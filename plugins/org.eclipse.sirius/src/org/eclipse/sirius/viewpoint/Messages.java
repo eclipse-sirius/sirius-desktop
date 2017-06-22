@@ -193,6 +193,9 @@ public final class Messages {
     public static String DialectManagerImpl_refreshMsg;
 
     @TranslatableMessage
+    public static String DRepresentationDescriptorToDRepresentationLinkManager_repLoading;
+
+    @TranslatableMessage
     public static String DViewOperations_addSelectedViewMsg;
 
     @TranslatableMessage
@@ -497,7 +500,7 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SessionFactoryImpl_sessionLoadingMsg;
-    
+
     @TranslatableMessage
     public static String SessionInterpreter_evaluationError;
 

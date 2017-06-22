@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.representation;
 
+import java.text.MessageFormat;
 import java.util.Optional;
 
 import org.eclipse.core.runtime.Assert;
@@ -22,6 +23,8 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * This class is intended to manage the link between the {@link DRepresentationDescriptor} and its
@@ -110,13 +113,19 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
         ResourceDescriptor resourceDescriptor = repDescriptor.getRepPath();
         Resource resource = repDescriptor.eResource();
         if (resourceDescriptor != null) {
-            // @formatter:off
-            return Optional.ofNullable(resource).map(Resource::getResourceSet)
-                    .map(rSet -> rSet.getEObject(resourceDescriptor.getResourceURI(), loadOnDemand))
-                    .filter(DRepresentation.class::isInstance)
-                    .map(DRepresentation.class::cast)
-                    .orElse(null);
-            // @formatter:on
+            try {
+                // @formatter:off
+                return Optional.ofNullable(resource).map(Resource::getResourceSet)
+                        .map(rSet -> rSet.getEObject(resourceDescriptor.getResourceURI(), loadOnDemand))
+                        .filter(DRepresentation.class::isInstance)
+                        .map(DRepresentation.class::cast)
+                        .orElse(null);
+                // @formatter:on
+             // CHECKSTYLE:OFF
+            } catch (Exception e) {
+             // CHECKSTYLE:ON
+                SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DRepresentationDescriptorToDRepresentationLinkManager_repLoading, resourceDescriptor.getResourceURI()), e);
+            }
         }
         return null;
     }
