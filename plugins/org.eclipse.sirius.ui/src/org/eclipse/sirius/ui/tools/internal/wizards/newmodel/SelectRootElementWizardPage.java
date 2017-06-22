@@ -12,22 +12,21 @@ package org.eclipse.sirius.ui.tools.internal.wizards.newmodel;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.WizardPage;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.ecore.EPackageMetaData;
+import org.eclipse.sirius.common.tools.internal.ecore.EPackageHelper;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -41,7 +40,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.dialogs.FilteredList;
 
 /**
  * A wizard page allowing to select a root element ({@link EClass}) from an {@link EPackage}.
@@ -49,6 +47,8 @@ import org.eclipse.ui.dialogs.FilteredList;
  * @see CreateEMFModelWizard
  * 
  * @author <a href="mailto:axel.richard@obeo.fr">Axel Richard</a>
+ * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+ *
  */
 public class SelectRootElementWizardPage extends WizardPage implements PropertyChangeListener {
 
@@ -66,13 +66,18 @@ public class SelectRootElementWizardPage extends WizardPage implements PropertyC
     private Button rootElementCheckbox;
 
     /** The list of root elements. */
-    private FilteredList rootElementFilteredList;
+    private TableViewer rootElementFilteredList;
 
     /** The filter used by the text field and the filtered list. */
     private String rootElementFilter;
 
     /** The data model used by the wizard and its pages. */
     private CreateEMFModelWizardDataModel dataModel;
+
+    /**
+     * Filter selecting elements if they match a given regular expression.
+     */
+    private RegexpViewerFilter filter;
 
     /**
      * Default constructor for this page.
@@ -90,14 +95,14 @@ public class SelectRootElementWizardPage extends WizardPage implements PropertyC
     /**
      * Sets the filter pattern.
      *
-     * @param filter
+     * @param theFilter
      *            the filter pattern.
      */
-    public void setRootElementFilter(String filter) {
+    public void setRootElementFilter(String theFilter) {
         if (this.rootElementText == null) {
-            this.rootElementFilter = filter;
+            this.rootElementFilter = theFilter;
         } else {
-            this.rootElementText.setText(filter);
+            this.rootElementText.setText(theFilter);
         }
     }
 
@@ -107,6 +112,7 @@ public class SelectRootElementWizardPage extends WizardPage implements PropertyC
      * @param parent
      *            the parent composite.
      */
+    @Override
     public void createControl(Composite parent) {
         Composite container = new Composite(parent, SWT.NULL);
 
@@ -134,12 +140,16 @@ public class SelectRootElementWizardPage extends WizardPage implements PropertyC
         this.rootElementText = new Text(parent, SWT.BORDER);
         this.rootElementText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
         this.rootElementText.setText(this.rootElementFilter == null ? "" : this.rootElementFilter); //$NON-NLS-1$
-        this.rootElementText.addListener(SWT.Modify, event -> this.rootElementFilteredList.setFilter(this.rootElementText.getText()));
+        this.rootElementText.addListener(SWT.Modify, event -> {
+            filter.setFilter(this.rootElementText.getText());
+            rootElementFilteredList.refresh(true);
+
+        });
         this.rootElementText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.keyCode == SWT.ARROW_DOWN) {
-                    rootElementFilteredList.setFocus();
+                    rootElementFilteredList.getTable().setFocus();
                 }
             }
         });
@@ -172,15 +182,40 @@ public class SelectRootElementWizardPage extends WizardPage implements PropertyC
      *            the parent composite.
      */
     private void createRootElementFilteredList(Composite parent) {
-        this.rootElementFilteredList = new FilteredList(parent, SWT.BORDER | SWT.FULL_SELECTION | SWT.V_SCROLL | SWT.H_SCROLL | SWT.SINGLE, new RootElementsListLabelProvider(), true, false, false);
-        this.rootElementFilteredList.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-        this.rootElementFilteredList.setFilter(this.rootElementFilter == null ? "" : this.rootElementFilter); //$NON-NLS-1$
-        this.rootElementFilteredList.addSelectionListener(new SelectionAdapter() {
+        this.rootElementFilteredList = new TableViewer(parent, SWT.BORDER | SWT.FULL_SELECTION | SWT.V_SCROLL | SWT.H_SCROLL | SWT.SINGLE);
+        this.rootElementFilteredList.getControl().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+        this.filter = new RegexpViewerFilter();
+        this.filter.setFilter(this.rootElementFilter == null ? "" : this.rootElementFilter); //$NON-NLS-1$
+        this.rootElementFilteredList.setFilters(filter);
+        this.rootElementFilteredList.addSelectionChangedListener((event) -> {
+            updateSelectedRootElement();
+        });
+        this.rootElementFilteredList.setContentProvider(new ITreeContentProvider() {
+
             @Override
-            public void widgetSelected(SelectionEvent e) {
-                updateSelectedRootElement();
+            public boolean hasChildren(Object element) {
+                return false;
+            }
+
+            @Override
+            public Object getParent(Object element) {
+                return null;
+            }
+
+            @Override
+            public Object[] getElements(Object inputElement) {
+                if (inputElement instanceof Object[]) {
+                    return (Object[]) inputElement;
+                }
+                return new Object[0];
+            }
+
+            @Override
+            public Object[] getChildren(Object parentElement) {
+                return new Object[0];
             }
         });
+        this.rootElementFilteredList.setLabelProvider(new RootElementsListLabelProvider());
     }
 
     @Override
@@ -195,18 +230,22 @@ public class SelectRootElementWizardPage extends WizardPage implements PropertyC
      * Update the selected root element and validate the page.
      */
     private void updateSelectedRootElement() {
-        Object[] selection = this.rootElementFilteredList.getSelection();
-        if (selection.length == 1) {
-            this.dataModel.setSelectedRootElement((EClass) selection[0]);
-            setPageComplete(true);
-        } else {
-            EClass preferredRootElement = getPreferredRootElementFromEPackageExtraData(this.dataModel.getSelectedPackage());
-            if (preferredRootElement != null) {
-                this.dataModel.setSelectedRootElement(preferredRootElement);
+        ISelection selection = this.rootElementFilteredList.getSelection();
+        if (selection instanceof StructuredSelection) {
+            StructuredSelection structuredSelection = (StructuredSelection) selection;
+            Object[] selectionArray = structuredSelection.toArray();
+            if (selectionArray.length == 1) {
+                this.dataModel.setSelectedRootElement((EClass) selectionArray[0]);
                 setPageComplete(true);
             } else {
-                this.dataModel.setSelectedRootElement(null);
-                setPageComplete(false);
+                EClass preferredRootElement = EPackageHelper.getPreferredRootElementFromEPackageExtraData(this.dataModel.getSelectedPackage());
+                if (preferredRootElement != null) {
+                    this.dataModel.setSelectedRootElement(preferredRootElement);
+                    setPageComplete(true);
+                } else {
+                    this.dataModel.setSelectedRootElement(null);
+                    setPageComplete(false);
+                }
             }
         }
     }
@@ -216,117 +255,58 @@ public class SelectRootElementWizardPage extends WizardPage implements PropertyC
      */
     private void updateRootElementFilteredList() {
         if (this.rootElementCheckbox != null) {
-            Object[] classesArray;
+            Object[] rootElements;
             if (this.rootElementCheckbox.getSelection()) {
-                classesArray = getFilteredConcreteClasses(this.dataModel.getSelectedPackage()).toArray();
+                List<EClass> eClassRootElements = EPackageHelper.getEClassRootElements(this.dataModel.getSelectedPackage());
+                rootElements = eClassRootElements.toArray();
             } else {
-                classesArray = getConcreteClasses(this.dataModel.getSelectedPackage()).toArray();
+                rootElements = EPackageHelper.getConcreteClasses(this.dataModel.getSelectedPackage()).toArray();
             }
-            this.rootElementFilteredList.setElements(classesArray);
-            EClass preferredRootElement = getPreferredRootElementFromEPackageExtraData(this.dataModel.getSelectedPackage());
+            this.rootElementFilteredList.setInput(rootElements);
+            EClass preferredRootElement = EPackageHelper.getPreferredRootElementFromEPackageExtraData(this.dataModel.getSelectedPackage());
             if (preferredRootElement != null) {
-                this.rootElementFilteredList.setSelection(new Object[] { preferredRootElement });
+                this.rootElementFilteredList.setSelection(new StructuredSelection(preferredRootElement));
+            } else if (rootElements.length > 0) {
+                this.rootElementFilteredList.setSelection(new StructuredSelection(rootElements[0]));
             }
+            this.rootElementFilteredList.refresh(true);
         }
     }
 
     /**
-     * Get the concrete classes from the given {@link EPackage} (classes that are not abstract and that are not
-     * interfaces).
+     * Filter selecting elements if they match a given regular expression.
      * 
-     * @param ePackage
-     *            the given {@link EPackage}.
-     * @return the concrete classes from the given {@link EPackage}.
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
      */
-    private Collection<EClass> getConcreteClasses(EPackage ePackage) {
-        Collection<EClass> concreteClasses = new HashSet<>();
-        if (ePackage != null) {
-            for (EClassifier eClassifier : ePackage.getEClassifiers()) {
-                if (eClassifier instanceof EClass && !((EClass) eClassifier).isAbstract() && !((EClass) eClassifier).isInterface()) {
-                    concreteClasses.add((EClass) eClassifier);
-                }
-            }
+    private final class RegexpViewerFilter extends ViewerFilter {
+        /**
+         * The text filter to use when applying filtering on given elements.
+         */
+        private String filter;
+
+        /**
+         * Set the text filter to use when applying filtering on given elements.
+         * 
+         * @param theFilter
+         *            the text filter to use when applying filtering on given elements.
+         */
+        public void setFilter(String theFilter) {
+            this.filter = theFilter;
         }
-        return concreteClasses;
+
+        @Override
+        public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (!filter.equals("*") && element instanceof EClass) { //$NON-NLS-1$
+                EClass eClass = (EClass) element;
+                return eClass.getName() != null && eClass.getName().toLowerCase().contains(filter.toLowerCase());
+            }
+            return true;
+        }
     }
 
     /**
-     * Get the filtered concrete classes from the given {@link EPackage} (classes that are not abstract and that are not
-     * interfaces, and that are not child of other classes).
-     * 
-     * @param ePackage
-     *            the given {@link EPackage}.
-     * @return the filtered concrete classes from the given {@link EPackage}.
-     */
-    private Collection<EClass> getFilteredConcreteClasses(EPackage ePackage) {
-        /*
-         * We'll only consider actually instanciable classes.
-         */
-        Collection<EClass> concreteClasses = getConcreteClasses(ePackage);
-
-        /*
-         * If we have explicit metadata associated with the EPackage, use the suggested roots.
-         */
-        if (ePackage != null) {
-            String nsURI = ePackage.getNsURI();
-            EPackageMetaData metaData = DslCommonPlugin.INSTANCE.getEPackageMetaData(nsURI);
-            List<EClass> roots = new ArrayList<>();
-            if (metaData != null && !metaData.getSuggestedRoots().isEmpty()) {
-                roots = concreteClasses.stream().filter(c -> metaData.getSuggestedRoots().contains(c.getName())).collect(Collectors.toList());
-            }
-            if (!roots.isEmpty()) {
-                return roots;
-            }
-        }
-
-        /*
-         * Otherwise, or if there is no instanciable suggested root, try to infer good candidates from the metamodel's
-         * structure (i.e. prefer elements which are not contained by anything).
-         */
-        return inferRootElementsCandidates(concreteClasses);
-    }
-
-    private Collection<EClass> inferRootElementsCandidates(Collection<EClass> concreteClasses) {
-        Collection<EClass> filteredConcreteClasses = new HashSet<>(concreteClasses);
-        for (EClass eClass : concreteClasses) {
-            if (filteredConcreteClasses.contains(eClass)) {
-                eClass.getEAllReferences().stream().filter(EReference::isContainment).forEach(eReference -> {
-                    EClassifier eType = eReference.getEType();
-                    if (concreteClasses.contains(eType) && eType != eClass) {
-                        filteredConcreteClasses.remove(eType);
-                    } else {
-                        concreteClasses.stream().filter(c -> c.getEAllSuperTypes().contains(eType)).forEach(c -> filteredConcreteClasses.remove(c));
-                    }
-                });
-            }
-        }
-        return filteredConcreteClasses;
-    }
-
-    /**
-     * Get the preferred root element for the given {@link EPackage} from the registry of EPackageExtraData.
-     * 
-     * @see EPackageExtraDataRegistry
-     * @param ePackage
-     *            the given {@link EPackage}.
-     * @return the preferred root element for the given {@link EPackage}, or null if it can't be found.
-     */
-    private EClass getPreferredRootElementFromEPackageExtraData(EPackage ePackage) {
-        if (ePackage != null) {
-            String nsURI = ePackage.getNsURI();
-            EPackageMetaData metaData = DslCommonPlugin.INSTANCE.getEPackageMetaData(nsURI);
-            if (metaData != null && !metaData.getSuggestedRoots().isEmpty()) {
-                EClassifier result = ePackage.getEClassifier(metaData.getSuggestedRoots().get(0));
-                if (result instanceof EClass) {
-                    return (EClass) result;
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * A label provider for the {@link SelectRootElementWizardPage#rootElementFilteredList}.
+     * A label provider for the {@link SelectRootElementWizardPage#rootElementFilteredTree}.
      */
     private class RootElementsListLabelProvider extends LabelProvider {
 
