@@ -1263,6 +1263,9 @@ public final class Messages {
     public static String SnapBackDistantLabelsMigrationParticipant_oneLabelSnapBacked;
 
     @TranslatableMessage
+    public static String SnapBackDistantLabelsMigrationParticipant_nodesMoved;
+
+    @TranslatableMessage
     public static String SnapBackDistantLabelsMigrationParticipant_severalLabelsSnapBacked;
 
     @TranslatableMessage

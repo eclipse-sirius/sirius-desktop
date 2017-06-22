@@ -143,12 +143,8 @@
 			<li><span class="label label-success">Added</span> An 
 				<a href="./user/general/Modeling%20Project.html#Migration">automatic migration</a> has been added in this version to fix diagram with edge labels corrupted (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=517437">bugzilla #517437</a> for more details). Contrary to all previous migrations, this one logs an information in the 
-				<em>Error Log</em> view to inform how many labels have been fixed in concerned diagrams. If detected as &#8220;corrupted label&#8221;, the label is reset to its default location (as if you launch the &#8220;Snap Back&#8221; action of it).
-			</li>
-		</ul>
-		<p>The rules applied to detect a corrupted label are the following:</p>
-		<ul>
-			<li>
+				<em>Error Log</em> view to inform how many labels have been fixed in concerned diagrams. If detected as &#8220;corrupted label&#8221;, the label is reset to its default location (as if you launch the &#8220;Snap Back&#8221; action of it). If at least one label is detected as &#8220;corrupted label&#8221;, the layout is also potentially corrupted (nodes, children of the diagram, with x or y coordinate very big). In this case, the concerned nodes are moved near 5000 (or -5000) as new coordinate. A message is added in this case: 
+				<em>Some nodes have also been moved as the layout of this diagram is corrupted. A Reset Origin and/or manual layout is probably needed for this diagram.</em> The rules applied to detect a corrupted label are the following:
 				<ul>
 					<li>If the label is less than 250 pixels away from the reference point on its corresponding edge, the label is not considered as distant.</li>
 					<li>If the label is more than 1000 pixels away from the reference point on its corresponding edge, the label is considered as distant.</li>
@@ -161,7 +157,7 @@
 		<ul>
 			<li><span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=517437">bugzilla #517437</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
-				<em>11.1.6.201706141600</em>.
+				<em>11.1.6.201706261600</em>.
 			</li>
 		</ul>
 		<h2 id="sirius4.1.5">Changes in Sirius 4.1.5</h2>
