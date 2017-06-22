@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,9 +24,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 
 /**
  * Test for {@link SessionService}.
@@ -68,7 +66,6 @@ public class SessionServiceGMFDiagramTest extends SiriusDiagramTestCase implemen
 
     public void testClearGMFData() throws Exception {
         final Collection<DRepresentationDescriptor> allRepDescriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
-        final Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
         Command cmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
@@ -85,14 +82,6 @@ public class SessionServiceGMFDiagramTest extends SiriusDiagramTestCase implemen
         for (final EObject content : resource.getContents()) {
             if (content instanceof Diagram)
                 fail();
-        }
-
-        for (DRepresentation dRepresentation : allRepresentations) {
-            for (AnnotationEntry annotation : dRepresentation.getOwnedAnnotationEntries()) {
-                if (annotation.getSource().equals(CustomDataConstants.GMF_DIAGRAMS)) {
-                    fail();
-                }
-            }
         }
     }
 }

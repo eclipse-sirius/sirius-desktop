@@ -118,7 +118,7 @@ public class ResourceQuery {
      */
     public boolean isSrmResource() {
         EList<EObject> contents = resource.getContents();
-        return Optional.ofNullable(contents.isEmpty() ? null : resource.getContents().get(0)).filter(DRepresentation.class::isInstance).isPresent();
+        return Optional.ofNullable(contents.isEmpty() ? null : contents.get(0)).filter(DRepresentation.class::isInstance).isPresent();
     }
 
     /**

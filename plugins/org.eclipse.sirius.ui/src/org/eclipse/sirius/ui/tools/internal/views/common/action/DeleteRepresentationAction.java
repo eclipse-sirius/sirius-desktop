@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -101,14 +102,13 @@ public class DeleteRepresentationAction extends Action {
                                 IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
                                 if (editingSession != null) {
                                     for (DRepresentationDescriptor dRepDescriptor : dRepdescriptors) {
-                                        DRepresentation representation = dRepDescriptor.getRepresentation();
-                                        if (representation != null) {
-                                            DialectEditor editor = editingSession.getEditor(representation);
+                                        Optional.of(dRepDescriptor).filter(DRepresentationDescriptor::isLoadedRepresentation).map(DRepresentationDescriptor::getRepresentation).ifPresent(rep -> {
+                                            DialectEditor editor = editingSession.getEditor(rep);
                                             if (editor != null) {
                                                 DialectUIManager.INSTANCE.closeEditor(editor, false);
                                                 editingSession.detachEditor(editor);
                                             }
-                                        }
+                                        });
                                     }
                                 }
                             }
@@ -142,9 +142,7 @@ public class DeleteRepresentationAction extends Action {
                 };
                 PlatformUI.getWorkbench().getProgressService().run(true, false, representationsDeletionRunnable);
             }
-        } catch (final InvocationTargetException e) {
-            SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
-        } catch (final InterruptedException e) {
+        } catch (final InvocationTargetException | InterruptedException e) {
             SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
         }
     }

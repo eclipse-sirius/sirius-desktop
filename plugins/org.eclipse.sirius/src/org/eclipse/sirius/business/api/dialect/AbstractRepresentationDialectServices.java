@@ -10,11 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.dialect;
 
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -23,6 +26,7 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
@@ -44,6 +48,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -209,8 +214,20 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     @Override
     public boolean deleteRepresentation(DRepresentationDescriptor representationDescriptor, Session session) {
         if (isSupported(representationDescriptor)) {
-            SiriusUtil.delete(representationDescriptor.getRepresentation(), session);
+            Optional<Resource> resOpt = Optional.ofNullable(representationDescriptor.getRepresentation()).map(EObject::eResource);
+            if (representationDescriptor.getRepresentation() != null) {
+                SiriusUtil.delete(representationDescriptor.getRepresentation(), session);
+            }
             SiriusUtil.delete(representationDescriptor, session);
+
+            // delete the resource if it is empty
+            resOpt.filter(res -> res.getContents().isEmpty()).ifPresent(res -> {
+                try {
+                    res.delete(Collections.emptyMap());
+                } catch (IOException e) {
+                    SiriusPlugin.getDefault().error(Messages.SiriusUncontrolCommand_resourceDeletionFailedMsg, e);
+                }
+            });
             return true;
         }
         return false;

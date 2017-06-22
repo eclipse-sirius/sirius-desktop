@@ -31,7 +31,6 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
@@ -283,21 +282,6 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         return requiredViewpoints;
     }
 
-    @Override
-    public boolean deleteRepresentation(final DRepresentationDescriptor representationDescriptor, final Session session) {
-        DRepresentation representation = representationDescriptor.getRepresentation();
-        if (representation instanceof DDiagram) {
-            session.getServices().clearCustomData(CustomDataConstants.GMF_DIAGRAMS, representation);
-            SiriusUtil.delete(representation, session);
-            SiriusUtil.delete(representationDescriptor, session);
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public RepresentationDescription getDescription(final DRepresentation representation) {
         if (representation instanceof DDiagram) {
