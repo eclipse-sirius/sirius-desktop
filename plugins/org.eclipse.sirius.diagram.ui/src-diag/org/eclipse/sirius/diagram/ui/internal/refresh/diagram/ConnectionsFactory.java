@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.sirius.diagram.CenterLabelStyle;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
@@ -51,8 +52,10 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.edge.SlidableAnchor;
 import org.eclipse.sirius.diagram.ui.part.SiriusLinkDescriptor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.internal.routers.RectilinearEdgeUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
  * Specific factory for {@link Edge} used by the
@@ -251,14 +254,32 @@ public class ConnectionsFactory {
                     // Computes pointList
                     PrecisionPoint sourceRelativeReference = SlidableAnchor.parseTerminalString(sourceTerminal);
                     SlidableAnchor sourceAnchor = new SlidableAnchor(source, sourceRelativeReference);
-                    pointList.addPoint(sourceAnchor.getLocation(sourceAnchor.getReferencePoint()));
+                    sourceRefPoint = sourceAnchor.getLocation(sourceAnchor.getReferencePoint());
 
                     PrecisionPoint targetRelativeReference = SlidableAnchor.parseTerminalString(targetTerminal);
                     SlidableAnchor targetAnchor = new SlidableAnchor(target, targetRelativeReference);
-                    pointList.addPoint(targetAnchor.getLocation(targetAnchor.getReferencePoint()));
+                    targetRefPoint = targetAnchor.getLocation(targetAnchor.getReferencePoint());
+
+
+                    Option<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionalSourceBounds.get(), true);
+                    Option<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionaltargetBounds.get(), false);
+
+                    if (srcConnectionBendpoint.some() && tgtConnectionBendpoint.some()) {
+                            pointList.addPoint(srcConnectionBendpoint.get());
+                            pointList.addPoint(tgtConnectionBendpoint.get());
+                            EdgeQuery edgeQuery = new EdgeQuery(edge);
+                            if (edgeQuery.isEdgeWithRectilinearRoutingStyle()) {
+                                RectilinearEdgeUtil.centerEdgeEnds(pointList, sourceRefPoint, targetRefPoint, CenteringStyle.BOTH);
+                            }
+                    } else {
+                        // no intersection found, case when source and target are overlapped
+                        pointList.addPoint(sourceRefPoint);
+                        pointList.addPoint(targetRefPoint);
+                    }
                 }
             }
         }
+        pointList = RectilinearEdgeUtil.normalizeToStraightLineTolerance(pointList, 2);
     }
 
     /**

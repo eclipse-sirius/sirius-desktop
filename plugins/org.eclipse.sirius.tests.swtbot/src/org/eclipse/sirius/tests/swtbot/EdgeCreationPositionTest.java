@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.List;
+
+import org.eclipse.draw2d.Bendpoint;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -24,6 +27,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.EdgeRouting;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
@@ -37,6 +42,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
@@ -55,6 +62,8 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     private static final PrecisionPoint TOP_LEFT_CORNER = new PrecisionPoint(0.1, 0.1);
 
     private static final PrecisionPoint BOTTOM_RIGHT_CORNER = new PrecisionPoint(0.9, 0.9);
+    
+    private static final PrecisionPoint BOTTOM_LEFT_CORNER = new PrecisionPoint(0.1, 0.9);
 
     private static final String MODEL = "tc-2185.ecore";
 
@@ -115,6 +124,16 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     /** */
     public void test_Container() {
         createEdgeAndValidateAnchors("Container", "A", AbstractDiagramContainerEditPart.class, "B", AbstractDiagramContainerEditPart.class);
+    }
+    
+    /**
+     * Test Bendpoints of an edge created with border Node as source and target.
+     */
+    public void test_BorderedEdgeAndContainer() {
+        changeDiagramPreference(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, true);
+        changeDiagramPreference(SiriusDiagramCorePreferences.PREF_LINE_STYLE, EdgeRouting.MANHATTAN);
+        createBorderedEdgeAndValidateAnchors("Container", "A", AbstractDiagramContainerEditPart.class, "B",
+                AbstractDiagramContainerEditPart.class);
     }
 
     /**
@@ -249,13 +268,50 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         openDiagram(diagramName, zoomLevel);
         IGraphicalEditPart sourcePart = (IGraphicalEditPart) editor.getEditPart(sourceName, expectedSourceType).part();
         IGraphicalEditPart targetPart = (IGraphicalEditPart) editor.getEditPart(targetName, expectedTargetType).part();
-        createEdge(sourcePart, sourcePosition, targetPart, targetPosition);
+        createEdge(sourcePart, sourcePosition, targetPart, targetPosition, getCreateEdgeToolName());
         DEdgeEditPart edge = getSingleDEdgeFrom((NodeEditPart) sourcePart);
         assertAreValidAnchors(sourcePart, targetPart, edge);
         if (!ZoomLevel.ZOOM_100.equals(zoomLevel)) {
             // Reset to original zoom to avoid problem in further tests
             editor.zoom(ZoomLevel.ZOOM_100);
         }
+    }
+
+    /**
+     * Open the diagram <code>diagramName</code>, create an edge between
+     * <code>sourceName</code> and <code>targetName</code> including border
+     * Node creation and validate the source and target anchors.
+     * 
+     * @param diagramName
+     *            The name of the diagram to open
+     * @param sourceName
+     *            The name of the source
+     * @param expectedSourceType
+     *            The type of the expected source edit part
+     * @param targetName
+     *            The name of the target
+     * @param expectedTargetType
+     *            The type of the expected target edit part
+     */
+    private void createBorderedEdgeAndValidateAnchors(String diagramName, String sourceName,
+            Class<? extends EditPart> expectedSourceType, String targetName,
+            Class<? extends EditPart> expectedTargetType) {
+        openDiagram(diagramName);
+        IGraphicalEditPart sourcePart = (IGraphicalEditPart) editor.getEditPart(sourceName, expectedSourceType).part();
+        IGraphicalEditPart targetPart = (IGraphicalEditPart) editor.getEditPart(targetName, expectedTargetType).part();
+        createEdge(sourcePart, BOTTOM_RIGHT_CORNER, targetPart, BOTTOM_LEFT_CORNER, getCreateBorderEdgeToolName());
+
+        List<SWTBotGefConnectionEditPart> connectionsEditPart = editor.getConnectionsEditPart();
+        assertEquals(1, connectionsEditPart.size());
+        SWTBotGefConnectionEditPart conection = connectionsEditPart.get(0);
+        assertTrue(conection.part() instanceof DEdgeEditPart);
+        DEdgeEditPart edge = (DEdgeEditPart) conection.part();
+
+        SWTBotGefEditPart borderSource = conection.source();
+        SWTBotGefEditPart borderTarget = conection.target();
+
+        assertAreValidAnchorsAndBendpoints((IGraphicalEditPart) borderSource.part(),
+                (IGraphicalEditPart) borderTarget.part(), edge);
     }
 
     /** */
@@ -274,6 +330,20 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      *            Edge to consider
      */
     protected void assertAreValidAnchors(IGraphicalEditPart source, IGraphicalEditPart target, DEdgeEditPart edge) {
+        assertAreValidAnchorsAndBendpoints(source, target, edge);
+    }
+
+    /**
+     * Check that anchor of edge are valid and bend-points of edge are consistent with draw2D points.
+     * 
+     * @param source
+     *            The source of the edge
+     * @param target
+     *            The target of the edge
+     * @param edge
+     *            Edge to consider
+     */
+    protected void assertAreValidAnchorsAndBendpoints(IGraphicalEditPart source, IGraphicalEditPart target, DEdgeEditPart edge) {
         assertIsValidAnchor((NodeEditPart) source, edge, true);
         assertIsValidAnchor((NodeEditPart) target, edge, false);
 
@@ -310,7 +380,14 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         assertTrue("Intersection should exist between target and edge : " + GraphicalHelper.getAbsoluteBoundsIn100Percent(target) + " and " + sourcePoint + "-->" + targetPoint,
                 targetIntersection.some());
 
+        // GMF bendpoints
+        @SuppressWarnings("unchecked")
+        List<Bendpoint> routingConstraint = (List<Bendpoint>) connectionFigure.getRoutingConstraint();
+        // Draw 2D bendpoints
         PointList figurePoints = connectionFigure.getPoints();
+
+        assertEquals("Bad number of bendpoints after edge creation", routingConstraint.size(), figurePoints.size());
+
         assertEquals("Wrong x coordinate for source.", sourceIntersection.get().x, figurePoints.getFirstPoint().x, 1);
         assertEquals("Wrong y coordinate for source.", sourceIntersection.get().y, figurePoints.getFirstPoint().y, 1);
         assertEquals("Wrong x coordinate for target.", targetIntersection.get().x, figurePoints.getLastPoint().x, 1);
@@ -352,12 +429,12 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         return (DEdgeEditPart) edge;
     }
 
-    private void createEdge(IGraphicalEditPart source, PrecisionPoint sourcePosition, IGraphicalEditPart target, PrecisionPoint targetPosition) {
+    private void createEdge(IGraphicalEditPart source, PrecisionPoint sourcePosition, IGraphicalEditPart target, PrecisionPoint targetPosition, String toolName) {
         Point sourcePoint = getProportionalPoint(GraphicalHelper.getAbsoluteBounds(source), sourcePosition);
         Point targetPoint = getProportionalPoint(GraphicalHelper.getAbsoluteBounds(target), targetPosition);
 
         ICondition done = new OperationDoneCondition();
-        editor.activateTool(getCreateEdgeToolName());
+        editor.activateTool(toolName);
         editor.click(sourcePoint, true);
         editor.click(targetPoint, true);
         SWTBotUtils.waitAllUiEvents();
@@ -371,6 +448,15 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      */
     protected String getCreateEdgeToolName() {
         return "Super";
+    }
+    
+    /**
+     * Return the name of the create border edge tool to use.
+     * 
+     * @return the name of the create edge tool to use.
+     */
+    protected String getCreateBorderEdgeToolName() {
+        return "SuperWithBorderNode";
     }
 
     private Point getProportionalPoint(Rectangle bounds, PrecisionPoint proportions) {

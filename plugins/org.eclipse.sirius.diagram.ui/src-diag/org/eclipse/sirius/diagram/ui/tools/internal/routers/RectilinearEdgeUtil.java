@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -370,5 +370,46 @@ public final class RectilinearEdgeUtil {
         } else {
             return null;
         }
+    }
+
+    /**
+     * Goes through line segments of a polyline and makes strict straight segments from nearly straight segments.
+     * Then remove also unnecessary points.
+     * 
+     * @param line
+     *            polyline to straight
+     * @param tolerance
+     *            tolerance value specifying nearly straight lines.
+     * @return the line made straight with only necessary points
+     */
+    public static PointList normalizeToStraightLineTolerance(PointList line, int tolerance) {
+        // straight edge
+        for (int i = 0; i < line.size() - 1; i++) {
+            Point pt1 = line.getPoint(i);
+            Point pt2 = line.getPoint(i + 1);
+            if (Math.abs(pt1.y - pt2.y) < tolerance) {
+                line.setPoint(new Point(pt2.x, pt1.y), i + 1);
+            } else if (Math.abs(pt1.x - pt2.x) < tolerance) {
+                line.setPoint(new Point(pt1.x, pt2.y), i + 1);
+            }
+        }
+        // delete unnecessary points
+        PointList newLine = new PointList();
+        newLine.addPoint(line.getPoint(0));
+        if (line.size() > 2) {
+            for (int i = 1; i < line.size() - 1; i++) {
+                Point pt1 = line.getPoint(i - 1);
+                Point pt2 = line.getPoint(i);
+                Point pt3 = line.getPoint(i + 1);
+                if ((pt1.x == pt2.x && pt3.x == pt2.x) || (pt1.y == pt2.y && pt3.y == pt2.y)) {
+                    // three point are aligned horizontally or vertically
+                    // point is not necessary
+                } else {
+                    newLine.addPoint(pt2);
+                }
+            }
+        }
+        newLine.addPoint(line.getPoint(line.size() - 1));
+        return newLine;
     }
 }

@@ -624,6 +624,30 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     protected void launchCancelCustomStyle() {
         bot.buttonWithTooltip("Cancel custom style").click();
     }
+    
+    /**
+     * Change a preference and store the old value. It will be automatically
+     * reset during tear down.
+     * 
+     * TO CALL ONLY ONCE PER TEST (set up + test)
+     * 
+     * @param preferenceKey
+     *            The key of the preference.
+     * @param newValue
+     *            The new value.
+     */
+    protected void changeDiagramPreference(String preferenceKey, Integer newValue) {
+        assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
+
+        int oldValue = Platform.getPreferencesService().getInt(DiagramPlugin.ID, preferenceKey, 0, null);
+        oldValueDiagramPreferences.put(preferenceKey, oldValue);
+
+        IEclipsePreferences diagramCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
+        diagramCorePreferences.putInt(preferenceKey, newValue);
+
+        int valueToCheck = Platform.getPreferencesService().getInt(DiagramPlugin.ID, preferenceKey, 0, null);
+        TestCase.assertEquals(getErrorMessage(preferenceKey, DiagramPlugin.ID), newValue.intValue(), valueToCheck);
+    }
 
     /**
      * Change a boolean preference and store the old value. It will be
