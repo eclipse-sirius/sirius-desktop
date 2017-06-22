@@ -40,6 +40,7 @@ import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.api.views.common.item.AnalysisResourceItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
+import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.FileSessionFinder;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -71,6 +72,12 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
      * Default image descriptor for the "Sirius Modeling" overlay.
      */
     public static final ImageDescriptor SIRIUS_MODELING_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/ovr16/SessionDecorator.gif"); //$NON-NLS-1$ ;
+
+    /**
+     * The overlay decorator used to distinguish representation types/categories from actual representations
+     * (instances).
+     */
+    private static final ImageDescriptor REPRESENTATION_DESCRIPTION_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/ovr16/description_decorator.png"); //$NON-NLS-1$ ;
 
     private static final String DISABLED_REPRESENTATION_SUFFIX = "_disabled"; //$NON-NLS-1$
 
@@ -118,12 +125,23 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
                     }
                     img = disabledImage;
                 }
-            } catch (IllegalStateException e) {
-                // This can happen when trying to get the label of a CDOObject
-                // which
-                // Transaction has just been closed
-                // Nothing to do, null will returned
-            } catch (NullPointerException e) {
+                if (element instanceof RepresentationDescriptionItem) {
+                    Object wrapped = ((RepresentationDescriptionItem) element).getWrappedObject();
+                    if (wrapped instanceof RepresentationDescription) {
+                        // Decorate representation descriptions with a small overlay to distinguish them from the
+                        // instances.
+                        String key = ((RepresentationDescription) wrapped).eClass().getName() + "_decorated"; //$NON-NLS-1$
+                        Image baseImg = img;
+                        img = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
+                        if (img == null) {
+                            ImageDescriptor[] imageDescriptors = new ImageDescriptor[5];
+                            imageDescriptors[IDecoration.BOTTOM_RIGHT] = SiriusCommonLabelProvider.REPRESENTATION_DESCRIPTION_OVERLAY_DESC;
+                            img = new DecorationOverlayIcon(baseImg, imageDescriptors).createImage();
+                            SiriusEditPlugin.getPlugin().getImageRegistry().put(key, img);
+                        }
+                    }
+                }
+            } catch (IllegalStateException | NullPointerException e) {
                 // This can happen when trying to get the label of a CDOObject
                 // which transaction has just been closed
                 // Nothing to do, null will returned
@@ -198,11 +216,7 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
                 // Let eclipse look for file and project icons + nature
                 // decoration
                 text = sessionLabelProvider.getText(element);
-            } catch (IllegalStateException e) {
-                // This can happen when trying to get the label of a CDOObject
-                // which transaction has just been closed
-                // Nothing to do, null will returned
-            } catch (NullPointerException e) {
+            } catch (IllegalStateException | NullPointerException e) {
                 // This can happen when trying to get the label of a CDOObject
                 // which transaction has just been closed
                 // Nothing to do, null will returned
@@ -317,11 +331,7 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
             if (isDanglingRepresentationDescriptor(element)) {
                 foreground = VisualBindingManager.getDefault().getColorFromName("light_gray"); //$NON-NLS-1$
             }
-        } catch (IllegalStateException e) {
-            // This can happen when trying to get the label of a CDOObject which
-            // Transaction has just been closed
-            // Nothing to do, null will returned
-        } catch (NullPointerException e) {
+        } catch (IllegalStateException | NullPointerException e) {
             // This can happen when trying to get the label of a CDOObject
             // which transaction has just been closed
             // Nothing to do, null will returned
