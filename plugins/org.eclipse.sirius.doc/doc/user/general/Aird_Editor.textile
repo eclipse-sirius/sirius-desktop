@@ -50,7 +50,31 @@ When this preference is activated, then aird editor is opened automatically in t
 
 !images/aird_editor_expand_aird_file.png!
 
-_Important note:_ Closing the aird editor will not close representations you may have opened, nor unload the associated files and models. If you are using a _Modeling Project_ in the _Model Explorer_ view, you need to close the whole project to unload the models. In other contexts you can use the _Close_ action available in the context menu of the aird file.
+h2(#closing). Closing the Aird Editor and unloading models
+
+You have four different ways to close the aird editor. But not all the ways have the same behaviour.
+
+There is one thing to take in consideration when it comes to close the aird editor:
+
+* An opened aird editor has all its referenced models loaded in memory as well as any representation opened in a Sirius editor. For big models and big representations, this can have a big memory footprint. So when you want to close the aird editor you must ask yourself if you want to free the memory used by the loaded aird or not. Then you have to choose the right way to close the editor accordingly. Indeed some way to close the editor will not free this memory and some others will.
+
+The closing mechanism which does not unload models and representations is the following:
+
+* Clicking on the editor white cross on the top right corner of editor's tab. This will only close the aird editor and will not free memory used by loaded models and representations opened in Sirius editors.
+
+!images/aird_editor_close_editor_with_cross.png!
+
+The closing mechanisms which do unload models and representations from memory are the following:
+
+* If your aird editor refers to an aird file on a _Modeling Project_, the only way to unload models and representations from memory is to close it.
+
+* If your aird editor does not refer to an aird file on a _Modeling Project_, a button _Unload models_ is provided by the editor and allows to close the aird editor and free memory used by loaded models and representations.
+
+!images/aird_editor_close_editor_with_button.png!
+
+* When aird editor is not in a _Modeling Project_, _Close_ action in contextual menu of the aird file is available. This action is reachable in any view showing the aird as an IFile like _Model Explorer_, _Package Explorer_ etc... 
+
+!images/aird_editor_close_editor_with_right_click.png!
 
 h2(#semantic_models). Managing the Semantic Models
 

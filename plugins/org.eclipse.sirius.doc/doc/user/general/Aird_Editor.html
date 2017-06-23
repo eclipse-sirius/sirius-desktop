@@ -29,6 +29,9 @@
 						<a href="#opening">Opening the Aird Editor</a>
 					</li>
 					<li>
+						<a href="#closing">Closing the Aird Editor and unloading models</a>
+					</li>
+					<li>
 						<a href="#semantic_models">Managing the Semantic Models</a>
 						<ol style="list-style: disc;">
 							<li>
@@ -145,11 +148,44 @@
 		<p>
 			<img border="0" src="images/aird_editor_expand_aird_file.png"/>
 		</p>
+		<h2 id="closing">Closing the Aird Editor and unloading models</h2>
+		<p>You have four different ways to close the aird editor. But not all the ways have the same behaviour.</p>
+		<p>There is one thing to take in consideration when it comes to close the aird editor:</p>
+		<ul>
+			<li>An opened aird editor has all its referenced models loaded in memory as well as any representation opened in a Sirius editor. For big models and big representations, this can have a big memory footprint. So when you want to close the aird editor you must ask yourself if you want to free the memory used by the loaded aird or not. Then you have to choose the right way to close the editor accordingly. Indeed some way to close the editor will not free this memory and some others will.</li>
+		</ul>
+		<p>The closing mechanism which does not unload models and representations is the following:</p>
+		<ul>
+			<li>Clicking on the editor white cross on the top right corner of editor&#8217;s tab. This will only close the aird editor and will not free memory used by loaded models and representations opened in Sirius editors.</li>
+		</ul>
 		<p>
-			<em>Important note:</em> Closing the aird editor will not close representations you may have opened, nor unload the associated files and models. If you are using a 
-			<em>Modeling Project</em> in the 
-			<em>Model Explorer</em> view, you need to close the whole project to unload the models. In other contexts you can use the 
-			<em>Close</em> action available in the context menu of the aird file.
+			<img border="0" src="images/aird_editor_close_editor_with_cross.png"/>
+		</p>
+		<p>The closing mechanisms which do unload models and representations from memory are the following:</p>
+		<ul>
+			<li>If your aird editor refers to an aird file on a 
+				<em>Modeling Project</em>, the only way to unload models and representations from memory is to close it.
+			</li>
+		</ul>
+		<ul>
+			<li>If your aird editor does not refer to an aird file on a 
+				<em>Modeling Project</em>, a button 
+				<em>Unload models</em> is provided by the editor and allows to close the aird editor and free memory used by loaded models and representations.
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/aird_editor_close_editor_with_button.png"/>
+		</p>
+		<ul>
+			<li>When aird editor is not in a 
+				<em>Modeling Project</em>, 
+				<em>Close</em> action in contextual menu of the aird file is available. This action is reachable in any view showing the aird as an IFile like 
+				<em>Model Explorer</em>, 
+				<em>Package Explorer</em> etc... 
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/aird_editor_close_editor_with_right_click.png"/>
 		</p>
 		<h2 id="semantic_models">Managing the Semantic Models</h2>
 		<p>This section describes how to manage the semantic models associated to your aird file, which are visible in the 
