@@ -42,6 +42,11 @@ public class FileHandledBySessionTester extends PropertyTester {
     private static final String SESSION_FILE_PROPERTY = "isSessionFile"; //$NON-NLS-1$
 
     /**
+     * Property verifying that a given element in an IFile in a modeling project.
+     */
+    private static final String SESSION_IN_MODELING_PROJECT = "isFileInModelingProject"; //$NON-NLS-1$
+
+    /**
      * Constructor.
      */
     public FileHandledBySessionTester() {
@@ -52,22 +57,26 @@ public class FileHandledBySessionTester extends PropertyTester {
      */
     @Override
     public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
+        boolean result = false;
         if (SESSION_FILE_PROPERTY.equals(property)) {
-            return isSessionFile(receiver);
+            result = isSessionFile(receiver);
         } else {
-            boolean result = false;
             if (receiver instanceof IFile) {
                 IFile receiverFile = (IFile) receiver;
-
-                // Modeling project should show expansion arrows during session load
-                if (ModelingProject.hasModelingProjectNature(receiverFile.getProject())) {
-                    result = true;
+                boolean hasModelingProjectNature = ModelingProject.hasModelingProjectNature(receiverFile.getProject());
+                if (SESSION_IN_MODELING_PROJECT.equals(property)) {
+                    result = hasModelingProjectNature;
                 } else {
-                    result = new FileQuery(receiverFile.getFileExtension()).isSessionResourceFile() || !FileSessionFinder.getSelectedSessions(Collections.singletonList(receiverFile)).isEmpty();
+                    // Modeling project should show expansion arrows during session load
+                    if (hasModelingProjectNature) {
+                        result = true;
+                    } else {
+                        result = new FileQuery(receiverFile.getFileExtension()).isSessionResourceFile() || !FileSessionFinder.getSelectedSessions(Collections.singletonList(receiverFile)).isEmpty();
+                    }
                 }
             }
-            return result;
         }
+        return result;
     }
 
     /**

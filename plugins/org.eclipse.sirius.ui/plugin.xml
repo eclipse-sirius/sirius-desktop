@@ -260,7 +260,7 @@
            id="org.eclipse.sirius.ui.fileForSessionTester"
            type="org.eclipse.core.resources.IFile"
            namespace="org.eclipse.sirius.ui"
-           properties="isFileForSessionTester,isSessionFile"
+           properties="isFileForSessionTester,isSessionFile,isFileInModelingProject"
            class="org.eclipse.sirius.ui.tools.internal.views.common.FileHandledBySessionTester">
        </propertyTester>
        <propertyTester
@@ -658,9 +658,16 @@
              <iterate>
                   <adapt
                    type="org.eclipse.core.resources.IResource">
-                <test
-                      property="org.eclipse.sirius.ui.isSessionFile">
-                </test>
+                     <and>
+                        <test
+                              property="org.eclipse.sirius.ui.isSessionFile">
+                        </test>
+                        <not>
+                           <test
+                                 property="org.eclipse.sirius.ui.isFileInModelingProject">
+                           </test>
+                        </not>
+                     </and>
              </adapt>
              </iterate>
           </visibleWhen>

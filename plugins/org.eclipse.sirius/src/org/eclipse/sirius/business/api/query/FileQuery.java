@@ -59,7 +59,6 @@ public class FileQuery {
      * @return true if the file extension indicates that it contains a VSM, false otherwise
      */
     public boolean isVSMFile() {
-
         return SiriusUtil.DESCRIPTION_MODEL_EXTENSION.equals(fileExtension);
     }
 
