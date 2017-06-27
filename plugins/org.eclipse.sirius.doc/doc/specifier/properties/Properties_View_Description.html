@@ -162,6 +162,22 @@
 		<p>Note that if you have the (optional) support for Sirius-defined properties views correctly installed but do not specify anything inside your VSMs, Sirius will apply default generic rules to provide a canonical properties view for your model elements. As soon as you specify your own configuration, as described in this document, the default rules will be ignored in favor of yours. See 
 			<a href="#default_rules">below</a> for how both approaches can be combined.
 		</p>
+		<p>You can create a 
+			<em>Properties View</em> description under the root element of an odesign thanks to three specific menu items.
+		</p>
+		<p>
+			<img border="0" src="images/new-properties.png"/>
+		</p>
+		<ul>
+			<li>The first menu is used to create a blank 
+				<em>Properties View</em> description. With this menu, you will start your 
+				<em>Property View</em> definition from scratch.
+			</li>
+			<li>The second menu can copy the default rules directly inside of the odesign. While powerful, those default rules can be quite complex for new users.</li>
+			<li>The third menu can create a new 
+				<em>Properties View</em> which will extends the default rules. Using this mechanism, you can leverage all the default rules and you have the ability to easily add new rules.
+			</li>
+		</ul>
 		<h2 id="properties_view_description">Properties View Description</h2>
 		<p>Properties view are configured by creating a 
 			<em>Properties View Description</em> element (directly under the top-level 
@@ -201,7 +217,9 @@
 				</a>, which represent named sections inside a page/tab which contain the actual widgets;
 			</li>
 			<li>
-				<a href="#overrides">_Overrides</a>, which allows to override part of an existing properties view description. 
+				<a href="#overrides">
+					<em>Overrides</em>
+				</a>, which allows to override part of an existing properties view description. 
 			</li>
 		</ul>
 		<p>It is recommended that the 
@@ -1578,10 +1596,10 @@
 			</li>
 		</ul>
 		<p>The 
-			<code>Extend</code> tab is used to specify:
+			<code>Override</code> tab is used to specify:
 		</p>
-		<p id="extends">
-			<strong>Extends.</strong> Is used to specify the overridden element thanks to a combo box it is possible to select an existing element. In the tree editor, the inheritance is visible as the element is named as following : 
+		<p id="override">
+			<strong>Override.</strong> Is used to specify the overridden element thanks to a combo box it is possible to select an existing element. In the tree editor, the inheritance is visible as the element is named as following : 
 			<em>Page A</em> 
 			<strong>extends</strong> 
 			<em>Page B</em>. Pay attention, the current specification editor allows to select the currently defined element, this will lead to an infinite loop at runtime. 

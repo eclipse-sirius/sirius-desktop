@@ -14,6 +14,14 @@ Sirius properties view are enabled whenever the selected element is part of an o
 
 Note that if you have the (optional) support for Sirius-defined properties views correctly installed but do not specify anything inside your VSMs, Sirius will apply default generic rules to provide a canonical properties view for your model elements. As soon as you specify your own configuration, as described in this document, the default rules will be ignored in favor of yours. See "below":#default_rules for how both approaches can be combined.
 
+You can create a _Properties View_ description under the root element of an odesign thanks to three specific menu items.
+
+!images/new-properties.png!
+
+* The first menu is used to create a blank _Properties View_ description. With this menu, you will start your _Property View_ definition from scratch.
+* The second menu can copy the default rules directly inside of the odesign. While powerful, those default rules can be quite complex for new users.
+* The third menu can create a new _Properties View_ which will extends the default rules. Using this mechanism, you can leverage all the default rules and you have the ability to easily add new rules.
+
 h2(#properties_view_description). Properties View Description
 
 Properties view are configured by creating a _Properties View Description_ element (directly under the top-level "_Group_":../general/Specifying_Viewpoints.html#vsm_organization element of the VSM) and its sub-elements (which describe the widgets, the actions, the layout, etc.).
@@ -26,7 +34,7 @@ Inside a _Properties View Description_ element, you can create:
 Inside a _Category_ element, you can create:
 * "_Pages_":#pages, which correspond to "tabs";
 * "_Groups_":#groups, which represent named sections inside a page/tab which contain the actual widgets;
-* "_Overrides":#overrides, which allows to override part of an existing properties view description. 
+* "_Overrides_":#overrides, which allows to override part of an existing properties view description. 
 
 It is recommended that the _Properties View Description_ be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the _Metamodels_ property section of the _Properties View Description_. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your "_VSM_":../../Glossary.html#VSM.
 
@@ -610,9 +618,9 @@ A page override can extend another page defined somewhere else (in another "cate
 * dynamic mapping override: a _Dynamic Mapping Override_ is a dynamic mapping and so defines the same features as a "dynamic mapping":#dynamic_mappings,
 * widget override: a _Widget Override_ is a widget and so defines the same features as a "widget":#widgets.
 
-The @Extend@ tab is used to specify:
+The @Override@ tab is used to specify:
 
-p(#extends). *Extends.* Is used to specify the overridden element thanks to a combo box it is possible to select an existing element. In the tree editor, the inheritance is visible as the element is named as following : _Page A_ *extends* _Page B_. Pay attention, the current specification editor allows to select the currently defined element, this will lead to an infinite loop at runtime. 
+p(#override). *Override.* Is used to specify the overridden element thanks to a combo box it is possible to select an existing element. In the tree editor, the inheritance is visible as the element is named as following : _Page A_ *extends* _Page B_. Pay attention, the current specification editor allows to select the currently defined element, this will lead to an infinite loop at runtime. 
 By default, the values of the @General@ tab fields are set with the values coming from the overridden element if these fields are not set in the extending element. If one of these attributes is edited in the extending element, then it *overrides* the inherited value. The same behavior is applied for mono valued containment elements. For example, if a _Group A_ defines a _Style A_ and extends a _Group B_ with a _Style B_, the style used to render the _Group A_ is the one defined under the _Group A_, i.e _Style A_ and not the one of the _Group B_.
 If the specifier defines in the extending page @General@ tab:
 * @Label Expression@, @Domain Class@, @Semantic Candidate Expression@ or @Precondition Expression@, these values will *override* the values defined in the extended description. It is worth noting that the expressions are evaluated in the context of the currently extending element, exactly as if you have defined the expressions from the @General@ tab. 
