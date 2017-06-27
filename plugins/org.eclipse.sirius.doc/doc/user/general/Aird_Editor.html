@@ -41,7 +41,7 @@
 								<a href="#model_creation_wizard">Creating New Models</a>
 							</li>
 							<li>
-								<a href="#removing_model">Removing a Model From The aird Editor</a>
+								<a href="#removing_model">Removing Model Dependencies And Representations From The Aird Editor</a>
 							</li>
 							<li>
 								<a href="#quick_editing">Models Quick Editing</a>
@@ -256,16 +256,49 @@
 				<code>aird</code> file and have a generated name.
 			</li>
 		</ul>
-		<h3 id="removing_model">Removing a Model From The aird Editor</h3>
-		<p>To remove a semantic model loaded in the aird file, just select it in the editor and click on the 
+		<h3 id="removing_model">Removing Model Dependencies And Representations From The Aird Editor</h3>
+		<p>To remove a 
+			<strong>representation</strong> from the aird file, you can either select it in the editor and click on the 
 			<strong>
 				<i>Remove</i>
-			</strong> button. This action does not delete the physical file.
+			</strong> button. Or use the right click contextual action 
+			<strong>
+				<i>Delete</i>
+			</strong> or the 
+			<strong>
+				<i>DEL</i>
+			</strong> keyboard key.
 		</p>
-		<p>Note that if you are working inside a project with the 
-			<em>Modeling</em> nature, it is not possible to remove a semantic model which is located inside the project. Indeed, the 
-			<em>Modeling</em> nature ensures that all model files stored inside the project are always loaded in the project&#8217;s 
-			<code>aird</code> file.
+		<p>To remove 
+			<strong>models dependencies</strong>, you must select it or one of its children elements in the editor and click on the 
+			<strong>
+				<i>Remove</i>
+			</strong> button. Note that this action does not delete the physical model file.
+		</p>
+		<p>The removal can be applied only if some rules are respected. If they are not, the remove button will still be active and its activation, will inform you of the reasons why you cannot proceed the removal.</p>
+		<p>The rules regarding models dependencies removal are the following :</p>
+		<ul>
+			<li>A model dependency cannot be removed if at least one of its element contains a representation. Note that the representation can be invisible if the viewpoint providing it is not enabled.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/aird_editor_remove_semantic_model_representation.png"/>
+		</p>
+		<ul>
+			<li>A model dependency cannot be removed if you are working inside a project with the 
+				<em>Modeling</em> nature and the semantic model is located inside this project. Indeed, the 
+				<em>Modeling</em> nature ensures that all model files stored inside the project are always loaded in the project&#8217;s 
+				<code>aird</code> file.
+			</li>
+		</ul>
+		<ul>
+			<li>A model dependency cannot be removed if it is a fragment of a model. In this situation you need to use the 
+				<strong>
+					<i>Uncontrol</i>
+				</strong> action to remove it.
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/aird_editor_remove_semantic_model_uncontrol.png"/>
 		</p>
 		<h3 id="quick_editing">Models Quick Editing</h3>
 		<p>The normal way to display and edit models with Sirius is to do it through one or several Sirius-defined representations (
