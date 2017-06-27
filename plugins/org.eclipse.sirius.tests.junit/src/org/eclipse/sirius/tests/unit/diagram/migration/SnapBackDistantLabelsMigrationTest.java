@@ -38,6 +38,8 @@ import com.google.common.collect.UnmodifiableIterator;
  */
 public class SnapBackDistantLabelsMigrationTest extends SiriusTestCase {
 
+    private static final String UNEXPECTED_DATA_MESSAGE = "An expected diagram has not been found in data.";
+
     private static final String PATH = "data/unit/migration/do_not_migrate/edgeLabelMove/";
 
     private static final String SESSION_RESOURCE_NAME = "edgeLabelsMoveTest.aird";
@@ -89,6 +91,8 @@ public class SnapBackDistantLabelsMigrationTest extends SiriusTestCase {
         Diagram corruptedDiagram2 = null;
         Diagram diagram3 = null;
         Diagram corruptedDiagram3 = null;
+        Diagram diagram4 = null;
+        Diagram corruptedDiagram4 = null;
 
         while (diagrams.hasNext()) {
             Diagram diagram = diagrams.next();
@@ -105,28 +109,42 @@ public class SnapBackDistantLabelsMigrationTest extends SiriusTestCase {
                 } else {
                     diagram2 = diagram;
                 }
-            } else {
+            } else if (diagramName.startsWith("MyDiagram")) {
                 if (diagramName.endsWith(suffix)) {
                     corruptedDiagram3 = diagram;
                 } else {
                     diagram3 = diagram;
                 }
+            } else {
+                if (diagramName.endsWith(suffix)) {
+                    corruptedDiagram4 = diagram;
+                } else {
+                    diagram4 = diagram;
+                }
             }
         }
 
-        assertNotNull("An expected diagram has not been found in data", diagram1);
-        assertNotNull("An expected diagram has not been found in data", corruptedDiagram1);
-        assertNotNull("An expected diagram has not been found in data", diagram2);
-        assertNotNull("An expected diagram has not been found in data", corruptedDiagram2);
-        assertNotNull("An expected diagram has not been found in data", diagram3);
-        assertNotNull("An expected diagram has not been found in data", corruptedDiagram3);
+        compareDiagram(corruptedDiagram1, diagram1);
+        compareDiagram(corruptedDiagram2, diagram2);
+        compareDiagram(corruptedDiagram3, diagram3);
+        // This diag is a specific case with a node with huge coordinates.
+        compareDiagram(corruptedDiagram4, diagram4);
+    }
 
-        assertEquals("Corrupted diagram " + ((DDiagram) corruptedDiagram1.getElement()).getName() + " should have the same bounding box as other diagram after migration.",
-                calculateLocationBoundingBox(diagram1), calculateLocationBoundingBox(corruptedDiagram1));
-        assertEquals("Corrupted diagram " + ((DDiagram) corruptedDiagram2.getElement()).getName() + " should have the same bounding box as other diagram after migration.",
-                calculateLocationBoundingBox(diagram2), calculateLocationBoundingBox(corruptedDiagram2));
-        assertEquals("Corrupted diagram " + ((DDiagram) corruptedDiagram3.getElement()).getName() + " should have the same bounding box as other diagram after migration.",
-                calculateLocationBoundingBox(diagram3), calculateLocationBoundingBox(corruptedDiagram3));
+    /**
+     * Compare a diagram that must be fixed during the migration, with another
+     * one.
+     * 
+     * @param corruptedDiagram
+     *            Diagram that must be OK after migration
+     * @param diagram
+     *            Diagram to compare with
+     */
+    private void compareDiagram(Diagram corruptedDiagram, Diagram diagram) {
+        assertNotNull(UNEXPECTED_DATA_MESSAGE, diagram);
+        assertNotNull(UNEXPECTED_DATA_MESSAGE, corruptedDiagram);
+        assertEquals("Corrupted diagram " + ((DDiagram) corruptedDiagram.getElement()).getName() + " should have the same bounding box as other diagram after migration.",
+                calculateLocationBoundingBox(diagram), calculateLocationBoundingBox(corruptedDiagram));
     }
 
     /**

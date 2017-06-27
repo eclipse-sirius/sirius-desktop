@@ -18,6 +18,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="refToC1B" eType="#//P1/C1B"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="C1B"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C1C"/>
   </eSubpackages>
   <eSubpackages name="P2">
     <eClassifiers xsi:type="ecore:EClass" name="G" abstract="true"/>

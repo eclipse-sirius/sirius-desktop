@@ -8,7 +8,7 @@ h2(#sirius3.1.9). Changes in Sirius 3.1.9
 
 h3. User-Visible Changes
 
-* <span class="label label-success">Added</span> An "automatic migration":./user/general/Modeling%20Project.html#Migration has been added in this version to fix diagram with edge labels corrupted (see "bugzilla #518440":https://bugs.eclipse.org/bugs/show_bug.cgi?id=518440 for more details). Contrary to all previous migrations, this one logs an information in the _Error Log_ view to inform how many labels have been fixed in concerned diagrams. If detected as "corrupted label", the label is reset to its default location (as if you launch the "Snap Back" action on it). The rules applied to detect a corrupted label are the following:
+* <span class="label label-success">Added</span> An "automatic migration":./user/general/Modeling%20Project.html#Migration has been added in this version to fix diagram with edge labels corrupted (see "bugzilla #518440":https://bugs.eclipse.org/bugs/show_bug.cgi?id=518440 for more details). Contrary to all previous migrations, this one logs an information in the _Error Log_ view to inform how many labels have been fixed in concerned diagrams. If detected as "corrupted label", the label is reset to its default location (as if you launch the "Snap Back" action of it). If at least one label is detected as "corrupted label", the layout is also potentially corrupted (nodes, children of the diagram, with x or y coordinate very big). In this case, the concerned nodes are moved near 5000 (or -5000) as new coordinate. A message is added in this case: _Some nodes have also been moved as the layout of this diagram is corrupted. A Reset Origin and/or manual layout is probably needed for this diagram._ The rules applied to detect a corrupted label are the following:
 ** If the label is less than 250 pixels away from the reference point on its corresponding edge, the label is not considered as distant.
 ** If the label is more than 1000 pixels away from the reference point on its corresponding edge, the label is considered as distant.
 ** Between these 2 limits, the label is considered as distant if the distance between the center of the label and the edge is higher than "four times the size of the nearest segment".
@@ -17,7 +17,7 @@ h3. Developer-Visible Changes
 
 h4. Migrations
 
-* <span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see "bugzilla #518440":https://bugs.eclipse.org/bugs/show_bug.cgi?id=518440 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _10.1.9.201706191500_.
+* <span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see "bugzilla #518440":https://bugs.eclipse.org/bugs/show_bug.cgi?id=518440 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _10.1.9.201706271200_.
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
