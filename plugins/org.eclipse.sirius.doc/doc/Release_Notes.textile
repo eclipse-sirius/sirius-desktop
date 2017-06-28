@@ -4,11 +4,15 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius5.0.1). Changes in Sirius 5.0.1
+
+Sirius 5.0.1 is a maintenance release with only bugfixes and small tweaks to the UI of "the aird editor":user/general/Aird_Editor.html.
+
 h2(#sirius5.0.0). Changes in Sirius 5.0.0
 
 h3. User-Visible Changes
 
-* <span class="label label-success">Added</span> An new _session editor_ is available on _.aird_ files. It provides an alternative, form-based GUI to visualize and manipulate sirius sessions which is not tied to the Modeling perspective or Model Explorer view. See "the editor's documentation":user/general/Aird_Editor.html for more details.
+* <span class="label label-success">Added</span> An new _aird editor_ is available on _.aird_ files. It provides an alternative, form-based GUI to visualize and manipulate sirius sessions which is not tied to the Modeling perspective or Model Explorer view. See "the editor's documentation":user/general/Aird_Editor.html for more details.
 * <span class="label label-info">Modified</span> The label alignment of Notes from the Palette has been modified from Juno to Luna or newer versions of Eclipse. The label alignment had changed from _TOP_ & _CENTER_ to _MIDDLE_ & _LEFT_ (respectively). The initial alignment (_TOP_ & _CENTER_) has been restored.
 * <span class="label label-info">Modified</span> The _Export diagram as images_ action now adatps the output resolution based on the diagram size. This leads to better resolution for small to medium diagrams (and also bigger file) and to an operation which is no longer failing with out of memory errors in case of very big diagrams.
 * <span class="label label-info">Modified</span> The "straighten to" actions previously had a limitation concerning overlap detection. This is no longer the case. The previous known limitation has been removed from the documentation (__In case of multi-selection, the overlap check is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.__).
