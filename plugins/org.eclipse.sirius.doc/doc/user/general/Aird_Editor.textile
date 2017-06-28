@@ -117,9 +117,11 @@ The aird editor features a generic model creation wizard that can be used to cre
 
 h3(#removing_model). Removing Model Dependencies And Representations From The Aird Editor
 
-To remove a *representation* from the aird file, you can either select it in the editor and click on the *__Remove__* button. Or use the right click contextual action *__Delete__* or the *__DEL__* keyboard key.
+To remove *models dependencies*, you must select the root model items and click on the *__Remove__* button:
 
-To remove *models dependencies*, you must select it or one of its children elements in the editor and click on the *__Remove__* button. Note that this action does not delete the physical model file.
+!images/aird_editor_remove_semantic_model.png!
+
+ Note that this action does not delete the physical model file.
 
 The removal can be applied only if some rules are respected. If they are not, the remove button will still be active and its activation, will inform you of the reasons why you cannot proceed the removal.
 
@@ -133,6 +135,10 @@ The rules regarding models dependencies removal are the following :
 * A model dependency cannot be removed if it is a fragment of a model. In this situation you need to use the *__Uncontrol__* action to remove it.
 
 !images/aird_editor_remove_semantic_model_uncontrol.png!
+
+h3(#removing_representation). Removing Representations From The Aird Editor
+
+To remove a *representation* from the aird file, you can either select it in the editor and use the right click contextual action *__Delete__* or the *__DEL__* keyboard key.
 
 h3(#quick_editing). Models Quick Editing
 

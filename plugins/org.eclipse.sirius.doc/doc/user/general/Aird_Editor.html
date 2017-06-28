@@ -44,6 +44,9 @@
 								<a href="#removing_model">Removing Model Dependencies And Representations From The Aird Editor</a>
 							</li>
 							<li>
+								<a href="#removing_representation">Removing Representations From The Aird Editor</a>
+							</li>
+							<li>
 								<a href="#quick_editing">Models Quick Editing</a>
 							</li>
 						</ol>
@@ -257,24 +260,15 @@
 			</li>
 		</ul>
 		<h3 id="removing_model">Removing Model Dependencies And Representations From The Aird Editor</h3>
-		<p>To remove a 
-			<strong>representation</strong> from the aird file, you can either select it in the editor and click on the 
-			<strong>
-				<i>Remove</i>
-			</strong> button. Or use the right click contextual action 
-			<strong>
-				<i>Delete</i>
-			</strong> or the 
-			<strong>
-				<i>DEL</i>
-			</strong> keyboard key.
-		</p>
 		<p>To remove 
-			<strong>models dependencies</strong>, you must select it or one of its children elements in the editor and click on the 
+			<strong>models dependencies</strong>, you must select the root model items and click on the 
 			<strong>
 				<i>Remove</i>
-			</strong> button. Note that this action does not delete the physical model file.
+			</strong> button:
 		</p>
+		<p>
+			<img border="0" src="images/aird_editor_remove_semantic_model.png"/>
+		</p>Note that this action does not delete the physical model file.
 		<p>The removal can be applied only if some rules are respected. If they are not, the remove button will still be active and its activation, will inform you of the reasons why you cannot proceed the removal.</p>
 		<p>The rules regarding models dependencies removal are the following :</p>
 		<ul>
@@ -299,6 +293,16 @@
 		</ul>
 		<p>
 			<img border="0" src="images/aird_editor_remove_semantic_model_uncontrol.png"/>
+		</p>
+		<h3 id="removing_representation">Removing Representations From The Aird Editor</h3>
+		<p>To remove a 
+			<strong>representation</strong> from the aird file, you can either select it in the editor and use the right click contextual action 
+			<strong>
+				<i>Delete</i>
+			</strong> or the 
+			<strong>
+				<i>DEL</i>
+			</strong> keyboard key.
 		</p>
 		<h3 id="quick_editing">Models Quick Editing</h3>
 		<p>The normal way to display and edit models with Sirius is to do it through one or several Sirius-defined representations (
