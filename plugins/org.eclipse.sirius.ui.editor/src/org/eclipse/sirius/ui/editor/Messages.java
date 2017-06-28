@@ -88,6 +88,15 @@ public final class Messages {
     @TranslatableMessage
     public static String DefaultSessionEditorPage_closeSession_action_label;
 
+    @TranslatableMessage
+    public static String GraphicalSemanticModelsHandler_removeModelButton_tooltip;
+
+    @TranslatableMessage
+    public static String GraphicalSemanticModelsHandler_newModelButton_tooltip;
+
+    @TranslatableMessage
+    public static String GraphicalSemanticModelsHandler_addModelButton_tooltip;
+
     // CHECKSTYLE:ON
 
     private Messages() {

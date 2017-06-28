@@ -15,10 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.EventObject;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IContainer;
@@ -70,13 +67,11 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
-import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem;
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.AddModelDependencyAction;
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.RemoveSemanticResourceAction;
-import org.eclipse.sirius.ui.tools.internal.views.common.action.DeleteRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.NoDynamicProjectDependencies;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.ManageSessionActionProvider;
@@ -177,7 +172,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * The button used to remove external semantic model reference and
      * representations from the session.
      */
-    private Button removeSemanticModelOrRepresentationButton;
+    private Button removeSemanticModelDependencyButton;
 
     /**
      * The viewer showing all semantic models loaded from the given session.
@@ -303,34 +298,31 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         FillLayout buttonsLayout = new FillLayout(SWT.BEGINNING);
         buttonsLayout.spacing = 5;
         buttonsComposite.setLayout(buttonsLayout);
-        addButton(buttonsComposite, Messages.UI_SessionEditor_new_semantic_model_action_label, () -> {
+        Button newButton = addButton(buttonsComposite, Messages.UI_SessionEditor_new_semantic_model_action_label, () -> {
             createAndRegisterNewSemanticModel();
         });
-        addButton(buttonsComposite, Messages.UI_SessionEditor_models_button_newSemanticModel, () -> {
+        newButton.setToolTipText(Messages.GraphicalSemanticModelsHandler_newModelButton_tooltip);
+        Button addButton = addButton(buttonsComposite, Messages.UI_SessionEditor_models_button_newSemanticModel, () -> {
             AddModelDependencyAction addModelDependencyAction = new AddModelDependencyAction(session, false);
             addModelDependencyAction.run();
         });
-        removeSemanticModelOrRepresentationButton = addButton(buttonsComposite, Messages.UI_SessionEditor_models_button_removeSemanticModel, () -> {
+        addButton.setToolTipText(Messages.GraphicalSemanticModelsHandler_addModelButton_tooltip);
+        removeSemanticModelDependencyButton = addButton(buttonsComposite, Messages.UI_SessionEditor_models_button_removeSemanticModel, () -> {
             if (theTreeViewer != null) {
                 final IStructuredSelection selection = (IStructuredSelection) theTreeViewer.getSelection();
                 Collection<?> selectedObjects = selection.toList();
                 if (!selectedObjects.isEmpty()) {
-                    Collection<Resource> semanticResources = getSemanticResources(selectedObjects);
-                    if (!semanticResources.isEmpty()) {
+                    Collection<Resource> semanticResources = selectedObjects.stream().filter(Resource.class::isInstance).map(Resource.class::cast).collect(Collectors.toSet());
+                    if (!semanticResources.isEmpty() && semanticResources.size() == selectedObjects.size()) {
                         RemoveSemanticResourceAction removeSemanticResourceAction = new RemoveSemanticResourceAction(semanticResources, session);
                         removeSemanticResourceAction.run();
-                    }
-
-                    Set<DRepresentationDescriptor> repToDelete = selectedObjects.stream().filter(DRepresentationDescriptor.class::isInstance).map(DRepresentationDescriptor.class::cast)
-                            .collect(Collectors.toSet());
-                    if (!repToDelete.isEmpty()) {
-                        DeleteRepresentationAction deleteRepresentationAction = new DeleteRepresentationAction(repToDelete);
-                        deleteRepresentationAction.run();
                     }
                 }
                 theTreeViewer.refresh();
             }
         });
+        removeSemanticModelDependencyButton.setEnabled(false);
+        removeSemanticModelDependencyButton.setToolTipText(Messages.GraphicalSemanticModelsHandler_removeModelButton_tooltip);
     }
 
     /**
@@ -605,6 +597,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                 if (event.getSelection().isEmpty()) {
                     deleteActionHandler.setEnabled(false);
                     renameActionHandler.setEnabled(false);
+                    removeSemanticModelDependencyButton.setEnabled(false);
                 } else {
                     // The tree allows only single selections so we pick the
                     // first element.
@@ -627,6 +620,19 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                     undoAction.update();
                     redoAction.update();
                     actionBars.updateActionBars();
+
+                    if (treeViewer != null) {
+                        Collection<?> selectedObjects = selection.toList();
+                        if (!selectedObjects.isEmpty()) {
+                            Collection<Resource> semanticResources = selectedObjects.stream().filter(Resource.class::isInstance).map(Resource.class::cast).collect(Collectors.toSet());
+                            if (!semanticResources.isEmpty() && semanticResources.size() == selectedObjects.size()) {
+                                removeSemanticModelDependencyButton.setEnabled(true);
+                            } else {
+                                removeSemanticModelDependencyButton.setEnabled(false);
+                            }
+                        }
+                        treeViewer.refresh();
+                    }
                 }
             });
         }
@@ -876,34 +882,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
             treeViewer.expandToLevel(2);
             treeViewer.expandToLevel(projectDependenciesItem, 2);
         }
-    }
-
-    /**
-     * Return semantic resource form selection in treeViewer.
-     * 
-     * @param selection
-     *            the selection from treeViewer
-     * @return semantic resource from selection
-     */
-    private Collection<Resource> getSemanticResources(final Collection<?> selection) {
-        Collection<Resource> semanticResources = new HashSet<Resource>();
-        if (selection != null) {
-            Iterator<?> iterator = selection.iterator();
-            while (iterator.hasNext()) {
-                Object object = iterator.next();
-                if (object instanceof Resource) {
-                    semanticResources.add((Resource) object);
-                } else if (object instanceof EObject) {
-                    EObject eObject = (EObject) object;
-                    Resource eResource = eObject.eResource();
-                    if (eResource != null && !(eResource instanceof AirdResource)) {
-                        semanticResources.add(eResource);
-                    }
-                }
-
-            }
-        }
-        return semanticResources;
     }
 
     /**

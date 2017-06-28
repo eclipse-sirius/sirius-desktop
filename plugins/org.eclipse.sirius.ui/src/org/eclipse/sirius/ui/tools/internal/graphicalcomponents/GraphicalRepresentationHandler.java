@@ -863,7 +863,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      */
     private void createRepresentationExplorerButton(Composite parent, final TreeViewer theTreeViewer) {
         Composite buttonsComposite = createButtonsComposite(parent);
-        addButton(buttonsComposite, Messages.GraphicalRepresentationHandler_button_newRepresentation, () -> {
+        Button newRepButton = addButton(buttonsComposite, Messages.GraphicalRepresentationHandler_button_newRepresentation, () -> {
             CreateRepresentationWizard wizard = new CreateRepresentationWizard(session);
             wizard.init();
             final WizardDialog dialog = new WizardDialog(parent.getShell(), wizard);
@@ -872,6 +872,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
             dialog.getShell().setText(Messages.GraphicalRepresentationHandler_CreateRepresentationWizard_title);
             dialog.open();
         });
+        newRepButton.setToolTipText(Messages.GraphicalRepresentationHandler_newRepresentationButton_tooltip);
         removeRepresentationInstanceButton = addButton(buttonsComposite, Messages.GraphicalRepresentationHandler_button_removeRepresentation, () -> {
             if (theTreeViewer != null) {
                 final IStructuredSelection selection = (IStructuredSelection) theTreeViewer.getSelection();
@@ -885,16 +886,19 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                 theTreeViewer.refresh();
             }
         });
+        removeRepresentationInstanceButton.setToolTipText(Messages.GraphicalRepresentationHandler_removeRepresentationButton_tooltip);
         enableViewpointButton = addButton(buttonsComposite, Messages.GraphicalRepresentationHandler_button_activateViewpoint, () -> {
             if (theTreeViewer != null) {
                 toggleViewpointState((IStructuredSelection) theTreeViewer.getSelection(), true);
             }
         });
+        enableViewpointButton.setToolTipText(Messages.GraphicalRepresentationHandler_enableViewpointButton_tooltip);
         disableViewpointButton = addButton(buttonsComposite, Messages.GraphicalRepresentationHandler_button_deactivateViewpoint, () -> {
             if (theTreeViewer != null) {
                 toggleViewpointState((IStructuredSelection) theTreeViewer.getSelection(), false);
             }
         });
+        disableViewpointButton.setToolTipText(Messages.GraphicalRepresentationHandler_disableViewpointButton_tooltip);
         enableViewpointButton.setEnabled(false);
         disableViewpointButton.setEnabled(false);
         removeRepresentationInstanceButton.setEnabled(false);

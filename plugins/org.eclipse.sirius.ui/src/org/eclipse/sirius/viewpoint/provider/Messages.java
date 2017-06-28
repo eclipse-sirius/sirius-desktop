@@ -1179,6 +1179,18 @@ public final class Messages {
     @TranslatableMessage
     public static String RemoveSemanticResourceAction_Error_Removal_Title;
 
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_newRepresentationButton_tooltip;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_removeRepresentationButton_tooltip;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_enableViewpointButton_tooltip;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_disableViewpointButton_tooltip;
+
     // CHECKSTYLE:ON
 
     private Messages() {
