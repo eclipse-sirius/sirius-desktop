@@ -80,6 +80,8 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
 
     private boolean exportToHtml;
 
+    private boolean autoScalingEnabled = true;
+
     /**
      * Check if GMF is able to export in HTML.
      *
@@ -142,6 +144,16 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     @Override
     public DiagramEditPart createDiagramEditPart(Diagram diagram, Shell shell, PreferencesHint preferencesHint) {
         return OffscreenEditPartFactory.getInstance().createDiagramEditPart(diagram, shell, preferencesHint);
+    }
+
+    /**
+     * Enable or disable the automatic detection of the best (highest) export resolution possible.
+     * 
+     * @param autoScalingEnabled
+     *            whether or not the enable auto-scaling.
+     */
+    public void setAutoScalingEnabled(boolean autoScalingEnabled) {
+        this.autoScalingEnabled = autoScalingEnabled;
     }
 
     /**
@@ -246,16 +258,20 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      *         exporting.
      */
     protected double getExportResolutionFactor(DiagramEditPart diagramEP, SiriusDiagramImageGenerator gen) {
-        List<?> editParts = diagramEP.getPrimaryEditParts();
-        org.eclipse.swt.graphics.Rectangle imageRect = gen.calculateImageRectangle(editParts);
-        // w = the image width / h = the image height
-        // c= zoom factor we are looking for
-        // max=the target size
-        //
-        // (w*c) * (h*c) == max
-        // (c*c) == max/(w*h)
-        // c == sqrt(max/(w*h))
-        return Math.floor(Math.sqrt(Double.valueOf(getMaximumTotalSize()) / ((imageRect.width) * (imageRect.height))) * 100) / 100;
+        if (this.autoScalingEnabled) {
+            List<?> editParts = diagramEP.getPrimaryEditParts();
+            org.eclipse.swt.graphics.Rectangle imageRect = gen.calculateImageRectangle(editParts);
+            // w = the image width / h = the image height
+            // c= zoom factor we are looking for
+            // max=the target size
+            //
+            // (w*c) * (h*c) == max
+            // (c*c) == max/(w*h)
+            // c == sqrt(max/(w*h))
+            return Math.floor(Math.sqrt(Double.valueOf(getMaximumTotalSize()) / ((imageRect.width) * (imageRect.height))) * 100) / 100;
+        } else {
+            return 1.0;
+        }
     }
 
     /**
