@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -39,19 +41,16 @@ import com.google.common.collect.Sets;
  */
 public class Session1MillionTests extends SiriusDiagramTestCase {
     /**
-     * limit is set empirically: this projects takes less than 10 seconds on my
-     * machine with an SSD drive.
+     * limit is set empirically.
      */
-    private static final long MAX_TIME_TO_OPEN_SECONDS = 15;
+    private static final long MAX_TIME_TO_OPEN_SECONDS = 110;
 
-    private static final long MAX_TIME_TO_CLOSE_SECONDS = 2;
+    private static final long MAX_TIME_TO_CLOSE_SECONDS = 10;
 
     private static final int NUMBER_Of_ELEMENTS = 966220;
 
-    private static final String[] SEMANTIC_ROOTS = { "/reverse1.ecorebin", "/reverse2.ecorebin", "/reverse3.ecorebin", "/reverse4.ecorebin", "/reverse5.ecorebin", "/reverse6.ecorebin",
-            "/reverse7.ecorebin", "/reverse8.ecorebin", "/reverse9.ecorebin", "/reverse10.ecorebin", "/reverse11.ecorebin", "/reverse12.ecorebin", "/reverse13.ecorebin", "/reverse14.ecorebin",
-            "/reverse15.ecorebin", "/reverse16.ecorebin", "/reverse17.ecorebin", "/reverse18.ecorebin", "/reverse19.ecorebin", "/reverse20.ecorebin" };
-
+    private static final String[] SEMANTIC_ROOTS = IntStream.range(1, 21).mapToObj(i -> String.format("/reverse%d.ecorebin", i)).collect(Collectors.toList()).toArray(new String[0]);
+    
     private static final String AIRD_ROOT = "/representations.aird";
 
     @Override

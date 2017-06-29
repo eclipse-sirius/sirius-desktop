@@ -326,7 +326,6 @@ public class AllCommonPluginTests extends TestCase {
 
         suite.addTestSuite(SubMenusPrioritiesTest.class);
         suite.addTestSuite(ZombieViewpointsTest.class);
-        suite.addTestSuite(Session1MillionTests.class);
         suite.addTestSuite(DAnnotationTest.class);
     }
 
@@ -340,6 +339,8 @@ public class AllCommonPluginTests extends TestCase {
     public static void addNonGerritPart(TestSuite suite) {
         // This one takes too long (12 minutes) to be part of the Gerrit suite.
         suite.addTestSuite(AcceleoMTInterpreterOnPackageImportTests.class);
+        // Almost 2 minutes for this once since 8cf04acad92e8646077e69a5c869923168c30f54
+        suite.addTestSuite(Session1MillionTests.class);
         // The ones below are "blacklisted" for now because they caused at least
         // one false-negative Gerrit Verification job
         suite.addTestSuite(SessionManagerListener2Tests.class);
