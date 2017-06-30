@@ -124,6 +124,7 @@ import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter;
 import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter.FeatureAccess;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionDialog;
 import org.eclipse.sirius.ui.debug.ResourceSetTopologyAnalyzer.Reference;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -141,11 +142,9 @@ import com.google.common.collect.Multiset;
 import com.google.common.collect.Ordering;
 
 /**
- * A simple view synchronized with the Eclipse selection, used to show arbitrary
- * computed information from the currently selected edit part of a diagram and
- * launch actions on them. This view is targeted to developers to help
- * debugging, it should not be packaged in the final product and should not be
- * available to end users.
+ * A simple view synchronized with the Eclipse selection, used to show arbitrary computed information from the currently
+ * selected edit part of a diagram and launch actions on them. This view is targeted to developers to help debugging, it
+ * should not be packaged in the final product and should not be available to end users.
  * 
  * @author pcdavid
  */
@@ -174,13 +173,36 @@ public class SiriusDebugView extends AbstractDebugView {
             return getTextForDiagram((DDiagramEditPart) obj);
         } else if (obj instanceof ConnectionEditPart) {
             return getTextForConnection((ConnectionEditPart) obj);
+        } else if (getRepresentationDescriptor(obj) != null) {
+            return getTextForRepDescriptor(getRepresentationDescriptor(obj));
         } else {
             return "Selection type not supported: " + obj;
         }
     }
 
+    private DRepresentationDescriptor getRepresentationDescriptor(Object obj) {
+        DRepresentationDescriptor repDesc = null;
+        if (obj instanceof DRepresentationDescriptor) {
+            repDesc = (DRepresentationDescriptor) obj;
+        } else if (obj instanceof IAdaptable) {
+            EObject repDescObj = ((IAdaptable) obj).getAdapter(EObject.class);
+            if (repDescObj instanceof DRepresentationDescriptor) {
+                repDesc = (DRepresentationDescriptor) repDescObj;
+            }
+        }
+        return repDesc;
+    }
+
+    private String getTextForRepDescriptor(DRepresentationDescriptor repDesc) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(repDesc + "\n");
+        sb.append("isLoadedRepresentation : " + repDesc.isLoadedRepresentation());
+        return sb.toString();
+    }
+
     private String getTextForDiagram(DDiagramEditPart sdep) {
         StringBuilder sb = new StringBuilder();
+        sb.append(getCurrentEObject() + "\n");
         sb.append("Direct diagram children:\n");
         for (IGraphicalEditPart child : Iterables.filter(sdep.getChildren(), IGraphicalEditPart.class)) {
             sb.append("- " + toString(child));
@@ -523,8 +545,7 @@ public class SiriusDebugView extends AbstractDebugView {
                     for (int i = log.size() > max ? log.size() - max : 0; i < log.size(); i++) {
                         FeatureAccess featureAccess = log.get(i);
                         tr.addLine(Arrays.asList(/*
-                                                  * String.format("%tT",
-                                                  * featureAccess.timestamp),
+                                                  * String.format("%tT", featureAccess.timestamp),
                                                   */((Component) featureAccess.setting.getEObject()).getName(), featureAccess.setting.getEStructuralFeature().getName()));
                     }
                 } finally {
@@ -979,8 +1000,8 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     /**
-     * Reads and remembers the vertical position of each element in a sequence
-     * diagram. Use in conjunction with "Show Position Changes".
+     * Reads and remembers the vertical position of each element in a sequence diagram. Use in conjunction with "Show
+     * Position Changes".
      */
     private void addStorePositionsAction() {
         addAction("Store positions", new Runnable() {
@@ -995,10 +1016,8 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     /**
-     * Prints a report of which elements changed position in a sequence diagram
-     * since the last call to "Store positions". Only the elements whose
-     * position is different are shown (i.e. an empty report means nothing
-     * changed).
+     * Prints a report of which elements changed position in a sequence diagram since the last call to "Store
+     * positions". Only the elements whose position is different are shown (i.e. an empty report means nothing changed).
      */
     private void addShowPositionChangesAction() {
         addAction("Show Position Changes", new Runnable() {
@@ -1041,9 +1060,8 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     /**
-     * Prints a report of the graphical and semantic orderings on a sequence
-     * diagram. For elements which have a valid graphical position, it is also
-     * reported.
+     * Prints a report of the graphical and semantic orderings on a sequence diagram. For elements which have a valid
+     * graphical position, it is also reported.
      */
     private void addShowOrderingsAction() {
         addAction("Orderings", new Runnable() {
@@ -1121,9 +1139,8 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     /**
-     * Show details about each figure in the Draw2D hierarchy starting from the
-     * current selection's figure. See {@link #figureDetails(IFigure)} for what
-     * information is actually shown for each figure.
+     * Show details about each figure in the Draw2D hierarchy starting from the current selection's figure. See
+     * {@link #figureDetails(IFigure)} for what information is actually shown for each figure.
      */
     private void addShowFiguresHierarchyAction() {
         addAction("Show figures", new Runnable() {
