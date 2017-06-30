@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.ui.tools.internal.routers;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
-import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
@@ -279,53 +278,62 @@ public final class RectilinearEdgeUtil {
      *            target point of the rectilinear edge
      * @return the point list (in absolute coordinates) composing rectilinear edge.
      */
-    public static PointList computeRectilinearCenteredBendpoints(Rectangle srcAbsoluteBounds, Rectangle tgtAbsoluteBounds, Point srcPoint, Point tgtPoint) {
+    public static PointList computeRectilinearBendpoints(Rectangle srcAbsoluteBounds, Rectangle tgtAbsoluteBounds, Point srcPoint, Point tgtPoint) {
         PointList pointList = new PointList();
+        pointList.addPoint(srcPoint);
         // check if source and target side of connection is horizontal
         LineSeg srcSeg = getBoundSideIntersection(srcPoint, srcAbsoluteBounds);
         LineSeg tgtSeg = getBoundSideIntersection(tgtPoint, tgtAbsoluteBounds);
         if (srcSeg != null && tgtSeg != null) {
-            Point middleSrcSegment = getMiddleOfSegment(srcSeg);
-            Point middleTgtSegment = getMiddleOfSegment(tgtSeg);
             if (srcSeg.isHorizontal()) {
-                srcPoint.setX(middleSrcSegment.x);
-                pointList.addPoint(srcPoint);
                 if (srcPoint.x == tgtPoint.x) {
-                    // edge is vertical
-                    tgtPoint.setX(middleTgtSegment.x);
+                    // no intermediate point to add
                 } else if (tgtSeg.isHorizontal()) {
                     // edge is composed of 3 segments (4 points)
-                    tgtPoint.setX(middleTgtSegment.x);
                     int middleY = (srcPoint.y + tgtPoint.y) / 2;
                     pointList.addPoint(new Point(srcPoint.x, middleY));
                     pointList.addPoint(new Point(tgtPoint.x, middleY));
                 } else {
                     // edge is composed of 2 segments (3 points)
-                    tgtPoint.setY(middleTgtSegment.y);
                     pointList.addPoint(new Point(srcPoint.x, tgtPoint.y));
                 }
-                pointList.addPoint(tgtPoint);
             } else {
-                srcPoint.setY(middleSrcSegment.y);
-                pointList.addPoint(srcPoint);
                 if (srcPoint.y == tgtPoint.y) {
-                    // edge is horizontal
-                    tgtPoint.setY(middleTgtSegment.y);
+                    // no intermediate point to add
                 } else if (tgtSeg.isVertical()) {
                     // edge is composed of 3 segments (4 points)
-                    tgtPoint.setY(middleTgtSegment.y);
                     int middleX = (srcPoint.x + tgtPoint.x) / 2;
                     pointList.addPoint(new Point(middleX, srcPoint.y));
                     pointList.addPoint(new Point(middleX, tgtPoint.y));
                 } else {
                     // edge is composed of 2 segments (3 points)
-                    tgtPoint.setX(middleTgtSegment.x);
                     pointList.addPoint(new Point(tgtPoint.x, srcPoint.y));
                 }
-                pointList.addPoint(tgtPoint);
             }
         }
+        pointList.addPoint(tgtPoint);
         return pointList;
+    }
+
+    /**
+     * Align point of figure's bound toward anchor.
+     * 
+     * @param figureBounds
+     *            bounds of figure which contains point to align
+     * @param point
+     *            the point to align with anchor
+     * @param absoluteAnchorCoordinates
+     *            the anchor coordinates.
+     */
+    public static void alignBoundPointTowardAnchor(Rectangle figureBounds, Point point, Point absoluteAnchorCoordinates) {
+        LineSeg segment = getBoundSideIntersection(point, figureBounds);
+        if (segment != null) {
+            if (segment.isHorizontal()) {
+                point.setX(absoluteAnchorCoordinates.x);
+            } else {
+                point.setY(absoluteAnchorCoordinates.y);
+            }
+        }
     }
 
     /**
@@ -358,23 +366,8 @@ public final class RectilinearEdgeUtil {
     }
 
     /**
-     * Get the middle point of a given segment.
-     * 
-     * @param segment
-     *            segment to determine the middle
-     * @return the middle of the segment.
-     */
-    private static Point getMiddleOfSegment(LineSeg segment) {
-        if (segment != null) {
-            return new PrecisionPoint((segment.getOrigin().x + segment.getTerminus().x) * 0.5d, (segment.getOrigin().y + segment.getTerminus().y) * 0.5d);
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Goes through line segments of a polyline and makes strict straight segments from nearly straight segments.
-     * Then remove also unnecessary points.
+     * Goes through line segments of a polyline and makes strict straight segments from nearly straight segments. Then
+     * remove also unnecessary points.
      * 
      * @param line
      *            polyline to straight
@@ -383,6 +376,10 @@ public final class RectilinearEdgeUtil {
      * @return the line made straight with only necessary points
      */
     public static PointList normalizeToStraightLineTolerance(PointList line, int tolerance) {
+        if (line.size() < 3) {
+            // line is too short to be straight
+            return line;
+        }
         // straight edge
         for (int i = 0; i < line.size() - 1; i++) {
             Point pt1 = line.getPoint(i);
@@ -396,17 +393,15 @@ public final class RectilinearEdgeUtil {
         // delete unnecessary points
         PointList newLine = new PointList();
         newLine.addPoint(line.getPoint(0));
-        if (line.size() > 2) {
-            for (int i = 1; i < line.size() - 1; i++) {
-                Point pt1 = line.getPoint(i - 1);
-                Point pt2 = line.getPoint(i);
-                Point pt3 = line.getPoint(i + 1);
-                if ((pt1.x == pt2.x && pt3.x == pt2.x) || (pt1.y == pt2.y && pt3.y == pt2.y)) {
-                    // three point are aligned horizontally or vertically
-                    // point is not necessary
-                } else {
-                    newLine.addPoint(pt2);
-                }
+        for (int i = 1; i < line.size() - 1; i++) {
+            Point pt1 = line.getPoint(i - 1);
+            Point pt2 = line.getPoint(i);
+            Point pt3 = line.getPoint(i + 1);
+            if ((pt1.x == pt2.x && pt3.x == pt2.x) || (pt1.y == pt2.y && pt3.y == pt2.y)) {
+                // three point are aligned horizontally or vertically
+                // point is not necessary
+            } else {
+                newLine.addPoint(pt2);
             }
         }
         newLine.addPoint(line.getPoint(line.size() - 1));

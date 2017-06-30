@@ -22,6 +22,7 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.core.providers.IViewProvider;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
@@ -64,6 +65,11 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class ConnectionsFactory {
+
+    /**
+     * Value of null Terminal.
+     */
+    private static final String EMPTY_TERMINAL = ""; //$NON-NLS-1$
 
     /**
      * The {@link Diagram} corresponding to the DSemanticDiagram to synchronize.
@@ -260,26 +266,25 @@ public class ConnectionsFactory {
                     SlidableAnchor targetAnchor = new SlidableAnchor(target, targetRelativeReference);
                     targetRefPoint = targetAnchor.getLocation(targetAnchor.getReferencePoint());
 
-
                     Option<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionalSourceBounds.get(), true);
                     Option<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionaltargetBounds.get(), false);
 
                     if (srcConnectionBendpoint.some() && tgtConnectionBendpoint.some()) {
-                            pointList.addPoint(srcConnectionBendpoint.get());
-                            pointList.addPoint(tgtConnectionBendpoint.get());
-                            EdgeQuery edgeQuery = new EdgeQuery(edge);
-                            if (edgeQuery.isEdgeWithRectilinearRoutingStyle()) {
-                                RectilinearEdgeUtil.centerEdgeEnds(pointList, sourceRefPoint, targetRefPoint, CenteringStyle.BOTH);
-                            }
+                        pointList.addPoint(srcConnectionBendpoint.get());
+                        pointList.addPoint(tgtConnectionBendpoint.get());
+                        EdgeQuery edgeQuery = new EdgeQuery(edge);
+                        if (edgeQuery.isEdgeWithRectilinearRoutingStyle()) {
+                            RectilinearEdgeUtil.centerEdgeEnds(pointList, sourceRefPoint, targetRefPoint, CenteringStyle.BOTH);
+                        }
                     } else {
                         // no intersection found, case when source and target are overlapped
                         pointList.addPoint(sourceRefPoint);
                         pointList.addPoint(targetRefPoint);
                     }
                 }
+                pointList = RectilinearEdgeUtil.normalizeToStraightLineTolerance(pointList, 2);
             }
         }
-        pointList = RectilinearEdgeUtil.normalizeToStraightLineTolerance(pointList, 2);
     }
 
     /**
@@ -298,19 +303,54 @@ public class ConnectionsFactory {
      */
     protected void getAttributesForSourceOrTargetMove(EdgeLayoutData egdeLayoutData, Edge edge, View source, View target) {
         sourceTerminal = egdeLayoutData.getSourceTerminal();
+        if (EMPTY_TERMINAL.equals(sourceTerminal)) {
+            sourceTerminal = GMFNotationUtilities.getTerminalString(0.5d, 0.5d);
+        }
         targetTerminal = egdeLayoutData.getTargetTerminal();
+        if (EMPTY_TERMINAL.equals(targetTerminal)) {
+            targetTerminal = GMFNotationUtilities.getTerminalString(0.5d, 0.5d);
+        }
         // sourceRefPoint, targetRefPoint and pointList of
         // the edgeLayoutData can be null if the edge is
         // hide when the layout data is stored
         if (egdeLayoutData.getSourceRefPoint() != null) {
-            sourceRefPoint = egdeLayoutData.getSourceRefPoint();
+            sourceRefPoint = egdeLayoutData.getSourceRefPoint().getCopy();
         }
         if (egdeLayoutData.getTargetRefPoint() != null) {
-            targetRefPoint = egdeLayoutData.getTargetRefPoint();
+            targetRefPoint = egdeLayoutData.getTargetRefPoint().getCopy();
         }
 
         if (egdeLayoutData.getPointList() != null) {
-            pointList = egdeLayoutData.getPointList();
+            GraphicalEditPart srceEditPart = GMFHelper.getGraphicalEditPart(source).get();
+            GraphicalEditPart tgtEditPart = GMFHelper.getGraphicalEditPart(target).get();
+
+            if (srceEditPart != null && tgtEditPart != null) {
+                GraphicalHelper.screen2logical(sourceRefPoint, srceEditPart);
+                GraphicalHelper.screen2logical(targetRefPoint, tgtEditPart);
+
+                // Compute connection bendpoints
+                Rectangle optionalSourceBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(srceEditPart);
+                Option<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionalSourceBounds, true);
+                Rectangle optionaltargetBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(tgtEditPart);
+                Option<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionaltargetBounds, false);
+
+                if (srcConnectionBendpoint.some() && tgtConnectionBendpoint.some()) {
+                    EdgeQuery edgeQuery = new EdgeQuery(edge);
+                    Routing routingStyle = edgeQuery.getRoutingStyle();
+                    // Compute anchor logical coordinates
+                    if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
+                        pointList = RectilinearEdgeUtil.computeRectilinearBendpoints(optionalSourceBounds, optionaltargetBounds, srcConnectionBendpoint.get(), tgtConnectionBendpoint.get());
+                    } else {
+                        pointList.addPoint(srcConnectionBendpoint.get());
+                        pointList.addPoint(tgtConnectionBendpoint.get());
+                    }
+                }
+            }
+            if (pointList.size() == 0) {
+                // no intersection found, case when source and target are overlapped
+                pointList.addPoint(sourceRefPoint);
+                pointList.addPoint(targetRefPoint);
+            }
         }
     }
 

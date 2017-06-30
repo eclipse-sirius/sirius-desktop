@@ -126,7 +126,9 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
                 Point tgtPoint = tgtConnectionBendpoint.get();
                 PointList pointList = null;
                 if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
-                    pointList = RectilinearEdgeUtil.computeRectilinearCenteredBendpoints(srcAbsoluteBounds, tgtAbsoluteBounds, srcPoint, tgtPoint);
+                    RectilinearEdgeUtil.alignBoundPointTowardAnchor(srcAbsoluteBounds, srcPoint, absoluteSrcAnchorCoordinates);
+                    RectilinearEdgeUtil.alignBoundPointTowardAnchor(tgtAbsoluteBounds, tgtPoint, absoluteTgtAnchorCoordinates);
+                    pointList = RectilinearEdgeUtil.computeRectilinearBendpoints(srcAbsoluteBounds, tgtAbsoluteBounds, srcPoint, tgtPoint);
                 } else {
                     pointList = new PointList();
                     pointList.addPoint(srcPoint);

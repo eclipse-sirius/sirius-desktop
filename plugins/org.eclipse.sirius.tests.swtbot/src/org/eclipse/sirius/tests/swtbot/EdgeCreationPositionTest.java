@@ -92,9 +92,7 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      *            The name of the diagram to open.
      */
     protected void openDiagram(String name) {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), VIEWPOINT_NAME + " " + name, name, DDiagram.class);
-        editor.setSnapToGrid(false);
-        editor.zoom(ZoomLevel.ZOOM_100);
+        openDiagram(name, ZoomLevel.ZOOM_100);
     }
 
     /**
@@ -114,6 +112,14 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     /** */
     public void test_Node() {
         createEdgeAndValidateAnchors("Node", "A", AbstractDiagramNodeEditPart.class, "B", AbstractDiagramNodeEditPart.class);
+    }
+
+    /** */
+    public void test_Node_WithRectilinearEdge() {
+        changeDiagramPreference(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, true);
+        changeDiagramPreference(SiriusDiagramCorePreferences.PREF_LINE_STYLE, EdgeRouting.MANHATTAN);
+        createEdgeAndValidateAnchors("Node", "A", AbstractDiagramNodeEditPart.class, new PrecisionPoint(0.5, 0.5), "B",
+                AbstractDiagramNodeEditPart.class, TOP_LEFT_CORNER);
     }
 
     /** */
@@ -138,7 +144,7 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Same as test_Container() but with specific location that reveals a bug
-     * for snapToGrid (see bugzilla xxxxxx).
+     * for snapToGrid (see bugzilla 519305).
      */
     public void test_Container_Aligned() {
         createEdgeAndValidateAnchors("Container", "A", AbstractDiagramContainerEditPart.class, new PrecisionPoint(0.98, 0.2737), "B", AbstractDiagramContainerEditPart.class,
@@ -386,12 +392,22 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         // Draw 2D bendpoints
         PointList figurePoints = connectionFigure.getPoints();
 
-        assertEquals("Bad number of bendpoints after edge creation", routingConstraint.size(), figurePoints.size());
-
+        // check draw2D points coordinates
         assertEquals("Wrong x coordinate for source.", sourceIntersection.get().x, figurePoints.getFirstPoint().x, 1);
         assertEquals("Wrong y coordinate for source.", sourceIntersection.get().y, figurePoints.getFirstPoint().y, 1);
         assertEquals("Wrong x coordinate for target.", targetIntersection.get().x, figurePoints.getLastPoint().x, 1);
         assertEquals("Wrong y coordinate for target.", targetIntersection.get().y, figurePoints.getLastPoint().y, 1);
+
+        // check GMF bendpoints coordinates
+        assertEquals("Bad number of bendpoints after edge creation", routingConstraint.size(), figurePoints.size());
+
+        for (int i = 0; i < routingConstraint.size(); i++) {
+            Point gmfPoint = routingConstraint.get(i).getLocation();
+            assertEquals("Wrong x gmf coordinate for point number " + i + ".", gmfPoint.x, figurePoints.getPoint(i).x,
+                    1);
+            assertEquals("Wrong y gmf coordinate for point number " + i + ".", gmfPoint.y, figurePoints.getPoint(i).y,
+                    1);
+        }
     }
 
     /**
