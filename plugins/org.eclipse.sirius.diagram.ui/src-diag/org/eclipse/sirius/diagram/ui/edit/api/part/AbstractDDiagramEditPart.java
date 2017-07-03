@@ -30,6 +30,7 @@ import org.eclipse.gef.requests.SelectionRequest;
 import org.eclipse.gef.tools.DeselectAllTracker;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
@@ -69,6 +70,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingProvi
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.InitializeHiddenElementsCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.SynchronizeStatusFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.ordering.ViewOrderingProviderRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -344,6 +346,8 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         auth.addAuthorityListener(this.getEditPartAuthorityListener());
         this.getEditPartAuthorityListener().refreshEditMode();
 
+        // refresh synchronized status decorator
+        SynchronizeStatusFigure.updateNotification((DiagramRootEditPart) this.getRoot());
     }
 
     @Override

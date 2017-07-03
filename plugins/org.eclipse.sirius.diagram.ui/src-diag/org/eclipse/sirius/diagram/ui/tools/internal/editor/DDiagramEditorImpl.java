@@ -129,7 +129,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.command.RefreshDiagramOnO
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.DiagramHeaderPostCommitListener;
-import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.StatusBarPostCommitListener;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.SynchronizedStatusPostCommitListener;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.VisibilityPostCommitListener;
 import org.eclipse.sirius.diagram.ui.internal.refresh.SiriusDiagramSessionEventBroker;
 import org.eclipse.sirius.diagram.ui.internal.refresh.SynchronizeGMFModelCommand;
@@ -375,7 +375,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     private VisibilityPostCommitListener visibilityPostCommitListener;
 
-    private StatusBarPostCommitListener statusBarPostCommitListener;
+    private SynchronizedStatusPostCommitListener statusBarPostCommitListener;
 
     private GMFDiagramUpdater gmfDiagramUpdater;
 
@@ -570,7 +570,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (getEditingDomain() != null) {
             tabbarPostCommitListener = new TabbarRefresher(getEditingDomain());
             visibilityPostCommitListener = new VisibilityPostCommitListener(getDiagramEditPart());
-            statusBarPostCommitListener = new StatusBarPostCommitListener(this);
+            statusBarPostCommitListener = new SynchronizedStatusPostCommitListener(this);
             if (isHeaderSectionEnabled()) {
                 diagramHeaderPostCommitListener = new DiagramHeaderPostCommitListener(getEditingDomain(), getDiagramHeader());
             }

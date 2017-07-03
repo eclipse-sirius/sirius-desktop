@@ -1359,6 +1359,12 @@ public final class Messages {
     public static String SynchronizedDiagramCommand_unsynchronizedLabel;
 
     @TranslatableMessage
+    public static String SynchronizeStatusFigure_diagSynchronized;
+
+    @TranslatableMessage
+    public static String SynchronizeStatusFigure_diagUnsynchronized;
+
+    @TranslatableMessage
     public static String SynchronizeGMFModelCommand_label;
 
     @TranslatableMessage
