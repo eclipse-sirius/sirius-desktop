@@ -60,22 +60,16 @@ public class FinalParentHelper {
     }
 
     /**
-     * Determines what event will be the direct parent of this execution after
-     * the execution of the specified request. Returns <code>null</code> if the
-     * request is invalid. Calling this method also sets the
-     * <code>expansionZone</code> field: it is set to <code>null</code> if the
-     * returned parent can accept this execution directly, or to the vertical
-     * range which needs to be expanded on the future parent if there is not yet
-     * enough room to contain this execution.
+     * Determines what event will be the direct parent of this execution after the execution of the specified request.
+     * Returns <code>null</code> if the request is invalid. Calling this method also sets the <code>expansionZone</code>
+     * field: it is set to <code>null</code> if the returned parent can accept this execution directly, or to the
+     * vertical range which needs to be expanded on the future parent if there is not yet enough room to contain this
+     * execution.
      */
     public void computeFinalParent() {
         Range fullFinalRange = getFullFinalRange();
-        if (fullFinalRange != null) {
-            if (isInvalidInteractionInsideOperand(fullFinalRange)) {
-                globalFinalParent = null;
-            } else if (request.isResize()) {
-                globalFinalParent = getFinalParentOnResize(fullFinalRange);
-            }
+        if (fullFinalRange != null && request.isResize()) {
+            globalFinalParent = getFinalParentOnResize(fullFinalRange);
         }
     }
 
@@ -114,14 +108,12 @@ public class FinalParentHelper {
     }
 
     /**
-     * Computes the full final range which would be occupied by this execution
-     * and any of the elements resized along with it if we accept the specified
-     * request.
+     * Computes the full final range which would be occupied by this execution and any of the elements resized along
+     * with it if we accept the specified request.
      * 
      * @param request
      *            the request for changing the size/location of this execution
-     * @return the final vertical range of the execution and its linked messages
-     *         (if any) if we accept the request.
+     * @return the final vertical range of the execution and its linked messages (if any) if we accept the request.
      */
     private Range getFullFinalRange() {
         Rectangle newBounds = request.getLogicalTransformedRectangle(self.getProperLogicalBounds());
@@ -157,14 +149,15 @@ public class FinalParentHelper {
          */
         ISequenceEvent finalParent = self.getParentEvent();
         /*
-         * We must still check that the resizing is valid, in that it will not
-         * cause an overlap/conflict with sibling events.
+         * We must still check that the resizing is valid, in that it will not cause an overlap/conflict with sibling
+         * events.
          */
         final Collection<ISequenceEvent> linkedSiblings = FinalParentHelper.computeLinkedSiblings(request);
         Iterable<ISequenceEvent> finalSiblings = EventEndHelper.getIndependantEvents(self, finalParent.getSubEvents());
 
         final Option<Lifeline> selfLifeline = self.getLifeline();
         Predicate<ISequenceEvent> sameLifeline = new Predicate<ISequenceEvent>() {
+            @Override
             public boolean apply(ISequenceEvent input) {
                 Option<Lifeline> inputLifeline = input.getLifeline();
                 boolean same = !inputLifeline.some() || (selfLifeline.some() && inputLifeline.get() == selfLifeline.get());
@@ -181,6 +174,7 @@ public class FinalParentHelper {
         };
 
         Predicate<ISequenceEvent> intersectsFinalBounds = new Predicate<ISequenceEvent>() {
+            @Override
             public boolean apply(ISequenceEvent input) {
                 Range inputRange = input.getVerticalRange();
                 boolean intersection = inputRange.intersects(fullFinalRange) && !linkedSiblings.contains(input);
@@ -211,10 +205,10 @@ public class FinalParentHelper {
         };
 
         /*
-         * Removes parent combined fragment to be able to resize an execution in
-         * a combined fragment
+         * Removes parent combined fragment to be able to resize an execution in a combined fragment
          */
         Predicate<ISequenceEvent> notParentCombinedFragment = new Predicate<ISequenceEvent>() {
+            @Override
             public boolean apply(ISequenceEvent input) {
                 if (input instanceof CombinedFragment && self.getLifeline().some()) {
                     CombinedFragment combinedFragment = (CombinedFragment) input;
@@ -287,8 +281,8 @@ public class FinalParentHelper {
         ISequenceEvent sourceParent = (smep.getSourceElement() instanceof ISequenceEvent) ? (ISequenceEvent) smep.getSourceElement() : null;
 
         /*
-         * The target will not be an ISequenceEvent for creation and destruction
-         * messages as instance roles and EOL are not ISequenceEvents.
+         * The target will not be an ISequenceEvent for creation and destruction messages as instance roles and EOL are
+         * not ISequenceEvents.
          */
         ISequenceEvent targetParent = (smep.getTargetElement() instanceof ISequenceEvent) ? (ISequenceEvent) smep.getTargetElement() : null;
         ISequenceEvent remoteParent = allMovedElements.contains(sourceParent) ? targetParent : sourceParent;

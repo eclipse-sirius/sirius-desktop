@@ -47,8 +47,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Abstract class to validate Execution move & resize request and get from it a
- * command.
+ * Abstract class to validate Execution move & resize request and get from it a command.
  * 
  * @author edugueperoux
  * 
@@ -100,8 +99,7 @@ public class AbstractNodeEventResizeSelectionValidator {
     }
 
     /**
-     * Return the validation status. Validate the request result in the first
-     * call only.
+     * Return the validation status. Validate the request result in the first call only.
      * 
      * @return the validation status.
      */
@@ -111,10 +109,9 @@ public class AbstractNodeEventResizeSelectionValidator {
     }
 
     /**
-     * Performs all the computations required to validate the resizing, and
-     * stores any important information which will be useful to actually execute
-     * the move if it is valid, like for example avoid contact with siblings or
-     * handle reconnection.
+     * Performs all the computations required to validate the resizing, and stores any important information which will
+     * be useful to actually execute the move if it is valid, like for example avoid contact with siblings or handle
+     * reconnection.
      */
     public final void validate() {
         if (!initialized) {
@@ -124,9 +121,8 @@ public class AbstractNodeEventResizeSelectionValidator {
     }
 
     /**
-     * Performs all the computations required to validate the resizing, and
-     * stores any important information which will be useful to actually execute
-     * the resize if it is valid, like for example avoid contact with siblings.
+     * Performs all the computations required to validate the resizing, and stores any important information which will
+     * be useful to actually execute the resize if it is valid, like for example avoid contact with siblings.
      */
     private void doValidation() {
         Preconditions.checkNotNull(host, Messages.AbstractNodeEventResizeSelectionValidator_nullExecution);
@@ -145,9 +141,8 @@ public class AbstractNodeEventResizeSelectionValidator {
     }
 
     /**
-     * Verifies whether the new position/size of the execution would still be
-     * valid if we accept the request. In particular, ensures sibling events can
-     * not overlap.
+     * Verifies whether the new position/size of the execution would still be valid if we accept the request. In
+     * particular, ensures sibling events can not overlap.
      * 
      * @return true if the request is validated to true
      */
@@ -161,8 +156,8 @@ public class AbstractNodeEventResizeSelectionValidator {
     }
 
     /**
-     * Checks whether the new bounds implied by the requested change are valid
-     * for this execution. Uses Draw2D information to get the current bounds.
+     * Checks whether the new bounds implied by the requested change are valid for this execution. Uses Draw2D
+     * information to get the current bounds.
      */
     private boolean validateNewBounds(ExecutionEditPart self) {
         final boolean result;
@@ -176,10 +171,8 @@ public class AbstractNodeEventResizeSelectionValidator {
         } else {
             boolean isMove = requestQuery.isMove();
             /*
-             * If this is a MOVE, children will move along with us, so it is OK
-             * for them. Otherwise this is a RESIZE, where children do not move,
-             * so the resize is constrained by the range currently occupied by
-             * them.
+             * If this is a MOVE, children will move along with us, so it is OK for them. Otherwise this is a RESIZE,
+             * where children do not move, so the resize is constrained by the range currently occupied by them.
              */
             boolean okForChildren = isMove || RangeHelper.verticalRange(newBounds).includes(self.getISequenceEvent().getOccupiedRange());
             // linkedMessages are moved during execution resize too
@@ -189,16 +182,20 @@ public class AbstractNodeEventResizeSelectionValidator {
             // GraphicalHelper.verticalRange(newBounds));
             boolean okForParent = ((AbstractNodeEvent) self.getISequenceEvent()).getLifeline().get().getValidSubEventsRange().includes(RangeHelper.verticalRange(newBounds));
             /*
-             * Do not allow resize to expand beyond the range of the parent.
+             * Expansion of the last operand is valid and triggers a zone expansion.
              */
             if (requestQuery.isResize()) {
-                if (!parent.getVerticalRange().includes(RangeHelper.verticalRange(newBounds))) {
+                if (parent instanceof Operand && ((Operand) parent).getCombinedFragment().getLastOperand().equals(parent)) {
+                    okForParent = parent.getVerticalRange().getLowerBound() < RangeHelper.verticalRange(newBounds).getLowerBound();
+                    if (parent.getVerticalRange().getUpperBound() < RangeHelper.verticalRange(newBounds).getUpperBound()) {
+                        expansionZone = new Range(parent.getVerticalRange().getUpperBound(), RangeHelper.verticalRange(newBounds).getUpperBound() + LayoutConstants.EXECUTION_CHILDREN_MARGIN);
+                    }
+                } else if (!parent.getVerticalRange().includes(RangeHelper.verticalRange(newBounds))) {
                     okForParent = false;
                 }
             }
             /*
-             * Also check that the messages which will move with us will not
-             * become inconsistent.
+             * Also check that the messages which will move with us will not become inconsistent.
              */
             boolean okForMessageEnds = (expansionZone != null) || validateMessageEndsConsistency(self, bounds, newBounds);
             result = okForChildren && okForParent && okForMessageEnds;
@@ -207,8 +204,8 @@ public class AbstractNodeEventResizeSelectionValidator {
     }
 
     /**
-     * If this execution is delimited by a start and finish message, make sure
-     * they always point to the same remote execution/lifeline.
+     * If this execution is delimited by a start and finish message, make sure they always point to the same remote
+     * execution/lifeline.
      * 
      * @param move
      *            indicates the current action : move or resize.
@@ -294,9 +291,8 @@ public class AbstractNodeEventResizeSelectionValidator {
     }
 
     /**
-     * Check upper range margin between parentSequenceEventEditPart and
-     * returnMessageEditPart respect LayoutConstants.EXECUTION_CHILDREN_MARGIN
-     * margin
+     * Check upper range margin between parentSequenceEventEditPart and returnMessageEditPart respect
+     * LayoutConstants.EXECUTION_CHILDREN_MARGIN margin
      * 
      * @param parentSequenceEventEditPart
      * @param returnMessageEditPart
@@ -319,9 +315,8 @@ public class AbstractNodeEventResizeSelectionValidator {
     }
 
     /**
-     * Check if lower range margin between parentSequenceEventEditPart and
-     * callMessageEditPart respect LayoutConstants.EXECUTION_CHILDREN_MARGIN
-     * margin
+     * Check if lower range margin between parentSequenceEventEditPart and callMessageEditPart respect
+     * LayoutConstants.EXECUTION_CHILDREN_MARGIN margin
      * 
      * @param parentSequenceEventEditPart
      * @param callMessageEditPart
