@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.OperandResizeValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
@@ -171,9 +172,13 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
             } else if (request.getResizeDirection() == PositionConstants.SOUTH) {
                 OperandEditPart followingOperandEditPart = getFollowingOperandEditPart(operandIndex);
                 if (followingOperandEditPart == null && self.getSelected() != EditPart.SELECTED_NONE) {
-                    // There is no following operand, resize from south face
-                    // is forbidden
-                    ctc.add(new CommandProxy(UnexecutableCommand.INSTANCE));
+                    // There is no following operand, resize from south face is forwarded to the parent
+                    // CombinedFragmentEditPart in order to resize it instead.
+                    if (getHost() != null && getHost().getParent() != null && getHost().getParent().getParent() instanceof CombinedFragmentEditPart) {
+                        return getHost().getParent().getParent().getCommand(request);
+                    } else {
+                        ctc.add(new CommandProxy(UnexecutableCommand.INSTANCE));
+                    }
                 } else if (followingOperandEditPart != null) {
                     // We apply the inverse resize to the following operand
                     Option<Operand> followingOperandOption = ISequenceElementAccessor.getOperand(followingOperandEditPart.getNotationView());
@@ -221,8 +226,8 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     /**
-     * Finds the previous {@link OperandEditPart} of the current
-     * {@link OperandEditPart} identified by the index currentOperandIndex.
+     * Finds the previous {@link OperandEditPart} of the current {@link OperandEditPart} identified by the index
+     * currentOperandIndex.
      * 
      * @param currentOperandIndex
      *            the index of the current {@link OperandEditPart}
@@ -243,8 +248,8 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     /**
-     * Finds the following {@link OperandEditPart} of the current
-     * {@link OperandEditPart} identified by the index currentOperandIndex.
+     * Finds the following {@link OperandEditPart} of the current {@link OperandEditPart} identified by the index
+     * currentOperandIndex.
      * 
      * @param currentOperandIndex
      *            the index of the current {@link OperandEditPart}
