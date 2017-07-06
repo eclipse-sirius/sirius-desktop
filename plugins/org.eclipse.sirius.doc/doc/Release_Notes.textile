@@ -6,6 +6,12 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius5.0.2). Changes in Sirius 5.0.2
 
+h3. Specifier-Visible Changes
+
+h4. Properties Views Definitions
+
+* <span class="label label-info">Modified</span> The filtering expression variables available in the properties view definition in the 'Extends' tab were renamed to match the following pattern: @featureName+'Description'@ (e.g. @ifDescription@, @groupDescription@, etc.) to avoid potential conflicts.
+
 h3. Developer-Visible Changes
 
 h4. Migrations
