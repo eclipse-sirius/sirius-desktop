@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferences
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -310,7 +311,7 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
         } else {
             checkBox.deselect();
         }
-        bot.button("OK").click();
+        bot.button(TestsUtil.isOxygenPlatform() ? "Apply and Close" : "OK").click();
     }
 
     private void checkSiriusDiagramPreferencePage(boolean expectedValue) {
@@ -318,7 +319,8 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
         bot.waitUntil(Conditions.shellIsActive("Preferences"));
         bot.tree().getTreeItem("Sirius").expand().select().getNode("Sirius Diagram").select();
         assertEquals(expectedValue, bot.checkBox("Move unlinked notes during layout").isChecked());
-        bot.button("OK").click();
+        
+        bot.button(TestsUtil.isOxygenPlatform() ? "Apply and Close" : "OK").click();
     }
 
     /**
