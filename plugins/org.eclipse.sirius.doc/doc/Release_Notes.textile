@@ -19,6 +19,7 @@ h3. Specifier-Visible Changes
 ** If the label is more than 1000 pixels away from the reference point on its corresponding edge, the label is considered as distant.
 ** Between these 2 limits, the label is considered as distant if the distance between the center of the label and the edge is higher than "four times the size of the nearest segment".
 * <span class="label label-info">Modified</span> In manual refresh mode (_Automatic Refresh_ Sirius preference disabled), when the _Force Refresh_ option of a tool is enabled in your VSM, only the current representation is refreshed when the tool is applied. Before this version, all open representations were refreshed.
+* <span class="label label-info">Modified</span> The filtering expression variables available in the properties view definition in the 'Extends' tab were renamed to match the following pattern: featureName+'Description'.
 
 h3. Developer-Visible Changes
 

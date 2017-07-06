@@ -490,7 +490,7 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
     private Map<String, Object> computeFilterVariables(IVariableManager variableManager, EObject currentDescription, String eStructuralFeatureName) {
         Map<String, Object> variables = new HashMap<>();
         variables.putAll(variableManager.getVariables());
-        String variableName = this.getVariableName(eStructuralFeatureName);
+        String variableName = this.getVariableName(eStructuralFeatureName) + "Description"; //$NON-NLS-1$
         variables.put(variableName, currentDescription);
         return variables;
     }

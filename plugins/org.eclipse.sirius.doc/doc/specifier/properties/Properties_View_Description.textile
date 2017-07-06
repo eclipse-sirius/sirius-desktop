@@ -575,8 +575,8 @@ p(#filters). *Filter Expressions.* Different filters exist depending on the elem
 If the expression is not specified, all the inherited elements will be visible.
 For each _Filter expression_, a variable is available which represents the element which could be filtered. It is possible to filter all the inherited elements by just returning @false@ all the time. In this case, the elements defined under the current description *overrides* the elements defined in the extended description.
 For example if a _Page A_ extends another _Page B_, the @Extends@ tab allows to define:
-* The @Filter Groups Expression@ is used to *filter* which inherited groups are visible under the page. The @group@ variable can be used to check if a group must be filtered or not. 
-* The @Filter Validation Rules Expression@ is used to *filter* which inherited validation rules are used under the page. The @validationRule@ variable can be used to check if a rule must be filtered or not.
+* The @Filter Groups Expression@ is used to *filter* which inherited groups are visible under the page. The @groupDescription@ variable can be used to check if a group must be filtered or not. 
+* The @Filter Validation Rules Expression@ is used to *filter* which inherited validation rules are used under the page. The @validationRuleDescription@ variable can be used to check if a rule must be filtered or not.
 
 Following some examples of the extension mechanism usage are detailed:
 * *Reuse widgets*: In this example we want to specify the properties view of a Class and an interface both are defining a name attribute. A _Class Name_ text widget is defined to represent the _Name_ attribute of a _Class_ in the properties view. This widget defines in the _General_ tab:
@@ -632,8 +632,8 @@ p(#filters). *Filter Expressions.* Different filters exist depending on the elem
 If the expression is not specified, all the inherited elements will be visible.
 For each _Filter expression_, a variable is available which represents the element which could be filtered. It is possible to filter all the inherited elements by just returning @false@ all the time. In this case, the elements defined under the current description *overrides* the elements defined in the extended description.
 For example if a _Page A_ extends another _Page B_, the @Extends@ tab allows to define:
-* The @Filter Groups Expression@ is used to *filter* which inherited groups are visible under the page. The @group@ variable can be used to check if a group must be filtered or not. 
-* The @Filter Validation Rules Expression@ is used to *filter* which inherited validation rules are used under the page. The @validationRule@ variable can be used to check if a rule must be filtered or not.
+* The @Filter Groups Expression@ is used to *filter* which inherited groups are visible under the page. The @groupDescription@ variable can be used to check if a group must be filtered or not. 
+* The @Filter Validation Rules Expression@ is used to *filter* which inherited validation rules are used under the page. The @validationRuleDescription@ variable can be used to check if a rule must be filtered or not.
 
 If an element is overridden by many override definitions, the first encountered in the specification is applied.
 

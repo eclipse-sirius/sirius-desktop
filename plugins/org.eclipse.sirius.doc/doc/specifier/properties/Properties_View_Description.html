@@ -209,7 +209,7 @@
 			<li>
 				<a href="#pages">
 					<em>Pages</em>
-				</a>, which correspond to &#8220;tabs&#8221;;
+				</a>, which correspond to &#171;tabs&#187;;
 			</li>
 			<li>
 				<a href="#groups">
@@ -304,7 +304,7 @@
 		</p>
 		<ul>
 			<li>Extend the default rules model inside your VSM: from the top-level element of the VSM model, select 
-				<em>New Properties&gt; Extend Default Properties View</em>. This will allow you to redefine the behavior of the default rules thanks to the &#8220;extension mechanism&#8221;#extensibility_features.
+				<em>New Properties&gt; Extend Default Properties View</em>. This will allow you to redefine the behavior of the default rules thanks to the &#171;extension mechanism&#187;#extensibility_features.
 			</li>
 			<li>Import a copy of the default rules model inside your VSM: from the top-level element of the VSM model, select 
 				<em>New Properties &gt; Import Default Properties View</em>.
@@ -368,7 +368,7 @@
 			<strong>Styles.</strong> Each kind of properties view element supports a rich set of possible 
 			<a href="#styling">styles</a>.
 		</p>
-		<p>To find some documentation for each properties, you can also refer to the tool-tips available directly in the editor on the &#8220;question mark&#8221; icon of each property.</p>
+		<p>To find some documentation for each properties, you can also refer to the tool-tips available directly in the editor on the &#171;question mark&#187; icon of each property.</p>
 		<p>Here is an example of a widget configuration (a single-line 
 			<a href="#text">text</a> in this case) which illustrates some of the common attributes:
 		</p>
@@ -413,7 +413,7 @@
 				<code>self</code> variable inside a 
 				<em>Page</em>, but inside a group 
 				<code>self</code> may have a different value is 
-				<em>Semantic Candidate Expressions</em> were used, so this service can be used to obtain the &#8220;original self&#8221; from anywhere.
+				<em>Semantic Candidate Expressions</em> were used, so this service can be used to obtain the &#171;original self&#187; from anywhere.
 			</li>
 			<li>
 				<code>input.getAllSemanticElements()</code>: returns 
@@ -421,7 +421,7 @@
 				<code>DRepresentationElement#semanticElements</code> if there are any.
 			</li>
 			<li>
-				<code>input.emfEditServices(EObject)</code>: provides a handle to invoke &#8220;EMF Edit&#8221;-related services on the model element specified in argument. See below for the list of services that can be called on the result.
+				<code>input.emfEditServices(EObject)</code>: provides a handle to invoke &#171;EMF Edit&#187;-related services on the model element specified in argument. See below for the list of services that can be called on the result.
 			</li>
 			<li>
 				<code>input.context()</code>: provides a handle to invoke additional services to obtain more information about the overall context of the selection. See below fot the list of services that can be called on the result.
@@ -461,7 +461,7 @@
 				<code>IItemLabelProvider</code>.
 			</li>
 			<li>
-				<code>getText(EStructuralFeature)</code>: returns the &#8220;display name&#8221; of the specified feature of 
+				<code>getText(EStructuralFeature)</code>: returns the &#171;display name&#187; of the specified feature of 
 				<code>obj</code>, as defined by its 
 				<code>IItemPropertyDescriptor</code>, or the textual representation of the feature itself (as defined by its own 
 				<code>IItemLabelProvider</code>) if no display name is defined.
@@ -1202,7 +1202,7 @@
 		<p>To define the behavior, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
 			<a href="../general/Model_Operations.html">model operations</a>. A variable named 
-			<code>onClickEventKind</code> is available to determine if the operation has been triggered by a single click or double click. In case of a single click, the variable has the value &#8220;SINGLE_CLICK&#8221; and &#8220;DOUBLE_CLICK&#8221; in case of a double click.
+			<code>onClickEventKind</code> is available to determine if the operation has been triggered by a single click or double click. In case of a single click, the variable has the value &#171;SINGLE_CLICK&#187; and &#171;DOUBLE_CLICK&#187; in case of a double click.
 		</p>
 		<p>The expressions defined under the 
 			<em>Begin</em> can use the 
@@ -1480,12 +1480,12 @@
 			<li>The 
 				<code>Filter Groups Expression</code> is used to 
 				<strong>filter</strong> which inherited groups are visible under the page. The 
-				<code>group</code> variable can be used to check if a group must be filtered or not. 
+				<code>groupDescription</code> variable can be used to check if a group must be filtered or not. 
 			</li>
 			<li>The 
 				<code>Filter Validation Rules Expression</code> is used to 
 				<strong>filter</strong> which inherited validation rules are used under the page. The 
-				<code>validationRule</code> variable can be used to check if a rule must be filtered or not.
+				<code>validationRuleDescription</code> variable can be used to check if a rule must be filtered or not.
 			</li>
 		</ul>
 		<p>Following some examples of the extension mechanism usage are detailed:</p>
@@ -1659,12 +1659,12 @@
 			<li>The 
 				<code>Filter Groups Expression</code> is used to 
 				<strong>filter</strong> which inherited groups are visible under the page. The 
-				<code>group</code> variable can be used to check if a group must be filtered or not. 
+				<code>groupDescription</code> variable can be used to check if a group must be filtered or not. 
 			</li>
 			<li>The 
 				<code>Filter Validation Rules Expression</code> is used to 
 				<strong>filter</strong> which inherited validation rules are used under the page. The 
-				<code>validationRule</code> variable can be used to check if a rule must be filtered or not.
+				<code>validationRuleDescription</code> variable can be used to check if a rule must be filtered or not.
 			</li>
 		</ul>
 		<p>If an element is overridden by many override definitions, the first encountered in the specification is applied.</p>
