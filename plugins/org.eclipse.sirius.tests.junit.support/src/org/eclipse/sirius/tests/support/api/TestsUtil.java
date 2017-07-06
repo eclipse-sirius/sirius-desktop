@@ -47,6 +47,8 @@ public final class TestsUtil {
 
     private static final String UI_WORKBENCH_LUNA_START = "3.106";
 
+    private static final String UI_WORKBENCH_OXYGEN_START = "3.110";
+    
     /**
      * Constructor.
      */
@@ -217,9 +219,19 @@ public final class TestsUtil {
      *         otherwise.
      */
     public static boolean isLunaPlatform() {
-        Version keplerStart = Version.parseVersion(UI_WORKBENCH_LUNA_START);
-        return checkUiWorkbenchVersion(keplerStart, null);
+        return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_LUNA_START), null);
     }
+    
+    /**
+     * Tells if the current platform corresponds to Oxygen or later.
+     * 
+     * @return true if the current platform corresponds to Oxygen or later, false
+     *         otherwise.
+     */
+    public static boolean isOxygenPlatform() {
+        return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_OXYGEN_START), null);
+    }
+
 
     /**
      * Copied and adapted from
