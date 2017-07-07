@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_-aHbgGMqEee3DdaQR_R7SA" selectedViews="_AjlCYGMrEee3DdaQR_R7SA" version="12.0.0.201704271200">
+    <semanticResources>TestRectilinear.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_AjlCYGMrEee3DdaQR_R7SA">
+      <viewpoint xmi:type="description:Viewpoint" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_CPjcAGMrEee3DdaQR_R7SA" name="DiagBadEdge" repPath="#_CPgYsGMrEee3DdaQR_R7SA">
+        <description xmi:type="description_1:DiagramDescription" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']"/>
+        <target xmi:type="ecore:EPackage" href="TestRectilinear.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_DvXB4GMrEee3DdaQR_R7SA" name="DiagGoodEdge" repPath="#_DvVzwGMrEee3DdaQR_R7SA">
+        <description xmi:type="description_1:DiagramDescription" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']"/>
+        <target xmi:type="ecore:EPackage" href="TestRectilinear.ecore#//P2"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram xmi:id="_CPgYsGMrEee3DdaQR_R7SA" name="DiagBadEdge">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_CPgYsWMrEee3DdaQR_R7SA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_CPgYsmMrEee3DdaQR_R7SA"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_CPr-4GMrEee3DdaQR_R7SA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_CPr-4WMrEee3DdaQR_R7SA" type="Sirius" element="_CPgYsGMrEee3DdaQR_R7SA" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_CPvpQGMrEee3DdaQR_R7SA" type="2001" element="_CPg_wGMrEee3DdaQR_R7SA">
+          <children xmi:type="notation:Node" xmi:id="_CP1I0GMrEee3DdaQR_R7SA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_CP1I0WMrEee3DdaQR_R7SA" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CP4MIGMrEee3DdaQR_R7SA" type="3003" element="_CPg_wWMrEee3DdaQR_R7SA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_CP4zMGMrEee3DdaQR_R7SA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CP4zMWMrEee3DdaQR_R7SA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_CPvpQWMrEee3DdaQR_R7SA" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CPvpQmMrEee3DdaQR_R7SA" x="120" y="95" width="151" height="206"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_CP2-AGMrEee3DdaQR_R7SA" type="2001" element="_CPg_wmMrEee3DdaQR_R7SA">
+          <children xmi:type="notation:Node" xmi:id="_CP3lEGMrEee3DdaQR_R7SA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_CP3lEWMrEee3DdaQR_R7SA" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CP4zMmMrEee3DdaQR_R7SA" type="3003" element="_CPg_w2MrEee3DdaQR_R7SA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_CP4zM2MrEee3DdaQR_R7SA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CP4zNGMrEee3DdaQR_R7SA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_CP2-AWMrEee3DdaQR_R7SA" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CP2-AmMrEee3DdaQR_R7SA" x="400" y="70" width="136" height="166"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_CPr-4mMrEee3DdaQR_R7SA"/>
+        <edges xmi:type="notation:Edge" xmi:id="_OmF64GMrEee3DdaQR_R7SA" type="4001" element="_OmCQgGMrEee3DdaQR_R7SA" source="_CPvpQGMrEee3DdaQR_R7SA" target="_CP2-AGMrEee3DdaQR_R7SA">
+          <children xmi:type="notation:Node" xmi:id="_OmF65GMrEee3DdaQR_R7SA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OmGh8GMrEee3DdaQR_R7SA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_OmGh8WMrEee3DdaQR_R7SA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OmGh8mMrEee3DdaQR_R7SA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_OmGh82MrEee3DdaQR_R7SA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OmGh9GMrEee3DdaQR_R7SA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_OmF64WMrEee3DdaQR_R7SA" routing="Rectilinear"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_OmF64mMrEee3DdaQR_R7SA" fontName="Segoe UI"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OmF642MrEee3DdaQR_R7SA" points="[25, 16, -139, -90]$[154, 117, -10, 11]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OmGh9WMrEee3DdaQR_R7SA" id="(0.8344370860927153,0.0970873786407767)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OmGh9mMrEee3DdaQR_R7SA" id="(0.07352941176470588,0.9096385542168675)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_CPg_wGMrEee3DdaQR_R7SA" name="C1" outgoingEdges="_OmCQgGMrEee3DdaQR_R7SA" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="TestRectilinear.ecore#//C1"/>
+      <semanticElements xmi:type="ecore:EClass" href="TestRectilinear.ecore#//C1"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" xmi:id="_CPg_wWMrEee3DdaQR_R7SA" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_CPg_wmMrEee3DdaQR_R7SA" name="C2" incomingEdges="_OmCQgGMrEee3DdaQR_R7SA" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="TestRectilinear.ecore#//C2"/>
+      <semanticElements xmi:type="ecore:EClass" href="TestRectilinear.ecore#//C2"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" xmi:id="_CPg_w2MrEee3DdaQR_R7SA" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_OmCQgGMrEee3DdaQR_R7SA" sourceNode="_CPg_wGMrEee3DdaQR_R7SA" targetNode="_CPg_wmMrEee3DdaQR_R7SA">
+      <target xmi:type="ecore:EClass" href="TestRectilinear.ecore#//C1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_OmCQgWMrEee3DdaQR_R7SA" size="2" routingStyle="manhattan">
+        <customFeatures>routingStyle</customFeatures>
+        <description xmi:type="style:EdgeStyleDescription" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@edgeMappings[name='Node_Supertype']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@edgeMappings[name='Node_Supertype']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_CPg_xGMrEee3DdaQR_R7SA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="TestRectilinear.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram xmi:id="_DvVzwGMrEee3DdaQR_R7SA" name="DiagGoodEdge">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_DvVzwWMrEee3DdaQR_R7SA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_DvVzwmMrEee3DdaQR_R7SA"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_DvXo8GMrEee3DdaQR_R7SA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_DvXo8WMrEee3DdaQR_R7SA" type="Sirius" element="_DvVzwGMrEee3DdaQR_R7SA" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_DvYQAGMrEee3DdaQR_R7SA" type="2001" element="_DvVzxGMrEee3DdaQR_R7SA">
+          <children xmi:type="notation:Node" xmi:id="_DvY3EGMrEee3DdaQR_R7SA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_DvY3EWMrEee3DdaQR_R7SA" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_DvZeImMrEee3DdaQR_R7SA" type="3003" element="_DvVzxWMrEee3DdaQR_R7SA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_DvZeI2MrEee3DdaQR_R7SA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DvZeJGMrEee3DdaQR_R7SA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_DvYQAWMrEee3DdaQR_R7SA" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DvYQAmMrEee3DdaQR_R7SA" x="127" y="20" width="107" height="173"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_DvY3EmMrEee3DdaQR_R7SA" type="2001" element="_DvVzxmMrEee3DdaQR_R7SA">
+          <children xmi:type="notation:Node" xmi:id="_DvZeIGMrEee3DdaQR_R7SA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_DvZeIWMrEee3DdaQR_R7SA" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_DvZeJWMrEee3DdaQR_R7SA" type="3003" element="_DvVzx2MrEee3DdaQR_R7SA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_DvZeJmMrEee3DdaQR_R7SA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DvZeJ2MrEee3DdaQR_R7SA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_DvY3E2MrEee3DdaQR_R7SA" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DvY3FGMrEee3DdaQR_R7SA" x="365" y="100" width="89" height="162"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_DvXo8mMrEee3DdaQR_R7SA"/>
+        <edges xmi:type="notation:Edge" xmi:id="_GdqbMGMrEee3DdaQR_R7SA" type="4001" element="_GdifYGMrEee3DdaQR_R7SA" source="_DvYQAGMrEee3DdaQR_R7SA" target="_DvY3EmMrEee3DdaQR_R7SA">
+          <children xmi:type="notation:Node" xmi:id="_GdrCQGMrEee3DdaQR_R7SA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GdrCQWMrEee3DdaQR_R7SA" x="18" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_GdrpUGMrEee3DdaQR_R7SA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GdrpUWMrEee3DdaQR_R7SA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_GdsQYGMrEee3DdaQR_R7SA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GdsQYWMrEee3DdaQR_R7SA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_GdqbMWMrEee3DdaQR_R7SA" routing="Rectilinear"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_GdqbMmMrEee3DdaQR_R7SA" fontName="Segoe UI"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GdqbM2MrEee3DdaQR_R7SA" points="[17, 19, -147, -170]$[100, 19, -64, -170]$[100, 170, -64, -19]$[148, 170, -16, -19]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Gds3cGMrEee3DdaQR_R7SA" id="(0.8411214953271028,0.2023121387283237)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Gds3cWMrEee3DdaQR_R7SA" id="(0.1797752808988764,0.8888888888888888)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_DvVzxGMrEee3DdaQR_R7SA" name="C3" outgoingEdges="_GdifYGMrEee3DdaQR_R7SA" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="TestRectilinear.ecore#//P2/C3"/>
+      <semanticElements xmi:type="ecore:EClass" href="TestRectilinear.ecore#//P2/C3"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" xmi:id="_DvVzxWMrEee3DdaQR_R7SA" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_DvVzxmMrEee3DdaQR_R7SA" name="C4" incomingEdges="_GdifYGMrEee3DdaQR_R7SA" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="TestRectilinear.ecore#//P2/C4"/>
+      <semanticElements xmi:type="ecore:EClass" href="TestRectilinear.ecore#//P2/C4"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" xmi:id="_DvVzx2MrEee3DdaQR_R7SA" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_GdifYGMrEee3DdaQR_R7SA" sourceNode="_DvVzxGMrEee3DdaQR_R7SA" targetNode="_DvVzxmMrEee3DdaQR_R7SA">
+      <target xmi:type="ecore:EClass" href="TestRectilinear.ecore#//P2/C3"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_GdjtgGMrEee3DdaQR_R7SA" size="2" routingStyle="manhattan">
+        <customFeatures>routingStyle</customFeatures>
+        <description xmi:type="style:EdgeStyleDescription" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@edgeMappings[name='Node_Supertype']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@edgeMappings[name='Node_Supertype']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_DvVzyGMrEee3DdaQR_R7SA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="TestRectilinear.odesign#//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="TestRectilinear.ecore#//P2"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

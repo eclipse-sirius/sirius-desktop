@@ -136,6 +136,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.NoteShapeDefaultLabelAlig
 import org.eclipse.sirius.tests.unit.diagram.migration.OptionalLayerToAdditionalLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ReferencedModelResourceMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RemoveAcceleoReferencesMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.RepairGMFbendpointsMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairMigrateLostDiagramElementsTC1Test;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairMigrateLostDiagramElementsTC2Test;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairMigratePinStatusTest;
@@ -234,6 +235,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(NoteAttachmentMigrationTest.class);
         suite.addTestSuite(DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest.class);
         suite.addTestSuite(DecorationDescriptionImageExpressionMigrationTest.class);
+        suite.addTestSuite(RepairGMFbendpointsMigrationParticipantTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
         suite.addTest(new JUnit4TestAdapter(GroupingContentProviderTest.class));

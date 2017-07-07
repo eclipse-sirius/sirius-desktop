@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="TestRectilinear" version="12.0.0.2017041100">
+  <ownedViewpoints name="TestRectilinear" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TestRectilinear Node" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NodeEClass" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <borderedNodeMappings name="BNodeEClass_Out" preconditionExpression="aql:self.eSuperTypes->size() &lt;> 0" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" hideLabelByDefault="true" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="BNodeEClass_In" preconditionExpression="aql:self.eInverse('eSuperTypes')->size() &lt;> 0" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" hideLabelByDefault="true" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Node_Supertype" createElements="false" sourceMapping="//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']" targetMapping="//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']" targetFinderExpression="aql:self.eSuperTypes">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Node_SupertypeBn" createElements="false" sourceMapping="//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']/@borderedNodeMappings[name='BNodeEClass_Out']" targetMapping="//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']/@borderedNodeMappings[name='BNodeEClass_In']" targetFinderExpression="aql:self.eSuperTypes">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Super" edgeMappings="//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@edgeMappings[name='Node_Supertype']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SuperWithBorderNode" edgeMappings="//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@edgeMappings[name='Node_SupertypeBn']" extraSourceMappings="//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']" extraTargetMappings="//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']/@borderedNodeMappings[name='BNodeEClass_Out']" containerViewExpression="var:sourceView" variableName="newSourceView"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@nodeMappings[name='NodeEClass']/@borderedNodeMappings[name='BNodeEClass_In']" containerViewExpression="var:targetView" variableName="newTargetView"/>
+                  <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='TestRectilinear']/@ownedRepresentations[name='TestRectilinear%20Node']/@defaultLayer/@edgeMappings[name='Node_SupertypeBn']" containerViewExpression="[sourceView.eContainer(diagram::DDiagram)/]" variableName="edgeCreatedView" sourceExpression="var:source" targetExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
