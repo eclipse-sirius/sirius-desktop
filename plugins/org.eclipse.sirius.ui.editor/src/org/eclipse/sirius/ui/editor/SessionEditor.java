@@ -13,6 +13,8 @@ package org.eclipse.sirius.ui.editor;
 import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
 import java.util.EventObject;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -34,9 +36,14 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.editor.ISiriusEditor;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.ui.editor.internal.pages.DefaultSessionEditorPage;
+import org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage;
+import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry;
+import org.eclipse.sirius.ui.editor.internal.pages.PageProviderListener;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CTabFolder;
+import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
@@ -65,7 +72,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
  */
-public class SessionEditor extends SharedHeaderFormEditor implements ITabbedPropertySheetPageContributor, IModelExplorerView, SessionListener, ISiriusEditor {
+public class SessionEditor extends SharedHeaderFormEditor implements ITabbedPropertySheetPageContributor, IModelExplorerView, SessionListener, ISiriusEditor, PageProviderListener {
     /**
      * The editor's id.
      */
@@ -75,12 +82,6 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
      * Session opened with editor.
      */
     private Session session;
-
-    /**
-     * The default page of the session editor showing the content of the session
-     * with means to update it.
-     */
-    private DefaultSessionEditorPage defaultPage;
 
     /**
      * The property sheet page used by this editor.
@@ -95,20 +96,80 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
 
     private int choice = ISaveablePart2.DEFAULT;
 
+    /**
+     * The registry providing custom pages to this editor.
+     */
+    private PageProviderRegistry pageRegistry;
+
     @Override
     protected void addPages() {
-        try {
-            defaultPage = new DefaultSessionEditorPage(this, session);
-            addPage(0, defaultPage);
-        } catch (PartInitException e) {
-            ErrorDialog.openError(getSite().getShell(), MessageFormat.format(Messages.UI_SessionEditor_page_loading_error_message, new Object[0]), e.getMessage(), e.getStatus()); // $NON-NLS-1$
+        updatePages();
+    }
+
+    /**
+     * Remove obsolete page, add new pages and reorder all pages currently
+     * displayed like the new list.
+     * 
+     */
+    private void updatePages() {
+        List<AbstractSessionEditorPage> newOrderedPages = pageRegistry.getPagesOrdered(this, session,
+                pages.stream().filter(AbstractSessionEditorPage.class::isInstance).map(AbstractSessionEditorPage.class::cast).collect(Collectors.toList()));
+
+        CTabFolder cTabF = (CTabFolder) this.getContainer();
+        IFormPage activePage = getActivePageInstance();
+        for (int i = 0; i < newOrderedPages.size(); i++) {
+            AbstractSessionEditorPage page = newOrderedPages.get(i);
+            int pageIndex = pages.indexOf(page);
+            if (pageIndex != -1) {
+                if (pageIndex != i) {
+                    // page already exists so we reuse its control in a new
+                    // tab to avoid loosing states like expanded items.
+                    cTabF.getItem(pageIndex).dispose();
+                    pages.remove(pageIndex);
+                    page.setIndex(i);
+
+                    CTabItem item = new CTabItem(cTabF, SWT.NONE, i);
+                    item.setText(page.getTitle());
+                    item.setControl(page.getPartControl());
+                    pages.add(i, page);
+                }
+            } else {
+                try {
+                    addPage(i, page);
+                } catch (PartInitException e) {
+                    String errorMessage = MessageFormat.format(Messages.UI_SessionEditor_page_loading_error_message, new Object[0]);
+                    SessionEditorPlugin.getPlugin().error(errorMessage, e);
+                    ErrorDialog.openError(getSite().getShell(), errorMessage, e.getMessage(), e.getStatus());
+                }
+            }
         }
+        if (newOrderedPages.size() < pages.size()) {
+            // obsolete pages must be removed.
+            for (int i = newOrderedPages.size(); i < pages.size(); i++) {
+                removePage(i);
+
+            }
+        }
+
+        cTabF.getParent().layout();
+        if (activePage != null) {
+            int activePageIndex = pages.indexOf(activePage);
+            if (activePageIndex != -1) {
+                this.setActivePage(activePageIndex);
+            } else {
+                this.setActivePage(0);
+            }
+        }
+    }
+
+    @Override
+    public void pageProviderChanged() {
+        updatePages();
     }
 
     @Override
     public void init(IEditorSite site, IEditorInput input) throws PartInitException {
         super.init(site, input);
-
         IEditorInput editorInput = this.getEditorInput();
         URI sessionResourceURI = null;
         if (editorInput instanceof FileEditorInput) {
@@ -180,13 +241,19 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                 session.getTransactionalEditingDomain().getCommandStack().addCommandStackListener(listener);
             }
         } catch (InvocationTargetException | InterruptedException e) {
-            ErrorDialog.openError(getSite().getShell(), MessageFormat.format(Messages.UI_SessionEditor_session_loading_error_message, new Object[0]), e.getMessage(), Status.CANCEL_STATUS); // $NON-NLS-1$
+            ErrorDialog.openError(getSite().getShell(), MessageFormat.format(Messages.UI_SessionEditor_session_loading_error_message, new Object[0]), e.getMessage(), Status.CANCEL_STATUS);
         }
+        pageRegistry = SessionEditorPlugin.getPlugin().getPageRegistry();
+        pageRegistry.addRegistryListener(this);
     }
 
     @Override
     public void dispose() {
         super.dispose();
+        if (pageRegistry != null) {
+            pageRegistry.removeRegistryListener(this);
+            pageRegistry = null;
+        }
         if (session != null) {
             final IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
             if (editingSession != null) {
@@ -296,7 +363,15 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                 choice = uiSession.promptToSaveOnClose();
             }
         }
-
         return choice;
+    }
+
+    /**
+     * Returns the {@link Session} edited by this editor.
+     * 
+     * @return the {@link Session} edited by this editor.
+     */
+    public Session getSession() {
+        return session;
     }
 }
