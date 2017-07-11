@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,31 +10,38 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckMessageEditPartIsDisplayed;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckResize;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckToolIsActivated;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
+import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
+import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 import org.junit.Assert;
 
 /**
- * Tests only zoom and creation with single/double click, others features to
- * test are Junit Plugin Tests.
+ * Tests only zoom and creation with single/double click, others features to test are Junit Plugin Tests.
  * 
  * @author edugueperoux, smonnier
  */
 public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragmentSequenceTests {
 
     /**
-     * VP-1338 Validate that moving an execution, on lifeline, will not result
-     * to have its source message other end overlaping an Interaction Use.
+     * VP-1338 Validate that moving an execution, on lifeline, will not result to have its source message other end
+     * overlaping an Interaction Use.
      */
     public void testMoveExecutionOnLifelineCanNotHaveItsSourceMessageOverlapingIU() {
         // Remove the first CF to have space
@@ -74,8 +81,8 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * VP-1338 Validate that moving an execution, on lifeline, will not result
-     * to have its target message other end overlaping an Interaction Use.
+     * VP-1338 Validate that moving an execution, on lifeline, will not result to have its target message other end
+     * overlaping an Interaction Use.
      */
     public void testMoveExecutionOnLifelineCanNotHaveItsTargetMessageOverlapingIU() {
         // Remove the first CF to have space
@@ -118,8 +125,8 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * VP-1338 Validate that moving an execution, on lifeline, will not result
-     * to have its source message other end overlaping an Combined Fragment.
+     * VP-1338 Validate that moving an execution, on lifeline, will not result to have its source message other end
+     * overlaping an Combined Fragment.
      */
     public void testMoveExecutionOnLifelineCanNotHaveItSourceMessageOverlapingCF() {
         // create an execution on lifeline B
@@ -152,8 +159,8 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * VP-1338 Validate that moving an execution, on lifeline, will not result
-     * to have its target message other end overlaping an Combined Fragment.
+     * VP-1338 Validate that moving an execution, on lifeline, will not result to have its target message other end
+     * overlaping an Combined Fragment.
      */
     public void testMoveExecutionOnLifelineCanNotHaveItTargetMessageOverlapingCF() {
         // create an execution on lifeline B
@@ -186,8 +193,8 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * VP-1338 Validate that moving an execution, on lifeline, will not result
-     * to have its source message other end overlaping an Operand.
+     * VP-1338 Validate that moving an execution, on lifeline, will not result to have its source message other end
+     * overlaping an Operand.
      */
     public void testMoveExecutionOnLifelineCanNotHaveItsSourceMessageOverlapingOperand() {
         // create an execution on lifeline B
@@ -220,8 +227,8 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * VP-1338 Validate that moving an execution, on lifeline, will not result
-     * to have its source message other end overlaping an Operand.
+     * VP-1338 Validate that moving an execution, on lifeline, will not result to have its source message other end
+     * overlaping an Operand.
      */
     public void testMoveExecutionOnLifelineCanNotHaveItsTargetMessageOverlapingOperand() {
         // create an execution on lifeline B
@@ -254,8 +261,8 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * VP-1338 Validate that moving an execution, in operand, will not result to
-     * have its source message other end overlaping an Interaction Use.
+     * VP-1338 Validate that moving an execution, in operand, will not result to have its source message other end
+     * overlaping an Interaction Use.
      */
     public void testMoveExecutionInOperandCanNotHaveItsSourceMessageOverlapingIU() {
         // create an IU on lifeline A
@@ -291,8 +298,8 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * VP-1338 Validate that moving an execution, in operand, will not result to
-     * have its target message other end overlaping an Interaction Use.
+     * VP-1338 Validate that moving an execution, in operand, will not result to have its target message other end
+     * overlaping an Interaction Use.
      */
     public void testMoveExecutionInOperandCanNotHaveItsTargetMessageOverlapingIU() {
         // create an IU on lifeline A
@@ -328,8 +335,8 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * VP-1338 Validate that moving an execution, in operand, will not result to
-     * have its source message other end overlaping an Combined Fragment.
+     * VP-1338 Validate that moving an execution, in operand, will not result to have its source message other end
+     * overlaping an Combined Fragment.
      */
     public void testMoveExecutionInOperandCanNotHaveItsSourceMessagesOverlapingOtherCF() {
         // create an IU on lifeline A
@@ -365,8 +372,8 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * VP-1338 Validate that moving an execution, in operand, will not result to
-     * have its source message other end overlaping an Combined Fragment.
+     * VP-1338 Validate that moving an execution, in operand, will not result to have its source message other end
+     * overlaping an Combined Fragment.
      */
     public void testMoveExecutionInOperandCanNotHaveItsTargetMessagesOverlapingOtherCF() {
         // create an IU on lifeline A
@@ -402,8 +409,8 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * VP-1338 Validate that moving an execution, in operand, will not result to
-     * have its source message other end overlaping an Operand.
+     * VP-1338 Validate that moving an execution, in operand, will not result to have its source message other end
+     * overlaping an Operand.
      */
     public void testMoveExecutionInOperandCanNotHaveItsSourceMessageOverlapingOtherOperand() {
         // create an IU on lifeline A
@@ -439,8 +446,8 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * VP-1338 Validate that moving an execution, in operand, will not result to
-     * have its target message other end overlaping an Operand.
+     * VP-1338 Validate that moving an execution, in operand, will not result to have its target message other end
+     * overlaping an Operand.
      */
     public void testMoveExecutionInOperandCanNotHaveItsTargetMessageOverlapingOtherOperand() {
         // create an IU on lifeline A
@@ -473,6 +480,58 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
         // Undo create IU
         undo();
         assertNotChange();
+    }
+
+    /**
+     * Test that tries to resize an execution in the first operand lower than the operand bottom bound (not accepted).
+     */
+    public void testReziseExecutionOutOfFirstOperandUpperBound() {
+        e2Bot.select();
+
+        Point expectedTranslation = new Point(0, 200);
+        try {
+            CheckResize cR = new CheckResize(LIFELINE_B, 1, expectedTranslation, editor);
+            editor.drag(e2Bounds.getBottom(), e2Bounds.getBottom().getCopy().getTranslated(expectedTranslation));
+            bot.waitUntil(cR);
+            fail("An execution can be resized further than its parent operand bottom bound only if it is the last operand of its parent combined fragment");
+        } catch (TimeoutException te) {
+            // Failed as expected.
+        }
+    }
+
+    /**
+     * Test that resizes an execution in the last operand lower than the operand bottom bound (accepted). Then,
+     * dimension of resized or moved elements are checked.
+     */
+    public void testReziseExecutionOutOfLastOperandLowerBound() {
+        String toolName = "Execution";
+        ICondition done = new CheckToolIsActivated(editor, toolName);
+        editor.activateTool(toolName);
+        bot.waitUntil(done);
+        editor.click(e2Bounds.getCenter().x, secondOperandOfFirstCombinedFragmentBounds.getCenter().y);
+        SWTBotGefEditPart e3Bot = instanceRoleEditPartBBot.parent().descendants(IsInstanceOf.instanceOf(ExecutionEditPart.class)).get(2);
+        Rectangle e3Bounds = editor.getBounds(e3Bot);
+        e3Bot.select();
+
+        Dimension expectedResize = new Dimension(0, 200);
+        CheckResize cR = new CheckResize(LIFELINE_B, 2, expectedResize, editor);
+
+        editor.drag(e3Bounds.getBottom(), e3Bounds.getBottom().getCopy().getTranslated(expectedResize));
+        bot.waitUntil(cR);
+        SWTBotGefEditPart e3BotAfterRezize = instanceRoleEditPartBBot.parent().descendants(IsInstanceOf.instanceOf(ExecutionEditPart.class)).get(2);
+        Rectangle e3BoundsAfterRezize = editor.getBounds(e3BotAfterRezize);
+
+        SWTBotGefEditPart secondOperandOfFirstCombinedFragmentBotAfterRezize = firstCombinedFragmentBot.descendants(IsInstanceOf.instanceOf(OperandEditPart.class)).get(1);
+        Rectangle secondOperandOfFirstCombinedFragmentBoundsAfterRezize = editor.getBounds(secondOperandOfFirstCombinedFragmentBotAfterRezize);
+
+        SWTBotGefEditPart secondCombinedFragmentBotAfterRezize = sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(CombinedFragmentEditPart.class)).get(1);
+        Rectangle secondCombinedFragmentBoundsAfterRezize = editor.getBounds(secondCombinedFragmentBotAfterRezize);
+
+        assertEquals("Unexpected gap between the end of the resized execution and the containing operand.", secondOperandOfFirstCombinedFragmentBoundsAfterRezize.getBottom().y,
+                e3BoundsAfterRezize.getBottom().y + LayoutConstants.EXECUTION_CHILDREN_MARGIN);
+        assertEquals("The gap between both Combined Fragment should be unchanged.", secondCombinedFragmentBounds.getTop().y - firstCombinedFragmentBounds.getBottom().y,
+                secondCombinedFragmentBoundsAfterRezize.getTop().y - secondOperandOfFirstCombinedFragmentBoundsAfterRezize.getBottom().y);
+        assertEquals("Second Combined Fragment dimension should be unchanged.", secondCombinedFragmentBounds.getSize(), secondCombinedFragmentBoundsAfterRezize.getSize());
     }
 
 }
