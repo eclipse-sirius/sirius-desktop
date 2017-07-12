@@ -22,6 +22,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckMessageEditPartIsDisplayed;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckResize;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckToolIsActivated;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
@@ -532,6 +533,27 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
         assertEquals("The gap between both Combined Fragment should be unchanged.", secondCombinedFragmentBounds.getTop().y - firstCombinedFragmentBounds.getBottom().y,
                 secondCombinedFragmentBoundsAfterRezize.getTop().y - secondOperandOfFirstCombinedFragmentBoundsAfterRezize.getBottom().y);
         assertEquals("Second Combined Fragment dimension should be unchanged.", secondCombinedFragmentBounds.getSize(), secondCombinedFragmentBoundsAfterRezize.getSize());
+    }
+
+    /**
+     * Test last operand resize that expand the whole combined fragment.
+     */
+    public void testReziseLastOperand() {
+        editor.click(secondOperandOfFirstCombinedFragmentBounds.getCenter());
+
+        Dimension expectedResize = new Dimension(0, 200);
+        CheckEditPartResized cR = new CheckEditPartResized(secondOperandOfFirstCombinedFragmentBot);
+        editor.drag(secondOperandOfFirstCombinedFragmentBounds.getBottom(), secondOperandOfFirstCombinedFragmentBounds.getBottom().getCopy().getTranslated(expectedResize));
+        bot.waitUntil(cR);
+
+        SWTBotGefEditPart secondOperandOfFirstCombinedFragmentBotAfterRezize = firstCombinedFragmentBot.descendants(IsInstanceOf.instanceOf(OperandEditPart.class)).get(1);
+        Rectangle secondOperandOfFirstCombinedFragmentBoundsAfterRezize = editor.getBounds(secondOperandOfFirstCombinedFragmentBotAfterRezize);
+
+        SWTBotGefEditPart secondCombinedFragmentBotAfterRezize = sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(CombinedFragmentEditPart.class)).get(1);
+        Rectangle secondCombinedFragmentBoundsAfterRezize = editor.getBounds(secondCombinedFragmentBotAfterRezize);
+
+        assertEquals("The gap between both Combined Fragment should be unchanged.", secondCombinedFragmentBounds.getTop().y - firstCombinedFragmentBounds.getBottom().y,
+                secondCombinedFragmentBoundsAfterRezize.getTop().y - secondOperandOfFirstCombinedFragmentBoundsAfterRezize.getBottom().y);
     }
 
 }
