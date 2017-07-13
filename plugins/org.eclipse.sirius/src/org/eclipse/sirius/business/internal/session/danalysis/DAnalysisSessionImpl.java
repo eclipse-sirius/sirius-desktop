@@ -81,6 +81,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStat
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -155,7 +156,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private SessionService services;
 
-    private ECrossReferenceAdapterWithUnproxyCapability crossReferencer;
+    private LazyCrossReferencer crossReferencer;
 
     private IInterpreter interpreter;
 
@@ -251,7 +252,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * 
      * @return a new cross referencer adapter
      */
-    protected ECrossReferenceAdapterWithUnproxyCapability createSemanticCrossReferencer() {
+    protected LazyCrossReferencer createSemanticCrossReferencer() {
         return new SessionLazyCrossReferencer(this);
     }
 
@@ -420,6 +421,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * 
      * @return all valid(i.e. not null) owned and referenced analyses.
      */
+    @Override
     public Collection<DAnalysis> allAnalyses() {
         Collection<DAnalysis> analysisAndReferenced = Sets.newLinkedHashSet();
         for (DAnalysis analysis : Lists.newArrayList(super.getAnalyses())) {

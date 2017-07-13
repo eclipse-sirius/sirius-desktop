@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
 package org.eclipse.sirius.common.tools.api.util;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
@@ -21,24 +23,19 @@ import org.eclipse.emf.ecore.resource.Resource;
 import com.google.common.collect.Iterables;
 
 /**
- * A lazy cross referencer which does nothing until one of its method is called.
+ * A lazy cross referencer which does nothing until one of its method is called. <BR>
  * <BR>
+ * This cross referencer also reacts to {@link EObject} removal from their containing reference : it removes itself
+ * automatically from their adapters and recursively from those of their contents. If the new container is already set
+ * and also has the cross referencer, in this case cross referencer is not removed. <BR>
  * <BR>
- * This cross referencer also reacts to {@link EObject} removal from their
- * containing reference : it removes itself automatically from their adapters
- * and recursively from those of their contents. If the new container is already
- * set and also has the cross referencer, in this case cross referencer is not
- * removed. <BR>
- * <BR>
- * This cross referencer also provide a way to disable the resolution of proxy.
- * This can be useful to avoid reloading of a resource during the unloading of
- * it (caused by resolution of some proxy with crossReferencer).<BR>
+ * This cross referencer also provide a way to disable the resolution of proxy. This can be useful to avoid reloading of
+ * a resource during the unloading of it (caused by resolution of some proxy with crossReferencer).<BR>
  * <BR>
  * 
  * @see {@link org.eclipse.emf.transaction.impl.ResourceSetManager#observe(org.eclipse.emf.ecore.resource.Resource, Notification)}
- *      and message
- *      {@link org.eclipse.emf.transaction.internal.EMFTransactionStatusCodes.RELOAD_DURING_UNLOAD}
- *      this one.
+ *      and message {@link org.eclipse.emf.transaction.internal.EMFTransactionStatusCodes.RELOAD_DURING_UNLOAD} this
+ *      one.
  * 
  * @author mchauvin
  */
@@ -48,6 +45,8 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
      * Flag to know if the LazyCrossReferencer has been initialized.
      */
     protected boolean initialized;
+
+    private Predicate<EObject> eObjectToBeIgnoredPredicate = obj -> false;
 
     /**
      * Subclasses should override, and call super.initialize().
@@ -64,36 +63,59 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
         super.dump();
     }
 
+    /**
+     * Set a predicate to know if inverse references has to be searched for a given EObject.</br>
+     * This can be useful to prevent the resolution of some references of the given EObject.
+     * 
+     * @param predicate
+     *            the predicate
+     */
+    public void setEObjectToBeIgnored(Predicate<EObject> predicate) {
+        this.eObjectToBeIgnoredPredicate = predicate;
+    }
+
     @Override
     public Collection<Setting> getInverseReferences(final EObject object, final boolean resolve) {
-        if (!initialized) {
-            initialize();
+        if (!eObjectToBeIgnoredPredicate.test(object)) {
+            if (!initialized) {
+                initialize();
+            }
+            return super.getInverseReferences(object, resolve);
         }
-        return super.getInverseReferences(object, resolve);
+        return Collections.emptyList();
     }
 
     @Override
     public Collection<Setting> getInverseReferences(final EObject object) {
-        if (!initialized) {
-            initialize();
+        if (!eObjectToBeIgnoredPredicate.test(object)) {
+            if (!initialized) {
+                initialize();
+            }
+            return super.getInverseReferences(object);
         }
-        return super.getInverseReferences(object);
+        return Collections.emptyList();
     }
 
     @Override
     public Collection<Setting> getNonNavigableInverseReferences(final EObject object, final boolean resolve) {
-        if (!initialized) {
-            initialize();
+        if (!eObjectToBeIgnoredPredicate.test(object)) {
+            if (!initialized) {
+                initialize();
+            }
+            return super.getNonNavigableInverseReferences(object, resolve);
         }
-        return super.getNonNavigableInverseReferences(object, resolve);
+        return Collections.emptyList();
     }
 
     @Override
     public Collection<Setting> getNonNavigableInverseReferences(final EObject object) {
-        if (!initialized) {
-            initialize();
+        if (!eObjectToBeIgnoredPredicate.test(object)) {
+            if (!initialized) {
+                initialize();
+            }
+            return super.getNonNavigableInverseReferences(object);
         }
-        return super.getNonNavigableInverseReferences(object);
+        return Collections.emptyList();
     }
 
     @Override
@@ -137,12 +159,10 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
     }
 
     /**
-     * Look at all EObjects of this resource and resolve proxy cross reference
-     * that reference these EObjects.
+     * Look at all EObjects of this resource and resolve proxy cross reference that reference these EObjects.
      * 
      * @param resource
-     *            Each cross reference pointing to a proxy of this
-     *            <code>resource</code> will be resolved.
+     *            Each cross reference pointing to a proxy of this <code>resource</code> will be resolved.
      */
     @Override
     public void resolveProxyCrossReferences(Resource resource) {
@@ -161,9 +181,8 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
     }
 
     /**
-     * This method removes the current cross referencer adapter from adapters of
-     * removed elements. The removeAdapter method propagate the removal to all
-     * contents of its parameter.
+     * This method removes the current cross referencer adapter from adapters of removed elements. The removeAdapter
+     * method propagate the removal to all contents of its parameter.
      * 
      * @param notification
      *            a containment notification
@@ -192,8 +211,7 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
     }
 
     /**
-     * This method does not remove the adapter from the notification old value
-     * in two cases:
+     * This method does not remove the adapter from the notification old value in two cases:
      * <ul>
      * <li>if its new container is already set and also has the adapter</li>
      * <li>if the element is now a root of a resource which has the adapter</li>
