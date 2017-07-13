@@ -284,6 +284,13 @@
            properties="isSemanticResourceFileTester"
            class="org.eclipse.sirius.ui.tools.internal.views.common.FileHandledByOpenedSessionTester">
        </propertyTester>
+       <propertyTester
+             class="org.eclipse.sirius.ui.business.internal.commands.UpdateRepresentationLocationCommandPropertyTester"
+             id="org.eclipse.sirius.ui.split.representation.propertyTester"
+             namespace="org.eclipse.sirius.ui"
+             properties="isContainingAirdFiles"
+             type="java.lang.Object">
+       </propertyTester>
    </extension>
   <extension
         point="org.eclipse.ui.navigator.navigatorContent">
@@ -673,5 +680,37 @@
           </visibleWhen>
        </command>
     </menuContribution>
+ <menuContribution
+       locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+    <command
+          commandId="org.eclipse.sirius.ui.splitrepresentations.command"
+          label="%command.update.rep.location.label"
+          style="push">
+       <visibleWhen>
+          <iterate
+                ifEmpty="false"
+                operator="and">
+             <and>
+                <instanceof
+                      value="org.eclipse.core.resources.IResource">
+                </instanceof>
+                <test
+                      forcePluginActivation="true"
+                      property="org.eclipse.sirius.ui.isContainingAirdFiles">
+                </test>
+             </and>
+          </iterate>
+       </visibleWhen>
+    </command>
+ </menuContribution>
  </extension>
+ 
+  <extension
+        point="org.eclipse.ui.commands">
+     <command
+           defaultHandler="org.eclipse.sirius.ui.business.internal.commands.UpdateRepresentationsLocationHandler"
+           id="org.eclipse.sirius.ui.splitrepresentations.command"
+           name="%command.update.rep.location.name">
+     </command>
+  </extension>
 </plugin>

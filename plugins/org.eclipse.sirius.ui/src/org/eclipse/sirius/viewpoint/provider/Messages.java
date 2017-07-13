@@ -1191,6 +1191,12 @@ public final class Messages {
     @TranslatableMessage
     public static String GraphicalRepresentationHandler_disableViewpointButton_tooltip;
 
+    @TranslatableMessage
+    public static String UpdateRepresentationsLocationHandler_label;
+
+    @TranslatableMessage
+    public static String UpdateRepresentationsLocationHandler_errorMsg;
+
     // CHECKSTYLE:ON
 
     private Messages() {

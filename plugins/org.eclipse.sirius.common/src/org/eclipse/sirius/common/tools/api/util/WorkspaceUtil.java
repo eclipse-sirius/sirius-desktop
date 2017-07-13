@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 
@@ -35,10 +34,10 @@ public final class WorkspaceUtil {
     }
 
     /**
-     * Get the files with a specific extension in the given projects.
+     * Get the files with a specific extension in the given containers (Project, Folder etc.).
      * 
-     * @param projects
-     *            the project in which to look for
+     * @param containers
+     *            the containers in which to look for
      * 
      * @param extension
      *            the file extension
@@ -47,14 +46,13 @@ public final class WorkspaceUtil {
      * 
      *         examples :
      * 
-     *         getFilesFromWorkspace (null) : return all files from the
-     *         workspace getFilesFromWorkspaces ("java" : return all java
-     *         sources files from the workspace
+     *         getFilesFromWorkspace (null) : return all files from the workspace getFilesFromWorkspaces ("java" :
+     *         return all java sources files from the workspace
      */
-    public static List<IFile> getFilesFromWorkspace(final Collection<IProject> projects, final String extension) {
+    public static List<IFile> getFilesFromWorkspace(final Collection<IContainer> containers, final String extension) {
         List<IFile> allFiles = new ArrayList<IFile>();
         try {
-            allFiles = getWorkspaceFiles(projects.toArray(new IProject[projects.size()]));
+            allFiles = getWorkspaceFiles(containers.toArray(new IContainer[containers.size()]));
         } catch (final CoreException e1) {
             // do nothing -- fail silently
         }
@@ -78,8 +76,7 @@ public final class WorkspaceUtil {
      * @param resources
      *            the resources to scan
      * @throws CoreException
-     *             if {@link org.eclipse.core.resources.IContainer#members()} on
-     *             a resource fails. Reasons include:
+     *             if {@link org.eclipse.core.resources.IContainer#members()} on a resource fails. Reasons include:
      *             <ul>
      *             <li>This resource does not exist.</li>
      *             <li>This resource is a project that is not open.</li>
