@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,13 +32,17 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionDelegate;
 
 /**
- * This action will be called when the user needs to repair a representations
- * file.
+ * This action will be called when the user needs to repair a representations file.
  *
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  * @author mchauvin
  */
 public class RepresentationFilesRepairAction extends ActionDelegate {
+
+    /**
+     * The repair action label.
+     */
+    public static final String REPAIR_ACTION_LABEL = Messages.RepresentationFilesRepairValidator_repairActionLabel;
 
     /** The file selected in the workspace. */
     protected IFile file;
@@ -54,7 +58,7 @@ public class RepresentationFilesRepairAction extends ActionDelegate {
     public void run(final IAction action) {
         if (file != null) {
             try {
-                IStatus validationStatus = new RepresentationFilesRepairValidator().validate(file);
+                IStatus validationStatus = new RepresentationFilesNeedCloseSessionValidator(REPAIR_ACTION_LABEL).validate(file);
                 if (validationStatus.isOK()) {
                     PlatformUI.getWorkbench().getProgressService().busyCursorWhile(new IRunnableWithProgress() {
 

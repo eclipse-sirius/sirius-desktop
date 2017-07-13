@@ -34,21 +34,40 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Validator to validate the environment before launching the repair action and
- * eventually ask questions to the user to passed in valid environment.
+ * Validator to validate the environment before launching the repair action and eventually ask questions to the user to
+ * passed in valid environment.
  * 
  * A valid environment is an environment with no session open.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class RepresentationFilesRepairValidator {
-
-    /**
-     * The name of the dialog which ask question.
-     */
-    public static final String MESSAGE_TITLE = Messages.RepresentationFilesRepairValidator_confirmationDialogTitle;
+public class RepresentationFilesNeedCloseSessionValidator {
 
     private static final int OPERATION_CANCELED = 0;
+
+    private String actionName;
+
+    /**
+     * Default constructor.
+     * 
+     * @param actionName
+     *            the name of the action that needs to close opened sessions.
+     */
+    public RepresentationFilesNeedCloseSessionValidator(String actionName) {
+        this.actionName = actionName;
+    }
+
+    /**
+     * Get the name of the dialog which ask question.
+     * 
+     * @param actionName
+     *            the name of the action.
+     * 
+     * @return the title.
+     */
+    public static String getMessageTitle(String actionName) {
+        return MessageFormat.format(Messages.RepresentationFilesRepairValidator_confirmationDialogTitle, actionName);
+    }
 
     /**
      * Validates the environment for launching a repair action.
@@ -63,11 +82,9 @@ public class RepresentationFilesRepairValidator {
      * @param currentFileToMigrate
      *            File to repair.
      * 
-     * @return the status of validation. The {@link IStatus#getSeverity
-     *         severity} of the result indicates whether validation passed or
-     *         (how badly it) failed. Normally, the result is a
-     *         {@link IStatus#isMultiStatus multi-status} whose children are the
-     *         results of individual constraint evaluations
+     * @return the status of validation. The {@link IStatus#getSeverity severity} of the result indicates whether
+     *         validation passed or (how badly it) failed. Normally, the result is a {@link IStatus#isMultiStatus
+     *         multi-status} whose children are the results of individual constraint evaluations
      */
     public IStatus validate(IFile currentFileToMigrate) {
         IStatus resultStatus = null;
@@ -110,8 +127,7 @@ public class RepresentationFilesRepairValidator {
         }
 
         boolean saveSessions = false;
-        String repairActionLabel = Messages.RepresentationFilesRepairValidator_repairActionLabel;
-        StringBuffer message = new StringBuffer(MessageFormat.format(Messages.RepresentationFilesRepairValidator_launchImpossibleRepresentationsOpened, repairActionLabel));
+        StringBuffer message = new StringBuffer(MessageFormat.format(Messages.RepresentationFilesRepairValidator_launchImpossibleRepresentationsOpened, actionName));
         if (dirtySessionsName.size() > 0) {
             if (dirtySessionsName.size() == 1) {
                 message.append(" ").append(Messages.RepresentationFilesRepairValidator_representationFileModified); //$NON-NLS-1$
@@ -124,18 +140,19 @@ public class RepresentationFilesRepairValidator {
             message.delete(message.length() - 2, message.length() - 1);
             message.append("\n\n").append(Messages.RepresentationFilesRepairValidator_askSave); //$NON-NLS-1$
             String[] buttons = new String[] { IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL, IDialogConstants.CANCEL_LABEL };
-            final MessageDialog dialog = new MessageDialog(shell, MESSAGE_TITLE, null, message.toString(), MessageDialog.QUESTION, buttons, 0);
+            final MessageDialog dialog = new MessageDialog(shell, getMessageTitle(actionName), null, message.toString(), MessageDialog.QUESTION, buttons, 0);
             int result = dialog.open();
             if (result == SWT.DEFAULT || buttons[result].equals(IDialogConstants.CANCEL_LABEL)) {
-                throw new CoreException(new Status(IStatus.CANCEL, SiriusEditPlugin.ID, RepresentationFilesRepairValidator.OPERATION_CANCELED, Messages.RepresentationFilesRepairValidator_migrationCanceled, null));
+                throw new CoreException(new Status(IStatus.CANCEL, SiriusEditPlugin.ID, RepresentationFilesNeedCloseSessionValidator.OPERATION_CANCELED,
+                        Messages.RepresentationFilesRepairValidator_migrationCanceled, null));
             }
             if (buttons[result].equals(IDialogConstants.YES_LABEL)) {
                 saveSessions = true;
             }
         } else {
             message.append("\n").append(Messages.RepresentationFilesRepairValidator_askContinue); //$NON-NLS-1$
-            if (!MessageDialog.openConfirm(shell, MESSAGE_TITLE, message.toString())) {
-                throw new CoreException(new Status(IStatus.CANCEL, SiriusEditPlugin.ID, RepresentationFilesRepairValidator.OPERATION_CANCELED, Messages.RepresentationFilesRepairValidator_migrationCanceled, null));
+            if (!MessageDialog.openConfirm(shell, getMessageTitle(actionName), message.toString())) {
+                throw new CoreException(new Status(IStatus.CANCEL, SiriusEditPlugin.ID, OPERATION_CANCELED, Messages.RepresentationFilesRepairValidator_migrationCanceled, null));
             }
         }
         return saveSessions;
@@ -145,8 +162,7 @@ public class RepresentationFilesRepairValidator {
      * Close all the opened sessions.
      * 
      * @param saveSessions
-     *            true to save the session before closing, false to close
-     *            without saving
+     *            true to save the session before closing, false to close without saving
      */
     private void closeSessions(boolean saveSessions) {
         Collection<IEditingSession> editingSessions = SessionUIManager.INSTANCE.getUISessions();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.sirius.ui.tools.internal.actions.repair.RepresentationFilesRepairValidator;
+import org.eclipse.sirius.ui.tools.internal.actions.repair.RepresentationFilesNeedCloseSessionValidator;
+import org.eclipse.sirius.ui.tools.internal.actions.repair.RepresentationFilesRepairAction;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -48,8 +49,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
  */
 public class RepairTest extends AbstractScenarioTestCase {
     /**
-     * Cannot use mocks here because {@link #logging(IStatus, String)} is called
-     * asynchronously. Thrown exception is lost and doesn't stop
+     * Cannot use mocks here because {@link #logging(IStatus, String)} is called asynchronously. Thrown exception is
+     * lost and doesn't stop
      * 
      * @author dlecan
      */
@@ -272,8 +273,8 @@ public class RepairTest extends AbstractScenarioTestCase {
         String repairActionLabel = SiriusEditPlugin.getPlugin().getString("repairActionLabel");
         designerProject.mouseRigthClickOnResource(sessionAirdResource, repairActionLabel);
         //
-        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesRepairValidator.MESSAGE_TITLE));
-        SWTBotShell message = bot.shell(RepresentationFilesRepairValidator.MESSAGE_TITLE);
+        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL)));
+        SWTBotShell message = bot.shell(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL));
         message.setFocus();
         bot.button("Cancel").click();
         // Check that the session is always opened
@@ -323,8 +324,8 @@ public class RepairTest extends AbstractScenarioTestCase {
         String repairActionLabel = SiriusEditPlugin.getPlugin().getString("repairActionLabel");
         designerProject.mouseRigthClickOnResource(sessionAirdResource, repairActionLabel);
         //
-        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesRepairValidator.MESSAGE_TITLE));
-        SWTBotShell message = bot.shell(RepresentationFilesRepairValidator.MESSAGE_TITLE);
+        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL)));
+        SWTBotShell message = bot.shell(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL));
         message.setFocus();
         // Close the popup with the cross
         bot.activeShell().close();
@@ -439,8 +440,8 @@ public class RepairTest extends AbstractScenarioTestCase {
         String repairActionLabel = SiriusEditPlugin.getPlugin().getString("repairActionLabel");
         designerProject.mouseRigthClickOnResource(sessionAirdResource1, repairActionLabel);
         //
-        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesRepairValidator.MESSAGE_TITLE));
-        SWTBotShell message = bot.shell(RepresentationFilesRepairValidator.MESSAGE_TITLE);
+        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL)));
+        SWTBotShell message = bot.shell(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL));
         message.setFocus();
         bot.button("Cancel").click();
         // Check that the sessions are always opened
@@ -455,22 +456,19 @@ public class RepairTest extends AbstractScenarioTestCase {
     }
 
     /**
-     * Scenario 4 : repair with multiple opened sessions (at least one changed),
-     * and backup
+     * Scenario 4 : repair with multiple opened sessions (at least one changed), and backup
      * <UL>
      * <LI>Close all the opened sessions</LI>
      * <LI>Open a session on a simple aird file, sc4-1.aird</LI>
      * <LI>The session is opened and not dirty (if it's dirty, save it)</LI>
      * <LI>Open a session on another simple aird file, sc4-2.aird</LI>
-     * <LI>Modify one of the diagram of the second session to have this one in
-     * dirty mode</LI>
+     * <LI>Modify one of the diagram of the second session to have this one in dirty mode</LI>
      * <LI>Launch the action Repair model on an sc3-1.aird</LI>
      * <LI>A popup warns the user that the session will be close</LI>
      * <LI>Click OK on the popup</LI>
      * <LI>Check that the session are closed</LI>
      * <LI>Check that a backup was done</LI>
-     * <LI>Check that the modification done in the diagram of the second session
-     * (sc4-2.aird) is always here.</LI>
+     * <LI>Check that the modification done in the diagram of the second session (sc4-2.aird) is always here.</LI>
      * </UL>
      * 
      * @throws Exception
@@ -506,8 +504,8 @@ public class RepairTest extends AbstractScenarioTestCase {
         String repairActionLabel = SiriusEditPlugin.getPlugin().getString("repairActionLabel");
         designerProject.mouseRigthClickOnResource(sessionAirdResource1, repairActionLabel);
         //
-        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesRepairValidator.MESSAGE_TITLE));
-        SWTBotShell message = bot.shell(RepresentationFilesRepairValidator.MESSAGE_TITLE);
+        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL)));
+        SWTBotShell message = bot.shell(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL));
         message.setFocus();
         bot.button(IDialogConstants.YES_LABEL).click();
         // Wait the end of repair
@@ -526,22 +524,20 @@ public class RepairTest extends AbstractScenarioTestCase {
     }
 
     /**
-     * Scenario 4 bis : repair with multiple opened sessions (at least one
-     * changed), and without backup
+     * Scenario 4 bis : repair with multiple opened sessions (at least one changed), and without backup
      * <UL>
      * <LI>Close all the opened sessions</LI>
      * <LI>Open a session on a simple aird file, sc4-1.aird</LI>
      * <LI>The session is opened and not dirty (if it's dirty, save it)</LI>
      * <LI>Open a session on another simple aird file, sc4-2.aird</LI>
-     * <LI>Modify one of the diagram of the second session to have this one in
-     * dirty mode</LI>
+     * <LI>Modify one of the diagram of the second session to have this one in dirty mode</LI>
      * <LI>Launch the action Repair model on an sc3-1.aird</LI>
      * <LI>A popup warns the user that the session will be close</LI>
      * <LI>Click NO on the popup</LI>
      * <LI>Check that the session are closed</LI>
      * <LI>Check that a backup was done</LI>
-     * <LI>Check that the modification done in the diagram of the second session
-     * (sc4-2.aird) is still longer here and that the second session is dirty</LI>
+     * <LI>Check that the modification done in the diagram of the second session (sc4-2.aird) is still longer here and
+     * that the second session is dirty</LI>
      * </UL>
      * 
      * @throws Exception
@@ -574,8 +570,8 @@ public class RepairTest extends AbstractScenarioTestCase {
         String repairActionLabel = SiriusEditPlugin.getPlugin().getString("repairActionLabel");
         designerProject.mouseRigthClickOnResource(sessionAirdResource1, repairActionLabel);
         //
-        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesRepairValidator.MESSAGE_TITLE));
-        SWTBotShell message = bot.shell(RepresentationFilesRepairValidator.MESSAGE_TITLE);
+        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL)));
+        SWTBotShell message = bot.shell(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL));
         message.setFocus();
         bot.button(IDialogConstants.NO_LABEL).click();
         // Wait the end of repair
@@ -595,15 +591,13 @@ public class RepairTest extends AbstractScenarioTestCase {
     }
 
     /**
-     * Scenario 4 ter : repair with multiple opened sessions (at least one
-     * changed), and cancel
+     * Scenario 4 ter : repair with multiple opened sessions (at least one changed), and cancel
      * <UL>
      * <LI>Close all the opened sessions</LI>
      * <LI>Open a session on a simple aird file, sc4-1.aird</LI>
      * <LI>The session is opened and not dirty (if it's dirty, save it)</LI>
      * <LI>Open a session on another simple aird file, sc4-2.aird</LI>
-     * <LI>Modify one of the diagram of the second session to have this one in
-     * dirty mode</LI>
+     * <LI>Modify one of the diagram of the second session to have this one in dirty mode</LI>
      * <LI>Launch the action Repair model on an sc3-1.aird</LI>
      * <LI>A popup warns the user that the session will be close</LI>
      * <LI>Click Cancel on the popup</LI>
@@ -645,8 +639,8 @@ public class RepairTest extends AbstractScenarioTestCase {
         String repairActionLabel = SiriusEditPlugin.getPlugin().getString("repairActionLabel");
         designerProject.mouseRigthClickOnResource(sessionAirdResource1, repairActionLabel);
         //
-        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesRepairValidator.MESSAGE_TITLE));
-        SWTBotShell message = bot.shell(RepresentationFilesRepairValidator.MESSAGE_TITLE);
+        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL)));
+        SWTBotShell message = bot.shell(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL));
         message.setFocus();
         bot.button(IDialogConstants.CANCEL_LABEL).click();
         // Check that the sessions are always opened
@@ -662,15 +656,14 @@ public class RepairTest extends AbstractScenarioTestCase {
     }
 
     /**
-     * Scenario 4 ter : repair with multiple opened sessions (at least one
-     * changed), and cancel with the cross of the popup
+     * Scenario 4 ter : repair with multiple opened sessions (at least one changed), and cancel with the cross of the
+     * popup
      * <UL>
      * <LI>Close all the opened sessions</LI>
      * <LI>Open a session on a simple aird file, sc4-1.aird</LI>
      * <LI>The session is opened and not dirty (if it's dirty, save it)</LI>
      * <LI>Open a session on another simple aird file, sc4-2.aird</LI>
-     * <LI>Modify one of the diagram of the second session to have this one in
-     * dirty mode</LI>
+     * <LI>Modify one of the diagram of the second session to have this one in dirty mode</LI>
      * <LI>Launch the action Repair model on an sc3-1.aird</LI>
      * <LI>A popup warns the user that the session will be close</LI>
      * <LI>Click Cancel on the popup</LI>
@@ -712,8 +705,8 @@ public class RepairTest extends AbstractScenarioTestCase {
         String repairActionLabel = SiriusEditPlugin.getPlugin().getString("repairActionLabel");
         designerProject.mouseRigthClickOnResource(sessionAirdResource1, repairActionLabel);
         //
-        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesRepairValidator.MESSAGE_TITLE));
-        SWTBotShell message = bot.shell(RepresentationFilesRepairValidator.MESSAGE_TITLE);
+        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL)));
+        SWTBotShell message = bot.shell(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL));
         message.setFocus();
         // Close the popup with the cross
         bot.activeShell().close();
@@ -733,10 +726,8 @@ public class RepairTest extends AbstractScenarioTestCase {
      * Contexte :
      * <UL>
      * <LI>sc5.aird file use the sc5.ecore as semantic resource</LI>
-     * <LI>sc5-1.aird is a fragmented file (controlled from sc5.aird) and use
-     * sc5-1.ecore as semantic resource</LI>
-     * <LI>sc5-2.aird is a fragmented file (controlled from sc5.aird) and use
-     * sc5-2.ecore as semantic resource</LI>
+     * <LI>sc5-1.aird is a fragmented file (controlled from sc5.aird) and use sc5-1.ecore as semantic resource</LI>
+     * <LI>sc5-2.aird is a fragmented file (controlled from sc5.aird) and use sc5-2.ecore as semantic resource</LI>
      * </UL>
      * Steps :
      * <UL>
@@ -747,8 +738,7 @@ public class RepairTest extends AbstractScenarioTestCase {
      * <LI>A popup warns the user that the sessions will be close</LI>
      * <LI>Click OK on the popup</LI>
      * <LI>Check that the session are closed</LI>
-     * <LI>Check that a backup was done for the three files
-     * (sc5-timestamp.aird.old, sc5-1-timestamp.aird.old and
+     * <LI>Check that a backup was done for the three files (sc5-timestamp.aird.old, sc5-1-timestamp.aird.old and
      * sc5-2-timestamp.aird.old)</LI>
      * <LI>Check that the representations are OK in the repaired files</LI>
      * </UL>
@@ -801,20 +791,19 @@ public class RepairTest extends AbstractScenarioTestCase {
     }
 
     /**
-     * Launch the repair action from the context menu of the specified aird
-     * resource.
+     * Launch the repair action from the context menu of the specified aird resource.
      */
     private void launchRepairAction(UIResource sessionAirdResource) {
         String repairActionLabel = SiriusEditPlugin.getPlugin().getString("repairActionLabel");
         designerProject.mouseRigthClickOnResource(sessionAirdResource, repairActionLabel);
-        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesRepairValidator.MESSAGE_TITLE));
-        SWTBotShell message = bot.shell(RepresentationFilesRepairValidator.MESSAGE_TITLE);
+        bot.waitUntil(Conditions.shellIsActive(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL)));
+        SWTBotShell message = bot.shell(RepresentationFilesNeedCloseSessionValidator.getMessageTitle(RepresentationFilesRepairAction.REPAIR_ACTION_LABEL));
         message.setFocus();
         bot.button("OK").click();
         SWTBotUtils.waitProgressMonitorClose("Progress Information");
         assertNoProblemsLogged();
     }
-    
+
     /**
      * Check there is no log message.
      */
@@ -830,8 +819,7 @@ public class RepairTest extends AbstractScenarioTestCase {
     }
 
     /**
-     * Check that we have the expected number of backup files for the specified
-     * aird
+     * Check that we have the expected number of backup files for the specified aird
      */
     private void assertNumberOfBackupFiles(int expected, IProject project, String airdFileName) {
         assertEquals("It should be no backup file before repair.", expected, getNumberOfBackupFiles(project, airdFileName));
@@ -858,9 +846,8 @@ public class RepairTest extends AbstractScenarioTestCase {
     }
 
     /**
-     * Compute the number of backup files corresponding to this aird file in
-     * this project. A backup file starts with the name of the original file and
-     * ends with "aird.old".
+     * Compute the number of backup files corresponding to this aird file in this project. A backup file starts with the
+     * name of the original file and ends with "aird.old".
      * 
      * @param project
      *            The project containg the aird file
