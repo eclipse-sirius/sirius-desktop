@@ -20,6 +20,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.layout.GridLayoutFactory;
@@ -33,6 +34,7 @@ import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
+import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdateCommand;
 import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalSemanticModelsHandler;
 import org.eclipse.sirius.ui.tools.internal.actions.session.CloseSessionsAction;
 import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler;
@@ -304,7 +306,6 @@ public class DefaultSessionEditorPage extends AbstractSessionEditorPage implemen
         representationSectionClient.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).create());
         representationSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         representationSection.setClient(representationSectionClient);
-
         GraphicalRepresentationHandlerBuilder graphicalRepresentationHandlerBuilder = new GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder(session);
         graphicalRepresentationHandler = graphicalRepresentationHandlerBuilder.activateBrowserWithViewpointAndRepresentationDescriptionInformation().activateGroupingByCheckbox()
                 .activateRepresentationAndViewpointControls().useToolkitToCreateGraphicComponents(toolkit).activateShowDisabledViewpointsCheckbox().build();
@@ -387,6 +388,11 @@ public class DefaultSessionEditorPage extends AbstractSessionEditorPage implemen
 
     @Override
     public PositioningKind getPositioning() {
+        return null;
+    }
+
+    @Override
+    public PageUpdateCommand notifyAndGetUpdateCommands(ResourceSetChangeEvent resourceSetChangeEvent) {
         return null;
     }
 }

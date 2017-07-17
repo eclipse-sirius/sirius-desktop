@@ -39,7 +39,10 @@ public class PageProviderRegistry {
      */
     private final List<PageProvider> pageProviders;
 
-    private final PageOrderer pageOrderer;
+    /**
+     * Components ordering pages regarding positioning information.
+     */
+    private PageOrderer pageOrderer;
 
     /**
      * This enum specifies positioning type to apply when initializing an
@@ -144,7 +147,6 @@ public class PageProviderRegistry {
     public List<AbstractSessionEditorPage> getPagesOrdered(SessionEditor editor, Session session, List<AbstractSessionEditorPage> displayedPages) {
         List<AbstractSessionEditorPage> pagesOrdered = pageOrderer.getOrderedPages(pageProviders, editor, displayedPages);
         return pagesOrdered;
-
     }
 
 }

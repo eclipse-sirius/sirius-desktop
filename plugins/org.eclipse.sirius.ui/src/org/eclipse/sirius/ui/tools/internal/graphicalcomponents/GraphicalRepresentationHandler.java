@@ -159,7 +159,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                         // a model may have been added/removed from the model so we have to update content that is
                         // relative to loaded models.
                         PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
-                            if (!treeViewer.getTree().isDisposed()) {
+                            if (treeViewer != null && !treeViewer.getTree().isDisposed()) {
                                 initInput();
                             }
                         });
@@ -944,9 +944,11 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
             return viewpointItemImpl.getViewpoint();
         });
         ViewpointHelper.handleViewpointActivation(session, viewpoints.collect(Collectors.toSet()), enable, true);
-        treeViewer.getTree().setRedraw(true);
-        treeViewer.refresh();
-        treeViewer.setSelection(new StructuredSelection(viewpointsToActivate.stream().collect(Collectors.toList())));
+        if (treeViewer != null && !treeViewer.getTree().isDisposed()) {
+            treeViewer.getTree().setRedraw(true);
+            treeViewer.refresh();
+            treeViewer.setSelection(new StructuredSelection(viewpointsToActivate.stream().collect(Collectors.toList())));
+        }
     }
 
     /**

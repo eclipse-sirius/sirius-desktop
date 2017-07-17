@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.debug.pages;
 
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage;
 import org.eclipse.sirius.ui.editor.api.pages.DefaultSessionEditorPage;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
+import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdateCommand;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -41,16 +43,6 @@ public class DebugPage extends AbstractSessionEditorPage {
     public DebugPage(SessionEditor editor, String id, String title) {
         super(editor, id, title);
         this.session = editor.getSession();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see org.eclipse.ui.forms.editor.FormPage#dispose()
-     */
-    @Override
-    public void dispose() {
-        // TODO Auto-generated method stub
-        super.dispose();
     }
 
     @Override
@@ -79,6 +71,11 @@ public class DebugPage extends AbstractSessionEditorPage {
     @Override
     public PositioningKind getPositioning() {
         return PositioningKind.AFTER;
+    }
+
+    @Override
+    public PageUpdateCommand notifyAndGetUpdateCommands(ResourceSetChangeEvent resourceSetChangeEvent) {
+        return null;
     }
 
 }

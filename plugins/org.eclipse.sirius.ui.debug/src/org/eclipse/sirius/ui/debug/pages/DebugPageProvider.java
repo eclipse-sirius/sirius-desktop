@@ -17,7 +17,6 @@ import java.util.function.Supplier;
 
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage;
-import org.eclipse.sirius.ui.editor.api.pages.DefaultSessionEditorPage;
 import org.eclipse.sirius.ui.editor.api.pages.PageProvider;
 
 /**
@@ -33,7 +32,7 @@ public class DebugPageProvider extends PageProvider {
     @Override
     public Map<String, Supplier<AbstractSessionEditorPage>> getPages(SessionEditor editor) {
         Map<String, Supplier<AbstractSessionEditorPage>> resultMap = new HashMap<>();
-        resultMap.put(DefaultSessionEditorPage.PAGE_ID, () -> {
+        resultMap.put(DebugPage.PAGE_ID, () -> {
             return new DebugPage(editor, DebugPage.PAGE_ID, DEBUG_PAGE_TITLE);
         });
         return resultMap;

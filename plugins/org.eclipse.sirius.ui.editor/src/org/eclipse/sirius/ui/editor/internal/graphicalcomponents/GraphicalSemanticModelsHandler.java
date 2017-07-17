@@ -409,22 +409,23 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                 site.getShell().getDisplay().asyncExec(new Runnable() {
                     @Override
                     public void run() {
-
-                        // Try to select the last affected objects.
-                        Command mostRecentCommand = ((CommandStack) event.getSource()).getMostRecentCommand();
-                        if (mostRecentCommand != null) {
-                            Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
-                            if (!affectedObjects.isEmpty()) {
-                                setSelectionToViewer(affectedObjects);
-                            } else {
-                                Tree tree = treeViewer.getTree();
-                                if (!tree.isDisposed() && tree.getItems().length > 0 && !tree.getItem(0).isDisposed()) {
-                                    List<Object> selectionCollection = new ArrayList<Object>();
-                                    selectionCollection.add(tree.getItem(0).getData());
-                                    setSelectionToViewer(selectionCollection);
+                        if (treeViewer != null && !treeViewer.getTree().isDisposed()) {
+                            // Try to select the last affected objects.
+                            Command mostRecentCommand = ((CommandStack) event.getSource()).getMostRecentCommand();
+                            if (mostRecentCommand != null) {
+                                Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
+                                if (!affectedObjects.isEmpty()) {
+                                    setSelectionToViewer(affectedObjects);
+                                } else {
+                                    Tree tree = treeViewer.getTree();
+                                    if (!tree.isDisposed() && tree.getItems().length > 0 && !tree.getItem(0).isDisposed()) {
+                                        List<Object> selectionCollection = new ArrayList<Object>();
+                                        selectionCollection.add(tree.getItem(0).getData());
+                                        setSelectionToViewer(selectionCollection);
+                                    }
                                 }
+                                actionBars.updateActionBars();
                             }
-                            actionBars.updateActionBars();
                         }
                     }
                 });

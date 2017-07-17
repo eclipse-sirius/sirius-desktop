@@ -11,12 +11,14 @@
 
 package org.eclipse.sirius.ui.editor.api.pages;
 
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
+import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdateCommand;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
 
 /**
- * Custom page provided to aird editor must extends this class.
+ * Custom page provided to session editor must extends this class.
  * 
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
@@ -67,5 +69,19 @@ public abstract class AbstractSessionEditorPage extends FormPage {
      *         returned by {@link AbstractSessionEditorPage#getLocationId()}.
      */
     public abstract PositioningKind getPositioning();
+
+    /**
+     * This method notifies when a {@link ResourceSetChangeEvent} occurs on
+     * the*session's resource set of the session editor containing your page. If
+     * some* change must be done to the page at editor'slevel, you can return a
+     * list*of {@link PageUpdateCommand}to do so. The command must be provided
+     * by* using the factory {@link PageUpdateCommand }.**
+     * 
+     * @param resourceSetChangeEvent
+     *            the event that occurred.*@return an optional
+     *            {@link PageUpdateCommand} the editor should execute.* It can
+     *            be null.
+     */
+    public abstract PageUpdateCommand notifyAndGetUpdateCommands(ResourceSetChangeEvent resourceSetChangeEvent);
 
 }

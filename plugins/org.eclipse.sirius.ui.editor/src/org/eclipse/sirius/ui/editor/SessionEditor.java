@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
 import java.util.EventObject;
 import java.util.List;
+import java.util.Vector;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
@@ -28,6 +29,8 @@ import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
@@ -38,12 +41,18 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry;
+import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdateCommand;
 import org.eclipse.sirius.ui.editor.internal.pages.PageProviderListener;
+import org.eclipse.sirius.ui.editor.internal.pages.RemovePageCommand;
+import org.eclipse.sirius.ui.editor.internal.pages.RenameTabLabelCommand;
+import org.eclipse.sirius.ui.editor.internal.pages.ReorderPageCommand;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
@@ -74,6 +83,33 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  */
 public class SessionEditor extends SharedHeaderFormEditor implements ITabbedPropertySheetPageContributor, IModelExplorerView, SessionListener, ISiriusEditor, PageProviderListener {
     /**
+     * This listener listens to any change in the session's resource set and
+     * notifies all pages when such change happens.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    private final class SessionResourceSetListener extends ResourceSetListenerImpl {
+        @Override
+        public void resourceSetChanged(ResourceSetChangeEvent event) {
+            int pageCount = SessionEditor.this.getPageCount();
+            for (int i = 0; i < pageCount; i++) {
+                Object page = SessionEditor.this.pages.get(i);
+                if (page instanceof AbstractSessionEditorPage) {
+                    AbstractSessionEditorPage customPage = (AbstractSessionEditorPage) page;
+                    PageUpdateCommand updateCommand = customPage.notifyAndGetUpdateCommands(event);
+                    executeUpdateCommands(customPage, updateCommand);
+                }
+            }
+        }
+
+        @Override
+        public boolean isPostcommitOnly() {
+            return true;
+        }
+    }
+
+    /**
      * The editor's id.
      */
     public static final String EDITOR_ID = "org.eclipse.sirius.ui.editor.session"; //$NON-NLS-1$
@@ -101,6 +137,12 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
      */
     private PageProviderRegistry pageRegistry;
 
+    /**
+     * This listener listens to any change in the session's resource set and
+     * notifies all pages when such change happens.
+     */
+    private SessionResourceSetListener resourceSetListener;
+
     @Override
     protected void addPages() {
         updatePages();
@@ -122,16 +164,7 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
             int pageIndex = pages.indexOf(page);
             if (pageIndex != -1) {
                 if (pageIndex != i) {
-                    // page already exists so we reuse its control in a new
-                    // tab to avoid loosing states like expanded items.
-                    cTabF.getItem(pageIndex).dispose();
-                    pages.remove(pageIndex);
-                    page.setIndex(i);
-
-                    CTabItem item = new CTabItem(cTabF, SWT.NONE, i);
-                    item.setText(page.getTitle());
-                    item.setControl(page.getPartControl());
-                    pages.add(i, page);
+                    updatePageTabPosition(cTabF, page, pageIndex, i);
                 }
             } else {
                 try {
@@ -152,6 +185,61 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
         }
 
         cTabF.getParent().layout();
+        setActivePage(activePage);
+    }
+
+    /**
+     * Update the page tab position at the given original index to the new
+     * target index.
+     * 
+     * @param cTabF
+     *            the {@link CTabFolder} containing the {@link TabItem}.
+     * @param page
+     *            the page associated to the tab item to update.
+     * @param originalPositionIndex
+     *            the position index of the tab item to update.
+     * @param targetPositionIndex
+     *            the target index the tab item should have. the
+     * 
+     * 
+     */
+    private void updatePageTabPosition(CTabFolder cTabF, AbstractSessionEditorPage page, int originalPositionIndex, int targetPositionIndex) {
+        // page already exists so we reuse its control in a new
+        // tab to avoid loosing states like expanded items.
+        cTabF.getItem(originalPositionIndex).dispose();
+        pages.remove(originalPositionIndex);
+
+        CTabItem item = new CTabItem(cTabF, SWT.NONE, targetPositionIndex);
+        item.setText(page.getTitle());
+        item.setControl(page.getPartControl());
+        pages.add(targetPositionIndex, page);
+
+        updatePageIndices(0);
+    }
+
+    /**
+     * Update page indices.
+     * 
+     * @param start
+     *            start index from which index updating is done.
+     */
+    private void updatePageIndices(int start) {
+        for (int i = start; i < pages.size(); i++) {
+            Object page = pages.get(i);
+            if (page instanceof IFormPage) {
+                IFormPage fpage = (IFormPage) page;
+                fpage.setIndex(i);
+            }
+        }
+    }
+
+    /**
+     * Set the given page as this editor active page if such page exists.
+     * 
+     * @param activePage
+     *            the page to set as the active page of this editor.
+     */
+    public void setActivePage(IFormPage activePage) {
         if (activePage != null) {
             int activePageIndex = pages.indexOf(activePage);
             if (activePageIndex != -1) {
@@ -183,11 +271,9 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
             ErrorDialog.openError(getSite().getShell(), MessageFormat.format(Messages.UI_SessionEditor_session_loading_error_message, new Object[0]),
                     MessageFormat.format(Messages.UI_SessionEditor_inputNotHandled_error_message, editorInput.getClass().getSimpleName()), Status.CANCEL_STATUS);
         }
-
         try {
             if (sessionResourceURI != null) {
                 final URI sessionResourceURIFinal = sessionResourceURI;
-
                 IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(sessionResourceURIFinal.toPlatformString(true)));
                 IProject project = file.getProject();
                 if (ModelingProject.hasModelingProjectNature(project)) {
@@ -199,12 +285,10 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                     setPartName(sessionResourceURIFinal.lastSegment());
                     setContentDescription(sessionResourceURIFinal.toPlatformString(true));
                 }
-
                 // until we find a way to load session independently from the
                 // editor, session loading blocks the editor opening with a
                 // progress monitor.
                 PlatformUI.getWorkbench().getProgressService().busyCursorWhile((monitor) -> {
-
                     SubMonitor subMonitor = SubMonitor.convert(monitor, 1);
                     subMonitor.beginTask(MessageFormat.format(Messages.UI_SessionEditor_session_loading_task_title, new Object[0]), 1);
                     session = SessionManager.INSTANCE.getSession(sessionResourceURIFinal, subMonitor);
@@ -215,6 +299,9 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                     final IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
                     editingSession.open();
                     editingSession.attachEditor(this);
+
+                    resourceSetListener = new SessionResourceSetListener();
+                    session.getTransactionalEditingDomain().addResourceSetListener(resourceSetListener);
 
                     subMonitor.worked(1);
                     subMonitor.done();
@@ -253,6 +340,10 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
         if (pageRegistry != null) {
             pageRegistry.removeRegistryListener(this);
             pageRegistry = null;
+        }
+        if (resourceSetListener != null && session != null && session.getTransactionalEditingDomain() != null) {
+            session.getTransactionalEditingDomain().removeResourceSetListener(resourceSetListener);
+            resourceSetListener = null;
         }
         if (session != null) {
             final IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
@@ -373,5 +464,134 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
      */
     public Session getSession() {
         return session;
+    }
+
+    /**
+     * Execute the given {@link PageUpdateCommand}. If a remove command is
+     * present, other update command will be ignored.
+     * 
+     * @param customPage
+     *            the page updated.
+     * @param updateCommand
+     *            the commands this editor must execute to update the page.
+     */
+    private void executeUpdateCommands(AbstractSessionEditorPage customPage, PageUpdateCommand updateCommand) {
+        if (updateCommand != null) {
+            boolean removeCommandExecuted = false;
+            if (updateCommand.getRemoveCommand() != null) {
+                executeRemoveCommand(updateCommand.getRemoveCommand(), SessionEditor.this, customPage);
+                removeCommandExecuted = true;
+            }
+            if (!removeCommandExecuted && updateCommand.getReorderCommand() != null) {
+                executeReorderCommand(updateCommand.getReorderCommand(), SessionEditor.this, customPage);
+            } else {
+                SessionEditorPlugin.getPlugin().error(MessageFormat.format(Messages.SessionEditor_PageCommand_Integrity_Error, customPage.getClass().getName()), null);
+            }
+            if (!removeCommandExecuted && updateCommand.getRenameCommand() != null) {
+                executeRenameCommand(updateCommand.getRenameCommand(), SessionEditor.this, customPage);
+            } else {
+                SessionEditorPlugin.getPlugin().error(MessageFormat.format(Messages.SessionEditor_PageCommand_Integrity_Error, customPage.getClass().getName()), null);
+            }
+        }
+    }
+
+    /**
+     * Execute the reorder command.
+     * 
+     * @param pageUpdateCommand
+     *            the command to execute containing execution information.
+     * @param editor
+     *            the editor calling for a page reordering.
+     * @param page
+     *            the page reordered.
+     */
+    private void executeReorderCommand(ReorderPageCommand pageUpdateCommand, SessionEditor editor, AbstractSessionEditorPage page) {
+        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+            Composite container = editor.getContainer();
+            if (container instanceof CTabFolder) {
+                CTabFolder tabFolder = (CTabFolder) editor.getContainer();
+                IFormPage activePage = editor.getActivePageInstance();
+
+                int targetPageIndex = -1;
+                String targetPageId = pageUpdateCommand.getTargetPageId();
+                for (Object object : pages) {
+                    if (object instanceof AbstractSessionEditorPage && targetPageId.equals(((AbstractSessionEditorPage) object).getId())) {
+                        targetPageIndex = ((AbstractSessionEditorPage) object).getIndex();
+                        break;
+                    }
+                }
+
+                int commandingPageIndex = pages.indexOf(page);
+                if (commandingPageIndex != -1 && targetPageIndex != -1) {
+                    switch (pageUpdateCommand.getPositioningKind()) {
+                    case AFTER:
+                        if (targetPageIndex + 1 != commandingPageIndex) {
+                            updatePageTabPosition(tabFolder, page, commandingPageIndex, targetPageIndex);
+                        }
+                        break;
+                    case BEFORE:
+                        if (commandingPageIndex + 1 != targetPageIndex) {
+                            updatePageTabPosition(tabFolder, page, commandingPageIndex, targetPageIndex);
+                        }
+                        break;
+                    case REPLACE:
+                        editor.removePage(targetPageIndex);
+                        commandingPageIndex = pages.indexOf(page);
+                        int targetPageIndexAfterRemoval = targetPageIndex > 0 && targetPageIndex >= pages.size() ? targetPageIndex - 1 : targetPageIndex;
+                        updatePageTabPosition(tabFolder, page, commandingPageIndex, targetPageIndexAfterRemoval);
+                        break;
+                    default:
+                        break;
+                    }
+                }
+                tabFolder.getParent().redraw();
+                tabFolder.getParent().layout();
+                editor.setFocus();
+                editor.setActivePage(activePage);
+            }
+        });
+
+    }
+
+    /**
+     * Execute the page removal command for the given page.
+     * 
+     * @param pageUpdateCommand
+     *            the command containing removal information.
+     * @param editor
+     *            the editor calling for a page removal..
+     * @param page
+     *            the page that will be removed from editor.
+     */
+    private void executeRemoveCommand(RemovePageCommand pageUpdateCommand, SessionEditor editor, AbstractSessionEditorPage page) {
+        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+            editor.removePage(editor.pages.indexOf(page));
+        });
+    }
+
+    /**
+     * Execute the tab renaming command for the given page.
+     * 
+     * @param pageUpdateCommand
+     *            the command containing rename information.
+     * @param editor
+     *            the editor calling for a page tab renaming.
+     * @param page
+     *            the page that will have its tab renamed.
+     */
+    private void executeRenameCommand(RenameTabLabelCommand pageUpdateCommand, SessionEditor editor, AbstractSessionEditorPage page) {
+        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+            Composite container = editor.getContainer();
+            if (container instanceof CTabFolder) {
+                Vector<Object> pages = editor.pages;
+                int index = pages.indexOf(page);
+                if (index != -1) {
+                    CTabFolder tabFolder = (CTabFolder) container;
+                    CTabItem tabItem = tabFolder.getItem(index);
+                    tabItem.setText(pageUpdateCommand.getNewLabel());
+                    tabFolder.getParent().layout();
+                }
+            }
+        });
     }
 }

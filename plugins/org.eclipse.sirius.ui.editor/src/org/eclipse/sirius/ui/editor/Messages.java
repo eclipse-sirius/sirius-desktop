@@ -97,6 +97,9 @@ public final class Messages {
     @TranslatableMessage
     public static String GraphicalSemanticModelsHandler_addModelButton_tooltip;
 
+    @TranslatableMessage
+    public static String SessionEditor_PageCommand_Integrity_Error;
+
     // CHECKSTYLE:ON
 
     private Messages() {
