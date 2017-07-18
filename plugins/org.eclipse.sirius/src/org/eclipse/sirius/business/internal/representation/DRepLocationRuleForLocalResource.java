@@ -62,11 +62,16 @@ public class DRepLocationRuleForLocalResource implements DRepresentationLocation
     protected URI getDedicatedRepResourceURI(DRepresentation representation, Resource airdResource) {
         int count = 1;
         ResourceSet resourceSet = airdResource.getResourceSet();
-        URI repUri = createRepURI(airdResource, representation, count++);
+        String suffix = getSuffix();
+        URI repUri = createRepURI(airdResource, representation, suffix, count++);
         while (!isUsableURI(repUri, resourceSet, representation)) {
-            repUri = createRepURI(airdResource, representation, count++);
+            repUri = createRepURI(airdResource, representation, suffix, count++);
         }
         return repUri;
+    }
+
+    protected String getSuffix() {
+        return null;
     }
 
     private boolean isUsableURI(URI repUri, ResourceSet resourceSet, DRepresentation representation) {
@@ -115,14 +120,18 @@ public class DRepLocationRuleForLocalResource implements DRepresentationLocation
      *            the aird resource
      * @param representation
      *            the representation
+     * @param providedSuffix
+     *            suffix to add to the URI. If null, the count is used instead
      * @param count
+     *            the counter that may be used to have an unique URI
      * @return the representation URI
      */
-    private URI createRepURI(Resource airdResource, DRepresentation representation, int count) {
+    protected URI createRepURI(Resource airdResource, DRepresentation representation, String providedSuffix, int count) {
         // get the representation URI fragment
         RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
         String repName = description.getName().replace(' ', '_');
-        repName += "_" + String.valueOf(count); //$NON-NLS-1$
+        String suffix = providedSuffix != null ? providedSuffix : String.valueOf(count);
+        repName += "_" + suffix; //$NON-NLS-1$
 
         URI airdURI = airdResource.getURI();
 
