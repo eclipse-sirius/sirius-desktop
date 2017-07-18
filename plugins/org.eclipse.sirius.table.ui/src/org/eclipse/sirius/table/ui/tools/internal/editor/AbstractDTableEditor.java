@@ -15,6 +15,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -62,6 +63,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
@@ -269,10 +271,10 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             if (session != null) {
                 InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
             }
-    
+
             refreshAtOpeningActivator = new RefreshAtOpeningActivator(session, this);
             getSite().getPage().addPartListener(refreshAtOpeningActivator);
-    
+
             // Activate the context for this site.
             IContextService contextService = getSite().getService(IContextService.class);
             contextService.activateContext(CONTEXT_ID);
@@ -342,7 +344,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
      * Get the DTable corresponding to this URI
      * 
      * @param uri
-     *            the URI to resolve.
+     *            the URI of the {@link DRepresentationDescriptor} to resolve.
      * @param loadOnDemand
      *            whether to create and load the resource, if it doesn't already exists.
      * @return the DTable resource resolved by the URI, or <code>null</code> if there isn't one and it's not being
@@ -356,6 +358,8 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
                 final EObject rootElement = resource.getEObject(uri.fragment());
                 if (rootElement instanceof DTable) {
                     result = (DTable) rootElement;
+                } else if (rootElement instanceof DRepresentationDescriptor) {
+                    result = Optional.ofNullable(((DRepresentationDescriptor) rootElement).getRepresentation()).filter(DTable.class::isInstance).map(DTable.class::cast).orElse(null);
                 }
             }
         }

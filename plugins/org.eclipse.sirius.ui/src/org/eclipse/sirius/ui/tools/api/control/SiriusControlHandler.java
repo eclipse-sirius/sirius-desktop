@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,9 +64,8 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import com.google.common.collect.Sets;
 
 /**
- * Implements the UI part of the "Control" operation. This class gathers the
- * required parameters from the user and the invokes the properly configured
- * {@link org.eclipse.sirius.business.internal.command.control.ControlCommand} .
+ * Implements the UI part of the "Control" operation. This class gathers the required parameters from the user and the
+ * invokes the properly configured {@link org.eclipse.sirius.business.internal.command.control.ControlCommand} .
  *
  * @since 0.9.0
  *
@@ -101,9 +100,8 @@ public class SiriusControlHandler extends AbstractHandler {
     }
 
     /**
-     * Performs the control operation on the specified semantic element, using
-     * the provided shell to interact with the end-user, gathering the required
-     * parameters.
+     * Performs the control operation on the specified semantic element, using the provided shell to interact with the
+     * end-user, gathering the required parameters.
      *
      * @param shell
      *            the shell to use to interact with the user
@@ -133,7 +131,8 @@ public class SiriusControlHandler extends AbstractHandler {
                         DialectEditor editor = uiSession.getEditor(dRepDescriptor.getRepresentation());
                         if (editor instanceof IReusableEditor) {
                             IReusableEditor iReusableEditor = (IReusableEditor) editor;
-                            SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(dRepDescriptor.getRepresentation()), dRepDescriptor.getRepresentation().getName(), session);
+                            SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(dRepDescriptor.getRepresentation()), EcoreUtil.getURI(dRepDescriptor),
+                                    dRepDescriptor.getRepresentation().getName(), session);
                             iReusableEditor.setInput(updatedEditorInput);
                         }
                     }
@@ -166,8 +165,7 @@ public class SiriusControlHandler extends AbstractHandler {
     }
 
     /**
-     * Creation of the dialog to ask the user for the URI of the controlled
-     * resource to create.
+     * Creation of the dialog to ask the user for the URI of the controlled resource to create.
      *
      * @param shell
      *            the shell to use to interact with the user.
@@ -192,8 +190,7 @@ public class SiriusControlHandler extends AbstractHandler {
     }
 
     /**
-     * Finds the URI of the default corresponding Aird of a semantic model with
-     * its URI.
+     * Finds the URI of the default corresponding Aird of a semantic model with its URI.
      *
      * @param semanticModelUri
      *            URI of a semantic model
@@ -204,9 +201,8 @@ public class SiriusControlHandler extends AbstractHandler {
     }
 
     /**
-     * Asks the end-user which representations should be controlled in
-     * conjunction with the semantic elements. The default is to control all the
-     * representations which target an element of the specified resource.
+     * Asks the end-user which representations should be controlled in conjunction with the semantic elements. The
+     * default is to control all the representations which target an element of the specified resource.
      *
      * @param shell
      *            the shell to use to interact with the user.
@@ -225,8 +221,7 @@ public class SiriusControlHandler extends AbstractHandler {
     }
 
     /**
-     * Asks the end-user to select a sub-set of the representations existing in
-     * the session.
+     * Asks the end-user to select a sub-set of the representations existing in the session.
      *
      * @param shell
      *            the shell to use to interact with the user.
@@ -256,9 +251,8 @@ public class SiriusControlHandler extends AbstractHandler {
     }
 
     /**
-     * Returns all the existing representation descriptors in the given session
-     * which representation is associated to a semantic element of the specified
-     * resource (excluding elements of sub-resources).
+     * Returns all the existing representation descriptors in the given session which representation is associated to a
+     * semantic element of the specified resource (excluding elements of sub-resources).
      *
      * @param session
      *            the session opened for semanticRoot.
@@ -278,9 +272,8 @@ public class SiriusControlHandler extends AbstractHandler {
     }
 
     /**
-     * Returns the text of the URI proposed by default when controlling the
-     * specified object. The URI is based on the initial parent resource and the
-     * "name" feature of the controlled element.
+     * Returns the text of the URI proposed by default when controlling the specified object. The URI is based on the
+     * initial parent resource and the "name" feature of the controlled element.
      *
      * @param obj
      *            the controlled element.
@@ -298,8 +291,7 @@ public class SiriusControlHandler extends AbstractHandler {
     }
 
     /**
-     * A dialog to ask the user for the URI of the resource to put controlled
-     * elements into.
+     * A dialog to ask the user for the URI of the resource to put controlled elements into.
      */
     private class ControlResourceDialog extends ResourceDialog {
         private final String defaultURI;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CopyRepresentationCommand;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -41,6 +42,7 @@ import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorInput;
@@ -98,10 +100,9 @@ public class SessionEditorInputTests extends TestCase {
     }
 
     /**
-     * Test that opening a {@link DRepresentation} whose {@link URI} has changed
-     * to be same as an already opened {@link DRepresentation} doesn't open the
-     * already opened {@link DRepresentation} but a new editor for the requested
-     * {@link DRepresentation}.
+     * Test that opening a {@link DRepresentation} whose {@link URI} has changed to be same as an already opened
+     * {@link DRepresentation} doesn't open the already opened {@link DRepresentation} but a new editor for the
+     * requested {@link DRepresentation}.
      */
     public void testSessionEditorInputWithInputURIChange() {
         IEditorPart editor1 = DialectUIManager.INSTANCE.openEditor(session, dRepresentation1, new NullProgressMonitor());
@@ -114,12 +115,18 @@ public class SessionEditorInputTests extends TestCase {
         assertEquals(1, EclipseUIUtil.getActivePage().getEditorReferences().length);
         // Change URI of DRepresentations by changing order as uriFragments are
         // xpath based
+        DRepresentationQuery query = new DRepresentationQuery(dRepresentation1);
+        DRepresentationDescriptor descriptor1 = query.getRepresentationDescriptor();
+        query = new DRepresentationQuery(dRepresentation2);
+        DRepresentationDescriptor descriptor2 = query.getRepresentationDescriptor();
         URI dRepresentation1URI = EcoreUtil.getURI(dRepresentation1);
         URI dRepresentation2URI = EcoreUtil.getURI(dRepresentation2);
         Command moveCmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
                 dView.eResource().getContents().move(1, dRepresentation2);
+                descriptor1.updateRepresentation(dRepresentation1);
+                descriptor2.updateRepresentation(dRepresentation2);
             }
         };
         session.getTransactionalEditingDomain().getCommandStack().execute(moveCmd);

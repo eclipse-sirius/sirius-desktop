@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
@@ -57,6 +58,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
@@ -198,8 +200,10 @@ public class DiagramDialectUIServices implements DialectUIServices {
         DialectEditor dialectEditor = null;
         URI uri = EcoreUtil.getURI(gmfDiag);
         String editorName = DialectUIManager.INSTANCE.getEditorName(dRepresentation);
+        DRepresentationQuery query = new DRepresentationQuery(dRepresentation);
+        URI repDescURI = Optional.ofNullable(query.getRepresentationDescriptor()).map(repDesc -> EcoreUtil.getURI(repDesc)).orElse(null);
         monitor.worked(1);
-        final IEditorInput editorInput = new SessionEditorInput(uri, editorName, session);
+        final IEditorInput editorInput = new SessionEditorInput(uri, repDescURI, editorName, session);
         monitor.subTask(MessageFormat.format(Messages.DiagramDialectUIServices_diagramEditorOpeningMonitorTaskName, dRepresentation.getName()));
         RunnableWithResult<DialectEditor> runnable = new RunnableWithResult.Impl<DialectEditor>() {
 

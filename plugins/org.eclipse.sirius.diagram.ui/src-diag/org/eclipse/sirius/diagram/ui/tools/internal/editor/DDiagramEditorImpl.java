@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.core.commands.operations.IOperationHistoryListener;
 import org.eclipse.core.commands.operations.IUndoContext;
@@ -191,6 +192,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionEditorInputFactory;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElementsListener;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.SWT;
@@ -1739,19 +1741,28 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         IEditorInput updatedEditorInput = input;
         if (session != null && input instanceof URIEditorInput) {
             URI uri = ((URIEditorInput) input).getURI();
-            if (uri != null && !StringUtil.isEmpty(uri.fragment())) {
-                EObject eObject = session.getTransactionalEditingDomain().getResourceSet().getEObject(uri, false);
-                if (eObject instanceof DDiagram) {
-                    DDiagram dDiagram = (DDiagram) eObject;
-                    final DiagramCreationUtil util = new DiagramCreationUtil(dDiagram);
-                    if (!util.findAssociatedGMFDiagram()) {
-                        DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, Messages.DDiagramEditorImpl_noAssociatedGMFDiagramMsg));
-                    }
-                    final Diagram gmfDiag = util.getAssociatedGMFDiagram();
-                    updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(gmfDiag), dDiagram.getName(), session);
+            URI repDescURI = Optional.of(input).filter(SessionEditorInput.class::isInstance).map(SessionEditorInput.class::cast).map(s -> s.getRepDescUri()).orElse(null);
+            Optional<DDiagram> dDiagramOptional = Optional.ofNullable(repDescURI).map(rduri -> session.getTransactionalEditingDomain().getResourceSet().getEObject(rduri, false))
+                    .filter(DRepresentationDescriptor.class::isInstance).map(rd -> ((DRepresentationDescriptor) rd).getRepresentation()).map(DDiagram.class::cast);
+            DDiagram dDiagram = dDiagramOptional.orElse(null);
 
+            if (dDiagram == null) {
+                if (uri != null && !StringUtil.isEmpty(uri.fragment())) {
+                    EObject eObject = session.getTransactionalEditingDomain().getResourceSet().getEObject(uri, false);
+                    if (eObject instanceof DDiagram) {
+                        dDiagram = (DDiagram) eObject;
+                    }
                 }
             }
+            if (dDiagram != null) {
+                final DiagramCreationUtil util = new DiagramCreationUtil(dDiagram);
+                if (!util.findAssociatedGMFDiagram()) {
+                    DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, Messages.DDiagramEditorImpl_noAssociatedGMFDiagramMsg));
+                }
+                final Diagram gmfDiag = util.getAssociatedGMFDiagram();
+                updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(gmfDiag), repDescURI, dDiagram.getName(), session);
+            }
+
         }
         super.setInput(updatedEditorInput);
         if (getGraphicalViewer() != null) {

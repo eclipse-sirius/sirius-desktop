@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IMemento;
@@ -39,17 +41,17 @@ import org.eclipse.ui.IMemento;
 public class SessionEditorInput extends URIEditorInput {
 
     /**
-     * Constant to store the uri of the main resource of the session. We can't
-     * use the URI that is already store in the URIEditorInput because it can be
-     * different in case of fragmentation.
+     * Constant to store the uri of the main resource of the session. We can't use the URI that is already store in the
+     * URIEditorInput because it can be different in case of fragmentation.
      */
     private static final String SESSION_RESOURCE_URI = "SESSION_RESOURCE_URI"; //$NON-NLS-1$
+
+    private static final String REP_DESC_URI = "REP_DESC_URI"; //$NON-NLS-1$
 
     private WeakReference<Session> sessionRef;
 
     /**
-     * add a name field to override the {@link URIEditorInput} one's with
-     * possibility to update it.
+     * add a name field to override the {@link URIEditorInput} one's with possibility to update it.
      */
     private String name;
 
@@ -58,6 +60,8 @@ public class SessionEditorInput extends URIEditorInput {
     private WeakReference<EObject> inputRef;
 
     private IStatus status = Status.OK_STATUS;
+
+    private URI repDescURI;
 
     /**
      * Create a new SessionEditorInput with the current session and ui session.
@@ -76,6 +80,25 @@ public class SessionEditorInput extends URIEditorInput {
         if (session.getSessionResource() != null) {
             this.sessionResourceURI = session.getSessionResource().getURI();
         }
+    }
+
+    /**
+     * Create a new SessionEditorInput with the current session and ui session.
+     *
+     * @param uri
+     *            element URI.
+     * @param repDescURI
+     *            The URI of the {@link DRepresentationDescriptor}. This URI is Used for loading the
+     *            {@link DRepresentation} from the {@link DRepresentationDescriptor#getRepresentation()}. Can be null.
+     * @param name
+     *            name of the editor.
+     * @param session
+     *            the current session.
+     */
+    public SessionEditorInput(URI uri, URI repDescURI, String name, Session session) {
+        this(uri, name, session);
+        this.repDescURI = repDescURI;
+
     }
 
     /**
@@ -102,8 +125,7 @@ public class SessionEditorInput extends URIEditorInput {
      * Return the model editing session.
      *
      * @param restore
-     *            true to restore the session if it is not instantiated or
-     *            closed.
+     *            true to restore the session if it is not instantiated or closed.
      * @return the model editing session.
      */
     public Session getSession(boolean restore) {
@@ -137,8 +159,7 @@ public class SessionEditorInput extends URIEditorInput {
      * Get the input of this editor input.
      *
      * @param restore
-     *            true to restore the input and associated session if they are
-     *            not instantiated
+     *            true to restore the input and associated session if they are not instantiated
      * @return the input of this editor input
      */
     private EObject getInput(boolean restore) {
@@ -164,6 +185,14 @@ public class SessionEditorInput extends URIEditorInput {
         this.name = string;
     }
 
+    public URI getRepDescUri() {
+        return repDescURI;
+    }
+
+    public void setRepDescURI(URI repDescURI) {
+        this.repDescURI = repDescURI;
+    }
+
     @Override
     public void saveState(final IMemento memento) {
         super.saveState(memento);
@@ -173,6 +202,9 @@ public class SessionEditorInput extends URIEditorInput {
         if (sessionResourceURI != null) {
             memento.putString(SessionEditorInput.SESSION_RESOURCE_URI, sessionResourceURI.toString());
         }
+        if (repDescURI != null) {
+            memento.putString(SessionEditorInput.REP_DESC_URI, repDescURI.toString());
+        }
     }
 
     @Override
@@ -180,12 +212,16 @@ public class SessionEditorInput extends URIEditorInput {
         super.loadState(memento);
         setName(memento.getString(URIEditorInput.NAME_TAG));
         final String sessionResourceURIString = memento.getString(SessionEditorInput.SESSION_RESOURCE_URI);
+        final String repDescURIString = memento.getString(SessionEditorInput.REP_DESC_URI);
         if (sessionResourceURIString != null) {
             sessionResourceURI = URI.createURI(sessionResourceURIString);
             Session newSession = getSession(sessionResourceURI);
             if (newSession != null) {
                 this.sessionRef = new WeakReference<Session>(newSession);
             }
+        }
+        if (repDescURIString != null) {
+            repDescURI = URI.createURI(repDescURIString);
         }
     }
 
@@ -293,16 +329,12 @@ public class SessionEditorInput extends URIEditorInput {
     }
 
     /**
-     * To avoid memory leak, the session is not kept during the closing of the
-     * corresponding editor. Indeed, editorInput is kept by
-     * {@link org.eclipse.ui.INavigationHistory} and
-     * org.eclipse.ui.internal.EditorHistory. This method must not be called by
-     * client, it is automatically called by the dispose of
-     * {@link DDiagramEditor}.
+     * To avoid memory leak, the session is not kept during the closing of the corresponding editor. Indeed, editorInput
+     * is kept by {@link org.eclipse.ui.INavigationHistory} and org.eclipse.ui.internal.EditorHistory. This method must
+     * not be called by client, it is automatically called by the dispose of {@link DDiagramEditor}.
      *
-     * @deprecated since a {@link org.eclipse.ui.IEditorInput} can be reused by
-     *             several instances of {@link org.eclipse.ui.IEditorPart}
-     *             through the navigation history view.
+     * @deprecated since a {@link org.eclipse.ui.IEditorInput} can be reused by several instances of
+     *             {@link org.eclipse.ui.IEditorPart} through the navigation history view.
      */
     @Deprecated
     public void dispose() {
@@ -344,14 +376,13 @@ public class SessionEditorInput extends URIEditorInput {
     }
 
     /**
-     * Get the status of the session opening from this
-     * {@link SessionEditorInput}.
+     * Get the status of the session opening from this {@link SessionEditorInput}.
      * 
      * <ul>
-     * <li>A status with severity {@link IStatus#CANCEL} is returned for a
-     * session opening canceled through {@link OperationCanceledException}.</li>
-     * <li>A status with severity {@link IStatus#ERROR} is returned for a
-     * session opening failing because of another {@link RuntimeException}.</li>
+     * <li>A status with severity {@link IStatus#CANCEL} is returned for a session opening canceled through
+     * {@link OperationCanceledException}.</li>
+     * <li>A status with severity {@link IStatus#ERROR} is returned for a session opening failing because of another
+     * {@link RuntimeException}.</li>
      * <li>Otherwise a status with severity {@link IStatus#OK} is returned.</li>
      * </ul>
      * 

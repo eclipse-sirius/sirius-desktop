@@ -14,6 +14,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -55,6 +56,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
@@ -225,17 +227,17 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
             treeViewerManager = new DTreeViewerManager(parent, getTreeModel(), getEditingDomain(), accessor, emfCommandFactory, this);
             // DslCommonPlugin.PROFILER.stopWork(SiriusTasks.CREATE_TREE);
             getSite().setSelectionProvider(treeViewerManager.getTreeViewer());
-    
+
             /* initialize interpreter. */
             if (session != null) {
                 InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
             }
             // Add the CreateTreeItem menu of the toolbar
             ((DTreeActionBarContributor) getEditorSite().getActionBarContributor()).addCreateTreeItemMenu(((DTreeViewerManager) this.getTableViewer()).getCreateTreeItemMenu());
-    
+
             refreshAtOpeningActivator = new RefreshAtOpeningActivator(this);
             getSite().getPage().addPartListener(refreshAtOpeningActivator);
-    
+
             // Activate context
             IContextService contextService = getSite().getService(IContextService.class);
             contextService.activateContext(CONTEXT_ID);
@@ -326,6 +328,8 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
                 final EObject rootElement = resource.getEObject(uri.fragment());
                 if (rootElement instanceof DTree) {
                     result = (DTree) rootElement;
+                } else if (rootElement instanceof DRepresentationDescriptor) {
+                    result = Optional.ofNullable(((DRepresentationDescriptor) rootElement).getRepresentation()).filter(DTree.class::isInstance).map(DTree.class::cast).orElse(null);
                 }
             }
         }

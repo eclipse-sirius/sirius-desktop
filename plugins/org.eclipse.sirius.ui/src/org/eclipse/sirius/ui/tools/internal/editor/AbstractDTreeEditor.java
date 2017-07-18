@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.tools.internal.editor;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -349,8 +350,9 @@ public abstract class AbstractDTreeEditor extends EditorPart
             SessionEditorInput sessionEditorInput = (SessionEditorInput) input;
             final URI uri = sessionEditorInput.getURI();
             this.session = sessionEditorInput.getSession();
+            URI uriToUse = Optional.ofNullable(sessionEditorInput.getRepDescUri()).orElse(uri);
             if (session != null) {
-                setRepresentation(uri, false);
+                setRepresentation(uriToUse, false);
             }
         } else if (input instanceof URIEditorInput) {
             /* This happens when Eclipse is launched with an open tree editor */
@@ -489,10 +491,10 @@ public abstract class AbstractDTreeEditor extends EditorPart
     protected abstract void updateEditorAfterAirdResourceReload();
 
     /**
-     * Retrieve and set the representation from the given URI.
+     * Retrieve and set the representation from the given {@link DRepresentationDescriptor} URI.
      * 
      * @param uri
-     *            the URI to resolve.
+     *            the URI of the {@link DRepresentationDescriptor} to resolve.
      * @param loadOnDemand
      *            whether to create and load the resource, if it doesn't already exists.
      */

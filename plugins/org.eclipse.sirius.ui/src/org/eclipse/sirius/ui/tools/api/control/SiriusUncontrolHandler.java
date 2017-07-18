@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.api.control;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Optional;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -21,6 +22,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -106,7 +108,9 @@ public class SiriusUncontrolHandler extends AbstractHandler {
                     if (editor instanceof IReusableEditor) {
                         IReusableEditor iReusableEditor = (IReusableEditor) editor;
                         DRepresentation representation = editor.getRepresentation();
-                        SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(representation), representation.getName(), session);
+                        URI repDescURI = Optional.ofNullable(editor.getEditorInput()).filter(SessionEditorInput.class::isInstance).map(SessionEditorInput.class::cast)
+                                .map(SessionEditorInput::getRepDescUri).orElse(null);
+                        SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(representation), repDescURI, representation.getName(), session);
                         iReusableEditor.setInput(updatedEditorInput);
                     }
                 }

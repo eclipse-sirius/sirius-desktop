@@ -13,6 +13,7 @@ package org.eclipse.sirius.tree.ui.business.internal.dialect;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -31,6 +32,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -111,7 +113,9 @@ public class TreeDialectUIServices implements DialectUIServices {
             if (dRepresentation instanceof DTree) {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.OPEN_TREE_KEY);
                 URI uri = EcoreUtil.getURI(dRepresentation);
-                final IEditorInput editorInput = new SessionEditorInput(uri, getEditorName(dRepresentation), session);
+                DRepresentationQuery query = new DRepresentationQuery(dRepresentation);
+                URI repDescURI = Optional.ofNullable(query.getRepresentationDescriptor()).map(repDesc -> EcoreUtil.getURI(repDesc)).orElse(null);
+                final IEditorInput editorInput = new SessionEditorInput(uri, repDescURI, getEditorName(dRepresentation), session);
                 monitor.worked(2);
                 monitor.subTask(Messages.TreeDialectUIServices_treeOpening + " : " + dRepresentation.getName()); //$NON-NLS-1$
                 RunnableWithResult<IEditorPart> runnable = new RunnableWithResult.Impl<IEditorPart>() {
