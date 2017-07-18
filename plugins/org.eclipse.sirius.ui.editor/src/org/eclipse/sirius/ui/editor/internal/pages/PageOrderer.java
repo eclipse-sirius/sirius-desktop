@@ -11,16 +11,21 @@
 package org.eclipse.sirius.ui.editor.internal.pages;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage;
 import org.eclipse.sirius.ui.editor.api.pages.PageProvider;
@@ -99,14 +104,17 @@ public class PageOrderer {
      * 
      * @param alreadyInitializedPages
      *            the pages the editor currently contains.
+     * @param event
+     *            the event triggering the call to this method. Can be null.
      * @return all pages the caller should display in the order defined by all
      *         their positioning information.
      */
-    public List<AbstractSessionEditorPage> getOrderedPages(List<PageProvider> pageProviders, SessionEditor editor, List<AbstractSessionEditorPage> alreadyInitializedPages) {
+    public List<AbstractSessionEditorPage> getOrderedPages(List<PageProvider> pageProviders, SessionEditor editor, List<AbstractSessionEditorPage> alreadyInitializedPages,
+            ResourceSetChangeEvent event) {
         List<AbstractSessionEditorPage> pagesToKeep = new ArrayList<>();
         List<PagePositioning> pagePositioningElements = new ArrayList<>();
         Map<String, PagePositioning> pageIdToPageMap = new HashMap<>();
-        initializePagePositioning(pageProviders, editor, alreadyInitializedPages, pagesToKeep, pagePositioningElements, pageIdToPageMap);
+        initializePagePositioning(pageProviders, editor, alreadyInitializedPages, pagesToKeep, pagePositioningElements, pageIdToPageMap, event);
         positionPagesRegardingOthers(pagePositioningElements, pageIdToPageMap);
         Set<PagePositioning> replacedPages = new HashSet<>();
         replacePages(pagePositioningElements, pageIdToPageMap, replacedPages);
@@ -262,26 +270,38 @@ public class PageOrderer {
      * @param pageIdToPageMap
      *            a map of page id to the corresponding {@link PagePositioning}
      *            containing a page to display in the given editor.
+     * @param event
+     *            the event triggering the call to this method. Can be null.
      */
     private void initializePagePositioning(List<PageProvider> pageProviders, SessionEditor editor, List<AbstractSessionEditorPage> alreadyInitializedPages, List<AbstractSessionEditorPage> pagesToKeep,
-            List<PagePositioning> pagePositioningElements, Map<String, PagePositioning> pageIdToPageMap) {
+            List<PagePositioning> pagePositioningElements, Map<String, PagePositioning> pageIdToPageMap, ResourceSetChangeEvent event) {
         Set<String> alreadyInitializedPagesId = alreadyInitializedPages.stream().map(page -> page.getId()).collect(Collectors.toSet());
         for (PageProvider pageProvider : pageProviders) {
-            Map<String, Supplier<AbstractSessionEditorPage>> pagesToAdd = pageProvider.getPages(editor);
-            if (pagesToAdd != null) {
-                // For each page provided by the provider we initialize a
-                // PagePositionning defining the page and the location it
-                // should have regarding other page.
-                for (Entry<String, Supplier<AbstractSessionEditorPage>> pageEntry : pagesToAdd.entrySet()) {
-                    if (!alreadyInitializedPagesId.contains(pageEntry.getKey())) {
-                        AbstractSessionEditorPage page = pageEntry.getValue().get();
-                        PositioningKind positioningKind = page.getPositioning();
-                        String locationId = page.getLocationId();
-                        PagePositioning pagePositioning = new PagePositioning();
-                        pageIdToPageMap.put(page.getId(), pagePositioning);
-                        pagePositioningElements.add(pagePositioning);
-                        setPortsId(positioningKind, locationId, pagePositioning);
-                        pagePositioning.page = page;
+            List<Notification> notifications = event != null ? event.getNotifications() : Collections.emptyList();
+            NotificationFilter filterForInitialCondition = pageProvider.getFilterForPageRequesting();
+            boolean providePages = notifications.isEmpty()
+                    || notifications.stream().anyMatch(notification -> filterForInitialCondition == null ? true : filterForInitialCondition.matches(notification));
+            if (providePages) {
+                Map<String, Supplier<AbstractSessionEditorPage>> pagesToAdd = pageProvider.getPages(editor);
+                if (pagesToAdd != null) {
+                    // For each page provided by the provider we initialize a
+                    // PagePositionning defining the page and the location it
+                    // should have regarding other page.
+                    for (Entry<String, Supplier<AbstractSessionEditorPage>> pageEntry : pagesToAdd.entrySet()) {
+                        if (!alreadyInitializedPagesId.contains(pageEntry.getKey())) {
+                            AbstractSessionEditorPage page = pageEntry.getValue().get();
+
+                            PagePositioning pagePositioning = new PagePositioning();
+                            pageIdToPageMap.put(page.getId(), pagePositioning);
+                            pagePositioningElements.add(pagePositioning);
+                            Optional<PositioningKind> positioningKind = page.getPositioning();
+                            Optional<String> locationId = page.getLocationId();
+                            if (positioningKind.isPresent() && locationId.isPresent()) {
+                                setPortsId(positioningKind.get(), locationId.get(), pagePositioning);
+                            }
+                            pagePositioning.page = page;
+
+                        }
                     }
                 }
             }
@@ -290,13 +310,15 @@ public class PageOrderer {
                 // should be kept, we ask this provider to know if some
                 // additional already initialized pages should be kept.
                 for (AbstractSessionEditorPage page : alreadyInitializedPages) {
-                    if (pagesToAdd.get(page.getId()) != null) {
+                    if (pageProvider.provides(page.getId())) {
                         pagesToKeep.add(page);
-                        PositioningKind positioningKind = page.getPositioning();
-                        String locationId = page.getLocationId();
                         PagePositioning pagePositioning = new PagePositioning();
                         pageIdToPageMap.put(page.getId(), pagePositioning);
-                        setPortsId(positioningKind, locationId, pagePositioning);
+                        Optional<PositioningKind> positioningKind = page.getPositioning();
+                        Optional<String> locationId = page.getLocationId();
+                        if (positioningKind.isPresent() && locationId.isPresent()) {
+                            setPortsId(positioningKind.get(), locationId.get(), pagePositioning);
+                        }
                         pagePositioning.page = page;
                         pagePositioningElements.add(pagePositioning);
                     }

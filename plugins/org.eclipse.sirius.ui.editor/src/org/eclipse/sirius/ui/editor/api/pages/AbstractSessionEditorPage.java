@@ -11,7 +11,11 @@
 
 package org.eclipse.sirius.ui.editor.api.pages;
 
+import java.util.Optional;
+
+import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
 import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdateCommand;
 import org.eclipse.ui.forms.editor.FormEditor;
@@ -57,31 +61,73 @@ public abstract class AbstractSessionEditorPage extends FormPage {
      * page.
      * 
      * @return the id of the page to take in consideration when positioning this
-     *         page.
+     *         page. {@link Optional#empty()} if no positioning is provided.
      */
-    public abstract String getLocationId();
+    public abstract Optional<String> getLocationId();
 
     /**
      * Returns the kind of positioning to apply regarding the target page
      * returned by {@link AbstractSessionEditorPage#getLocationId()}.
      * 
      * @return the kind of positioning to apply regarding the target page
-     *         returned by {@link AbstractSessionEditorPage#getLocationId()}.
+     *         returned by
+     *         {@link AbstractSessionEditorPage#getLocationId()}.{@link Optional#empty()}
+     *         if no positioning is provided.
      */
-    public abstract PositioningKind getPositioning();
+    public abstract Optional<PositioningKind> getPositioning();
 
     /**
-     * This method notifies when a {@link ResourceSetChangeEvent} occurs on
-     * the*session's resource set of the session editor containing your page. If
-     * some* change must be done to the page at editor'slevel, you can return a
-     * list*of {@link PageUpdateCommand}to do so. The command must be provided
-     * by* using the factory {@link PageUpdateCommand }.**
+     * This method notifies you when a {@link ResourceSetChangeEvent} occurs on
+     * the session's resource set of the session editor containing your page. If
+     * some changes must be done to the page at editor's level, you can return a
+     * {@link PageUpdateCommand} built with {@link PageUpdateCommandBuilder} to
+     * do so.
      * 
      * @param resourceSetChangeEvent
-     *            the event that occurred.*@return an optional
-     *            {@link PageUpdateCommand} the editor should execute.* It can
-     *            be null.
+     *            the event that occurred.
+     * @return an {@link PageUpdateCommand} the editor should execute.
+     *         {@link Optional#empty()} if no update should be done.
      */
-    public abstract PageUpdateCommand notifyAndGetUpdateCommands(ResourceSetChangeEvent resourceSetChangeEvent);
+    public abstract Optional<PageUpdateCommand> resourceSetChanged(ResourceSetChangeEvent resourceSetChangeEvent);
+
+    /**
+     * Notifies the page that its visibility status has changed. You can return
+     * a {@link PageUpdateCommand} built with {@link PageUpdateCommandBuilder}
+     * if a page update must be done from session editor owning this page.
+     * 
+     * The method is call with the parameter isVisible to true when the page tab
+     * is selected.
+     * 
+     * The method is call with the parameter isVisible to false when any page
+     * tab except the one of this page is selected.
+     * 
+     * 
+     * @param isVisible
+     *            true if the page has just been made visible. I.e page tab has
+     *            been clicked. False if the page has just been made invisible.
+     *            I.e another page tab has been clicked.
+     * @return a {@link PageUpdateCommand} built with
+     *         {@link PageUpdateCommandBuilder} if a page update must be done
+     *         from session editor owning this page. {@link Optional#empty()} if
+     *         no update must be done.
+     */
+    public abstract Optional<PageUpdateCommand> pageChanged(boolean isVisible);
+
+    /**
+     * Returns a filter that will reduce the call to the method
+     * {@link PageProvider#getPages(SessionEditor)} for better performances.
+     * Without the filter, the method is called when any resource set event
+     * occurs on the editor's session.
+     * 
+     * By default, the {@link NotificationFilter#NOT_TOUCH} filter is provided.
+     * 
+     * @return a filter that will reduce the call to the method
+     *         {@link PageProvider#getPages(SessionEditor)} for better
+     *         performances. {@link Optional#empty()} if no filtering should be
+     *         done.
+     */
+    public Optional<NotificationFilter> getFilterForPageRequesting() {
+        return Optional.of(NotificationFilter.NOT_TOUCH);
+    }
 
 }

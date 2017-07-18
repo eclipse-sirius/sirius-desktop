@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.editor.api.pages;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.MessageFormat;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IProject;
@@ -382,17 +383,23 @@ public class DefaultSessionEditorPage extends AbstractSessionEditorPage implemen
     }
 
     @Override
-    public String getLocationId() {
-        return null;
+    public Optional<String> getLocationId() {
+        return Optional.empty();
     }
 
     @Override
-    public PositioningKind getPositioning() {
-        return null;
+    public Optional<PositioningKind> getPositioning() {
+        return Optional.empty();
     }
 
     @Override
-    public PageUpdateCommand notifyAndGetUpdateCommands(ResourceSetChangeEvent resourceSetChangeEvent) {
-        return null;
+    public Optional<PageUpdateCommand> resourceSetChanged(ResourceSetChangeEvent resourceSetChangeEvent) {
+        return Optional.empty();
     }
+
+    @Override
+    public Optional<PageUpdateCommand> pageChanged(boolean isVisible) {
+        return Optional.empty();
+    }
+
 }

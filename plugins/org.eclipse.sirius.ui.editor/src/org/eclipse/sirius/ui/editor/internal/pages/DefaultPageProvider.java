@@ -36,4 +36,9 @@ public class DefaultPageProvider extends PageProvider {
         });
         return resultMap;
     }
+
+    @Override
+    public boolean provides(String pageId) {
+        return DefaultSessionEditorPage.PAGE_ID.equals(pageId);
+    }
 }

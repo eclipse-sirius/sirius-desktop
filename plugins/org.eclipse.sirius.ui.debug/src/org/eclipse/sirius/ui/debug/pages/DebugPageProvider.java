@@ -38,4 +38,8 @@ public class DebugPageProvider extends PageProvider {
         return resultMap;
     }
 
+    @Override
+    public boolean provides(String pageId) {
+        return DebugPage.PAGE_ID.equals(pageId);
+    }
 }

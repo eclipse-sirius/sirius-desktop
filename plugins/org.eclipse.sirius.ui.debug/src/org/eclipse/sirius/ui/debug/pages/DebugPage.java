@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.debug.pages;
 
+import java.util.Optional;
+
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.sirius.business.api.session.Session;
@@ -64,18 +66,23 @@ public class DebugPage extends AbstractSessionEditorPage {
     }
 
     @Override
-    public String getLocationId() {
-        return DefaultSessionEditorPage.PAGE_ID;
+    public Optional<String> getLocationId() {
+        return Optional.of(DefaultSessionEditorPage.PAGE_ID);
     }
 
     @Override
-    public PositioningKind getPositioning() {
-        return PositioningKind.AFTER;
+    public Optional<PositioningKind> getPositioning() {
+        return Optional.of(PositioningKind.AFTER);
     }
 
     @Override
-    public PageUpdateCommand notifyAndGetUpdateCommands(ResourceSetChangeEvent resourceSetChangeEvent) {
-        return null;
+    public Optional<PageUpdateCommand> resourceSetChanged(ResourceSetChangeEvent resourceSetChangeEvent) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<PageUpdateCommand> pageChanged(boolean isVisible) {
+        return Optional.empty();
     }
 
 }

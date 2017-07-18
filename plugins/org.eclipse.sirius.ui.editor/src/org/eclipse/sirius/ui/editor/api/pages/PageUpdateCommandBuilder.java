@@ -30,7 +30,7 @@ public class PageUpdateCommandBuilder {
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
      */
-    public class PageUpdateCommand {
+    public final class PageUpdateCommand {
         /**
          * This command remove the page providing it from its editor.
          */
@@ -45,6 +45,9 @@ public class PageUpdateCommandBuilder {
          * This command reorder the page in its editor to a new location.
          */
         ReorderPageCommand reorderCommand;
+
+        private PageUpdateCommand() {
+        }
 
         /**
          * Returns the command to remove the page providing it from its editor.

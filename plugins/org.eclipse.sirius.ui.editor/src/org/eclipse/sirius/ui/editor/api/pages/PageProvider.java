@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.editor.api.pages;
 import java.util.Map;
 import java.util.function.Supplier;
 
+import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.ui.part.MultiPageEditorPart;
 
@@ -39,4 +40,31 @@ public abstract class PageProvider {
      *         in a multi-page editor.
      */
     public abstract Map<String, Supplier<AbstractSessionEditorPage>> getPages(SessionEditor editor);
+
+    /**
+     * Returns a filter that will reduce the call to the method
+     * {@link PageProvider#getPages(SessionEditor)} for better performances.
+     * Without the filter, the method is called when any resource set event
+     * occurs on the editor's session.
+     * 
+     * By default, the {@link NotificationFilter#NOT_TOUCH} filter is provided.
+     * 
+     * @return a filter that will reduce the call to the method
+     *         {@link PageProvider#getPages(SessionEditor)} for better
+     *         performances.
+     */
+    public NotificationFilter getFilterForPageRequesting() {
+        return NotificationFilter.NOT_TOUCH;
+    }
+
+    /**
+     * Returns true if this provider provides pages with the given id.
+     * 
+     * @param pageId
+     *            the page's id from which we want to know if this provider
+     *            provides pages with this id.
+     * @return true if this provider provides pages with the given id. False
+     *         otherwise.
+     */
+    public abstract boolean provides(String pageId);
 }

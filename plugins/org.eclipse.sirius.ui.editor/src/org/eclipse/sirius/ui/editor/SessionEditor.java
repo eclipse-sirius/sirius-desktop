@@ -12,8 +12,10 @@ package org.eclipse.sirius.ui.editor;
 
 import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
+import java.util.Optional;
 import java.util.Vector;
 import java.util.stream.Collectors;
 
@@ -29,6 +31,7 @@ import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.jface.dialogs.ErrorDialog;
@@ -93,14 +96,21 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
         @Override
         public void resourceSetChanged(ResourceSetChangeEvent event) {
             int pageCount = SessionEditor.this.getPageCount();
+            List<Runnable> commandsToExecute = new ArrayList<>();
             for (int i = 0; i < pageCount; i++) {
                 Object page = SessionEditor.this.pages.get(i);
                 if (page instanceof AbstractSessionEditorPage) {
                     AbstractSessionEditorPage customPage = (AbstractSessionEditorPage) page;
-                    PageUpdateCommand updateCommand = customPage.notifyAndGetUpdateCommands(event);
-                    executeUpdateCommands(customPage, updateCommand);
+                    Optional<NotificationFilter> notificationFilter = customPage.getFilterForPageRequesting();
+                    boolean providePages = event.getNotifications().stream().anyMatch(notification -> notificationFilter.isPresent() ? true : notificationFilter.get().matches(notification));
+                    if (providePages) {
+                        Optional<PageUpdateCommand> updateCommand = customPage.resourceSetChanged(event);
+                        commandsToExecute.addAll(prepareUpdateCommands(customPage, updateCommand));
+                    }
                 }
             }
+            executeCommands(commandsToExecute);
+            updatePages(event);
         }
 
         @Override
@@ -145,17 +155,31 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
 
     @Override
     protected void addPages() {
-        updatePages();
+        updatePages(null);
+    }
+
+    /**
+     * Execute the given command in UI thread.
+     * 
+     * @param commandsToExecute
+     *            the commands to execute.
+     */
+    private void executeCommands(List<Runnable> commandsToExecute) {
+        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+            commandsToExecute.stream().forEach(Runnable::run);
+        });
     }
 
     /**
      * Remove obsolete page, add new pages and reorder all pages currently
      * displayed like the new list.
      * 
+     * @param event
+     * 
      */
-    private void updatePages() {
+    private void updatePages(ResourceSetChangeEvent event) {
         List<AbstractSessionEditorPage> newOrderedPages = pageRegistry.getPagesOrdered(this, session,
-                pages.stream().filter(AbstractSessionEditorPage.class::isInstance).map(AbstractSessionEditorPage.class::cast).collect(Collectors.toList()));
+                pages.stream().filter(AbstractSessionEditorPage.class::isInstance).map(AbstractSessionEditorPage.class::cast).collect(Collectors.toList()), event);
 
         CTabFolder cTabF = (CTabFolder) this.getContainer();
         IFormPage activePage = getActivePageInstance();
@@ -252,12 +276,31 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
 
     @Override
     public void pageProviderChanged() {
-        updatePages();
+        updatePages(null);
     }
 
     @Override
     public void init(IEditorSite site, IEditorInput input) throws PartInitException {
         super.init(site, input);
+        this.addPageChangedListener(event -> {
+            Object selectedPage = event.getSelectedPage();
+            if (selectedPage instanceof AbstractSessionEditorPage) {
+                AbstractSessionEditorPage theSelectedPage = (AbstractSessionEditorPage) selectedPage;
+                Optional<PageUpdateCommand> selectedPageCommand = theSelectedPage.pageChanged(true);
+                List<Runnable> commandsToExecute = new ArrayList<>();
+                commandsToExecute.addAll(prepareUpdateCommands(theSelectedPage, selectedPageCommand));
+                for (Object page : pages) {
+                    if (page instanceof AbstractSessionEditorPage) {
+                        AbstractSessionEditorPage sessionEditorPage = (AbstractSessionEditorPage) page;
+                        if (sessionEditorPage.getIndex() != theSelectedPage.getIndex()) {
+                            Optional<PageUpdateCommand> pageCommand = sessionEditorPage.pageChanged(false);
+                            commandsToExecute.addAll(prepareUpdateCommands(sessionEditorPage, pageCommand));
+                        }
+                    }
+                }
+                executeCommands(commandsToExecute);
+            }
+        });
         IEditorInput editorInput = this.getEditorInput();
         URI sessionResourceURI = null;
         if (editorInput instanceof FileEditorInput) {
@@ -467,36 +510,39 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
     }
 
     /**
-     * Execute the given {@link PageUpdateCommand}. If a remove command is
-     * present, other update command will be ignored.
+     * Prepare all commands as {@link Runnable} from the given
+     * {@link PageUpdateCommand}. If a remove command is present, other update
+     * command will be ignored.
      * 
      * @param customPage
      *            the page updated.
      * @param updateCommand
      *            the commands this editor must execute to update the page.
      */
-    private void executeUpdateCommands(AbstractSessionEditorPage customPage, PageUpdateCommand updateCommand) {
-        if (updateCommand != null) {
+    private List<Runnable> prepareUpdateCommands(AbstractSessionEditorPage customPage, Optional<PageUpdateCommand> updateCommand) {
+        List<Runnable> runnables = new ArrayList<>(2);
+        updateCommand.ifPresent(updateCommandTemp -> {
             boolean removeCommandExecuted = false;
-            if (updateCommand.getRemoveCommand() != null) {
-                executeRemoveCommand(updateCommand.getRemoveCommand(), SessionEditor.this, customPage);
+            if (updateCommandTemp.getRemoveCommand() != null) {
+                runnables.add(prepareRemoveCommand(updateCommandTemp.getRemoveCommand(), SessionEditor.this, customPage));
                 removeCommandExecuted = true;
             }
-            if (!removeCommandExecuted && updateCommand.getReorderCommand() != null) {
-                executeReorderCommand(updateCommand.getReorderCommand(), SessionEditor.this, customPage);
+            if (!removeCommandExecuted && updateCommandTemp.getReorderCommand() != null) {
+                runnables.add(prepareReorderCommand(updateCommandTemp.getReorderCommand(), SessionEditor.this, customPage));
             } else {
                 SessionEditorPlugin.getPlugin().error(MessageFormat.format(Messages.SessionEditor_PageCommand_Integrity_Error, customPage.getClass().getName()), null);
             }
-            if (!removeCommandExecuted && updateCommand.getRenameCommand() != null) {
-                executeRenameCommand(updateCommand.getRenameCommand(), SessionEditor.this, customPage);
+            if (!removeCommandExecuted && updateCommandTemp.getRenameCommand() != null) {
+                runnables.add(prepareRenameCommand(updateCommandTemp.getRenameCommand(), SessionEditor.this, customPage));
             } else {
                 SessionEditorPlugin.getPlugin().error(MessageFormat.format(Messages.SessionEditor_PageCommand_Integrity_Error, customPage.getClass().getName()), null);
             }
-        }
+        });
+        return runnables;
     }
 
     /**
-     * Execute the reorder command.
+     * Prepare the reorder command by returning a {@link Runnable}.
      * 
      * @param pageUpdateCommand
      *            the command to execute containing execution information.
@@ -505,13 +551,12 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
      * @param page
      *            the page reordered.
      */
-    private void executeReorderCommand(ReorderPageCommand pageUpdateCommand, SessionEditor editor, AbstractSessionEditorPage page) {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+    private Runnable prepareReorderCommand(ReorderPageCommand pageUpdateCommand, SessionEditor editor, AbstractSessionEditorPage page) {
+        return () -> {
             Composite container = editor.getContainer();
             if (container instanceof CTabFolder) {
                 CTabFolder tabFolder = (CTabFolder) editor.getContainer();
                 IFormPage activePage = editor.getActivePageInstance();
-
                 int targetPageIndex = -1;
                 String targetPageId = pageUpdateCommand.getTargetPageId();
                 for (Object object : pages) {
@@ -520,7 +565,6 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                         break;
                     }
                 }
-
                 int commandingPageIndex = pages.indexOf(page);
                 if (commandingPageIndex != -1 && targetPageIndex != -1) {
                     switch (pageUpdateCommand.getPositioningKind()) {
@@ -549,12 +593,12 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                 editor.setFocus();
                 editor.setActivePage(activePage);
             }
-        });
-
+        };
     }
 
     /**
-     * Execute the page removal command for the given page.
+     * Prepare the page removal command for the given page by returning a
+     * {@link Runnable}.
      * 
      * @param pageUpdateCommand
      *            the command containing removal information.
@@ -563,14 +607,15 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
      * @param page
      *            the page that will be removed from editor.
      */
-    private void executeRemoveCommand(RemovePageCommand pageUpdateCommand, SessionEditor editor, AbstractSessionEditorPage page) {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+    private Runnable prepareRemoveCommand(RemovePageCommand pageUpdateCommand, SessionEditor editor, AbstractSessionEditorPage page) {
+        return () -> {
             editor.removePage(editor.pages.indexOf(page));
-        });
+        };
     }
 
     /**
-     * Execute the tab renaming command for the given page.
+     * Prepare the tab renaming command for the given page by returning a
+     * {@link Runnable}.
      * 
      * @param pageUpdateCommand
      *            the command containing rename information.
@@ -579,8 +624,8 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
      * @param page
      *            the page that will have its tab renamed.
      */
-    private void executeRenameCommand(RenameTabLabelCommand pageUpdateCommand, SessionEditor editor, AbstractSessionEditorPage page) {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+    private Runnable prepareRenameCommand(RenameTabLabelCommand pageUpdateCommand, SessionEditor editor, AbstractSessionEditorPage page) {
+        return () -> {
             Composite container = editor.getContainer();
             if (container instanceof CTabFolder) {
                 Vector<Object> pages = editor.pages;
@@ -592,6 +637,6 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                     tabFolder.getParent().layout();
                 }
             }
-        });
+        };
     }
 }

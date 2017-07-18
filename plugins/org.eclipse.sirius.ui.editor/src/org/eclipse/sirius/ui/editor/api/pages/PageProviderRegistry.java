@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.internal.pages.PageOrderer;
@@ -139,13 +140,15 @@ public class PageProviderRegistry {
      *            the aird editor's session from which page request is done.
      * @param displayedPages
      *            pages already dysplayed by the editor.
+     * @param event
+     *            the event triggering the call to this method. Can be null.
      * @return a list of {@link AbstractSessionEditorPage} in the order computed
      *         from all their location information retrieved from their parent
      *         creators {@link PageProvider}. Obsolete pages are not returned.
      *         New available pages fitting current context are returned.
      */
-    public List<AbstractSessionEditorPage> getPagesOrdered(SessionEditor editor, Session session, List<AbstractSessionEditorPage> displayedPages) {
-        List<AbstractSessionEditorPage> pagesOrdered = pageOrderer.getOrderedPages(pageProviders, editor, displayedPages);
+    public List<AbstractSessionEditorPage> getPagesOrdered(SessionEditor editor, Session session, List<AbstractSessionEditorPage> displayedPages, ResourceSetChangeEvent event) {
+        List<AbstractSessionEditorPage> pagesOrdered = pageOrderer.getOrderedPages(pageProviders, editor, displayedPages, event);
         return pagesOrdered;
     }
 
