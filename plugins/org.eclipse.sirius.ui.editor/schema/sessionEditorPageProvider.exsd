@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.sirius.ui.editor" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.sirius.ui.editor" id="sessionEditoPageProvider" name="Session Editor Page Provider"/>
+      </appInfo>
+      <documentation>
+         This plugin is the entry point to provide custom pages to show in the mutli-page aird editor.
+
+The provided pages can specify positioning information. I.e where the page should be positioned regarding the id of another page when created. It can be before, after the page specified or it can even replace a page.
+
+When initialized and visible in editor, a page can still update its position regarding session&apos;s resource set events or page activation status or tell the editor to be removed or to update its tab label.
+
+See Sirius developper documentation to have more details about this extension point.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="pageProvider"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="pageProvider">
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A class providing custom pages to show in the aird editor.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.sirius.ui.editor.api.pages.PageProvider:"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         Since 5.1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         A full example exists in the plugin &lt;code&gt;org.eclipse.sirius.ui.debug&lt;/code&gt;.
+
+The extension is the following:
+&lt;pre&gt;
+ &lt;extension
+         point=&quot;org.eclipse.sirius.ui.editor.sessionEditorPageProvider&quot;&gt;
+      &lt;pageProvider
+            class=&quot;org.eclipse.sirius.ui.debug.pages.DebugPageProvider&quot;&gt;
+      &lt;/pageProvider&gt;
+ &lt;/extension&gt;
+&lt;/pre&gt;
+
+The registered page provider from this extension adds a custom page &lt;code&gt;org.eclipse.sirius.ui.debug.pages.DebugPage&lt;/code&gt; in the aird editor showing various information about the editor&apos;s session.
+
+
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiinfo"/>
+      </appInfo>
+      <documentation>
+         &lt;h1&gt;PageProvider&lt;/h1&gt;
+
+The entry point for custom page providing is the class &lt;code&gt;org.eclipse.sirius.ui.editor.api.pages.PageProvider&lt;/code&gt;. You must provide an instanceof this class in your extension for this extension point. 
+
+This class contains a method &lt;code&gt;org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPagevider.getPages(SessionEditor)&lt;/code&gt; that defines initial visibility condition and returns new instances of &lt;code&gt;org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage&lt;/code&gt;  if the initial conditions are verified. 
+
+The initial conditions can be determined only from the given aird editor instance and its session accessible from the method &lt;code&gt;org.eclipse.sirius.ui.editor.SessionEditor.getSession()&lt;/code&gt; or from singleton components like &lt;code&gt;PlatformUI&lt;/code&gt;
+
+You can use any graphic components in your pages.
+
+You also must tell callers of the method &lt;code&gt;org.eclipse.sirius.ui.editor.api.pages.PageProvider.provides(String)&lt;/code&gt; if the given page id correspond to the id of a page your provider provides. If all the pages your provider handles are not defined in this method, page positionning may fail. 
+
+&lt;h1&gt;AbstractSessionEditorPage&lt;/h1&gt;
+
+The pages your page provider provides must extends the class &lt;code&gt;org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage&lt;/code&gt;. It defines positioning information to use when creating the page with the methods &lt;code&gt;org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage.getPositioning()&lt;/code&gt; and &lt;code&gt;org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage.getLocationId()&lt;/code&gt;.
+
+And dynamic positioning with the methods &lt;code&gt;org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage.pageChanged(boolean)&lt;/code&gt; and &lt;code&gt;org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage.resourceSetChanged(ResourceSetChangeEvent)&lt;/code&gt;
+
+You also can specify a filter&lt;code&gt;org.eclipse.emf.transaction.NotificationFilter&lt;/code&gt; different from the default one &lt;code&gt;org.eclipse.emf.transaction.NotificationFilter.NOT_TOUCH&lt;/code&gt; or in addition of it. The filter is used to filter event from session&apos;s resource set from which you don&apos;t want to react to. I.e the method &lt;code&gt;resourceSetChanged(ResourceSetChangeEvent)&lt;/code&gt; will not be called for this filtered events.
+
+&lt;h1&gt;Programmatic contribution&lt;/h1&gt;
+
+An alternative to this extension point exists to provide custom pages. You can programmatically add your &lt;code&gt;PageProvider&lt;/code&gt; providing custom pages by using the methods of the registry &lt;code&gt;org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry&lt;/code&gt; accessible with the following code: &lt;code&gt;SessionEditorPlugin.getPlugin().getPageRegistry()&lt;/code&gt;. 
+
+When using this API it is your responsability to handle lifecycle of your page provider. If you don&apos;t want memory issues, you will have to remove your provider from the registry when not needed anymore.
+
+      </documentation>
+   </annotation>
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2017 Obeo
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+ 
+  Contributors:
+      Obeo - initial API and implementation
+      </documentation>
+   </annotation>
+
+</schema>

@@ -12,6 +12,7 @@
 -->
 
 <plugin>
+   <extension-point id="sessionEditorPageProvider" name="%sessionEditorPageProviderExtensionPointName" schema="schema/sessionEditorPageProvider.exsd"/>
    <extension
          point="org.eclipse.ui.editors">
       <editor

@@ -95,6 +95,7 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
     private final class SessionResourceSetListener extends ResourceSetListenerImpl {
         @Override
         public void resourceSetChanged(ResourceSetChangeEvent event) {
+
             int pageCount = SessionEditor.this.getPageCount();
             List<Runnable> commandsToExecute = new ArrayList<>();
             for (int i = 0; i < pageCount; i++) {
@@ -102,15 +103,17 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                 if (page instanceof AbstractSessionEditorPage) {
                     AbstractSessionEditorPage customPage = (AbstractSessionEditorPage) page;
                     Optional<NotificationFilter> notificationFilter = customPage.getFilterForPageRequesting();
-                    boolean providePages = event.getNotifications().stream().anyMatch(notification -> notificationFilter.isPresent() ? true : notificationFilter.get().matches(notification));
-                    if (providePages) {
+                    boolean reactToNotification = event.getNotifications().stream().anyMatch(notification -> notificationFilter.isPresent() ? true : notificationFilter.get().matches(notification));
+                    if (reactToNotification) {
                         Optional<PageUpdateCommand> updateCommand = customPage.resourceSetChanged(event);
                         commandsToExecute.addAll(prepareUpdateCommands(customPage, updateCommand));
                     }
                 }
             }
-            executeCommands(commandsToExecute);
-            updatePages(event);
+            PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+                commandsToExecute.stream().forEach(Runnable::run);
+                updatePages(event);
+            });
         }
 
         @Override
@@ -156,18 +159,6 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
     @Override
     protected void addPages() {
         updatePages(null);
-    }
-
-    /**
-     * Execute the given command in UI thread.
-     * 
-     * @param commandsToExecute
-     *            the commands to execute.
-     */
-    private void executeCommands(List<Runnable> commandsToExecute) {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
-            commandsToExecute.stream().forEach(Runnable::run);
-        });
     }
 
     /**
@@ -298,7 +289,7 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                         }
                     }
                 }
-                executeCommands(commandsToExecute);
+                commandsToExecute.stream().forEach(Runnable::run);
             }
         });
         IEditorInput editorInput = this.getEditorInput();

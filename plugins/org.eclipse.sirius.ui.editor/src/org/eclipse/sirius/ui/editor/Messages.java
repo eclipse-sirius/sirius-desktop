@@ -100,6 +100,12 @@ public final class Messages {
     @TranslatableMessage
     public static String SessionEditor_PageCommand_Integrity_Error;
 
+    @TranslatableMessage
+    public static String PluginPageProviderRegistry_classInitialization;
+
+    @TranslatableMessage
+    public static String PluginPageProviderRegistry_badClassType;
+
     // CHECKSTYLE:ON
 
     private Messages() {

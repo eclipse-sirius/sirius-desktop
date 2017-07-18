@@ -66,4 +66,10 @@
             id="org.eclipse.sirius.ui.debug.SiriusDebugView">
       </view>
    </extension>
+   <extension
+         point="org.eclipse.sirius.ui.editor.sessionEditorPageProvider">
+      <pageProvider
+            class="org.eclipse.sirius.ui.debug.pages.DebugPageProvider">
+      </pageProvider>
+   </extension>
 </plugin>

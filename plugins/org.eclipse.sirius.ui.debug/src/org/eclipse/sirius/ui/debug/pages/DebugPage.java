@@ -10,8 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.debug.pages;
 
+import java.util.Collection;
 import java.util.Optional;
 
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.sirius.business.api.session.Session;
@@ -24,6 +28,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.IManagedForm;
+import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 
@@ -41,6 +46,10 @@ public class DebugPage extends AbstractSessionEditorPage {
     public static final String PAGE_ID = "org.eclipse.sirius.ui.debug.page";
 
     private Session session;
+
+    private FormText semanticValueText;
+
+    private FormText viewpointNumberText;
 
     public DebugPage(SessionEditor editor, String id, String title) {
         super(editor, id, title);
@@ -63,6 +72,37 @@ public class DebugPage extends AbstractSessionEditorPage {
         Composite subBody = toolkit.createComposite(body);
         subBody.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).create());
         subBody.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+
+        toolkit.createLabel(subBody, "Viewpoins enabled: ");
+        viewpointNumberText = toolkit.createFormText(subBody, true);
+        setViewpointNumber();
+
+        toolkit.createLabel(subBody, "Semantic elements number: ");
+        semanticValueText = toolkit.createFormText(subBody, true);
+        setSemanticValue();
+    }
+
+    /**
+     * Set the number of viewpoints activated.
+     */
+    private void setViewpointNumber() {
+        viewpointNumberText.setText(String.valueOf(session.getSelectedViewpoints(false).size()), false, false);
+    }
+
+    /**
+     * Set the number of semantic elements loaded in the session.
+     */
+    private void setSemanticValue() {
+        Collection<Resource> semanticResources = session.getSemanticResources();
+        int semanticResourcesNumber = 0;
+        for (Resource resource : semanticResources) {
+            TreeIterator<EObject> allContents = resource.getAllContents();
+            while (allContents.hasNext()) {
+                allContents.next();
+                semanticResourcesNumber++;
+            }
+        }
+        semanticValueText.setText(String.valueOf(semanticResourcesNumber), false, false);
     }
 
     @Override
@@ -82,6 +122,10 @@ public class DebugPage extends AbstractSessionEditorPage {
 
     @Override
     public Optional<PageUpdateCommand> pageChanged(boolean isVisible) {
+        if (isVisible) {
+            setSemanticValue();
+            setViewpointNumber();
+        }
         return Optional.empty();
     }
 

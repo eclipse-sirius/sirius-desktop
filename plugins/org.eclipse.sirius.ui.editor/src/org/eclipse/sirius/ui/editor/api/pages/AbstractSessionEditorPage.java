@@ -18,6 +18,7 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
 import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdateCommand;
+import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
 
@@ -83,6 +84,10 @@ public abstract class AbstractSessionEditorPage extends FormPage {
      * {@link PageUpdateCommand} built with {@link PageUpdateCommandBuilder} to
      * do so.
      * 
+     * WARNING: Your page may not be initialized with
+     * {@link FormPage#createFormContent(IManagedForm)} when this method is
+     * called.
+     * 
      * @param resourceSetChangeEvent
      *            the event that occurred.
      * @return an {@link PageUpdateCommand} the editor should execute.
@@ -95,12 +100,15 @@ public abstract class AbstractSessionEditorPage extends FormPage {
      * a {@link PageUpdateCommand} built with {@link PageUpdateCommandBuilder}
      * if a page update must be done from session editor owning this page.
      * 
-     * The method is call with the parameter isVisible to true when the page tab
-     * is selected.
+     * The method is called with the parameter isVisible to true when the page
+     * tab is selected.
      * 
-     * The method is call with the parameter isVisible to false when any page
+     * The method is called with the parameter isVisible to false when any page
      * tab except the one of this page is selected.
      * 
+     * WARNING: Your page may not be initialized with
+     * {@link FormPage#createFormContent(IManagedForm)} when this method is
+     * called.
      * 
      * @param isVisible
      *            true if the page has just been made visible. I.e page tab has

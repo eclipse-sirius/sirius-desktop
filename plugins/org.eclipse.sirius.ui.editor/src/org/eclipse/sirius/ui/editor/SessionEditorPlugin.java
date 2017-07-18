@@ -14,6 +14,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
@@ -22,6 +23,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry;
 import org.eclipse.sirius.ui.editor.internal.pages.DefaultPageProvider;
+import org.eclipse.sirius.ui.editor.internal.pages.PluginPageProviderRegistry;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener.ISessionFileLoadingListener;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PartInitException;
@@ -86,6 +88,8 @@ public class SessionEditorPlugin extends EMFPlugin {
          */
         private PageProviderRegistry pageRegistry;
 
+        private PluginPageProviderRegistry pluginPageProviderRegistry;
+
         /**
          * Creates an instance.
          */
@@ -126,13 +130,17 @@ public class SessionEditorPlugin extends EMFPlugin {
             SiriusEditPlugin.getPlugin().addSessionFileLoadingListener(modelingProjectExpansionListener);
             pageRegistry = new PageProviderRegistry();
             pageRegistry.addPageProvider(new DefaultPageProvider());
+            pluginPageProviderRegistry = new PluginPageProviderRegistry(pageRegistry);
+            Platform.getExtensionRegistry().addListener(pluginPageProviderRegistry, PluginPageProviderRegistry.PAGE_PROVIDER_EXTENSION_POINT_ID);
         }
 
         @Override
         public void stop(BundleContext context) throws Exception {
             SiriusEditPlugin.getPlugin().removeSessionFileLoadingListener(modelingProjectExpansionListener);
+            Platform.getExtensionRegistry().removeListener(pluginPageProviderRegistry);
             modelingProjectExpansionListener = null;
             pageRegistry = null;
+            pluginPageProviderRegistry = null;
             super.stop(context);
         }
 
