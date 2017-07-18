@@ -502,6 +502,13 @@ public class SiriusDebugView extends AbstractDebugView {
                     sb.append("* ").append(esf.getName()).append(":\n");
                     appendValue(session, esf, sb);
                 }
+                sb.append("* ").append("srm resources:\n");
+                int count = 0;
+                for (Resource res : session.getSrmResources()) {
+                    count++;
+                    sb.append("  ").append(count).append(". ").append(res.getURI());
+                }
+
                 return sb.toString();
             }
 
