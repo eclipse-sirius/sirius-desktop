@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -265,9 +266,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             refineVariableType(availableVariables, SELF, possibleSemanticTypes);
         }
         if (target instanceof ReconnectEdgeDescription && this.feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION) {
-            Collection<String> possibleContainerTypes = Sets.newLinkedHashSet();
-            collectPotentialContainerTypes(possibleContainerTypes, Sets.<String> newLinkedHashSet(), ((ReconnectEdgeDescription) target).getMappings());
-            availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
+            collectReconnectEdgeDescriptionVariableTypes(availableVariables);
         }
         if (target instanceof RepresentationCreationDescription) {
             typeVariablesForDiagramCreationRepresentation((RepresentationCreationDescription) target, availableVariables);
@@ -629,6 +628,31 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 }
             }
         }
+    }
+
+    private void collectReconnectEdgeDescriptionVariableTypes(Map<String, VariableType> availableVariables) {
+        Collection<String> possibleContainerTypes = Sets.newLinkedHashSet();
+        EList<EdgeMapping> mappings = ((ReconnectEdgeDescription) target).getMappings();
+        collectPotentialContainerTypes(possibleContainerTypes, Sets.<String> newLinkedHashSet(), mappings);
+        availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
+
+        Set<String> sourceSemanticType = Sets.newLinkedHashSet();
+        Set<String> sourceViewType = Sets.newLinkedHashSet();
+        Set<String> targetSemanticType = Sets.newLinkedHashSet();
+        Set<String> targetViewType = Sets.newLinkedHashSet();
+        for (EdgeMapping edgeMapping : mappings) {
+            for (DiagramElementMapping m : edgeMapping.getSourceMapping()) {
+                collectTypes(sourceSemanticType, sourceViewType, m);
+            }
+            for (DiagramElementMapping m : edgeMapping.getTargetMapping()) {
+                collectTypes(targetSemanticType, targetViewType, m);
+            }
+        }
+        availableVariables.put(IInterpreterSiriusVariables.SOURCE, VariableType.fromStrings(sourceSemanticType));
+        availableVariables.put(IInterpreterSiriusVariables.SOURCE_VIEW, VariableType.fromStrings(sourceViewType));
+        availableVariables.put(IInterpreterSiriusVariables.TARGET, VariableType.fromStrings(targetSemanticType));
+        availableVariables.put(IInterpreterSiriusVariables.TARGET_VIEW, VariableType.fromStrings(targetViewType));
+        availableVariables.put(IInterpreterSiriusVariables.DIAGRAM, VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
     }
 
     /**
