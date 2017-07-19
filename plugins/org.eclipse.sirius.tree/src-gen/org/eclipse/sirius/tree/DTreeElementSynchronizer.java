@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface DTreeElementSynchronizer extends EObject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model DTreeItemRequired="true"
      * @generated
      */

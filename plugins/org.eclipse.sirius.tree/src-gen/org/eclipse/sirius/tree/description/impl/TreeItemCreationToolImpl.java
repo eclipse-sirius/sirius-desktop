@@ -35,7 +35,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
     /**
      * The cached value of the '{@link #getMapping() <em>Mapping</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMapping()
      * @generated
      * @ordered
@@ -44,7 +44,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemCreationToolImpl() {
@@ -53,7 +53,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -63,7 +63,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +90,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -107,7 +107,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -21,14 +21,14 @@ import org.eclipse.sirius.tree.description.TreeItemStyleDescription;
 import org.eclipse.sirius.viewpoint.description.impl.ConditionalStyleDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Conditional Tree Item Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Conditional Tree Item Style
+ * Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.description.impl.ConditionalTreeItemStyleDescriptionImpl#getStyle <em>Style</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.ConditionalTreeItemStyleDescriptionImpl#getStyle
+ * <em>Style</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,7 +37,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConditionalTreeItemStyleDescriptionImpl() {
@@ -55,7 +55,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,7 +75,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(TreeItemStyleDescription newStyle, NotificationChain msgs) {
@@ -94,7 +94,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +118,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

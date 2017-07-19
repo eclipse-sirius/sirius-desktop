@@ -53,7 +53,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
     /**
      * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
     /**
      * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeVariableImpl() {
@@ -81,7 +81,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +114,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -178,7 +178,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +230,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -248,7 +248,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

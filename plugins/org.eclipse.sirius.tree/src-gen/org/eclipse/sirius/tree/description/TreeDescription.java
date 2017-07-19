@@ -24,13 +24,13 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.tree.description.TreeDescription#getDomainClass <em>Domain Class</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeDescription#getPreconditionExpression
- * <em>Precondition Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeDescription#getPreconditionExpression <em>Precondition
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.TreeDescription#getCreateTreeItem <em>Create Tree Item</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeDescription#getOwnedRepresentationCreationDescriptions
- * <em>Owned Representation Creation Descriptions</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeDescription#getOwnedRepresentationNavigationDescriptions
- * <em>Owned Representation Navigation Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeDescription#getOwnedRepresentationCreationDescriptions <em>Owned
+ * Representation Creation Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeDescription#getOwnedRepresentationNavigationDescriptions <em>Owned
+ * Representation Navigation Descriptions</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeDescription()
@@ -45,7 +45,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeDescription_DomainClass()
@@ -55,9 +55,9 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
     String getDomainClass();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeDescription#getDomainClass
-     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeDescription#getDomainClass <em>Domain
+     * Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -85,7 +85,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeDescription#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition Expression</em>' attribute.
      * @see #getPreconditionExpression()

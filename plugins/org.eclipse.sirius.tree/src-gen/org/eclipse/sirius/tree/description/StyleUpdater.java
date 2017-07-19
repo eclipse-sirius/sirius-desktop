@@ -36,7 +36,7 @@ public interface StyleUpdater extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Default Style</em>' containment reference.
      * @see #setDefaultStyle(TreeItemStyleDescription)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getStyleUpdater_DefaultStyle()
@@ -46,9 +46,9 @@ public interface StyleUpdater extends EObject {
     TreeItemStyleDescription getDefaultStyle();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.tree.description.StyleUpdater#getDefaultStyle
-     * <em>Default Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.StyleUpdater#getDefaultStyle <em>Default
+     * Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Default Style</em>' containment reference.
      * @see #getDefaultStyle()
@@ -64,7 +64,7 @@ public interface StyleUpdater extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditional Styles</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getStyleUpdater_ConditionalStyles()
      * @model containment="true"

@@ -35,7 +35,7 @@ public interface DTreeElement extends DRepresentationElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Tree Element Mapping</em>' reference.
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeElement_TreeElementMapping()
      * @model transient="true" changeable="false" volatile="true" derived="true"

@@ -44,7 +44,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
     /**
      * The cached value of the '{@link #getMask() <em>Mask</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMask()
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
     /**
      * The cached value of the '{@link #getMapping() <em>Mapping</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMapping()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
     /**
      * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getElement()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
     /**
      * The cached value of the '{@link #getRoot() <em>Root</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRoot()
      * @generated
      * @ordered
@@ -83,7 +83,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemEditionToolImpl() {
@@ -92,7 +92,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetMask(EditMaskVariables newMask, NotificationChain msgs) {
@@ -131,7 +131,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetElement(ElementDropVariable newElement, NotificationChain msgs) {
@@ -197,7 +197,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,7 +221,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -231,7 +231,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetRoot(ElementDropVariable newRoot, NotificationChain msgs) {
@@ -250,7 +250,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -292,7 +292,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -312,7 +312,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -338,7 +338,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -362,7 +362,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

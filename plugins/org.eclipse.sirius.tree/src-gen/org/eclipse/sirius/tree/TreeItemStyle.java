@@ -37,7 +37,7 @@ public interface TreeItemStyle extends Style, LabelStyle {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' attribute.
      * @see #setBackgroundColor(RGBValues)
      * @see org.eclipse.sirius.tree.TreePackage#getTreeItemStyle_BackgroundColor()
@@ -47,9 +47,9 @@ public interface TreeItemStyle extends Style, LabelStyle {
     RGBValues getBackgroundColor();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.tree.TreeItemStyle#getBackgroundColor <em>Background Color</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.tree.TreeItemStyle#getBackgroundColor <em>Background
+     * Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()

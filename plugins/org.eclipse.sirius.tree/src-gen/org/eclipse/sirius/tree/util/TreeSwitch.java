@@ -39,21 +39,21 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
  * returned, which is the result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tree.TreePackage
  * @generated
  */
 public class TreeSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static TreePackage modelPackage;
 
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeSwitch() {
@@ -65,7 +65,7 @@ public class TreeSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -76,7 +76,7 @@ public class TreeSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -92,7 +92,7 @@ public class TreeSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -241,7 +241,7 @@ public class TreeSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DTree</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DTree</em>'.
@@ -255,7 +255,7 @@ public class TreeSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DTree Element</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DTree Element</em>'.
@@ -269,7 +269,7 @@ public class TreeSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DTree Item</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DTree Item</em>'.
@@ -283,7 +283,7 @@ public class TreeSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Item Style</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Item Style</em>'.
@@ -327,7 +327,7 @@ public class TreeSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DRefreshable</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DRefreshable</em>'.
@@ -401,7 +401,7 @@ public class TreeSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DStylizable</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DStylizable</em>'.
@@ -430,7 +430,7 @@ public class TreeSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Customizable</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Customizable</em>'.
@@ -444,7 +444,7 @@ public class TreeSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Style</em>'.
@@ -473,7 +473,7 @@ public class TreeSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Label Style</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Label Style</em>'.
@@ -488,7 +488,7 @@ public class TreeSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch, but this is the last case
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>EObject</em>'.

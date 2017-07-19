@@ -40,7 +40,7 @@ public interface TreePopupMenu extends AbstractToolDescription {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Menu Item Descriptions</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreePopupMenu_MenuItemDescriptions()
      * @model containment="true"

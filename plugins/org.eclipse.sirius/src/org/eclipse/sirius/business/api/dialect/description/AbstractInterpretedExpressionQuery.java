@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -468,7 +468,13 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      */
     private void collectLocalVariablesDefinitions() {
         if (feature != null) {
-            EAnnotation varAnnotations = feature.getEAnnotation(AbstractInterpretedExpressionQuery.VARIABLES_ANNOTATION_SOURCE);
+            EAnnotation varAnnotations = null;
+            EAnnotation overrideAnnotation = target.eClass().getEAnnotation(AbstractInterpretedExpressionQuery.VARIABLES_ANNOTATION_SOURCE + "_" + feature.getName()); //$NON-NLS-1$
+            if (overrideAnnotation == null || overrideAnnotation.getDetails().isEmpty()) {
+                varAnnotations = feature.getEAnnotation(AbstractInterpretedExpressionQuery.VARIABLES_ANNOTATION_SOURCE);
+            } else {
+                varAnnotations = overrideAnnotation;
+            }
             if (varAnnotations != null) {
                 for (String varName : varAnnotations.getDetails().keySet()) {
                     String doc = varAnnotations.getDetails().get(varName);

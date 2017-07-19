@@ -47,146 +47,146 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DescriptionPackageImpl extends EPackageImpl implements DescriptionPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeItemMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeItemStyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass conditionalTreeItemStyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeItemToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeItemDragToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeItemContainerDropToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeItemCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeItemEditionToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeItemDeletionToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeCreationDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeNavigationDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass styleUpdaterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeVariableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeItemUpdaterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass precedingSiblingsVariablesEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeItemMappingContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treePopupMenuEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum treeDragSourceEEnum = null;
@@ -210,7 +210,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -264,7 +264,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -294,7 +294,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -304,7 +304,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -314,7 +314,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -324,7 +324,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -334,7 +334,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -344,7 +344,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -354,7 +354,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -364,7 +364,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -374,7 +374,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -384,7 +384,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -394,7 +394,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -404,7 +404,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -414,7 +414,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -424,7 +424,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -434,7 +434,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -444,7 +444,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -454,7 +454,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -464,7 +464,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -474,7 +474,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -484,7 +484,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -494,7 +494,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -504,7 +504,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -514,7 +514,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -524,7 +524,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -534,7 +534,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -544,7 +544,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -554,7 +554,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -564,7 +564,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -574,7 +574,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -584,7 +584,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -594,7 +594,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -604,7 +604,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -614,7 +614,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -624,7 +624,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -634,7 +634,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -644,7 +644,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -654,7 +654,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -664,7 +664,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -674,7 +674,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -684,7 +684,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -694,7 +694,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -704,7 +704,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -714,7 +714,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -724,7 +724,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -734,7 +734,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -744,7 +744,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -754,7 +754,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -764,7 +764,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -774,7 +774,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -784,7 +784,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -794,7 +794,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -804,7 +804,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -814,7 +814,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -824,7 +824,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -834,7 +834,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -844,7 +844,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -854,7 +854,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -864,7 +864,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -874,7 +874,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -884,7 +884,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -894,7 +894,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -904,7 +904,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -914,7 +914,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -924,7 +924,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -934,7 +934,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -944,7 +944,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -954,7 +954,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -962,7 +962,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     /**
      * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
      * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -1064,7 +1064,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -1072,7 +1072,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     /**
      * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
      * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
@@ -1328,6 +1328,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createReturnTypeAnnotations();
         // http://www.eclipse.org/sirius/interpreted/expression/variables
         createVariablesAnnotations();
+        // http://www.eclipse.org/sirius/interpreted/expression/variables_precondition
+        createVariables_preconditionAnnotations();
     }
 
     /**
@@ -1372,6 +1374,19 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                         "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
                         "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
                 });
+    }
+
+    /**
+     * Initializes the annotations for
+     * <b>http://www.eclipse.org/sirius/interpreted/expression/variables_precondition</b>. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    protected void createVariables_preconditionAnnotations() {
+        String source = "http://www.eclipse.org/sirius/interpreted/expression/variables_precondition"; //$NON-NLS-1$
+        addAnnotation(treeItemContainerDropToolEClass, source, new String[] { "newContainer", "ecore.EObject | the new container." //$NON-NLS-1$ //$NON-NLS-2$
+        });
     }
 
 } // DescriptionPackageImpl

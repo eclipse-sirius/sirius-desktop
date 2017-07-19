@@ -33,8 +33,8 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemToolImpl#getFirstModelOperation
- * <em>First Model Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemToolImpl#getFirstModelOperation <em>First Model
+ * Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemToolImpl#getVariables <em>Variables</em>}</li>
  * </ul>
  *
@@ -44,7 +44,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
     /**
      * The cached value of the '{@link #getFirstModelOperation() <em>First Model Operation</em>}' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFirstModelOperation()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemToolImpl() {
@@ -72,7 +72,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFirstModelOperation(ModelOperation newFirstModelOperation, NotificationChain msgs) {
@@ -111,7 +111,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,7 +164,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -200,7 +200,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

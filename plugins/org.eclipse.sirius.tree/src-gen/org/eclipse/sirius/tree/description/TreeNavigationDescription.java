@@ -20,8 +20,8 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.description.TreeNavigationDescription#getTreeDescription <em>Tree Description</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeNavigationDescription#getTreeDescription <em>Tree
+ * Description</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeNavigationDescription()
@@ -36,7 +36,7 @@ public interface TreeNavigationDescription extends RepresentationNavigationDescr
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Tree Description</em>' reference.
      * @see #setTreeDescription(TreeDescription)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeNavigationDescription_TreeDescription()
@@ -48,7 +48,7 @@ public interface TreeNavigationDescription extends RepresentationNavigationDescr
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeNavigationDescription#getTreeDescription
      * <em>Tree Description</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Tree Description</em>' reference.
      * @see #getTreeDescription()

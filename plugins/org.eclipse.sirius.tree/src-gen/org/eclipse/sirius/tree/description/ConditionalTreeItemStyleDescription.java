@@ -13,8 +13,8 @@ package org.eclipse.sirius.tree.description;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Conditional Tree Item Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Conditional Tree Item Style
+ * Description</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -36,7 +36,7 @@ public interface ConditionalTreeItemStyleDescription extends ConditionalStyleDes
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(TreeItemStyleDescription)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getConditionalTreeItemStyleDescription_Style()
@@ -48,7 +48,7 @@ public interface ConditionalTreeItemStyleDescription extends ConditionalStyleDes
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.ConditionalTreeItemStyleDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

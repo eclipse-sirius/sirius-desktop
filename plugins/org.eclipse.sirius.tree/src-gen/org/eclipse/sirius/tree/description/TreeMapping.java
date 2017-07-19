@@ -34,22 +34,25 @@ public interface TreeMapping extends RepresentationElementMapping {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Elements</em>' attribute.
      * @see #setSemanticElements(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeMapping_SemanticElements()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='tree.DTreeElement | current DTreeElement.' containerView='ecore.EObject | container of the current DTreeElement (variable is available if container is not null).' container='ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator).'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        Collection<EObject> or an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables view='tree.DTreeElement |
+     *        current DTreeElement.' containerView='ecore.EObject | container of the current DTreeElement (variable is
+     *        available if container is not null).' container='ecore.EObject | semantic target of $containerView (if it
+     *        is a DSemanticDecorator).'"
      * @generated
      */
     String getSemanticElements();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeMapping#getSemanticElements
-     * <em>Semantic Elements</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeMapping#getSemanticElements <em>Semantic
+     * Elements</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Semantic Elements</em>' attribute.
      * @see #getSemanticElements()

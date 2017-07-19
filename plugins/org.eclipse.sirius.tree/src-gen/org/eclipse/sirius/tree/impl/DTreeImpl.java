@@ -49,7 +49,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTreeImpl() {
@@ -97,7 +97,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetTarget() {
@@ -135,7 +135,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeDescription basicGetDescription() {
@@ -203,7 +203,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -232,7 +232,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -272,7 +272,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -299,7 +299,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -323,7 +323,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -343,7 +343,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -369,7 +369,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

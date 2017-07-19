@@ -21,12 +21,12 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDomainClass <em>Domain Class</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getPreconditionExpression
- * <em>Precondition Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getSemanticCandidatesExpression
- * <em>Semantic Candidates Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getReusedTreeItemMappings
- * <em>Reused Tree Item Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getPreconditionExpression <em>Precondition
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getSemanticCandidatesExpression <em>Semantic
+ * Candidates Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getReusedTreeItemMappings <em>Reused Tree Item
+ * Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getAllSubMappings <em>All Sub Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getSpecialize <em>Specialize</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDelete <em>Delete</em>}</li>
@@ -47,7 +47,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_DomainClass()
@@ -57,9 +57,9 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     String getDomainClass();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDomainClass
-     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDomainClass <em>Domain
+     * Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -81,9 +81,11 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_PreconditionExpression()
      * @model dataType="org.eclipse.sirius.description.InterpretedExpression" annotation =
      *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='tree.DTreeElement | current DTreeElement.' containerView='ecore.EObject | container of the current DTreeElement (variable is available if container is not null).' container='ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator).'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an
+     *        EObject.'" annotation= "http://www.eclipse.org/sirius/interpreted/expression/variables
+     *        view='tree.DTreeElement | current DTreeElement.' containerView='ecore.EObject | container of the current
+     *        DTreeElement (variable is available if container is not null).' container='ecore.EObject | semantic target
+     *        of $containerView (if it is a DSemanticDecorator).'"
      * @generated
      */
     String getPreconditionExpression();
@@ -91,7 +93,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition Expression</em>' attribute.
      * @see #getPreconditionExpression()
@@ -109,9 +111,11 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_SemanticCandidatesExpression()
      * @model dataType="org.eclipse.sirius.description.InterpretedExpression" annotation =
      *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='tree.DTreeElement | current DTreeElement.' containerView='ecore.EObject | container of the current DTreeElement (variable is available if container is not null).' container='ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator).'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an
+     *        EObject.'" annotation= "http://www.eclipse.org/sirius/interpreted/expression/variables
+     *        view='tree.DTreeElement | current DTreeElement.' containerView='ecore.EObject | container of the current
+     *        DTreeElement (variable is available if container is not null).' container='ecore.EObject | semantic target
+     *        of $containerView (if it is a DSemanticDecorator).'"
      * @generated
      */
     String getSemanticCandidatesExpression();
@@ -119,7 +123,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getSemanticCandidatesExpression
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #getSemanticCandidatesExpression()
@@ -135,7 +139,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Tree Item Mappings</em>' reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_ReusedTreeItemMappings()
      * @model
@@ -151,7 +155,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Sub Mappings</em>' reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_AllSubMappings()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -166,7 +170,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Specialize</em>' reference.
      * @see #setSpecialize(TreeItemMapping)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_Specialize()
@@ -178,7 +182,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getSpecialize
      * <em>Specialize</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Specialize</em>' reference.
      * @see #getSpecialize()
@@ -208,7 +212,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDelete <em>Delete</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Delete</em>' containment reference.
      * @see #getDelete()
@@ -224,7 +228,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Create</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_Create()
      * @model containment="true"
@@ -240,7 +244,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Dnd Tools</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_DndTools()
      * @model containment="true"
@@ -257,7 +261,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Popup Menus</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_PopupMenus()
      * @model containment="true"

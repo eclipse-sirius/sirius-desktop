@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMappingContainer#getSubItemMappings <em>Sub Item Mappings</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMappingContainer#getSubItemMappings <em>Sub Item
+ * Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.TreeItemMappingContainer#getDropTools <em>Drop Tools</em>}</li>
  * </ul>
  *
@@ -39,7 +39,7 @@ public interface TreeItemMappingContainer extends EObject {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sub Item Mappings</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMappingContainer_SubItemMappings()
      * @model containment="true" keys="name"
@@ -55,7 +55,7 @@ public interface TreeItemMappingContainer extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Drop Tools</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMappingContainer_DropTools()
      * @model containment="true"

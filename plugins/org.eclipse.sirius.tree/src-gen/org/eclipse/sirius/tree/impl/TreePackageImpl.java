@@ -10,13 +10,22 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.impl;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
@@ -31,48 +40,48 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TreePackageImpl extends EPackageImpl implements TreePackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dTreeItemContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dTreeEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dTreeElementEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dTreeItemEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass treeItemStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dTreeElementSynchronizerEClass = null;
@@ -96,7 +105,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -108,7 +117,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * This method is used to initialize {@link TreePackage#eINSTANCE} when that field is accessed. Clients should not
      * invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -148,9 +157,34 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
         return theTreePackage;
     }
 
+    protected static void addAnnotationJMA(ENamedElement eNamedElement, int depth, String source, String[] details, URI[] references) {
+        EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
+        eAnnotation.setSource(source);
+        EMap<String, String> theDetails = eAnnotation.getDetails();
+        for (int i = 1; i < details.length; i += 2) {
+            theDetails.put(details[i - 1], details[i]);
+        }
+        EList<EAnnotation> annotations = eNamedElement.getEAnnotations();
+        for (int i = 0; i < depth; ++i) {
+            @SuppressWarnings("unchecked")
+            EList<EAnnotation> childAnnotations = (EList<EAnnotation>) (EList<?>) annotations.get(annotations.size() - 1).getContents();
+            annotations = childAnnotations;
+        }
+        annotations.remove(1);
+        annotations.add(eAnnotation);
+        if (references != null) {
+            InternalEList<EObject> eAnnotationReferences = (InternalEList<EObject>) eAnnotation.getReferences();
+            for (URI reference : references) {
+                InternalEObject internalEObject = (InternalEObject) EcoreFactory.eINSTANCE.createEObject();
+                internalEObject.eSetProxyURI(reference);
+                eAnnotationReferences.addUnique(internalEObject);
+            }
+        }
+    }
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +194,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +204,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +214,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -190,7 +224,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +234,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -210,7 +244,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -220,7 +254,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +264,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -240,7 +274,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +284,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -260,7 +294,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +304,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -280,7 +314,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -290,7 +324,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,7 +334,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -310,7 +344,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -320,7 +354,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -330,7 +364,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -338,7 +372,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
     /**
      * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
      * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -374,7 +408,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -382,7 +416,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
     /**
      * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
      * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {

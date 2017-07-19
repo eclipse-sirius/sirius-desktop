@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
 public class DTreeElementImpl extends DRepresentationElementImpl implements DTreeElement {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTreeElementImpl() {
@@ -40,7 +40,7 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -50,7 +50,7 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -61,7 +61,7 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeMapping basicGetTreeElementMapping() {
@@ -73,7 +73,7 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +90,7 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

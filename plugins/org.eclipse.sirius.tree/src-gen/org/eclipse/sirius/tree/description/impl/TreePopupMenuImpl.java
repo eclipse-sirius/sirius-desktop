@@ -30,8 +30,8 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreePopupMenuImpl#getMenuItemDescriptions
- * <em>Menu Item Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreePopupMenuImpl#getMenuItemDescriptions <em>Menu Item
+ * Descriptions</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,7 +40,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
     /**
      * The cached value of the '{@link #getMenuItemDescriptions() <em>Menu Item Descriptions</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMenuItemDescriptions()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreePopupMenuImpl() {
@@ -58,7 +58,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -126,7 +126,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

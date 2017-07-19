@@ -46,7 +46,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemUpdaterImpl() {
@@ -55,7 +55,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,7 +75,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDirectEdit(TreeItemEditionTool newDirectEdit, NotificationChain msgs) {
@@ -94,7 +94,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +118,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +185,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

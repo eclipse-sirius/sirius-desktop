@@ -48,7 +48,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTreeItemContainerImpl() {
@@ -57,7 +57,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -95,7 +95,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -140,7 +140,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

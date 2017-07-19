@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,13 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
+import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 
@@ -38,6 +40,8 @@ import com.google.common.collect.Sets;
  * 
  */
 public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressionQuery {
+
+    private static final String TREE_D_TREE_ELEMENT = "tree.DTreeElement"; //$NON-NLS-1$
 
     /**
      * Default constructor.
@@ -70,6 +74,19 @@ public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressio
         superResult.add(TreePackage.eINSTANCE);
         superResult.add(DescriptionPackage.eINSTANCE);
         return superResult;
+    }
+
+    @Override
+    public Map<String, VariableType> getAvailableVariables() {
+        Map<String, VariableType> availableVariables = super.getAvailableVariables();
+
+        /*
+         * [516578] tool variables are not displayed in autocompletion.
+         */
+        if (target instanceof TreeItemContainerDropTool) {
+            availableVariables.put(IInterpreterSiriusVariables.ELEMENT, VariableType.fromString(TREE_D_TREE_ELEMENT));
+        }
+        return availableVariables;
     }
 
     /**

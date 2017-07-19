@@ -22,8 +22,8 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemStyleDescription#getBackgroundColor <em>Background Color</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemStyleDescription#getBackgroundColor <em>Background
+ * Color</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemStyleDescription()
@@ -50,7 +50,7 @@ public interface TreeItemStyleDescription extends StyleDescription, LabelStyleDe
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemStyleDescription#getBackgroundColor
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()

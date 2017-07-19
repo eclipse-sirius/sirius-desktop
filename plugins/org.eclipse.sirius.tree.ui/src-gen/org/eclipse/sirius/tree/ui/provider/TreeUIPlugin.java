@@ -201,7 +201,7 @@ public final class TreeUIPlugin extends EMFPlugin {
 
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated NOT
          */
         public Implementation() {

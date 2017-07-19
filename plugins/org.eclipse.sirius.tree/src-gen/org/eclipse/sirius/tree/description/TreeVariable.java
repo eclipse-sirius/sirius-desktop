@@ -35,7 +35,7 @@ public interface TreeVariable extends AbstractVariable, VariableContainer {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Documentation</em>' attribute.
      * @see #setDocumentation(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeVariable_Documentation()
@@ -47,7 +47,7 @@ public interface TreeVariable extends AbstractVariable, VariableContainer {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeVariable#getDocumentation
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Documentation</em>' attribute.
      * @see #getDocumentation()

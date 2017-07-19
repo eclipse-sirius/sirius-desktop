@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.business.internal.metamodel.TreeToolVariables;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.TreeDescription;
+import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -59,5 +60,29 @@ public class TreeVariablesTest extends AbstractInterpretedExpressionTestCase {
         assertVariableExistenceAndType(treeItemCreationTool, "container", "ecore.EObject", variables, variablesToType);
         assertVariableExistenceAndType(treeItemCreationTool, "element", "ecore.EObject", variables, variablesToType);
         assertVariableExistenceAndType(treeItemCreationTool, "root", "ecore.EObject", variables, variablesToType);
+    }
+
+    public void testInterpreterContextForContainerDropTool() {
+        // 1 - Setup
+        TreeDescription treeDescription = DescriptionFactory.eINSTANCE.createTreeDescription();
+        TreeItemMapping treeItemMapping = DescriptionFactory.eINSTANCE.createTreeItemMapping();
+        treeItemMapping.setDomainClass("ecore.EClass");
+        treeDescription.getSubItemMappings().add(treeItemMapping);
+        TreeItemContainerDropTool treeItemContainerDropTool = DescriptionFactory.eINSTANCE
+                .createTreeItemContainerDropTool();
+        new TreeToolVariables().doSwitch(treeItemContainerDropTool);
+        treeItemMapping.getDropTools().add(treeItemContainerDropTool);
+
+        // 2 - Code to test
+        IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(
+                treeItemContainerDropTool, ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT);
+
+        // 3 - Test
+        Map<String, VariableType> variablesToType = context.getVariables();
+        Set<String> variables = variablesToType.keySet();
+
+        // check tool variables
+        assertVariableExistenceAndType(treeItemContainerDropTool, "newContainer", "ecore.EObject", variables,
+                variablesToType);
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" name="validateVariableTypeTree" version="12.0.0.2017041100">
+  <ownedViewpoints name="VSMTypes">
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="Tree" domainClass="interactions.Model">
+      <subItemMappings name="Participants" domainClass="interactions.Participant" semanticCandidatesExpression="feature:eAllContents">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+      <dropTools name="Drop participant" precondition="aql:newContainer.oclIsKindOf(interactions::Participant) and element&lt;>null" forceRefresh="true">
+        <oldContainer name="oldContainer"/>
+        <newContainer name="newContainer"/>
+        <element name="element"/>
+        <newViewContainer name="newViewContainer"/>
+        <precedingSiblings name="precedingSiblings" documentation="The list of all the preceding siblings in a Drag and Drop operation"/>
+      </dropTools>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

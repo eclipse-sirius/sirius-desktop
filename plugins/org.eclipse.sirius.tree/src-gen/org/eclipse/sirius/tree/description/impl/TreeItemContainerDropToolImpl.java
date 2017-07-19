@@ -39,21 +39,21 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getFirstModelOperation
- * <em>First Model Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getVariables <em>Variables</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getOldContainer
- * <em>Old Container</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getNewContainer
- * <em>New Container</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getFirstModelOperation <em>First
+ * Model Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getVariables
+ * <em>Variables</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getOldContainer <em>Old
+ * Container</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getNewContainer <em>New
+ * Container</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getElement <em>Element</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getNewViewContainer
- * <em>New View Container</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getPrecedingSiblings
- * <em>Preceding Siblings</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getDragSource <em>Drag Source</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getNewViewContainer <em>New View
+ * Container</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getPrecedingSiblings <em>Preceding
+ * Siblings</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemContainerDropToolImpl#getDragSource <em>Drag
+ * Source</em>}</li>
  * </ul>
  *
  * @generated
@@ -62,7 +62,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
     /**
      * The cached value of the '{@link #getFirstModelOperation() <em>First Model Operation</em>}' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFirstModelOperation()
      * @generated
      * @ordered
@@ -102,7 +102,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
     /**
      * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getElement()
      * @generated
      * @ordered
@@ -132,7 +132,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
     /**
      * The default value of the '{@link #getDragSource() <em>Drag Source</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDragSource()
      * @generated
      * @ordered
@@ -142,7 +142,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
     /**
      * The cached value of the '{@link #getDragSource() <em>Drag Source</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDragSource()
      * @generated
      * @ordered
@@ -151,7 +151,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemContainerDropToolImpl() {
@@ -160,7 +160,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFirstModelOperation(ModelOperation newFirstModelOperation, NotificationChain msgs) {
@@ -200,7 +200,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -249,7 +249,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetOldContainer(DropContainerVariable newOldContainer, NotificationChain msgs) {
@@ -268,7 +268,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -292,7 +292,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -302,7 +302,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetNewContainer(DropContainerVariable newNewContainer, NotificationChain msgs) {
@@ -321,7 +321,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -345,7 +345,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -355,7 +355,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetElement(ElementDropVariable newElement, NotificationChain msgs) {
@@ -374,7 +374,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -398,7 +398,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -408,7 +408,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetNewViewContainer(ContainerViewVariable newNewViewContainer, NotificationChain msgs) {
@@ -428,7 +428,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -454,7 +454,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -464,7 +464,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetPrecedingSiblings(PrecedingSiblingsVariables newPrecedingSiblings, NotificationChain msgs) {
@@ -484,7 +484,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -510,7 +510,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -520,7 +520,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -534,7 +534,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -560,7 +560,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -588,7 +588,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -626,7 +626,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -662,7 +662,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -690,7 +690,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -710,7 +710,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -730,7 +730,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

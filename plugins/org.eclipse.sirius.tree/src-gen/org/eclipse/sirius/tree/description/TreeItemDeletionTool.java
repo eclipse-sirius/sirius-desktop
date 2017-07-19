@@ -27,14 +27,14 @@ package org.eclipse.sirius.tree.description;
  */
 public interface TreeItemDeletionTool extends TreeItemTool {
     /**
-     * Returns the value of the '<em><b>Mapping</b></em>' container reference. It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getDelete <em>Delete</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Mapping</b></em>' container reference. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDelete <em>Delete</em>}'. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Mapping</em>' reference list isn't clear, there really should be more of a description
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mapping</em>' container reference.
      * @see #setMapping(TreeItemMapping)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemDeletionTool_Mapping()
@@ -47,7 +47,7 @@ public interface TreeItemDeletionTool extends TreeItemTool {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemDeletionTool#getMapping
      * <em>Mapping</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mapping</em>' container reference.
      * @see #getMapping()

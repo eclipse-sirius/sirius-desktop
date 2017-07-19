@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -275,7 +275,13 @@ public abstract class AbstractTextWithButtonPropertySection extends AbstractView
     }
 
     protected void appendVariablesDetails(EAttribute exp, StringBuilder sb) {
-        final EAnnotation variables = exp.getEAnnotation(VARIABLES);
+        final EAnnotation variables;
+        EAnnotation overrideAnnotation = eObject.eClass().getEAnnotation(VARIABLES + "_" + exp.getName());
+        if (overrideAnnotation == null || overrideAnnotation.getDetails().isEmpty()) {
+            variables = exp.getEAnnotation(VARIABLES);
+        } else {
+            variables = overrideAnnotation;
+        }
         if (variables != null && !variables.getDetails().isEmpty()) {
             addNewLine(sb);
             sb.append("Available variables:");

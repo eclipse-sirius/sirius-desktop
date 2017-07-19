@@ -35,7 +35,7 @@ public interface TreeItemUpdater extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Direct Edit</em>' containment reference.
      * @see #setDirectEdit(TreeItemEditionTool)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemUpdater_DirectEdit()
@@ -45,9 +45,9 @@ public interface TreeItemUpdater extends EObject {
     TreeItemEditionTool getDirectEdit();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemUpdater#getDirectEdit
-     * <em>Direct Edit</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemUpdater#getDirectEdit <em>Direct
+     * Edit</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Direct Edit</em>' containment reference.
      * @see #getDirectEdit()
@@ -57,7 +57,7 @@ public interface TreeItemUpdater extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      * @generated
      */
@@ -65,7 +65,7 @@ public interface TreeItemUpdater extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */

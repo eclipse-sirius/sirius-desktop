@@ -42,19 +42,19 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getFirstModelOperation
- * <em>First Model Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getFirstModelOperation <em>First Model
+ * Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getVariables <em>Variables</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getOldContainer <em>Old Container</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getNewContainer <em>New Container</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getElement <em>Element</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getNewViewContainer
- * <em>New View Container</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getNewViewContainer <em>New View
+ * Container</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getContainers <em>Containers</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getDragSourceType <em>Drag Source Type</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getPrecedingSiblings
- * <em>Preceding Siblings</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getDragSourceType <em>Drag Source
+ * Type</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDragToolImpl#getPrecedingSiblings <em>Preceding
+ * Siblings</em>}</li>
  * </ul>
  *
  * @generated
@@ -64,7 +64,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
     /**
      * The cached value of the '{@link #getFirstModelOperation() <em>First Model Operation</em>}' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFirstModelOperation()
      * @generated
      * @ordered
@@ -104,7 +104,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
     /**
      * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getElement()
      * @generated
      * @ordered
@@ -124,7 +124,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
     /**
      * The cached value of the '{@link #getContainers() <em>Containers</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainers()
      * @generated
      * @ordered
@@ -134,7 +134,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
     /**
      * The default value of the '{@link #getDragSourceType() <em>Drag Source Type</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDragSourceType()
      * @generated
      * @ordered
@@ -144,7 +144,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
     /**
      * The cached value of the '{@link #getDragSourceType() <em>Drag Source Type</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDragSourceType()
      * @generated
      * @ordered
@@ -163,7 +163,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemDragToolImpl() {
@@ -172,7 +172,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -192,7 +192,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFirstModelOperation(ModelOperation newFirstModelOperation, NotificationChain msgs) {
@@ -212,7 +212,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -249,7 +249,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetOldContainer(DropContainerVariable newOldContainer, NotificationChain msgs) {
@@ -278,7 +278,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -302,7 +302,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -312,7 +312,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetNewContainer(DropContainerVariable newNewContainer, NotificationChain msgs) {
@@ -331,7 +331,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -355,7 +355,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -365,7 +365,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetElement(ElementDropVariable newElement, NotificationChain msgs) {
@@ -384,7 +384,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -408,7 +408,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -418,7 +418,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetNewViewContainer(ContainerViewVariable newNewViewContainer, NotificationChain msgs) {
@@ -437,7 +437,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -461,7 +461,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -473,7 +473,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -486,7 +486,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -496,7 +496,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -510,7 +510,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -520,7 +520,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetPrecedingSiblings(PrecedingSiblingsVariables newPrecedingSiblings, NotificationChain msgs) {
@@ -539,7 +539,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -563,7 +563,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -589,7 +589,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -619,7 +619,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -661,7 +661,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -700,7 +700,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -730,7 +730,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -750,7 +750,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -770,7 +770,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

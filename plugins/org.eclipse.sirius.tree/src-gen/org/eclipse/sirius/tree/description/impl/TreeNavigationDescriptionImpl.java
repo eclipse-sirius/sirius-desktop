@@ -26,8 +26,8 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigati
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.description.impl.TreeNavigationDescriptionImpl#getTreeDescription
- * <em>Tree Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeNavigationDescriptionImpl#getTreeDescription <em>Tree
+ * Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -36,7 +36,7 @@ public class TreeNavigationDescriptionImpl extends RepresentationNavigationDescr
     /**
      * The cached value of the '{@link #getTreeDescription() <em>Tree Description</em>}' reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTreeDescription()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class TreeNavigationDescriptionImpl extends RepresentationNavigationDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeNavigationDescriptionImpl() {
@@ -54,7 +54,7 @@ public class TreeNavigationDescriptionImpl extends RepresentationNavigationDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class TreeNavigationDescriptionImpl extends RepresentationNavigationDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class TreeNavigationDescriptionImpl extends RepresentationNavigationDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeDescription basicGetTreeDescription() {
@@ -92,7 +92,7 @@ public class TreeNavigationDescriptionImpl extends RepresentationNavigationDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class TreeNavigationDescriptionImpl extends RepresentationNavigationDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class TreeNavigationDescriptionImpl extends RepresentationNavigationDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class TreeNavigationDescriptionImpl extends RepresentationNavigationDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class TreeNavigationDescriptionImpl extends RepresentationNavigationDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

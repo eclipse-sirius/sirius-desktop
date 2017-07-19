@@ -23,7 +23,7 @@ import org.eclipse.sirius.tree.description.PrecedingSiblingsVariables;
 public class PrecedingSiblingsVariablesImpl extends TreeVariableImpl implements PrecedingSiblingsVariables {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PrecedingSiblingsVariablesImpl() {
@@ -32,7 +32,7 @@ public class PrecedingSiblingsVariablesImpl extends TreeVariableImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

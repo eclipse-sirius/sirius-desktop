@@ -40,7 +40,7 @@ public interface DTree extends DRepresentation, DTreeItemContainer {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Elements</em>' reference list.
      * @see org.eclipse.sirius.tree.TreePackage#getDTree_SemanticElements()
      * @model
@@ -55,7 +55,7 @@ public interface DTree extends DRepresentation, DTreeItemContainer {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(TreeDescription)
      * @see org.eclipse.sirius.tree.TreePackage#getDTree_Description()

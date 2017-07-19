@@ -21,8 +21,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemTool#getFirstModelOperation <em>First Model Operation</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemTool#getFirstModelOperation <em>First Model
+ * Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.description.TreeItemTool#getVariables <em>Variables</em>}</li>
  * </ul>
  *
@@ -38,7 +38,7 @@ public interface TreeItemTool extends AbstractToolDescription {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>First Model Operation</em>' containment reference.
      * @see #setFirstModelOperation(ModelOperation)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemTool_FirstModelOperation()
@@ -48,9 +48,9 @@ public interface TreeItemTool extends AbstractToolDescription {
     ModelOperation getFirstModelOperation();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemTool#getFirstModelOperation
-     * <em>First Model Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemTool#getFirstModelOperation <em>First
+     * Model Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>First Model Operation</em>' containment reference.
      * @see #getFirstModelOperation()
@@ -66,7 +66,7 @@ public interface TreeItemTool extends AbstractToolDescription {
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Variables</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemTool_Variables()
      * @model containment="true"

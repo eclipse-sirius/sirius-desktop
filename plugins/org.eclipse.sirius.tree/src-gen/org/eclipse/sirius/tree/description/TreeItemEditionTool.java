@@ -40,7 +40,7 @@ public interface TreeItemEditionTool extends TreeItemTool {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mask</em>' containment reference.
      * @see #setMask(EditMaskVariables)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemEditionTool_Mask()
@@ -52,7 +52,7 @@ public interface TreeItemEditionTool extends TreeItemTool {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemEditionTool#getMask <em>Mask</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mask</em>' containment reference.
      * @see #getMask()
@@ -68,7 +68,7 @@ public interface TreeItemEditionTool extends TreeItemTool {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mapping</em>' reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemEditionTool_Mapping()
      * @model
@@ -83,7 +83,7 @@ public interface TreeItemEditionTool extends TreeItemTool {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementDropVariable)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemEditionTool_Element()
@@ -93,9 +93,9 @@ public interface TreeItemEditionTool extends TreeItemTool {
     ElementDropVariable getElement();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemEditionTool#getElement <em>Element</em>
-     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemEditionTool#getElement
+     * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Element</em>' containment reference.
      * @see #getElement()
@@ -110,7 +110,7 @@ public interface TreeItemEditionTool extends TreeItemTool {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Root</em>' containment reference.
      * @see #setRoot(ElementDropVariable)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemEditionTool_Root()
@@ -122,7 +122,7 @@ public interface TreeItemEditionTool extends TreeItemTool {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemEditionTool#getRoot <em>Root</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Root</em>' containment reference.
      * @see #getRoot()
