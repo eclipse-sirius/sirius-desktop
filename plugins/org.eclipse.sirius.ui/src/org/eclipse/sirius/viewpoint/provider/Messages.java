@@ -83,6 +83,18 @@ public final class Messages {
     public static String AbstractSWTCallback_askForDetailName_canceled;
 
     @TranslatableMessage
+    public static String AbstractSWTCallback_DeleteRepresentationAction_message;
+
+    @TranslatableMessage
+    public static String AbstractSWTCallback_DeleteRepresentationAction_message_plural;
+
+    @TranslatableMessage
+    public static String AbstractSWTCallback_DeleteRepresentationAction_title;
+
+    @TranslatableMessage
+    public static String AbstractSWTCallback_DeleteRepresentationAction_title_plural;
+
+    @TranslatableMessage
     public static String AbstractSWTCallback_loadResourceError;
 
     @TranslatableMessage
@@ -298,19 +310,7 @@ public final class Messages {
     public static String DeleteRepresentationAction_deleteRepresentationTask_plural;
 
     @TranslatableMessage
-    public static String DeleteRepresentationAction_message;
-
-    @TranslatableMessage
-    public static String DeleteRepresentationAction_message_plural;
-
-    @TranslatableMessage
     public static String DeleteRepresentationAction_name;
-
-    @TranslatableMessage
-    public static String DeleteRepresentationAction_title;
-
-    @TranslatableMessage
-    public static String DeleteRepresentationAction_title_plural;
 
     @TranslatableMessage
     public static String DesignerControlAction_controlTask;

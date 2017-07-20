@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.tools.api.command.ui;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -22,12 +23,12 @@ import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchExce
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.TypedVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 
 /**
- * This interface is called when one need a UI callback, for variables
- * selection, or any other user interface stuff.
+ * This interface is called when one need a UI callback, for variables selection, or any other user interface stuff.
  * 
  * @author cbrun
  */
@@ -42,8 +43,7 @@ public interface UICallBack {
      *            the variable to select.
      * @return a Collection of selected EObjects.
      * @throws InterruptedException
-     *             when the process is interrupted (for instance the user
-     *             pressed "cancel".)
+     *             when the process is interrupted (for instance the user pressed "cancel".)
      */
     Collection<EObject> askForVariableValues(EObject model, SelectModelElementVariable variable) throws InterruptedException;
 
@@ -54,8 +54,7 @@ public interface UICallBack {
      *            the default name.
      * @return the name that has been inputed by the user.
      * @throws InterruptedException
-     *             when the process is interrupted (for instance the user
-     *             pressed "cancel".)
+     *             when the process is interrupted (for instance the user pressed "cancel".)
      */
     String askForDetailName(String defaultName) throws InterruptedException;
 
@@ -68,8 +67,7 @@ public interface UICallBack {
      *            the documentation of the future representation
      * @return the name that has been inputed by the user.
      * @throws InterruptedException
-     *             when the process is interrupted (for instance the user
-     *             pressed "cancel".)
+     *             when the process is interrupted (for instance the user pressed "cancel".)
      * @deprecated Replaced by {@link #askForDetailName(String, String, String)}
      * 
      */
@@ -82,32 +80,27 @@ public interface UICallBack {
      * @param defaultName
      *            the default name.
      * @param representationDescriptionName
-     *            the name of the representation description used for the future
-     *            representation
+     *            the name of the representation description used for the future representation
      * @param representationDescriptionDoc
      *            the documentation of the future representation
      * @return the name that has been inputed by the user.
      * @throws InterruptedException
-     *             when the process is interrupted (for instance the user
-     *             pressed "cancel".)
+     *             when the process is interrupted (for instance the user pressed "cancel".)
      */
     String askForDetailName(String defaultName, String representationDescriptionName, String representationDescriptionDoc) throws InterruptedException;
 
     /**
-     * Called when the user interface should prompt for a selection of EObject
-     * instances.
+     * Called when the user interface should prompt for a selection of EObject instances.
      * 
      * @param message
      *            the message to display.
      * @param input
      *            the tree of objects as input.
      * @param factory
-     *            the adapter factory to provides labels and icons for the
-     *            objects.
+     *            the adapter factory to provides labels and icons for the objects.
      * @return a list of the selected {@link EObject}.
      * @throws InterruptedException
-     *             when the process is interrupted (for instance the user
-     *             pressed "cancel".)
+     *             when the process is interrupted (for instance the user pressed "cancel".)
      */
     Collection<EObject> askForEObjects(String message, TreeItemWrapper input, AdapterFactory factory) throws InterruptedException;
 
@@ -119,12 +112,10 @@ public interface UICallBack {
      * @param input
      *            the tree of objects as input.
      * @param factory
-     *            the adapter factory to provides labels and icons for the
-     *            objects.
+     *            the adapter factory to provides labels and icons for the objects.
      * @return the selected {@link EObject}.
      * @throws InterruptedException
-     *             when the process is interrupted (for instance the user
-     *             pressed "cancel".)
+     *             when the process is interrupted (for instance the user pressed "cancel".)
      */
     EObject askForEObject(String message, TreeItemWrapper input, AdapterFactory factory) throws InterruptedException;
 
@@ -152,8 +143,7 @@ public interface UICallBack {
     void openRepresentation(Session openedSession, DRepresentation representation);
 
     /**
-     * Load a resource in the resource set associated to the editing domain
-     * given as parameter.
+     * Load a resource in the resource set associated to the editing domain given as parameter.
      * 
      * @param file
      *            the file
@@ -179,15 +169,13 @@ public interface UICallBack {
      * 
      * @param resource
      *            the externally deleted resource.
-     * @return <code>true</code> if the resource should be removed from the
-     *         session.
+     * @return <code>true</code> if the resource should be removed from the session.
      * @since 0.9.0
      */
     boolean shouldRemove(Resource resource);
 
     /**
-     * Called when the user interface should prompt for a choice. The deleted
-     * resource contains session critical data.
+     * Called when the user interface should prompt for a choice. The deleted resource contains session critical data.
      * 
      * @param session
      *            the current session.
@@ -197,6 +185,17 @@ public interface UICallBack {
      * @since 0.9.0
      */
     boolean shouldClose(Session session, Resource resource);
+
+    /**
+     * Called when the user interface should prompt for a choice about the representation deletion.
+     * 
+     * @param repDescriptors
+     *            the representationDescriptors being deleted.
+     * @return <code>true</code> if the session should be closed.
+     */
+    default boolean shouldDeleteRepresentation(Set<DRepresentationDescriptor> repDescriptors) {
+        return true;
+    };
 
     /**
      * Session name to display while saving this.
@@ -218,29 +217,24 @@ public interface UICallBack {
     void openError(String title, String message);
 
     /**
-     * Open an UI to ask the user the value corresponding to each TypedVariable
-     * of typedVariableList. </br>
+     * Open an UI to ask the user the value corresponding to each TypedVariable of typedVariableList. </br>
      * The returned list has the same size as typedVariableList
      * 
      * @param typedVariableList
      *            the list of variable for which to get the values
      * @param defaultValues
-     *            the default values used to initialize UI. This list must have
-     *            the typedVariableList size.
+     *            the default values used to initialize UI. This list must have the typedVariableList size.
      * @return the value provided by the user
      * @throws InterruptedException
-     *             when the process is interrupted (for instance the user
-     *             pressed "cancel".)
+     *             when the process is interrupted (for instance the user pressed "cancel".)
      */
     List<String> askForTypedVariable(List<TypedVariable> typedVariableList, List<String> defaultValues) throws InterruptedException;;
 
     /**
-     * Ask to end-user if he wants to open the session ignoring the resource
-     * version mismatch or not.
+     * Ask to end-user if he wants to open the session ignoring the resource version mismatch or not.
      * 
      * @param e
-     *            the {@link AirdResourceVersionMismatchException} holding
-     *            mismatch informations
+     *            the {@link AirdResourceVersionMismatchException} holding mismatch informations
      * 
      * @return true to reopen session false otherwise
      * @since 4.0

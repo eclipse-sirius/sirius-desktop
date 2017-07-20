@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -57,6 +58,7 @@ import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.selection.TypedVariableValueDialog;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.TypedVariable;
@@ -242,6 +244,18 @@ public abstract class AbstractSWTCallback implements UICallBack {
                 MessageFormat.format(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_shouldClose_message, resource.getURI()));
     }
 
+    @Override
+    public boolean shouldDeleteRepresentation(Set<DRepresentationDescriptor> repDescriptors) {
+        String deleteRepresenationDialogTitle = org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_DeleteRepresentationAction_title;
+        String deletionMessage = org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_DeleteRepresentationAction_message;
+        if (repDescriptors.size() >= 2) {
+            deleteRepresenationDialogTitle = org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_DeleteRepresentationAction_title_plural;
+            deletionMessage = org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_DeleteRepresentationAction_message_plural;
+        }
+        Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+        return MessageDialog.openConfirm(shell, deleteRepresenationDialogTitle, deletionMessage);
+    }
+
     /**
      * Convenience method to open a simple Yes/No question dialog.
      *
@@ -249,8 +263,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
      *            the dialog's title, or <code>null</code> if none
      * @param message
      *            the message
-     * @return <code>true</code> if the user presses the Yes button,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the user presses the Yes button, <code>false</code> otherwise
      */
     private boolean openQuestion(final String title, final String message) {
         if (inUIThread()) {
@@ -271,14 +284,12 @@ public abstract class AbstractSWTCallback implements UICallBack {
      * Return an expression describing what is saving :
      * <UL>
      * <LI>"Models" if only semantic files have been modified,</LI>
-     * <LI>"Representations" if only representations files have been modified,
-     * </LI>
+     * <LI>"Representations" if only representations files have been modified,</LI>
      * <LI>"Models and Representations" if both.</LI>
      * </UL>
      * suffixed with :
      * <UL>
-     * <LI>"project's session name" if the session has a second segment (that is
-     * the project name).</LI>
+     * <LI>"project's session name" if the session has a second segment (that is the project name).</LI>
      * <LI>"toPlatformString URI" if the session uses a InMemoryQuery</LI>
      * <LI>"the toString URI" otherwise.</LI>
      * </UL>

@@ -25,7 +25,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -41,6 +40,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
@@ -79,15 +79,9 @@ public class DeleteRepresentationAction extends Action {
     public void run() {
         Map<DRepresentationDescriptor, Session> representation2Session = getRepresentations();
         final Map<Session, Set<DRepresentationDescriptor>> session2DRepresentations = getSession2Representations(representation2Session);
-        String deleteRepresenationDialogTitle = Messages.DeleteRepresentationAction_title;
-        String deletionMessage = Messages.DeleteRepresentationAction_message;
-        if (representation2Session.size() >= 2) {
-            deleteRepresenationDialogTitle = Messages.DeleteRepresentationAction_title_plural;
-            deletionMessage = Messages.DeleteRepresentationAction_message_plural;
-        }
         try {
             Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-            boolean deletionConfirmation = MessageDialog.openConfirm(shell, deleteRepresenationDialogTitle, deletionMessage);
+            boolean deletionConfirmation = SiriusPlugin.getDefault().getUiCallback().shouldDeleteRepresentation(representation2Session.keySet());
             if (deletionConfirmation) {
                 IRunnableContext context = new ProgressMonitorDialog(shell);
                 IRunnableWithProgress editorClosingRunnable = new IRunnableWithProgress() {
