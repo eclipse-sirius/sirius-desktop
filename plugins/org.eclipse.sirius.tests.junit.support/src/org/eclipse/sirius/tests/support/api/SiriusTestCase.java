@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -150,8 +150,7 @@ public abstract class SiriusTestCase extends TestCase {
     protected static final String TEMPORARY_PROJECT_NAME = "DesignerTestProject";
 
     /**
-     * The default session URI used when there is no session path passed to the
-     * generic setup.
+     * The default session URI used when there is no session path passed to the generic setup.
      */
     protected static final URI DEFAULT_MODELING_PROJECT_REPRESENTATIONS_FILE_URI = URI
             .createPlatformResourceURI(File.separator + SiriusTestCase.TEMPORARY_PROJECT_NAME + File.separator + ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME, true);
@@ -179,8 +178,7 @@ public abstract class SiriusTestCase extends TestCase {
     protected EObject semanticModel;
 
     /**
-     * Indicates if the workspace project created during the setup should be a
-     * modeling one.
+     * Indicates if the workspace project created during the setup should be a modeling one.
      */
     protected boolean createModelingProject;
 
@@ -285,8 +283,7 @@ public abstract class SiriusTestCase extends TestCase {
      * @param semanticModelPath
      *            the semantic model path
      * @param modelerDescriptionPath
-     *            the modeler description path (PlatformPlugin or
-     *            PlatformResource)
+     *            the modeler description path (PlatformPlugin or PlatformResource)
      * @throws Exception
      *             any exception
      */
@@ -300,8 +297,7 @@ public abstract class SiriusTestCase extends TestCase {
      * @param semanticModelPath
      *            the semantic model path
      * @param modelerDescriptionPaths
-     *            the modeler description paths (PlatformPlugin or
-     *            PlatformResource)
+     *            the modeler description paths (PlatformPlugin or PlatformResource)
      * @throws Exception
      *             any exception
      */
@@ -315,8 +311,7 @@ public abstract class SiriusTestCase extends TestCase {
      * @param semanticModelPath
      *            the semantic model path
      * @param modelerDescriptionPath
-     *            the modeler description path (PlatformPlugin or
-     *            PlatformResource)
+     *            the modeler description path (PlatformPlugin or PlatformResource)
      * @param representationsModelPath
      *            the aird path
      * @throws Exception
@@ -332,8 +327,7 @@ public abstract class SiriusTestCase extends TestCase {
      * @param semanticModelPaths
      *            the semantic model paths
      * @param modelerDescriptionPaths
-     *            the modeler description paths (PlatformPlugin or
-     *            PlatformResource)
+     *            the modeler description paths (PlatformPlugin or PlatformResource)
      * @param representationsModelPath
      *            the aird path
      * @throws Exception
@@ -378,12 +372,18 @@ public abstract class SiriusTestCase extends TestCase {
         return uri;
     }
 
-    private URI toURI(final String path) {
+    /**
+     * Create an URI from a path.
+     * 
+     * @param path
+     *            path to a file in plugin or temporary project
+     * @return the URI
+     */
+    protected URI toURI(final String path) {
         if (path != null) {
             URI uri;
             /*
-             * if path starts with the temporary project name, then we have a
-             * local resource uri
+             * if path starts with the temporary project name, then we have a local resource uri
              */
             if (path.startsWith(SiriusTestCase.TEMPORARY_PROJECT_NAME) || (path.startsWith('/' + SiriusTestCase.TEMPORARY_PROJECT_NAME))) {
                 uri = toURI(path, ResourceURIType.RESOURCE_PLATFORM_URI);
@@ -401,8 +401,7 @@ public abstract class SiriusTestCase extends TestCase {
      * @param semanticResourceURIs
      *            the semantic model paths
      * @param modelerResourceURIs
-     *            the modeler description paths (PlatformPlugin or
-     *            PlatformResource)
+     *            the modeler description paths (PlatformPlugin or PlatformResource)
      * @param createSession
      *            force session creation even if it already exists
      * @param sessionResourceURI
@@ -482,9 +481,8 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * The default session URI used when there is no session path passed to the
-     * generic setup. The name of the aird used the name of the test case to
-     * easily debug.
+     * The default session URI used when there is no session path passed to the generic setup. The name of the aird used
+     * the name of the test case to easily debug.
      *
      * @return default session URI.
      */
@@ -521,8 +519,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Load the VSM at the specified URI and registers all its Viewpoints in the
-     * testcase.
+     * Load the VSM at the specified URI and registers all its Viewpoints in the testcase.
      * 
      * @param modelerResourceURI
      *            the URI of the VSM.
@@ -537,8 +534,8 @@ public abstract class SiriusTestCase extends TestCase {
             group = (Group) ModelUtils.load(modelerResourceURI, domain.getResourceSet());
         } catch (final IOException exception) {
             /*
-             * if an IOException occurs here, its probably because we try to
-             * create a plaftorm plugin URI and it was a local one
+             * if an IOException occurs here, its probably because we try to create a plaftorm plugin URI and it was a
+             * local one
              */
             String uri = modelerResourceURI.toString();
             if (uri.startsWith("platform:/plugin/")) {
@@ -563,8 +560,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Get a {@link ICommandFactory}. To override to return a custom
-     * {@link ICommandFactory}.
+     * Get a {@link ICommandFactory}. To override to return a custom {@link ICommandFactory}.
      * 
      * @return a custom {@link ICommandFactory}
      */
@@ -655,8 +651,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Clear the list of warnings. Can be useful when some messages are
-     * expected.
+     * Clear the list of warnings. Can be useful when some messages are expected.
      */
     protected synchronized void clearWarnings() {
         warnings.clear();
@@ -691,24 +686,20 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Activate or deactivate the external error detection: the test will fail
-     * in an error is logged or uncaught.
+     * Activate or deactivate the external error detection: the test will fail in an error is logged or uncaught.
      * 
      * @param errorCatchActive
-     *            boolean to indicate if we activate or deactivate the external
-     *            error detection
+     *            boolean to indicate if we activate or deactivate the external error detection
      */
     protected synchronized void setErrorCatchActive(boolean errorCatchActive) {
         this.errorCatchActive = errorCatchActive;
     }
 
     /**
-     * Activate or deactivate the external warning detection: the test will fail
-     * in a warning is logged or uncaught.
+     * Activate or deactivate the external warning detection: the test will fail in a warning is logged or uncaught.
      * 
      * @param warningCatchActive
-     *            boolean to indicate if we activate or deactivate the external
-     *            warning detection
+     *            boolean to indicate if we activate or deactivate the external warning detection
      */
     protected synchronized void setWarningCatchActive(boolean warningCatchActive) {
         this.warningCatchActive = warningCatchActive;
@@ -738,9 +729,8 @@ public abstract class SiriusTestCase extends TestCase {
     private void checkLogs() {
         /* an exception occurs in another thread */
         /*
-         * TODO: skip checkLoggers when we are in a shouldSkipUnreliableTests
-         * mode. We have some unwanted resource notifications during the
-         * teardown on jenkins.
+         * TODO: skip checkLoggers when we are in a shouldSkipUnreliableTests mode. We have some unwanted resource
+         * notifications during the teardown on jenkins.
          */
         if (!TestsUtil.shouldSkipUnreliableTests()) {
             if (doesAnErrorOccurs()) {
@@ -801,8 +791,8 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Convert the <code>status</code> exception in String and add it at the end
-     * of the <code>stringBuilder</code>. Add the
+     * Convert the <code>status</code> exception in String and add it at the end of the <code>stringBuilder</code>. Add
+     * the
      * 
      * @param stringBuilder
      *            The string build to use
@@ -875,8 +865,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Initialize a viewpoint (and force the initialization of the description
-     * to true).
+     * Initialize a viewpoint (and force the initialization of the description to true).
      * 
      * @param viewpointName
      *            the name of the viewpoint to initialize.
@@ -895,9 +884,7 @@ public abstract class SiriusTestCase extends TestCase {
      * @param alternateSemanticModel
      *            the model to use to initialize the viewpoint
      * @since 1.1
-     * @deprecated use
-     *             {@link SiriusTestCase#initViewpoint(String, Session, boolean)}
-     *             instead
+     * @deprecated use {@link SiriusTestCase#initViewpoint(String, Session, boolean)} instead
      */
     @Deprecated
     protected final void initViewpoint(final String viewpointName, final Session alternateSession, final EObject alternateSemanticModel) {
@@ -912,8 +899,7 @@ public abstract class SiriusTestCase extends TestCase {
      * @param alternateSession
      *            the session to use to initialize the viewpoint
      * @param initRepresentations
-     *            true to init representations at viewpoint activation, false to
-     *            not do it
+     *            true to init representations at viewpoint activation, false to not do it
      * @since 1.1
      */
     protected final void initViewpoint(final String viewpointName, final Session alternateSession, final boolean initRepresentations) {
@@ -1000,13 +986,11 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Create a new representation from the contextual semanticModel & the
-     * contextual Session.
+     * Create a new representation from the contextual semanticModel & the contextual Session.
      * 
      * @param representationDescriptionName
      *            the representation description name
-     * @return the created representation, or <code>null</code> if the
-     *         representation description could not be found
+     * @return the created representation, or <code>null</code> if the representation description could not be found
      */
     protected final DRepresentation createRepresentation(final String representationDescriptionName) {
         return createRepresentation(representationDescriptionName, representationDescriptionName, semanticModel, session);
@@ -1019,8 +1003,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            the representation description name
      * @param semantic
      *            the semantic root object
-     * @return the created representation, or <code>null</code> if the
-     *         representation description could not be found
+     * @return the created representation, or <code>null</code> if the representation description could not be found
      */
     protected final DRepresentation createRepresentation(final String representationDescriptionName, final EObject semantic) {
         return createRepresentation(representationDescriptionName, representationDescriptionName, semantic, session);
@@ -1035,8 +1018,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            the semantic root object
      * @param sessionToUse
      *            the session to use instead of the contextual Session
-     * @return the created representation, or <code>null</code> if the
-     *         representation description could not be found
+     * @return the created representation, or <code>null</code> if the representation description could not be found
      */
     protected final DRepresentation createRepresentation(final String representationDescriptionName, final EObject semantic, final Session sessionToUse) {
         return createRepresentation(representationDescriptionName, representationDescriptionName, semantic, sessionToUse);
@@ -1051,8 +1033,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            the name of the new representation
      * @param semantic
      *            the semantic root object
-     * @return the created representation, or <code>null</code> if the
-     *         representation description could not be found
+     * @return the created representation, or <code>null</code> if the representation description could not be found
      */
     protected final DRepresentation createRepresentation(final String representationDescriptionName, final String name, final EObject semantic) {
         return createRepresentation(representationDescriptionName, representationDescriptionName, semantic, session);
@@ -1069,8 +1050,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            the semantic root object
      * @param sessionToUse
      *            the session to use instead of the contextual Session
-     * @return the created representation, or <code>null</code> if the
-     *         representation description could not be found
+     * @return the created representation, or <code>null</code> if the representation description could not be found
      */
     protected final DRepresentation createRepresentation(final String representationDescriptionName, final String name, final EObject semantic, final Session sessionToUse) {
         final Collection<RepresentationDescription> descriptions = new ArrayList<RepresentationDescription>();
@@ -1103,12 +1083,11 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Get a {@link RepresentationDescription} ref from the current session
-     * ResourceSet.
+     * Get a {@link RepresentationDescription} ref from the current session ResourceSet.
      * 
      * @param localViewpoint
-     *            the Sirius local to the current session ResourceSet containing
-     *            the {@link RepresentationDescription} to get
+     *            the Sirius local to the current session ResourceSet containing the {@link RepresentationDescription}
+     *            to get
      * 
      * @param representationDescriptionName
      *            the name of the {@link RepresentationDescription} to get
@@ -1148,9 +1127,8 @@ public abstract class SiriusTestCase extends TestCase {
      * @param sessionToUse
      *            the Session from which ResourceSet to return the Viewpoint
      * 
-     * @return the first {@link Viewpoint} of the viewpoints Set, return a
-     *         logical Viewpoint from the session's ResourceSet and not from the
-     *         {@link ViewpointRegistry}'s ResourceSet
+     * @return the first {@link Viewpoint} of the viewpoints Set, return a logical Viewpoint from the session's
+     *         ResourceSet and not from the {@link ViewpointRegistry}'s ResourceSet
      */
     public Viewpoint getViewpointFromName(String viewpointName, Session sessionToUse) {
         Viewpoint localViewpoint = null;
@@ -1177,8 +1155,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Get a {@link RepresentationDescription} named
-     * <code>representationDescriptionName</code> owned by
+     * Get a {@link RepresentationDescription} named <code>representationDescriptionName</code> owned by
      * <code>viewpoint</code>.
      * 
      * @param representationDescriptionName
@@ -1187,8 +1164,7 @@ public abstract class SiriusTestCase extends TestCase {
      * @param viewpoint
      *            the {@link Viewpoint} in which to search
      * 
-     * @return the found {@link RepresentationDescription} or null if nothing
-     *         found
+     * @return the found {@link RepresentationDescription} or null if nothing found
      */
     public RepresentationDescription getRepresentationDescription(String representationDescriptionName, Viewpoint viewpoint) {
         RepresentationDescription result = null;
@@ -1202,12 +1178,10 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Get all the representation with the given representation description
-     * name.
+     * Get all the representation with the given representation description name.
      * 
      * @param representationDescriptionName
-     *            the name of the representation description. <code>null</code>
-     *            is not excepted.
+     *            the name of the representation description. <code>null</code> is not excepted.
      * @return a {@link Collection} with all representations retrieved.
      */
     protected final Collection<DRepresentation> getRepresentations(final String representationDescriptionName) {
@@ -1225,22 +1199,18 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Get all representation descriptors with the given representation
-     * description name.
+     * Get all representation descriptors with the given representation description name.
      * 
      * @param representationDescriptionName
-     *            the name of the representation description. <code>null</code>
-     *            is not excepted.
-     * @return a {@link Collection} with all representation descriptors
-     *         retrieved.
+     *            the name of the representation description. <code>null</code> is not excepted.
+     * @return a {@link Collection} with all representation descriptors retrieved.
      */
     protected final Collection<DRepresentationDescriptor> getRepresentationDescriptors(final String representationDescriptionName) {
         return getRepresentationDescriptors(representationDescriptionName, session);
     }
 
     /**
-     * Get all representations with the given representation description name in
-     * the given session.
+     * Get all representations with the given representation description name in the given session.
      * 
      * @param name
      *            the name. <code>null</code> is not excepted.
@@ -1263,12 +1233,10 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Get all representation descriptors with the given representation
-     * description name in the given session.
+     * Get all representation descriptors with the given representation description name in the given session.
      * 
      * @param representationDescriptionName
-     *            the name of the representation description. <code>null</code>
-     *            is not excepted.
+     *            the name of the representation description. <code>null</code> is not excepted.
      * @param alternateSession
      *            the session to look for representation
      * @return a {@link Collection} with all representations retrieved.
@@ -1288,8 +1256,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Get all representations with the given representation description name in
-     * the given session.
+     * Get all representations with the given representation description name in the given session.
      * 
      * @param name
      *            the name. <code>null</code> is not excepted.
@@ -1313,8 +1280,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Get all the representation with the given representation description
-     * name.
+     * Get all the representation with the given representation description name.
      * 
      * @param name
      *            the name. <code>null</code> is not excepted.
@@ -1369,8 +1335,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            the representation
      * @param semanticElement
      *            the semantic element
-     * @return the first representation element which has as target the semantic
-     *         element given as parameter
+     * @return the first representation element which has as target the semantic element given as parameter
      */
     protected final DRepresentationElement getFirstRepresentationElement(final DRepresentation representation, final EObject semanticElement) {
         for (final DRepresentationElement element : representation.getRepresentationElements()) {
@@ -1392,8 +1357,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            the semantic element
      * @param clazz
      *            the type of representation element
-     * @return the first representation element which has as target the semantic
-     *         element given as parameter
+     * @return the first representation element which has as target the semantic element given as parameter
      */
     @SuppressWarnings("unchecked")
     protected final <T> T getFirstRepresentationElement(final DRepresentation representation, final EObject semanticElement, final Class<T> clazz) {
@@ -1406,15 +1370,13 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Get all representation elements which target a given semantic element
-     * from a representation.
+     * Get all representation elements which target a given semantic element from a representation.
      * 
      * @param representation
      *            the representation
      * @param semanticElement
      *            the target semantic element
-     * @return all the graphical elements with the given semantic element as
-     *         target
+     * @return all the graphical elements with the given semantic element as target
      */
     protected final Collection<DRepresentationElement> getAllRepresentationElements(final DRepresentation representation, final EObject semanticElement) {
         final Collection<DRepresentationElement> elements = new HashSet<DRepresentationElement>();
@@ -1431,8 +1393,7 @@ public abstract class SiriusTestCase extends TestCase {
      * 
      * @param cmd
      *            the command to execute
-     * @return <code>true</code> if the execution succeed, <code>false</code>
-     *         otherwise
+     * @return <code>true</code> if the execution succeed, <code>false</code> otherwise
      */
     protected boolean executeCommand(final Command cmd) {
         boolean result = cmd.canExecute();
@@ -1551,8 +1512,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Change a preference and store the old value. It will be automatically
-     * reset during tear down.
+     * Change a preference and store the old value. It will be automatically reset during tear down.
      * 
      * TO CALL ONLY ONCE PER TEST (set up + test)
      * 
@@ -1575,8 +1535,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Change a boolean preference and store the old value. It will be
-     * automatically reset during tear down.
+     * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      * 
      * TO CALL ONLY ONCE PER TEST (set up + test)
      * 
@@ -1600,8 +1559,8 @@ public abstract class SiriusTestCase extends TestCase {
 
     /**
      * Restore this preference to its initial value. Should be called after
-     * {@link #changeDiagramPreference(String, Boolean)} of
-     * {@link #changeDiagramPreference(String, Integer)} to have effect.
+     * {@link #changeDiagramPreference(String, Boolean)} of {@link #changeDiagramPreference(String, Integer)} to have
+     * effect.
      * 
      * @param preferenceKey
      *            The key of the preference.
@@ -1613,8 +1572,8 @@ public abstract class SiriusTestCase extends TestCase {
 
     /**
      * Restore this preference to its initial value. Should be called after
-     * {@link #changeDiagramPreference(String, Boolean)} of
-     * {@link #changeDiagramPreference(String, Integer)} to have effect.
+     * {@link #changeDiagramPreference(String, Boolean)} of {@link #changeDiagramPreference(String, Integer)} to have
+     * effect.
      * 
      * @param preferenceKey
      *            The key of the preference.
@@ -1631,8 +1590,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Change a preference and store the old value. It will be automatically
-     * reset during tear down.
+     * Change a preference and store the old value. It will be automatically reset during tear down.
      * 
      * TO CALL ONLY ONCE PER TEST (set up + test)
      * 
@@ -1650,8 +1608,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Change a boolean preference and store the old value. It will be
-     * automatically reset during tear down.
+     * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      * 
      * TO CALL ONLY ONCE PER TEST (set up + test)
      * 
@@ -1670,8 +1627,8 @@ public abstract class SiriusTestCase extends TestCase {
 
     /**
      * Restore this preference to its initial value. Should be called after
-     * {@link #changeDiagramUIPreference(String, Boolean)} of
-     * {@link #changeDiagramUIPreference(String, Integer)} to have effect.
+     * {@link #changeDiagramUIPreference(String, Boolean)} of {@link #changeDiagramUIPreference(String, Integer)} to
+     * have effect.
      * 
      * @param preferenceKey
      *            The key of the preference.
@@ -1683,8 +1640,8 @@ public abstract class SiriusTestCase extends TestCase {
 
     /**
      * Restore this preference to its initial value. Should be called after
-     * {@link #changeDiagramUIPreference(String, Boolean)} of
-     * {@link #changeDiagramUIPreference(String, Integer)} to have effect.
+     * {@link #changeDiagramUIPreference(String, Boolean)} of {@link #changeDiagramUIPreference(String, Integer)} to
+     * have effect.
      * 
      * @param preferenceKey
      *            The key of the preference.
@@ -1701,8 +1658,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Change a boolean preference and store the old value to reset it after the
-     * test.
+     * Change a boolean preference and store the old value to reset it after the test.
      * 
      * @param preferenceKey
      *            The key of the preference.
@@ -1716,8 +1672,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Change a boolean preference and store the old value. It will be
-     * automatically reset during tear down.
+     * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      * 
      * TO CALL ONLY ONCE PER TEST (set up + test)
      * 
@@ -1738,8 +1693,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Change a boolean preference and store the old value. It will be
-     * automatically reset during tear down.
+     * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      * 
      * TO CALL ONLY ONCE PER TEST (set up + test)
      * 
@@ -1838,11 +1792,9 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * This will undo the last Command if possible and return <code>True</code>
-     * if it is, <code>False</code> otherwise.
+     * This will undo the last Command if possible and return <code>True</code> if it is, <code>False</code> otherwise.
      * 
-     * @return <code>True</code> if the command was undoable, <code>False</code>
-     *         otherwise.
+     * @return <code>True</code> if the command was undoable, <code>False</code> otherwise.
      * @throws Exception
      *             In case of problem
      */
@@ -1856,11 +1808,10 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * This will redo the last undone Command if possible and return
-     * <code>True</code> if it is, <code>False</code> otherwise.
+     * This will redo the last undone Command if possible and return <code>True</code> if it is, <code>False</code>
+     * otherwise.
      * 
-     * @return <code>True</code> if the command was undoable, <code>False</code>
-     *         otherwise.
+     * @return <code>True</code> if the command was undoable, <code>False</code> otherwise.
      * @throws Exception
      *             In case of problem
      */
@@ -1980,9 +1931,8 @@ public abstract class SiriusTestCase extends TestCase {
      * 
      * @param name
      *            name of the {@link Viewpoint} to look for.
-     * @return the first {@link Viewpoint} found in the registry with the
-     *         specified name, if any. The instance returned is the one from the
-     *         {@link Viewpoint} registry's editing domain.
+     * @return the first {@link Viewpoint} found in the registry with the specified name, if any. The instance returned
+     *         is the one from the {@link Viewpoint} registry's editing domain.
      */
     protected Option<Viewpoint> findViewpoint(String name) {
         for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
@@ -1994,8 +1944,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Return all resource type ecore or aird in resource set passed in
-     * parameter.
+     * Return all resource type ecore or aird in resource set passed in parameter.
      * 
      * @param rs
      *            the resource set.
@@ -2016,9 +1965,8 @@ public abstract class SiriusTestCase extends TestCase {
     /**
      * Check that the data has the expected migration need.
      * 
-     * It can be used to verify that a file has not be migrated before the test.
-     * And then it allows to check the effect of the migration in the other
-     * test.
+     * It can be used to verify that a file has not be migrated before the test. And then it allows to check the effect
+     * of the migration in the other test.
      * 
      * @param representationFileURI
      *            the uri of the representation file to check.
@@ -2034,9 +1982,8 @@ public abstract class SiriusTestCase extends TestCase {
     /**
      * Check that the data has the expected migration need.
      * 
-     * It can be used to verify that a file has not be migrated before the test.
-     * And then it allows to check the effect of the migration in the other
-     * test.
+     * It can be used to verify that a file has not be migrated before the test. And then it allows to check the effect
+     * of the migration in the other test.
      * 
      * @param vsmFileURI
      *            the uri of the VSM file to check.
@@ -2050,8 +1997,8 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Check that the data were not migrated before the test. It allows to check
-     * the effect of the migration in the other test.
+     * Check that the data were not migrated before the test. It allows to check the effect of the migration in the
+     * other test.
      * 
      * @param fileURI
      *            the uri of the file to check.
