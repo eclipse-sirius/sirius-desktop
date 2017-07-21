@@ -25,10 +25,11 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.properties.core.internal.Messages;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
- * This class can be used to convert any kind of Sirius object to an EEF one
- * using the name of their structural features.
+ * This class can be used to convert any kind of Sirius object to an EEF one using the name of their structural
+ * features.
  * 
  * @author sbegaudeau
  * 
@@ -97,8 +98,7 @@ public class DefaultDescriptionConverter<SIRIUS extends EObject> extends Abstrac
     }
 
     /**
-     * Converts the value of the given Sirius EAttribute from the Sirius EObject
-     * to the given EEF EObject.
+     * Converts the value of the given Sirius EAttribute from the Sirius EObject to the given EEF EObject.
      * 
      * @param siriusEObject
      *            The Sirius EObject
@@ -118,12 +118,16 @@ public class DefaultDescriptionConverter<SIRIUS extends EObject> extends Abstrac
                 Object value = siriusEObject.eGet(eAttribute);
                 eefEObject.eSet(eefEStructuralFeature, Integer.toString(Integer.valueOf(value.toString())));
             }
+        } else {
+            eefEStructuralFeature = eefEObject.eClass().getEStructuralFeature("identifier"); //$NON-NLS-1$
+            if (eAttribute.equals(DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME) && eefEStructuralFeature instanceof EAttribute) {
+                eefEObject.eSet(eefEStructuralFeature, siriusEObject.eGet(DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME));
+            }
         }
     }
 
     /**
-     * Converts the value of the given Sirius EReference from the Sirius EObject
-     * to the given EEF EObject.
+     * Converts the value of the given Sirius EReference from the Sirius EObject to the given EEF EObject.
      * 
      * @param siriusEObject
      *            The Sirius EObject
