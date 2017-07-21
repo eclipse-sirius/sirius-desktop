@@ -128,7 +128,7 @@ public class PageOrderer {
     /**
      * This method returns a flattened list of all isolated PagePositioning and
      * trees of PagePositioning linked to other PagePositioning to have an
-     * ordered list of page to display in their right order.
+     * ordered list of pages to display in their right order.
      * 
      * @param pagePositioningElements
      *            the list containing elements isolated or related to others or
@@ -342,8 +342,8 @@ public class PageOrderer {
      *            the {@link PositioningKind} to set for the given
      *            {@link PagePositioning}.
      * @param targetPageId
-     *            the id of the page that will be poisitionned regarding the
-     *            given {@link PagePositioning} 's page.
+     *            the id of the page that will be positioned regarding the given
+     *            {@link PagePositioning} 's page.
      * @param pagePositioning
      *            the component containing the page to position regarding the
      *            given page id.

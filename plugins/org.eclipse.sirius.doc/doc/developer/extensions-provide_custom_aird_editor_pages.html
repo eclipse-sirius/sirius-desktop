@@ -1,0 +1,338 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-provide_custom_aird_editor_pages</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusProvidecustomairdeditorpages">Sirius &#8211; Provide custom aird editor pages</h1>
+		<h2 id="Goals">Goals</h2>
+		<p>Sirius provides an aird editor with a default page allowing to handle viewpoints and representations as well as semantic models. It is the entry point to any Sirius project for end user.</p>
+		<p>Custom pages can be provided to aird editor instances to show different information not available in the default page. It can be anything from business information to aird information. The functionalities around custom page providing are the following: </p>
+		<ul>
+			<li>Custom page can replace the default page or any other contributed pages.  </li>
+			<li>Custom pages can be located before or after other pages.</li>
+			<li>Custom pages can be dynamically updated. I.e for any change in the resource set of the aird opened with the editor owing your page instance, you can tell the editor to execute reordering, removing or editor page tab refreshing commands in addition of a refresh done internally by your class.</li>
+			<li>Custom pages are displayed by aird editors only if a required context specified by your page is present. It no such context is specified, the page will always be shown in aird editors.</li>
+			<li>The update commands computing and internal refresh can be deferred to when your page is visible to avoid performance problem when browsing other page whereas yours is not used. This can be useful if you do heavy computing when refreshing or computing update commands.</li>
+		</ul>
+		<p>Sirius offers two distinct ways of providing custom pages for aird editor:</p>
+		<ul>
+			<li>an API with the 
+				<code>PageRegistry</code> as entry point.
+			</li>
+			<li>and the same API with 
+				<code>sessionEditorPageProvider</code> extension point as entry point.
+			</li>
+		</ul>
+		<h2 id="UsingtheAPItoprovidecustompages">Using the API to provide custom pages</h2>
+		<p>The API is composed of the following classes:</p>
+		<ul>
+			<li>The 
+				<code>AbstractSessionEditorPage</code>
+			</li>
+			<li>The 
+				<code>PageProvider</code>
+			</li>
+			<li>The 
+				<code>PageUpdateCOmmand</code>
+			</li>
+			<li>The 
+				<code>PositioningKind</code>
+			</li>
+			<li>The 
+				<code>PageUpdateCommandBuilder</code>
+			</li>
+			<li>The 
+				<code>PageRegistry</code>
+			</li>
+		</ul>
+		<p>and are available in the package 
+			<code>org.eclipse.sirius.ui.editor.api.pages</code> from the plugin 
+			<code>org.eclipse.sirius.ui.editor</code>
+		</p>
+		<p>To provide a custom page by using this API you have to:</p>
+		<ol>
+			<li>Build your custom page that extends 
+				<code>AbstractSessionEditorPage</code> and with the help of 
+				<code>PageUpdateCommandBuilder</code> if needed.
+			</li>
+			<li>Create a 
+				<code>PageProvider</code> that will provide your custom page as well as other custom pages you want.
+			</li>
+			<li>Register your 
+				<code>PageProvider</code> either directly in the 
+				<code>PageRegistry</code> or by using the provided extension point.
+			</li>
+			<li>Launch the runtime and open the aird editor of a modeling project. If the display context required by your custom page is present it will be visible.</li>
+		</ol>
+		<p>Example with the Sirius Debug Page:
+			<br/>
+			<img border="0" src="images/customPageApi_debugPage_example.png"/>
+		</p>
+		<h3 id="pagePositioning">Page positioning</h3>
+		<p>When contributing a custom page, you can tell where the editor tab corresponding to your page will be located regarding other pages' tab in different contexts:</p>
+		<ul>
+			<li>when the page is initialized by your 
+				<code>PageProvider</code>
+			</li>
+			<li>when the page position is updated by a reorder command in response to an aird editor&#8217;s session&#8217;s resource set event or a page visibility update.</li>
+		</ul>
+		<p>Whatever the context is, you always need to provide two kind of information to position your page regarding others:</p>
+		<ul>
+			<li>The 
+				<b>id</b> of the page from which your page will be placed relatively to it.
+			</li>
+			<li>The kind of positioning you want to achieve. The different kinds are defined by the enum 
+				<code>org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind</code>:
+				<ul>
+					<li>The 
+						<code>BEFORE</code> kind will place your page&#8217;s tab in the aird editor before the target page&#8217;s tab. For example with the debug page before 
+						<i>Overview</i>:
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/customPageApi_debugPage_before.png"/>
+		</p>
+		<ul>
+			<li>
+				<ul>
+					<li>The 
+						<code>AFTER</code> kind will place your page&#8217;s tab in the aird editor after the target page&#8217;s tab. For example with the debug page after 
+						<i>Overview</i>:
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/customPageApi_debugPage_after.png"/>
+		</p>
+		<ul>
+			<li>
+				<ul>
+					<li>The 
+						<code>REPLACE</code> kind will replace the target page&#8217;s tab in the aird editor by your page&#8217;s tab. For example with the debug page replace the default page 
+						<em>Overview</em>:
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/customPageApi_debugPage_replace.png"/>
+		</p>
+		<p>If a page identified by the id used to position your custom page does not exists in the aird editor when positioning your page, then your page will be added to the leftmost position.</p>
+		<h3 id="Buildingthecustompage">Building the custom page</h3>
+		<p>To build a custom page you need to create a class extending 
+			<code>org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage</code> that also extends 
+			<code>FormPage</code>.  
+			<br/>The UI creation part of your page is handled by the methods of 
+			<code>FormPage</code> with the method 
+			<code>createFormContent(IManagedForm managedForm)</code> as entry point.
+			<br/>The 
+			<code>AbstractSessionEditorPage</code> abstract class brings the following methods to implement:
+		</p>
+		<ul>
+			<li>
+				<code>Optional&lt;PageUpdateCommand&gt; pageChanged(boolean)</code>
+			</li>
+			<li>
+				<code>Optional&lt;PageUpdateCommand&gt; resourceSetChanged(ResourceSetChangeEvent)</code>
+			</li>
+			<li>
+				<code>Optional&lt;PositioningKind&gt; getPositioning()</code>
+			</li>
+			<li>
+				<code>Optional&lt;String&gt; getLocationId()</code>
+			</li>
+		</ul>
+		<p>There is also a method 
+			<code>NotificationFilter getFilterForPageRequesting()</code> with default behavior that can be overridden.
+		</p>
+		<h4 id="resourceSetChanged">resourceSetChanged</h4>
+		<p>This method is called by the aird editor whenever a resource set event occurs on its session&#8217;s resource set. The event can be a change regarding the aird file, or the loaded resources or viewpoints. </p>
+		<p>You can internally refresh your graphic components when called according to the change event. You also can return a list of 
+			<code>PageUpdateCommand</code> that the editor needs to execute to update your page by using the builder 
+			<code>PageUpdateCommandBuilder</code>. For example:
+		</p>
+		<pre><code>return Optional.of(new PageUpdateCommandBuilder().removePage().build());
+</code></pre>
+		<p>This builder allows you to build a command the owning aird editor must execute. The built command can do one or a combination of the following command:</p>
+		<ul>
+			<li>the REMOVE command (
+				<code>PageUpdateCommandBuilder removePage()</code>): when the aird editor execute this command, your page will be removed from the editor.
+			</li>
+			<li>the REORDER command (
+				<code>PageUpdateCommandBuilder reorderPage(PositioningKind positioningKind, String targetPageId)</code>): when the aird editor execute this command, your page will be placed at the defined position. To know more about positioning, please read the section 
+				<a href="#pagePositioning">Page Positioning</a>  
+			</li>
+			<li>the RENAME command 
+				<code>PageUpdateCommandBuilder renameTab(String newLabel)</code>: when the aird editor execute this command, the editor tab owning your page will have its label updated with the one given to build the command.
+			</li>
+		</ul>
+		<p>If the built command contains the remove command and a reorder, rename or both command, then the remove command will be executed but not the other(s).</p>
+		<p>If you does not need to use this functionality you must return 
+			<code>Optional.empty()</code>.
+		</p>
+		<h4 id="pageChanged">pageChanged</h4>
+		<p>This method is called with true as parameter when your page just becomes visible (i.e it is selected). It is called with false as parameter when any other page than yours is selected. </p>
+		<p>You can use the parameter to avoid doing heavy computation on model changes when you know your page is not visible to the end-user, and defer these to later, when it will become visible again (i.e. when pageChanged is invoked with 
+			<code>true</code>).
+		</p>
+		<p>You also can internally refresh your graphic components when called according to the change event. You also can return a list of 
+			<code>PageUpdateCommand</code>  that the editor needs to execute to update your page by using the builder 
+			<code>PageUpdateCommandBuilder</code>. See section 
+			<a href="#resourceSetChanged">resourceSetChanged</a> to have details about the commands. 
+		</p>
+		<p>If you want to apply page update only when the page is visible and if certain conditions are fulfilled regarding the session, then it is your responsibility to keep track of what happens since the last page selection with calls to 
+			<code>resourceSetChanged(ResourceSetChangeEvent)</code> to know if some update must be done.
+		</p>
+		<p>If you does not need to use this functionality you must return 
+			<code>Optional.empty()</code>.
+		</p>
+		<h4 id="getFilterForPageRequesting">getFilterForPageRequesting</h4>
+		<p>This method defined with a default implementation in 
+			<code>AbstractSessionEditorPage</code> allows to prevent calls to 
+			<code>AbstractSessionEditorPage.resourceSetChanged(ResourceSetChangeEvent)</code> for events you does not want to consider because you know your page will not refresh anything from these. 
+		</p>
+		<p>By default the filter 
+			<code>org.eclipse.emf.transaction.NotificationFilter.NOT_TOUCH</code> is used. This filter makes sure you are not called when all the event&#8217;s notification does not change any values.
+		</p>
+		<p>You can override this method to provide your own filter.</p>
+		<h4 id="getPositioning">getPositioning</h4>
+		<p>This method is used when your page is created to position it among other pages. See section 
+			<a href="#pagePositioning">Page Positioning</a>  to now more about how positioning works.
+		</p>
+		<p>It defines the kind of positioning to achieve.</p>
+		<p>If you don&#8217;t want to position your page relatively to another one, you can return 
+			<code>Optional.empty()</code>. In this case your page will be added to the leftmost position (first position).
+		</p>
+		<h4 id="getLocationId">getLocationId</h4>
+		<p>This method is used when your page is created to position it among other pages. See section 
+			<a href="#pagePositioning">Page Positioning</a>  to now more about how positioning works.
+		</p>
+		<p>It defines the page id from which your page should be positioned relatively to.</p>
+		<p>If you don&#8217;t want to position your page relatively to another one, you can return 
+			<code>Optional.empty()</code>. In this case your page will be added to the leftmost position (first position).
+		</p>
+		<h3 id="BuildingthePageProvider">Building the PageProvider</h3>
+		<p>The PageProvider responsibilities are:  </p>
+		<ul>
+			<li>to provide all the custom pages you want to Sirius.</li>
+			<li>to give the id of the pages provided by it.</li>
+		</ul>
+		<p>To build a custom page you need to create a class extending 
+			<code>org.eclipse.sirius.ui.editor.api.pages.PageProvider</code>.
+			<br/>This abstract class brings the following methods to implements:
+		</p>
+		<ul>
+			<li>
+				<code>Map&lt;String, Supplier&lt;AbstractSessionEditorPage&gt;&gt; getPages(SessionEditor)</code>
+			</li>
+			<li>
+				<code>NotificationFilter getFilterForPageRequesting()</code>
+			</li>
+			<li>
+				<code>boolean provides(String)</code>
+			</li>
+		</ul>
+		<h4 id="getPages">getPages</h4>
+		<p>This method returns all custom pages instances extending 
+			<code>AbstractSessionEditorPage</code> to initialize.
+		</p>
+		<p>This method must return a map of page id to its supplier initializing a new instance of the page.</p>
+		<p>For example with the debug page:</p>
+		<pre><code>Map&lt;String, Supplier&lt;AbstractSessionEditorPage&gt;&gt; resultMap = new HashMap&lt;&gt;();
+resultMap.put(DebugPage.PAGE_ID, () -&gt; {
+    return new DebugPage(editor, DebugPage.PAGE_ID, DEBUG_PAGE_TITLE);
+});
+return resultMap;
+</code></pre>
+		<p>You can use the given parameter to determine if your pages should be provided at the moment. You have access to the editor 
+			<code>org.eclipse.sirius.ui.editor.SessionEditor</code> asking for the pages of your provider. From this parameter you can access to its session by using the method 
+			<code>org.eclipse.sirius.ui.editor.SessionEditor.getSession()</code>. You also can use any singleton like 
+			<code>PlatformUI</code> to know if your pages should be created at the moment.
+		</p>
+		<p>If the required conditions to display a page that can be computed from the session are not verified, then you should not return a new instance of this page.</p>
+		<p>The method is called when: </p>
+		<ul>
+			<li>the aird editor is created.</li>
+			<li>a resource set event occurs from the resource set of the editor&#8217;s session excepted if all notifications of the event are not filtered by the filter returned by method 
+				<code>getFilterForPageRequesting</code>.
+			</li>
+			<li>a 
+				<code>PageProvider</code> is added or removed from the providers registry.
+			</li>
+		</ul>
+		<h4 id="getFilterForPageRequesting2">getFilterForPageRequesting</h4>
+		<p>This method defined with a default implementation in 
+			<code>PageProvider</code> allows to prevent calls to 
+			<code>PageProvider.getPages(SessionEditor)</code> for events you does not want to consider because you know that the initial conditions to show your pages will not be fulfilled. 
+		</p>
+		<p>By default the filter 
+			<code>org.eclipse.emf.transaction.NotificationFilter.NOT_TOUCH</code> is used. This filter makes sure you are not called when the event does not change any values.
+		</p>
+		<p>You can override this method to provide your own filter.</p>
+		<h4 id="provides">provides</h4>
+		<p>This method tells if your provider can create a page instance of the given id as parameter. It is used when computing page positions. </p>
+		<p>Warning: If you don&#8217;t return true for the id of a page you provide, then positioning may not be what you expect.</p>
+		<h3 id="Pagestatussynchronization">Page status synchronization</h3>
+		<p>You can create pages at a given position of an editor only when some initial conditions are fulfilled. This mechanism involves the methods:</p>
+		<ul>
+			<li>
+				<code>PageProvider.getPages(SessionEditor)</code>
+			</li>
+			<li>
+				<code>AbstractSessionEditorPage.getPositioning()</code>
+			</li>
+			<li>
+				<code>AbstractSessionEditorPage.getLocationId()</code>
+			</li>
+		</ul>
+		<p>You also can dynamically change the page position by reacting to session&#8217;s resource set events or even tell the editor to remove the page no longer useful. This mechanism involves the methods:</p>
+		<ul>
+			<li>
+				<code>AbstractSessionEditorPage.resourceSetChanged(ResourceSetChangeEvent)</code>
+			</li>
+			<li>
+				<code>AbstractSessionEditorPage.pageChanged(boolean)</code>
+			</li>
+		</ul>
+		<p>So we have two distinct mechanism allowing for page positioning that can be conflicted if not careful.
+			<br/>For example, your 
+			<code>AbstractSessionEditorPage</code> page can dynamically be removed when a condition A is verified. But your page creation initial condition in 
+			<code>PageProvider</code> is also A. In this situation, if A is verified a first time, the page is created. Then if A is verified a second time, the page will be removed dynamically and created again.
+		</p>
+		<p>So to avoid conflicts, the page position and creation/removal must have the most specific conditions in the 
+			<code>PageProvider</code> and the less specific in 
+			<code>AbstractSessionEditorPage</code>
+		</p>
+		<p>For example, if a page can be created from 
+			<code>PageProvider</code> when condition A and B are verified, then this page can be dynamically removed only if !A or !B is verified but not if another condition is verified like C or !C.
+		</p>
+		<h3 id="RegisteringthePageProvider">Registering the PageProvider</h3>
+		<p>When your PageProvider providing your custom pages is done, you have to register it to Sirius so it can be use to display your pages in aird editors.
+			<br/>You have two ways to do that either by using the 
+			<code>PageRegistry</code> or an extension point.
+		</p>
+		<h4 id="Programmaticregistering">Programmatic registering</h4>
+		<p>The 
+			<code>PageRegistry</code> is the registry containing all 
+			<code>PageProvider</code> used by aird editors. 
+			<br/>To be used, your provider can be registered in this registry.
+		</p>
+		<p>You can do this programmatically by calling the method 
+			<code>org.eclipse.sirius.ui.editor.SessionEditorPlugin.getPlugin().getPageRegistry().addPageProvider(parameter)</code> with a new instance of your page provider as parameter.
+		</p>
+		<h4 id="Declarativeregistering">Declarative registering</h4>
+		<p>The extension point 
+			<code>org.eclipse.sirius.ui.editor.sessionEditorPageProvider</code> allows you to define the class of your page provider that should be taken in consideration when Sirius populates pages of aird editors:
+		</p>
+		<p>
+			<img border="0" src="images/customPageApi_debugPage_extensionPoint.png"/>
+		</p>
+	</body>
+</html>
