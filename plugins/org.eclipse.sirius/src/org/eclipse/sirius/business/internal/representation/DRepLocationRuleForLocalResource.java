@@ -129,10 +129,10 @@ public class DRepLocationRuleForLocalResource implements DRepresentationLocation
     protected URI createRepURI(Resource airdResource, DRepresentation representation, String providedSuffix, int count) {
         // get the representation URI fragment
         RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
-        String repName = description.getName().replace(' ', '_');
+        String repName = description.getName();
         String suffix = providedSuffix != null ? providedSuffix : String.valueOf(count);
         repName += "_" + suffix; //$NON-NLS-1$
-
+        repName = URI.encodeSegment(repName, true);
         URI airdURI = airdResource.getURI();
 
         List<String> srmFileSegments = new ArrayList<>(airdURI.segmentsList());
