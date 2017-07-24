@@ -173,7 +173,7 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                 pages.stream().filter(AbstractSessionEditorPage.class::isInstance).map(AbstractSessionEditorPage.class::cast).collect(Collectors.toList()), event);
 
         CTabFolder cTabF = (CTabFolder) this.getContainer();
-        IFormPage activePage = getActivePageInstance();
+        IFormPage lastActivePage = getActivePageInstance();
         for (int i = 0; i < newOrderedPages.size(); i++) {
             AbstractSessionEditorPage page = newOrderedPages.get(i);
             int pageIndex = pages.indexOf(page);
@@ -194,13 +194,26 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
         if (newOrderedPages.size() < pages.size()) {
             // obsolete pages must be removed.
             for (int i = newOrderedPages.size(); i < pages.size(); i++) {
+                if (lastActivePage.equals(pages.get(i))) {
+                    lastActivePage = null;
+                }
                 removePage(i);
-
             }
         }
 
         cTabF.getParent().layout();
-        setActivePage(activePage);
+        if (getActivePageInstance() == null && lastActivePage != null) {
+            setActivePage(lastActivePage);
+        }
+    }
+
+    /**
+     * Returns the pages this editor displays.
+     * 
+     * @return the pages this editor displays.
+     */
+    public List<IFormPage> getPages() {
+        return pages.stream().filter(IFormPage.class::isInstance).map(IFormPage.class::cast).collect(Collectors.toList());
     }
 
     /**
@@ -258,9 +271,46 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
         if (activePage != null) {
             int activePageIndex = pages.indexOf(activePage);
             if (activePageIndex != -1) {
-                this.setActivePage(activePageIndex);
+                setActivePage(activePageIndex);
             } else {
-                this.setActivePage(0);
+                SessionEditorPlugin.getPlugin().error(MessageFormat.format(Messages.SessionEditor_PageActivation_Failure, activePage.getClass().getName()), null);
+            }
+        }
+    }
+
+    /**
+     * Set the currently active page.
+     * 
+     * @param pageIndex
+     *            the index of the page to set as the active page of this
+     *            editor.
+     */
+    @Override
+    public void setActivePage(int pageIndex) {
+        // we notifies all pages the change of page visibility.
+        Object pageToSelect = pages.get(pageIndex);
+        if (pageToSelect instanceof AbstractSessionEditorPage) {
+            AbstractSessionEditorPage theSelectedPage = (AbstractSessionEditorPage) pageToSelect;
+            Optional<PageUpdateCommand> selectedPageCommand = theSelectedPage.pageChanged(true);
+            List<Runnable> commandsToExecute = new ArrayList<>();
+            commandsToExecute.addAll(prepareUpdateCommands(theSelectedPage, selectedPageCommand));
+            for (Object page : pages) {
+                if (page instanceof AbstractSessionEditorPage) {
+                    AbstractSessionEditorPage sessionEditorPage = (AbstractSessionEditorPage) page;
+                    if (sessionEditorPage.getIndex() != theSelectedPage.getIndex()) {
+                        Optional<PageUpdateCommand> pageCommand = sessionEditorPage.pageChanged(false);
+                        commandsToExecute.addAll(prepareUpdateCommands(sessionEditorPage, pageCommand));
+                    }
+                }
+            }
+            commandsToExecute.stream().forEach(Runnable::run);
+
+            getContainer().getParent().layout();
+            int selectedPageIndex = pages.indexOf(pageToSelect);
+            if (selectedPageIndex > -1) {
+                super.setActivePage(selectedPageIndex);
+            } else {
+                super.setActivePage(0);
             }
         }
     }
@@ -273,25 +323,6 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
     @Override
     public void init(IEditorSite site, IEditorInput input) throws PartInitException {
         super.init(site, input);
-        this.addPageChangedListener(event -> {
-            Object selectedPage = event.getSelectedPage();
-            if (selectedPage instanceof AbstractSessionEditorPage) {
-                AbstractSessionEditorPage theSelectedPage = (AbstractSessionEditorPage) selectedPage;
-                Optional<PageUpdateCommand> selectedPageCommand = theSelectedPage.pageChanged(true);
-                List<Runnable> commandsToExecute = new ArrayList<>();
-                commandsToExecute.addAll(prepareUpdateCommands(theSelectedPage, selectedPageCommand));
-                for (Object page : pages) {
-                    if (page instanceof AbstractSessionEditorPage) {
-                        AbstractSessionEditorPage sessionEditorPage = (AbstractSessionEditorPage) page;
-                        if (sessionEditorPage.getIndex() != theSelectedPage.getIndex()) {
-                            Optional<PageUpdateCommand> pageCommand = sessionEditorPage.pageChanged(false);
-                            commandsToExecute.addAll(prepareUpdateCommands(sessionEditorPage, pageCommand));
-                        }
-                    }
-                }
-                commandsToExecute.stream().forEach(Runnable::run);
-            }
-        });
         IEditorInput editorInput = this.getEditorInput();
         URI sessionResourceURI = null;
         if (editorInput instanceof FileEditorInput) {
@@ -370,11 +401,6 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
 
     @Override
     public void dispose() {
-        super.dispose();
-        if (pageRegistry != null) {
-            pageRegistry.removeRegistryListener(this);
-            pageRegistry = null;
-        }
         if (resourceSetListener != null && session != null && session.getTransactionalEditingDomain() != null) {
             session.getTransactionalEditingDomain().removeResourceSetListener(resourceSetListener);
             resourceSetListener = null;
@@ -383,7 +409,6 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
             final IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
             if (editingSession != null) {
                 editingSession.detachEditor(this, choice == ISaveablePart2.NO);
-
             }
             if (session.getTransactionalEditingDomain() != null) {
                 session.getTransactionalEditingDomain().getCommandStack().removeCommandStackListener(listener);
@@ -391,6 +416,16 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
         }
         session = null;
         propertySheetPage = null;
+        super.dispose();
+    }
+
+    @Override
+    public void close(boolean save) {
+        if (pageRegistry != null) {
+            pageRegistry.removeRegistryListener(this);
+            pageRegistry = null;
+        }
+        super.close(save);
     }
 
     @Override
@@ -520,12 +555,12 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
             }
             if (!removeCommandExecuted && updateCommandTemp.getReorderCommand() != null) {
                 runnables.add(prepareReorderCommand(updateCommandTemp.getReorderCommand(), SessionEditor.this, customPage));
-            } else {
+            } else if (updateCommandTemp.getReorderCommand() != null) {
                 SessionEditorPlugin.getPlugin().error(MessageFormat.format(Messages.SessionEditor_PageCommand_Integrity_Error, customPage.getClass().getName()), null);
             }
             if (!removeCommandExecuted && updateCommandTemp.getRenameCommand() != null) {
                 runnables.add(prepareRenameCommand(updateCommandTemp.getRenameCommand(), SessionEditor.this, customPage));
-            } else {
+            } else if (updateCommandTemp.getRenameCommand() != null) {
                 SessionEditorPlugin.getPlugin().error(MessageFormat.format(Messages.SessionEditor_PageCommand_Integrity_Error, customPage.getClass().getName()), null);
             }
         });
@@ -547,7 +582,6 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
             Composite container = editor.getContainer();
             if (container instanceof CTabFolder) {
                 CTabFolder tabFolder = (CTabFolder) editor.getContainer();
-                IFormPage activePage = editor.getActivePageInstance();
                 int targetPageIndex = -1;
                 String targetPageId = pageUpdateCommand.getTargetPageId();
                 for (Object object : pages) {
@@ -579,10 +613,6 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                         break;
                     }
                 }
-                tabFolder.getParent().redraw();
-                tabFolder.getParent().layout();
-                editor.setFocus();
-                editor.setActivePage(activePage);
             }
         };
     }
@@ -594,7 +624,7 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
      * @param pageUpdateCommand
      *            the command containing removal information.
      * @param editor
-     *            the editor calling for a page removal..
+     *            the editor calling for a page removal.
      * @param page
      *            the page that will be removed from editor.
      */
@@ -625,7 +655,6 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                     CTabFolder tabFolder = (CTabFolder) container;
                     CTabItem tabItem = tabFolder.getItem(index);
                     tabItem.setText(pageUpdateCommand.getNewLabel());
-                    tabFolder.getParent().layout();
                 }
             }
         };

@@ -50,8 +50,8 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.IManagedForm;
+import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
-import org.eclipse.ui.forms.events.IHyperlinkListener;
 import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -153,16 +153,7 @@ public class DefaultSessionEditorPage extends AbstractSessionEditorPage implemen
         body.setLayout(GridLayoutFactory.swtDefaults().create());
 
         informativeLabel = toolkit.createFormText(body, false);
-        informativeLabel.addHyperlinkListener(new IHyperlinkListener() {
-
-            @Override
-            public void linkExited(HyperlinkEvent e) {
-            }
-
-            @Override
-            public void linkEntered(HyperlinkEvent e) {
-            }
-
+        informativeLabel.addHyperlinkListener(new HyperlinkAdapter() {
             @Override
             public void linkActivated(HyperlinkEvent e) {
                 try {
@@ -171,6 +162,7 @@ public class DefaultSessionEditorPage extends AbstractSessionEditorPage implemen
                     SessionEditorPlugin.getPlugin().error("An error occured while opening the external web browser.", ex); //$NON-NLS-1$
                 }
             }
+
         });
         informativeLabel.setForeground(body.getDisplay().getSystemColor(SWT.COLOR_RED));
 

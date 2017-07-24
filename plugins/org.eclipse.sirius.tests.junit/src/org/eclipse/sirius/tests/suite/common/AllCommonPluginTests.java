@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.suite.common;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.ext.jface.viewers.IToolTipProvider;
+import org.eclipse.sirius.tests.unit.airdeditor.PageOrdererTest;
 import org.eclipse.sirius.tests.unit.api.componentization.DiagramComponentizationManagerTest;
 import org.eclipse.sirius.tests.unit.api.componentization.DiagramExtensionDescriptionTest;
 import org.eclipse.sirius.tests.unit.api.componentization.MetamodelSpecificationInRepresentationExtensionDescriptionTest;
@@ -146,6 +147,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.RgbValuesEDataTypeMigrati
 import org.eclipse.sirius.tests.unit.diagram.migration.RunRepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SnapBackDistantLabelsMigrationTest;
+import org.eclipse.sirius.tests.unit.multipageeditor.SessionEditorTest;
 import org.eclipse.sirius.tests.unit.multipageeditor.SiriusMultiPageEditorTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
 import org.eclipse.sirius.tests.unit.perf.common.Session1MillionTests;
@@ -331,11 +333,13 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(SubMenusPrioritiesTest.class);
         suite.addTestSuite(ZombieViewpointsTest.class);
         suite.addTestSuite(DAnnotationTest.class);
+
+        suite.addTestSuite(PageOrdererTest.class);
+        suite.addTestSuite(SessionEditorTest.class);
     }
 
     /**
-     * Add the tests which for one reason or another are not part of the suite
-     * launched on each Gerrit verification.
+     * Add the tests which for one reason or another are not part of the suite launched on each Gerrit verification.
      * 
      * @param suite
      *            the suite to add the tests into.

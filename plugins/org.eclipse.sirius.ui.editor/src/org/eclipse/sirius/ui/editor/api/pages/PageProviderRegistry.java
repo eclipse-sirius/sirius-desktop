@@ -139,7 +139,7 @@ public class PageProviderRegistry {
      * @param session
      *            the aird editor's session from which page request is done.
      * @param displayedPages
-     *            pages already dysplayed by the editor.
+     *            pages already displayed by the editor.
      * @param event
      *            the event triggering the call to this method. Can be null.
      * @return a list of {@link AbstractSessionEditorPage} in the order computed

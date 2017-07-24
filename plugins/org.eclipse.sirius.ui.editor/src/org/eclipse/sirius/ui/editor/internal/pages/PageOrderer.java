@@ -182,12 +182,14 @@ public class PageOrderer {
         for (PagePositioning pagePositioning : pagePositioningElements) {
             if (pagePositioning.replacePortPageId != null) {
                 PagePositioning replacedPage = pageIdToPageMap.get(pagePositioning.replacePortPageId);
-                pagePositioning.replacePortPage = replacedPage;
-                // the page replace the target. I.e it connects to target
-                // left and right pages.
-                pagePositioning.leftPortPage = pagePositioning.replacePortPage.leftPortPage;
-                pagePositioning.rightPortPage = pagePositioning.replacePortPage.rightPortPage;
-                replacedPages.add(pagePositioning.replacePortPage);
+                if (replacedPage != null) {
+                    pagePositioning.replacePortPage = replacedPage;
+                    // the page replace the target. I.e it connects to target
+                    // left and right pages.
+                    pagePositioning.leftPortPage = pagePositioning.replacePortPage.leftPortPage;
+                    pagePositioning.rightPortPage = pagePositioning.replacePortPage.rightPortPage;
+                    replacedPages.add(pagePositioning.replacePortPage);
+                }
             }
         }
     }
@@ -221,27 +223,32 @@ public class PageOrderer {
         for (PagePositioning pagePositioning : pagePositioningElements) {
             if (pagePositioning.leftPortPageId != null) {
                 PagePositioning targetPagePositioning = pageIdToPageMap.get(pagePositioning.leftPortPageId);
-                pagePositioning.leftPortPage = targetPagePositioning;
-                if (targetPagePositioning.rightPortPage != null) {
-                    // We put this page in between the target page and the page
-                    // already to its right. This is a conflict.
-                    targetPagePositioning.rightPortPage.leftPortPage = pagePositioning;
-                    pagePositioning.rightPortPage = targetPagePositioning.rightPortPage;
+                if (targetPagePositioning != null) {
+                    pagePositioning.leftPortPage = targetPagePositioning;
+                    if (targetPagePositioning.rightPortPage != null) {
+                        // We put this page in between the target page and the
+                        // page
+                        // already to its right. This is a conflict.
+                        targetPagePositioning.rightPortPage.leftPortPage = pagePositioning;
+                        pagePositioning.rightPortPage = targetPagePositioning.rightPortPage;
 
+                    }
+                    targetPagePositioning.rightPortPage = pagePositioning;
                 }
-                targetPagePositioning.rightPortPage = pagePositioning;
             }
             if (pagePositioning.rightPortPageId != null) {
                 PagePositioning targetPagePositioning = pageIdToPageMap.get(pagePositioning.rightPortPageId);
-                pagePositioning.rightPortPage = targetPagePositioning;
-                if (targetPagePositioning.leftPortPage != null) {
-                    // We put this page in between the target page and the page
-                    // already to its left. This is a conflict.
-                    targetPagePositioning.leftPortPage.rightPortPage = pagePositioning;
-                    pagePositioning.leftPortPage = targetPagePositioning.leftPortPage;
+                if (targetPagePositioning != null) {
+                    pagePositioning.rightPortPage = targetPagePositioning;
+                    if (targetPagePositioning.leftPortPage != null) {
+                        // We put this page in between the target page and the
+                        // page
+                        // already to its left. This is a conflict.
+                        targetPagePositioning.leftPortPage.rightPortPage = pagePositioning;
+                        pagePositioning.leftPortPage = targetPagePositioning.leftPortPage;
+                    }
+                    targetPagePositioning.leftPortPage = pagePositioning;
                 }
-                targetPagePositioning.leftPortPage = pagePositioning;
-
             }
         }
     }
@@ -290,7 +297,7 @@ public class PageOrderer {
                     for (Entry<String, Supplier<AbstractSessionEditorPage>> pageEntry : pagesToAdd.entrySet()) {
                         if (!alreadyInitializedPagesId.contains(pageEntry.getKey())) {
                             AbstractSessionEditorPage page = pageEntry.getValue().get();
-
+                            page.initialize(editor);
                             PagePositioning pagePositioning = new PagePositioning();
                             pageIdToPageMap.put(page.getId(), pagePositioning);
                             pagePositioningElements.add(pagePositioning);

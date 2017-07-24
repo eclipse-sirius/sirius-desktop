@@ -106,6 +106,9 @@ public final class Messages {
     @TranslatableMessage
     public static String PluginPageProviderRegistry_badClassType;
 
+    @TranslatableMessage
+    public static String SessionEditor_PageActivation_Failure;
+
     // CHECKSTYLE:ON
 
     private Messages() {
