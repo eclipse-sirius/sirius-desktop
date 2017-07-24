@@ -27,8 +27,38 @@ h4. Migrations
 * <span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see "bugzilla #518870":https://bugs.eclipse.org/bugs/show_bug.cgi?id=518870 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _12.1.0.201706291600_.
 * <span class="label label-success">Added</span> A new class @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure@ has been added in plugin @org.eclipse.sirius.ext.gmf.runtime@. The goal of the class is to workaround a "GMF bug":https://bugs.eclipse.org/bugs/show_bug.cgi?id=519250. So if you have created class which inherits from @org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure@, you must now use the new @SiriusDefaultSizeNodeFigure@ instead.
 * <span class="label label-success">Added</span> A migration has been added to add an @uid@ to all instances of type DRepresentation.This @uid@ is used to reference the DRepresentation from the DRepresentationDescriptor. @DRepresentationDescriptor.repPath@ has been changed to have @uid@ as fragment.
-
 * <span class="label label-success">Added</span> A migration has been added to fix diagram with edge bend-points corrupted (see "bugzilla #519044":https://bugs.eclipse.org/bugs/show_bug.cgi?id=519044 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _12.1.0.201708031200_.
+
+h4. Representations lazy loading (experimental).
+
+A new mode (currently experimental) is available to load representations on demand and not during session opening. This feature implies to serialize Sirius representations in separate resources. This mode can be activated by setting the system property @createLocalRepresentationInSeparateResource@ at true. For more detail, see the developer documentation: "Representations lazy loading (experimental)":./developer/representations_lazy_loading.html.
+
+h4. Changes in @org.eclipse.sirius@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.DRepresentationDescriptor.isLoadedRepresentation()@ has been added to know if the representation linked with this {@link DRepresentationDescriptor} is loaded. By default, all representations are held in the same resource than the DRepresentationDescriptor, in that case the method will always return true.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession.allAnalyses()@ has been added in the interface to reflect the already existing @org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl.allAnalyses()@ implementation.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.dialect.DialectManager.getLoadedRepresentations(EObject, Session)@ has been added to get all loaded representations in the given session with the given EObject as target.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.dialect.DialectServices.getAllLoadedRepresentations(Session)@ has been added to get all loaded representations in the given session.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.helper.SiriusUtil.REPRESENTATIONS_FOLDER_NAME@ constant has been added. This is the default folder where representations file (*.srm) are located if the system property "createLocalRepresentationInSeparateResource" is set at true.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.tools.api.command.ui.UICallBack.shouldDeleteRepresentation(Set<DRepresentationDescriptor>)@ has been added to be called when the user interface should prompt for a choice about the representation deletion.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.business.api.dialect.DialectServices.getRepresentationDescriptors(EObject, Session)@ has been moved to @org.eclipse.sirius.business.api.dialect.DialectManager@.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.business.api.dialect.DialectServices.getAllRepresentationDescriptors(Session)@ has been moved to @org.eclipse.sirius.business.api.dialect.DialectManager@.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.business.api.dialect.DialectServices.getRepresentationDescriptors(RepresentationDescription, Session)@ has been moved to @org.eclipse.sirius.business.api.dialect.DialectManager@.
+* <span class="label label-danger">Removed</span> The implementations of @getRepresentationDescriptors(EObject, Session)@, @getAllRepresentationDescriptors(Session)@ and @getRepresentationDescriptors(RepresentationDescription, Session)@ have been removed from @AbstractRepresentationDialectServices@. They are implemented in @DialectManagerImpl@.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.business.api.dialect.DialectServices.getRepresentations(EObject, Session)@ has been moved to @org.eclipse.sirius.business.api.dialect.DialectManager@
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.business.api.dialect.DialectServices.getAllRepresentations(Session)@ has been moved to @org.eclipse.sirius.business.api.dialect.DialectManager@
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.business.api.dialect.DialectServices.getRepresentations(RepresentationDescription, Session)@ has been moved to @org.eclipse.sirius.business.api.dialect.DialectManager@
+* <span class="label label-danger">Removed</span> The implementations of @getRepresentations(EObject, Session)@, @getAllRepresentations(Session)@ and @getRepresentations(RepresentationDescription, Session)@ have been removed from @AbstractRepresentationDialectServices@. They are implemented in @DialectManagerImpl@.
+
+h4. Changes in @org.eclipse.sirius.common@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer.setEObjectToBeIgnored(Predicate<EObject>)@ has  been added to filter inverse references to prevent some references resolution.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.common.tools.api.util.WorkspaceUtil.getFilesFromWorkspace(Collection<IProject>, String)@ signature has been modified in @getFilesFromWorkspace(Collection<IContainer>, String)@ to be more generic.
+
+h4. Changes in @org.eclipse.sirius.ui@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.shouldDeleteRepresentation(Set<DRepresentationDescriptor>)@ default implementation has been added to prompt the confirm dialog.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.SessionEditorInput(URI, URI, String, Session)@ has been added to provide the @DRepresentationDescriptor@ URI to retrieve the @DRepresentation@ from the @DRepresentationDescriptor.getRepresentation()@ method instead of performing a direct load.
 
 h2(#sirius5.0.1). Changes in Sirius 5.0.1
 

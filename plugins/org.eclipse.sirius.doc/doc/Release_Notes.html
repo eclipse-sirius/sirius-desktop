@@ -160,11 +160,102 @@
 				<code>DRepresentationDescriptor.repPath</code> has been changed to have 
 				<code>uid</code> as fragment.
 			</li>
-		</ul>
-		<ul>
 			<li><span class="label label-success">Added</span> A migration has been added to fix diagram with edge bend-points corrupted (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=519044">bugzilla #519044</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
 				<em>12.1.0.201708031200</em>.
+			</li>
+		</ul>
+		<h4 id="Representationslazyloadingexperimental.">Representations lazy loading (experimental).</h4>
+		<p>A new mode (currently experimental) is available to load representations on demand and not during session opening. This feature implies to serialize Sirius representations in separate resources. This mode can be activated by setting the system property 
+			<code>createLocalRepresentationInSeparateResource</code> at true. For more detail, see the developer documentation: 
+			<a href="./developer/representations_lazy_loading.html">Representations lazy loading (experimental)</a>.
+		</p>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.viewpoint.DRepresentationDescriptor.isLoadedRepresentation()</code> has been added to know if the representation linked with this {@link DRepresentationDescriptor} is loaded. By default, all representations are held in the same resource than the DRepresentationDescriptor, in that case the method will always return true.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession.allAnalyses()</code> has been added in the interface to reflect the already existing 
+				<code>org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl.allAnalyses()</code> implementation.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.dialect.DialectManager.getLoadedRepresentations(EObject, Session)</code> has been added to get all loaded representations in the given session with the given EObject as target.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.getAllLoadedRepresentations(Session)</code> has been added to get all loaded representations in the given session.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.helper.SiriusUtil.REPRESENTATIONS_FOLDER_NAME</code> constant has been added. This is the default folder where representations file (*.srm) are located if the system property &#8220;createLocalRepresentationInSeparateResource&#8221; is set at true.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.tools.api.command.ui.UICallBack.shouldDeleteRepresentation(Set&lt;DRepresentationDescriptor&gt;)</code> has been added to be called when the user interface should prompt for a choice about the representation deletion.
+			</li>
+			<li><span class="label label-danger">Removed</span> 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.getRepresentationDescriptors(EObject, Session)</code> has been moved to 
+				<code>org.eclipse.sirius.business.api.dialect.DialectManager</code>.
+			</li>
+			<li><span class="label label-danger">Removed</span> 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.getAllRepresentationDescriptors(Session)</code> has been moved to 
+				<code>org.eclipse.sirius.business.api.dialect.DialectManager</code>.
+			</li>
+			<li><span class="label label-danger">Removed</span> 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.getRepresentationDescriptors(RepresentationDescription, Session)</code> has been moved to 
+				<code>org.eclipse.sirius.business.api.dialect.DialectManager</code>.
+			</li>
+			<li><span class="label label-danger">Removed</span> The implementations of 
+				<code>getRepresentationDescriptors(EObject, Session)</code>, 
+				<code>getAllRepresentationDescriptors(Session)</code> and 
+				<code>getRepresentationDescriptors(RepresentationDescription, Session)</code> have been removed from 
+				<code>AbstractRepresentationDialectServices</code>. They are implemented in 
+				<code>DialectManagerImpl</code>.
+			</li>
+			<li><span class="label label-danger">Removed</span> 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.getRepresentations(EObject, Session)</code> has been moved to 
+				<code>org.eclipse.sirius.business.api.dialect.DialectManager</code>
+			</li>
+			<li><span class="label label-danger">Removed</span> 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.getAllRepresentations(Session)</code> has been moved to 
+				<code>org.eclipse.sirius.business.api.dialect.DialectManager</code>
+			</li>
+			<li><span class="label label-danger">Removed</span> 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.getRepresentations(RepresentationDescription, Session)</code> has been moved to 
+				<code>org.eclipse.sirius.business.api.dialect.DialectManager</code>
+			</li>
+			<li><span class="label label-danger">Removed</span> The implementations of 
+				<code>getRepresentations(EObject, Session)</code>, 
+				<code>getAllRepresentations(Session)</code> and 
+				<code>getRepresentations(RepresentationDescription, Session)</code> have been removed from 
+				<code>AbstractRepresentationDialectServices</code>. They are implemented in 
+				<code>DialectManagerImpl</code>.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer.setEObjectToBeIgnored(Predicate&lt;EObject&gt;)</code> has  been added to filter inverse references to prevent some references resolution.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.common.tools.api.util.WorkspaceUtil.getFilesFromWorkspace(Collection&lt;IProject&gt;, String)</code> signature has been modified in 
+				<code>getFilesFromWorkspace(Collection&lt;IContainer&gt;, String)</code> to be more generic.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+			<code>org.eclipse.sirius.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.shouldDeleteRepresentation(Set&lt;DRepresentationDescriptor&gt;)</code> default implementation has been added to prompt the confirm dialog.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.SessionEditorInput(URI, URI, String, Session)</code> has been added to provide the 
+				<code>DRepresentationDescriptor</code> URI to retrieve the 
+				<code>DRepresentation</code> from the 
+				<code>DRepresentationDescriptor.getRepresentation()</code> method instead of performing a direct load.
 			</li>
 		</ul>
 		<h2 id="sirius5.0.1">Changes in Sirius 5.0.1</h2>
@@ -260,7 +351,7 @@
 		<p>See 
 			<a href="i18n_changes.html#sirius50">this document</a> for the complete list of message keys added or removed in Sirius 5.0.
 		</p>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code> 
 		</h4>
 		<ul>
@@ -284,7 +375,7 @@
 				<code>org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog</code> equivalent provided by EMF directly instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code> 
 		</h4>
 		<ul>
@@ -418,7 +509,7 @@
 				<code>RepresentationElementIdentifier</code>) have been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -987,7 +1078,7 @@ SWTBotUtils.waitAllUiEvents();
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1092,7 +1183,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>updateModelsReferences(DAnalysis, Iterator&lt;DSemanticDecorator&gt;)</code> because it is more suited to the client needs.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1429,7 +1520,7 @@ SWTBotUtils.waitAllUiEvents();
 				<a href="developer/extensions-provide_custom_bundled_image_shape.html">developer documentation</a> for more details.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1524,7 +1615,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>MetamodelDescriptorProvider</code>. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -1586,7 +1677,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.resetVariables()</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1734,7 +1825,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker</code> has been added to declare states used by all DragTrackers which manage move in diagram using mouse middle click.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -2117,7 +2208,7 @@ SWTBotUtils.waitAllUiEvents();
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -2147,7 +2238,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder</code> used to build the content proposals with their various parameters more easily.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -2186,7 +2277,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.tools.api.command.IUndoableCommand</code> interface removed because it is useless since undo/redo is managed by EMF Transaction.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui6">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>

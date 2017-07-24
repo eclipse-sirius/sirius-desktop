@@ -1,0 +1,33 @@
+h1. Sirius - Representations lazy loading (experimental)
+
+h2. Overview
+
+An experimental mode allows to have the representation lazy loading. This mode is available with the system property @createLocalRepresentationInSeparateResource=true@.
+
+There is two main changes to keep in mind with this mode:
+* The representations are (by default) serialized in separate *.srm files in a .representation folder. This folder is created at the same location than the *.aird file.
+* The representations are loaded on demand. That means the session opening does not load the representations. They will be loaded as soon as Sirius needs it to perform the functionality. For example: open an editor, copy, rename or delete a representation, export a diagram as image etc. From a developer point of view, the representation is loaded when @DRepresentationDescriptor.getRepresentation()@ is called.
+
+h2. Impacts
+
+The Sirius API used to retrieve @DRepresentation@, such as the @DialectManager@, keep the same behavior: the representation will be loaded where necessary. New API (see the release note for more details) has been added to retrieve only loaded representations.
+
+*Warning*, if some of your features depend on the Sirius crossReferencer, it may not return the same result than before. It works on the scope of only what is loaded in the session. Before, all the models was loaded whereas now some representations will not be. @ECrossReferenceAdapter.getInverseReferences(EObject )@ or @ECrossReferenceAdapter.getInverseReferences(EObject , boolean)@ will not provide potential inverse references that would be in not loaded representation. The typical case is getting DRepresentationElement referencing a semantic element as DSemanticDecorator.target.
+
+
+h2. Override the representation location rule.
+
+By default Sirius creates an *.srm file per representation. Developer may need to override this rule by choosing to add one or several representations in a specific resource.
+
+h3. The @DRepresentationLocationRule@ interface
+
+* @boolean provides(DRepresentation representation, Resource dViewResource)@: Indicates if this @DRepresentationLocationRule@ provides a custom URI for this kind of representation and the resource that holds the @DView@. If not and if there is no other @DRepresentationLocationRule@ that provides, Sirius fall back to the default implementation.
+
+* @URI getResourceURI(DRepresentation representation, Resource dViewResource)@: Provides the new URI for the given representation.
+    
+* @Boolean isARepresentationResource(String fileExtension)@: Indicates if the given file extension is considered as a representation file. This extension point allows to define its own extension to hold representations. The developer still needs to register the Resource Factory to @org.eclipse.emf.ecore.extension_parser@ extension point.
+
+h3. Provide your @DRepresentationLocationRule@ using the @org.eclipse.sirius.dRepresentationLocationRule@ extension point
+
+Please refer to this extension point documentation for more details.
+

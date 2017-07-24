@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>representations_lazy_loading</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusRepresentationslazyloadingexperimental">Sirius &#8211; Representations lazy loading (experimental)</h1>
+		<h2 id="Overview">Overview</h2>
+		<p>An experimental mode allows to have the representation lazy loading. This mode is available with the system property 
+			<code>createLocalRepresentationInSeparateResource=true</code>.
+		</p>
+		<p>There is two main changes to keep in mind with this mode:</p>
+		<ul>
+			<li>The representations are (by default) serialized in separate *.srm files in a .representation folder. This folder is created at the same location than the *.aird file.</li>
+			<li>The representations are loaded on demand. That means the session opening does not load the representations. They will be loaded as soon as Sirius needs it to perform the functionality. For example: open an editor, copy, rename or delete a representation, export a diagram as image etc. From a developer point of view, the representation is loaded when 
+				<code>DRepresentationDescriptor.getRepresentation()</code> is called.
+			</li>
+		</ul>
+		<h2 id="Impacts">Impacts</h2>
+		<p>The Sirius API used to retrieve 
+			<code>DRepresentation</code>, such as the 
+			<code>DialectManager</code>, keep the same behavior: the representation will be loaded where necessary. New API (see the release note for more details) has been added to retrieve only loaded representations.
+		</p>
+		<p>
+			<strong>Warning</strong>, if some of your features depend on the Sirius crossReferencer, it may not return the same result than before. It works on the scope of only what is loaded in the session. Before, all the models was loaded whereas now some representations will not be. 
+			<code>ECrossReferenceAdapter.getInverseReferences(EObject )</code> or 
+			<code>ECrossReferenceAdapter.getInverseReferences(EObject , boolean)</code> will not provide potential inverse references that would be in not loaded representation. The typical case is getting DRepresentationElement referencing a semantic element as DSemanticDecorator.target.
+		</p>
+		<h2 id="Overridetherepresentationlocationrule.">Override the representation location rule.</h2>
+		<p>By default Sirius creates an *.srm file per representation. Developer may need to override this rule by choosing to add one or several representations in a specific resource.</p>
+		<h3 id="TheDRepresentationLocationRuleinterface">The 
+			<code>DRepresentationLocationRule</code> interface
+		</h3>
+		<ul>
+			<li>
+				<code>boolean provides(DRepresentation representation, Resource dViewResource)</code>: Indicates if this 
+				<code>DRepresentationLocationRule</code> provides a custom URI for this kind of representation and the resource that holds the 
+				<code>DView</code>. If not and if there is no other 
+				<code>DRepresentationLocationRule</code> that provides, Sirius fall back to the default implementation.
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<code>URI getResourceURI(DRepresentation representation, Resource dViewResource)</code>: Provides the new URI for the given representation.
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<code>Boolean isARepresentationResource(String fileExtension)</code>: Indicates if the given file extension is considered as a representation file. This extension point allows to define its own extension to hold representations. The developer still needs to register the Resource Factory to 
+				<code>org.eclipse.emf.ecore.extension_parser</code> extension point.
+			</li>
+		</ul>
+		<h3 id="ProvideyourDRepresentationLocationRuleusingtheorg.eclipse.sirius.dRepresentationLocationRuleextensionpoint">Provide your 
+			<code>DRepresentationLocationRule</code> using the 
+			<code>org.eclipse.sirius.dRepresentationLocationRule</code> extension point
+		</h3>
+		<p>Please refer to this extension point documentation for more details.</p>
+	</body>
+</html>

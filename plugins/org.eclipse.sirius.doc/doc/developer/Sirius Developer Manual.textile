@@ -17,6 +17,6 @@ This document gives an overview of the internals of the _Sirius_ platform, and d
 ** "*Provide custom bundled image shape*":extensions-provide_custom_bundled_image_shape.html
 ** "*Provide custom widget for the properties view and dialogs*":extensions-properties_provide_custom_widget.html
 ** "*Provide custom model operation*":extensions-provide_custom_model_operation.html
-** "*Provide representation location rule (experimental)*":extensions-provide_representation_location_rule.html
+** "*Representations lazy loading (experimental)*":representations_lazy_loading.html
 * The Sirius platform publishs a set of API, and the next sections describe some which require particular attention:
 ** "*SiriusCrossReferenceAdapter*":siriusCrossReferenceAdapter.html
