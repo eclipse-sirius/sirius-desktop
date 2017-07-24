@@ -48,7 +48,9 @@ public final class TestsUtil {
     private static final String UI_WORKBENCH_LUNA_START = "3.106";
 
     private static final String UI_WORKBENCH_OXYGEN_START = "3.110";
-    
+
+    private static final String CREATE_REPRESENTATATION_IN_SEPARATE_RESOURCE = "createLocalRepresentationInSeparateResource";
+
     /**
      * Constructor.
      */
@@ -57,9 +59,8 @@ public final class TestsUtil {
     }
 
     /**
-     * Wait the end of the asynchronous calls in UI Thread and ignore the
-     * Exception. <B>Use this exclusively</B> in the setup method to ensure a
-     * clean environment.
+     * Wait the end of the asynchronous calls in UI Thread and ignore the Exception. <B>Use this exclusively</B> in the
+     * setup method to ensure a clean environment.
      */
     public static void emptyEventsFromUIThread() {
         boolean shouldRetry = false;
@@ -85,10 +86,9 @@ public final class TestsUtil {
     }
 
     /**
-     * Tests whether the environment is configured to skip non-critical tests
-     * which take a long time. This possibility to skip some tests should only
-     * be used on developer machines to get faster feedback, and never on a
-     * continuous integration server.
+     * Tests whether the environment is configured to skip non-critical tests which take a long time. This possibility
+     * to skip some tests should only be used on developer machines to get faster feedback, and never on a continuous
+     * integration server.
      * 
      * @return <code>true</code> if the environment is setup to skip long tests.
      */
@@ -97,8 +97,7 @@ public final class TestsUtil {
     }
 
     /**
-     * Tests whether unreliable tests should be run. See
-     * {@link #shouldSkipUnreliableTests()}. Can be used in tests as:
+     * Tests whether unreliable tests should be run. See {@link #shouldSkipUnreliableTests()}. Can be used in tests as:
      * 
      * <pre>
      * Assume.assumeTrue(TestUtil.shouldRunUnreliableTests())
@@ -113,19 +112,17 @@ public final class TestsUtil {
     }
 
     /**
-     * Tests whether the environment is configured to skip tests which are known
-     * to be unreliable (i.e. they sometimes work, sometimes fail).
+     * Tests whether the environment is configured to skip tests which are known to be unreliable (i.e. they sometimes
+     * work, sometimes fail).
      * 
-     * @return <code>true</code> if the environment is setup to skip unreliable
-     *         tests.
+     * @return <code>true</code> if the environment is setup to skip unreliable tests.
      */
     public static boolean shouldSkipUnreliableTests() {
         return "true".equals(System.getProperty("org.eclipse.sirius.tests.skipUnreliableTests"));
     }
 
     /**
-     * Tests whether long running tests should be run. See
-     * {@link #shouldSkipLongTests()}. Can be used in tests as:
+     * Tests whether long running tests should be run. See {@link #shouldSkipLongTests()}. Can be used in tests as:
      * 
      * <pre>
      * Assume.assumeTrue(TestUtil.shouldRunLongTests())
@@ -140,10 +137,31 @@ public final class TestsUtil {
     }
 
     /**
+     * Whether the createLocalRepresentationInSeparateResource system property is set at true or not.
+     * 
+     * @return true if createLocalRepresentationInSeparateResource property is set at true, otherwise false.
+     */
+    public static boolean isCreateRepresentationInSeparateResource() {
+        return Boolean.getBoolean(CREATE_REPRESENTATATION_IN_SEPARATE_RESOURCE);
+    }
+
+    /**
+     * Change the createLocalRepresentationInSeparateResource system property.
+     * 
+     * @param value
+     *            the value
+     * 
+     * @return the previous value
+     */
+    public static boolean setCreateRepresentationInSeparateResource(boolean value) {
+        String property = System.setProperty(CREATE_REPRESENTATATION_IN_SEPARATE_RESOURCE, String.valueOf(value));
+        return Boolean.valueOf(property);
+    }
+
+    /**
      * Tests if the EEF-based properties view support is installed.
      * 
-     * @return <code>true</code> if the EEF-based properties view support is
-     *         installed.
+     * @return <code>true</code> if the EEF-based properties view support is installed.
      */
     public static boolean isEEFBasedPropertiesViewsSupportInstalled() {
         return Platform.getBundle("org.eclipse.sirius.ui.properties") != null;
@@ -152,8 +170,7 @@ public final class TestsUtil {
     /**
      * Tells if the current platform corresponds to juno3 (i.e. Eclipse 3.8).
      * 
-     * @return true if the current platform corresponds to juno3 (i.e. Eclipse
-     *         3.8), false else
+     * @return true if the current platform corresponds to juno3 (i.e. Eclipse 3.8), false else
      */
     public static boolean isJuno3Platform() {
         boolean isJuno3Platform = false;
@@ -165,11 +182,9 @@ public final class TestsUtil {
     }
 
     /**
-     * Tells if the current platform corresponds to Juno, Kepler, Luna, .. (i.e.
-     * Eclipse 4.x).
+     * Tells if the current platform corresponds to Juno, Kepler, Luna, .. (i.e. Eclipse 4.x).
      * 
-     * @return true if the current platform corresponds to eclipse 4.x, false
-     *         otherwise.
+     * @return true if the current platform corresponds to eclipse 4.x, false otherwise.
      */
     public static boolean isEclipse4xPlatform() {
         Version junoStart = Version.parseVersion(UI_WORKBENCH_JUNO_START);
@@ -179,8 +194,7 @@ public final class TestsUtil {
     /**
      * Tells if the current platform corresponds to Juno (i.e. Eclipse 4.x).
      * 
-     * @return true if the current platform corresponds to Juno 4.x, false
-     *         otherwise.
+     * @return true if the current platform corresponds to Juno 4.x, false otherwise.
      */
     public static boolean isJuno4Platform() {
         Version junoStart = Version.parseVersion(UI_WORKBENCH_JUNO_START);
@@ -190,8 +204,8 @@ public final class TestsUtil {
 
     private static boolean checkUiWorkbenchVersion(Version versiontStart, Version versionEnd) {
         /*
-         * Juno/Kepler Core Runtime plugins version are 3.8/3.9 and not 4.x. So
-         * the "org.eclipse.ui.workbench" is used instead.
+         * Juno/Kepler Core Runtime plugins version are 3.8/3.9 and not 4.x. So the "org.eclipse.ui.workbench" is used
+         * instead.
          */
         Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench");
         if (uiWorkbenchBundle != null) {
@@ -203,8 +217,7 @@ public final class TestsUtil {
     /**
      * Tells if the current platform corresponds to Kepler.
      * 
-     * @return true if the current platform corresponds to Kepler, false
-     *         otherwise.
+     * @return true if the current platform corresponds to Kepler, false otherwise.
      */
     public static boolean isKeplerPlatform() {
         Version keplerStart = Version.parseVersion(UI_WORKBENCH_KEPLER_START);
@@ -215,32 +228,26 @@ public final class TestsUtil {
     /**
      * Tells if the current platform corresponds to Luna.
      * 
-     * @return true if the current platform corresponds to Luna, false
-     *         otherwise.
+     * @return true if the current platform corresponds to Luna, false otherwise.
      */
     public static boolean isLunaPlatform() {
         return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_LUNA_START), null);
     }
-    
+
     /**
      * Tells if the current platform corresponds to Oxygen or later.
      * 
-     * @return true if the current platform corresponds to Oxygen or later, false
-     *         otherwise.
+     * @return true if the current platform corresponds to Oxygen or later, false otherwise.
      */
     public static boolean isOxygenPlatform() {
         return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_OXYGEN_START), null);
     }
 
-
     /**
-     * Copied and adapted from
-     * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(ICondition, long,
-     * long)
+     * Copied and adapted from org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(ICondition, long, long)
      * 
-     * Waits until the condition has been meet, or the timeout is reached. The
-     * interval is the delay between evaluating the condition after it has
-     * failed.
+     * Waits until the condition has been meet, or the timeout is reached. The interval is the delay between evaluating
+     * the condition after it has failed.
      * 
      * @param condition
      *            the condition to be evaluated.
@@ -276,13 +283,10 @@ public final class TestsUtil {
     }
 
     /**
-     * Copied and adapted from
-     * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(ICondition, long,
-     * long)
+     * Copied and adapted from org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(ICondition, long, long)
      * 
-     * Waits until the condition has been meet, or the timeout is reached. The
-     * interval is the delay between evaluating the condition after it has
-     * failed.
+     * Waits until the condition has been meet, or the timeout is reached. The interval is the delay between evaluating
+     * the condition after it has failed.
      * 
      * Interval : 500
      * 
@@ -296,13 +300,10 @@ public final class TestsUtil {
     }
 
     /**
-     * Copied and adapted from
-     * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(ICondition, long,
-     * long)
+     * Copied and adapted from org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(ICondition, long, long)
      * 
-     * Waits until the condition has been meet, or the timeout is reached. The
-     * interval is the delay between evaluating the condition after it has
-     * failed.
+     * Waits until the condition has been meet, or the timeout is reached. The interval is the delay between evaluating
+     * the condition after it has failed.
      * 
      * Timeout: 5000 Interval : 500
      * 
@@ -314,15 +315,12 @@ public final class TestsUtil {
     }
 
     /**
-     * Sets a target platform in the test platform to get workspace builds OK
-     * with PDE.<BR>
-     * Copied and adpated from
-     * http://git.eclipse.org/c/gmf-tooling/org.eclipse.gmf-tooling.git/tree/
+     * Sets a target platform in the test platform to get workspace builds OK with PDE.<BR>
+     * Copied and adpated from http://git.eclipse.org/c/gmf-tooling/org.eclipse.gmf-tooling.git/tree/
      * tests/org.eclipse.gmf.tests/src/org/eclipse/gmf/tests/Utils.java
      * 
      * @throws CoreException
-     *             In case of problem to retrieve current target platform or to
-     *             save the new one.
+     *             In case of problem to retrieve current target platform or to save the new one.
      * @throws InterruptedException
      *             if the loading platform job is interrupted while waiting
      */

@@ -37,6 +37,7 @@ import org.eclipse.sirius.tests.unit.api.modelingproject.SemanticResourcesManage
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderByContainingTest;
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderTest;
 import org.eclipse.sirius.tests.unit.api.refresh.ModifyHeaderLabelExpressionTest;
+import org.eclipse.sirius.tests.unit.api.representation.DRepresentationLocationManagerTest;
 import org.eclipse.sirius.tests.unit.api.resource.ResourceStrategyForUmlTests;
 import org.eclipse.sirius.tests.unit.api.resource.ResourceStrategyTests;
 import org.eclipse.sirius.tests.unit.api.resource.SemanticResourceURIInAirdTests;
@@ -331,6 +332,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ResourceStrategyForUmlTests.class);
         suite.addTestSuite(OpenSessionTest.class);
         suite.addTestSuite(ModelAccessorLifecycleTest.class);
+        suite.addTestSuite(DRepresentationLocationManagerTest.class);
 
         suite.addTestSuite(SubMenusPrioritiesTest.class);
         suite.addTestSuite(ZombieViewpointsTest.class);
