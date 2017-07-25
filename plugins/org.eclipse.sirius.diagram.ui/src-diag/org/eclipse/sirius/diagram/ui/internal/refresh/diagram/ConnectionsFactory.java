@@ -348,8 +348,7 @@ public class ConnectionsFactory {
             }
             if (pointList.size() == 0) {
                 // no intersection found, case when source and target are overlapped
-                pointList.addPoint(sourceRefPoint);
-                pointList.addPoint(targetRefPoint);
+                pointList = egdeLayoutData.getPointList();
             }
         }
     }

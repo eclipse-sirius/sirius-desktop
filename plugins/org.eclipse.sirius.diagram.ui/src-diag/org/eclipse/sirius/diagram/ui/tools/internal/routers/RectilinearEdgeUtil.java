@@ -376,7 +376,7 @@ public final class RectilinearEdgeUtil {
      * @return the line made straight with only necessary points
      */
     public static PointList normalizeToStraightLineTolerance(PointList line, int tolerance) {
-        if (line.size() < 3) {
+        if (line == null || line.size() < 3) {
             // line is too short to be straight
             return line;
         }

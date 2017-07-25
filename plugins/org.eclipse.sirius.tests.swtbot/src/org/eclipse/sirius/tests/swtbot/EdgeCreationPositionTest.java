@@ -92,7 +92,10 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      *            The name of the diagram to open.
      */
     protected void openDiagram(String name) {
-        openDiagram(name, ZoomLevel.ZOOM_100);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                VIEWPOINT_NAME + " " + name, name, DDiagram.class);
+        editor.setSnapToGrid(false);
+        editor.zoom(ZoomLevel.ZOOM_100);
     }
 
     /**
