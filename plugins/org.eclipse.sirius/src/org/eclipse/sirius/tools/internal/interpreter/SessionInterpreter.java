@@ -115,10 +115,11 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider, IInt
 
     @Override
     public void addImport(final String dependency) {
-        this.dependencies.add(dependency);
-        for (final IInterpreter interpreter : this.loadedInterpreters.values()) {
-            if (interpreter != null) {
-                interpreter.addImport(dependency);
+        if (this.dependencies.add(dependency)) {
+            for (final IInterpreter interpreter : this.loadedInterpreters.values()) {
+                if (interpreter != null) {
+                    interpreter.addImport(dependency);
+                }
             }
         }
     }
@@ -182,6 +183,7 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider, IInt
             public Object getValue() {
                 return null;
             }
+
             @Override
             public Diagnostic getDiagnostic() {
                 return diag;
