@@ -10,21 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.representation;
 
-import java.text.MessageFormat;
 import java.util.Optional;
 
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * This class is intended to manage the link between the {@link DRepresentationDescriptor} and its
@@ -50,30 +44,16 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
      * Set the repPath attribute according to the given newRepresentation. This method should not be called by client.
      * Call {@link DRepresentationDescriptor#setRepresentation(DRepresentation)} instead.
      * 
-     * @param newRepresentation
-     *            the new representation to set. Can be null. If the newRepresentation is not null,
-     *            newRepresentation.eResource must not be null.
+     * @param representation
+     *            the representation to set. Can be null. If the representation is not null, representation.eResource
+     *            must not be null.
      */
-    public void setRepresentation(DRepresentation newRepresentation) {
-        if (newRepresentation != null) {
-            Optional.ofNullable(newRepresentation).ifPresent(rep -> Assert.isNotNull(rep.eResource()));
-            Optional<DRepresentationURIFragmentStrategy> fragmentStrategy = EclipseUtil
-                    .getExtensionPlugins(DRepresentationURIFragmentStrategy.class, DRepresentationURIFragmentStrategy.ID, DRepresentationURIFragmentStrategy.CLASS_ATTRIBUTE).stream()
-                    .filter(strategy -> strategy.providesSetter(newRepresentation)).findFirst();
-            if (fragmentStrategy.isPresent()) {
-                fragmentStrategy.get().setRepresentation(repDescriptor, newRepresentation);
-            } else {
-                setRepresentationPathFromURI(newRepresentation);
-            }
+    public void setRepresentation(DRepresentation representation) {
+        if (representation != null) {
+            String iD = representation.getUid();
+            Optional.ofNullable(representation.eResource()).map(resource -> resource.getURI().appendFragment(iD)).ifPresent(uri -> repDescriptor.setRepPath(new ResourceDescriptor(uri)));
         } else {
             repDescriptor.setRepPath(null);
-        }
-    }
-
-    private void setRepresentationPathFromURI(DRepresentation newRepresentation) {
-        URI uri = EcoreUtil.getURI(newRepresentation);
-        if (uri != null) {
-            repDescriptor.setRepPath(new ResourceDescriptor(uri));
         }
     }
 
@@ -100,33 +80,23 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
     }
 
     private Optional<DRepresentation> getRepresentationInternal(boolean loadOnDemand) {
-        Optional<DRepresentationURIFragmentStrategy> fragmentStrategy = EclipseUtil
-                .getExtensionPlugins(DRepresentationURIFragmentStrategy.class, DRepresentationURIFragmentStrategy.ID, DRepresentationURIFragmentStrategy.CLASS_ATTRIBUTE).stream()
-                .filter(strategy -> strategy.providesGetter(repDescriptor)).findFirst();
-        if (fragmentStrategy.isPresent()) {
-            return fragmentStrategy.get().getRepresentation(repDescriptor, loadOnDemand);
-        }
-        return Optional.ofNullable(getRepresentationFromURI(loadOnDemand));
-    }
-
-    private DRepresentation getRepresentationFromURI(boolean loadOnDemand) {
         ResourceDescriptor resourceDescriptor = repDescriptor.getRepPath();
         Resource resource = repDescriptor.eResource();
-        if (resourceDescriptor != null) {
-            try {
-                // @formatter:off
-                return Optional.ofNullable(resource).map(Resource::getResourceSet)
-                        .map(rSet -> rSet.getEObject(resourceDescriptor.getResourceURI(), loadOnDemand))
-                        .filter(DRepresentation.class::isInstance)
-                        .map(DRepresentation.class::cast)
-                        .orElse(null);
-                // @formatter:on
-             // CHECKSTYLE:OFF
-            } catch (Exception e) {
-             // CHECKSTYLE:ON
-                SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DRepresentationDescriptorToDRepresentationLinkManager_repLoading, resourceDescriptor.getResourceURI()), e);
+
+        // We retrieve the URI from descriptor.
+        Optional<URI> uri = Optional.ofNullable(resourceDescriptor).map(desc -> desc.getResourceURI());
+        if (uri.isPresent()) {
+            // We retrieve the representation resource from the uri.
+            Optional<Resource> representationResource = Optional.ofNullable(resource).map(rsr -> rsr.getResourceSet())
+                    .map(resourceSet -> resourceSet.getResource(uri.get().trimFragment(), loadOnDemand));
+            String repId = uri.get().fragment();
+            if (representationResource.isPresent() && repId != null) {
+                // We look for the representation with the repId (retrieved from
+                // the uri fragment) within the representation resource.
+                return representationResource.get().getContents().stream().filter(DRepresentation.class::isInstance).map(DRepresentation.class::cast)
+                        .filter(dRepresentation -> repId.equals(dRepresentation.getUid())).findFirst();
             }
         }
-        return null;
+        return Optional.empty();
     }
 }

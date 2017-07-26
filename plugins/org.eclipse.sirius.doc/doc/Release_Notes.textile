@@ -25,6 +25,7 @@ h4. Migrations
 
 * <span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see "bugzilla #518870":https://bugs.eclipse.org/bugs/show_bug.cgi?id=518870 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _12.1.0.201706291600_.
 * <span class="label label-success">Added</span> A new class @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure@ has been added in plugin @org.eclipse.sirius.ext.gmf.runtime@. The goal of the class is to workaround a "GMF bug":https://bugs.eclipse.org/bugs/show_bug.cgi?id=519250. So if you have created class which inherits from @org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure@, you must now use the new @SiriusDefaultSizeNodeFigure@ instead.
+* <span class="label label-success">Added</span> A migration has been added to add an @uid@ to all instances of type DRepresentation.This @uid@ is used to reference the DRepresentation from the DRepresentationDescriptor. @DRepresentationDescriptor.repPath@ has been changed to have @uid@ as fragment.
 
 h2(#sirius5.0.1). Changes in Sirius 5.0.1
 

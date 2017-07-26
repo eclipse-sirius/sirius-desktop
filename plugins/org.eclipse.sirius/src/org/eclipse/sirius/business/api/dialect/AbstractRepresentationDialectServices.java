@@ -205,6 +205,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         EcoreUtil.Copier copier = new EcoreUtil.Copier();
         DRepresentation newRepresentation = (DRepresentation) copier.copy(representation);
         copier.copyReferences();
+        newRepresentation.setUid(EcoreUtil.generateUUID());
 
         /* Set the correct name */
         newRepresentation.setName(name);

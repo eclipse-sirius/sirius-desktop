@@ -58,6 +58,7 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
             addOwnedRepresentationElementsPropertyDescriptor(object);
             addRepresentationElementsPropertyDescriptor(object);
             addNamePropertyDescriptor(object);
+            addUidPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -98,6 +99,18 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DRepresentation_name_feature"), //$NON-NLS-1$
                         getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_name_feature", "_UI_DRepresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         ViewpointPackage.Literals.DREPRESENTATION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Uid feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addUidPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DRepresentation_uid_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_uid_feature", "_UI_DRepresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DREPRESENTATION__UID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -157,6 +170,7 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
 
         switch (notification.getFeatureID(DRepresentation.class)) {
         case ViewpointPackage.DREPRESENTATION__NAME:
+        case ViewpointPackage.DREPRESENTATION__UID:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case ViewpointPackage.DREPRESENTATION__EANNOTATIONS:

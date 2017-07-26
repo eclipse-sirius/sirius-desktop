@@ -130,4 +130,30 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      */
     void setUiState(UIState value);
 
+    /**
+     * Returns the value of the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Uid</em>' attribute isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Uid</em>' attribute.
+     * @see #setUid(String)
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_Uid()
+     * @model
+     * @generated
+     */
+    String getUid();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DRepresentation#getUid <em>Uid</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Uid</em>' attribute.
+     * @see #getUid()
+     * @generated
+     */
+    void setUid(String value);
+
 } // DRepresentation

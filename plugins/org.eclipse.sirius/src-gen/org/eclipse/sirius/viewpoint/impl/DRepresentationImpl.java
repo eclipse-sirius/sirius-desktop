@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -105,6 +106,25 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     protected UIState uiState;
 
     /**
+     * The default value of the '{@link #getUid() <em>Uid</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @see #getUid()
+     * @generated
+     * @ordered
+     */
+    protected static final String UID_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getUid() <em>Uid</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getUid()
+     * @generated
+     * @ordered
+     */
+    protected String uid = DRepresentationImpl.UID_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated NOT
@@ -112,6 +132,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     protected DRepresentationImpl() {
         super();
         setUiState(ViewpointFactory.eINSTANCE.createUIState());
+        setUid(EcoreUtil.generateUUID());
     }
 
     /**
@@ -263,6 +284,30 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
      * @generated
      */
     @Override
+    public String getUid() {
+        return uid;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setUid(String newUid) {
+        String oldUid = uid;
+        uid = newUid;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DREPRESENTATION__UID, oldUid, uid));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public DAnnotation getDAnnotation(String source) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -319,6 +364,8 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
             return getOwnedAnnotationEntries();
         case ViewpointPackage.DREPRESENTATION__UI_STATE:
             return getUiState();
+        case ViewpointPackage.DREPRESENTATION__UID:
+            return getUid();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -346,6 +393,9 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
         case ViewpointPackage.DREPRESENTATION__UI_STATE:
             setUiState((UIState) newValue);
             return;
+        case ViewpointPackage.DREPRESENTATION__UID:
+            setUid((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -369,6 +419,9 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
             return;
         case ViewpointPackage.DREPRESENTATION__UI_STATE:
             setUiState((UIState) null);
+            return;
+        case ViewpointPackage.DREPRESENTATION__UID:
+            setUid(DRepresentationImpl.UID_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -394,6 +447,8 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
             return ownedAnnotationEntries != null && !ownedAnnotationEntries.isEmpty();
         case ViewpointPackage.DREPRESENTATION__UI_STATE:
             return uiState != null;
+        case ViewpointPackage.DREPRESENTATION__UID:
+            return DRepresentationImpl.UID_EDEFAULT == null ? uid != null : !DRepresentationImpl.UID_EDEFAULT.equals(uid);
         }
         return super.eIsSet(featureID);
     }
@@ -460,6 +515,8 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
+        result.append(", uid: "); //$NON-NLS-1$
+        result.append(uid);
         result.append(')');
         return result.toString();
     }

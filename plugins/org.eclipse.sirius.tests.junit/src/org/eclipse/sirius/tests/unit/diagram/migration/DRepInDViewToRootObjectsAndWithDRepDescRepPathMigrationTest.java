@@ -73,7 +73,7 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest extends
      * effect of the migration in the other test.
      */
     public void testMigrationIsNeededOnData() {
-        Version dRepresentationMoveVersion = DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant.MIGRATION_VERSION;
+        Version dRepresentationMoveVersion = DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant.MIGRATION_VERSION_REP_IN_DVIEW_TO_ROOT_OBJECT;
 
         // Check that the representation file migration is needed.
         URI uri = URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + PATH + SESSION_RESOURCE_NAME, true);
