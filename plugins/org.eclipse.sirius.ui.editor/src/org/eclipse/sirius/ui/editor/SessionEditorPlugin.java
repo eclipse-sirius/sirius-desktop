@@ -20,6 +20,8 @@ import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry;
+import org.eclipse.sirius.ui.editor.internal.pages.DefaultPageProvider;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener.ISessionFileLoadingListener;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PartInitException;
@@ -32,7 +34,7 @@ public class SessionEditorPlugin extends EMFPlugin {
      * This plug-in's identifier.
      */
     public static final String ID = "org.eclipse.sirius.ui.editor"; //$NON-NLS-1$
-    
+
     /**
      * Keep track of the singleton.
      */
@@ -80,10 +82,24 @@ public class SessionEditorPlugin extends EMFPlugin {
         private ISessionFileLoadingListener modelingProjectExpansionListener;
 
         /**
+         * The registry providing custom pages to aird editor.
+         */
+        private PageProviderRegistry pageRegistry;
+
+        /**
          * Creates an instance.
          */
         public Implementation() {
             plugin = this;
+        }
+
+        /**
+         * Returns the registry providing custom pages to aird editor.
+         * 
+         * @return the registry providing custom pages to aird editor.
+         */
+        public PageProviderRegistry getPageRegistry() {
+            return pageRegistry;
         }
 
         @Override
@@ -108,12 +124,15 @@ public class SessionEditorPlugin extends EMFPlugin {
                 }
             };
             SiriusEditPlugin.getPlugin().addSessionFileLoadingListener(modelingProjectExpansionListener);
+            pageRegistry = new PageProviderRegistry();
+            pageRegistry.addPageProvider(new DefaultPageProvider());
         }
 
         @Override
         public void stop(BundleContext context) throws Exception {
             SiriusEditPlugin.getPlugin().removeSessionFileLoadingListener(modelingProjectExpansionListener);
             modelingProjectExpansionListener = null;
+            pageRegistry = null;
             super.stop(context);
         }
 

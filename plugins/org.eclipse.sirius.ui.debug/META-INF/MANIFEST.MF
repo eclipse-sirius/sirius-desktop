@@ -14,11 +14,13 @@ Require-Bundle: org.eclipse.gmf.runtime.diagram.ui.properties,
  org.eclipse.sirius.diagram.sequence.ui,
  com.google.guava;bundle-version="[15.0,22.0)",
  org.eclipse.sirius.editor,
- org.eclipse.sirius.tests.sample.component;bundle-version="0.1.0"
+ org.eclipse.sirius.tests.sample.component;bundle-version="0.1.0",
+ org.eclipse.sirius.ui.editor;bundle-version="5.0.1"
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Bundle-Vendor: %providerName
 Export-Package: org.eclipse.sirius.ui.debug,
+ org.eclipse.sirius.ui.debug.pages,
  org.eclipse.sirius.ui.debug.properties,
  org.eclipse.sirius.ui.debug.statusline
 Import-Package: org.eclipse.sirius.ext.base;version="1.0.0",

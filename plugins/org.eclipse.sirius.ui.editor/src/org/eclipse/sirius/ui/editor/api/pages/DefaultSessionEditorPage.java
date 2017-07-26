@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.editor.internal.pages;
+package org.eclipse.sirius.ui.editor.api.pages;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -32,6 +32,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
+import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
 import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalSemanticModelsHandler;
 import org.eclipse.sirius.ui.tools.internal.actions.session.CloseSessionsAction;
 import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler;
@@ -46,7 +47,6 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.IManagedForm;
-import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.events.IHyperlinkListener;
 import org.eclipse.ui.forms.widgets.FormText;
@@ -69,12 +69,12 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
  */
-public class DefaultSessionEditorPage extends FormPage implements SessionListener {
+public class DefaultSessionEditorPage extends AbstractSessionEditorPage implements SessionListener {
 
     /**
      * The page's unique id.
      */
-    private static final String PAGE_ID = "org.eclipse.sirius.ui.editor.DefaultSessionEditorPage"; //$NON-NLS-1$
+    public static final String PAGE_ID = "org.eclipse.sirius.ui.editor.DefaultSessionEditorPage"; //$NON-NLS-1$
 
     /**
      * Delimiter used to separate text part for the page title.
@@ -120,12 +120,10 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      * 
      * @param theEditor
      *            the editor.
-     * @param theSession
-     *            the session.
      */
-    public DefaultSessionEditorPage(SessionEditor theEditor, Session theSession) {
+    public DefaultSessionEditorPage(SessionEditor theEditor) {
         super(theEditor, PAGE_ID, Messages.UI_SessionEditor_default_page_tab_label);
-        this.session = theSession;
+        this.session = theEditor.getSession();
         this.editor = theEditor;
     }
 
@@ -380,5 +378,15 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
             filterActionGroup.dispose();
             filterActionGroup = null;
         }
+    }
+
+    @Override
+    public String getLocationId() {
+        return null;
+    }
+
+    @Override
+    public PositioningKind getPositioning() {
+        return null;
     }
 }
