@@ -270,8 +270,12 @@ public class DialectManagerImpl implements DialectManager {
         Collection<DRepresentation> result = Lists.newArrayList();
         ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
         for (EStructuralFeature.Setting setting : xref.getInverseReferences(semantic)) {
-            if (ViewpointPackage.Literals.DREPRESENTATION.isInstance(setting.getEObject()) && setting.getEStructuralFeature() == ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET) {
-                result.add((DRepresentation) setting.getEObject());
+            if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(setting.getEObject())
+                    && setting.getEStructuralFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__TARGET) {
+                DRepresentation representation = ((DRepresentationDescriptor) setting.getEObject()).getRepresentation();
+                if (representation != null) {
+                    result.add(representation);
+                }
             }
         }
         return result;
