@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="viewPointDirectEdit" version="12.0.0.2017041100">
+  <ownedViewpoints name="487428" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="tree" domainClass="EObject">
+      <subItemMappings name="itemMapping" domainClass="EObject" semanticCandidatesExpression="feature:eContents" reusedTreeItemMappings="//@ownedViewpoints[name='487428']/@ownedRepresentations[name='tree']/@subItemMappings[name='itemMapping']">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <directEdit name="qsd" mapping="//@ownedViewpoints[name='487428']/@ownedRepresentations[name='tree']/@subItemMappings[name='itemMapping']">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:self">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+          <element name="element"/>
+          <root name="root"/>
+        </directEdit>
+      </subItemMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

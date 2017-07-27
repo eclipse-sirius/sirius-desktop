@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:tree="http://www.eclipse.org/sirius/tree/1.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/tree/description/1.0.0 http://www.eclipse.org/sirius/tree/1.0.0#//description">
+  <viewpoint:DAnalysis xmi:id="_gM1TwHKwEeep1YecyUKWQA" selectedViews="_jz99EHKxEeep1YecyUKWQA" version="12.1.0.201706291600">
+    <semanticResources>My.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_jz99EHKxEeep1YecyUKWQA">
+      <viewpoint xmi:type="description:Viewpoint" href="487828.odesign#//@ownedViewpoints[name='487428']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_kvULCnKxEeep1YecyUKWQA" name="new tree" repPath="#_kvULAHKxEeep1YecyUKWQA">
+        <description xmi:type="description_1:TreeDescription" href="487828.odesign#//@ownedViewpoints[name='487428']/@ownedRepresentations[name='tree']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <tree:DTree xmi:id="_kvULAHKxEeep1YecyUKWQA" name="new tree">
+    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_kvULAnKxEeep1YecyUKWQA" name="C1">
+      <target xmi:type="ecore:EClass" href="My.ecore#//C1"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//C1"/>
+      <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_kvULA3KxEeep1YecyUKWQA"/>
+      <actualMapping xmi:type="description_1:TreeItemMapping" href="487828.odesign#//@ownedViewpoints[name='487428']/@ownedRepresentations[name='tree']/@subItemMappings[name='itemMapping']"/>
+    </ownedTreeItems>
+    <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_kvULBHKxEeep1YecyUKWQA" name="C2">
+      <target xmi:type="ecore:EClass" href="My.ecore#//C2"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//C2"/>
+      <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_kvULBXKxEeep1YecyUKWQA"/>
+      <actualMapping xmi:type="description_1:TreeItemMapping" href="487828.odesign#//@ownedViewpoints[name='487428']/@ownedRepresentations[name='tree']/@subItemMappings[name='itemMapping']"/>
+    </ownedTreeItems>
+    <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_kvULBnKxEeep1YecyUKWQA" name="P2">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//P2"/>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_kvULB3KxEeep1YecyUKWQA">
+        <target xmi:type="ecore:EClass" href="My.ecore#//P2/C3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P2/C3"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_kvULCHKxEeep1YecyUKWQA" labelColor="209,209,209" backgroundColor="209,209,209"/>
+        <actualMapping xmi:type="description_1:TreeItemMapping" href="487828.odesign#//@ownedViewpoints[name='487428']/@ownedRepresentations[name='tree']/@subItemMappings[name='itemMapping']"/>
+      </ownedTreeItems>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P2"/>
+      <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_kvULCXKxEeep1YecyUKWQA"/>
+      <actualMapping xmi:type="description_1:TreeItemMapping" href="487828.odesign#//@ownedViewpoints[name='487428']/@ownedRepresentations[name='tree']/@subItemMappings[name='itemMapping']"/>
+    </ownedTreeItems>
+    <description xmi:type="description_1:TreeDescription" href="487828.odesign#//@ownedViewpoints[name='487428']/@ownedRepresentations[name='tree']"/>
+  </tree:DTree>
+</xmi:XMI>

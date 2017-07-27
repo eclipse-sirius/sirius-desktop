@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.sirius.tests.swtbot.tree.ContextMenuTreeTest;
 import org.eclipse.sirius.tests.swtbot.tree.CopyTreeRepresentationTest;
 import org.eclipse.sirius.tests.swtbot.tree.CreatedDTreeItemsSelectionTests;
 import org.eclipse.sirius.tests.swtbot.tree.DeleteSeveralElementOnTree;
+import org.eclipse.sirius.tests.swtbot.tree.DirectEditTreeItemTest;
 import org.eclipse.sirius.tests.swtbot.tree.DisplayLabelOnNodeTest;
 import org.eclipse.sirius.tests.swtbot.tree.NavigateInTreeRepresentationTest;
 import org.eclipse.sirius.tests.swtbot.tree.OpenCloseCreateDeleteTreeRepresentationTest;
@@ -67,6 +68,7 @@ public class TreeSwtbotTestSuite extends TestCase {
         suite.addTestSuite(OpenCloseCreateDeleteTreeRepresentationTest.class);
         suite.addTestSuite(RenameTreeRepresentationTest.class);
         suite.addTestSuite(NavigateInTreeRepresentationTest.class);
+        suite.addTestSuite(DirectEditTreeItemTest.class);
         suite.addTestSuite(ConditionalTreeItemStyleDescriptionTest.class);
         suite.addTestSuite(TreeItemStyleDescriptionTest.class);
         suite.addTestSuite(TreeItemMappingTest.class);
