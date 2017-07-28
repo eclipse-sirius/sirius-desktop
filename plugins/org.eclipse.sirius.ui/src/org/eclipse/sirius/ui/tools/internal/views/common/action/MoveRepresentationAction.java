@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo and others.
+ * Copyright (c) 2015, 2017 Obeo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,12 +13,14 @@ package org.eclipse.sirius.ui.tools.internal.views.common.action;
 import java.text.MessageFormat;
 import java.util.Collection;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.dialect.command.MoveRepresentationCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
+import org.eclipse.sirius.business.internal.representation.DRepresentationLocationManager;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
@@ -40,6 +42,8 @@ import com.google.common.collect.Iterables;
  * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
  */
 public class MoveRepresentationAction extends Action {
+    private static final String PLATFORM_SCHEME = "platform"; //$NON-NLS-1$
+
     private final Collection<DRepresentationDescriptor> repDescriptors;
 
     private final DAnalysis targetAnalysis;
@@ -61,11 +65,19 @@ public class MoveRepresentationAction extends Action {
         this.targetAnalysis = targetAnalysis;
         this.session = session;
         this.repDescriptors = selection;
+        Assert.isTrue(!repDescriptors.isEmpty());
 
         final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif"); //$NON-NLS-1$
         this.setImageDescriptor(descriptor);
 
-        this.setText(MessageFormat.format(Messages.MoveRepresentationAction_text, targetAnalysis.eResource().getURI().toString()));
+        DRepresentationDescriptor firstRepDesc = repDescriptors.iterator().next();
+        String uriString = new DRepresentationLocationManager().getRepresentationResourceURI(firstRepDesc.getRepresentation(), targetAnalysis.eResource()).map(uri -> {
+            if (uri.scheme().equals(PLATFORM_SCHEME)) {
+                return uri.toString();
+            }
+            return uri.scheme();
+        }).orElse(""); //$NON-NLS-1$
+        this.setText(MessageFormat.format(Messages.MoveRepresentationAction_text, uriString));
 
         // Disable the action if the selection is not valid
         if (!isValidSelection()) {

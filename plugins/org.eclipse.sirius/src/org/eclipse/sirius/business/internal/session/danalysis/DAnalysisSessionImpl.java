@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session.danalysis;
 
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,6 +69,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelectorServic
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
+import org.eclipse.sirius.business.internal.representation.DRepresentationLocationManager;
 import org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater;
 import org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
@@ -501,16 +503,32 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         final IPermissionAuthority receiverAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(receiverDView);
         if (receiverAuthority.canCreateIn(receiverDView)) {
             DRepresentation dRepresentation = repDescriptor.getRepresentation();
-            receiverDView.eResource().getContents().add(dRepresentation);
-            // We call updateRepresentation to update the new path. We need to update the path before updating the
-            // repDescritor's parent which triggers the model explorer refresh with a wrong repPath attribute.
-            repDescriptor.updateRepresentation(dRepresentation);
-            receiverDView.getOwnedRepresentationDescriptors().add(repDescriptor);
-            // Add all semantic root elements pointed by the target of all
-            // DSemanticDecorator of this representation (except of this root is
-            // a root of a referencedAnalysis)
-            if (receiverDView.eContainer() instanceof DAnalysis) {
-                DAnalysisSessionHelper.updateModelsReferences(receiverDView);
+            Resource sourceRepResource = dRepresentation.eResource();
+
+            // move representation
+            Resource targetRepResource = new DRepresentationLocationManager().getOrCreateRepresentationResource(dRepresentation, receiverDView.eResource());
+            if (targetRepResource != null) {
+                targetRepResource.getContents().add(dRepresentation);
+
+                // We call updateRepresentation to update the new path. We need to update the path before updating the
+                // repDescritor's parent which triggers the model explorer refresh with a wrong repPath attribute.
+                repDescriptor.updateRepresentation(dRepresentation);
+                receiverDView.getOwnedRepresentationDescriptors().add(repDescriptor);
+                // Add all semantic root elements pointed by the target of all
+                // DSemanticDecorator of this representation (except of this root is
+                // a root of a referencedAnalysis)
+                if (receiverDView.eContainer() instanceof DAnalysis) {
+                    DAnalysisSessionHelper.updateModelsReferences(receiverDView);
+                }
+
+                // delete the resource if it is empty
+                Arrays.asList(sourceRepResource, targetRepResource).stream().filter(res -> res.getContents().isEmpty()).forEach(res -> {
+                    try {
+                        res.delete(Collections.emptyMap());
+                    } catch (IOException e) {
+                        SiriusPlugin.getDefault().error(Messages.SiriusUncontrolCommand_resourceDeletionFailedMsg, e);
+                    }
+                });
             }
         } else {
             throw new LockedInstanceException(receiverDView);

@@ -40,7 +40,7 @@ public class DRepresentationLocationManager {
         ResourceSet resourceSet = airdResource != null ? airdResource.getResourceSet() : null;
         if (resourceSet != null) {
             // Get the fragment of the URI
-            resource = getURIFromExtensionPoint(representation, airdResource).map(repResourceURI -> {
+            resource = getRepresentationResourceURI(representation, airdResource).map(repResourceURI -> {
                 // get or create resource
                 Resource res = resourceSet.getResource(repResourceURI, false);
                 if (res == null) {
@@ -57,7 +57,16 @@ public class DRepresentationLocationManager {
         return resource;
     }
 
-    private Optional<URI> getURIFromExtensionPoint(DRepresentation representation, Resource airdResource) {
+    /**
+     * Get the URI of the resource in which the representation will be stored.
+     * 
+     * @param representation
+     *            the DRepresentation
+     * @param airdResource
+     *            the airdResource the representation wil be reference from
+     * @return the URI
+     */
+    public Optional<URI> getRepresentationResourceURI(DRepresentation representation, Resource airdResource) {
         Optional<DRepresentationLocationRule> representationLocationRule = DRepresentationLocationRuleRegistry.getInstance().getRepresentationLocationRule(representation, airdResource);
 
         return representationLocationRule.map(r -> r.getResourceURI(representation, airdResource));
