@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.internal.quickfix;
 
 import java.text.MessageFormat;
+import java.util.Optional;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -34,6 +35,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFacto
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.NavigationMarkerConstants;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
@@ -56,8 +58,7 @@ public class ValidationFixResolution implements IMarkerResolution {
     private ValidationFix fix;
 
     /**
-     * Create a new {@link ValidationFixResolution} from a {@link ValidationFix}
-     * .
+     * Create a new {@link ValidationFixResolution} from a {@link ValidationFix} .
      * 
      * @param fix
      *            {@link ValidationFix} to execute.
@@ -138,16 +139,18 @@ public class ValidationFixResolution implements IMarkerResolution {
 
     private View getMarkedView(Session session, IMarker marker) {
         String elementID = marker.getAttribute(org.eclipse.gmf.runtime.common.ui.resources.IMarker.ELEMENT_ID, null);
-        String diagramURI = marker.getAttribute(NavigationMarkerConstants.DIAGRAM_URI, null);
+        String diagramDescriptorURI = marker.getAttribute(NavigationMarkerConstants.DIAGRAM_DESCRIPTOR_URI, null);
 
-        if (diagramURI == null || elementID == null) {
+        if (diagramDescriptorURI == null || elementID == null) {
             return null;
         }
 
         ResourceSet set = session.getTransactionalEditingDomain().getResourceSet();
         if (set != null) {
-            EObject markedDiagram = set.getEObject(URI.createURI(diagramURI), true);
-            EObject markerTarget = markedDiagram instanceof Diagram ? markedDiagram.eResource().getEObject(elementID) : null;
+            EObject markedDiagramDescriptor = set.getEObject(URI.createURI(diagramDescriptorURI), true);
+            EObject markedDiagram = Optional.ofNullable(markedDiagramDescriptor).filter(DRepresentationDescriptor.class::isInstance).map(d -> ((DRepresentationDescriptor) d).getRepresentation())
+                    .orElse(null);
+            EObject markerTarget = markedDiagram instanceof DDiagram ? markedDiagram.eResource().getEObject(elementID) : null;
             if (markerTarget instanceof View) {
                 return (View) markerTarget;
             }

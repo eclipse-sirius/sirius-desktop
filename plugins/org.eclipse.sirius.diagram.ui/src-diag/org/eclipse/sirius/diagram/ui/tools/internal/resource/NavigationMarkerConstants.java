@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,17 +18,14 @@ package org.eclipse.sirius.diagram.ui.tools.internal.resource;
 public final class NavigationMarkerConstants {
 
     /**
-     * The key for record the diagram info for retrieve the diagram on marker
-     * opening.<BR>
-     * The URI is like this :
-     * platform:/resource/projectName/folderPath/fileName#id
+     * The key for record the diagram descriptor info for retrieve the diagram on marker opening.<BR>
+     * The URI is like this : platform:/resource/projectName/folderPath/fileName#id
      */
-    public static final String DIAGRAM_URI = "DIAGRAM_URI"; //$NON-NLS-1$
+    public static final String DIAGRAM_DESCRIPTOR_URI = "DIAGRAM_DESCRIPTOR_URI"; //$NON-NLS-1$
 
     /**
      * The key for record the semantic element URI.<BR>
-     * The URI is like this :
-     * platform:/resource/projectName/folderPath/fileName#id
+     * The URI is like this : platform:/resource/projectName/folderPath/fileName#id
      */
     public static final String SEMANTIC_URI = "SEMANTIC_URI"; //$NON-NLS-1$
 

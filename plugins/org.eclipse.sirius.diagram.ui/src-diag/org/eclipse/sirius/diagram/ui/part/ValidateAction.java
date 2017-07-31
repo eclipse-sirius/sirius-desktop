@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
@@ -43,6 +44,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
@@ -59,6 +61,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.part.OffscreenEditPartFactor
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.validation.constraint.RuleWrappingStatus;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -169,9 +172,8 @@ public class ValidateAction extends Action {
     }
 
     /**
-     * @was-generated NOT it is not necessary to call the createMarkers
-     *                operation since the markers are automatically added for
-     *                EMF validation. <br/>
+     * @was-generated NOT it is not necessary to call the createMarkers operation since the markers are automatically
+     *                added for EMF validation. <br/>
      *                Validation is run on view elements and its children.<br/>
      */
     private static void validate(DiagramEditPart diagramEditPart, View view) {
@@ -209,10 +211,9 @@ public class ValidateAction extends Action {
     }
 
     /*
-     * The marker should reference the main aird file, to be sure to load all
-     * the user session when clicking on the marker if the corresponding session
-     * is closed (referenced analysis cases or CDO for which the main aird is
-     * local file with information concerning the server).
+     * The marker should reference the main aird file, to be sure to load all the user session when clicking on the
+     * marker if the corresponding session is closed (referenced analysis cases or CDO for which the main aird is local
+     * file with information concerning the server).
      * @was-generated NOT
      */
     private static IFile getFileToMark(DiagramEditPart diagramEditPart, View view) {
@@ -284,12 +285,8 @@ public class ValidateAction extends Action {
         }
         // Search diagram URI
         Object object = viewer.getFocusEditPart().getModel();
-        String diagramUri = null;
-        if (object instanceof Diagram) {
-            final URI uri = EcoreUtil.getURI((Diagram) object);
-            diagramUri = uri.toString();
-        }
-        SiriusMarkerNavigationProviderSpec.addValidationRuleMarker(nextStatus.getOriginRule(), target, elementId, diagramUri, semanticURI, location, message, statusSeverity);
+        String diagramDescriptorUri = getDRepresentationDescriptorURIFromDiagram(object);
+        SiriusMarkerNavigationProviderSpec.addValidationRuleMarker(nextStatus.getOriginRule(), target, elementId, diagramDescriptorUri, semanticURI, location, message, statusSeverity);
     }
 
     /**
@@ -346,12 +343,23 @@ public class ValidateAction extends Action {
         }
         // Search diagram URI
         Object object = viewer.getFocusEditPart().getModel();
-        String diagramUri = null;
+        String diagramDescriptorUri = getDRepresentationDescriptorURIFromDiagram(object);
+        SiriusMarkerNavigationProviderSpec.addMarker(target, elementId, diagramDescriptorUri, semanticURI, location, message, statusSeverity);
+    }
+
+    private static String getDRepresentationDescriptorURIFromDiagram(Object object) {
+        String diagramDescriptorUri = null;
         if (object instanceof Diagram) {
-            final URI uri = EcoreUtil.getURI((Diagram) object);
-            diagramUri = uri.toString();
+            Optional<DRepresentationDescriptor> optional = Optional.of((Diagram) object).map(View::getElement).filter(DDiagram.class::isInstance).map(d -> {
+                DRepresentationQuery query = new DRepresentationQuery((DDiagram) d);
+                return query.getRepresentationDescriptor();
+            });
+            if (optional.isPresent()) {
+                final URI uri = EcoreUtil.getURI(optional.get());
+                diagramDescriptorUri = uri.toString();
+            }
         }
-        SiriusMarkerNavigationProviderSpec.addMarker(target, elementId, diagramUri, semanticURI, location, message, statusSeverity);
+        return diagramDescriptorUri;
     }
 
     /**
