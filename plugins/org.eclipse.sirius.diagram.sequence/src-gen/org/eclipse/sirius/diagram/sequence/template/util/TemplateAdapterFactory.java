@@ -38,21 +38,21 @@ import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
  * method for each class of the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage
  * @generated
  */
 public class TemplateAdapterFactory extends AdapterFactoryImpl {
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static TemplatePackage modelPackage;
 
     /**
      * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TemplateAdapterFactory() {
@@ -65,7 +65,7 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
      * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc --> This
      * implementation returns <code>true</code> if the object is either the model's package or is an instance object of
      * the model. <!-- end-user-doc -->
-     * 
+     *
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
@@ -82,7 +82,7 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TemplateSwitch<Adapter> modelSwitch = new TemplateSwitch<Adapter>() {
@@ -189,7 +189,7 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param target
      *            the object to adapt.
      * @return the adapter for the <code>target</code>.
@@ -247,7 +247,7 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
      * <em>TLifeline Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
      * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
      * end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineStyle
      * @generated
@@ -257,12 +257,11 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle
-     * <em>TConditional Lifeline Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
-     * 
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle <em>TConditional Lifeline
+     * Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle
      * @generated
@@ -304,7 +303,7 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
      * <em>TExecution Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
      * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
      * end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionStyle
      * @generated
@@ -314,12 +313,11 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle
-     * <em>TConditional Execution Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
-     * 
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle <em>TConditional Execution
+     * Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle
      * @generated
@@ -343,12 +341,11 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping
-     * <em>TSource Target Message Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so
-     * that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping <em>TSource Target Message
+     * Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping
      * @generated
@@ -358,11 +355,11 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping <em>TReturn Message Mapping</em>}'.
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping <em>TReturn Message Mapping</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
      * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping
      * @generated
@@ -372,11 +369,11 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TCreationMessageMapping <em>TCreation Message Mapping</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
-     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TCreationMessageMapping <em>TCreation Message
+     * Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.template.TCreationMessageMapping
      * @generated
@@ -386,12 +383,11 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping
-     * <em>TDestruction Message Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
-     * 
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping <em>TDestruction Message
+     * Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping
      * @generated
@@ -419,7 +415,7 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
      * <em>TMessage Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
      * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
      * end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageMapping
      * @generated
@@ -443,11 +439,11 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle <em>TConditional Message Style</em>}
-     * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle <em>TConditional Message
+     * Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle
      * @generated
@@ -473,7 +469,7 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation returns null.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @generated
      */

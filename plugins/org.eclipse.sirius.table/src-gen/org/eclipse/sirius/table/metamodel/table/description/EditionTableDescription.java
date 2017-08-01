@@ -58,7 +58,7 @@ public interface EditionTableDescription extends TableDescription {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Column Mappings</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getEditionTableDescription_ReusedColumnMappings()
      * @model keys="name"
@@ -74,7 +74,7 @@ public interface EditionTableDescription extends TableDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Column Mappings</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getEditionTableDescription_AllColumnMappings()
      * @model keys="name" required="true" transient="true" changeable="false" volatile="true" derived="true"

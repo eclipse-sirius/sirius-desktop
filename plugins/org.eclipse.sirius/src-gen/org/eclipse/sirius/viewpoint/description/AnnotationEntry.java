@@ -37,7 +37,7 @@ public interface AnnotationEntry extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Source</em>' attribute.
      * @see #setSource(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAnnotationEntry_Source()
@@ -47,9 +47,9 @@ public interface AnnotationEntry extends EObject {
     String getSource();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getSource <em>Source</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getSource
+     * <em>Source</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Source</em>' attribute.
      * @see #getSource()
@@ -64,7 +64,7 @@ public interface AnnotationEntry extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Data</em>' containment reference.
      * @see #setData(EObject)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAnnotationEntry_Data()
@@ -76,7 +76,7 @@ public interface AnnotationEntry extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getData <em>Data</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Data</em>' containment reference.
      * @see #getData()

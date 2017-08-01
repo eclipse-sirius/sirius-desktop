@@ -45,7 +45,7 @@ public interface TableMapping extends RepresentationElementMapping {
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements <em>Semantic
      * Elements</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Elements</em>' attribute.
      * @see #getSemanticElements()

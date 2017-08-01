@@ -36,7 +36,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
     /**
      * The default value of the '{@link #getSendingEndFinderExpression() <em>Sending End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSendingEndFinderExpression()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
     /**
      * The cached value of the '{@link #getSendingEndFinderExpression() <em>Sending End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSendingEndFinderExpression()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
     /**
      * The default value of the '{@link #getReceivingEndFinderExpression() <em>Receiving End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReceivingEndFinderExpression()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
     /**
      * The cached value of the '{@link #getReceivingEndFinderExpression() <em>Receiving End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReceivingEndFinderExpression()
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MessageMappingImpl() {
@@ -84,7 +84,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +118,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

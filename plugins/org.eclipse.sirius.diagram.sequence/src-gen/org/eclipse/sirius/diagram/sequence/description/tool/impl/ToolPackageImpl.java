@@ -42,104 +42,104 @@ import org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass sequenceDiagramToolDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass orderedElementCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass coveringElementCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass instanceRoleCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass lifelineCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass messageCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass executionCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass stateCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass reorderToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass instanceRoleReorderToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass observationPointCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass interactionUseCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass combinedFragmentCreationToolEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass operandCreationToolEClass = null;
@@ -163,7 +163,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -175,7 +175,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * This method is used to initialize {@link ToolPackage#eINSTANCE} when that field is accessed. Clients should not
      * invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -229,7 +229,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -249,7 +249,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -269,7 +269,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -289,7 +289,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -299,7 +299,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -309,7 +309,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -319,7 +319,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -329,7 +329,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -339,7 +339,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -349,7 +349,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -369,7 +369,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -379,7 +379,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -389,7 +389,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -399,7 +399,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -409,7 +409,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -419,7 +419,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -429,7 +429,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -439,7 +439,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -449,7 +449,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -459,7 +459,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -469,7 +469,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -479,7 +479,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -489,7 +489,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -499,7 +499,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -509,7 +509,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -519,7 +519,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -527,7 +527,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
     /**
      * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
      * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -582,7 +582,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -590,7 +590,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
     /**
      * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
      * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
@@ -734,7 +734,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
     /**
      * Initializes the annotations for <b>toolVariable</b>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void createToolVariableAnnotations() {

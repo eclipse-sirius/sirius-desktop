@@ -24,8 +24,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.CreateView#getMapping <em>Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.CreateView#getContainerViewExpression
- * <em>Container View Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.CreateView#getContainerViewExpression <em>Container View
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.CreateView#getVariableName <em>Variable Name</em>}</li>
  * </ul>
  *
@@ -47,9 +47,9 @@ public interface CreateView extends ContainerModelOperation {
     DiagramElementMapping getMapping();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.CreateView#getMapping <em>Mapping</em>}
-     * ' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.CreateView#getMapping
+     * <em>Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Mapping</em>' reference.
      * @see #getMapping()
@@ -65,13 +65,14 @@ public interface CreateView extends ContainerModelOperation {
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Container View Expression</em>' attribute.
      * @see #setContainerViewExpression(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateView_ContainerViewExpression()
      * @model default="" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
-     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a view (DNode, DEdge, DDiagram -> any DSemanticDecorator).'"
+     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a view (DNode,
+     *        DEdge, DDiagram -> any DSemanticDecorator).'"
      * @generated
      */
     String getContainerViewExpression();
@@ -79,7 +80,7 @@ public interface CreateView extends ContainerModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.CreateView#getContainerViewExpression
      * <em>Container View Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Container View Expression</em>' attribute.
      * @see #getContainerViewExpression()
@@ -102,9 +103,9 @@ public interface CreateView extends ContainerModelOperation {
     String getVariableName();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.CreateView#getVariableName
-     * <em>Variable Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.CreateView#getVariableName <em>Variable
+     * Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Variable Name</em>' attribute.
      * @see #getVariableName()

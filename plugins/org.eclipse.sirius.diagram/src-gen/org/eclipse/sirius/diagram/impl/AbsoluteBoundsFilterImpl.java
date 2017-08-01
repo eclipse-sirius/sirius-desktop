@@ -36,7 +36,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container implements AbsoluteBoundsFilter {
     /**
      * The default value of the '{@link #getX() <em>X</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getX()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * The cached value of the '{@link #getX() <em>X</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getX()
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * The default value of the '{@link #getY() <em>Y</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getY()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * The cached value of the '{@link #getY() <em>Y</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getY()
      * @generated
      * @ordered
@@ -73,7 +73,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
     /**
      * The default value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
@@ -83,7 +83,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
@@ -93,7 +93,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
     /**
      * The default value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWidth()
      * @generated
      * @ordered
@@ -112,7 +112,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbsoluteBoundsFilterImpl() {
@@ -121,7 +121,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +247,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -271,7 +271,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -295,7 +295,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -315,7 +315,7 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NodeMappingImportItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Hide Sub Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHideSubMappingsPropertyDescriptor(Object object) {
@@ -78,7 +78,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     /**
      * This adds a property descriptor for the Inherits Ancestor Filters feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInheritsAncestorFiltersPropertyDescriptor(Object object) {
@@ -91,7 +91,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Imported Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addImportedMappingPropertyDescriptor(Object object) {
@@ -134,7 +134,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

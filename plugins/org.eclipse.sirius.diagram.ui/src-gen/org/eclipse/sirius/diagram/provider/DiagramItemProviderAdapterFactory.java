@@ -42,7 +42,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -50,7 +50,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -65,7 +65,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramItemProviderAdapterFactory() {
@@ -87,7 +87,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.DDiagram}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.DSemanticDiagram} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DSemanticDiagramItemProvider dSemanticDiagramItemProvider;
@@ -110,7 +110,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.DSemanticDiagram}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.HideFilter}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.HideLabelFilter} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected HideLabelFilterItemProvider hideLabelFilterItemProvider;
@@ -156,7 +156,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.HideLabelFilter}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +171,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.FoldingPointFilter} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FoldingPointFilterItemProvider foldingPointFilterItemProvider;
@@ -179,7 +179,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.FoldingPointFilter}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.FoldingFilter}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.AppliedCompositeFilters}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AppliedCompositeFiltersItemProvider appliedCompositeFiltersItemProvider;
@@ -225,7 +225,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.AppliedCompositeFilters}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -240,7 +240,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.AbsoluteBoundsFilter}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbsoluteBoundsFilterItemProvider absoluteBoundsFilterItemProvider;
@@ -248,7 +248,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.AbsoluteBoundsFilter}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -286,7 +286,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.DNodeContainer} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DNodeContainerItemProvider dNodeContainerItemProvider;
@@ -294,7 +294,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.DNodeContainer}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -317,7 +317,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.DNodeList}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -332,7 +332,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.DNodeListElement} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DNodeListElementItemProvider dNodeListElementItemProvider;
@@ -340,7 +340,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.DNodeListElement}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -409,7 +409,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.GaugeSection}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -424,7 +424,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.FlatContainerStyle} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FlatContainerStyleItemProvider flatContainerStyleItemProvider;
@@ -432,7 +432,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.FlatContainerStyle}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -447,7 +447,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.ShapeContainerStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ShapeContainerStyleItemProvider shapeContainerStyleItemProvider;
@@ -455,7 +455,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.ShapeContainerStyle}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -478,7 +478,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.Square}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -501,7 +501,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.Ellipse}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -524,7 +524,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.Lozenge}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -547,7 +547,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.BundledImage}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -562,7 +562,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.WorkspaceImage} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WorkspaceImageItemProvider workspaceImageItemProvider;
@@ -570,7 +570,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.WorkspaceImage}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -593,7 +593,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.CustomStyle}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -616,7 +616,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.EdgeStyle}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -631,7 +631,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.GaugeCompositeStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GaugeCompositeStyleItemProvider gaugeCompositeStyleItemProvider;
@@ -639,7 +639,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.GaugeCompositeStyle}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -662,7 +662,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.BorderedStyle}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -700,7 +700,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.FilterVariableHistory}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FilterVariableHistoryItemProvider filterVariableHistoryItemProvider;
@@ -708,7 +708,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.FilterVariableHistory}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -723,7 +723,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.CollapseFilter} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CollapseFilterItemProvider collapseFilterItemProvider;
@@ -731,7 +731,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.CollapseFilter}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -746,7 +746,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.IndirectlyCollapseFilter}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IndirectlyCollapseFilterItemProvider indirectlyCollapseFilterItemProvider;
@@ -754,7 +754,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.IndirectlyCollapseFilter}. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -769,7 +769,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.BeginLabelStyle} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BeginLabelStyleItemProvider beginLabelStyleItemProvider;
@@ -777,7 +777,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.BeginLabelStyle}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -792,7 +792,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.CenterLabelStyle} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CenterLabelStyleItemProvider centerLabelStyleItemProvider;
@@ -800,7 +800,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.CenterLabelStyle}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -823,7 +823,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.EndLabelStyle}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -838,7 +838,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.BracketEdgeStyle} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BracketEdgeStyleItemProvider bracketEdgeStyleItemProvider;
@@ -846,7 +846,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.BracketEdgeStyle}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -862,7 +862,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComputedStyleDescriptionRegistryItemProvider computedStyleDescriptionRegistryItemProvider;
@@ -885,7 +885,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.DragAndDropTarget} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DragAndDropTargetItemProvider dragAndDropTargetItemProvider;
@@ -893,7 +893,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.DragAndDropTarget}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -908,7 +908,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.TypedVariableValue} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TypedVariableValueItemProvider typedVariableValueItemProvider;
@@ -916,7 +916,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.TypedVariableValue}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -931,7 +931,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.EObjectVariableValue}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EObjectVariableValueItemProvider eObjectVariableValueItemProvider;
@@ -939,7 +939,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.EObjectVariableValue}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -953,7 +953,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -963,7 +963,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -973,7 +973,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -984,7 +984,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -994,7 +994,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1011,7 +1011,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1021,7 +1021,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1032,7 +1032,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1046,7 +1046,7 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

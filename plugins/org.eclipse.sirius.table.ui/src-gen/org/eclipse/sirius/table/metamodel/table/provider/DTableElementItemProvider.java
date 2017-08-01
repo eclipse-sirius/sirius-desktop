@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.provider.DRepresentationElementItemProvider;
 public class DTableElementItemProvider extends DRepresentationElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DTableElementItemProvider(AdapterFactory adapterFactory) {
@@ -40,7 +40,7 @@ public class DTableElementItemProvider extends DRepresentationElementItemProvide
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class DTableElementItemProvider extends DRepresentationElementItemProvide
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class DTableElementItemProvider extends DRepresentationElementItemProvide
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class DTableElementItemProvider extends DRepresentationElementItemProvide
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

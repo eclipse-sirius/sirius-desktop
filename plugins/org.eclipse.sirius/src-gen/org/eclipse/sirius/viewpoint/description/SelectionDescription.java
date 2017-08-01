@@ -21,14 +21,14 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getCandidatesExpression
- * <em>Candidates Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getCandidatesExpression <em>Candidates
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#isMultiple <em>Multiple</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#isTree <em>Tree</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getRootExpression <em>Root Expression</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getChildrenExpression
- * <em>Children Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getRootExpression <em>Root
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getChildrenExpression <em>Children
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getMessage <em>Message</em>}</li>
  * </ul>
  *
@@ -44,23 +44,25 @@ public interface SelectionDescription extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Candidates Expression</em>' attribute.
      * @see #setCandidatesExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSelectionDescription_CandidatesExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the view of the container.' container='ecore.EObject | the semantic element of the container.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        Collection<EObject> or an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables
+     *        diagram='diagram.DSemanticDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator |
+     *        the view of the container.' container='ecore.EObject | the semantic element of the container.'"
      * @generated
      */
     String getCandidatesExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getCandidatesExpression
-     * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getCandidatesExpression <em>Candidates
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Candidates Expression</em>' attribute.
      * @see #getCandidatesExpression()
@@ -75,7 +77,7 @@ public interface SelectionDescription extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Multiple</em>' attribute.
      * @see #setMultiple(boolean)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSelectionDescription_Multiple()
@@ -87,7 +89,7 @@ public interface SelectionDescription extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#isMultiple
      * <em>Multiple</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Multiple</em>' attribute.
      * @see #isMultiple()
@@ -109,9 +111,9 @@ public interface SelectionDescription extends EObject {
     boolean isTree();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#isTree <em>Tree</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#isTree
+     * <em>Tree</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Tree</em>' attribute.
      * @see #isTree()
@@ -126,14 +128,16 @@ public interface SelectionDescription extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Root Expression</em>' attribute.
      * @see #setRootExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSelectionDescription_RootExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the view of the container.' container='ecore.EObject | the semantic element of the container.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        Collection<EObject> or an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables
+     *        diagram='diagram.DSemanticDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator |
+     *        the view of the container.' container='ecore.EObject | the semantic element of the container.'"
      * @generated
      */
     String getRootExpression();
@@ -141,7 +145,7 @@ public interface SelectionDescription extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getRootExpression
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Root Expression</em>' attribute.
      * @see #getRootExpression()
@@ -156,14 +160,16 @@ public interface SelectionDescription extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Children Expression</em>' attribute.
      * @see #setChildrenExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSelectionDescription_ChildrenExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the view of the container.' container='ecore.EObject | the semantic element of the container.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        Collection<EObject> or an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables
+     *        diagram='diagram.DSemanticDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator |
+     *        the view of the container.' container='ecore.EObject | the semantic element of the container.'"
      * @generated
      */
     String getChildrenExpression();
@@ -171,7 +177,7 @@ public interface SelectionDescription extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getChildrenExpression
      * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Children Expression</em>' attribute.
      * @see #getChildrenExpression()
@@ -186,7 +192,7 @@ public interface SelectionDescription extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Message</em>' attribute.
      * @see #setMessage(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSelectionDescription_Message()
@@ -198,7 +204,7 @@ public interface SelectionDescription extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.SelectionDescription#getMessage
      * <em>Message</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Message</em>' attribute.
      * @see #getMessage()

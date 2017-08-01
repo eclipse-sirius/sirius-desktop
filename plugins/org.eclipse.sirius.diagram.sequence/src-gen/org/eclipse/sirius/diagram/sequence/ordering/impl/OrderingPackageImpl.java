@@ -35,41 +35,41 @@ import org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass eventEndsOrderingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass eventEndEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass singleEventEndEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass compoundEventEndEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass instanceRolesOrderingEClass = null;
@@ -93,7 +93,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -105,7 +105,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
      * This method is used to initialize {@link OrderingPackage#eINSTANCE} when that field is accessed. Clients should
      * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -159,7 +159,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -199,7 +199,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -229,7 +229,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -249,7 +249,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -269,7 +269,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -289,7 +289,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -297,7 +297,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
     /**
      * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
      * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -327,7 +327,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -335,7 +335,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
     /**
      * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
      * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {

@@ -28,10 +28,10 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getMappings <em>Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElement <em>Element</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElementView <em>Element View</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getInitialOperation
- * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElementView <em>Element
+ * View</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getInitialOperation <em>Initial
+ * Operation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDoubleClickDescription()
@@ -42,9 +42,9 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
     /**
      * Returns the value of the '<em><b>Mappings</b></em>' reference list. The list contents are of type
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}. It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getDoubleClickDescription
-     * <em>Double Click Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Mappings associated with this deletion behavior. <!-- end-model-doc -->
+     * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getDoubleClickDescription <em>Double Click
+     * Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Mappings associated
+     * with this deletion behavior. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDoubleClickDescription_Mappings()
@@ -70,7 +70,7 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElement
      * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element</em>' containment reference.
      * @see #getElement()
@@ -85,7 +85,7 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Element View</em>' containment reference.
      * @see #setElementView(ElementDoubleClickVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDoubleClickDescription_ElementView()
@@ -97,7 +97,7 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElementView
      * <em>Element View</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element View</em>' containment reference.
      * @see #getElementView()
@@ -118,10 +118,10 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
     InitialOperation getInitialOperation();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getInitialOperation <em>Initial
+     * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()

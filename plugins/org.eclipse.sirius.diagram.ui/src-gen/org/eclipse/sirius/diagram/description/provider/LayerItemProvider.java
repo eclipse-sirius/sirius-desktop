@@ -50,7 +50,7 @@ import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemPr
 public class LayerItemProvider extends DocumentedElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LayerItemProvider(AdapterFactory adapterFactory) {
@@ -59,7 +59,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -109,7 +109,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
     /**
      * This adds a property descriptor for the Label feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -122,7 +122,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
     /**
      * This adds a property descriptor for the Reused Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedMappingsPropertyDescriptor(Object object) {
@@ -135,7 +135,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
     /**
      * This adds a property descriptor for the All Tools feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllToolsPropertyDescriptor(Object object) {
@@ -146,7 +146,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
     /**
      * This adds a property descriptor for the Reused Tools feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedToolsPropertyDescriptor(Object object) {
@@ -158,7 +158,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
     /**
      * This adds a property descriptor for the Icon feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPropertyDescriptor(Object object) {
@@ -171,7 +171,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
     /**
      * This adds a property descriptor for the All Edge Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllEdgeMappingsPropertyDescriptor(Object object) {
@@ -186,7 +186,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -371,7 +371,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

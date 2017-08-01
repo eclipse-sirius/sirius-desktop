@@ -32,13 +32,13 @@ import org.eclipse.sirius.viewpoint.description.provider.RepresentationElementMa
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.DiagramElementMapping} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DiagramElementMappingItemProvider extends RepresentationElementMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramElementMappingItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
 
     /**
      * This adds a property descriptor for the Paste Descriptions feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPasteDescriptionsPropertyDescriptor(Object object) {
@@ -82,7 +82,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This adds a property descriptor for the Precondition Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
@@ -110,7 +110,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
 
     /**
      * This adds a property descriptor for the Label Direct Edit feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelDirectEditPropertyDescriptor(Object object) {
@@ -124,7 +124,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This adds a property descriptor for the Semantic Candidates Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
@@ -138,7 +138,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
 
     /**
      * This adds a property descriptor for the Semantic Elements feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
@@ -153,7 +153,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This adds a property descriptor for the Double Click Description feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDoubleClickDescriptionPropertyDescriptor(Object object) {
@@ -202,7 +202,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SwitchChild#getSubModelOperations
- * <em>Sub Model Operations</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SwitchChild#getSubModelOperations <em>Sub Model
+ * Operations</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSwitchChild()
@@ -38,7 +38,7 @@ public interface SwitchChild extends EObject {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sub Model Operations</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSwitchChild_SubModelOperations()
      * @model containment="true" resolveProxies="true"

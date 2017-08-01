@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting#getExtensionGroup
- * <em>Extension Group</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting#getExtensionGroup <em>Extension
+ * Group</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getMetamodelExtensionSetting()
@@ -45,10 +45,10 @@ public interface MetamodelExtensionSetting extends EObject {
     EObject getExtensionGroup();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting#getExtensionGroup
-     * <em>Extension Group</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting#getExtensionGroup <em>Extension
+     * Group</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Extension Group</em>' reference.
      * @see #getExtensionGroup()

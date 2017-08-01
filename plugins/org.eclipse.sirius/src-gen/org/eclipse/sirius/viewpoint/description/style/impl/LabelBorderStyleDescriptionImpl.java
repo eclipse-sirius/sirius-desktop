@@ -25,10 +25,10 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStyleDescriptionImpl#getId <em>Id</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStyleDescriptionImpl#getName <em>Name</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStyleDescriptionImpl#getId
+ * <em>Id</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStyleDescriptionImpl#getName
+ * <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStyleDescriptionImpl#getCornerHeight
  * <em>Corner Height</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStyleDescriptionImpl#getCornerWidth
@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Container implements LabelBorderStyleDescription {
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The default value of the '{@link #getCornerHeight() <em>Corner Height</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getCornerHeight()
      * @generated
      * @ordered
@@ -89,7 +89,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getCornerHeight() <em>Corner Height</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getCornerHeight()
      * @generated
      * @ordered
@@ -99,7 +99,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The default value of the '{@link #getCornerWidth() <em>Corner Width</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getCornerWidth()
      * @generated
      * @ordered
@@ -109,7 +109,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getCornerWidth() <em>Corner Width</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCornerWidth()
      * @generated
      * @ordered
@@ -118,7 +118,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelBorderStyleDescriptionImpl() {
@@ -127,7 +127,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +171,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +185,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -253,7 +253,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -277,7 +277,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -301,7 +301,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -321,7 +321,7 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

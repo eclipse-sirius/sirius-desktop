@@ -24,8 +24,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.ChangeContextImpl#getBrowseExpression
- * <em>Browse Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.ChangeContextImpl#getBrowseExpression <em>Browse
+ * Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,7 +53,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ChangeContextImpl() {
@@ -62,7 +62,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

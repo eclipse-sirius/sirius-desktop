@@ -21,8 +21,8 @@ package org.eclipse.sirius.viewpoint.description.validation;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass
- * <em>Target Class</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass <em>Target
+ * Class</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getSemanticValidationRule()
@@ -33,7 +33,7 @@ public interface SemanticValidationRule extends ValidationRule {
     /**
      * Returns the value of the '<em><b>Target Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The name of the domain class of the element. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Target Class</em>' attribute.
      * @see #setTargetClass(String)
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getSemanticValidationRule_TargetClass()
@@ -43,10 +43,10 @@ public interface SemanticValidationRule extends ValidationRule {
     String getTargetClass();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass
-     * <em>Target Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass <em>Target
+     * Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Target Class</em>' attribute.
      * @see #getTargetClass()

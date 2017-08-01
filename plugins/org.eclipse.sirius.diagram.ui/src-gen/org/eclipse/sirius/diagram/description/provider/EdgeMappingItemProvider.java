@@ -42,7 +42,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EdgeMappingItemProvider(AdapterFactory adapterFactory) {
@@ -51,7 +51,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Documentation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
@@ -89,7 +89,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Source Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSourceMappingPropertyDescriptor(Object object) {
@@ -102,7 +102,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Target Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetMappingPropertyDescriptor(Object object) {
@@ -116,7 +116,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
     /**
      * This adds a property descriptor for the Target Finder Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetFinderExpressionPropertyDescriptor(Object object) {
@@ -131,7 +131,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
     /**
      * This adds a property descriptor for the Source Finder Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSourceFinderExpressionPropertyDescriptor(Object object) {
@@ -145,7 +145,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Target Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetExpressionPropertyDescriptor(Object object) {
@@ -159,7 +159,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -173,7 +173,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Use Domain Element feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addUseDomainElementPropertyDescriptor(Object object) {
@@ -185,7 +185,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Reconnections feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReconnectionsPropertyDescriptor(Object object) {
@@ -198,7 +198,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Path Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPathExpressionPropertyDescriptor(Object object) {
@@ -212,7 +212,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Path Node Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPathNodeMappingPropertyDescriptor(Object object) {
@@ -228,7 +228,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -256,7 +256,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * This returns EdgeMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -348,7 +348,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {

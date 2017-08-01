@@ -32,13 +32,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class RepresentationCreationDescriptionItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RepresentationCreationDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
 
     /**
      * This adds a property descriptor for the Title Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTitleExpressionPropertyDescriptor(Object object) {
@@ -77,7 +77,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
 
     /**
      * This adds a property descriptor for the Browse Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBrowseExpressionPropertyDescriptor(Object object) {
@@ -91,7 +91,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
     /**
      * This adds a property descriptor for the Representation Description feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRepresentationDescriptionPropertyDescriptor(Object object) {
@@ -106,7 +106,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

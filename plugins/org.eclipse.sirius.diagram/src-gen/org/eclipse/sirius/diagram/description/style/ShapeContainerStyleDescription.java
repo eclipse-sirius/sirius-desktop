@@ -40,7 +40,7 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.ContainerShape
      * @see #setShape(ContainerShape)
@@ -51,10 +51,10 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
     ContainerShape getShape();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getShape <em>Shape</em>}'
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getShape <em>Shape</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.ContainerShape
@@ -76,10 +76,10 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
     ColorDescription getBackgroundColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getBackgroundColor
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getBackgroundColor
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()

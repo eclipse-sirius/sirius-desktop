@@ -61,7 +61,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #getOutgoingEdges() <em>Outgoing Edges</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOutgoingEdges()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #getIncomingEdges() <em>Incoming Edges</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIncomingEdges()
      * @generated
      * @ordered
@@ -112,7 +112,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #getSourceNode() <em>Source Node</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSourceNode()
      * @generated
      * @ordered
@@ -122,7 +122,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #getTargetNode() <em>Target Node</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTargetNode()
      * @generated
      * @ordered
@@ -132,7 +132,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #getActualMapping() <em>Actual Mapping</em>}' reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getActualMapping()
      * @generated
      * @ordered
@@ -142,7 +142,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The default value of the '{@link #getRoutingStyle() <em>Routing Style</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getRoutingStyle()
      * @generated
      * @ordered
@@ -152,7 +152,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #getRoutingStyle() <em>Routing Style</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getRoutingStyle()
      * @generated
      * @ordered
@@ -163,7 +163,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The default value of the '{@link #isIsFold() <em>Is Fold</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isIsFold()
      * @generated
      * @ordered
@@ -173,7 +173,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #isIsFold() <em>Is Fold</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isIsFold()
      * @generated
      * @ordered
@@ -183,7 +183,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The default value of the '{@link #isIsMockEdge() <em>Is Mock Edge</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isIsMockEdge()
      * @generated
      * @ordered
@@ -193,7 +193,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #isIsMockEdge() <em>Is Mock Edge</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isIsMockEdge()
      * @generated
      * @ordered
@@ -203,7 +203,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #getOriginalStyle() <em>Original Style</em>}' reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getOriginalStyle()
      * @generated
      * @ordered
@@ -213,7 +213,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #getPath() <em>Path</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPath()
      * @generated
      * @ordered
@@ -233,7 +233,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The default value of the '{@link #getBeginLabel() <em>Begin Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBeginLabel()
      * @generated
      * @ordered
@@ -243,7 +243,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #getBeginLabel() <em>Begin Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBeginLabel()
      * @generated
      * @ordered
@@ -253,7 +253,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The default value of the '{@link #getEndLabel() <em>End Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndLabel()
      * @generated
      * @ordered
@@ -263,7 +263,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     /**
      * The cached value of the '{@link #getEndLabel() <em>End Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndLabel()
      * @generated
      * @ordered
@@ -272,7 +272,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DEdgeImpl() {
@@ -281,7 +281,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -291,7 +291,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -304,7 +304,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -317,7 +317,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -344,7 +344,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EdgeStyle basicGetOwnedStyle() {
@@ -353,7 +353,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetOwnedStyle(EdgeStyle newOwnedStyle, NotificationChain msgs) {
@@ -372,7 +372,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -396,7 +396,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -406,7 +406,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -420,7 +420,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -439,7 +439,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EdgeTarget basicGetSourceNode() {
@@ -448,7 +448,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetSourceNode(EdgeTarget newSourceNode, NotificationChain msgs) {
@@ -467,7 +467,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -491,7 +491,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -510,7 +510,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EdgeTarget basicGetTargetNode() {
@@ -519,7 +519,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTargetNode(EdgeTarget newTargetNode, NotificationChain msgs) {
@@ -538,7 +538,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -562,7 +562,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -581,7 +581,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public IEdgeMapping basicGetActualMapping() {
@@ -590,7 +590,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -604,7 +604,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -614,7 +614,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -628,7 +628,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -639,7 +639,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -654,7 +654,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -665,7 +665,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -680,7 +680,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -699,7 +699,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Style basicGetOriginalStyle() {
@@ -708,7 +708,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -722,7 +722,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -735,7 +735,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -748,7 +748,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -758,7 +758,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -772,7 +772,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -782,7 +782,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -796,7 +796,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -808,7 +808,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -835,7 +835,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -857,7 +857,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -914,7 +914,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -976,7 +976,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1033,7 +1033,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1075,7 +1075,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1095,7 +1095,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1115,7 +1115,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

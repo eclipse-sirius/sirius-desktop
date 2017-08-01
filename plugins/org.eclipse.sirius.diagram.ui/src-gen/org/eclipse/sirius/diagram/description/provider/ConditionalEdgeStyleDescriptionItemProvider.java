@@ -32,13 +32,13 @@ import org.eclipse.sirius.viewpoint.description.provider.ConditionalStyleDescrip
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ConditionalEdgeStyleDescriptionItemProvider extends ConditionalStyleDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ConditionalEdgeStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class ConditionalEdgeStyleDescriptionItemProvider extends ConditionalStyl
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class ConditionalEdgeStyleDescriptionItemProvider extends ConditionalStyl
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -78,7 +78,7 @@ public class ConditionalEdgeStyleDescriptionItemProvider extends ConditionalStyl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class ConditionalEdgeStyleDescriptionItemProvider extends ConditionalStyl
 
     /**
      * This returns ConditionalEdgeStyleDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class ConditionalEdgeStyleDescriptionItemProvider extends ConditionalStyl
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class ConditionalEdgeStyleDescriptionItemProvider extends ConditionalStyl
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

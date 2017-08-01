@@ -27,10 +27,10 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl#getShape <em>Shape</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl#getColor <em>Color</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl#getShape
+ * <em>Shape</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl#getColor
+ * <em>Color</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl#getProvidedShapeID
  * <em>Provided Shape ID</em>}</li>
  * </ul>
@@ -41,7 +41,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
     /**
      * The default value of the '{@link #getShape() <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getShape()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
     /**
      * The cached value of the '{@link #getProvidedShapeID() <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getProvidedShapeID()
      * @generated
      * @ordered
@@ -90,7 +90,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BundledImageDescriptionImpl() {
@@ -99,7 +99,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetColor() {
@@ -161,7 +161,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +185,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -199,7 +199,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -220,7 +220,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,7 +241,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -262,7 +262,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -280,7 +280,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

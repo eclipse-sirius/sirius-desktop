@@ -38,7 +38,7 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getFeatureColumnMapping_FeatureName()
@@ -51,7 +51,7 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureName <em>Feature
      * Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()
@@ -66,7 +66,7 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getFeatureColumnMapping_LabelExpression()
@@ -85,7 +85,7 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getLabelExpression <em>Label
      * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
@@ -110,7 +110,7 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureParentExpression
      * <em>Feature Parent Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Parent Expression</em>' attribute.
      * @see #getFeatureParentExpression()

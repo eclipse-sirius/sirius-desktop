@@ -34,13 +34,13 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class LineMappingItemProvider extends TableMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LineMappingItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Reused Sub Lines feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedSubLinesPropertyDescriptor(Object object) {
@@ -80,7 +80,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -94,7 +94,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Semantic Candidates Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
@@ -108,7 +108,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Header Label Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHeaderLabelExpressionPropertyDescriptor(Object object) {
@@ -121,7 +121,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Reused In Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedInMappingsPropertyDescriptor(Object object) {
@@ -137,7 +137,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This returns LineMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -251,7 +251,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {

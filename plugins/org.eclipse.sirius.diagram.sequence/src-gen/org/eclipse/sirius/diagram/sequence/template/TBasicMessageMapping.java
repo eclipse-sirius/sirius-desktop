@@ -37,7 +37,7 @@ public interface TBasicMessageMapping extends TSourceTargetMessageMapping {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Target</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTBasicMessageMapping_Target()
      * @model required="true"

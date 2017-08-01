@@ -19,8 +19,8 @@ package org.eclipse.sirius.viewpoint.description;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getAttributeName <em>Attribute Name</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getAttributeName <em>Attribute
+ * Name</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getValue <em>Value</em>}</li>
  * </ul>
  *
@@ -36,7 +36,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Attribute Name</em>' attribute.
      * @see #setAttributeName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEAttributeCustomization_AttributeName()
@@ -48,7 +48,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getAttributeName
      * <em>Attribute Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Attribute Name</em>' attribute.
      * @see #getAttributeName()
@@ -63,14 +63,15 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEAttributeCustomization_Value()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='A java Object to affect as new value of a EAttribute, for example a java primitive.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='ecore.EObject | the current view.' container='ecore.EObject | the semantic container.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='A java Object to
+     *        affect as new value of a EAttribute, for example a java primitive.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables view='ecore.EObject | the
+     *        current view.' container='ecore.EObject | the semantic container.'"
      * @generated
      */
     String getValue();
@@ -78,7 +79,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getValue
      * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()

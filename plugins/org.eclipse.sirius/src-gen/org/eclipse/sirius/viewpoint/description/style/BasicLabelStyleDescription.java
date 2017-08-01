@@ -26,18 +26,18 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelSize <em>Label Size</em>
- * }</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelFormat
- * <em>Label Format</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#isShowIcon <em>Show Icon</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelExpression
- * <em>Label Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelColor
- * <em>Label Color</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getIconPath <em>Icon Path</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelSize <em>Label
+ * Size</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelFormat <em>Label
+ * Format</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#isShowIcon <em>Show
+ * Icon</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelExpression <em>Label
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelColor <em>Label
+ * Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getIconPath <em>Icon
+ * Path</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBasicLabelStyleDescription()
@@ -58,10 +58,10 @@ public interface BasicLabelStyleDescription extends EObject {
     int getLabelSize();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelSize <em>Label Size</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelSize <em>Label
+     * Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -97,10 +97,10 @@ public interface BasicLabelStyleDescription extends EObject {
     boolean isShowIcon();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#isShowIcon <em>Show Icon</em>}'
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#isShowIcon <em>Show Icon</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Show Icon</em>' attribute.
      * @see #isShowIcon()
@@ -119,16 +119,18 @@ public interface BasicLabelStyleDescription extends EObject {
      * @model default="feature:name" dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation = "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DSemanticDiagram.' view='diagram.DDiagramElement | the current view for which the label is calculated.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the
+     *        current DSemanticDiagram.' view='diagram.DDiagramElement | the current view for which the label is
+     *        calculated.'"
      * @generated
      */
     String getLabelExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelExpression
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelExpression <em>Label
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
@@ -143,7 +145,7 @@ public interface BasicLabelStyleDescription extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Color</em>' reference.
      * @see #setLabelColor(ColorDescription)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBasicLabelStyleDescription_LabelColor()
@@ -153,10 +155,10 @@ public interface BasicLabelStyleDescription extends EObject {
     ColorDescription getLabelColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelColor
-     * <em>Label Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getLabelColor <em>Label
+     * Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Label Color</em>' reference.
      * @see #getLabelColor()
@@ -178,10 +180,10 @@ public interface BasicLabelStyleDescription extends EObject {
     String getIconPath();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getIconPath <em>Icon Path</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription#getIconPath <em>Icon
+     * Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Icon Path</em>' attribute.
      * @see #getIconPath()

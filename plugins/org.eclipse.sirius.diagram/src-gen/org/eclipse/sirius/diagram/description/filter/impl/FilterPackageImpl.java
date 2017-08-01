@@ -41,48 +41,48 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass filterDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass filterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass mappingFilterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass compositeFilterDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass variableFilterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum filterKindEEnum = null;
@@ -106,7 +106,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -118,7 +118,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * This method is used to initialize {@link FilterPackage#eINSTANCE} when that field is accessed. Clients should not
      * invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -176,7 +176,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -256,7 +256,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -276,7 +276,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -286,7 +286,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -296,7 +296,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -306,7 +306,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -316,7 +316,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -324,7 +324,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
     /**
      * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
      * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -357,7 +357,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -365,7 +365,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
     /**
      * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
      * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {

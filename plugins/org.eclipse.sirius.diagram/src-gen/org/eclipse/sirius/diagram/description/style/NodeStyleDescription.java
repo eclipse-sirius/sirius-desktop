@@ -28,13 +28,13 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getSizeComputationExpression
- * <em>Size Computation Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getLabelPosition <em>Label Position</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getSizeComputationExpression <em>Size
+ * Computation Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getLabelPosition <em>Label
+ * Position</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getResizeKind <em>Resize Kind</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getForbiddenSides
- * <em>Forbidden Sides</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getForbiddenSides <em>Forbidden
+ * Sides</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription()
@@ -57,10 +57,10 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
     String getSizeComputationExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getSizeComputationExpression
-     * <em>Size Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getSizeComputationExpression <em>Size
+     * Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Size Computation Expression</em>' attribute.
      * @see #getSizeComputationExpression()
@@ -86,7 +86,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getLabelPosition
      * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.diagram.LabelPosition
@@ -113,7 +113,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getResizeKind
      * <em>Resize Kind</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Resize Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.ResizeKind

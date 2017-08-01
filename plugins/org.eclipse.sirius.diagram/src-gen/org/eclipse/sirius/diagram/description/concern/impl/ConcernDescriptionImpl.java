@@ -35,11 +35,11 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getLabel <em>Label</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getFilters <em>Filters</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getFilters
+ * <em>Filters</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getRules <em>Rules</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getBehaviors <em>Behaviors</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getBehaviors
+ * <em>Behaviors</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,7 +68,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     /**
      * The cached value of the '{@link #getFilters() <em>Filters</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getFilters()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     /**
      * The cached value of the '{@link #getRules() <em>Rules</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRules()
      * @generated
      * @ordered
@@ -108,7 +108,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     /**
      * The cached value of the '{@link #getBehaviors() <em>Behaviors</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBehaviors()
      * @generated
      * @ordered
@@ -117,7 +117,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConcernDescriptionImpl() {
@@ -126,7 +126,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -210,7 +210,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +223,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -245,7 +245,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -276,7 +276,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -303,7 +303,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -325,7 +325,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -345,7 +345,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -365,7 +365,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

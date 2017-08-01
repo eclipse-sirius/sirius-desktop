@@ -42,7 +42,7 @@ public interface DLine extends LineContainer, DTableElement {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_Label()
@@ -54,7 +54,7 @@ public interface DLine extends LineContainer, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getLabel <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label</em>' attribute.
      * @see #getLabel()
@@ -69,7 +69,7 @@ public interface DLine extends LineContainer, DTableElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Origin Mapping</em>' reference.
      * @see #setOriginMapping(LineMapping)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_OriginMapping()
@@ -81,7 +81,7 @@ public interface DLine extends LineContainer, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getOriginMapping <em>Origin
      * Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Origin Mapping</em>' reference.
      * @see #getOriginMapping()
@@ -109,7 +109,7 @@ public interface DLine extends LineContainer, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#isVisible <em>Visible</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Visible</em>' attribute.
      * @see #isVisible()
@@ -137,7 +137,7 @@ public interface DLine extends LineContainer, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#isCollapsed <em>Collapsed</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Collapsed</em>' attribute.
      * @see #isCollapsed()
@@ -172,7 +172,7 @@ public interface DLine extends LineContainer, DTableElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Container</em>' container reference.
      * @see #setContainer(LineContainer)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_Container()
@@ -185,7 +185,7 @@ public interface DLine extends LineContainer, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getContainer <em>Container</em>}'
      * container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Container</em>' container reference.
      * @see #getContainer()
@@ -228,7 +228,7 @@ public interface DLine extends LineContainer, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getCurrentStyle <em>Current
      * Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Current Style</em>' containment reference.
      * @see #getCurrentStyle()

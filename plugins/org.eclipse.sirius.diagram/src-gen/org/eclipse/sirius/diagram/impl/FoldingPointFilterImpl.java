@@ -25,7 +25,7 @@ import org.eclipse.sirius.diagram.FoldingPointFilter;
 public class FoldingPointFilterImpl extends MinimalEObjectImpl.Container implements FoldingPointFilter {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FoldingPointFilterImpl() {
@@ -34,7 +34,7 @@ public class FoldingPointFilterImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

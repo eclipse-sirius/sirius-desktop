@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl;
 public class CenterLabelStyleImpl extends BasicLabelStyleImpl implements CenterLabelStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CenterLabelStyleImpl() {
@@ -38,7 +38,7 @@ public class CenterLabelStyleImpl extends BasicLabelStyleImpl implements CenterL
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

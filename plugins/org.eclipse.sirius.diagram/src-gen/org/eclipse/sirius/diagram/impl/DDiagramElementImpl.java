@@ -42,8 +42,8 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementImpl#getTooltipText <em>Tooltip Text</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementImpl#getParentLayers <em>Parent Layers</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementImpl#getDecorations <em>Decorations</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementImpl#getDiagramElementMapping
- * <em>Diagram Element Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementImpl#getDiagramElementMapping <em>Diagram Element
+ * Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementImpl#getGraphicalFilters <em>Graphical Filters</em>}</li>
  * </ul>
  *
@@ -53,7 +53,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * The default value of the '{@link #isVisible() <em>Visible</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isVisible()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * The cached value of the '{@link #isVisible() <em>Visible</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isVisible()
      * @generated
      * @ordered
@@ -93,7 +93,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * The cached value of the '{@link #getParentLayers() <em>Parent Layers</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getParentLayers()
      * @generated
      * @ordered
@@ -113,7 +113,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * The cached value of the '{@link #getTransientDecorations() <em>Transient Decorations</em>}' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTransientDecorations()
      * @generated
      * @ordered
@@ -123,7 +123,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * The cached value of the '{@link #getGraphicalFilters() <em>Graphical Filters</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGraphicalFilters()
      * @generated
      * @ordered
@@ -132,7 +132,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DDiagramElementImpl() {
@@ -141,7 +141,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +201,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -260,7 +260,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,7 +273,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -285,7 +285,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -303,7 +303,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -332,7 +332,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -367,7 +367,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -397,7 +397,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -423,7 +423,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

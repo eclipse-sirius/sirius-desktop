@@ -32,8 +32,8 @@ import org.eclipse.sirius.diagram.description.filter.MappingFilter;
  * <li>{@link org.eclipse.sirius.diagram.description.filter.impl.MappingFilterImpl#getMappings <em>Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.filter.impl.MappingFilterImpl#getSemanticConditionExpression
  * <em>Semantic Condition Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.filter.impl.MappingFilterImpl#getViewConditionExpression
- * <em>View Condition Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.filter.impl.MappingFilterImpl#getViewConditionExpression <em>View
+ * Condition Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -42,7 +42,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
     /**
      * The cached value of the '{@link #getMappings() <em>Mappings</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMappings()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
     /**
      * The default value of the '{@link #getSemanticConditionExpression() <em>Semantic Condition Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticConditionExpression()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
     /**
      * The cached value of the '{@link #getSemanticConditionExpression() <em>Semantic Condition Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticConditionExpression()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
     /**
      * The default value of the '{@link #getViewConditionExpression() <em>View Condition Expression</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getViewConditionExpression()
      * @generated
      * @ordered
@@ -82,7 +82,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
     /**
      * The cached value of the '{@link #getViewConditionExpression() <em>View Condition Expression</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getViewConditionExpression()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MappingFilterImpl() {
@@ -100,7 +100,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +171,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -212,7 +212,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -253,7 +253,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

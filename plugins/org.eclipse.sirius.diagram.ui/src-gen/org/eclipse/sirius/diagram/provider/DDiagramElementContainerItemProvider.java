@@ -34,7 +34,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 public class DDiagramElementContainerItemProvider extends DDiagramElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DDiagramElementContainerItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This adds a property descriptor for the Outgoing Edges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOutgoingEdgesPropertyDescriptor(Object object) {
@@ -93,7 +93,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This adds a property descriptor for the Incoming Edges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIncomingEdgesPropertyDescriptor(Object object) {
@@ -105,7 +105,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This adds a property descriptor for the Nodes feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNodesPropertyDescriptor(Object object) {
@@ -117,7 +117,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This adds a property descriptor for the Containers feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addContainersPropertyDescriptor(Object object) {
@@ -129,7 +129,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This adds a property descriptor for the Elements feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addElementsPropertyDescriptor(Object object) {
@@ -141,7 +141,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This adds a property descriptor for the Original Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
@@ -153,7 +153,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This adds a property descriptor for the Actual Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
@@ -165,7 +165,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This adds a property descriptor for the Candidates Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCandidatesMappingPropertyDescriptor(Object object) {
@@ -177,7 +177,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This adds a property descriptor for the Width feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWidthPropertyDescriptor(Object object) {
@@ -189,7 +189,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This adds a property descriptor for the Height feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHeightPropertyDescriptor(Object object) {
@@ -204,7 +204,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -232,7 +232,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

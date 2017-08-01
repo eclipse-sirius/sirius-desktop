@@ -47,7 +47,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * The cached value of the '{@link #getKey() <em>Key</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getKey()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
     /**
      * The cached value of the '{@link #getData() <em>Data</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getData()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DAnalysisCustomDataImpl() {
@@ -75,7 +75,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetData() {
@@ -145,7 +145,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetData(EObject newData, NotificationChain msgs) {
@@ -164,7 +164,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,7 +221,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,7 +273,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

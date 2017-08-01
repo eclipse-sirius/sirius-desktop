@@ -37,14 +37,14 @@ import org.eclipse.sirius.viewpoint.description.UserColorsPalette;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.UserColorsPalette} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class UserColorsPaletteItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public UserColorsPaletteItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +53,7 @@ public class UserColorsPaletteItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class UserColorsPaletteItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class UserColorsPaletteItemProvider extends ItemProviderAdapter
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class UserColorsPaletteItemProvider extends ItemProviderAdapter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class UserColorsPaletteItemProvider extends ItemProviderAdapter
 
     /**
      * This returns UserColorsPalette.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class UserColorsPaletteItemProvider extends ItemProviderAdapter
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

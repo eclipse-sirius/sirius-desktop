@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.ContainerModelOper
 public class NavigationItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NavigationItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
 
     /**
      * This returns Navigation.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -38,7 +38,7 @@ public interface DAnnotationEntry extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Source</em>' attribute.
      * @see #setSource(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotationEntry_Source()
@@ -48,9 +48,9 @@ public interface DAnnotationEntry extends EObject {
     String getSource();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.DAnnotationEntry#getSource <em>Source</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.DAnnotationEntry#getSource
+     * <em>Source</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Source</em>' attribute.
      * @see #getSource()
@@ -66,7 +66,7 @@ public interface DAnnotationEntry extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Details</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotationEntry_Details()
      * @model

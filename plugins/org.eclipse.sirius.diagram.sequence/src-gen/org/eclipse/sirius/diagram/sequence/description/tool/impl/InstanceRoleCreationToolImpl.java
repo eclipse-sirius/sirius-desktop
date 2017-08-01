@@ -46,7 +46,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InstanceRoleCreationToolImpl() {
@@ -55,7 +55,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,7 +75,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetPredecessor(ElementVariable newPredecessor, NotificationChain msgs) {
@@ -94,7 +94,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +118,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

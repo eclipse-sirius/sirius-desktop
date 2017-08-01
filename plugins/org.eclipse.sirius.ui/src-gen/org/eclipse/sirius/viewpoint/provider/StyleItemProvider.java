@@ -31,13 +31,13 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.Style} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class StyleItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public StyleItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class StyleItemProvider extends ItemProviderAdapter implements IEditingDo
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class StyleItemProvider extends ItemProviderAdapter implements IEditingDo
 
     /**
      * This adds a property descriptor for the Custom Features feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCustomFeaturesPropertyDescriptor(Object object) {
@@ -74,7 +74,7 @@ public class StyleItemProvider extends ItemProviderAdapter implements IEditingDo
 
     /**
      * This adds a property descriptor for the Description feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
@@ -85,7 +85,7 @@ public class StyleItemProvider extends ItemProviderAdapter implements IEditingDo
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class StyleItemProvider extends ItemProviderAdapter implements IEditingDo
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class StyleItemProvider extends ItemProviderAdapter implements IEditingDo
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

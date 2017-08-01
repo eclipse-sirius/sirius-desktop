@@ -34,14 +34,14 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class FeatureChangeListenerItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FeatureChangeListenerItemProvider(AdapterFactory adapterFactory) {
@@ -50,7 +50,7 @@ public class FeatureChangeListenerItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class FeatureChangeListenerItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -79,7 +79,7 @@ public class FeatureChangeListenerItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Feature Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
@@ -92,7 +92,7 @@ public class FeatureChangeListenerItemProvider extends ItemProviderAdapter
 
     /**
      * This returns FeatureChangeListener.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class FeatureChangeListenerItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class FeatureChangeListenerItemProvider extends ItemProviderAdapter
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class FeatureChangeListenerItemProvider extends ItemProviderAdapter
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

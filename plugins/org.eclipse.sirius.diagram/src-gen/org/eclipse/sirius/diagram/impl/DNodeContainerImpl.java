@@ -45,7 +45,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
     /**
      * The cached value of the '{@link #getOwnedDiagramElements() <em>Owned Diagram Elements</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedDiagramElements()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DNodeContainerImpl() {
@@ -83,7 +83,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -180,7 +180,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -25,8 +25,8 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramExtensionDescription#getLayers <em>Layers</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.DiagramExtensionDescription#getValidationSet
- * <em>Validation Set</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.DiagramExtensionDescription#getValidationSet <em>Validation
+ * Set</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramExtensionDescription#getConcerns <em>Concerns</em>}</li>
  * </ul>
  *
@@ -43,7 +43,7 @@ public interface DiagramExtensionDescription extends RepresentationExtensionDesc
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Layers</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramExtensionDescription_Layers()
      * @model containment="true" resolveProxies="true" keys="name"
@@ -66,7 +66,7 @@ public interface DiagramExtensionDescription extends RepresentationExtensionDesc
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.DiagramExtensionDescription#getValidationSet
      * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Validation Set</em>' containment reference.
      * @see #getValidationSet()
@@ -90,7 +90,7 @@ public interface DiagramExtensionDescription extends RepresentationExtensionDesc
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.DiagramExtensionDescription#getConcerns
      * <em>Concerns</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Concerns</em>' containment reference.
      * @see #getConcerns()

@@ -28,8 +28,8 @@ import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.impl.PasteTargetDescriptionImpl#getPasteDescriptions
- * <em>Paste Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.PasteTargetDescriptionImpl#getPasteDescriptions <em>Paste
+ * Descriptions</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,7 +47,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PasteTargetDescriptionImpl() {
@@ -56,7 +56,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -110,7 +110,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

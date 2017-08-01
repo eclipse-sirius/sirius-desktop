@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public class SwitchItemProvider extends ModelOperationItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SwitchItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class SwitchItemProvider extends ModelOperationItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class SwitchItemProvider extends ModelOperationItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class SwitchItemProvider extends ModelOperationItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class SwitchItemProvider extends ModelOperationItemProvider {
 
     /**
      * This returns Switch.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class SwitchItemProvider extends ModelOperationItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

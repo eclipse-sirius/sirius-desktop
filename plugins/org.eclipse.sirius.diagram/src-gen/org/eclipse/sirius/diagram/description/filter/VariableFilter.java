@@ -29,8 +29,8 @@ import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.filter.VariableFilter#getOwnedVariables <em>Owned Variables</em>}
  * </li>
- * <li>{@link org.eclipse.sirius.diagram.description.filter.VariableFilter#getSemanticConditionExpression
- * <em>Semantic Condition Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.filter.VariableFilter#getSemanticConditionExpression <em>Semantic
+ * Condition Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getVariableFilter()
@@ -46,7 +46,7 @@ public interface VariableFilter extends Filter {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Variables</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getVariableFilter_OwnedVariables()
      * @model containment="true" resolveProxies="true"
@@ -69,10 +69,10 @@ public interface VariableFilter extends Filter {
     String getSemanticConditionExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.filter.VariableFilter#getSemanticConditionExpression
-     * <em>Semantic Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.filter.VariableFilter#getSemanticConditionExpression <em>Semantic
+     * Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Semantic Condition Expression</em>' attribute.
      * @see #getSemanticConditionExpression()

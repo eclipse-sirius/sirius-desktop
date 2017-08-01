@@ -25,8 +25,8 @@ import org.eclipse.sirius.viewpoint.description.TypedVariable;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.TypedVariableValueImpl#getVariableDefinition <em>Variable Definition</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.TypedVariableValueImpl#getVariableDefinition <em>Variable
+ * Definition</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.TypedVariableValueImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
@@ -46,7 +46,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
     /**
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getValue()
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TypedVariableValueImpl() {
@@ -74,7 +74,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TypedVariable basicGetVariableDefinition() {
@@ -112,7 +112,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -187,7 +187,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,7 +205,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,7 +221,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

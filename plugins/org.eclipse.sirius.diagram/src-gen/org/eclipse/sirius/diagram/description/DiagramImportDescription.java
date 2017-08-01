@@ -21,8 +21,8 @@ import org.eclipse.sirius.viewpoint.description.RepresentationImportDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.DiagramImportDescription#getImportedDiagram
- * <em>Imported Diagram</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.DiagramImportDescription#getImportedDiagram <em>Imported
+ * Diagram</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramImportDescription()
@@ -45,7 +45,7 @@ public interface DiagramImportDescription extends RepresentationImportDescriptio
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.DiagramImportDescription#getImportedDiagram
      * <em>Imported Diagram</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Imported Diagram</em>' reference.
      * @see #getImportedDiagram()

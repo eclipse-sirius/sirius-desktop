@@ -45,10 +45,10 @@ public interface TLifelineStyle extends TTransformer {
     String getLifelineWidthComputationExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineWidthComputationExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineWidthComputationExpression
      * <em>Lifeline Width Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Lifeline Width Computation Expression</em>' attribute.
      * @see #getLifelineWidthComputationExpression()
@@ -63,7 +63,7 @@ public interface TLifelineStyle extends TTransformer {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Lifeline Color</em>' reference.
      * @see #setLifelineColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTLifelineStyle_LifelineColor()
@@ -75,7 +75,7 @@ public interface TLifelineStyle extends TTransformer {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineColor
      * <em>Lifeline Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Lifeline Color</em>' reference.
      * @see #getLifelineColor()

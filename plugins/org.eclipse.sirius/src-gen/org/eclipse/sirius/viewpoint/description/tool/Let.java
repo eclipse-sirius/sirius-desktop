@@ -43,9 +43,9 @@ public interface Let extends ContainerModelOperation {
     String getVariableName();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.Let#getVariableName
-     * <em>Variable Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.Let#getVariableName <em>Variable
+     * Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Variable Name</em>' attribute.
      * @see #getVariableName()
@@ -69,9 +69,9 @@ public interface Let extends ContainerModelOperation {
     String getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.Let#getValueExpression
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.Let#getValueExpression <em>Value
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()

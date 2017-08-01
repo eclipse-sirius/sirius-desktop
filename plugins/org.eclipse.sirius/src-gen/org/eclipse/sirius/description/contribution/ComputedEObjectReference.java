@@ -19,8 +19,8 @@ package org.eclipse.sirius.description.contribution;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.description.contribution.ComputedEObjectReference#getValueExpression
- * <em>Value Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.ComputedEObjectReference#getValueExpression <em>Value
+ * Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getComputedEObjectReference()
@@ -46,8 +46,8 @@ public interface ComputedEObjectReference extends EObjectReference {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference#getValueExpression
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference#getValueExpression <em>Value
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.

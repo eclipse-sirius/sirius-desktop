@@ -59,7 +59,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BackgroundConditionalStyleImpl() {
@@ -77,7 +77,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(BackgroundStyleDescription newStyle, NotificationChain msgs) {
@@ -140,7 +140,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,7 +164,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +230,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +247,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

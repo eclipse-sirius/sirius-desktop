@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 public class EndOfLifeMappingImpl extends NodeMappingImpl implements EndOfLifeMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EndOfLifeMappingImpl() {
@@ -33,7 +33,7 @@ public class EndOfLifeMappingImpl extends NodeMappingImpl implements EndOfLifeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

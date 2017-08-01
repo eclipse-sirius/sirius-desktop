@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.HideFilter;
 public class HideFilterImpl extends MinimalEObjectImpl.Container implements HideFilter {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected HideFilterImpl() {
@@ -33,7 +33,7 @@ public class HideFilterImpl extends MinimalEObjectImpl.Container implements Hide
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

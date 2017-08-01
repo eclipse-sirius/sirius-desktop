@@ -77,13 +77,13 @@ import com.google.common.collect.Multimap;
 
 /**
  * This is the central singleton for the Viewpoint edit plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public final class SiriusEditPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final SiriusEditPlugin INSTANCE = new SiriusEditPlugin();
@@ -92,14 +92,14 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static Implementation plugin;
 
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SiriusEditPlugin() {
@@ -132,7 +132,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @generated
      */
@@ -190,7 +190,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
         /**
          * Returns all listeners that must be worn when a session file has been loaded.
-         * 
+         *
          * @return all listeners that must be worn when a session file has been loaded.
          */
         public Set<ISessionFileLoadingListener> getSessionFileLoadingListeners() {
@@ -199,7 +199,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
         /**
          * Add the given listener to the registry.
-         * 
+         *
          * @param sessionFileLoadingListener
          *            the listener to add.
          */
@@ -211,7 +211,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
         /**
          * Add the given listener from the registry.
-         * 
+         *
          * @param sessionFileLoadingListener
          *            the listener to add.
          */

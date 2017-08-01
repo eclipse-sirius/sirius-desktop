@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplateFactory
  * @model kind="package"
  * @generated
@@ -33,28 +33,28 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 public interface TemplatePackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "template"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/diagram/sequence/template/2.0.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "template"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     TemplatePackage eINSTANCE = org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl.init();
@@ -62,7 +62,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TSequenceDiagramImpl
      * <em>TSequence Diagram</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TSequenceDiagramImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTSequenceDiagram()
      * @generated
@@ -72,7 +72,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageExtremityImpl
      * <em>TMessage Extremity</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TMessageExtremityImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTMessageExtremity()
      * @generated
@@ -82,7 +82,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl
      * <em>TLifeline Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTLifelineMapping()
      * @generated
@@ -92,7 +92,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TTransformerImpl
      * <em>TTransformer</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TTransformerImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTTransformer()
      * @generated
@@ -101,7 +101,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -119,7 +119,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TAbstractMappingImpl
      * <em>TAbstract Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TAbstractMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTAbstractMapping()
      * @generated
@@ -128,7 +128,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -136,7 +136,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -144,7 +144,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -153,7 +153,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -162,7 +162,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TAbstract Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -170,7 +170,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -179,7 +179,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Owned Representations</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -187,7 +187,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -195,7 +195,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -203,7 +203,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Ends Ordering</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -212,7 +212,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Lifeline Mappings</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -221,7 +221,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Message Mappings</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -230,7 +230,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TSequence Diagram</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -239,7 +239,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TMessage Extremity</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -247,7 +247,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -255,7 +255,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -263,7 +263,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -272,7 +272,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -281,7 +281,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Eol Visible Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -290,7 +290,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Execution Mappings</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -299,7 +299,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Instance Role Style</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -308,7 +308,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Lifeline Style</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -317,7 +317,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>End Of Life Style</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -335,7 +335,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TLifeline Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -344,7 +344,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineStyleImpl
      * <em>TLifeline Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TLifelineStyleImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTLifelineStyle()
      * @generated
@@ -353,7 +353,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -362,7 +362,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Lifeline Width Computation Expression</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -370,7 +370,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Lifeline Color</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -379,17 +379,17 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TLifeline Style</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int TLIFELINE_STYLE_FEATURE_COUNT = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 2;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalLifelineStyleImpl
-     * <em>TConditional Lifeline Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalLifelineStyleImpl <em>TConditional Lifeline
+     * Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TConditionalLifelineStyleImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTConditionalLifelineStyle()
      * @generated
@@ -398,7 +398,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -407,7 +407,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Predicate Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -425,7 +425,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TConditional Lifeline Style</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -434,7 +434,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl
      * <em>TExecution Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTExecutionMapping()
      * @generated
@@ -443,7 +443,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -451,7 +451,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -459,7 +459,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -468,7 +468,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -477,7 +477,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -486,7 +486,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -494,7 +494,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Recursive</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -503,7 +503,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Execution Mappings</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -521,7 +521,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -530,7 +530,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TExecution Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -539,7 +539,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionStyleImpl
      * <em>TExecution Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TExecutionStyleImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTExecutionStyle()
      * @generated
@@ -548,7 +548,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -557,7 +557,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Size Computation Expression</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -565,7 +565,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -583,17 +583,17 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TExecution Style</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int TEXECUTION_STYLE_FEATURE_COUNT = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 3;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalExecutionStyleImpl
-     * <em>TConditional Execution Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalExecutionStyleImpl <em>TConditional
+     * Execution Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TConditionalExecutionStyleImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTConditionalExecutionStyle()
      * @generated
@@ -602,7 +602,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -611,7 +611,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Predicate Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -629,7 +629,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TConditional Execution Style</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -638,7 +638,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl
      * <em>TMessage Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTMessageMapping()
      * @generated
@@ -647,7 +647,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -655,7 +655,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -663,7 +663,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -672,7 +672,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -681,7 +681,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -690,7 +690,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -708,7 +708,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -717,7 +717,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TMessage Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -726,7 +726,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageStyleImpl
      * <em>TMessage Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TMessageStyleImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTMessageStyle()
      * @generated
@@ -735,7 +735,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -743,7 +743,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Stroke Color</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -751,7 +751,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Line Style</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -759,7 +759,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Source Arrow</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -767,7 +767,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Target Arrow</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -785,7 +785,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TMessage Style</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -794,7 +794,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalMessageStyleImpl
      * <em>TConditional Message Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TConditionalMessageStyleImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTConditionalMessageStyle()
      * @generated
@@ -803,7 +803,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -812,7 +812,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Predicate Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -830,17 +830,17 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TConditional Message Style</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int TCONDITIONAL_MESSAGE_STYLE_FEATURE_COUNT = TemplatePackage.TTRANSFORMER_FEATURE_COUNT + 2;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl
-     * <em>TSource Target Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl <em>TSource Target
+     * Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTSourceTargetMessageMapping()
      * @generated
@@ -849,7 +849,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -857,7 +857,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -865,7 +865,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -874,7 +874,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -883,7 +883,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -892,7 +892,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -910,7 +910,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -918,7 +918,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -927,7 +927,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -936,7 +936,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -954,7 +954,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TSource Target Message Mapping</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -963,7 +963,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TBasicMessageMappingImpl
      * <em>TBasic Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TBasicMessageMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTBasicMessageMapping()
      * @generated
@@ -972,7 +972,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -980,7 +980,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -988,7 +988,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -997,7 +997,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1006,7 +1006,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1015,7 +1015,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1033,7 +1033,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1041,7 +1041,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1050,7 +1050,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1059,7 +1059,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1076,7 +1076,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1085,7 +1085,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TBasic Message Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1094,7 +1094,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TReturnMessageMappingImpl
      * <em>TReturn Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TReturnMessageMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTReturnMessageMapping()
      * @generated
@@ -1103,7 +1103,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1111,7 +1111,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1119,7 +1119,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1128,7 +1128,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1137,7 +1137,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1146,7 +1146,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1164,7 +1164,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1182,7 +1182,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Invocation Message Finder Expression</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1191,7 +1191,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TReturn Message Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1200,7 +1200,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TCreationMessageMappingImpl
      * <em>TCreation Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TCreationMessageMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTCreationMessageMapping()
      * @generated
@@ -1209,7 +1209,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1217,7 +1217,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1225,7 +1225,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1234,7 +1234,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1243,7 +1243,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1252,7 +1252,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1270,7 +1270,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1278,7 +1278,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1287,7 +1287,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1296,7 +1296,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1313,7 +1313,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1322,17 +1322,17 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TCreation Message Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int TCREATION_MESSAGE_MAPPING_FEATURE_COUNT = TemplatePackage.TSOURCE_TARGET_MESSAGE_MAPPING_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.impl.TDestructionMessageMappingImpl
-     * <em>TDestruction Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TDestructionMessageMappingImpl <em>TDestruction Message
+     * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TDestructionMessageMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTDestructionMessageMapping()
      * @generated
@@ -1341,7 +1341,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Outputs</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1349,7 +1349,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1357,7 +1357,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1366,7 +1366,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1375,7 +1375,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1384,7 +1384,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1402,7 +1402,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Style</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1410,7 +1410,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1419,7 +1419,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1428,7 +1428,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1445,7 +1445,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1454,7 +1454,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * The number of structural features of the '<em>TDestruction Message Mapping</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1463,7 +1463,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram
      * <em>TSequence Diagram</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TSequence Diagram</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram
      * @generated
@@ -1471,10 +1471,10 @@ public interface TemplatePackage extends EPackage {
     EClass getTSequenceDiagram();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getEndsOrdering <em>Ends Ordering</em>}'.
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getEndsOrdering <em>Ends Ordering</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Ends Ordering</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getEndsOrdering()
      * @see #getTSequenceDiagram()
@@ -1483,10 +1483,10 @@ public interface TemplatePackage extends EPackage {
     EAttribute getTSequenceDiagram_EndsOrdering();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getLifelineMappings
-     * <em>Lifeline Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getLifelineMappings <em>Lifeline
+     * Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the containment reference list '<em>Lifeline Mappings</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getLifelineMappings()
      * @see #getTSequenceDiagram()
@@ -1495,10 +1495,10 @@ public interface TemplatePackage extends EPackage {
     EReference getTSequenceDiagram_LifelineMappings();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getMessageMappings <em>Message Mappings</em>
-     * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getMessageMappings <em>Message
+     * Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the containment reference list '<em>Message Mappings</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getMessageMappings()
      * @see #getTSequenceDiagram()
@@ -1509,7 +1509,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TMessageExtremity
      * <em>TMessage Extremity</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TMessage Extremity</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageExtremity
      * @generated
@@ -1519,7 +1519,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping
      * <em>TLifeline Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TLifeline Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineMapping
      * @generated
@@ -1527,10 +1527,10 @@ public interface TemplatePackage extends EPackage {
     EClass getTLifelineMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getEolVisibleExpression
-     * <em>Eol Visible Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getEolVisibleExpression <em>Eol Visible
+     * Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Eol Visible Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getEolVisibleExpression()
      * @see #getTLifelineMapping()
@@ -1539,10 +1539,10 @@ public interface TemplatePackage extends EPackage {
     EAttribute getTLifelineMapping_EolVisibleExpression();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getExecutionMappings
-     * <em>Execution Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getExecutionMappings <em>Execution
+     * Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the containment reference list '<em>Execution Mappings</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getExecutionMappings()
      * @see #getTLifelineMapping()
@@ -1551,10 +1551,10 @@ public interface TemplatePackage extends EPackage {
     EReference getTLifelineMapping_ExecutionMappings();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getInstanceRoleStyle
-     * <em>Instance Role Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getInstanceRoleStyle <em>Instance Role
+     * Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the containment reference '<em>Instance Role Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getInstanceRoleStyle()
      * @see #getTLifelineMapping()
@@ -1563,10 +1563,10 @@ public interface TemplatePackage extends EPackage {
     EReference getTLifelineMapping_InstanceRoleStyle();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getLifelineStyle <em>Lifeline Style</em>}'.
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getLifelineStyle <em>Lifeline Style</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Lifeline Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getLifelineStyle()
      * @see #getTLifelineMapping()
@@ -1575,10 +1575,10 @@ public interface TemplatePackage extends EPackage {
     EReference getTLifelineMapping_LifelineStyle();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getEndOfLifeStyle <em>End Of Life Style</em>
-     * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getEndOfLifeStyle <em>End Of Life
+     * Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the containment reference '<em>End Of Life Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getEndOfLifeStyle()
      * @see #getTLifelineMapping()
@@ -1587,10 +1587,10 @@ public interface TemplatePackage extends EPackage {
     EReference getTLifelineMapping_EndOfLifeStyle();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getConditionalLifeLineStyles
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getConditionalLifeLineStyles
      * <em>Conditional Life Line Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Conditional Life Line Styles</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getConditionalLifeLineStyles()
      * @see #getTLifelineMapping()
@@ -1601,7 +1601,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle
      * <em>TLifeline Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TLifeline Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineStyle
      * @generated
@@ -1609,10 +1609,10 @@ public interface TemplatePackage extends EPackage {
     EClass getTLifelineStyle();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineWidthComputationExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineWidthComputationExpression
      * <em>Lifeline Width Computation Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Lifeline Width Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineWidthComputationExpression()
      * @see #getTLifelineStyle()
@@ -1621,10 +1621,10 @@ public interface TemplatePackage extends EPackage {
     EAttribute getTLifelineStyle_LifelineWidthComputationExpression();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineColor <em>Lifeline Color</em>}'.
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineColor <em>Lifeline Color</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Lifeline Color</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineColor()
      * @see #getTLifelineStyle()
@@ -1635,7 +1635,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle
      * <em>TConditional Lifeline Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TConditional Lifeline Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle
      * @generated
@@ -1643,10 +1643,10 @@ public interface TemplatePackage extends EPackage {
     EClass getTConditionalLifelineStyle();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle#getPredicateExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle#getPredicateExpression
      * <em>Predicate Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Predicate Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle#getPredicateExpression()
      * @see #getTConditionalLifelineStyle()
@@ -1681,7 +1681,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TTransformer
      * <em>TTransformer</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TTransformer</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TTransformer
      * @generated
@@ -1703,7 +1703,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping
      * <em>TExecution Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TExecution Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionMapping
      * @generated
@@ -1711,10 +1711,10 @@ public interface TemplatePackage extends EPackage {
     EClass getTExecutionMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getStartingEndFinderExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getStartingEndFinderExpression
      * <em>Starting End Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Starting End Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getStartingEndFinderExpression()
      * @see #getTExecutionMapping()
@@ -1723,10 +1723,10 @@ public interface TemplatePackage extends EPackage {
     EAttribute getTExecutionMapping_StartingEndFinderExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getFinishingEndFinderExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getFinishingEndFinderExpression
      * <em>Finishing End Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Finishing End Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getFinishingEndFinderExpression()
      * @see #getTExecutionMapping()
@@ -1747,10 +1747,10 @@ public interface TemplatePackage extends EPackage {
     EAttribute getTExecutionMapping_Recursive();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getExecutionMappings
-     * <em>Execution Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getExecutionMappings <em>Execution
+     * Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the containment reference list '<em>Execution Mappings</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getExecutionMappings()
      * @see #getTExecutionMapping()
@@ -1771,10 +1771,10 @@ public interface TemplatePackage extends EPackage {
     EReference getTExecutionMapping_Style();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getConditionalStyles
-     * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getConditionalStyles <em>Conditional
+     * Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the containment reference list '<em>Conditional Styles</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionMapping#getConditionalStyles()
      * @see #getTExecutionMapping()
@@ -1785,7 +1785,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle
      * <em>TExecution Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TExecution Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionStyle
      * @generated
@@ -1793,10 +1793,10 @@ public interface TemplatePackage extends EPackage {
     EClass getTExecutionStyle();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderSizeComputationExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderSizeComputationExpression
      * <em>Border Size Computation Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Border Size Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderSizeComputationExpression()
      * @see #getTExecutionStyle()
@@ -1817,10 +1817,10 @@ public interface TemplatePackage extends EPackage {
     EReference getTExecutionStyle_BorderColor();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBackgroundColor <em>Background Color</em>}
-     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBackgroundColor <em>Background
+     * Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the reference '<em>Background Color</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBackgroundColor()
      * @see #getTExecutionStyle()
@@ -1831,7 +1831,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle
      * <em>TConditional Execution Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TConditional Execution Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle
      * @generated
@@ -1839,10 +1839,10 @@ public interface TemplatePackage extends EPackage {
     EClass getTConditionalExecutionStyle();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle#getPredicateExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle#getPredicateExpression
      * <em>Predicate Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Predicate Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle#getPredicateExpression()
      * @see #getTConditionalExecutionStyle()
@@ -1865,7 +1865,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping
      * <em>TBasic Message Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TBasic Message Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping
      * @generated
@@ -1885,10 +1885,10 @@ public interface TemplatePackage extends EPackage {
     EReference getTBasicMessageMapping_Target();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping
-     * <em>TSource Target Message Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping <em>TSource Target Message
+     * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>TSource Target Message Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping
      * @generated
@@ -1908,10 +1908,10 @@ public interface TemplatePackage extends EPackage {
     EReference getTSourceTargetMessageMapping_Source();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getSourceFinderExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getSourceFinderExpression
      * <em>Source Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Source Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getSourceFinderExpression()
      * @see #getTSourceTargetMessageMapping()
@@ -1920,10 +1920,10 @@ public interface TemplatePackage extends EPackage {
     EAttribute getTSourceTargetMessageMapping_SourceFinderExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getTargetFinderExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getTargetFinderExpression
      * <em>Target Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Target Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getTargetFinderExpression()
      * @see #getTSourceTargetMessageMapping()
@@ -1932,10 +1932,10 @@ public interface TemplatePackage extends EPackage {
     EAttribute getTSourceTargetMessageMapping_TargetFinderExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#isUseDomainElement
-     * <em>Use Domain Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#isUseDomainElement <em>Use
+     * Domain Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Use Domain Element</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#isUseDomainElement()
      * @see #getTSourceTargetMessageMapping()
@@ -1946,7 +1946,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping
      * <em>TReturn Message Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TReturn Message Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping
      * @generated
@@ -1954,10 +1954,10 @@ public interface TemplatePackage extends EPackage {
     EClass getTReturnMessageMapping();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping#getInvocationMapping
-     * <em>Invocation Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping#getInvocationMapping <em>Invocation
+     * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the reference '<em>Invocation Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping#getInvocationMapping()
      * @see #getTReturnMessageMapping()
@@ -1966,10 +1966,10 @@ public interface TemplatePackage extends EPackage {
     EReference getTReturnMessageMapping_InvocationMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping#getInvocationMessageFinderExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping#getInvocationMessageFinderExpression
      * <em>Invocation Message Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Invocation Message Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping#getInvocationMessageFinderExpression()
      * @see #getTReturnMessageMapping()
@@ -1980,7 +1980,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TCreationMessageMapping
      * <em>TCreation Message Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TCreation Message Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TCreationMessageMapping
      * @generated
@@ -2002,7 +2002,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping
      * <em>TDestruction Message Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TDestruction Message Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping
      * @generated
@@ -2024,7 +2024,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping
      * <em>TAbstract Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TAbstract Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TAbstractMapping
      * @generated
@@ -2032,10 +2032,10 @@ public interface TemplatePackage extends EPackage {
     EClass getTAbstractMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping#getName <em>Name</em>}'. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping#getName <em>Name</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TAbstractMapping#getName()
      * @see #getTAbstractMapping()
@@ -2056,10 +2056,10 @@ public interface TemplatePackage extends EPackage {
     EAttribute getTAbstractMapping_DomainClass();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping#getSemanticCandidatesExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping#getSemanticCandidatesExpression
      * <em>Semantic Candidates Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Semantic Candidates Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TAbstractMapping#getSemanticCandidatesExpression()
      * @see #getTAbstractMapping()
@@ -2070,7 +2070,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping
      * <em>TMessage Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TMessage Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageMapping
      * @generated
@@ -2078,10 +2078,10 @@ public interface TemplatePackage extends EPackage {
     EClass getTMessageMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getSendingEndFinderExpression
-     * <em>Sending End Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getSendingEndFinderExpression <em>Sending
+     * End Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Sending End Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getSendingEndFinderExpression()
      * @see #getTMessageMapping()
@@ -2090,10 +2090,10 @@ public interface TemplatePackage extends EPackage {
     EAttribute getTMessageMapping_SendingEndFinderExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getReceivingEndFinderExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getReceivingEndFinderExpression
      * <em>Receiving End Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Receiving End Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getReceivingEndFinderExpression()
      * @see #getTMessageMapping()
@@ -2114,10 +2114,10 @@ public interface TemplatePackage extends EPackage {
     EReference getTMessageMapping_Style();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getConditionalStyle
-     * <em>Conditional Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getConditionalStyle <em>Conditional
+     * Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the containment reference list '<em>Conditional Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getConditionalStyle()
      * @see #getTMessageMapping()
@@ -2126,9 +2126,9 @@ public interface TemplatePackage extends EPackage {
     EReference getTMessageMapping_ConditionalStyle();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle
-     * <em>TMessage Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle <em>TMessage
+     * Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>TMessage Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageStyle
      * @generated
@@ -2184,10 +2184,10 @@ public interface TemplatePackage extends EPackage {
     EAttribute getTMessageStyle_TargetArrow();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getLabelExpression <em>Label Expression</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getLabelExpression <em>Label
+     * Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Label Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getLabelExpression()
      * @see #getTMessageStyle()
@@ -2198,7 +2198,7 @@ public interface TemplatePackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle
      * <em>TConditional Message Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>TConditional Message Style</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle
      * @generated
@@ -2206,10 +2206,10 @@ public interface TemplatePackage extends EPackage {
     EClass getTConditionalMessageStyle();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle#getPredicateExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle#getPredicateExpression
      * <em>Predicate Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Predicate Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle#getPredicateExpression()
      * @see #getTConditionalMessageStyle()
@@ -2231,7 +2231,7 @@ public interface TemplatePackage extends EPackage {
 
     /**
      * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -2246,15 +2246,15 @@ public interface TemplatePackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TSequenceDiagramImpl <em>TSequence Diagram</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TSequenceDiagramImpl <em>TSequence Diagram</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TSequenceDiagramImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTSequenceDiagram()
          * @generated
@@ -2264,7 +2264,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Ends Ordering</b></em>' attribute feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TSEQUENCE_DIAGRAM__ENDS_ORDERING = TemplatePackage.eINSTANCE.getTSequenceDiagram_EndsOrdering();
@@ -2286,10 +2286,10 @@ public interface TemplatePackage extends EPackage {
         EReference TSEQUENCE_DIAGRAM__MESSAGE_MAPPINGS = TemplatePackage.eINSTANCE.getTSequenceDiagram_MessageMappings();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageExtremityImpl <em>TMessage Extremity</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageExtremityImpl <em>TMessage Extremity</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TMessageExtremityImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTMessageExtremity()
          * @generated
@@ -2297,10 +2297,10 @@ public interface TemplatePackage extends EPackage {
         EClass TMESSAGE_EXTREMITY = TemplatePackage.eINSTANCE.getTMessageExtremity();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl <em>TLifeline Mapping</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl <em>TLifeline Mapping</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTLifelineMapping()
          * @generated
@@ -2350,7 +2350,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Conditional Life Line Styles</b></em>' containment reference list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TLIFELINE_MAPPING__CONDITIONAL_LIFE_LINE_STYLES = TemplatePackage.eINSTANCE.getTLifelineMapping_ConditionalLifeLineStyles();
@@ -2358,7 +2358,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineStyleImpl
          * <em>TLifeline Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TLifelineStyleImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTLifelineStyle()
          * @generated
@@ -2368,7 +2368,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Lifeline Width Computation Expression</b></em>' attribute feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TLIFELINE_STYLE__LIFELINE_WIDTH_COMPUTATION_EXPRESSION = TemplatePackage.eINSTANCE.getTLifelineStyle_LifelineWidthComputationExpression();
@@ -2376,16 +2376,16 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Lifeline Color</b></em>' reference feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TLIFELINE_STYLE__LIFELINE_COLOR = TemplatePackage.eINSTANCE.getTLifelineStyle_LifelineColor();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalLifelineStyleImpl
-         * <em>TConditional Lifeline Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalLifelineStyleImpl <em>TConditional
+         * Lifeline Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TConditionalLifelineStyleImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTConditionalLifelineStyle()
          * @generated
@@ -2395,7 +2395,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Predicate Expression</b></em>' attribute feature. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TCONDITIONAL_LIFELINE_STYLE__PREDICATE_EXPRESSION = TemplatePackage.eINSTANCE.getTConditionalLifelineStyle_PredicateExpression();
@@ -2403,7 +2403,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment reference feature. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TCONDITIONAL_LIFELINE_STYLE__STYLE = TemplatePackage.eINSTANCE.getTConditionalLifelineStyle_Style();
@@ -2411,7 +2411,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>' attribute feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TSEQUENCE_DIAGRAM__DOMAIN_CLASS = TemplatePackage.eINSTANCE.getTSequenceDiagram_DomainClass();
@@ -2419,7 +2419,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TTransformerImpl
          * <em>TTransformer</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TTransformerImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTTransformer()
          * @generated
@@ -2429,16 +2429,16 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Outputs</b></em>' reference list feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TTRANSFORMER__OUTPUTS = TemplatePackage.eINSTANCE.getTTransformer_Outputs();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl <em>TExecution Mapping</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl <em>TExecution Mapping</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTExecutionMapping()
          * @generated
@@ -2464,7 +2464,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Recursive</b></em>' attribute feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TEXECUTION_MAPPING__RECURSIVE = TemplatePackage.eINSTANCE.getTExecutionMapping_Recursive();
@@ -2480,7 +2480,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment reference feature. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TEXECUTION_MAPPING__STYLE = TemplatePackage.eINSTANCE.getTExecutionMapping_Style();
@@ -2496,7 +2496,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionStyleImpl
          * <em>TExecution Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TExecutionStyleImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTExecutionStyle()
          * @generated
@@ -2514,7 +2514,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Border Color</b></em>' reference feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TEXECUTION_STYLE__BORDER_COLOR = TemplatePackage.eINSTANCE.getTExecutionStyle_BorderColor();
@@ -2522,16 +2522,16 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>' reference feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TEXECUTION_STYLE__BACKGROUND_COLOR = TemplatePackage.eINSTANCE.getTExecutionStyle_BackgroundColor();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalExecutionStyleImpl
-         * <em>TConditional Execution Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalExecutionStyleImpl <em>TConditional
+         * Execution Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TConditionalExecutionStyleImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTConditionalExecutionStyle()
          * @generated
@@ -2541,7 +2541,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Predicate Expression</b></em>' attribute feature. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TCONDITIONAL_EXECUTION_STYLE__PREDICATE_EXPRESSION = TemplatePackage.eINSTANCE.getTConditionalExecutionStyle_PredicateExpression();
@@ -2549,16 +2549,16 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment reference feature. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TCONDITIONAL_EXECUTION_STYLE__STYLE = TemplatePackage.eINSTANCE.getTConditionalExecutionStyle_Style();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TBasicMessageMappingImpl
-         * <em>TBasic Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TBasicMessageMappingImpl <em>TBasic Message
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TBasicMessageMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTBasicMessageMapping()
          * @generated
@@ -2568,16 +2568,16 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Target</b></em>' reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TBASIC_MESSAGE_MAPPING__TARGET = TemplatePackage.eINSTANCE.getTBasicMessageMapping_Target();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl
-         * <em>TSource Target Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl <em>TSource Target
+         * Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTSourceTargetMessageMapping()
          * @generated
@@ -2587,7 +2587,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Source</b></em>' reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE = TemplatePackage.eINSTANCE.getTSourceTargetMessageMapping_Source();
@@ -2611,16 +2611,16 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Use Domain Element</b></em>' attribute feature. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = TemplatePackage.eINSTANCE.getTSourceTargetMessageMapping_UseDomainElement();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TReturnMessageMappingImpl
-         * <em>TReturn Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TReturnMessageMappingImpl <em>TReturn Message
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TReturnMessageMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTReturnMessageMapping()
          * @generated
@@ -2630,7 +2630,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Invocation Mapping</b></em>' reference feature. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TRETURN_MESSAGE_MAPPING__INVOCATION_MAPPING = TemplatePackage.eINSTANCE.getTReturnMessageMapping_InvocationMapping();
@@ -2638,16 +2638,16 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Invocation Message Finder Expression</b></em>' attribute feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TRETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION = TemplatePackage.eINSTANCE.getTReturnMessageMapping_InvocationMessageFinderExpression();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TCreationMessageMappingImpl
-         * <em>TCreation Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TCreationMessageMappingImpl <em>TCreation Message
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TCreationMessageMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTCreationMessageMapping()
          * @generated
@@ -2657,16 +2657,16 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Target</b></em>' reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TCREATION_MESSAGE_MAPPING__TARGET = TemplatePackage.eINSTANCE.getTCreationMessageMapping_Target();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TDestructionMessageMappingImpl
-         * <em>TDestruction Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TDestructionMessageMappingImpl <em>TDestruction
+         * Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TDestructionMessageMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTDestructionMessageMapping()
          * @generated
@@ -2676,16 +2676,16 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Target</b></em>' reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TDESTRUCTION_MESSAGE_MAPPING__TARGET = TemplatePackage.eINSTANCE.getTDestructionMessageMapping_Target();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TAbstractMappingImpl <em>TAbstract Mapping</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TAbstractMappingImpl <em>TAbstract Mapping</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TAbstractMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTAbstractMapping()
          * @generated
@@ -2695,7 +2695,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TABSTRACT_MAPPING__NAME = TemplatePackage.eINSTANCE.getTAbstractMapping_Name();
@@ -2703,7 +2703,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>' attribute feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TABSTRACT_MAPPING__DOMAIN_CLASS = TemplatePackage.eINSTANCE.getTAbstractMapping_DomainClass();
@@ -2719,7 +2719,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl
          * <em>TMessage Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTMessageMapping()
          * @generated
@@ -2745,7 +2745,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment reference feature. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TMESSAGE_MAPPING__STYLE = TemplatePackage.eINSTANCE.getTMessageMapping_Style();
@@ -2761,7 +2761,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageStyleImpl
          * <em>TMessage Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TMessageStyleImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTMessageStyle()
          * @generated
@@ -2771,7 +2771,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Stroke Color</b></em>' reference feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TMESSAGE_STYLE__STROKE_COLOR = TemplatePackage.eINSTANCE.getTMessageStyle_StrokeColor();
@@ -2779,7 +2779,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Line Style</b></em>' attribute feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TMESSAGE_STYLE__LINE_STYLE = TemplatePackage.eINSTANCE.getTMessageStyle_LineStyle();
@@ -2787,7 +2787,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Source Arrow</b></em>' attribute feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TMESSAGE_STYLE__SOURCE_ARROW = TemplatePackage.eINSTANCE.getTMessageStyle_SourceArrow();
@@ -2795,7 +2795,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Target Arrow</b></em>' attribute feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TMESSAGE_STYLE__TARGET_ARROW = TemplatePackage.eINSTANCE.getTMessageStyle_TargetArrow();
@@ -2803,16 +2803,16 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>' attribute feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TMESSAGE_STYLE__LABEL_EXPRESSION = TemplatePackage.eINSTANCE.getTMessageStyle_LabelExpression();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalMessageStyleImpl
-         * <em>TConditional Message Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalMessageStyleImpl <em>TConditional
+         * Message Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TConditionalMessageStyleImpl
          * @see org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl#getTConditionalMessageStyle()
          * @generated
@@ -2822,7 +2822,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Predicate Expression</b></em>' attribute feature. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TCONDITIONAL_MESSAGE_STYLE__PREDICATE_EXPRESSION = TemplatePackage.eINSTANCE.getTConditionalMessageStyle_PredicateExpression();
@@ -2830,7 +2830,7 @@ public interface TemplatePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment reference feature. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TCONDITIONAL_MESSAGE_STYLE__STYLE = TemplatePackage.eINSTANCE.getTConditionalMessageStyle_Style();

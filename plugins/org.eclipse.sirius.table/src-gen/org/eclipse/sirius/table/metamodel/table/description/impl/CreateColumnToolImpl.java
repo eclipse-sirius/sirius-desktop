@@ -36,7 +36,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping
 public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumnTool {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateColumnToolImpl() {
@@ -45,7 +45,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -55,7 +55,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetMapping(ElementColumnMapping newMapping, NotificationChain msgs) {
@@ -78,7 +78,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,7 +164,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -51,7 +51,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SystemColorImpl() {
@@ -60,7 +60,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

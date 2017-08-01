@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription#getPredicateExpression
- * <em>Predicate Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription#getPredicateExpression <em>Predicate
+ * Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getConditionalStyleDescription()
@@ -40,16 +40,17 @@ public interface ConditionalStyleDescription extends EObject {
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getConditionalStyleDescription_PredicateExpression()
      * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='ecore.EObject | the current view.' container='ecore.EObject | the semantic container.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='ecore.EObject | the current view.'
+     *        container='ecore.EObject | the semantic container.'"
      * @generated
      */
     String getPredicateExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription#getPredicateExpression
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription#getPredicateExpression <em>Predicate
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Predicate Expression</em>' attribute.
      * @see #getPredicateExpression()
@@ -59,7 +60,7 @@ public interface ConditionalStyleDescription extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

@@ -42,9 +42,9 @@ public interface WorkspaceImage extends NodeStyle, ContainerStyle {
     String getWorkspacePath();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.WorkspaceImage#getWorkspacePath <em>Workspace Path</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.WorkspaceImage#getWorkspacePath <em>Workspace
+     * Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Workspace Path</em>' attribute.
      * @see #getWorkspacePath()

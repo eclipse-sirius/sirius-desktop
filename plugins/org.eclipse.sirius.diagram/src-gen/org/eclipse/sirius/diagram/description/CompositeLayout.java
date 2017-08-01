@@ -46,9 +46,9 @@ public interface CompositeLayout extends Layout {
     int getPadding();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.CompositeLayout#getPadding <em>Padding</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.CompositeLayout#getPadding
+     * <em>Padding</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Padding</em>' attribute.
      * @see #getPadding()
@@ -78,7 +78,7 @@ public interface CompositeLayout extends Layout {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.CompositeLayout#getDirection
      * <em>Direction</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Direction</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.LayoutDirection

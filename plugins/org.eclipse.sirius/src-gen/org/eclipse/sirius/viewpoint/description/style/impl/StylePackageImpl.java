@@ -38,49 +38,49 @@ import org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass styleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass basicLabelStyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass labelStyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass labelBorderStylesEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass labelBorderStyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tooltipStyleDescriptionEClass = null;
@@ -104,7 +104,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -116,7 +116,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * This method is used to initialize {@link StylePackage#eINSTANCE} when that field is accessed. Clients should not
      * invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -174,7 +174,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +204,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +224,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +234,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -244,7 +244,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -254,7 +254,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -264,7 +264,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -294,7 +294,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -304,7 +304,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -314,7 +314,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -324,7 +324,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -334,7 +334,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -344,7 +344,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -354,7 +354,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -364,7 +364,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -374,7 +374,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -382,7 +382,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
     /**
      * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
      * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -420,7 +420,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -428,7 +428,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
     /**
      * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
      * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {

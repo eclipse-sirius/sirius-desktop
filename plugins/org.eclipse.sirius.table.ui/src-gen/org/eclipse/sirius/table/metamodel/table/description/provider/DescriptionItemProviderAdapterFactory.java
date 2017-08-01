@@ -43,7 +43,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -51,7 +51,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -66,7 +66,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DescriptionItemProviderAdapterFactory() {
@@ -106,7 +106,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CrossTableDescriptionItemProvider crossTableDescriptionItemProvider;
@@ -130,7 +130,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableMapping} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TableMappingItemProvider tableMappingItemProvider;
@@ -154,7 +154,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LineMappingItemProvider lineMappingItemProvider;
@@ -178,7 +178,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping} instances. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ColumnMappingItemProvider columnMappingItemProvider;
@@ -202,7 +202,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ElementColumnMappingItemProvider elementColumnMappingItemProvider;
@@ -210,7 +210,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FeatureColumnMappingItemProvider featureColumnMappingItemProvider;
@@ -234,7 +234,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CellUpdaterItemProvider cellUpdaterItemProvider;
@@ -274,7 +274,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IntersectionMappingItemProvider intersectionMappingItemProvider;
@@ -282,7 +282,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -298,7 +298,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableTool} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TableToolItemProvider tableToolItemProvider;
@@ -322,7 +322,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool} instances. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelEditToolItemProvider labelEditToolItemProvider;
@@ -346,7 +346,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool} instances. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateColumnToolItemProvider createColumnToolItemProvider;
@@ -370,7 +370,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateCrossColumnToolItemProvider createCrossColumnToolItemProvider;
@@ -378,7 +378,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -394,7 +394,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateLineTool} instances. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateLineToolItemProvider createLineToolItemProvider;
@@ -418,7 +418,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool} instances. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateCellToolItemProvider createCellToolItemProvider;
@@ -442,7 +442,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool} instances. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DeleteColumnToolItemProvider deleteColumnToolItemProvider;
@@ -466,7 +466,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool} instances. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DeleteLineToolItemProvider deleteLineToolItemProvider;
@@ -499,7 +499,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -524,7 +524,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -549,7 +549,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -574,7 +574,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -590,7 +590,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableVariable} instances. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TableVariableItemProvider tableVariableItemProvider;
@@ -623,7 +623,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -648,7 +648,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -662,7 +662,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -672,7 +672,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -682,7 +682,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -693,7 +693,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -703,7 +703,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -720,7 +720,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -730,7 +730,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -741,7 +741,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -755,7 +755,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

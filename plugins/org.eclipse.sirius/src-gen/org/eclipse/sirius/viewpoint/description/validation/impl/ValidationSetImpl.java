@@ -34,12 +34,12 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getOwnedRules
- * <em>Owned Rules</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getReusedRules
- * <em>Reused Rules</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getAllRules <em>All Rules</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getOwnedRules <em>Owned
+ * Rules</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getReusedRules <em>Reused
+ * Rules</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getAllRules <em>All
+ * Rules</em>}</li>
  * </ul>
  *
  * @generated
@@ -78,7 +78,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     /**
      * The cached value of the '{@link #getReusedRules() <em>Reused Rules</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getReusedRules()
      * @generated
      * @ordered
@@ -87,7 +87,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ValidationSetImpl() {
@@ -96,7 +96,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +171,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +185,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,7 +205,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -229,7 +229,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

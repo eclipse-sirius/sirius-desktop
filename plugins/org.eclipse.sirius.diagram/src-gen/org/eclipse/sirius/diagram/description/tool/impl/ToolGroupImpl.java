@@ -65,7 +65,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -85,7 +85,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
     /**
      * The cached value of the '{@link #getTools() <em>Tools</em>}' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getTools()
      * @generated
      * @ordered
@@ -94,7 +94,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolGroupImpl() {
@@ -103,7 +103,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -229,7 +229,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -268,7 +268,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -288,7 +288,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -308,7 +308,7 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

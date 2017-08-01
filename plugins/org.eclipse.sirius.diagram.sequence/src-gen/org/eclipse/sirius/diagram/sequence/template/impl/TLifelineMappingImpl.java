@@ -34,16 +34,16 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl#getEolVisibleExpression
- * <em>Eol Visible Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl#getExecutionMappings
- * <em>Execution Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl#getInstanceRoleStyle
- * <em>Instance Role Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl#getLifelineStyle
- * <em>Lifeline Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl#getEndOfLifeStyle
- * <em>End Of Life Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl#getEolVisibleExpression <em>Eol
+ * Visible Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl#getExecutionMappings <em>Execution
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl#getInstanceRoleStyle <em>Instance
+ * Role Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl#getLifelineStyle <em>Lifeline
+ * Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl#getEndOfLifeStyle <em>End Of Life
+ * Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TLifelineMappingImpl#getConditionalLifeLineStyles
  * <em>Conditional Life Line Styles</em>}</li>
  * </ul>
@@ -74,7 +74,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
     /**
      * The cached value of the '{@link #getExecutionMappings() <em>Execution Mappings</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getExecutionMappings()
      * @generated
      * @ordered
@@ -84,7 +84,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
     /**
      * The cached value of the '{@link #getInstanceRoleStyle() <em>Instance Role Style</em>}' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInstanceRoleStyle()
      * @generated
      * @ordered
@@ -114,7 +114,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
     /**
      * The cached value of the '{@link #getConditionalLifeLineStyles() <em>Conditional Life Line Styles</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalLifeLineStyles()
      * @generated
      * @ordered
@@ -123,7 +123,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TLifelineMappingImpl() {
@@ -132,7 +132,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInstanceRoleStyle(NodeStyleDescription newInstanceRoleStyle, NotificationChain msgs) {
@@ -208,7 +208,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -232,7 +232,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -242,7 +242,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetLifelineStyle(TLifelineStyle newLifelineStyle, NotificationChain msgs) {
@@ -261,7 +261,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -285,7 +285,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -295,7 +295,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetEndOfLifeStyle(NodeStyleDescription newEndOfLifeStyle, NotificationChain msgs) {
@@ -314,7 +314,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -338,7 +338,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -351,7 +351,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -373,7 +373,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -397,7 +397,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -430,7 +430,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -460,7 +460,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -484,7 +484,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

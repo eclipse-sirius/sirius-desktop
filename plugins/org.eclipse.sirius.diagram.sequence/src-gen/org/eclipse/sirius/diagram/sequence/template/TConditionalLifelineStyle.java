@@ -38,16 +38,17 @@ public interface TConditionalLifelineStyle extends TTransformer {
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTConditionalLifelineStyle_PredicateExpression()
      * @model dataType="org.eclipse.sirius.description.InterpretedExpression" required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='the current view.' container='the semantic container.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='the current view.' container='the
+     *        semantic container.'"
      * @generated
      */
     String getPredicateExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle#getPredicateExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle#getPredicateExpression
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Predicate Expression</em>' attribute.
      * @see #getPredicateExpression()
@@ -62,7 +63,7 @@ public interface TConditionalLifelineStyle extends TTransformer {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(TLifelineStyle)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTConditionalLifelineStyle_Style()
@@ -74,7 +75,7 @@ public interface TConditionalLifelineStyle extends TTransformer {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

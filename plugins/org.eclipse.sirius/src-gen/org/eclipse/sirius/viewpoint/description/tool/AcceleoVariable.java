@@ -21,8 +21,8 @@ import org.eclipse.sirius.viewpoint.description.SubVariable;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable#getComputationExpression
- * <em>Computation Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable#getComputationExpression <em>Computation
+ * Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAcceleoVariable()
@@ -37,21 +37,22 @@ public interface AcceleoVariable extends VariableContainer, SubVariable {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Computation Expression</em>' attribute.
      * @see #setComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAcceleoVariable_ComputationExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<Object> or an Object.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        Collection<Object> or an Object.'"
      * @generated
      */
     String getComputationExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable#getComputationExpression
-     * <em>Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable#getComputationExpression <em>Computation
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Computation Expression</em>' attribute.
      * @see #getComputationExpression()

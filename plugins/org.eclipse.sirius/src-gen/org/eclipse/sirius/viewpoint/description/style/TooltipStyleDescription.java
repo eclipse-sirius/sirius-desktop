@@ -41,16 +41,17 @@ public interface TooltipStyleDescription extends EObject {
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getTooltipStyleDescription_TooltipExpression()
      * @model default="" dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='viewpoint.DSemanticDecorator | the current view.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='viewpoint.DSemanticDecorator | the
+     *        current view.'"
      * @generated
      */
     String getTooltipExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription#getTooltipExpression
-     * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription#getTooltipExpression <em>Tooltip
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Tooltip Expression</em>' attribute.
      * @see #getTooltipExpression()

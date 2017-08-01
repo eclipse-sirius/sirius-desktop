@@ -36,7 +36,7 @@ public interface CreateInstance extends ContainerModelOperation {
     /**
      * Returns the value of the '<em><b>Type Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The type of the new instance. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Type Name</em>' attribute.
      * @see #setTypeName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getCreateInstance_TypeName()
@@ -46,9 +46,9 @@ public interface CreateInstance extends ContainerModelOperation {
     String getTypeName();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance#getTypeName
-     * <em>Type Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance#getTypeName <em>Type
+     * Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Type Name</em>' attribute.
      * @see #getTypeName()
@@ -71,7 +71,7 @@ public interface CreateInstance extends ContainerModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance#getReferenceName
      * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Reference Name</em>' attribute.
      * @see #getReferenceName()
@@ -96,7 +96,7 @@ public interface CreateInstance extends ContainerModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance#getVariableName
      * <em>Variable Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Variable Name</em>' attribute.
      * @see #getVariableName()

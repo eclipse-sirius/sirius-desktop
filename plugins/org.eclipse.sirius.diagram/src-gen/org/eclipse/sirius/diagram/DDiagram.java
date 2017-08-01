@@ -66,7 +66,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Owned Diagram Elements</b></em>' containment reference list. The list contents
      * are of type {@link org.eclipse.sirius.diagram.DDiagramElement}. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The DDiagramElements directly owned by this diagram. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Diagram Elements</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_OwnedDiagramElements()
      * @model containment="true" resolveProxies="true"
@@ -89,7 +89,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Returns the value of the '<em><b>Description</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The description of the diagram. It may be null. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(DiagramDescription)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_Description()
@@ -101,7 +101,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#getDescription <em>Description</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()
@@ -173,7 +173,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#getCurrentConcern <em>Current Concern</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Current Concern</em>' reference.
      * @see #getCurrentConcern()
@@ -202,7 +202,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Activated Transient Layers</em>' reference list.
      * @see #isSetActivatedTransientLayers()
      * @see #unsetActivatedTransientLayers()
@@ -213,9 +213,9 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     EList<AdditionalLayer> getActivatedTransientLayers();
 
     /**
-     * Unsets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#getActivatedTransientLayers
-     * <em>Activated Transient Layers</em>}' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Unsets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#getActivatedTransientLayers <em>Activated
+     * Transient Layers</em>}' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #isSetActivatedTransientLayers()
      * @see #getActivatedTransientLayers()
      * @generated
@@ -225,7 +225,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Returns whether the value of the '{@link org.eclipse.sirius.diagram.DDiagram#getActivatedTransientLayers
      * <em>Activated Transient Layers</em>}' reference list is set. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Activated Transient Layers</em>' reference list is set.
      * @see #unsetActivatedTransientLayers()
      * @see #getActivatedTransientLayers()
@@ -263,7 +263,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Activate Behaviors</b></em>' reference list. The list contents are of type
      * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool}. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> Behaviors that are currently activated for this viewpoint. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Activate Behaviors</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_ActivateBehaviors()
      * @model
@@ -278,7 +278,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Variable History</em>' containment reference.
      * @see #setFilterVariableHistory(FilterVariableHistory)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_FilterVariableHistory()
@@ -288,9 +288,9 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     FilterVariableHistory getFilterVariableHistory();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#getFilterVariableHistory
-     * <em>Filter Variable History</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#getFilterVariableHistory <em>Filter Variable
+     * History</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Filter Variable History</em>' containment reference.
      * @see #getFilterVariableHistory()
@@ -306,7 +306,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Activated Layers</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_ActivatedLayers()
      * @model
@@ -334,7 +334,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#isSynchronized <em>Synchronized</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Synchronized</em>' attribute.
      * @see #isSynchronized()
@@ -362,7 +362,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Is In Layouting Mode</em>' attribute.
      * @see #setIsInLayoutingMode(boolean)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_IsInLayoutingMode()
@@ -372,9 +372,9 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     boolean isIsInLayoutingMode();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#isIsInLayoutingMode
-     * <em>Is In Layouting Mode</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#isIsInLayoutingMode <em>Is In Layouting
+     * Mode</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Is In Layouting Mode</em>' attribute.
      * @see #isIsInLayoutingMode()
@@ -399,7 +399,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#getHeaderHeight <em>Header Height</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Header Height</em>' attribute.
      * @see #getHeaderHeight()

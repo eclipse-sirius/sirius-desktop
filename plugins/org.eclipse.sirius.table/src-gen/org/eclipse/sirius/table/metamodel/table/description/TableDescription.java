@@ -89,7 +89,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition Expression</em>' attribute.
      * @see #getPreconditionExpression()
@@ -104,7 +104,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription_DomainClass()
@@ -117,7 +117,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getDomainClass <em>Domain
      * Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -211,7 +211,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Line Mappings</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription_OwnedLineMappings()
      * @model containment="true" keys="name" required="true"
@@ -227,7 +227,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Line Mappings</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription_ReusedLineMappings()
      * @model keys="name"
@@ -243,7 +243,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Line Mappings</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription_AllLineMappings()
      * @model keys="name" required="true" transient="true" changeable="false" volatile="true"
@@ -259,7 +259,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Create Line</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription_OwnedCreateLine()
      * @model containment="true"
@@ -275,7 +275,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Create Line</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription_ReusedCreateLine()
      * @model
@@ -291,7 +291,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Create Line</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription_AllCreateLine()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -316,7 +316,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getInitialHeaderColumnWidth
      * <em>Initial Header Column Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Header Column Width</em>' attribute.
      * @see #getInitialHeaderColumnWidth()
@@ -332,7 +332,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Imported Elements</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription_ImportedElements()
      * @model containment="true"

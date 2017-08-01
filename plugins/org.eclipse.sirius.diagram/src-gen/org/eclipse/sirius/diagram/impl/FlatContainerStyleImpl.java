@@ -39,7 +39,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     /**
      * The default value of the '{@link #getBackgroundStyle() <em>Background Style</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundStyle()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     /**
      * The cached value of the '{@link #getBackgroundStyle() <em>Background Style</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundStyle()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     /**
      * The default value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     /**
      * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     /**
      * The default value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -89,7 +89,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     /**
      * The cached value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FlatContainerStyleImpl() {
@@ -107,7 +107,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -228,7 +228,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -249,7 +249,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -267,7 +267,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

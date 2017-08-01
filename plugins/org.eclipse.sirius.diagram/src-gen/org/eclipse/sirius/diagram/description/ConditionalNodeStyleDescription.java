@@ -37,7 +37,7 @@ public interface ConditionalNodeStyleDescription extends ConditionalStyleDescrip
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(NodeStyleDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getConditionalNodeStyleDescription_Style()
@@ -49,7 +49,7 @@ public interface ConditionalNodeStyleDescription extends ConditionalStyleDescrip
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

@@ -33,13 +33,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SelectionWizardDescriptionItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SelectionWizardDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
 
     /**
      * This adds a property descriptor for the Multiple feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMultiplePropertyDescriptor(Object object) {
@@ -98,7 +98,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
 
     /**
      * This adds a property descriptor for the Tree feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTreePropertyDescriptor(Object object) {
@@ -111,7 +111,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
 
     /**
      * This adds a property descriptor for the Root Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRootExpressionPropertyDescriptor(Object object) {
@@ -138,7 +138,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
 
     /**
      * This adds a property descriptor for the Message feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMessagePropertyDescriptor(Object object) {
@@ -151,7 +151,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
 
     /**
      * This adds a property descriptor for the Icon Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
@@ -164,7 +164,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
 
     /**
      * This adds a property descriptor for the Window Title feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWindowTitlePropertyDescriptor(Object object) {
@@ -177,7 +177,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
 
     /**
      * This adds a property descriptor for the Window Image Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWindowImagePathPropertyDescriptor(Object object) {
@@ -193,7 +193,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -210,7 +210,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +223,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
 
     /**
      * This returns SelectionWizardDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -278,7 +278,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -37,7 +37,7 @@ public interface DModelElement extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>EAnnotations</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDModelElement_EAnnotations()
      * @model containment="true"
@@ -47,7 +47,7 @@ public interface DModelElement extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

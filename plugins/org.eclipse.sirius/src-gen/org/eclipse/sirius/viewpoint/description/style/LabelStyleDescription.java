@@ -23,8 +23,8 @@ import org.eclipse.sirius.viewpoint.LabelAlignment;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment
- * <em>Label Alignment</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment <em>Label
+ * Alignment</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelStyleDescription()
@@ -52,9 +52,9 @@ public interface LabelStyleDescription extends BasicLabelStyleDescription {
     LabelAlignment getLabelAlignment();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment
-     * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment <em>Label
+     * Alignment</em>}' attribute. <!-- begin-user-doc -->
      *
      * @since 0.9.0 <!--end-user-doc -->
      * @param value

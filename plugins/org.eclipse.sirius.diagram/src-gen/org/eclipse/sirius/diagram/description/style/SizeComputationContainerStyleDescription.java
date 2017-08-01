@@ -14,18 +14,16 @@ package org.eclipse.sirius.diagram.description.style;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Size Computation Container Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Size Computation Container Style
+ * Description</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression
  * <em>Width Computation Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression
  * <em>Height Computation Expression</em>}</li>
  * </ul>
  *
@@ -49,10 +47,10 @@ public interface SizeComputationContainerStyleDescription extends EObject {
     String getWidthComputationExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression
      * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width Computation Expression</em>' attribute.
      * @see #getWidthComputationExpression()
@@ -75,10 +73,10 @@ public interface SizeComputationContainerStyleDescription extends EObject {
     String getHeightComputationExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression
      * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height Computation Expression</em>' attribute.
      * @see #getHeightComputationExpression()

@@ -41,7 +41,7 @@ public interface DTable extends DRepresentation, LineContainer {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Columns</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTable_Columns()
      * @see org.eclipse.sirius.table.metamodel.table.DColumn#getTable
@@ -57,7 +57,7 @@ public interface DTable extends DRepresentation, LineContainer {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(TableDescription)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTable_Description()
@@ -69,7 +69,7 @@ public interface DTable extends DRepresentation, LineContainer {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DTable#getDescription
      * <em>Description</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()
@@ -84,7 +84,7 @@ public interface DTable extends DRepresentation, LineContainer {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Header Column Width</em>' attribute.
      * @see #setHeaderColumnWidth(int)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTable_HeaderColumnWidth()
@@ -96,7 +96,7 @@ public interface DTable extends DRepresentation, LineContainer {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DTable#getHeaderColumnWidth <em>Header
      * Column Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Header Column Width</em>' attribute.
      * @see #getHeaderColumnWidth()

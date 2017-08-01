@@ -21,8 +21,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation#getSubModelOperations
- * <em>Sub Model Operations</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation#getSubModelOperations <em>Sub Model
+ * Operations</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerModelOperation()
@@ -38,7 +38,7 @@ public interface ContainerModelOperation extends ModelOperation {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sub Model Operations</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerModelOperation_SubModelOperations()
      * @model containment="true" resolveProxies="true"

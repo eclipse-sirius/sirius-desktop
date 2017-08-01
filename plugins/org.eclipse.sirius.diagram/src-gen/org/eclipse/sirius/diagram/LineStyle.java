@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum LineStyle implements Enumerator {
     /**
      * The '<em><b>Solid</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #SOLID
      * @generated
      * @ordered
@@ -38,7 +38,7 @@ public enum LineStyle implements Enumerator {
 
     /**
      * The '<em><b>Dash</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #DASH
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public enum LineStyle implements Enumerator {
 
     /**
      * The '<em><b>Dot</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #DOT
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public enum LineStyle implements Enumerator {
 
     /**
      * The '<em><b>Dash dot</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #DASH_DOT
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public enum LineStyle implements Enumerator {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #SOLID_LITERAL
      * @model name="solid"
      * @generated
@@ -85,7 +85,7 @@ public enum LineStyle implements Enumerator {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #DASH_LITERAL
      * @model name="dash"
      * @generated
@@ -100,7 +100,7 @@ public enum LineStyle implements Enumerator {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #DOT_LITERAL
      * @model name="dot"
      * @generated
@@ -115,7 +115,7 @@ public enum LineStyle implements Enumerator {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #DASH_DOT_LITERAL
      * @model name="dash_dot"
      * @generated
@@ -125,7 +125,7 @@ public enum LineStyle implements Enumerator {
 
     /**
      * An array of all the '<em><b>Line Style</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final LineStyle[] VALUES_ARRAY = new LineStyle[] { SOLID_LITERAL, DASH_LITERAL, DOT_LITERAL, DASH_DOT_LITERAL, };
@@ -133,7 +133,7 @@ public enum LineStyle implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Line Style</b></em>' enumerators. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<LineStyle> VALUES = Collections.unmodifiableList(Arrays.asList(LineStyle.VALUES_ARRAY));
@@ -141,7 +141,7 @@ public enum LineStyle implements Enumerator {
     /**
      * Returns the '<em><b>Line Style</b></em>' literal with the specified literal value. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -159,7 +159,7 @@ public enum LineStyle implements Enumerator {
     /**
      * Returns the '<em><b>Line Style</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -177,7 +177,7 @@ public enum LineStyle implements Enumerator {
     /**
      * Returns the '<em><b>Line Style</b></em>' literal with the specified integer value. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -199,28 +199,28 @@ public enum LineStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
 
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private LineStyle(int value, String name, String literal) {
@@ -231,7 +231,7 @@ public enum LineStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,7 +241,7 @@ public enum LineStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -251,7 +251,7 @@ public enum LineStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -262,7 +262,7 @@ public enum LineStyle implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -28,13 +28,13 @@ import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.InterpolatedColor} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InterpolatedColorItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -61,7 +61,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -74,7 +74,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Color Value Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addColorValueComputationExpressionPropertyDescriptor(Object object) {
@@ -89,7 +89,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Min Value Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMinValueComputationExpressionPropertyDescriptor(Object object) {
@@ -104,7 +104,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Max Value Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMaxValueComputationExpressionPropertyDescriptor(Object object) {
@@ -121,7 +121,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
 
     /**
      * This returns InterpolatedColor.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

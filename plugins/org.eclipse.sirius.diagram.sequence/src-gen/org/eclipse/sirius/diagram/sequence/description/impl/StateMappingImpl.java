@@ -37,7 +37,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
     /**
      * The default value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
     /**
      * The cached value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
     /**
      * The default value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
     /**
      * The cached value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StateMappingImpl() {
@@ -85,7 +85,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -265,7 +265,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

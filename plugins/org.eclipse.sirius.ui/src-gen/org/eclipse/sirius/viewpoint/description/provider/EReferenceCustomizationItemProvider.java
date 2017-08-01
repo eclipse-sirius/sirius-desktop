@@ -26,13 +26,13 @@ import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EReferenceCustomizationItemProvider extends EStructuralFeatureCustomizationItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EReferenceCustomizationItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -57,7 +57,7 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
 
     /**
      * This adds a property descriptor for the Reference Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReferenceNamePropertyDescriptor(Object object) {
@@ -69,7 +69,7 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
 
     /**
      * This adds a property descriptor for the Value feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addValuePropertyDescriptor(Object object) {
@@ -81,7 +81,7 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
 
     /**
      * This returns EReferenceCustomization.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

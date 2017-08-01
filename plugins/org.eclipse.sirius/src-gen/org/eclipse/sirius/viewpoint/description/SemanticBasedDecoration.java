@@ -22,8 +22,8 @@ package org.eclipse.sirius.viewpoint.description;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration#getDomainClass <em>Domain Class</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration#getDomainClass <em>Domain
+ * Class</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSemanticBasedDecoration()
@@ -34,7 +34,7 @@ public interface SemanticBasedDecoration extends DecorationDescription {
     /**
      * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The path of the icon of the decoration. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSemanticBasedDecoration_DomainClass()
@@ -46,7 +46,7 @@ public interface SemanticBasedDecoration extends DecorationDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()

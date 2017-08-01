@@ -36,21 +36,21 @@ public interface DelimitedEventMapping extends EventMapping {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Starting End Finder Expression</em>' attribute.
      * @see #setStartingEndFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getDelimitedEventMapping_StartingEndFinderExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
      */
     String getStartingEndFinderExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getStartingEndFinderExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getStartingEndFinderExpression
      * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Starting End Finder Expression</em>' attribute.
      * @see #getStartingEndFinderExpression()
@@ -65,21 +65,21 @@ public interface DelimitedEventMapping extends EventMapping {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Finishing End Finder Expression</em>' attribute.
      * @see #setFinishingEndFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getDelimitedEventMapping_FinishingEndFinderExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
      */
     String getFinishingEndFinderExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getFinishingEndFinderExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getFinishingEndFinderExpression
      * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Finishing End Finder Expression</em>' attribute.
      * @see #getFinishingEndFinderExpression()

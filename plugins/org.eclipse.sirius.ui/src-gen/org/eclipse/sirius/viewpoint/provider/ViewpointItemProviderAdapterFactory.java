@@ -42,7 +42,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -50,7 +50,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -65,7 +65,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ViewpointItemProviderAdapterFactory() {
@@ -87,7 +87,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.DAnalysis}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DRepresentationDescriptorItemProvider dRepresentationDescriptorItemProvider;
@@ -110,7 +110,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor}. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.DView}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.MetaModelExtension}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MetaModelExtensionItemProvider metaModelExtensionItemProvider;
@@ -156,7 +156,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.MetaModelExtension}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.Decoration}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.DAnalysisCustomData}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DAnalysisCustomDataItemProvider dAnalysisCustomDataItemProvider;
@@ -202,7 +202,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.DAnalysisCustomData}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -225,7 +225,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.LabelStyle}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -240,7 +240,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DAnalysisSessionEObjectItemProvider dAnalysisSessionEObjectItemProvider;
@@ -248,7 +248,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject}. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -263,7 +263,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.SessionManagerEObject}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SessionManagerEObjectItemProvider sessionManagerEObjectItemProvider;
@@ -271,7 +271,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.SessionManagerEObject}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -294,7 +294,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.DFile}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -309,7 +309,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.DResourceContainer}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DResourceContainerItemProvider dResourceContainerItemProvider;
@@ -317,7 +317,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.DResourceContainer}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -340,7 +340,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.DProject}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -363,7 +363,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.DFolder}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -386,7 +386,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.DModel}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -401,7 +401,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.BasicLabelStyle} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BasicLabelStyleItemProvider basicLabelStyleItemProvider;
@@ -409,7 +409,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.BasicLabelStyle}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -432,7 +432,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.UIState}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -446,7 +446,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -456,7 +456,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -466,7 +466,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -477,7 +477,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -487,7 +487,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -504,7 +504,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -514,7 +514,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -525,7 +525,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -539,7 +539,7 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

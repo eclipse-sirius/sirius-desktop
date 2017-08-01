@@ -27,7 +27,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 public class DefaultItemProvider extends SwitchChildItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DefaultItemProvider(AdapterFactory adapterFactory) {
@@ -36,7 +36,7 @@ public class DefaultItemProvider extends SwitchChildItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -50,7 +50,7 @@ public class DefaultItemProvider extends SwitchChildItemProvider {
 
     /**
      * This returns Default.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -60,7 +60,7 @@ public class DefaultItemProvider extends SwitchChildItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class DefaultItemProvider extends SwitchChildItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

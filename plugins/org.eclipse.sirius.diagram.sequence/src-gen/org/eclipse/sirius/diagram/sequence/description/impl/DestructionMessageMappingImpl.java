@@ -23,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping
 public class DestructionMessageMappingImpl extends MessageMappingImpl implements DestructionMessageMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DestructionMessageMappingImpl() {
@@ -32,7 +32,7 @@ public class DestructionMessageMappingImpl extends MessageMappingImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

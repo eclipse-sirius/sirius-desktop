@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public PopupMenuItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +44,7 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -61,7 +61,7 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,7 +75,7 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -88,7 +88,7 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
 
     /**
      * This returns PopupMenu.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {

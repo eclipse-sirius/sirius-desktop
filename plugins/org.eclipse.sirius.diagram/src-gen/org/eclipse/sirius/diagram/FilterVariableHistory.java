@@ -38,7 +38,7 @@ public interface FilterVariableHistory extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Values</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getFilterVariableHistory_OwnedValues()
      * @model containment="true" resolveProxies="true"

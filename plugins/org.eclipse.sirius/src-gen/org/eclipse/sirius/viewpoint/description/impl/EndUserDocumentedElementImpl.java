@@ -25,8 +25,8 @@ import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.impl.EndUserDocumentedElementImpl#getEndUserDocumentation
- * <em>End User Documentation</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.EndUserDocumentedElementImpl#getEndUserDocumentation <em>End
+ * User Documentation</em>}</li>
  * </ul>
  *
  * @generated
@@ -54,7 +54,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EndUserDocumentedElementImpl() {
@@ -63,7 +63,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

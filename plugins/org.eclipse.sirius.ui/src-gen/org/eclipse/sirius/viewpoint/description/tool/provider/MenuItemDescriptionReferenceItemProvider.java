@@ -32,14 +32,14 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MenuItemDescriptionReferenceItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapte
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -63,7 +63,7 @@ public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapte
 
     /**
      * This adds a property descriptor for the Item feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addItemPropertyDescriptor(Object object) {
@@ -75,7 +75,7 @@ public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapte
 
     /**
      * This returns MenuItemDescriptionReference.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapte
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapte
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapte
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

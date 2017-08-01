@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl;
 public class EndLabelStyleImpl extends BasicLabelStyleImpl implements EndLabelStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EndLabelStyleImpl() {
@@ -38,7 +38,7 @@ public class EndLabelStyleImpl extends BasicLabelStyleImpl implements EndLabelSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

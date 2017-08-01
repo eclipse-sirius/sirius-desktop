@@ -34,7 +34,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DNodeListElementItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Original Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
@@ -86,7 +86,7 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Actual Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
@@ -98,7 +98,7 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Candidates Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCandidatesMappingPropertyDescriptor(Object object) {
@@ -113,7 +113,7 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This returns DNodeListElement.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

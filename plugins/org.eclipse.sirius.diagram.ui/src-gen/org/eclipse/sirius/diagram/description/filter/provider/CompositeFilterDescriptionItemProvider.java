@@ -29,13 +29,13 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CompositeFilterDescriptionItemProvider extends FilterDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CompositeFilterDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +44,7 @@ public class CompositeFilterDescriptionItemProvider extends FilterDescriptionIte
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -61,7 +61,7 @@ public class CompositeFilterDescriptionItemProvider extends FilterDescriptionIte
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,7 +75,7 @@ public class CompositeFilterDescriptionItemProvider extends FilterDescriptionIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -88,7 +88,7 @@ public class CompositeFilterDescriptionItemProvider extends FilterDescriptionIte
 
     /**
      * This returns CompositeFilterDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class CompositeFilterDescriptionItemProvider extends FilterDescriptionIte
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

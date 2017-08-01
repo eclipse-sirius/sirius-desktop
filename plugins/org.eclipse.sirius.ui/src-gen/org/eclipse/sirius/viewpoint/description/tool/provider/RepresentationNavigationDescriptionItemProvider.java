@@ -32,13 +32,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class RepresentationNavigationDescriptionItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RepresentationNavigationDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
 
     /**
      * This adds a property descriptor for the Browse Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBrowseExpressionPropertyDescriptor(Object object) {
@@ -79,7 +79,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Navigation Name Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNavigationNameExpressionPropertyDescriptor(Object object) {
@@ -94,7 +94,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Representation Description feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRepresentationDescriptionPropertyDescriptor(Object object) {
@@ -109,7 +109,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

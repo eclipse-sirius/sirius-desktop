@@ -34,7 +34,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
     /**
      * The default value of the '{@link #getTargetClass() <em>Target Class</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetClass()
      * @generated
      * @ordered
@@ -44,7 +44,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
     /**
      * The cached value of the '{@link #getTargetClass() <em>Target Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTargetClass()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SemanticValidationRuleImpl() {
@@ -62,7 +62,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -38,7 +38,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AppliedCompositeFiltersItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -63,7 +63,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Composite Filter Descriptions feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCompositeFilterDescriptionsPropertyDescriptor(Object object) {
@@ -75,7 +75,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter
 
     /**
      * This returns AppliedCompositeFilters.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

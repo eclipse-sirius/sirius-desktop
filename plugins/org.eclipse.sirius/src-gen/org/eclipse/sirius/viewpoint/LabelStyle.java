@@ -48,8 +48,8 @@ public interface LabelStyle extends BasicLabelStyle {
     LabelAlignment getLabelAlignment();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.LabelStyle#getLabelAlignment <em>Label Alignment</em>}
-     * ' attribute. <!-- begin-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.LabelStyle#getLabelAlignment <em>Label
+     * Alignment</em>}' attribute. <!-- begin-user-doc -->
      *
      * @since 0.9.0 <!-- end-user-doc -->
      * @param value

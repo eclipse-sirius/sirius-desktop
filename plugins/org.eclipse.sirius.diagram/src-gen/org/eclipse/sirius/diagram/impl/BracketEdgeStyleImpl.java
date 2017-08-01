@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 public class BracketEdgeStyleImpl extends EdgeStyleImpl implements BracketEdgeStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BracketEdgeStyleImpl() {
@@ -33,7 +33,7 @@ public class BracketEdgeStyleImpl extends EdgeStyleImpl implements BracketEdgeSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

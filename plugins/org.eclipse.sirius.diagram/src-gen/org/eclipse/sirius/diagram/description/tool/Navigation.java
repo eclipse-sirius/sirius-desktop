@@ -23,10 +23,10 @@ import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.Navigation#isCreateIfNotExistent
- * <em>Create If Not Existent</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.Navigation#getDiagramDescription <em>Diagram Description</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.Navigation#isCreateIfNotExistent <em>Create If Not
+ * Existent</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.Navigation#getDiagramDescription <em>Diagram
+ * Description</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getNavigation()
@@ -41,7 +41,7 @@ public interface Navigation extends ContainerModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Create If Not Existent</em>' attribute.
      * @see #setCreateIfNotExistent(boolean)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getNavigation_CreateIfNotExistent()
@@ -53,7 +53,7 @@ public interface Navigation extends ContainerModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.Navigation#isCreateIfNotExistent
      * <em>Create If Not Existent</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Create If Not Existent</em>' attribute.
      * @see #isCreateIfNotExistent()
@@ -68,7 +68,7 @@ public interface Navigation extends ContainerModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Diagram Description</em>' reference.
      * @see #setDiagramDescription(DiagramDescription)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getNavigation_DiagramDescription()
@@ -80,7 +80,7 @@ public interface Navigation extends ContainerModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.Navigation#getDiagramDescription
      * <em>Diagram Description</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Diagram Description</em>' reference.
      * @see #getDiagramDescription()

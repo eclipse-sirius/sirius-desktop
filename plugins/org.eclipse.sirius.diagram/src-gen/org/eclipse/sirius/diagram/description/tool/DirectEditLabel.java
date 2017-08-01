@@ -30,8 +30,8 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * <li>{@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getMask <em>Mask</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInitialOperation <em>Initial Operation</em>
  * }</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInputLabelExpression
- * <em>Input Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInputLabelExpression <em>Input Label
+ * Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDirectEditLabel()
@@ -54,7 +54,7 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getMask <em>Mask</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mask</em>' containment reference.
      * @see #getMask()
@@ -77,7 +77,7 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
@@ -95,7 +95,9 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDirectEditLabel_InputLabelExpression()
      * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DSemanticDiagram.' view='diagram.DDiagramElement | the current view for which the label is calculated.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the
+     *        current DSemanticDiagram.' view='diagram.DDiagramElement | the current view for which the label is
+     *        calculated.'"
      * @generated
      */
     String getInputLabelExpression();
@@ -103,7 +105,7 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInputLabelExpression
      * <em>Input Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Input Label Expression</em>' attribute.
      * @see #getInputLabelExpression()
@@ -113,7 +115,7 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation" required="true"
      * @generated
      */

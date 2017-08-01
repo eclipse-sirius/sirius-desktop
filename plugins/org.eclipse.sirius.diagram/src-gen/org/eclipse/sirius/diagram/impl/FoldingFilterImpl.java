@@ -25,7 +25,7 @@ import org.eclipse.sirius.diagram.FoldingFilter;
 public class FoldingFilterImpl extends MinimalEObjectImpl.Container implements FoldingFilter {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FoldingFilterImpl() {
@@ -34,7 +34,7 @@ public class FoldingFilterImpl extends MinimalEObjectImpl.Container implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

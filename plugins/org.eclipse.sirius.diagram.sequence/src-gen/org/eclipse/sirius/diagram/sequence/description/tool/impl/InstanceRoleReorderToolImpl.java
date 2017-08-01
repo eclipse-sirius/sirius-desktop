@@ -49,7 +49,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
     /**
      * The cached value of the '{@link #getMappings() <em>Mappings</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMappings()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
     /**
      * The cached value of the '{@link #getInstanceRoleMoved() <em>Instance Role Moved</em>}' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInstanceRoleMoved()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InstanceRoleReorderToolImpl() {
@@ -97,7 +97,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetPredecessorBefore(ElementVariable newPredecessorBefore, NotificationChain msgs) {
@@ -149,7 +149,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,7 +173,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetPredecessorAfter(ElementVariable newPredecessorAfter, NotificationChain msgs) {
@@ -202,7 +202,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInstanceRoleMoved(InitialOperation newInstanceRoleMoved, NotificationChain msgs) {
@@ -255,7 +255,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -297,7 +297,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -317,7 +317,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -343,7 +343,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -367,7 +367,7 @@ public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

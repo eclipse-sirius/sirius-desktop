@@ -38,7 +38,7 @@ public interface SytemColorsPalette extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Entries</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSytemColorsPalette_Entries()
      * @model containment="true" resolveProxies="true" keys="name"

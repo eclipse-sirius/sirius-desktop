@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerMappingItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -69,7 +69,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
 
     /**
      * This adds a property descriptor for the Drop Descriptions feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
@@ -82,7 +82,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
 
     /**
      * This adds a property descriptor for the All Node Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllNodeMappingsPropertyDescriptor(Object object) {
@@ -110,7 +110,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     /**
      * This adds a property descriptor for the Reused Container Mappings feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedContainerMappingsPropertyDescriptor(Object object) {
@@ -154,7 +154,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -190,7 +190,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
 
     /**
      * This returns ContainerMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

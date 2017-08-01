@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.audit.AuditFactory
  * @model kind="package"
  * @generated
@@ -32,28 +32,28 @@ import org.eclipse.emf.ecore.EPackage;
 public interface AuditPackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "audit"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/description/audit/1.1.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "audit"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     AuditPackage eINSTANCE = org.eclipse.sirius.viewpoint.description.audit.impl.AuditPackageImpl.init();
@@ -61,7 +61,7 @@ public interface AuditPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.audit.impl.InformationSectionImpl
      * <em>Information Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.viewpoint.description.audit.impl.InformationSectionImpl
      * @see org.eclipse.sirius.viewpoint.description.audit.impl.AuditPackageImpl#getInformationSection()
      * @generated
@@ -71,17 +71,17 @@ public interface AuditPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Information Section</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int INFORMATION_SECTION_FEATURE_COUNT = 0;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.audit.impl.TemplateInformationSectionImpl
-     * <em>Template Information Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.viewpoint.description.audit.impl.TemplateInformationSectionImpl <em>Template
+     * Information Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.sirius.viewpoint.description.audit.impl.TemplateInformationSectionImpl
      * @see org.eclipse.sirius.viewpoint.description.audit.impl.AuditPackageImpl#getTemplateInformationSection()
      * @generated
@@ -90,7 +90,7 @@ public interface AuditPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Template Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -99,7 +99,7 @@ public interface AuditPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Template Information Section</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -108,7 +108,7 @@ public interface AuditPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.description.audit.InformationSection
      * <em>Information Section</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Information Section</em>'.
      * @see org.eclipse.sirius.viewpoint.description.audit.InformationSection
      * @generated
@@ -116,10 +116,10 @@ public interface AuditPackage extends EPackage {
     EClass getInformationSection();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection
-     * <em>Template Information Section</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection <em>Template Information
+     * Section</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Template Information Section</em>'.
      * @see org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection
      * @generated
@@ -127,10 +127,10 @@ public interface AuditPackage extends EPackage {
     EClass getTemplateInformationSection();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection#getTemplatePath
-     * <em>Template Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection#getTemplatePath <em>Template
+     * Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Template Path</em>'.
      * @see org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection#getTemplatePath()
      * @see #getTemplateInformationSection()
@@ -140,7 +140,7 @@ public interface AuditPackage extends EPackage {
 
     /**
      * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -155,15 +155,15 @@ public interface AuditPackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.description.audit.impl.InformationSectionImpl
-         * <em>Information Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.viewpoint.description.audit.impl.InformationSectionImpl <em>Information
+         * Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.viewpoint.description.audit.impl.InformationSectionImpl
          * @see org.eclipse.sirius.viewpoint.description.audit.impl.AuditPackageImpl#getInformationSection()
          * @generated
@@ -171,10 +171,10 @@ public interface AuditPackage extends EPackage {
         EClass INFORMATION_SECTION = AuditPackage.eINSTANCE.getInformationSection();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.description.audit.impl.TemplateInformationSectionImpl
-         * <em>Template Information Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.viewpoint.description.audit.impl.TemplateInformationSectionImpl <em>Template
+         * Information Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.viewpoint.description.audit.impl.TemplateInformationSectionImpl
          * @see org.eclipse.sirius.viewpoint.description.audit.impl.AuditPackageImpl#getTemplateInformationSection()
          * @generated
@@ -184,7 +184,7 @@ public interface AuditPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Template Path</b></em>' attribute feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TEMPLATE_INFORMATION_SECTION__TEMPLATE_PATH = AuditPackage.eINSTANCE.getTemplateInformationSection_TemplatePath();

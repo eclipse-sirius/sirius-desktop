@@ -24,8 +24,8 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.DRepresentation#getOwnedRepresentationElements
- * <em>Owned Representation Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DRepresentation#getOwnedRepresentationElements <em>Owned Representation
+ * Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DRepresentation#getRepresentationElements <em>Representation Elements</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.viewpoint.DRepresentation#getName <em>Name</em>}</li>
@@ -43,7 +43,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * Returns the value of the '<em><b>Owned Representation Elements</b></em>' reference list. The list contents are of
      * type {@link org.eclipse.sirius.viewpoint.DRepresentationElement}. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The directly contained representation elements <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Representation Elements</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_OwnedRepresentationElements()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -79,7 +79,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DRepresentation#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -95,7 +95,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Annotation Entries</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_OwnedAnnotationEntries()
      * @model containment="true" resolveProxies="true"
@@ -110,7 +110,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Ui State</em>' containment reference.
      * @see #setUiState(UIState)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_UiState()
@@ -122,7 +122,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DRepresentation#getUiState <em>Ui State</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Ui State</em>' containment reference.
      * @see #getUiState()

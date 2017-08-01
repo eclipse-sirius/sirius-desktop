@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum ERROR_LEVEL implements Enumerator {
     /**
      * The '<em><b>INFO</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #INFO
      * @generated
      * @ordered
@@ -38,7 +38,7 @@ public enum ERROR_LEVEL implements Enumerator {
 
     /**
      * The '<em><b>WARNING</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #WARNING
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public enum ERROR_LEVEL implements Enumerator {
 
     /**
      * The '<em><b>ERROR</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #ERROR
      * @generated
      * @ordered
@@ -89,7 +89,7 @@ public enum ERROR_LEVEL implements Enumerator {
 
     /**
      * An array of all the '<em><b>ERROR LEVEL</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final ERROR_LEVEL[] VALUES_ARRAY = new ERROR_LEVEL[] { INFO_LITERAL, WARNING_LITERAL, ERROR_LITERAL, };
@@ -97,7 +97,7 @@ public enum ERROR_LEVEL implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>ERROR LEVEL</b></em>' enumerators. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<ERROR_LEVEL> VALUES = Collections.unmodifiableList(Arrays.asList(ERROR_LEVEL.VALUES_ARRAY));
@@ -105,7 +105,7 @@ public enum ERROR_LEVEL implements Enumerator {
     /**
      * Returns the '<em><b>ERROR LEVEL</b></em>' literal with the specified literal value. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -123,7 +123,7 @@ public enum ERROR_LEVEL implements Enumerator {
     /**
      * Returns the '<em><b>ERROR LEVEL</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -141,7 +141,7 @@ public enum ERROR_LEVEL implements Enumerator {
     /**
      * Returns the '<em><b>ERROR LEVEL</b></em>' literal with the specified integer value. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -161,28 +161,28 @@ public enum ERROR_LEVEL implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
 
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private ERROR_LEVEL(int value, String name, String literal) {
@@ -193,7 +193,7 @@ public enum ERROR_LEVEL implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public enum ERROR_LEVEL implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public enum ERROR_LEVEL implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +224,7 @@ public enum ERROR_LEVEL implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

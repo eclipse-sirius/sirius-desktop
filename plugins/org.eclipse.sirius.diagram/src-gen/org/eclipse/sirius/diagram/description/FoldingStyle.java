@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.Enumerator;
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>Folding Style</b></em>', and
  * utility methods for working with them. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getFoldingStyle()
  * @model
  * @generated
@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum FoldingStyle implements Enumerator {
     /**
      * The '<em><b>NONE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #NONE
      * @generated
      * @ordered
@@ -37,7 +37,7 @@ public enum FoldingStyle implements Enumerator {
 
     /**
      * The '<em><b>SOURCE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #SOURCE
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public enum FoldingStyle implements Enumerator {
 
     /**
      * The '<em><b>TARGET</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #TARGET
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public enum FoldingStyle implements Enumerator {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #NONE_LITERAL
      * @model
      * @generated
@@ -75,7 +75,7 @@ public enum FoldingStyle implements Enumerator {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #SOURCE_LITERAL
      * @model
      * @generated
@@ -90,7 +90,7 @@ public enum FoldingStyle implements Enumerator {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #TARGET_LITERAL
      * @model
      * @generated
@@ -100,7 +100,7 @@ public enum FoldingStyle implements Enumerator {
 
     /**
      * An array of all the '<em><b>Folding Style</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final FoldingStyle[] VALUES_ARRAY = new FoldingStyle[] { NONE_LITERAL, SOURCE_LITERAL, TARGET_LITERAL, };
@@ -108,7 +108,7 @@ public enum FoldingStyle implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Folding Style</b></em>' enumerators. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<FoldingStyle> VALUES = Collections.unmodifiableList(Arrays.asList(FoldingStyle.VALUES_ARRAY));
@@ -116,7 +116,7 @@ public enum FoldingStyle implements Enumerator {
     /**
      * Returns the '<em><b>Folding Style</b></em>' literal with the specified literal value. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -134,7 +134,7 @@ public enum FoldingStyle implements Enumerator {
     /**
      * Returns the '<em><b>Folding Style</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -152,7 +152,7 @@ public enum FoldingStyle implements Enumerator {
     /**
      * Returns the '<em><b>Folding Style</b></em>' literal with the specified integer value. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -172,28 +172,28 @@ public enum FoldingStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
 
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private FoldingStyle(int value, String name, String literal) {
@@ -204,7 +204,7 @@ public enum FoldingStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public enum FoldingStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +224,7 @@ public enum FoldingStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -235,7 +235,7 @@ public enum FoldingStyle implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

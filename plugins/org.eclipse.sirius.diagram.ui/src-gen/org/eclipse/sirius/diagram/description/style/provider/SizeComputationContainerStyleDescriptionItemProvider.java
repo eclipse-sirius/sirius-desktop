@@ -42,7 +42,7 @@ public class SizeComputationContainerStyleDescriptionItemProvider extends ItemPr
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SizeComputationContainerStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -51,7 +51,7 @@ public class SizeComputationContainerStyleDescriptionItemProvider extends ItemPr
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class SizeComputationContainerStyleDescriptionItemProvider extends ItemPr
     /**
      * This adds a property descriptor for the Width Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWidthComputationExpressionPropertyDescriptor(Object object) {
@@ -83,7 +83,7 @@ public class SizeComputationContainerStyleDescriptionItemProvider extends ItemPr
     /**
      * This adds a property descriptor for the Height Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHeightComputationExpressionPropertyDescriptor(Object object) {
@@ -98,7 +98,7 @@ public class SizeComputationContainerStyleDescriptionItemProvider extends ItemPr
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class SizeComputationContainerStyleDescriptionItemProvider extends ItemPr
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class SizeComputationContainerStyleDescriptionItemProvider extends ItemPr
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -26,13 +26,13 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.LabelStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LabelStyleItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -69,7 +69,7 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
 
     /**
      * This returns LabelStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

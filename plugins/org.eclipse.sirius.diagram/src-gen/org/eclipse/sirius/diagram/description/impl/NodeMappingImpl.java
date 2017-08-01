@@ -39,11 +39,11 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.NodeMappingImpl#getDropDescriptions <em>Drop Descriptions</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.NodeMappingImpl#getDropDescriptions <em>Drop
+ * Descriptions</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.NodeMappingImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.NodeMappingImpl#getConditionnalStyles
- * <em>Conditionnal Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.NodeMappingImpl#getConditionnalStyles <em>Conditionnal
+ * Styles</em>}</li>
  * </ul>
  *
  * @generated
@@ -62,7 +62,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
     /**
      * The cached value of the '{@link #getConditionnalStyles() <em>Conditionnal Styles</em>}' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionnalStyles()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NodeMappingImpl() {
@@ -90,7 +90,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NodeStyleDescription basicGetStyle() {
@@ -149,7 +149,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(NodeStyleDescription newStyle, NotificationChain msgs) {
@@ -168,7 +168,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -192,7 +192,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +230,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -242,7 +242,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -254,7 +254,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -282,7 +282,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -303,7 +303,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -327,7 +327,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -348,7 +348,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -366,7 +366,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -384,7 +384,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

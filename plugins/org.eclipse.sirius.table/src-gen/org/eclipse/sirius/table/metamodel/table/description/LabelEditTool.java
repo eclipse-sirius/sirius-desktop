@@ -44,7 +44,7 @@ public interface LabelEditTool extends TableTool {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool#getMask
      * <em>Mask</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mask</em>' containment reference.
      * @see #getMask()

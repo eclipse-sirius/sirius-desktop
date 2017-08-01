@@ -36,7 +36,7 @@ public interface TypedVariableValue extends VariableValue {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Variable Definition</em>' reference.
      * @see #setVariableDefinition(TypedVariable)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getTypedVariableValue_VariableDefinition()
@@ -46,9 +46,9 @@ public interface TypedVariableValue extends VariableValue {
     TypedVariable getVariableDefinition();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.TypedVariableValue#getVariableDefinition
-     * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.TypedVariableValue#getVariableDefinition <em>Variable
+     * Definition</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Variable Definition</em>' reference.
      * @see #getVariableDefinition()
@@ -63,7 +63,7 @@ public interface TypedVariableValue extends VariableValue {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getTypedVariableValue_Value()
@@ -75,7 +75,7 @@ public interface TypedVariableValue extends VariableValue {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.TypedVariableValue#getValue <em>Value</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()

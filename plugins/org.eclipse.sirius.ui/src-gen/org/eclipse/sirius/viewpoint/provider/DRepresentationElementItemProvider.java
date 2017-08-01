@@ -40,7 +40,7 @@ public class DRepresentationElementItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DRepresentationElementItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class DRepresentationElementItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class DRepresentationElementItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Target feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetPropertyDescriptor(Object object) {
@@ -78,7 +78,7 @@ public class DRepresentationElementItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -90,7 +90,7 @@ public class DRepresentationElementItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Semantic Elements feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
@@ -102,7 +102,7 @@ public class DRepresentationElementItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class DRepresentationElementItemProvider extends ItemProviderAdapter
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class DRepresentationElementItemProvider extends ItemProviderAdapter
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

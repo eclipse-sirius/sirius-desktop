@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl;
 public class CoveredLifelinesVariableImpl extends AbstractVariableImpl implements CoveredLifelinesVariable {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CoveredLifelinesVariableImpl() {
@@ -33,7 +33,7 @@ public class CoveredLifelinesVariableImpl extends AbstractVariableImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

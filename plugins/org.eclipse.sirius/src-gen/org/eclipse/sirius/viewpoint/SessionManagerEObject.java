@@ -38,7 +38,7 @@ public interface SessionManagerEObject extends EObject {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Sessions</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getSessionManagerEObject_OwnedSessions()
      * @model containment="true" resolveProxies="true"

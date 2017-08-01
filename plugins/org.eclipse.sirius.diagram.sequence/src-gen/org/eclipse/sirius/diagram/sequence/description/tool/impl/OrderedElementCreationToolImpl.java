@@ -27,11 +27,9 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.OrderedElementCreationToolImpl#getStartingEndPredecessor
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.OrderedElementCreationToolImpl#getStartingEndPredecessor
  * <em>Starting End Predecessor</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.OrderedElementCreationToolImpl#getFinishingEndPredecessor
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.OrderedElementCreationToolImpl#getFinishingEndPredecessor
  * <em>Finishing End Predecessor</em>}</li>
  * </ul>
  *
@@ -41,7 +39,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
     /**
      * The cached value of the '{@link #getStartingEndPredecessor() <em>Starting End Predecessor</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndPredecessor()
      * @generated
      * @ordered
@@ -51,7 +49,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
     /**
      * The cached value of the '{@link #getFinishingEndPredecessor() <em>Finishing End Predecessor</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndPredecessor()
      * @generated
      * @ordered
@@ -60,7 +58,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OrderedElementCreationToolImpl() {
@@ -69,7 +67,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +77,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,7 +87,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStartingEndPredecessor(MessageEndVariable newStartingEndPredecessor, NotificationChain msgs) {
@@ -109,7 +107,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +133,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +143,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFinishingEndPredecessor(MessageEndVariable newFinishingEndPredecessor, NotificationChain msgs) {
@@ -165,7 +163,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +189,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +205,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +221,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,7 +239,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +257,7 @@ public abstract class OrderedElementCreationToolImpl extends MinimalEObjectImpl.
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

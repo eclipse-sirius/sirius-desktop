@@ -32,13 +32,13 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getSourceMapping <em>Source Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getTargetMapping <em>Target Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getTargetFinderExpression
- * <em>Target Finder Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getSourceFinderExpression
- * <em>Source Finder Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getTargetFinderExpression <em>Target Finder
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getSourceFinderExpression <em>Source Finder
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getConditionnalStyles <em>Conditionnal Styles</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getConditionnalStyles <em>Conditionnal
+ * Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getTargetExpression <em>Target Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getDomainClass <em>Domain Class</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#isUseDomainElement <em>Use Domain Element</em>}</li>
@@ -93,10 +93,11 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * @see #setTargetFinderExpression(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_TargetFinderExpression()
      * @model default="" dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.' viewPoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.'"
+     *        annotation= "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        Collection<EObject> or an EObject.'" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the
+     *        current DDiagram.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.'
+     *        viewPoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.'"
      * @generated
      */
     String getTargetFinderExpression();
@@ -104,7 +105,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMapping#getTargetFinderExpression
      * <em>Target Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Finder Expression</em>' attribute.
      * @see #getTargetFinderExpression()
@@ -124,9 +125,11 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * @see #setSourceFinderExpression(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_SourceFinderExpression()
      * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.' viewPoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an
+     *        EObject.'" annotation= "http://www.eclipse.org/sirius/interpreted/expression/variables
+     *        diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram |
+     *        (deprecated) the current DDiagram.' viewPoint='diagram.DSemanticDiagram | (deprecated) the current
+     *        DDiagram.'"
      * @generated
      */
     String getSourceFinderExpression();
@@ -134,7 +137,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMapping#getSourceFinderExpression
      * <em>Source Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source Finder Expression</em>' attribute.
      * @see #getSourceFinderExpression()
@@ -157,7 +160,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMapping#getStyle <em>Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -189,15 +192,17 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_TargetExpression()
      * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.' viewPoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the
+     *        current DDiagram.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.'
+     *        viewPoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.'"
      * @generated
      */
     String getTargetExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMapping#getTargetExpression
-     * <em>Target Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMapping#getTargetExpression <em>Target
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Target Expression</em>' attribute.
      * @see #getTargetExpression()
@@ -209,7 +214,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The type of the target elements that are represented by this edge. Useful only if
      * useDomainElement is true. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_DomainClass()
@@ -219,9 +224,9 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
     String getDomainClass();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMapping#getDomainClass
-     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMapping#getDomainClass <em>Domain
+     * Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -237,7 +242,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Use Domain Element</em>' attribute.
      * @see #setUseDomainElement(boolean)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_UseDomainElement()
@@ -247,9 +252,9 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
     boolean isUseDomainElement();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMapping#isUseDomainElement
-     * <em>Use Domain Element</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMapping#isUseDomainElement <em>Use
+     * Domain Element</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Use Domain Element</em>' attribute.
      * @see #isUseDomainElement()
@@ -265,7 +270,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reconnections</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_Reconnections()
      * @model
@@ -280,22 +285,26 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Path Expression</em>' attribute.
      * @see #setPathExpression(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_PathExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.' element='ecore.EObject | the semantic element  of the current edge.' source='ecore.EObject | the semantic target of the current source node.' target='ecore.EObject | the semantic element of the current target node.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        Collection<EObject> or an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables
+     *        diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram |
+     *        (deprecated) the current DDiagram.' element='ecore.EObject | the semantic element of the current edge.'
+     *        source='ecore.EObject | the semantic target of the current source node.' target='ecore.EObject | the
+     *        semantic element of the current target node.'"
      * @generated
      */
     String getPathExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMapping#getPathExpression
-     * <em>Path Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMapping#getPathExpression <em>Path
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Path Expression</em>' attribute.
      * @see #getPathExpression()
@@ -311,7 +320,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Path Node Mapping</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_PathNodeMapping()
      * @model
@@ -321,7 +330,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model sourceRequired="true" targetRequired="true"
      * @generated
      */
@@ -330,7 +339,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model sourceRequired="true" targetRequired="true"
      * @generated
      */
@@ -339,7 +348,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */
@@ -348,7 +357,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model viewEdgeRequired="true"
      * @generated
      */
@@ -357,7 +366,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */
@@ -366,7 +375,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */
@@ -375,7 +384,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

@@ -44,7 +44,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
     /**
      * The cached value of the '{@link #getOwnedColumnMappings() <em>Owned Column Mappings</em>}' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedColumnMappings()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EditionTableDescriptionImpl() {
@@ -72,7 +72,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -176,7 +176,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

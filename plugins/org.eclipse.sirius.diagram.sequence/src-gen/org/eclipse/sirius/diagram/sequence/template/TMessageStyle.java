@@ -26,8 +26,8 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getLineStyle <em>Line Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getSourceArrow <em>Source Arrow</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getTargetArrow <em>Target Arrow</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getLabelExpression <em>Label Expression</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getLabelExpression <em>Label
+ * Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageStyle()
@@ -38,7 +38,7 @@ public interface TMessageStyle extends TTransformer {
     /**
      * Returns the value of the '<em><b>Stroke Color</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The color of the edge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Stroke Color</em>' reference.
      * @see #setStrokeColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageStyle_StrokeColor()
@@ -50,7 +50,7 @@ public interface TMessageStyle extends TTransformer {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getStrokeColor
      * <em>Stroke Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Stroke Color</em>' reference.
      * @see #getStrokeColor()
@@ -73,9 +73,9 @@ public interface TMessageStyle extends TTransformer {
     LineStyle getLineStyle();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getLineStyle
-     * <em>Line Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getLineStyle <em>Line
+     * Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Line Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.LineStyle
@@ -102,7 +102,7 @@ public interface TMessageStyle extends TTransformer {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getSourceArrow
      * <em>Source Arrow</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source Arrow</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeArrows
@@ -128,7 +128,7 @@ public interface TMessageStyle extends TTransformer {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getTargetArrow
      * <em>Target Arrow</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Arrow</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeArrows
@@ -148,7 +148,8 @@ public interface TMessageStyle extends TTransformer {
      * @model default="feature:name" dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation = "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='the current DSemanticDiagram.' view='the current view for which the label is calculated.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='the current DSemanticDiagram.'
+     *        view='the current view for which the label is calculated.'"
      * @generated
      */
     String getLabelExpression();
@@ -156,7 +157,7 @@ public interface TMessageStyle extends TTransformer {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle#getLabelExpression
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()

@@ -30,13 +30,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.filter.VariableFilter} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class VariableFilterItemProvider extends FilterItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public VariableFilterItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class VariableFilterItemProvider extends FilterItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -61,7 +61,7 @@ public class VariableFilterItemProvider extends FilterItemProvider {
     /**
      * This adds a property descriptor for the Semantic Condition Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticConditionExpressionPropertyDescriptor(Object object) {
@@ -77,7 +77,7 @@ public class VariableFilterItemProvider extends FilterItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class VariableFilterItemProvider extends FilterItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class VariableFilterItemProvider extends FilterItemProvider {
 
     /**
      * This returns VariableFilter.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +114,7 @@ public class VariableFilterItemProvider extends FilterItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class VariableFilterItemProvider extends FilterItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -24,8 +24,8 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TAbstractMappingImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TAbstractMappingImpl#getDomainClass
- * <em>Domain Class</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TAbstractMappingImpl#getDomainClass <em>Domain
+ * Class</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TAbstractMappingImpl#getSemanticCandidatesExpression
  * <em>Semantic Candidates Expression</em>}</li>
  * </ul>
@@ -56,7 +56,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
     /**
      * The default value of the '{@link #getSemanticCandidatesExpression() <em>Semantic Candidates Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -86,7 +86,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
     /**
      * The cached value of the '{@link #getSemanticCandidatesExpression() <em>Semantic Candidates Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -95,7 +95,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TAbstractMappingImpl() {
@@ -104,7 +104,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +114,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +204,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -225,7 +225,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -265,7 +265,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

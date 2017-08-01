@@ -41,9 +41,9 @@ public interface Unset extends ContainerModelOperation {
     String getFeatureName();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.Unset#getFeatureName
-     * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.Unset#getFeatureName <em>Feature
+     * Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()
@@ -60,7 +60,8 @@ public interface Unset extends ContainerModelOperation {
      * @see #setElementExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getUnset_ElementExpression()
      * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an
+     *        EObject.'"
      * @generated
      */
     String getElementExpression();
@@ -68,7 +69,7 @@ public interface Unset extends ContainerModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.Unset#getElementExpression
      * <em>Element Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element Expression</em>' attribute.
      * @see #getElementExpression()

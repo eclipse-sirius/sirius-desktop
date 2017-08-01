@@ -23,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
 public class InteractionUseMappingImpl extends FrameMappingImpl implements InteractionUseMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InteractionUseMappingImpl() {
@@ -32,7 +32,7 @@ public class InteractionUseMappingImpl extends FrameMappingImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

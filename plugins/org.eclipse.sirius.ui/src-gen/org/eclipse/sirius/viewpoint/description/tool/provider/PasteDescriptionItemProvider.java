@@ -29,13 +29,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PasteDescriptionItemProvider extends MappingBasedToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public PasteDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +44,7 @@ public class PasteDescriptionItemProvider extends MappingBasedToolDescriptionIte
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -61,7 +61,7 @@ public class PasteDescriptionItemProvider extends MappingBasedToolDescriptionIte
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public class PasteDescriptionItemProvider extends MappingBasedToolDescriptionIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class PasteDescriptionItemProvider extends MappingBasedToolDescriptionIte
 
     /**
      * This returns PasteDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class PasteDescriptionItemProvider extends MappingBasedToolDescriptionIte
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

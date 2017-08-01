@@ -29,13 +29,13 @@ import org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SequencePackageImpl extends EPackageImpl implements SequencePackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass sequenceDDiagramEClass = null;
@@ -59,7 +59,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -71,7 +71,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
      * This method is used to initialize {@link SequencePackage#eINSTANCE} when that field is accessed. Clients should
      * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -125,7 +125,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -183,7 +183,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
     /**
      * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
      * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -201,7 +201,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -209,7 +209,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
     /**
      * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
      * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {

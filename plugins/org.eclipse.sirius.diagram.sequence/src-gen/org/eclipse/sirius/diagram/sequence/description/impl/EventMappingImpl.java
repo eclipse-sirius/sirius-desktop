@@ -23,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 public abstract class EventMappingImpl extends MinimalEObjectImpl.Container implements EventMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EventMappingImpl() {
@@ -32,7 +32,7 @@ public abstract class EventMappingImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

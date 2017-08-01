@@ -57,7 +57,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FilterDescriptionImpl() {
@@ -85,7 +85,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +171,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +223,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -263,7 +263,7 @@ public abstract class FilterDescriptionImpl extends DocumentedElementImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

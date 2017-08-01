@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
 public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl implements CustomStyleDescription {
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -41,7 +41,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomStyleDescriptionImpl() {
@@ -59,7 +59,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -69,7 +69,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

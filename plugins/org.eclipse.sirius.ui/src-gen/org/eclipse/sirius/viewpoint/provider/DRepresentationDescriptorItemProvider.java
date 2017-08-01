@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.provider.DModelElementItemProvid
 public class DRepresentationDescriptorItemProvider extends DModelElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DRepresentationDescriptorItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class DRepresentationDescriptorItemProvider extends DModelElementItemProv
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class DRepresentationDescriptorItemProvider extends DModelElementItemProv
 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -77,7 +77,7 @@ public class DRepresentationDescriptorItemProvider extends DModelElementItemProv
 
     /**
      * This adds a property descriptor for the Representation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRepresentationPropertyDescriptor(Object object) {
@@ -89,7 +89,7 @@ public class DRepresentationDescriptorItemProvider extends DModelElementItemProv
 
     /**
      * This adds a property descriptor for the Rep Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRepPathPropertyDescriptor(Object object) {
@@ -101,7 +101,7 @@ public class DRepresentationDescriptorItemProvider extends DModelElementItemProv
 
     /**
      * This adds a property descriptor for the Description feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
@@ -113,7 +113,7 @@ public class DRepresentationDescriptorItemProvider extends DModelElementItemProv
 
     /**
      * This adds a property descriptor for the Target feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetPropertyDescriptor(Object object) {
@@ -195,7 +195,7 @@ public class DRepresentationDescriptorItemProvider extends DModelElementItemProv
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,7 +205,7 @@ public class DRepresentationDescriptorItemProvider extends DModelElementItemProv
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

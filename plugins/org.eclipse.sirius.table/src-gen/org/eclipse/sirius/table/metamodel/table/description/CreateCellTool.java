@@ -46,7 +46,7 @@ public interface CreateCellTool extends TableTool, AbstractToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool#getMask
      * <em>Mask</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mask</em>' containment reference.
      * @see #getMask()
@@ -76,7 +76,7 @@ public interface CreateCellTool extends TableTool, AbstractToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool#getMapping
      * <em>Mapping</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mapping</em>' container reference.
      * @see #getMapping()

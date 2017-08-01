@@ -31,14 +31,14 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.DragAndDropTargetDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DragAndDropTargetDescriptionItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DragAndDropTargetDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class DragAndDropTargetDescriptionItemProvider extends ItemProviderAdapte
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class DragAndDropTargetDescriptionItemProvider extends ItemProviderAdapte
 
     /**
      * This adds a property descriptor for the Drop Descriptions feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
@@ -75,7 +75,7 @@ public class DragAndDropTargetDescriptionItemProvider extends ItemProviderAdapte
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class DragAndDropTargetDescriptionItemProvider extends ItemProviderAdapte
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class DragAndDropTargetDescriptionItemProvider extends ItemProviderAdapte
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

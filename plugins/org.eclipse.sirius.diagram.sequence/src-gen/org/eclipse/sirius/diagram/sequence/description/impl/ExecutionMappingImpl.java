@@ -38,7 +38,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
     /**
      * The default value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
     /**
      * The cached value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
     /**
      * The default value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
     /**
      * The cached value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -77,7 +77,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExecutionMappingImpl() {
@@ -86,7 +86,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -215,7 +215,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,7 +241,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -267,7 +267,7 @@ public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

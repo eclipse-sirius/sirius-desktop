@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation#getFirstModelOperations
- * <em>First Model Operations</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation#getFirstModelOperations <em>First
+ * Model Operations</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getInitEdgeCreationOperation()
@@ -37,7 +37,7 @@ public interface InitEdgeCreationOperation extends EObject {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>First Model Operations</em>' containment reference.
      * @see #setFirstModelOperations(ModelOperation)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getInitEdgeCreationOperation_FirstModelOperations()
@@ -47,10 +47,10 @@ public interface InitEdgeCreationOperation extends EObject {
     ModelOperation getFirstModelOperations();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation#getFirstModelOperations
-     * <em>First Model Operations</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation#getFirstModelOperations <em>First
+     * Model Operations</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>First Model Operations</em>' containment reference.
      * @see #getFirstModelOperations()

@@ -45,7 +45,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
     /**
      * The cached value of the '{@link #getOwnedColumnMappings() <em>Owned Column Mappings</em>}' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedColumnMappings()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CrossTableDescriptionImpl() {
@@ -83,7 +83,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -193,7 +193,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

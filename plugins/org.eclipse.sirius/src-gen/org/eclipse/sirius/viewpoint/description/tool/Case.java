@@ -21,8 +21,8 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.Case#getConditionExpression <em>Condition Expression</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.Case#getConditionExpression <em>Condition
+ * Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getCase()
@@ -48,7 +48,7 @@ public interface Case extends SwitchChild {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.Case#getConditionExpression
      * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Condition Expression</em>' attribute.
      * @see #getConditionExpression()

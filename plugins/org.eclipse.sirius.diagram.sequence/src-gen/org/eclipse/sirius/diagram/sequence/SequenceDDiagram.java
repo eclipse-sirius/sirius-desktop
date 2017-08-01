@@ -22,10 +22,10 @@ import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getSemanticOrdering <em>Semantic Ordering</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getGraphicalOrdering <em>Graphical Ordering</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getInstanceRoleSemanticOrdering
- * <em>Instance Role Semantic Ordering</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getGraphicalOrdering <em>Graphical
+ * Ordering</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getInstanceRoleSemanticOrdering <em>Instance Role
+ * Semantic Ordering</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.sequence.SequencePackage#getSequenceDDiagram()
@@ -40,7 +40,7 @@ public interface SequenceDDiagram extends DSemanticDiagram {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Ordering</em>' containment reference.
      * @see #setSemanticOrdering(EventEndsOrdering)
      * @see org.eclipse.sirius.diagram.sequence.SequencePackage#getSequenceDDiagram_SemanticOrdering()
@@ -52,7 +52,7 @@ public interface SequenceDDiagram extends DSemanticDiagram {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getSemanticOrdering
      * <em>Semantic Ordering</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Ordering</em>' containment reference.
      * @see #getSemanticOrdering()
@@ -67,7 +67,7 @@ public interface SequenceDDiagram extends DSemanticDiagram {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Graphical Ordering</em>' containment reference.
      * @see #setGraphicalOrdering(EventEndsOrdering)
      * @see org.eclipse.sirius.diagram.sequence.SequencePackage#getSequenceDDiagram_GraphicalOrdering()
@@ -79,7 +79,7 @@ public interface SequenceDDiagram extends DSemanticDiagram {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getGraphicalOrdering
      * <em>Graphical Ordering</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Graphical Ordering</em>' containment reference.
      * @see #getGraphicalOrdering()
@@ -105,10 +105,10 @@ public interface SequenceDDiagram extends DSemanticDiagram {
     InstanceRolesOrdering getInstanceRoleSemanticOrdering();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getInstanceRoleSemanticOrdering
-     * <em>Instance Role Semantic Ordering</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getInstanceRoleSemanticOrdering <em>Instance Role
+     * Semantic Ordering</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Instance Role Semantic Ordering</em>' containment reference.
      * @see #getInstanceRoleSemanticOrdering()

@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.style.impl.BasicLabelStyleDescri
 public class BeginLabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl implements BeginLabelStyleDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BeginLabelStyleDescriptionImpl() {
@@ -34,7 +34,7 @@ public class BeginLabelStyleDescriptionImpl extends BasicLabelStyleDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

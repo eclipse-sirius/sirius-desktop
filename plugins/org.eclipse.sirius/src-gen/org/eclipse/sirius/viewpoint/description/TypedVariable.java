@@ -19,8 +19,8 @@ import org.eclipse.emf.ecore.EDataType;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.TypedVariable#getDefaultValueExpression
- * <em>Default Value Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.TypedVariable#getDefaultValueExpression <em>Default Value
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.TypedVariable#getValueType <em>Value Type</em>}</li>
  * </ul>
  *
@@ -38,7 +38,8 @@ public interface TypedVariable extends InteractiveVariableDescription, SubVariab
      * @see #setDefaultValueExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getTypedVariable_DefaultValueExpression()
      * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='Must return an instance of type valueType.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='Must return an instance of
+     *        type valueType.'"
      * @generated
      */
     String getDefaultValueExpression();
@@ -46,7 +47,7 @@ public interface TypedVariable extends InteractiveVariableDescription, SubVariab
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.TypedVariable#getDefaultValueExpression
      * <em>Default Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Default Value Expression</em>' attribute.
      * @see #getDefaultValueExpression()
@@ -71,9 +72,9 @@ public interface TypedVariable extends InteractiveVariableDescription, SubVariab
     EDataType getValueType();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.TypedVariable#getValueType
-     * <em>Value Type</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.TypedVariable#getValueType <em>Value
+     * Type</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Value Type</em>' reference.
      * @see #getValueType()

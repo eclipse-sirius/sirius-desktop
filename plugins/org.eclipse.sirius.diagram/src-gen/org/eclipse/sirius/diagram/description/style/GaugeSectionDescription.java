@@ -24,16 +24,16 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression
- * <em>Min Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMaxValueExpression
- * <em>Max Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getBackgroundColor
- * <em>Background Color</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getForegroundColor
- * <em>Foreground Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression <em>Min Value
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMaxValueExpression <em>Max Value
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getValueExpression <em>Value
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getBackgroundColor <em>Background
+ * Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getForegroundColor <em>Foreground
+ * Color</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getLabel <em>Label</em>}</li>
  * </ul>
  *
@@ -50,21 +50,21 @@ public interface GaugeSectionDescription extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Min Value Expression</em>' attribute.
      * @see #setMinValueExpression(String)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_MinValueExpression()
-     * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
+     * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getMinValueExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression
-     * <em>Min Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression <em>Min Value
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Min Value Expression</em>' attribute.
      * @see #getMinValueExpression()
@@ -80,21 +80,21 @@ public interface GaugeSectionDescription extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Max Value Expression</em>' attribute.
      * @see #setMaxValueExpression(String)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_MaxValueExpression()
-     * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
+     * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getMaxValueExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMaxValueExpression
-     * <em>Max Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMaxValueExpression <em>Max Value
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Max Value Expression</em>' attribute.
      * @see #getMaxValueExpression()
@@ -110,21 +110,21 @@ public interface GaugeSectionDescription extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_ValueExpression()
-     * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
+     * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getValueExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getValueExpression
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getValueExpression <em>Value
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -145,10 +145,10 @@ public interface GaugeSectionDescription extends EObject {
     ColorDescription getBackgroundColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getBackgroundColor
-     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getBackgroundColor <em>Background
+     * Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()
@@ -169,10 +169,10 @@ public interface GaugeSectionDescription extends EObject {
     ColorDescription getForegroundColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getForegroundColor
-     * <em>Foreground Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getForegroundColor <em>Foreground
+     * Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Foreground Color</em>' reference.
      * @see #getForegroundColor()
@@ -195,7 +195,7 @@ public interface GaugeSectionDescription extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getLabel
      * <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label</em>' attribute.
      * @see #getLabel()

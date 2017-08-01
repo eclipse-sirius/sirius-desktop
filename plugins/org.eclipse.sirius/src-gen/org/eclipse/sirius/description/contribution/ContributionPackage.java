@@ -96,8 +96,8 @@ public interface ContributionPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.description.contribution.impl.IgnoreFeatureContributionImpl
-     * <em>Ignore Feature Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.impl.IgnoreFeatureContributionImpl <em>Ignore Feature
+     * Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see org.eclipse.sirius.description.contribution.impl.IgnoreFeatureContributionImpl
      * @see org.eclipse.sirius.description.contribution.impl.ContributionPackageImpl#getIgnoreFeatureContribution()
@@ -202,8 +202,8 @@ public interface ContributionPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.description.contribution.impl.RemoveFeatureContributionImpl
-     * <em>Remove Feature Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.impl.RemoveFeatureContributionImpl <em>Remove Feature
+     * Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see org.eclipse.sirius.description.contribution.impl.RemoveFeatureContributionImpl
      * @see org.eclipse.sirius.description.contribution.impl.ContributionPackageImpl#getRemoveFeatureContribution()
@@ -307,8 +307,8 @@ public interface ContributionPackage extends EPackage {
     int RESET_FEATURE_CONTRIBUTION_FEATURE_COUNT = ContributionPackage.FEATURE_CONTRIBUTION_FEATURE_COUNT + 0;
 
     /**
-     * The meta object id for the ' {@link org.eclipse.sirius.description.contribution.EObjectReference
-     * <em>EObject Reference</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the ' {@link org.eclipse.sirius.description.contribution.EObjectReference <em>EObject
+     * Reference</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see org.eclipse.sirius.description.contribution.EObjectReference
      * @see org.eclipse.sirius.description.contribution.impl.ContributionPackageImpl#getEObjectReference()
@@ -642,8 +642,8 @@ public interface ContributionPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference#getValueExpression
-     * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference#getValueExpression <em>Value
+     * Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Value Expression</em>'.
      * @see org.eclipse.sirius.description.contribution.ComputedEObjectReference#getValueExpression()
@@ -828,8 +828,8 @@ public interface ContributionPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.description.contribution.impl.IgnoreFeatureContributionImpl
-         * <em>Ignore Feature Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * {@link org.eclipse.sirius.description.contribution.impl.IgnoreFeatureContributionImpl <em>Ignore Feature
+         * Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @see org.eclipse.sirius.description.contribution.impl.IgnoreFeatureContributionImpl
          * @see org.eclipse.sirius.description.contribution.impl.ContributionPackageImpl#getIgnoreFeatureContribution()
@@ -839,8 +839,8 @@ public interface ContributionPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.description.contribution.impl.SetFeatureContributionImpl
-         * <em>Set Feature Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * {@link org.eclipse.sirius.description.contribution.impl.SetFeatureContributionImpl <em>Set Feature
+         * Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @see org.eclipse.sirius.description.contribution.impl.SetFeatureContributionImpl
          * @see org.eclipse.sirius.description.contribution.impl.ContributionPackageImpl#getSetFeatureContribution()
@@ -850,8 +850,8 @@ public interface ContributionPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.description.contribution.impl.AddFeatureContributionImpl
-         * <em>Add Feature Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * {@link org.eclipse.sirius.description.contribution.impl.AddFeatureContributionImpl <em>Add Feature
+         * Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @see org.eclipse.sirius.description.contribution.impl.AddFeatureContributionImpl
          * @see org.eclipse.sirius.description.contribution.impl.ContributionPackageImpl#getAddFeatureContribution()
@@ -861,8 +861,8 @@ public interface ContributionPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.description.contribution.impl.RemoveFeatureContributionImpl
-         * <em>Remove Feature Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * {@link org.eclipse.sirius.description.contribution.impl.RemoveFeatureContributionImpl <em>Remove Feature
+         * Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @see org.eclipse.sirius.description.contribution.impl.RemoveFeatureContributionImpl
          * @see org.eclipse.sirius.description.contribution.impl.ContributionPackageImpl#getRemoveFeatureContribution()
@@ -872,8 +872,8 @@ public interface ContributionPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.description.contribution.impl.ClearFeatureContributionImpl
-         * <em>Clear Feature Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * {@link org.eclipse.sirius.description.contribution.impl.ClearFeatureContributionImpl <em>Clear Feature
+         * Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @see org.eclipse.sirius.description.contribution.impl.ClearFeatureContributionImpl
          * @see org.eclipse.sirius.description.contribution.impl.ContributionPackageImpl#getClearFeatureContribution()
@@ -883,8 +883,8 @@ public interface ContributionPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.description.contribution.impl.ResetFeatureContributionImpl
-         * <em>Reset Feature Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * {@link org.eclipse.sirius.description.contribution.impl.ResetFeatureContributionImpl <em>Reset Feature
+         * Contribution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @see org.eclipse.sirius.description.contribution.impl.ResetFeatureContributionImpl
          * @see org.eclipse.sirius.description.contribution.impl.ContributionPackageImpl#getResetFeatureContribution()
@@ -904,8 +904,8 @@ public interface ContributionPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.description.contribution.impl.DirectEObjectReferenceImpl
-         * <em>Direct EObject Reference</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * {@link org.eclipse.sirius.description.contribution.impl.DirectEObjectReferenceImpl <em>Direct EObject
+         * Reference</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @see org.eclipse.sirius.description.contribution.impl.DirectEObjectReferenceImpl
          * @see org.eclipse.sirius.description.contribution.impl.ContributionPackageImpl#getDirectEObjectReference()
@@ -923,8 +923,8 @@ public interface ContributionPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.description.contribution.impl.ComputedEObjectReferenceImpl
-         * <em>Computed EObject Reference</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * {@link org.eclipse.sirius.description.contribution.impl.ComputedEObjectReferenceImpl <em>Computed EObject
+         * Reference</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @see org.eclipse.sirius.description.contribution.impl.ComputedEObjectReferenceImpl
          * @see org.eclipse.sirius.description.contribution.impl.ContributionPackageImpl#getComputedEObjectReference()

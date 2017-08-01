@@ -33,7 +33,7 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
 public class DColumnItemProvider extends DTableElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DColumnItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * This adds a property descriptor for the Label feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -73,7 +73,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * This adds a property descriptor for the Cells feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCellsPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * This adds a property descriptor for the Origin Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOriginMappingPropertyDescriptor(Object object) {
@@ -96,7 +96,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * This adds a property descriptor for the Ordered Cells feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOrderedCellsPropertyDescriptor(Object object) {
@@ -108,7 +108,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * This adds a property descriptor for the Visible feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addVisiblePropertyDescriptor(Object object) {
@@ -119,7 +119,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * This adds a property descriptor for the Width feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWidthPropertyDescriptor(Object object) {
@@ -133,7 +133,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * This returns DColumn.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

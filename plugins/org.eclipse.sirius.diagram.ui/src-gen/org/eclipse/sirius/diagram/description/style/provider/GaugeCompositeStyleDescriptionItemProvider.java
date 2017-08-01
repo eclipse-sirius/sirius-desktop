@@ -29,13 +29,13 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class GaugeCompositeStyleDescriptionItemProvider extends NodeStyleDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public GaugeCompositeStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +44,7 @@ public class GaugeCompositeStyleDescriptionItemProvider extends NodeStyleDescrip
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -59,7 +59,7 @@ public class GaugeCompositeStyleDescriptionItemProvider extends NodeStyleDescrip
 
     /**
      * This adds a property descriptor for the Alignment feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAlignmentPropertyDescriptor(Object object) {
@@ -75,7 +75,7 @@ public class GaugeCompositeStyleDescriptionItemProvider extends NodeStyleDescrip
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,7 +89,7 @@ public class GaugeCompositeStyleDescriptionItemProvider extends NodeStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class GaugeCompositeStyleDescriptionItemProvider extends NodeStyleDescrip
 
     /**
      * This returns GaugeCompositeStyleDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class GaugeCompositeStyleDescriptionItemProvider extends NodeStyleDescrip
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

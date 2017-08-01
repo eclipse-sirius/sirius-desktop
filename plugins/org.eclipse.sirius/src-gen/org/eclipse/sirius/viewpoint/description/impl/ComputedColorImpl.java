@@ -44,7 +44,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * The cached value of the '{@link #getRed() <em>Red</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRed()
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
     /**
      * The default value of the '{@link #getGreen() <em>Green</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getGreen()
      * @generated
      * @ordered
@@ -93,7 +93,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComputedColorImpl() {
@@ -102,7 +102,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +223,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -244,7 +244,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -262,7 +262,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

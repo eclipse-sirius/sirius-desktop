@@ -52,22 +52,22 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getDocumentation
  * <em>Documentation</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getName <em>Name</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getLabel <em>Label</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getName
+ * <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getLabel
+ * <em>Label</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getPrecondition
  * <em>Precondition</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#isForceRefresh
- * <em>Force Refresh</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#isForceRefresh <em>Force
+ * Refresh</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getFilters
  * <em>Filters</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getElementsToSelect
  * <em>Elements To Select</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#isInverseSelectionOrder
  * <em>Inverse Selection Order</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getEdgeMappings
- * <em>Edge Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getEdgeMappings <em>Edge
+ * Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getSourceVariable
  * <em>Source Variable</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getTargetVariable
@@ -78,20 +78,17 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
  * <em>Target View Variable</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getIconPath
- * <em>Icon Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getIconPath <em>Icon
+ * Path</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getExtraSourceMappings
  * <em>Extra Source Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getExtraTargetMappings
  * <em>Extra Target Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getConnectionStartPrecondition
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getConnectionStartPrecondition
  * <em>Connection Start Precondition</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getStartingEndPredecessor
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getStartingEndPredecessor
  * <em>Starting End Predecessor</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getFinishingEndPredecessor
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getFinishingEndPredecessor
  * <em>Finishing End Predecessor</em>}</li>
  * </ul>
  *
@@ -101,7 +98,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -111,7 +108,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -141,7 +138,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -161,7 +158,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The default value of the '{@link #getPrecondition() <em>Precondition</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -171,7 +168,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -181,7 +178,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The default value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isForceRefresh()
      * @generated
      * @ordered
@@ -191,7 +188,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The cached value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isForceRefresh()
      * @generated
      * @ordered
@@ -201,7 +198,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getFilters() <em>Filters</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilters()
      * @generated
      * @ordered
@@ -251,7 +248,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getEdgeMappings() <em>Edge Mappings</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEdgeMappings()
      * @generated
      * @ordered
@@ -281,7 +278,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getSourceViewVariable() <em>Source View Variable</em>}' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSourceViewVariable()
      * @generated
      * @ordered
@@ -291,7 +288,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getTargetViewVariable() <em>Target View Variable</em>}' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetViewVariable()
      * @generated
      * @ordered
@@ -311,7 +308,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -321,7 +318,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -351,7 +348,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The default value of the '{@link #getConnectionStartPrecondition() <em>Connection Start Precondition</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConnectionStartPrecondition()
      * @generated
      * @ordered
@@ -361,7 +358,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getConnectionStartPrecondition() <em>Connection Start Precondition</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConnectionStartPrecondition()
      * @generated
      * @ordered
@@ -371,7 +368,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getStartingEndPredecessor() <em>Starting End Predecessor</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndPredecessor()
      * @generated
      * @ordered
@@ -381,7 +378,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     /**
      * The cached value of the '{@link #getFinishingEndPredecessor() <em>Finishing End Predecessor</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndPredecessor()
      * @generated
      * @ordered
@@ -390,7 +387,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MessageCreationToolImpl() {
@@ -399,7 +396,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -409,7 +406,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -419,7 +416,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -433,7 +430,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -443,7 +440,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -457,7 +454,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -467,7 +464,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -481,7 +478,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -491,7 +488,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -505,7 +502,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -515,7 +512,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -529,7 +526,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -542,7 +539,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -552,7 +549,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -566,7 +563,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -576,7 +573,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -590,7 +587,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -603,7 +600,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -630,7 +627,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SourceEdgeCreationVariable basicGetSourceVariable() {
@@ -639,7 +636,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetSourceVariable(SourceEdgeCreationVariable newSourceVariable, NotificationChain msgs) {
@@ -658,7 +655,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -682,7 +679,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -709,7 +706,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TargetEdgeCreationVariable basicGetTargetVariable() {
@@ -718,7 +715,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTargetVariable(TargetEdgeCreationVariable newTargetVariable, NotificationChain msgs) {
@@ -737,7 +734,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -761,7 +758,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -788,7 +785,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SourceEdgeViewCreationVariable basicGetSourceViewVariable() {
@@ -797,7 +794,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetSourceViewVariable(SourceEdgeViewCreationVariable newSourceViewVariable, NotificationChain msgs) {
@@ -816,7 +813,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -840,7 +837,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -867,7 +864,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TargetEdgeViewCreationVariable basicGetTargetViewVariable() {
@@ -876,7 +873,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTargetViewVariable(TargetEdgeViewCreationVariable newTargetViewVariable, NotificationChain msgs) {
@@ -895,7 +892,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -919,7 +916,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -946,7 +943,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitEdgeCreationOperation basicGetInitialOperation() {
@@ -955,7 +952,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitEdgeCreationOperation newInitialOperation, NotificationChain msgs) {
@@ -974,7 +971,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -998,7 +995,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1008,7 +1005,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1022,7 +1019,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1035,7 +1032,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1048,7 +1045,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1058,7 +1055,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1072,7 +1069,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1082,7 +1079,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStartingEndPredecessor(MessageEndVariable newStartingEndPredecessor, NotificationChain msgs) {
@@ -1102,7 +1099,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1128,7 +1125,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1138,7 +1135,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFinishingEndPredecessor(MessageEndVariable newFinishingEndPredecessor, NotificationChain msgs) {
@@ -1158,7 +1155,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1184,7 +1181,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1196,7 +1193,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1224,7 +1221,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1291,7 +1288,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -1368,7 +1365,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1440,7 +1437,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1493,7 +1490,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1585,7 +1582,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1677,7 +1674,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -49,132 +49,132 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tSequenceDiagramEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tMessageExtremityEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tLifelineMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tLifelineStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tConditionalLifelineStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tTransformerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tExecutionMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tExecutionStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tConditionalExecutionStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tBasicMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tSourceTargetMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tReturnMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tCreationMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tDestructionMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tAbstractMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tMessageStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tConditionalMessageStyleEClass = null;
@@ -198,7 +198,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -210,7 +210,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
      * This method is used to initialize {@link TemplatePackage#eINSTANCE} when that field is accessed. Clients should
      * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -264,7 +264,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -294,7 +294,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -304,7 +304,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -314,7 +314,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -324,7 +324,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -334,7 +334,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -344,7 +344,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -354,7 +354,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -364,7 +364,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -374,7 +374,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -384,7 +384,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -394,7 +394,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -404,7 +404,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -414,7 +414,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -424,7 +424,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -434,7 +434,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -444,7 +444,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -454,7 +454,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -464,7 +464,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -474,7 +474,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -484,7 +484,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -494,7 +494,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -504,7 +504,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -514,7 +514,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -524,7 +524,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -534,7 +534,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -544,7 +544,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -554,7 +554,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -564,7 +564,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -574,7 +574,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -584,7 +584,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -594,7 +594,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -604,7 +604,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -614,7 +614,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -624,7 +624,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -634,7 +634,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -644,7 +644,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -654,7 +654,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -664,7 +664,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -674,7 +674,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -684,7 +684,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -694,7 +694,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -704,7 +704,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -714,7 +714,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -724,7 +724,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -734,7 +734,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -744,7 +744,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -754,7 +754,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -764,7 +764,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -774,7 +774,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -784,7 +784,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -794,7 +794,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -804,7 +804,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -814,7 +814,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -824,7 +824,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -834,7 +834,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -844,7 +844,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -854,7 +854,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -864,7 +864,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -874,7 +874,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -884,7 +884,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -894,7 +894,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -904,7 +904,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -914,7 +914,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -924,7 +924,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -934,7 +934,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -944,7 +944,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -952,7 +952,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
     /**
      * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
      * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -1050,7 +1050,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -1058,7 +1058,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
     /**
      * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
      * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {

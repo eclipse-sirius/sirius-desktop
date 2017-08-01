@@ -35,7 +35,7 @@ public interface AbstractVariable extends EObject {
      * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAbstractVariable_Name()
@@ -47,7 +47,7 @@ public interface AbstractVariable extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.AbstractVariable#getName <em>Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()

@@ -26,8 +26,8 @@ import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.impl.EReferenceCustomizationImpl#getReferenceName
- * <em>Reference Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.EReferenceCustomizationImpl#getReferenceName <em>Reference
+ * Name</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.impl.EReferenceCustomizationImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
@@ -37,7 +37,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
     /**
      * The default value of the '{@link #getReferenceName() <em>Reference Name</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getReferenceName()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
     /**
      * The cached value of the '{@link #getReferenceName() <em>Reference Name</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getReferenceName()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EReferenceCustomizationImpl() {
@@ -75,7 +75,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetValue() {
@@ -137,7 +137,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

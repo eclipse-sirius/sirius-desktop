@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.UserFixedColor;
 public class UserFixedColorItemProvider extends FixedColorItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public UserFixedColorItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class UserFixedColorItemProvider extends FixedColorItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -56,7 +56,7 @@ public class UserFixedColorItemProvider extends FixedColorItemProvider {
 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -68,7 +68,7 @@ public class UserFixedColorItemProvider extends FixedColorItemProvider {
 
     /**
      * This returns UserFixedColor.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class UserFixedColorItemProvider extends FixedColorItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -32,13 +32,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public PaneBasedSelectionWizardDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
 
     /**
      * This adds a property descriptor for the Icon Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
@@ -85,7 +85,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
 
     /**
      * This adds a property descriptor for the Window Title feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWindowTitlePropertyDescriptor(Object object) {
@@ -98,7 +98,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
 
     /**
      * This adds a property descriptor for the Window Image Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWindowImagePathPropertyDescriptor(Object object) {
@@ -112,7 +112,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
 
     /**
      * This adds a property descriptor for the Message feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMessagePropertyDescriptor(Object object) {
@@ -126,7 +126,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Choice Of Values Message feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addChoiceOfValuesMessagePropertyDescriptor(Object object) {
@@ -155,7 +155,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
 
     /**
      * This adds a property descriptor for the Tree feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTreePropertyDescriptor(Object object) {
@@ -168,7 +168,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
 
     /**
      * This adds a property descriptor for the Root Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRootExpressionPropertyDescriptor(Object object) {
@@ -197,7 +197,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Selected Values Message feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSelectedValuesMessagePropertyDescriptor(Object object) {
@@ -212,7 +212,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Pre Selected Candidates Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreSelectedCandidatesExpressionPropertyDescriptor(Object object) {
@@ -229,7 +229,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
 
     /**
      * This returns PaneBasedSelectionWizardDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -316,7 +316,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -38,7 +38,7 @@ public interface ToolGroup extends ToolEntry {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Tools</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolGroup_Tools()
      * @model containment="true" resolveProxies="true"

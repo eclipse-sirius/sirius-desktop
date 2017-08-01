@@ -81,21 +81,21 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
  * returned, which is the result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage
  * @generated
  */
 public class DiagramSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static DiagramPackage modelPackage;
 
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramSwitch() {
@@ -107,7 +107,7 @@ public class DiagramSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -118,7 +118,7 @@ public class DiagramSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -134,7 +134,7 @@ public class DiagramSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -1142,7 +1142,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DDiagram</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DDiagram</em>'.
@@ -1201,7 +1201,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Hide Filter</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Hide Filter</em>'.
@@ -1305,7 +1305,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DNode</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DNode</em>'.
@@ -1349,7 +1349,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DNode List</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DNode List</em>'.
@@ -1378,7 +1378,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DEdge</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DEdge</em>'.
@@ -1392,7 +1392,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Node Style</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Node Style</em>'.
@@ -1406,7 +1406,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Dot</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Dot</em>'.
@@ -1420,7 +1420,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Gauge Section</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Gauge Section</em>'.
@@ -1479,7 +1479,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Square</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Square</em>'.
@@ -1493,7 +1493,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Ellipse</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Ellipse</em>'.
@@ -1507,7 +1507,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Lozenge</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Lozenge</em>'.
@@ -1521,7 +1521,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Bundled Image</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Bundled Image</em>'.
@@ -1550,7 +1550,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Custom Style</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Custom Style</em>'.
@@ -1564,7 +1564,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Edge Target</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Edge Target</em>'.
@@ -1578,7 +1578,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Edge Style</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Edge Style</em>'.
@@ -1622,7 +1622,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Note</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Note</em>'.
@@ -1742,7 +1742,7 @@ public class DiagramSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Computed Style Description Registry</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Computed Style Description Registry</em>'.
@@ -1846,7 +1846,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DRefreshable</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DRefreshable</em>'.
@@ -1920,7 +1920,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DStylizable</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DStylizable</em>'.
@@ -1949,7 +1949,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Customizable</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Customizable</em>'.
@@ -1978,7 +1978,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Label Style</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Label Style</em>'.
@@ -1992,7 +1992,7 @@ public class DiagramSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Style</em>'.
@@ -2007,7 +2007,7 @@ public class DiagramSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch, but this is the last case
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>EObject</em>'.

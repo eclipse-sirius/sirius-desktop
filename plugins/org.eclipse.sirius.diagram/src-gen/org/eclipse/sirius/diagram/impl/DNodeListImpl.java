@@ -47,7 +47,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DNodeListImpl() {
@@ -56,7 +56,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -124,7 +124,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

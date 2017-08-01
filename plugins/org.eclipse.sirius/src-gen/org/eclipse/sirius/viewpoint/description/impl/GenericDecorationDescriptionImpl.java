@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 public class GenericDecorationDescriptionImpl extends DecorationDescriptionImpl implements GenericDecorationDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GenericDecorationDescriptionImpl() {
@@ -33,7 +33,7 @@ public class GenericDecorationDescriptionImpl extends DecorationDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -50,7 +50,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Sub Lines</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_OwnedSubLines()
      * @model containment="true" keys="name"
@@ -68,7 +68,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Sub Lines</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_ReusedSubLines()
      * @see org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings
@@ -84,7 +84,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_DomainClass()
@@ -96,7 +96,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -112,7 +112,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Create</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_Create()
      * @model containment="true"
@@ -142,7 +142,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDelete
      * <em>Delete</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Delete</em>' containment reference.
      * @see #getDelete()
@@ -157,7 +157,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #setSemanticCandidatesExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_SemanticCandidatesExpression()
@@ -176,7 +176,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getSemanticCandidatesExpression
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #getSemanticCandidatesExpression()
@@ -191,7 +191,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Header Label Expression</em>' attribute.
      * @see #setHeaderLabelExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_HeaderLabelExpression()
@@ -205,7 +205,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getHeaderLabelExpression <em>Header
      * Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Header Label Expression</em>' attribute.
      * @see #getHeaderLabelExpression()
@@ -221,7 +221,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Sub Lines</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_AllSubLines()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -239,7 +239,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused In Mappings</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_ReusedInMappings()
      * @see org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines

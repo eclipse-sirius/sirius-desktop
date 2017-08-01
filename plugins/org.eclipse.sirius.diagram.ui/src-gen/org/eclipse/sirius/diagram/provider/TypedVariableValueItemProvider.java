@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.TypedVariableValue;
 public class TypedVariableValueItemProvider extends VariableValueItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TypedVariableValueItemProvider(AdapterFactory adapterFactory) {
@@ -40,7 +40,7 @@ public class TypedVariableValueItemProvider extends VariableValueItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -69,7 +69,7 @@ public class TypedVariableValueItemProvider extends VariableValueItemProvider {
 
     /**
      * This adds a property descriptor for the Value feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addValuePropertyDescriptor(Object object) {
@@ -81,7 +81,7 @@ public class TypedVariableValueItemProvider extends VariableValueItemProvider {
 
     /**
      * This returns TypedVariableValue.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class TypedVariableValueItemProvider extends VariableValueItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class TypedVariableValueItemProvider extends VariableValueItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

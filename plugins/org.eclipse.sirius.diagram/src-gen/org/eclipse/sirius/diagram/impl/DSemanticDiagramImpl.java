@@ -37,7 +37,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DSemanticDiagramImpl() {
@@ -55,7 +55,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetTarget() {
@@ -93,7 +93,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

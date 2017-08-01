@@ -48,7 +48,7 @@ public interface DeleteLineTool extends DeleteTool {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool#getMapping
      * <em>Mapping</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mapping</em>' container reference.
      * @see #getMapping()

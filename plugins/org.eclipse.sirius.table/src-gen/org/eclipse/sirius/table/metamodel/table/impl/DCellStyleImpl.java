@@ -55,7 +55,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DCellStyleImpl() {
@@ -64,7 +64,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TableMapping basicGetForegroundStyleOrigin() {
@@ -102,7 +102,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TableMapping basicGetBackgroundStyleOrigin() {
@@ -144,7 +144,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

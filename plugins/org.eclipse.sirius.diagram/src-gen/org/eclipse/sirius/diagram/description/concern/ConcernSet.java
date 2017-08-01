@@ -23,8 +23,8 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.concern.ConcernSet#getOwnedConcernDescriptions
- * <em>Owned Concern Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.ConcernSet#getOwnedConcernDescriptions <em>Owned Concern
+ * Descriptions</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernSet()

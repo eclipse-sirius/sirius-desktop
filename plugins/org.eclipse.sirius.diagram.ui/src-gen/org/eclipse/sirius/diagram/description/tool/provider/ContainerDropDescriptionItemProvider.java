@@ -34,13 +34,13 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDe
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerDropDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
 
     /**
      * This adds a property descriptor for the Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMappingsPropertyDescriptor(Object object) {
@@ -79,7 +79,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
 
     /**
      * This adds a property descriptor for the Drag Source feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDragSourcePropertyDescriptor(Object object) {
@@ -92,7 +92,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
 
     /**
      * This adds a property descriptor for the Move Edges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMoveEdgesPropertyDescriptor(Object object) {
@@ -108,7 +108,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
 
     /**
      * This returns ContainerDropDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -228,7 +228,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

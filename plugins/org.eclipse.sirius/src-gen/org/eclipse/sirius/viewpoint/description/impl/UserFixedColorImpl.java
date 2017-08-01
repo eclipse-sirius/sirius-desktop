@@ -53,7 +53,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected UserFixedColorImpl() {
@@ -62,7 +62,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -190,7 +190,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

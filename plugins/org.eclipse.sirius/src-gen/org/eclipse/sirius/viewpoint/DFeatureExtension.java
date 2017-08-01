@@ -37,7 +37,7 @@ public interface DFeatureExtension extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(FeatureExtensionDescription)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDFeatureExtension_Description()
@@ -47,9 +47,9 @@ public interface DFeatureExtension extends EObject {
     FeatureExtensionDescription getDescription();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DFeatureExtension#getDescription <em>Description</em>}
-     * ' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DFeatureExtension#getDescription
+     * <em>Description</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

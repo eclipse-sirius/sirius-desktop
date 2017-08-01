@@ -19,10 +19,10 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCoveredLifelinesExpression
- * <em>Covered Lifelines Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCenterLabelExpression
- * <em>Center Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCoveredLifelinesExpression <em>Covered
+ * Lifelines Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCenterLabelExpression <em>Center Label
+ * Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getFrameMapping()
@@ -37,21 +37,22 @@ public interface FrameMapping extends ContainerMapping, DelimitedEventMapping {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Covered Lifelines Expression</em>' attribute.
      * @see #setCoveredLifelinesExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getFrameMapping_CoveredLifelinesExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='the list of semantic EObjects representing the lifelines which are semantically covered by the frame.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='the list of
+     *        semantic EObjects representing the lifelines which are semantically covered by the frame.'"
      * @generated
      */
     String getCoveredLifelinesExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCoveredLifelinesExpression
-     * <em>Covered Lifelines Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCoveredLifelinesExpression <em>Covered
+     * Lifelines Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Covered Lifelines Expression</em>' attribute.
      * @see #getCoveredLifelinesExpression()
@@ -66,21 +67,22 @@ public interface FrameMapping extends ContainerMapping, DelimitedEventMapping {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Center Label Expression</em>' attribute.
      * @see #setCenterLabelExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getFrameMapping_CenterLabelExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='the text to show in the center of the IU'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='the text to show
+     *        in the center of the IU'"
      * @generated
      */
     String getCenterLabelExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCenterLabelExpression
-     * <em>Center Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCenterLabelExpression <em>Center Label
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Center Label Expression</em>' attribute.
      * @see #getCenterLabelExpression()

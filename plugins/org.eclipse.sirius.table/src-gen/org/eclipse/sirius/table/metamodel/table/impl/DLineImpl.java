@@ -96,7 +96,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -116,7 +116,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     /**
      * The cached value of the '{@link #getOriginMapping() <em>Origin Mapping</em>}' reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getOriginMapping()
      * @generated
      * @ordered
@@ -126,7 +126,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     /**
      * The default value of the '{@link #isVisible() <em>Visible</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isVisible()
      * @generated
      * @ordered
@@ -136,7 +136,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     /**
      * The cached value of the '{@link #isVisible() <em>Visible</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isVisible()
      * @generated
      * @ordered
@@ -146,7 +146,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     /**
      * The default value of the '{@link #isCollapsed() <em>Collapsed</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isCollapsed()
      * @generated
      * @ordered
@@ -156,7 +156,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     /**
      * The cached value of the '{@link #isCollapsed() <em>Collapsed</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isCollapsed()
      * @generated
      * @ordered
@@ -166,7 +166,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     /**
      * The cached value of the '{@link #getCells() <em>Cells</em>}' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getCells()
      * @generated
      * @ordered
@@ -185,7 +185,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DLineImpl() {
@@ -194,7 +194,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +204,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -228,7 +228,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,7 +241,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -261,7 +261,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -271,7 +271,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -285,7 +285,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -304,7 +304,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LineMapping basicGetOriginMapping() {
@@ -313,7 +313,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -327,7 +327,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -337,7 +337,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -351,7 +351,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -361,7 +361,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -375,7 +375,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -388,7 +388,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -401,7 +401,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetContainer(LineContainer newContainer, NotificationChain msgs) {
@@ -411,7 +411,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -438,7 +438,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -453,7 +453,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -463,7 +463,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetCurrentStyle(DTableElementStyle newCurrentStyle, NotificationChain msgs) {
@@ -482,7 +482,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -506,7 +506,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -518,7 +518,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -530,7 +530,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -542,7 +542,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -562,7 +562,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -580,7 +580,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -594,7 +594,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -634,7 +634,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -676,7 +676,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -715,7 +715,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -749,7 +749,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -795,7 +795,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -841,7 +841,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

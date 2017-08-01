@@ -37,7 +37,7 @@ public class MappingBasedDecorationImpl extends DecorationDescriptionImpl implem
     /**
      * The cached value of the '{@link #getMappings() <em>Mappings</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMappings()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class MappingBasedDecorationImpl extends DecorationDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MappingBasedDecorationImpl() {
@@ -55,7 +55,7 @@ public class MappingBasedDecorationImpl extends DecorationDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class MappingBasedDecorationImpl extends DecorationDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -78,7 +78,7 @@ public class MappingBasedDecorationImpl extends DecorationDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class MappingBasedDecorationImpl extends DecorationDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -109,7 +109,7 @@ public class MappingBasedDecorationImpl extends DecorationDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class MappingBasedDecorationImpl extends DecorationDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

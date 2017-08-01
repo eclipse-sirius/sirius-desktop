@@ -26,13 +26,13 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.BundledImage} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class BundledImageItemProvider extends NodeStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BundledImageItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Shape feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addShapePropertyDescriptor(Object object) {
@@ -71,7 +71,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addColorPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Provided Shape ID feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addProvidedShapeIDPropertyDescriptor(Object object) {
@@ -96,7 +96,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
 
     /**
      * This returns BundledImage.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

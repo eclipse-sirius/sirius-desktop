@@ -49,7 +49,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
     /**
      * The default value of the '{@link #getCanEdit() <em>Can Edit</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCanEdit()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
     /**
      * The cached value of the '{@link #getCanEdit() <em>Can Edit</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCanEdit()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CellUpdaterImpl() {
@@ -77,7 +77,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDirectEdit(LabelEditTool newDirectEdit, NotificationChain msgs) {
@@ -116,7 +116,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,7 +164,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -254,7 +254,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

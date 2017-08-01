@@ -23,14 +23,14 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getPosition <em>Position</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getDistributionDirection
- * <em>Distribution Direction</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getPreconditionExpression
- * <em>Precondition Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getImageExpression
- * <em>Image Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getTooltipExpression
- * <em>Tooltip Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getDistributionDirection <em>Distribution
+ * Direction</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getPreconditionExpression <em>Precondition
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getImageExpression <em>Image
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getTooltipExpression <em>Tooltip
+ * Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDecorationDescription()
@@ -53,7 +53,7 @@ public interface DecorationDescription extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -83,7 +83,7 @@ public interface DecorationDescription extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getPosition
      * <em>Position</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Position</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.Position
@@ -101,7 +101,7 @@ public interface DecorationDescription extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Distribution Direction</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection
      * @see #setDistributionDirection(DecorationDistributionDirection)
@@ -112,10 +112,10 @@ public interface DecorationDescription extends EObject {
     DecorationDistributionDirection getDistributionDirection();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getDistributionDirection
-     * <em>Distribution Direction</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getDistributionDirection <em>Distribution
+     * Direction</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Distribution Direction</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection
@@ -134,16 +134,20 @@ public interface DecorationDescription extends EObject {
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDecorationDescription_PreconditionExpression()
      * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables containerView='viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.' container='ecore.EObject | the semantic element of the container view.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current diagram.' diagram='diagram.DSemanticDiagram | the current diagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables
+     *        containerView='viewpoint.DSemanticDecorator | the view that would contain the potential views of the
+     *        checked elements.' container='ecore.EObject | the semantic element of the container view.'
+     *        viewpoint='diagram.DSemanticDiagram | (deprecated) the current diagram.' diagram='diagram.DSemanticDiagram
+     *        | the current diagram.'"
      * @generated
      */
     String getPreconditionExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getPreconditionExpression
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getPreconditionExpression <em>Precondition
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Precondition Expression</em>' attribute.
      * @see #getPreconditionExpression()
@@ -157,14 +161,16 @@ public interface DecorationDescription extends EObject {
      * image in the form of /myProjectID/path/to/image.png * an expression that gives a path to an image * an expression
      * that provides an instance of org.eclipse.swt.graphics.Image * an expression that provides an instance of
      * org.eclipse.draw2d.IFigure <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Image Expression</em>' attribute.
      * @see #setImageExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDecorationDescription_ImageExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a String, an Image or an IFigure'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables containerView='viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.' container='ecore.EObject | the semantic element of the container view.' diagram='diagram.DDiagram | the current diagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a String, an Image or an
+     *        IFigure'" annotation= "http://www.eclipse.org/sirius/interpreted/expression/variables
+     *        containerView='viewpoint.DSemanticDecorator | the view that would contain the potential views of the
+     *        checked elements.' container='ecore.EObject | the semantic element of the container view.'
+     *        diagram='diagram.DDiagram | the current diagram.'"
      * @generated
      */
     String getImageExpression();
@@ -172,7 +178,7 @@ public interface DecorationDescription extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getImageExpression
      * <em>Image Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Image Expression</em>' attribute.
      * @see #getImageExpression()
@@ -185,14 +191,16 @@ public interface DecorationDescription extends EObject {
      * end-user-doc --> <!-- begin-model-doc --> Expression that provides the tool-tip as the following choices : * a
      * fixed tool-tip string * an expression that provides a tool-tip string * an expression that provides an instance
      * of org.eclipse.draw2d.IFigure <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Tooltip Expression</em>' attribute.
      * @see #setTooltipExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDecorationDescription_TooltipExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a String, an Image or an IFigure'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables containerView='viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.' container='ecore.EObject | the semantic element of the container view.' diagram='diagram.DDiagram | the current diagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a String, an Image or an
+     *        IFigure'" annotation= "http://www.eclipse.org/sirius/interpreted/expression/variables
+     *        containerView='viewpoint.DSemanticDecorator | the view that would contain the potential views of the
+     *        checked elements.' container='ecore.EObject | the semantic element of the container view.'
+     *        diagram='diagram.DDiagram | the current diagram.'"
      * @generated
      */
     String getTooltipExpression();
@@ -200,7 +208,7 @@ public interface DecorationDescription extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getTooltipExpression
      * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Tooltip Expression</em>' attribute.
      * @see #getTooltipExpression()

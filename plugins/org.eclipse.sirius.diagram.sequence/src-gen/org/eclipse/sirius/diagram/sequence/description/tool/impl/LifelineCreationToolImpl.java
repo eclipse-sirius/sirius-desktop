@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 public class LifelineCreationToolImpl extends ContainerCreationDescriptionImpl implements LifelineCreationTool {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LifelineCreationToolImpl() {
@@ -33,7 +33,7 @@ public class LifelineCreationToolImpl extends ContainerCreationDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

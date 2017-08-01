@@ -27,13 +27,13 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.style.ContainerStyleDescription} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
     /**
      * This adds a property descriptor for the Border Size Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderSizeComputationExpressionPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
 
     /**
      * This adds a property descriptor for the Border Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
@@ -97,7 +97,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
 
     /**
      * This adds a property descriptor for the Border Line Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderLineStylePropertyDescriptor(Object object) {
@@ -110,7 +110,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
 
     /**
      * This adds a property descriptor for the Label Size feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelSizePropertyDescriptor(Object object) {
@@ -124,7 +124,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
 
     /**
      * This adds a property descriptor for the Label Format feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelFormatPropertyDescriptor(Object object) {
@@ -138,7 +138,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
 
     /**
      * This adds a property descriptor for the Show Icon feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addShowIconPropertyDescriptor(Object object) {
@@ -152,7 +152,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
 
     /**
      * This adds a property descriptor for the Label Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -166,7 +166,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
 
     /**
      * This adds a property descriptor for the Label Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelColorPropertyDescriptor(Object object) {
@@ -179,7 +179,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
 
     /**
      * This adds a property descriptor for the Icon Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
@@ -238,7 +238,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
 
     /**
      * This adds a property descriptor for the Rounded Corner feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRoundedCornerPropertyDescriptor(Object object) {
@@ -251,7 +251,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -295,7 +295,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

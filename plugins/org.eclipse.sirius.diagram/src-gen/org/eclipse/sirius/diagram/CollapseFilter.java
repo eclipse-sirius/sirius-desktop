@@ -24,8 +24,8 @@ package org.eclipse.sirius.diagram;
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getCollapseFilter()
- * @model annotation=
- *        "http://www.eclipse.org/emf/2002/GenModel Documentation='Graphical filter specifying that the owner element has to be collapsed.'"
+ * @model annotation= "http://www.eclipse.org/emf/2002/GenModel Documentation='Graphical filter specifying that the
+ *        owner element has to be collapsed.'"
  * @generated
  */
 public interface CollapseFilter extends GraphicalFilter {
@@ -36,7 +36,7 @@ public interface CollapseFilter extends GraphicalFilter {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(int)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getCollapseFilter_Width()
@@ -63,7 +63,7 @@ public interface CollapseFilter extends GraphicalFilter {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(int)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getCollapseFilter_Height()
@@ -75,7 +75,7 @@ public interface CollapseFilter extends GraphicalFilter {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.CollapseFilter#getHeight <em>Height</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()

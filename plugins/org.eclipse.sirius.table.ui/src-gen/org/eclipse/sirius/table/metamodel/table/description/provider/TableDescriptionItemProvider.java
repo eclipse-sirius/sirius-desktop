@@ -35,13 +35,13 @@ import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemPr
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TableDescriptionItemProvider extends DocumentedElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TableDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -50,7 +50,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -87,7 +87,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
     /**
      * This adds a property descriptor for the Label feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -100,7 +100,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
     /**
      * This adds a property descriptor for the Title Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTitleExpressionPropertyDescriptor(Object object) {
@@ -113,7 +113,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
     /**
      * This adds a property descriptor for the Initialisation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInitialisationPropertyDescriptor(Object object) {
@@ -126,7 +126,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
     /**
      * This adds a property descriptor for the Metamodel feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMetamodelPropertyDescriptor(Object object) {
@@ -169,7 +169,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     /**
      * This adds a property descriptor for the Precondition Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
@@ -183,7 +183,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
     /**
      * This adds a property descriptor for the Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -198,7 +198,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     /**
      * This adds a property descriptor for the Initial Header Column Width feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInitialHeaderColumnWidthPropertyDescriptor(Object object) {
@@ -215,7 +215,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -232,7 +232,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -245,7 +245,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
     /**
      * This returns TableDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -352,7 +352,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

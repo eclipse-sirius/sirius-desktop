@@ -37,7 +37,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
     /**
      * The default value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWidth()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
     /**
      * The default value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
     /**
      * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
@@ -77,7 +77,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
     /**
      * The default value of the '{@link #getColor() <em>Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SquareImpl() {
@@ -105,7 +105,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,7 +173,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -187,7 +187,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,7 +205,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +247,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -265,7 +265,7 @@ public class SquareImpl extends NodeStyleImpl implements Square {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -46,7 +46,7 @@ public interface DSemanticDecorator extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DSemanticDecorator#getTarget <em>Target</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target</em>' reference.
      * @see #getTarget()

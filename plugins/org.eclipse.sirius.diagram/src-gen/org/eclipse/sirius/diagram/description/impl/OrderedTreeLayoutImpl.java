@@ -30,10 +30,10 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.OrderedTreeLayoutImpl#getChildrenExpression
- * <em>Children Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.OrderedTreeLayoutImpl#getNodeMapping <em>Node Mapping</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.OrderedTreeLayoutImpl#getChildrenExpression <em>Children
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.OrderedTreeLayoutImpl#getNodeMapping <em>Node
+ * Mapping</em>}</li>
  * </ul>
  *
  * @generated
@@ -62,7 +62,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
     /**
      * The cached value of the '{@link #getNodeMapping() <em>Node Mapping</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getNodeMapping()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OrderedTreeLayoutImpl() {
@@ -80,7 +80,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +90,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +114,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -163,7 +163,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,7 +181,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

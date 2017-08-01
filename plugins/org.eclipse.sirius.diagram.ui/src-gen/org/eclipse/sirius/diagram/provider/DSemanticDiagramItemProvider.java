@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public class DSemanticDiagramItemProvider extends DDiagramItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DSemanticDiagramItemProvider(AdapterFactory adapterFactory) {
@@ -39,7 +39,7 @@ public class DSemanticDiagramItemProvider extends DDiagramItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -54,7 +54,7 @@ public class DSemanticDiagramItemProvider extends DDiagramItemProvider {
 
     /**
      * This adds a property descriptor for the Target feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetPropertyDescriptor(Object object) {
@@ -66,7 +66,7 @@ public class DSemanticDiagramItemProvider extends DDiagramItemProvider {
 
     /**
      * This returns DSemanticDiagram.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class DSemanticDiagramItemProvider extends DDiagramItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

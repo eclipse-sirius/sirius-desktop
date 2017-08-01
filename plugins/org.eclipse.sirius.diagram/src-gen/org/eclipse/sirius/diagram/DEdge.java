@@ -59,7 +59,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DEdge#getOwnedStyle <em>Owned Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Style</em>' containment reference.
      * @see #getOwnedStyle()
@@ -108,7 +108,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DEdge#getSourceNode <em>Source Node</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source Node</em>' reference.
      * @see #getSourceNode()
@@ -133,7 +133,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DEdge#getTargetNode <em>Target Node</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Node</em>' reference.
      * @see #getTargetNode()
@@ -156,7 +156,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DEdge#getActualMapping <em>Actual Mapping</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Actual Mapping</em>' reference.
      * @see #getActualMapping()
@@ -182,7 +182,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DEdge#getRoutingStyle <em>Routing Style</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Routing Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeRouting
@@ -221,7 +221,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * Returns the value of the '<em><b>Is Mock Edge</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> <code>true</code> if the edge is an edge that is displayed only to have the plus image
      * to decollapse a branch. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Is Mock Edge</em>' attribute.
      * @see #setIsMockEdge(boolean)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge_IsMockEdge()
@@ -234,7 +234,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DEdge#isIsMockEdge <em>Is Mock Edge</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Is Mock Edge</em>' attribute.
      * @see #isIsMockEdge()
@@ -259,7 +259,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DEdge#getOriginalStyle <em>Original Style</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Original Style</em>' reference.
      * @see #getOriginalStyle()
@@ -275,7 +275,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Path</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge_Path()
      * @model
@@ -292,7 +292,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Arrange Constraints</em>' attribute list.
      * @see org.eclipse.sirius.diagram.ArrangeConstraint
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge_ArrangeConstraints()
@@ -317,7 +317,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DEdge#getBeginLabel <em>Begin Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Begin Label</em>' attribute.
      * @see #getBeginLabel()

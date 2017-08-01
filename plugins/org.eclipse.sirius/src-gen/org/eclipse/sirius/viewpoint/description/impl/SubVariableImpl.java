@@ -23,7 +23,7 @@ import org.eclipse.sirius.viewpoint.description.SubVariable;
 public abstract class SubVariableImpl extends AbstractVariableImpl implements SubVariable {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SubVariableImpl() {
@@ -32,7 +32,7 @@ public abstract class SubVariableImpl extends AbstractVariableImpl implements Su
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

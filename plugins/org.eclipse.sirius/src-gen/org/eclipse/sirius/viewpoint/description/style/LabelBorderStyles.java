@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyles#getLabelBorderStyleDescriptions
- * <em>Label Border Style Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyles#getLabelBorderStyleDescriptions <em>Label
+ * Border Style Descriptions</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelBorderStyles()

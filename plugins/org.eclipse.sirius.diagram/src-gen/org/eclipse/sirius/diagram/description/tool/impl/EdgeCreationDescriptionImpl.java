@@ -40,26 +40,25 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getEdgeMappings
- * <em>Edge Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getSourceVariable
- * <em>Source Variable</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getTargetVariable
- * <em>Target Variable</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getEdgeMappings <em>Edge
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getSourceVariable <em>Source
+ * Variable</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getTargetVariable <em>Target
+ * Variable</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getSourceViewVariable
  * <em>Source View Variable</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getTargetViewVariable
  * <em>Target View Variable</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getIconPath
- * <em>Icon Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getIconPath <em>Icon
+ * Path</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getExtraSourceMappings
  * <em>Extra Source Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getExtraTargetMappings
  * <em>Extra Target Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getConnectionStartPrecondition
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl#getConnectionStartPrecondition
  * <em>Connection Start Precondition</em>}</li>
  * </ul>
  *
@@ -69,7 +68,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     /**
      * The cached value of the '{@link #getEdgeMappings() <em>Edge Mappings</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEdgeMappings()
      * @generated
      * @ordered
@@ -99,7 +98,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     /**
      * The cached value of the '{@link #getSourceViewVariable() <em>Source View Variable</em>}' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSourceViewVariable()
      * @generated
      * @ordered
@@ -109,7 +108,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     /**
      * The cached value of the '{@link #getTargetViewVariable() <em>Target View Variable</em>}' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetViewVariable()
      * @generated
      * @ordered
@@ -129,7 +128,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -139,7 +138,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -169,7 +168,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     /**
      * The default value of the '{@link #getConnectionStartPrecondition() <em>Connection Start Precondition</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConnectionStartPrecondition()
      * @generated
      * @ordered
@@ -179,7 +178,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     /**
      * The cached value of the '{@link #getConnectionStartPrecondition() <em>Connection Start Precondition</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConnectionStartPrecondition()
      * @generated
      * @ordered
@@ -188,7 +187,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EdgeCreationDescriptionImpl() {
@@ -197,7 +196,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +206,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -220,7 +219,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +246,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SourceEdgeCreationVariable basicGetSourceVariable() {
@@ -256,7 +255,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetSourceVariable(SourceEdgeCreationVariable newSourceVariable, NotificationChain msgs) {
@@ -275,7 +274,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -299,7 +298,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -326,7 +325,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TargetEdgeCreationVariable basicGetTargetVariable() {
@@ -335,7 +334,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTargetVariable(TargetEdgeCreationVariable newTargetVariable, NotificationChain msgs) {
@@ -354,7 +353,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -378,7 +377,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -405,7 +404,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SourceEdgeViewCreationVariable basicGetSourceViewVariable() {
@@ -414,7 +413,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetSourceViewVariable(SourceEdgeViewCreationVariable newSourceViewVariable, NotificationChain msgs) {
@@ -433,7 +432,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -457,7 +456,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -484,7 +483,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TargetEdgeViewCreationVariable basicGetTargetViewVariable() {
@@ -493,7 +492,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTargetViewVariable(TargetEdgeViewCreationVariable newTargetViewVariable, NotificationChain msgs) {
@@ -512,7 +511,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -536,7 +535,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -563,7 +562,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitEdgeCreationOperation basicGetInitialOperation() {
@@ -572,7 +571,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitEdgeCreationOperation newInitialOperation, NotificationChain msgs) {
@@ -591,7 +590,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -615,7 +614,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -625,7 +624,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -639,7 +638,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -652,7 +651,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -665,7 +664,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -675,7 +674,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -689,7 +688,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -701,7 +700,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -723,7 +722,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -770,7 +769,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -816,7 +815,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -858,7 +857,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -891,7 +890,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

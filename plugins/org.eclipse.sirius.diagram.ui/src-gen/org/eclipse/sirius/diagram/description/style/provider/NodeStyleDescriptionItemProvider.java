@@ -34,14 +34,14 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NodeStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -50,7 +50,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Border Size Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderSizeComputationExpressionPropertyDescriptor(Object object) {
@@ -95,7 +95,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Border Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
@@ -108,7 +108,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Border Line Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderLineStylePropertyDescriptor(Object object) {
@@ -121,7 +121,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Label Size feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelSizePropertyDescriptor(Object object) {
@@ -135,7 +135,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Label Format feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelFormatPropertyDescriptor(Object object) {
@@ -149,7 +149,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Show Icon feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addShowIconPropertyDescriptor(Object object) {
@@ -163,7 +163,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Label Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -177,7 +177,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Label Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelColorPropertyDescriptor(Object object) {
@@ -190,7 +190,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Icon Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
@@ -235,7 +235,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Size Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSizeComputationExpressionPropertyDescriptor(Object object) {
@@ -248,7 +248,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Label Position feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPositionPropertyDescriptor(Object object) {
@@ -276,7 +276,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Resize Kind feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addResizeKindPropertyDescriptor(Object object) {
@@ -289,7 +289,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Forbidden Sides feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addForbiddenSidesPropertyDescriptor(Object object) {
@@ -347,7 +347,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -357,7 +357,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

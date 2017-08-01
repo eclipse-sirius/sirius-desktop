@@ -47,9 +47,9 @@ public interface Filter extends EObject {
     FilterKind getFilterKind();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.filter.Filter#getFilterKind
-     * <em>Filter Kind</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.filter.Filter#getFilterKind <em>Filter
+     * Kind</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Filter Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.filter.FilterKind

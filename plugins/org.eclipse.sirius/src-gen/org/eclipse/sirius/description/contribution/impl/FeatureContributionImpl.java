@@ -27,10 +27,10 @@ import org.eclipse.sirius.description.contribution.FeatureContribution;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.description.contribution.impl.FeatureContributionImpl#getSourceFeature
- * <em>Source Feature</em>}</li>
- * <li>{@link org.eclipse.sirius.description.contribution.impl.FeatureContributionImpl#getTargetFeature
- * <em>Target Feature</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.FeatureContributionImpl#getSourceFeature <em>Source
+ * Feature</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.FeatureContributionImpl#getTargetFeature <em>Target
+ * Feature</em>}</li>
  * </ul>
  *
  * @generated

@@ -20,8 +20,8 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.MoveElement#getNewContainerExpression
- * <em>New Container Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.MoveElement#getNewContainerExpression <em>New Container
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.MoveElement#getFeatureName <em>Feature Name</em>}</li>
  * </ul>
  *
@@ -47,7 +47,7 @@ public interface MoveElement extends ContainerModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.MoveElement#getNewContainerExpression
      * <em>New Container Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>New Container Expression</em>' attribute.
      * @see #getNewContainerExpression()
@@ -59,7 +59,7 @@ public interface MoveElement extends ContainerModelOperation {
      * Returns the value of the '<em><b>Feature Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The name of the reference in the new container to put the element in. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getMoveElement_FeatureName()
@@ -71,7 +71,7 @@ public interface MoveElement extends ContainerModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.MoveElement#getFeatureName
      * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()

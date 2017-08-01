@@ -20,8 +20,8 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getEndsOrdering
- * <em>Ends Ordering</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getEndsOrdering <em>Ends
+ * Ordering</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getInstanceRolesOrdering
  * <em>Instance Roles Ordering</em>}</li>
  * </ul>
@@ -38,23 +38,24 @@ public interface SequenceDiagramDescription extends DiagramDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Ends Ordering</em>' attribute.
      * @see #setEndsOrdering(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getSequenceDiagramDescription_EndsOrdering()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables eventEnds='a List<EObject> containing the semantic event ends.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        Collection<EObject> or an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables eventEnds='a List<EObject>
+     *        containing the semantic event ends.'"
      * @generated
      */
     String getEndsOrdering();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getEndsOrdering
-     * <em>Ends Ordering</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getEndsOrdering <em>Ends
+     * Ordering</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Ends Ordering</em>' attribute.
      * @see #getEndsOrdering()
@@ -69,21 +70,22 @@ public interface SequenceDiagramDescription extends DiagramDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Instance Roles Ordering</em>' attribute.
      * @see #setInstanceRolesOrdering(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getSequenceDiagramDescription_InstanceRolesOrdering()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        Collection<EObject> or an EObject.'"
      * @generated
      */
     String getInstanceRolesOrdering();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getInstanceRolesOrdering
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getInstanceRolesOrdering
      * <em>Instance Roles Ordering</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Instance Roles Ordering</em>' attribute.
      * @see #getInstanceRolesOrdering()

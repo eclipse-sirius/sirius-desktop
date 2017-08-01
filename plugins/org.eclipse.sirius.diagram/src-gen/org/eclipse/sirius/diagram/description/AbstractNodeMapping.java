@@ -28,10 +28,10 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.AbstractNodeMapping#getDomainClass <em>Domain Class</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.AbstractNodeMapping#getBorderedNodeMappings
- * <em>Bordered Node Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.AbstractNodeMapping#getReusedBorderedNodeMappings
- * <em>Reused Bordered Node Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.AbstractNodeMapping#getBorderedNodeMappings <em>Bordered Node
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.AbstractNodeMapping#getReusedBorderedNodeMappings <em>Reused
+ * Bordered Node Mappings</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAbstractNodeMapping()
@@ -42,7 +42,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
     /**
      * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The domain class of the mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAbstractNodeMapping_DomainClass()
@@ -54,7 +54,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.AbstractNodeMapping#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -83,7 +83,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Bordered Node Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAbstractNodeMapping_ReusedBorderedNodeMappings()
      * @model
@@ -126,7 +126,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */

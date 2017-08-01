@@ -35,8 +35,8 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getAllTools <em>All Tools</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getToolSections <em>Tool Sections</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getReusedTools <em>Reused Tools</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.Layer#getDecorationDescriptionsSet
- * <em>Decoration Descriptions Set</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.Layer#getDecorationDescriptionsSet <em>Decoration Descriptions
+ * Set</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getIcon <em>Icon</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getAllEdgeMappings <em>All Edge Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getCustomization <em>Customization</em>}</li>
@@ -51,7 +51,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * Returns the value of the '<em><b>Node Mappings</b></em>' containment reference list. The list contents are of
      * type {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> Node mappings that are owned by this simple mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Node Mappings</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_NodeMappings()
      * @model containment="true" resolveProxies="true" keys="name"
@@ -63,7 +63,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * Returns the value of the '<em><b>Edge Mappings</b></em>' containment reference list. The list contents are of
      * type {@link org.eclipse.sirius.diagram.description.EdgeMapping}. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> Edge mappings that are owned by this simple mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Edge Mappings</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_EdgeMappings()
      * @model containment="true" resolveProxies="true" keys="name"
@@ -154,7 +154,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Decoration Descriptions Set</em>' containment reference.
      * @see #setDecorationDescriptionsSet(DecorationDescriptionsSet)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_DecorationDescriptionsSet()
@@ -166,7 +166,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.Layer#getDecorationDescriptionsSet
      * <em>Decoration Descriptions Set</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Decoration Descriptions Set</em>' containment reference.
      * @see #getDecorationDescriptionsSet()
@@ -189,7 +189,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.Layer#getIcon <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon</em>' attribute.
      * @see #getIcon()
@@ -217,7 +217,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Customization</em>' containment reference.
      * @see #setCustomization(Customization)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_Customization()
@@ -229,7 +229,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.Layer#getCustomization
      * <em>Customization</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Customization</em>' containment reference.
      * @see #getCustomization()

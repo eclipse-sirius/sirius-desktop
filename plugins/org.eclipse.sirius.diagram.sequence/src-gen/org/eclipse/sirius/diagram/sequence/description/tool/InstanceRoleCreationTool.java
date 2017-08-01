@@ -37,7 +37,7 @@ public interface InstanceRoleCreationTool extends NodeCreationDescription, Seque
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Predecessor</em>' containment reference.
      * @see #setPredecessor(ElementVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getInstanceRoleCreationTool_Predecessor()
@@ -47,10 +47,10 @@ public interface InstanceRoleCreationTool extends NodeCreationDescription, Seque
     ElementVariable getPredecessor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool#getPredecessor
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool#getPredecessor
      * <em>Predecessor</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Predecessor</em>' containment reference.
      * @see #getPredecessor()

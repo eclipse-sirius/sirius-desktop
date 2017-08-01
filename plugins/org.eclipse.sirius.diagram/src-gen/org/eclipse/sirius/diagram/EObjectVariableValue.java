@@ -37,7 +37,7 @@ public interface EObjectVariableValue extends VariableValue {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Variable Definition</em>' reference.
      * @see #setVariableDefinition(SelectModelElementVariable)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEObjectVariableValue_VariableDefinition()
@@ -47,9 +47,9 @@ public interface EObjectVariableValue extends VariableValue {
     SelectModelElementVariable getVariableDefinition();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition
-     * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition <em>Variable
+     * Definition</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Variable Definition</em>' reference.
      * @see #getVariableDefinition()
@@ -64,7 +64,7 @@ public interface EObjectVariableValue extends VariableValue {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Model Element</em>' reference.
      * @see #setModelElement(EObject)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEObjectVariableValue_ModelElement()
@@ -74,9 +74,9 @@ public interface EObjectVariableValue extends VariableValue {
     EObject getModelElement();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement
-     * <em>Model Element</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement <em>Model
+     * Element</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Model Element</em>' reference.
      * @see #getModelElement()

@@ -30,8 +30,8 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.sequence.ordering.impl.CompoundEventEndImpl#getEventEnds <em>Event Ends</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.ordering.impl.CompoundEventEndImpl#getEventEnds <em>Event
+ * Ends</em>}</li>
  * </ul>
  *
  * @generated
@@ -49,7 +49,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CompoundEventEndImpl() {
@@ -58,7 +58,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -138,7 +138,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

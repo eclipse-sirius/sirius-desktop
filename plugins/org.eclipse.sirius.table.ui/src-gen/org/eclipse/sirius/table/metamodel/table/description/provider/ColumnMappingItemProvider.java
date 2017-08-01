@@ -28,13 +28,13 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ColumnMappingItemProvider extends TableMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColumnMappingItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -60,7 +60,7 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Header Label Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHeaderLabelExpressionPropertyDescriptor(Object object) {
@@ -73,7 +73,7 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Initial Width feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInitialWidthPropertyDescriptor(Object object) {
@@ -86,7 +86,7 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This returns ColumnMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

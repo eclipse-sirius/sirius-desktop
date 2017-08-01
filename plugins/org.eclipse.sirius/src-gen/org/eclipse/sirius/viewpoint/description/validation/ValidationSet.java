@@ -25,8 +25,8 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getOwnedRules <em>Owned Rules</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getReusedRules <em>Reused Rules</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getReusedRules <em>Reused
+ * Rules</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getAllRules <em>All Rules</em>}</li>
  * </ul>
  *
@@ -50,7 +50,7 @@ public interface ValidationSet extends DocumentedElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()

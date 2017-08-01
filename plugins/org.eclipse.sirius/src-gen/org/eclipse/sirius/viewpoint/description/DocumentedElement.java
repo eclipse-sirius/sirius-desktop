@@ -49,7 +49,7 @@ public interface DocumentedElement extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.DocumentedElement#getDocumentation
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Documentation</em>' attribute.
      * @see #getDocumentation()

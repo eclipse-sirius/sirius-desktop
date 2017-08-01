@@ -43,7 +43,7 @@ public interface UIState extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Inverse Selection Order</em>' attribute.
      * @see #setInverseSelectionOrder(boolean)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getUIState_InverseSelectionOrder()
@@ -53,9 +53,9 @@ public interface UIState extends EObject {
     boolean isInverseSelectionOrder();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.UIState#isInverseSelectionOrder
-     * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.UIState#isInverseSelectionOrder <em>Inverse Selection
+     * Order</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Inverse Selection Order</em>' attribute.
      * @see #isInverseSelectionOrder()
@@ -71,7 +71,7 @@ public interface UIState extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Elements To Select</em>' reference list.
      * @see #isSetElementsToSelect()
      * @see #unsetElementsToSelect()
@@ -82,9 +82,9 @@ public interface UIState extends EObject {
     EList<EObject> getElementsToSelect();
 
     /**
-     * Unsets the value of the '{@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect
-     * <em>Elements To Select</em>}' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Unsets the value of the '{@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect <em>Elements To
+     * Select</em>}' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #isSetElementsToSelect()
      * @see #getElementsToSelect()
      * @generated
@@ -92,9 +92,9 @@ public interface UIState extends EObject {
     void unsetElementsToSelect();
 
     /**
-     * Returns whether the value of the '{@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect
-     * <em>Elements To Select</em>}' reference list is set. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns whether the value of the '{@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect <em>Elements To
+     * Select</em>}' reference list is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return whether the value of the '<em>Elements To Select</em>' reference list is set.
      * @see #unsetElementsToSelect()
      * @see #getElementsToSelect()
@@ -122,7 +122,7 @@ public interface UIState extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.UIState#getDecorationImage <em>Decoration Image</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Decoration Image</em>' attribute.
      * @see #getDecorationImage()

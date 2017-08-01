@@ -50,7 +50,7 @@ public interface AbstractDNode extends DDiagramElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Arrange Constraints</em>' attribute list.
      * @see org.eclipse.sirius.diagram.ArrangeConstraint
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbstractDNode_ArrangeConstraints()

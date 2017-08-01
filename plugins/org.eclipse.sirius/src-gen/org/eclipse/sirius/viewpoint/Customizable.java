@@ -37,7 +37,7 @@ public interface Customizable extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Custom Features</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getCustomizable_CustomFeatures()
      * @model

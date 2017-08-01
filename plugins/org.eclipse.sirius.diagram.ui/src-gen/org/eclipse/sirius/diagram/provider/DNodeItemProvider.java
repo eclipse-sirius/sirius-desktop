@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.ui.business.api.provider.DNodeLabelItemProvide
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.DNode} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DNodeItemProvider extends DDiagramElementItemProvider {
@@ -44,7 +44,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DNodeItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +53,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +90,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Outgoing Edges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOutgoingEdgesPropertyDescriptor(Object object) {
@@ -102,7 +102,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Incoming Edges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIncomingEdgesPropertyDescriptor(Object object) {
@@ -114,7 +114,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Width feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWidthPropertyDescriptor(Object object) {
@@ -125,7 +125,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Height feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHeightPropertyDescriptor(Object object) {
@@ -136,7 +136,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Label Position feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPositionPropertyDescriptor(Object object) {
@@ -148,7 +148,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Resize Kind feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addResizeKindPropertyDescriptor(Object object) {
@@ -159,7 +159,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Original Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
@@ -171,7 +171,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Actual Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
@@ -183,7 +183,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This adds a property descriptor for the Candidates Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCandidatesMappingPropertyDescriptor(Object object) {
@@ -198,7 +198,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This returns DNode.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -275,7 +275,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

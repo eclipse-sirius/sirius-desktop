@@ -23,8 +23,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.IfImpl#getConditionExpression
- * <em>Condition Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.IfImpl#getConditionExpression <em>Condition
+ * Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,7 +52,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IfImpl() {
@@ -61,7 +61,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,7 +71,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

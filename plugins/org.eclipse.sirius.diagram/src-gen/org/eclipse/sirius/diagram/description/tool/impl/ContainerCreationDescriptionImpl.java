@@ -40,12 +40,12 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * <em>Container Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getVariable
  * <em>Variable</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getViewVariable
- * <em>View Variable</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getViewVariable <em>View
+ * Variable</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getIconPath
- * <em>Icon Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getIconPath <em>Icon
+ * Path</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getExtraMappings
  * <em>Extra Mappings</em>}</li>
  * </ul>
@@ -66,7 +66,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
     /**
      * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getVariable()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -106,7 +106,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -116,7 +116,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
     /**
      * The cached value of the '{@link #getExtraMappings() <em>Extra Mappings</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getExtraMappings()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerCreationDescriptionImpl() {
@@ -134,7 +134,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NodeCreationVariable basicGetVariable() {
@@ -193,7 +193,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetVariable(NodeCreationVariable newVariable, NotificationChain msgs) {
@@ -212,7 +212,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -263,7 +263,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable basicGetViewVariable() {
@@ -272,7 +272,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetViewVariable(ContainerViewVariable newViewVariable, NotificationChain msgs) {
@@ -291,7 +291,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -315,7 +315,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -342,7 +342,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialNodeCreationOperation basicGetInitialOperation() {
@@ -351,7 +351,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialNodeCreationOperation newInitialOperation, NotificationChain msgs) {
@@ -370,7 +370,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -394,7 +394,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -404,7 +404,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -418,7 +418,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -431,7 +431,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -449,7 +449,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -482,7 +482,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -515,7 +515,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -545,7 +545,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -569,7 +569,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

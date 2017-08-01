@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering#getSemanticInstanceRoles
- * <em>Semantic Instance Roles</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering#getSemanticInstanceRoles <em>Semantic
+ * Instance Roles</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getInstanceRolesOrdering()
@@ -38,7 +38,7 @@ public interface InstanceRolesOrdering extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Instance Roles</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getInstanceRolesOrdering_SemanticInstanceRoles()
      * @model

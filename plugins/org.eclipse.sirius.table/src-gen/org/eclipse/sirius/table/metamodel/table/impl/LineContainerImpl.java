@@ -39,7 +39,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
     /**
      * The cached value of the '{@link #getLines() <em>Lines</em>}' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getLines()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LineContainerImpl() {
@@ -57,7 +57,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -95,7 +95,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -140,7 +140,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

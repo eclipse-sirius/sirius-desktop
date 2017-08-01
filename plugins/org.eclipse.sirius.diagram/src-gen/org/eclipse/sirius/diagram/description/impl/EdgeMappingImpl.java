@@ -46,23 +46,23 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getDocumentation <em>Documentation</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getSourceMapping <em>Source Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getTargetMapping <em>Target Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getTargetFinderExpression
- * <em>Target Finder Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getSourceFinderExpression
- * <em>Source Finder Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getTargetFinderExpression <em>Target Finder
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getSourceFinderExpression <em>Source Finder
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getConditionnalStyles
- * <em>Conditionnal Styles</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getTargetExpression <em>Target Expression</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getConditionnalStyles <em>Conditionnal
+ * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getTargetExpression <em>Target
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getDomainClass <em>Domain Class</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#isUseDomainElement <em>Use Domain Element</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#isUseDomainElement <em>Use Domain
+ * Element</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getReconnections <em>Reconnections</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getPathExpression <em>Path Expression</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getPathNodeMapping <em>Path Node Mapping</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getPathExpression <em>Path
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl#getPathNodeMapping <em>Path Node
+ * Mapping</em>}</li>
  * </ul>
  *
  * @generated
@@ -71,7 +71,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * The cached value of the '{@link #getSourceMapping() <em>Source Mapping</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSourceMapping()
      * @generated
      * @ordered
@@ -101,7 +101,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * The cached value of the '{@link #getTargetMapping() <em>Target Mapping</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetMapping()
      * @generated
      * @ordered
@@ -151,7 +151,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -161,7 +161,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * The cached value of the '{@link #getConditionnalStyles() <em>Conditionnal Styles</em>}' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionnalStyles()
      * @generated
      * @ordered
@@ -191,7 +191,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -201,7 +201,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -231,7 +231,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * The cached value of the '{@link #getReconnections() <em>Reconnections</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReconnections()
      * @generated
      * @ordered
@@ -241,7 +241,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * The default value of the '{@link #getPathExpression() <em>Path Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPathExpression()
      * @generated
      * @ordered
@@ -251,7 +251,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * The cached value of the '{@link #getPathExpression() <em>Path Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPathExpression()
      * @generated
      * @ordered
@@ -270,7 +270,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EdgeMappingImpl() {
@@ -279,7 +279,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -289,7 +289,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -299,7 +299,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -341,7 +341,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -351,7 +351,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -365,7 +365,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -375,7 +375,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -389,7 +389,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -416,7 +416,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EdgeStyleDescription basicGetStyle() {
@@ -425,7 +425,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(EdgeStyleDescription newStyle, NotificationChain msgs) {
@@ -444,7 +444,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -468,7 +468,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -482,7 +482,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -492,7 +492,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -506,7 +506,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -516,7 +516,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -530,7 +530,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -540,7 +540,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -554,7 +554,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -567,7 +567,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -577,7 +577,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -591,7 +591,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -604,7 +604,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -616,7 +616,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -628,7 +628,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -640,7 +640,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -652,7 +652,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -664,7 +664,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -676,7 +676,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -688,7 +688,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -704,7 +704,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -745,7 +745,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -802,7 +802,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -853,7 +853,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -891,7 +891,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -915,7 +915,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -939,7 +939,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

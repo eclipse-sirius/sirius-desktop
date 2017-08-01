@@ -31,13 +31,13 @@ import org.eclipse.sirius.viewpoint.description.provider.RepresentationElementMa
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.table.metamodel.table.description.TableMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TableMappingItemProvider extends RepresentationElementMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TableMappingItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class TableMappingItemProvider extends RepresentationElementMappingItemPr
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -61,7 +61,7 @@ public class TableMappingItemProvider extends RepresentationElementMappingItemPr
 
     /**
      * This adds a property descriptor for the Semantic Elements feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
@@ -74,7 +74,7 @@ public class TableMappingItemProvider extends RepresentationElementMappingItemPr
 
     /**
      * This returns TableMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class TableMappingItemProvider extends RepresentationElementMappingItemPr
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class TableMappingItemProvider extends RepresentationElementMappingItemPr
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -29,23 +29,23 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getEdgeMappings <em>Edge Mappings</em>
- * }</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceVariable
- * <em>Source Variable</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetVariable
- * <em>Target Variable</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceViewVariable
- * <em>Source View Variable</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetViewVariable
- * <em>Target View Variable</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getInitialOperation
- * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getEdgeMappings <em>Edge
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceVariable <em>Source
+ * Variable</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetVariable <em>Target
+ * Variable</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceViewVariable <em>Source View
+ * Variable</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetViewVariable <em>Target View
+ * Variable</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getInitialOperation <em>Initial
+ * Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getIconPath <em>Icon Path</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getExtraSourceMappings
- * <em>Extra Source Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getExtraTargetMappings
- * <em>Extra Target Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getExtraSourceMappings <em>Extra
+ * Source Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getExtraTargetMappings <em>Extra
+ * Target Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getConnectionStartPrecondition
  * <em>Connection Start Precondition</em>}</li>
  * </ul>
@@ -81,10 +81,10 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
     SourceEdgeCreationVariable getSourceVariable();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceVariable
-     * <em>Source Variable</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceVariable <em>Source
+     * Variable</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Source Variable</em>' containment reference.
      * @see #getSourceVariable()
@@ -106,10 +106,10 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
     TargetEdgeCreationVariable getTargetVariable();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetVariable
-     * <em>Target Variable</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetVariable <em>Target
+     * Variable</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Target Variable</em>' containment reference.
      * @see #getTargetVariable()
@@ -131,10 +131,10 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
     SourceEdgeViewCreationVariable getSourceViewVariable();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceViewVariable
-     * <em>Source View Variable</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceViewVariable <em>Source View
+     * Variable</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Source View Variable</em>' containment reference.
      * @see #getSourceViewVariable()
@@ -156,10 +156,10 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
     TargetEdgeViewCreationVariable getTargetViewVariable();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetViewVariable
-     * <em>Target View Variable</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetViewVariable <em>Target View
+     * Variable</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Target View Variable</em>' containment reference.
      * @see #getTargetViewVariable()
@@ -180,10 +180,10 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
     InitEdgeCreationOperation getInitialOperation();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getInitialOperation <em>Initial
+     * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
@@ -208,7 +208,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getIconPath
      * <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon Path</em>' attribute.
      * @see #getIconPath()
@@ -254,17 +254,20 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * @see #setConnectionStartPrecondition(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getEdgeCreationDescription_ConnectionStartPrecondition()
      * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables container='ecore.EObject | the semantic element of diagram.' preSourceView='diagram.EdgeTarget | (edge only) the source view of the current potential edge.' preSource='ecore.EObject | (edge only) the semantic element of $preSourceView.' diagram='diagram.DSemanticDiagram | the diagram of the current potential edge'"
-     *        annotation= "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables container='ecore.EObject | the semantic
+     *        element of diagram.' preSourceView='diagram.EdgeTarget | (edge only) the source view of the current
+     *        potential edge.' preSource='ecore.EObject | (edge only) the semantic element of $preSourceView.'
+     *        diagram='diagram.DSemanticDiagram | the diagram of the current potential edge'" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated
      */
     String getConnectionStartPrecondition();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getConnectionStartPrecondition
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getConnectionStartPrecondition
      * <em>Connection Start Precondition</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Connection Start Precondition</em>' attribute.
      * @see #getConnectionStartPrecondition()

@@ -35,7 +35,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
     /**
      * The cached value of the '{@link #getMask() <em>Mask</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMask()
      * @generated
      * @ordered
@@ -44,7 +44,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelEditToolImpl() {
@@ -53,7 +53,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -63,7 +63,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetMask(EditMaskVariables newMask, NotificationChain msgs) {
@@ -92,7 +92,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

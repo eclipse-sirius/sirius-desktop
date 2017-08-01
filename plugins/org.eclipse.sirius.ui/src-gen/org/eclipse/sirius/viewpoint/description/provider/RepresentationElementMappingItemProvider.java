@@ -25,13 +25,13 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class RepresentationElementMappingItemProvider extends IdentifiedElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RepresentationElementMappingItemProvider(AdapterFactory adapterFactory) {
@@ -40,7 +40,7 @@ public class RepresentationElementMappingItemProvider extends IdentifiedElementI
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,7 +71,7 @@ public class RepresentationElementMappingItemProvider extends IdentifiedElementI
     /**
      * This adds a property descriptor for the Navigation Descriptions feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNavigationDescriptionsPropertyDescriptor(Object object) {
@@ -109,7 +109,7 @@ public class RepresentationElementMappingItemProvider extends IdentifiedElementI
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

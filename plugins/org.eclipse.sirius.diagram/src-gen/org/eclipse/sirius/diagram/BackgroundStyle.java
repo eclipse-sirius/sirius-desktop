@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum BackgroundStyle implements Enumerator {
     /**
      * The '<em><b>Gradient Left To Right</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #GRADIENT_LEFT_TO_RIGHT
      * @generated
      * @ordered
@@ -38,7 +38,7 @@ public enum BackgroundStyle implements Enumerator {
 
     /**
      * The '<em><b>Liquid</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #LIQUID
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public enum BackgroundStyle implements Enumerator {
 
     /**
      * The '<em><b>Gradient Top To Bottom</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #GRADIENT_TOP_TO_BOTTOM
      * @generated
      * @ordered
@@ -89,7 +89,7 @@ public enum BackgroundStyle implements Enumerator {
 
     /**
      * An array of all the '<em><b>Background Style</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final BackgroundStyle[] VALUES_ARRAY = new BackgroundStyle[] { GRADIENT_LEFT_TO_RIGHT_LITERAL, LIQUID_LITERAL, GRADIENT_TOP_TO_BOTTOM_LITERAL, };
@@ -97,7 +97,7 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Background Style</b></em>' enumerators. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<BackgroundStyle> VALUES = Collections.unmodifiableList(Arrays.asList(BackgroundStyle.VALUES_ARRAY));
@@ -105,7 +105,7 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * Returns the '<em><b>Background Style</b></em>' literal with the specified literal value. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -123,7 +123,7 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * Returns the '<em><b>Background Style</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -141,7 +141,7 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * Returns the '<em><b>Background Style</b></em>' literal with the specified integer value. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -161,28 +161,28 @@ public enum BackgroundStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
 
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private BackgroundStyle(int value, String name, String literal) {
@@ -193,7 +193,7 @@ public enum BackgroundStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public enum BackgroundStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public enum BackgroundStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +224,7 @@ public enum BackgroundStyle implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

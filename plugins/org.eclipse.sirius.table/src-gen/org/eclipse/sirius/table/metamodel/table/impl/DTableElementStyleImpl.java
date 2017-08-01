@@ -53,7 +53,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -73,7 +73,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}' attribute list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelFormat()
      * @generated
      * @ordered
@@ -123,7 +123,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The default value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -133,7 +133,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The cached value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -143,7 +143,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The default value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -153,7 +153,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -162,7 +162,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTableElementStyleImpl() {
@@ -171,7 +171,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,7 +181,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +191,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,7 +205,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -228,7 +228,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -242,7 +242,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -252,7 +252,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -276,7 +276,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -290,7 +290,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,7 +300,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -314,7 +314,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -338,7 +338,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -370,7 +370,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -400,7 +400,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -424,7 +424,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

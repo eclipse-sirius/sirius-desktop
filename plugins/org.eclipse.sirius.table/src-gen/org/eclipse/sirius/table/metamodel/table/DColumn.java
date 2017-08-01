@@ -42,7 +42,7 @@ public interface DColumn extends DTableElement {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_Label()
@@ -54,7 +54,7 @@ public interface DColumn extends DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DColumn#getLabel <em>Label</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label</em>' attribute.
      * @see #getLabel()
@@ -88,7 +88,7 @@ public interface DColumn extends DTableElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Origin Mapping</em>' reference.
      * @see #setOriginMapping(ColumnMapping)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_OriginMapping()
@@ -100,7 +100,7 @@ public interface DColumn extends DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DColumn#getOriginMapping <em>Origin
      * Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Origin Mapping</em>' reference.
      * @see #getOriginMapping()
@@ -116,7 +116,7 @@ public interface DColumn extends DTableElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Table</em>' container reference.
      * @see #setTable(DTable)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_Table()
@@ -129,7 +129,7 @@ public interface DColumn extends DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DColumn#getTable <em>Table</em>}'
      * container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Table</em>' container reference.
      * @see #getTable()
@@ -174,7 +174,7 @@ public interface DColumn extends DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DColumn#isVisible <em>Visible</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Visible</em>' attribute.
      * @see #isVisible()
@@ -189,7 +189,7 @@ public interface DColumn extends DTableElement {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(int)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_Width()
@@ -201,7 +201,7 @@ public interface DColumn extends DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DColumn#getWidth <em>Width</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()
@@ -228,7 +228,7 @@ public interface DColumn extends DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DColumn#getCurrentStyle <em>Current
      * Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Current Style</em>' containment reference.
      * @see #getCurrentStyle()

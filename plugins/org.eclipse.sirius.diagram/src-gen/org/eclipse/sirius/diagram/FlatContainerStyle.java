@@ -46,9 +46,9 @@ public interface FlatContainerStyle extends ContainerStyle {
     BackgroundStyle getBackgroundStyle();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.FlatContainerStyle#getBackgroundStyle
-     * <em>Background Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.FlatContainerStyle#getBackgroundStyle <em>Background
+     * Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Background Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.BackgroundStyle
@@ -70,9 +70,9 @@ public interface FlatContainerStyle extends ContainerStyle {
     RGBValues getBackgroundColor();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.FlatContainerStyle#getBackgroundColor
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.FlatContainerStyle#getBackgroundColor <em>Background
+     * Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()
@@ -93,9 +93,9 @@ public interface FlatContainerStyle extends ContainerStyle {
     RGBValues getForegroundColor();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.FlatContainerStyle#getForegroundColor
-     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.FlatContainerStyle#getForegroundColor <em>Foreground
+     * Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Foreground Color</em>' attribute.
      * @see #getForegroundColor()

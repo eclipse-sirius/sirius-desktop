@@ -25,10 +25,10 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderSizeComputationExpression
  * <em>Border Size Computation Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderColor <em>Border Color</em>
- * }</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle
- * <em>Border Line Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderColor <em>Border
+ * Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle <em>Border Line
+ * Style</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBorderedStyleDescription()
@@ -51,10 +51,10 @@ public interface BorderedStyleDescription extends StyleDescription {
     String getBorderSizeComputationExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderSizeComputationExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderSizeComputationExpression
      * <em>Border Size Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Border Size Computation Expression</em>' attribute.
      * @see #getBorderSizeComputationExpression()
@@ -69,7 +69,7 @@ public interface BorderedStyleDescription extends StyleDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Border Color</em>' reference.
      * @see #setBorderColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBorderedStyleDescription_BorderColor()
@@ -79,10 +79,10 @@ public interface BorderedStyleDescription extends StyleDescription {
     ColorDescription getBorderColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderColor <em>Border Color</em>
-     * }' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderColor <em>Border
+     * Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Border Color</em>' reference.
      * @see #getBorderColor()
@@ -105,10 +105,10 @@ public interface BorderedStyleDescription extends StyleDescription {
     LineStyle getBorderLineStyle();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle
-     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle <em>Border Line
+     * Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Border Line Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.LineStyle

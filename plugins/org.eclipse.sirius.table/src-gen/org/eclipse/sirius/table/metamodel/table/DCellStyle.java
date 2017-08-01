@@ -47,7 +47,7 @@ public interface DCellStyle extends DTableElementStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getForegroundStyleOrigin
      * <em>Foreground Style Origin</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Foreground Style Origin</em>' reference.
      * @see #getForegroundStyleOrigin()
@@ -72,7 +72,7 @@ public interface DCellStyle extends DTableElementStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getBackgroundStyleOrigin
      * <em>Background Style Origin</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Style Origin</em>' reference.
      * @see #getBackgroundStyleOrigin()

@@ -35,7 +35,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
     /**
      * The default value of the '{@link #getFilterKind() <em>Filter Kind</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getFilterKind()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
     /**
      * The cached value of the '{@link #getFilterKind() <em>Filter Kind</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getFilterKind()
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FilterImpl() {
@@ -63,7 +63,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

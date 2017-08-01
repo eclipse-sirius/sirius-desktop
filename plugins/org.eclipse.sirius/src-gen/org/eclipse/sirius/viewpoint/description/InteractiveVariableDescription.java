@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription#getUserDocumentation
- * <em>User Documentation</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription#getUserDocumentation <em>User
+ * Documentation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getInteractiveVariableDescription()
@@ -45,10 +45,10 @@ public interface InteractiveVariableDescription extends EObject {
     String getUserDocumentation();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription#getUserDocumentation
-     * <em>User Documentation</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription#getUserDocumentation <em>User
+     * Documentation</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>User Documentation</em>' attribute.
      * @see #getUserDocumentation()

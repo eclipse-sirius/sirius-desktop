@@ -15,14 +15,14 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a create method for each non-abstract class of
  * the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage
  * @generated
  */
 public interface ToolFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     ToolFactory eINSTANCE = org.eclipse.sirius.diagram.sequence.description.tool.impl.ToolFactoryImpl.init();
@@ -30,7 +30,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Sequence Diagram Tool Description</em>'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Sequence Diagram Tool Description</em>'.
      * @generated
      */
@@ -47,7 +47,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Lifeline Creation Tool</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Lifeline Creation Tool</em>'.
      * @generated
      */
@@ -55,7 +55,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Message Creation Tool</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Message Creation Tool</em>'.
      * @generated
      */
@@ -63,7 +63,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Execution Creation Tool</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Execution Creation Tool</em>'.
      * @generated
      */
@@ -71,7 +71,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>State Creation Tool</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>State Creation Tool</em>'.
      * @generated
      */
@@ -79,7 +79,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Reorder Tool</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Reorder Tool</em>'.
      * @generated
      */
@@ -97,7 +97,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Observation Point Creation Tool</em>'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Observation Point Creation Tool</em>'.
      * @generated
      */
@@ -115,7 +115,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Combined Fragment Creation Tool</em>'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Combined Fragment Creation Tool</em>'.
      * @generated
      */
@@ -123,7 +123,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Operand Creation Tool</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Operand Creation Tool</em>'.
      * @generated
      */
@@ -131,7 +131,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the package supported by this factory.
      * @generated
      */

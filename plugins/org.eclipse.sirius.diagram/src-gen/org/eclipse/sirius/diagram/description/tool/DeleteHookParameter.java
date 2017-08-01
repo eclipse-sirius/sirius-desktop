@@ -45,7 +45,7 @@ public interface DeleteHookParameter extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -61,7 +61,8 @@ public interface DeleteHookParameter extends EObject {
      * @see #setValue(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDeleteHookParameter_Value()
      * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an
+     *        EObject.'"
      * @generated
      */
     String getValue();
@@ -69,7 +70,7 @@ public interface DeleteHookParameter extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter#getValue
      * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()

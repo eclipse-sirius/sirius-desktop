@@ -38,7 +38,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * If the meaning of the '<em>X</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>X</em>' attribute.
      * @see #setX(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbsoluteBoundsFilter_X()
@@ -64,7 +64,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * If the meaning of the '<em>Y</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Y</em>' attribute.
      * @see #setY(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbsoluteBoundsFilter_Y()
@@ -91,7 +91,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbsoluteBoundsFilter_Height()
@@ -103,7 +103,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.AbsoluteBoundsFilter#getHeight <em>Height</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -118,7 +118,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbsoluteBoundsFilter_Width()
@@ -130,7 +130,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.AbsoluteBoundsFilter#getWidth <em>Width</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()

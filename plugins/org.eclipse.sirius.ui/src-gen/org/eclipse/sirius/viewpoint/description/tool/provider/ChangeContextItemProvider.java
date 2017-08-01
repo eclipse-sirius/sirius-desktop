@@ -26,13 +26,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.ChangeContext} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ChangeContextItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ChangeContextItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -56,7 +56,7 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
 
     /**
      * This adds a property descriptor for the Browse Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBrowseExpressionPropertyDescriptor(Object object) {
@@ -69,7 +69,7 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
 
     /**
      * This returns ChangeContext.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

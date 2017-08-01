@@ -66,7 +66,7 @@ public interface ConcernDescription extends DocumentedElement, IdentifiedElement
      * Returns the value of the '<em><b>Behaviors</b></em>' reference list. The list contents are of type
      * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool}. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> All behaviors of the concern. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Behaviors</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernDescription_Behaviors()
      * @model

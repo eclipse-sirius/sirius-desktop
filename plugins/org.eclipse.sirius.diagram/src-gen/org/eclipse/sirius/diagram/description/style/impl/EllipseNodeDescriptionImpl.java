@@ -27,11 +27,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EllipseNodeDescriptionImpl#getColor <em>Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.EllipseNodeDescriptionImpl#getHorizontalDiameterComputationExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EllipseNodeDescriptionImpl#getHorizontalDiameterComputationExpression
  * <em>Horizontal Diameter Computation Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.EllipseNodeDescriptionImpl#getVerticalDiameterComputationExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EllipseNodeDescriptionImpl#getVerticalDiameterComputationExpression
  * <em>Vertical Diameter Computation Expression</em>}</li>
  * </ul>
  *
@@ -49,9 +47,9 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
     protected ColorDescription color;
 
     /**
-     * The default value of the '{@link #getHorizontalDiameterComputationExpression()
-     * <em>Horizontal Diameter Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The default value of the '{@link #getHorizontalDiameterComputationExpression() <em>Horizontal Diameter
+     * Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getHorizontalDiameterComputationExpression()
      * @generated
      * @ordered
@@ -59,9 +57,9 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
     protected static final String HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getHorizontalDiameterComputationExpression()
-     * <em>Horizontal Diameter Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getHorizontalDiameterComputationExpression() <em>Horizontal Diameter Computation
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getHorizontalDiameterComputationExpression()
      * @generated
      * @ordered
@@ -69,9 +67,9 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
     protected String horizontalDiameterComputationExpression = EllipseNodeDescriptionImpl.HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getVerticalDiameterComputationExpression()
-     * <em>Vertical Diameter Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The default value of the '{@link #getVerticalDiameterComputationExpression() <em>Vertical Diameter Computation
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getVerticalDiameterComputationExpression()
      * @generated
      * @ordered
@@ -79,9 +77,9 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
     protected static final String VERTICAL_DIAMETER_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getVerticalDiameterComputationExpression()
-     * <em>Vertical Diameter Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getVerticalDiameterComputationExpression() <em>Vertical Diameter Computation
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getVerticalDiameterComputationExpression()
      * @generated
      * @ordered
@@ -90,7 +88,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EllipseNodeDescriptionImpl() {
@@ -99,7 +97,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +107,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +126,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetColor() {
@@ -137,7 +135,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +149,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +159,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +174,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +184,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +199,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +220,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +241,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -264,7 +262,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +282,7 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

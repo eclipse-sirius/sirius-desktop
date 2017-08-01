@@ -41,28 +41,28 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getStrokeColor
- * <em>Stroke Color</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getLineStyle
- * <em>Line Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getSourceArrow
- * <em>Source Arrow</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getTargetArrow
- * <em>Target Arrow</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getStrokeColor <em>Stroke
+ * Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getLineStyle <em>Line
+ * Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getSourceArrow <em>Source
+ * Arrow</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getTargetArrow <em>Target
+ * Arrow</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getSizeComputationExpression
  * <em>Size Computation Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getRoutingStyle
- * <em>Routing Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getFoldingStyle
- * <em>Folding Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getRoutingStyle <em>Routing
+ * Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getFoldingStyle <em>Folding
+ * Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getBeginLabelStyleDescription
  * <em>Begin Label Style Description</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getCenterLabelStyleDescription
  * <em>Center Label Style Description</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getEndLabelStyleDescription
  * <em>End Label Style Description</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getEndsCentering
- * <em>Ends Centering</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getEndsCentering <em>Ends
+ * Centering</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getCenteredSourceMappings
  * <em>Centered Source Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getCenteredTargetMappings
@@ -75,7 +75,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getStrokeColor() <em>Stroke Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStrokeColor()
      * @generated
      * @ordered
@@ -85,7 +85,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The default value of the '{@link #getLineStyle() <em>Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLineStyle()
      * @generated
      * @ordered
@@ -95,7 +95,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getLineStyle() <em>Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLineStyle()
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The default value of the '{@link #getSourceArrow() <em>Source Arrow</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getSourceArrow()
      * @generated
      * @ordered
@@ -115,7 +115,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getSourceArrow() <em>Source Arrow</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSourceArrow()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The default value of the '{@link #getTargetArrow() <em>Target Arrow</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetArrow()
      * @generated
      * @ordered
@@ -135,7 +135,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getTargetArrow() <em>Target Arrow</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTargetArrow()
      * @generated
      * @ordered
@@ -145,7 +145,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The default value of the '{@link #getSizeComputationExpression() <em>Size Computation Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSizeComputationExpression()
      * @generated
      * @ordered
@@ -155,7 +155,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getSizeComputationExpression() <em>Size Computation Expression</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSizeComputationExpression()
      * @generated
      * @ordered
@@ -165,7 +165,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The default value of the '{@link #getRoutingStyle() <em>Routing Style</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getRoutingStyle()
      * @generated
      * @ordered
@@ -175,7 +175,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getRoutingStyle() <em>Routing Style</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getRoutingStyle()
      * @generated
      * @ordered
@@ -185,7 +185,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The default value of the '{@link #getFoldingStyle() <em>Folding Style</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getFoldingStyle()
      * @generated
      * @ordered
@@ -195,7 +195,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getFoldingStyle() <em>Folding Style</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getFoldingStyle()
      * @generated
      * @ordered
@@ -205,7 +205,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getBeginLabelStyleDescription() <em>Begin Label Style Description</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBeginLabelStyleDescription()
      * @generated
      * @ordered
@@ -215,7 +215,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getCenterLabelStyleDescription() <em>Center Label Style Description</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCenterLabelStyleDescription()
      * @generated
      * @ordered
@@ -225,7 +225,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getEndLabelStyleDescription() <em>End Label Style Description</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEndLabelStyleDescription()
      * @generated
      * @ordered
@@ -235,7 +235,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The default value of the '{@link #getEndsCentering() <em>Ends Centering</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getEndsCentering()
      * @generated
      * @ordered
@@ -245,7 +245,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getEndsCentering() <em>Ends Centering</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getEndsCentering()
      * @generated
      * @ordered
@@ -255,7 +255,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getCenteredSourceMappings() <em>Centered Source Mappings</em>}' reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCenteredSourceMappings()
      * @generated
      * @ordered
@@ -265,7 +265,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
     /**
      * The cached value of the '{@link #getCenteredTargetMappings() <em>Centered Target Mappings</em>}' reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCenteredTargetMappings()
      * @generated
      * @ordered
@@ -274,7 +274,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EdgeStyleDescriptionImpl() {
@@ -283,7 +283,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -293,7 +293,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -312,7 +312,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetStrokeColor() {
@@ -321,7 +321,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -335,7 +335,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -345,7 +345,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -369,7 +369,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -383,7 +383,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -393,7 +393,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -407,7 +407,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -417,7 +417,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -431,7 +431,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -441,7 +441,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -455,7 +455,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -465,7 +465,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -479,7 +479,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -508,7 +508,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BeginLabelStyleDescription basicGetBeginLabelStyleDescription() {
@@ -517,7 +517,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetBeginLabelStyleDescription(BeginLabelStyleDescription newBeginLabelStyleDescription, NotificationChain msgs) {
@@ -537,7 +537,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -563,7 +563,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -592,7 +592,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CenterLabelStyleDescription basicGetCenterLabelStyleDescription() {
@@ -601,7 +601,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetCenterLabelStyleDescription(CenterLabelStyleDescription newCenterLabelStyleDescription, NotificationChain msgs) {
@@ -621,7 +621,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -647,7 +647,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -675,7 +675,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EndLabelStyleDescription basicGetEndLabelStyleDescription() {
@@ -684,7 +684,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetEndLabelStyleDescription(EndLabelStyleDescription newEndLabelStyleDescription, NotificationChain msgs) {
@@ -704,7 +704,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -730,7 +730,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -740,7 +740,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -754,7 +754,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -767,7 +767,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -780,7 +780,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -798,7 +798,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -848,7 +848,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -902,7 +902,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -953,7 +953,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -992,7 +992,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

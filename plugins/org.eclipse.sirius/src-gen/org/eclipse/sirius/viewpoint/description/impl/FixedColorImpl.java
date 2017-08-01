@@ -43,7 +43,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * The cached value of the '{@link #getRed() <em>Red</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRed()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
     /**
      * The default value of the '{@link #getGreen() <em>Green</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getGreen()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FixedColorImpl() {
@@ -101,7 +101,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +201,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -261,7 +261,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

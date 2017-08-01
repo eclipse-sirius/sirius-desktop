@@ -38,7 +38,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
     /**
      * The default value of the '{@link #getShape() <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getShape()
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
     /**
      * The default value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
     /**
      * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -77,7 +77,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ShapeContainerStyleImpl() {
@@ -86,7 +86,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

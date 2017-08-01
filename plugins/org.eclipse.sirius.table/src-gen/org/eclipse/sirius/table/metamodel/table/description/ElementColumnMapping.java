@@ -40,7 +40,7 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getElementColumnMapping_DomainClass()
@@ -53,7 +53,7 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDomainClass <em>Domain
      * Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -68,7 +68,7 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #setSemanticCandidatesExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getElementColumnMapping_SemanticCandidatesExpression()
@@ -86,7 +86,7 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getSemanticCandidatesExpression
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #getSemanticCandidatesExpression()
@@ -104,7 +104,7 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Create</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getElementColumnMapping_Create()
      * @see org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool#getMapping
@@ -135,7 +135,7 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDelete
      * <em>Delete</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Delete</em>' containment reference.
      * @see #getDelete()

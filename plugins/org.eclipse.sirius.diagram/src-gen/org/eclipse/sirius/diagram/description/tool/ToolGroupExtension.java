@@ -39,7 +39,7 @@ public interface ToolGroupExtension extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Group</em>' reference.
      * @see #setGroup(ToolGroup)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolGroupExtension_Group()
@@ -51,7 +51,7 @@ public interface ToolGroupExtension extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension#getGroup
      * <em>Group</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Group</em>' reference.
      * @see #getGroup()
@@ -67,7 +67,7 @@ public interface ToolGroupExtension extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Tools</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolGroupExtension_Tools()
      * @model containment="true" resolveProxies="true"

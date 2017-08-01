@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public class DLineItemProvider extends LineContainerItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DLineItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -77,7 +77,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Semantic Elements feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
@@ -102,7 +102,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Label feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -113,7 +113,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Origin Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOriginMappingPropertyDescriptor(Object object) {
@@ -125,7 +125,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Visible feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addVisiblePropertyDescriptor(Object object) {
@@ -136,7 +136,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Collapsed feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCollapsedPropertyDescriptor(Object object) {
@@ -147,7 +147,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Ordered Cells feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOrderedCellsPropertyDescriptor(Object object) {
@@ -162,7 +162,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -190,7 +190,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
 
     /**
      * This returns DLine.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

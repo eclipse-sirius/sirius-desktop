@@ -22,21 +22,21 @@ import org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
  * method for each class of the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.audit.AuditPackage
  * @generated
  */
 public class AuditAdapterFactory extends AdapterFactoryImpl {
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static AuditPackage modelPackage;
 
     /**
      * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AuditAdapterFactory() {
@@ -49,7 +49,7 @@ public class AuditAdapterFactory extends AdapterFactoryImpl {
      * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc --> This
      * implementation returns <code>true</code> if the object is either the model's package or is an instance object of
      * the model. <!-- end-user-doc -->
-     * 
+     *
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
@@ -66,7 +66,7 @@ public class AuditAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AuditSwitch<Adapter> modelSwitch = new AuditSwitch<Adapter>() {
@@ -88,7 +88,7 @@ public class AuditAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param target
      *            the object to adapt.
      * @return the adapter for the <code>target</code>.
@@ -114,12 +114,11 @@ public class AuditAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection
-     * <em>Template Information Section</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
-     * 
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection <em>Template Information
+     * Section</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection
      * @generated
@@ -131,7 +130,7 @@ public class AuditAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation returns null.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @generated
      */

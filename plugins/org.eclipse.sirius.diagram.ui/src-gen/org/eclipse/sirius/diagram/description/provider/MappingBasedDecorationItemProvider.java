@@ -27,13 +27,13 @@ import org.eclipse.sirius.viewpoint.description.provider.DecorationDescriptionIt
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.MappingBasedDecoration} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MappingBasedDecorationItemProvider extends DecorationDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MappingBasedDecorationItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -57,7 +57,7 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
 
     /**
      * This adds a property descriptor for the Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMappingsPropertyDescriptor(Object object) {
@@ -70,7 +70,7 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
 
     /**
      * This returns MappingBasedDecoration.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

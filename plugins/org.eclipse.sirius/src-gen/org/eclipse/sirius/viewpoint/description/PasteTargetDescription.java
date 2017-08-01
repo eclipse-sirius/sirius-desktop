@@ -26,8 +26,8 @@ import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.PasteTargetDescription#getPasteDescriptions
- * <em>Paste Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.PasteTargetDescription#getPasteDescriptions <em>Paste
+ * Descriptions</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getPasteTargetDescription()
@@ -43,7 +43,7 @@ public interface PasteTargetDescription extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Paste Descriptions</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getPasteTargetDescription_PasteDescriptions()
      * @model

@@ -46,7 +46,7 @@ public interface DAnalysis extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Referenced Analysis</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_ReferencedAnalysis()
      * @model
@@ -62,7 +62,7 @@ public interface DAnalysis extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Models</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_Models()
      * @model transient="true" volatile="true" derived="true"
@@ -78,7 +78,7 @@ public interface DAnalysis extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>EAnnotations</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_EAnnotations()
      * @model containment="true"
@@ -94,7 +94,7 @@ public interface DAnalysis extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Views</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_OwnedViews()
      * @model containment="true" resolveProxies="true"
@@ -110,7 +110,7 @@ public interface DAnalysis extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Selected Views</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_SelectedViews()
      * @model
@@ -126,7 +126,7 @@ public interface DAnalysis extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Feature Extensions</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_OwnedFeatureExtensions()
      * @model containment="true" resolveProxies="true"
@@ -141,7 +141,7 @@ public interface DAnalysis extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Version</em>' attribute.
      * @see #setVersion(String)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_Version()
@@ -153,7 +153,7 @@ public interface DAnalysis extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DAnalysis#getVersion <em>Version</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Version</em>' attribute.
      * @see #getVersion()
@@ -169,7 +169,7 @@ public interface DAnalysis extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Resources</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_SemanticResources()
      * @model dataType="org.eclipse.sirius.viewpoint.ResourceDescriptor"

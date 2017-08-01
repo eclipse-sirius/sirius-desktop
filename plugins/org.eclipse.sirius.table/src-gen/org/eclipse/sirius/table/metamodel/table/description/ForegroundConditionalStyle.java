@@ -38,7 +38,7 @@ public interface ForegroundConditionalStyle extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Predicate Expression</em>' attribute.
      * @see #setPredicateExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundConditionalStyle_PredicateExpression()
@@ -52,7 +52,7 @@ public interface ForegroundConditionalStyle extends EObject {
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getPredicateExpression
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Predicate Expression</em>' attribute.
      * @see #getPredicateExpression()
@@ -67,7 +67,7 @@ public interface ForegroundConditionalStyle extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(ForegroundStyleDescription)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundConditionalStyle_Style()
@@ -80,7 +80,7 @@ public interface ForegroundConditionalStyle extends EObject {
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getStyle <em>Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

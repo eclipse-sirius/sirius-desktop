@@ -38,18 +38,18 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramExtensionDescriptionImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramExtensionDescriptionImpl#getViewpointURI
- * <em>Viewpoint URI</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramExtensionDescriptionImpl#getViewpointURI <em>Viewpoint
+ * URI</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramExtensionDescriptionImpl#getRepresentationName
  * <em>Representation Name</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramExtensionDescriptionImpl#getMetamodel
  * <em>Metamodel</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramExtensionDescriptionImpl#getLayers <em>Layers</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramExtensionDescriptionImpl#getLayers
+ * <em>Layers</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramExtensionDescriptionImpl#getValidationSet
  * <em>Validation Set</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramExtensionDescriptionImpl#getConcerns <em>Concerns</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramExtensionDescriptionImpl#getConcerns
+ * <em>Concerns</em>}</li>
  * </ul>
  *
  * @generated
@@ -78,7 +78,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The default value of the '{@link #getViewpointURI() <em>Viewpoint URI</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getViewpointURI()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getViewpointURI() <em>Viewpoint URI</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getViewpointURI()
      * @generated
      * @ordered
@@ -118,7 +118,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMetamodel()
      * @generated
      * @ordered
@@ -128,7 +128,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getLayers() <em>Layers</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLayers()
      * @generated
      * @ordered
@@ -148,7 +148,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
     /**
      * The cached value of the '{@link #getConcerns() <em>Concerns</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getConcerns()
      * @generated
      * @ordered
@@ -157,7 +157,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DiagramExtensionDescriptionImpl() {
@@ -166,7 +166,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -210,7 +210,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +224,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +234,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -248,7 +248,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -261,7 +261,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -301,7 +301,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ValidationSet basicGetValidationSet() {
@@ -310,7 +310,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetValidationSet(ValidationSet newValidationSet, NotificationChain msgs) {
@@ -329,7 +329,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -353,7 +353,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -380,7 +380,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ConcernSet basicGetConcerns() {
@@ -389,7 +389,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetConcerns(ConcernSet newConcerns, NotificationChain msgs) {
@@ -408,7 +408,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -432,7 +432,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -450,7 +450,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -482,7 +482,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -518,7 +518,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -551,7 +551,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -578,7 +578,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

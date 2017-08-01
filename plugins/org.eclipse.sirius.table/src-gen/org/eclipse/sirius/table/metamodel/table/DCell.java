@@ -41,7 +41,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCell_Label()
@@ -53,7 +53,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DCell#getLabel <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label</em>' attribute.
      * @see #getLabel()
@@ -69,7 +69,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Line</em>' container reference.
      * @see #setLine(DLine)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCell_Line()
@@ -82,7 +82,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DCell#getLine <em>Line</em>}' container
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Line</em>' container reference.
      * @see #getLine()
@@ -98,7 +98,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Column</em>' reference.
      * @see #setColumn(DColumn)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCell_Column()
@@ -111,7 +111,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DCell#getColumn <em>Column</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Column</em>' reference.
      * @see #getColumn()
@@ -155,7 +155,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DCell#getCurrentStyle <em>Current
      * Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Current Style</em>' containment reference.
      * @see #getCurrentStyle()
@@ -170,7 +170,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Updater</em>' reference.
      * @see #setUpdater(CellUpdater)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCell_Updater()
@@ -182,7 +182,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DCell#getUpdater <em>Updater</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Updater</em>' reference.
      * @see #getUpdater()
@@ -197,7 +197,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Intersection Mapping</em>' reference.
      * @see #setIntersectionMapping(IntersectionMapping)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCell_IntersectionMapping()
@@ -209,7 +209,7 @@ public interface DCell extends DSemanticDecorator, DTableElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DCell#getIntersectionMapping
      * <em>Intersection Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Intersection Mapping</em>' reference.
      * @see #getIntersectionMapping()

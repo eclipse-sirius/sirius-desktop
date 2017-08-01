@@ -22,7 +22,7 @@ import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.GenericDecorationDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class GenericDecorationDescriptionItemProvider extends DecorationDescriptionItemProvider {
@@ -51,7 +51,7 @@ public class GenericDecorationDescriptionItemProvider extends DecorationDescript
 
     /**
      * This returns GenericDecorationDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -61,7 +61,7 @@ public class GenericDecorationDescriptionItemProvider extends DecorationDescript
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,7 +75,7 @@ public class GenericDecorationDescriptionItemProvider extends DecorationDescript
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override

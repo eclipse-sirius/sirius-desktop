@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.HideLabelCapabilityStyle#isHideLabelByDefault <em>Hide Label By Default</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.HideLabelCapabilityStyle#isHideLabelByDefault <em>Hide Label By
+ * Default</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getHideLabelCapabilityStyle()
@@ -45,9 +45,9 @@ public interface HideLabelCapabilityStyle extends EObject {
     boolean isHideLabelByDefault();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.HideLabelCapabilityStyle#isHideLabelByDefault
-     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.HideLabelCapabilityStyle#isHideLabelByDefault <em>Hide
+     * Label By Default</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Hide Label By Default</em>' attribute.
      * @see #isHideLabelByDefault()

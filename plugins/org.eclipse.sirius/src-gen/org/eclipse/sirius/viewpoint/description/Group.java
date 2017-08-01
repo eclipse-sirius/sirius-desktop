@@ -52,7 +52,7 @@ public interface Group extends DModelElement, DocumentedElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.Group#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -68,7 +68,7 @@ public interface Group extends DModelElement, DocumentedElement {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Viewpoints</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getGroup_OwnedViewpoints()
      * @model containment="true" resolveProxies="true" keys="name"
@@ -83,7 +83,7 @@ public interface Group extends DModelElement, DocumentedElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>System Colors Palette</em>' reference.
      * @see #setSystemColorsPalette(SytemColorsPalette)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getGroup_SystemColorsPalette()
@@ -93,9 +93,9 @@ public interface Group extends DModelElement, DocumentedElement {
     SytemColorsPalette getSystemColorsPalette();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.Group#getSystemColorsPalette
-     * <em>System Colors Palette</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.Group#getSystemColorsPalette <em>System
+     * Colors Palette</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>System Colors Palette</em>' reference.
      * @see #getSystemColorsPalette()
@@ -111,7 +111,7 @@ public interface Group extends DModelElement, DocumentedElement {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>User Colors Palettes</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getGroup_UserColorsPalettes()
      * @model containment="true" resolveProxies="true" keys="name"
@@ -126,7 +126,7 @@ public interface Group extends DModelElement, DocumentedElement {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Version</em>' attribute.
      * @see #setVersion(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getGroup_Version()
@@ -138,7 +138,7 @@ public interface Group extends DModelElement, DocumentedElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.Group#getVersion <em>Version</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Version</em>' attribute.
      * @see #getVersion()
@@ -154,7 +154,7 @@ public interface Group extends DModelElement, DocumentedElement {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Extensions</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getGroup_Extensions()
      * @model containment="true" resolveProxies="true"

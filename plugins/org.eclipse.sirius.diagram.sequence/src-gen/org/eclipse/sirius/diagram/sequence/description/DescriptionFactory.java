@@ -15,14 +15,14 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a create method for each non-abstract class of
  * the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage
  * @generated
  */
 public interface DescriptionFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     DescriptionFactory eINSTANCE = org.eclipse.sirius.diagram.sequence.description.impl.DescriptionFactoryImpl.init();
@@ -38,7 +38,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Instance Role Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Instance Role Mapping</em>'.
      * @generated
      */
@@ -46,7 +46,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Execution Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Execution Mapping</em>'.
      * @generated
      */
@@ -54,7 +54,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>State Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>State Mapping</em>'.
      * @generated
      */
@@ -62,7 +62,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>End Of Life Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>End Of Life Mapping</em>'.
      * @generated
      */
@@ -70,7 +70,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Basic Message Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Basic Message Mapping</em>'.
      * @generated
      */
@@ -78,7 +78,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Return Message Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Return Message Mapping</em>'.
      * @generated
      */
@@ -86,7 +86,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Creation Message Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Creation Message Mapping</em>'.
      * @generated
      */
@@ -103,7 +103,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Message End Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Message End Variable</em>'.
      * @generated
      */
@@ -120,7 +120,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Interaction Use Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Interaction Use Mapping</em>'.
      * @generated
      */
@@ -128,7 +128,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Combined Fragment Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Combined Fragment Mapping</em>'.
      * @generated
      */
@@ -136,7 +136,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Operand Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Operand Mapping</em>'.
      * @generated
      */
@@ -144,7 +144,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Observation Point Mapping</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Observation Point Mapping</em>'.
      * @generated
      */
@@ -152,7 +152,7 @@ public interface DescriptionFactory extends EFactory {
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the package supported by this factory.
      * @generated
      */

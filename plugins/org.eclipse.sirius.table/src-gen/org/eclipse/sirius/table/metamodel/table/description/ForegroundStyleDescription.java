@@ -52,7 +52,7 @@ public interface ForegroundStyleDescription extends EObject {
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize <em>Label
      * Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -81,7 +81,7 @@ public interface ForegroundStyleDescription extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Fore Ground Color</em>' reference.
      * @see #setForeGroundColor(ColorDescription)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundStyleDescription_ForeGroundColor()
@@ -94,7 +94,7 @@ public interface ForegroundStyleDescription extends EObject {
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
      * <em>Fore Ground Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Fore Ground Color</em>' reference.
      * @see #getForeGroundColor()

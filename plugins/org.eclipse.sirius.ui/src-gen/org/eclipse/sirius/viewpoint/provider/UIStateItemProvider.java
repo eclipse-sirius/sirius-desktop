@@ -33,13 +33,13 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.UIState} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class UIStateItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public UIStateItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
     /**
      * This adds a property descriptor for the Inverse Selection Order feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInverseSelectionOrderPropertyDescriptor(Object object) {
@@ -78,7 +78,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
 
     /**
      * This adds a property descriptor for the Elements To Select feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addElementsToSelectPropertyDescriptor(Object object) {
@@ -90,7 +90,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
 
     /**
      * This adds a property descriptor for the Decoration Image feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDecorationImagePropertyDescriptor(Object object) {
@@ -102,7 +102,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
 
     /**
      * This returns UIState.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

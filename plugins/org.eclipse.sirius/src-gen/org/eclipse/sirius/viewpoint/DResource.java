@@ -35,7 +35,7 @@ public interface DResource extends EObject {
      * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDResource_Name()
@@ -61,7 +61,7 @@ public interface DResource extends EObject {
      * If the meaning of the '<em>Path</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Path</em>' attribute.
      * @see #setPath(String)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDResource_Path()

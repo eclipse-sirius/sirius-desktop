@@ -36,7 +36,7 @@ public interface SingleEventEnd extends EventEnd {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Start</em>' attribute.
      * @see #setStart(boolean)
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getSingleEventEnd_Start()
@@ -46,9 +46,9 @@ public interface SingleEventEnd extends EventEnd {
     boolean isStart();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd#isStart <em>Start</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd#isStart
+     * <em>Start</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Start</em>' attribute.
      * @see #isStart()
@@ -63,7 +63,7 @@ public interface SingleEventEnd extends EventEnd {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Event</em>' reference.
      * @see #setSemanticEvent(EObject)
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getSingleEventEnd_SemanticEvent()
@@ -75,7 +75,7 @@ public interface SingleEventEnd extends EventEnd {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd#getSemanticEvent
      * <em>Semantic Event</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Event</em>' reference.
      * @see #getSemanticEvent()

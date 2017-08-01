@@ -25,8 +25,8 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.style.impl.LabelStyleDescriptionImpl#getLabelAlignment
- * <em>Label Alignment</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.impl.LabelStyleDescriptionImpl#getLabelAlignment <em>Label
+ * Alignment</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,7 +35,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
     /**
      * The default value of the '{@link #getLabelAlignment() <em>Label Alignment</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
     /**
      * The cached value of the '{@link #getLabelAlignment() <em>Label Alignment</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelStyleDescriptionImpl() {
@@ -63,7 +63,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

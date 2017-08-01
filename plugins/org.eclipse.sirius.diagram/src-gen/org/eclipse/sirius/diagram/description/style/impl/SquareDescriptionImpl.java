@@ -37,7 +37,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
     /**
      * The default value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWidth()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
     /**
      * The default value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
     /**
      * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
@@ -86,7 +86,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SquareDescriptionImpl() {
@@ -95,7 +95,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetColor() {
@@ -181,7 +181,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -237,7 +237,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -258,7 +258,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -276,7 +276,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

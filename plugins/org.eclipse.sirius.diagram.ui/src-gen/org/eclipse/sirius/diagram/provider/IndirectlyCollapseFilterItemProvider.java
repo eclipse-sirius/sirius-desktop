@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public IndirectlyCollapseFilterItemProvider(AdapterFactory adapterFactory) {
@@ -37,7 +37,7 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -51,7 +51,7 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
 
     /**
      * This returns IndirectlyCollapseFilter.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -61,7 +61,7 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

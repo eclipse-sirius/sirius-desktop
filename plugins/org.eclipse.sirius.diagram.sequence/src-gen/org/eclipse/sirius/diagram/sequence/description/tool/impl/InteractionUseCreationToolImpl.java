@@ -31,14 +31,11 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.InteractionUseCreationToolImpl#getStartingEndPredecessor
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.InteractionUseCreationToolImpl#getStartingEndPredecessor
  * <em>Starting End Predecessor</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.InteractionUseCreationToolImpl#getFinishingEndPredecessor
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.InteractionUseCreationToolImpl#getFinishingEndPredecessor
  * <em>Finishing End Predecessor</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.InteractionUseCreationToolImpl#getCoveredLifelines
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.InteractionUseCreationToolImpl#getCoveredLifelines
  * <em>Covered Lifelines</em>}</li>
  * </ul>
  *
@@ -48,7 +45,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
     /**
      * The cached value of the '{@link #getStartingEndPredecessor() <em>Starting End Predecessor</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndPredecessor()
      * @generated
      * @ordered
@@ -58,7 +55,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
     /**
      * The cached value of the '{@link #getFinishingEndPredecessor() <em>Finishing End Predecessor</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndPredecessor()
      * @generated
      * @ordered
@@ -77,7 +74,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InteractionUseCreationToolImpl() {
@@ -86,7 +83,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +93,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +103,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStartingEndPredecessor(MessageEndVariable newStartingEndPredecessor, NotificationChain msgs) {
@@ -126,7 +123,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +149,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +159,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFinishingEndPredecessor(MessageEndVariable newFinishingEndPredecessor, NotificationChain msgs) {
@@ -182,7 +179,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -208,7 +205,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +215,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetCoveredLifelines(CoveredLifelinesVariable newCoveredLifelines, NotificationChain msgs) {
@@ -237,7 +234,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -261,7 +258,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +276,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -297,7 +294,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -318,7 +315,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -339,7 +336,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -357,7 +354,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -391,7 +388,7 @@ public class InteractionUseCreationToolImpl extends ContainerCreationDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

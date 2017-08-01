@@ -25,7 +25,7 @@ import org.eclipse.sirius.diagram.HideLabelFilter;
 public class HideLabelFilterImpl extends MinimalEObjectImpl.Container implements HideLabelFilter {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected HideLabelFilterImpl() {
@@ -34,7 +34,7 @@ public class HideLabelFilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

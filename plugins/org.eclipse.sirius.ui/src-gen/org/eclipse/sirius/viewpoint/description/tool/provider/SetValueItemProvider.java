@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public class SetValueItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SetValueItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -57,7 +57,7 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
 
     /**
      * This adds a property descriptor for the Feature Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
@@ -70,7 +70,7 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
 
     /**
      * This adds a property descriptor for the Value Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
@@ -83,7 +83,7 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
 
     /**
      * This returns SetValue.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

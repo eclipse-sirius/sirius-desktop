@@ -55,7 +55,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.ToolSection#getIcon <em>Icon</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon</em>' attribute.
      * @see #getIcon()
@@ -67,7 +67,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * Returns the value of the '<em><b>Owned Tools</b></em>' containment reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolEntry}. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> All tools of the section. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Tools</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_OwnedTools()
      * @model containment="true" resolveProxies="true" keys="name"
@@ -79,7 +79,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * Returns the value of the '<em><b>Sub Sections</b></em>' containment reference list. The list contents are of type
      * {@link org.eclipse.sirius.diagram.description.tool.ToolSection}. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> All sub sections <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Sub Sections</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_SubSections()
      * @model containment="true" resolveProxies="true" keys="name"
@@ -91,7 +91,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * Returns the value of the '<em><b>Popup Menus</b></em>' reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu}. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> Popup menus available on this layer. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Popup Menus</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_PopupMenus()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -103,7 +103,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * Returns the value of the '<em><b>Reused Tools</b></em>' reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolEntry}. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> Tools that are reused by this viewpoint. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Tools</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_ReusedTools()
      * @model
@@ -119,7 +119,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Group Extensions</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_GroupExtensions()
      * @model containment="true" resolveProxies="true"

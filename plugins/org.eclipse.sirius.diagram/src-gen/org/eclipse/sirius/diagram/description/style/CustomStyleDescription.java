@@ -43,7 +43,7 @@ public interface CustomStyleDescription extends NodeStyleDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.CustomStyleDescription#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()

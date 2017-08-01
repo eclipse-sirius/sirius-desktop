@@ -14,8 +14,8 @@ package org.eclipse.sirius.diagram.description.style;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Hide Label Capability Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Hide Label Capability Style
+ * Description</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -45,10 +45,10 @@ public interface HideLabelCapabilityStyleDescription extends EObject {
     boolean isHideLabelByDefault();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription#isHideLabelByDefault
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription#isHideLabelByDefault
      * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Hide Label By Default</em>' attribute.
      * @see #isHideLabelByDefault()

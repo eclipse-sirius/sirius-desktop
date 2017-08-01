@@ -30,13 +30,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ExternalJavaActionCallItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -60,7 +60,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
 
     /**
      * This adds a property descriptor for the Action feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActionPropertyDescriptor(Object object) {
@@ -76,7 +76,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +90,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
 
     /**
      * This returns ExternalJavaActionCall.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

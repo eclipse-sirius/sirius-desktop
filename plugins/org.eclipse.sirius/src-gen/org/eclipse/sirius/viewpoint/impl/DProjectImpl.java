@@ -23,7 +23,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public class DProjectImpl extends DResourceContainerImpl implements DProject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DProjectImpl() {
@@ -32,7 +32,7 @@ public class DProjectImpl extends DResourceContainerImpl implements DProject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

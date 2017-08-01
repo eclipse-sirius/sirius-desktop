@@ -23,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 public class CreationMessageMappingImpl extends MessageMappingImpl implements CreationMessageMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreationMessageMappingImpl() {
@@ -32,7 +32,7 @@ public class CreationMessageMappingImpl extends MessageMappingImpl implements Cr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

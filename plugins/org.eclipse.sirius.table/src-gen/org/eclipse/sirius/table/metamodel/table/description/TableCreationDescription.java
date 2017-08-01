@@ -36,7 +36,7 @@ public interface TableCreationDescription extends RepresentationCreationDescript
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Table Description</em>' reference.
      * @see #setTableDescription(TableDescription)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableCreationDescription_TableDescription()
@@ -49,7 +49,7 @@ public interface TableCreationDescription extends RepresentationCreationDescript
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription#getTableDescription
      * <em>Table Description</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Table Description</em>' reference.
      * @see #getTableDescription()

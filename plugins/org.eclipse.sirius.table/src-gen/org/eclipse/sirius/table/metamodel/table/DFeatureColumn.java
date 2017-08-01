@@ -34,7 +34,7 @@ public interface DFeatureColumn extends DColumn {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDFeatureColumn_FeatureName()
@@ -46,7 +46,7 @@ public interface DFeatureColumn extends DColumn {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn#getFeatureName <em>Feature
      * Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()

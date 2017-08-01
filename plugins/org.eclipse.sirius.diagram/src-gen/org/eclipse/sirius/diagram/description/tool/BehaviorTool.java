@@ -24,8 +24,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getDomainClass <em>Domain Class</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getInitialOperation <em>Initial Operation</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getInitialOperation <em>Initial
+ * Operation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getBehaviorTool()
@@ -47,9 +47,9 @@ public interface BehaviorTool extends AbstractToolDescription {
     String getDomainClass();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getDomainClass
-     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getDomainClass <em>Domain
+     * Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -72,7 +72,7 @@ public interface BehaviorTool extends AbstractToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()

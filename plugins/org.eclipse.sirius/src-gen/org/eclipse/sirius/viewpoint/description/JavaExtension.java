@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.JavaExtension#getQualifiedClassName <em>Qualified Class Name</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.JavaExtension#getQualifiedClassName <em>Qualified Class
+ * Name</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getJavaExtension()
@@ -47,7 +47,7 @@ public interface JavaExtension extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.JavaExtension#getQualifiedClassName
      * <em>Qualified Class Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Qualified Class Name</em>' attribute.
      * @see #getQualifiedClassName()

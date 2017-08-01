@@ -37,7 +37,7 @@ public interface TCreationMessageMapping extends TSourceTargetMessageMapping {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Target</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTCreationMessageMapping_Target()
      * @model required="true"

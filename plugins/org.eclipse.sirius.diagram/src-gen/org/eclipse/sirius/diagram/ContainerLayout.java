@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.Enumerator;
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>Container Layout</b></em>', and
  * utility methods for working with them. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getContainerLayout()
  * @model
  * @generated
@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum ContainerLayout implements Enumerator {
     /**
      * The '<em><b>Free Form</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #FREE_FORM_VALUE
      * @generated
      * @ordered
@@ -37,7 +37,7 @@ public enum ContainerLayout implements Enumerator {
 
     /**
      * The '<em><b>List</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #LIST_VALUE
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public enum ContainerLayout implements Enumerator {
 
     /**
      * The '<em><b>Horizontal Stack</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #HORIZONTAL_STACK_VALUE
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public enum ContainerLayout implements Enumerator {
 
     /**
      * The '<em><b>Vertical Stack</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #VERTICAL_STACK_VALUE
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public enum ContainerLayout implements Enumerator {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #FREE_FORM
      * @model name="FreeForm"
      * @generated
@@ -84,7 +84,7 @@ public enum ContainerLayout implements Enumerator {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #LIST
      * @model name="List"
      * @generated
@@ -99,7 +99,7 @@ public enum ContainerLayout implements Enumerator {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #HORIZONTAL_STACK
      * @model name="HorizontalStack"
      * @generated
@@ -114,7 +114,7 @@ public enum ContainerLayout implements Enumerator {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #VERTICAL_STACK
      * @model name="VerticalStack"
      * @generated
@@ -124,7 +124,7 @@ public enum ContainerLayout implements Enumerator {
 
     /**
      * An array of all the '<em><b>Container Layout</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final ContainerLayout[] VALUES_ARRAY = new ContainerLayout[] { FREE_FORM, LIST, HORIZONTAL_STACK, VERTICAL_STACK, };
@@ -132,7 +132,7 @@ public enum ContainerLayout implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Container Layout</b></em>' enumerators. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<ContainerLayout> VALUES = Collections.unmodifiableList(Arrays.asList(ContainerLayout.VALUES_ARRAY));
@@ -140,7 +140,7 @@ public enum ContainerLayout implements Enumerator {
     /**
      * Returns the '<em><b>Container Layout</b></em>' literal with the specified literal value. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -158,7 +158,7 @@ public enum ContainerLayout implements Enumerator {
     /**
      * Returns the '<em><b>Container Layout</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -176,7 +176,7 @@ public enum ContainerLayout implements Enumerator {
     /**
      * Returns the '<em><b>Container Layout</b></em>' literal with the specified integer value. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -198,28 +198,28 @@ public enum ContainerLayout implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
 
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private ContainerLayout(int value, String name, String literal) {
@@ -230,7 +230,7 @@ public enum ContainerLayout implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -240,7 +240,7 @@ public enum ContainerLayout implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public enum ContainerLayout implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -261,7 +261,7 @@ public enum ContainerLayout implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

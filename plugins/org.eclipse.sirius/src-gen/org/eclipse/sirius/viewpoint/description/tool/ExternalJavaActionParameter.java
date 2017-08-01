@@ -45,7 +45,7 @@ public interface ExternalJavaActionParameter extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -61,7 +61,8 @@ public interface ExternalJavaActionParameter extends EObject {
      * @see #setValue(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getExternalJavaActionParameter_Value()
      * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='any type supported by the corresponding java parameter.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='any type supported by the
+     *        corresponding java parameter.'"
      * @generated
      */
     String getValue();
@@ -69,7 +70,7 @@ public interface ExternalJavaActionParameter extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter#getValue
      * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()

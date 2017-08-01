@@ -35,7 +35,7 @@ public interface CellUpdater extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Direct Edit</em>' containment reference.
      * @see #setDirectEdit(LabelEditTool)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCellUpdater_DirectEdit()
@@ -47,7 +47,7 @@ public interface CellUpdater extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getDirectEdit
      * <em>Direct Edit</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Direct Edit</em>' containment reference.
      * @see #getDirectEdit()
@@ -62,7 +62,7 @@ public interface CellUpdater extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Can Edit</em>' attribute.
      * @see #setCanEdit(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCellUpdater_CanEdit()
@@ -75,7 +75,7 @@ public interface CellUpdater extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getCanEdit <em>Can
      * Edit</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Can Edit</em>' attribute.
      * @see #getCanEdit()
@@ -85,7 +85,7 @@ public interface CellUpdater extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      * @generated
      */
@@ -93,7 +93,7 @@ public interface CellUpdater extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */

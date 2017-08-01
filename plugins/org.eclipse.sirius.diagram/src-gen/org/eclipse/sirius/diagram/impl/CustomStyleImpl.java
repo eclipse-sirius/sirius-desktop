@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -40,7 +40,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomStyleImpl() {
@@ -58,7 +58,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -78,7 +78,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -34,7 +34,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
     /**
      * The default value of the '{@link #getTemplatePath() <em>Template Path</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getTemplatePath()
      * @generated
      * @ordered
@@ -44,7 +44,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
     /**
      * The cached value of the '{@link #getTemplatePath() <em>Template Path</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getTemplatePath()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TemplateInformationSectionImpl() {
@@ -62,7 +62,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

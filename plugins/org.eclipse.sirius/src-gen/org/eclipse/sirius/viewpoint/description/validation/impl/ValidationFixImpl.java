@@ -28,8 +28,8 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationFixImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationFixImpl#getInitialOperation
- * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationFixImpl#getInitialOperation <em>Initial
+ * Operation</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,7 +67,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ValidationFixImpl() {
@@ -76,7 +76,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -146,7 +146,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -165,7 +165,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -240,7 +240,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -258,7 +258,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class ValidationFixImpl extends MinimalEObjectImpl.Container implements V
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -33,7 +33,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
     /**
      * The default value of the '{@link #getWorkspacePath() <em>Workspace Path</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getWorkspacePath()
      * @generated
      * @ordered
@@ -43,7 +43,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
     /**
      * The cached value of the '{@link #getWorkspacePath() <em>Workspace Path</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getWorkspacePath()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WorkspaceImageImpl() {
@@ -61,7 +61,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,7 +71,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -39,7 +39,7 @@ public interface TableTool extends EObject {
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Variables</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableTool_Variables()
      * @model containment="true"
@@ -54,7 +54,7 @@ public interface TableTool extends EObject {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>First Model Operation</em>' containment reference.
      * @see #setFirstModelOperation(ModelOperation)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableTool_FirstModelOperation()
@@ -67,7 +67,7 @@ public interface TableTool extends EObject {
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.TableTool#getFirstModelOperation <em>First Model
      * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>First Model Operation</em>' containment reference.
      * @see #getFirstModelOperation()

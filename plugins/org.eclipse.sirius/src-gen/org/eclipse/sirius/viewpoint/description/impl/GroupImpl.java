@@ -38,10 +38,10 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <li>{@link org.eclipse.sirius.viewpoint.description.impl.GroupImpl#getDocumentation <em>Documentation</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.impl.GroupImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.impl.GroupImpl#getOwnedViewpoints <em>Owned Viewpoints</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.impl.GroupImpl#getSystemColorsPalette
- * <em>System Colors Palette</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.impl.GroupImpl#getUserColorsPalettes
- * <em>User Colors Palettes</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.GroupImpl#getSystemColorsPalette <em>System Colors
+ * Palette</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.GroupImpl#getUserColorsPalettes <em>User Colors
+ * Palettes</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.impl.GroupImpl#getVersion <em>Version</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.impl.GroupImpl#getExtensions <em>Extensions</em>}</li>
  * </ul>
@@ -52,7 +52,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
     /**
      * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
     /**
      * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
     /**
      * The cached value of the '{@link #getOwnedViewpoints() <em>Owned Viewpoints</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedViewpoints()
      * @generated
      * @ordered
@@ -112,7 +112,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
     /**
      * The cached value of the '{@link #getUserColorsPalettes() <em>User Colors Palettes</em>}' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getUserColorsPalettes()
      * @generated
      * @ordered
@@ -122,7 +122,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
     /**
      * The default value of the '{@link #getVersion() <em>Version</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getVersion()
      * @generated
      * @ordered
@@ -132,7 +132,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
     /**
      * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getVersion()
      * @generated
      * @ordered
@@ -151,7 +151,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GroupImpl() {
@@ -160,7 +160,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +204,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -231,7 +231,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SytemColorsPalette basicGetSystemColorsPalette() {
@@ -259,7 +259,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,7 +273,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -286,7 +286,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -296,7 +296,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -310,7 +310,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -323,7 +323,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -341,7 +341,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -370,7 +370,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -407,7 +407,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -440,7 +440,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -466,7 +466,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -484,7 +484,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -502,7 +502,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

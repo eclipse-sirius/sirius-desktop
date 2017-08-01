@@ -21,10 +21,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isHideSubMappings
- * <em>Hide Sub Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isInheritsAncestorFilters
- * <em>Inherits Ancestor Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isHideSubMappings <em>Hide Sub
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isInheritsAncestorFilters <em>Inherits
+ * Ancestor Filters</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAbstractMappingImport()
@@ -48,7 +48,7 @@ public interface AbstractMappingImport extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isHideSubMappings
      * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Hide Sub Mappings</em>' attribute.
      * @see #isHideSubMappings()
@@ -70,10 +70,10 @@ public interface AbstractMappingImport extends EObject {
     boolean isInheritsAncestorFilters();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isInheritsAncestorFilters
-     * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isInheritsAncestorFilters <em>Inherits
+     * Ancestor Filters</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Inherits Ancestor Filters</em>' attribute.
      * @see #isInheritsAncestorFilters()

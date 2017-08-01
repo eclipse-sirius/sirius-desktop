@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
 public abstract class DTableElementImpl extends DRepresentationElementImpl implements DTableElement {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTableElementImpl() {
@@ -42,7 +42,7 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -52,7 +52,7 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,7 +89,7 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

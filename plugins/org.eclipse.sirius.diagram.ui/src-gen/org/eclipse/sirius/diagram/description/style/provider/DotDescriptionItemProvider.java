@@ -27,13 +27,13 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.style.DotDescription} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DotDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
 
     /**
      * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -72,7 +72,7 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
     /**
      * This adds a property descriptor for the Stroke Size Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addStrokeSizeComputationExpressionPropertyDescriptor(Object object) {
@@ -85,7 +85,7 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
 
     /**
      * This returns DotDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

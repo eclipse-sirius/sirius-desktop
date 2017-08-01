@@ -28,13 +28,13 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ShapeContainerStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     /**
      * This adds a property descriptor for the Width Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWidthComputationExpressionPropertyDescriptor(Object object) {
@@ -77,7 +77,7 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     /**
      * This adds a property descriptor for the Height Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHeightComputationExpressionPropertyDescriptor(Object object) {
@@ -92,7 +92,7 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
 
     /**
      * This adds a property descriptor for the Shape feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addShapePropertyDescriptor(Object object) {
@@ -105,7 +105,7 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
 
     /**
      * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -118,7 +118,7 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
 
     /**
      * This returns ShapeContainerStyleDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

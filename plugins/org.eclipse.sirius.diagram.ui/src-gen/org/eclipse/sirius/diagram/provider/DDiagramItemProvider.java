@@ -31,13 +31,13 @@ import org.eclipse.sirius.viewpoint.provider.DRepresentationItemProvider;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.DDiagram} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DDiagramItemProvider extends DRepresentationItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DDiagramItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Diagram Elements feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDiagramElementsPropertyDescriptor(Object object) {
@@ -89,7 +89,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Description feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
@@ -101,7 +101,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Edges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEdgesPropertyDescriptor(Object object) {
@@ -112,7 +112,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Nodes feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNodesPropertyDescriptor(Object object) {
@@ -123,7 +123,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Node List Elements feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNodeListElementsPropertyDescriptor(Object object) {
@@ -135,7 +135,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Containers feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addContainersPropertyDescriptor(Object object) {
@@ -147,7 +147,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Current Concern feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCurrentConcernPropertyDescriptor(Object object) {
@@ -159,7 +159,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Activated Filters feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActivatedFiltersPropertyDescriptor(Object object) {
@@ -171,7 +171,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the All Filters feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllFiltersPropertyDescriptor(Object object) {
@@ -183,7 +183,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Activated Rules feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActivatedRulesPropertyDescriptor(Object object) {
@@ -195,7 +195,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Activate Behaviors feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActivateBehaviorsPropertyDescriptor(Object object) {
@@ -207,7 +207,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Activated Layers feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActivatedLayersPropertyDescriptor(Object object) {
@@ -220,7 +220,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
     /**
      * This adds a property descriptor for the Activated Transient Layers feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActivatedTransientLayersPropertyDescriptor(Object object) {
@@ -232,7 +232,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Synchronized feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSynchronizedPropertyDescriptor(Object object) {
@@ -244,7 +244,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Hidden Elements feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHiddenElementsPropertyDescriptor(Object object) {
@@ -269,7 +269,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This adds a property descriptor for the Header Height feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHeaderHeightPropertyDescriptor(Object object) {
@@ -284,7 +284,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -299,7 +299,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -312,7 +312,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This returns DDiagram.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -322,7 +322,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -360,7 +360,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -382,7 +382,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

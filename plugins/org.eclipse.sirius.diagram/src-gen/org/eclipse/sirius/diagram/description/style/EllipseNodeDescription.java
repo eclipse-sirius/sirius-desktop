@@ -24,11 +24,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getColor <em>Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getHorizontalDiameterComputationExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getHorizontalDiameterComputationExpression
  * <em>Horizontal Diameter Computation Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression
  * <em>Vertical Diameter Computation Expression</em>}</li>
  * </ul>
  *
@@ -52,7 +50,7 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getColor
      * <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' reference.
      * @see #getColor()
@@ -75,10 +73,10 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
     String getHorizontalDiameterComputationExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getHorizontalDiameterComputationExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getHorizontalDiameterComputationExpression
      * <em>Horizontal Diameter Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Horizontal Diameter Computation Expression</em>' attribute.
      * @see #getHorizontalDiameterComputationExpression()
@@ -101,10 +99,10 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
     String getVerticalDiameterComputationExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression
      * <em>Vertical Diameter Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Vertical Diameter Computation Expression</em>' attribute.
      * @see #getVerticalDiameterComputationExpression()

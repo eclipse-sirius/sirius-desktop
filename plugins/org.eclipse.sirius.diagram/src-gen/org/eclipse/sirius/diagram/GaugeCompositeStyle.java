@@ -49,7 +49,7 @@ public interface GaugeCompositeStyle extends NodeStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.GaugeCompositeStyle#getAlignment <em>Alignment</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Alignment</em>' attribute.
      * @see org.eclipse.sirius.diagram.AlignmentKind

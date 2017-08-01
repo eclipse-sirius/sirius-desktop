@@ -46,7 +46,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DiagramNavigationDescriptionImpl() {
@@ -55,7 +55,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramDescription basicGetDiagramDescription() {
@@ -93,7 +93,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

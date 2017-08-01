@@ -50,21 +50,21 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
  * returned, which is the result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage
  * @generated
  */
 public class ViewpointSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static ViewpointPackage modelPackage;
 
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ViewpointSwitch() {
@@ -76,7 +76,7 @@ public class ViewpointSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -87,7 +87,7 @@ public class ViewpointSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -103,7 +103,7 @@ public class ViewpointSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -160,6 +160,9 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR: {
             DRepresentationDescriptor dRepresentationDescriptor = (DRepresentationDescriptor) theEObject;
             T result = caseDRepresentationDescriptor(dRepresentationDescriptor);
+            if (result == null) {
+                result = caseDModelElement(dRepresentationDescriptor);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -388,7 +391,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DAnalysis</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DAnalysis</em>'.
@@ -417,7 +420,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DStylizable</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DStylizable</em>'.
@@ -431,7 +434,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DRefreshable</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DRefreshable</em>'.
@@ -520,7 +523,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DView</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DView</em>'.
@@ -549,7 +552,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Decoration</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Decoration</em>'.
@@ -578,7 +581,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Label Style</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Label Style</em>'.
@@ -592,7 +595,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Style</em>'.
@@ -636,7 +639,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DResource</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DResource</em>'.
@@ -650,7 +653,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DFile</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DFile</em>'.
@@ -679,7 +682,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DProject</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DProject</em>'.
@@ -693,7 +696,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DFolder</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DFolder</em>'.
@@ -707,7 +710,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>DModel</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>DModel</em>'.
@@ -736,7 +739,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Customizable</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Customizable</em>'.
@@ -750,7 +753,7 @@ public class ViewpointSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>UI State</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>UI State</em>'.
@@ -795,7 +798,7 @@ public class ViewpointSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch, but this is the last case
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>EObject</em>'.

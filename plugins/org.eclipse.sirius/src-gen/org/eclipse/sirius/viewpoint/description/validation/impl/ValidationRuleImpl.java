@@ -37,10 +37,10 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#getLevel <em>Level</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#getMessage <em>Message</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#getAudits <em>Audits</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#getMessage
+ * <em>Message</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#getAudits
+ * <em>Audits</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#getFixes <em>Fixes</em>}</li>
  * </ul>
  *
@@ -50,7 +50,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
     /**
      * The default value of the '{@link #getLevel() <em>Level</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLevel()
      * @generated
      * @ordered
@@ -80,7 +80,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
     /**
      * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
@@ -90,7 +90,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
     /**
      * The cached value of the '{@link #getAudits() <em>Audits</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAudits()
      * @generated
      * @ordered
@@ -100,7 +100,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
     /**
      * The cached value of the '{@link #getFixes() <em>Fixes</em>}' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getFixes()
      * @generated
      * @ordered
@@ -109,7 +109,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ValidationRuleImpl() {
@@ -118,7 +118,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -242,7 +242,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -262,7 +262,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -289,7 +289,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -313,7 +313,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -333,7 +333,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

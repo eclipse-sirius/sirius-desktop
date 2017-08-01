@@ -37,7 +37,7 @@ public interface CoveringElementCreationTool extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Covered Lifelines</em>' containment reference.
      * @see #setCoveredLifelines(CoveredLifelinesVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getCoveringElementCreationTool_CoveredLifelines()
@@ -47,10 +47,10 @@ public interface CoveringElementCreationTool extends EObject {
     CoveredLifelinesVariable getCoveredLifelines();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool#getCoveredLifelines
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool#getCoveredLifelines
      * <em>Covered Lifelines</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Covered Lifelines</em>' containment reference.
      * @see #getCoveredLifelines()

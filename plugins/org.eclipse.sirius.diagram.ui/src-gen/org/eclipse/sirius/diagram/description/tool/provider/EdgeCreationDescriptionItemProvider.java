@@ -34,13 +34,13 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDe
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EdgeCreationDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
 
     /**
      * This adds a property descriptor for the Edge Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEdgeMappingsPropertyDescriptor(Object object) {
@@ -81,7 +81,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
 
     /**
      * This adds a property descriptor for the Icon Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
@@ -123,7 +123,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
     /**
      * This adds a property descriptor for the Connection Start Precondition feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addConnectionStartPreconditionPropertyDescriptor(Object object) {
@@ -154,7 +154,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +185,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
 
     /**
      * This returns EdgeCreationDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +234,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

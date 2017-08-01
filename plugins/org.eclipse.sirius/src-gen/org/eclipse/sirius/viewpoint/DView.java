@@ -25,8 +25,8 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentationDescriptors
- * <em>Owned Representation Descriptors</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentationDescriptors <em>Owned Representation
+ * Descriptors</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions <em>Owned Extensions</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getModels <em>Models</em>}</li>
  * </ul>
@@ -39,7 +39,7 @@ public interface DView extends DRefreshable {
     /**
      * Returns the value of the '<em><b>Viewpoint</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The viewpoint that is used for this view <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Viewpoint</em>' reference.
      * @see #setViewpoint(Viewpoint)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_Viewpoint()
@@ -51,7 +51,7 @@ public interface DView extends DRefreshable {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Viewpoint</em>' reference.
      * @see #getViewpoint()
@@ -88,7 +88,7 @@ public interface DView extends DRefreshable {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions <em>Owned Extensions</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Extensions</em>' containment reference.
      * @see #getOwnedExtensions()
@@ -104,7 +104,7 @@ public interface DView extends DRefreshable {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Models</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_Models()
      * @model transient="true" changeable="false" volatile="true" derived="true"

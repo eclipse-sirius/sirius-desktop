@@ -21,10 +21,10 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth <em>Arc Width</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight
- * <em>Arc Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth <em>Arc
+ * Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight <em>Arc
+ * Height</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getRoundedCornerStyleDescription()
@@ -46,10 +46,10 @@ public interface RoundedCornerStyleDescription extends StyleDescription {
     Integer getArcWidth();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth <em>Arc Width</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth <em>Arc
+     * Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Arc Width</em>' attribute.
      * @see #getArcWidth()
@@ -71,10 +71,10 @@ public interface RoundedCornerStyleDescription extends StyleDescription {
     Integer getArcHeight();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight
-     * <em>Arc Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight <em>Arc
+     * Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Arc Height</em>' attribute.
      * @see #getArcHeight()

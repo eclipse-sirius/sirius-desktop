@@ -25,50 +25,41 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectContainerVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Pane Based Selection Wizard Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Pane Based Selection Wizard
+ * Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getElement
  * <em>Element</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getContainerView
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getContainerView
  * <em>Container View</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getContainer
  * <em>Container</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getInitialOperation
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getIconPath
  * <em>Icon Path</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getWindowTitle
  * <em>Window Title</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getWindowImagePath
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getWindowImagePath
  * <em>Window Image Path</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getMessage
  * <em>Message</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getChoiceOfValuesMessage
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getChoiceOfValuesMessage
  * <em>Choice Of Values Message</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getCandidatesExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getCandidatesExpression
  * <em>Candidates Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#isTree
  * <em>Tree</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getRootExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getRootExpression
  * <em>Root Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getChildrenExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getChildrenExpression
  * <em>Children Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getSelectedValuesMessage
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getSelectedValuesMessage
  * <em>Selected Values Message</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getPreSelectedCandidatesExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PaneBasedSelectionWizardDescriptionImpl#getPreSelectedCandidatesExpression
  * <em>Pre Selected Candidates Expression</em>}</li>
  * </ul>
  *
@@ -78,7 +69,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     /**
      * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getElement()
      * @generated
      * @ordered
@@ -98,7 +89,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     /**
      * The cached value of the '{@link #getContainer() <em>Container</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainer()
      * @generated
      * @ordered
@@ -118,7 +109,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -128,7 +119,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -138,7 +129,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     /**
      * The default value of the '{@link #getWindowTitle() <em>Window Title</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getWindowTitle()
      * @generated
      * @ordered
@@ -148,7 +139,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     /**
      * The cached value of the '{@link #getWindowTitle() <em>Window Title</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWindowTitle()
      * @generated
      * @ordered
@@ -168,7 +159,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     /**
      * The cached value of the '{@link #getWindowImagePath() <em>Window Image Path</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWindowImagePath()
      * @generated
      * @ordered
@@ -178,7 +169,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     /**
      * The default value of the '{@link #getMessage() <em>Message</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
@@ -188,7 +179,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     /**
      * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
@@ -258,7 +249,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     /**
      * The default value of the '{@link #getRootExpression() <em>Root Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -268,7 +259,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     /**
      * The cached value of the '{@link #getRootExpression() <em>Root Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -316,9 +307,9 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     protected String selectedValuesMessage = PaneBasedSelectionWizardDescriptionImpl.SELECTED_VALUES_MESSAGE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getPreSelectedCandidatesExpression()
-     * <em>Pre Selected Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The default value of the '{@link #getPreSelectedCandidatesExpression() <em>Pre Selected Candidates
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getPreSelectedCandidatesExpression()
      * @generated
      * @ordered
@@ -326,9 +317,9 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
     protected static final String PRE_SELECTED_CANDIDATES_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getPreSelectedCandidatesExpression() <em>Pre Selected Candidates Expression</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getPreSelectedCandidatesExpression() <em>Pre Selected Candidates
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getPreSelectedCandidatesExpression()
      * @generated
      * @ordered
@@ -337,7 +328,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PaneBasedSelectionWizardDescriptionImpl() {
@@ -346,7 +337,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -356,7 +347,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -383,7 +374,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementSelectVariable basicGetElement() {
@@ -392,7 +383,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetElement(ElementSelectVariable newElement, NotificationChain msgs) {
@@ -411,7 +402,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -435,7 +426,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -463,7 +454,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable basicGetContainerView() {
@@ -472,7 +463,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetContainerView(ContainerViewVariable newContainerView, NotificationChain msgs) {
@@ -491,7 +482,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -515,7 +506,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -542,7 +533,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SelectContainerVariable basicGetContainer() {
@@ -551,7 +542,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetContainer(SelectContainerVariable newContainer, NotificationChain msgs) {
@@ -570,7 +561,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -594,7 +585,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -622,7 +613,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -631,7 +622,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -651,7 +642,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -677,7 +668,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -687,7 +678,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -701,7 +692,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -711,7 +702,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -725,7 +716,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -735,7 +726,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -749,7 +740,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -759,7 +750,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -773,7 +764,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -783,7 +774,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -797,7 +788,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -807,7 +798,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -821,7 +812,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -831,7 +822,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -845,7 +836,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -855,7 +846,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -869,7 +860,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -879,7 +870,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -893,7 +884,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -903,7 +894,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -917,7 +908,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -927,7 +918,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -942,7 +933,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -962,7 +953,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1016,7 +1007,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1073,7 +1064,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1130,7 +1121,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1179,7 +1170,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -25,13 +25,13 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getPrecondition
  * <em>Precondition</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isForceRefresh
- * <em>Force Refresh</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isForceRefresh <em>Force
+ * Refresh</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getFilters <em>Filters</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getElementsToSelect
- * <em>Elements To Select</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isInverseSelectionOrder
- * <em>Inverse Selection Order</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getElementsToSelect <em>Elements To
+ * Select</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isInverseSelectionOrder <em>Inverse
+ * Selection Order</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription()
@@ -50,16 +50,17 @@ public interface AbstractToolDescription extends ToolEntry {
      * @model default="" dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation =
      *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables container='ecore.EObject | the container.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables container='ecore.EObject | the
+     *        container.'"
      * @generated
      */
     String getPrecondition();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getPrecondition
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getPrecondition
      * <em>Precondition</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition</em>' attribute.
      * @see #getPrecondition()
@@ -81,10 +82,10 @@ public interface AbstractToolDescription extends ToolEntry {
     boolean isForceRefresh();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isForceRefresh
-     * <em>Force Refresh</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isForceRefresh <em>Force
+     * Refresh</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Force Refresh</em>' attribute.
      * @see #isForceRefresh()
@@ -100,7 +101,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filters</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_Filters()
      * @model containment="true" resolveProxies="true"
@@ -119,16 +120,17 @@ public interface AbstractToolDescription extends ToolEntry {
      * @model default="" dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation =
      *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables container='ecore.EObject | the container.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables container='ecore.EObject | the
+     *        container.'"
      * @generated
      */
     String getElementsToSelect();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getElementsToSelect
-     * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getElementsToSelect <em>Elements To
+     * Select</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Elements To Select</em>' attribute.
      * @see #getElementsToSelect()
@@ -149,17 +151,17 @@ public interface AbstractToolDescription extends ToolEntry {
      * @return the value of the '<em>Inverse Selection Order</em>' attribute.
      * @see #setInverseSelectionOrder(boolean)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_InverseSelectionOrder()
-     * @model default="false" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     * @model default="false" annotation= "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        boolean.'"
      * @generated
      */
     boolean isInverseSelectionOrder();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isInverseSelectionOrder
-     * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isInverseSelectionOrder <em>Inverse
+     * Selection Order</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Inverse Selection Order</em>' attribute.
      * @see #isInverseSelectionOrder()

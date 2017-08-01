@@ -31,13 +31,13 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EditionTableDescriptionItemProvider extends TableDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EditionTableDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class EditionTableDescriptionItemProvider extends TableDescriptionItemPro
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -63,7 +63,7 @@ public class EditionTableDescriptionItemProvider extends TableDescriptionItemPro
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public class EditionTableDescriptionItemProvider extends TableDescriptionItemPro
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +90,7 @@ public class EditionTableDescriptionItemProvider extends TableDescriptionItemPro
 
     /**
      * This returns EditionTableDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

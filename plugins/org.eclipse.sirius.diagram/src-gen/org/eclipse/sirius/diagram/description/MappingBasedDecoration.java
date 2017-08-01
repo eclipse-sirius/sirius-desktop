@@ -41,7 +41,7 @@ public interface MappingBasedDecoration extends DecorationDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getMappingBasedDecoration_Mappings()
      * @model required="true"

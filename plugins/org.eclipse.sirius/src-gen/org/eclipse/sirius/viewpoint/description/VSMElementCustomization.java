@@ -21,10 +21,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.VSMElementCustomization#getPredicateExpression
- * <em>Predicate Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.VSMElementCustomization#getFeatureCustomizations
- * <em>Feature Customizations</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.VSMElementCustomization#getPredicateExpression <em>Predicate
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.VSMElementCustomization#getFeatureCustomizations <em>Feature
+ * Customizations</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getVSMElementCustomization()
@@ -39,23 +39,24 @@ public interface VSMElementCustomization extends IVSMElementCustomization {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Predicate Expression</em>' attribute.
      * @see #setPredicateExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getVSMElementCustomization_PredicateExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean result. True to enable the customization, false to disabled it. True by default.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='ecore.EObject | the current view.' container='ecore.EObject | the semantic container.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean result.
+     *        True to enable the customization, false to disabled it. True by default.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables view='ecore.EObject | the
+     *        current view.' container='ecore.EObject | the semantic container.'"
      * @generated
      */
     String getPredicateExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.VSMElementCustomization#getPredicateExpression
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.VSMElementCustomization#getPredicateExpression <em>Predicate
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Predicate Expression</em>' attribute.
      * @see #getPredicateExpression()
@@ -72,7 +73,7 @@ public interface VSMElementCustomization extends IVSMElementCustomization {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Feature Customizations</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getVSMElementCustomization_FeatureCustomizations()
      * @model containment="true" resolveProxies="true" required="true"

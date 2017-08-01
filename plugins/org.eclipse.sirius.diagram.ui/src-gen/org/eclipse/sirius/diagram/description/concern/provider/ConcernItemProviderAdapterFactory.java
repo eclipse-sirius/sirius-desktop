@@ -42,7 +42,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -50,7 +50,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
     /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -65,7 +65,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ConcernItemProviderAdapterFactory() {
@@ -80,7 +80,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernSet} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConcernSetItemProvider concernSetItemProvider;
@@ -104,7 +104,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConcernDescriptionItemProvider concernDescriptionItemProvider;
@@ -126,7 +126,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
     /**
      * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,7 +205,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
     /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

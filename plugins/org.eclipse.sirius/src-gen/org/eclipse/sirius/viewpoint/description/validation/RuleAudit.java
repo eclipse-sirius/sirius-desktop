@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression <em>Audit Expression</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression <em>Audit
+ * Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getRuleAudit()
@@ -48,7 +48,7 @@ public interface RuleAudit extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression
      * <em>Audit Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Audit Expression</em>' attribute.
      * @see #getAuditExpression()

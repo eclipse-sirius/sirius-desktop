@@ -28,13 +28,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.ElementViewVariable}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ElementViewVariableItemProvider extends AbstractVariableItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementViewVariableItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class ElementViewVariableItemProvider extends AbstractVariableItemProvide
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -60,7 +60,7 @@ public class ElementViewVariableItemProvider extends AbstractVariableItemProvide
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class ElementViewVariableItemProvider extends AbstractVariableItemProvide
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public class ElementViewVariableItemProvider extends AbstractVariableItemProvide
 
     /**
      * This returns ElementViewVariable.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class ElementViewVariableItemProvider extends AbstractVariableItemProvide
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class ElementViewVariableItemProvider extends AbstractVariableItemProvide
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {

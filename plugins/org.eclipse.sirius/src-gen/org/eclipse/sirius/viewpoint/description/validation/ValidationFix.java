@@ -22,8 +22,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getInitialOperation
- * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getInitialOperation <em>Initial
+ * Operation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationFix()
@@ -46,7 +46,7 @@ public interface ValidationFix extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -67,10 +67,10 @@ public interface ValidationFix extends EObject {
     InitialOperation getInitialOperation();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getInitialOperation <em>Initial
+     * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()

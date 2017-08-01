@@ -51,7 +51,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -61,7 +61,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
     /**
      * The cached value of the '{@link #getLines() <em>Lines</em>}' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getLines()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
     /**
      * The cached value of the '{@link #getColumns() <em>Columns</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColumns()
      * @generated
      * @ordered
@@ -101,7 +101,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
@@ -110,7 +110,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTableImpl() {
@@ -119,7 +119,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetTarget() {
@@ -157,7 +157,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +171,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TableDescription basicGetDescription() {
@@ -225,7 +225,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -249,7 +249,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -263,7 +263,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -280,7 +280,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -296,7 +296,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -324,7 +324,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -354,7 +354,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -381,7 +381,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -403,7 +403,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -429,7 +429,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -455,7 +455,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

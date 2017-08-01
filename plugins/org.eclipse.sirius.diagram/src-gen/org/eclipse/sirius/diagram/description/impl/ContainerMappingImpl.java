@@ -40,25 +40,25 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getDropDescriptions
- * <em>Drop Descriptions</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getSubNodeMappings
- * <em>Sub Node Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getAllNodeMappings
- * <em>All Node Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getReusedNodeMappings
- * <em>Reused Node Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getSubContainerMappings
- * <em>Sub Container Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getReusedContainerMappings
- * <em>Reused Container Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getAllContainerMappings
- * <em>All Container Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getDropDescriptions <em>Drop
+ * Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getSubNodeMappings <em>Sub Node
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getAllNodeMappings <em>All Node
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getReusedNodeMappings <em>Reused Node
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getSubContainerMappings <em>Sub Container
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getReusedContainerMappings <em>Reused
+ * Container Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getAllContainerMappings <em>All Container
+ * Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getConditionnalStyles
- * <em>Conditionnal Styles</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getChildrenPresentation
- * <em>Children Presentation</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getConditionnalStyles <em>Conditionnal
+ * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl#getChildrenPresentation <em>Children
+ * Presentation</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,7 +77,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     /**
      * The cached value of the '{@link #getSubNodeMappings() <em>Sub Node Mappings</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSubNodeMappings()
      * @generated
      * @ordered
@@ -97,7 +97,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     /**
      * The cached value of the '{@link #getSubContainerMappings() <em>Sub Container Mappings</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSubContainerMappings()
      * @generated
      * @ordered
@@ -107,7 +107,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     /**
      * The cached value of the '{@link #getReusedContainerMappings() <em>Reused Container Mappings</em>}' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReusedContainerMappings()
      * @generated
      * @ordered
@@ -117,7 +117,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -127,7 +127,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     /**
      * The cached value of the '{@link #getConditionnalStyles() <em>Conditionnal Styles</em>}' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionnalStyles()
      * @generated
      * @ordered
@@ -156,7 +156,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerMappingImpl() {
@@ -165,7 +165,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +201,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -229,7 +229,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -242,7 +242,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -297,7 +297,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerStyleDescription basicGetStyle() {
@@ -306,7 +306,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(ContainerStyleDescription newStyle, NotificationChain msgs) {
@@ -325,7 +325,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -349,7 +349,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -363,7 +363,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -373,7 +373,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -387,7 +387,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -399,7 +399,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -419,7 +419,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -454,7 +454,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -497,7 +497,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -533,7 +533,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -565,7 +565,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -583,7 +583,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -601,7 +601,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

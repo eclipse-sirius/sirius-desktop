@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 public abstract class ColorDescriptionImpl extends MinimalEObjectImpl.Container implements ColorDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ColorDescriptionImpl() {
@@ -34,7 +34,7 @@ public abstract class ColorDescriptionImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -39,12 +39,12 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImportImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImportImpl#getLabel <em>Label</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImportImpl#getImportedMapping
- * <em>Imported Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImportImpl#getConditionnalStyles
- * <em>Conditionnal Styles</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImportImpl#isInheritsAncestorFilters
- * <em>Inherits Ancestor Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImportImpl#getImportedMapping <em>Imported
+ * Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImportImpl#getConditionnalStyles <em>Conditionnal
+ * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.EdgeMappingImportImpl#isInheritsAncestorFilters <em>Inherits
+ * Ancestor Filters</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,7 +73,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -93,7 +93,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
     /**
      * The cached value of the '{@link #getImportedMapping() <em>Imported Mapping</em>}' reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getImportedMapping()
      * @generated
      * @ordered
@@ -103,7 +103,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
     /**
      * The cached value of the '{@link #getConditionnalStyles() <em>Conditionnal Styles</em>}' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionnalStyles()
      * @generated
      * @ordered
@@ -113,7 +113,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
     /**
      * The default value of the '{@link #isInheritsAncestorFilters() <em>Inherits Ancestor Filters</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isInheritsAncestorFilters()
      * @generated
      * @ordered
@@ -132,7 +132,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EdgeMappingImportImpl() {
@@ -141,7 +141,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +185,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -199,7 +199,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public IEdgeMapping basicGetImportedMapping() {
@@ -227,7 +227,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,7 +241,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -265,7 +265,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -291,7 +291,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -305,7 +305,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -330,7 +330,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -359,7 +359,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -386,7 +386,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -408,7 +408,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -434,7 +434,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -460,7 +460,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

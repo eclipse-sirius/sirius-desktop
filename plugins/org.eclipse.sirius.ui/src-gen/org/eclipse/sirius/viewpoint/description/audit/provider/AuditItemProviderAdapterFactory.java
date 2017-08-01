@@ -49,7 +49,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -57,14 +57,14 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
     /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
     /**
      * This helps manage the child creation extenders. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(SiriusEditPlugin.INSTANCE, AuditPackage.eNS_URI);
@@ -79,7 +79,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AuditItemProviderAdapterFactory() {
@@ -94,7 +94,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TemplateInformationSectionItemProvider templateInformationSectionItemProvider;
@@ -102,7 +102,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
 
     /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
 
     /**
      * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
     /**
      * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public List<IChildCreationExtender> getChildCreationExtenders() {
@@ -183,7 +183,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +224,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
     /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -238,7 +238,7 @@ public class AuditItemProviderAdapterFactory extends AuditAdapterFactory impleme
 
     /**
      * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

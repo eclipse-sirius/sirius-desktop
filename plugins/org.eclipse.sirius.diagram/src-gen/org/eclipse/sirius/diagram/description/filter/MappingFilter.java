@@ -24,10 +24,10 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getMappings <em>Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getSemanticConditionExpression
- * <em>Semantic Condition Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getViewConditionExpression
- * <em>View Condition Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getSemanticConditionExpression <em>Semantic
+ * Condition Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getViewConditionExpression <em>View Condition
+ * Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getMappingFilter()
@@ -62,10 +62,10 @@ public interface MappingFilter extends Filter {
     String getSemanticConditionExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getSemanticConditionExpression
-     * <em>Semantic Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getSemanticConditionExpression <em>Semantic
+     * Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Semantic Condition Expression</em>' attribute.
      * @see #getSemanticConditionExpression()
@@ -87,10 +87,10 @@ public interface MappingFilter extends Filter {
     String getViewConditionExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getViewConditionExpression
-     * <em>View Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getViewConditionExpression <em>View Condition
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>View Condition Expression</em>' attribute.
      * @see #getViewConditionExpression()

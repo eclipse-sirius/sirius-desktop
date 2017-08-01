@@ -28,8 +28,8 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl#getDropDescriptions
- * <em>Drop Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl#getDropDescriptions <em>Drop
+ * Descriptions</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,7 +47,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DragAndDropTargetDescriptionImpl() {
@@ -56,7 +56,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -110,7 +110,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

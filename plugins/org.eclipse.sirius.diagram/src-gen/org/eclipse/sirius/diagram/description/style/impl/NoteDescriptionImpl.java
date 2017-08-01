@@ -44,7 +44,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NoteDescriptionImpl() {
@@ -53,7 +53,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -63,7 +63,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetColor() {
@@ -91,7 +91,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

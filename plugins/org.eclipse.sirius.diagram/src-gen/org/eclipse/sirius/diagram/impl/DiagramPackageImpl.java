@@ -94,412 +94,412 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dDiagramEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dSemanticDiagramEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dDiagramElementEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass graphicalFilterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass hideFilterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass hideLabelFilterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass foldingPointFilterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass foldingFilterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass appliedCompositeFiltersEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass absoluteBoundsFilterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass abstractDNodeEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dNodeEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dDiagramElementContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dNodeContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dNodeListEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dNodeListElementEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dEdgeEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass nodeStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dotEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass gaugeSectionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass containerStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass flatContainerStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass shapeContainerStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass squareEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass ellipseEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass lozengeEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass bundledImageEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass workspaceImageEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass customStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass edgeTargetEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass edgeStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass gaugeCompositeStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass borderedStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass noteEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass filterVariableHistoryEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass collapseFilterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass indirectlyCollapseFilterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass beginLabelStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass centerLabelStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass endLabelStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass bracketEdgeStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass computedStyleDescriptionRegistryEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dragAndDropTargetEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass hideLabelCapabilityStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass variableValueEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass typedVariableValueEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass eObjectVariableValueEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum containerLayoutEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum labelPositionEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum containerShapeEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum backgroundStyleEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum bundledImageShapeEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum lineStyleEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum edgeArrowsEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum edgeRoutingEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum alignmentKindEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum resizeKindEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum arrangeConstraintEEnum = null;
@@ -523,7 +523,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -535,7 +535,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * This method is used to initialize {@link DiagramPackage#eINSTANCE} when that field is accessed. Clients should
      * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -593,7 +593,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -603,7 +603,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -613,7 +613,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -623,7 +623,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -633,7 +633,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -643,7 +643,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -653,7 +653,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -663,7 +663,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -673,7 +673,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -683,7 +683,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -693,7 +693,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -703,7 +703,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -713,7 +713,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -723,7 +723,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -733,7 +733,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -743,7 +743,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -753,7 +753,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -763,7 +763,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -773,7 +773,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -783,7 +783,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -793,7 +793,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -803,7 +803,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -813,7 +813,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -823,7 +823,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -833,7 +833,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -843,7 +843,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -853,7 +853,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -863,7 +863,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -873,7 +873,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -883,7 +883,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -893,7 +893,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -903,7 +903,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -913,7 +913,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -923,7 +923,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -933,7 +933,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -943,7 +943,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -953,7 +953,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -963,7 +963,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -973,7 +973,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -983,7 +983,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -993,7 +993,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1003,7 +1003,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1013,7 +1013,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1023,7 +1023,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1033,7 +1033,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1043,7 +1043,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1053,7 +1053,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1063,7 +1063,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1073,7 +1073,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1083,7 +1083,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1093,7 +1093,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1103,7 +1103,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1113,7 +1113,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1123,7 +1123,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1133,7 +1133,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1143,7 +1143,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1153,7 +1153,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1163,7 +1163,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1173,7 +1173,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1183,7 +1183,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1193,7 +1193,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1203,7 +1203,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1213,7 +1213,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1223,7 +1223,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1233,7 +1233,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1243,7 +1243,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1253,7 +1253,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1263,7 +1263,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1273,7 +1273,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1283,7 +1283,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1293,7 +1293,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1303,7 +1303,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1313,7 +1313,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1323,7 +1323,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1333,7 +1333,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1343,7 +1343,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1353,7 +1353,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1363,7 +1363,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1373,7 +1373,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1383,7 +1383,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1393,7 +1393,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1403,7 +1403,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1413,7 +1413,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1423,7 +1423,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1433,7 +1433,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1443,7 +1443,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1453,7 +1453,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1463,7 +1463,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1473,7 +1473,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1483,7 +1483,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1493,7 +1493,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1503,7 +1503,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1513,7 +1513,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1523,7 +1523,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1533,7 +1533,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1543,7 +1543,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1553,7 +1553,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1563,7 +1563,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1573,7 +1573,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1583,7 +1583,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1593,7 +1593,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1603,7 +1603,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1613,7 +1613,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1623,7 +1623,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1633,7 +1633,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1643,7 +1643,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1653,7 +1653,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1663,7 +1663,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1673,7 +1673,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1683,7 +1683,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1693,7 +1693,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1703,7 +1703,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1713,7 +1713,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1723,7 +1723,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1733,7 +1733,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1743,7 +1743,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1753,7 +1753,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1763,7 +1763,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1773,7 +1773,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1783,7 +1783,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1793,7 +1793,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1803,7 +1803,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1813,7 +1813,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1823,7 +1823,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1833,7 +1833,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1843,7 +1843,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1853,7 +1853,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1863,7 +1863,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1873,7 +1873,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1883,7 +1883,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1893,7 +1893,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1903,7 +1903,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1913,7 +1913,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1923,7 +1923,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1933,7 +1933,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1943,7 +1943,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1953,7 +1953,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1963,7 +1963,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1973,7 +1973,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1983,7 +1983,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1993,7 +1993,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2003,7 +2003,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2013,7 +2013,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2023,7 +2023,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2033,7 +2033,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2043,7 +2043,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2053,7 +2053,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2063,7 +2063,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2073,7 +2073,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2083,7 +2083,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2093,7 +2093,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2103,7 +2103,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2113,7 +2113,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2123,7 +2123,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2133,7 +2133,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2143,7 +2143,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2153,7 +2153,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2163,7 +2163,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2173,7 +2173,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2183,7 +2183,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2193,7 +2193,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2203,7 +2203,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2213,7 +2213,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2223,7 +2223,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2233,7 +2233,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2243,7 +2243,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2253,7 +2253,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2263,7 +2263,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2273,7 +2273,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2283,7 +2283,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2293,7 +2293,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2303,7 +2303,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2313,7 +2313,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2323,7 +2323,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2333,7 +2333,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2343,7 +2343,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2353,7 +2353,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2363,7 +2363,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2373,7 +2373,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2383,7 +2383,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2393,7 +2393,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2403,7 +2403,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2413,7 +2413,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2423,7 +2423,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2433,7 +2433,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2443,7 +2443,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2453,7 +2453,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -2461,7 +2461,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
     /**
      * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
      * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -2708,7 +2708,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -2716,7 +2716,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
     /**
      * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
      * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
@@ -3361,7 +3361,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
     /**
      * Initializes the annotations for <b>Sirius</b>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void createSiriusAnnotations() {

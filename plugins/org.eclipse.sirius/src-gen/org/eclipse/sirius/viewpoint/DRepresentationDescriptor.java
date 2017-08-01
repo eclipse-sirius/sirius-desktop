@@ -127,7 +127,7 @@ public interface DRepresentationDescriptor extends DModelElement {
      * Tells if the representation associated this {@link DRepresentationDescriptor} is loaded.</br>
      * Knowing that {@code getRepresentation} will load the representation, the method is useful for client that would
      * implement the representation lazy loading.
-     * 
+     *
      * @return true if the representation is loaded.
      */
     default boolean isLoadedRepresentation() {
@@ -149,7 +149,7 @@ public interface DRepresentationDescriptor extends DModelElement {
     /**
      * Updates the repPath attribute according to the given representation. This method is intended to be called if the
      * representation instance is still the same but requires to recompute the repPath.
-     * 
+     *
      * @param representation
      *            the {@link DRepresentation} to update path.
      */

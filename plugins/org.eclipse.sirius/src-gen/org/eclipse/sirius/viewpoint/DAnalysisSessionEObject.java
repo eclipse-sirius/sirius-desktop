@@ -26,13 +26,13 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isOpen <em>Open</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getResources <em>Resources</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getControlledResources <em>Controlled Resources</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getActivatedViewpoints <em>Activated Viewpoints</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getControlledResources <em>Controlled
+ * Resources</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getActivatedViewpoints <em>Activated
+ * Viewpoints</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getAnalyses <em>Analyses</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getSynchronizationStatus
- * <em>Synchronization Status</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getSynchronizationStatus <em>Synchronization
+ * Status</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject()
@@ -46,7 +46,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * If the meaning of the '<em>Open</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Open</em>' attribute.
      * @see #setOpen(boolean)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_Open()
@@ -58,7 +58,7 @@ public interface DAnalysisSessionEObject extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isOpen <em>Open</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Open</em>' attribute.
      * @see #isOpen()
@@ -74,7 +74,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Resources</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_Resources()
      * @model transient="true"
@@ -90,7 +90,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Controlled Resources</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_ControlledResources()
      * @model transient="true"
@@ -106,7 +106,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Activated Viewpoints</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_ActivatedViewpoints()
      * @model
@@ -122,7 +122,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Analyses</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_Analyses()
      * @model
@@ -152,7 +152,7 @@ public interface DAnalysisSessionEObject extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getSynchronizationStatus
      * <em>Synchronization Status</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Synchronization Status</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.SyncStatus

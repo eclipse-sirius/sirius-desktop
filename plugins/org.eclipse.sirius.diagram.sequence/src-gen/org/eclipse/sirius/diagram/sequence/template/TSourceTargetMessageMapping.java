@@ -25,8 +25,8 @@ import org.eclipse.emf.common.util.EList;
  * <em>Source Finder Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getTargetFinderExpression
  * <em>Target Finder Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#isUseDomainElement
- * <em>Use Domain Element</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#isUseDomainElement <em>Use Domain
+ * Element</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping()
@@ -42,7 +42,7 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Source</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping_Source()
      * @model required="true"
@@ -60,18 +60,19 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping_SourceFinderExpression()
      * @model dataType="org.eclipse.sirius.description.InterpretedExpression" annotation =
      *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='the current DDiagram.' viewpoint='(deprecated) the current DDiagram.' viewPoint='(deprecated) the current DDiagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an
+     *        EObject.'" annotation= "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='the
+     *        current DDiagram.' viewpoint='(deprecated) the current DDiagram.' viewPoint='(deprecated) the current
+     *        DDiagram.'"
      * @generated
      */
     String getSourceFinderExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getSourceFinderExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getSourceFinderExpression
      * <em>Source Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source Finder Expression</em>' attribute.
      * @see #getSourceFinderExpression()
@@ -89,18 +90,19 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping_TargetFinderExpression()
      * @model dataType="org.eclipse.sirius.description.InterpretedExpression" required="true" annotation=
      *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='the current DDiagram.' viewpoint='(deprecated) the current DDiagram.' viewPoint='(deprecated) the current DDiagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an
+     *        EObject.'" annotation= "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='the
+     *        current DDiagram.' viewpoint='(deprecated) the current DDiagram.' viewPoint='(deprecated) the current
+     *        DDiagram.'"
      * @generated
      */
     String getTargetFinderExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getTargetFinderExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getTargetFinderExpression
      * <em>Target Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Finder Expression</em>' attribute.
      * @see #getTargetFinderExpression()
@@ -116,7 +118,7 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Use Domain Element</em>' attribute.
      * @see #setUseDomainElement(boolean)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping_UseDomainElement()
@@ -126,10 +128,10 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
     boolean isUseDomainElement();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#isUseDomainElement
-     * <em>Use Domain Element</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#isUseDomainElement <em>Use
+     * Domain Element</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Use Domain Element</em>' attribute.
      * @see #isUseDomainElement()

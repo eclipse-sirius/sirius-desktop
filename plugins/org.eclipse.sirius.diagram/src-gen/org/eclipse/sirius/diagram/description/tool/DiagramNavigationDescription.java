@@ -22,8 +22,8 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription#getDiagramDescription
- * <em>Diagram Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription#getDiagramDescription <em>Diagram
+ * Description</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDiagramNavigationDescription()
@@ -38,7 +38,7 @@ public interface DiagramNavigationDescription extends RepresentationNavigationDe
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Diagram Description</em>' reference.
      * @see #setDiagramDescription(DiagramDescription)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDiagramNavigationDescription_DiagramDescription()
@@ -48,10 +48,10 @@ public interface DiagramNavigationDescription extends RepresentationNavigationDe
     DiagramDescription getDiagramDescription();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription#getDiagramDescription
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription#getDiagramDescription
      * <em>Diagram Description</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Diagram Description</em>' reference.
      * @see #getDiagramDescription()

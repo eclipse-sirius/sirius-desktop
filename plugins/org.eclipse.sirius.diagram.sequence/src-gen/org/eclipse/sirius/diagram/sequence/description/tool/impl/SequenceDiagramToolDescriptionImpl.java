@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 public class SequenceDiagramToolDescriptionImpl extends MinimalEObjectImpl.Container implements SequenceDiagramToolDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SequenceDiagramToolDescriptionImpl() {
@@ -33,7 +33,7 @@ public class SequenceDiagramToolDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

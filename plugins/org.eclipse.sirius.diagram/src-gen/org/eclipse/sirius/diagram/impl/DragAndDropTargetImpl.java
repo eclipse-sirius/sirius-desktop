@@ -26,7 +26,7 @@ import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 public class DragAndDropTargetImpl extends MinimalEObjectImpl.Container implements DragAndDropTarget {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DragAndDropTargetImpl() {
@@ -35,7 +35,7 @@ public class DragAndDropTargetImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -45,7 +45,7 @@ public class DragAndDropTargetImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

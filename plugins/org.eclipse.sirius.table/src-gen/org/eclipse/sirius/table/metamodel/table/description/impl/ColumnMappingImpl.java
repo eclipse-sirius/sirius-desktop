@@ -55,7 +55,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
     /**
      * The default value of the '{@link #getInitialWidth() <em>Initial Width</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialWidth()
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
     /**
      * The cached value of the '{@link #getInitialWidth() <em>Initial Width</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialWidth()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ColumnMappingImpl() {
@@ -83,7 +83,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

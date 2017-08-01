@@ -50,7 +50,7 @@ public interface BasicLabelStyle extends Customizable {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelSize <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -88,7 +88,7 @@ public interface BasicLabelStyle extends Customizable {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#isShowIcon <em>Show Icon</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Show Icon</em>' attribute.
      * @see #isShowIcon()
@@ -116,7 +116,7 @@ public interface BasicLabelStyle extends Customizable {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelColor <em>Label Color</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Color</em>' attribute.
      * @see #getLabelColor()
@@ -140,7 +140,7 @@ public interface BasicLabelStyle extends Customizable {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getIconPath <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon Path</em>' attribute.
      * @see #getIconPath()

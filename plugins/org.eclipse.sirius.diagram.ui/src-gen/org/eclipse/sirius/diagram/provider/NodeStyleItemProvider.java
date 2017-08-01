@@ -30,13 +30,13 @@ import org.eclipse.sirius.viewpoint.provider.LabelStyleItemProvider;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.NodeStyle} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class NodeStyleItemProvider extends LabelStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NodeStyleItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Description feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
@@ -76,7 +76,7 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Border Size feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderSizePropertyDescriptor(Object object) {
@@ -89,7 +89,7 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Border Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
@@ -102,7 +102,7 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Border Line Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderLineStylePropertyDescriptor(Object object) {
@@ -115,7 +115,7 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Label Position feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPositionPropertyDescriptor(Object object) {
@@ -140,7 +140,7 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

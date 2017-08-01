@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl;
 public class MessageEndVariableImpl extends AbstractVariableImpl implements MessageEndVariable {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MessageEndVariableImpl() {
@@ -33,7 +33,7 @@ public class MessageEndVariableImpl extends AbstractVariableImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

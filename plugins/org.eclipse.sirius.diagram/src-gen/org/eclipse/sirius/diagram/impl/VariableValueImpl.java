@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.VariableValue;
 public abstract class VariableValueImpl extends MinimalEObjectImpl.Container implements VariableValue {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected VariableValueImpl() {
@@ -33,7 +33,7 @@ public abstract class VariableValueImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

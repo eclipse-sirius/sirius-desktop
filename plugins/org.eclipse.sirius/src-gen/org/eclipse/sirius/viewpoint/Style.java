@@ -37,7 +37,7 @@ public interface Style extends DRefreshable, Customizable {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(StyleDescription)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getStyle_Description()
@@ -49,7 +49,7 @@ public interface Style extends DRefreshable, Customizable {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.Style#getDescription <em>Description</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

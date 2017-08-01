@@ -37,7 +37,7 @@ public interface DResourceContainer extends DResource {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Members</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDResourceContainer_Members()
      * @model containment="true" resolveProxies="true"

@@ -25,8 +25,8 @@ import org.eclipse.sirius.description.contribution.ContributionPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.description.contribution.impl.ComputedEObjectReferenceImpl#getValueExpression
- * <em>Value Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.ComputedEObjectReferenceImpl#getValueExpression <em>Value
+ * Expression</em>}</li>
  * </ul>
  *
  * @generated

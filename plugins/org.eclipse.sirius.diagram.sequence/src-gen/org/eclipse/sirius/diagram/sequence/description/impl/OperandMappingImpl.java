@@ -38,7 +38,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
     /**
      * The default value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
     /**
      * The cached value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
     /**
      * The default value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
     /**
      * The cached value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -77,7 +77,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OperandMappingImpl() {
@@ -86,7 +86,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -240,7 +240,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

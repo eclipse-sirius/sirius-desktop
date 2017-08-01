@@ -45,7 +45,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
     /**
      * The default value of the '{@link #getAlignment() <em>Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAlignment()
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
     /**
      * The cached value of the '{@link #getAlignment() <em>Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAlignment()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GaugeCompositeStyleDescriptionImpl() {
@@ -83,7 +83,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -180,7 +180,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

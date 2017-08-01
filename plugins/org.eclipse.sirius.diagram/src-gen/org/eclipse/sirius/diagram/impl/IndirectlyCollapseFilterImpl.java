@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 public class IndirectlyCollapseFilterImpl extends CollapseFilterImpl implements IndirectlyCollapseFilter {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IndirectlyCollapseFilterImpl() {
@@ -33,7 +33,7 @@ public class IndirectlyCollapseFilterImpl extends CollapseFilterImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

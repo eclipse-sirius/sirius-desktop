@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.sequence.description.ObservationPointMapping;
 public class ObservationPointMappingImpl extends NodeMappingImpl implements ObservationPointMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ObservationPointMappingImpl() {
@@ -33,7 +33,7 @@ public class ObservationPointMappingImpl extends NodeMappingImpl implements Obse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -37,7 +37,7 @@ public interface CompoundEventEnd extends EventEnd {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Event Ends</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getCompoundEventEnd_EventEnds()
      * @model containment="true" required="true"
@@ -47,7 +47,7 @@ public interface CompoundEventEnd extends EventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */

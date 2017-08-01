@@ -50,10 +50,10 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
     String getWidthComputationExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getWidthComputationExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getWidthComputationExpression
      * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width Computation Expression</em>' attribute.
      * @see #getWidthComputationExpression()
@@ -76,10 +76,10 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
     String getHeightComputationExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getHeightComputationExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getHeightComputationExpression
      * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height Computation Expression</em>' attribute.
      * @see #getHeightComputationExpression()
@@ -102,7 +102,7 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getColor
      * <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' reference.
      * @see #getColor()

@@ -22,8 +22,8 @@ import org.eclipse.sirius.viewpoint.Style;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderSize <em>Border Size</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderSizeComputationExpression
- * <em>Border Size Computation Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderSizeComputationExpression <em>Border Size Computation
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderColor <em>Border Color</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderLineStyle <em>Border Line Style</em>}</li>
  * </ul>
@@ -53,7 +53,7 @@ public interface BorderedStyle extends Style {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderSize <em>Border Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Border Size</em>' attribute.
      * @see #getBorderSize()
@@ -69,12 +69,12 @@ public interface BorderedStyle extends Style {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Border Size Computation Expression</em>' attribute.
      * @see #setBorderSizeComputationExpression(String)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getBorderedStyle_BorderSizeComputationExpression()
-     * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
+     * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getBorderSizeComputationExpression();
@@ -82,7 +82,7 @@ public interface BorderedStyle extends Style {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderSizeComputationExpression
      * <em>Border Size Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Border Size Computation Expression</em>' attribute.
      * @see #getBorderSizeComputationExpression()
@@ -98,7 +98,7 @@ public interface BorderedStyle extends Style {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Border Color</em>' attribute.
      * @see #setBorderColor(RGBValues)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getBorderedStyle_BorderColor()
@@ -110,7 +110,7 @@ public interface BorderedStyle extends Style {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderColor <em>Border Color</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Border Color</em>' attribute.
      * @see #getBorderColor()
@@ -133,9 +133,9 @@ public interface BorderedStyle extends Style {
     LineStyle getBorderLineStyle();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderLineStyle
-     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderLineStyle <em>Border Line
+     * Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Border Line Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.LineStyle

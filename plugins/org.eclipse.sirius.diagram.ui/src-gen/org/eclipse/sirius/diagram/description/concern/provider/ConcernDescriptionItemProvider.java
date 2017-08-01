@@ -32,13 +32,13 @@ import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemPr
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ConcernDescriptionItemProvider extends DocumentedElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ConcernDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class ConcernDescriptionItemProvider extends DocumentedElementItemProvide
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class ConcernDescriptionItemProvider extends DocumentedElementItemProvide
 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -79,7 +79,7 @@ public class ConcernDescriptionItemProvider extends DocumentedElementItemProvide
 
     /**
      * This adds a property descriptor for the Label feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -92,7 +92,7 @@ public class ConcernDescriptionItemProvider extends DocumentedElementItemProvide
 
     /**
      * This adds a property descriptor for the Filters feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFiltersPropertyDescriptor(Object object) {
@@ -105,7 +105,7 @@ public class ConcernDescriptionItemProvider extends DocumentedElementItemProvide
 
     /**
      * This adds a property descriptor for the Rules feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRulesPropertyDescriptor(Object object) {
@@ -118,7 +118,7 @@ public class ConcernDescriptionItemProvider extends DocumentedElementItemProvide
 
     /**
      * This adds a property descriptor for the Behaviors feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBehaviorsPropertyDescriptor(Object object) {
@@ -131,7 +131,7 @@ public class ConcernDescriptionItemProvider extends DocumentedElementItemProvide
 
     /**
      * This returns ConcernDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,7 +173,7 @@ public class ConcernDescriptionItemProvider extends DocumentedElementItemProvide
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class ConcernDescriptionItemProvider extends DocumentedElementItemProvide
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -32,8 +32,8 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.ReorderToolImpl#getMappings <em>Mappings</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.ReorderToolImpl#getMappings
+ * <em>Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.ReorderToolImpl#getStartingEndPredecessorBefore
  * <em>Starting End Predecessor Before</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.ReorderToolImpl#getStartingEndPredecessorAfter
@@ -42,8 +42,8 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * <em>Finishing End Predecessor Before</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.ReorderToolImpl#getFinishingEndPredecessorAfter
  * <em>Finishing End Predecessor After</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.ReorderToolImpl#getOnEventMovedOperation
- * <em>On Event Moved Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.ReorderToolImpl#getOnEventMovedOperation <em>On
+ * Event Moved Operation</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,7 +52,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
     /**
      * The cached value of the '{@link #getMappings() <em>Mappings</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMappings()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
     /**
      * The cached value of the '{@link #getStartingEndPredecessorBefore() <em>Starting End Predecessor Before</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndPredecessorBefore()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
     /**
      * The cached value of the '{@link #getStartingEndPredecessorAfter() <em>Starting End Predecessor After</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndPredecessorAfter()
      * @generated
      * @ordered
@@ -82,7 +82,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
     /**
      * The cached value of the '{@link #getFinishingEndPredecessorBefore() <em>Finishing End Predecessor Before</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndPredecessorBefore()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
     /**
      * The cached value of the '{@link #getFinishingEndPredecessorAfter() <em>Finishing End Predecessor After</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndPredecessorAfter()
      * @generated
      * @ordered
@@ -102,7 +102,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
     /**
      * The cached value of the '{@link #getOnEventMovedOperation() <em>On Event Moved Operation</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOnEventMovedOperation()
      * @generated
      * @ordered
@@ -111,7 +111,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ReorderToolImpl() {
@@ -120,7 +120,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStartingEndPredecessorBefore(MessageEndVariable newStartingEndPredecessorBefore, NotificationChain msgs) {
@@ -173,7 +173,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -199,7 +199,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStartingEndPredecessorAfter(MessageEndVariable newStartingEndPredecessorAfter, NotificationChain msgs) {
@@ -229,7 +229,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -265,7 +265,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFinishingEndPredecessorBefore(MessageEndVariable newFinishingEndPredecessorBefore, NotificationChain msgs) {
@@ -285,7 +285,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -311,7 +311,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -321,7 +321,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFinishingEndPredecessorAfter(MessageEndVariable newFinishingEndPredecessorAfter, NotificationChain msgs) {
@@ -341,7 +341,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -367,7 +367,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -377,7 +377,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetOnEventMovedOperation(InitialOperation newOnEventMovedOperation, NotificationChain msgs) {
@@ -396,7 +396,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -420,7 +420,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -442,7 +442,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -466,7 +466,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -498,7 +498,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -528,7 +528,7 @@ public class ReorderToolImpl extends AbstractToolDescriptionImpl implements Reor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

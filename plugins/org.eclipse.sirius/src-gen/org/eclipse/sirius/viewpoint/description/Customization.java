@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.Customization#getVsmElementCustomizations
- * <em>Vsm Element Customizations</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.Customization#getVsmElementCustomizations <em>Vsm Element
+ * Customizations</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getCustomization()

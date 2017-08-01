@@ -25,13 +25,13 @@ import org.eclipse.sirius.viewpoint.description.style.provider.BasicLabelStyleDe
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.style.EndLabelStyleDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EndLabelStyleDescriptionItemProvider extends BasicLabelStyleDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EndLabelStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -40,7 +40,7 @@ public class EndLabelStyleDescriptionItemProvider extends BasicLabelStyleDescrip
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -54,7 +54,7 @@ public class EndLabelStyleDescriptionItemProvider extends BasicLabelStyleDescrip
 
     /**
      * This returns EndLabelStyleDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class EndLabelStyleDescriptionItemProvider extends BasicLabelStyleDescrip
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,7 +89,7 @@ public class EndLabelStyleDescriptionItemProvider extends BasicLabelStyleDescrip
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class EndLabelStyleDescriptionItemProvider extends BasicLabelStyleDescrip
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

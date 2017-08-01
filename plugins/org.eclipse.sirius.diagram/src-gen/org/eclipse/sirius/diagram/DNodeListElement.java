@@ -51,7 +51,7 @@ public interface DNodeListElement extends AbstractDNode {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DNodeListElement#getOwnedStyle <em>Owned Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Style</em>' containment reference.
      * @see #getOwnedStyle()
@@ -73,9 +73,9 @@ public interface DNodeListElement extends AbstractDNode {
     Style getOriginalStyle();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.DNodeListElement#getOriginalStyle
-     * <em>Original Style</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.DNodeListElement#getOriginalStyle <em>Original
+     * Style</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Original Style</em>' reference.
      * @see #getOriginalStyle()
@@ -96,9 +96,9 @@ public interface DNodeListElement extends AbstractDNode {
     NodeMapping getActualMapping();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.DNodeListElement#getActualMapping
-     * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.DNodeListElement#getActualMapping <em>Actual
+     * Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Actual Mapping</em>' reference.
      * @see #getActualMapping()

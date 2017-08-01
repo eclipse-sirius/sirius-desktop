@@ -26,13 +26,13 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CreateEdgeViewItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -57,7 +57,7 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
 
     /**
      * This adds a property descriptor for the Source Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSourceExpressionPropertyDescriptor(Object object) {
@@ -70,7 +70,7 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
 
     /**
      * This adds a property descriptor for the Target Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetExpressionPropertyDescriptor(Object object) {
@@ -83,7 +83,7 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
 
     /**
      * This returns CreateEdgeView.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

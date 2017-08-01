@@ -27,10 +27,10 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.ContainerModelOperatio
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl#getMapping <em>Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl#getContainerViewExpression
- * <em>Container View Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl#getVariableName <em>Variable Name</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl#getContainerViewExpression <em>Container
+ * View Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl#getVariableName <em>Variable
+ * Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -39,7 +39,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
     /**
      * The cached value of the '{@link #getMapping() <em>Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMapping()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
     /**
      * The default value of the '{@link #getContainerViewExpression() <em>Container View Expression</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainerViewExpression()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
     /**
      * The cached value of the '{@link #getContainerViewExpression() <em>Container View Expression</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainerViewExpression()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
     /**
      * The default value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getVariableName()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
     /**
      * The cached value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getVariableName()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateViewImpl() {
@@ -97,7 +97,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramElementMapping basicGetMapping() {
@@ -135,7 +135,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,7 +173,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -260,7 +260,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -278,7 +278,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

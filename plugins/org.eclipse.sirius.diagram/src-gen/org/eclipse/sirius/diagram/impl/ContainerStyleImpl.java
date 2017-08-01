@@ -37,8 +37,8 @@ import org.eclipse.sirius.viewpoint.impl.LabelStyleImpl;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#getDescription <em>Description</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#getBorderSize <em>Border Size</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#getBorderSizeComputationExpression
- * <em>Border Size Computation Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#getBorderSizeComputationExpression <em>Border Size
+ * Computation Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#getBorderColor <em>Border Color</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#getBorderLineStyle <em>Border Line Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#isHideLabelByDefault <em>Hide Label By Default</em>}
@@ -51,7 +51,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
@@ -61,7 +61,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
     /**
      * The default value of the '{@link #getBorderSize() <em>Border Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBorderSize()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
     /**
      * The cached value of the '{@link #getBorderSize() <em>Border Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBorderSize()
      * @generated
      * @ordered
@@ -79,9 +79,9 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
     protected Integer borderSize = ContainerStyleImpl.BORDER_SIZE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getBorderSizeComputationExpression()
-     * <em>Border Size Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The default value of the '{@link #getBorderSizeComputationExpression() <em>Border Size Computation
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -89,9 +89,9 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
     protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getBorderSizeComputationExpression() <em>Border Size Computation Expression</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getBorderSizeComputationExpression() <em>Border Size Computation
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -101,7 +101,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
     /**
      * The default value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderColor()
      * @generated
      * @ordered
@@ -111,7 +111,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBorderColor()
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
     /**
      * The cached value of the '{@link #getBorderLineStyle() <em>Border Line Style</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -160,7 +160,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerStyleImpl() {
@@ -169,7 +169,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public StyleDescription basicGetDescription() {
@@ -207,7 +207,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,7 +221,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -231,7 +231,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -245,7 +245,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -280,7 +280,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -294,7 +294,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -304,7 +304,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -318,7 +318,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -328,7 +328,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -342,7 +342,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -354,7 +354,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -381,7 +381,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -411,7 +411,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -441,7 +441,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -466,7 +466,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -512,7 +512,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -558,7 +558,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -24,8 +24,8 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.AdditionalLayerImpl#isActiveByDefault
- * <em>Active By Default</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.AdditionalLayerImpl#isActiveByDefault <em>Active By
+ * Default</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.AdditionalLayerImpl#isOptional <em>Optional</em>}</li>
  * </ul>
  *
@@ -35,7 +35,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
     /**
      * The default value of the '{@link #isActiveByDefault() <em>Active By Default</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isActiveByDefault()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
     /**
      * The cached value of the '{@link #isActiveByDefault() <em>Active By Default</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isActiveByDefault()
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
     /**
      * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isOptional()
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
     /**
      * The cached value of the '{@link #isOptional() <em>Optional</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isOptional()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AdditionalLayerImpl() {
@@ -83,7 +83,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

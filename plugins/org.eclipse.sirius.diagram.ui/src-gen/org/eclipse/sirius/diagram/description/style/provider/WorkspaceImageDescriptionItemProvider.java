@@ -27,13 +27,13 @@ import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public WorkspaceImageDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -60,7 +60,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
 
     /**
      * This adds a property descriptor for the Arc Width feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addArcWidthPropertyDescriptor(Object object) {
@@ -73,7 +73,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
 
     /**
      * This adds a property descriptor for the Arc Height feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addArcHeightPropertyDescriptor(Object object) {
@@ -86,7 +86,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
 
     /**
      * This adds a property descriptor for the Rounded Corner feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRoundedCornerPropertyDescriptor(Object object) {
@@ -99,7 +99,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
 
     /**
      * This adds a property descriptor for the Workspace Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWorkspacePathPropertyDescriptor(Object object) {
@@ -112,7 +112,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
 
     /**
      * This returns WorkspaceImageDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

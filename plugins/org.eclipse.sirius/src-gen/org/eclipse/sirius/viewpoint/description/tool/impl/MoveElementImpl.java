@@ -23,10 +23,10 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.MoveElementImpl#getNewContainerExpression
- * <em>New Container Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.MoveElementImpl#getFeatureName <em>Feature Name</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.MoveElementImpl#getNewContainerExpression <em>New
+ * Container Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.MoveElementImpl#getFeatureName <em>Feature
+ * Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,7 +55,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
     /**
      * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
     /**
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MoveElementImpl() {
@@ -83,7 +83,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

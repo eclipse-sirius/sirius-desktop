@@ -23,13 +23,13 @@ import org.eclipse.sirius.diagram.description.concern.ConcernSet;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ConcernFactoryImpl extends EFactoryImpl implements ConcernFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static ConcernFactory init() {
@@ -46,7 +46,7 @@ public class ConcernFactoryImpl extends EFactoryImpl implements ConcernFactory {
 
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ConcernFactoryImpl() {
@@ -55,7 +55,7 @@ public class ConcernFactoryImpl extends EFactoryImpl implements ConcernFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class ConcernFactoryImpl extends EFactoryImpl implements ConcernFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class ConcernFactoryImpl extends EFactoryImpl implements ConcernFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class ConcernFactoryImpl extends EFactoryImpl implements ConcernFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class ConcernFactoryImpl extends EFactoryImpl implements ConcernFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

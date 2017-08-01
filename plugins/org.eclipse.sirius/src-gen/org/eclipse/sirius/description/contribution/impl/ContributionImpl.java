@@ -37,8 +37,8 @@ import org.eclipse.sirius.description.contribution.FeatureContribution;
  * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getTarget <em>Target</em>}</li>
  * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getFeatureMask <em>Feature Mask</em>}
  * </li>
- * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getSubContributions
- * <em>Sub Contributions</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getSubContributions <em>Sub
+ * Contributions</em>}</li>
  * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getDescription <em>Description</em>}
  * </li>
  * </ul>

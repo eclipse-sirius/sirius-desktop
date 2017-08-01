@@ -26,13 +26,13 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.CustomStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CustomStyleItemProvider extends NodeStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CustomStyleItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class CustomStyleItemProvider extends NodeStyleItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -56,7 +56,7 @@ public class CustomStyleItemProvider extends NodeStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Id feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIdPropertyDescriptor(Object object) {
@@ -68,7 +68,7 @@ public class CustomStyleItemProvider extends NodeStyleItemProvider {
 
     /**
      * This returns CustomStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -78,7 +78,7 @@ public class CustomStyleItemProvider extends NodeStyleItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class CustomStyleItemProvider extends NodeStyleItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

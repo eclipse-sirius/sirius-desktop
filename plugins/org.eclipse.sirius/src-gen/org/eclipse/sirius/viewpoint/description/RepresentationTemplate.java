@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.RepresentationTemplate#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.RepresentationTemplate#getOwnedRepresentations
- * <em>Owned Representations</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.RepresentationTemplate#getOwnedRepresentations <em>Owned
+ * Representations</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationTemplate()
@@ -38,7 +38,7 @@ public interface RepresentationTemplate extends EObject {
      * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationTemplate_Name()
@@ -50,7 +50,7 @@ public interface RepresentationTemplate extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.RepresentationTemplate#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -66,7 +66,7 @@ public interface RepresentationTemplate extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Representations</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationTemplate_OwnedRepresentations()
      * @model containment="true" resolveProxies="true"

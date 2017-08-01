@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionFactory
  * @model kind="package"
  * @generated
@@ -31,37 +31,37 @@ import org.eclipse.emf.ecore.EPackage;
 public interface DescriptionPackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "description"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "description"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     DescriptionPackage eINSTANCE = org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl.init();
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.impl.SequenceDiagramDescriptionImpl
-     * <em>Sequence Diagram Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.impl.SequenceDiagramDescriptionImpl <em>Sequence Diagram
+     * Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.SequenceDiagramDescriptionImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getSequenceDiagramDescription()
      * @generated
@@ -71,7 +71,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -79,7 +79,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -88,7 +88,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>End User Documentation</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -96,7 +96,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -104,7 +104,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -121,7 +121,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -129,7 +129,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -137,7 +137,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -146,7 +146,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -155,7 +155,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -164,7 +164,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Edge Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -173,7 +173,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -182,7 +182,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -191,7 +191,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Validation Set</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -200,7 +200,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Concerns</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -208,7 +208,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>All Tools</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -216,7 +216,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -225,7 +225,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -233,7 +233,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Default Concern</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -241,7 +241,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Root Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -249,7 +249,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Init</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -267,7 +267,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Diagram Initialisation</b></em>' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -276,7 +276,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Default Layer</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -285,7 +285,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Additional Layers</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -293,7 +293,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>All Layers</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -302,7 +302,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Activated Tools</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -311,7 +311,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' containment reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -320,7 +320,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Edge Mappings</b></em>' containment reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -329,7 +329,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Edge Mapping Imports</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -338,7 +338,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -347,7 +347,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -356,7 +356,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Tool Section</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -382,7 +382,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Ends Ordering</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -391,7 +391,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Instance Roles Ordering</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -400,7 +400,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Sequence Diagram Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -409,7 +409,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.InstanceRoleMappingImpl
      * <em>Instance Role Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.InstanceRoleMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getInstanceRoleMapping()
      * @generated
@@ -418,7 +418,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -426,7 +426,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -435,7 +435,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -444,7 +444,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -453,7 +453,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -462,7 +462,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -471,7 +471,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -489,7 +489,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -497,7 +497,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -515,7 +515,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -524,7 +524,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -532,7 +532,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -540,7 +540,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -549,7 +549,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -558,7 +558,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -567,7 +567,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -585,7 +585,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -594,7 +594,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Instance Role Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -603,7 +603,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.EventMappingImpl
      * <em>Event Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.EventMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getEventMapping()
      * @generated
@@ -613,7 +613,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Event Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -622,7 +622,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.DelimitedEventMappingImpl
      * <em>Delimited Event Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DelimitedEventMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getDelimitedEventMapping()
      * @generated
@@ -632,7 +632,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -641,7 +641,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -650,7 +650,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Delimited Event Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -659,7 +659,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.ExecutionMappingImpl
      * <em>Execution Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.ExecutionMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getExecutionMapping()
      * @generated
@@ -668,7 +668,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -676,7 +676,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -685,7 +685,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -694,7 +694,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -703,7 +703,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -712,7 +712,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -721,7 +721,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -739,7 +739,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -747,7 +747,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -765,7 +765,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -774,7 +774,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -782,7 +782,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -790,7 +790,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -799,7 +799,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -808,7 +808,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -817,7 +817,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -835,7 +835,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -844,7 +844,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -853,7 +853,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -862,7 +862,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Execution Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -871,7 +871,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl
      * <em>State Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getStateMapping()
      * @generated
@@ -880,7 +880,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -888,7 +888,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -897,7 +897,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -906,7 +906,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -915,7 +915,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -924,7 +924,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -933,7 +933,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -951,7 +951,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -959,7 +959,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -977,7 +977,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -986,7 +986,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -994,7 +994,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1002,7 +1002,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1011,7 +1011,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1020,7 +1020,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1029,7 +1029,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1047,7 +1047,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1056,7 +1056,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1065,7 +1065,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1074,7 +1074,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>State Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1083,7 +1083,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.EndOfLifeMappingImpl
      * <em>End Of Life Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.EndOfLifeMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getEndOfLifeMapping()
      * @generated
@@ -1092,7 +1092,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1100,7 +1100,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1109,7 +1109,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1118,7 +1118,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1127,7 +1127,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1136,7 +1136,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1145,7 +1145,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1163,7 +1163,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1171,7 +1171,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1189,7 +1189,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1198,7 +1198,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1206,7 +1206,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1214,7 +1214,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1223,7 +1223,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1232,7 +1232,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1241,7 +1241,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1259,7 +1259,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1268,7 +1268,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>End Of Life Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1277,7 +1277,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.MessageMappingImpl
      * <em>Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.MessageMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getMessageMapping()
      * @generated
@@ -1286,7 +1286,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1294,7 +1294,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1303,7 +1303,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1312,7 +1312,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1321,7 +1321,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1330,7 +1330,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1339,7 +1339,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1357,7 +1357,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1365,7 +1365,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1383,7 +1383,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1392,7 +1392,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1400,7 +1400,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1427,7 +1427,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1436,7 +1436,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1454,7 +1454,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1471,7 +1471,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1497,7 +1497,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1506,7 +1506,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Path Node Mapping</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1515,7 +1515,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1524,7 +1524,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1533,7 +1533,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Message Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1542,7 +1542,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.BasicMessageMappingImpl
      * <em>Basic Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.BasicMessageMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getBasicMessageMapping()
      * @generated
@@ -1551,7 +1551,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1559,7 +1559,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1568,7 +1568,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1577,7 +1577,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1586,7 +1586,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1595,7 +1595,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1604,7 +1604,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1622,7 +1622,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1630,7 +1630,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1648,7 +1648,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1657,7 +1657,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1665,7 +1665,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1692,7 +1692,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1701,7 +1701,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1719,7 +1719,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1736,7 +1736,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1762,7 +1762,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1771,7 +1771,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Path Node Mapping</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1780,7 +1780,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1789,7 +1789,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1798,7 +1798,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Basic Message Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1807,7 +1807,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.ReturnMessageMappingImpl
      * <em>Return Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.ReturnMessageMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getReturnMessageMapping()
      * @generated
@@ -1816,7 +1816,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1824,7 +1824,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1833,7 +1833,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1842,7 +1842,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1851,7 +1851,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1860,7 +1860,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1869,7 +1869,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1887,7 +1887,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1895,7 +1895,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1913,7 +1913,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1922,7 +1922,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1930,7 +1930,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1957,7 +1957,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1966,7 +1966,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1984,7 +1984,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2001,7 +2001,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2027,7 +2027,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2036,7 +2036,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Path Node Mapping</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2045,7 +2045,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2054,7 +2054,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2063,7 +2063,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Invocation Message Finder Expression</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2072,17 +2072,17 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Return Message Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int RETURN_MESSAGE_MAPPING_FEATURE_COUNT = DescriptionPackage.MESSAGE_MAPPING_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.impl.CreationMessageMappingImpl
-     * <em>Creation Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.impl.CreationMessageMappingImpl <em>Creation Message
+     * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.CreationMessageMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getCreationMessageMapping()
      * @generated
@@ -2091,7 +2091,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2099,7 +2099,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2108,7 +2108,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2117,7 +2117,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2126,7 +2126,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2135,7 +2135,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2144,7 +2144,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2162,7 +2162,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2170,7 +2170,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2188,7 +2188,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2197,7 +2197,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2205,7 +2205,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2232,7 +2232,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2241,7 +2241,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2259,7 +2259,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2276,7 +2276,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2302,7 +2302,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2311,7 +2311,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Path Node Mapping</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2320,7 +2320,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2329,7 +2329,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2338,17 +2338,17 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Creation Message Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int CREATION_MESSAGE_MAPPING_FEATURE_COUNT = DescriptionPackage.MESSAGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.impl.DestructionMessageMappingImpl
-     * <em>Destruction Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.impl.DestructionMessageMappingImpl <em>Destruction
+     * Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DestructionMessageMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getDestructionMessageMapping()
      * @generated
@@ -2357,7 +2357,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2365,7 +2365,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2374,7 +2374,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2383,7 +2383,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2392,7 +2392,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2401,7 +2401,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2410,7 +2410,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2428,7 +2428,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2436,7 +2436,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2454,7 +2454,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2463,7 +2463,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2471,7 +2471,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2498,7 +2498,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2507,7 +2507,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2525,7 +2525,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2542,7 +2542,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2568,7 +2568,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2577,7 +2577,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Path Node Mapping</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2586,7 +2586,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2595,7 +2595,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2604,7 +2604,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Destruction Message Mapping</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2613,7 +2613,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.MessageEndVariableImpl
      * <em>Message End Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.MessageEndVariableImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getMessageEndVariable()
      * @generated
@@ -2622,7 +2622,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2631,17 +2631,17 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Message End Variable</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int MESSAGE_END_VARIABLE_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.impl.CoveredLifelinesVariableImpl
-     * <em>Covered Lifelines Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.impl.CoveredLifelinesVariableImpl <em>Covered Lifelines
+     * Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.CoveredLifelinesVariableImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getCoveredLifelinesVariable()
      * @generated
@@ -2650,7 +2650,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2659,7 +2659,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Covered Lifelines Variable</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2668,7 +2668,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl
      * <em>Frame Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getFrameMapping()
      * @generated
@@ -2677,7 +2677,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2685,7 +2685,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2694,7 +2694,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2703,7 +2703,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2712,7 +2712,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2721,7 +2721,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2730,7 +2730,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2748,7 +2748,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2756,7 +2756,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2774,7 +2774,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2783,7 +2783,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2791,7 +2791,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2799,7 +2799,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2808,7 +2808,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2817,7 +2817,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2826,7 +2826,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2835,7 +2835,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sub Node Mappings</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2844,7 +2844,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2853,7 +2853,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2862,7 +2862,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sub Container Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2871,7 +2871,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2880,7 +2880,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2898,7 +2898,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2907,7 +2907,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Children Presentation</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2916,7 +2916,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2925,7 +2925,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2934,7 +2934,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Covered Lifelines Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2943,7 +2943,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Center Label Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2952,7 +2952,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Frame Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2961,7 +2961,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.InteractionUseMappingImpl
      * <em>Interaction Use Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.InteractionUseMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getInteractionUseMapping()
      * @generated
@@ -2970,7 +2970,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2978,7 +2978,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2987,7 +2987,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2996,7 +2996,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3005,7 +3005,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3014,7 +3014,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3023,7 +3023,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3041,7 +3041,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3049,7 +3049,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3067,7 +3067,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3076,7 +3076,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3084,7 +3084,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3092,7 +3092,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3101,7 +3101,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3110,7 +3110,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3119,7 +3119,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3128,7 +3128,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sub Node Mappings</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3137,7 +3137,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3146,7 +3146,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3155,7 +3155,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sub Container Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3164,7 +3164,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3173,7 +3173,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3191,7 +3191,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3200,7 +3200,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Children Presentation</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3209,7 +3209,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3218,7 +3218,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3227,7 +3227,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Covered Lifelines Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3236,7 +3236,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Center Label Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3245,17 +3245,17 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Interaction Use Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int INTERACTION_USE_MAPPING_FEATURE_COUNT = DescriptionPackage.FRAME_MAPPING_FEATURE_COUNT + 0;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.impl.CombinedFragmentMappingImpl
-     * <em>Combined Fragment Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.impl.CombinedFragmentMappingImpl <em>Combined Fragment
+     * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.CombinedFragmentMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getCombinedFragmentMapping()
      * @generated
@@ -3264,7 +3264,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3272,7 +3272,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3281,7 +3281,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3290,7 +3290,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3299,7 +3299,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3308,7 +3308,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3317,7 +3317,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3335,7 +3335,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3343,7 +3343,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3361,7 +3361,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3370,7 +3370,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3378,7 +3378,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3386,7 +3386,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3395,7 +3395,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3404,7 +3404,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3413,7 +3413,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3422,7 +3422,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sub Node Mappings</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3431,7 +3431,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3440,7 +3440,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3449,7 +3449,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sub Container Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3458,7 +3458,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3467,7 +3467,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3485,7 +3485,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3494,7 +3494,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Children Presentation</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3503,7 +3503,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3512,7 +3512,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3521,7 +3521,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Covered Lifelines Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3530,7 +3530,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Center Label Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3539,7 +3539,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Combined Fragment Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3548,7 +3548,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.OperandMappingImpl
      * <em>Operand Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.OperandMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getOperandMapping()
      * @generated
@@ -3557,7 +3557,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3565,7 +3565,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3574,7 +3574,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3583,7 +3583,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3592,7 +3592,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3601,7 +3601,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3610,7 +3610,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3628,7 +3628,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3636,7 +3636,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3654,7 +3654,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3663,7 +3663,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3671,7 +3671,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3679,7 +3679,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3688,7 +3688,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3697,7 +3697,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3706,7 +3706,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3715,7 +3715,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sub Node Mappings</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3724,7 +3724,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3733,7 +3733,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3742,7 +3742,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sub Container Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3751,7 +3751,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3760,7 +3760,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3778,7 +3778,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3787,7 +3787,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Children Presentation</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3796,7 +3796,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3805,7 +3805,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3814,17 +3814,17 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Operand Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int OPERAND_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 2;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.impl.ObservationPointMappingImpl
-     * <em>Observation Point Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.impl.ObservationPointMappingImpl <em>Observation Point
+     * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.sirius.diagram.sequence.description.impl.ObservationPointMappingImpl
      * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getObservationPointMapping()
      * @generated
@@ -3833,7 +3833,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3841,7 +3841,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3850,7 +3850,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3859,7 +3859,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3868,7 +3868,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3877,7 +3877,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3886,7 +3886,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3904,7 +3904,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3912,7 +3912,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3930,7 +3930,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3939,7 +3939,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3947,7 +3947,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3955,7 +3955,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3964,7 +3964,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3973,7 +3973,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3982,7 +3982,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4000,7 +4000,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4009,17 +4009,17 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Observation Point Mapping</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int OBSERVATION_POINT_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription
-     * <em>Sequence Diagram Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription <em>Sequence Diagram
+     * Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Sequence Diagram Description</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription
      * @generated
@@ -4027,10 +4027,10 @@ public interface DescriptionPackage extends EPackage {
     EClass getSequenceDiagramDescription();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getEndsOrdering
-     * <em>Ends Ordering</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getEndsOrdering <em>Ends
+     * Ordering</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Ends Ordering</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getEndsOrdering()
      * @see #getSequenceDiagramDescription()
@@ -4039,10 +4039,10 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getSequenceDiagramDescription_EndsOrdering();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getInstanceRolesOrdering
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getInstanceRolesOrdering
      * <em>Instance Roles Ordering</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Instance Roles Ordering</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getInstanceRolesOrdering()
      * @see #getSequenceDiagramDescription()
@@ -4053,7 +4053,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping
      * <em>Instance Role Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Instance Role Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping
      * @generated
@@ -4061,9 +4061,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getInstanceRoleMapping();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.EventMapping
-     * <em>Event Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.EventMapping <em>Event
+     * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Event Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.EventMapping
      * @generated
@@ -4073,7 +4073,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping
      * <em>Delimited Event Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Delimited Event Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping
      * @generated
@@ -4081,10 +4081,10 @@ public interface DescriptionPackage extends EPackage {
     EClass getDelimitedEventMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getStartingEndFinderExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getStartingEndFinderExpression
      * <em>Starting End Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Starting End Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getStartingEndFinderExpression()
      * @see #getDelimitedEventMapping()
@@ -4093,10 +4093,10 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getDelimitedEventMapping_StartingEndFinderExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getFinishingEndFinderExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getFinishingEndFinderExpression
      * <em>Finishing End Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Finishing End Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getFinishingEndFinderExpression()
      * @see #getDelimitedEventMapping()
@@ -4107,7 +4107,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.ExecutionMapping
      * <em>Execution Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Execution Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.ExecutionMapping
      * @generated
@@ -4115,9 +4115,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getExecutionMapping();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.StateMapping
-     * <em>State Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.StateMapping <em>State
+     * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>State Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.StateMapping
      * @generated
@@ -4127,7 +4127,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping
      * <em>End Of Life Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>End Of Life Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping
      * @generated
@@ -4137,7 +4137,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.MessageMapping
      * <em>Message Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Message Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.MessageMapping
      * @generated
@@ -4145,10 +4145,10 @@ public interface DescriptionPackage extends EPackage {
     EClass getMessageMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.description.MessageMapping#getSendingEndFinderExpression
-     * <em>Sending End Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.description.MessageMapping#getSendingEndFinderExpression <em>Sending
+     * End Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Sending End Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.MessageMapping#getSendingEndFinderExpression()
      * @see #getMessageMapping()
@@ -4157,10 +4157,10 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getMessageMapping_SendingEndFinderExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.description.MessageMapping#getReceivingEndFinderExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.description.MessageMapping#getReceivingEndFinderExpression
      * <em>Receiving End Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Receiving End Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.MessageMapping#getReceivingEndFinderExpression()
      * @see #getMessageMapping()
@@ -4171,7 +4171,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.BasicMessageMapping
      * <em>Basic Message Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Basic Message Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.BasicMessageMapping
      * @generated
@@ -4181,7 +4181,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping
      * <em>Return Message Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Return Message Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping
      * @generated
@@ -4189,10 +4189,10 @@ public interface DescriptionPackage extends EPackage {
     EClass getReturnMessageMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping#getInvocationMessageFinderExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping#getInvocationMessageFinderExpression
      * <em>Invocation Message Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Invocation Message Finder Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping#getInvocationMessageFinderExpression()
      * @see #getReturnMessageMapping()
@@ -4203,7 +4203,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.CreationMessageMapping
      * <em>Creation Message Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Creation Message Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.CreationMessageMapping
      * @generated
@@ -4211,10 +4211,10 @@ public interface DescriptionPackage extends EPackage {
     EClass getCreationMessageMapping();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping
-     * <em>Destruction Message Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping <em>Destruction Message
+     * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Destruction Message Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping
      * @generated
@@ -4224,7 +4224,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.MessageEndVariable
      * <em>Message End Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Message End Variable</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.MessageEndVariable
      * @generated
@@ -4232,10 +4232,10 @@ public interface DescriptionPackage extends EPackage {
     EClass getMessageEndVariable();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable
-     * <em>Covered Lifelines Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable <em>Covered Lifelines
+     * Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Covered Lifelines Variable</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable
      * @generated
@@ -4243,9 +4243,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getCoveredLifelinesVariable();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.FrameMapping
-     * <em>Frame Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.FrameMapping <em>Frame
+     * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Frame Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.FrameMapping
      * @generated
@@ -4253,10 +4253,10 @@ public interface DescriptionPackage extends EPackage {
     EClass getFrameMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCoveredLifelinesExpression
-     * <em>Covered Lifelines Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCoveredLifelinesExpression <em>Covered
+     * Lifelines Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Covered Lifelines Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCoveredLifelinesExpression()
      * @see #getFrameMapping()
@@ -4265,10 +4265,10 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getFrameMapping_CoveredLifelinesExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCenterLabelExpression
-     * <em>Center Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCenterLabelExpression <em>Center Label
+     * Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Center Label Expression</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCenterLabelExpression()
      * @see #getFrameMapping()
@@ -4279,7 +4279,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping
      * <em>Interaction Use Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Interaction Use Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping
      * @generated
@@ -4289,7 +4289,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.CombinedFragmentMapping
      * <em>Combined Fragment Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Combined Fragment Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.CombinedFragmentMapping
      * @generated
@@ -4299,7 +4299,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.OperandMapping
      * <em>Operand Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Operand Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.OperandMapping
      * @generated
@@ -4309,7 +4309,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.sequence.description.ObservationPointMapping
      * <em>Observation Point Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Observation Point Mapping</em>'.
      * @see org.eclipse.sirius.diagram.sequence.description.ObservationPointMapping
      * @generated
@@ -4318,7 +4318,7 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -4333,15 +4333,15 @@ public interface DescriptionPackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.SequenceDiagramDescriptionImpl
-         * <em>Sequence Diagram Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.SequenceDiagramDescriptionImpl <em>Sequence
+         * Diagram Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.SequenceDiagramDescriptionImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getSequenceDiagramDescription()
          * @generated
@@ -4351,7 +4351,7 @@ public interface DescriptionPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Ends Ordering</b></em>' attribute feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING = DescriptionPackage.eINSTANCE.getSequenceDiagramDescription_EndsOrdering();
@@ -4365,10 +4365,10 @@ public interface DescriptionPackage extends EPackage {
         EAttribute SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING = DescriptionPackage.eINSTANCE.getSequenceDiagramDescription_InstanceRolesOrdering();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.InstanceRoleMappingImpl
-         * <em>Instance Role Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.InstanceRoleMappingImpl <em>Instance Role
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.InstanceRoleMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getInstanceRoleMapping()
          * @generated
@@ -4378,7 +4378,7 @@ public interface DescriptionPackage extends EPackage {
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.EventMappingImpl
          * <em>Event Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.EventMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getEventMapping()
          * @generated
@@ -4386,10 +4386,10 @@ public interface DescriptionPackage extends EPackage {
         EClass EVENT_MAPPING = DescriptionPackage.eINSTANCE.getEventMapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.DelimitedEventMappingImpl
-         * <em>Delimited Event Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.DelimitedEventMappingImpl <em>Delimited Event
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DelimitedEventMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getDelimitedEventMapping()
          * @generated
@@ -4413,10 +4413,10 @@ public interface DescriptionPackage extends EPackage {
         EAttribute DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getDelimitedEventMapping_FinishingEndFinderExpression();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.ExecutionMappingImpl <em>Execution Mapping</em>}'
-         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.ExecutionMappingImpl <em>Execution
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.ExecutionMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getExecutionMapping()
          * @generated
@@ -4426,7 +4426,7 @@ public interface DescriptionPackage extends EPackage {
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl
          * <em>State Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getStateMapping()
          * @generated
@@ -4434,10 +4434,10 @@ public interface DescriptionPackage extends EPackage {
         EClass STATE_MAPPING = DescriptionPackage.eINSTANCE.getStateMapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.EndOfLifeMappingImpl <em>End Of Life Mapping</em>
-         * }' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.EndOfLifeMappingImpl <em>End Of Life
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.EndOfLifeMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getEndOfLifeMapping()
          * @generated
@@ -4445,10 +4445,10 @@ public interface DescriptionPackage extends EPackage {
         EClass END_OF_LIFE_MAPPING = DescriptionPackage.eINSTANCE.getEndOfLifeMapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.MessageMappingImpl <em>Message Mapping</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.MessageMappingImpl <em>Message Mapping</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.MessageMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getMessageMapping()
          * @generated
@@ -4472,10 +4472,10 @@ public interface DescriptionPackage extends EPackage {
         EAttribute MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getMessageMapping_ReceivingEndFinderExpression();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.BasicMessageMappingImpl
-         * <em>Basic Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.BasicMessageMappingImpl <em>Basic Message
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.BasicMessageMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getBasicMessageMapping()
          * @generated
@@ -4483,10 +4483,10 @@ public interface DescriptionPackage extends EPackage {
         EClass BASIC_MESSAGE_MAPPING = DescriptionPackage.eINSTANCE.getBasicMessageMapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.ReturnMessageMappingImpl
-         * <em>Return Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.ReturnMessageMappingImpl <em>Return Message
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.ReturnMessageMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getReturnMessageMapping()
          * @generated
@@ -4496,16 +4496,16 @@ public interface DescriptionPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Invocation Message Finder Expression</b></em>' attribute feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION = DescriptionPackage.eINSTANCE.getReturnMessageMapping_InvocationMessageFinderExpression();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.CreationMessageMappingImpl
-         * <em>Creation Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.CreationMessageMappingImpl <em>Creation Message
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.CreationMessageMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getCreationMessageMapping()
          * @generated
@@ -4513,10 +4513,10 @@ public interface DescriptionPackage extends EPackage {
         EClass CREATION_MESSAGE_MAPPING = DescriptionPackage.eINSTANCE.getCreationMessageMapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.DestructionMessageMappingImpl
-         * <em>Destruction Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.DestructionMessageMappingImpl <em>Destruction
+         * Message Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DestructionMessageMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getDestructionMessageMapping()
          * @generated
@@ -4524,10 +4524,10 @@ public interface DescriptionPackage extends EPackage {
         EClass DESTRUCTION_MESSAGE_MAPPING = DescriptionPackage.eINSTANCE.getDestructionMessageMapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.MessageEndVariableImpl
-         * <em>Message End Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.MessageEndVariableImpl <em>Message End
+         * Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.MessageEndVariableImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getMessageEndVariable()
          * @generated
@@ -4535,10 +4535,10 @@ public interface DescriptionPackage extends EPackage {
         EClass MESSAGE_END_VARIABLE = DescriptionPackage.eINSTANCE.getMessageEndVariable();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.CoveredLifelinesVariableImpl
-         * <em>Covered Lifelines Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.CoveredLifelinesVariableImpl <em>Covered
+         * Lifelines Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.CoveredLifelinesVariableImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getCoveredLifelinesVariable()
          * @generated
@@ -4548,7 +4548,7 @@ public interface DescriptionPackage extends EPackage {
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl
          * <em>Frame Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getFrameMapping()
          * @generated
@@ -4572,10 +4572,10 @@ public interface DescriptionPackage extends EPackage {
         EAttribute FRAME_MAPPING__CENTER_LABEL_EXPRESSION = DescriptionPackage.eINSTANCE.getFrameMapping_CenterLabelExpression();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.InteractionUseMappingImpl
-         * <em>Interaction Use Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.InteractionUseMappingImpl <em>Interaction Use
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.InteractionUseMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getInteractionUseMapping()
          * @generated
@@ -4583,10 +4583,10 @@ public interface DescriptionPackage extends EPackage {
         EClass INTERACTION_USE_MAPPING = DescriptionPackage.eINSTANCE.getInteractionUseMapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.CombinedFragmentMappingImpl
-         * <em>Combined Fragment Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.CombinedFragmentMappingImpl <em>Combined
+         * Fragment Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.CombinedFragmentMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getCombinedFragmentMapping()
          * @generated
@@ -4594,10 +4594,10 @@ public interface DescriptionPackage extends EPackage {
         EClass COMBINED_FRAGMENT_MAPPING = DescriptionPackage.eINSTANCE.getCombinedFragmentMapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.OperandMappingImpl <em>Operand Mapping</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.OperandMappingImpl <em>Operand Mapping</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.OperandMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getOperandMapping()
          * @generated
@@ -4605,10 +4605,10 @@ public interface DescriptionPackage extends EPackage {
         EClass OPERAND_MAPPING = DescriptionPackage.eINSTANCE.getOperandMapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.sequence.description.impl.ObservationPointMappingImpl
-         * <em>Observation Point Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.sequence.description.impl.ObservationPointMappingImpl <em>Observation
+         * Point Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.eclipse.sirius.diagram.sequence.description.impl.ObservationPointMappingImpl
          * @see org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl#getObservationPointMapping()
          * @generated

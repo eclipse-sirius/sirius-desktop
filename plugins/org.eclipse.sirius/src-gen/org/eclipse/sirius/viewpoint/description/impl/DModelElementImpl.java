@@ -57,7 +57,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DModelElementImpl() {
@@ -66,7 +66,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -144,7 +144,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

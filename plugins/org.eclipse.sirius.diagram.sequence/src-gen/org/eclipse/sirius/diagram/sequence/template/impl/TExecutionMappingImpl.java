@@ -36,10 +36,10 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em>Starting End Finder Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl#getFinishingEndFinderExpression
  * <em>Finishing End Finder Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl#isRecursive <em>Recursive</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl#getExecutionMappings
- * <em>Execution Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl#isRecursive
+ * <em>Recursive</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl#getExecutionMappings <em>Execution
+ * Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl#getStyle <em>Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionMappingImpl#getConditionalStyles
  * <em>Conditional Styles</em>}</li>
@@ -51,7 +51,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     /**
      * The default value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -61,7 +61,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     /**
      * The cached value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     /**
      * The default value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     /**
      * The cached value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     /**
      * The default value of the '{@link #isRecursive() <em>Recursive</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isRecursive()
      * @generated
      * @ordered
@@ -101,7 +101,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     /**
      * The cached value of the '{@link #isRecursive() <em>Recursive</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isRecursive()
      * @generated
      * @ordered
@@ -111,7 +111,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     /**
      * The cached value of the '{@link #getExecutionMappings() <em>Execution Mappings</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getExecutionMappings()
      * @generated
      * @ordered
@@ -121,7 +121,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -140,7 +140,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TExecutionMappingImpl() {
@@ -149,7 +149,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -231,7 +231,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -244,7 +244,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -254,7 +254,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(TExecutionStyle newStyle, NotificationChain msgs) {
@@ -273,7 +273,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -297,7 +297,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -310,7 +310,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -328,7 +328,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -352,7 +352,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -385,7 +385,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -415,7 +415,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -441,7 +441,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

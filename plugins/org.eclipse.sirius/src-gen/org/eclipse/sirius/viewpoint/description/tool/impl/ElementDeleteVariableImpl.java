@@ -32,8 +32,8 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.ElementDeleteVariableImpl#getSubVariables
- * <em>Sub Variables</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.ElementDeleteVariableImpl#getSubVariables <em>Sub
+ * Variables</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,7 +51,7 @@ public class ElementDeleteVariableImpl extends AbstractVariableImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ElementDeleteVariableImpl() {
@@ -60,7 +60,7 @@ public class ElementDeleteVariableImpl extends AbstractVariableImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public class ElementDeleteVariableImpl extends AbstractVariableImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class ElementDeleteVariableImpl extends AbstractVariableImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class ElementDeleteVariableImpl extends AbstractVariableImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class ElementDeleteVariableImpl extends AbstractVariableImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -128,7 +128,7 @@ public class ElementDeleteVariableImpl extends AbstractVariableImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class ElementDeleteVariableImpl extends AbstractVariableImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class ElementDeleteVariableImpl extends AbstractVariableImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class ElementDeleteVariableImpl extends AbstractVariableImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

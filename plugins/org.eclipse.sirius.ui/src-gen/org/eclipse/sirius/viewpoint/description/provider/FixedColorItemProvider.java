@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
 public class FixedColorItemProvider extends ColorDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FixedColorItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class FixedColorItemProvider extends ColorDescriptionItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class FixedColorItemProvider extends ColorDescriptionItemProvider {
 
     /**
      * This adds a property descriptor for the Red feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRedPropertyDescriptor(Object object) {
@@ -70,7 +70,7 @@ public class FixedColorItemProvider extends ColorDescriptionItemProvider {
 
     /**
      * This adds a property descriptor for the Green feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addGreenPropertyDescriptor(Object object) {
@@ -82,7 +82,7 @@ public class FixedColorItemProvider extends ColorDescriptionItemProvider {
 
     /**
      * This adds a property descriptor for the Blue feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBluePropertyDescriptor(Object object) {
@@ -94,7 +94,7 @@ public class FixedColorItemProvider extends ColorDescriptionItemProvider {
 
     /**
      * This returns FixedColor.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class FixedColorItemProvider extends ColorDescriptionItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class FixedColorItemProvider extends ColorDescriptionItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

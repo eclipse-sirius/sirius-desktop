@@ -46,7 +46,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNode_Width()
@@ -73,7 +73,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNode_Height()
@@ -108,7 +108,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DNode#getOwnedStyle <em>Owned Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Style</em>' containment reference.
      * @see #getOwnedStyle()
@@ -134,7 +134,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DNode#getLabelPosition <em>Label Position</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.diagram.LabelPosition
@@ -160,7 +160,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DNode#getResizeKind <em>Resize Kind</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Resize Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.ResizeKind
@@ -185,7 +185,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DNode#getOriginalStyle <em>Original Style</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Original Style</em>' reference.
      * @see #getOriginalStyle()
@@ -208,7 +208,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DNode#getActualMapping <em>Actual Mapping</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Actual Mapping</em>' reference.
      * @see #getActualMapping()

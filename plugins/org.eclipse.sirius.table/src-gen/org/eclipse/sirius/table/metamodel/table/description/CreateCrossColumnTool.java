@@ -34,7 +34,7 @@ public interface CreateCrossColumnTool extends CreateTool {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mapping</em>' reference.
      * @see #setMapping(ElementColumnMapping)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCreateCrossColumnTool_Mapping()
@@ -47,7 +47,7 @@ public interface CreateCrossColumnTool extends CreateTool {
      * Sets the value of the
      * '{@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool#getMapping <em>Mapping</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mapping</em>' reference.
      * @see #getMapping()

@@ -49,7 +49,7 @@ public interface NodeStyle extends LabelStyle, Style, BorderedStyle, HideLabelCa
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.NodeStyle#getLabelPosition <em>Label Position</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.diagram.LabelPosition

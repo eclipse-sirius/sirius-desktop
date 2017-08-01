@@ -51,7 +51,7 @@ public class AdditionalLayerItemProvider extends LayerItemProvider implements II
 
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AdditionalLayerItemProvider(AdapterFactory adapterFactory) {
@@ -60,7 +60,7 @@ public class AdditionalLayerItemProvider extends LayerItemProvider implements II
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public class AdditionalLayerItemProvider extends LayerItemProvider implements II
 
     /**
      * This adds a property descriptor for the Active By Default feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActiveByDefaultPropertyDescriptor(Object object) {
@@ -89,7 +89,7 @@ public class AdditionalLayerItemProvider extends LayerItemProvider implements II
 
     /**
      * This adds a property descriptor for the Optional feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOptionalPropertyDescriptor(Object object) {
@@ -134,7 +134,7 @@ public class AdditionalLayerItemProvider extends LayerItemProvider implements II
     public Object getStyledText(Object object) {
         StyledString styledString = new StyledString(getText(object));
         if (LayerHelper.isTransientLayer((Layer) object)) {
-            styledString.append(MessageFormat.format(" ({0})", getString("AdditionalLayerItemProvider_transientLayer")), TRANSIENT_LAYER_STYLE); //$NON-NLS-1$ //$NON-NLS-2$
+            styledString.append(MessageFormat.format(" ({0})", getString("AdditionalLayerItemProvider_transientLayer")), AdditionalLayerItemProvider.TRANSIENT_LAYER_STYLE); //$NON-NLS-1$ //$NON-NLS-2$
         }
         return styledString;
 
@@ -163,7 +163,7 @@ public class AdditionalLayerItemProvider extends LayerItemProvider implements II
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

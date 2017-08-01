@@ -39,22 +39,22 @@ import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getPasteDescriptions
- * <em>Paste Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getPasteDescriptions <em>Paste
+ * Descriptions</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getPreconditionExpression
  * <em>Precondition Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getDeletionDescription
- * <em>Deletion Description</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getLabelDirectEdit
- * <em>Label Direct Edit</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getDeletionDescription <em>Deletion
+ * Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getLabelDirectEdit <em>Label Direct
+ * Edit</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getSemanticCandidatesExpression
  * <em>Semantic Candidates Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#isCreateElements
- * <em>Create Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getSemanticElements
- * <em>Semantic Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getDoubleClickDescription
- * <em>Double Click Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#isCreateElements <em>Create
+ * Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getSemanticElements <em>Semantic
+ * Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#getDoubleClickDescription <em>Double
+ * Click Description</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramElementMappingImpl#isSynchronizationLock
  * <em>Synchronization Lock</em>}</li>
  * </ul>
@@ -105,7 +105,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
     /**
      * The cached value of the '{@link #getLabelDirectEdit() <em>Label Direct Edit</em>}' reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelDirectEdit()
      * @generated
      * @ordered
@@ -115,7 +115,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
     /**
      * The default value of the '{@link #getSemanticCandidatesExpression() <em>Semantic Candidates Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
     /**
      * The cached value of the '{@link #getSemanticCandidatesExpression() <em>Semantic Candidates Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -135,7 +135,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
     /**
      * The default value of the '{@link #isCreateElements() <em>Create Elements</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isCreateElements()
      * @generated
      * @ordered
@@ -145,7 +145,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
     /**
      * The cached value of the '{@link #isCreateElements() <em>Create Elements</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isCreateElements()
      * @generated
      * @ordered
@@ -204,7 +204,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DiagramElementMappingImpl() {
@@ -213,7 +213,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +223,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -260,7 +260,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DeleteElementDescription basicGetDeletionDescription() {
@@ -288,7 +288,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -302,7 +302,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -321,7 +321,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DirectEditLabel basicGetLabelDirectEdit() {
@@ -330,7 +330,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -344,7 +344,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -354,7 +354,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -369,7 +369,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -379,7 +379,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -393,7 +393,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -403,7 +403,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -417,7 +417,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -436,7 +436,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DoubleClickDescription basicGetDoubleClickDescription() {
@@ -445,7 +445,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDoubleClickDescription(DoubleClickDescription newDoubleClickDescription, NotificationChain msgs) {
@@ -465,7 +465,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -489,7 +489,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -499,7 +499,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -513,7 +513,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -525,7 +525,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -537,7 +537,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -549,7 +549,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -566,7 +566,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -580,7 +580,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -619,7 +619,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -660,7 +660,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -699,7 +699,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -731,7 +731,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -749,7 +749,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -767,7 +767,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

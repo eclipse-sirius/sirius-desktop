@@ -37,7 +37,7 @@ public interface Decoration extends EObject {
     /**
      * Returns the value of the '<em><b>Description</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The referenced DecorationDescription. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(DecorationDescription)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDecoration_Description()
@@ -49,7 +49,7 @@ public interface Decoration extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.Decoration#getDescription <em>Description</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

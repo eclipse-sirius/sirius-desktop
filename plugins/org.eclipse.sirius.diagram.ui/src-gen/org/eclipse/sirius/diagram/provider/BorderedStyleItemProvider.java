@@ -29,13 +29,13 @@ import org.eclipse.sirius.viewpoint.provider.StyleItemProvider;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.BorderedStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class BorderedStyleItemProvider extends StyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BorderedStyleItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +44,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -61,7 +61,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
 
     /**
      * This adds a property descriptor for the Border Size feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderSizePropertyDescriptor(Object object) {
@@ -74,7 +74,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
 
     /**
      * This adds a property descriptor for the Border Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
@@ -87,7 +87,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
 
     /**
      * This adds a property descriptor for the Border Line Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderLineStylePropertyDescriptor(Object object) {
@@ -100,7 +100,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
 
     /**
      * This returns BorderedStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

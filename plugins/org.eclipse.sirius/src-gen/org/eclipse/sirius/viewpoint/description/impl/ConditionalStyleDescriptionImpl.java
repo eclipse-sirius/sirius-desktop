@@ -55,7 +55,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConditionalStyleDescriptionImpl() {
@@ -64,7 +64,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

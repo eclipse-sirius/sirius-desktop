@@ -30,8 +30,8 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernSetImpl#getOwnedConcernDescriptions
- * <em>Owned Concern Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernSetImpl#getOwnedConcernDescriptions <em>Owned
+ * Concern Descriptions</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,7 +40,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
     /**
      * The cached value of the '{@link #getOwnedConcernDescriptions() <em>Owned Concern Descriptions</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedConcernDescriptions()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConcernSetImpl() {
@@ -58,7 +58,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -126,7 +126,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

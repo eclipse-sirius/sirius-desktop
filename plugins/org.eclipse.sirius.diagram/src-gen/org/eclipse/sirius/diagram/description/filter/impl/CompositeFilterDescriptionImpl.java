@@ -40,7 +40,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
     /**
      * The cached value of the '{@link #getFilters() <em>Filters</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilters()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CompositeFilterDescriptionImpl() {
@@ -58,7 +58,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -126,7 +126,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -26,13 +26,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CreateInstanceItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CreateInstanceItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
 
     /**
      * This adds a property descriptor for the Type Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTypeNamePropertyDescriptor(Object object) {
@@ -71,7 +71,7 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
 
     /**
      * This adds a property descriptor for the Reference Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReferenceNamePropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
 
     /**
      * This adds a property descriptor for the Variable Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addVariableNamePropertyDescriptor(Object object) {
@@ -97,7 +97,7 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
 
     /**
      * This returns CreateInstance.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

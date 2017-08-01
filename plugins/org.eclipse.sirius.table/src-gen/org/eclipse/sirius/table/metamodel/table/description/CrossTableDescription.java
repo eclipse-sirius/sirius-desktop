@@ -58,7 +58,7 @@ public interface CrossTableDescription extends TableDescription {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Intersection</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCrossTableDescription_Intersection()
      * @model containment="true"
@@ -74,7 +74,7 @@ public interface CrossTableDescription extends TableDescription {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Create Column</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCrossTableDescription_CreateColumn()
      * @model containment="true"

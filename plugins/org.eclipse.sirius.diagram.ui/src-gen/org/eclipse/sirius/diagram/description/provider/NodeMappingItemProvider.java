@@ -44,7 +44,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NodeMappingItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +53,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Drop Descriptions feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String getTextGen(Object object) {
@@ -218,7 +218,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {

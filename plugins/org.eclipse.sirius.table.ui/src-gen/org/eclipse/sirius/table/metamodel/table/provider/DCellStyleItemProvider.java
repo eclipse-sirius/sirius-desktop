@@ -29,7 +29,7 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
 public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DCellStyleItemProvider(AdapterFactory adapterFactory) {
@@ -38,7 +38,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -55,7 +55,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
     /**
      * This adds a property descriptor for the Foreground Style Origin feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addForegroundStyleOriginPropertyDescriptor(Object object) {
@@ -68,7 +68,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
     /**
      * This adds a property descriptor for the Background Style Origin feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundStyleOriginPropertyDescriptor(Object object) {
@@ -80,7 +80,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
 
     /**
      * This returns DCellStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +90,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -23,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 public class CombinedFragmentMappingImpl extends FrameMappingImpl implements CombinedFragmentMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CombinedFragmentMappingImpl() {
@@ -32,7 +32,7 @@ public class CombinedFragmentMappingImpl extends FrameMappingImpl implements Com
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

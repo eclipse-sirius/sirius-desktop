@@ -22,13 +22,13 @@ import org.eclipse.emf.ecore.EPackage;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#getTitleExpression
- * <em>Title Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#getTitleExpression <em>Title
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#isInitialisation
  * <em>Initialisation</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#getMetamodel <em>Metamodel</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#isShowOnStartup
- * <em>Show On Startup</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#isShowOnStartup <em>Show On
+ * Startup</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationDescription()
@@ -51,10 +51,10 @@ public interface RepresentationDescription extends DocumentedElement, EndUserDoc
     String getTitleExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#getTitleExpression
-     * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#getTitleExpression <em>Title
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Title Expression</em>' attribute.
      * @see #getTitleExpression()
@@ -78,7 +78,7 @@ public interface RepresentationDescription extends DocumentedElement, EndUserDoc
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#isInitialisation
      * <em>Initialisation</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initialisation</em>' attribute.
      * @see #isInitialisation()

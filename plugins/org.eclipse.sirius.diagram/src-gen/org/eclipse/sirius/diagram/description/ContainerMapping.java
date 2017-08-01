@@ -32,19 +32,19 @@ import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
  * </li>
  * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getAllNodeMappings <em>All Node Mappings</em>}
  * </li>
- * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getReusedNodeMappings
- * <em>Reused Node Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getSubContainerMappings
- * <em>Sub Container Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getReusedContainerMappings
- * <em>Reused Container Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getAllContainerMappings
- * <em>All Container Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getReusedNodeMappings <em>Reused Node
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getSubContainerMappings <em>Sub Container
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getReusedContainerMappings <em>Reused Container
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getAllContainerMappings <em>All Container
+ * Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getStyle <em>Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getConditionnalStyles <em>Conditionnal Styles</em>
  * }</li>
- * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getChildrenPresentation
- * <em>Children Presentation</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.ContainerMapping#getChildrenPresentation <em>Children
+ * Presentation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping()
@@ -60,7 +60,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sub Node Mappings</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_SubNodeMappings()
      * @model containment="true" resolveProxies="true" keys="name"
@@ -76,7 +76,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Node Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_AllNodeMappings()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -92,7 +92,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Node Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_ReusedNodeMappings()
      * @model
@@ -108,7 +108,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sub Container Mappings</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_SubContainerMappings()
      * @model containment="true" resolveProxies="true" keys="name"
@@ -124,7 +124,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Container Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_ReusedContainerMappings()
      * @model
@@ -140,7 +140,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Container Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_AllContainerMappings()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -155,7 +155,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(ContainerStyleDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_Style()
@@ -167,7 +167,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.ContainerMapping#getStyle <em>Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -184,7 +184,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditionnal Styles</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_ConditionnalStyles()
      * @model containment="true" resolveProxies="true"
@@ -210,7 +210,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.ContainerMapping#getChildrenPresentation
      * <em>Children Presentation</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Children Presentation</em>' attribute.
      * @see org.eclipse.sirius.diagram.ContainerLayout
@@ -221,7 +221,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

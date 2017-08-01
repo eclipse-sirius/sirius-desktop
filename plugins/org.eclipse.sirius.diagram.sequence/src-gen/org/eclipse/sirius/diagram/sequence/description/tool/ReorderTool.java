@@ -32,8 +32,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em>Finishing End Predecessor Before</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getFinishingEndPredecessorAfter
  * <em>Finishing End Predecessor After</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getOnEventMovedOperation
- * <em>On Event Moved Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getOnEventMovedOperation <em>On Event
+ * Moved Operation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getReorderTool()
@@ -49,7 +49,7 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getReorderTool_Mappings()
      * @model
@@ -75,10 +75,10 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
     MessageEndVariable getStartingEndPredecessorBefore();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getStartingEndPredecessorBefore
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getStartingEndPredecessorBefore
      * <em>Starting End Predecessor Before</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Starting End Predecessor Before</em>' containment reference.
      * @see #getStartingEndPredecessorBefore()
@@ -104,10 +104,10 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
     MessageEndVariable getStartingEndPredecessorAfter();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getStartingEndPredecessorAfter
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getStartingEndPredecessorAfter
      * <em>Starting End Predecessor After</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Starting End Predecessor After</em>' containment reference.
      * @see #getStartingEndPredecessorAfter()
@@ -133,10 +133,10 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
     MessageEndVariable getFinishingEndPredecessorBefore();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getFinishingEndPredecessorBefore
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getFinishingEndPredecessorBefore
      * <em>Finishing End Predecessor Before</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Finishing End Predecessor Before</em>' containment reference.
      * @see #getFinishingEndPredecessorBefore()
@@ -162,10 +162,10 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
     MessageEndVariable getFinishingEndPredecessorAfter();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getFinishingEndPredecessorAfter
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getFinishingEndPredecessorAfter
      * <em>Finishing End Predecessor After</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Finishing End Predecessor After</em>' containment reference.
      * @see #getFinishingEndPredecessorAfter()
@@ -181,7 +181,7 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>On Event Moved Operation</em>' containment reference.
      * @see #setOnEventMovedOperation(InitialOperation)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getReorderTool_OnEventMovedOperation()
@@ -191,10 +191,10 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
     InitialOperation getOnEventMovedOperation();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getOnEventMovedOperation
-     * <em>On Event Moved Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getOnEventMovedOperation <em>On Event
+     * Moved Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>On Event Moved Operation</em>' containment reference.
      * @see #getOnEventMovedOperation()

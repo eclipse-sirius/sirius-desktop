@@ -32,21 +32,22 @@ public interface For extends ContainerModelOperation {
     /**
      * Returns the value of the '<em><b>Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> Expression returning the elements to iterate on. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Expression</em>' attribute.
      * @see #setExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFor_Expression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
-     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
+     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        Collection<EObject> or an EObject.'"
      * @generated
      */
     String getExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.For#getExpression <em>Expression</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.For#getExpression
+     * <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Expression</em>' attribute.
      * @see #getExpression()
@@ -68,9 +69,9 @@ public interface For extends ContainerModelOperation {
     String getIteratorName();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.For#getIteratorName
-     * <em>Iterator Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.For#getIteratorName <em>Iterator
+     * Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Iterator Name</em>' attribute.
      * @see #getIteratorName()

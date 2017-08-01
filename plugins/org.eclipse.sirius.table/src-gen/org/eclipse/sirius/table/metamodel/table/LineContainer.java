@@ -37,7 +37,7 @@ public interface LineContainer extends DSemanticDecorator {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Lines</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getLineContainer_Lines()
      * @see org.eclipse.sirius.table.metamodel.table.DLine#getContainer

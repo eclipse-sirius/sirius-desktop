@@ -29,12 +29,12 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getElement <em>Element</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getElementView <em>Element View</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getContainerView
- * <em>Container View</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getInitialOperation
- * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getElementView <em>Element
+ * View</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getContainerView <em>Container
+ * View</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getInitialOperation <em>Initial
+ * Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getHook <em>Hook</em>}</li>
  * </ul>
  *
@@ -59,7 +59,7 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getElement
      * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element</em>' containment reference.
      * @see #getElement()
@@ -74,7 +74,7 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Element View</em>' containment reference.
      * @see #setElementView(ElementDeleteVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDeleteElementDescription_ElementView()
@@ -86,7 +86,7 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getElementView
      * <em>Element View</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element View</em>' containment reference.
      * @see #getElementView()
@@ -108,10 +108,10 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
     ContainerViewVariable getContainerView();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getContainerView
-     * <em>Container View</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getContainerView <em>Container
+     * View</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Container View</em>' containment reference.
      * @see #getContainerView()
@@ -132,10 +132,10 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
     InitialOperation getInitialOperation();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getInitialOperation <em>Initial
+     * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
@@ -150,7 +150,7 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Hook</em>' containment reference.
      * @see #setHook(DeleteHook)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDeleteElementDescription_Hook()
@@ -162,7 +162,7 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getHook
      * <em>Hook</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Hook</em>' containment reference.
      * @see #getHook()
@@ -172,7 +172,7 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation" required="true"
      * @generated
      */

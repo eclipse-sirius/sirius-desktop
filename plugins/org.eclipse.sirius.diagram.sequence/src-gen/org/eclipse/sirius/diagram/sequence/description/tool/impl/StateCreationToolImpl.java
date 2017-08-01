@@ -41,7 +41,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
     /**
      * The cached value of the '{@link #getStartingEndPredecessor() <em>Starting End Predecessor</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndPredecessor()
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
     /**
      * The cached value of the '{@link #getFinishingEndPredecessor() <em>Finishing End Predecessor</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndPredecessor()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StateCreationToolImpl() {
@@ -69,7 +69,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,7 +89,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStartingEndPredecessor(MessageEndVariable newStartingEndPredecessor, NotificationChain msgs) {
@@ -109,7 +109,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFinishingEndPredecessor(MessageEndVariable newFinishingEndPredecessor, NotificationChain msgs) {
@@ -163,7 +163,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,7 +205,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,7 +221,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,7 +273,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -299,7 +299,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

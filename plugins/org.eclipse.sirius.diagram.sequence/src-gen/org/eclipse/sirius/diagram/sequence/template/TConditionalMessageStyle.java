@@ -18,8 +18,8 @@ package org.eclipse.sirius.diagram.sequence.template;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle#getPredicateExpression
- * <em>Predicate Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle#getPredicateExpression <em>Predicate
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle#getStyle <em>Style</em>}</li>
  * </ul>
  *
@@ -38,16 +38,17 @@ public interface TConditionalMessageStyle extends TTransformer {
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTConditionalMessageStyle_PredicateExpression()
      * @model dataType="org.eclipse.sirius.description.InterpretedExpression" required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='the current view.' container='the semantic container.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='the current view.' container='the
+     *        semantic container.'"
      * @generated
      */
     String getPredicateExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle#getPredicateExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle#getPredicateExpression
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Predicate Expression</em>' attribute.
      * @see #getPredicateExpression()
@@ -62,7 +63,7 @@ public interface TConditionalMessageStyle extends TTransformer {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(TMessageStyle)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTConditionalMessageStyle_Style()
@@ -74,7 +75,7 @@ public interface TConditionalMessageStyle extends TTransformer {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

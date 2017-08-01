@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.ShapeContainerStyle;
 public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ShapeContainerStyleItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider 
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -57,7 +57,7 @@ public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider 
 
     /**
      * This adds a property descriptor for the Shape feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addShapePropertyDescriptor(Object object) {
@@ -70,7 +70,7 @@ public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider 
 
     /**
      * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -83,7 +83,7 @@ public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider 
 
     /**
      * This returns ShapeContainerStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider 
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider 
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

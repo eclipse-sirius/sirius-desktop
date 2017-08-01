@@ -26,8 +26,8 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TCreationMessageMappingImpl#getTarget <em>Target</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TCreationMessageMappingImpl#getTarget
+ * <em>Target</em>}</li>
  * </ul>
  *
  * @generated
@@ -36,7 +36,7 @@ public class TCreationMessageMappingImpl extends TSourceTargetMessageMappingImpl
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class TCreationMessageMappingImpl extends TSourceTargetMessageMappingImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TCreationMessageMappingImpl() {
@@ -54,7 +54,7 @@ public class TCreationMessageMappingImpl extends TSourceTargetMessageMappingImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class TCreationMessageMappingImpl extends TSourceTargetMessageMappingImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public class TCreationMessageMappingImpl extends TSourceTargetMessageMappingImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class TCreationMessageMappingImpl extends TSourceTargetMessageMappingImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -108,7 +108,7 @@ public class TCreationMessageMappingImpl extends TSourceTargetMessageMappingImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class TCreationMessageMappingImpl extends TSourceTargetMessageMappingImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractToolDescri
 public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BehaviorToolItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
 
     /**
      * This adds a property descriptor for the Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -80,7 +80,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
 
     /**
      * This returns BehaviorTool.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

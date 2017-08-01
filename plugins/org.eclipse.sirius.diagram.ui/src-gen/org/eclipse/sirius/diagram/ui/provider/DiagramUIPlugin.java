@@ -84,21 +84,21 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final DiagramUIPlugin INSTANCE = new DiagramUIPlugin();
 
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static Implementation plugin;
 
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramUIPlugin() {
@@ -107,7 +107,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @generated
      */
@@ -118,7 +118,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @generated
      */
@@ -153,7 +153,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public Implementation() {

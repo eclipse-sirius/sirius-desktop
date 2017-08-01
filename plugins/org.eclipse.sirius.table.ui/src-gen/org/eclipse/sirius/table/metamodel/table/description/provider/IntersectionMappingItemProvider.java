@@ -42,13 +42,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public IntersectionMappingItemProvider(AdapterFactory adapterFactory) {
@@ -57,7 +57,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Can Edit feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCanEditPropertyDescriptor(Object object) {
@@ -95,7 +95,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Line Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLineMappingPropertyDescriptor(Object object) {
@@ -108,7 +108,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Column Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addColumnMappingPropertyDescriptor(Object object) {
@@ -121,7 +121,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Label Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -134,7 +134,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Use Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addUseDomainClassPropertyDescriptor(Object object) {
@@ -148,7 +148,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Column Finder Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addColumnFinderExpressionPropertyDescriptor(Object object) {
@@ -176,7 +176,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Semantic Candidates Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
@@ -190,7 +190,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -204,7 +204,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds a property descriptor for the Precondition Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
@@ -217,7 +217,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Create feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCreatePropertyDescriptor(Object object) {
@@ -232,7 +232,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -251,7 +251,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -264,7 +264,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * This returns IntersectionMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -320,7 +320,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -354,7 +354,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
         LabelEditTool labelEditTool = DescriptionFactory.eINSTANCE.createLabelEditTool();
         labelEditTool.setMask(ToolFactory.eINSTANCE.createEditMaskVariables());
         addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ELEMENT, Messages.Table_CurrentSemanticElement);
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.TABLE, Messages.Table_TableElement);
+        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.TABLE, Messages.Table_TableElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE, Messages.Table_LineElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.Table_SemanticLineElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, Messages.Table_SemanticColumnElement);

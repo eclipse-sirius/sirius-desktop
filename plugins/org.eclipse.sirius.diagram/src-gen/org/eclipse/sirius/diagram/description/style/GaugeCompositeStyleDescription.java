@@ -26,8 +26,8 @@ import org.eclipse.sirius.diagram.AlignmentKind;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription#getAlignment
  * <em>Alignment</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription#getSections <em>Sections</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription#getSections
+ * <em>Sections</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeCompositeStyleDescription()
@@ -50,10 +50,10 @@ public interface GaugeCompositeStyleDescription extends NodeStyleDescription {
     AlignmentKind getAlignment();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription#getAlignment
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription#getAlignment
      * <em>Alignment</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Alignment</em>' attribute.
      * @see org.eclipse.sirius.diagram.AlignmentKind

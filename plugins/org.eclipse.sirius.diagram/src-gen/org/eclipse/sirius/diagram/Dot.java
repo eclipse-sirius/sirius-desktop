@@ -22,8 +22,8 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.Dot#getStrokeSizeComputationExpression
- * <em>Stroke Size Computation Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.Dot#getStrokeSizeComputationExpression <em>Stroke Size Computation
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.Dot#getBackgroundColor <em>Background Color</em>}</li>
  * </ul>
  *
@@ -47,7 +47,7 @@ public interface Dot extends NodeStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.Dot#getBackgroundColor <em>Background Color</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()
@@ -70,9 +70,9 @@ public interface Dot extends NodeStyle {
     String getStrokeSizeComputationExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.Dot#getStrokeSizeComputationExpression
-     * <em>Stroke Size Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.Dot#getStrokeSizeComputationExpression <em>Stroke Size
+     * Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Stroke Size Computation Expression</em>' attribute.
      * @see #getStrokeSizeComputationExpression()

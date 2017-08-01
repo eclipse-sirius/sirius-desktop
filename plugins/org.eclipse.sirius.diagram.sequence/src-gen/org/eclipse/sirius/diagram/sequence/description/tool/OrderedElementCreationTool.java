@@ -40,7 +40,7 @@ public interface OrderedElementCreationTool extends EObject {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Starting End Predecessor</em>' containment reference.
      * @see #setStartingEndPredecessor(MessageEndVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getOrderedElementCreationTool_StartingEndPredecessor()
@@ -50,10 +50,10 @@ public interface OrderedElementCreationTool extends EObject {
     MessageEndVariable getStartingEndPredecessor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool#getStartingEndPredecessor
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool#getStartingEndPredecessor
      * <em>Starting End Predecessor</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Starting End Predecessor</em>' containment reference.
      * @see #getStartingEndPredecessor()
@@ -69,7 +69,7 @@ public interface OrderedElementCreationTool extends EObject {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Finishing End Predecessor</em>' containment reference.
      * @see #setFinishingEndPredecessor(MessageEndVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getOrderedElementCreationTool_FinishingEndPredecessor()
@@ -79,10 +79,10 @@ public interface OrderedElementCreationTool extends EObject {
     MessageEndVariable getFinishingEndPredecessor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool#getFinishingEndPredecessor
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool#getFinishingEndPredecessor
      * <em>Finishing End Predecessor</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Finishing End Predecessor</em>' containment reference.
      * @see #getFinishingEndPredecessor()

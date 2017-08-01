@@ -39,7 +39,7 @@ public interface DAnnotation extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Source</em>' attribute.
      * @see #setSource(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation_Source()
@@ -51,7 +51,7 @@ public interface DAnnotation extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.DAnnotation#getSource <em>Source</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source</em>' attribute.
      * @see #getSource()
@@ -66,7 +66,7 @@ public interface DAnnotation extends EObject {
      * If the meaning of the '<em>Details</em>' map isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Details</em>' map.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation_Details()
      * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString,
@@ -86,7 +86,7 @@ public interface DAnnotation extends EObject {
      * is not known by Sirius session.
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>References</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation_References()
      * @model

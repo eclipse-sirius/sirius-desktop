@@ -48,7 +48,7 @@ public interface ComputedColor extends UserColor, ColorDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.ComputedColor#getRed <em>Red</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Red</em>' attribute.
      * @see #getRed()
@@ -77,7 +77,7 @@ public interface ComputedColor extends UserColor, ColorDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.ComputedColor#getGreen <em>Green</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Green</em>' attribute.
      * @see #getGreen()
@@ -105,7 +105,7 @@ public interface ComputedColor extends UserColor, ColorDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.ComputedColor#getBlue <em>Blue</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Blue</em>' attribute.
      * @see #getBlue()

@@ -49,7 +49,7 @@ public interface SquareDescription extends NodeStyleDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.SquareDescription#getWidth
      * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()
@@ -73,7 +73,7 @@ public interface SquareDescription extends NodeStyleDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.SquareDescription#getHeight
      * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -88,7 +88,7 @@ public interface SquareDescription extends NodeStyleDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Color</em>' reference.
      * @see #setColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getSquareDescription_Color()
@@ -100,7 +100,7 @@ public interface SquareDescription extends NodeStyleDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.SquareDescription#getColor
      * <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' reference.
      * @see #getColor()

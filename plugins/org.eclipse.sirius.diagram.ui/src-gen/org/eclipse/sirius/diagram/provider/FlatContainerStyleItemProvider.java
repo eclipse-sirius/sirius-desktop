@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.FlatContainerStyle;
 public class FlatContainerStyleItemProvider extends ContainerStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FlatContainerStyleItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class FlatContainerStyleItemProvider extends ContainerStyleItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class FlatContainerStyleItemProvider extends ContainerStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Background Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundStylePropertyDescriptor(Object object) {
@@ -71,7 +71,7 @@ public class FlatContainerStyleItemProvider extends ContainerStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class FlatContainerStyleItemProvider extends ContainerStyleItemProvider {
 
     /**
      * This adds a property descriptor for the Foreground Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addForegroundColorPropertyDescriptor(Object object) {
@@ -97,7 +97,7 @@ public class FlatContainerStyleItemProvider extends ContainerStyleItemProvider {
 
     /**
      * This returns FlatContainerStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class FlatContainerStyleItemProvider extends ContainerStyleItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class FlatContainerStyleItemProvider extends ContainerStyleItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
