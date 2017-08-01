@@ -23,6 +23,13 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+h4. Changes in @org.eclipse.sirius.ui.editor.api.pages@
+
+* <span class="label label-success">Added</span> New classes have been added in package @org.eclipse.sirius.ui.editor.api.pages@. They are the following: @AbstractSessionEditorPage@, @PageProvider@, @PageUpdateCOmmand@, @PositioningKind@, @PageUpdateCommandFactory@. These classes allow to provide custom pages to session editor instances.
+
+* <span class="label label-success">Added</span> An extension point @org.eclipse.sirius.ui.editor.sessionEditorPageProvider@ has been added to allow custom page providing for session editor instances.
+
+
 h4. Migrations
 
 * <span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see "bugzilla #518870":https://bugs.eclipse.org/bugs/show_bug.cgi?id=518870 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _12.1.0.201706291600_.
