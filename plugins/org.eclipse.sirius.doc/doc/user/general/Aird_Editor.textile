@@ -104,6 +104,8 @@ To be able to edit a semantic model with a Sirius modeler, you must first tell t
 * A manual one were you have two different buttons in the editor:
 ** The *__New...__* button, which opens a wizard allowing to create a new model from any registered package and in any project you want (see the next section for more details on the wizard). The newly created model will be loaded automatically in the aird file.
 ** The *__Add__* button, which allows to load into the aird file an already existing model either from the same project or from another one.
+Note that you can also add a new semantic model to a session by simply drag and dropping the model file from the workpace (from any Eclipse view) into the _Models_ block on the left side of the editor.
+
 
 h3(#model_creation_wizard). Creating New Models
 

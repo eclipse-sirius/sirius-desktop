@@ -53,7 +53,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.platform,
  org.eclipse.sirius.tests.sample.migration,
  org.eclipse.emf.edit.ui,
- org.eclipse.gmf.runtime.diagram.ui.render
+ org.eclipse.gmf.runtime.diagram.ui.render,
+ org.eclipse.sirius.ui.editor
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-RegisterBuddy: org.apache.log4j

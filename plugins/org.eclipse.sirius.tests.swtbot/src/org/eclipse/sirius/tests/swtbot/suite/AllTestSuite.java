@@ -271,6 +271,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(OpenMultipleRepresentationsTest.class);
         suite.addTestSuite(ShapeResizingEdgePositionStabilityTests.class);
         suite.addTestSuite(PortsOnNodePositionStabilityTest.class);
+        suite.addTest(new JUnit4TestAdapter(DndWorkspaceToAirdEditorTest.class));
         suite.addTest(new JUnit4TestAdapter(PortLocationAfterDragAndDropTest.class));
         suite.addTestSuite(PortLocationAfterDragAndDropOnDiagramTest.class);
         suite.addTestSuite(CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest.class);
@@ -360,7 +361,8 @@ public class AllTestSuite extends TestCase {
         // This test is KO if the cdonative plugins are active (VP-4101), so
         // launch it only when cdonative plugins are not active.
         try {
-            Resource resource = new ResourceSetImpl().getResource(URI.createPlatformPluginURI("org.eclipse.sirius.cdonative/model/viewpoint.genmodel", true), true);
+            Resource resource = new ResourceSetImpl().getResource(
+                    URI.createPlatformPluginURI("org.eclipse.sirius.cdonative/model/viewpoint.genmodel", true), true);
             if (resource == null) {
                 suite.addTestSuite(DisabledSiriusClipboardSupportTest.class);
             }

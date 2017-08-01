@@ -1,0 +1,144 @@
+/*******************************************************************************
+ * Copyright (c) 2017 Obeo
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tests.swtbot;
+
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.transaction.RunnableWithResult;
+import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
+import org.eclipse.sirius.ui.editor.SessionEditor;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
+import org.junit.Assume;
+import org.junit.runner.RunWith;
+
+/**
+ * Class test for the new feature "drag and drop on aird editor". see bug #517532
+ * 
+ * @author jmallet
+ */
+@RunWith(SWTBotJunit4ClassRunner.class)
+public class DndWorkspaceToAirdEditorTest extends AbstractSiriusSwtBotGefTestCase {
+
+    private static final String MODEL = "436.ecore";
+
+    private static final String SESSION_FILE = "436.aird";
+
+    private static final String VSM_FILE = "436.odesign";
+
+    private static final String SAMPLE_MODEL_FILE = "file.ecore";
+
+    private static final String DATA_UNIT_DIR = "data/unit/dragAndDrop/tc-436/";
+
+    private static final String FILE_DIR = "/";
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onSetUpBeforeClosingWelcomePage() throws Exception {
+        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, VSM_FILE, SESSION_FILE, SAMPLE_MODEL_FILE);
+    }
+
+    /**
+     * Validate drag&drop of a model from the explorer view to the models block of the aird editor.
+     * 
+     * @throws Exception
+     *             if an error occurs.
+     */
+    public void testDragAndDropModelFile() throws Exception {
+        Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
+        // open aird editor
+        final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
+        RunnableWithResult<IEditorPart> result = new RunnableWithResult<IEditorPart>() {
+            private IEditorPart resultEditor;
+
+            @Override
+            public void run() {
+                URI uri = URI.createPlatformResourceURI(sessionAirdResource.getFullPath().toString(), true);
+                try {
+                    resultEditor = PlatformUI.getWorkbench()
+                            .getActiveWorkbenchWindow().getActivePage().openEditor(new FileEditorInput(ResourcesPlugin
+                                    .getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)))),
+                                    SessionEditor.EDITOR_ID);
+                } catch (PartInitException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public IEditorPart getResult() {
+                return resultEditor;
+            }
+
+            @Override
+            public void setStatus(IStatus status) {
+
+            }
+
+            @Override
+            public IStatus getStatus() {
+                return null;
+            }
+        };
+        PlatformUI.getWorkbench().getDisplay().syncExec(result);
+        // Get back trees
+        SWTBotTree semanticAirdTree = bot.editorById(SessionEditor.EDITOR_ID).bot().tree(0);
+
+        SWTBotTree modelExplorerTree = bot.viewByTitle("Model Explorer").bot().tree();
+        SWTBotTreeItem sampleFile = modelExplorerTree.expandNode(designerProject.getName())
+                .expandNode(SAMPLE_MODEL_FILE);
+        int modelNumber = semanticAirdTree.getAllItems().length;
+
+        bot.getDisplay().asyncExec(() -> {
+            // compute drop point
+            Rectangle bounds = semanticAirdTree.widget.getBounds();
+            Point dropPoint = new Point(modelExplorerTree.widget.getBounds().width + bounds.width / 2, bounds.height);
+            // drag and drop
+            sampleFile.select();
+            DndUtil util = new DndUtil(bot.getDisplay());
+            util.dragAndDrop(sampleFile, dropPoint);
+        });
+        bot.waitUntil(new DefaultCondition() {
+
+            public boolean test() throws Exception {
+                return semanticAirdTree.getAllItems().length > modelNumber;
+            }
+
+            public String getFailureMessage() {
+                return "No model was added after the drag and drop.";
+            }
+        });
+        // check item of the semantic aird tree
+        boolean isDragAndDropOk = false;
+        for (SWTBotTreeItem swtBotTreeItem : semanticAirdTree.getAllItems()) {
+            String text = swtBotTreeItem.getText();
+            if (text.contains(SAMPLE_MODEL_FILE)) {
+                isDragAndDropOk = true;
+            }
+        }
+
+        assertTrue("Model file file.ecore must be added to semantic model tree.", isDragAndDropOk);
+
+    }
+}

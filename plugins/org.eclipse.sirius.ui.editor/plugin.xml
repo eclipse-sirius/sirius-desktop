@@ -72,6 +72,15 @@
             priority="high">
          <triggerPoints>
         </triggerPoints>
+         <dropAssistant
+               class="org.eclipse.sirius.ui.editor.ModelCommonDropAdapterAssistant"
+               id="org.eclipse.sirius.ui.editor.modelDropAssistant">
+               <possibleDropTargets>
+                  <adapt
+                        type="java.lang.Object">
+                  </adapt>
+               </possibleDropTargets>
+         </dropAssistant>
       </navigatorContent>
    </extension>
 </plugin>
