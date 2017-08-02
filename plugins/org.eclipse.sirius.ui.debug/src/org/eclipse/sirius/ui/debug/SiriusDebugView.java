@@ -506,7 +506,7 @@ public class SiriusDebugView extends AbstractDebugView {
                 int count = 0;
                 for (Resource res : session.getSrmResources()) {
                     count++;
-                    sb.append("  ").append(count).append(". ").append(res.getURI());
+                    sb.append("  ").append(count).append(". ").append(res.getURI()).append("\n");
                 }
 
                 return sb.toString();
