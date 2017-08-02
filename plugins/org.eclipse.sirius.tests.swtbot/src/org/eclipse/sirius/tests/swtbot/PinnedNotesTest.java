@@ -26,6 +26,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
@@ -311,7 +313,7 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
         } else {
             checkBox.deselect();
         }
-        bot.button(TestsUtil.isOxygenPlatform() ? "Apply and Close" : "OK").click();
+        bot.button(TestsUtil.isOxygenPlatform() ? JFaceResources.getString("PreferencesDialog.okButtonLabel") : IDialogConstants.OK_LABEL).click();
     }
 
     private void checkSiriusDiagramPreferencePage(boolean expectedValue) {
@@ -319,8 +321,8 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
         bot.waitUntil(Conditions.shellIsActive("Preferences"));
         bot.tree().getTreeItem("Sirius").expand().select().getNode("Sirius Diagram").select();
         assertEquals(expectedValue, bot.checkBox("Move unlinked notes during layout").isChecked());
+        bot.button(TestsUtil.isOxygenPlatform() ? JFaceResources.getString("PreferencesDialog.okButtonLabel") : IDialogConstants.OK_LABEL).click();
         
-        bot.button(TestsUtil.isOxygenPlatform() ? "Apply and Close" : "OK").click();
     }
 
     /**

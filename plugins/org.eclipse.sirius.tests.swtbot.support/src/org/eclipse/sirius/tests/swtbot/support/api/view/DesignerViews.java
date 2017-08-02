@@ -10,6 +10,8 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.view;
 
+import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
@@ -102,7 +104,7 @@ public class DesignerViews {
         bot.sleep(500);
         // The node is already expanded (so don't use expand method)
         bot.tree().getTreeItem(categoryName).getNode(labelInList).select();
-        final SWTBotButton okButton = bot.button("OK");
+        final SWTBotButton okButton = bot.button(TestsUtil.isOxygenPlatform() ? "Open" : IDialogConstants.OK_LABEL);
         bot.waitUntil(new OKButtonEnabledCondition(okButton));
         okButton.click();
         return bot.viewByTitle(viewTitle);
