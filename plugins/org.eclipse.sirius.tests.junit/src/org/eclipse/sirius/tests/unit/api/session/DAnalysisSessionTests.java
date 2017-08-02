@@ -41,6 +41,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorPart;
@@ -403,6 +404,16 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
             // null analysis.
         } catch (AssertionError ae) {
             // We may also fail with an assertion error if they are enabled.
+        }
+    }
+
+    public void testCreateSessionFromEcoreResource() throws Exception {
+        URI semanticUri = toURI(SEMANTIC_MODEL_PATH);
+        try {
+            session = SessionFactory.INSTANCE.createSession(semanticUri, new NullProgressMonitor());
+            fail();
+        } catch (final Exception e) {
+            assertEquals(Messages.SessionFactoryImpl_ResourceTypeErrorMsg, e.getMessage());
         }
     }
 

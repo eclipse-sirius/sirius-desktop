@@ -487,6 +487,9 @@ public final class Messages {
     public static String SelectionWizardDescriptionImpl_title;
 
     @TranslatableMessage
+    public static String SessionFactoryImpl_ResourceTypeErrorMsg;
+
+    @TranslatableMessage
     public static String SessionFactoryImpl_EmptyContentErrorMsg;
 
     @TranslatableMessage

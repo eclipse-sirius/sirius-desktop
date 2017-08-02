@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.internal.movida.Movida;
@@ -33,6 +34,7 @@ import org.eclipse.sirius.business.internal.movida.registry.ViewpointURIConverte
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
+import org.eclipse.sirius.tools.internal.resource.InMemoryResourceImpl;
 import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.Messages;
@@ -140,6 +142,10 @@ public final class SessionFactoryImpl implements SessionFactory {
         try {
             monitor.beginTask(Messages.SessionFactoryImpl_sessionCreation, 2);
             Resource sessionModelResource = new ResourceSetImpl().createResource(sessionResourceURI);
+            ResourceQuery resourceQuery = new ResourceQuery(sessionModelResource);
+            if (!(resourceQuery.isRepresentationsResource() || sessionModelResource instanceof InMemoryResourceImpl)) {
+                throw new IllegalArgumentException(Messages.SessionFactoryImpl_ResourceTypeErrorMsg);
+            }
             DAnalysis analysis = ViewpointFactory.eINSTANCE.createDAnalysis();
             sessionModelResource.getContents().add(analysis);
             try {
