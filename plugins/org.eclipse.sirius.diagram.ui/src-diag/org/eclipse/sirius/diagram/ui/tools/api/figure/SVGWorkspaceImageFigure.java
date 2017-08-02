@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.swt.graphics.Image;
@@ -34,10 +33,6 @@ import org.eclipse.swt.graphics.Image;
  *
  */
 public class SVGWorkspaceImageFigure extends SVGFigure implements IWorkspaceImageFigure {
-
-    private double imageAspectRatio = 1.0;
-
-    private boolean keepAspectRatio = true;
 
     /**
      * Create a new {@link SVGWorkspaceImageFigure}.
@@ -61,16 +56,6 @@ public class SVGWorkspaceImageFigure extends SVGFigure implements IWorkspaceImag
     }
 
     @Override
-    public void setSize(final int w, final int h) {
-        if (keepAspectRatio) {
-            final int newHeight = (int) (w / imageAspectRatio);
-            super.setSize(w, newHeight);
-        } else {
-            super.setSize(w, h);
-        }
-    }
-
-    @Override
     public void setMaximumSize(final Dimension d) {
         super.setMaximumSize(this.getSize());
     }
@@ -83,16 +68,6 @@ public class SVGWorkspaceImageFigure extends SVGFigure implements IWorkspaceImag
     @Override
     public void setPreferredSize(final Dimension size) {
         super.setPreferredSize(this.getSize());
-    }
-
-    /**
-     * Get the image aspect ratio.
-     *
-     * @return the image aspect ratio
-     */
-    @Override
-    public double getImageAspectRatio() {
-        return imageAspectRatio;
     }
 
     /**
@@ -128,10 +103,6 @@ public class SVGWorkspaceImageFigure extends SVGFigure implements IWorkspaceImag
             boolean updated = this.updateImageURI(workspaceImage.getWorkspacePath());
             if (updated) {
                 this.contentChanged();
-                SimpleImageTranscoder transcoder = getTranscoder();
-                if (transcoder != null) {
-                    imageAspectRatio = transcoder.getAspectRatio();
-                }
             }
         } else {
             this.setURI(null);

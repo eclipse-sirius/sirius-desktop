@@ -178,6 +178,9 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
 
     private SimpleImageTranscoder transcoder;
 
+    /** The image ratio (width/height); computed during a SVG change detected {@link #contentChanged()}. */
+    private double initialAspectRatio = 1;
+
     protected static WeakHashMap<String, Document> documentsMap = new WeakHashMap<String, Document>();
 
     public SVGFigure() {
@@ -212,6 +215,15 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     @Override
     public int getImageWidth() {
         return (transcoder != null) ? transcoder.getImageWidth() : 0;
+    }
+
+    /**
+     * Get the original SVG image ratio (width/height).
+     *
+     * @return the original SVG image ratio (width/height).
+     */
+    public double getImageAspectRatio() {
+        return initialAspectRatio;
     }
 
     @Override
@@ -303,6 +315,9 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         getDocument();
         if (transcoder != null) {
             transcoder.contentChanged();
+            // Each time that SVG document is changed, we store the real ratio of the image (width/height); the transcoder aspect ratio. Indeed, after the transcoder aspect ratio will be
+            // the previous displayed ratio and not the real ratio of the image.
+            initialAspectRatio = transcoder.getAspectRatio();
         }
         repaint();
     }
@@ -366,7 +381,16 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
             if (image != null) {
                 synchronized (image) {
                     if (!image.isDisposed()) {
-                        graphics.drawImage(image, 0, 0, scaledArea.width(), scaledArea.height(), svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
+                        // The scaled width (and height) must not be greater than area width (and height). So depending
+                        // on the initialAspectRatio and zoom factor, the reference can be the width or the height.
+                        double scaledWidth = svgArea.width() * graphics.getAbsoluteScale();
+                        double scaledHeight = scaledWidth / getImageAspectRatio();
+                        if ((scaledHeight / graphics.getAbsoluteScale()) > svgArea.height()) {
+                            // The height must be the reference to avoid an IllegalArgumentException later.
+                            scaledHeight = svgArea.height() * graphics.getAbsoluteScale();
+                            scaledWidth = scaledHeight * getImageAspectRatio();
+                        }
+                        graphics.drawImage(image, 0, 0, (int) scaledWidth, (int) scaledHeight, svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
                     }
                 }
             }
