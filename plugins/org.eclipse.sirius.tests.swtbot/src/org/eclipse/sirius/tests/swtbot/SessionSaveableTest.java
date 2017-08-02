@@ -15,6 +15,7 @@ import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -82,10 +83,6 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     private UILocalSession localSession;
 
     private SWTBotSiriusDiagramEditor editor;
-
-    private boolean oldValuePrefReloadOnLastEditorClose;
-
-    private boolean oldValuePrefSaveWhenNoEditor;
 
     private boolean oldValuePrefPromptWhenSaveableStillOpen;
 
@@ -375,7 +372,7 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotButton buttonYes = bot.button("Yes");
         buttonYes.click();
         bot.waitUntil(Conditions.shellIsActive("Save Resource"));
-        buttonYes = bot.button("Yes");
+        buttonYes = bot.button(TestsUtil.isOxygenPlatform() ? "Save" : "Yes");
         buttonYes.click();
         SessionSavedCondition sessionCondition = new SessionSavedCondition(localSession.getOpenedSession());
         bot.waitUntil(sessionCondition);

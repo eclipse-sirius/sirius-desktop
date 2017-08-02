@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UISessionCreationWizardFlow.SessionChoice;
@@ -98,7 +99,7 @@ public class ValidationTest extends AbstractScenarioTestCase {
 
         // Close the table
         SWTBotCommonHelper.closeCurrentEditor();
-        bot.button("No").click();
+        bot.button(TestsUtil.isOxygenPlatform() ? "Don't Save" : "No").click();
         bot.sleep(500);
 
         // Check that all editors are closes
@@ -209,6 +210,6 @@ public class ValidationTest extends AbstractScenarioTestCase {
 
         bot.tree().getTreeItem("General").expand().getNode("Problems").select();
 
-        bot.button("OK").click();
+        bot.button(TestsUtil.isOxygenPlatform() ? "Open" : "OK").click();
     }
 }
