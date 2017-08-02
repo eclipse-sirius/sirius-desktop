@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,6 +55,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.Tabbar
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarPinElementsEclipseAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarRouterMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarSelectMenuManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarStraightenToMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarUnpinElementsEclipseAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomInAction;
@@ -76,9 +77,8 @@ public class TabbarContributionFactory {
     private static final String HIDE_ELEMENT_ID = "org.eclipse.sirius.diagram.ui.tabbar.hideelement"; //$NON-NLS-1$
 
     /**
-     * Creates the Automatic Layout contribution item. Organized in a drop-down
-     * menu, this item is used to trigger an automatic layout of the elements on
-     * the diagram.
+     * Creates the Automatic Layout contribution item. Organized in a drop-down menu, this item is used to trigger an
+     * automatic layout of the elements on the diagram.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
@@ -91,9 +91,8 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Select menu manager contribution item. Organized in a
-     * drop-down menu, can be used to select groups of diagram elements in a
-     * single operation.
+     * Creates the Select menu manager contribution item. Organized in a drop-down menu, can be used to select groups of
+     * diagram elements in a single operation.
      * 
      * @return the {@link IContributionItem}.
      */
@@ -104,9 +103,8 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Alignment contribution item. This menu contains several
-     * operations which can be used to align several graphical elements in
-     * various ways.
+     * Creates the Alignment contribution item. This menu contains several operations which can be used to align several
+     * graphical elements in various ways.
      * 
      * @return the {@link IContributionItem}.
      */
@@ -190,8 +188,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createSelectHiddenElementsContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -203,8 +200,7 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Hide Element contribution item. This button hides all the
-     * selected elements from view.
+     * Creates the Hide Element contribution item. This button hides all the selected elements from view.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
@@ -219,8 +215,7 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Hide Element Label contribution item. This button hides the
-     * label of the selected elements.
+     * Creates the Hide Element Label contribution item. This button hides the label of the selected elements.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
@@ -232,9 +227,8 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Delete From Diagram contribution item. This action removes
-     * the selected graphical element from the diagram, but does not delete the
-     * corresponding semantic elements.
+     * Creates the Delete From Diagram contribution item. This action removes the selected graphical element from the
+     * diagram, but does not delete the corresponding semantic elements.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
@@ -247,13 +241,12 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Delete From Model contribution item. This action removes both
-     * the selected graphical element and the corresponding semantic elements.
+     * Creates the Delete From Model contribution item. This action removes both the selected graphical element and the
+     * corresponding semantic elements.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createDeleteFromModelContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -270,8 +263,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createSelectPinnedElementsContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -284,8 +276,7 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Pin element contribution item. Mark all the selected elements
-     * as pinned.
+     * Creates the Pin element contribution item. Mark all the selected elements as pinned.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
@@ -297,8 +288,7 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Unpin element contribution item. Mark all the selected
-     * elements as un-pinned.
+     * Creates the Unpin element contribution item. Mark all the selected elements as un-pinned.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
@@ -324,8 +314,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createZoomContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -350,8 +339,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createZoomInContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -369,8 +357,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createZoomOutContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -388,8 +375,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createFontColorContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -406,8 +392,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createBoldFontStyleContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -423,8 +408,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createItalicFontStyleContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -440,8 +424,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createFontDialogContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -458,8 +441,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createFillColorContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -476,8 +458,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createLineColorPropertyContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -490,14 +471,12 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Cancel Custom Style contribution item. The Cancel Custom
-     * Style button resets all the style attributes of an element to its default
-     * values and un-marks it as customized.
+     * Creates the Cancel Custom Style contribution item. The Cancel Custom Style button resets all the style attributes
+     * of an element to its default values and un-marks it as customized.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createResetStylePropertyContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -509,10 +488,8 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the set style to workspace image contribution item. The Workspace
-     * image button can be used to replace the graphical representation of an
-     * element by an image that you can select from anywhere in your Eclipse
-     * workspace.
+     * Creates the set style to workspace image contribution item. The Workspace image button can be used to replace the
+     * graphical representation of an element by an image that you can select from anywhere in your Eclipse workspace.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
@@ -523,10 +500,8 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Distribute menu contribution item. This menu contains several
-     * actions which can be used to distribute the selected diagram elements
-     * horizontally/vertically with a same space between their centers or their
-     * bounds.
+     * Creates the Distribute menu contribution item. This menu contains several actions which can be used to distribute
+     * the selected diagram elements horizontally/vertically with a same space between their centers or their bounds.
      * 
      * @return the {@link IContributionItem}.
      */
@@ -536,8 +511,8 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Export As Image contribution item.This button can be used to
-     * export the current diagram as an image file stored on disk.
+     * Creates the Export As Image contribution item.This button can be used to export the current diagram as an image
+     * file stored on disk.
      * 
      * @return the {@link IContributionItem}.
      */
@@ -547,15 +522,13 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Layout Mode contribution item. This button enables a special
-     * "layout mode", in which some operations are prevented from having an
-     * effect on the semantic model.
+     * Creates the Layout Mode contribution item. This button enables a special "layout mode", in which some operations
+     * are prevented from having an effect on the semantic model.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized or if the diagram doesn't allow the layouting
-     *         mode.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized or if the diagram
+     *         doesn't allow the layouting mode.
      */
     public IContributionItem createLayoutingModeContributionItem(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -571,8 +544,8 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Router contribution item. This action allows changing the
-     * line style of edges (Rectilinear, Oblique, Tree)
+     * Creates the Router contribution item. This action allows changing the line style of edges (Rectilinear, Oblique,
+     * Tree)
      * 
      * @return the {@link IContributionItem}.
      */
@@ -583,13 +556,12 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Apply Style contribution item. Use this button to reproduce
-     * the visual style of an element onto others.
+     * Creates the Apply Style contribution item. Use this button to reproduce the visual style of an element onto
+     * others.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createCopyAppearancePropertiesContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -601,14 +573,12 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the copy format contribution item. This tool can be used to
-     * duplicate the format of some diagram elements from this diagram into
-     * another.
+     * Creates the copy format contribution item. This tool can be used to duplicate the format of some diagram elements
+     * from this diagram into another.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createCopyFormatContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -624,8 +594,7 @@ public class TabbarContributionFactory {
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createPasteFormatContribution(IDiagramWorkbenchPart part) {
         TabbarPasteFormatMenuManager pasteFormatMenu = new TabbarPasteFormatMenuManager();
@@ -634,9 +603,8 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Refresh action contribution item. This operation, which can
-     * also be invoked with the F5 keyboard shortcut, will force an update of
-     * the diagram's content according to the latest version of the underlying
+     * Creates the Refresh action contribution item. This operation, which can also be invoked with the F5 keyboard
+     * shortcut, will force an update of the diagram's content according to the latest version of the underlying
      * semantic model.
      * 
      * @return the {@link IContributionItem}.
@@ -648,14 +616,12 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Make Same Size contribution item. When multiple elements are
-     * selected, clicking on this tool will resize all of them to have the same
-     * size (both width and height).
+     * Creates the Make Same Size contribution item. When multiple elements are selected, clicking on this tool will
+     * resize all of them to have the same size (both width and height).
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createSizeBothContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -668,13 +634,11 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Auto-Size contribution item. This button marks the selected
-     * elements as auto-sized.
+     * Creates the Auto-Size contribution item. This button marks the selected elements as auto-sized.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is
-     *         being initialized.
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
      */
     public IContributionItem createAutoSizeContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
@@ -683,6 +647,18 @@ public class TabbarContributionFactory {
             return new ActionContributionItem(autoSizeAction);
         }
         return null;
+    }
+
+    /**
+     * Creates the straighten to contribution item. This menu contains several operations which can be used to
+     * straighten to different positions edges.
+     * 
+     * @return the {@link IContributionItem}.
+     */
+    public IContributionItem createStraightenContribution() {
+        TabbarStraightenToMenuManager straightenToMenuManager = new TabbarStraightenToMenuManager();
+        straightenToMenuManager.setVisible(true);
+        return straightenToMenuManager;
     }
 
 }

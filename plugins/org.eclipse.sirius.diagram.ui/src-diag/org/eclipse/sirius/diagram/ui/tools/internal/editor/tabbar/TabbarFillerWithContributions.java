@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -194,6 +194,7 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
     }
 
     private void addDiagramElementContributionItems() {
+        addContributionItem(diagramElementContributionItems, ARRANGE_SELECTION, contributionFactory.createStraightenContribution());
         addContributionItem(diagramElementContributionItems, ARRANGE_SELECTION, contributionFactory.createDistributeContribution());
         addContributionItem(diagramElementContributionItems, ARRANGE_SELECTION, contributionFactory.createAlignMenuManager());
         addContributionItem(diagramElementContributionItems, ARRANGE_SELECTION, contributionFactory.createArrangeMenuManager(part));
@@ -226,6 +227,7 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
 
         addContributionItem(diagramElementContributionItems, SIZE, contributionFactory.createAutoSizeContribution(part));
         addContributionItem(diagramElementContributionItems, SIZE, contributionFactory.createSizeBothContribution(part));
+
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -95,8 +95,8 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String[] DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { Messages.LayoutingModeSwitchingAction_activate };
 
-    private static final String[] CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Font Color",
-            "Fill &Color", "Li&ne Color", "Line Style" };
+    private static final String[] CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Straighten to left", "Align Left",
+            DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
 
     private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { Messages.PinElementsEclipseAction_text, Messages.UnpinElementsEclipseAction_text, Messages.CopyFormatAction_toolTipText,
             Messages.SiriusDiagramActionBarContributor_hideElement, Messages.SiriusDiagramActionBarContributor_hideLabel, Messages.SiriusDiagramActionBarContributor_deleteFromDiagram,
@@ -173,9 +173,8 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * When an element is selected on a diagram, setting focus on another view,
-     * than the editor, should not reload the tabbar like if there was no
-     * selection. (VP-3663)
+     * When an element is selected on a diagram, setting focus on another view, than the editor, should not reload the
+     * tabbar like if there was no selection. (VP-3663)
      * 
      * @throws Exception
      *             Test error.
@@ -196,9 +195,8 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * When an element is selected on a diagram, setting focus on another editor
-     * (with split editor area to display more than one editor), should not
-     * reload the tabbar like if there was no selection. (VP-3663)
+     * When an element is selected on a diagram, setting focus on another editor (with split editor area to display more
+     * than one editor), should not reload the tabbar like if there was no selection. (VP-3663)
      * 
      * @throws Exception
      *             Test error.
@@ -328,12 +326,10 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test toggling the old style preference programmatically. Note that this
-     * preference does not exist anymore in the UI, but can still be used
-     * un-officially in the code to programmatically disable the tabbar. This
-     * possibility is used for in some SWTBot tests that rely heavily on
-     * hard-coded screen corrdinates which were determined when the tabbar did
-     * not exist (in particular for sequence diagrams).
+     * Test toggling the old style preference programmatically. Note that this preference does not exist anymore in the
+     * UI, but can still be used un-officially in the code to programmatically disable the tabbar. This possibility is
+     * used for in some SWTBot tests that rely heavily on hard-coded screen corrdinates which were determined when the
+     * tabbar did not exist (in particular for sequence diagrams).
      * 
      * @throws Exception
      *             Test error.
@@ -451,11 +447,10 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test Pin/Unpin and Show/Hide wizard tabbar buttons are enabled when
-     * diagram is selected.
+     * Test Pin/Unpin and Show/Hide wizard tabbar buttons are enabled when diagram is selected.
      * 
-     * See VP-3731 : those buttons were disabled and hidden just after element
-     * creation. The diagram selection made them visible but not enabled.
+     * See VP-3731 : those buttons were disabled and hidden just after element creation. The diagram selection made them
+     * visible but not enabled.
      */
     public void testTabbarDiagramActionsEnablement() {
         if (TestsUtil.shouldSkipUnreliableTests()) {

@@ -40,8 +40,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Test case to check the tabbar extension point. See
- * https://bugs.eclipse.org/bugs/show_bug.cgi?id=481573
+ * Test case to check the tabbar extension point. See https://bugs.eclipse.org/bugs/show_bug.cgi?id=481573
  * 
  * @author Florian Barbin
  */
@@ -81,15 +80,14 @@ public class TabbarContributorExtensionTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Test that the default tabbar is properly displayed when no contributor is
-     * provided.
+     * Test that the default tabbar is properly displayed when no contributor is provided.
      */
     public void testTabbarCountWithoutContributor() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         selectDiagramElement();
         SWTBotUtils.waitAllUiEvents();
         int count = getTabbarItemsCount();
-        assertEquals("Unexpected number of tabbar contribution items", 28, count);
+        assertEquals("Unexpected number of tabbar contribution items", 29, count);
         selectDiagram();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();
@@ -97,12 +95,11 @@ public class TabbarContributorExtensionTest extends AbstractSiriusSwtBotGefTestC
         selectEdge();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();
-        assertEquals("Unexpected number of tabbar contribution items", 28, count);
+        assertEquals("Unexpected number of tabbar contribution items", 29, count);
     }
 
     /**
-     * Tests that the custom tabbar is properly displayed when it is installed
-     * via extension point.
+     * Tests that the custom tabbar is properly displayed when it is installed via extension point.
      */
     public void testCustomTabbarContributor() {
         registerExtension();
