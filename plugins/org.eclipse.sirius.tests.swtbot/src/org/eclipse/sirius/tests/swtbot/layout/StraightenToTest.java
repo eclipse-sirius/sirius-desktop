@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.layout;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -26,6 +27,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEdit
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
@@ -45,8 +47,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
- * Class test for the new feature that straighten edges. See bug #499991 for
- * details.
+ * Class test for the new feature that straighten edges. See bug #499991 for details.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
@@ -100,10 +101,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * <UL>
      * <LI>Straighten oblique edge12 to Left: Expected OK</LI>
      * <LI>Straighten oblique edge12 to Right: Expected OK</LI>
-     * <LI>Straighten oblique edge12 to Top: Expected: menu disabled (invalid
-     * axis)</LI>
-     * <LI>Straighten oblique edge12 to Bottom: Expected: menu disabled (invalid
-     * axis)</LI>
+     * <LI>Straighten oblique edge12 to Top: Expected: menu disabled (invalid axis)</LI>
+     * <LI>Straighten oblique edge12 to Bottom: Expected: menu disabled (invalid axis)</LI>
      * </UL>
      */
     public void testObliqueEdgeLeftAndRight() {
@@ -116,10 +115,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * <UL>
      * <LI>Straighten oblique edge24 to Left: Expected OK</LI>
      * <LI>Straighten oblique edge24 to Right: Expected OK</LI>
-     * <LI>Straighten oblique edge24 to Top: Expected: menu disabled (invalid
-     * axis)</LI>
-     * <LI>Straighten oblique edge24 to Bottom: Expected: menu disabled (invalid
-     * axis)</LI>
+     * <LI>Straighten oblique edge24 to Top: Expected: menu disabled (invalid axis)</LI>
+     * <LI>Straighten oblique edge24 to Bottom: Expected: menu disabled (invalid axis)</LI>
      * </UL>
      */
     public void testObliqueEdgeLeftAndRightWithWrongYGMFCoordinate() {
@@ -130,10 +127,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * <ul>
-     * <LI>Straighten oblique edge8 to Right: Expected: menu disabled (centered
-     * edge on source side)</LI>
-     * <LI>Straighten oblique edge8 to Left: Expected: menu disabled (centered
-     * edge on source side)</LI>
+     * <LI>Straighten oblique edge8 to Right: Expected: menu disabled (centered edge on source side)</LI>
+     * <LI>Straighten oblique edge8 to Left: Expected: menu disabled (centered edge on source side)</LI>
      * </ul>
      */
     public void testObliqueEdgeLeftAndRightForbiddenBecauseofCentering() {
@@ -193,8 +188,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     /**
      * <UL>
      * <LI>Straighten rectilinear edge14 to Top: Expected OK</LI>
-     * <LI>Straighten rectilinear edge14 to Bottom: Expected: menu disabled (out
-     * of bounds)</LI>
+     * <LI>Straighten rectilinear edge14 to Bottom: Expected: menu disabled (out of bounds)</LI>
      * </UL>
      */
     public void testRectilinearTopAndBottomOutOfBounds() {
@@ -206,33 +200,30 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     /**
      * <ul>
      * <LI>Straighten oblique edge4 to Top: Expected OK</LI>
-     * <LI>Straighten oblique edge4 to Bottom: Expected OK (even if it concerns
-     * a border node with several edge)</LI>
+     * <LI>Straighten oblique edge4 to Bottom: Expected OK (even if it concerns a border node with several edge)</LI>
      * </ul>
      */
     public void testObliqueEdgeLinkedToBorderNodeWithSeveralEdges() {
         // {top,bottom,left,right}
         boolean[] availableDirections = { true, true, false, false };
-        checkEdgeActions(availableDirections, true, "edge4");
+        checkEdgeActions(availableDirections, true, null, "edge4");
     }
 
     /**
      * <ul>
-     * <LI>Straighten oblique edge17 to Left: Expected OK (even if it concerns a
-     * border node with several edge)</LI>
+     * <LI>Straighten oblique edge17 to Left: Expected OK (even if it concerns a border node with several edge)</LI>
      * <LI>Straighten oblique edge17 to Right: Expected OK</LI>
      * </ul>
      */
     public void testRectilinearEdgeLinkedToBorderNodeWithSeveralEdges() {
         // {top,bottom,left,right}
         boolean[] availableDirections = { false, false, true, true };
-        checkEdgeActions(availableDirections, true, "edge17");
+        checkEdgeActions(availableDirections, true, null, "edge17");
     }
 
     /**
      * <ul>
-     * <LI>Straighten oblique edge17 to Left: Expected OK (even if it concerns a
-     * border node with several edge)</LI>
+     * <LI>Straighten oblique edge17 to Left: Expected OK (even if it concerns a border node with several edge)</LI>
      * <LI>Straighten oblique edge17 to Right: Expected OK</LI>
      * </ul>
      */
@@ -248,8 +239,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     /**
      * <ul>
      * <LI>Straighten oblique edge6 to Top: Expected OK</LI>
-     * <LI>Straighten oblique edge6 to Bottom: Expected: menu disabled (overlap)
-     * </LI>
+     * <LI>Straighten oblique edge6 to Bottom: Expected: menu disabled (overlap)</LI>
      * </ul>
      */
     public void testObliqueEdgeTopAndBottomForbiddenForOverlap() {
@@ -259,8 +249,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Straighten rectilinear edge2 to *: Expected: menu disabled (not same
-     * axis)
+     * Straighten rectilinear edge2 to *: Expected: menu disabled (not same axis)
      */
     public void testRectilinearAllForbiddenForDifferentAxes() {
         // {top,bottom,left,right}
@@ -271,8 +260,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     /**
      * <ul>
      * <LI>Straighten rectilinear edge5 to Right: Expected: OK</LI>
-     * <LI>Straighten rectilinear edge5 to Left: Expected: menu disabled
-     * (centered edge on target side)</LI>
+     * <LI>Straighten rectilinear edge5 to Left: Expected: menu disabled (centered edge on target side)</LI>
      * </ul>
      */
     public void testRectilinearToRightWithLeftForbiddenBecauseofCentering() {
@@ -283,10 +271,9 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * <ul>
-     * <LI>Straighten rectilinear edge5 to Right with zoom 200% : Expected: OK
-     * </LI>
-     * <LI>Straighten rectilinear edge5 to Left with zoom 200% : Expected: menu
-     * disabled (centered edge on target side)</LI>
+     * <LI>Straighten rectilinear edge5 to Right with zoom 200% : Expected: OK</LI>
+     * <LI>Straighten rectilinear edge5 to Left with zoom 200% : Expected: menu disabled (centered edge on target
+     * side)</LI>
      * </ul>
      */
     public void testRectilinearToRightWithLeftForbiddenBecauseofCenteringWithZoom200() {
@@ -310,21 +297,33 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Straighten edge5 AND edge15 to *: Expected: menu disabled (not same axis
-     * for both edges)
+     * Edges subject to a straighten action.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
      */
-    public void testTwoEdgesAllForbidden() {
+    private enum EdgeImpact {
+        FIRST_EDGE, SECOND_EDGE, BOTH_EDGE;
+    }
+
+    /**
+     * Tests that launching "straighten to" action available for one edge among two selected applies the straightening
+     * to this edge without error.
+     */
+    public void testTwoEdgesAllIncompatibleStraigthenAction() {
         // {top,bottom,left,right}
-        boolean[] availableDirections = { false, false, false, false };
-        checkEdgeActions(availableDirections, "edge5", "edge15");
+        boolean[] availableDirections = { true, true, false, true };
+        Map<Integer, EdgeImpact> directionsIndexToConcernedEdge = new HashMap<>();
+        directionsIndexToConcernedEdge.put(0, EdgeImpact.SECOND_EDGE);
+        directionsIndexToConcernedEdge.put(1, EdgeImpact.SECOND_EDGE);
+        directionsIndexToConcernedEdge.put(3, EdgeImpact.FIRST_EDGE);
+        checkEdgeActions(availableDirections, directionsIndexToConcernedEdge, "edge5", "edge15");
     }
 
     /**
      * <ul>
-     * <LI>Straighten oblique edge7 to Bottom: Expected: OK (with scrollbar)
-     * </LI>
-     * <LI>Straighten oblique edge7 to Top: Expected: menu disabled (out of
-     * bounds)</LI>
+     * <LI>Straighten oblique edge7 to Bottom: Expected: OK (with scrollbar)</LI>
+     * <LI>Straighten oblique edge7 to Top: Expected: menu disabled (out of bounds)</LI>
      * </ul>
      */
     public void testObliqueToBottomWithScrollbar() {
@@ -338,10 +337,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * <UL>
-     * <LI>Straighten rectilinear edge14 to Top: Expected OK (with scrollbar)
-     * </LI>
-     * <LI>Straighten rectilinear edge14 to Bottom: Expected: menu disabled (out
-     * of bounds with scrollbar)</LI>
+     * <LI>Straighten rectilinear edge14 to Top: Expected OK (with scrollbar)</LI>
+     * <LI>Straighten rectilinear edge14 to Bottom: Expected: menu disabled (out of bounds with scrollbar)</LI>
      * </UL>
      */
     public void testRectilinearTopAndBottomOutOfBoundsWithScrollbar() {
@@ -354,25 +351,36 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Straighten edge12 AND container3 to *: Expected: menu not visible
-     * (container in selection)
+     * Straighten edge12 AND container3 to *: Expected: menu visible (container in selection)
      */
     public void testMenuVisibilityWithEdgeAndContainer() {
         SWTBotGefEditPart editPart1 = editor.getEditPart("edge12", AbstractDiagramEdgeEditPart.class);
         SWTBotGefEditPart editPart2 = editor.getEditPart("container3", AbstractDiagramContainerEditPart.class);
         editor.select(editPart1, editPart2);
-        try {
-            editor.clickContextMenu(Messages.StraightenToMenuAction_text);
-            fail("The " + Messages.StraightenToMenuAction_text + " menu should not be displayed");
-        } catch (WidgetNotFoundException e) {
-            // do nothing, normal case.
-        }
+        editor.reveal(editPart1.part());
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { false, true, false, false };
+        checkEdgeActions(availableDirections, "edge11");
+    }
+
+    /**
+     * Straighten edge12 AND its name part are selected:
+     * 
+     * Expected: menu visible
+     */
+    public void testMenuVisibilityWithEdgeAndPartName() {
+        SWTBotGefEditPart editPart1 = editor.getEditPart("edge12", AbstractDiagramEdgeEditPart.class);
+        SWTBotGefEditPart editPart2 = editor.getEditPart("edge12", AbstractDiagramNameEditPart.class);
+        editor.select(editPart1, editPart2);
+        editor.reveal(editPart1.part());
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { false, true, false, false };
+        checkEdgeActions(availableDirections, "edge11");
     }
 
     /**
      * <ul>
-     * <LI>Straighten oblique edge11 to Top: Expected: menu disabled (out of
-     * bounds)</LI>
+     * <LI>Straighten oblique edge11 to Top: Expected: menu disabled (out of bounds)</LI>
      * <LI>Straighten oblique edge11 to Bottom: Expected OK</LI>
      * </ul>
      */
@@ -387,8 +395,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     /**
      * <ul>
      * <LI>Straighten oblique edge10 to Top: Expected OK</LI>
-     * <LI>Straighten oblique edge10 to Bottom: Expected: menu disabled (out of
-     * bounds)</LI>
+     * <LI>Straighten oblique edge10 to Bottom: Expected: menu disabled (out of bounds)</LI>
      * </ul>
      */
     public void testObliqueEdgeTopAndBottomBetweenElementNotAtSameLevel() {
@@ -436,7 +443,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      *            list of names corresponding to the edges to select.
      */
     private void checkEdgeActions(boolean[] availableDirections, String... edgeNames) {
-        checkEdgeActions(availableDirections, false, edgeNames);
+        checkEdgeActions(availableDirections, false, null, edgeNames);
     }
 
     /**
@@ -451,12 +458,28 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      *            the actions that should be available: {top,bottom,left,right}
      * @param edgeNames
      *            list of names corresponding to the edges to select.
-     * @param checkOtherEdges
-     *            true if the bendpoints stability of edges linked to moved
-     *            border node must also be checked (only segment linked to
-     *            border node must be moved), false otherwise
      */
-    private void checkEdgeActions(boolean[] availableDirections, boolean checkOtherEdges, String... edgeNames) {
+    private void checkEdgeActions(boolean[] availableDirections, Map<Integer, EdgeImpact> directionsIndexToConcernedEdge, String... edgeNames) {
+        checkEdgeActions(availableDirections, false, directionsIndexToConcernedEdge, edgeNames);
+    }
+
+    /**
+     * Checks the edge "to straight" actions. Makes sure that:
+     * <ul>
+     * <li>All actions (To Top, To Bottom etc.) exist in the menu</li>
+     * <li>Actions are enable according to the availableDirections argument</li>
+     * <li>All enabled actions result is correct</li>
+     * </ul>
+     * 
+     * @param availableDirections
+     *            the actions that should be available: {top,bottom,left,right}
+     * @param checkOtherEdges
+     *            true if the bendpoints stability of edges linked to moved border node must also be checked (only
+     *            segment linked to border node must be moved), false otherwise
+     * @param directionsIndexToConcernedEdge
+     *            * @param edgeNames list of names corresponding to the edges to select.
+     */
+    private void checkEdgeActions(boolean[] availableDirections, boolean checkOtherEdges, Map<Integer, EdgeImpact> directionsIndexToConcernedEdge, String... edgeNames) {
         for (int i = 0; i < 4; i++) {
             Map<SWTBotGefEditPart, List<Point>> gefEditParts2ExpectedPointList = Maps.newHashMap();
             // Map only used if checkOtherEdges is true
@@ -474,21 +497,77 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
                     fail("the \"" + labels[i] + "\" menu should be " + status + " for the edge selection: " + Arrays.toString(edgeNames));
                 }
                 if (enable) {
+                    int j = 0;
                     // if the action is enabled we check the result.
                     for (SWTBotGefEditPart edgeEditPart : gefEditParts2ExpectedPointList.keySet()) {
-                        List<Point> pointList = gefEditParts2ExpectedPointList.get(edgeEditPart);
-                        computeExpectedPoints(edgeEditPart, pointList, i);
-                        if (checkOtherEdges) {
-                            computeOtherEdgesExpectedPoints(edgeEditPart, otherEdgeEditParts2ExpectedPointList, i);
+                        boolean computePoints = false;
+                        if (directionsIndexToConcernedEdge != null) {
+                            switch (directionsIndexToConcernedEdge.get(i)) {
+                            case BOTH_EDGE:
+                                if (j == 0 || j == 1) {
+                                    computePoints = true;
+                                }
+                                break;
+                            case FIRST_EDGE:
+                                if (j == 0) {
+                                    computePoints = true;
+                                }
+                                break;
+                            case SECOND_EDGE:
+                                if (j == 1) {
+                                    computePoints = true;
+                                }
+                                break;
+                            default:
+                                computePoints = true;
+                                break;
+                            }
+
                         }
+                        if (computePoints) {
+                            List<Point> pointList = gefEditParts2ExpectedPointList.get(edgeEditPart);
+                            computeExpectedPoints(edgeEditPart, pointList, i);
+                            if (checkOtherEdges) {
+                                computeOtherEdgesExpectedPoints(edgeEditPart, otherEdgeEditParts2ExpectedPointList, i);
+                            }
+                        }
+                        j++;
                     }
                     editor.clickContextMenu(labels[i]);
+                    j = 0;
                     for (SWTBotGefEditPart edgeEditPart : gefEditParts2ExpectedPointList.keySet()) {
-                        List<Point> pointList = gefEditParts2ExpectedPointList.get(edgeEditPart);
-                        checkResult(edgeEditPart, pointList, i);
-                        if (checkOtherEdges) {
-                            checkResultOfOtherEdges(edgeEditPart, otherEdgeEditParts2ExpectedPointList);
+                        boolean checkResult = false;
+                        if (directionsIndexToConcernedEdge != null) {
+                            switch (directionsIndexToConcernedEdge.get(i)) {
+                            case BOTH_EDGE:
+                                if (j == 0 || j == 1) {
+                                    checkResult = true;
+                                }
+                                break;
+                            case FIRST_EDGE:
+                                if (j == 0) {
+                                    checkResult = true;
+                                }
+                                break;
+                            case SECOND_EDGE:
+                                if (j == 1) {
+                                    checkResult = true;
+                                }
+                                break;
+                            default:
+                                checkResult = true;
+                                break;
+                            }
+
                         }
+                        if (checkResult) {
+                            List<Point> pointList = gefEditParts2ExpectedPointList.get(edgeEditPart);
+                            checkResult(edgeEditPart, pointList, i);
+                            if (checkOtherEdges) {
+                                checkResultOfOtherEdges(edgeEditPart, otherEdgeEditParts2ExpectedPointList);
+                            }
+                        }
+                        j++;
                     }
                     undo();
                 }
@@ -504,11 +583,9 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * @param edgeEditPart
      *            the current edge swtbot edit part.
      * @param pointList
-     *            the expected point list. The Start at 0 index and End at 1
-     *            index.
+     *            the expected point list. The Start at 0 index and End at 1 index.
      * @param i
-     *            the current action tested in labels order
-     *            {top,bottom,left,right}
+     *            the current action tested in labels order {top,bottom,left,right}
      */
     private void checkResult(SWTBotGefEditPart edgeEditPart, List<Point> pointList, int i) {
         AbstractDiagramEdgeEditPart part = (AbstractDiagramEdgeEditPart) edgeEditPart.part();
@@ -524,14 +601,12 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that edges linked to the moved border node are at the expected
-     * location.
+     * Check that edges linked to the moved border node are at the expected location.
      * 
      * @param edgeEditPart
      *            The current straighten edge
      * @param otherEdgeEditParts2ExpectedPointList
-     *            the list where register the expected points, a point set to
-     *            {-1, -1} is to ignore in the comparison
+     *            the list where register the expected points, a point set to {-1, -1} is to ignore in the comparison
      */
     private void checkResultOfOtherEdges(SWTBotGefEditPart edgeEditPart, Map<AbstractDiagramEdgeEditPart, PointList> otherEdgeEditParts2ExpectedPointList) {
         for (Entry<AbstractDiagramEdgeEditPart, PointList> entry : otherEdgeEditParts2ExpectedPointList.entrySet()) {
@@ -562,11 +637,9 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * @param edgeEditPart
      *            the swtbot gef editpart to check points.
      * @param pointList
-     *            the list where register the expected points, (Start at 0 and
-     *            End at 1)
+     *            the list where register the expected points, (Start at 0 and End at 1)
      * @param i
-     *            the current action index in labels order
-     *            {top,bottom,left,right} order
+     *            the current action index in labels order {top,bottom,left,right} order
      */
     private void computeExpectedPoints(SWTBotGefEditPart edgeEditPart, List<Point> pointList, int i) {
         AbstractDiagramEdgeEditPart part = (AbstractDiagramEdgeEditPart) edgeEditPart.part();
@@ -648,17 +721,15 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Compute the expected points for edges linked to the moved border node.
-     * The current straighten edge is not in the returned list
+     * Compute the expected points for edges linked to the moved border node. The current straighten edge is not in the
+     * returned list
      * 
      * @param edgeEditPart
      *            The current straighten edge
      * @param otherEdgeEditParts2ExpectedPointList
-     *            the list where register the expected points, a point set to
-     *            {-1, -1} is to ignore in the comparison
+     *            the list where register the expected points, a point set to {-1, -1} is to ignore in the comparison
      * @param i
-     *            the current action index in labels order
-     *            {top,bottom,left,right} order
+     *            the current action index in labels order {top,bottom,left,right} order
      */
     private void computeOtherEdgesExpectedPoints(SWTBotGefEditPart edgeEditPart, Map<AbstractDiagramEdgeEditPart, PointList> otherEdgeEditParts2ExpectedPointList, int i) {
         AbstractDiagramEdgeEditPart part = (AbstractDiagramEdgeEditPart) edgeEditPart.part();
@@ -718,16 +789,15 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Compute the expected points for edges linked to the moved border node.
-     * The current straighten edge is not in the returned list
+     * Compute the expected points for edges linked to the moved border node. The current straighten edge is not in the
+     * returned list
      * 
      * @param borderNodeEditPart
      *            The moved border node edit part
      * @param edgeEditPart
      *            The current straighten edge
      * @param otherEdgeEditParts2ExpectedPointList
-     *            the list where register the expected points, a point set to
-     *            {-1, -1} is to ignore in the comparison
+     *            the list where register the expected points, a point set to {-1, -1} is to ignore in the comparison
      */
     private void computeOtherEdgesExpectedPoints(AbstractDiagramBorderNodeEditPart borderNodeEditPart, AbstractDiagramEdgeEditPart selectedEdgeEditPart,
             Map<AbstractDiagramEdgeEditPart, PointList> otherEdgeEditParts2ExpectedPointList) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.draw2d.Connection;
+import org.eclipse.gef.EditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 
@@ -22,7 +26,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPa
  * 
  * @author mPorhel
  */
-public class DEdgeNameSelectionFeedbackEditPolicy extends AbstractEdgeSelectionFeedbackEditPolicy {
+public class DEdgeNameSelectionFeedbackEditPolicy extends AbstractEdgeSelectionFeedbackEditPolicy implements PropertyChangeListener {
 
     /**
      * {@inheritDoc}
@@ -54,6 +58,37 @@ public class DEdgeNameSelectionFeedbackEditPolicy extends AbstractEdgeSelectionF
             }
         }
         return names;
+    }
+
+    @Override
+    protected void showSelection() {
+        if (getEdgeEditPart() != null && getEdgeEditPart().getFigure() != null) {
+            // we register this policy as a property listener to clear rebuild its handles when target edge's bend
+            // points change. This is needed when an edge is straighten whereas the edge part and its name part are both
+            // selected.
+            ((Connection) getEdgeEditPart().getFigure()).addPropertyChangeListener(this);
+        }
+        super.showSelection();
+    }
+
+    @Override
+    protected void hideSelection() {
+        if (getEdgeEditPart() != null && getEdgeEditPart().getFigure() != null) {
+            ((Connection) getEdgeEditPart().getFigure()).removePropertyChangeListener(this);
+        }
+        super.hideSelection();
+    }
+
+    /**
+     * Adds selection handles to the Connection, if it is selected, when the points property changes. Since we only
+     * listen for changes in the points property, this method is only called when the points of the Connection have
+     * changed.
+     */
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (getHost().getSelected() != EditPart.SELECTED_NONE) {
+            addSelectionHandles();
+        }
     }
 
 }

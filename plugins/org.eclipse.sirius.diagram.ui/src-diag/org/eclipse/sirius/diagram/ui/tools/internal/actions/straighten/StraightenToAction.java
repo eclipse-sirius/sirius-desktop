@@ -27,7 +27,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.StraightenToRequest;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.ui.IWorkbenchPage;
 
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -86,8 +85,7 @@ public class StraightenToAction extends DiagramAction {
     }
 
     /**
-     * Get the label of the action according to <code>distributionType</code>
-     * and <code>isToolbarItem</code>.
+     * Get the label of the action according to <code>distributionType</code> and <code>isToolbarItem</code>.
      * 
      * @param straightenType
      *            the kind of straighten.
@@ -143,8 +141,7 @@ public class StraightenToAction extends DiagramAction {
     }
 
     /**
-     * Creates the Straighten to top action to align the edge horizontally to
-     * the highest source or target.
+     * Creates the Straighten to top action to align the edge horizontally to the highest source or target.
      * 
      * @param workbenchPage
      *            the workbench part used to obtain context
@@ -160,8 +157,7 @@ public class StraightenToAction extends DiagramAction {
     }
 
     /**
-     * Creates the Straighten to bottom action to align the edge horizontally to
-     * the lowest source or target.
+     * Creates the Straighten to bottom action to align the edge horizontally to the lowest source or target.
      * 
      * @param workbenchPage
      *            the workbench part used to obtain context
@@ -177,8 +173,7 @@ public class StraightenToAction extends DiagramAction {
     }
 
     /**
-     * Creates the Straighten to left action to align the edge vertically to the
-     * left most source or target.
+     * Creates the Straighten to left action to align the edge vertically to the left most source or target.
      * 
      * @param workbenchPage
      *            the workbench part used to obtain context
@@ -194,8 +189,7 @@ public class StraightenToAction extends DiagramAction {
     }
 
     /**
-     * Creates the Straighten to right action to align the edge vertically to
-     * the right most source or target.
+     * Creates the Straighten to right action to align the edge vertically to the right most source or target.
      * 
      * @param workbenchPage
      *            the workbench part used to obtain context
@@ -228,25 +222,26 @@ public class StraightenToAction extends DiagramAction {
     protected Command getCommand() {
         List<?> operationSet = getOperationSet();
         if (!operationSet.isEmpty()) {
-            Object firstSelectedObject = operationSet.get(0);
-            if (firstSelectedObject instanceof AbstractDiagramEdgeEditPart) {
-                return ((AbstractDiagramEdgeEditPart) firstSelectedObject).getCommand(getTargetRequest());
+            for (Object object : operationSet) {
+                if (object instanceof AbstractDiagramEdgeEditPart) {
+                    return ((AbstractDiagramEdgeEditPart) object).getCommand(getTargetRequest());
+                }
             }
         }
         return UnexecutableCommand.INSTANCE;
     }
 
     /**
-     * Return only a list of selected AbstractDiagramEdgeEditPart that
-     * understands the request. If there is at least one other kind of edit
-     * part, an empty list is returned.
+     * Return only a list of selected AbstractDiagramEdgeEditPart that understands the request. If there is at least one
+     * other kind of edit part, an empty list is returned.
      * 
      * @return A list of {@link AbstractDiagramEdgeEditPart} selected.
      */
     @Override
     protected List<?> createOperationSet() {
         List<?> selection = getSelectedObjects();
-        if (!Iterables.all(selection, Predicates.instanceOf(AbstractDiagramEdgeEditPart.class))) {
+
+        if (!selection.stream().anyMatch(AbstractDiagramEdgeEditPart.class::isInstance)) {
             selection = Collections.EMPTY_LIST;
         }
         return selection;

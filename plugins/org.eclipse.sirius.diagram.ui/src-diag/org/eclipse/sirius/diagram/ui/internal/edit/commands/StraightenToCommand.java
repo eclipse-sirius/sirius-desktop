@@ -65,8 +65,7 @@ import com.google.common.collect.Maps;
  */
 public class StraightenToCommand extends AbstractTransactionalCommand {
     /**
-     * All data associated to an edgeEditPart computed during the canExecute()
-     * method.
+     * All data associated to an edgeEditPart computed during the canExecute() method.
      * 
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
@@ -90,38 +89,34 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
         private boolean isTargetABorderNode;
 
         /**
-         * Boolean to indicate if this command moves the source or the target of
-         * the edge.<br>
-         * Value computed during {@link #canExecute()} method, more precisely in
-         * {@link #isSourceWillBeMoved()} .
+         * Boolean to indicate if this command moves the source or the target of the edge.<br>
+         * Value computed during {@link #canExecute()} method, more precisely in {@link #isSourceWillBeMoved()} .
          */
         private boolean moveSource;
 
         /**
-         * Boolean to indicate that we are in the specific case where both
-         * source and target point will be moved. This case is when the source
-         * and the target of the edge are border nodes and edge is centered on
-         * each side.
+         * Boolean to indicate that we are in the specific case where both source and target point will be moved. This
+         * case is when the source and the target of the edge are border nodes and edge is centered on each side.
          */
         private boolean isSpecificCase;
 
         /**
          * The x delta by which the source (or target) will be moved.<br>
-         * Value computed during {@link #canExecute()} method, more precisely in
-         * {@link #isNewLocationInParentBounds()}.
+         * Value computed during {@link #canExecute()} method, more precisely in {@link #isNewLocationInParentBounds()}.
          */
         private int deltaX = 0;
 
         /**
          * The y delta by which the source (or target) will be moved.<br>
-         * Value computed during {@link #canExecute()} method, more precisely in
-         * {@link #isNewLocationInParentBounds()}.
+         * Value computed during {@link #canExecute()} method, more precisely in {@link #isNewLocationInParentBounds()}.
          */
         private int deltaY = 0;
     }
 
     /** Edge edit parts to straighten with associated data. */
     Map<AbstractDiagramEdgeEditPart, StraightenToCommandData> edgeEditParts = Maps.newHashMap();
+
+    Map<AbstractDiagramEdgeEditPart, StraightenToCommandData> edgeEditPartsToStraighten = Maps.newHashMap();
 
     /**
      * The straighten type must by one of:
@@ -166,67 +161,72 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
         boolean canExecute = true;
         // First iteration with quick checks
         for (Map.Entry<AbstractDiagramEdgeEditPart, StraightenToCommandData> edgeEditPartWithData : edgeEditParts.entrySet()) {
-            if (canExecute) {
-                AbstractDiagramEdgeEditPart edgeEditPart = edgeEditPartWithData.getKey();
-                StraightenToCommandData data = edgeEditPartWithData.getValue();
-                Object model = edgeEditPart.getModel();
-                if (model instanceof Edge && data.sourceEditPart != null && data.targetEditPart != null) {
-                    Edge edge = (Edge) model;
-                    EdgeQuery edgeQuery = new EdgeQuery(edge);
-                    // Check if this edge has a rectilinear routing style or an
-                    // oblique routing style (not a tree routing style).
-                    canExecute = !edgeQuery.isEdgeWithTreeRoutingStyle();
-                    // Check if the source or the target of this edge is another
-                    // edge
-                    if (canExecute) {
-                        canExecute = !(data.sourceEditPart instanceof ConnectionEditPart || data.targetEditPart instanceof ConnectionEditPart);
-                    }
-                    if (canExecute) {
-                        data.isSourceABorderNode = data.sourceEditPart instanceof AbstractDiagramBorderNodeEditPart;
-                        data.isTargetABorderNode = data.targetEditPart instanceof AbstractDiagramBorderNodeEditPart;
-                        // Check if the source and the target are not on the
-                        // same axis (west and east sides or north and south
-                        // sides)
-                        int axis = getSourceAndTargetSameAxis(edgeEditPart, data);
-                        canExecute = axis != PositionConstants.NONE;
-                        if (canExecute) {
-                            if ((axis == PositionConstants.HORIZONTAL && (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM))
-                                    || (axis == PositionConstants.VERTICAL && (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT))) {
-                                data.moveSource = isSourceWillBeMoved(edgeEditPart, data);
-                            } else {
-                                canExecute = false;
-                            }
+            boolean canExecuteThisEdge = true;
+            AbstractDiagramEdgeEditPart edgeEditPart = edgeEditPartWithData.getKey();
+            StraightenToCommandData data = edgeEditPartWithData.getValue();
+            Object model = edgeEditPart.getModel();
+            if (model instanceof Edge && data.sourceEditPart != null && data.targetEditPart != null) {
+                Edge edge = (Edge) model;
+                EdgeQuery edgeQuery = new EdgeQuery(edge);
+                // Check if this edge has a rectilinear routing style or an
+                // oblique routing style (not a tree routing style).
+                canExecuteThisEdge = !edgeQuery.isEdgeWithTreeRoutingStyle();
+                // Check if the source or the target of this edge is another
+                // edge
+                if (canExecuteThisEdge) {
+                    canExecuteThisEdge = !(data.sourceEditPart instanceof ConnectionEditPart || data.targetEditPart instanceof ConnectionEditPart);
+                }
+                if (canExecuteThisEdge) {
+                    data.isSourceABorderNode = data.sourceEditPart instanceof AbstractDiagramBorderNodeEditPart;
+                    data.isTargetABorderNode = data.targetEditPart instanceof AbstractDiagramBorderNodeEditPart;
+                    // Check if the source and the target are not on the
+                    // same axis (west and east sides or north and south
+                    // sides)
+                    int axis = getSourceAndTargetSameAxis(edgeEditPart, data);
+                    canExecuteThisEdge = axis != PositionConstants.NONE;
+                    if (canExecuteThisEdge) {
+                        if ((axis == PositionConstants.HORIZONTAL && (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM))
+                                || (axis == PositionConstants.VERTICAL && (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT))) {
+                            data.moveSource = isSourceWillBeMoved(edgeEditPart, data);
+                        } else {
+                            canExecuteThisEdge = false;
                         }
                     }
-                    if (canExecute) {
-                        // A straighten action can be disabled if the edge
-                        // centering is activated on an edge.
-                        canExecute = !isCentered(edgeEditPart, data);
-                    }
+                }
+                if (canExecuteThisEdge) {
+                    // A straighten action can be disabled if the edge
+                    // centering is activated on an edge.
+                    canExecuteThisEdge = !isCentered(edgeEditPart, data);
                 }
             }
+            if (canExecuteThisEdge) {
+                edgeEditPartsToStraighten.put(edgeEditPart, data);
+            }
+            canExecute = canExecute || canExecuteThisEdge;
         }
         if (canExecute) {
             // Second with longer checks (bounds and overlap)
             for (Map.Entry<AbstractDiagramEdgeEditPart, StraightenToCommandData> edgeEditPartWithData : edgeEditParts.entrySet()) {
-                if (canExecute) {
-                    AbstractDiagramEdgeEditPart edgeEditPart = edgeEditPartWithData.getKey();
-                    StraightenToCommandData data = edgeEditPartWithData.getValue();
-                    if (canExecute) {
-                        // Compute if new location is in bounds of its
-                        // container.
-                        canExecute = isNewLocationInParentBounds(edgeEditPart, data);
-                    }
-                    if (canExecute) {
-                        // Check if the border node (source or target) will
-                        // overlapped another border node
-                        movedBorderNodes = getMovedBorderNodes();
-                        canExecute = !isOverlapped(edgeEditPart, data);
-                    }
+                boolean canExecuteThisEdge = true;
+                AbstractDiagramEdgeEditPart edgeEditPart = edgeEditPartWithData.getKey();
+                StraightenToCommandData data = edgeEditPartWithData.getValue();
+                if (canExecuteThisEdge) {
+                    // Compute if new location is in bounds of its
+                    // container.
+                    canExecuteThisEdge = isNewLocationInParentBounds(edgeEditPart, data);
+                }
+                if (canExecuteThisEdge) {
+                    // Check if the border node (source or target) will
+                    // overlapped another border node
+                    movedBorderNodes = getMovedBorderNodes();
+                    canExecuteThisEdge = !isOverlapped(edgeEditPart, data);
+                }
+                if (!canExecuteThisEdge) {
+                    edgeEditPartsToStraighten.remove(edgeEditPart);
                 }
             }
         }
-        return canExecute;
+        return edgeEditPartsToStraighten.size() > 0;
     }
 
     /**
@@ -271,7 +271,7 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
     @Override
     protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
         CommandResult commandResult = CommandResult.newOKCommandResult();
-        for (Map.Entry<AbstractDiagramEdgeEditPart, StraightenToCommandData> edgeEditPartWithData : edgeEditParts.entrySet()) {
+        for (Map.Entry<AbstractDiagramEdgeEditPart, StraightenToCommandData> edgeEditPartWithData : edgeEditPartsToStraighten.entrySet()) {
             AbstractDiagramEdgeEditPart edgeEditPart = edgeEditPartWithData.getKey();
             StraightenToCommandData data = edgeEditPartWithData.getValue();
             if (edgeEditPart.getFigure() instanceof Connection && edgeEditPart.getModel() instanceof Edge) {
@@ -339,11 +339,9 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
      * @param command
      *            The command to complete
      * @param editPartOnMovedSide
-     *            The {@link IGraphicalEditPart} on the side of the edge that
-     *            will be moved.
+     *            The {@link IGraphicalEditPart} on the side of the edge that will be moved.
      * @param isABorderNode
-     *            true if the <code>editPartOnMovedSide</code> is a border node,
-     *            false otherwise
+     *            true if the <code>editPartOnMovedSide</code> is a border node, false otherwise
      * @param sourceBounds
      *            The bounds of the source edit part
      * @param targetBounds
@@ -395,9 +393,8 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
     }
 
     /**
-     * Get the axis ({@link PositionConstants#HORIZONTAL} or
-     * {@link PositionConstants#VERTICAL}) if the source and the target are on
-     * the same axis, {@link PositionConstants#NONE} otherwise.
+     * Get the axis ({@link PositionConstants#HORIZONTAL} or {@link PositionConstants#VERTICAL}) if the source and the
+     * target are on the same axis, {@link PositionConstants#NONE} otherwise.
      * 
      * @return the axis of the edge
      */
@@ -472,15 +469,14 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
      * <LI>Oblique edges: Move forbidden if at least one side is centered.</LI>
      * <LI>Rectilinear edges: Move forbidden if the moved side is centered.LI>
      * </UL>
-     * There is an exception when the source and the target of the edge are
-     * border nodes and edge is centered on each side.
+     * There is an exception when the source and the target of the edge are border nodes and edge is centered on each
+     * side.
      * 
      * @param edgeEditPart
      *            The edge edit part to check
      * @param data
      *            The corresponding data
-     * @return true if the centering constraint forbids the move, false
-     *         otherwise.
+     * @return true if the centering constraint forbids the move, false otherwise.
      */
     private boolean isCentered(AbstractDiagramEdgeEditPart edgeEditPart, StraightenToCommandData data) {
         boolean isCentered = false;
@@ -503,15 +499,15 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
     }
 
     /**
-     * Check if the new location is in the parent bounds. This method also sets
-     * deltaX and deltaY used later during command execution.
+     * Check if the new location is in the parent bounds. This method also sets deltaX and deltaY used later during
+     * command execution.
      * 
      * @param edgeEditPart
      *            The edge edit part to check
      * @param data
      *            The corresponding data
-     * @return true if the source or target of the edge is in the bounds of its
-     *         parent after the straighten, false otherwise.
+     * @return true if the source or target of the edge is in the bounds of its parent after the straighten, false
+     *         otherwise.
      */
     private boolean isNewLocationInParentBounds(AbstractDiagramEdgeEditPart edgeEditPart, StraightenToCommandData data) {
         boolean isNewLocationInParentBounds = false;
@@ -593,17 +589,15 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
     }
 
     /**
-     * {@link #isNewLocationInParentBounds()} must be called before this method
-     * as it determines the {@link #deltaX} and {@link #deltaY} needed to check
-     * overlap.
+     * {@link #isNewLocationInParentBounds()} must be called before this method as it determines the {@link #deltaX} and
+     * {@link #deltaY} needed to check overlap.
      * 
      * @param edgeEditPart
      *            The edge edit part to check
      * @param data
      *            The corresponding data
-     * @return true if the border node overlapped another border node after the
-     *         move, false otherwise (or if the moved node is not a border
-     *         node).
+     * @return true if the border node overlapped another border node after the move, false otherwise (or if the moved
+     *         node is not a border node).
      */
     private boolean isOverlapped(AbstractDiagramEdgeEditPart edgeEditPart, StraightenToCommandData data) {
         boolean isOverlapped = false;
@@ -622,8 +616,8 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
     }
 
     /**
-     * Check if the <code>node</node> is overlapped another border node after
-     * applying the move (with {@link #deltaX} and {@link #deltaY}).
+     * Check if the <code>node</node> is overlapped another border node after applying the move (with {@link #deltaX}
+     * and {@link #deltaY}).
      * 
      * @param node
      *            The {@link Node} to check
@@ -682,9 +676,8 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
 
     /**
      * <P>
-     * Returns an integer which represents the position of the given point with
-     * respect to this rectangle. Possible return values are bitwise ORs of the
-     * constants WEST, EAST, NORTH, and SOUTH as found in
+     * Returns an integer which represents the position of the given point with respect to this rectangle. Possible
+     * return values are bitwise ORs of the constants WEST, EAST, NORTH, and SOUTH as found in
      * {@link org.eclipse.draw2d.PositionConstants}.
      * 
      * <P>
@@ -693,8 +686,7 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
      * @param point
      *            The Point whose position has to be determined
      * @param rect
-     *            the {@link Rectangle} on which <code>location</code> is
-     *            supposed to be
+     *            the {@link Rectangle} on which <code>location</code> is supposed to be
      * @return An <code>int</code> which is a {@link PositionConstant}
      */
     private int getLocation(Point point, Rectangle rect) {

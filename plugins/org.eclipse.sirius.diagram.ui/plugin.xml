@@ -165,7 +165,8 @@
          </partContribution>
          
 		<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
-            <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart">
+            <popupStructuredContributionCriteria
+                  policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.MultiSelectionEdgePolicy">
             </popupStructuredContributionCriteria>
             <popupMenu path="/filterFormatGroup" id="formatMenu">
             </popupMenu>
@@ -178,7 +179,7 @@
                class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider"
                id="StraightenToContribution">
             <popupStructuredContributionCriteria
-                  objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart">
+                  policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.MultiSelectionEdgePolicy">
             </popupStructuredContributionCriteria>
             
             <popupMenuGroup path="/formatMenu/arrangeMenu/" id="straightenToGroup" />
@@ -421,19 +422,40 @@
                   remove="true">
             </popupPredefinedItem>
          </popupContribution>
+      </contributionItemProvider>
+
+      <contributionItemProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider"
+            checkPluginLoaded="false">
+         <Priority name="Low"/>
          <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
             <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart">
-            </popupStructuredContributionCriteria>          
-            <popupMenuGroup id="filterFormatGroup">
-            </popupMenuGroup>
-            <popupMenu path="/filterFormatGroup" id="formatMenu">
-            </popupMenu>
+            </popupStructuredContributionCriteria>
             <popupMenuGroup path="/formatMenu/" id="fontFillLineGroup">
             </popupMenuGroup>
             <popupAction path="/formatMenu/fontFillLineGroup" id="fontDialogAction">
-            </popupAction>
-        </popupContribution>
-      </contributionItemProvider>
+            </popupAction>    
+          </popupContribution>             
+       </contributionItemProvider>
+       
+       <contributionItemProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider"
+            checkPluginLoaded="false">
+         <Priority name="Lowest"/>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria   policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.MultiSelectionEdgePolicy">
+            </popupStructuredContributionCriteria>
+             <popupMenu path="/filterFormatGroup" id="formatMenu">
+            </popupMenu>
+            <popupMenuGroup path="/formatMenu/" id="miscellaneousGroup">
+            </popupMenuGroup>
+            <popupMenu path="/formatMenu/miscellaneousGroup" id="arrangeMenu">
+            </popupMenu>    
+            <popupMenuGroup path="/formatMenu/arrangeMenu/" id="arrangeGroup">
+            </popupMenuGroup>  
+          </popupContribution>             
+       </contributionItemProvider>
+       
 
       <contributionItemProvider
             class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusContributionItemProvider"
