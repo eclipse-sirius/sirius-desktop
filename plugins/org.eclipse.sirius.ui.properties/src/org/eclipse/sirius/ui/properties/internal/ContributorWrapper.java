@@ -51,31 +51,43 @@ public class ContributorWrapper extends AbstractEEFTabbedPropertySheetPageContri
     @Override
     public void updateFormTitle(Form form, ISelection selection) {
         if (selection instanceof IStructuredSelection) {
+            boolean semanticElementFound = false;
             IStructuredSelection structuredSelection = (IStructuredSelection) selection;
             Object element = structuredSelection.getFirstElement();
-            if (element == null) {
-                return;
-            }
-
-            SiriusInputDescriptor inputDescriptor = new SiriusInputDescriptor(element);
-            EObject semanticElement = inputDescriptor.getSemanticElement();
-            if (semanticElement != null) {
-                String text = new EditingDomainServices().getLabelProviderText(semanticElement);
-                if (!Util.isBlank(text)) {
-                    // Keep only the first line in case of multiline labels
-                    String[] result = LINE_SEPARATOR_PATTERN.split(text, 2);
-                    if (result.length >= 1) {
-                        form.setText(result[0]);
-                    }
-                } else {
-                    form.setText(""); //$NON-NLS-1$
+            if (element != null) {
+                SiriusInputDescriptor inputDescriptor = new SiriusInputDescriptor(element);
+                EObject semanticElement = inputDescriptor.getSemanticElement();
+                if (semanticElement != null) {
+                    semanticElementFound = true;
+                    updateFormText(form, semanticElement);
+                    form.setImage(ExtendedImageRegistry.INSTANCE.getImage(new EditingDomainServices().getLabelProviderImage(semanticElement)));
                 }
-
-                form.setImage(ExtendedImageRegistry.INSTANCE.getImage(new EditingDomainServices().getLabelProviderImage(semanticElement)));
-            } else {
+            }
+            if (!semanticElementFound) {
                 form.setText(""); //$NON-NLS-1$
                 form.setImage(null);
             }
+        }
+    }
+
+    /**
+     * Update the text of the title of the form.
+     * 
+     * @param form
+     *            The form
+     * @param semanticElement
+     *            The current semantic element
+     */
+    protected void updateFormText(Form form, EObject semanticElement) {
+        String text = new EditingDomainServices().getLabelProviderText(semanticElement);
+        if (!Util.isBlank(text)) {
+            // Keep only the first line in case of multiline labels
+            String[] result = LINE_SEPARATOR_PATTERN.split(text, 2);
+            if (result.length >= 1) {
+                form.setText(result[0]);
+            }
+        } else {
+            form.setText(""); //$NON-NLS-1$
         }
     }
 
