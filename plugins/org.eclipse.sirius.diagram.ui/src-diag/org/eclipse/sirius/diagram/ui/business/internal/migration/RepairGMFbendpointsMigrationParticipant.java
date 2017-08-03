@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +30,11 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.edge.SlidableAnchor;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.RectilinearEdgeUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -63,17 +66,26 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
     @Override
     protected void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
         if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
+            boolean isModified = false;
+            StringBuilder sb = new StringBuilder(Messages.RepairGMFbendpointsMigrationParticipant_title);
             for (DView dView : dAnalysis.getOwnedViews()) {
                 for (DDiagram dDiagram : Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DDiagram.class)) {
                     if ("DSemanticDiagramSpec".equals(dDiagram.getClass().getSimpleName())) { //$NON-NLS-1$
                         List<Edge> edgeList = getEdgeList(dDiagram);
+                        boolean isEdgeModified = false;
                         for (Edge edge : edgeList) {
-                            checkAndRepairBendpointsOfEdge(edge);
+                            isEdgeModified = checkAndRepairBendpointsOfEdge(edge);
+                        }
+                        if (isEdgeModified) {
+                            isModified = true;
+                            sb.append(MessageFormat.format(Messages.RepairGMFbendpointsMigrationParticipant_edgesModified, dDiagram.getName()));
                         }
                     }
                 }
             }
-
+            if (isModified) {
+                DiagramPlugin.getDefault().logInfo(sb.toString());
+            }
         }
     }
 
@@ -82,8 +94,10 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
      * 
      * @param edge
      *            the edge which contains bend-points to check
+     * @return true if bend-points of the given edge have been modified, false otherwise
      */
-    private void checkAndRepairBendpointsOfEdge(Edge edge) {
+    private boolean checkAndRepairBendpointsOfEdge(Edge edge) {
+        boolean isEdgeModified = false;
         // compute Source and Target Reference point
         View source = edge.getSource();
         IdentityAnchor srcAnchor = (IdentityAnchor) edge.getSourceAnchor();
@@ -110,13 +124,14 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
             if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
                 if (srcPoint.x != tgtPoint.x && srcPoint.y != tgtPoint.y) {
                     // edge is not horizontal neither vertical
-                    repairBendpointsOfEdge(edge, srcBounds, srcRef, tgtBounds, tgtRef);
+                    isEdgeModified = repairBendpointsOfEdge(edge, srcBounds, srcRef, tgtBounds, tgtRef);
                 }
             } else if (!isPointOnBounds(srcPoint, srcBounds) || !isPointOnBounds(tgtPoint, tgtBounds)) {
                 // source and target connection must belong to bounds
-                repairBendpointsOfEdge(edge, srcBounds, srcRef, tgtBounds, tgtRef);
+                isEdgeModified = repairBendpointsOfEdge(edge, srcBounds, srcRef, tgtBounds, tgtRef);
             }
         }
+        return isEdgeModified;
     }
 
     /**
@@ -132,8 +147,10 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
      *            bounds of the figure of target edge
      * @param tgtRef
      *            target point used as reference to compute bend-points
+     * @return true if bend-points of the given edge have been modified, false otherwise
      */
-    private void repairBendpointsOfEdge(Edge edge, Rectangle srcBounds, Point srcRef, Rectangle tgtBounds, Point tgtRef) {
+    private boolean repairBendpointsOfEdge(Edge edge, Rectangle srcBounds, Point srcRef, Rectangle tgtBounds, Point tgtRef) {
+        boolean isEdgeModified = false;
         PointList newPointList = new PointList();
 
         // compute intersection of anchors line with bounds
@@ -141,6 +158,7 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
         Option<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(srcRef, tgtRef, tgtBounds, false);
 
         if (srcConnectionBendpoint.some() && tgtConnectionBendpoint.some()) {
+            isEdgeModified = true;
             EdgeQuery edgeQuery = new EdgeQuery(edge);
             Routing routingStyle = edgeQuery.getRoutingStyle();
             // Compute anchor logical coordinates
@@ -154,6 +172,7 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
 
             setNewBendPoints(edge, srcRef, tgtRef, newPointList);
         }
+        return isEdgeModified;
     }
 
     /**
