@@ -74,7 +74,7 @@ public class DirectEditTreeItemTest extends AbstractTreeSiriusSWTBotGefTestCase 
 
             @Override
             public boolean test() throws Exception {
-                return "newLabel".equals(treeItem.getText());
+                return (treeItem.getText()).contains("newLabel");
             }
 
             @Override
@@ -103,7 +103,7 @@ public class DirectEditTreeItemTest extends AbstractTreeSiriusSWTBotGefTestCase 
 
             @Override
             public boolean test() throws Exception {
-                return "newLabel".equals(treeItem.getText());
+                return (treeItem.getText()).contains("newLabel");
             }
 
             @Override
