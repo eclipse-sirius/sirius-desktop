@@ -48,7 +48,7 @@ public class XTextResourceSetFactory extends org.eclipse.sirius.common.tools.api
     }
 
     private IProject findProjectFromURI(URI resourceURI) {
-        if (resourceURI.isPlatformResource() && resourceURI.segmentCount() > 0) {
+        if (resourceURI != null && resourceURI.isPlatformResource() && resourceURI.segmentCount() > 0) {
             final String projectName = resourceURI.segment(1);
             return ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
         }
