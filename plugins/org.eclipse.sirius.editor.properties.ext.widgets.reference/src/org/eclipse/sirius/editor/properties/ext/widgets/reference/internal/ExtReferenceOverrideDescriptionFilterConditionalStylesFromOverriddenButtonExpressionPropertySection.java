@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -11,29 +12,23 @@ package org.eclipse.sirius.editor.properties.ext.widgets.reference.internal;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
+import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-/**
- * A section for the expression used to compute the name of the reference of a ExtReferenceDescription object. In order
- * to support the button used to open the dialog for the edition of an expression, this code depends on an internal
- * class from Eclipse Sirius, {@link TextWithContentProposalDialog}.
- * 
- * @author sbegaudeau
- */
 @SuppressWarnings("restriction")
-public class ExtReferenceDescriptionReferenceOwnerExpressionPropertySection extends AbstractTextWithButtonPropertySection {
+public class ExtReferenceOverrideDescriptionFilterConditionalStylesFromOverriddenButtonExpressionPropertySection
+        extends org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     @Override
     protected String getDefaultLabelText() {
-        return "Reference Owner Expression"; //$NON-NLS-1$
+        return "FilterConditionalStylesFromOverriddenExtReferenceExpression"; //$NON-NLS-1$
     }
 
     @Override
@@ -43,7 +38,7 @@ public class ExtReferenceDescriptionReferenceOwnerExpressionPropertySection exte
 
     @Override
     public EAttribute getFeature() {
-        return PropertiesExtWidgetsReferencePackage.eINSTANCE.getAbstractExtReferenceDescription_ReferenceOwnerExpression();
+        return PropertiesExtWidgetsReferencePackage.eINSTANCE.getExtReferenceOverrideDescription_FilterConditionalStylesFromOverriddenExtReferenceExpression();
     }
 
     @Override
@@ -53,7 +48,7 @@ public class ExtReferenceDescriptionReferenceOwnerExpressionPropertySection exte
 
     @Override
     protected boolean isEqual(String newText) {
-        return this.getFeatureAsText().equals(newText);
+        return getFeatureAsText().equals(newText);
     }
 
     @Override
@@ -68,7 +63,8 @@ public class ExtReferenceDescriptionReferenceOwnerExpressionPropertySection exte
         return new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), ExtReferenceDescriptionReferenceOwnerExpressionPropertySection.this, text.getText());
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(),
+                        ExtReferenceOverrideDescriptionFilterConditionalStylesFromOverriddenButtonExpressionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
                 handleTextModified();
@@ -80,5 +76,4 @@ public class ExtReferenceDescriptionReferenceOwnerExpressionPropertySection exte
     protected String getPropertyDescription() {
         return ""; //$NON-NLS-1$
     }
-
 }
