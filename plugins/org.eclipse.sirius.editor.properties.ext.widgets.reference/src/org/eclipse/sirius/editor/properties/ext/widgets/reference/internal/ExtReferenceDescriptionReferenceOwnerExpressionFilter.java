@@ -27,7 +27,7 @@ public class ExtReferenceDescriptionReferenceOwnerExpressionFilter extends Viewp
 
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
+        return arg0 instanceof org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription;
     }
 
 }
