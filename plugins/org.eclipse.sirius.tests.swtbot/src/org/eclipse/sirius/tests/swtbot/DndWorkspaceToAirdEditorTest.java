@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -30,6 +30,8 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.junit.Assume;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
@@ -52,6 +54,12 @@ public class DndWorkspaceToAirdEditorTest extends AbstractSiriusSwtBotGefTestCas
 
     private static final String FILE_DIR = "/";
 
+    @Override
+    @Before
+    public void setUp() throws Exception {
+        super.setUp();
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -66,21 +74,22 @@ public class DndWorkspaceToAirdEditorTest extends AbstractSiriusSwtBotGefTestCas
      * @throws Exception
      *             if an error occurs.
      */
+    @Test
     public void testDragAndDropModelFile() throws Exception {
         Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
         // open aird editor
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
+
         RunnableWithResult<IEditorPart> result = new RunnableWithResult<IEditorPart>() {
             private IEditorPart resultEditor;
 
             @Override
             public void run() {
-                URI uri = URI.createPlatformResourceURI(sessionAirdResource.getFullPath().toString(), true);
                 try {
-                    resultEditor = PlatformUI.getWorkbench()
-                            .getActiveWorkbenchWindow().getActivePage().openEditor(new FileEditorInput(ResourcesPlugin
-                                    .getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)))),
-                                    SessionEditor.EDITOR_ID);
+                    final IFile fileToOpen = ResourcesPlugin.getWorkspace().getRoot()
+                            .getFile(new Path(sessionAirdResource.getFullPath()));
+                    resultEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                            .openEditor(new FileEditorInput(fileToOpen), SessionEditor.EDITOR_ID);
                 } catch (PartInitException e) {
                     throw new RuntimeException(e);
                 }

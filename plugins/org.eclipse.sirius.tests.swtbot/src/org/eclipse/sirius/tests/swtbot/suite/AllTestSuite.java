@@ -221,6 +221,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DiagramPrintTest.class);
         suite.addTestSuite(PinnedElementsTest.class);
         suite.addTestSuite(StraightenToTest.class);
+        suite.addTest(new JUnit4TestAdapter(DndWorkspaceToAirdEditorTest.class));
     }
 
     /**
@@ -271,7 +272,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(OpenMultipleRepresentationsTest.class);
         suite.addTestSuite(ShapeResizingEdgePositionStabilityTests.class);
         suite.addTestSuite(PortsOnNodePositionStabilityTest.class);
-        suite.addTest(new JUnit4TestAdapter(DndWorkspaceToAirdEditorTest.class));
         suite.addTest(new JUnit4TestAdapter(PortLocationAfterDragAndDropTest.class));
         suite.addTestSuite(PortLocationAfterDragAndDropOnDiagramTest.class);
         suite.addTestSuite(CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest.class);
