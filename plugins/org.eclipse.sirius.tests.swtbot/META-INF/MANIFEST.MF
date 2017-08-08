@@ -61,7 +61,10 @@ Eclipse-RegisterBuddy: org.apache.log4j
 Bundle-Vendor: %providerName
 Export-Package: org.eclipse.sirius.tests.swtbot,
  org.eclipse.sirius.tests.swtbot.canonicalrefresh,
+ org.eclipse.sirius.tests.swtbot.celleditor,
  org.eclipse.sirius.tests.swtbot.clipboard,
+ org.eclipse.sirius.tests.swtbot.compartment,
+ org.eclipse.sirius.tests.swtbot.crossTable,
  org.eclipse.sirius.tests.swtbot.editor.vsm,
  org.eclipse.sirius.tests.swtbot.layout,
  org.eclipse.sirius.tests.swtbot.modelexplorer,

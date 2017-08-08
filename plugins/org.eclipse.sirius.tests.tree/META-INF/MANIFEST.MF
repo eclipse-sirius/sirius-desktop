@@ -48,7 +48,9 @@ Export-Package: org.eclipse.sirius.tests,
  org.eclipse.sirius.tests.support.api,
  org.eclipse.sirius.tests.unit.common,
  org.eclipse.sirius.tests.unit.dialect,
+ org.eclipse.sirius.tests.unit.migration,
  org.eclipse.sirius.tests.unit.tree,
  org.eclipse.sirius.tests.unit.tree.tools,
+ org.eclipse.sirius.tests.unit.tree.vsm.color,
  org.eclipse.sirius.tests.unit.tree.vsm.edit
 Import-Package: org.eclipse.sirius.ext.base;version="1.0.0"

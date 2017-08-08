@@ -30,3 +30,8 @@ Require-Bundle: org.eclipse.sirius.ui.properties;bundle-version="4.1.0",
  org.eclipse.sirius.ecore.extender,
  org.eclipse.emf.transaction
 Bundle-Localization: plugin
+Export-Package: org.eclipse.sirius.tests.ui.properties.internal,
+ org.eclipse.sirius.tests.ui.properties.internal.converters,
+ org.eclipse.sirius.tests.ui.properties.internal.migration,
+ org.eclipse.sirius.tests.ui.properties.internal.preprocessor,
+ org.eclipse.sirius.tests.ui.properties.internal.vsm
