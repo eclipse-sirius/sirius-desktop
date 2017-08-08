@@ -149,7 +149,6 @@ import org.eclipse.sirius.tests.unit.diagram.migration.RgbValuesEDataTypeMigrati
 import org.eclipse.sirius.tests.unit.diagram.migration.RunRepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SnapBackDistantLabelsMigrationTest;
-import org.eclipse.sirius.tests.unit.multipageeditor.SessionEditorTest;
 import org.eclipse.sirius.tests.unit.multipageeditor.SiriusMultiPageEditorTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
 import org.eclipse.sirius.tests.unit.perf.common.Session1MillionTests;
@@ -339,7 +338,6 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(DAnnotationTest.class);
 
         suite.addTestSuite(PageOrdererTest.class);
-        suite.addTestSuite(SessionEditorTest.class);
     }
 
     /**
