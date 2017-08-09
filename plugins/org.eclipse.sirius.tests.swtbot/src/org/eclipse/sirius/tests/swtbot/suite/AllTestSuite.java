@@ -253,8 +253,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesLayoutStabilityTest.class);
         suite.addTestSuite(DistributeActionTests.class);
 
-        // TODO CBR : fix these tests
-        // suite.addTestSuite(ArrangeAllTest.class);
+        suite.addTestSuite(ArrangeAllTest.class);
+        suite.addTest(new JUnit4TestAdapter(DragNDropTest.class));
         suite.addTestSuite(EdgeStabilityOnBendpointsAlignmentTest.class);
         suite.addTestSuite(EdgeStabilityOnDragAndDropTest.class);
         suite.addTestSuite(EdgeLabelStabilityTest.class);
@@ -437,13 +437,6 @@ public class AllTestSuite extends TestCase {
         // TODO MCH : Fix this test. This test is deactivate because the build
         // fails on Hudson (Timeout Exception)
         suite.addTestSuite(DndWorkspaceSupportTest.class);
-
-        // TODO CBR : fix these tests
-        suite.addTestSuite(ArrangeAllTest.class);
-
-        // This tests are not enabled because the method util.dragAndDrop() is
-        // unreliable. Sometimes the drop works and sometimes the drop fails.
-        suite.addTestSuite(DragNDropTest.class);
 
         // TODO DLE : reenable theses tests as soon as getEditPart method will
         // be based on matcher.
