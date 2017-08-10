@@ -726,6 +726,54 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             }
         });
     }
+    
+    /**
+     * Change an int preference and store the old value. It will be
+     * automatically reset during tear down.
+     *
+     * TO CALL ONLY ONCE PER TEST (set up + test)
+     *
+     * @param preferenceKey
+     *            The key of the preference.
+     * @param newValue
+     *            The new value.
+     */
+    protected void changeDiagramUIPreference(final String preferenceKey, final int newValue) {
+        assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
+
+        final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
+        oldValueDiagramUIPreferences.put(preferenceKey, prefs.getInt(preferenceKey));
+        UIThreadRunnable.syncExec(new VoidResult() {
+            @Override
+            public void run() {
+                prefs.setValue(preferenceKey, newValue);
+            }
+        });
+    }
+    
+    /**
+     * Change a double preference and store the old value. It will be
+     * automatically reset during tear down.
+     *
+     * TO CALL ONLY ONCE PER TEST (set up + test)
+     *
+     * @param preferenceKey
+     *            The key of the preference.
+     * @param newValue
+     *            The new value.
+     */
+    protected void changeDiagramUIPreference(final String preferenceKey, final double newValue) {
+        assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
+
+        final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
+        oldValueDiagramUIPreferences.put(preferenceKey, prefs.getDouble(preferenceKey));
+        UIThreadRunnable.syncExec(new VoidResult() {
+            @Override
+            public void run() {
+                prefs.setValue(preferenceKey, newValue);
+            }
+        });
+    }
 
     /**
      * Restore this preference to its initial value. Should be called after

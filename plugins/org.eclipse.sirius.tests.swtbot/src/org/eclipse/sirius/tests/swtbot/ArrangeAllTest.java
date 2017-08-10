@@ -60,11 +60,22 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final int BIG_PADDING = 300;
 
-    private UILocalSession localSession;
+    /**
+     * The local session.
+     */
+    protected UILocalSession localSession;
 
-    private SWTBotTreeItem mainEPackage;
+    /**
+     * The first package of the model.
+     */
+    protected SWTBotTreeItem mainEPackage;
 
     private UIResource semanticModel;
+
+    /**
+     * True if snapToGrid should be activated on editor, false otherwise.
+     */
+    protected boolean snapToGrid;
 
     /*
      * (non-Javadoc)
@@ -74,7 +85,9 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        changeDiagramUIPreference(IPreferenceConstants.PREF_SNAP_TO_GRID, false);
+        if (!snapToGrid) {
+            changeDiagramUIPreference(IPreferenceConstants.PREF_SNAP_TO_GRID, false);
+        }
     }
 
     private void arrangeAll(final SWTBotSiriusDiagramEditor editor) {
@@ -154,8 +167,10 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
                 .newDiagramRepresentation("new " + defaultPaddingDiagramDescription, defaultPaddingDiagramDescription)
                 .on(mainEPackage).withDefaultName().ok();
         SWTBotSiriusDiagramEditor editor = defaultPadding.open().getEditor();
-        editor.mainEditPart().part().getViewer().setProperty(SnapToGrid.PROPERTY_GRID_ENABLED, Boolean.FALSE);
-        editor.setSnapToGrid(false);
+        if (!snapToGrid) {
+            editor.mainEditPart().part().getViewer().setProperty(SnapToGrid.PROPERTY_GRID_ENABLED, Boolean.FALSE);
+            editor.setSnapToGrid(false);
+        }
         return editor;
     }
 
@@ -275,10 +290,13 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
         assertNotNull(LF72);
         assertNotNull(LF71);
 
-        assertEquals("Bad space between two nodes", expectedPadding * 2,
-                LF72.getFigure().getBounds().getTopLeft().x - LF8.getFigure().getBounds().getTopRight().x);
-        assertEquals("Bad space between two nodes", expectedPadding * 2,
-                LF71.getFigure().getBounds().getTopLeft().x - LF72.getFigure().getBounds().getTopRight().x);
+        if (!snapToGrid) {
+            // Nothing to check when snapToGrid is activated because padding can not be respected.
+            assertEquals("Bad space between two nodes", expectedPadding * 2,
+                    LF72.getFigure().getBounds().getTopLeft().x - LF8.getFigure().getBounds().getTopRight().x);
+            assertEquals("Bad space between two nodes", expectedPadding * 2,
+                    LF71.getFigure().getBounds().getTopLeft().x - LF72.getFigure().getBounds().getTopRight().x);
+        }
     }
 
     /**
@@ -385,10 +403,13 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
         assertNotNull(LF72);
         assertNotNull(LF71);
 
-        assertEquals("Bad space between two nodes", expectedPadding * 2,
-                LF72.getFigure().getBounds().getTopLeft().y - LF8.getFigure().getBounds().getBottomLeft().y);
-        assertEquals("Bad space between two nodes", expectedPadding * 2,
-                LF71.getFigure().getBounds().getTopLeft().y - LF72.getFigure().getBounds().getBottomLeft().y);
+        if (!snapToGrid) {
+            // Nothing to check when snapToGrid is activated because padding can not be respected.
+            assertEquals("Bad space between two nodes", expectedPadding * 2,
+                    LF72.getFigure().getBounds().getTopLeft().y - LF8.getFigure().getBounds().getBottomLeft().y);
+            assertEquals("Bad space between two nodes", expectedPadding * 2,
+                    LF71.getFigure().getBounds().getTopLeft().y - LF72.getFigure().getBounds().getBottomLeft().y);
+        }
     }
 
     /**
@@ -498,10 +519,13 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
         assertNotNull(LF5);
         assertNotNull(LF3);
 
-        assertEquals("Bad space between two nodes", expectedPadding * 2,
-                LF5.getFigure().getBounds().getTopLeft().y - LF1.getFigure().getBounds().getBottomLeft().y);
-        assertEquals("Bad space between two nodes", expectedPadding * 2,
-                LF5.getFigure().getBounds().getTopLeft().y - LF3.getFigure().getBounds().getBottomLeft().y);
+        if (!snapToGrid) {
+            // Nothing to check when snapToGrid is activated because padding can not be respected.
+            assertEquals("Bad space between two nodes", expectedPadding * 2,
+                    LF5.getFigure().getBounds().getTopLeft().y - LF1.getFigure().getBounds().getBottomLeft().y);
+            assertEquals("Bad space between two nodes", expectedPadding * 2,
+                    LF5.getFigure().getBounds().getTopLeft().y - LF3.getFigure().getBounds().getBottomLeft().y);
+        }
     }
 
     /**

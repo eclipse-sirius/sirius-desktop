@@ -255,6 +255,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DistributeActionTests.class);
 
         suite.addTestSuite(ArrangeAllTest.class);
+        suite.addTestSuite(ArrangeAllWithSnapToGridTest.class);
         suite.addTest(new JUnit4TestAdapter(DragNDropTest.class));
         suite.addTestSuite(EdgeStabilityOnBendpointsAlignmentTest.class);
         suite.addTestSuite(EdgeStabilityOnDragAndDropTest.class);
