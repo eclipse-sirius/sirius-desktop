@@ -21,7 +21,7 @@ By default Sirius creates an *.srm file per representation. Developer may need t
 
 h3. The @DRepresentationLocationRule@ interface
 
-* @boolean provides(DRepresentation representation, Resource dViewResource)@: Indicates if this @DRepresentationLocationRule@ provides a custom URI for this kind of representation and the resource that holds the @DView@. If not and if there is no other @DRepresentationLocationRule@ that provides, Sirius fall back to the default implementation.
+* @boolean providesURI(DRepresentation representation, Resource dViewResource)@: Indicates if this @DRepresentationLocationRule@ provides a custom URI for this kind of representation and the resource that holds the @DView@. If not and if there is no other @DRepresentationLocationRule@ that provides, Sirius fall back to the default implementation.
 
 * @URI getResourceURI(DRepresentation representation, Resource dViewResource)@: Provides the new URI for the given representation.
     
