@@ -257,6 +257,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ArrangeAllTest.class);
         suite.addTestSuite(ArrangeAllWithSnapToGridTest.class);
         suite.addTest(new JUnit4TestAdapter(DragNDropTest.class));
+        suite.addTest(new JUnit4TestAdapter(DragAndDropWithSnapToGridTest.class));
         suite.addTestSuite(EdgeStabilityOnBendpointsAlignmentTest.class);
         suite.addTestSuite(EdgeStabilityOnDragAndDropTest.class);
         suite.addTestSuite(EdgeLabelStabilityTest.class);
@@ -363,8 +364,7 @@ public class AllTestSuite extends TestCase {
         // This test is KO if the cdonative plugins are active (VP-4101), so
         // launch it only when cdonative plugins are not active.
         try {
-            Resource resource = new ResourceSetImpl().getResource(
-                    URI.createPlatformPluginURI("org.eclipse.sirius.cdonative/model/viewpoint.genmodel", true), true);
+            Resource resource = new ResourceSetImpl().getResource(URI.createPlatformPluginURI("org.eclipse.sirius.cdonative/model/viewpoint.genmodel", true), true);
             if (resource == null) {
                 suite.addTestSuite(DisabledSiriusClipboardSupportTest.class);
             }

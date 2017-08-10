@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
@@ -88,6 +89,16 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     private SWTBotTreeItem semanticResourceNode;
 
+    /**
+     * True if SnapToGrid is activated on editor, false otherwise.
+     */
+    protected boolean snapToGrid;
+
+    /**
+     * Step used for the grid spacing.
+     */
+    protected static final int GRID_STEP = 20;
+
     @Override
     @Before
     public void setUp() throws Exception {
@@ -120,6 +131,9 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
     private void openRepresentation2() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_2,
                 REPRESENTATION_INSTANCE_2BLANK, DDiagram.class);
+        if (snapToGrid) {
+            editor.setSnapToGrid(true, GRID_STEP, 2);
+        }
     }
 
     /**
@@ -128,6 +142,9 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
     private void openRepresentation5() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_5,
                 REPRESENTATION_INSTANCE_5BLANK, DDiagram.class);
+        if (snapToGrid) {
+            editor.setSnapToGrid(true, GRID_STEP, 2);
+        }
     }
 
     /**
@@ -155,6 +172,10 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
+
+            IGraphicalEditPart p1EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CONTAINER_TO_DRAG_P1, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p1EditPart);
         } finally {
             closeErrorLogView();
         }
@@ -186,10 +207,14 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             final SWTBotTreeItem ecoreTreeItem1 = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
                     .getNode(CONTAINER_TO_DRAG_P2);
             util.dragAndDrop(ecoreTreeItem1, editor.getCanvas(),
-                    new org.eclipse.swt.graphics.Point(p1Location.x + 20, p1Location.y + 20));
+                    new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
+
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p2EditPart);
         } finally {
             closeErrorLogView();
         }
@@ -231,10 +256,16 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBotGefEditPart p2Bot = editor.getEditPart(CONTAINER_TO_DRAG_P2).parent();
             Point p2Location = editor.getBounds(p2Bot).getTopLeft();
 
-            assertEquals(targetLocation.x, p2Location.x, 2);
-            assertEquals(targetLocation.y, p2Location.y, 2);
+            if (!snapToGrid) {
+                assertEquals(targetLocation.x, p2Location.x, 2);
+                assertEquals(targetLocation.y, p2Location.y, 2);
+            }
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
+
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p2EditPart);
         } finally {
             closeErrorLogView();
             editor.zoom(ZoomLevel.ZOOM_100);
@@ -279,6 +310,10 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
             assertEquals("Bad number of elements!", 2, allEditParts.size());
 
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p2EditPart);
+
         } finally {
             closeErrorLogView();
         }
@@ -311,6 +346,10 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             editor.drag(sourceSwtBotPart, targetCenter);
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
+
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p2EditPart);
 
         } finally {
             closeErrorLogView();
@@ -347,6 +386,10 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 2));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
+            IGraphicalEditPart p3EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CONTAINER_TO_DRAG_P3, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p3EditPart);
+
             // Get the location of P2
             SWTBotGefEditPart p2Bot = editor.getEditPart(CONTAINER_TO_DRAG_P2).parent();
             Point p2Location = editor.getBounds(p2Bot).getCenter();
@@ -360,6 +403,10 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             editor.drag(p2Location, targetCenter);
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
+
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p2EditPart);
 
         } finally {
             closeErrorLogView();
@@ -400,6 +447,10 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 2));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
+            IGraphicalEditPart p3EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CONTAINER_TO_DRAG_P3, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p3EditPart);
+
             SWTBotGefEditPart p21Bot = editor.getEditPart(CONTAINER_TO_DRAG_P3, AbstractDiagramContainerEditPart.class);
             final IGraphicalEditPart targetPart = (IGraphicalEditPart) p21Bot.part();
             editor.reveal(targetPart);
@@ -423,6 +474,10 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals(targetCenter.y, p2Location.y, 4);
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
+
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p2EditPart);
 
         } finally {
             closeErrorLogView();
@@ -463,7 +518,6 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
             assertEquals("Bad number of elements!", 0, allEditParts.size());
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
-
         } finally {
             closeErrorLogView();
         }
@@ -498,7 +552,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
                     .expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas(),
-                    new org.eclipse.swt.graphics.Point(p1Location.x + 20, p1Location.y + 20));
+                    new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
 
             // Asserts that C1 was not created as child of P1 and no error
             // message was generated
@@ -541,6 +595,10 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
+
+            IGraphicalEditPart p1EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CONTAINER_TO_DRAG_P1, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p1EditPart);
         } finally {
             closeErrorLogView();
         }
@@ -572,10 +630,14 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
                     .expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas(),
-                    new org.eclipse.swt.graphics.Point(p1Location.x + 20, p1Location.y + 20));
+                    new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
+
+            IGraphicalEditPart c1EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CLASS_TO_DRAG_C1, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(c1EditPart);
         } finally {
             closeErrorLogView();
         }
@@ -610,6 +672,10 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 2));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p2EditPart);
+
             // Get the location of C1
             SWTBotGefEditPart c1Bot = editor.getEditPart(CLASS_TO_DRAG_C1).parent();
             Point c1Location = editor.getBounds(c1Bot).getLocation();
@@ -624,6 +690,10 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             editor.drag(c1Location, targetCenter);
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
+
+            IGraphicalEditPart c1EditPart = (IGraphicalEditPart) editor
+                    .getEditPart(CLASS_TO_DRAG_C1, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(c1EditPart);
 
         } finally {
             closeErrorLogView();
@@ -691,7 +761,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
                     .getNode(CONTAINER_TO_DRAG_P2);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas(),
-                    new org.eclipse.swt.graphics.Point(p1Location.x + 20, p1Location.y + 20));
+                    new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
 
             // Asserts that P2 was not created as child of P1 and no error
             // message was generated
@@ -703,7 +773,6 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
             assertEquals("Bad number of elements", 0, Sets.newLinkedHashSet(filter).size());
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
-
         } finally {
             closeErrorLogView();
         }
@@ -729,5 +798,15 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotUtils.waitAllUiEvents();
         localSession.close(false);
         super.tearDown();
+    }
+
+    /**
+     * Check if EditPart is on Diagram.
+     * 
+     * @param editPart
+     *            the edit part to check
+     */
+    protected void checkEditPartLocation(IGraphicalEditPart editPart) {
+        assertNotNull("No container edit part found with this name", editPart);
     }
 }
