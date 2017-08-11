@@ -258,7 +258,7 @@ public class StraightenToAction extends DiagramAction {
     public static StraightenToAction createStraightenLeftSidePinnedAction(IWorkbenchPage workbenchPage) {
         StraightenToAction action = new StraightenToAction(workbenchPage, StraightenToAction.LEFT_SIDE_PINNED);
         action.setId(ActionIds.STRAIGHTEN_LEFT_SIDE_PINNED);
-        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_TO_TOP);
+        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_WITH_LEFT_PINNED);
         action.setImageDescriptor(bundledImageDescriptor);
         action.setHoverImageDescriptor(bundledImageDescriptor);
         return action;
@@ -275,7 +275,7 @@ public class StraightenToAction extends DiagramAction {
     public static StraightenToAction createStraightenRightSidePinnedAction(IWorkbenchPage workbenchPage) {
         StraightenToAction action = new StraightenToAction(workbenchPage, StraightenToAction.RIGHT_SIDE_PINNED);
         action.setId(ActionIds.STRAIGHTEN_RIGHT_SIDE_PINNED);
-        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_TO_BOTTOM);
+        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_WITH_RIGHT_PINNED);
         action.setImageDescriptor(bundledImageDescriptor);
         action.setHoverImageDescriptor(bundledImageDescriptor);
         return action;
@@ -292,7 +292,7 @@ public class StraightenToAction extends DiagramAction {
     public static StraightenToAction createStraightenTopSidePinnedAction(IWorkbenchPage workbenchPage) {
         StraightenToAction action = new StraightenToAction(workbenchPage, StraightenToAction.TOP_SIDE_PINNED);
         action.setId(ActionIds.STRAIGHTEN_TOP_SIDE_PINNED);
-        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_TO_LEFT);
+        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_WITH_TOP_PINNED);
         action.setImageDescriptor(bundledImageDescriptor);
         action.setHoverImageDescriptor(bundledImageDescriptor);
         return action;
@@ -309,7 +309,7 @@ public class StraightenToAction extends DiagramAction {
     public static StraightenToAction createStraightenBottomSidePinnedAction(IWorkbenchPage workbenchPage) {
         StraightenToAction action = new StraightenToAction(workbenchPage, StraightenToAction.BOTTOM_SIDE_PINNED);
         action.setId(ActionIds.STRAIGHTEN_BOTTOM_SIDE_PINNED);
-        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_TO_RIGHT);
+        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_WITH_BOTTOM_PINNED);
         action.setImageDescriptor(bundledImageDescriptor);
         action.setHoverImageDescriptor(bundledImageDescriptor);
         return action;

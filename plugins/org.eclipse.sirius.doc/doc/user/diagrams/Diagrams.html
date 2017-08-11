@@ -321,31 +321,56 @@
 			<img border="0" src="images/rectilinearAfterRemoveBendpoints.png"/>
 		</p>
 		<p>This action is available within the edge context menu or by using the shortcut &#8220;Ctrl&#8221; + &#8220;Shift&#8221; + &#8220;-&#8221; and it is not available on edges with a &#8220;Tree&#8221; routing style.</p>
-		<h4 id="straighten_an_edge">Straighten an edge</h4>
-		<p>There are four actions to straighten an edge, i.e. to transform an edge to an horizontal, or vertical, straight edge (with only one starting point and one ending point).
+		<h4 id="straighten_an_edge">Straighten edges</h4>
+		<h5 id="Straightenasingleedge">Straighten a single edge</h5>
+		<p>There are eight actions to straighten an edge, i.e. to transform an edge to an horizontal, or vertical, straight edge (with only one starting point and one ending point).
 			<br/>If the edge is connected to a border node, the border node is moved too.
 		</p>
-		<p>These actions are available on edge contextual menu 
+		<p>These actions can be triggered on edge contextual menu 
 			<em>Layout/Straighten</em>: 
+		</p>
+		<p>
 			<img border="0" src="images/straightenToMenu.png"/>
 		</p>
-		<p>Example of initial state of horizontal cases: 
-			<img border="0" src="images/straightenHorizontalInitialState.png"/>
-			<br/>Result after 
-			<em>Straighten to top</em> action: 
-			<img border="0" src="images/straightenToTop.png"/>
-			<br/>Result after 
-			<em>Straighten to bottom</em> action: 
-			<img border="0" src="images/straightenToBottom.png"/>
-			<br/>Example of initial state of vertical cases: 
-			<img border="0" src="images/straightenVerticalInitialState.png"/>
-			<br/>Result after 
-			<em>Straighten to left</em> action: 
-			<img border="0" src="images/straightenToLeft.png"/>
-			<br/>Result after 
-			<em>Straighten to right</em> action: 
-			<img border="0" src="images/straightenToRight.png"/>
+		<p>and also in the tabbar if at least one edge is selected: </p>
+		<p>
+			<img border="0" src="images/straightenToTabbarButton.png"/>
 		</p>
+		<p>There are two distinct kinds of straightening actions. The following examples show how they can be used.</p>
+		<p>Example for horizontal cases of result with the same initial state (the moved nodes are in red): </p>
+		<ul>
+			<li>Result after 
+				<em>Straighten to top</em> action: 
+				<img border="0" src="images/straightenToTop.png"/>
+			</li>
+			<li>Result after 
+				<em>Straighten with left side pinned</em> action: 
+				<img border="0" src="images/straightenWithLeftPinned.png"/>
+			</li>
+			<li>Result after 
+				<em>Straighten with right side pinned</em> action: 
+				<img border="0" src="images/straightenWithRightPinned.png"/>
+			</li>
+			<li>Result after 
+				<em>Straighten to bottom</em> action: 
+				<img border="0" src="images/straightenToBottom.png"/>
+			</li>
+		</ul>
+		<p>Example of initial state of vertical cases: 
+			<img border="0" src="images/straightenVerticalInitialState.png"/>
+		</p>
+		<ul>
+			<li>Result after 
+				<em>Straighten to left</em> or 
+				<em>Straighten with bottom side pinned</em> action: 
+				<img border="0" src="images/straightenToRight.png"/>
+			</li>
+			<li>Result after 
+				<em>Straighten to right</em> or 
+				<em>Straighten with top side pinned</em> action: 
+				<img border="0" src="images/straightenToLeft.png"/>
+			</li>
+		</ul>
 		<p>The action can be disabled (grayed menu) in some conditions:</p>
 		<ul>
 			<li>The action is not possible because it does not respect the source or target node boundaries.</li>
@@ -357,7 +382,11 @@
 			<li>The source or the target of the edge is another edge.</li>
 			<li>The source and the target is the same element.</li>
 		</ul>
-		<p>The action is available (menu is displayed) if the selection contains only edges (note and text attachments are not considered as edges).</p>
+		<p>The action is available (menu is displayed) if the selection contains at least one edge (note, labels and text attachments are not considered as edges). The menu will show all actions available for all edges in the selection. So if a straighten to top is available on one edge and straighten to left on another, both action will be available. Their execution will only affects the edges compatible with it.</p>
+		<h5 id="Straightenmanyedges">Straighten many edges</h5>
+		<p>The straighten actions can be triggered on one edge but also in case of a multi-selection containing more than one edges.</p>
+		<p>In this case the straighten actions available will be the union of actions available for each edges of the selection. I.e if an edge can be only straighten to top and another edge in the selection can be only straighten to top, then available actions on the selection of both edges will be both the top and left actions.</p>
+		<p>When executing a straighten action, only edges from the selection that can be affected by this action will be impacted (if a constraint prevent an edge to be straighten to the direction of the executed action, then it is untouched). </p>
 		<h4 id="move_edge_group">Move edge group</h4>
 		<p>In specific cases, we can find edges connected to border nodes. For example in a diagram representing data flows, exchanges are connected to port in and port out. When the user wants to move an exchange on a layouted diagram, he has to move the source port, then the target port and possibly move some bendpoints of the edge.
 			<br/>This feature aims to move the group {edge, labels, ports} in a single 

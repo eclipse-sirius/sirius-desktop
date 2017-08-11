@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -200,4 +200,24 @@ public interface DiagramImagesPath {
      * Path of the action's image to straighten to top.
      */
     String STRAIGHTEN_TO_TOP = "icons/straightenToTop.png"; //$NON-NLS-1$
+
+    /**
+     * Path of the action's image to straighten to bottom.
+     */
+    String STRAIGHTEN_WITH_BOTTOM_PINNED = "icons/straightenWithBottomPinned.png"; //$NON-NLS-1$
+
+    /**
+     * Path of the action's image to straighten to left.
+     */
+    String STRAIGHTEN_WITH_LEFT_PINNED = "icons/straightenWithLeftPinned.png"; //$NON-NLS-1$
+
+    /**
+     * Path of the action's image to straighten to right.
+     */
+    String STRAIGHTEN_WITH_RIGHT_PINNED = "icons/straightenWithRightPinned.png"; //$NON-NLS-1$
+
+    /**
+     * Path of the action's image to straighten to top.
+     */
+    String STRAIGHTEN_WITH_TOP_PINNED = "icons/straightenWithTopPinned.png"; //$NON-NLS-1$
 }

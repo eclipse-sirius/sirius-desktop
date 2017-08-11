@@ -153,19 +153,33 @@ The user executes the "Remove Bend-points" action:
 
 This action is available within the edge context menu or by using the shortcut "Ctrl" + "Shift" + "-" and it is not available on edges with a "Tree" routing style.
 
-h4(#straighten_an_edge). Straighten an edge
+h4(#straighten_an_edge). Straighten edges
 
-There are four actions to straighten an edge, i.e. to transform an edge to an horizontal, or vertical, straight edge (with only one starting point and one ending point).
+h5. Straighten a single edge
+
+There are eight actions to straighten an edge, i.e. to transform an edge to an horizontal, or vertical, straight edge (with only one starting point and one ending point).
 If the edge is connected to a border node, the border node is moved too.
 
-These actions are available on edge contextual menu _Layout/Straighten_: !images/straightenToMenu.png!
+These actions can be triggered on edge contextual menu _Layout/Straighten_: 
 
-Example of initial state of horizontal cases: !images/straightenHorizontalInitialState.png!
-Result after _Straighten to top_ action: !images/straightenToTop.png!
-Result after _Straighten to bottom_ action: !images/straightenToBottom.png!
+!images/straightenToMenu.png!
+
+and also in the tabbar if at least one edge is selected: 
+
+!images/straightenToTabbarButton.png!
+
+There are two distinct kinds of straightening actions. The following examples show how they can be used.
+
+Example for horizontal cases of result with the same initial state (the moved nodes are in red): 
+
+* Result after _Straighten to top_ action: !images/straightenToTop.png!
+* Result after _Straighten with left side pinned_ action: !images/straightenWithLeftPinned.png!
+* Result after _Straighten with right side pinned_ action: !images/straightenWithRightPinned.png!
+* Result after _Straighten to bottom_ action: !images/straightenToBottom.png!
+
 Example of initial state of vertical cases: !images/straightenVerticalInitialState.png!
-Result after _Straighten to left_ action: !images/straightenToLeft.png!
-Result after _Straighten to right_ action: !images/straightenToRight.png!
+* Result after _Straighten to left_ or _Straighten with bottom side pinned_ action: !images/straightenToRight.png!
+* Result after _Straighten to right_ or _Straighten with top side pinned_ action: !images/straightenToLeft.png!
 
 The action can be disabled (grayed menu) in some conditions:
 * The action is not possible because it does not respect the source or target node boundaries.
@@ -175,7 +189,16 @@ The action can be disabled (grayed menu) in some conditions:
 * The source or the target of the edge is another edge.
 * The source and the target is the same element.
 
-The action is available (menu is displayed) if the selection contains only edges (note and text attachments are not considered as edges).
+The action is available (menu is displayed) if the selection contains at least one edge (note, labels and text attachments are not considered as edges). The menu will show all actions available for all edges in the selection. So if a straighten to top is available on one edge and straighten to left on another, both action will be available. Their execution will only affects the edges compatible with it.
+
+h5. Straighten many edges
+
+The straighten actions can be triggered on one edge but also in case of a multi-selection containing more than one edges.
+
+In this case the straighten actions available will be the union of actions available for each edges of the selection. I.e if an edge can be only straighten to top and another edge in the selection can be only straighten to top, then available actions on the selection of both edges will be both the top and left actions.
+
+When executing a straighten action, only edges from the selection that can be affected by this action will be impacted (if a constraint prevent an edge to be straighten to the direction of the executed action, then it is untouched). 
+
 
 h4(#move_edge_group). Move edge group
 
