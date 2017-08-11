@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,10 +40,10 @@ import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
- * 
  * @author smonnier
  */
-public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractArrangeAllTest implements PositionConstants {
+public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractArrangeAllTest
+        implements PositionConstants {
 
     /**
      * A safety margin because of the method used to compute the port location
@@ -113,6 +113,16 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
     private UILocalSession localSession;
 
     /**
+     * True if SnapToGrid is activated on editor, false otherwise.
+     */
+    protected boolean snapToGrid;
+
+    /**
+     * Step used for the grid spacing.
+     */
+    protected static final int GRID_STEP = 20;
+
+    /**
      * Current editor.
      */
     protected SWTBotSiriusDiagramEditor editor;
@@ -126,7 +136,17 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
     }
 
     private void arrangeLinkedBorderedNodes() {
+        if (snapToGrid) {
+            editor.setSnapToGrid(true, GRID_STEP, 2);
+        }
         editor.clickContextMenu("Linked Border Nodes");
+    }
+
+    private void arrangeAllMenu() {
+        if (snapToGrid) {
+            editor.setSnapToGrid(true, GRID_STEP, 2);
+        }
+        editor.clickContextMenu("Arrange All");
     }
 
     @Override
@@ -143,9 +163,10 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase1() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC1, REPRESENTATION_INSTANCE_NAME_UC1, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC1, REPRESENTATION_INSTANCE_NAME_UC1, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
-        editor.clickContextMenu("Arrange All");
+        arrangeAllMenu();
         // Validate the positions of the bordered nodes.
         // We don't check the edges crossing because the label on the border
         // nodes can cause crossing (indeed a label can take the place of a
@@ -160,9 +181,10 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase2() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC2, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC2, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
-        editor.clickContextMenu("Arrange All");
+        arrangeAllMenu();
         // Validate the positions of the border nodes.
         validatePositions(false);
     }
@@ -174,9 +196,10 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase3() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC3, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC3, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
-        editor.clickContextMenu("Arrange All");
+        arrangeAllMenu();
         // Validate the positions of the border nodes.
         validatePositions(true);
     }
@@ -190,16 +213,16 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * compute the real location with the parent figure (which has not been
      * resized). It is resized later with a refreshVisuals after the execution
      * of all commands.
-     * 
      * TODO : Correct the problem (if possible) and reactivate this test.
      * 
      * @throws Exception
      *             Test error.
      */
     public void failedTestArrangeLinkedBorderNodesCase4() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC4, REPRESENTATION_INSTANCE_NAME_UC4, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC4, REPRESENTATION_INSTANCE_NAME_UC4, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
-        editor.clickContextMenu("Arrange All");
+        arrangeAllMenu();
         // Validate the positions of the border nodes.
         validatePositions(true);
     }
@@ -211,7 +234,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase5_1() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_1, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_1, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -225,7 +249,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase5_2() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_2, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_2, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -239,7 +264,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase5_3() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_3, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_3, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -253,7 +279,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase5_4() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_4, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_4, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -267,7 +294,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase5_5() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_5, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_5, DDiagram.class);
         arrangeLinkedBorderedNodes();
         // Validate the positions of the bordered nodes.
         validatePositionsOfUseCase5();
@@ -280,7 +308,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase5_6() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_6, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_6, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -294,7 +323,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase5_7() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_7, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_7, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -308,7 +338,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase5_8() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_8, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_8, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -322,7 +353,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase6() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC6, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC6, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -336,7 +368,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase7() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC7, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC7, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -355,7 +388,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase7WithZoom() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC7, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC7, DDiagram.class);
         editor.zoom(ZoomLevel.ZOOM_200);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
@@ -375,7 +409,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase8() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC8, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC8, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -390,7 +425,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase8WithZoom() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC8, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC8, DDiagram.class);
         editor.zoom(ZoomLevel.ZOOM_200);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
@@ -406,7 +442,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase9() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC9, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC9, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -421,7 +458,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase9WithZoom() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC9, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC9, DDiagram.class);
         editor.zoom(ZoomLevel.ZOOM_200);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
@@ -437,7 +475,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase10() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC10, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC10, DDiagram.class);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -454,7 +493,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      *             Test error.
      */
     public void testArrangeLinkedBorderNodesCase10WithZoom() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC10, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC10, DDiagram.class);
         editor.zoom(ZoomLevel.ZOOM_200);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
@@ -554,10 +594,13 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         assertNull(message, getLineSeg("p5", "C53", "p6", "C64").intersect(getLineSeg("p5", "C54", "p6", "C63"), 0));
 
         if (isDiagramWithRecursivePackage) {
-            assertNull(message, getLineSeg("p7", "C71", "p9", "C92").intersect(getLineSeg("p7", "C72", "p9", "C91"), 0));
-            assertNull(message, getLineSeg("p7", "C71", "p9", "C92").intersect(getLineSeg("p7", "C73", "p10", "C101"), 0));
+            assertNull(message,
+                    getLineSeg("p7", "C71", "p9", "C92").intersect(getLineSeg("p7", "C72", "p9", "C91"), 0));
+            assertNull(message,
+                    getLineSeg("p7", "C71", "p9", "C92").intersect(getLineSeg("p7", "C73", "p10", "C101"), 0));
 
-            assertNull(message, getLineSeg("p7", "C72", "p9", "C91").intersect(getLineSeg("p7", "C73", "p10", "C101"), 0));
+            assertNull(message,
+                    getLineSeg("p7", "C72", "p9", "C91").intersect(getLineSeg("p7", "C73", "p10", "C101"), 0));
         }
     }
 
@@ -593,20 +636,25 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @param targetPortName
      * @return
      */
-    private LineSeg getLineSeg(String sourceContainerName, String sourcePortName, String targetContainerName, String targetPortName) {
+    private LineSeg getLineSeg(String sourceContainerName, String sourcePortName, String targetContainerName,
+            String targetPortName) {
         SWTBotGefEditPart swtbotSourceContainerEditPart = editor.getEditPart(sourceContainerName);
         assertNotNull("No container edit part found with this name", swtbotSourceContainerEditPart);
         EditPart sourceContainerSquareEP = swtbotSourceContainerEditPart.part();
-        assertTrue("The parent edit part of the container label is not a AbstractBorderedShapeEditPart", sourceContainerSquareEP.getParent() instanceof AbstractBorderedShapeEditPart);
-        final AbstractBorderedShapeEditPart sourceContainerEP = (AbstractBorderedShapeEditPart) sourceContainerSquareEP.getParent();
+        assertTrue("The parent edit part of the container label is not a AbstractBorderedShapeEditPart",
+                sourceContainerSquareEP.getParent() instanceof AbstractBorderedShapeEditPart);
+        final AbstractBorderedShapeEditPart sourceContainerEP = (AbstractBorderedShapeEditPart) sourceContainerSquareEP
+                .getParent();
         final AbstractDiagramBorderNodeEditPart sourcePortEP = findPortInContainer(sourceContainerEP, sourcePortName);
         assertNotNull("No port edit part found with this name", sourcePortEP);
 
         SWTBotGefEditPart swtbotTargetContainerEditPart = editor.getEditPart(targetContainerName);
         assertNotNull("No container edit part found with this name", swtbotTargetContainerEditPart);
         EditPart targetContainerSquareEP = swtbotTargetContainerEditPart.part();
-        assertTrue("The parent edit part of the container label is not a AbstractBorderedShapeEditPart", targetContainerSquareEP.getParent() instanceof AbstractBorderedShapeEditPart);
-        final AbstractBorderedShapeEditPart targetContainerEP = (AbstractBorderedShapeEditPart) targetContainerSquareEP.getParent();
+        assertTrue("The parent edit part of the container label is not a AbstractBorderedShapeEditPart",
+                targetContainerSquareEP.getParent() instanceof AbstractBorderedShapeEditPart);
+        final AbstractBorderedShapeEditPart targetContainerEP = (AbstractBorderedShapeEditPart) targetContainerSquareEP
+                .getParent();
         final AbstractDiagramBorderNodeEditPart targetPortEP = findPortInContainer(targetContainerEP, targetPortName);
         assertNotNull("No port edit part found with this name", targetPortEP);
 
@@ -635,7 +683,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @param pinBorderedNodes
      *            true if the port must be pin during the validation of it
      */
-    private void validatePositionOfPortOnContainer(String containerName, String portName, boolean pinBorderedNodes) { // ,
+    protected void validatePositionOfPortOnContainer(String containerName, String portName, boolean pinBorderedNodes) { // ,
         // int
         // position){
 
@@ -645,7 +693,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
 
         EditPart containerSquareEP = swtbotContainerEditPart.part();
 
-        assertTrue("The parent edit part of the container label is not a AbstractBorderedShapeEditPart", containerSquareEP.getParent() instanceof AbstractBorderedShapeEditPart);
+        assertTrue("The parent edit part of the container label is not a AbstractBorderedShapeEditPart",
+                containerSquareEP.getParent() instanceof AbstractBorderedShapeEditPart);
         final AbstractBorderedShapeEditPart containerEP = (AbstractBorderedShapeEditPart) containerSquareEP.getParent();
         final AbstractDiagramBorderNodeEditPart portEP = findPortInContainer(containerEP, portName);
 
@@ -655,10 +704,16 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
             pinDiagramElement((DDiagramElement) ((Node) portEP.getModel()).getElement());
         }
 
-        boolean edgeFromPortCrossParentContainer = validateEdgeFromPortCrossParentContainer(containerEP, portEP);
-        assertFalse("The port " + portName + " has an edge that cross the parent container " + containerName, edgeFromPortCrossParentContainer);
+        if (!snapToGrid) {
+            // This test is not done when snapToGrid is enabled as the snap can
+            // break the "arrange all linked border nodes" rules.
+            boolean edgeFromPortCrossParentContainer = validateEdgeFromPortCrossParentContainer(containerEP, portEP);
+            assertFalse("The port " + portName + " has an edge that cross the parent container " + containerName,
+                edgeFromPortCrossParentContainer);
+        }
         boolean validateEdgeFromPortHaveBendpointsReset = validateEdgeFromPortHaveBendpointsReset(containerEP, portEP);
-        assertTrue("The port " + portName + " has an edge that don't have its bendpoints reset " + containerName, validateEdgeFromPortHaveBendpointsReset);
+        assertTrue("The port " + portName + " has an edge that don't have its bendpoints reset " + containerName,
+                validateEdgeFromPortHaveBendpointsReset);
 
         // boolean validatePositionOfPortOnContainer =
         // validatePositionOfPortOnContainer(containerEP, portEP, position);
@@ -680,7 +735,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @param pinPorts
      *            true is the port must be pin during the validation
      */
-    private void validatePositionOfPortOnContainer(String containerName, String portName, int position, boolean pinPorts) {
+    private void validatePositionOfPortOnContainer(String containerName, String portName, int position,
+            boolean pinPorts) {
 
         SWTBotGefEditPart swtbotContainerEditPart = editor.getEditPart(containerName);
 
@@ -688,7 +744,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
 
         EditPart containerSquareEP = swtbotContainerEditPart.part();
 
-        assertTrue("The parent edit part of the container label is not a AbstractBorderedShapeEditPart", containerSquareEP.getParent() instanceof AbstractBorderedShapeEditPart);
+        assertTrue("The parent edit part of the container label is not a AbstractBorderedShapeEditPart",
+                containerSquareEP.getParent() instanceof AbstractBorderedShapeEditPart);
         final AbstractBorderedShapeEditPart containerEP = (AbstractBorderedShapeEditPart) containerSquareEP.getParent();
         final AbstractDiagramBorderNodeEditPart portEP = findPortInContainer(containerEP, portName);
 
@@ -699,10 +756,12 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         }
 
         boolean validatePositionOfPortOnContainer = validatePositionOfPortOnContainer(containerEP, portEP, position);
-        assertTrue("The port " + portName + " is not in the expected position relatively to the container " + containerName, validatePositionOfPortOnContainer);
+        assertTrue("The port " + portName + " is not in the expected position relatively to the container "
+            + containerName, validatePositionOfPortOnContainer);
     }
 
-    private boolean validateEdgeFromPortCrossParentContainer(final AbstractBorderedShapeEditPart containerEP, final AbstractDiagramBorderNodeEditPart portEP) {
+    private boolean validateEdgeFromPortCrossParentContainer(final AbstractBorderedShapeEditPart containerEP,
+            final AbstractDiagramBorderNodeEditPart portEP) {
         Rectangle containerBounds = containerEP.getFigure().getBounds().getCopy();
         containerEP.getFigure().translateToAbsolute(containerBounds);
         List<AbstractDiagramEdgeEditPart> edgesEP = listEdgesConnectedToPort(portEP);
@@ -712,19 +771,22 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
                 int south = findSouth(edgeEP);
                 int west = findWest(edgeEP);
                 int east = findEast(edgeEP);
-                Rectangle edgeBounds = new Rectangle(west + SAFETY_MARGIN, north + SAFETY_MARGIN, east - west - (SAFETY_MARGIN * 2), south - north - (SAFETY_MARGIN * 2));
+                Rectangle edgeBounds = new Rectangle(west + SAFETY_MARGIN, north + SAFETY_MARGIN,
+                        east - west - (SAFETY_MARGIN * 2), south - north - (SAFETY_MARGIN * 2));
                 return edgeBounds.intersects(containerBounds);
             }
         }
         return false;
     }
 
-    private boolean validateEdgeFromPortHaveBendpointsReset(final AbstractBorderedShapeEditPart containerEP, final AbstractDiagramBorderNodeEditPart portEP) {
+    private boolean validateEdgeFromPortHaveBendpointsReset(final AbstractBorderedShapeEditPart containerEP,
+            final AbstractDiagramBorderNodeEditPart portEP) {
         List<AbstractDiagramEdgeEditPart> edgesEP = listEdgesConnectedToPort(portEP);
         if (!edgesEP.isEmpty()) {
             for (AbstractDiagramEdgeEditPart edgeEP : edgesEP) {
                 Bendpoints bendpoints = ((Edge) edgeEP.getNotationView()).getBendpoints();
-                if (bendpoints instanceof RelativeBendpoints && ((RelativeBendpoints) bendpoints).getPoints().size() != 2) {
+                if (bendpoints instanceof RelativeBendpoints
+                    && ((RelativeBendpoints) bendpoints).getPoints().size() != 2) {
                     return false;
                 }
             }
@@ -776,7 +838,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         return west;
     }
 
-    private List<AbstractDiagramEdgeEditPart> listEdgesConnectedToPort(final AbstractDiagramBorderNodeEditPart portEP) {
+    protected List<AbstractDiagramEdgeEditPart> listEdgesConnectedToPort(final AbstractDiagramBorderNodeEditPart portEP) {
         ArrayList<AbstractDiagramEdgeEditPart> linkedPorts = new ArrayList<AbstractDiagramEdgeEditPart>();
         Iterator<?> targetIterator = portEP.getTargetConnections().iterator();
         while (targetIterator.hasNext()) {
@@ -799,30 +861,43 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         return linkedPorts;
     }
 
-    private boolean validatePositionOfPortOnContainer(AbstractBorderedShapeEditPart containerEP, AbstractDiagramBorderNodeEditPart portEP, int position) {
+    private boolean validatePositionOfPortOnContainer(AbstractBorderedShapeEditPart containerEP,
+            AbstractDiagramBorderNodeEditPart portEP, int position) {
         Rectangle boundsPort = portEP.getFigure().getBounds();
         Rectangle boundsContainer = containerEP.getFigure().getBounds();
         switch (position) {
-        case NORTH:
-            return Math.abs(boundsContainer.y - boundsPort.y) < IBorderItemOffsets.DEFAULT_OFFSET.height;
+            case NORTH:
+                return Math.abs(boundsContainer.y - boundsPort.y) < IBorderItemOffsets.DEFAULT_OFFSET.height;
 
-        case EAST:
-            return Math.abs(boundsContainer.x + boundsContainer.width - boundsPort.x - boundsPort.width) < IBorderItemOffsets.DEFAULT_OFFSET.width;
+            case EAST:
+                return Math.abs(boundsContainer.x + boundsContainer.width - boundsPort.x
+                    - boundsPort.width) < IBorderItemOffsets.DEFAULT_OFFSET.width;
 
-        case SOUTH:
-            return Math.abs(boundsContainer.y + boundsContainer.height - boundsPort.y - boundsPort.height) < IBorderItemOffsets.DEFAULT_OFFSET.height;
+            case SOUTH:
+                return Math.abs(boundsContainer.y + boundsContainer.height - boundsPort.y
+                    - boundsPort.height) < IBorderItemOffsets.DEFAULT_OFFSET.height;
 
-        case WEST:
-            return Math.abs(boundsContainer.x - boundsPort.x) < IBorderItemOffsets.DEFAULT_OFFSET.width;
+            case WEST:
+                return Math.abs(boundsContainer.x - boundsPort.x) < IBorderItemOffsets.DEFAULT_OFFSET.width;
 
-        default:
-            fail("The position should be one among North/East/South/West.");
-            break;
+            default:
+                fail("The position should be one among North/East/South/West.");
+                break;
         }
         return false;
     }
 
-    private AbstractDiagramBorderNodeEditPart findPortInContainer(AbstractBorderedShapeEditPart containerEP, String portName) {
+    /**
+     * Extract port from a container with a given name.
+     * 
+     * @param containerEP
+     *            container which contains the port
+     * @param portName
+     *            name of the port to find
+     * @return port from a container with a given name.
+     */
+    protected AbstractDiagramBorderNodeEditPart findPortInContainer(AbstractBorderedShapeEditPart containerEP,
+            String portName) {
         Iterator<?> iterator = containerEP.getChildren().iterator();
         while (iterator.hasNext()) {
             Object object = iterator.next();
@@ -834,7 +909,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
                     EObject portElement = portNode.getElement();
                     if (portElement instanceof DDiagramElement) {
                         DDiagramElement portDDiagramElement = (DDiagramElement) portElement;
-                        Iterator<EObject> semanticElementsIterator = portDDiagramElement.getSemanticElements().iterator();
+                        Iterator<EObject> semanticElementsIterator = portDDiagramElement.getSemanticElements()
+                                .iterator();
                         while (semanticElementsIterator.hasNext()) {
                             EObject eObject = semanticElementsIterator.next();
                             if (eObject instanceof ENamedElement) {

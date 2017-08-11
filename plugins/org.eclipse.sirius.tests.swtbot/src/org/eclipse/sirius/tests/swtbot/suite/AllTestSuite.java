@@ -251,6 +251,7 @@ public class AllTestSuite extends TestCase {
 
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest.class);
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesLayoutStabilityTest.class);
+        suite.addTestSuite(ArrangeAllLinkedBorderedNodesWithSnapToGridTest.class);
         suite.addTestSuite(DistributeActionTests.class);
 
         suite.addTestSuite(ArrangeAllTest.class);
