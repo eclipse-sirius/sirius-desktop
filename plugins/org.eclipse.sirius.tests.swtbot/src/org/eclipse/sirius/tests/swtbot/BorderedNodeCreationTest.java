@@ -69,7 +69,7 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     /**
      * The name of the tool that create a bordered node on a package.
      */
-    private static final String BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME = "Enum";
+    protected static final String BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME = "Enum";
 
     /**
      * The name of the tool that create a collapsed bordered node on a class (if
@@ -108,7 +108,8 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String PACKAGE_3_NAME = "P3";
 
-    private static final String PACKAGE_4_NAME = "P4";
+    /** Name of the fourth package */
+    protected static final String PACKAGE_4_NAME = "P4";
 
     private static final String CLASS_1_NAME = "Class1";
 
@@ -438,7 +439,7 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *            the name of the package to reveal before inserting the
      *            bordered node.
      */
-    private void testBNC_OnContainer(ZoomLevel zoomLevel, String packageToRevealName) {
+    protected void testBNC_OnContainer(ZoomLevel zoomLevel, String packageToRevealName) {
         testBNC_OnContainer(zoomLevel, packageToRevealName, null);
     }
 

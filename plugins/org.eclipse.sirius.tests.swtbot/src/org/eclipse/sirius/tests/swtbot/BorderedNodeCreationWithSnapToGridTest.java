@@ -19,8 +19,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
@@ -31,10 +33,15 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
  */
 public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreationTest {
     /**
-     * The name of the tool that create a bordered node (that named
-     * "new Attribute2" on a class.
+     * The name of the tool that create a bordered node (that named "new Attribute2" on a class.
      */
     private static final String BORDERED_NODE_CREATION_ON_CLASS_2_TOOL_NAME = "Attribute2";
+
+    /**
+     * The name of the tool that create a bordered node (that named "new Enum"with number of Enum as suffix on a
+     * container.
+     */
+    private static final String BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME_2 = "Enum2";
 
     /**
      * The name of a new bordered node created on class with the above tool.
@@ -54,8 +61,8 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
     }
 
     /**
-     * Ensures that 2 border nodes created at same location (forced with
-     * snapToGrid) on a Node (zoom level : 100%) are not at same location.
+     * Ensures that 2 border nodes created at same location (forced with snapToGrid) on a Node (zoom level : 100%) are
+     * not at same location.
      */
     public void testCreateTwoBorderNodesAtSameLocation() {
         testBNC_OnNode(ZoomLevel.ZOOM_100, C1_NAME, false);
@@ -92,11 +99,34 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
     }
 
     /**
-     * Only one of the coordinates is snap to grid. The other is constrained by
-     * the parent border.
+     * Ensures that 2 border nodes created at same location (forced with snapToGrid) on a package (zoom level : 100%)
+     * are aligned on the grid. Indeed, Grid spacing is sufficient to have two border node aligned on the grid.
+     */
+    public void testCreateTwoBorderNodesAtSameLocationWithThinGridSpacing() {
+        int gridStep = 50;
+        editor.setSnapToGrid(true, gridStep, 2);
+
+        SWTBotGefEditPart packageP4 = editor.getEditPart(PACKAGE_4_NAME, AbstractDiagramContainerEditPart.class);
+        Rectangle packageAbsoluteBounds = editor.getAbsoluteBounds(packageP4);
+
+        // We compute the location according the top left package location
+        Point creationLocation = packageAbsoluteBounds.getTopLeft().translate(20, 20);
+
+        createBorderedNode(BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME_2, creationLocation.x, creationLocation.y);
+        createBorderedNode(BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME_2, creationLocation.x, creationLocation.y);
+
+        IGraphicalEditPart firstNewNode = (IGraphicalEditPart) editor.getEditPart("new Enum2", AbstractDiagramBorderNodeEditPart.class).part();
+        checkLocationAlignOnGrid(firstNewNode, "BorderNode 'new Enum2'");
+
+        IGraphicalEditPart secondNewNode = (IGraphicalEditPart) editor.getEditPart("new Enum3", AbstractDiagramBorderNodeEditPart.class).part();
+        checkLocationAlignOnGrid(secondNewNode, "BorderNode 'new Enum3'");
+    }
+
+    /**
+     * Only one of the coordinates is snap to grid. The other is constrained by the parent border.
      * 
-     * @see org.eclipse.sirius.tests.swtbot.BorderedNodeCreationTest#assertSameLocation(String,
-     *      Point, Point, Point, Point, IGraphicalEditPart)
+     * @see org.eclipse.sirius.tests.swtbot.BorderedNodeCreationTest#assertSameLocation(String, Point, Point, Point,
+     *      Point, IGraphicalEditPart)
      */
     @Override
     protected void assertSameLocation(String errorMessage, Point expectedLocation, Point nodeLocation, Point parentLocation, Point creationLocation, IGraphicalEditPart parentPart) {
@@ -145,5 +175,27 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
         if (figure.getParent() != null) {
             addParentScrollbar(figure.getParent(), location);
         }
+    }
+
+    /**
+     * Check that a diagram element is aligned on the grid.
+     * 
+     * @param editPart
+     *            edit part of the diagram element to check
+     * @param elementNameToDisplay
+     *            The name of the element displayed in case of error
+     */
+    private void checkLocationAlignOnGrid(IGraphicalEditPart editPart, String elementNameToDisplay) {
+        Point location = editPart.getFigure().getBounds().getTopLeft();
+        boolean locationIsOK = (location.x % GRID_SPACING) == 0 || (location.y % GRID_SPACING) == 0;
+        if (!locationIsOK) {
+            IGraphicalEditPart parentPart = (IGraphicalEditPart) editPart.getParent();
+            Rectangle parentBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentPart);
+            locationIsOK = (location.x == parentBounds.x || location.x == (parentBounds.x + parentBounds.width)) || (location.y == parentBounds.y || location.y == (parentBounds.y + parentBounds.height));
+        }
+        if (!locationIsOK) {
+            fail("For " + elementNameToDisplay + ", the x or y coordinate of the top left corner should be on the grid (grid spacing = " + GRID_SPACING + "), but was: " + location + ".");
+        }
+
     }
 }
