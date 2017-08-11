@@ -16,14 +16,14 @@ import java.util.Set;
 
 import org.eclipse.core.commands.operations.IOperationHistoryListener;
 import org.eclipse.core.commands.operations.OperationHistoryEvent;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 
 /**
- * The SiriusLayoutDataFlusher which listens IOperationHistory events to
- * flush the list of {@link RootLayoutData} of the
- * {@link SiriusLayoutDataManagerImpl} after a
- * {@link OperationHistoryEvent#DONE} event.
+ * The SiriusLayoutDataFlusher which listens IOperationHistory events to flush the list of {@link RootLayoutData} of the
+ * {@link SiriusLayoutDataManagerImpl} after a {@link OperationHistoryEvent#DONE} event.
  * 
  * @author edugueperoux
  */
@@ -35,21 +35,30 @@ public class SiriusLayoutDataFlusher implements IOperationHistoryListener {
      * Default constructor for the SiriusLayoutDataFlusher.
      * 
      * @param viewPointLayoutDataManagerImpl
-     *            the {@link SiriusLayoutDataManagerImpl} on which to flush
-     *            the list of {@link RootLayoutData}
+     *            the {@link SiriusLayoutDataManagerImpl} on which to flush the list of {@link RootLayoutData}
      */
     public SiriusLayoutDataFlusher(SiriusLayoutDataManagerImpl viewPointLayoutDataManagerImpl) {
         this.viewPointLayoutDataManagerImpl = viewPointLayoutDataManagerImpl;
     }
 
     /**
-     * Overridden to flush the list of {@link RootLayoutData} of the
-     * {@link SiriusLayoutDataManagerImpl}.
+     * Overridden to flush the list of {@link RootLayoutData} of the {@link SiriusLayoutDataManagerImpl}.
      * 
      * {@inheritDoc}
      */
     public void historyNotification(OperationHistoryEvent event) {
         if (event.getEventType() == OperationHistoryEvent.DONE || event.getEventType() == OperationHistoryEvent.OPERATION_NOT_OK) {
+            if (event.getOperation() instanceof EMFCommandOperation) {
+                EMFCommandOperation oper = (EMFCommandOperation) event.getOperation();
+                TransactionalEditingDomain domain = oper.getEditingDomain();
+                if (domain instanceof org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl
+                        && ((org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl) domain).getActiveTransaction() != null) {
+                    // Ignore operations which corresponds to intermediate sub-transactions: the layout data should be
+                    // kept around until the full end of the top-level user interaction.
+                    return;
+                }
+            }
+
             viewPointLayoutDataManagerImpl.flushRootLayoutDatas();
             Map<Diagram, Set<View>> createdViewsToLayout = viewPointLayoutDataManagerImpl.getCreatedViewsToLayout();
             for (Diagram diagram : new ArrayList<Diagram>(createdViewsToLayout.keySet())) {
