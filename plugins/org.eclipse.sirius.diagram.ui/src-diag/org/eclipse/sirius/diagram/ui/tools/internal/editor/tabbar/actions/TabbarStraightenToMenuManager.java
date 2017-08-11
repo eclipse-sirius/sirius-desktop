@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
@@ -99,11 +100,16 @@ public class TabbarStraightenToMenuManager extends DistributeMenuManager {
         if (isEmpty() && visible) {
             IWorkbenchPage page = EclipseUIUtil.getActivePage();
             if (page != null) {
-                add(StraightenToAction.createStraightenToLeftAction(page));
-                add(StraightenToAction.createStraightenToRightAction(page));
                 add(StraightenToAction.createStraightenToTopAction(page));
                 add(StraightenToAction.createStraightenToBottomAction(page));
-                setDefaultAction(ActionIds.STRAIGHTEN_TO_LEFT);
+                add(StraightenToAction.createStraightenLeftSidePinnedAction(page));
+                add(StraightenToAction.createStraightenRightSidePinnedAction(page));
+                add(new Separator());
+                add(StraightenToAction.createStraightenToLeftAction(page));
+                add(StraightenToAction.createStraightenToRightAction(page));
+                add(StraightenToAction.createStraightenTopSidePinnedAction(page));
+                add(StraightenToAction.createStraightenBottomSidePinnedAction(page));
+                setDefaultAction(ActionIds.STRAIGHTEN_TO_TOP);
             }
         }
     }

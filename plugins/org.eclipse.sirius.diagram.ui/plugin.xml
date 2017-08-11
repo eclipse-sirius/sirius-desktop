@@ -190,6 +190,10 @@
             <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToHorizontalGroup" id="straightenToBottom"/>
             <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToVerticalGroup" id="straightenToLeft"/>
             <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToVerticalGroup" id="straightenToRight"/>
+            <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToVerticalGroup" id="straightenToTopSidePinned" />
+            <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToVerticalGroup" id="straightenToBottomSidePinned"/>
+            <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToHorizontalGroup" id="straightenToLeftSidePinned"/>
+            <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToHorizontalGroup" id="straightenToRightSidePinned"/>
          </popupContribution>
          <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart" />

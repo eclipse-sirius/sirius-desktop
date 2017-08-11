@@ -10,13 +10,23 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.eclipse.gmf.runtime.common.ui.action.ActionMenuManager;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.straighten.StraightenToAction;
+import org.eclipse.ui.IWorkbenchPage;
 
 /**
  * The straighten menu manager. It contains all straighten-related actions.
@@ -43,5 +53,70 @@ public class StraightenToMenuManager extends ActionMenuManager {
      */
     public StraightenToMenuManager() {
         super(ActionIds.MENU_STRAIGHTEN_TO, new StraightenMenuAction(), true);
+    }
+
+    /**
+     * Set the default action id for this menu manager.
+     * 
+     * @param actionId
+     *            the action id to set
+     */
+    public void setDefaultAction(String actionId) {
+        for (final IContributionItem item : getItems()) {
+            if (item instanceof ActionContributionItem) {
+                if (actionId.equals(((ActionContributionItem) item).getAction().getId())) {
+                    final IAction defaultAction = ((ActionContributionItem) item).getAction();
+                    setHandler(defaultAction);
+                    super.setDefaultAction(defaultAction);
+                    return;
+                }
+            }
+        }
+    }
+
+    /**
+     * We should use reflection to access the default handler method
+     * 
+     * @param defaultAction
+     *            the default action to set
+     */
+    private void setHandler(final IAction defaultAction) {
+        Method method;
+        try {
+            method = MenuCreatorAction.class.getDeclaredMethod("setActionHandler", IAction.class); //$NON-NLS-1$
+            method.setAccessible(true);
+            method.invoke(super.action, defaultAction);
+        } catch (SecurityException e) {
+            /* do nothing should not happen */
+        } catch (NoSuchMethodException e) {
+            /* do nothing should not happen */
+        } catch (IllegalArgumentException e) {
+            /* do nothing should not happen */
+        } catch (IllegalAccessException e) {
+            /* do nothing should not happen */
+        } catch (InvocationTargetException e) {
+            /* do nothing should not happen */
+        }
+    }
+
+    @Override
+    public void setVisible(boolean visible) {
+        super.setVisible(visible);
+        if (isEmpty() && visible) {
+            IWorkbenchPage page = EclipseUIUtil.getActivePage();
+            if (page != null) {
+                add(StraightenToAction.createStraightenToTopAction(page));
+                add(StraightenToAction.createStraightenToBottomAction(page));
+                add(StraightenToAction.createStraightenLeftSidePinnedAction(page));
+                add(StraightenToAction.createStraightenRightSidePinnedAction(page));
+                add(new Separator());
+                add(StraightenToAction.createStraightenToLeftAction(page));
+                add(StraightenToAction.createStraightenToRightAction(page));
+                add(StraightenToAction.createStraightenTopSidePinnedAction(page));
+                add(StraightenToAction.createStraightenBottomSidePinnedAction(page));
+
+                setDefaultAction(ActionIds.STRAIGHTEN_TO_TOP);
+            }
+        }
     }
 }

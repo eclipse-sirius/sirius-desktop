@@ -95,8 +95,8 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String[] DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { Messages.LayoutingModeSwitchingAction_activate };
 
-    private static final String[] CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Straighten to left", "Align Left",
-            DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
+    private static final String[] CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Straighten to top",
+            "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
 
     private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { Messages.PinElementsEclipseAction_text, Messages.UnpinElementsEclipseAction_text, Messages.CopyFormatAction_toolTipText,
             Messages.SiriusDiagramActionBarContributor_hideElement, Messages.SiriusDiagramActionBarContributor_hideLabel, Messages.SiriusDiagramActionBarContributor_deleteFromDiagram,

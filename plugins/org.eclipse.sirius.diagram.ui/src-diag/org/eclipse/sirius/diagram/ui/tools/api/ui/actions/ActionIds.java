@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 /**
  * A list of constants defining the diagram action and menu action ids.
  * <p>
- * This interface defines constants only, it is <EM>not</EM> intended to be
- * implemented by clients.
+ * This interface defines constants only, it is <EM>not</EM> intended to be implemented by clients.
  * </p>
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
@@ -126,5 +125,17 @@ public interface ActionIds {
 
     /** Action's id to straighten to right. */
     String STRAIGHTEN_TO_RIGHT = RequestConstants.REQ_STRAIGHTEN + "Right"; //$NON-NLS-1$
+
+    /** Action's id to straighten to top. */
+    String STRAIGHTEN_LEFT_SIDE_PINNED = RequestConstants.REQ_STRAIGHTEN + "LeftSidePinned"; //$NON-NLS-1$
+
+    /** Action's id to straighten to bottom. */
+    String STRAIGHTEN_RIGHT_SIDE_PINNED = RequestConstants.REQ_STRAIGHTEN + "RightSidePinned"; //$NON-NLS-1$
+
+    /** Action's id to straighten to left. */
+    String STRAIGHTEN_TOP_SIDE_PINNED = RequestConstants.REQ_STRAIGHTEN + "TopSidePinned"; //$NON-NLS-1$
+
+    /** Action's id to straighten to right. */
+    String STRAIGHTEN_BOTTOM_SIDE_PINNED = RequestConstants.REQ_STRAIGHTEN + "BottomSidePinned"; //$NON-NLS-1$
 
 }

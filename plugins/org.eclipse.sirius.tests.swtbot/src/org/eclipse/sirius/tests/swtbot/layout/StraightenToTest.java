@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
@@ -29,6 +30,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -65,7 +67,34 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final Point IGNORED_POINT = new Point(-1, -1);
 
-    private String[] labels = { Messages.StraightenToAction_toTopLabel, Messages.StraightenToAction_toBottomLabel, Messages.StraightenToAction_toLeftLabel, Messages.StraightenToAction_toRightLabel };
+    private String[] labels = { Messages.StraightenToAction_toTopLabel, Messages.StraightenToAction_toBottomLabel, Messages.StraightenToAction_LeftSidePinnedLabel,
+            Messages.StraightenToAction_RightSidePinnedLabel, Messages.StraightenToAction_toLeftLabel, Messages.StraightenToAction_toRightLabel, Messages.StraightenToAction_TopSidePinnedLabel,
+            Messages.StraightenToAction_BottomSidePinnedLabel };
+
+    /**
+     * This class allows to gather diagrams parts or swtbot parts with their label.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    private class TestPart {
+        public String partName;
+
+        public SWTBotGefEditPart swtBotpart;
+
+        public AbstractDiagramEdgeEditPart part;
+
+        public TestPart(String edgeName, SWTBotGefEditPart editPart) {
+            this.partName = edgeName;
+            this.swtBotpart = editPart;
+        }
+
+        public TestPart(String edgeName, AbstractDiagramEdgeEditPart edgeEditPart) {
+            this.partName = edgeName;
+            this.part = edgeEditPart;
+        }
+
+    }
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -106,8 +135,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </UL>
      */
     public void testObliqueEdgeLeftAndRight() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, false, true, true };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, false, false, false, true, true, true, true };
         checkEdgeActions(availableDirections, "edge12");
     }
 
@@ -120,8 +149,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </UL>
      */
     public void testObliqueEdgeLeftAndRightWithWrongYGMFCoordinate() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, false, true, true };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, false, false, false, true, true, true, true };
         checkEdgeActions(availableDirections, "edge24");
     }
 
@@ -132,8 +161,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </ul>
      */
     public void testObliqueEdgeLeftAndRightForbiddenBecauseofCentering() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, false, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, false, false, false, false, false, false, false };
         checkEdgeActions(availableDirections, "edge8");
     }
 
@@ -144,8 +173,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </ul>
      */
     public void testObliqueEdgeLeftAndRightCenteringOnBothSourceAndTargetBorderNodes() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, false, true, true };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, false, false, false, true, true, true, true };
         checkEdgeActions(availableDirections, "edge9");
     }
 
@@ -156,8 +185,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </UL>
      */
     public void testObliqueEdgeTopAndBottom() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { true, true, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { true, true, true, true, false, false, false, false };
         checkEdgeActions(availableDirections, "edge15");
     }
 
@@ -168,8 +197,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </UL>
      */
     public void testObliqueEdgeTopAndBottomWithWrongXGMFCoordinate() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { true, true, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { true, true, true, true, false, false, false, false };
         checkEdgeActions(availableDirections, "edge25");
     }
 
@@ -180,8 +209,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </UL>
      */
     public void testObliqueEdgeTopAndBottomBetweenBorderNodeNotAsSameLevel() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, true, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, true, true, false, false, false, false, false };
         checkEdgeActions(availableDirections, "edge21");
     }
 
@@ -192,8 +221,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </UL>
      */
     public void testRectilinearTopAndBottomOutOfBounds() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { true, false, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { true, false, false, true, false, false, false, false };
         checkEdgeActions(availableDirections, "edge14");
     }
 
@@ -204,8 +233,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </ul>
      */
     public void testObliqueEdgeLinkedToBorderNodeWithSeveralEdges() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { true, true, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { true, true, true, true, false, false, false, false };
         checkEdgeActions(availableDirections, true, null, "edge4");
     }
 
@@ -216,8 +245,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </ul>
      */
     public void testRectilinearEdgeLinkedToBorderNodeWithSeveralEdges() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, false, true, true };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, false, false, false, true, true, true, true };
         checkEdgeActions(availableDirections, true, null, "edge17");
     }
 
@@ -243,8 +272,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </ul>
      */
     public void testObliqueEdgeTopAndBottomForbiddenForOverlap() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { true, false, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { true, false, false, true, false, false, false, false };
         checkEdgeActions(availableDirections, "edge6");
     }
 
@@ -252,8 +281,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * Straighten rectilinear edge2 to *: Expected: menu disabled (not same axis)
      */
     public void testRectilinearAllForbiddenForDifferentAxes() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, false, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, false, false, false, false, false, false, false };
         checkEdgeActions(availableDirections, "edge2");
     }
 
@@ -264,8 +293,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * </ul>
      */
     public void testRectilinearToRightWithLeftForbiddenBecauseofCentering() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, false, false, true };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, false, false, false, false, true, true, false };
         checkEdgeActions(availableDirections, "edge5");
     }
 
@@ -279,8 +308,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     public void testRectilinearToRightWithLeftForbiddenBecauseofCenteringWithZoom200() {
         editor.zoom(ZoomLevel.ZOOM_200);
         try {
-            // {top,bottom,left,right}
-            boolean[] availableDirections = { false, false, false, true };
+            // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+            boolean[] availableDirections = { false, false, false, false, false, true, true, false };
             checkEdgeActions(availableDirections, "edge5");
         } finally {
             editor.zoom(ZoomLevel.ZOOM_100);
@@ -291,8 +320,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * Straighten edge3 AND edge5 to Right: Expected: OK (for both)
      */
     public void testTwoEdgesToRightWithOneWithLeftForbidden() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, false, false, true };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, false, false, false, false, true, true, false };
         checkEdgeActions(availableDirections, "edge5", "edge3");
     }
 
@@ -311,13 +340,16 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * to this edge without error.
      */
     public void testTwoEdgesAllIncompatibleStraigthenAction() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { true, true, false, true };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { true, true, true, true, false, true, true, false };
         Map<Integer, EdgeImpact> directionsIndexToConcernedEdge = new HashMap<>();
-        directionsIndexToConcernedEdge.put(0, EdgeImpact.SECOND_EDGE);
-        directionsIndexToConcernedEdge.put(1, EdgeImpact.SECOND_EDGE);
+        directionsIndexToConcernedEdge.put(0, EdgeImpact.FIRST_EDGE);
+        directionsIndexToConcernedEdge.put(1, EdgeImpact.FIRST_EDGE);
+        directionsIndexToConcernedEdge.put(2, EdgeImpact.FIRST_EDGE);
         directionsIndexToConcernedEdge.put(3, EdgeImpact.FIRST_EDGE);
-        checkEdgeActions(availableDirections, directionsIndexToConcernedEdge, "edge5", "edge15");
+        directionsIndexToConcernedEdge.put(5, EdgeImpact.SECOND_EDGE);
+        directionsIndexToConcernedEdge.put(6, EdgeImpact.SECOND_EDGE);
+        checkEdgeActions(availableDirections, directionsIndexToConcernedEdge, "edge15", "edge5");
     }
 
     /**
@@ -330,8 +362,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
         // Reveals the edit part to have scrollbar
         SWTBotGefEditPart editPart = editor.getEditPart("edge7", AbstractDiagramEdgeEditPart.class);
         editor.reveal(editPart.part());
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, true, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, true, false, true, false, false, false, false };
         checkEdgeActions(availableDirections, "edge7");
     }
 
@@ -345,8 +377,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
         // Reveals the edit part to have scrollbar
         SWTBotGefEditPart editPart = editor.getEditPart("edge14", AbstractDiagramEdgeEditPart.class);
         editor.reveal(editPart.part());
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { true, false, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { true, false, false, true, false, false, false, false };
         checkEdgeActions(availableDirections, "edge14");
     }
 
@@ -358,8 +390,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart editPart2 = editor.getEditPart("container3", AbstractDiagramContainerEditPart.class);
         editor.select(editPart1, editPart2);
         editor.reveal(editPart1.part());
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, true, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, true, true, false, false, false, false, false };
         checkEdgeActions(availableDirections, "edge11");
     }
 
@@ -373,8 +405,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart editPart2 = editor.getEditPart("edge12", AbstractDiagramNameEditPart.class);
         editor.select(editPart1, editPart2);
         editor.reveal(editPart1.part());
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, true, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, true, true, false, false, false, false, false };
         checkEdgeActions(availableDirections, "edge11");
     }
 
@@ -387,8 +419,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     public void testObliqueEdgeTopAndBottomBetweenElementAtSameLevelButNotInSameContainer() {
         SWTBotGefEditPart editPart = editor.getEditPart("container9", AbstractDiagramContainerEditPart.class);
         editor.reveal(editPart.part());
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { false, true, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { false, true, true, false, false, false, false, false };
         checkEdgeActions(availableDirections, "edge11");
     }
 
@@ -401,8 +433,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     public void testObliqueEdgeTopAndBottomBetweenElementNotAtSameLevel() {
         SWTBotGefEditPart editPart = editor.getEditPart("container9", AbstractDiagramContainerEditPart.class);
         editor.reveal(editPart.part());
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { true, false, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { true, false, true, false, false, false, false, false };
         checkEdgeActions(availableDirections, "edge10");
     }
 
@@ -415,8 +447,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     public void testObliqueEdgeTopAndBottomBetweenBorderNodeAtSameLevelButNotInSameContainer() {
         SWTBotGefEditPart editPart = editor.getEditPart("container9", AbstractDiagramContainerEditPart.class);
         editor.reveal(editPart.part());
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { true, true, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { true, true, true, true, false, false, false, false };
         checkEdgeActions(availableDirections, "edge13");
     }
 
@@ -424,8 +456,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * Straighten edge22 AND edge23 to top and bottom: Expected: OK (for both)
      */
     public void testTwoEdgesLinkedToBorderNodeWithOverlapBeforeStraighten() {
-        // {top,bottom,left,right}
-        boolean[] availableDirections = { true, true, false, false };
+        // {top,bottom,leftSide,rightSide,left,right,topSide,BottomSide}
+        boolean[] availableDirections = { true, true, true, true, false, false, false, false };
         checkEdgeActions(availableDirections, "edge22", "edge23");
     }
 
@@ -477,17 +509,21 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      *            true if the bendpoints stability of edges linked to moved border node must also be checked (only
      *            segment linked to border node must be moved), false otherwise
      * @param directionsIndexToConcernedEdge
-     *            * @param edgeNames list of names corresponding to the edges to select.
+     *            a map that associate the edge(s) that will be changed if the straighten command at the index given by
+     *            the key is executed. The command to execute is the one represented by the direction at the given index
+     *            of availableDirections parameter.
+     * @param edgeNames
+     *            list of names corresponding to the edges to select.
      */
     private void checkEdgeActions(boolean[] availableDirections, boolean checkOtherEdges, Map<Integer, EdgeImpact> directionsIndexToConcernedEdge, String... edgeNames) {
-        for (int i = 0; i < 4; i++) {
-            Map<SWTBotGefEditPart, List<Point>> gefEditParts2ExpectedPointList = Maps.newHashMap();
+        for (int i = 0; i < 8; i++) {
+            Map<TestPart, List<Point>> gefEditParts2ExpectedPointList = Maps.newHashMap();
             // Map only used if checkOtherEdges is true
-            Map<AbstractDiagramEdgeEditPart, PointList> otherEdgeEditParts2ExpectedPointList = Maps.newHashMap();
+            Map<TestPart, PointList> otherEdgeEditParts2ExpectedPointList = Maps.newHashMap();
             for (String edgeName : edgeNames) {
-                gefEditParts2ExpectedPointList.put(editor.getEditPart(edgeName, AbstractDiagramEdgeEditPart.class), Lists.<Point> newArrayList());
+                gefEditParts2ExpectedPointList.put(new TestPart(edgeName, editor.getEditPart(edgeName, AbstractDiagramEdgeEditPart.class)), Lists.<Point> newArrayList());
             }
-            editor.select(gefEditParts2ExpectedPointList.keySet());
+            editor.select(gefEditParts2ExpectedPointList.keySet().stream().map(part -> part.swtBotpart).collect(Collectors.toSet()));
             try {
                 boolean enable = SWTBotUtils.isMenuEnabled(bot.getDisplay(), editor.getDiagramEditPart().getViewer().getControl(), labels[i]);
                 // The test fail if the action should not be enable and if it is
@@ -499,33 +535,12 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
                 if (enable) {
                     int j = 0;
                     // if the action is enabled we check the result.
-                    for (SWTBotGefEditPart edgeEditPart : gefEditParts2ExpectedPointList.keySet()) {
-                        boolean computePoints = false;
-                        if (directionsIndexToConcernedEdge != null) {
-                            switch (directionsIndexToConcernedEdge.get(i)) {
-                            case BOTH_EDGE:
-                                if (j == 0 || j == 1) {
-                                    computePoints = true;
-                                }
-                                break;
-                            case FIRST_EDGE:
-                                if (j == 0) {
-                                    computePoints = true;
-                                }
-                                break;
-                            case SECOND_EDGE:
-                                if (j == 1) {
-                                    computePoints = true;
-                                }
-                                break;
-                            default:
-                                computePoints = true;
-                                break;
-                            }
-
-                        }
+                    for (String edgeName : edgeNames) {
+                        TestPart testPart = gefEditParts2ExpectedPointList.keySet().stream().filter(part -> edgeName.equals(part.partName)).findFirst().get();
+                        SWTBotGefEditPart edgeEditPart = testPart.swtBotpart;
+                        boolean computePoints = checkEdge(directionsIndexToConcernedEdge, i, j);
                         if (computePoints) {
-                            List<Point> pointList = gefEditParts2ExpectedPointList.get(edgeEditPart);
+                            List<Point> pointList = gefEditParts2ExpectedPointList.get(testPart);
                             computeExpectedPoints(edgeEditPart, pointList, i);
                             if (checkOtherEdges) {
                                 computeOtherEdgesExpectedPoints(edgeEditPart, otherEdgeEditParts2ExpectedPointList, i);
@@ -535,33 +550,12 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
                     }
                     editor.clickContextMenu(labels[i]);
                     j = 0;
-                    for (SWTBotGefEditPart edgeEditPart : gefEditParts2ExpectedPointList.keySet()) {
-                        boolean checkResult = false;
-                        if (directionsIndexToConcernedEdge != null) {
-                            switch (directionsIndexToConcernedEdge.get(i)) {
-                            case BOTH_EDGE:
-                                if (j == 0 || j == 1) {
-                                    checkResult = true;
-                                }
-                                break;
-                            case FIRST_EDGE:
-                                if (j == 0) {
-                                    checkResult = true;
-                                }
-                                break;
-                            case SECOND_EDGE:
-                                if (j == 1) {
-                                    checkResult = true;
-                                }
-                                break;
-                            default:
-                                checkResult = true;
-                                break;
-                            }
-
-                        }
+                    for (String edgeName : edgeNames) {
+                        TestPart testPart = gefEditParts2ExpectedPointList.keySet().stream().filter(part -> edgeName.equals(part.partName)).findFirst().get();
+                        SWTBotGefEditPart edgeEditPart = testPart.swtBotpart;
+                        boolean checkResult = checkEdge(directionsIndexToConcernedEdge, i, j);
                         if (checkResult) {
-                            List<Point> pointList = gefEditParts2ExpectedPointList.get(edgeEditPart);
+                            List<Point> pointList = gefEditParts2ExpectedPointList.get(testPart);
                             checkResult(edgeEditPart, pointList, i);
                             if (checkOtherEdges) {
                                 checkResultOfOtherEdges(edgeEditPart, otherEdgeEditParts2ExpectedPointList);
@@ -575,6 +569,49 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
                 fail("the \"" + labels[i] + "\" menu should be displayed for the edge selection: " + Arrays.toString(edgeNames));
             }
         }
+    }
+
+    /**
+     * Checks that the j th edge selected is changed by the straighten command at i index and thus it's change should be
+     * verified.
+     * 
+     * @param directionsIndexToConcernedEdge
+     *            the map that gives the edges impacted by the straighten command at the key position.
+     * @param i
+     *            the index of the straighten command to execute.
+     * @param j
+     *            the j th edge selected before executing the straighten command.
+     * @return true the j th edge selected is changed by the straighten command at i index and thus it's change should
+     *         be verified. False otherwise
+     */
+    private boolean checkEdge(Map<Integer, EdgeImpact> directionsIndexToConcernedEdge, int i, int j) {
+        boolean checkEdge = false;
+        if (directionsIndexToConcernedEdge != null) {
+            // we only check result for edges concerned by the straighten command executed.
+            switch (directionsIndexToConcernedEdge.get(i)) {
+            case BOTH_EDGE:
+                if (j == 0 || j == 1) {
+                    checkEdge = true;
+                }
+                break;
+            case FIRST_EDGE:
+                if (j == 0) {
+                    checkEdge = true;
+                }
+                break;
+            case SECOND_EDGE:
+                if (j == 1) {
+                    checkEdge = true;
+                }
+                break;
+            default:
+                checkEdge = true;
+                break;
+            }
+        } else {
+            checkEdge = true;
+        }
+        return checkEdge;
     }
 
     /**
@@ -608,12 +645,12 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * @param otherEdgeEditParts2ExpectedPointList
      *            the list where register the expected points, a point set to {-1, -1} is to ignore in the comparison
      */
-    private void checkResultOfOtherEdges(SWTBotGefEditPart edgeEditPart, Map<AbstractDiagramEdgeEditPart, PointList> otherEdgeEditParts2ExpectedPointList) {
-        for (Entry<AbstractDiagramEdgeEditPart, PointList> entry : otherEdgeEditParts2ExpectedPointList.entrySet()) {
-            PolylineConnectionEx polylineConnection = entry.getKey().getPolylineConnectionFigure();
+    private void checkResultOfOtherEdges(SWTBotGefEditPart edgeEditPart, Map<TestPart, PointList> otherEdgeEditParts2ExpectedPointList) {
+        for (Entry<TestPart, PointList> entry : otherEdgeEditParts2ExpectedPointList.entrySet()) {
+            PolylineConnectionEx polylineConnection = entry.getKey().part.getPolylineConnectionFigure();
             for (int i = 0; i < entry.getValue().size(); i++) {
                 if (!IGNORED_POINT.equals(entry.getValue().getPoint(i))) {
-                    assertEquals("The point \"" + i + "\" of edge \"" + getLabelFromEdgeEditPart(entry.getKey()) + "\" is not valid.", entry.getValue().getPoint(i),
+                    assertEquals("The point \"" + i + "\" of edge \"" + getLabelFromEdgeEditPart(entry.getKey().part) + "\" is not valid.", entry.getValue().getPoint(i),
                             polylineConnection.getPoints().getPoint(i));
                 }
             }
@@ -689,8 +726,32 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
                 expectedEndPoint.setX(endPointBefore.x());
             }
             break;
-        // left
+        // left side
         case 2:
+            if (startPointBefore.x <= endPointBefore.x) {
+                expectedEndPoint.setY(expectedStartPoint.y);
+            } else {
+                expectedStartPoint.setY(expectedEndPoint.y);
+            }
+            if (specificCase) {
+                expectedStartPoint.setX(startPointBefore.x());
+                expectedEndPoint.setX(endPointBefore.x());
+            }
+            break;
+        // right side
+        case 3:
+            if (startPointBefore.x <= endPointBefore.x) {
+                expectedStartPoint.setY(expectedEndPoint.y);
+            } else {
+                expectedEndPoint.setY(expectedStartPoint.y);
+            }
+            if (specificCase) {
+                expectedStartPoint.setX(startPointBefore.x());
+                expectedEndPoint.setX(endPointBefore.x());
+            }
+            break;
+        // left
+        case 4:
             if (startPointBefore.x <= endPointBefore.x) {
                 expectedEndPoint.setX(expectedStartPoint.x);
             } else {
@@ -702,7 +763,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
             }
             break;
         // right
-        case 3:
+        case 5:
             if (startPointBefore.x <= endPointBefore.x) {
                 expectedStartPoint.setX(expectedEndPoint.x);
             } else {
@@ -714,7 +775,30 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
             }
 
             break;
-
+        // top side
+        case 6:
+            if (startPointBefore.y <= endPointBefore.y) {
+                expectedEndPoint.setX(expectedStartPoint.x);
+            } else {
+                expectedStartPoint.setX(expectedEndPoint.x);
+            }
+            if (specificCase) {
+                expectedStartPoint.setY(startPointBefore.y());
+                expectedEndPoint.setY(endPointBefore.y());
+            }
+            break;
+        // bottom side
+        case 7:
+            if (startPointBefore.y <= endPointBefore.y) {
+                expectedStartPoint.setX(expectedEndPoint.x);
+            } else {
+                expectedEndPoint.setX(expectedStartPoint.x);
+            }
+            if (specificCase) {
+                expectedStartPoint.setY(startPointBefore.y());
+                expectedEndPoint.setY(endPointBefore.y());
+            }
+            break;
         default:
             break;
         }
@@ -731,7 +815,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * @param i
      *            the current action index in labels order {top,bottom,left,right} order
      */
-    private void computeOtherEdgesExpectedPoints(SWTBotGefEditPart edgeEditPart, Map<AbstractDiagramEdgeEditPart, PointList> otherEdgeEditParts2ExpectedPointList, int i) {
+    private void computeOtherEdgesExpectedPoints(SWTBotGefEditPart edgeEditPart, Map<TestPart, PointList> otherEdgeEditParts2ExpectedPointList, int i) {
         AbstractDiagramEdgeEditPart part = (AbstractDiagramEdgeEditPart) edgeEditPart.part();
         PolylineConnectionEx polylineConnection = part.getPolylineConnectionFigure();
         Point startPointBefore = polylineConnection.getStart();
@@ -800,7 +884,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      *            the list where register the expected points, a point set to {-1, -1} is to ignore in the comparison
      */
     private void computeOtherEdgesExpectedPoints(AbstractDiagramBorderNodeEditPart borderNodeEditPart, AbstractDiagramEdgeEditPart selectedEdgeEditPart,
-            Map<AbstractDiagramEdgeEditPart, PointList> otherEdgeEditParts2ExpectedPointList) {
+            Map<TestPart, PointList> otherEdgeEditParts2ExpectedPointList) {
         for (AbstractDiagramEdgeEditPart edgeEditPart : Iterables.filter(borderNodeEditPart.getSourceConnections(), AbstractDiagramEdgeEditPart.class)) {
             if (!edgeEditPart.equals(selectedEdgeEditPart)) {
                 PolylineConnectionEx polylineConnection = edgeEditPart.getPolylineConnectionFigure();
@@ -814,7 +898,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
                     pointList.setPoint(IGNORED_POINT, 0);
                     pointList.setPoint(IGNORED_POINT, 1);
                 }
-                otherEdgeEditParts2ExpectedPointList.put(edgeEditPart, pointList);
+                otherEdgeEditParts2ExpectedPointList.put(new TestPart(((DEdgeNameEditPart) edgeEditPart.getChildren().get(0)).getLabelText(), edgeEditPart), pointList);
             }
         }
         for (AbstractDiagramEdgeEditPart edgeEditPart : Iterables.filter(borderNodeEditPart.getTargetConnections(), AbstractDiagramEdgeEditPart.class)) {
@@ -830,7 +914,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
                     pointList.setPoint(IGNORED_POINT, pointList.size() - 1);
                     pointList.setPoint(IGNORED_POINT, pointList.size() - 2);
                 }
-                otherEdgeEditParts2ExpectedPointList.put(edgeEditPart, pointList);
+                otherEdgeEditParts2ExpectedPointList.put(
+                        new TestPart(((DEdgeNameEditPart) edgeEditPart.getChildren().stream().filter(DEdgeNameEditPart.class::isInstance).findFirst().get()).getLabelText(), edgeEditPart), pointList);
             }
         }
     }

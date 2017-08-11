@@ -185,8 +185,10 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
                     int axis = getSourceAndTargetSameAxis(edgeEditPart, data);
                     canExecuteThisEdge = axis != PositionConstants.NONE;
                     if (canExecuteThisEdge) {
-                        if ((axis == PositionConstants.HORIZONTAL && (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM))
-                                || (axis == PositionConstants.VERTICAL && (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT))) {
+                        if ((axis == PositionConstants.HORIZONTAL && (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM
+                                || straightenType == StraightenToAction.LEFT_SIDE_PINNED || straightenType == StraightenToAction.RIGHT_SIDE_PINNED))
+                                || (axis == PositionConstants.VERTICAL && (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT
+                                        || straightenType == StraightenToAction.TOP_SIDE_PINNED || straightenType == StraightenToAction.BOTTOM_SIDE_PINNED))) {
                             data.moveSource = isSourceWillBeMoved(edgeEditPart, data);
                         } else {
                             canExecuteThisEdge = false;
@@ -319,7 +321,8 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
     }
 
     private void computePointsInSpecificCase(Point firstPoint, Point lastPoint, Rectangle sourceBounds, Rectangle targetBounds) {
-        if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
+        if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM || straightenType == StraightenToAction.LEFT_SIDE_PINNED
+                || straightenType == StraightenToAction.RIGHT_SIDE_PINNED) {
             firstPoint.setX(firstPoint.x).setY(sourceBounds.getCenter().y);
             lastPoint.setX(lastPoint.x).setY(targetBounds.getCenter().y);
         } else {
@@ -445,15 +448,15 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
         } else {
             targetPoint = new Point();
         }
-        if (straightenType == StraightenToAction.TO_LEFT) {
+        if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.LEFT_SIDE_PINNED) {
             if (sourcePoint.x > targetPoint.x) {
                 isSourceWillBeMoved = true;
             }
-        } else if (straightenType == StraightenToAction.TO_RIGHT) {
+        } else if (straightenType == StraightenToAction.TO_RIGHT || straightenType == StraightenToAction.RIGHT_SIDE_PINNED) {
             if (sourcePoint.x < targetPoint.x) {
                 isSourceWillBeMoved = true;
             }
-        } else if (straightenType == StraightenToAction.TO_TOP) {
+        } else if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TOP_SIDE_PINNED) {
             if (sourcePoint.y > targetPoint.y) {
                 isSourceWillBeMoved = true;
             }
@@ -520,9 +523,11 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
                 lastPoint = GraphicalHelper.getAbsoluteBoundsIn100Percent(data.targetEditPart).getCenter();
             }
             if (data.moveSource) {
-                if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
+                if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM || straightenType == StraightenToAction.LEFT_SIDE_PINNED
+                        || straightenType == StraightenToAction.RIGHT_SIDE_PINNED) {
                     data.deltaY = lastPoint.y - firstPoint.y;
-                } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT) {
+                } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT || straightenType == StraightenToAction.TOP_SIDE_PINNED
+                        || straightenType == StraightenToAction.BOTTOM_SIDE_PINNED) {
                     data.deltaX = lastPoint.x - firstPoint.x;
                 }
                 if (data.isSourceABorderNode) {
@@ -530,31 +535,37 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
                     Rectangle borderNodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(data.sourceEditPart);
                     // Get the computed bounds after the move
                     borderNodeBounds = borderNodeBounds.getTranslated(data.deltaX, data.deltaY);
-                    if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
+                    if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM || straightenType == StraightenToAction.LEFT_SIDE_PINNED
+                            || straightenType == StraightenToAction.RIGHT_SIDE_PINNED) {
                         if (parentBorderNodeBounds.y <= borderNodeBounds.y && (borderNodeBounds.y + borderNodeBounds.height) <= (parentBorderNodeBounds.y + parentBorderNodeBounds.height)) {
                             isNewLocationInParentBounds = true;
                         }
-                    } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT) {
+                    } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT || straightenType == StraightenToAction.TOP_SIDE_PINNED
+                            || straightenType == StraightenToAction.BOTTOM_SIDE_PINNED) {
                         if (parentBorderNodeBounds.x <= borderNodeBounds.x && (borderNodeBounds.x + borderNodeBounds.width) <= (parentBorderNodeBounds.x + parentBorderNodeBounds.width)) {
                             isNewLocationInParentBounds = true;
                         }
                     }
                 } else {
                     Rectangle bounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(data.sourceEditPart);
-                    if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
+                    if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM || straightenType == StraightenToAction.LEFT_SIDE_PINNED
+                            || straightenType == StraightenToAction.RIGHT_SIDE_PINNED) {
                         if (bounds.y <= lastPoint.y && lastPoint.y <= (bounds.y + bounds.height)) {
                             isNewLocationInParentBounds = true;
                         }
-                    } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT) {
+                    } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT || straightenType == StraightenToAction.TOP_SIDE_PINNED
+                            || straightenType == StraightenToAction.BOTTOM_SIDE_PINNED) {
                         if (bounds.x <= lastPoint.x && lastPoint.x <= (bounds.x + bounds.width)) {
                             isNewLocationInParentBounds = true;
                         }
                     }
                 }
             } else {
-                if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
+                if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM || straightenType == StraightenToAction.LEFT_SIDE_PINNED
+                        || straightenType == StraightenToAction.RIGHT_SIDE_PINNED) {
                     data.deltaY = firstPoint.y - lastPoint.y;
-                } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT) {
+                } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT || straightenType == StraightenToAction.TOP_SIDE_PINNED
+                        || straightenType == StraightenToAction.BOTTOM_SIDE_PINNED) {
                     data.deltaX = firstPoint.x - lastPoint.x;
                 }
                 if (data.isTargetABorderNode) {
@@ -562,22 +573,26 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
                     Rectangle borderNodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(data.targetEditPart);
                     // Get the computed bounds after the move
                     borderNodeBounds = borderNodeBounds.getTranslated(data.deltaX, data.deltaY);
-                    if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
+                    if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM || straightenType == StraightenToAction.LEFT_SIDE_PINNED
+                            || straightenType == StraightenToAction.RIGHT_SIDE_PINNED) {
                         if (parentBorderNodeBounds.y <= borderNodeBounds.y && (borderNodeBounds.y + borderNodeBounds.height) <= (parentBorderNodeBounds.y + parentBorderNodeBounds.height)) {
                             isNewLocationInParentBounds = true;
                         }
-                    } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT) {
+                    } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT || straightenType == StraightenToAction.TOP_SIDE_PINNED
+                            || straightenType == StraightenToAction.BOTTOM_SIDE_PINNED) {
                         if (parentBorderNodeBounds.x <= borderNodeBounds.x && (borderNodeBounds.x + borderNodeBounds.width) <= (parentBorderNodeBounds.x + parentBorderNodeBounds.width)) {
                             isNewLocationInParentBounds = true;
                         }
                     }
                 } else {
                     Rectangle bounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(data.targetEditPart);
-                    if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
+                    if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM || straightenType == StraightenToAction.LEFT_SIDE_PINNED
+                            || straightenType == StraightenToAction.RIGHT_SIDE_PINNED) {
                         if (bounds.y <= firstPoint.y && firstPoint.y <= (bounds.y + bounds.height)) {
                             isNewLocationInParentBounds = true;
                         }
-                    } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT) {
+                    } else if (straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT || straightenType == StraightenToAction.TOP_SIDE_PINNED
+                            || straightenType == StraightenToAction.BOTTOM_SIDE_PINNED) {
                         if (bounds.x <= firstPoint.x && firstPoint.x <= (bounds.x + bounds.width)) {
                             isNewLocationInParentBounds = true;
                         }
@@ -650,10 +665,12 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             Rectangle initialAsboluteConstraint = initialRelativeConstraint.getTranslated(parentAbsoluteLocation);
             Point validInitialAbsoluteLocation = borderItemLocator.getValidLocation(initialAsboluteConstraint, node, Lists.newArrayList(node));
             Rectangle validInitialAbsoluteConstraint = initialAsboluteConstraint.getCopy();
-            if ((straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT) && initialAsboluteConstraint.y != validInitialAbsoluteLocation.y) {
+            if ((straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT || straightenType == StraightenToAction.TOP_SIDE_PINNED
+                    || straightenType == StraightenToAction.BOTTOM_SIDE_PINNED) && initialAsboluteConstraint.y != validInitialAbsoluteLocation.y) {
                 // There is probably a bug in the GMF location, fix it.
                 validInitialAbsoluteConstraint.setY(validInitialAbsoluteLocation.y);
-            } else if ((straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) && initialAsboluteConstraint.x != validInitialAbsoluteLocation.x) {
+            } else if ((straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM || straightenType == StraightenToAction.LEFT_SIDE_PINNED
+                    || straightenType == StraightenToAction.RIGHT_SIDE_PINNED) && initialAsboluteConstraint.x != validInitialAbsoluteLocation.x) {
                 // There is probably a bug in the GMF location, fix it.
                 validInitialAbsoluteConstraint.setX(validInitialAbsoluteLocation.x);
             }

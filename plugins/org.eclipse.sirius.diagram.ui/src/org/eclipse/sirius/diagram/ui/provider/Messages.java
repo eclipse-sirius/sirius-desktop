@@ -1335,6 +1335,30 @@ public final class Messages {
     public static String StraightenToAction_toTopTooltip;
 
     @TranslatableMessage
+    public static String StraightenToAction_LeftSidePinnedLabel;
+
+    @TranslatableMessage
+    public static String StraightenToAction_LeftSidePinnedTooltip;
+
+    @TranslatableMessage
+    public static String StraightenToAction_RightSidePinnedLabel;
+
+    @TranslatableMessage
+    public static String StraightenToAction_RightSidePinnedTooltip;
+
+    @TranslatableMessage
+    public static String StraightenToAction_TopSidePinnedLabel;
+
+    @TranslatableMessage
+    public static String StraightenToAction_TopSidePinnedTooltip;
+
+    @TranslatableMessage
+    public static String StraightenToAction_BottomSidePinnedLabel;
+
+    @TranslatableMessage
+    public static String StraightenToAction_BottomSidePinnedTooltip;
+
+    @TranslatableMessage
     public static String StraightenToCommand_errorMsg;
 
     @TranslatableMessage

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -101,6 +101,14 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = StraightenToAction.createStraightenToLeftAction(workbenchPage);
         } else if (ActionIds.STRAIGHTEN_TO_RIGHT.equals(actionId)) {
             result = StraightenToAction.createStraightenToRightAction(workbenchPage);
+        } else if (ActionIds.STRAIGHTEN_TOP_SIDE_PINNED.equals(actionId)) {
+            result = StraightenToAction.createStraightenTopSidePinnedAction(workbenchPage);
+        } else if (ActionIds.STRAIGHTEN_BOTTOM_SIDE_PINNED.equals(actionId)) {
+            result = StraightenToAction.createStraightenBottomSidePinnedAction(workbenchPage);
+        } else if (ActionIds.STRAIGHTEN_LEFT_SIDE_PINNED.equals(actionId)) {
+            result = StraightenToAction.createStraightenLeftSidePinnedAction(workbenchPage);
+        } else if (ActionIds.STRAIGHTEN_RIGHT_SIDE_PINNED.equals(actionId)) {
+            result = StraightenToAction.createStraightenRightSidePinnedAction(workbenchPage);
         } else {
             result = super.createAction(actionId, partDescriptor);
         }

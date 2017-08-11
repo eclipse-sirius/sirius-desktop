@@ -35,7 +35,6 @@ import com.google.common.collect.Lists;
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-@SuppressWarnings("restriction")
 public class StraightenToAction extends DiagramAction {
 
     /** Constant indicating a straighten to top action. */
@@ -50,6 +49,18 @@ public class StraightenToAction extends DiagramAction {
     /** Constant indicating a straighten to right action. */
     public static final int TO_RIGHT = 3;
 
+    /** Constant indicating a straighten with left side pinned action. */
+    public static final int LEFT_SIDE_PINNED = 4;
+
+    /** Constant indicating a straighten with right side pinned action. */
+    public static final int RIGHT_SIDE_PINNED = 5;
+
+    /** Constant indicating a straighten with top side pinned action. */
+    public static final int TOP_SIDE_PINNED = 6;
+
+    /** Constant indicating a straighten with bottom side pinned action. */
+    public static final int BOTTOM_SIDE_PINNED = 7;
+
     /**
      * The straighten type must by one of:
      * <UL>
@@ -57,6 +68,10 @@ public class StraightenToAction extends DiagramAction {
      * <LI>{@link StraightenToAction#TO_BOTTOM}</LI>
      * <LI>{@link StraightenToAction#TO_LEFT}</LI>
      * <LI>{@link StraightenToAction#TO_RIGHT}</LI>
+     * <LI>{@link StraightenToAction#TOP_SIDE_PINNED}</LI>
+     * <LI>{@link StraightenToAction#BOTTOM_SIDE_PINNED}</LI>
+     * <LI>{@link StraightenToAction#LEFT_SIDE_PINNED}</LI>
+     * <LI>{@link StraightenToAction#RIGHT_SIDE_PINNED}</LI>
      * </UL>
      */
     private int straightenType;
@@ -70,6 +85,10 @@ public class StraightenToAction extends DiagramAction {
      * <LI>{@link StraightenToAction#TO_BOTTOM}</LI>
      * <LI>{@link StraightenToAction#TO_LEFT}</LI>
      * <LI>{@link StraightenToAction#TO_RIGHT}</LI>
+     * <LI>{@link StraightenToAction#TOP_SIDE_PINNED}</LI>
+     * <LI>{@link StraightenToAction#BOTTOM_SIDE_PINNED}</LI>
+     * <LI>{@link StraightenToAction#LEFT_SIDE_PINNED}</LI>
+     * <LI>{@link StraightenToAction#RIGHT_SIDE_PINNED}</LI>
      * </UL>
      * 
      * @param workbenchPage
@@ -106,6 +125,18 @@ public class StraightenToAction extends DiagramAction {
         case StraightenToAction.TO_RIGHT:
             label = Messages.StraightenToAction_toRightLabel;
             break;
+        case StraightenToAction.LEFT_SIDE_PINNED:
+            label = Messages.StraightenToAction_LeftSidePinnedLabel;
+            break;
+        case StraightenToAction.RIGHT_SIDE_PINNED:
+            label = Messages.StraightenToAction_RightSidePinnedLabel;
+            break;
+        case StraightenToAction.TOP_SIDE_PINNED:
+            label = Messages.StraightenToAction_TopSidePinnedLabel;
+            break;
+        case StraightenToAction.BOTTOM_SIDE_PINNED:
+            label = Messages.StraightenToAction_BottomSidePinnedLabel;
+            break;
         default:
             break;
         }
@@ -133,6 +164,18 @@ public class StraightenToAction extends DiagramAction {
             break;
         case StraightenToAction.TO_RIGHT:
             tooltip = Messages.StraightenToAction_toRightTooltip;
+            break;
+        case StraightenToAction.LEFT_SIDE_PINNED:
+            tooltip = Messages.StraightenToAction_LeftSidePinnedTooltip;
+            break;
+        case StraightenToAction.RIGHT_SIDE_PINNED:
+            tooltip = Messages.StraightenToAction_RightSidePinnedTooltip;
+            break;
+        case StraightenToAction.TOP_SIDE_PINNED:
+            tooltip = Messages.StraightenToAction_TopSidePinnedTooltip;
+            break;
+        case StraightenToAction.BOTTOM_SIDE_PINNED:
+            tooltip = Messages.StraightenToAction_BottomSidePinnedTooltip;
             break;
         default:
             break;
@@ -198,6 +241,74 @@ public class StraightenToAction extends DiagramAction {
     public static StraightenToAction createStraightenToRightAction(IWorkbenchPage workbenchPage) {
         StraightenToAction action = new StraightenToAction(workbenchPage, StraightenToAction.TO_RIGHT);
         action.setId(ActionIds.STRAIGHTEN_TO_RIGHT);
+        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_TO_RIGHT);
+        action.setImageDescriptor(bundledImageDescriptor);
+        action.setHoverImageDescriptor(bundledImageDescriptor);
+        return action;
+    }
+
+    /**
+     * Creates the Straighten with left side pinned action to align the edge(s) horizontally by moving all right side
+     * extremities of edge(s).
+     * 
+     * @param workbenchPage
+     *            the workbench part used to obtain context
+     * @return the corresponding action
+     */
+    public static StraightenToAction createStraightenLeftSidePinnedAction(IWorkbenchPage workbenchPage) {
+        StraightenToAction action = new StraightenToAction(workbenchPage, StraightenToAction.LEFT_SIDE_PINNED);
+        action.setId(ActionIds.STRAIGHTEN_LEFT_SIDE_PINNED);
+        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_TO_TOP);
+        action.setImageDescriptor(bundledImageDescriptor);
+        action.setHoverImageDescriptor(bundledImageDescriptor);
+        return action;
+    }
+
+    /**
+     * Creates the Straighten with right side pinned action to align the edge(s) horizontally by moving all left side
+     * extremities of edge(s).
+     * 
+     * @param workbenchPage
+     *            the workbench part used to obtain context
+     * @return the corresponding action
+     */
+    public static StraightenToAction createStraightenRightSidePinnedAction(IWorkbenchPage workbenchPage) {
+        StraightenToAction action = new StraightenToAction(workbenchPage, StraightenToAction.RIGHT_SIDE_PINNED);
+        action.setId(ActionIds.STRAIGHTEN_RIGHT_SIDE_PINNED);
+        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_TO_BOTTOM);
+        action.setImageDescriptor(bundledImageDescriptor);
+        action.setHoverImageDescriptor(bundledImageDescriptor);
+        return action;
+    }
+
+    /**
+     * Creates the Straighten with top side pinned action to align the edge(s) vertically by moving all bottom side
+     * extremities of edge(s).
+     * 
+     * @param workbenchPage
+     *            the workbench part used to obtain context
+     * @return the corresponding action
+     */
+    public static StraightenToAction createStraightenTopSidePinnedAction(IWorkbenchPage workbenchPage) {
+        StraightenToAction action = new StraightenToAction(workbenchPage, StraightenToAction.TOP_SIDE_PINNED);
+        action.setId(ActionIds.STRAIGHTEN_TOP_SIDE_PINNED);
+        ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_TO_LEFT);
+        action.setImageDescriptor(bundledImageDescriptor);
+        action.setHoverImageDescriptor(bundledImageDescriptor);
+        return action;
+    }
+
+    /**
+     * Creates the Straighten with bottom side pinned action to align the edge(s) vertically by moving all top side
+     * extremities of edge(s).
+     * 
+     * @param workbenchPage
+     *            the workbench part used to obtain context
+     * @return the corresponding action
+     */
+    public static StraightenToAction createStraightenBottomSidePinnedAction(IWorkbenchPage workbenchPage) {
+        StraightenToAction action = new StraightenToAction(workbenchPage, StraightenToAction.BOTTOM_SIDE_PINNED);
+        action.setId(ActionIds.STRAIGHTEN_BOTTOM_SIDE_PINNED);
         ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_TO_RIGHT);
         action.setImageDescriptor(bundledImageDescriptor);
         action.setHoverImageDescriptor(bundledImageDescriptor);
