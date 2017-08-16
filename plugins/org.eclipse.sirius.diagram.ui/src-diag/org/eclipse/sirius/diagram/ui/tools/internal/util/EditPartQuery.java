@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,13 +23,20 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.ViewportUtilities;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.EditPartViewer;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
+import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -37,6 +44,7 @@ import org.eclipse.gmf.runtime.notation.DrawerStyle;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -58,9 +66,8 @@ import com.google.common.collect.Ordering;
 /**
  * Queries on GMF edit parts.
  * <p>
- * The class is named <code>EditPartQuery</code> instead of the longer but more
- * accurate <code>IGraphicalEditPartQuery</code> only to avoid an overly long
- * and cumbersome name.
+ * The class is named <code>EditPartQuery</code> instead of the longer but more accurate
+ * <code>IGraphicalEditPartQuery</code> only to avoid an overly long and cumbersome name.
  * 
  * @author pcdavid
  */
@@ -78,15 +85,14 @@ public class EditPartQuery {
     }
 
     /**
-     * Returns the first ancestor (in the hierarchy of edit parts) of this part
-     * which is of the specified type.
+     * Returns the first ancestor (in the hierarchy of edit parts) of this part which is of the specified type.
      * 
      * @param <T>
      *            the type.
      * @param type
      *            the type of the ancestor to look for.
-     * @return the closest ancestor of the specified part which is compatible
-     *         with <code>type</code>, or <code>null</code> if there is none.
+     * @return the closest ancestor of the specified part which is compatible with <code>type</code>, or
+     *         <code>null</code> if there is none.
      */
     public <T> T getFirstAncestorOfType(Class<T> type) {
         if (part == null) {
@@ -100,15 +106,14 @@ public class EditPartQuery {
     }
 
     /**
-     * Returns all ancestors (in the hierarchy of edit parts) of this part which
-     * are of the specified type.
+     * Returns all ancestors (in the hierarchy of edit parts) of this part which are of the specified type.
      * 
      * @param <T>
      *            the type.
      * @param type
      *            the type of the ancestor to look for.
-     * @return all the ancestors of this part which are compatible with
-     *         <code>type</code> from the closest to the farthest.
+     * @return all the ancestors of this part which are compatible with <code>type</code> from the closest to the
+     *         farthest.
      */
     public <T> List<T> getAllAncestorsOfType(Class<T> type) {
         if (part == null) {
@@ -126,14 +131,11 @@ public class EditPartQuery {
     }
 
     /**
-     * Return the list of Node corresponding to the BorderItemEditPart that is
-     * on the expected side.
+     * Return the list of Node corresponding to the BorderItemEditPart that is on the expected side.
      * 
      * @param expectedSide
-     *            The side ({@link org.eclipse.draw2d.PositionConstants}) where
-     *            the children must be
-     * @return the list of Node corresponding to the BorderItemEditPart that is
-     *         on the expected side.
+     *            The side ({@link org.eclipse.draw2d.PositionConstants}) where the children must be
+     * @return the list of Node corresponding to the BorderItemEditPart that is on the expected side.
      */
     public List<Node> getBorderedNodes(final int expectedSide) {
         List<Node> result = new ArrayList<Node>();
@@ -144,15 +146,13 @@ public class EditPartQuery {
     }
 
     /**
-     * Return the list of {@link BorderItemEditPart}s that are on the expected
-     * side.
+     * Return the list of {@link BorderItemEditPart}s that are on the expected side.
      * 
      * @param expectedSide
-     *            The side ({@link org.eclipse.draw2d.PositionConstants}) where
-     *            the children must be
-     * @return the list of {@link BorderItemEditPart}s that are on the expected
-     *         side.
+     *            The side ({@link org.eclipse.draw2d.PositionConstants}) where the children must be
+     * @return the list of {@link BorderItemEditPart}s that are on the expected side.
      */
+    @SuppressWarnings("unchecked")
     public List<IBorderItemEditPart> getBorderNodeEditParts(final int expectedSide) {
         if (part instanceof IBorderedShapeEditPart) {
             Iterable<IBorderItemEditPart> bordersItemPart = Iterables.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IBorderItemEditPart.class), new Predicate<IBorderItemEditPart>() {
@@ -168,35 +168,24 @@ public class EditPartQuery {
     }
 
     /**
-     * Return a Map with a move delta for each nodes that must be moved
-     * following the resize of the parent. The delta is to applied on GMF
-     * location of border nodes (relative to container).
+     * Return a Map with a move delta for each nodes that must be moved following the resize of the parent. The delta is
+     * to applied on GMF location of border nodes (relative to container).
      * 
      * @param expectedSide
-     *            the side on which the border item appears as defined in
-     *            {@link PositionConstants}. Possible values are
+     *            the side on which the border item appears as defined in {@link PositionConstants}. Possible values are
      *            <ul>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#EAST}, if
-     *            parent is resized from North or South</li>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#WEST}, if
-     *            parent is resized from North or South</li>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#NORTH}, if
-     *            parent is resized from East or West</li>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if
-     *            parent is resized from East or West</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#EAST}, if parent is resized from North or South</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#WEST}, if parent is resized from North or South</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#NORTH}, if parent is resized from East or West</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if parent is resized from East or West</li>
      *            </ul>
      * @param resizedSide
-     *            the side that is moved as defined in {@link PositionConstants}
-     *            . Possible values are
+     *            the side that is moved as defined in {@link PositionConstants} . Possible values are
      *            <ul>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#EAST}, if
-     *            parent is resized from East</li>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#WEST}, if
-     *            parent is resized from West</li>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#NORTH}, if
-     *            parent is resized from North</li>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if
-     *            parent is resized from South</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#EAST}, if parent is resized from East</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#WEST}, if parent is resized from West</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#NORTH}, if parent is resized from North</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if parent is resized from South</li>
      *            </ul>
      * @param parentResizeSize
      *            the resize size of the parent
@@ -236,11 +225,9 @@ public class EditPartQuery {
     }
 
     /**
-     * Return true if the figure of the current part is currently visible (by
-     * the end-user), false otherwise.
+     * Return true if the figure of the current part is currently visible (by the end-user), false otherwise.
      * 
-     * @return true if the figure of the current part is currently visible (by
-     *         the end-user), false otherwise.
+     * @return true if the figure of the current part is currently visible (by the end-user), false otherwise.
      */
     public boolean isVisibleOnViewport() {
         // Traverse the viewport path of the figure (and reduce clipRect
@@ -276,8 +263,7 @@ public class EditPartQuery {
     }
 
     /**
-     * Returns the area covered by the viewport in absolute coordinates. Method
-     * copied from
+     * Returns the area covered by the viewport in absolute coordinates. Method copied from
      * {@link org.eclipse.draw2d.ViewportAwareConnectionLayerClippingStrategy}.
      * 
      * @param viewport
@@ -289,8 +275,7 @@ public class EditPartQuery {
     }
 
     /**
-     * Returns the viewport's client area in absolute coordinates. Method copied
-     * from
+     * Returns the viewport's client area in absolute coordinates. Method copied from
      * {@link org.eclipse.draw2d.ViewportAwareConnectionLayerClippingStrategy}.
      * 
      * @param figure
@@ -319,11 +304,9 @@ public class EditPartQuery {
     }
 
     /**
-     * Check that the container of the <code>part</code> is layouted with
-     * "FreeForm" style.
+     * Check that the container of the <code>part</code> is layouted with "FreeForm" style.
      * 
-     * @return true if the the container of the <code>part</code> is layouted
-     *         with "FreeForm" style, false otherwise.
+     * @return true if the the container of the <code>part</code> is layouted with "FreeForm" style, false otherwise.
      */
     public boolean isFreeFormContainerChildrenPresentation() {
         boolean isFreeForm = true;
@@ -351,13 +334,10 @@ public class EditPartQuery {
      * @param parentBounds
      *            The available bounds to consider for the parent
      * @param resizedSide
-     *            the side that is moved as defined in {@link PositionConstants}
-     *            . Possible values are
+     *            the side that is moved as defined in {@link PositionConstants} . Possible values are
      *            <ul>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#NORTH}, if
-     *            parent is resized from North</li>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if
-     *            parent is resized from South</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#NORTH}, if parent is resized from North</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if parent is resized from South</li>
      *            </ul>
      * @param parentResizeSize
      *            the resize size of the parent
@@ -450,13 +430,10 @@ public class EditPartQuery {
      * @param parentBounds
      *            The available bounds to consider for the parent
      * @param resizedSide
-     *            the side that is moved as defined in {@link PositionConstants}
-     *            . Possible values are
+     *            the side that is moved as defined in {@link PositionConstants} . Possible values are
      *            <ul>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#EAST}, if
-     *            parent is resized from East</li>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#WEST}, if
-     *            parent is resized from West</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#EAST}, if parent is resized from East</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#WEST}, if parent is resized from West</li>
      *            </ul>
      * @param parentResizeSize
      *            the resize size of the parent
@@ -548,17 +525,12 @@ public class EditPartQuery {
      * @param nodes
      *            List of {@link IBorderItemEditPart} to sort
      * @param resizedSide
-     *            the side that is moved as defined in {@link PositionConstants}
-     *            . Possible values are
+     *            the side that is moved as defined in {@link PositionConstants} . Possible values are
      *            <ul>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#EAST}, if
-     *            parent is resized from East</li>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#WEST}, if
-     *            parent is resized from West</li>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#NORTH}, if
-     *            parent is resized from North</li>
-     *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if
-     *            parent is resized from South</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#EAST}, if parent is resized from East</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#WEST}, if parent is resized from West</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#NORTH}, if parent is resized from North</li>
+     *            <li>{@link org.eclipse.draw2d.PositionConstants#SOUTH}, if parent is resized from South</li>
      *            </ul>
      * @return A new sorted list
      */
@@ -624,8 +596,7 @@ public class EditPartQuery {
     }
 
     /**
-     * Test if the current is collapsed. Collapse is enabled only on List
-     * Regions in vertical stacks.
+     * Test if the current is collapsed. Collapse is enabled only on List Regions in vertical stacks.
      * 
      * @return true if the part is collapsed.
      */
@@ -635,8 +606,8 @@ public class EditPartQuery {
     }
 
     /**
-     * Return the drawer style when collapse is enabled on the current part.
-     * Collapse is enabled only on List Regions in vertical stacks.
+     * Return the drawer style when collapse is enabled on the current part. Collapse is enabled only on List Regions in
+     * vertical stacks.
      * 
      * @return the drawer style when collapse is enabled on the current part.
      */
@@ -655,8 +626,7 @@ public class EditPartQuery {
     /**
      * Check if the given part is used in a diagram in layouting mode.
      * 
-     * @return true if the given part is used in a diagram in layouting mode,
-     *         false otherwise.
+     * @return true if the given part is used in a diagram in layouting mode, false otherwise.
      */
     public boolean isInLayoutingMode() {
         View notationView = part.getNotationView();
@@ -665,6 +635,44 @@ public class EditPartQuery {
             if (diagram != null) {
                 EObject element = diagram.getElement();
                 return element instanceof DDiagram && ((DDiagram) element).isIsInLayoutingMode();
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Provides the corrected location according to the snap.
+     * 
+     * @param request
+     *            the request to update location.
+     * @param proposedLocation
+     *            the proposed location.
+     * @return the corrected location.
+     */
+    public Point getSnapLocation(Request request, Point proposedLocation) {
+        if (isSnapToGridEnabled()) {
+            Object helper = part.getAdapter(SnapToHelper.class);
+            if (helper instanceof SnapToHelper) {
+                PrecisionPoint preciseLocation = new PrecisionPoint(proposedLocation);
+                PrecisionPoint result = new PrecisionPoint(proposedLocation);
+                ((SnapToHelper) helper).snapPoint(request, PositionConstants.HORIZONTAL | PositionConstants.VERTICAL, preciseLocation, result);
+                return result.getCopy();
+            }
+        }
+        return proposedLocation;
+    }
+
+    /**
+     * Return true if snapToGrid is enabled for the diagram containing the current part.
+     * 
+     * @return true if snapToGrid is enabled for the diagram containing the current part.
+     */
+    public boolean isSnapToGridEnabled() {
+        EditPartViewer editPartViewer = part.getViewer();
+        if (editPartViewer instanceof DiagramGraphicalViewer) {
+            IPreferenceStore preferenceStore = ((DiagramGraphicalViewer) editPartViewer).getWorkspaceViewerPreferenceStore();
+            if (preferenceStore != null) {
+                return preferenceStore.getBoolean(WorkspaceViewerProperties.SNAPTOGRID);
             }
         }
         return false;

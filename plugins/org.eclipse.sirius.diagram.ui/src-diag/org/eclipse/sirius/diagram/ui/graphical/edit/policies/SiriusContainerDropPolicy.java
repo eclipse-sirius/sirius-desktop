@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,6 +60,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
@@ -86,26 +87,20 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
     private IFigure figure;
 
     /**
-     * A weak reference to the last request used in
-     * {@link #getDropCommand(ChangeBoundsRequest)} or
+     * A weak reference to the last request used in {@link #getDropCommand(ChangeBoundsRequest)} or
      * {@link #showTargetFeedback(Request)}. This reference is linked to
-     * {@link SiriusContainerDropPolicy#weakLastCommand}. This two weak
-     * references allow to be more fluent during drag and avoid to recompute the
-     * command to each call. The method
-     * {@link #addCommandInWeakCache(Request, Command)} must be used to set this
-     * two members.
+     * {@link SiriusContainerDropPolicy#weakLastCommand}. This two weak references allow to be more fluent during drag
+     * and avoid to recompute the command to each call. The method {@link #addCommandInWeakCache(Request, Command)} must
+     * be used to set this two members.
      */
     private WeakReference<Request> weakLastRequest;
 
     /**
-     * A weak reference to the last command computed in
-     * {@link #getDropCommand(ChangeBoundsRequest)} or
+     * A weak reference to the last command computed in {@link #getDropCommand(ChangeBoundsRequest)} or
      * {@link #showTargetFeedback(Request)}. This reference is linked to
-     * {@link SiriusContainerDropPolicy#weakLastRequest}. This two weak
-     * references allow to be more fluent during drag and avoid to recompute the
-     * command to each call. The method
-     * {@link #addCommandInWeakCache(Request, Command)} must be used to set this
-     * two members.
+     * {@link SiriusContainerDropPolicy#weakLastRequest}. This two weak references allow to be more fluent during drag
+     * and avoid to recompute the command to each call. The method {@link #addCommandInWeakCache(Request, Command)} must
+     * be used to set this two members.
      */
     private WeakReference<Command> weakLastCommand;
 
@@ -119,8 +114,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
     /**
      * {@inheritDoc}
      * 
-     * We can use a cache here, because the command is used only to know if it
-     * is executable.
+     * We can use a cache here, because the command is used only to know if it is executable.
      * 
      * @see org.eclipse.gef.EditPolicy#showTargetFeedback(org.eclipse.gef.Request)
      */
@@ -209,12 +203,10 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
      * 
      * We can use a cache here, because:
      * <UL>
-     * <LI>for drag and drop from diagram, the buildCommand is called at the
-     * execution of the command and it recomputes the location directly from the
-     * request (the location is updated in the request at each call of this
-     * method,</LI>
-     * <LI>for drag and drop from "model explorer view" (not a diagram), the
-     * request is different for each call to this method.</LI>
+     * <LI>for drag and drop from diagram, the buildCommand is called at the execution of the command and it recomputes
+     * the location directly from the request (the location is updated in the request at each call of this method,</LI>
+     * <LI>for drag and drop from "model explorer view" (not a diagram), the request is different for each call to this
+     * method.</LI>
      * </UL>
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy#getDropCommand(org.eclipse.gef.requests.ChangeBoundsRequest)
@@ -243,7 +235,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
                 if (validator.isValid(request, hostGraphicalEditPart)) {
                     Point absoluteRequestLocation = request.getLocation().getCopy();
                     GraphicalHelper.screen2logical(absoluteRequestLocation, hostGraphicalEditPart);
-
+                    absoluteRequestLocation = computeSnap(request, hostGraphicalEditPart, absoluteRequestLocation);
                     final Point locationRelativeToNewContainer = computeRelativeLocation(absoluteRequestLocation, false,
                             new RequestQuery(request).isDropOrCreationOfBorderNode() || validator.isConcerningOnlyBorderNodeFromView());
                     // Create an intermediate command. The "real" command is
@@ -287,6 +279,14 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
         }
         addCommandInWeakCache(request, dropCommand);
         return dropCommand;
+    }
+
+    private Point computeSnap(final ChangeBoundsRequest request, GraphicalEditPart hostGraphicalEditPart, Point absoluteRequestLocation) {
+        if (hostGraphicalEditPart != null) {
+            EditPartQuery editPartQuery = new EditPartQuery(hostGraphicalEditPart);
+            return editPartQuery.getSnapLocation(request, absoluteRequestLocation);
+        }
+        return absoluteRequestLocation;
     }
 
     private Command buildCommand(DragAndDropValidator validator, ChangeBoundsRequest request, DragAndDropTarget targetDragAndDropTarget, Point adaptedRequestLocation,
@@ -360,6 +360,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
         return semanticContainer;
     }
 
+    @SuppressWarnings("unchecked")
     private org.eclipse.emf.common.command.Command getSaveLayoutCommand(ChangeBoundsRequest request, final Iterable<IGraphicalEditPart> editPartsToDrop, TransactionalEditingDomain editingDomain) {
         org.eclipse.emf.common.command.CompoundCommand saveLayoutCommand = new org.eclipse.emf.common.command.CompoundCommand(Messages.SiriusContainerDropPolicy_saveEditPartLayoutCommandLabel);
         EditPartViewer viewer = getHost().getViewer();
@@ -418,8 +419,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
     }
 
     /**
-     * Compute location relative to the figure of the host of this policy
-     * (relative to the new container).
+     * Compute location relative to the figure of the host of this policy (relative to the new container).
      * 
      * @param absolutePointerLocation
      *            The absolute location

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,41 +10,45 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.Tool;
 import org.eclipse.gef.dnd.TemplateTransfer;
 import org.eclipse.gef.dnd.TemplateTransferDropTargetListener;
+import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gef.requests.CreationFactory;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.CreationTool;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 
 /**
- * A Sirius specific {@link TemplateTransferDropTargetListener} to support
- * drag'n drop from the palette.
+ * A Sirius specific {@link TemplateTransferDropTargetListener} to support drag'n drop from the palette.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 @SuppressWarnings("restriction")
 public class SiriusPaletteToolDropTargetListener extends TemplateTransferDropTargetListener {
 
+    private boolean drop;
+
     /**
      * Default constructor.
      * 
      * @param viewer
-     *            the {@link EditPartViewer} on which ask a creation from a
-     *            request.
+     *            the {@link EditPartViewer} on which ask a creation from a request.
      */
     public SiriusPaletteToolDropTargetListener(EditPartViewer viewer) {
         super(viewer);
     }
 
     /**
-     * If the template is a palette entry with a creation tool, then the request
-     * from the creation tool is used.
+     * If the template is a palette entry with a creation tool, then the request from the creation tool is used.
      * 
      * {@inheritDoc}
      */
+    @Override
     protected Request createTargetRequest() {
 
         CreationTool tool = getCreationTool();
@@ -89,4 +93,31 @@ public class SiriusPaletteToolDropTargetListener extends TemplateTransferDropTar
         return creationFactory;
     }
 
+    @Override
+    protected void updateTargetRequest() {
+        // We only override the target request at the end of the drop (not during the drag)
+        if (drop) {
+            updateTargetEditPart();
+            if (getTargetEditPart() instanceof IGraphicalEditPart) {
+                EditPartQuery editPartQuery = new EditPartQuery((IGraphicalEditPart) getTargetEditPart());
+                CreateRequest req = getCreateRequest();
+                Point result = editPartQuery.getSnapLocation(req, getDropLocation());
+                req.setLocation(result.getCopy());
+            }
+        } else {
+            super.updateTargetRequest();
+        }
+    }
+
+    @Override
+    protected void handleDrop() {
+        // We are at the end of the drop so we set the flag at true.
+        drop = true;
+        try {
+            super.handleDrop();
+        } finally {
+            // The drop is over, we set back the flag at false.
+            drop = false;
+        }
+    }
 }
