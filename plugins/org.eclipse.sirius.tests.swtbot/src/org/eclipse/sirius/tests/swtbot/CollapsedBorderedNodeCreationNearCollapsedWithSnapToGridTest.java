@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
  * Same tests as {@link CollapsedBorderedNodeCreationNearCollapsedTest} but with
@@ -28,11 +29,16 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
  */
 public class CollapsedBorderedNodeCreationNearCollapsedWithSnapToGridTest extends CollapsedBorderedNodeCreationNearCollapsedTest {
 
+    /**
+     * The grid spacing in pixels.
+     */
+    private static final int GRID_SPACING = 100;
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
 
-        editor.setSnapToGrid(true, 100, 2);
+        editor.setSnapToGrid(true, GRID_SPACING, 2);
     }
 
     @Override
@@ -94,10 +100,16 @@ public class CollapsedBorderedNodeCreationNearCollapsedWithSnapToGridTest extend
             errorMessage += " expected <Point(" + nodeLocation.x + ", " + absoluteSnapToLocation.y + ")> but was:" + nodeLocation;
             assertTrue(errorMessage, nodeLocation.y == absoluteSnapToLocation.y);
         } else {
-            errorMessage += " expected <Point(" + absoluteExpectedLocation.x + ", " + absoluteSnapToLocation.y + ")> or <Point(" + absoluteSnapToLocation.x + ", " + absoluteExpectedLocation.y
-                    + ")> but was:" + nodeLocation;
-            assertTrue(errorMessage, nodeLocation.x == absoluteExpectedLocation.x && nodeLocation.y == absoluteSnapToLocation.y || nodeLocation.x == absoluteSnapToLocation.x
-                    && nodeLocation.y == absoluteExpectedLocation.y);
+            // Get the absolute bounds of parent
+            Rectangle parentBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentPart, true);
+
+            errorMessage += " At least x or y must be on the grid (grid spacing = " + GRID_SPACING + "), but was: " + nodeLocation + "for parent: " + parentBounds;
+
+            assertTrue(errorMessage,
+                    ((nodeLocation.x - 4) % GRID_SPACING == 0
+                            && (nodeLocation.y == absoluteExpectedLocation.y || nodeLocation.y == parentAbsoluteLocation.y + 1 || nodeLocation.y == parentBounds.bottom() - 2))
+                            || ((nodeLocation.x == absoluteExpectedLocation.x || nodeLocation.x == parentAbsoluteLocation.x + 1 || nodeLocation.x == parentBounds.right() - 2)
+                                    && (nodeLocation.y - 4) % GRID_SPACING == 0));
         }
     }
 

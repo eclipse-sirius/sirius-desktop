@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
+import org.eclipse.sirius.tests.swtbot.BorderNodeSideTest;
 import org.eclipse.sirius.tests.swtbot.BorderedNodeCreationNearCollapsedTest;
 import org.eclipse.sirius.tests.swtbot.BorderedNodeCreationNearCollapsedWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.BorderedNodeCreationTest;
@@ -72,7 +73,6 @@ public class AllCreationTestSuite extends TestCase {
         suite.addTestSuite(CollapsedBorderedNodeCreationNearCollapsedTest.class);
 
         suite.addTestSuite(NoteCreationWithSnapToGridTest.class);
-        // suite.addTestSuite(NodeCreationPositionWithSnapToGridTest.class);
         suite.addTestSuite(NodeCreationWithSnapToGridTest.class);
         suite.addTestSuite(ContainerCreationWithSnapToGridTest.class);
         suite.addTestSuite(DNodeListCreationWithSnapToGridTest.class);
@@ -83,6 +83,7 @@ public class AllCreationTestSuite extends TestCase {
         suite.addTestSuite(EdgeCreationPositionTest.class);
         suite.addTestSuite(EdgeCreationPositionWithSnapToGridTest.class);
         suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
+        suite.addTestSuite(BorderNodeSideTest.class);
 
         return suite;
     }

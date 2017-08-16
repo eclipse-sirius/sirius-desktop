@@ -44,8 +44,8 @@ import org.eclipse.sirius.ext.base.Options;
 public class CanonicalDBorderItemLocator {
 
     /**
-     * The number of sides. Used to avoid infinite loop exception in there is
-     * too many borderNode relative to the size of the container.
+     * The number of sides. Used to avoid infinite loop exception in there is too many borderNode relative to the size
+     * of the container.
      */
     private static final int NB_SIDES = 4;
 
@@ -64,11 +64,9 @@ public class CanonicalDBorderItemLocator {
     private BitSet authorizedSides = new BitSet(PositionConstants.NSEW);
 
     /**
-     * The parent bounds can be set with
-     * {@link #setParentBorderBounds(Rectangle)} if it is known or if the
-     * CanonicalDBorderItemLocator must consider a different bounds. If this
-     * bounds is not set, it will be computed at the first
-     * {@link #getParentBorder()} call.
+     * The parent bounds can be set with {@link #setParentBorderBounds(Rectangle)} if it is known or if the
+     * CanonicalDBorderItemLocator must consider a different bounds. If this bounds is not set, it will be computed at
+     * the first {@link #getParentBorder()} call.
      */
     private Rectangle parentBorder;
 
@@ -132,23 +130,20 @@ public class CanonicalDBorderItemLocator {
     }
 
     /**
-     * Sets the side of the parent figure on which the border item should
-     * appear.
+     * Sets the side of the parent figure on which the border item should appear.
      * 
      * @param side
-     *            the side on which this border item appears as defined in
-     *            {@link PositionConstants}
+     *            the side on which this border item appears as defined in {@link PositionConstants}
      */
     public void setCurrentSideOfParent(int side) {
         this.currentSide = side;
     }
 
     /**
-     * Returns the preferred side of the parent figure on which to place this
-     * border item.
+     * Returns the preferred side of the parent figure on which to place this border item.
      * 
-     * @return the preferred side of the parent figure on which to place this
-     *         border item as defined in {@link PositionConstants}
+     * @return the preferred side of the parent figure on which to place this border item as defined in
+     *         {@link PositionConstants}
      */
     public int getPreferredSideOfParent() {
         return preferredSide;
@@ -175,10 +170,8 @@ public class CanonicalDBorderItemLocator {
      * @param parentBorder
      *            the parent border
      * @param authorizedSides
-     *            the authorized sides. a BitSet using the
-     *            {@link PositionConstants} values as index. All sides are
-     *            considered as authorized if the value is null or the bitSet is
-     *            empty.
+     *            the authorized sides. a BitSet using the {@link PositionConstants} values as index. All sides are
+     *            considered as authorized if the value is null or the bitSet is empty.
      * @return draw constant
      */
     private static int findClosestSideOfParent(final Rectangle proposedLocation, final Rectangle parentBorder, BitSet authorizedSides) {
@@ -405,8 +398,7 @@ public class CanonicalDBorderItemLocator {
     }
 
     /**
-     * Determine if the the given point conflicts with the position of an
-     * existing borderItemFigure.
+     * Determine if the the given point conflicts with the position of an existing borderItemFigure.
      * 
      * @param recommendedLocation
      *            the location to check
@@ -414,8 +406,8 @@ public class CanonicalDBorderItemLocator {
      *            the size of the bordered node to check
      * @param portsNodesToIgnore
      *            list of nodes to ignore during conflict detection.
-     * @return the optional Rectangle of the border item that is in conflict
-     *         with the given bordered node (a none option)
+     * @return the optional Rectangle of the border item that is in conflict with the given bordered node (a none
+     *         option)
      */
     private Option<Rectangle> conflicts(final Point recommendedLocation, final Dimension nodeSize, final Collection<Node> portsNodesToIgnore) {
         final Rectangle recommendedRect = new Rectangle(recommendedLocation.x, recommendedLocation.y, nodeSize.width, nodeSize.height);
@@ -470,8 +462,7 @@ public class CanonicalDBorderItemLocator {
     }
 
     /**
-     * Ensure the suggested location actually lies on the parent boundary. The
-     * side takes precedence.
+     * Ensure the suggested location actually lies on the parent boundary. The side takes precedence.
      * 
      * @param suggestedLocation
      *            suggested location
@@ -547,10 +538,8 @@ public class CanonicalDBorderItemLocator {
     /**
      * Locate the recommendedLocation on the south border :
      * <UL>
-     * <LI>Search alternately to the left and to the right until find an
-     * available space</LI>
-     * <LI>And finally if there is no space on this border search on the east
-     * border.</LI>
+     * <LI>Search alternately to the left and to the right until find an available space</LI>
+     * <LI>And finally if there is no space on this border search on the east border.</LI>
      * </UL>
      * 
      * @param recommendedLocation
@@ -643,10 +632,8 @@ public class CanonicalDBorderItemLocator {
     /**
      * Locate the recommendedLocation on the north border :
      * <UL>
-     * <LI>Search alternately to the left and to the right until find an
-     * available space</LI>
-     * <LI>And finally if there is no space on this border search on the west
-     * border.</LI>
+     * <LI>Search alternately to the left and to the right until find an available space</LI>
+     * <LI>And finally if there is no space on this border search on the west border.</LI>
      * </UL>
      * 
      * @param recommendedLocation
@@ -739,10 +726,8 @@ public class CanonicalDBorderItemLocator {
     /**
      * Locate the recommendedLocation on the west border :
      * <UL>
-     * <LI>Search alternately upward and downward until find an available space
-     * </LI>
-     * <LI>And finally if there is no space on this border search on the south
-     * border.</LI>
+     * <LI>Search alternately upward and downward until find an available space</LI>
+     * <LI>And finally if there is no space on this border search on the south border.</LI>
      * </UL>
      * 
      * @param recommendedLocation
@@ -835,10 +820,8 @@ public class CanonicalDBorderItemLocator {
     /**
      * Locate the recommendedLocation on the east border :
      * <UL>
-     * <LI>Search alternately upward and downward until find an available space
-     * </LI>
-     * <LI>And finally if there is no space on this border search on the north
-     * border.</LI>
+     * <LI>Search alternately upward and downward until find an available space</LI>
+     * <LI>And finally if there is no space on this border search on the north border.</LI>
      * </UL>
      * 
      * @param recommendedLocation
@@ -929,12 +912,11 @@ public class CanonicalDBorderItemLocator {
     }
 
     /**
-     * Sets the preferred side of the parent figure on which to place this
-     * border item.
+     * Sets the preferred side of the parent figure on which to place this border item.
      * 
      * @param preferredSide
-     *            the preferred side of the parent figure on which to place this
-     *            border item as defined in {@link PositionConstants}
+     *            the preferred side of the parent figure on which to place this border item as defined in
+     *            {@link PositionConstants}
      */
     // CHECKSTYLE:OFF
     public void setPreferredSideOfParent(int preferredSide) {
@@ -951,11 +933,9 @@ public class CanonicalDBorderItemLocator {
     }
 
     /**
-     * Returns the side of the parent figure on which the border item is
-     * currently on.
+     * Returns the side of the parent figure on which the border item is currently on.
      * 
-     * @return the side on which this border item appears as defined in
-     *         {@link PositionConstants}
+     * @return the side on which this border item appears as defined in {@link PositionConstants}
      */
     public int getCurrentSideOfParent() {
         return currentSide;
@@ -975,12 +955,11 @@ public class CanonicalDBorderItemLocator {
     }
 
     /**
-     * Set the parent border bounds if it is known. If this bounds is not set,
-     * it will be computed at the first {@link #getParentBorder()} call.
+     * Set the parent border bounds if it is known. If this bounds is not set, it will be computed at the first
+     * {@link #getParentBorder()} call.
      * 
      * @param parentBounds
-     *            The bounds to consider for this
-     *            {@link CanonicalDBorderItemLocator}.
+     *            The bounds to consider for this {@link CanonicalDBorderItemLocator}.
      */
     public void setParentBorderBounds(Rectangle parentBounds) {
         parentBorder = parentBounds;
@@ -991,16 +970,14 @@ public class CanonicalDBorderItemLocator {
     }
 
     /**
-     * Returns a suitable location for the border item given a proposed Bounds.
-     * By implementing this method, the feedback shown when the user moves a
-     * border item can reflect where the locator will actually place the border
+     * Returns a suitable location for the border item given a proposed Bounds. By implementing this method, the
+     * feedback shown when the user moves a border item can reflect where the locator will actually place the border
      * item.
      * <p>
-     * For example, if the border item is restricted to being on the border of
-     * its parent shape, when the user attempts to move the border item outside
-     * the border of the parent shape (the proposed bounds), the feedback will
-     * always show the border item on the border. In this case, this method
-     * would return a location on the border close to the proposed location.
+     * For example, if the border item is restricted to being on the border of its parent shape, when the user attempts
+     * to move the border item outside the border of the parent shape (the proposed bounds), the feedback will always
+     * show the border item on the border. In this case, this method would return a location on the border close to the
+     * proposed location.
      * </p>
      * 
      * @param proposedBounds
@@ -1008,8 +985,8 @@ public class CanonicalDBorderItemLocator {
      * @param borderItem
      *            the border item in question
      * @param portsNodesToIgnore
-     *            list of nodes to ignore during conflict detection. This list
-     *            must contain at least the <code>borderItem</code>.
+     *            list of nodes to ignore during conflict detection. This list must contain at least the
+     *            <code>borderItem</code>.
      * @return a Point corresponding to the valid location
      */
     public Point getValidLocation(Rectangle proposedBounds, Node borderItem, final Collection<Node> portsNodesToIgnore) {
