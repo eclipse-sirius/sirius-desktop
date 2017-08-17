@@ -25,6 +25,7 @@ import org.eclipse.sirius.tests.swtbot.DNodeListCreationTest;
 import org.eclipse.sirius.tests.swtbot.DNodeListCreationWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.EdgeCreationPositionTest;
 import org.eclipse.sirius.tests.swtbot.EdgeCreationPositionWithSnapToGridTest;
+import org.eclipse.sirius.tests.swtbot.EdgeWithBorderNodeCreationPositionTest;
 import org.eclipse.sirius.tests.swtbot.EdgeWithBorderNodeCreationPositionWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.NodeCreationPositionTest;
 import org.eclipse.sirius.tests.swtbot.NodeCreationTest;
@@ -82,6 +83,7 @@ public class AllCreationTestSuite extends TestCase {
         suite.addTestSuite(CollapsedBorderedNodeCreationNearCollapsedWithSnapToGridTest.class);
         suite.addTestSuite(EdgeCreationPositionTest.class);
         suite.addTestSuite(EdgeCreationPositionWithSnapToGridTest.class);
+        suite.addTestSuite(EdgeWithBorderNodeCreationPositionTest.class);
         suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
         suite.addTestSuite(BorderNodeSideTest.class);
 

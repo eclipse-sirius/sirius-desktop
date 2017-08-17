@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,6 +76,14 @@ public class EdgeLayoutData extends AbstractEdgeLayoutData {
     private LayoutData edgeSourceLayoutData;
 
     private LayoutData edgeTargetLayoutData;
+
+    /**
+     * A secondary edgeLayoutData that can replace the current if it must be used for edge created directly with
+     * associated border nodes. In this case, the placement rule is not the same, the source and target location must be
+     * stored to allow later computation. The source and target point stored in this layout data is only the nearest
+     * grid location from the original click (the computation for border nodes are done later when consuming the data).
+     */
+    private EdgeLayoutData edgeLayoutDataForBorderNodes;
 
     /**
      * Constructor.
@@ -302,6 +310,27 @@ public class EdgeLayoutData extends AbstractEdgeLayoutData {
      */
     public void setRouting(Routing routing) {
         this.routing = routing;
+    }
+
+    /**
+     * Set the layout data that will replace the current one if the edge to create is created in the same time as its
+     * border nodes.
+     * 
+     * @param edgeLayoutDataForBorderNodes
+     *            The EdgeLayoutData to set
+     */
+    public void setEdgeLayoutDataForBorderNodes(EdgeLayoutData edgeLayoutDataForBorderNodes) {
+        this.edgeLayoutDataForBorderNodes = edgeLayoutDataForBorderNodes;
+    }
+
+    /**
+     * Get the layout data that will replace the current one if the edge to create is created in the same time as its
+     * border nodes.
+     * 
+     * @return a specific edge layout data
+     */
+    public EdgeLayoutData getEdgeLayoutDataForBorderNodes() {
+        return edgeLayoutDataForBorderNodes;
     }
 
     /**

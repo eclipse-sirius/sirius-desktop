@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -284,20 +284,35 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         for (final AbstractLayoutData abstractLayoutData : rootsLayoutData) {
             if (abstractLayoutData instanceof EdgeLayoutData) {
                 EdgeLayoutData edgeLayoutData = (EdgeLayoutData) abstractLayoutData;
-                LayoutData edgeSourceLayoutData = edgeLayoutData.getEdgeSourceLayoutData();
-                if (edgeSourceLayoutData != null) {
-                    result = edgeSourceLayoutData.getData(searchNode, ignoreConsumeState);
-                }
-                if (result == null) {
-                    LayoutData edgeTargetLayoutData = edgeLayoutData.getEdgeTargetLayoutData();
-                    if (edgeTargetLayoutData != null) {
-                        result = edgeTargetLayoutData.getData(searchNode, ignoreConsumeState);
+                // Search if the specific layout data for border nodes is the good one.
+                EdgeLayoutData edgeLayoutDataBN = edgeLayoutData.getEdgeLayoutDataForBorderNodes();
+                if (edgeLayoutDataBN != null) {
+                    result = getLayoutDataFromEdgeLayoutData(edgeLayoutDataBN, searchNode);
+                    if (result != null) {
+                        break;
                     }
-                } else {
-                    break;
                 }
+                // Search in the "standard" layout data
+                result = getLayoutDataFromEdgeLayoutData(edgeLayoutData, searchNode);
                 if (result != null) {
                     break;
+                }
+            }
+        }
+        return result;
+    }
+
+    private LayoutData getLayoutDataFromEdgeLayoutData(EdgeLayoutData edgeLayoutData, AbstractDNode searchNode) {
+        LayoutData result = null;
+        if (edgeLayoutData != null) {
+            LayoutData edgeSourceLayoutData = edgeLayoutData.getEdgeSourceLayoutData();
+            if (edgeSourceLayoutData != null) {
+                result = edgeSourceLayoutData.getData(searchNode, ignoreConsumeState);
+            }
+            if (result == null) {
+                LayoutData edgeTargetLayoutData = edgeLayoutData.getEdgeTargetLayoutData();
+                if (edgeTargetLayoutData != null) {
+                    result = edgeTargetLayoutData.getData(searchNode, ignoreConsumeState);
                 }
             }
         }

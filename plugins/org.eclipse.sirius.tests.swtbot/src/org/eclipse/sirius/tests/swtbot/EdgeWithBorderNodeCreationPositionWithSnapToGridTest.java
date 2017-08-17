@@ -10,20 +10,19 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import java.util.NoSuchElementException;
-
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gef.NodeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -35,14 +34,12 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
-import com.google.common.collect.Iterables;
-
 /**
  * Same tests as {@link EdgeCreationPositionTest} but with snapToGrid enabled.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeCreationPositionTest {
+public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeWithBorderNodeCreationPositionTest {
 
     private static final double gridStep = 100;
 
@@ -60,54 +57,44 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeCr
     }
 
     @Override
-    protected String getCreateEdgeToolName() {
-        return "SuperWithBorderNode";
-    }
-
-    @Override
-    protected DEdgeEditPart getSingleDEdgeFrom(NodeEditPart sourcePart) {
-        // Get the new source border node
-        AbstractDiagramBorderNodeEditPart sourceBorderNode = getBorderNode(sourcePart);
-        assertEquals(1, sourceBorderNode.getSourceConnections().size());
-        ConnectionEditPart edge = (ConnectionEditPart) sourceBorderNode.getSourceConnections().get(0);
-        assertTrue(edge instanceof DEdgeEditPart);
-        return (DEdgeEditPart) edge;
-    }
-
-    private AbstractDiagramBorderNodeEditPart getBorderNode(EditPart parent) {
-        AbstractDiagramBorderNodeEditPart result = null;
-        try {
-            result = Iterables.getOnlyElement(Iterables.filter(parent.getChildren(), AbstractDiagramBorderNodeEditPart.class));
-        } catch (NoSuchElementException e) {
-            fail("There is no border node created on source.");
-        } catch (IllegalArgumentException e) {
-            fail("There should be only one border node created on source.");
-        }
-        return result;
-    }
-
-    @Override
-    protected void assertAreValidAnchors(IGraphicalEditPart source, IGraphicalEditPart target, DEdgeEditPart edge) {
-        // Get the new source border node
-        IGraphicalEditPart sourceBorderNode = getBorderNode(source);
-        // Get the new target border node
-        IGraphicalEditPart targetBorderNode = getBorderNode(target);
-
-        super.assertAreValidAnchors(sourceBorderNode, targetBorderNode, edge);
+    protected void assertAreValidAnchors(IGraphicalEditPart source, PrecisionPoint sourcePosition, IGraphicalEditPart target, PrecisionPoint targetPosition, DEdgeEditPart edge) {
+        super.assertAreValidAnchors(source, sourcePosition, target, targetPosition, edge);
         // Check that at least
         // * the x coordinate of the border node is on the grid
         // * or the y coordinate of the border node is on the grid
         // * or one of them is the same as parent (case when the grid is outside
-        // the
-        // node).
+        // the node).
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return !GraphicalHelper.getAbsoluteBoundsIn100Percent(source, true).getTopLeft().equals(0, 0);
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The border node location is not yet correctly set.";
+            }
+        });
         Rectangle parentSourceBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(source, true);
-        Point sourceBNLocation = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceBorderNode, true).getTopLeft();
-        assertTrue("For starting point (" + sourceBNLocation.preciseX() + ", " + sourceBNLocation.preciseY() + "), the x or y coordinate should be on the grid (step=" + gridStep
-                + ") or at least one should be the same as parent: " + parentSourceBounds + ".", checkLocation(sourceBNLocation, parentSourceBounds));
+        Point draw2DSourceBNLocation = GraphicalHelper.getAbsoluteBoundsIn100Percent(source, true).getTopLeft();
+        assertTrue("For starting point (" + draw2DSourceBNLocation.preciseX() + ", " + draw2DSourceBNLocation.preciseY() + "), the x or y coordinate should be on the grid (step=" + gridStep
+                + ") or at least one should be the same as parent: " + parentSourceBounds + ".", checkLocation(draw2DSourceBNLocation, parentSourceBounds));
+        Point gmfSourceBNLocation = GMFHelper.getAbsoluteLocation((Node) source.getModel(), true);
+        assertEquals("The computing starting point from GMF data should be the same than draw2D", draw2DSourceBNLocation, gmfSourceBNLocation);
+
         Rectangle parentTargetBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(target, true);
-        Point targetBNLocation = GraphicalHelper.getAbsoluteBoundsIn100Percent(targetBorderNode, true).getTopLeft();
-        assertTrue("For ending point (" + targetBNLocation.preciseX() + ", " + targetBNLocation.preciseY() + "), the x or y coordinate should be on the grid (step=" + gridStep
-                + ") or at least one should be the same as parent: " + parentTargetBounds + ".", checkLocation(targetBNLocation, parentTargetBounds));
+        Point draw2DTargetBNLocation = GraphicalHelper.getAbsoluteBoundsIn100Percent(target, true).getTopLeft();
+        assertTrue("For ending point (" + draw2DTargetBNLocation.preciseX() + ", " + draw2DTargetBNLocation.preciseY() + "), the x or y coordinate should be on the grid (step=" + gridStep
+                + ") or at least one should be the same as parent: " + parentTargetBounds + ".", checkLocation(draw2DTargetBNLocation, parentTargetBounds));
+        Point gmfTargetBNLocation = GMFHelper.getAbsoluteLocation((Node) target.getModel(), true);
+        assertEquals("The computing starting point from GMF data should be the same than draw2D", draw2DTargetBNLocation, gmfTargetBNLocation);
+        // Contrary to super class, the checkSide are not done because
+        // snapToGrid is enabled and has effect on the side.
     }
 
     private boolean checkLocation(Point location, Rectangle parentBounds) {
@@ -116,6 +103,103 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeCr
             result = (location.x == parentBounds.x || location.x == (parentBounds.x + parentBounds.width)) || (location.y == parentBounds.y || location.y == (parentBounds.y + parentBounds.height));
         }
         return result;
+    }
+
+    @Override
+    public void test_Node() {
+        // Force the expected source side as the snapToGrid change the "computed
+        // one" in the test code.
+        sourceSide = PositionConstants.WEST;
+        try {
+            super.test_Node();
+        } finally {
+            sourceSide = PositionConstants.NONE;
+        }
+    }
+
+    @Override
+    public void test_Node_WithZoom() {
+        // Force the expected source side as the snapToGrid change the "computed
+        // one" in the test code.
+        sourceSide = PositionConstants.WEST;
+        try {
+            super.test_Node_WithZoom();
+        } finally {
+            sourceSide = PositionConstants.NONE;
+        }
+    }
+
+    @Override
+    public void test_List() {
+        // Force the expected source side and target side as the snapToGrid
+        // change the "computed ones" in the test code.
+        sourceSide = PositionConstants.NORTH;
+        targetSide = PositionConstants.EAST;
+        try {
+            super.test_List();
+        } finally {
+            sourceSide = PositionConstants.NONE;
+            targetSide = PositionConstants.NONE;
+        }
+    }
+
+    @Override
+    public void test_Node_WithRectilinearEdge() {
+        // Force the expected source side and target side as the snapToGrid
+        // change the "computed ones" in the test code.
+        sourceSide = PositionConstants.NORTH;
+        targetSide = PositionConstants.WEST;
+        try {
+            super.test_Node_WithRectilinearEdge();
+        } finally {
+            sourceSide = PositionConstants.NONE;
+            targetSide = PositionConstants.NONE;
+        }
+    }
+
+    @Override
+    public void test_Bordered_Node_on_Node() {
+        // Force the expected source side and target side as the snapToGrid
+        // change the "computed ones" in the test code.
+        sourceSide = PositionConstants.WEST;
+        targetSide = PositionConstants.WEST;
+        try {
+            super.test_Bordered_Node_on_Node();
+        } finally {
+            sourceSide = PositionConstants.NONE;
+            targetSide = PositionConstants.NONE;
+        }
+    }
+
+    @Override
+    public void test_Container_in_Container() {
+        // Force the expected source side and target side as the snapToGrid
+        // change the "computed ones" in the test code.
+        sourceSide = PositionConstants.NORTH;
+        targetSide = PositionConstants.SOUTH;
+        try {
+            super.test_Container_in_Container();
+        } finally {
+            sourceSide = PositionConstants.NONE;
+            targetSide = PositionConstants.NONE;
+        }
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see org.eclipse.sirius.tests.swtbot.EdgeCreationPositionTest#
+     * test_Bordered_Node_on_Container()
+     */
+    @Override
+    public void test_Bordered_Node_on_Container() {
+        // Force the expected source side as the snapToGrid change the "computed
+        // ones" in the test code.
+        sourceSide = PositionConstants.EAST;
+        try {
+            super.test_Bordered_Node_on_Container();
+        } finally {
+            sourceSide = PositionConstants.NONE;
+        }
     }
 
     /**

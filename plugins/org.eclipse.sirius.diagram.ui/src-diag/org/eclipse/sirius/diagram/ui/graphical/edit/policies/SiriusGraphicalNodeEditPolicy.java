@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -865,11 +865,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      *            the {@link EditPart} that the target end of the connection
      *            should be connected to.
      * @param sourceLocation
-     *            the location of the first click (relative to the source edit
-     *            part)
+     *            the location of the first click (relative to the source edit part), snapped to grid if feature enabled
      * @param targetLocation
-     *            the location of the second click (relative to the target edit
-     *            part)
+     *            the location of the second click (relative to the target edit part), snapped to grid if feature
+     *            enabled
      * @return The edge layout data corresponding to the creation request and to
      *         the snapToGrid state.
      */
@@ -891,23 +890,31 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         // location) and the target node
         Option<Point> intersectionTargetPoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, tgtEditPart, true, true);
         // Compute the snap source location and the snap target location
-        Point absoluteSourceLocationSnapIn100Percent;
-        Point absoluteTargetLocationSnapIn100Percent;
         if (intersectionSourcePoint.some() && intersectionTargetPoint.some()) {
-            absoluteSourceLocationSnapIn100Percent = snapLocationToGridAndToParentBorder(absoluteSourceLocationIn100Percent, absoluteSourceBoundsIn100Percent, intersectionSourcePoint.get());
-            absoluteTargetLocationSnapIn100Percent = snapLocationToGridAndToParentBorder(absoluteTargetLocationIn100Percent, absoluteTargetBoundsIn100Percent, intersectionTargetPoint.get());
+            PointList sourceSnappedPoints = snapLocationToGridAndToParentBorder(absoluteSourceLocationIn100Percent, absoluteSourceBoundsIn100Percent, intersectionSourcePoint.get());
+            PointList targetSnappedPoints = snapLocationToGridAndToParentBorder(absoluteTargetLocationIn100Percent, absoluteTargetBoundsIn100Percent, intersectionTargetPoint.get());
+            EdgeLayoutData edgeLayoutData = createEdgeLayoutData(srcEditPart, tgtEditPart, absoluteSourceBoundsIn100Percent, absoluteTargetBoundsIn100Percent, sourceSnappedPoints.getFirstPoint(),
+                    targetSnappedPoints.getFirstPoint());
+            EdgeLayoutData edgeLayoutData2 = createEdgeLayoutData(srcEditPart, tgtEditPart, absoluteSourceBoundsIn100Percent, absoluteTargetBoundsIn100Percent, sourceSnappedPoints.getLastPoint(),
+                    targetSnappedPoints.getLastPoint());
+            edgeLayoutData.setEdgeLayoutDataForBorderNodes(edgeLayoutData2);
+            return edgeLayoutData;
         } else {
             // There is probably a case not handle, use the default layout data
             return getEdgeLayoutData(request, sourceEditPart, targetEditPart, sourceLocation, targetLocation);
         }
+    }
 
+    private EdgeLayoutData createEdgeLayoutData(IGraphicalEditPart sourceEditPart, IGraphicalEditPart targetEditPart, Rectangle absoluteSourceBoundsIn100Percent,
+            Rectangle absoluteTargetBoundsIn100Percent, Point absoluteSourceLocationSnapIn100Percent, Point absoluteTargetLocationSnapIn100Percent) {
+        EdgeLayoutData edgeLayoutData;
         // Make snap source point relative to the source edit part
         Point sourceLocationSnapIn100Percent = getTranslatedToRelative(absoluteSourceLocationSnapIn100Percent, absoluteSourceBoundsIn100Percent);
         final LayoutData sourceLayoutData = new RootLayoutData(sourceEditPart, sourceLocationSnapIn100Percent, null);
         // Make snap target point relative to the source edit part
         Point targetLocationSnapIn100Percent = getTranslatedToRelative(absoluteTargetLocationSnapIn100Percent, absoluteTargetBoundsIn100Percent);
         final LayoutData targetLayoutData = new RootLayoutData(targetEditPart, targetLocationSnapIn100Percent, null);
-        EdgeLayoutData edgeLayoutData = new EdgeLayoutData(sourceLayoutData, targetLayoutData);
+        edgeLayoutData = new EdgeLayoutData(sourceLayoutData, targetLayoutData);
         // Compute the new source terminal anchor
         PrecisionPoint sourceTerminalPosition = new PrecisionPoint((double) sourceLocationSnapIn100Percent.x / absoluteSourceBoundsIn100Percent.width,
                 (double) sourceLocationSnapIn100Percent.y / absoluteSourceBoundsIn100Percent.height);
@@ -921,9 +928,9 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         // Applied the zoom of the current diagram to set the pointList, the
         // source reference point and the target reference point.
         PrecisionPoint absoluteSourceLocationSnap = new PrecisionPoint(absoluteSourceLocationSnapIn100Percent);
-        GraphicalHelper.logical2screen(absoluteSourceLocationSnap, srcEditPart);
+        GraphicalHelper.logical2screen(absoluteSourceLocationSnap, sourceEditPart);
         PrecisionPoint absoluteTargteLoactionSnap = new PrecisionPoint(absoluteTargetLocationSnapIn100Percent);
-        GraphicalHelper.logical2screen(absoluteTargteLoactionSnap, tgtEditPart);
+        GraphicalHelper.logical2screen(absoluteTargteLoactionSnap, targetEditPart);
 
         edgeLayoutData.setSourceRefPoint(absoluteSourceLocationSnap);
         edgeLayoutData.setTargetRefPoint(absoluteTargteLoactionSnap);
@@ -932,23 +939,23 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         pointList.addPoint(absoluteSourceLocationSnap.getCopy());
         pointList.addPoint(absoluteTargteLoactionSnap.getCopy());
         edgeLayoutData.setPointList(pointList.getCopy());
-
         return edgeLayoutData;
     }
 
     /**
-     * * @param absoluteLocation The location in absolute coordinates (and in
-     * 100%)
-     *
+     * @param absoluteLocation
+     *            The location in absolute coordinates (and in 100%)
      * @param absoluteParentBounds
      *            The parent bounds in absolute coordinates (and in 100%)
      * @param intersectionPoint
-     *            The intersection location in absolute coordinates (and in
-     *            100%)
-     * @return
+     *            The intersection location in absolute coordinates (and in 100%)
+     * @return a list of 2 points: the first is the intersection point snap to grid and to parent border, the second is
+     *          snap to grid but on the nearest side of the parent border according to the click location
      */
-    private Point snapLocationToGridAndToParentBorder(Point absoluteLocation, Rectangle absoluteParentBounds, Point intersectionPoint) {
-        Point absoluteSourceLocationSnapIn100Percent;
+    private PointList snapLocationToGridAndToParentBorder(Point absoluteLocation, Rectangle absoluteParentBounds, Point intersectionPoint) {
+        PointList result = new PointList();
+        Point absoluteLocationSnapIn100PercentOnIntersection;
+        Point absoluteLocationSnapIn100PercentOnNearestSide;
         if (intersectionPoint.x == absoluteParentBounds.x || intersectionPoint.x == (absoluteParentBounds.x + absoluteParentBounds.width)) {
             int yCoordinate = absoluteLocation.y;
             // If y coordinate of absoluteLocation is outside the parent
@@ -959,7 +966,13 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             } else if (yCoordinate > (absoluteParentBounds.y + absoluteParentBounds.height)) {
                 yCoordinate = absoluteParentBounds.y + absoluteParentBounds.height;
             }
-            absoluteSourceLocationSnapIn100Percent = new Point(intersectionPoint.x, yCoordinate);
+            absoluteLocationSnapIn100PercentOnIntersection = new Point(intersectionPoint.x, yCoordinate);
+            // Compute the x coordinate according to the nearest parent side
+            int xCoordinate = intersectionPoint.x;
+            if (absoluteLocation.x - absoluteParentBounds.x > absoluteParentBounds.getRight().x - absoluteLocation.x) {
+                xCoordinate = absoluteParentBounds.getRight().x;
+            }
+            absoluteLocationSnapIn100PercentOnNearestSide = absoluteLocation.getCopy();
         } else {
             int xCoordinate = absoluteLocation.x;
             // If x coordinate of absoluteLocation is outside the parent
@@ -970,9 +983,17 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             } else if (xCoordinate > (absoluteParentBounds.x + absoluteParentBounds.width)) {
                 xCoordinate = absoluteParentBounds.x + absoluteParentBounds.width;
             }
-            absoluteSourceLocationSnapIn100Percent = new Point(xCoordinate, intersectionPoint.y);
+            absoluteLocationSnapIn100PercentOnIntersection = new Point(xCoordinate, intersectionPoint.y);
+            // Compute the y coordinate according to the nearest parent side
+            int yCoordinate = absoluteLocation.y;
+            if (absoluteLocation.y - absoluteParentBounds.y > absoluteParentBounds.getBottom().y - absoluteLocation.y) {
+                yCoordinate = absoluteParentBounds.getBottom().y;
+            }
+            absoluteLocationSnapIn100PercentOnNearestSide = absoluteLocation.getCopy();
         }
-        return absoluteSourceLocationSnapIn100Percent;
+        result.addPoint(absoluteLocationSnapIn100PercentOnIntersection);
+        result.addPoint(absoluteLocationSnapIn100PercentOnNearestSide);
+        return result;
     }
 
     /**

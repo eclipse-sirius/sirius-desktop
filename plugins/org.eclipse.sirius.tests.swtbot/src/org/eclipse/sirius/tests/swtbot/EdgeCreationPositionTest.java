@@ -117,6 +117,13 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         createEdgeAndValidateAnchors("Node", "A", AbstractDiagramNodeEditPart.class, "B", AbstractDiagramNodeEditPart.class);
     }
 
+    /**
+     * Same as test_Container_Aligned() but with a specific zoom.
+     */
+    public void test_Node_WithZoom() {
+        createEdgeAndValidateAnchors("Node", "A", AbstractDiagramNodeEditPart.class, TOP_LEFT_CORNER, "B", AbstractDiagramNodeEditPart.class, BOTTOM_RIGHT_CORNER, ZoomLevel.ZOOM_200);
+    }
+
     /** */
     public void test_Node_WithRectilinearEdge() {
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, true);
@@ -279,7 +286,7 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         IGraphicalEditPart targetPart = (IGraphicalEditPart) editor.getEditPart(targetName, expectedTargetType).part();
         createEdge(sourcePart, sourcePosition, targetPart, targetPosition, getCreateEdgeToolName());
         DEdgeEditPart edge = getSingleDEdgeFrom((NodeEditPart) sourcePart);
-        assertAreValidAnchors(sourcePart, targetPart, edge);
+        assertAreValidAnchors(sourcePart, sourcePosition, targetPart, targetPosition, edge);
         if (!ZoomLevel.ZOOM_100.equals(zoomLevel)) {
             // Reset to original zoom to avoid problem in further tests
             editor.zoom(ZoomLevel.ZOOM_100);
@@ -333,12 +340,16 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     /**
      * @param source
      *            The source of the edge
+     * @param sourcePosition
+     *            The position for the first point of the edge (source)
      * @param target
      *            The target of the edge
+     * @param targetPosition
+     *            The position for the last point of the edge (target)
      * @param edge
      *            Edge to consider
      */
-    protected void assertAreValidAnchors(IGraphicalEditPart source, IGraphicalEditPart target, DEdgeEditPart edge) {
+    protected void assertAreValidAnchors(IGraphicalEditPart source, PrecisionPoint sourcePosition, IGraphicalEditPart target, PrecisionPoint targetPosition, DEdgeEditPart edge) {
         assertAreValidAnchorsAndBendpoints(source, target, edge);
     }
 
