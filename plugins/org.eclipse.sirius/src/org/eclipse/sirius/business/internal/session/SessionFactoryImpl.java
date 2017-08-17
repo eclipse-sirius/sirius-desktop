@@ -11,6 +11,8 @@
 package org.eclipse.sirius.business.internal.session;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.CoreException;
@@ -47,11 +49,7 @@ import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
  *
  * @author mchauvin
  */
-public final class SessionFactoryImpl implements SessionFactory {
-
-    /** Avoid instantiation. */
-    private SessionFactoryImpl() {
-    }
+public class SessionFactoryImpl implements SessionFactory {
 
     /**
      * Default initialization of a {@link SessionFactoryImpl}.
@@ -76,39 +74,92 @@ public final class SessionFactoryImpl implements SessionFactory {
      * @throws CoreException
      *             exception when session resource creation failed
      */
-    public Session createSession(URI sessionResourceURI) throws CoreException {
+    public final Session createSession(URI sessionResourceURI) throws CoreException {
         return createSession(sessionResourceURI, new NullProgressMonitor());
     }
 
     @Override
     public Session createSession(final URI sessionResourceURI, IProgressMonitor monitor) throws CoreException {
+        final TransactionalEditingDomain ted = prepareEditingDomain(sessionResourceURI);
+
+        boolean alreadyExistingResource = ted.getResourceSet().getURIConverter().exists(sessionResourceURI, null);
+        Session session = null;
+        if (alreadyExistingResource) {
+            session = loadSessionModelResource(sessionResourceURI, ted, monitor);
+        } else {
+            session = createSessionResource(sessionResourceURI, ted, true, monitor);
+        }
+        return session;
+    }
+
+    @Override
+    public Session createDefaultSession(URI sessionResourceURI) throws CoreException {
+        return createSession(sessionResourceURI, new NullProgressMonitor());
+    }
+
+    /**
+     * Create and prepare the editing domain of the future session.
+     * 
+     * It calls {@link ResourceSetFactory} to init the resource set and then the {@link EditingDomainFactoryService} to
+     * instantiate the editing domain.
+     * 
+     * Note that {@link SessionFactoryImpl#configureDomain(TransactionalEditingDomain, URI)} allows to configure the
+     * created editing domain.
+     * 
+     * @param sessionResourceURI
+     *            the location URI of the future {@link Session}
+     * @return a configured editing domain.
+     */
+    protected final TransactionalEditingDomain prepareEditingDomain(final URI sessionResourceURI) {
         ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(sessionResourceURI);
         final TransactionalEditingDomain transactionalEditingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().createEditingDomain(set);
 
         // Configure the resource set, its is done here and not before the
         // editing domain creation which could provide its own resource set.
         set = transactionalEditingDomain.getResourceSet();
+
+        set.getLoadOptions().put(DescriptionResourceImpl.OPTION_USE_URI_FRAGMENT_AS_ID, true);
+
+        configureDomain(transactionalEditingDomain, sessionResourceURI);
+
+        return transactionalEditingDomain;
+    }
+
+    /**
+     * Configure the editing domain which will be used to create a Session for the given session resource uri.
+     * 
+     * @param transactionalEditingDomain
+     *            the editing domain to configure
+     * @param sessionResourceUri
+     *            the location URI of the future {@link Session}
+     */
+    protected void configureDomain(TransactionalEditingDomain transactionalEditingDomain, URI sessionResourceUri) {
+        ResourceSet set = transactionalEditingDomain.getResourceSet();
+
         if (Movida.isEnabled()) {
             set.setURIConverter(new ViewpointURIConverter((ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance()));
         }
+
         if (set instanceof ResourceSetImpl) {
             ResourceSetImpl resourceSetImpl = (ResourceSetImpl) set;
             new ResourceSetImpl.MappedResourceLocator(resourceSetImpl);
         }
-
-        set.getLoadOptions().put(DescriptionResourceImpl.OPTION_USE_URI_FRAGMENT_AS_ID, true);
-
-        boolean alreadyExistingResource = set.getURIConverter().exists(sessionResourceURI, null);
-        Session session = null;
-        if (alreadyExistingResource) {
-            session = loadSessionModelResource(sessionResourceURI, transactionalEditingDomain, monitor);
-        } else {
-            session = createSessionResource(sessionResourceURI, transactionalEditingDomain, monitor);
-        }
-        return session;
     }
 
-    private Session loadSessionModelResource(URI sessionResourceURI, TransactionalEditingDomain transactionalEditingDomain, IProgressMonitor monitor) throws CoreException {
+    /**
+     * Load and existing session.
+     * 
+     * @param sessionResourceURI
+     *            the location URI of the new {@link Session} to create
+     * @param transactionalEditingDomain
+     *            the editing domain of the new {@link Session} to create
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of {@link Session} creation
+     * @return the newly created {@link Session}
+     * @throws CoreException
+     *             if some loading error occurs.
+     */
+    protected Session loadSessionModelResource(URI sessionResourceURI, final TransactionalEditingDomain transactionalEditingDomain, IProgressMonitor monitor) throws CoreException {
         ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
         // Make ResourceSet aware of resource loading with progress monitor
         ResourceSetUtil.setProgressMonitor(resourceSet, new SubProgressMonitor(monitor, 2));
@@ -118,14 +169,15 @@ public final class SessionFactoryImpl implements SessionFactory {
             monitor.beginTask(Messages.SessionFactoryImpl_sessionLoadingMsg, 4);
             // Get resource
             final Resource sessionModelResource = resourceSet.getResource(sessionResourceURI, true);
+            checkResource(sessionResourceURI, resourceSet);
             if (sessionModelResource != null) {
                 DAnalysis analysis = null;
                 if (!sessionModelResource.getContents().isEmpty() && (sessionModelResource.getContents().get(0) instanceof DAnalysis)) {
                     analysis = (DAnalysis) sessionModelResource.getContents().get(0);
-                    session = new DAnalysisSessionImpl(analysis);
+                    session = createSession(analysis);
                     monitor.worked(2);
                 } else {
-                    session = createSessionResource(sessionResourceURI, transactionalEditingDomain, new SubProgressMonitor(monitor, 2));
+                    session = createSessionResource(sessionResourceURI, transactionalEditingDomain, false, new SubProgressMonitor(monitor, 2));
                 }
             }
         } catch (WrappedException e) {
@@ -137,7 +189,43 @@ public final class SessionFactoryImpl implements SessionFactory {
         return session;
     }
 
-    private Session createSessionResource(final URI sessionResourceURI, final TransactionalEditingDomain transactionalEditingDomain, IProgressMonitor monitor) throws CoreException {
+    /**
+     * This method can be overridden to do additional checks during
+     * {@link SessionFactoryImpl#loadSessionModelResource(URI, TransactionalEditingDomain, IProgressMonitor)} just after
+     * the load of the session resource.
+     * 
+     * It does nothing per default.
+     * 
+     * @param sessionResourceURI
+     *            the current session resource uri.
+     * 
+     * @param resourceSet
+     *            the current resource set.
+     */
+    protected void checkResource(URI sessionResourceURI, ResourceSet resourceSet) {
+        // Nothing to do per default.
+    }
+
+    /**
+     * Creates the resource that will store the root DAnalysis of the session to create.
+     * 
+     * @param sessionResourceURI
+     *            the URI indicating the location
+     * @param transactionalEditingDomain
+     *            the editing domain to use for creating the resource
+     * @param additionalTasks
+     *            a boolean to configure the calls of
+     *            {@link SessionFactoryImpl#createAdditionalResources(Collection, TransactionalEditingDomain, URI, IProgressMonitor)}
+     *            and {@link SessionFactoryImpl#completeSessionCreation(Session, Collection, IProgressMonitor)}
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of session creation
+     * @param forceDefaultSessionKind
+     * @return the created Session
+     * @throws CoreException
+     *             if resource cannot be created
+     */
+    protected Session createSessionResource(final URI sessionResourceURI, final TransactionalEditingDomain transactionalEditingDomain, boolean additionalTasks, IProgressMonitor monitor)
+            throws CoreException {
         Session session = null;
         try {
             monitor.beginTask(Messages.SessionFactoryImpl_sessionCreation, 2);
@@ -146,21 +234,19 @@ public final class SessionFactoryImpl implements SessionFactory {
             if (!(resourceQuery.isRepresentationsResource() || sessionModelResource instanceof InMemoryResourceImpl)) {
                 throw new IllegalArgumentException(Messages.SessionFactoryImpl_ResourceTypeErrorMsg);
             }
-            DAnalysis analysis = ViewpointFactory.eINSTANCE.createDAnalysis();
-            sessionModelResource.getContents().add(analysis);
-            try {
-                sessionModelResource.save(Collections.emptyMap());
-            } catch (IOException e) {
-                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, Messages.SessionFactoryImpl_creationFailedErrorMsg, e));
+
+            Collection<Resource> additionalResources = new ArrayList<>();
+            if (additionalTasks) {
+                createAdditionalResources(additionalResources, transactionalEditingDomain, sessionResourceURI, monitor);
             }
-            monitor.worked(1);
-            // Now load it from the TED
-            sessionModelResource = transactionalEditingDomain.getResourceSet().getResource(sessionResourceURI, true);
-            if (sessionModelResource.getContents().isEmpty()) {
-                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, Messages.SessionFactoryImpl_EmptyContentErrorMsg));
+
+            DAnalysis analysis = prepareDAnalysis(sessionResourceURI, transactionalEditingDomain, monitor, sessionModelResource, SiriusPlugin.ID);
+            session = createSession(analysis);
+
+            if (additionalTasks) {
+                completeSessionCreation(session, additionalResources, monitor);
             }
-            analysis = (DAnalysis) sessionModelResource.getContents().get(0);
-            session = new DAnalysisSessionImpl(analysis);
+
             monitor.worked(1);
         } finally {
             monitor.done();
@@ -168,8 +254,74 @@ public final class SessionFactoryImpl implements SessionFactory {
         return session;
     }
 
-    @Override
-    public Session createDefaultSession(URI sessionResourceURI) throws CoreException {
-        return createSession(sessionResourceURI, new NullProgressMonitor());
+    /**
+     * 
+     * Create additional resources for future {@link Session}.
+     * 
+     * This method is called in {@link SessionFactoryImpl#createSessionResource()} if additionalTask == true before the
+     * {@link DAnalysis} and {@link Session} creation.
+     * 
+     * @param additionalResources
+     *            accumulator to reference created resources, it will be later passed a paramater of
+     *            {@link SessionFactoryImpl#completeSessionCreation(Session, Collection, IProgressMonitor)}
+     * @param transactionalEditingDomain
+     *            the editing domain of the future {@link Session}
+     * @param sessionResourceURI
+     *            the location URI of the new {@link Session} to create
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of {@link Session} creation
+     */
+    protected void createAdditionalResources(Collection<Resource> additionalResources, TransactionalEditingDomain transactionalEditingDomain, URI sessionResourceURI, IProgressMonitor monitor) {
+        // Nothing to do per default.
+    }
+
+    private DAnalysis prepareDAnalysis(final URI sessionResourceURI, final TransactionalEditingDomain transactionalEditingDomain, final IProgressMonitor monitor, Resource sessionModelResource,
+            String pluginID) throws CoreException {
+
+        Resource sessionResource = sessionModelResource;
+        DAnalysis analysis = ViewpointFactory.eINSTANCE.createDAnalysis();
+        sessionModelResource.getContents().add(analysis);
+        try {
+            sessionModelResource.save(Collections.emptyMap());
+        } catch (IOException e) {
+            throw new CoreException(new Status(IStatus.ERROR, pluginID, Messages.SessionFactoryImpl_creationFailedErrorMsg, e));
+        }
+        monitor.worked(1);
+        // Now load it from the TED
+        sessionResource = transactionalEditingDomain.getResourceSet().getResource(sessionResourceURI, true);
+        if (sessionResource.getContents().isEmpty()) {
+            throw new CoreException(new Status(IStatus.ERROR, pluginID, Messages.SessionFactoryImpl_EmptyContentErrorMsg));
+        }
+        analysis = (DAnalysis) sessionResource.getContents().get(0);
+        return analysis;
+    }
+
+    /**
+     * Create a {@link Session} for the given {@link DAnalysis}.
+     * 
+     * @param analysis
+     *            the main DAnalysis of the {@link Session} to create.
+     * @return a {@link Session}
+     */
+    protected Session createSession(DAnalysis analysis) {
+        return new DAnalysisSessionImpl(analysis);
+    }
+
+    /**
+     * Complete the session creation.
+     * 
+     * This method is called in {@link SessionFactoryImpl#createSessionResource()} if additionalTask == true after the
+     * {@link DAnalysis} and {@link Session} creation.
+     *
+     * @param session
+     *            the newly created {@link Session}
+     * @param additionalResources
+     *            accumulator to referencing additional resource created sooner in
+     *            {@link SessionFactoryImpl#createAdditionalResources(Collection, TransactionalEditingDomain, URI, IProgressMonitor)}
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of {@link Session} creation
+     */
+    protected void completeSessionCreation(Session session, Collection<Resource> additionalResources, IProgressMonitor monitor) {
+        // Nothing to do per default.
     }
 }

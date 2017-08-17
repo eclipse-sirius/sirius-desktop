@@ -29,15 +29,13 @@ public interface SessionFactory {
     SessionFactory INSTANCE = SessionFactoryImpl.init();
 
     /**
-     * Create a new empty {@link Session} instance from the sessionModelURI. If
-     * a underlying Resource exist, use it otherwise create a new Session
-     * Resource.
+     * Create a new empty {@link Session} instance from the sessionModelURI. If a underlying Resource exist, use it
+     * otherwise create a new Session Resource.
      * 
      * @param sessionResourceURI
      *            the location URI of the new {@link Session} to create
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of
-     *            {@link Session} creation
+     *            a {@link IProgressMonitor} to show progression of {@link Session} creation
      * @return the newly created {@link Session}
      * 
      * @throws CoreException
@@ -48,9 +46,8 @@ public interface SessionFactory {
     Session createSession(URI sessionResourceURI, IProgressMonitor monitor) throws CoreException;
 
     /**
-     * Create a new empty default {@link Session} instance from the
-     * sessionModelURI. If a underlying Resource exist, use it otherwise create
-     * a new Session Resource.
+     * Create a new empty default {@link Session} instance from the sessionModelURI. If a underlying Resource exist, use
+     * it otherwise create a new Session Resource.
      * 
      * @param sessionResourceURI
      *            the location URI of the new {@link Session} to create
