@@ -35,6 +35,8 @@ import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -353,24 +355,30 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                 // until we find a way to load session independently from the
                 // editor, session loading blocks the editor opening with a
                 // progress monitor.
-                PlatformUI.getWorkbench().getProgressService().busyCursorWhile((monitor) -> {
-                    SubMonitor subMonitor = SubMonitor.convert(monitor, 1);
-                    subMonitor.beginTask(MessageFormat.format(Messages.UI_SessionEditor_session_loading_task_title, new Object[0]), 1);
-                    session = SessionManager.INSTANCE.getSession(sessionResourceURIFinal, subMonitor);
-                    if (!session.isOpen()) {
-                        session.open(monitor);
+                IRunnableWithProgress exportAllRepresentationsRunnable = new IRunnableWithProgress() {
+
+                    @Override
+                    public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                        SubMonitor subMonitor = SubMonitor.convert(monitor, 1);
+                        subMonitor.beginTask(MessageFormat.format(Messages.UI_SessionEditor_session_loading_task_title, new Object[0]), 1);
+                        session = SessionManager.INSTANCE.openSession(sessionResourceURIFinal, subMonitor, SiriusEditPlugin.getPlugin().getUiCallback());
+                        session.addListener(SessionEditor.this);
+
+                        final IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
+                        editingSession.open();
+                        editingSession.attachEditor(SessionEditor.this);
+
+                        resourceSetListener = new SessionResourceSetListener();
+                        session.getTransactionalEditingDomain().addResourceSetListener(resourceSetListener);
+
+                        subMonitor.worked(1);
+                        subMonitor.done();
+
                     }
-                    session.addListener(this);
-                    final IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
-                    editingSession.open();
-                    editingSession.attachEditor(this);
+                };
 
-                    resourceSetListener = new SessionResourceSetListener();
-                    session.getTransactionalEditingDomain().addResourceSetListener(resourceSetListener);
-
-                    subMonitor.worked(1);
-                    subMonitor.done();
-                });
+                final ProgressMonitorDialog pmd = new ProgressMonitorDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+                pmd.run(false, false, exportAllRepresentationsRunnable);
                 listener = new CommandStackListener() {
                     @Override
                     public void commandStackChanged(final EventObject event) {
@@ -498,7 +506,7 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
 
     @Override
     public Saveable[] getSaveables() {
-        if (session != null && session.isOpen()) {
+        if (SessionUIManager.INSTANCE != null && session != null && session.isOpen()) {
             IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
             if (uiSession instanceof ISaveablesSource) {
                 return ((ISaveablesSource) uiSession).getSaveables();

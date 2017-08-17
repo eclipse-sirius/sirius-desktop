@@ -278,19 +278,21 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
      * @return true if the dirty decorator
      */
     public static boolean shoudlShowSessionDirtyStatus(Session session) {
-        IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+        if (SessionUIManager.INSTANCE != null) {
+            IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
 
-        if (session != null && uiSession != null && session.isOpen() && uiSession.isOpen()) {
+            if (session != null && uiSession != null && session.isOpen() && uiSession.isOpen()) {
 
-            IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-            boolean shouldBeSavedWithoutEditor = preferenceStore != null && preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
+                IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
+                boolean shouldBeSavedWithoutEditor = preferenceStore != null && preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
 
-            // When option PREF_SAVE_WHEN_NO_EDITOR is enabled, show dirty
-            // status only when there si no editors to detect bugs.
-            if (SessionStatus.DIRTY == session.getStatus() && (!shouldBeSavedWithoutEditor || uiSession.getEditors().isEmpty())) {
-                return true;
+                // When option PREF_SAVE_WHEN_NO_EDITOR is enabled, show dirty
+                // status only when there si no editors to detect bugs.
+                if (SessionStatus.DIRTY == session.getStatus() && (!shouldBeSavedWithoutEditor || uiSession.getEditors().isEmpty())) {
+                    return true;
+                }
+
             }
-
         }
         return false;
     }
