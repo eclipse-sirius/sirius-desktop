@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -106,6 +106,17 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     protected Map<View, Boolean> regionsContainersToLayoutWithImpactStatus = Maps.newHashMap();
 
     /**
+     * True if the snap to grid is considered as activated. In this case, the returned location, by
+     * {@link #getValidLocation(Rectangle, Node, Collection<Node>)}, is snapped to the grid (if possible).
+     */
+    private boolean snapToGrid;
+
+    /**
+     * The grid step (it is mandatory if the {@link #snapToGrid} is true.
+     */
+    private int gridSpacing = 0;
+
+    /**
      * Default constructor.
      */
     public AbstractCanonicalSynchronizer() {
@@ -197,6 +208,22 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         }
 
         return createdViews;
+    }
+
+    protected boolean isSnapToGrid() {
+        return snapToGrid;
+    }
+
+    protected void setSnapToGrid(boolean snapToGrid) {
+        this.snapToGrid = snapToGrid;
+    }
+
+    protected int getGridSpacing() {
+        return gridSpacing;
+    }
+
+    protected void setGridSpacing(int gridSpacing) {
+        this.gridSpacing = gridSpacing;
     }
 
     /**
@@ -539,7 +566,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                 tempBounds = new Rectangle(location, size);
             }
 
-            CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parentNode, PositionConstants.NSEW);
+            CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parentNode, PositionConstants.NSEW, isSnapToGrid(), getGridSpacing());
             if (new ViewQuery(createdView).isForNameEditPart()) {
                 locator.setBorderItemOffset(IBorderItemOffsets.NO_OFFSET);
             } else {
@@ -555,7 +582,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             locator.setConstraint(constraint);
             dummyFigure.setVisible(true);
             final Rectangle rect = new Rectangle(constraint);
-            Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode);
+            Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode, true);
             rect.translate(parentAbsoluteLocation.x, parentAbsoluteLocation.y);
             dummyFigure.setBounds(rect);
             final Point realLocation = locator.getValidLocation(rect, createdNode, Lists.newArrayList(createdNode));
