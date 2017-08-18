@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditP
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.DiagramWithChildrensCondition;
@@ -205,7 +206,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         test_DnDPackageFromMC2DiagramBlank2();
 
         try {
-            pressZoomInButton(editor, 4);
+            editor.zoom(ZoomLevel.ZOOM_200);
 
             openErrorLogViewByAPI();
             SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
@@ -236,7 +237,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
         } finally {
             closeErrorLogView();
-            pressZoomOutButton(editor, 4);
+            editor.zoom(ZoomLevel.ZOOM_100);
+            editor.click(10, 10);
         }
     }
 
@@ -376,7 +378,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             editor.click(10, 10);
-            pressZoomInButton(editor, 4);
+            editor.zoom(ZoomLevel.ZOOM_200);
             openErrorLogViewByAPI();
             SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
@@ -424,8 +426,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         } finally {
             closeErrorLogView();
+            editor.zoom(ZoomLevel.ZOOM_100);
             editor.click(10, 10);
-            pressZoomOutButton(editor, 4);
         }
     }
 
