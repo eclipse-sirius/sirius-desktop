@@ -441,7 +441,7 @@
        <contributionItemProvider
             class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider"
             checkPluginLoaded="false">
-         <Priority name="Lowest"/>
+         <Priority name="Low"/>
          <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
             <popupStructuredContributionCriteria   policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.MultiSelectionEdgePolicy">
             </popupStructuredContributionCriteria>
