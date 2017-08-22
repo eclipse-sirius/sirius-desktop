@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2016 Obeo.
+ * Copyright (c) 2013, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -452,7 +452,7 @@ public final class JavaExtensionsManager {
      *            the Java qualified name of a class to consider as a Java
      *            Extension.
      */
-    public void addImport(String classQualifiedName) {
+    public synchronized void addImport(String classQualifiedName) {
         if (classQualifiedName != null && SourceVersion.isName(classQualifiedName)) {
             boolean newImport = this.imports.add(classQualifiedName);
             if (newImport) {
@@ -468,7 +468,7 @@ public final class JavaExtensionsManager {
      *            the Java qualified name of a class to remove as a Java
      *            Extension.
      */
-    public void removeImport(String classQualifiedName) {
+    public synchronized void removeImport(String classQualifiedName) {
         if (this.imports.contains(classQualifiedName)) {
             couldNotBeLoaded.remove(classQualifiedName);
             Set<String> removedImport = Sets.newLinkedHashSet();
@@ -483,14 +483,14 @@ public final class JavaExtensionsManager {
      * 
      * @return the current list of class qualified name used as Java Extensions.
      */
-    public Collection<String> getImports() {
+    public synchronized Collection<String> getImports() {
         return ImmutableList.copyOf(this.imports);
     }
 
     /**
      * Unload the already known Java Extensions.
      */
-    public void clearImports() {
+    public synchronized void clearImports() {
         unloadJavaExtensions(this.imports);
         this.imports.clear();
         this.couldNotBeLoaded.clear();
