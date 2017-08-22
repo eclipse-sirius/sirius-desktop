@@ -73,7 +73,7 @@
          <triggerPoints>
         </triggerPoints>
          <dropAssistant
-               class="org.eclipse.sirius.ui.editor.ModelCommonDropAdapterAssistant"
+               class="org.eclipse.sirius.ui.editor.internal.ModelCommonDropAdapterAssistant"
                id="org.eclipse.sirius.ui.editor.modelDropAssistant">
                <possibleDropTargets>
                   <adapt
