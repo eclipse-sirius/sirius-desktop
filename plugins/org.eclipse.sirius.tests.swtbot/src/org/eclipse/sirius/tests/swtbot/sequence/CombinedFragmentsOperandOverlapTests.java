@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import static org.junit.Assert.assertNotEquals;
+
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -484,6 +486,17 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
+     * Test that tries to resize an execution in the first operand lower than
+     * the operand bottom bound. Then, dimension of resized or moved elements
+     * are checked.
+     */
+    public void testResizeExecutionOutOfFirstOperandLowerBound() {
+        e2Bot.select();
+
+        checkExecutionResize(LIFELINE_B, 1, 0, e2Bounds, 200);
+    }
+    
+    /**
      * Test that tries to resize an execution in the first operand lower than the operand bottom bound (not accepted).
      */
     public void testResizeExecutionOutOfFirstOperandUpperBound() {
@@ -497,6 +510,59 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
             fail("An execution can be resized further than its parent operand bottom bound only if it is the last operand of its parent combined fragment");
         } catch (TimeoutException te) {
             // Failed as expected.
+        }
+    }
+
+    /**
+     * Test that resizes an execution in the last operand upper than the operand
+     * top bound. Then, dimension of resized or moved elements are checked.
+     */
+    public void testResizeExecutionOutOfLastOperandUpperBound() {
+        String toolName = "Execution";
+        ICondition done = new CheckToolIsActivated(editor, toolName);
+        editor.activateTool(toolName);
+        bot.waitUntil(done);
+        editor.click(e2Bounds.getCenter().x, secondOperandOfFirstCombinedFragmentBounds.getCenter().y);
+        SWTBotGefEditPart e3Bot = instanceRoleEditPartBBot.parent().descendants(IsInstanceOf.instanceOf(ExecutionEditPart.class)).get(2);
+        e3Bot.select();
+
+        Rectangle executionBounds = editor.getBounds(e3Bot);
+        checkExecutionResize(LIFELINE_B, 2, 1, executionBounds, secondOperandOfFirstCombinedFragmentBounds.getTop().y - executionBounds.getTop().y - 10);
+    }
+
+    private void checkExecutionResize(String labelOfLifelineEditPart, int indexOfExecution, int indexOfParentOperand, Rectangle executionBounds, int expectedResize) {
+        CheckResize cR = new CheckResize(labelOfLifelineEditPart, indexOfExecution, new Dimension(0, Math.abs(expectedResize)), editor);
+        if (expectedResize > 0) {
+            editor.drag(executionBounds.getBottom(), executionBounds.getBottom().translate(0, expectedResize));
+        } else {
+            editor.drag(executionBounds.getTop(), executionBounds.getTop().translate(0, expectedResize));
+        }
+        bot.waitUntil(cR);
+        SWTBotGefEditPart executionAfterRezize = instanceRoleEditPartBBot.parent().descendants(IsInstanceOf.instanceOf(ExecutionEditPart.class)).get(indexOfExecution);
+        Rectangle executionBoundsAfterRezize = editor.getBounds(executionAfterRezize);
+
+        SWTBotGefEditPart parentOperand = firstCombinedFragmentBot.descendants(IsInstanceOf.instanceOf(OperandEditPart.class)).get(indexOfParentOperand);
+        Rectangle parentOperandBoundsAfterRezize = editor.getBounds(parentOperand);
+
+        SWTBotGefEditPart firstCombinedFragmentBotAfterRezize = sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(CombinedFragmentEditPart.class)).get(0);
+        Rectangle firstCombinedFragmentBoundsAfterRezize = editor.getBounds(firstCombinedFragmentBotAfterRezize);
+
+        SWTBotGefEditPart secondCombinedFragmentBotAfterRezize = sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(CombinedFragmentEditPart.class)).get(1);
+        Rectangle secondCombinedFragmentBoundsAfterRezize = editor.getBounds(secondCombinedFragmentBotAfterRezize);
+
+        assertEquals("The execution should have resized.", executionBounds.height + Math.abs(expectedResize), executionBoundsAfterRezize.height);
+        assertNotEquals("The size of the containing operand should have changed.", firstCombinedFragmentBounds.height, parentOperandBoundsAfterRezize.height);
+        if (expectedResize > 0) {
+            // Resize in the bottom direction
+            assertEquals("Unexpected gap between the end of the resized execution and the containing operand.", parentOperandBoundsAfterRezize.getBottom().y,
+                    executionBoundsAfterRezize.getBottom().y + LayoutConstants.EXECUTION_CHILDREN_MARGIN);
+            assertEquals("The gap between both Combined Fragment should be unchanged.", secondCombinedFragmentBounds.getTop().y - firstCombinedFragmentBounds.getBottom().y,
+                    secondCombinedFragmentBoundsAfterRezize.getTop().y - firstCombinedFragmentBoundsAfterRezize.getBottom().y);
+            assertEquals("Second Combined Fragment dimension should be unchanged.", secondCombinedFragmentBounds.getSize(), secondCombinedFragmentBoundsAfterRezize.getSize());
+        } else {
+            // Resize in the top direction
+            assertEquals("Unexpected gap between the start of the resized execution and the containing operand.", parentOperandBoundsAfterRezize.getTop().y,
+                    executionBoundsAfterRezize.getTop().y - LayoutConstants.EXECUTION_CHILDREN_MARGIN);
         }
     }
 

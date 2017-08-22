@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,67 +39,72 @@ public class CheckResize extends DefaultCondition {
 
     private String labelOfEditPart;
 
-    private Point expectedTranslation;
-
     private final SWTBotSiriusDiagramEditor editor;
 
     private int indexOfExecution = Integer.MIN_VALUE;
 
-    private Dimension expectedResize;
+    Dimension expectedEffect;
 
     /**
      * Constructor for resize from top : resize delta == - translation delta
      * 
-     * @param bot
-     *            Bot.
+     * @param labelOfEditPart
+     *            The label of the edit part that must be resized
+     * @param expectedTranslation
+     *            the resize delta
+     * @param editor
+     *            The editor containing the edit part that must be resized
      */
     public CheckResize(String labelOfEditPart, Point expectedTranslation, SWTBotSiriusDiagramEditor editor) {
         this.labelOfEditPart = labelOfEditPart;
-        this.expectedTranslation = expectedTranslation;
+        expectedEffect = new Dimension(-expectedTranslation.x, -expectedTranslation.y);
         this.editor = editor;
-        this.initialBounds = getBounds(labelOfEditPart).getCopy();
+        this.initialBounds = getBounds(labelOfEditPart);
     }
 
     /**
-     * Constructor for resize from top : resize delta == - translation delta
+     * Constructor for resizing an execution from top : resize delta == -
+     * translation delta
      * 
-     * @param bot
-     *            Bot.
+     * @param labelOfLifelineEditPart
+     *            The label of life line containing the edit part that must be
+     *            resized
+     * @param indexOfExecution
+     *            The index of the execution on the life line
+     * @param expectedTranslation
+     *            the resize delta the resize delta
+     * @param editor
+     *            The editor containing the edit part that must be resized
      */
     public CheckResize(String labelOfLifelineEditPart, int indexOfExecution, Point expectedTranslation, SWTBotSiriusDiagramEditor editor) {
-        this.labelOfEditPart = labelOfLifelineEditPart;
-        this.expectedTranslation = expectedTranslation;
-        this.editor = editor;
-        this.indexOfExecution = indexOfExecution;
-        this.initialBounds = getBounds(labelOfLifelineEditPart).getCopy();
+        this(labelOfLifelineEditPart, indexOfExecution, new Dimension(-expectedTranslation.x, -expectedTranslation.y), editor);
     }
 
     /**
-     * Constructor.
+     * Constructor for resizing an execution.
      * 
-     * @param bot
-     *            Bot.
+     * @param labelOfLifelineEditPart
+     *            The label of life line containing the edit part that must be
+     *            resized
+     * @param indexOfExecution
+     *            The index of the execution on the life line
+     * @param expectedResize
+     *            the resize delta
+     * @param editor
+     *            The editor containing the edit part that must be resized
      */
     public CheckResize(String labelOfLifelineEditPart, int indexOfExecution, Dimension expectedResize, SWTBotSiriusDiagramEditor editor) {
         this.labelOfEditPart = labelOfLifelineEditPart;
-        this.expectedResize = expectedResize;
+        expectedEffect = expectedResize;
         this.editor = editor;
         this.indexOfExecution = indexOfExecution;
-        this.initialBounds = getBounds(labelOfLifelineEditPart).getCopy();
+        this.initialBounds = getBounds(labelOfLifelineEditPart);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean test() throws Exception {
-        Dimension expectedEffect = new Dimension();
-        if (expectedTranslation != null) {
-            expectedEffect = new Dimension(-expectedTranslation.x, -expectedTranslation.y);
-        } else if (expectedResize != null) {
-            expectedEffect = expectedResize.getCopy();
-        }
-
-        return getBounds(labelOfEditPart).width == initialBounds.width + expectedEffect.width && getBounds(labelOfEditPart).height == initialBounds.height + expectedEffect.height;
+        Rectangle currentBounds = getBounds(labelOfEditPart);
+        return currentBounds.width == initialBounds.width + expectedEffect.width && currentBounds.height == initialBounds.height + expectedEffect.height;
     }
 
     private Rectangle getBounds(final String editPartName) {
@@ -116,10 +121,11 @@ public class CheckResize extends DefaultCondition {
 
     /**
      * Get the execution edit part.
+     * 
      * @param lifelineLabel
-     *            name of the lifeline
+     *            name of the life line
      * @param index
-     *            position of the execution on the lifeline
+     *            position of the execution on the life line
      * @return the execution edit part.
      */
     public ExecutionEditPart getExecutionEditPart(String lifelineLabel, int index) {
@@ -132,10 +138,11 @@ public class CheckResize extends DefaultCondition {
         return allExecutions.get(index);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getFailureMessage() {
-        return null;
+        Rectangle currentBounds = getBounds(labelOfEditPart);
+        return "The edit part \"" + labelOfEditPart + "\" with initial size <" + initialBounds.width + ", " + initialBounds.height + "> has not been resized as expected. expected <"
+                + (initialBounds.width + expectedEffect.width) + ", "
+                + (initialBounds.height + expectedEffect.height) + "> but was <" + currentBounds.width + ", " + currentBounds.height + ">";
     }
 }
