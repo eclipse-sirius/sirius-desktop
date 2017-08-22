@@ -8,15 +8,15 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.table.ui.tools.internal.migration;
+package org.eclipse.sirius.table.business.internal.migration.description;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.migration.AbstractVSMMigrationParticipant;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
-import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
+import org.eclipse.sirius.table.tools.internal.Messages;
 import org.osgi.framework.Version;
 
 /**
@@ -43,12 +43,12 @@ public class LabelEditToolVariableMigrationParticipant extends AbstractVSMMigrat
 
             final TableVariable tableVar = DescriptionFactory.eINSTANCE.createTableVariable();
             tableVar.setName(IInterpreterSiriusTableVariables.TABLE);
-            tableVar.setDocumentation(Messages.Table_TableElement);
+            tableVar.setDocumentation(Messages.TableToolVariables_TableElement);
             labelEditTool.getVariables().add(tableVar);
 
             final TableVariable lineVar = DescriptionFactory.eINSTANCE.createTableVariable();
             lineVar.setName(IInterpreterSiriusTableVariables.LINE);
-            lineVar.setDocumentation(Messages.Table_LineElement);
+            lineVar.setDocumentation(Messages.TableToolVariables_LineElement);
             labelEditTool.getVariables().add(lineVar);
         }
         return newObject;

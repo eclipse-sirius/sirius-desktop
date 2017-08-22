@@ -45,6 +45,9 @@
              class="org.eclipse.sirius.table.business.internal.migration.description.InitializeCreationToolElementsToSelectExpressionParticipant"
              kind="VSM">
        </participant>
-    </extension>
-   
+      <participant
+            class="org.eclipse.sirius.table.business.internal.migration.description.LabelEditToolVariableMigrationParticipant"
+            kind="VSM">
+      </participant>
+   </extension>   
 </plugin>
