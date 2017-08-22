@@ -20,7 +20,7 @@ import org.eclipse.sirius.ui.editor.api.pages.DefaultSessionEditorPage;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
 
 /**
- * Tests the component {@link PageRegistry}
+ * Tests the component {@link PageRegistry}. To succeed, the plugin org.eclipse.sirius.ui.debug must not be loaded.
  * 
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
@@ -235,6 +235,28 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
     public void testMultiPageOrderingReplaceConflict() {
         initTwoPageProvider(PositioningKind.REPLACE, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.REPLACE, DefaultSessionEditorPage.PAGE_ID, PAGE3_ID);
         assertRightPageOrdering(2, PAGE2_ID, PAGE3_ID);
+    }
+
+    /**
+     * Test page positioning :
+     * 
+     * There are the default page "Overview" P1.
+     * 
+     * One page P2 replaces the default one P1.
+     * 
+     * One page P3 if after P2.
+     * 
+     * Another page P4 is after P1.
+     * 
+     * There is a conflict because P3 should be after P2 that replaced P1 and P4 is also after P2.
+     * 
+     * The page order should be P2,P3 and P4 because the pages attached to the page replacing another one have priority
+     * over pages attached to the replaced page.
+     */
+    public void testMultiPageOrderingReplaceConflict2() {
+        initThreePageProvider(PositioningKind.AFTER, PAGE2_ID, PAGE3_ID, PositioningKind.AFTER, DefaultSessionEditorPage.PAGE_ID, PAGE4_ID, PositioningKind.REPLACE, DefaultSessionEditorPage.PAGE_ID,
+                PAGE2_ID);
+        assertRightPageOrdering(3, PAGE2_ID, PAGE3_ID, PAGE4_ID);
     }
 
     /**

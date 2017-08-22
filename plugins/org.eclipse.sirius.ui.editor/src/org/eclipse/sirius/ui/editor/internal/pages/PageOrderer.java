@@ -186,11 +186,83 @@ public class PageOrderer {
                     pagePositioning.replacePortPage = replacedPage;
                     // the page replace the target. I.e it connects to target
                     // left and right pages.
-                    pagePositioning.leftPortPage = pagePositioning.replacePortPage.leftPortPage;
-                    pagePositioning.rightPortPage = pagePositioning.replacePortPage.rightPortPage;
+                    if (replacedPage.leftPortPage != null) {
+                        if (pagePositioning.leftPortPage == null) {
+                            pagePositioning.leftPortPage = replacedPage.leftPortPage;
+                        } else {
+                            // we have a conflict because the replaced page has
+                            // node to the left and the page replacing has also
+                            // node to the left. In this case we attach node to
+                            // the left of the page replacing to the left of the
+                            // leftmost node of the replaced page. And the left
+                            // node of the replaced page is attached to the left
+                            // of the page replacing.
+                            PagePositioning leftMostPage = getLeftMostPage(replacedPage);
+                            leftMostPage.leftPortPage = pagePositioning.leftPortPage;
+                            pagePositioning.leftPortPage.rightPortPage = leftMostPage;
+
+                            pagePositioning.leftPortPage = replacedPage.leftPortPage;
+                            replacedPage.leftPortPage.rightPortPage = pagePositioning;
+                        }
+                    }
+                    if (replacedPage.rightPortPage != null) {
+                        if (pagePositioning.rightPortPage == null) {
+                            pagePositioning.rightPortPage = replacedPage.rightPortPage;
+                        } else {
+                            // we have a conflict because the replaced page has
+                            // node to the right and the page replacing has also
+                            // node to the right. In this case we attach node
+                            // to the right of the page replacing to the right
+                            // of the rightmost node of the replaced page. And
+                            // the right node of the replaced page is attached
+                            // to the right of the page replacing.
+                            PagePositioning rightMostPage = getRightMostPage(replacedPage);
+                            rightMostPage.rightPortPage = pagePositioning.rightPortPage;
+                            pagePositioning.rightPortPage.leftPortPage = rightMostPage;
+
+                            pagePositioning.rightPortPage = replacedPage.rightPortPage;
+                            replacedPage.rightPortPage.leftPortPage = pagePositioning;
+                        }
+                    }
                     replacedPages.add(pagePositioning.replacePortPage);
                 }
             }
+        }
+    }
+
+    /**
+     * Return the {@link PagePositioning} at the rightmost position of the given
+     * one.
+     * 
+     * @param pagePositioning
+     *            the {@link PagePositioning} from which we want to retrieve the
+     *            rightmost one.
+     * @return the {@link PagePositioning} at the rightmost position of the
+     *         given one.
+     */
+    private PagePositioning getRightMostPage(PagePositioning pagePositioning) {
+        if (pagePositioning.rightPortPage == null) {
+            return pagePositioning;
+        } else {
+            return getLeftMostPage(pagePositioning.rightPortPage);
+        }
+    }
+
+    /**
+     * Return the {@link PagePositioning} at the leftmost position of the given
+     * one.
+     * 
+     * @param pagePositioning
+     *            the {@link PagePositioning} from which we want to retrieve the
+     *            leftmost one.
+     * @return the {@link PagePositioning} at the leftmost position of the given
+     *         one.
+     */
+    private PagePositioning getLeftMostPage(PagePositioning pagePositioning) {
+        if (pagePositioning.leftPortPage == null) {
+            return pagePositioning;
+        } else {
+            return getLeftMostPage(pagePositioning.leftPortPage);
         }
     }
 
