@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.Label;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.EditDomain;
@@ -223,12 +224,17 @@ public class ValidationDecorationDescriptorProvider extends AbstractSiriusDecora
     private String getViewId(View view) {
         List<String> listString = new ArrayList<>();
         try {
-            TransactionUtil.getEditingDomain(view).runExclusive(new Runnable() {
+            TransactionalEditingDomain ted = TransactionUtil.getEditingDomain(view);
+            if (ted == null) {
+                listString.add(null);
+            } else {
+                ted.runExclusive(new Runnable() {
                 @Override
                 public void run() {
                     listString.add(view != null ? SiriusGMFHelper.getViewId(view) : null);
                 }
             });
+            }
         } catch (InterruptedException e) {
             DiagramPlugin.getDefault().logError(Messages.StatusDecorator_viewIdAccessFailureMsg, e);
         }
