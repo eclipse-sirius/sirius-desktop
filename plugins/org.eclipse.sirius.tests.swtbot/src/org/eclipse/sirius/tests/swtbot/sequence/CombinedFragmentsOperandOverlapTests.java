@@ -540,6 +540,7 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
      */
     public void testReziseLastOperand() {
         editor.click(secondOperandOfFirstCombinedFragmentBounds.getCenter());
+        bot.waitUntil(new CheckSelectedCondition(editor, secondOperandOfFirstCombinedFragmentBot.part()));
 
         Dimension expectedResize = new Dimension(0, 200);
         CheckEditPartResized cR = new CheckEditPartResized(secondOperandOfFirstCombinedFragmentBot);
