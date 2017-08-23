@@ -486,7 +486,7 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     /**
      * Test that tries to resize an execution in the first operand lower than the operand bottom bound (not accepted).
      */
-    public void testReziseExecutionOutOfFirstOperandUpperBound() {
+    public void testResizeExecutionOutOfFirstOperandUpperBound() {
         e2Bot.select();
 
         Point expectedTranslation = new Point(0, 200);
@@ -504,7 +504,7 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
      * Test that resizes an execution in the last operand lower than the operand bottom bound (accepted). Then,
      * dimension of resized or moved elements are checked.
      */
-    public void testReziseExecutionOutOfLastOperandLowerBound() {
+    public void testResizeExecutionOutOfLastOperandLowerBound() {
         String toolName = "Execution";
         ICondition done = new CheckToolIsActivated(editor, toolName);
         editor.activateTool(toolName);
@@ -536,25 +536,84 @@ public class CombinedFragmentsOperandOverlapTests extends AbstractCombinedFragme
     }
 
     /**
-     * Test last operand resize that expand the whole combined fragment.
+     * Test that resizes last operand in the bottom direction. Expected effect:
+     * Expand the whole combined fragment.
      */
-    public void testReziseLastOperand() {
+    public void testResizeLastOperand() {
         editor.click(secondOperandOfFirstCombinedFragmentBounds.getCenter());
         bot.waitUntil(new CheckSelectedCondition(editor, secondOperandOfFirstCombinedFragmentBot.part()));
 
         Dimension expectedResize = new Dimension(0, 200);
         CheckEditPartResized cR = new CheckEditPartResized(secondOperandOfFirstCombinedFragmentBot);
         editor.drag(secondOperandOfFirstCombinedFragmentBounds.getBottom(), secondOperandOfFirstCombinedFragmentBounds.getBottom().getCopy().getTranslated(expectedResize));
-        bot.waitUntil(cR);
+        bot.waitUntil(cR, 2000);
 
         SWTBotGefEditPart secondOperandOfFirstCombinedFragmentBotAfterRezize = firstCombinedFragmentBot.descendants(IsInstanceOf.instanceOf(OperandEditPart.class)).get(1);
         Rectangle secondOperandOfFirstCombinedFragmentBoundsAfterRezize = editor.getBounds(secondOperandOfFirstCombinedFragmentBotAfterRezize);
 
+        SWTBotGefEditPart firstCombinedFragmentBotAfterRezize = sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(CombinedFragmentEditPart.class)).get(0);
+        Rectangle firstCombinedFragmentBoundsAfterRezize = editor.getBounds(firstCombinedFragmentBotAfterRezize);
+
         SWTBotGefEditPart secondCombinedFragmentBotAfterRezize = sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(CombinedFragmentEditPart.class)).get(1);
         Rectangle secondCombinedFragmentBoundsAfterRezize = editor.getBounds(secondCombinedFragmentBotAfterRezize);
 
+        assertEquals("The Combined Fragment containing the resized Operand should be resized too.", firstCombinedFragmentBounds.getBottom().y - firstCombinedFragmentBoundsAfterRezize.getBottom().y,
+                secondOperandOfFirstCombinedFragmentBounds.getBottom().y - secondOperandOfFirstCombinedFragmentBoundsAfterRezize.getBottom().y);
         assertEquals("The gap between both Combined Fragment should be unchanged.", secondCombinedFragmentBounds.getTop().y - firstCombinedFragmentBounds.getBottom().y,
                 secondCombinedFragmentBoundsAfterRezize.getTop().y - secondOperandOfFirstCombinedFragmentBoundsAfterRezize.getBottom().y);
     }
 
+    /**
+     * Test that resizes the first operand in top direction. Expected effect:
+     * Expand the whole combined fragment.
+     */
+    public void testResizeFirstOperand() {
+        editor.click(firstOperandOfFirstCombinedFragmentBounds.getCenter());
+        bot.waitUntil(new CheckSelectedCondition(editor, firstOperandOfFirstCombinedFragmentBot.part()));
+
+        // Make a resize just after the first execution of the life line (that
+        // constraints the resize)
+        double maxDelta = (firstCombinedFragmentBounds.getTop().preciseY() - e1Bounds.getBottom().preciseY() - LayoutConstants.EXECUTION_CHILDREN_MARGIN);
+        CheckEditPartResized cR = new CheckEditPartResized(firstOperandOfFirstCombinedFragmentBot);
+        editor.drag(firstOperandOfFirstCombinedFragmentBounds.getTop(),
+                firstOperandOfFirstCombinedFragmentBounds.getTop().translate(0, -maxDelta));
+        bot.waitUntil(cR, 2000);
+
+        SWTBotGefEditPart firstOperandOfFirstCombinedFragmentBotAfterRezize = firstCombinedFragmentBot.descendants(IsInstanceOf.instanceOf(OperandEditPart.class)).get(0);
+        Rectangle firstOperandOfFirstCombinedFragmentBoundsAfterRezize = editor.getBounds(firstOperandOfFirstCombinedFragmentBotAfterRezize);
+
+        SWTBotGefEditPart firstCombinedFragmentBotAfterRezize = sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(CombinedFragmentEditPart.class)).get(0);
+        Rectangle firstCombinedFragmentBoundsAfterRezize = editor.getBounds(firstCombinedFragmentBotAfterRezize);
+
+        SWTBotGefEditPart secondCombinedFragmentBotAfterRezize = sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(CombinedFragmentEditPart.class)).get(1);
+        Rectangle secondCombinedFragmentBoundsAfterRezize = editor.getBounds(secondCombinedFragmentBotAfterRezize);
+
+        assertEquals("The Combined Fragment containing the resized Operand should be resized too.", firstCombinedFragmentBounds.getTop().y - firstCombinedFragmentBoundsAfterRezize.getTop().y,
+                firstOperandOfFirstCombinedFragmentBounds.getTop().y - firstOperandOfFirstCombinedFragmentBoundsAfterRezize.getTop().y);
+        assertEquals("The gap between both Combined Fragment should be unchanged.", secondCombinedFragmentBounds.getTop().y - firstCombinedFragmentBounds.getBottom().y,
+                secondCombinedFragmentBoundsAfterRezize.getTop().y - firstCombinedFragmentBoundsAfterRezize.getBottom().y);
+    }
+
+    /**
+     * Test that resizes the first operand in top direction, but forbidden
+     * because the combined fragment can not be resized as an execution exists
+     * above. Expected effect: Nothing changes.
+     */
+    public void testResizeFirstOperandOutOfAuthorized() {
+        editor.click(firstOperandOfFirstCombinedFragmentBounds.getCenter());
+        bot.waitUntil(new CheckSelectedCondition(editor, firstOperandOfFirstCombinedFragmentBot.part()));
+
+        // Make a resize just before the first execution of the life line (that
+        // forbids the resize)
+        double maxDelta = (firstCombinedFragmentBounds.getTop().preciseY() - e1Bounds.getBottom().preciseY() + LayoutConstants.EXECUTION_CHILDREN_MARGIN);
+        CheckEditPartResized cR = new CheckEditPartResized(firstOperandOfFirstCombinedFragmentBot);
+        editor.drag(firstOperandOfFirstCombinedFragmentBounds.getTop(),
+                firstOperandOfFirstCombinedFragmentBounds.getTop().translate(0, -maxDelta - 1));
+        try {
+            bot.waitUntil(cR, 2000);
+            fail("An execution can be resized further than its parent operand top bound only if the combined fragment can be resized too.");
+        } catch (TimeoutException te) {
+            // Failed as expected.
+        }
+    }
 }
