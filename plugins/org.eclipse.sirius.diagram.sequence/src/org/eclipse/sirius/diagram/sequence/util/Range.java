@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ public class Range {
      *            the upper bound of the range.
      */
     public Range(int lower, int upper) {
-        Preconditions.checkArgument(lower <= upper);
+        Preconditions.checkArgument(lower <= upper, Messages.Range_wrongArgument);
         this.lower = lower;
         this.upper = upper;
     }
