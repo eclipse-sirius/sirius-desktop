@@ -143,6 +143,7 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     private Command getResizeCustomCommand(OperandEditPart self, ChangeBoundsRequest request) {
+        Command result = null;
         CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(self.getEditingDomain(), Messages.OperandResizableEditPolicy_resizeCompositeCommand);
         ctc.add(OperandResizableEditPolicy.getResizeBorderItemTCommand(self, request));
         Option<Operand> operandOption = ISequenceElementAccessor.getOperand(self.getNotationView());
@@ -154,9 +155,13 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
                 // previous operand
                 OperandEditPart previousOperandEditPart = getPreviousOperandEditPart(operandIndex);
                 if (previousOperandEditPart == null && self.getSelected() != EditPart.SELECTED_NONE) {
-                    // There is no previous operand, resize from north face
-                    // is forbidden
-                    ctc.add(new CommandProxy(UnexecutableCommand.INSTANCE));
+                    // There is no previous operand, resize from north face is forwarded to the parent
+                    // CombinedFragmentEditPart in order to resize it instead.
+                    if (getHost() != null && getHost().getParent() != null && getHost().getParent().getParent() instanceof CombinedFragmentEditPart) {
+                        result = getHost().getParent().getParent().getCommand(request);
+                    } else {
+                        ctc.add(new CommandProxy(UnexecutableCommand.INSTANCE));
+                    }
                 } else if (previousOperandEditPart != null) {
                     // We apply the inverse resize to the previous operand
                     Option<Operand> previousOperandOption = ISequenceElementAccessor.getOperand(previousOperandEditPart.getNotationView());
@@ -175,7 +180,7 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
                     // There is no following operand, resize from south face is forwarded to the parent
                     // CombinedFragmentEditPart in order to resize it instead.
                     if (getHost() != null && getHost().getParent() != null && getHost().getParent().getParent() instanceof CombinedFragmentEditPart) {
-                        return getHost().getParent().getParent().getCommand(request);
+                        result = getHost().getParent().getParent().getCommand(request);
                     } else {
                         ctc.add(new CommandProxy(UnexecutableCommand.INSTANCE));
                     }
@@ -192,6 +197,10 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
                     postProcessDefaultCommand(ctc, self);
                 }
             }
+        }
+        if (result != null) {
+            // The resulting has been computing from another edit part, return it
+            return result;
         }
         return new ICommandProxy(ctc);
     }
