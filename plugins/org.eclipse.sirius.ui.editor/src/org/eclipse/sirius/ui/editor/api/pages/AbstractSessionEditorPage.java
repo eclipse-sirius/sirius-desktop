@@ -64,7 +64,9 @@ public abstract class AbstractSessionEditorPage extends FormPage {
      * @return the id of the page to take in consideration when positioning this
      *         page. {@link Optional#empty()} if no positioning is provided.
      */
-    public abstract Optional<String> getLocationId();
+    public Optional<String> getLocationId() {
+        return Optional.of(DefaultSessionEditorPage.PAGE_ID);
+    }
 
     /**
      * Returns the kind of positioning to apply regarding the target page
@@ -93,7 +95,9 @@ public abstract class AbstractSessionEditorPage extends FormPage {
      * @return an {@link PageUpdateCommand} the editor should execute.
      *         {@link Optional#empty()} if no update should be done.
      */
-    public abstract Optional<PageUpdateCommand> resourceSetChanged(ResourceSetChangeEvent resourceSetChangeEvent);
+    public Optional<PageUpdateCommand> resourceSetChanged(ResourceSetChangeEvent resourceSetChangeEvent) {
+        return Optional.empty();
+    }
 
     /**
      * Notifies the page that its visibility status has changed. You can return
@@ -119,7 +123,9 @@ public abstract class AbstractSessionEditorPage extends FormPage {
      *         from session editor owning this page. {@link Optional#empty()} if
      *         no update must be done.
      */
-    public abstract Optional<PageUpdateCommand> pageChanged(boolean isVisible);
+    public Optional<PageUpdateCommand> pageChanged(boolean isVisible) {
+        return Optional.empty();
+    }
 
     /**
      * Returns a filter that will reduce the call to the method
