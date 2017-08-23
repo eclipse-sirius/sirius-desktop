@@ -162,11 +162,35 @@ public class Range {
      * @return <code>true</code> if the element is included in the range.
      */
     public boolean includes(int value) {
+        return includes(value, false, false);
+    }
+
+    /**
+     * Tests whether on element is included or not in the range.
+     * 
+     * @param value
+     *            the element to test.
+     * @param excludeLowerBounds
+     *            true to exclude the lower bounds of the {@link Range}, false otherwise
+     * @param excludeUpperBounds
+     *            true to exclude the upper bounds of the {@link Range}, false otherwise
+     * @return <code>true</code> if the element is included in the range.
+     */
+    public boolean includes(int value, boolean excludeLowerBounds, boolean excludeUpperBounds) {
+        boolean result = false;
         if (!isEmpty()) {
-            return lower <= value && value <= upper;
-        } else {
-            return false;
+            if (excludeLowerBounds) {
+                result = lower < value;
+            } else {
+                result = lower <= value;
+            }
+            if (excludeUpperBounds) {
+                result = result && value < upper;
+            } else {
+                result = result && value <= upper;
+            }
         }
+        return result;
     }
 
     /**

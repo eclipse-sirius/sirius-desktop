@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,8 +41,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
- * An operation to shift all the atomic events on a sequence diagram below a
- * certain point to make room.
+ * An operation to shift all the atomic events on a sequence diagram below a certain point to make room. The space is
+ * added from a point to the bottom direction.
  * 
  * @author pcdavid, smonnier
  */
@@ -76,11 +76,9 @@ public class VerticalSpaceExpansion extends AbstractModelChangeOperation<Void> {
      * @param shift
      *            the zone to expand.
      * @param move
-     *            how much the main execution which triggered this change is
-     *            vertically moved.
+     *            how much the main execution which triggered this change is vertically moved.
      * @param eventsToIgnore
-     *            the events which should be ignored, as they will be moved into
-     *            the new space.
+     *            the events which should be ignored, as they will be moved into the new space.
      */
     public VerticalSpaceExpansion(SequenceDiagram diagram, Range shift, Integer move, Collection<ISequenceEvent> eventsToIgnore) {
         super(MessageFormat.format(Messages.VerticalSpaceExpansion_operationName, shift));
@@ -305,11 +303,11 @@ public class VerticalSpaceExpansion extends AbstractModelChangeOperation<Void> {
     }
 
     private boolean containsInsertionPoint(ISequenceEvent event) {
-        return event != null && event.getVerticalRange().includes(insertionPoint);
+        return event != null && event.getVerticalRange().includes(insertionPoint, true, false);
     }
 
     private boolean isStrictlyBelowInsertionPoint(ISequenceEvent event) {
-        return event != null && event.getVerticalRange().getLowerBound() > insertionPoint;
+        return event != null && event.getVerticalRange().getLowerBound() >= insertionPoint;
     }
 
     private void expandDown(Lifeline lifeline, int height) {

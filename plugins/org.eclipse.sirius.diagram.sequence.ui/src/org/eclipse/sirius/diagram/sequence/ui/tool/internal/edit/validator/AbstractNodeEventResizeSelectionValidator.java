@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
@@ -182,10 +183,10 @@ public class AbstractNodeEventResizeSelectionValidator {
             // GraphicalHelper.verticalRange(newBounds));
             boolean okForParent = ((AbstractNodeEvent) self.getISequenceEvent()).getLifeline().get().getValidSubEventsRange().includes(RangeHelper.verticalRange(newBounds));
             /*
-             * Expansion of the last operand is valid and triggers a zone expansion.
+             * Expansion of the operand is valid and triggers a zone expansion.
              */
             if (requestQuery.isResize()) {
-                if (parent instanceof Operand && requestQuery.isResizeFromBottom() && ((Operand) parent).getCombinedFragment().getLastOperand().equals(parent)) {
+                if (parent instanceof Operand && requestQuery.isResizeFromBottom()) {
                     okForParent = parent.getVerticalRange().getLowerBound() < RangeHelper.verticalRange(newBounds).getLowerBound();
                     if (parent.getVerticalRange().getUpperBound() < RangeHelper.verticalRange(newBounds).getUpperBound()) {
                         expansionZone = new Range(parent.getVerticalRange().getUpperBound(), RangeHelper.verticalRange(newBounds).getUpperBound() + LayoutConstants.EXECUTION_CHILDREN_MARGIN);
@@ -440,7 +441,6 @@ public class AbstractNodeEventResizeSelectionValidator {
         } else {
             final Range finalRange = RangeHelper.verticalRange(newBounds);
             Function<ISequenceEvent, Range> futureRangeFunction = new Function<ISequenceEvent, Range>() {
-
                 @Override
                 public Range apply(ISequenceEvent from) {
                     Range verticalRange = from.getVerticalRange();
@@ -467,8 +467,13 @@ public class AbstractNodeEventResizeSelectionValidator {
                                 verticalRange = verticalRange.shifted(requestQuery.getLogicalDelta().height);
                             }
                         }
+                    } else if (from instanceof Operand && from.equals(host.getParentEvent())) {
+                        // The parent Operand will be resized.
+                        verticalRange = finalRange.grown(LayoutConstants.EXECUTION_CHILDREN_MARGIN).union(verticalRange);
+                    } else if (from instanceof CombinedFragment && host.getParentEvent() != null && from.equals(host.getParentEvent().getParentEvent())) {
+                        // The grand parent CombinedFragment will be resized.
+                        verticalRange = finalRange.shifted(-LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT - LayoutConstants.EXECUTION_CHILDREN_MARGIN).union(verticalRange);
                     }
-
                     return verticalRange;
                 }
             };
