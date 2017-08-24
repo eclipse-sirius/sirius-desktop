@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Interactio
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
-import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 
@@ -232,7 +231,7 @@ public abstract class AbstractInteractionFrameValidator {
         Iterator<ISequenceEvent> iterator = unMovedParents.iterator();
         while (checked && iterator.hasNext()) {
             ISequenceEvent parent = iterator.next();
-            Range parentRange = parent.getVerticalRange();
+            Range parentRange = parent.getValidSubEventsRange();
 
             if (expansionZone != null && !expansionZone.isEmpty()) {
                 parentRange = new Range(parentRange.getLowerBound(), parentRange.getUpperBound() + expansionZone.width());
@@ -241,7 +240,7 @@ public abstract class AbstractInteractionFrameValidator {
              * We make two tests separately so that is is easier when debugging
              * to determine which of the conditions went wrong, if any.
              */
-            boolean interactionInRange = parentRange.includes(finalRange.grown(LayoutConstants.EXECUTION_CHILDREN_MARGIN));
+            boolean interactionInRange = parentRange.includes(finalRange);
             checked = checked && interactionInRange;
         }
 

@@ -185,12 +185,12 @@ public class AbstractNodeEventResizeSelectionValidator {
              * Expansion of the last operand is valid and triggers a zone expansion.
              */
             if (requestQuery.isResize()) {
-                if (parent instanceof Operand && ((Operand) parent).getCombinedFragment().getLastOperand().equals(parent)) {
+                if (parent instanceof Operand && requestQuery.isResizeFromBottom() && ((Operand) parent).getCombinedFragment().getLastOperand().equals(parent)) {
                     okForParent = parent.getVerticalRange().getLowerBound() < RangeHelper.verticalRange(newBounds).getLowerBound();
                     if (parent.getVerticalRange().getUpperBound() < RangeHelper.verticalRange(newBounds).getUpperBound()) {
                         expansionZone = new Range(parent.getVerticalRange().getUpperBound(), RangeHelper.verticalRange(newBounds).getUpperBound() + LayoutConstants.EXECUTION_CHILDREN_MARGIN);
                     }
-                } else if (!parent.getVerticalRange().includes(RangeHelper.verticalRange(newBounds))) {
+                } else if (!parent.getValidSubEventsRange().includes(RangeHelper.verticalRange(newBounds))) {
                     okForParent = false;
                 }
             }
