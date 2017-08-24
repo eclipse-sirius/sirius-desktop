@@ -76,16 +76,14 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
- * Abstract class define common behavior between all
- * {@link CanonicalSynchronizer}s.
+ * Abstract class define common behavior between all {@link CanonicalSynchronizer}s.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchronizer {
 
     /**
-     * Say if we should store created views to layout in
-     * SiriusLayoutDataManager.
+     * Say if we should store created views to layout in SiriusLayoutDataManager.
      */
     protected boolean storeViews2Arrange = true;
 
@@ -97,8 +95,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     /**
      * Store regions containers and its impacted status:
      * <UL>
-     * <LI>A regions container is considered as impacted if it contains at least
-     * one new view or if at least one of its views has been deleted.</LI>
+     * <LI>A regions container is considered as impacted if it contains at least one new view or if at least one of its
+     * views has been deleted.</LI>
      * <LI>if impacted, the regions container must be layouted</LI>
      * </UL>
      * .
@@ -145,8 +143,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     /**
-     * Refresh the specified {@link View} children with the specified semantic
-     * element.
+     * Refresh the specified {@link View} children with the specified semantic element.
      * 
      * @param gmfView
      *            the specified {@link View}
@@ -227,20 +224,16 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     /**
-     * Set the gmfView, or its ancestor representation the real regions
-     * container, as impacted by the changes (new views, removed views or order
-     * change).
+     * Set the gmfView, or its ancestor representation the real regions container, as impacted by the changes (new
+     * views, removed views or order change).
      * 
      * @param gmfView
-     *            The concerned view (corresponding to the regions container
-     *            itself or one of its sub-part)
+     *            The concerned view (corresponding to the regions container itself or one of its sub-part)
      * @param isRegionsContainer
-     *            true is the current view represents the regions container,
-     *            false otherwise
+     *            true is the current view represents the regions container, false otherwise
      * @param isPartOfRegionsContainer
-     *            true is the current view represents the regions container or a
-     *            sub-part of the regions container (as CompartmentView for
-     *            example), false otherwise
+     *            true is the current view represents the regions container or a sub-part of the regions container (as
+     *            CompartmentView for example), false otherwise
      */
     private void setRegionsContainerAsImpacted(final View gmfView, boolean isRegionsContainer, boolean isPartOfRegionsContainer) {
         if (isRegionsContainer) {
@@ -264,13 +257,10 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     /**
-     * Refresh the GMF Views ordering according to the DDiagramElements
-     * ordering. In precondition to this call, is that the refreshSemantic()
-     * must be called to have same View children number as DDiagramElement
-     * children number.
+     * Refresh the GMF Views ordering according to the DDiagramElements ordering. In precondition to this call, is that
+     * the refreshSemantic() must be called to have same View children number as DDiagramElement children number.
      * 
-     * Could be called by a ListCompartmentEditPart's or RegionContainer edit
-     * part CanonicalEditPolicy.
+     * Could be called by a ListCompartmentEditPart's or RegionContainer edit part CanonicalEditPolicy.
      * 
      * @param gmfView
      * @return true if an element was moved.
@@ -314,8 +304,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     /**
-     * Creates a <code>View</code> element for each of the supplied semantic
-     * elements.
+     * Creates a <code>View</code> element for each of the supplied semantic elements.
      * 
      * @param eObjects
      *            list of semantic element
@@ -486,7 +475,11 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                     // are
                     // created at same time.
                     Bounds previousBounds = (Bounds) ((Node) previousCreatedView).getLayoutConstraint();
-                    location = new Point(previousBounds.getX(), previousBounds.getY()).getTranslated(SiriusLayoutDataManager.PADDING, SiriusLayoutDataManager.PADDING);
+                    int padding = SiriusLayoutDataManager.PADDING;
+                    if (isSnapToGrid()) {
+                        padding = getGridSpacing();
+                    }
+                    location = new Point(previousBounds.getX(), previousBounds.getY()).getTranslated(padding, padding);
                 }
             }
             // if a location has been registered in
@@ -799,8 +792,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * @param element
      *            the element to check
      * 
-     * @return true if the element is a direct child of {@link DDiagram}, false
-     *         otherwise
+     * @return true if the element is a direct child of {@link DDiagram}, false otherwise
      */
     protected boolean isTopLevelNode(EObject element) {
         boolean isTopLevelNode = false;
@@ -813,14 +805,12 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     /**
-     * Check if element is a child of {@link DNodeContainer} but not a bordered
-     * node.
+     * Check if element is a child of {@link DNodeContainer} but not a bordered node.
      * 
      * @param element
      *            the element to check
      * 
-     * @return true if the element is a child of {@link DNodeContainer} but not
-     *         a bordered node, false otherwise
+     * @return true if the element is a child of {@link DNodeContainer} but not a bordered node, false otherwise
      */
     private boolean isChildNodeButNotBorderedNodeOfContainer(EObject element) {
         boolean isChildNodeButNotBorderedNodeOfContainer = false;
@@ -905,13 +895,12 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     /**
-     * Deletes a list of views. The views will be deleted <tt>if</tt> their
-     * semantic element has also been deleted.
+     * Deletes a list of views. The views will be deleted <tt>if</tt> their semantic element has also been deleted.
      * 
      * @param views
      *            the {@link View}s to delete
-     * @return <tt>true</tt> if the host editpart should be refreshed; either
-     *         one one of the supplied views was deleted or has been reparented.
+     * @return <tt>true</tt> if the host editpart should be refreshed; either one one of the supplied views was deleted
+     *         or has been reparented.
      */
     protected boolean deleteViews(Collection<? extends View> views) {
         for (View view : views) {
@@ -936,8 +925,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     /**
-     * Get all incoming and outgoing edges of this <code>view</code> or of one
-     * of its children (except NoteAttachment).
+     * Get all incoming and outgoing edges of this <code>view</code> or of one of its children (except NoteAttachment).
      * 
      * @param view
      *            the concern view
