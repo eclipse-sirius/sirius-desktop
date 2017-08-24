@@ -1,0 +1,11 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+icons/close.gif - org.eclipse.ui -org.eclipse.ui/icons/full/elcl16/progress_rem.gif
+icons/collapseall.png - org.eclipse.ui.ide - org.eclipse.ui/icons/full/elcl16/collapseall.png 
+icons/filter_ps.png - org.eclipse.ui.ide - org.eclipse.ui/icons/full/elcl16/filter_ps.png
+icons/SessionResourceFile.gif - org.eclipse.osgi - org.eclipse.osgi/bundles/385/1/.cp/icons/full/obj16/fileType_filter.gif
+icons/SiriusFile.gif - org.eclipse.osgi - org.eclipse.osgi/bundles/385/1/.cp/icons/full/obj16/fileType_filter.gif

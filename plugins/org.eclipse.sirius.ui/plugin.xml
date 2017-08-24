@@ -615,12 +615,6 @@
 	        id="org.eclipse.sirius.ui.tools.internal.actions.nature.addRemoveNatureCommand"
 	        name="%_UI_ModelingProjectWizard_label">
 	</command>
- <command
-       categoryId="org.eclipse.ui.category.file"
-       defaultHandler="org.eclipse.sirius.ui.business.internal.commands.CloseSessionHandler"
-       id="org.eclipse.sirius.ui.closeSessionCommand"
-       name="%_UI_CloseSessionCommand_name">
- </command>		
 	</extension>
 	
 		
@@ -651,35 +645,6 @@
    </extension>
  <extension
        point="org.eclipse.ui.menus">
-    <menuContribution
-          allPopups="false"
-          locationURI="popup:org.eclipse.ui.popup.any?before=additions">
-       <command
-             commandId="org.eclipse.sirius.ui.closeSessionCommand"
-             icon="icons/full/others/close.gif"
-             id="org.eclipse.sirius.ui.closeSessionMenuContribution"
-             label="%_UI_CloseSession_label"
-             style="push">
-          <visibleWhen
-                checkEnabled="false">
-             <iterate>
-                  <adapt
-                   type="org.eclipse.core.resources.IResource">
-                     <and>
-                        <test
-                              property="org.eclipse.sirius.ui.isSessionFile">
-                        </test>
-                        <not>
-                           <test
-                                 property="org.eclipse.sirius.ui.isFileInModelingProject">
-                           </test>
-                        </not>
-                     </and>
-             </adapt>
-             </iterate>
-          </visibleWhen>
-       </command>
-    </menuContribution>
  <menuContribution
        locationURI="popup:org.eclipse.ui.popup.any?after=additions">
     <command

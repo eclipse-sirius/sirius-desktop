@@ -83,4 +83,39 @@
          </dropAssistant>
       </navigatorContent>
    </extension>
+    <extension
+       point="org.eclipse.ui.menus">
+    <menuContribution
+          allPopups="false"
+          locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+       <command
+             commandId="org.eclipse.sirius.ui.closeSessionCommand"
+             icon="icons/close.gif"
+             id="org.eclipse.sirius.ui.closeSessionMenuContribution"
+             label="%UI_CloseSession_label"
+             style="push">
+          <visibleWhen
+                checkEnabled="false">
+             <iterate>
+                  <adapt
+                   type="org.eclipse.core.resources.IResource">
+                <test
+                      property="org.eclipse.sirius.ui.isSessionFile">
+                </test>
+             </adapt>
+             </iterate>
+          </visibleWhen>
+       </command>
+    </menuContribution>
+ </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+ <command
+       categoryId="org.eclipse.ui.category.file"
+       defaultHandler="org.eclipse.sirius.ui.business.internal.commands.CloseSessionHandler"
+       id="org.eclipse.sirius.ui.closeSessionCommand"
+       name="%UI_CloseSessionCommand_name">
+ </command>		
+	</extension>
+	
 </plugin>
