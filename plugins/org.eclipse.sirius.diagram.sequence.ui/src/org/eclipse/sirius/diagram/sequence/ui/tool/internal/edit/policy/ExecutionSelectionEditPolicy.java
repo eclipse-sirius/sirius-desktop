@@ -23,12 +23,14 @@ import org.eclipse.draw2d.FreeformViewport;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
@@ -140,6 +142,33 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         ExecutionEditPart hostPart = (ExecutionEditPart) getHost();
         AbstractNodeEvent host = (AbstractNodeEvent) hostPart.getISequenceEvent();
 
+        // The resize in top direction is not handled as the resize in bottom direction. A vertical space expansion can
+        // be needed for resize to bottom, and there is always free space in bottom. All this aspect is handled by the
+        // AbstractNodeEventResizeSelectionValidator. For resize to top, we only need to resize recursively the parent
+        // as long as it is possible.
+        Command resizeParentToTopCmd = null;
+        RequestQuery requestQuery = new RequestQuery(request);
+        if (requestQuery.isResizeFromTop()) {
+            ISequenceEvent parentEvent = host.getParentEvent();
+            EditPart parentEventEditPart = (EditPart) hostPart.getViewer().getEditPartRegistry().get(parentEvent.getNotationView());
+            if (hostPart != null && parentEventEditPart != null) {
+                // Get resize command in top direction from for its container
+                Rectangle executionFinalBounds = requestQuery.getFinalBounds(hostPart);
+                Range executionFinalRange = RangeHelper.verticalRange(executionFinalBounds);
+                if (parentEvent.getValidSubEventsRange().getLowerBound() >= executionFinalRange.getLowerBound()) {
+                    ChangeBoundsRequest parentRequest = new ChangeBoundsRequest(request.getType());
+                    int yDelta = parentEvent.getValidSubEventsRange().getLowerBound() - executionFinalRange.getLowerBound();
+                    parentRequest.setMoveDelta(new PrecisionPoint(request.getMoveDelta().x(), -yDelta));
+                    parentRequest.setSizeDelta(new Dimension(request.getSizeDelta().width(), yDelta));
+                    parentRequest.setEditParts(parentEventEditPart);
+                    parentRequest.setResizeDirection(request.getResizeDirection());
+                    parentRequest.setLocation(request.getLocation());
+
+                    resizeParentToTopCmd = parentEventEditPart.getCommand(parentRequest);
+                }
+            }
+        }
+
         AbstractNodeEventResizeSelectionValidator validator = AbstractNodeEventResizeSelectionValidator.getOrCreateValidator(request, host);
 
         if (validator.isValid()) {
@@ -147,7 +176,14 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             if (solution == null) {
                 solution = IdentityCommand.INSTANCE;
             }
-            result = new ICommandProxy(solution);
+            if (resizeParentToTopCmd == null) {
+                result = new ICommandProxy(solution);
+            } else if (resizeParentToTopCmd.canExecute()) {
+                CompoundCommand cc = new CompoundCommand(solution.getLabel());
+                cc.add(resizeParentToTopCmd);
+                cc.add(new ICommandProxy(solution));
+                result = cc;
+            }
         }
         return result;
     }
@@ -162,7 +198,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             validator.setExpansionZone(null);
         }
 
-        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(hostPart.getEditingDomain(), Messages.ExecutionSelectionEditPolicy_resizeCompositeCommand);
+        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, Messages.ExecutionSelectionEditPolicy_resizeCompositeCommand);
         if (needVerticalSpaceExpansion(validator, request)) {
             SequenceDiagramEditPart diagram = EditPartsHelper.getSequenceDiagramPart(hostPart);
             Collection<ISequenceEvent> eventToIgnore = Collections.singletonList((ISequenceEvent) self);

@@ -154,7 +154,7 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
                 // Resizing the operand from north face must resize the
                 // previous operand
                 OperandEditPart previousOperandEditPart = getPreviousOperandEditPart(operandIndex);
-                if (previousOperandEditPart == null && self.getSelected() != EditPart.SELECTED_NONE) {
+                if (previousOperandEditPart == null) {
                     // There is no previous operand, resize from north face is forwarded to the parent
                     // CombinedFragmentEditPart in order to resize it instead.
                     if (getHost() != null && getHost().getParent() != null && getHost().getParent().getParent() instanceof CombinedFragmentEditPart) {

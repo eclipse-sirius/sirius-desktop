@@ -186,11 +186,8 @@ public class AbstractNodeEventResizeSelectionValidator {
              * Expansion of the operand is valid and triggers a zone expansion.
              */
             if (requestQuery.isResize()) {
-                if (parent instanceof Operand && requestQuery.isResizeFromBottom()) {
-                    okForParent = parent.getVerticalRange().getLowerBound() < RangeHelper.verticalRange(newBounds).getLowerBound();
-                    if (parent.getVerticalRange().getUpperBound() < RangeHelper.verticalRange(newBounds).getUpperBound()) {
-                        expansionZone = new Range(parent.getVerticalRange().getUpperBound(), RangeHelper.verticalRange(newBounds).getUpperBound() + LayoutConstants.EXECUTION_CHILDREN_MARGIN);
-                    }
+                if (parent instanceof Operand) {
+                    okForParent = validateNewBounds(self, newBounds, (Operand) parent);
                 } else if (!parent.getValidSubEventsRange().includes(RangeHelper.verticalRange(newBounds))) {
                     okForParent = false;
                 }
@@ -204,6 +201,23 @@ public class AbstractNodeEventResizeSelectionValidator {
         return result;
     }
 
+    private boolean validateNewBounds(ExecutionEditPart self, Rectangle newBounds, Operand parent) {
+        boolean okForParent = false;
+        if (requestQuery.isResizeFromBottom()) {
+            if (parent.getValidSubEventsRange().getLowerBound() < RangeHelper.verticalRange(newBounds).getLowerBound()) {
+                okForParent = true;
+                if (parent.getValidSubEventsRange().getUpperBound() < RangeHelper.verticalRange(newBounds).getUpperBound()) {
+                    expansionZone = new Range(parent.getValidSubEventsRange().getUpperBound(), RangeHelper.verticalRange(newBounds).getUpperBound());
+                }
+            }
+        } else if (requestQuery.isResizeFromTop()) {
+            // We consider that parent is resize before if needed.
+            okForParent = true;
+        } else if (parent.getValidSubEventsRange().includes(RangeHelper.verticalRange(newBounds))) {
+            okForParent = true;
+        }
+        return okForParent;
+    }
     /**
      * If this execution is delimited by a start and finish message, make sure they always point to the same remote
      * execution/lifeline.

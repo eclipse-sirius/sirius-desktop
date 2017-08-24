@@ -17,6 +17,7 @@ h3. User-Visible Changes
 * <span class="label label-info">Modified</span> In a diagram with _snapToGrid_ enabled, when you create an edge with a tool that also create the associated border nodes, the border nodes are now snapped near the click location. Before, it was created to respect a shortest path.
 !./images/borderNodesWithSnapToGrid.png! 
 * <span class="label label-info">Modified</span> In a sequence diagram, it is now possible to resize the combined fragment when the first or the last operand is selected (increase the size of the first operand to the top, or increase the size of the last operand to the bottom). Before, it was necessary to select the combined fragment itself to resize it. 
+* <span class="label label-info">Modified</span> In a sequence diagram, it is now possible to resize an _Execution_ contained in an _Operand_ without previously resize its _Operand_ if more space is needed. The _Operand_, and if necessary the _Combined Fragment_, is resized too.
 
 h3. Specifier-Visible Changes
 

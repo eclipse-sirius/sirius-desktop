@@ -1223,9 +1223,11 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         Rectangle executionBoundsB = editor.getBounds(executionB);
         assertEquals("the execution position is wrong", combinedFragmentBoundsA.getCenter().y, executionBoundsB.getTop().y);
 
-        // Resize execution in combined fragment, near the upper bound of the
-        // Operand (it's forbidden)
-        int limitAuthorized = combinedFragmentBoundsA.getTop().y + LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT + LayoutConstants.EXECUTION_CHILDREN_MARGIN;
+        // Resize execution in combined fragment, just before the lower bound of
+        // the lifeline, just when grand parent Combined Fragment becomes
+        // unauthorized (it's forbidden)
+        int limitAuthorized = getBounds(LIFELINE_A, true).getBottom().y + LayoutConstants.TIME_START_MIN_OFFSET + LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT
+                + LayoutConstants.EXECUTION_CHILDREN_MARGIN;
         int previousExecutionTop = executionBoundsB.getTop().y;
         editor.drag(executionBoundsB.getTop(), combinedFragmentBoundsA.getCenter().x, limitAuthorized - 1);
         bot.sleep(500);
@@ -1233,8 +1235,9 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         executionBoundsB = editor.getBounds(executionB);
         assertEquals("the execution must not be moved", previousExecutionTop, executionBoundsB.getTop().y);
 
-        // Resize execution in combined fragment, just after the upper bound of
-        // the Operand
+        // Resize execution in combined fragment, just before the lower bound of
+        // the lifeline, just when grand parent Combined Fragment starts to be
+        // authorized
         ICondition done = new OperationDoneCondition();
         editor.drag(executionBoundsB.getTop(), combinedFragmentBoundsA.getCenter().x, limitAuthorized);
         bot.waitUntil(done);
