@@ -824,7 +824,7 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         arrangeAll();
         editor.maximize();
         // Create first execution on lifeLine A
-        createExecutionWithResult(new Point(getLifelineScreenX(LIFELINE_A), 150)).get();
+        SWTBotGefEditPart firstExecutionA = createExecutionWithResult(new Point(getLifelineScreenX(LIFELINE_A), 150)).get();
         Rectangle firstExecutionBoundsA = assertExecutionHasValidScreenBounds(LIFELINE_A, 0, new Rectangle(0, 150, 0, 30), false);
         // Create second execution on lifeLine A
         SWTBotGefEditPart secondExecutionA = createExecutionWithResult(new Point(getLifelineScreenX(LIFELINE_A), 250)).get();
@@ -909,6 +909,14 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         secondExecutionBoundsAResize = new Rectangle(secondExecutionBoundsA.x, secondExecutionBoundsA.y, secondExecutionBoundsA.width, secondExecutionBoundsA.height);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 2, thirdExecutionBoundsAResize, true);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 1, secondExecutionBoundsAResize, true);
+
+        // Resize first execution on the life line bound limit. This action is
+        // forbidden.
+        editor.select(firstExecutionA);
+        bot.waitUntil(new CheckSelectedCondition(editor, firstExecutionA.part()));
+        editor.drag(firstExecutionBoundsA.getTop(), firstExecutionBoundsA.getTop().x, getBounds(LIFELINE_A, true).getBottom().y + LayoutConstants.TIME_START_MIN_OFFSET - 1);
+        bot.sleep(500);
+        assertExecutionHasValidScreenBounds(LIFELINE_A, 0, firstExecutionBoundsA, true);
     }
 
     /**
@@ -1185,6 +1193,54 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         secondExecution = new Rectangle(secondExecutionBoundsA.x, secondExecutionBoundsA.y + (secondExecutionBoundsA.height / 2) + 5, secondExecutionBoundsA.width, secondExecutionBoundsA.height);
         assertExecutionHasValidScreenBounds(LIFELINE_B, 0, firstSyncCallBoundsAResize, true);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 1, secondExecution, true);
+    }
+
+    /**
+     * Test move execution in combinedFragment and on life line.
+     * <p>
+     * Step 1 : Resize execution in limits of Operand upper bounds. This
+     * operation is forbidden.
+     * <p>
+     * Step 2 : Resize execution in combinedFragment
+     */
+    public void test_Resize_In_CombinedFragment() {
+        editor.reveal(LIFELINE_A);
+        arrangeAll();
+        editor.maximize();
+
+        int positionXBeforeLifeLineA = getLifelineScreenX(LIFELINE_A) - 20;
+        int positionXAfterLifeLineA = getLifelineScreenX(LIFELINE_A) + 20;
+        Point pointBefore = new Point(positionXBeforeLifeLineA, 200);
+        Point pointAfter = new Point(positionXAfterLifeLineA, 200);
+
+        // Create combined fragment on life line A
+        SWTBotGefEditPart combinedFragmentA = createCombinedFragmentWithResult(pointBefore, pointAfter);
+        Rectangle combinedFragmentBoundsA = editor.getBounds(combinedFragmentA);
+        assertEquals("the combinedFragment position is wrong", 200, combinedFragmentBoundsA.getTop().y);
+
+        // Create execution in CombinedFragment
+        SWTBotGefEditPart executionB = createExecutionWithResult(combinedFragmentBoundsA.getCenter().x, combinedFragmentBoundsA.getCenter().y).get();
+        Rectangle executionBoundsB = editor.getBounds(executionB);
+        assertEquals("the execution position is wrong", combinedFragmentBoundsA.getCenter().y, executionBoundsB.getTop().y);
+
+        // Resize execution in combined fragment, near the upper bound of the
+        // Operand (it's forbidden)
+        int limitAuthorized = combinedFragmentBoundsA.getTop().y + LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT + LayoutConstants.EXECUTION_CHILDREN_MARGIN;
+        int previousExecutionTop = executionBoundsB.getTop().y;
+        editor.drag(executionBoundsB.getTop(), combinedFragmentBoundsA.getCenter().x, limitAuthorized - 1);
+        bot.sleep(500);
+
+        executionBoundsB = editor.getBounds(executionB);
+        assertEquals("the execution must not be moved", previousExecutionTop, executionBoundsB.getTop().y);
+
+        // Resize execution in combined fragment, just after the upper bound of
+        // the Operand
+        ICondition done = new OperationDoneCondition();
+        editor.drag(executionBoundsB.getTop(), combinedFragmentBoundsA.getCenter().x, limitAuthorized);
+        bot.waitUntil(done);
+
+        executionBoundsB = editor.getBounds(executionB);
+        assertEquals("the execution must be resized in combined fragment", limitAuthorized, executionBoundsB.getTop().y);
     }
 
     /**

@@ -1477,8 +1477,8 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
             GraphicalHelper.screen2logical(bottom, isep);
         }
 
-        assertEquals(errorLabel + "do not have the good range lower bound.", top.y, range.getLowerBound(), 1);
-        assertEquals(errorLabel + "do not have the good range upper bound.", bottom.y, range.getUpperBound(), 2);
+        assertEquals(errorLabel + " do not have the good range lower bound.", top.y, range.getLowerBound(), 1);
+        assertEquals(errorLabel + " do not have the good range upper bound.", bottom.y, range.getUpperBound(), 2);
 
         if (ise instanceof Message) {
             SequenceMessageViewQuery query = new SequenceMessageViewQuery(((Message) ise).getNotationEdge());
