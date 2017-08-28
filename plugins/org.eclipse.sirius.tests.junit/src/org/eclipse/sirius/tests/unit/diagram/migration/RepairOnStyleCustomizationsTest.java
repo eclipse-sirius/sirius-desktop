@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,11 +14,13 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.business.api.color.RGBValuesProvider;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -105,9 +107,11 @@ public class RepairOnStyleCustomizationsTest extends AbstractRepairMigrateTest {
             DDiagram dDiagram = (DDiagram) getRepresentations("Entities").iterator().next();
             unsynchronizeDiagram(dDiagram);
             session.save(defaultProgress);
+            Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
         }
         // Launch a repair
         runRepairProcess(REPRESENTATIONS_RESOURCE_NAME);
+        Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
         session = SessionManager.INSTANCE.getSession(representationsResourceURI, defaultProgress);
         session.open(defaultProgress);
         DDiagram dDiagram = (DDiagram) getRepresentations("Entities").iterator().next();
