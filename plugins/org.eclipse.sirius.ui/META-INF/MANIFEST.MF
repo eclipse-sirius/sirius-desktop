@@ -83,7 +83,6 @@ Export-Package: org.eclipse.sirius.description.contribution.provider;version="2.
  org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter;version="2.0.4";x-internal:=true,
- org.eclipse.sirius.ui.tools.internal.views.interpreterview;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.modelexplorer;version="2.2.0";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab;version="2.0.4";x-internal:=true,
