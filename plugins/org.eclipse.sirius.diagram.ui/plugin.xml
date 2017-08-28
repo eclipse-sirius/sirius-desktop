@@ -1954,7 +1954,7 @@
       <statusLineContributionItemProvider
             class="org.eclipse.sirius.diagram.ui.tools.internal.providers.SiriusStatusLineContributionItemProvider">
          <Priority
-               name="Lowest">
+               name="Highest">
          </Priority>
       </statusLineContributionItemProvider>
    </extension>
