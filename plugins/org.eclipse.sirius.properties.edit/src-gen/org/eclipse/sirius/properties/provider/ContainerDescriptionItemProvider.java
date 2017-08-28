@@ -29,7 +29,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.ContainerDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ContainerDescriptionItemProvider extends ControlDescriptionItemProvider {
@@ -73,7 +73,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
     /**
      * This adds a property descriptor for the Filter Controls From Extended Container Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterControlsFromExtendedContainerExpressionPropertyDescriptor(Object object) {
@@ -156,7 +156,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,6 +164,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
         updateChildren(notification);
 
         switch (notification.getFeatureID(ContainerDescription.class)) {
+        case PropertiesPackage.CONTAINER_DESCRIPTION__EXTENDS:
         case PropertiesPackage.CONTAINER_DESCRIPTION__FILTER_CONTROLS_FROM_EXTENDED_CONTAINER_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

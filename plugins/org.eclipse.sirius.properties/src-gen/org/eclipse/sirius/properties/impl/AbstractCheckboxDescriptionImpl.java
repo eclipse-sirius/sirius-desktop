@@ -35,16 +35,15 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractCheckboxDescriptionImpl#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractCheckboxDescriptionImpl#getInitialOperation
- * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractCheckboxDescriptionImpl#getValueExpression <em>Value
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractCheckboxDescriptionImpl#getInitialOperation <em>Initial
+ * Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractCheckboxDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractCheckboxDescriptionImpl#getConditionalStyles
- * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractCheckboxDescriptionImpl#getConditionalStyles <em>Conditional
+ * Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractCheckboxDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.AbstractCheckboxDescriptionImpl#getFilterConditionalStylesFromExtendedCheckboxExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractCheckboxDescriptionImpl#getFilterConditionalStylesFromExtendedCheckboxExpression
  * <em>Filter Conditional Styles From Extended Checkbox Expression</em>}</li>
  * </ul>
  *
@@ -54,7 +53,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
     /**
      * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -64,7 +63,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
     /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -84,7 +83,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -94,7 +93,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -104,7 +103,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getExtends()
      * @generated
      * @ordered
@@ -112,10 +111,10 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
     protected CheckboxDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedCheckboxExpression()
-     * <em>Filter Conditional Styles From Extended Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedCheckboxExpression() <em>Filter
+     * Conditional Styles From Extended Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedCheckboxExpression()
      * @generated
      * @ordered
@@ -123,10 +122,10 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_CHECKBOX_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedCheckboxExpression()
-     * <em>Filter Conditional Styles From Extended Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedCheckboxExpression() <em>Filter
+     * Conditional Styles From Extended Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedCheckboxExpression()
      * @generated
      * @ordered
@@ -135,7 +134,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractCheckboxDescriptionImpl() {
@@ -144,7 +143,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -154,7 +153,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -164,7 +163,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -178,7 +177,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -188,7 +187,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -208,7 +207,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -234,7 +233,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -244,7 +243,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(CheckboxWidgetStyle newStyle, NotificationChain msgs) {
@@ -263,7 +262,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -287,7 +286,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -301,7 +300,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -320,7 +319,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public CheckboxDescription basicGetExtends() {
@@ -329,7 +328,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -343,7 +342,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -353,7 +352,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -368,7 +367,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -386,7 +385,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -413,7 +412,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -445,7 +444,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -475,7 +474,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -500,7 +499,7 @@ public abstract class AbstractCheckboxDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

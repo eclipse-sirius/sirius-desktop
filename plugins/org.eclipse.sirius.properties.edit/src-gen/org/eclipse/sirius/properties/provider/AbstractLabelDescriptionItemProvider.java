@@ -29,7 +29,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractLabelDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AbstractLabelDescriptionItemProvider extends AbstractWidgetDescriptionItemProvider {
@@ -100,7 +100,7 @@ public class AbstractLabelDescriptionItemProvider extends AbstractWidgetDescript
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended Label Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedLabelExpressionPropertyDescriptor(Object object) {
@@ -114,7 +114,7 @@ public class AbstractLabelDescriptionItemProvider extends AbstractWidgetDescript
     /**
      * This adds a property descriptor for the Filter Actions From Extended Label Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterActionsFromExtendedLabelExpressionPropertyDescriptor(Object object) {
@@ -187,7 +187,7 @@ public class AbstractLabelDescriptionItemProvider extends AbstractWidgetDescript
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,6 +197,7 @@ public class AbstractLabelDescriptionItemProvider extends AbstractWidgetDescript
         switch (notification.getFeatureID(AbstractLabelDescription.class)) {
         case PropertiesPackage.ABSTRACT_LABEL_DESCRIPTION__VALUE_EXPRESSION:
         case PropertiesPackage.ABSTRACT_LABEL_DESCRIPTION__DISPLAY_EXPRESSION:
+        case PropertiesPackage.ABSTRACT_LABEL_DESCRIPTION__EXTENDS:
         case PropertiesPackage.ABSTRACT_LABEL_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_LABEL_EXPRESSION:
         case PropertiesPackage.ABSTRACT_LABEL_DESCRIPTION__FILTER_ACTIONS_FROM_EXTENDED_LABEL_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

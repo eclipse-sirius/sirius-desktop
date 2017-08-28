@@ -175,7 +175,7 @@ public class AbstractTextAreaDescriptionItemProvider extends AbstractWidgetDescr
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,6 +185,7 @@ public class AbstractTextAreaDescriptionItemProvider extends AbstractWidgetDescr
         switch (notification.getFeatureID(AbstractTextAreaDescription.class)) {
         case PropertiesPackage.ABSTRACT_TEXT_AREA_DESCRIPTION__LINE_COUNT:
         case PropertiesPackage.ABSTRACT_TEXT_AREA_DESCRIPTION__VALUE_EXPRESSION:
+        case PropertiesPackage.ABSTRACT_TEXT_AREA_DESCRIPTION__EXTENDS:
         case PropertiesPackage.ABSTRACT_TEXT_AREA_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_TEXT_AREA_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

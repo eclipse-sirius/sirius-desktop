@@ -35,16 +35,15 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextDescriptionImpl#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextDescriptionImpl#getInitialOperation
- * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextDescriptionImpl#getValueExpression <em>Value
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextDescriptionImpl#getInitialOperation <em>Initial
+ * Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextDescriptionImpl#getConditionalStyles
- * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextDescriptionImpl#getConditionalStyles <em>Conditional
+ * Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.AbstractTextDescriptionImpl#getFilterConditionalStylesFromExtendedTextExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextDescriptionImpl#getFilterConditionalStylesFromExtendedTextExpression
  * <em>Filter Conditional Styles From Extended Text Expression</em>}</li>
  * </ul>
  *
@@ -54,7 +53,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
     /**
      * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -64,7 +63,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
     /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -84,7 +83,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -94,7 +93,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -104,7 +103,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getExtends()
      * @generated
      * @ordered
@@ -112,10 +111,9 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
     protected TextDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedTextExpression()
-     * <em>Filter Conditional Styles From Extended Text Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedTextExpression() <em>Filter Conditional
+     * Styles From Extended Text Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedTextExpression()
      * @generated
      * @ordered
@@ -123,10 +121,9 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_TEXT_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedTextExpression()
-     * <em>Filter Conditional Styles From Extended Text Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedTextExpression() <em>Filter Conditional
+     * Styles From Extended Text Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedTextExpression()
      * @generated
      * @ordered
@@ -135,7 +132,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractTextDescriptionImpl() {
@@ -144,7 +141,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -154,7 +151,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -164,7 +161,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -178,7 +175,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -188,7 +185,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -207,7 +204,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -231,7 +228,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -241,7 +238,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(TextWidgetStyle newStyle, NotificationChain msgs) {
@@ -260,7 +257,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -284,7 +281,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -297,7 +294,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -316,7 +313,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TextDescription basicGetExtends() {
@@ -325,7 +322,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -339,7 +336,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -349,7 +346,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -364,7 +361,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -382,7 +379,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -409,7 +406,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -441,7 +438,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -471,7 +468,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -496,7 +493,7 @@ public abstract class AbstractTextDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

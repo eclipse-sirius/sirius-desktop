@@ -29,8 +29,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <li>{@link org.eclipse.sirius.properties.impl.PageOverrideDescriptionImpl#getOverrides <em>Overrides</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.PageOverrideDescriptionImpl#getFilterGroupsFromOverriddenPageExpression
  * <em>Filter Groups From Overridden Page Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.PageOverrideDescriptionImpl#getFilterValidationRulesFromOverriddenPageExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.PageOverrideDescriptionImpl#getFilterValidationRulesFromOverriddenPageExpression
  * <em>Filter Validation Rules From Overridden Page Expression</em>}</li>
  * </ul>
  *
@@ -40,7 +39,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -48,9 +47,9 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
     protected PageDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterGroupsFromOverriddenPageExpression()
-     * <em>Filter Groups From Overridden Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterGroupsFromOverriddenPageExpression() <em>Filter Groups From Overridden
+     * Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterGroupsFromOverriddenPageExpression()
      * @generated
      * @ordered
@@ -58,9 +57,9 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
     protected static final String FILTER_GROUPS_FROM_OVERRIDDEN_PAGE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterGroupsFromOverriddenPageExpression()
-     * <em>Filter Groups From Overridden Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterGroupsFromOverriddenPageExpression() <em>Filter Groups From Overridden
+     * Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterGroupsFromOverriddenPageExpression()
      * @generated
      * @ordered
@@ -68,10 +67,9 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
     protected String filterGroupsFromOverriddenPageExpression = PageOverrideDescriptionImpl.FILTER_GROUPS_FROM_OVERRIDDEN_PAGE_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFilterValidationRulesFromOverriddenPageExpression()
-     * <em>Filter Validation Rules From Overridden Page Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterValidationRulesFromOverriddenPageExpression() <em>Filter Validation
+     * Rules From Overridden Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterValidationRulesFromOverriddenPageExpression()
      * @generated
      * @ordered
@@ -79,10 +77,9 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
     protected static final String FILTER_VALIDATION_RULES_FROM_OVERRIDDEN_PAGE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterValidationRulesFromOverriddenPageExpression()
-     * <em>Filter Validation Rules From Overridden Page Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterValidationRulesFromOverriddenPageExpression() <em>Filter Validation
+     * Rules From Overridden Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterValidationRulesFromOverriddenPageExpression()
      * @generated
      * @ordered
@@ -91,7 +88,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected PageOverrideDescriptionImpl() {
@@ -100,7 +97,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -110,7 +107,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +126,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public PageDescription basicGetOverrides() {
@@ -138,7 +135,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -152,7 +149,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +159,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -177,7 +174,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -187,7 +184,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +199,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -223,7 +220,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -244,7 +241,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -265,7 +262,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -285,7 +282,7 @@ public class PageOverrideDescriptionImpl extends AbstractPageDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

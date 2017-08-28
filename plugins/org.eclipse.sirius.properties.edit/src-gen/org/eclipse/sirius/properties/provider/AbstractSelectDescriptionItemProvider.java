@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractSelectDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AbstractSelectDescriptionItemProvider extends AbstractWidgetDescriptionItemProvider {
@@ -77,7 +77,7 @@ public class AbstractSelectDescriptionItemProvider extends AbstractWidgetDescrip
     /**
      * This adds a property descriptor for the Candidates Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     protected void addCandidatesExpressionPropertyDescriptor(Object object) {
@@ -115,7 +115,7 @@ public class AbstractSelectDescriptionItemProvider extends AbstractWidgetDescrip
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended Select Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedSelectExpressionPropertyDescriptor(Object object) {
@@ -189,7 +189,7 @@ public class AbstractSelectDescriptionItemProvider extends AbstractWidgetDescrip
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,6 +200,7 @@ public class AbstractSelectDescriptionItemProvider extends AbstractWidgetDescrip
         case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__VALUE_EXPRESSION:
         case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__CANDIDATES_EXPRESSION:
         case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION:
+        case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__EXTENDS:
         case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

@@ -36,19 +36,18 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getDisplayExpression
- * <em>Display Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getOnClickOperation
- * <em>On Click Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getValueExpression <em>Value
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getDisplayExpression <em>Display
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getOnClickOperation <em>On Click
+ * Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getActions <em>Actions</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getConditionalStyles
- * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getConditionalStyles <em>Conditional
+ * Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getFilterConditionalStylesFromExtendedListExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getFilterConditionalStylesFromExtendedListExpression
  * <em>Filter Conditional Styles From Extended List Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractListDescriptionImpl#getFilterActionsFromExtendedListExpression
  * <em>Filter Actions From Extended List Expression</em>}</li>
@@ -60,7 +59,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
     /**
      * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -70,7 +69,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
     /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -110,7 +109,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
     /**
      * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getActions()
      * @generated
      * @ordered
@@ -120,7 +119,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -130,7 +129,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -140,7 +139,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getExtends()
      * @generated
      * @ordered
@@ -148,10 +147,9 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
     protected ListDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedListExpression()
-     * <em>Filter Conditional Styles From Extended List Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedListExpression() <em>Filter Conditional
+     * Styles From Extended List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedListExpression()
      * @generated
      * @ordered
@@ -159,10 +157,9 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_LIST_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedListExpression()
-     * <em>Filter Conditional Styles From Extended List Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedListExpression() <em>Filter Conditional
+     * Styles From Extended List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedListExpression()
      * @generated
      * @ordered
@@ -170,9 +167,9 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
     protected String filterConditionalStylesFromExtendedListExpression = AbstractListDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_LIST_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFilterActionsFromExtendedListExpression()
-     * <em>Filter Actions From Extended List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterActionsFromExtendedListExpression() <em>Filter Actions From Extended
+     * List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterActionsFromExtendedListExpression()
      * @generated
      * @ordered
@@ -180,9 +177,9 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
     protected static final String FILTER_ACTIONS_FROM_EXTENDED_LIST_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterActionsFromExtendedListExpression()
-     * <em>Filter Actions From Extended List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterActionsFromExtendedListExpression() <em>Filter Actions From Extended
+     * List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterActionsFromExtendedListExpression()
      * @generated
      * @ordered
@@ -191,7 +188,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractListDescriptionImpl() {
@@ -200,7 +197,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -210,7 +207,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -220,7 +217,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -234,7 +231,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -244,7 +241,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -258,7 +255,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -268,7 +265,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetOnClickOperation(InitialOperation newOnClickOperation, NotificationChain msgs) {
@@ -287,7 +284,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -311,7 +308,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -324,7 +321,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -334,7 +331,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(ListWidgetStyle newStyle, NotificationChain msgs) {
@@ -353,7 +350,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -377,7 +374,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -390,7 +387,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -409,7 +406,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ListDescription basicGetExtends() {
@@ -418,7 +415,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -432,7 +429,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -442,7 +439,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -457,7 +454,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -467,7 +464,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -482,7 +479,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -502,7 +499,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -535,7 +532,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -577,7 +574,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -616,7 +613,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -648,7 +645,7 @@ public abstract class AbstractListDescriptionImpl extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

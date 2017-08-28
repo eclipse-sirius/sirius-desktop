@@ -116,7 +116,7 @@ public class AbstractHyperlinkDescriptionItemProvider extends AbstractWidgetDesc
     /**
      * This adds a property descriptor for the Filter Actions From Extended Hyperlink Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterActionsFromExtendedHyperlinkExpressionPropertyDescriptor(Object object) {
@@ -191,7 +191,7 @@ public class AbstractHyperlinkDescriptionItemProvider extends AbstractWidgetDesc
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,6 +201,7 @@ public class AbstractHyperlinkDescriptionItemProvider extends AbstractWidgetDesc
         switch (notification.getFeatureID(AbstractHyperlinkDescription.class)) {
         case PropertiesPackage.ABSTRACT_HYPERLINK_DESCRIPTION__VALUE_EXPRESSION:
         case PropertiesPackage.ABSTRACT_HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION:
+        case PropertiesPackage.ABSTRACT_HYPERLINK_DESCRIPTION__EXTENDS:
         case PropertiesPackage.ABSTRACT_HYPERLINK_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_HYPERLINK_EXPRESSION:
         case PropertiesPackage.ABSTRACT_HYPERLINK_DESCRIPTION__FILTER_ACTIONS_FROM_EXTENDED_HYPERLINK_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

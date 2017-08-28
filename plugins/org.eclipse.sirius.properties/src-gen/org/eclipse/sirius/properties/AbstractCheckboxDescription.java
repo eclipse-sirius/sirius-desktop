@@ -22,16 +22,15 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getValueExpression <em>Value Expression</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getInitialOperation <em>Initial Operation</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getValueExpression <em>Value
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getInitialOperation <em>Initial
+ * Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getConditionalStyles <em>Conditional Styles</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getConditionalStyles <em>Conditional
+ * Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getExtends <em>Extends</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getFilterConditionalStylesFromExtendedCheckboxExpression
+ * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getFilterConditionalStylesFromExtendedCheckboxExpression
  * <em>Filter Conditional Styles From Extended Checkbox Expression</em>}</li>
  * </ul>
  *
@@ -47,7 +46,7 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCheckboxDescription_ValueExpression()
@@ -59,7 +58,7 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -74,7 +73,7 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCheckboxDescription_InitialOperation()
@@ -86,7 +85,7 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
@@ -101,7 +100,7 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(CheckboxWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCheckboxDescription_Style()
@@ -113,7 +112,7 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getStyle <em>Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -129,7 +128,7 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Conditional Styles</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCheckboxDescription_ConditionalStyles()
      * @model containment="true"
@@ -144,7 +143,7 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Extends</em>' reference.
      * @see #setExtends(CheckboxDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCheckboxDescription_Extends()
@@ -156,7 +155,7 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getExtends
      * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
      * @see #getExtends()
@@ -172,7 +171,7 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Filter Conditional Styles From Extended Checkbox Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromExtendedCheckboxExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCheckboxDescription_FilterConditionalStylesFromExtendedCheckboxExpression()
@@ -182,11 +181,11 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
     String getFilterConditionalStylesFromExtendedCheckboxExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getFilterConditionalStylesFromExtendedCheckboxExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getFilterConditionalStylesFromExtendedCheckboxExpression
      * <em>Filter Conditional Styles From Extended Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Extended Checkbox Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromExtendedCheckboxExpression()

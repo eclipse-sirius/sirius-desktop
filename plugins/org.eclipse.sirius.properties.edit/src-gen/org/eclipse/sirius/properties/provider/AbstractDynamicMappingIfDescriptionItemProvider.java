@@ -63,7 +63,7 @@ public class AbstractDynamicMappingIfDescriptionItemProvider extends IdentifiedE
     /**
      * This adds a property descriptor for the Predicate Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     protected void addPredicateExpressionPropertyDescriptor(Object object) {
@@ -146,7 +146,7 @@ public class AbstractDynamicMappingIfDescriptionItemProvider extends IdentifiedE
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,6 +155,7 @@ public class AbstractDynamicMappingIfDescriptionItemProvider extends IdentifiedE
 
         switch (notification.getFeatureID(AbstractDynamicMappingIfDescription.class)) {
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_IF_DESCRIPTION__PREDICATE_EXPRESSION:
+        case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_IF_DESCRIPTION__EXTENDS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_IF_DESCRIPTION__WIDGET:

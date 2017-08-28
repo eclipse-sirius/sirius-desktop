@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.provider.IdentifiedElementItemPr
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractPageDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemProvider implements IItemStyledLabelProvider {
@@ -172,7 +172,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
     /**
      * This adds a property descriptor for the Filter Validation Rules From Extended Page Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterValidationRulesFromExtendedPageExpressionPropertyDescriptor(Object object) {
@@ -257,7 +257,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,6 +270,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__DOMAIN_CLASS:
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__PRECONDITION_EXPRESSION:
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__EXTENDS:
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_GROUPS_FROM_EXTENDED_PAGE_EXPRESSION:
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION:
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__INDENTED:

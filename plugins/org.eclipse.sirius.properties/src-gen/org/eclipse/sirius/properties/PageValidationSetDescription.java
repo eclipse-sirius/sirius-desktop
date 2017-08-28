@@ -23,8 +23,8 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.PageValidationSetDescription#getSemanticValidationRules
- * <em>Semantic Validation Rules</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.PageValidationSetDescription#getSemanticValidationRules <em>Semantic
+ * Validation Rules</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getPageValidationSetDescription()

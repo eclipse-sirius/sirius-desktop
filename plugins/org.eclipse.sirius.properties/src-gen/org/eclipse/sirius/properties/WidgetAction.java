@@ -38,7 +38,7 @@ public interface WidgetAction extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetAction_LabelExpression()
@@ -48,9 +48,9 @@ public interface WidgetAction extends EObject {
     String getLabelExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetAction#getLabelExpression
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetAction#getLabelExpression <em>Label
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
@@ -65,7 +65,7 @@ public interface WidgetAction extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Image Expression</em>' attribute.
      * @see #setImageExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetAction_ImageExpression()
@@ -75,9 +75,9 @@ public interface WidgetAction extends EObject {
     String getImageExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetAction#getImageExpression
-     * <em>Image Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetAction#getImageExpression <em>Image
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Image Expression</em>' attribute.
      * @see #getImageExpression()
@@ -99,9 +99,9 @@ public interface WidgetAction extends EObject {
     InitialOperation getInitialOperation();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetAction#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetAction#getInitialOperation <em>Initial
+     * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()

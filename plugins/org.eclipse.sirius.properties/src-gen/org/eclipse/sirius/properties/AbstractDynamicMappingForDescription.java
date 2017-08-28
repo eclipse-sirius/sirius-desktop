@@ -14,22 +14,21 @@ package org.eclipse.sirius.properties;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Abstract Dynamic Mapping For Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Abstract Dynamic Mapping For
+ * Description</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getIterator <em>Iterator</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getIterableExpression
- * <em>Iterable Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#isForceRefresh <em>Force Refresh</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getIterableExpression <em>Iterable
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#isForceRefresh <em>Force
+ * Refresh</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getIfs <em>Ifs</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getExtends <em>Extends</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getFilterIfsFromExtendedDynamicMappingForExpression
+ * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getFilterIfsFromExtendedDynamicMappingForExpression
  * <em>Filter Ifs From Extended Dynamic Mapping For Expression</em>}</li>
  * </ul>
  *
@@ -45,7 +44,7 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Iterator</em>' attribute.
      * @see #setIterator(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractDynamicMappingForDescription_Iterator()
@@ -57,7 +56,7 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getIterator
      * <em>Iterator</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Iterator</em>' attribute.
      * @see #getIterator()
@@ -72,7 +71,7 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Iterable Expression</em>' attribute.
      * @see #setIterableExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractDynamicMappingForDescription_IterableExpression()
@@ -82,10 +81,10 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
     String getIterableExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getIterableExpression
-     * <em>Iterable Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getIterableExpression <em>Iterable
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Iterable Expression</em>' attribute.
      * @see #getIterableExpression()
@@ -100,7 +99,7 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Force Refresh</em>' attribute.
      * @see #setForceRefresh(boolean)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractDynamicMappingForDescription_ForceRefresh()
@@ -112,7 +111,7 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#isForceRefresh
      * <em>Force Refresh</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Force Refresh</em>' attribute.
      * @see #isForceRefresh()
@@ -128,7 +127,7 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Ifs</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractDynamicMappingForDescription_Ifs()
      * @model containment="true" required="true"
@@ -143,7 +142,7 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Extends</em>' reference.
      * @see #setExtends(DynamicMappingForDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractDynamicMappingForDescription_Extends()
@@ -155,7 +154,7 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getExtends
      * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
      * @see #getExtends()
@@ -171,7 +170,7 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Filter Ifs From Extended Dynamic Mapping For Expression</em>' attribute.
      * @see #setFilterIfsFromExtendedDynamicMappingForExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractDynamicMappingForDescription_FilterIfsFromExtendedDynamicMappingForExpression()
@@ -181,11 +180,11 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
     String getFilterIfsFromExtendedDynamicMappingForExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getFilterIfsFromExtendedDynamicMappingForExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getFilterIfsFromExtendedDynamicMappingForExpression
      * <em>Filter Ifs From Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Filter Ifs From Extended Dynamic Mapping For Expression</em>' attribute.
      * @see #getFilterIfsFromExtendedDynamicMappingForExpression()

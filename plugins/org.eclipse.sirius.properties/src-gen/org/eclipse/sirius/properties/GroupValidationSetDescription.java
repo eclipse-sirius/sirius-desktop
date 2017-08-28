@@ -23,10 +23,10 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.GroupValidationSetDescription#getSemanticValidationRules
- * <em>Semantic Validation Rules</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.GroupValidationSetDescription#getPropertyValidationRules
- * <em>Property Validation Rules</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.GroupValidationSetDescription#getSemanticValidationRules <em>Semantic
+ * Validation Rules</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.GroupValidationSetDescription#getPropertyValidationRules <em>Property
+ * Validation Rules</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupValidationSetDescription()
@@ -59,7 +59,7 @@ public interface GroupValidationSetDescription extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Property Validation Rules</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupValidationSetDescription_PropertyValidationRules()
      * @model containment="true" keys="name"

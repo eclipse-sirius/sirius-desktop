@@ -34,14 +34,13 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getIterator <em>Iterator</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getIterableExpression
- * <em>Iterable Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#isForceRefresh <em>Force Refresh</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getIterableExpression <em>Iterable
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#isForceRefresh <em>Force
+ * Refresh</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getIfs <em>Ifs</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getFilterIfsFromExtendedDynamicMappingForExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getFilterIfsFromExtendedDynamicMappingForExpression
  * <em>Filter Ifs From Extended Dynamic Mapping For Expression</em>}</li>
  * </ul>
  *
@@ -51,7 +50,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
     /**
      * The default value of the '{@link #getIterator() <em>Iterator</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getIterator()
      * @generated
      * @ordered
@@ -61,7 +60,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
     /**
      * The cached value of the '{@link #getIterator() <em>Iterator</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getIterator()
      * @generated
      * @ordered
@@ -91,7 +90,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
     /**
      * The default value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #isForceRefresh()
      * @generated
      * @ordered
@@ -101,7 +100,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
     /**
      * The cached value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #isForceRefresh()
      * @generated
      * @ordered
@@ -111,7 +110,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
     /**
      * The cached value of the '{@link #getIfs() <em>Ifs</em>}' containment reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getIfs()
      * @generated
      * @ordered
@@ -121,7 +120,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getExtends()
      * @generated
      * @ordered
@@ -129,10 +128,9 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
     protected DynamicMappingForDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression()
-     * <em>Filter Ifs From Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression() <em>Filter Ifs From
+     * Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterIfsFromExtendedDynamicMappingForExpression()
      * @generated
      * @ordered
@@ -140,10 +138,9 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
     protected static final String FILTER_IFS_FROM_EXTENDED_DYNAMIC_MAPPING_FOR_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression()
-     * <em>Filter Ifs From Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression() <em>Filter Ifs From
+     * Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterIfsFromExtendedDynamicMappingForExpression()
      * @generated
      * @ordered
@@ -152,7 +149,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DynamicMappingForDescriptionImpl() {
@@ -161,7 +158,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -171,7 +168,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -181,7 +178,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +192,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -205,7 +202,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -219,7 +216,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -229,7 +226,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -243,7 +240,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -256,7 +253,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -275,7 +272,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DynamicMappingForDescription basicGetExtends() {
@@ -284,7 +281,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -298,7 +295,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -308,7 +305,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -323,7 +320,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -337,7 +334,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -364,7 +361,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -396,7 +393,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -426,7 +423,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -452,7 +449,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -480,7 +477,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -508,7 +505,7 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

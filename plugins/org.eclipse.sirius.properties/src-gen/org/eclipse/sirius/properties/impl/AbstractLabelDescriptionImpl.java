@@ -35,20 +35,18 @@ import org.eclipse.sirius.properties.WidgetAction;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getDisplayExpression
- * <em>Display Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getValueExpression <em>Value
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getDisplayExpression <em>Display
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getConditionalStyles
- * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getConditionalStyles <em>Conditional
+ * Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getActions <em>Actions</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getFilterConditionalStylesFromExtendedLabelExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getFilterConditionalStylesFromExtendedLabelExpression
  * <em>Filter Conditional Styles From Extended Label Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getFilterActionsFromExtendedLabelExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getFilterActionsFromExtendedLabelExpression
  * <em>Filter Actions From Extended Label Expression</em>}</li>
  * </ul>
  *
@@ -58,7 +56,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     /**
      * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -68,7 +66,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -98,7 +96,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -108,7 +106,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -118,7 +116,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     /**
      * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getActions()
      * @generated
      * @ordered
@@ -128,7 +126,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getExtends()
      * @generated
      * @ordered
@@ -136,10 +134,9 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     protected LabelDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedLabelExpression()
-     * <em>Filter Conditional Styles From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedLabelExpression() <em>Filter Conditional
+     * Styles From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedLabelExpression()
      * @generated
      * @ordered
@@ -147,10 +144,9 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedLabelExpression()
-     * <em>Filter Conditional Styles From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedLabelExpression() <em>Filter Conditional
+     * Styles From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedLabelExpression()
      * @generated
      * @ordered
@@ -158,9 +154,9 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     protected String filterConditionalStylesFromExtendedLabelExpression = AbstractLabelDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_LABEL_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFilterActionsFromExtendedLabelExpression()
-     * <em>Filter Actions From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterActionsFromExtendedLabelExpression() <em>Filter Actions From Extended
+     * Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterActionsFromExtendedLabelExpression()
      * @generated
      * @ordered
@@ -168,9 +164,9 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     protected static final String FILTER_ACTIONS_FROM_EXTENDED_LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterActionsFromExtendedLabelExpression()
-     * <em>Filter Actions From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterActionsFromExtendedLabelExpression() <em>Filter Actions From Extended
+     * Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterActionsFromExtendedLabelExpression()
      * @generated
      * @ordered
@@ -179,7 +175,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractLabelDescriptionImpl() {
@@ -188,7 +184,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +194,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -208,7 +204,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -222,7 +218,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -232,7 +228,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -246,7 +242,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -256,7 +252,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(LabelWidgetStyle newStyle, NotificationChain msgs) {
@@ -275,7 +271,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -299,7 +295,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -312,7 +308,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -325,7 +321,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -344,7 +340,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public LabelDescription basicGetExtends() {
@@ -353,7 +349,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -367,7 +363,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -377,7 +373,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -392,7 +388,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -402,7 +398,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -417,7 +413,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -435,7 +431,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -466,7 +462,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -505,7 +501,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -541,7 +537,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -571,7 +567,7 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

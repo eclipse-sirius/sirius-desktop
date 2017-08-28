@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.CheckboxDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvider {
@@ -90,7 +90,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
     /**
      * This adds a property descriptor for the Is Enabled Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     protected void addIsEnabledExpressionPropertyDescriptor(Object object) {
@@ -127,7 +127,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended Checkbox Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedCheckboxExpressionPropertyDescriptor(Object object) {
@@ -212,7 +212,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,6 +224,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
         case PropertiesPackage.CHECKBOX_DESCRIPTION__HELP_EXPRESSION:
         case PropertiesPackage.CHECKBOX_DESCRIPTION__IS_ENABLED_EXPRESSION:
         case PropertiesPackage.CHECKBOX_DESCRIPTION__VALUE_EXPRESSION:
+        case PropertiesPackage.CHECKBOX_DESCRIPTION__EXTENDS:
         case PropertiesPackage.CHECKBOX_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_CHECKBOX_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

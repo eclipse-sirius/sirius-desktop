@@ -38,15 +38,15 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getLabelExpression <em>Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getHelpExpression <em>Help Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getIsEnabledExpression
- * <em>Is Enabled Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getIsEnabledExpression <em>Is Enabled
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getValueExpression <em>Value Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
  * </li>
- * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getCandidatesExpression
- * <em>Candidates Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getCandidateDisplayExpression
- * <em>Candidate Display Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getCandidatesExpression <em>Candidates
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getCandidateDisplayExpression <em>Candidate
+ * Display Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getStyle <em>Style</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getNumberOfColumns <em>Number Of Columns</em>}
  * </li>
@@ -64,7 +64,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -84,7 +84,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The default value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -94,7 +94,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -124,7 +124,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -134,7 +134,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -174,7 +174,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The default value of the '{@link #getCandidateDisplayExpression() <em>Candidate Display Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -184,7 +184,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getCandidateDisplayExpression() <em>Candidate Display Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -194,7 +194,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -214,7 +214,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getNumberOfColumns() <em>Number Of Columns</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getNumberOfColumns()
      * @generated
      * @ordered
@@ -224,7 +224,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -234,7 +234,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getExtends()
      * @generated
      * @ordered
@@ -242,10 +242,9 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     protected RadioDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression()
-     * <em>Filter Conditional Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression() <em>Filter Conditional
+     * Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedRadioExpression()
      * @generated
      * @ordered
@@ -253,10 +252,9 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression()
-     * <em>Filter Conditional Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression() <em>Filter Conditional
+     * Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedRadioExpression()
      * @generated
      * @ordered
@@ -265,7 +263,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RadioDescriptionImpl() {
@@ -274,7 +272,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -284,7 +282,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -294,7 +292,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -308,7 +306,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -318,7 +316,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -332,7 +330,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -342,7 +340,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -356,7 +354,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -366,7 +364,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -380,7 +378,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -390,7 +388,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -409,7 +407,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -433,7 +431,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -443,7 +441,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -457,7 +455,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -467,7 +465,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -481,7 +479,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -491,7 +489,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(RadioWidgetStyle newStyle, NotificationChain msgs) {
@@ -510,7 +508,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -534,7 +532,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -544,7 +542,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -558,7 +556,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -571,7 +569,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -590,7 +588,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public RadioDescription basicGetExtends() {
@@ -599,7 +597,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -613,7 +611,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -623,7 +621,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -638,7 +636,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -656,7 +654,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -695,7 +693,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -745,7 +743,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -793,7 +791,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -831,7 +829,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -877,7 +875,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -923,7 +921,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

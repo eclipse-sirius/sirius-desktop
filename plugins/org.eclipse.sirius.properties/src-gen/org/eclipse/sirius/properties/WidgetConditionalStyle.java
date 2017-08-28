@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.WidgetConditionalStyle#getPreconditionExpression
- * <em>Precondition Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.WidgetConditionalStyle#getPreconditionExpression <em>Precondition
+ * Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetConditionalStyle()
@@ -37,7 +37,7 @@ public interface WidgetConditionalStyle extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetConditionalStyle_PreconditionExpression()
@@ -49,7 +49,7 @@ public interface WidgetConditionalStyle extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetConditionalStyle#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Precondition Expression</em>' attribute.
      * @see #getPreconditionExpression()

@@ -20,8 +20,7 @@ package org.eclipse.sirius.properties;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.RadioOverrideDescription#getOverrides <em>Overrides</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.RadioOverrideDescription#getFilterConditionalStylesFromOverriddenRadioExpression
+ * <li>{@link org.eclipse.sirius.properties.RadioOverrideDescription#getFilterConditionalStylesFromOverriddenRadioExpression
  * <em>Filter Conditional Styles From Overridden Radio Expression</em>}</li>
  * </ul>
  *
@@ -37,7 +36,7 @@ public interface RadioOverrideDescription extends AbstractRadioDescription, Abst
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(RadioDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getRadioOverrideDescription_Overrides()
@@ -49,7 +48,7 @@ public interface RadioOverrideDescription extends AbstractRadioDescription, Abst
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.RadioOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -65,7 +64,7 @@ public interface RadioOverrideDescription extends AbstractRadioDescription, Abst
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Filter Conditional Styles From Overridden Radio Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromOverriddenRadioExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getRadioOverrideDescription_FilterConditionalStylesFromOverriddenRadioExpression()
@@ -75,11 +74,11 @@ public interface RadioOverrideDescription extends AbstractRadioDescription, Abst
     String getFilterConditionalStylesFromOverriddenRadioExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.RadioOverrideDescription#getFilterConditionalStylesFromOverriddenRadioExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.properties.RadioOverrideDescription#getFilterConditionalStylesFromOverriddenRadioExpression
      * <em>Filter Conditional Styles From Overridden Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Overridden Radio Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromOverriddenRadioExpression()

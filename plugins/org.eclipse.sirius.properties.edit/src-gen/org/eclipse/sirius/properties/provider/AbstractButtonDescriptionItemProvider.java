@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractButtonDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AbstractButtonDescriptionItemProvider extends AbstractWidgetDescriptionItemProvider {
@@ -101,7 +101,7 @@ public class AbstractButtonDescriptionItemProvider extends AbstractWidgetDescrip
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended Button Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedButtonExpressionPropertyDescriptor(Object object) {
@@ -175,7 +175,7 @@ public class AbstractButtonDescriptionItemProvider extends AbstractWidgetDescrip
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,6 +185,7 @@ public class AbstractButtonDescriptionItemProvider extends AbstractWidgetDescrip
         switch (notification.getFeatureID(AbstractButtonDescription.class)) {
         case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
         case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__IMAGE_EXPRESSION:
+        case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__EXTENDS:
         case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

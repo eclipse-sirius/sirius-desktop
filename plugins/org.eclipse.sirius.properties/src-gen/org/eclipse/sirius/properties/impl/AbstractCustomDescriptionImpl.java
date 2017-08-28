@@ -36,16 +36,15 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getCustomExpressions
- * <em>Custom Expressions</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getCustomOperations
- * <em>Custom Operations</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getCustomExpressions <em>Custom
+ * Expressions</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getCustomOperations <em>Custom
+ * Operations</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getConditionalStyles
- * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getConditionalStyles <em>Conditional
+ * Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getFilterConditionalStylesFromExtendedCustomExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getFilterConditionalStylesFromExtendedCustomExpression
  * <em>Filter Conditional Styles From Extended Custom Expression</em>}</li>
  * </ul>
  *
@@ -55,7 +54,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
     /**
      * The cached value of the '{@link #getCustomExpressions() <em>Custom Expressions</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getCustomExpressions()
      * @generated
      * @ordered
@@ -65,7 +64,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
     /**
      * The cached value of the '{@link #getCustomOperations() <em>Custom Operations</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getCustomOperations()
      * @generated
      * @ordered
@@ -75,7 +74,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -85,7 +84,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -95,7 +94,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getExtends()
      * @generated
      * @ordered
@@ -103,10 +102,9 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
     protected CustomDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedCustomExpression()
-     * <em>Filter Conditional Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedCustomExpression() <em>Filter Conditional
+     * Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedCustomExpression()
      * @generated
      * @ordered
@@ -114,10 +112,9 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_CUSTOM_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedCustomExpression()
-     * <em>Filter Conditional Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedCustomExpression() <em>Filter Conditional
+     * Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedCustomExpression()
      * @generated
      * @ordered
@@ -126,7 +123,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractCustomDescriptionImpl() {
@@ -135,7 +132,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +142,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +155,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -171,7 +168,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -181,7 +178,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(CustomWidgetStyle newStyle, NotificationChain msgs) {
@@ -200,7 +197,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -224,7 +221,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -237,7 +234,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -256,7 +253,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public CustomDescription basicGetExtends() {
@@ -265,7 +262,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -279,7 +276,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -289,7 +286,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -304,7 +301,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -324,7 +321,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -351,7 +348,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -385,7 +382,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -415,7 +412,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -440,7 +437,7 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

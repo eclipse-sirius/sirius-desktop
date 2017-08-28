@@ -26,8 +26,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>{@link org.eclipse.sirius.properties.DialogButton#getInitialOperation <em>Initial Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.DialogButton#isDefault <em>Default</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.DialogButton#isCloseDialogOnClick <em>Close Dialog On Click</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.DialogButton#isRollbackChangesOnClose <em>Rollback Changes On Close</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.properties.DialogButton#isRollbackChangesOnClose <em>Rollback Changes On
+ * Close</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getDialogButton()
@@ -42,7 +42,7 @@ public interface DialogButton extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDialogButton_LabelExpression()
@@ -52,9 +52,9 @@ public interface DialogButton extends EObject {
     String getLabelExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.DialogButton#getLabelExpression
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.DialogButton#getLabelExpression <em>Label
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
@@ -69,7 +69,7 @@ public interface DialogButton extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Is Enabled Expression</em>' attribute.
      * @see #setIsEnabledExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDialogButton_IsEnabledExpression()
@@ -79,9 +79,9 @@ public interface DialogButton extends EObject {
     String getIsEnabledExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.DialogButton#getIsEnabledExpression
-     * <em>Is Enabled Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.DialogButton#getIsEnabledExpression <em>Is Enabled
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Is Enabled Expression</em>' attribute.
      * @see #getIsEnabledExpression()
@@ -103,9 +103,9 @@ public interface DialogButton extends EObject {
     InitialOperation getInitialOperation();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.DialogButton#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.DialogButton#getInitialOperation <em>Initial
+     * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
@@ -120,7 +120,7 @@ public interface DialogButton extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Default</em>' attribute.
      * @see #setDefault(boolean)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDialogButton_Default()
@@ -132,7 +132,7 @@ public interface DialogButton extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.DialogButton#isDefault <em>Default</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Default</em>' attribute.
      * @see #isDefault()
@@ -147,7 +147,7 @@ public interface DialogButton extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Close Dialog On Click</em>' attribute.
      * @see #setCloseDialogOnClick(boolean)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDialogButton_CloseDialogOnClick()
@@ -157,9 +157,9 @@ public interface DialogButton extends EObject {
     boolean isCloseDialogOnClick();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.DialogButton#isCloseDialogOnClick
-     * <em>Close Dialog On Click</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.DialogButton#isCloseDialogOnClick <em>Close Dialog On
+     * Click</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Close Dialog On Click</em>' attribute.
      * @see #isCloseDialogOnClick()
@@ -174,7 +174,7 @@ public interface DialogButton extends EObject {
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Rollback Changes On Close</em>' attribute.
      * @see #setRollbackChangesOnClose(boolean)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDialogButton_RollbackChangesOnClose()
@@ -184,9 +184,9 @@ public interface DialogButton extends EObject {
     boolean isRollbackChangesOnClose();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.DialogButton#isRollbackChangesOnClose
-     * <em>Rollback Changes On Close</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.DialogButton#isRollbackChangesOnClose <em>Rollback
+     * Changes On Close</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Rollback Changes On Close</em>' attribute.
      * @see #isRollbackChangesOnClose()

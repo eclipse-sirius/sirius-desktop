@@ -38,7 +38,7 @@ public interface ToolbarAction extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Tooltip Expression</em>' attribute.
      * @see #setTooltipExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getToolbarAction_TooltipExpression()
@@ -48,9 +48,9 @@ public interface ToolbarAction extends EObject {
     String getTooltipExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.ToolbarAction#getTooltipExpression
-     * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.ToolbarAction#getTooltipExpression <em>Tooltip
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Tooltip Expression</em>' attribute.
      * @see #getTooltipExpression()
@@ -65,7 +65,7 @@ public interface ToolbarAction extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Image Expression</em>' attribute.
      * @see #setImageExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getToolbarAction_ImageExpression()
@@ -75,9 +75,9 @@ public interface ToolbarAction extends EObject {
     String getImageExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.ToolbarAction#getImageExpression
-     * <em>Image Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.ToolbarAction#getImageExpression <em>Image
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Image Expression</em>' attribute.
      * @see #getImageExpression()
@@ -92,7 +92,7 @@ public interface ToolbarAction extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getToolbarAction_InitialOperation()
@@ -102,9 +102,9 @@ public interface ToolbarAction extends EObject {
     InitialOperation getInitialOperation();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.ToolbarAction#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.ToolbarAction#getInitialOperation <em>Initial
+     * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()

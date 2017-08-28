@@ -23,7 +23,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.WidgetDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvider {
@@ -81,7 +81,7 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
