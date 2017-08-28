@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.FreeformViewport;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
@@ -183,6 +184,33 @@ public final class GraphicalHelper {
     }
 
     /**
+     * Returns the difference between the logical origin (0, 0) and the top-left point actually visible. This
+     * corresponds to how much the scrollbars "shift" the successive containers.
+     * 
+     * @param part
+     *            an edit part on the view
+     * @return the scroll size
+     */
+    protected static Point getContainerScrollSize(GraphicalEditPart part) {
+        Preconditions.checkNotNull(part);
+        Point result = new Point(0, 0);
+        Point diagramScrollSize = new Point(0, 0);
+
+        IFigure current = part.getFigure();
+        FreeformViewport rootFreeformViewport = null;
+        while (current != null) {
+            if (current instanceof FreeformViewport) {
+                rootFreeformViewport = (FreeformViewport) current;
+                diagramScrollSize = rootFreeformViewport.getViewLocation();
+                result.translate(diagramScrollSize);
+            }
+            current = current.getParent();
+        }
+        result.translate(diagramScrollSize.negate());
+        return result;
+    }
+
+    /**
      * .
      * 
      * @param part
@@ -228,14 +256,32 @@ public final class GraphicalHelper {
      *            a part from the diagram.
      */
     public static void screen2logical(Rectangle rect, GraphicalEditPart part) {
-        rect.translate(GraphicalHelper.getScrollSize(part));
-        rect.performScale(1.0d / GraphicalHelper.getZoom(part));
+        screen2logical(rect, part, false);
     }
 
     /**
-     * Converts a dimension from screen coordinates to logical coordinates.
-     * Dimensions have no defined position, so only the current zoom level is
-     * take into account, not the scroll state.
+     * Converts a rectangle from screen coordinates to logical coordinates.
+     * 
+     * @param rect
+     *            the rectangle to convert.
+     * @param part
+     *            a part from the diagram.
+     * @param considerAllScroll
+     *            In all cases, the scroll of the diagram is used, but the scroll of containers are considered only if
+     *            this parameter is true.
+     */
+    protected static void screen2logical(Rectangle rect, GraphicalEditPart part, boolean considerAllScroll) {
+        double zoom = GraphicalHelper.getZoom(part);
+        if (considerAllScroll) {
+            rect.translate(GraphicalHelper.getContainerScrollSize(part).scale(zoom));
+        }
+        rect.translate(GraphicalHelper.getScrollSize(part));
+        rect.performScale(1.0d / zoom);
+    }
+
+    /**
+     * Converts a dimension from screen coordinates to logical coordinates. Dimensions have no defined position, so only
+     * the current zoom level is take into account, not the scroll state.
      * 
      * @param dim
      *            the dimension to convert.
@@ -551,6 +597,21 @@ public final class GraphicalHelper {
      * @return The absolute bounds.
      */
     public static Rectangle getAbsoluteBoundsIn100Percent(GraphicalEditPart part) {
+        return getAbsoluteBoundsIn100Percent(part, false);
+    }
+
+    /**
+     * Get the absolute bounds of this <code>part</code>. In case of zoom or/and scrollbars, the bounds are converted
+     * from screen to logical.<BR>
+     * 
+     * @param part
+     *            The part to consider.
+     * @param considerAllScroll
+     *            In all cases, the scroll of the diagram is used, but the scroll of containers are considered only if
+     *            this parameter is true.
+     * @return The absolute bounds.
+     */
+    public static Rectangle getAbsoluteBoundsIn100Percent(GraphicalEditPart part, boolean considerAllScroll) {
         PrecisionRectangle bounds;
         if (part.getFigure() instanceof HandleBounds) {
             bounds = new PrecisionRectangle(((HandleBounds) part.getFigure()).getHandleBounds());
@@ -558,7 +619,7 @@ public final class GraphicalHelper {
             bounds = new PrecisionRectangle(part.getFigure().getBounds());
         }
         part.getFigure().translateToAbsolute(bounds);
-        screen2logical(bounds, part);
+        screen2logical(bounds, part, considerAllScroll);
         return bounds;
     }
 

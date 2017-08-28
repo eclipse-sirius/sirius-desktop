@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
@@ -28,13 +29,25 @@ import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gef.rulers.RulerProvider;
+import org.eclipse.gmf.runtime.common.ui.services.editor.EditorService;
+import org.eclipse.gmf.runtime.common.ui.util.DisplayUtils;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
+import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
+import org.eclipse.gmf.runtime.diagram.ui.util.MeasurementUnitHelper;
+import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -53,6 +66,8 @@ import org.eclipse.sirius.diagram.ui.part.SiriusLinkDescriptor;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.Display;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -68,6 +83,7 @@ import com.google.common.collect.Sets;
  *
  * @since 0.9.0
  */
+@SuppressWarnings("restriction")
 public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer {
 
     /**
@@ -91,6 +107,76 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         super();
         this.gmfDiagram = gmfDiagram;
         this.connectionsFactory = new ConnectionsFactory(gmfDiagram, viewpointViewProvider);
+        // Search if it possible to get snapToGrid and gridSpacing values from the store associated to an opened editor.
+        loadPreferencesFromOpenedDiagram(ViewUtil.getIdStr(gmfDiagram));
+    }
+
+    /**
+     * Load the preferences from an opened diagram that has the given guid.<BR>
+     * Inspired from
+     * {@link org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusDiagramPrintPreviewHelper#loadPreferencesFromOpenDiagram(String)}.
+     * 
+     * @param id
+     *            guid of the opened diagram to load the preferences for
+     */
+    private void loadPreferencesFromOpenedDiagram(String id) {
+        List<? extends Object> diagramEditors = EditorService.getInstance().getRegisteredEditorParts();
+        @SuppressWarnings("unchecked")
+        Optional<DiagramEditor> diagramEditor = (Optional<DiagramEditor>) diagramEditors.stream().filter(
+                de -> de instanceof DiagramEditor && ((DiagramEditor) de).getDiagramEditPart() != null && id.equals(ViewUtil.getIdStr(((DiagramEditor) de).getDiagramEditPart().getDiagramView())))
+                .findFirst();
+        if (diagramEditor.isPresent()) {
+            IDiagramGraphicalViewer viewer = diagramEditor.get().getDiagramGraphicalViewer();
+            if (viewer instanceof DiagramGraphicalViewer) {
+                DiagramGraphicalViewer diagramGraphicalViewer = (DiagramGraphicalViewer) viewer;
+                // Load preferences
+                IPreferenceStore store = diagramGraphicalViewer.getWorkspaceViewerPreferenceStore();
+                setSnapToGrid(store.getBoolean(WorkspaceViewerProperties.SNAPTOGRID));
+                setGridSpacing(convertGridSpacingInPixels(store.getDouble(WorkspaceViewerProperties.GRIDSPACING), store.getInt(WorkspaceViewerProperties.RULERUNIT),
+                        MeasurementUnitHelper.getMapMode(gmfDiagram.getMeasurementUnit())));
+            }
+        }
+    }
+
+    /**
+     * This conversion method is inspired from
+     * {@link org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart#setGridSpacing(double)}.
+     * 
+     * @param gridSpacing
+     *            The current grid spacing respecting the ruler units.
+     * @param rulerUnits
+     *            The ruler units.
+     * @return The grid spacing in pixels.
+     */
+    private int convertGridSpacingInPixels(double gridSpacing, int rulerUnits, IMapMode mapMode) {
+        // Get the Displays DPIs
+        final Display display = DisplayUtils.getDisplay();
+        final RunnableWithResult<Point> runnable = new RunnableWithResult.Impl<Point>() {
+            @Override
+            public void run() {
+                setResult(display.getDPI());
+            }
+        };
+        display.syncExec(runnable);
+        double dotsPerInch = runnable.getResult().x;
+        int spacingInPixels = 0;
+
+        // Evaluate the Grid Spacing based on the ruler units
+        switch (rulerUnits) {
+        case RulerProvider.UNIT_INCHES:
+            spacingInPixels = (int) Math.round(dotsPerInch * gridSpacing);
+            break;
+
+        case RulerProvider.UNIT_CENTIMETERS:
+            spacingInPixels = (int) Math.round(dotsPerInch * gridSpacing / 2.54);
+            break;
+
+        default:
+            spacingInPixels = (int) gridSpacing;
+        }
+
+        int spacing = mapMode.DPtoLP(spacingInPixels);
+        return spacing;
     }
 
     /**

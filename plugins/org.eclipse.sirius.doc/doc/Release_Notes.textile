@@ -13,8 +13,9 @@ h3. User-Visible Changes
 * <span class="label label-success">Added</span> The user now have a drop down menu in the tabbar with all available straighten to edge actions. 
 * <span class="label label-success">Added</span> Straighten to actions on edge are now available even if the selection contains incompatible elements (edge labels for example). Their execution affects only compatible edges.
 * <span class="label label-success">Added</span> Four new straighten actions are available (with top pinned, with bottom pinned, with left pinned, with right pinned) and allow to straighten edges from the opposed straightening axis point of view.
-* <span class="label label-info">Modified</span> In a diagram, when selecting an edge or a node that are not fully displayed in the editor, now, the reveal is not done anymore, that is, the displayed content of the editor is not moved anymore. If the user want to fully see the selected element, he may drag the editor content using center mouse button.
-
+* <span class="label label-info">Modified</span> In a diagram, when selecting an edge or a node that are not fully displayed in the editor, now, the reveal is not done anymore, that is, the displayed content of the editor is not moved anymore. If the user want to fully see the selected element, he may drag the editor content using center mouse button. 
+* <span class="label label-info">Modified</span> In a diagram with _snapToGrid_ enabled, when you create an edge with a tool that also create the associated border nodes, the border nodes are now snapped near the click location. Before, it was created to respect a shortest path.
+!./images/borderNodesWithSnapToGrid.png! 
 
 h3. Specifier-Visible Changes
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,10 +25,10 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEdit
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
@@ -117,15 +117,6 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String CLASS_3_NAME = "Class3";
 
     private static final String CLASS_4_NAME = "Class4";
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
-
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
 
     /**
      * If true, the creation will be made near the bordered node named
@@ -254,6 +245,25 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *            created, this class is revealed before creation.
      */
     protected void testBNC_OnNode(ZoomLevel zoomLevel, String classToRevealName) {
+        testBNC_OnNode(zoomLevel, classToRevealName, true);
+    }
+
+    /**
+     * Ensures that a bordered node created on a Node (with Scroll) has the
+     * expected location.
+     * 
+     * @param zoomLevel
+     *            the zoomLevel to set on the editor
+     * @param classToRevealName
+     *            the name of the class on which the bordered node will be
+     *            created, this class is revealed before creation.
+     * @param eastAndSouthCases
+     *            true if the east and south cases must be tested, false
+     *            otherwise (if the node is in the container the reveal does not
+     *            reveal east and south sides so it is not possible to created
+     *            border nodes on these sides).
+     */
+    protected void testBNC_OnNode(ZoomLevel zoomLevel, String classToRevealName, boolean eastAndSouthCases) {
         editor.zoom(zoomLevel);
 
         SWTBotGefEditPart classEditPart = editor.getEditPart(classToRevealName, AbstractDiagramNodeEditPart.class);
@@ -287,9 +297,13 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
             } else {
                 fail("Problem during getting expanded bounds of the collapse bordered node.");
             }
+            testBNC_OnNodeFinalCheck(classEditPart, classAbsoluteLocation, creationLocation, absoluteExpectedLocation);
         } else {
-            // Try to locate the bordered node at 8 pixels to the top-left
-            // corner of the class
+            // To increase code coverage the 4 corners are tested
+            Rectangle classBounds = editor.getAbsoluteBounds(classEditPart);
+
+            // Try to locate the bordered node at the top-left corner of the
+            // class (on north side)
             Point delta = new Point(8, 0);
             // We compute the location according the the class location, the
             // zoom factor and an insets to be sure to be in the class and not
@@ -300,7 +314,58 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
             // bordered node make by BorderItemLocator
             // (IBorderItemOffsets.DEFAULT_OFFSET - size of the node).
             absoluteExpectedLocation = classAbsoluteLocation.getTranslated(delta.translate(0, -2));
+            testBNC_OnNodeFinalCheck(classEditPart, classAbsoluteLocation, creationLocation, absoluteExpectedLocation);
+            undo(getBorderedNodeCreationOnClassToolName());
+
+            if (eastAndSouthCases) {
+                // Try to locate the bordered node to the top-right corner of
+                // the class (on east side)
+                delta = new Point(classBounds.width - 1, 2);
+                // We compute the location according the the class location and
+                // the zoom factor
+                creationLocation = classLocation.getTranslated(delta.getScaled(zoomLevel.getAmount()));
+                // The expected location is in absolute coordinate the delta is
+                // translate with -7 in y axis corresponding to the shift of the
+                // bordered node make by BorderItemLocator
+                // (IBorderItemOffsets.DEFAULT_OFFSET - size of the node).
+                absoluteExpectedLocation = classAbsoluteLocation.getTranslated(delta.translate(-7, 0));
+                testBNC_OnNodeFinalCheck(classEditPart, classAbsoluteLocation, creationLocation, absoluteExpectedLocation);
+                undo(getBorderedNodeCreationOnClassToolName());
+
+                // Try to locate the bordered node to the bottom-left corner of
+                // the class (on south side)
+                delta = new Point(8, classBounds.height - 4);
+                // We compute the location according the the class location, the
+                // zoom factor and an insets to be sure to be in the class and
+                // not just above.
+                creationLocation = classLocation.getTranslated(delta.getScaled(zoomLevel.getAmount()).translate(0, 1));
+                // The expected location is in absolute coordinate the delta is
+                // translate with -2 in y axis corresponding to the shift of the
+                // bordered node make by BorderItemLocator
+                // (IBorderItemOffsets.DEFAULT_OFFSET - size of the node).
+                absoluteExpectedLocation = classAbsoluteLocation.getTranslated(delta.translate(0, -4));
+                testBNC_OnNodeFinalCheck(classEditPart, classAbsoluteLocation, creationLocation, absoluteExpectedLocation);
+                undo(getBorderedNodeCreationOnClassToolName());
+            }
+
+            // Try to locate the bordered node to the top-left corner of the
+            // class (on west side)
+            delta = new Point(2, 2);
+            // We compute the location according the the class location, the
+            // zoom factor and an insets to be sure to be in the class and not
+            // just above.
+            creationLocation = classLocation.getTranslated(delta.getScaled(zoomLevel.getAmount()));
+            // The expected location is in absolute coordinate the delta is
+            // translate with -2 in y axis corresponding to the shift of the
+            // bordered node make by BorderItemLocator
+            // (IBorderItemOffsets.DEFAULT_OFFSET - size of the node).
+            absoluteExpectedLocation = classAbsoluteLocation.getTranslated(delta.translate(-4, 0));
+            testBNC_OnNodeFinalCheck(classEditPart, classAbsoluteLocation, creationLocation, absoluteExpectedLocation);
         }
+
+    }
+
+    private void testBNC_OnNodeFinalCheck(SWTBotGefEditPart classEditPart, Point classAbsoluteLocation, Point creationLocation, Point absoluteExpectedLocation) {
         absoluteExpectedLocation = adaptExpectedLocation(((GraphicalEditPart) classEditPart.part()).getFigure(), classAbsoluteLocation, absoluteExpectedLocation);
 
         createBorderedNode(getBorderedNodeCreationOnClassToolName(), creationLocation.x, creationLocation.y);
@@ -552,8 +617,8 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * @param creationLocation
      *            The relative creation location used to create the border node
      *            or null
-     * @param parentFigure
-     *            the parent figure
+     * @param parentPart
+     *            the parent edit part
      * @param nearCollapsedBorderedNode
      *            If true, the creation will be made near the bordered node
      *            named "elementToRevealName + collapse" (this bordered node
@@ -561,14 +626,19 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *            creation will be made at 8 pixel of the top-left corner of the
      *            container.
      */
-    private void assertBorderedNodeAtLocation(String borderedNodeLabel, Point expectedLocation, Point parentLocation, Point creationLocation, IGraphicalEditPart parentPart,
+    protected void assertBorderedNodeAtLocation(String borderedNodeLabel, Point expectedLocation, Point parentLocation, Point creationLocation, IGraphicalEditPart parentPart,
             boolean nearCollapsedBorderedNode) {
-        Point nodeLocation = editor.getAbsoluteLocation(borderedNodeLabel, AbstractDiagramBorderNodeEditPart.class);
+        IGraphicalEditPart borderNodePart = (IGraphicalEditPart) editor.getEditPart(borderedNodeLabel, AbstractDiagramBorderNodeEditPart.class).part();
+        Point nodeLocation = editor.getAbsoluteLocation(borderNodePart);
         String errorMessage = "The BorderedNode has been created at wrong location.";
         if (nearCollapsedBorderedNode) {
             errorMessage = "The BorderedNode has been created at wrong location (for near collapsed bordered node case).";
         }
+        // Check Draw2d
         assertSameLocation(errorMessage, expectedLocation, nodeLocation, parentLocation, creationLocation, parentPart);
+        // Check GMF
+        Point gmfNodeLocation = GMFHelper.getAbsoluteLocation((Node) borderNodePart.getModel(), true);
+        assertSameLocation(errorMessage, expectedLocation, gmfNodeLocation, parentLocation, creationLocation, parentPart);
     }
 
     /**
@@ -605,7 +675,7 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * (zoom level : 100%) has the expected location.
      */
     public void testBNC_OnNodeInContainerWithScroll() {
-        testBNC_OnNode(ZoomLevel.ZOOM_100, CLASS_2_NAME);
+        testBNC_OnNode(ZoomLevel.ZOOM_100, CLASS_2_NAME, false);
     }
 
     /**
@@ -613,7 +683,7 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * (zoom level : 50%) has the expected location.
      */
     public void testBNC_OnNodeInContainerWithScrollAndChangeZoom() {
-        testBNC_OnNode(ZoomLevel.ZOOM_50, CLASS_2_NAME);
+        testBNC_OnNode(ZoomLevel.ZOOM_50, CLASS_2_NAME, false);
     }
 
     /**
@@ -622,16 +692,16 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * the expected location.
      */
     public void testBNC_OnNodeInContainerWithScrollWithScrollInDiagram() {
-        testBNC_OnNode(ZoomLevel.ZOOM_100, CLASS_4_NAME);
+        testBNC_OnNode(ZoomLevel.ZOOM_100, CLASS_4_NAME, false);
     }
 
     /**
      * Ensures that a bordered node created on a Node in Container with scroll
-     * (which location implies to scroll on the diagram) (zoom level : 100%) has
+     * (which location implies to scroll on the diagram) (zoom level : 200%) has
      * the expected location.
      */
     public void testBNC_OnNodeInContainerWithScrollWithScrollInDiagramAndChangeZoom() {
-        testBNC_OnNode(ZoomLevel.ZOOM_200, CLASS_4_NAME);
+        testBNC_OnNode(ZoomLevel.ZOOM_200, CLASS_4_NAME, false);
     }
 
     /**

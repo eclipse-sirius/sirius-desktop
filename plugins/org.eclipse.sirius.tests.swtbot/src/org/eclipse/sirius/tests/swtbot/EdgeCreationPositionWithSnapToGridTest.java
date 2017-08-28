@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
@@ -42,8 +43,8 @@ public class EdgeCreationPositionWithSnapToGridTest extends EdgeCreationPosition
     }
 
     @Override
-    protected void assertAreValidAnchors(IGraphicalEditPart source, IGraphicalEditPart target, DEdgeEditPart edge) {
-        super.assertAreValidAnchors(source, target, edge);
+    protected void assertAreValidAnchors(IGraphicalEditPart source, PrecisionPoint sourcePosition, IGraphicalEditPart target, PrecisionPoint targetPosition, DEdgeEditPart edge) {
+        super.assertAreValidAnchors(source, sourcePosition, target, targetPosition, edge);
         // Check that at least
         // * the x coordinate is on the grid
         // * or the y coordinate is on the grid
@@ -60,7 +61,7 @@ public class EdgeCreationPositionWithSnapToGridTest extends EdgeCreationPosition
     private boolean checkLocation(Point location, IGraphicalEditPart parentPart) {
         boolean result = (location.x % gridStep) == 0 || (location.y % gridStep) == 0;
         if (!result) {
-            Rectangle parentBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentPart);
+            Rectangle parentBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentPart, true);
             result = (location.x == parentBounds.x || location.x == (parentBounds.x + parentBounds.width)) && (location.y == parentBounds.y || location.y == (parentBounds.y + parentBounds.height));
         }
         return result;

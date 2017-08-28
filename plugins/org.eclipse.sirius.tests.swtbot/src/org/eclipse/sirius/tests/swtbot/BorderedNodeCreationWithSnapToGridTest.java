@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,12 +12,15 @@ package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Viewport;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -39,11 +42,16 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
      */
     private static final String NEW_BORDERED_NODE_ON_CLASS_2_NAME = "new Attribute2";
 
+    /**
+     * The grid spacing in pixels.
+     */
+    private static final int GRID_SPACING = 100;
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
 
-        editor.setSnapToGrid(true, 100, 2);
+        editor.setSnapToGrid(true, GRID_SPACING, 2);
     }
 
     /**
@@ -51,7 +59,7 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
      * snapToGrid) on a Node (zoom level : 100%) are not at same location.
      */
     public void testCreateTwoBorderNodesAtSameLocation() {
-        testBNC_OnNode(ZoomLevel.ZOOM_100, C1_NAME);
+        testBNC_OnNode(ZoomLevel.ZOOM_100, C1_NAME, false);
         // Create another border node just beside the new border node but at the
         // same location with snapToGrid and check that the create
         // location is not the same (in draw2d and GMF coordinates).
@@ -77,6 +85,11 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
         Rectangle secondNewNodeGMFBounds = GMFHelper.getAbsoluteBounds((Node) secondNewNode.part().getModel());
 
         assertFalse("Second border node should not overlap the first one (GMF).", firstNewNodeGMFBounds.intersects(secondNewNodeGMFBounds));
+
+        SWTBotGefEditPart classEditPart = editor.getEditPart(C1_NAME, AbstractDiagramNodeEditPart.class);
+        Point classAbsoluteLocation = editor.getAbsoluteLocation((GraphicalEditPart) classEditPart.part());
+        assertBorderedNodeAtLocation(NEW_BORDERED_NODE_ON_CLASS_2_NAME, creationLocation, classAbsoluteLocation, creationLocation, ((GraphicalEditPart) classEditPart.part()),
+                nearCollapsedBorderedNode);
     }
 
     /**
@@ -98,19 +111,23 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
 
         if (nodeLocation.x == parentLocation.x + 8 || nodeLocation.x == parentLocation.x) {
             // Case where the grid is outside the parent
-            errorMessage += " expected <Point(" + nodeLocation.x + ", " + absoluteSnapToLocation.y + ")> or <Point(" + nodeLocation.x + ", " + expectedLocation.y + ")> but was:" + nodeLocation;
+            errorMessage += " expected <Point(" + nodeLocation.x + ", " + absoluteSnapToLocation.y + ")> or <Point(" + nodeLocation.x + ", " + expectedLocation.y + ")> but was: " + nodeLocation;
             assertTrue(errorMessage, nodeLocation.x == nodeLocation.x && nodeLocation.y == absoluteSnapToLocation.y || nodeLocation.x == nodeLocation.x && nodeLocation.y == expectedLocation.y);
         } else if (nodeLocation.y == parentLocation.y) {
             // The y axis is the same as parent. Check that this axis also
             // corresponds to the grid. The x axis is constrained by the border
             // (east or west).
-            errorMessage += " expected <Point(" + nodeLocation.x + ", " + absoluteSnapToLocation.y + ")> or <Point(" + nodeLocation.x + ", " + expectedLocation.y + ")> but was:" + nodeLocation;
+            errorMessage += " expected <Point(" + nodeLocation.x + ", " + absoluteSnapToLocation.y + ")> or <Point(" + nodeLocation.x + ", " + expectedLocation.y + ")> but was: " + nodeLocation;
             assertTrue(errorMessage, nodeLocation.y == absoluteSnapToLocation.y);
         } else {
-            errorMessage += " expected <Point(" + expectedLocation.x + ", " + absoluteSnapToLocation.y + ")> or <Point(" + absoluteSnapToLocation.x + ", " + expectedLocation.y + ")> but was:"
-                    + nodeLocation;
-            assertTrue(errorMessage, nodeLocation.x == expectedLocation.x && nodeLocation.y == absoluteSnapToLocation.y || nodeLocation.x == absoluteSnapToLocation.x
-                    && nodeLocation.y == expectedLocation.y);
+            // Get the absolute bounds of parent
+            Rectangle parentBounds = new Rectangle(editor.getAbsoluteLocation(parentPart), parentPart.getFigure().getSize());
+
+            errorMessage += " At least x or y must be on the grid (grid spacing = " + GRID_SPACING + "), but was: " + nodeLocation + " for parent: " + parentBounds;
+
+            assertTrue(errorMessage,
+                    (nodeLocation.x % GRID_SPACING == 0 && (nodeLocation.y == expectedLocation.y || nodeLocation.y == parentLocation.y - 2 || nodeLocation.y == parentBounds.bottom() - 8))
+                            || ((nodeLocation.x == expectedLocation.x || nodeLocation.x == parentLocation.x - 2 || nodeLocation.x == parentBounds.right() - 8) && nodeLocation.y % GRID_SPACING == 0));
         }
     }
 
