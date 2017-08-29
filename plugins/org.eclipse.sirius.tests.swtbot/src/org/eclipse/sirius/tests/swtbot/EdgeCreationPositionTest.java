@@ -121,7 +121,7 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Same as test_Container_Aligned() but with a specific zoom.
      */
     public void test_Node_WithZoom() {
-        createEdgeAndValidateAnchors("Node", "A", AbstractDiagramNodeEditPart.class, TOP_LEFT_CORNER, "B", AbstractDiagramNodeEditPart.class, BOTTOM_RIGHT_CORNER, ZoomLevel.ZOOM_200);
+        createEdgeAndValidateAnchors("Node", "A", AbstractDiagramNodeEditPart.class, TOP_LEFT_CORNER, "B", AbstractDiagramNodeEditPart.class, BOTTOM_RIGHT_CORNER, ZoomLevel.ZOOM_125);
     }
 
     /** */
