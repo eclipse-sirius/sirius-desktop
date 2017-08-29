@@ -183,24 +183,6 @@
 				<a href="#replazyloading">representation lazy loading</a> as it may, in the future, not need to load all not yet loaded representations. For now, the use of this API will load all not loaded representations.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui.editor.api.pages">Changes in 
-			<code>org.eclipse.sirius.ui.editor.api.pages</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> New classes have been added in package 
-				<code>org.eclipse.sirius.ui.editor.api.pages</code>. They are the following: 
-				<code>AbstractSessionEditorPage</code>, 
-				<code>PageProvider</code>, 
-				<code>PageUpdateCOmmand</code>, 
-				<code>PositioningKind</code>, 
-				<code>PageUpdateCommandFactory</code>. These classes allow to provide custom pages to session editor instances.
-			</li>
-		</ul>
-		<ul>
-			<li><span class="label label-success">Added</span> An extension point 
-				<code>org.eclipse.sirius.ui.editor.sessionEditorPageProvider</code> has been added to allow custom page providing for session editor instances.
-			</li>
-		</ul>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see 
@@ -316,6 +298,11 @@
 		</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ui.tools.api.wizards.CreateEMFModelWizard</code> is a new wizard that can be invoked to create instances of any metamodel. It will ask the end-user for a metamodel (
+				<code>EPackage</code>), a concrete type to instanciate as root element, and finally the local path of the file to create. See the class Javadoc for sample usage. Note that the first two pages of the wizard (EPackage and root type selection) can be customized through the 
+				<code>org.eclipse.sirius.common.package_meta_data</code> extension point to provide user-oriented name and documentation for an EPackage, and to suggest specific EClasses as good root candidates.
+			</li>
+			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.shouldDeleteRepresentation(Set&lt;DRepresentationDescriptor&gt;)</code> default implementation has been added to prompt the confirm dialog.
 			</li>
 			<li><span class="label label-success">Added</span> 
@@ -323,6 +310,22 @@
 				<code>DRepresentationDescriptor</code> URI to retrieve the 
 				<code>DRepresentation</code> from the 
 				<code>DRepresentationDescriptor.getRepresentation()</code> method instead of performing a direct load.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui.editor">Changes in 
+			<code>org.eclipse.sirius.ui.editor</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> New classes have been added in package 
+				<code>org.eclipse.sirius.ui.editor.api.pages</code>. They are the following: 
+				<code>AbstractSessionEditorPage</code>, 
+				<code>PageProvider</code>, 
+				<code>PageUpdateCOmmand</code>, 
+				<code>PositioningKind</code>, 
+				<code>PageUpdateCommandFactory</code>. These classes allow to provide custom pages to session editor instances.
+			</li>
+			<li><span class="label label-success">Added</span> An extension point 
+				<code>org.eclipse.sirius.ui.editor.sessionEditorPageProvider</code> has been added to allow custom page providing for session editor instances.
 			</li>
 		</ul>
 		<h2 id="sirius5.0.1">Changes in Sirius 5.0.1</h2>
@@ -804,7 +807,7 @@
 				<code>SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE</code>. This enum value is the preference when true allowing to use runtime font height when displaying Sirius tree editor&#8217;s items instead of the one specified in the VSM.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui.editor">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui.editor2">Changes in 
 			<code>org.eclipse.sirius.ui.editor</code>
 		</h4>
 		<p>This plugin is new in Sirius 5.0. It provides a session editor showing loaded models, representations and viewpoint activation status of the session. It has functionalities allowing to change the viewpoint activation status, to create/remove representations or to load unload external models. The graphical block showing loaded models is integrated with CNF. You can provide content extension to its viewer by using an id matching the pattern 

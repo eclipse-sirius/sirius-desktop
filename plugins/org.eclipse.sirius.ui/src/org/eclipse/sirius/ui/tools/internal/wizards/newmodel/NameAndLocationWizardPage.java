@@ -18,6 +18,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.ui.tools.api.wizards.CreateEMFModelWizard;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 
@@ -68,7 +69,7 @@ public class NameAndLocationWizardPage extends WizardNewFileCreationPage impleme
     }
 
     @Override
-    protected boolean validatePage() {
+    public boolean validatePage() {
         boolean isValid = false;
         if (super.validatePage()) {
             String extension = new Path(getFileName()).getFileExtension();

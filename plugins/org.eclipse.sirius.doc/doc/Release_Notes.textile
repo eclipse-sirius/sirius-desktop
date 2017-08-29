@@ -39,13 +39,6 @@ h4. Changes in @org.eclipse.sirius.business.api@
 
 * <span class="label label-success">Added</span> (experimental) The new API @org.eclipse.sirius.business.api.query.SiriusReferenceFinder@ and @org.eclipse.sirius.business.api.query.EObjectQuery.getSiriusReferenceFinder()@ method to get it have been added. This API allows getting the DRepresentations or DRepresentationElements that reference the provided semantic object. It also allows getting the DRepresentationDescriptor which associated DRepresentation is or contains elements that reference the provided semantic object. This API will be useful for "representation lazy loading":#replazyloading as it may, in the future, not need to load all not yet loaded representations. For now, the use of this API will load all not loaded representations.
 
-h4. Changes in @org.eclipse.sirius.ui.editor.api.pages@
-
-* <span class="label label-success">Added</span> New classes have been added in package @org.eclipse.sirius.ui.editor.api.pages@. They are the following: @AbstractSessionEditorPage@, @PageProvider@, @PageUpdateCOmmand@, @PositioningKind@, @PageUpdateCommandFactory@. These classes allow to provide custom pages to session editor instances.
-
-* <span class="label label-success">Added</span> An extension point @org.eclipse.sirius.ui.editor.sessionEditorPageProvider@ has been added to allow custom page providing for session editor instances.
-
-
 h4. Migrations
 
 * <span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see "bugzilla #518870":https://bugs.eclipse.org/bugs/show_bug.cgi?id=518870 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _12.1.0.201706291600_.
@@ -82,8 +75,15 @@ h4. Changes in @org.eclipse.sirius.common@
 
 h4. Changes in @org.eclipse.sirius.ui@
 
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.wizards.CreateEMFModelWizard@ is a new wizard that can be invoked to create instances of any metamodel. It will ask the end-user for a metamodel (@EPackage@), a concrete type to instanciate as root element, and finally the local path of the file to create. See the class Javadoc for sample usage. Note that the first two pages of the wizard (EPackage and root type selection) can be customized through the @org.eclipse.sirius.common.package_meta_data@ extension point to provide user-oriented name and documentation for an EPackage, and to suggest specific EClasses as good root candidates.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.shouldDeleteRepresentation(Set<DRepresentationDescriptor>)@ default implementation has been added to prompt the confirm dialog.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.SessionEditorInput(URI, URI, String, Session)@ has been added to provide the @DRepresentationDescriptor@ URI to retrieve the @DRepresentation@ from the @DRepresentationDescriptor.getRepresentation()@ method instead of performing a direct load.
+
+h4. Changes in @org.eclipse.sirius.ui.editor@
+
+* <span class="label label-success">Added</span> New classes have been added in package @org.eclipse.sirius.ui.editor.api.pages@. They are the following: @AbstractSessionEditorPage@, @PageProvider@, @PageUpdateCOmmand@, @PositioningKind@, @PageUpdateCommandFactory@. These classes allow to provide custom pages to session editor instances.
+* <span class="label label-success">Added</span> An extension point @org.eclipse.sirius.ui.editor.sessionEditorPageProvider@ has been added to allow custom page providing for session editor instances.
+
 
 h2(#sirius5.0.1). Changes in Sirius 5.0.1
 

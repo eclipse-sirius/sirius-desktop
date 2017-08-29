@@ -52,6 +52,7 @@ Export-Package: org.eclipse.sirius.description.contribution.provider;version="2.
  org.eclipse.sirius.ui.tools.api.views.modelexplorerview;version="2.0.4",
  org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener;version="2.0.4",
  org.eclipse.sirius.ui.tools.api.wizards.page;version="2.0.4",
+ org.eclipse.sirius.ui.tools.api.wizards;version="5.1.0",
  org.eclipse.sirius.ui.tools.internal.actions.analysis;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.actions.control;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.actions.copy;version="2.0.4";x-internal:=true,

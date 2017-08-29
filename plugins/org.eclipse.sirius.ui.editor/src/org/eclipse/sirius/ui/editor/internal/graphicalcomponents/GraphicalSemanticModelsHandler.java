@@ -70,6 +70,7 @@ import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem;
+import org.eclipse.sirius.ui.tools.api.wizards.CreateEMFModelWizard;
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.AddModelDependencyAction;
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.RemoveSemanticResourceAction;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.NoDynamicProjectDependencies;
@@ -80,7 +81,6 @@ import org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.Filter
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.RepresentationInSemanticSorter;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHandler;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.RenameActionHandler;
-import org.eclipse.sirius.ui.tools.internal.wizards.newmodel.CreateEMFModelWizard;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;

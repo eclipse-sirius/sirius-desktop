@@ -27,6 +27,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.common.tools.internal.ecore.EPackageHelper;
+import org.eclipse.sirius.ui.tools.api.wizards.CreateEMFModelWizard;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;

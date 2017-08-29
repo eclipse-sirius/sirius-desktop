@@ -8,7 +8,7 @@
  * Contributors:
  *  Obeo - initial API and implementation
  */
-package org.eclipse.sirius.ui.tools.internal.wizards.newmodel;
+package org.eclipse.sirius.ui.tools.api.wizards;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -31,6 +31,10 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.sirius.ui.tools.internal.wizards.newmodel.CreateEMFModelWizardDataModel;
+import org.eclipse.sirius.ui.tools.internal.wizards.newmodel.NameAndLocationWizardPage;
+import org.eclipse.sirius.ui.tools.internal.wizards.newmodel.SelectEMFMetamodelWizardPage;
+import org.eclipse.sirius.ui.tools.internal.wizards.newmodel.SelectRootElementWizardPage;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IWorkbenchPage;
@@ -43,6 +47,15 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 /**
  * A wizard allowing to create a new EMF model. The model will be an instance of a metamodel available through the given
  * {@link Registry}.
+ * <p>
+ * Sample usage:
+ * <pre><code>
+ *   CreateEMFModelWizard wizard = new CreateEMFModelWizard(EPackage.Registry.INSTANCE, new StructuredSelection(context));
+ *   if (new WizardDialog(window.getShell(), wizard).open() == Window.OK) {
+ *     IFile newModel = wizard.getResult();
+ *     // do something with the new file
+ *   }
+ * </code></pre>
  * 
  * @see #CreateEMFModelWizard(Registry, IStructuredSelection)
  * 

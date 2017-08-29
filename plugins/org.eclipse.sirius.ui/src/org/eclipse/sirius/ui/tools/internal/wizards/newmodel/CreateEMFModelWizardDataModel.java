@@ -15,6 +15,7 @@ import java.beans.PropertyChangeSupport;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.ui.tools.api.wizards.CreateEMFModelWizard;
 
 /**
  * A data model that works along with {@link CreateEMFModelWizard}.
