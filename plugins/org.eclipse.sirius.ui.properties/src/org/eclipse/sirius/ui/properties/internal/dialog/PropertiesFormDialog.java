@@ -160,6 +160,7 @@ public class PropertiesFormDialog extends FormDialog {
         eefTab.createControls(composite, container);
         eefTab.aboutToBeShown();
         eefTab.refresh();
+        managedForm.getForm().reflow(true);
 
         this.configureModelChangeRefresh();
     }
