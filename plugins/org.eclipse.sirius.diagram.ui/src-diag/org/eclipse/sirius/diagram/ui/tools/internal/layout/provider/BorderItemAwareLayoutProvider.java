@@ -969,9 +969,30 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                         }
                     }
                 }
+                List<IBorderItemEditPart> allBorderNodes = Stream.concat(Stream.concat(tops.stream(), bottoms.stream()), Stream.concat(lefts.stream(), rights.stream())).collect(Collectors.toList());
+                addSnapCommand(resCommand, allBorderNodes);
             }
         }
         return resCommand;
+    }
+
+    /**
+     * Add the SnapCommand if the SnapToGrid is activated.
+     * 
+     * @param resCommand
+     *            the {@link CompoundCommand} where the SnapCommand will be added.
+     * @param allBorderNodes
+     *            the border nodes to apply snap command on.
+     */
+    private void addSnapCommand(CompoundCommand resCommand, List<IBorderItemEditPart> allBorderNodes) {
+        if (!allBorderNodes.isEmpty() && allBorderNodes.get(0).getViewer() instanceof DiagramGraphicalViewer) {
+            IPreferenceStore preferenceStore = ((DiagramGraphicalViewer) allBorderNodes.get(0).getViewer()).getWorkspaceViewerPreferenceStore();
+            if (preferenceStore != null && preferenceStore.getBoolean(WorkspaceViewerProperties.SNAPTOGRID)) {
+                for (IBorderItemEditPart editPart : allBorderNodes) {
+                    resCommand.add(new ICommandProxy(new SnapCommand(editPart.getEditingDomain(), Collections.singletonList(editPart))));
+                }
+            }
+        }
     }
 
     private void computeHeading(IBorderItemEditPart borderItemEditPart, Point containerCenterAfterArrangeAll, double scale, Map<IBorderItemEditPart, Vector> headings) {
