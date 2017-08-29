@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,7 +55,7 @@ public class SelectConnectionEditPartTracker extends org.eclipse.gmf.runtime.gef
         if (bExecuteDrag) {
             Method eraseSourceFeedbackMethod;
             try {
-                eraseSourceFeedbackMethod = SelectConnectionEditPartTracker.class.getDeclaredMethod("eraseSourceFeedback"); //$NON-NLS-1$
+                eraseSourceFeedbackMethod = org.eclipse.gmf.runtime.gef.ui.internal.tools.SelectConnectionEditPartTracker.class.getDeclaredMethod("eraseSourceFeedback"); //$NON-NLS-1$
                 eraseSourceFeedbackMethod.setAccessible(true);
                 eraseSourceFeedbackMethod.invoke(this);
             } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
