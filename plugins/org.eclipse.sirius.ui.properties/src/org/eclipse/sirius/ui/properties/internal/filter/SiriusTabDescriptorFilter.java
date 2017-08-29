@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.properties.internal.filter;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorFilter;
 import org.eclipse.sirius.properties.core.api.preferences.SiriusPropertiesCorePreferences;
@@ -22,9 +25,11 @@ import org.eclipse.sirius.properties.core.api.preferences.SiriusPropertiesCorePr
 public class SiriusTabDescriptorFilter implements IEEFTabDescriptorFilter {
 
     /**
-     * Id of the default tab.
+     * Ids of the default tab. For historical reasons the ids used by the different dialects (diagrams, tables & trees)
+     * are not the same, so we must consider all of them.
      */
-    private static final String DEFAULT_TAB_ID = "org.eclipse.sirius.ui.tools.views.model.explorer.tab"; //$NON-NLS-1$
+    private static final Collection<String> DEFAULT_TAB_IDS = Arrays.asList("org.eclipse.sirius.ui.tools.views.model.explorer.tab", //$NON-NLS-1$
+            "org.eclipse.sirius.table.ui.tab.semantic", "org.eclipse.sirius.tree.ui.tab.semantic"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * Id of the semantic tab.
@@ -39,7 +44,7 @@ public class SiriusTabDescriptorFilter implements IEEFTabDescriptorFilter {
         // an element is selected from a Sirius editor
         if (SEMANTIC_TAB_ID.equals(tabDescriptor.getId())) {
             result = SiriusPropertiesCorePreferences.INSTANCE.isSemanticTabFiltered();
-        } else if (DEFAULT_TAB_ID.equals(tabDescriptor.getId())) {
+        } else if (DEFAULT_TAB_IDS.contains(tabDescriptor.getId())) {
             result = SiriusPropertiesCorePreferences.INSTANCE.isDefaultTabFiltered();
         }
 
