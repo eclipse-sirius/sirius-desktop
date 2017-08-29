@@ -174,6 +174,16 @@
 				<em>Force Refresh</em> option of a tool is enabled in your VSM, only the current representation is refreshed when the tool is applied. Before this version, all open representations were refreshed.
 			</li>
 			<li><span class="label label-info">Modified</span> The filtering expression variables available in the properties view definition in the &#8216;Extends&#8217; tab were renamed to match the following pattern: featureName+&#8216;Description&#8217;.</li>
+			<li><span class="label label-info">Modified</span> The 
+				<em>Reference Name</em> field of 
+				<em>Create instance</em> completion will display only features with a consistent type with the one specified in 
+				<em>Type Name</em> field (if a type has been specified).
+			</li>
+			<li><span class="label label-info">Modified</span> The 
+				<em>Type Name</em> field of 
+				<em>Create instance</em> completion will display only types consistent with the feature type specified in 
+				<em>Reference Name</em> field (if a valid feature has been specified).
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Migrations">Migrations</h4>
@@ -330,6 +340,7 @@
 				<code>DRepresentation</code> from the 
 				<code>DRepresentationDescriptor.getRepresentation()</code> method instead of performing a direct load.
 			</li>
+			<li><span class="label label-info">Modified</span> The org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider.getSelectedElement() method is now protected instead of private to let sub-classes retrieving the selected element.</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui.editor">Changes in 
 			<code>org.eclipse.sirius.ui.editor</code>

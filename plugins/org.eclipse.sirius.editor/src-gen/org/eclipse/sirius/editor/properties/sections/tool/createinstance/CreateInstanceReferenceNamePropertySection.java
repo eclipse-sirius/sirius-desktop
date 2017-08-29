@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
-import org.eclipse.sirius.editor.tools.internal.assist.SiriusFeatureContentProposalProvider;
+import org.eclipse.sirius.editor.tools.internal.assist.CreateInstanceSiriusFeatureContentProposalProvider;
 import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
@@ -113,7 +113,7 @@ public class CreateInstanceReferenceNamePropertySection extends AbstractTextProp
 
         // Start of user code create controls
         text.setBackground(SiriusEditor.getColorRegistry().get("lightgreen"));
-        TypeContentProposalProvider.bindCompletionProcessor(this, new SiriusFeatureContentProposalProvider(), text);
+        TypeContentProposalProvider.bindCompletionProcessor(this, new CreateInstanceSiriusFeatureContentProposalProvider(), text);
         // End of user code create controls
 
     }

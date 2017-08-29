@@ -110,7 +110,12 @@ public class TextContentProposalProvider implements IAssistContentProvider {
 
     }
 
-    private Object getSelectedElement() {
+    /**
+     * Provides the selectedElement.
+     * 
+     * @return the selected elements.
+     */
+    protected Object getSelectedElement() {
         if (element == null && view != null && view.getSelection() instanceof IStructuredSelection) {
             return ((IStructuredSelection) view.getSelection()).getFirstElement();
         } else {

@@ -120,6 +120,7 @@ Some _VSM_ elements will need you to specify a _Feature Name_ (or _Reference Nam
 !images/featureName.png!
 
 Auto-completion is available in these fields using the _Ctrl+Space_ shortcut except if the current element type cannot be inferred, usually in the case of a generic tool where the target element will be known only at runtime.
+Note that for _Create Instance_  _Reference Name_ field, the completion will display only features that have a type consistent with the one specified in the _Type Name_ field. If no type is specified, all available features will be displayed. In the same way, if a valid _Reference Name_ is set, the completion for the _Type Name_ field will display only types consistent with the feature type.
 
 h3(#translatable_messages). Translatable Messages
 

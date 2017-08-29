@@ -73,7 +73,7 @@ public class FeatureAssistTest extends AbstractContentAssistTest {
      * 
      */
     public void testFeatureCompletionForSetValueFeatureName() {
-        testFeatureCompletion("Set stub", "stubLooseFocusChange", TABLE_REPRESENTATION_NAME, COLUMN_MAPPING_NODE, LABEL_EDIT_NODE, CHANGE_CONTEXT_NODE);
+        testFeatureCompletion("Set stub", "stubLooseFocusChange", "eAnnotations", TABLE_REPRESENTATION_NAME, COLUMN_MAPPING_NODE, LABEL_EDIT_NODE, CHANGE_CONTEXT_NODE);
     }
 
     /**
@@ -81,7 +81,7 @@ public class FeatureAssistTest extends AbstractContentAssistTest {
      * 
      */
     public void testFeatureCompletionForUnsetFeatureName() {
-        testFeatureCompletion("Unset stub", "stubLooseFocusChange", TABLE_REPRESENTATION_NAME, COLUMN_MAPPING_NODE, LABEL_EDIT_NODE, CHANGE_CONTEXT_NODE);
+        testFeatureCompletion("Unset stub", "stubLooseFocusChange", "eAnnotations", TABLE_REPRESENTATION_NAME, COLUMN_MAPPING_NODE, LABEL_EDIT_NODE, CHANGE_CONTEXT_NODE);
     }
 
     /**
@@ -89,7 +89,7 @@ public class FeatureAssistTest extends AbstractContentAssistTest {
      * 
      */
     public void testFeatureCompletionForMoveElementFeatureName() {
-        testFeatureCompletion("Move stub", "stubLooseFocusChange", TABLE_REPRESENTATION_NAME, COLUMN_MAPPING_NODE, LABEL_EDIT_NODE, CHANGE_CONTEXT_NODE);
+        testFeatureCompletion("Move stub", "stubLooseFocusChange", "eAnnotations", TABLE_REPRESENTATION_NAME, COLUMN_MAPPING_NODE, LABEL_EDIT_NODE, CHANGE_CONTEXT_NODE);
     }
 
     /**
@@ -97,7 +97,7 @@ public class FeatureAssistTest extends AbstractContentAssistTest {
      * 
      */
     public void testFeatureCompletionForCreateInstanceFeatureName() {
-        testFeatureCompletion("Create Instance ecore::EPackage", "stubLooseFocusChange", TABLE_REPRESENTATION_NAME, COLUMN_MAPPING_NODE, LABEL_EDIT_NODE, CHANGE_CONTEXT_NODE);
+        testFeatureCompletion("Create Instance ecore::EPackage", "stubLooseFocusChange", "ePackage", TABLE_REPRESENTATION_NAME, COLUMN_MAPPING_NODE, LABEL_EDIT_NODE, CHANGE_CONTEXT_NODE);
     }
 
     /**
@@ -105,17 +105,17 @@ public class FeatureAssistTest extends AbstractContentAssistTest {
      * 
      */
     public void testFeatureCompletionForFeatureColumnMappingFeatureName() {
-        testFeatureCompletion(COLUMN_MAPPING_NODE, "stubLooseFocusChange", TABLE_REPRESENTATION_NAME);
+        testFeatureCompletion(COLUMN_MAPPING_NODE, "stubLooseFocusChange", "eAnnotations", TABLE_REPRESENTATION_NAME);
     }
 
     /**
      * Test feature completion for FeatureChangeListenerFeatureName.
      */
     public void testFeatureCompletionForFeatureChangeListenerFeatureName() {
-        testFeatureCompletion("Feature Change Listener stub", "ecore::EPackage", TREE_REPRESENTATION_NAME, "Drop Tool", "Filter");
+        testFeatureCompletion("Feature Change Listener stub", "ecore::EPackage", "eAnnotations", TREE_REPRESENTATION_NAME, "Drop Tool", "Filter");
     }
 
-    private void testFeatureCompletion(String operationToSelect, String firstTextToSet, String... nodesToExpend) {
+    private void testFeatureCompletion(String operationToSelect, String firstTextToSet, String expectedResult, String... nodesToExpend) {
         // Open odesign file
         SWTBotView projectExplorer = bot.viewById(IModelExplorerView.ID);
         projectExplorer.setFocus();
@@ -153,7 +153,7 @@ public class FeatureAssistTest extends AbstractContentAssistTest {
 
             // Use of content assist
             selectContentAssistProposal(semanticCandidateExpressionText, 0, 0);
-            assertEquals("The content of Semantic Candidate Expression after content assist use is not as expected", "eAnnotations", semanticCandidateExpressionText.getText());
+            assertEquals("The content of Semantic Candidate Expression after content assist use is not as expected", expectedResult, semanticCandidateExpressionText.getText());
         } finally {
             activeEditor.close();
         }

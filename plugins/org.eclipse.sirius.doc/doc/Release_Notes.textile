@@ -33,6 +33,8 @@ h3. Specifier-Visible Changes
 ** Between these 2 limits, the label is considered as distant if the distance between the center of the label and the edge is higher than "four times the size of the nearest segment".
 * <span class="label label-info">Modified</span> In manual refresh mode (_Automatic Refresh_ Sirius preference disabled), when the _Force Refresh_ option of a tool is enabled in your VSM, only the current representation is refreshed when the tool is applied. Before this version, all open representations were refreshed.
 * <span class="label label-info">Modified</span> The filtering expression variables available in the properties view definition in the 'Extends' tab were renamed to match the following pattern: featureName+'Description'.
+* <span class="label label-info">Modified</span> The _Reference Name_ field of _Create instance_ completion will display only features with a consistent type with the one specified in _Type Name_ field (if a type has been specified).
+* <span class="label label-info">Modified</span> The _Type Name_ field of _Create instance_ completion will display only types consistent with the feature type specified in _Reference Name_ field (if a valid feature has been specified).
 
 h3. Developer-Visible Changes
 
@@ -84,6 +86,7 @@ h4. Changes in @org.eclipse.sirius.ui@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.wizards.CreateEMFModelWizard@ is a new wizard that can be invoked to create instances of any metamodel. It will ask the end-user for a metamodel (@EPackage@), a concrete type to instanciate as root element, and finally the local path of the file to create. See the class Javadoc for sample usage. Note that the first two pages of the wizard (EPackage and root type selection) can be customized through the @org.eclipse.sirius.common.package_meta_data@ extension point to provide user-oriented name and documentation for an EPackage, and to suggest specific EClasses as good root candidates.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.shouldDeleteRepresentation(Set<DRepresentationDescriptor>)@ default implementation has been added to prompt the confirm dialog.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.SessionEditorInput(URI, URI, String, Session)@ has been added to provide the @DRepresentationDescriptor@ URI to retrieve the @DRepresentation@ from the @DRepresentationDescriptor.getRepresentation()@ method instead of performing a direct load.
+* <span class="label label-info">Modified</span> The org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider.getSelectedElement() method is now protected instead of private to let sub-classes retrieving the selected element.
 
 h4. Changes in @org.eclipse.sirius.ui.editor@
 

@@ -62,6 +62,8 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     private Group modelerForVariableNameValidation;
 
     private Group modelerForInvalidVariableNameValidation;
+    
+    private Group modelerForInvalidTypeValidation;
 
     private Group modelerForImagePathValidation;
 
@@ -85,6 +87,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         modelerForDomainClassValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideDomainClassVSM.odesign", true), set);
         modelerForVariableNameValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVariableNameVSM.odesign", true), set);
         modelerForInvalidVariableNameValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/invalidVariableNameVSM.odesign", true), set);
+        modelerForInvalidTypeValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/invalidTypeVSM.odesign", true), set);
         modelerForImagePathValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateImagePathVSM.odesign", true), set);
         modelerForDefaultLayerValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateDefaultLayerVSM.odesign", true), set);
         modelerWithAllKindOfError = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateVSMProblemSeverity.odesign", true), set);
@@ -284,6 +287,16 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         Diagnostic diagnostic = diagnostician.validate(modelerForInvalidVariableNameValidation);
         assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
         assertEquals("Validation should have found 2 invalid variable names", 2, diagnostic.getChildren().size());
+    }
+    
+    /**
+     * Ensure that VSM validation detects inconsistent referenceName type.
+     */
+    public void testTypeValidation() {
+        Diagnostician diagnostician = new Diagnostician();
+        Diagnostic diagnostic = diagnostician.validate(modelerForInvalidTypeValidation);
+        assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
+        assertEquals("Validation should have found 2 invalid referenceName type", 2, diagnostic.getChildren().size());
     }
 
     /**

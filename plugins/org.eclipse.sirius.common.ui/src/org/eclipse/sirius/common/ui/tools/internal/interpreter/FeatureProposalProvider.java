@@ -11,11 +11,13 @@
 package org.eclipse.sirius.common.ui.tools.internal.interpreter;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
@@ -66,7 +68,8 @@ public class FeatureProposalProvider implements IProposalProvider {
             IInterpreterContext interpreterContext = context.getInterpreterContext();
             for (TypeName type : interpreterContext.getTargetType().getPossibleTypes()) {
                 for (EClass possibleEClass : Iterables.filter(type.search(interpreterContext.getAvailableEPackages()), EClass.class)) {
-                    Set<ContentProposal> proposalsForThisType = Sets.newLinkedHashSet(getProposals(context.getContents(), context.getPosition(), possibleEClass));
+                    Set<ContentProposal> proposalsForThisType = Sets
+                            .newLinkedHashSet(getProposals(context.getContents(), context.getPosition(), possibleEClass, getExpectedFeatureType(interpreterContext)));
                     if (intersectingProposals == null) {
                         intersectingProposals = proposalsForThisType;
                     } else {
@@ -101,7 +104,7 @@ public class FeatureProposalProvider implements IProposalProvider {
         } else if (context.getCurrentSelected() == null) {
             proposals = Collections.singletonList(getNewEmtpyExpression());
         } else {
-            proposals = getProposals(context.getTextSoFar(), context.getCursorPosition(), context.getCurrentSelected().eClass());
+            proposals = getProposals(context.getTextSoFar(), context.getCursorPosition(), context.getCurrentSelected().eClass(), Collections.emptyList());
         }
         return proposals;
     }
@@ -115,9 +118,11 @@ public class FeatureProposalProvider implements IProposalProvider {
      *            The current cursor position to consider only characters before it.
      * @param currentElementType
      *            The current element type in the context.
+     * @param featureType
+     *            the feature types.
      * @return content proposal list.
      */
-    private List<ContentProposal> getProposals(String writtenExpression, int cursorPosition, EClass currentElementType) {
+    private List<ContentProposal> getProposals(String writtenExpression, int cursorPosition, EClass currentElementType, Collection<EClass> featureTypes) {
         final List<ContentProposal> proposals = new ArrayList<ContentProposal>();
 
         // Keep only characters before cursor
@@ -136,7 +141,7 @@ public class FeatureProposalProvider implements IProposalProvider {
 
             if (currentElementType != null) {
                 for (EStructuralFeature eStructuralFeature : currentElementType.getEAllStructuralFeatures()) {
-                    if (eStructuralFeature.getName().startsWith(userInput)) {
+                    if (correctEType(eStructuralFeature, featureTypes) && eStructuralFeature.getName().startsWith(userInput)) {
                         String displayedName = eStructuralFeature.getName()
                                 + (eStructuralFeature.isMany() ? "[" + eStructuralFeature.getLowerBound() + ".." //$NON-NLS-1$//$NON-NLS-2$
                                         + (eStructuralFeature.getUpperBound() == -1 ? "*" : eStructuralFeature.getUpperBound()) + "]" : "") //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -148,6 +153,19 @@ public class FeatureProposalProvider implements IProposalProvider {
             }
         }
         return proposals;
+    }
+
+    private boolean correctEType(EStructuralFeature eStructuralFeature, Collection<EClass> featureTypes) {
+        boolean value = true;
+        if (!featureTypes.isEmpty()) {
+            EClassifier eType = eStructuralFeature.getEType();
+            if (eType instanceof EClass) {
+                value = featureTypes.stream().filter(featureType -> ((EClass) eType).isSuperTypeOf(featureType)).findFirst().isPresent();
+            } else {
+                value = false;
+            }
+        }
+        return value;
     }
 
     /**
@@ -172,6 +190,20 @@ public class FeatureProposalProvider implements IProposalProvider {
      */
     protected List<ContentProposal> addComputedFeatures(String userInput) {
         return new ArrayList<ContentProposal>(0);
+    }
+
+    /**
+     * If the feature proposal should restrict the list to features with a specific type, the method will return one or
+     * several type EClass according to the {@link IInterpreterContext}. If there is no specific type, the method
+     * returns an empty collection.
+     * 
+     * @param context
+     *            the {@link IInterpreterContext}.
+     * 
+     * @return the {@link Collection} containing EClasses if a specific type is set.
+     */
+    protected Collection<EClass> getExpectedFeatureType(IInterpreterContext context) {
+        return Collections.emptyList();
     }
 
 }

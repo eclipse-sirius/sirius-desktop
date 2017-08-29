@@ -37,10 +37,19 @@ public class SiriusFeatureContentProposalProvider extends TextContentProposalPro
         final ContentContext context = getContentContext(contents, position);
         String proposalStart = new ContentContextHelper(contents, position, prefix).getProposalStart();
         List<ContentProposal> proposals = new ArrayList<ContentProposal>();
-        proposals.addAll(new FeatureProposalProvider().getProposals(null, context));
+        proposals.addAll(createFeatureProposalProvider().getProposals(null, context));
 
         ContentProposalConverter contentProposalConverter = new ContentProposalConverter(proposalStart);
         return contentProposalConverter.convertToJFaceContentProposals(proposals);
+    }
+
+    /**
+     * Creates the {@link FeatureProposalProvider}.
+     * 
+     * @return the new created {@link FeatureProposalProvider}.
+     */
+    protected FeatureProposalProvider createFeatureProposalProvider() {
+        return new FeatureProposalProvider();
     }
 
 }
