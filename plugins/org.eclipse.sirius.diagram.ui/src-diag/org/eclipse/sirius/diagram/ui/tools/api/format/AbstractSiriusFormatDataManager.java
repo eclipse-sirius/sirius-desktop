@@ -666,18 +666,12 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
                     locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
                 }
 
-                // CanonicalDBorderItemLocator works with absolute GMF parent
-                // location so we need to translate BorderedNode absolute
-                // location
-                // from Draw2D to GMF.
-
-                Point delta = getGMFDraw2DDelta(parentNode, (IGraphicalEditPart) parentGraphicalEditPart);
-                final Rectangle rect = new Rectangle(locationToApply.getX() - delta.getX(), locationToApply.getY() - delta.getY(), formatData.getWidth(), formatData.getHeight());
+                final Rectangle rect = new Rectangle(locationToApply.getX(), locationToApply.getY(), formatData.getWidth(), formatData.getHeight());
 
                 final org.eclipse.draw2d.geometry.Point realLocation = locator.getValidLocation(rect, toRestoreView, portsNodesToIgnore);
 
                 // Compute the new relative position to the parent
-                final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parentNode).getTopLeft();
+                final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parentNode, true).getTopLeft();
                 locationToApply.setX(realLocation.x);
                 locationToApply.setY(realLocation.y);
                 locationToApply = FormatDataHelper.INSTANCE.getTranslated(locationToApply, parentAbsoluteLocation.negate());
@@ -725,20 +719,6 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         if (semanticDecorator instanceof EdgeTarget) {
             applyFormatToOutgoingEdge((EdgeTarget) semanticDecorator, editPartViewer, applyFormat, applyStyle);
         }
-    }
-
-    private Point getGMFDraw2DDelta(Node parentNode, IGraphicalEditPart parentEditPart) {
-
-        Point delta = FormatdataFactory.eINSTANCE.createPoint();
-
-        org.eclipse.draw2d.geometry.Point parentDraw2DAbsoluteLocation = parentEditPart.getFigure().getBounds().getTopLeft().getCopy();
-        FigureUtilities.translateToAbsoluteByIgnoringScrollbar(parentEditPart.getFigure(), parentDraw2DAbsoluteLocation);
-
-        org.eclipse.draw2d.geometry.Point parentGMFAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode);
-        delta.setX(parentDraw2DAbsoluteLocation.x - parentGMFAbsoluteLocation.x);
-        delta.setY(parentDraw2DAbsoluteLocation.y - parentGMFAbsoluteLocation.y);
-
-        return delta;
     }
 
     /**

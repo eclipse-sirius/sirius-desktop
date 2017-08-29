@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -667,18 +667,12 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
                     locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
                 }
 
-                // CanonicalDBorderItemLocator works with absolute GMF parent
-                // location so we need to translate BorderedNode absolute
-                // location
-                // from Draw2D to GMF.
-
-                Point delta = getGMFDraw2DDelta(parentNode, (IGraphicalEditPart) parentGraphicalEditPart);
-                final Rectangle rect = new Rectangle(locationToApply.getX() - delta.getX(), locationToApply.getY() - delta.getY(), layoutData.getWidth(), layoutData.getHeight());
+                final Rectangle rect = new Rectangle(locationToApply.getX(), locationToApply.getY(), layoutData.getWidth(), layoutData.getHeight());
 
                 final org.eclipse.draw2d.geometry.Point realLocation = locator.getValidLocation(rect, toRestoreView, portsNodesToIgnore);
 
                 // Compute the new relative position to the parent
-                final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parentNode).getTopLeft();
+                final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parentNode, true).getTopLeft();
                 locationToApply.setX(realLocation.x);
                 locationToApply.setY(realLocation.y);
                 locationToApply = LayoutDataHelper.INSTANCE.getTranslated(locationToApply, parentAbsoluteLocation.negate());
@@ -726,20 +720,6 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
         if (semanticDecorator instanceof EdgeTarget) {
             applyFormatToOutgoingEdge((EdgeTarget) semanticDecorator, editPartViewer, applyLayout, applyStyle);
         }
-    }
-
-    private Point getGMFDraw2DDelta(Node parentNode, IGraphicalEditPart parentEditPart) {
-
-        Point delta = LayoutdataFactory.eINSTANCE.createPoint();
-
-        org.eclipse.draw2d.geometry.Point parentDraw2DAbsoluteLocation = parentEditPart.getFigure().getBounds().getTopLeft().getCopy();
-        FigureUtilities.translateToAbsoluteByIgnoringScrollbar(parentEditPart.getFigure(), parentDraw2DAbsoluteLocation);
-
-        org.eclipse.draw2d.geometry.Point parentGMFAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode);
-        delta.setX(parentDraw2DAbsoluteLocation.x - parentGMFAbsoluteLocation.x);
-        delta.setY(parentDraw2DAbsoluteLocation.y - parentGMFAbsoluteLocation.y);
-
-        return delta;
     }
 
     /**
