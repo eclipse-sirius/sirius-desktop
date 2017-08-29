@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.Connection;
@@ -56,6 +58,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand;
+import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.ILayoutNode;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.ILayoutNodeOperation;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
@@ -69,6 +73,7 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -88,6 +93,7 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.SnapCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.ArrangeAllWithAutoSize;
@@ -104,18 +110,17 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Layout provider that arranges all border items after another layout provider
- * (<code>initialLayoutProvider</code>) that arranges all the nodes (with
- * ChangeBoundsCommand).
+ * Layout provider that arranges all border items after another layout provider (<code>initialLayoutProvider</code>)
+ * that arranges all the nodes (with ChangeBoundsCommand).
  * 
- * The layout is made with several iterations. During each iterations, we store
- * the port center location of this iteration and the previous one. We compare
- * the current location with the two previous iteration to know if the port has
- * been moved. If no port is moved, we stop the arrange process.
+ * The layout is made with several iterations. During each iterations, we store the port center location of this
+ * iteration and the previous one. We compare the current location with the two previous iteration to know if the port
+ * has been moved. If no port is moved, we stop the arrange process.
  * 
  * @author ymortier
  * @author lredor
  */
+@SuppressWarnings("restriction")
 public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
 
     /**
@@ -181,8 +186,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Class that store data about the element that is on the other side of the
-     * border node.
+     * Class that store data about the element that is on the other side of the border node.
      * 
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
@@ -193,9 +197,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         Point center;
 
         /**
-         * The location of this element on its container if it's a border node
-         * (PositionConstants). Otherwise, this field equals
-         * PositionConstants.NONE
+         * The location of this element on its container if it's a border node (PositionConstants). Otherwise, this
+         * field equals PositionConstants.NONE
          */
         int side;
 
@@ -210,8 +213,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * An abstract comparator for all comparators managed by the opposite
-     * element of the bordered nodes.
+     * An abstract comparator for all comparators managed by the opposite element of the bordered nodes.
      * 
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
@@ -400,20 +402,17 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     private static final int MAX_ITERATIONS = 10;
 
     /**
-     * The initial layout provider that arrange the nodes (launch before the
-     * arrange of bordered nodes).
+     * The initial layout provider that arrange the nodes (launch before the arrange of bordered nodes).
      */
     AbstractLayoutProvider initialLayoutProvider;
 
     /**
-     * Tell if the normal arrange process will be called before the border item
-     * arrange.
+     * Tell if the normal arrange process will be called before the border item arrange.
      */
     boolean launchNormalArrange;
 
     /**
-     * Stores the location of each border edit part compute during the previous
-     * iteration.
+     * Stores the location of each border edit part compute during the previous iteration.
      */
     Map<IBorderItemEditPart, BorderItemLayoutData> previousIterationDatasbyEditPart = new HashMap<IBorderItemEditPart, BorderItemLayoutData>();
 
@@ -429,8 +428,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      * The default constructor.
      * 
      * @param clp
-     *            The layout provider to call before calling the layout of the
-     *            border items.
+     *            The layout provider to call before calling the layout of the border items.
      */
     public BorderItemAwareLayoutProvider(final AbstractLayoutProvider clp) {
         initialLayoutProvider = clp;
@@ -474,23 +472,19 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Layout this list of selected objects, using the specified layout hint.
-     * The selected objects all reside within the same parent container. Other
-     * elements that are part of the container but not specified in the list of
-     * objects, are ignored.
+     * Layout this list of selected objects, using the specified layout hint. The selected objects all reside within the
+     * same parent container. Other elements that are part of the container but not specified in the list of objects,
+     * are ignored.
      * 
      * @param selectedObjects
-     *            <code>List</code> of <code>EditPart</code> objects that are to
-     *            be layed out.
+     *            <code>List</code> of <code>EditPart</code> objects that are to be layed out.
      * @param layoutHint
-     *            <code>IAdaptable</code> hint to the provider to determine the
-     *            layout kind.
+     *            <code>IAdaptable</code> hint to the provider to determine the layout kind.
      * @param normalArrangeMustBeCalled
-     *            Tell if the normal arrange process must be called before the
-     *            border item arrange
-     * @return <code>Command</code> that when executed will layout the edit
-     *         parts in the container
+     *            Tell if the normal arrange process must be called before the border item arrange
+     * @return <code>Command</code> that when executed will layout the edit parts in the container
      */
+    @SuppressWarnings("rawtypes")
     public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint, final boolean normalArrangeMustBeCalled) {
         this.launchNormalArrange = normalArrangeMustBeCalled;
 
@@ -545,13 +539,13 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            the layout hint.
      * @return the arrange command.
      */
+    @SuppressWarnings("rawtypes")
     protected Command lauchPrimaryArrangeAll(final List selectedObjects, final IAdaptable layoutHint) {
         return initialLayoutProvider.layoutEditParts(selectedObjects, layoutHint);
     }
 
     /**
-     * Register all the change bounds command recording during the initial
-     * layout (layout without moving ports).
+     * Register all the change bounds command recording during the initial layout (layout without moving ports).
      * 
      * @param recorder
      *            The request recorder
@@ -578,17 +572,16 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Reset the size and location of the pinned elements to there values they
-     * have before the arrange process.
+     * Reset the size and location of the pinned elements to there values they have before the arrange process.
      * 
      * @param selectedObjects
      *            The selected elements
      * @param compoundCommand
      *            Contains all the commands to execute at the end of the layout.
      * @param elementsToKeepFixed
-     *            IDiagramElementEditPart which are not actually pinned but have
-     *            to stay fixed
+     *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
      */
+    @SuppressWarnings("rawtypes")
     private void resetBoundsOfPinnedElements(final List selectedObjects, final CompoundCommand compoundCommand, ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
         for (IGraphicalEditPart graphicalEditPart : Iterables.filter(selectedObjects, IGraphicalEditPart.class)) {
             EObject semanticElement = graphicalEditPart.resolveSemanticElement();
@@ -626,24 +619,25 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         final LayoutConstraint layoutConstraint = node.getLayoutConstraint();
         if (layoutConstraint instanceof Bounds) {
             final Bounds bounds = (Bounds) layoutConstraint;
-            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain,  Messages.BorderItemAwareLayoutProvider_setBoundsCommandLabel, objectAdapter,
+            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain, Messages.BorderItemAwareLayoutProvider_setBoundsCommandLabel, objectAdapter,
                     new Rectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight()));
             compoundCommand.add(new ICommandProxy(setBoundsCommand));
         } else if (layoutConstraint instanceof Location) {
             final Location location = (Location) layoutConstraint;
-            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain,  Messages.BorderItemAwareLayoutProvider_setBoundsCommandLabel, objectAdapter, new Point(location.getX(), location.getY()));
+            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain, Messages.BorderItemAwareLayoutProvider_setBoundsCommandLabel, objectAdapter,
+                    new Point(location.getX(), location.getY()));
             compoundCommand.add(new ICommandProxy(setBoundsCommand));
         } else if (layoutConstraint instanceof Size) {
             final Size size = (Size) layoutConstraint;
-            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain,  Messages.BorderItemAwareLayoutProvider_setBoundsCommandLabel, objectAdapter, new Dimension(size.getWidth(), size.getHeight()));
+            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain, Messages.BorderItemAwareLayoutProvider_setBoundsCommandLabel, objectAdapter,
+                    new Dimension(size.getWidth(), size.getHeight()));
             compoundCommand.add(new ICommandProxy(setBoundsCommand));
         }
     }
 
     /**
-     * Method getBendpointsChangedCommand Different signature method that allows
-     * a command to constructed for changing the bendpoints without requiring
-     * the original Request.
+     * Method getBendpointsChangedCommand Different signature method that allows a command to constructed for changing
+     * the bendpoints without requiring the original Request.
      * 
      * @param connection
      *            Connection to generate the bendpoints changed command from
@@ -651,8 +645,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            notation element that the command will operate on.
      * @param editingDomain
      *            the concern editing domain
-     * @return Command SetBendpointsCommand that contains the point changes for
-     *         the connection.
+     * @return Command SetBendpointsCommand that contains the point changes for the connection.
      */
     protected Command getBendpointsChangedCommand(Connection connection, Edge edge, TransactionalEditingDomain editingDomain) {
         Point ptRef1 = connection.getSourceAnchor().getReferencePoint();
@@ -674,11 +667,9 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      * @param selectedObjects
      *            The selected elements
      * @param nbIterations
-     *            Number of made iterations. This number corresponds to the
-     *            current iteration.
+     *            Number of made iterations. This number corresponds to the current iteration.
      * @param elementsToKeepFixed
-     *            IDiagramElementEditPart which are not actually pinned but have
-     *            to stay fixed
+     *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
      * @return The command to execute to layout the border items.
      */
     private Command layoutBorderItems(final List<?> selectedObjects, final int nbIterations, ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
@@ -732,23 +723,19 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Add command to the <code>cc</code> to reset the bendpoints of the current
-     * <code>edge</code> if needed.
+     * Add command to the <code>cc</code> to reset the bendpoints of the current <code>edge</code> if needed.
      * 
      * @param edge
      *            The edge to deal with
      * @param cc
-     *            CompoundCommand to complete to reset bendpoints of
-     *            <code>edge</code> if needed.
+     *            CompoundCommand to complete to reset bendpoints of <code>edge</code> if needed.
      * @param borderItemEditPart
-     *            The moved border node edit part (source of edge if
-     *            <code>sourceEdge</code> equals true, target of edge
+     *            The moved border node edit part (source of edge if <code>sourceEdge</code> equals true, target of edge
      *            otherwise).
      * @param requests
      *            Request concerning the moved edit part
      * @param sourceEdge
-     *            true if the <code>borderItemEditPart</code> is the source of
-     *            the edge, false otherwise.
+     *            true if the <code>borderItemEditPart</code> is the source of the edge, false otherwise.
      */
     public void resetBendpoints(Edge edge, CompoundCommand cc, IBorderItemEditPart borderItemEditPart, List<Request> requests, boolean sourceEdge) {
         Point firstAnchorLocation;
@@ -809,12 +796,11 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Remove the request corresponding to this command of the map that maps all
-     * views with a its associated {@link ChangeBoundsRequest}.
+     * Remove the request corresponding to this command of the map that maps all views with a its associated
+     * {@link ChangeBoundsRequest}.
      * 
      * @param cc
-     *            The compoundCommand that is not executed and for which we
-     *            wan't to remove the corresponding request.
+     *            The compoundCommand that is not executed and for which we wan't to remove the corresponding request.
      */
     private void removeRequestsOfThisCommand(CompoundCommand cc) {
         for (Object childCommand : cc.getCommands()) {
@@ -833,8 +819,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * @return true if almost one of the border items has been moved during the
-     *         last iteration, false otherwise.
+     * @return true if almost one of the border items has been moved during the last iteration, false otherwise.
      */
     private boolean hasBeenMovedBorderItemsDuringLastIteration() {
         for (IBorderItemEditPart borderItemEditPart : previousIterationDatasbyEditPart.keySet()) {
@@ -867,10 +852,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      * @param graphicalEditPart
      *            The current element to deal with
      * @param elementsToKeepFixed
-     *            IDiagramElementEditPart which are not actually pinned but have
-     *            to stay fixed
-     * @return The command to execute to layout the border items of this
-     *         graphical edit part.
+     *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
+     * @return The command to execute to layout the border items of this graphical edit part.
      */
     private Command layoutBorderItems(final GraphicalEditPart graphicalEditPart, ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
         final CompoundCommand result = new CompoundCommand();
@@ -901,10 +884,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      * @param borderedShapeEditPart
      *            The current element to deal with
      * @param elementsToKeepFixed
-     *            IDiagramElementEditPart which are not actually pinned but have
-     *            to stay fixed
-     * @return The command to execute to layout the border items of this
-     *         graphical edit part.
+     *            IDiagramElementEditPart which are not actually pinned but have to stay fixed
+     * @return The command to execute to layout the border items of this graphical edit part.
      */
     private Command layoutBorderItems(final IBorderedShapeEditPart borderedShapeEditPart, ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
         CompoundCommand resCommand = null;
@@ -1008,9 +989,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      * @param containerBounds
      *            The bounds of the container after arrange all
      * @param position
-     *            The position of items on its container. Possible values can be
-     *            found in {@link PositionConstants} and include NORTH, SOUTH,
-     *            EAST and WEST.
+     *            The position of items on its container. Possible values can be found in {@link PositionConstants} and
+     *            include NORTH, SOUTH, EAST and WEST.
      * @param zoomScale
      *            The scale of the diagram
      * @return Command A command to layout all items.
@@ -1109,8 +1089,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Consider all the border item locators with free location (ie the location
-     * of the border item will be recomputed).
+     * Consider all the border item locators with free location (ie the location of the border item will be recomputed).
      * 
      * @param editParts
      *            The border items to reset
@@ -1177,19 +1156,17 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Returns the list of border items to be at the <code>side</code> position.
-     * These border items are sorted. To sort these element we compute again the
-     * rays with a new distant point to be more precise on the order.
+     * Returns the list of border items to be at the <code>side</code> position. These border items are sorted. To sort
+     * these element we compute again the rays with a new distant point to be more precise on the order.
      * 
      * @param side
-     *            the side to retrieve border nodes on (PositionConstants.NORTH,
-     *            PositionConstants.SOUTH, PositionConstants.WEST or
-     *            PositionConstants.EAST).
+     *            the side to retrieve border nodes on (PositionConstants.NORTH, PositionConstants.SOUTH,
+     *            PositionConstants.WEST or PositionConstants.EAST).
      * @param headings
      *            List of vector by border items
      * @param containerAbsoluteCosOrSin
-     *            The absolute cos of the container if location is NORTH or
-     *            SOUTH and sin of the container if location is WEST or EAST.
+     *            The absolute cos of the container if location is NORTH or SOUTH and sin of the container if location
+     *            is WEST or EAST.
      * @param containerCenter
      *            the center of the container of the border items
      * @return the list of border items to be at the <code>side</code> position.
@@ -1263,14 +1240,11 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Get heading (vector, angle, ...) between the center of the edit part and
-     * the center of the edit part at the other side of the edge. Return null if
-     * :
+     * Get heading (vector, angle, ...) between the center of the edit part and the center of the edit part at the other
+     * side of the edge. Return null if :
      * <UL>
-     * <LI>there is no edge that is come from or go back to
-     * <code>editPart</code></LI>
-     * <LI>there is many edges that is come from or go back to
-     * <code>editPart</code>
+     * <LI>there is no edge that is come from or go back to <code>editPart</code></LI>
+     * <LI>there is many edges that is come from or go back to <code>editPart</code>
      * <LI>
      * 
      * @param editPart
@@ -1280,8 +1254,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      * @param scale
      *            The scale of the current diagram
      * @param launchNormalArrange
-     *            Tell if the normal arrange process will be called before the
-     *            border item arrange
+     *            Tell if the normal arrange process will be called before the border item arrange
      * @return A vector representing the edge
      */
     private Vector getHeading(final IBorderItemEditPart editPart, final Point containerCenterAfterArrange, final double scale) {
@@ -1334,13 +1307,10 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Return the edit part that is at the other side of the edge. Return null
-     * if :
+     * Return the edit part that is at the other side of the edge. Return null if :
      * <UL>
-     * <LI>there is no edge that is come from or go back to
-     * <code>editPart</code></LI>
-     * <LI>there is many edges that is come from or go back to
-     * <code>editPart</code>
+     * <LI>there is no edge that is come from or go back to <code>editPart</code></LI>
+     * <LI>there is many edges that is come from or go back to <code>editPart</code>
      * <LI>
      * 
      * @param editPart
@@ -1358,8 +1328,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Check if <code>childCandidate</code> is contained in
-     * <code>parentCandidate</code>.
+     * Check if <code>childCandidate</code> is contained in <code>parentCandidate</code>.
      * 
      * @param childCandidate
      *            The child candidate
@@ -1379,10 +1348,9 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Get the absolute bounds that this edit part will have after the execution
-     * of arrangeAll.<BR>
-     * The return bounds take into account the scale, ie if the real bounds is
-     * {100, 200} the return bounds is {50, 100}.
+     * Get the absolute bounds that this edit part will have after the execution of arrangeAll.<BR>
+     * The return bounds take into account the scale, ie if the real bounds is {100, 200} the return bounds is {50,
+     * 100}.
      * 
      * @param graphicalEditPart
      *            The edit part to deal with
@@ -1395,10 +1363,9 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Get the absolute bounds that this edit part will have after the execution
-     * of arrangeAll.<BR>
-     * The return bounds take into account the scale, ie if the real bounds is
-     * {100, 200} the return bounds is {50, 100}.
+     * Get the absolute bounds that this edit part will have after the execution of arrangeAll.<BR>
+     * The return bounds take into account the scale, ie if the real bounds is {100, 200} the return bounds is {50,
+     * 100}.
      * 
      * @param graphicalEditPart
      *            The edit part to deal with
@@ -1413,10 +1380,9 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Get the absolute bounds that this edit part will have after the execution
-     * of arrangeAll.<BR>
-     * The return bounds take into account the scale, ie if the real bounds is
-     * {100, 200} the return bounds is {50, 100}.
+     * Get the absolute bounds that this edit part will have after the execution of arrangeAll.<BR>
+     * The return bounds take into account the scale, ie if the real bounds is {100, 200} the return bounds is {50,
+     * 100}.
      * 
      * @param graphicalEditPart
      *            The edit part to deal with
@@ -1425,11 +1391,9 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      * @param parentMoveDelta
      *            The parent move delta if it is know, null otherwise
      * @param processX
-     *            A boolean value used to validate if calculating width is
-     *            needed
+     *            A boolean value used to validate if calculating width is needed
      * @param processY
-     *            A boolean value used to validate if calculating height is
-     *            needed
+     *            A boolean value used to validate if calculating height is needed
      * @return The bounds after arrangeAll
      */
     protected Rectangle getBounds(final IGraphicalEditPart graphicalEditPart, final double scale, final Dimension parentMoveDelta, final boolean processX, final boolean processY) {
@@ -1486,10 +1450,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Utility to calculate the bounds with consideration for the handle bounds
-     * inset. Copied from
-     * org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator
-     * .getParentBorder().
+     * Utility to calculate the bounds with consideration for the handle bounds inset. Copied from
+     * org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator .getParentBorder().
      * 
      * @param graphicalEditPart
      *            The concerned edit part
@@ -1506,8 +1468,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Compute the delta between the actual location of the <code>part</code>
-     * and the target bounds.
+     * Compute the delta between the actual location of the <code>part</code> and the target bounds.
      * 
      * @param part
      *            The edit part to deal with
@@ -1515,8 +1476,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            The target bounds
      * @param scale
      *            The current scale of the diagram
-     * @return the delta between the actual location of the <code>part</code>
-     *         and the target bounds
+     * @return the delta between the actual location of the <code>part</code> and the target bounds
      */
     private Dimension getScaledMoveDelta(final IGraphicalEditPart part, final Rectangle targetBounds, final double scale) {
         final Point topLeft = part.getFigure().getBounds().getTopLeft();
@@ -1527,9 +1487,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Compute the size of this editPart after arrange all if this editPart is
-     * in auto-size mode. This calculation is approximate by the leftmost child
-     * and its size.
+     * Compute the size of this editPart after arrange all if this editPart is in auto-size mode. This calculation is
+     * approximate by the leftmost child and its size.
      * 
      * @param part
      *            The concern edit part
@@ -1575,8 +1534,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Return the x axis coordinate of the right size of the rightmost child
-     * (after the arrange all).
+     * Return the x axis coordinate of the right size of the rightmost child (after the arrange all).
      * 
      * @param part
      *            The parent
@@ -1585,10 +1543,10 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      * @param moveDelta
      *            The parent move delta if it is know, null otherwise
      * @param launchNormalArrange
-     *            Tell if the normal arrange process will be called before the
-     *            border item arrange
+     *            Tell if the normal arrange process will be called before the border item arrange
      * @return the x axis coordinate of the right size of the rightmost child
      */
+    @SuppressWarnings("unchecked")
     private int getRightSizeXCoordinateOfRightMostChild(final IGraphicalEditPart part, final double scale, final Dimension moveDelta) {
         int result = 0;
         final Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
@@ -1617,8 +1575,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Return the y axis coordinate of the bottom size of the lowest child
-     * (after the arrange all).
+     * Return the y axis coordinate of the bottom size of the lowest child (after the arrange all).
      * 
      * @param part
      *            The parent
@@ -1628,6 +1585,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            The parent move delta if it is know, null otherwise
      * @return the y axis coordinate of the bottom size of the lowest child
      */
+    @SuppressWarnings("unchecked")
     private int getBottomSizeYCoordinateOfLowestChild(final IGraphicalEditPart part, final double scale, final Dimension moveDelta) {
         int result = 0;
         final Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
