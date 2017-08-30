@@ -742,7 +742,7 @@
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionResizeKindPropertySectionSpec"
                id="style.section.nodeStyleDescription.ResizeKind"
-               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.nodestyledescription.NodeStyleDescriptionResizeKindFilter"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.nodestyledescription.NodeStyleDescriptionResizeKindFilterSpec"
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.diagram.description.style.NodeStyleDescription"/>
       </propertySection>
