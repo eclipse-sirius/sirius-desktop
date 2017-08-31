@@ -112,13 +112,15 @@ public final class EPackageHelper {
 
     private static Map<EClass, Integer> inferRootElementsCandidates(EPackage ePackage, Collection<EClass> concreteClasses) {
         Map<EClass, Integer> eClassToRootScore = new HashMap<>();
-        List<EClass> allClasses = ePackage.getEClassifiers().stream().filter(c -> c instanceof EClass).map(c -> (EClass) c).collect(Collectors.toList());
-        for (EClass eClass : concreteClasses) {
-            // Element without containment relations are not considered as root elements.
-            if (eClass.getEAllReferences().stream().anyMatch(EReference::isContainment)) {
-                int importance = getReferenceScore(eClass, allClasses);
-                if (importance != -1) {
-                    eClassToRootScore.put(eClass, importance);
+        if (ePackage != null) {
+            List<EClass> allClasses = ePackage.getEClassifiers().stream().filter(c -> c instanceof EClass).map(c -> (EClass) c).collect(Collectors.toList());
+            for (EClass eClass : concreteClasses) {
+                // Element without containment relations are not considered as root elements.
+                if (eClass.getEAllReferences().stream().anyMatch(EReference::isContainment)) {
+                    int importance = getReferenceScore(eClass, allClasses);
+                    if (importance != -1) {
+                        eClassToRootScore.put(eClass, importance);
+                    }
                 }
             }
         }
