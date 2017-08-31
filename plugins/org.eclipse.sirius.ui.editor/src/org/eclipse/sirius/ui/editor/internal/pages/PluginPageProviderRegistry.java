@@ -125,7 +125,7 @@ public class PluginPageProviderRegistry implements IRegistryEventListener {
     @Override
     public void removed(IExtension[] extensions) {
         for (IExtension extension : extensions) {
-            List<PageProvider> pageProviders = extensionToPageProvider.get(extensions);
+            List<PageProvider> pageProviders = extensionToPageProvider.get(extension);
 
             if (pageProviders != null) {
                 for (PageProvider pageProvider : pageProviders) {
