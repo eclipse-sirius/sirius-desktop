@@ -72,7 +72,7 @@ public class ResourceStrategyRegistryListener implements IRegistryEventListener 
                     final String extensionClassName = elem.getAttribute(RESOURCE_STRATEGY_CLASS_ATTRIBUTE);
                     Collection<ResourceStrategy> resourceStrategies = ResourceStrategyRegistry.getInstance().getProvidedResourceStrategies();
                     for (ResourceStrategy resourceStrategy : resourceStrategies) {
-                        if (extensionClassName.equals(resourceStrategy.getClass())) {
+                        if (extensionClassName.equals(resourceStrategy.getClass().getName())) {
                             ResourceStrategyRegistry.getInstance().removeResourceStrategy(resourceStrategy);
                         }
                     }
