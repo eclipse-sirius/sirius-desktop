@@ -74,7 +74,7 @@ public class DRepresentationLocationRuleRegistryListener implements IRegistryEve
                     final String extensionClassName = elem.getAttribute(REP_LOCATION_RULE_CLASS_ATTRIBUTE);
                     Collection<DRepresentationLocationRule> repLocationRules = DRepresentationLocationRuleRegistry.getInstance().getRepLocationRules();
                     for (DRepresentationLocationRule repLocationRule : repLocationRules) {
-                        if (extensionClassName.equals(repLocationRule.getClass())) {
+                        if (extensionClassName.equals(repLocationRule.getClass().getName())) {
                             DRepresentationLocationRuleRegistry.getInstance().removeRepLocationRule(repLocationRule);
                         }
                     }
