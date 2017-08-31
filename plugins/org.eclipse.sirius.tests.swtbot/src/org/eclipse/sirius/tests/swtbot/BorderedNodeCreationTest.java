@@ -630,15 +630,15 @@ public class BorderedNodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
             boolean nearCollapsedBorderedNode) {
         IGraphicalEditPart borderNodePart = (IGraphicalEditPart) editor.getEditPart(borderedNodeLabel, AbstractDiagramBorderNodeEditPart.class).part();
         Point nodeLocation = editor.getAbsoluteLocation(borderNodePart);
-        String errorMessage = "The BorderedNode has been created at wrong location.";
+        String errorMessage = "the BorderedNode has been created at wrong location.";
         if (nearCollapsedBorderedNode) {
-            errorMessage = "The BorderedNode has been created at wrong location (for near collapsed bordered node case).";
+            errorMessage = "the BorderedNode has been created at wrong location (for near collapsed bordered node case).";
         }
-        // Check Draw2d
-        assertSameLocation(errorMessage, expectedLocation, nodeLocation, parentLocation, creationLocation, parentPart);
         // Check GMF
         Point gmfNodeLocation = GMFHelper.getAbsoluteLocation((Node) borderNodePart.getModel(), true);
-        assertSameLocation(errorMessage, expectedLocation, gmfNodeLocation, parentLocation, creationLocation, parentPart);
+        assertSameLocation("For GMF, " + errorMessage, expectedLocation, gmfNodeLocation, parentLocation, creationLocation, parentPart);
+        // Check Draw2d
+        assertSameLocation("For Draw2d, " + errorMessage, expectedLocation, nodeLocation, parentLocation, creationLocation, parentPart);
     }
 
     /**

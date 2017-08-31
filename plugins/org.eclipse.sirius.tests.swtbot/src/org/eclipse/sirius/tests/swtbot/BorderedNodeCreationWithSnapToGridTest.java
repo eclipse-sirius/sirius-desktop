@@ -12,7 +12,6 @@ package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Viewport;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
