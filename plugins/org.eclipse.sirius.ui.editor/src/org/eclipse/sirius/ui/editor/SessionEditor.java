@@ -171,6 +171,11 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
      * 
      */
     private void updatePages(ResourceSetChangeEvent event) {
+        if (pageRegistry == null) {
+            // Can happen if we're called via a stale listener after the editor
+            // has already been closed (and pageRegistry set to null).
+            return;
+        }
         List<AbstractSessionEditorPage> newOrderedPages = pageRegistry.getPagesOrdered(this, session,
                 pages.stream().filter(AbstractSessionEditorPage.class::isInstance).map(AbstractSessionEditorPage.class::cast).collect(Collectors.toList()), event);
 
