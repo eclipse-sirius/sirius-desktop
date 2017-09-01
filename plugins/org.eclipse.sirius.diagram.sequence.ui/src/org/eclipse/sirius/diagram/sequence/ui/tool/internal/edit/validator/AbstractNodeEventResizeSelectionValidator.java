@@ -188,7 +188,7 @@ public class AbstractNodeEventResizeSelectionValidator {
             if (requestQuery.isResize()) {
                 if (parent instanceof Operand) {
                     okForParent = validateNewBounds(self, newBounds, (Operand) parent);
-                } else if (!parent.getValidSubEventsRange().includes(RangeHelper.verticalRange(newBounds))) {
+                } else if (!parent.getVerticalRange().includes(RangeHelper.verticalRange(newBounds))) {
                     okForParent = false;
                 }
             }

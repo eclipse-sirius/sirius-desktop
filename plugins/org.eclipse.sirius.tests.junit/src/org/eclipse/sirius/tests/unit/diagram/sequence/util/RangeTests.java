@@ -15,10 +15,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import junit.framework.TestCase;
+
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-
-import junit.framework.TestCase;
 
 /**
  * Tests for the {@link Range} utility class.
@@ -308,48 +308,6 @@ public class RangeTests extends TestCase {
         Range result = r.shifted(-1);
         assertNotNull(result);
         assertEquals(new Range(0, 1), result);
-    }
-
-    public void testReduceEmptyRange() {
-        Range r = Range.emptyRange();
-        Range result = r.reduced(10);
-        assertNotNull(result);
-        assertTrue(result.isEmpty());
-    }
-
-    public void testReduceRangeByZero() {
-        Range r = new Range(1, 2);
-        Range result = r.reduced(0);
-        assertNotNull(result);
-        assertEquals(r, result);
-    }
-
-    public void testReduceRangeByPositivSize() {
-        Range r = new Range(1, 10);
-        Range result = r.reduced(1);
-        assertNotNull(result);
-        assertEquals(new Range(1, 9), result);
-    }
-
-    public void testReduceRangeByNegativeSize() {
-        Range r = new Range(1, 10);
-        try {
-            r.reduced(-1);
-            fail("An illegal argument exception is expected");
-        } catch (IllegalArgumentException e) {
-            // ok
-        }
-    }
-
-    public void testReduceRangeByIllegalDistance() {
-        Range r = new Range(1, 2);
-
-        try {
-            r.reduced(2);
-            fail("An illegal argument exception is expected");
-        } catch (IllegalArgumentException e) {
-            // ok
-        }
     }
 
     public void testRangeOrderingByLowerBound() {

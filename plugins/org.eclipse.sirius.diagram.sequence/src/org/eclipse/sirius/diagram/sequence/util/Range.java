@@ -360,7 +360,7 @@ public class Range {
      * 
      * @param distance
      *            the positive distance to shrink this range.
-     * @return the new shrinked range.
+     * @return the new grown range.
      */
     public Range shrinked(int distance) {
         Preconditions.checkArgument(distance >= 0);
@@ -369,25 +369,6 @@ public class Range {
         } else {
             Preconditions.checkArgument(width() - 2 * distance >= 0);
             return new Range(lower + distance, upper - distance);
-        }
-    }
-
-    /**
-     * Returns a new range corresponding to this range reduced by the specified size (which must be positive). Reducing
-     * an empty range produces an empty range. Otherwise the resulting range has a smaller width than original (- size).
-     * The lower bound value of this range is kept constant.
-     * 
-     * @param size
-     *            the positive size to reduce this range.
-     * @return the new reduced range.
-     */
-    public Range reduced(int size) {
-        Preconditions.checkArgument(size >= 0);
-        if (isEmpty()) {
-            return Range.EMPTY_RANGE;
-        } else {
-            Preconditions.checkArgument(width() - size >= 0);
-            return new Range(lower, upper - size);
         }
     }
 

@@ -187,8 +187,8 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
     @Override
     public Range getValidSubEventsRange() {
         Range result = getVerticalRange();
-        if (result.width() > LayoutConstants.TIME_START_MIN_OFFSET) {
-            result = result.shifted(LayoutConstants.TIME_START_MIN_OFFSET).reduced(LayoutConstants.TIME_START_MIN_OFFSET);
+        if (result.width() > 2 * LayoutConstants.EXECUTION_CHILDREN_MARGIN) {
+            result = result.shrinked(LayoutConstants.EXECUTION_CHILDREN_MARGIN);
         }
         return result;
     }
