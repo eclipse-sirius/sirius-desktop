@@ -211,8 +211,11 @@ public class AbstractNodeEventResizeSelectionValidator {
                 }
             }
         } else if (requestQuery.isResizeFromTop()) {
-            // We consider that parent is resize before if needed.
-            okForParent = true;
+            // We consider that parent is resize before if needed. There is just an exception when the execution is just
+            // on the lower bound limit of the operand.
+            if (parent.getVerticalRange().getLowerBound() != RangeHelper.verticalRange(newBounds).getLowerBound()) {
+                okForParent = true;
+            }
         } else if (parent.getValidSubEventsRange().includes(RangeHelper.verticalRange(newBounds))) {
             okForParent = true;
         }
