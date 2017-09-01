@@ -824,7 +824,7 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         arrangeAll();
         editor.maximize();
         // Create first execution on lifeLine A
-        SWTBotGefEditPart firstExecutionA = createExecutionWithResult(new Point(getLifelineScreenX(LIFELINE_A), 150)).get();
+        createExecutionWithResult(new Point(getLifelineScreenX(LIFELINE_A), 150)).get();
         Rectangle firstExecutionBoundsA = assertExecutionHasValidScreenBounds(LIFELINE_A, 0, new Rectangle(0, 150, 0, 30), false);
         // Create second execution on lifeLine A
         SWTBotGefEditPart secondExecutionA = createExecutionWithResult(new Point(getLifelineScreenX(LIFELINE_A), 250)).get();
@@ -909,14 +909,6 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         secondExecutionBoundsAResize = new Rectangle(secondExecutionBoundsA.x, secondExecutionBoundsA.y, secondExecutionBoundsA.width, secondExecutionBoundsA.height);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 2, thirdExecutionBoundsAResize, true);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 1, secondExecutionBoundsAResize, true);
-
-        // Resize first execution on the life line bound limit. This action is
-        // forbidden.
-        editor.select(firstExecutionA);
-        bot.waitUntil(new CheckSelectedCondition(editor, firstExecutionA.part()));
-        editor.drag(firstExecutionBoundsA.getTop(), firstExecutionBoundsA.getTop().x, getBounds(LIFELINE_A, true).getBottom().y + LayoutConstants.TIME_START_MIN_OFFSET - 1);
-        bot.sleep(500);
-        assertExecutionHasValidScreenBounds(LIFELINE_A, 0, firstExecutionBoundsA, true);
     }
 
     /**
@@ -1224,20 +1216,9 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         assertEquals("the execution position is wrong", combinedFragmentBoundsA.getCenter().y, executionBoundsB.getTop().y);
 
         // Resize execution in combined fragment, just before the lower bound of
-        // the lifeline, just when grand parent Combined Fragment becomes
-        // unauthorized (it's forbidden)
-        int limitAuthorized = getBounds(LIFELINE_A, true).getBottom().y + LayoutConstants.TIME_START_MIN_OFFSET + LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT
-                + LayoutConstants.EXECUTION_CHILDREN_MARGIN;
-        int previousExecutionTop = executionBoundsB.getTop().y;
-        editor.drag(executionBoundsB.getTop(), combinedFragmentBoundsA.getCenter().x, limitAuthorized - 1);
-        bot.sleep(500);
-
-        executionBoundsB = editor.getBounds(executionB);
-        assertEquals("the execution must not be moved", previousExecutionTop, executionBoundsB.getTop().y);
-
-        // Resize execution in combined fragment, just before the lower bound of
         // the lifeline, just when grand parent Combined Fragment starts to be
         // authorized
+        int limitAuthorized = combinedFragmentBoundsA.getTop().y + LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT + LayoutConstants.EXECUTION_CHILDREN_MARGIN;
         ICondition done = new OperationDoneCondition();
         editor.drag(executionBoundsB.getTop(), combinedFragmentBoundsA.getCenter().x, limitAuthorized);
         bot.waitUntil(done);
