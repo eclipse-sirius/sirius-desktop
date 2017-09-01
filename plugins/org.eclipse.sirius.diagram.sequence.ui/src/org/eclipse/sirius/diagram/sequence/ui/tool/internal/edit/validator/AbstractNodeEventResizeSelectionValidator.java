@@ -204,7 +204,7 @@ public class AbstractNodeEventResizeSelectionValidator {
     private boolean validateNewBounds(ExecutionEditPart self, Rectangle newBounds, Operand parent) {
         boolean okForParent = false;
         if (requestQuery.isResizeFromBottom()) {
-            if (parent.getValidSubEventsRange().getLowerBound() < RangeHelper.verticalRange(newBounds).getLowerBound()) {
+            if (parent.getValidSubEventsRange().getLowerBound() <= RangeHelper.verticalRange(newBounds).getLowerBound()) {
                 okForParent = true;
                 if (parent.getValidSubEventsRange().getUpperBound() < RangeHelper.verticalRange(newBounds).getUpperBound()) {
                     expansionZone = new Range(parent.getValidSubEventsRange().getUpperBound(), RangeHelper.verticalRange(newBounds).getUpperBound());
