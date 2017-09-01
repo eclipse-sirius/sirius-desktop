@@ -148,7 +148,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         // as long as it is possible.
         Command resizeParentToTopCmd = null;
         RequestQuery requestQuery = new RequestQuery(request);
-        if (requestQuery.isResizeFromTop()) {
+        if (requestQuery.isResizeFromTop() && request.getSizeDelta().height() > 0) {
             ISequenceEvent parentEvent = host.getParentEvent();
             EditPart parentEventEditPart = (EditPart) hostPart.getViewer().getEditPartRegistry().get(parentEvent.getNotationView());
             if (hostPart != null && parentEventEditPart != null) {
