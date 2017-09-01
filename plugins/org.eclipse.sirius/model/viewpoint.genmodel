@@ -351,9 +351,12 @@
       <genClasses image="false" ecoreClass="viewpoint.ecore#//description/SelectionDescription">
         <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/candidatesExpression"/>
         <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/multiple"/>
-        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/tree"/>
-        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/rootExpression"/>
-        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/childrenExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="If ticked, Root Expression and Children Expression must be defined"
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/tree"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Required if Tree is ticked\nThis expression will return the root elements displayed in the dialog\nThese elements must also be in the list returned by Candidates Expression"
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/rootExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Required if Tree is ticked\nThis expression will return the children of a candidate element and will be evaluated recursively on each candidate from the root elements\nThese elements must also be in the list returned by Candidates Expression"
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/childrenExpression"/>
         <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/message"/>
       </genClasses>
       <genClasses image="false" ecoreClass="viewpoint.ecore#//description/ColorDescription"/>
@@ -517,9 +520,12 @@
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/message"/>
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/choiceOfValuesMessage"/>
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/candidatesExpression"/>
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/tree"/>
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/rootExpression"/>
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/childrenExpression"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="If ticked, Root Expression and Children Expression must be defined"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/tree"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Required if Tree is ticked\nThis expression will return the root elements displayed in the dialog\nThese elements must also be in the list returned by Candidates Expression"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/rootExpression"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Required if Tree is ticked\nThis expression will return the children of a candidate element and will be evaluated recursively on each candidate from the root elements\nThese elements must also be in the list returned by Candidates Expression"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/childrenExpression"/>
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/selectedValuesMessage"/>
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/preSelectedCandidatesExpression"/>
         </genClasses>

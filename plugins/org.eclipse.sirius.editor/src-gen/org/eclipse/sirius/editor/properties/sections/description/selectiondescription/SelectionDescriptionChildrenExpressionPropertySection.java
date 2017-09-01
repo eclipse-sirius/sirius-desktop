@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -34,91 +35,91 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * A section for the childrenExpression property of a SelectionDescription object.
  */
 public class SelectionDescriptionChildrenExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
+	
+	/** Help control of the section. */
+	protected CLabel help;
+	
+	/**
+	 * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
+	 */
+	public void refresh() {
+		super.refresh();
 
-    /** Help control of the section. */
-    protected CLabel help;
+		final String tooltip = getToolTipText();
+		if (tooltip != null && help != null) {
+			help.setToolTipText(getToolTipText());
+		}
+	}
+	
+	/**
+	 * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
+	 */
+	protected String getDefaultLabelText() {
+	    return "ChildrenExpression"; //$NON-NLS-1$
+	}
+	
+	/**
+	 * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
+	 */
+	protected String getLabelText() {
+		String labelText;
+		labelText = super.getLabelText() + ":"; //$NON-NLS-1$
+		// Start of user code get label text
 
-    /**
-     * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
-     */
-    public void refresh() {
-        super.refresh();
-
-        final String tooltip = getToolTipText();
-        if (tooltip != null && help != null) {
-            help.setToolTipText(getToolTipText());
-        }
-    }
-
-    /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
-     */
-    protected String getDefaultLabelText() {
-        return "ChildrenExpression"; //$NON-NLS-1$
-    }
-
-    /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
-     */
-    protected String getLabelText() {
-        String labelText;
-        labelText = super.getLabelText() + ":"; //$NON-NLS-1$
-        // Start of user code get label text
-
-        // End of user code get label text
-        return labelText;
-    }
-
-    /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
-     */
-    public EAttribute getFeature() {
-        return DescriptionPackage.eINSTANCE.getSelectionDescription_ChildrenExpression();
-    }
-
-    /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
-     */
-    protected Object getFeatureValue(String newText) {
-        return newText;
-    }
-
-    /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
-     */
-    protected boolean isEqual(String newText) {
-        return getFeatureAsText().equals(newText);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
-        super.createControls(parent, tabbedPropertySheetPage);
-        /*
-         * We set the color as it's a InterpretedExpression
-         */
-        text.setBackground(SiriusEditor.getColorRegistry().get("yellow"));
-
-        text.setToolTipText(getToolTipText());
-
-        help = getWidgetFactory().createCLabel(composite, "");
-        FormData data = new FormData();
+	    // End of user code get label text
+	    return labelText;
+	}
+	
+	/**
+	 * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
+	 */
+	public EAttribute getFeature() {
+		return DescriptionPackage.eINSTANCE.getSelectionDescription_ChildrenExpression();
+	}
+	
+	/**
+	 * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
+	 */
+	protected Object getFeatureValue(String newText) {
+		return newText;
+	}
+	
+	/**
+	 * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
+	 */
+	protected boolean isEqual(String newText) {
+		return getFeatureAsText().equals(newText);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
+	    super.createControls(parent, tabbedPropertySheetPage);
+	    /*
+	     * We set the color as it's a InterpretedExpression
+	     */
+	    text.setBackground(SiriusEditor.getColorRegistry().get("yellow"));
+	    
+	    text.setToolTipText(getToolTipText());
+	    	    
+	    help = getWidgetFactory().createCLabel(composite,"");
+	    FormData data = new FormData();
         data.top = new FormAttachment(text, 0, SWT.TOP);
-        data.left = new FormAttachment(nameLabel);
+        data.left = new FormAttachment(nameLabel);     
         help.setLayoutData(data);
         help.setImage(getHelpIcon());
-        help.setToolTipText(getToolTipText());
+        help.setToolTipText(getToolTipText());	    
+	    
+         TypeContentProposalProvider.bindPluginsCompletionProcessors(this, text);
+	    
+	    // Start of user code create controls
 
-        TypeContentProposalProvider.bindPluginsCompletionProcessors(this, text);
+	    // End of user code create controls
+	    
+	}
 
-        // Start of user code create controls
-
-        // End of user code create controls
-
-    }
-
-    @Override
+	@Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
@@ -129,15 +130,15 @@ public class SelectionDescriptionChildrenExpressionPropertySection extends Abstr
             }
         };
     }
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	protected String getPropertyDescription() {
+		return "Required if Tree is ticked\nThis expression will return the children of a candidate element and will be evaluated recursively on each candidate from the root elements\nThese elements must also be in the list returned by Candidates Expression";
+	}
+	
+	// Start of user code user operations
 
-    /**
-     * {@inheritDoc}
-     */
-    protected String getPropertyDescription() {
-        return "";
-    }
-
-    // Start of user code user operations
-
-    // End of user code user operations
+	// End of user code user operations
 }

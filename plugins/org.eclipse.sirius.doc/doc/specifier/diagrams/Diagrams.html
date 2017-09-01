@@ -1526,8 +1526,13 @@
 		</p>
 		<p>The 
 			<em>Candidates Expression</em> should return a list of elements from which the user can select the variable&#8217;s value. By default these candidates are presented as a list. You can also enable the 
-			<em>Tree</em> mode, and specify a 
-			<em>Children Expression</em>, which will be evaluated recursively on each candidate to build a tree of possible values. Finally, you can set the 
+			<em>Tree</em> mode to display elements as a tree. In that case, you must specify a 
+			<em>Root Expression</em> that will provide elements to be displayed as first level of the tree item in the dialog and a 
+			<em>Children Expression</em>, which will be evaluated recursively on each candidate, from the root elements, to build a tree of possible values. Note that 
+			<em>Root Expression</em> and 
+			<em>Children Expression</em> provides elements that must be included in 
+			<em>Candidates Expression</em> elements.
+			<br/>Finally, you can set the 
 			<em>Multiple</em> flag to allow users to select several of the candidates instead of a single one.
 		</p>
 		<p><div style="display: none">

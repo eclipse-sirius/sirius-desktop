@@ -599,7 +599,8 @@ When the tool is selected, the user must first select a diagram element as the t
 
 The _Window Title_, _Icon Path_, _Windows Image Path_ and _Message_ can be used to customize the look of the selection window.
 
-The _Candidates Expression_ should return a list of elements from which the user can select the variable's value. By default these candidates are presented as a list. You can also enable the _Tree_ mode, and specify a _Children Expression_, which will be evaluated recursively on each candidate to build a tree of possible values. Finally, you can set the _Multiple_ flag to allow users to select several of the candidates instead of a single one.
+The _Candidates Expression_ should return a list of elements from which the user can select the variable's value. By default these candidates are presented as a list. You can also enable the _Tree_ mode to display elements as a tree. In that case, you must specify a _Root Expression_ that will provide elements to be displayed as first level of the tree item in the dialog and a _Children Expression_, which will be evaluated recursively on each candidate, from the root elements, to build a tree of possible values. Note that _Root Expression_ and _Children Expression_ provides elements that must be included in _Candidates Expression_ elements.
+Finally, you can set the _Multiple_ flag to allow users to select several of the candidates instead of a single one.
 
 <div style="display: none">
 *TODO* What is the context where the tool's body is executed if several elements are selected?
