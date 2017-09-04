@@ -77,6 +77,9 @@ public interface DiagramImagesPath {
     /** path of the delete from diagram icon image. */
     String DELETE_FROM_DIAGRAM_ICON = "icons/delete.gif"; //$NON-NLS-1$
 
+    /** path of the diagram element decorator icon image when the semantic element is deleted. */
+    String DELETED_DIAG_ELEM_DECORATOR_ICON = "icons/deletedDiagElemDecorator.gif"; //$NON-NLS-1$
+
     /** path of the delete from diagram icon image. */
     String DELETE_FROM_MODEL_ICON = "icons/deleteModel.gif"; //$NON-NLS-1$
 

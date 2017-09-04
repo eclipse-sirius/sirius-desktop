@@ -120,7 +120,7 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
             // Case 2 : edit part is broken
             if (decorationImage == null && isBroken(editPart)) {
                 // If the edit part is broken, we return a "deleted" image (red cross)
-                decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
+                decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON));
             }
         }
         return decorationImage;

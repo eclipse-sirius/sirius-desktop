@@ -13,6 +13,7 @@ icons/collapse.gif - org.eclipse.gmf.runtime.diagram.ui - org.eclipse.gmf.runtim
 icons/collapseall.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/collapseall.gif
 icons/DDiagram.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
 icons/delete.gif - org.eclipse.ui	org.eclipse.ui/icons/full/obj16/delete_obj.gif
+icons/deletedDiagElemDecorator.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/delete_obj.gif
 icons/deleteModel.gif - org.eclipse.search - org.eclipse.search/icons/full/elcl16/search_remall.gif
 icons/disabled_co.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/disabled_co.gif
 icons/distributeCentersHorizontal.gif - org.eclipse.gef - org.eclipse.gef/src/org/eclipse/gef/internal/icons/alignleft.gif
