@@ -470,8 +470,10 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             bot.waitUntil(new CheckNumberOfDescendants(p1Bot, AbstractDiagramNodeEditPart.class, 0));
             bot.waitUntil(new CheckNumberOfDescendants(p21Bot, AbstractDiagramNodeEditPart.class, 1));
 
-            assertEquals(targetCenter.x, p2Location.x, 4);
-            assertEquals(targetCenter.y, p2Location.y, 4);
+            if (!snapToGrid) {
+                assertEquals(targetCenter.x, p2Location.x, 4);
+                assertEquals(targetCenter.y, p2Location.y, 4);
+            }
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
