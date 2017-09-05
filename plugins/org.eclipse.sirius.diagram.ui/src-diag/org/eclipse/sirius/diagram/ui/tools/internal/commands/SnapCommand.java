@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2007, 2010 IBM Corporation and others.
+ * Copyright (c) 2007, 2017 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,13 +34,11 @@ import org.eclipse.gef.handles.HandleBounds;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
-import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
-import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -53,17 +51,15 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 // Copied from org.eclipse.gmf.runtime.diagram.ui.internal.commands.SnapCommand
 //CHECKSTYLE:OFF
 /**
- * This command is used to snap edit parts on a diagram, where the edit parts
- * are passed in as the parameter.
+ * This command is used to snap edit parts on a diagram, where the edit parts are passed in as the parameter.
  * 
- * Duplicate class for
- * {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerEditPolicy}
- * needs.
+ * Duplicate class for {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerEditPolicy} needs.
  * 
  * @author carson_li
  */
@@ -88,8 +84,7 @@ public class SnapCommand extends AbstractTransactionalCommand {
     }
 
     /*
-     * @see org.eclipse.gmf.runtime.emf.commands.core.command.
-     * AbstractTransactionalCommand#getAffectedFiles()
+     * @see org.eclipse.gmf.runtime.emf.commands.core.command. AbstractTransactionalCommand#getAffectedFiles()
      */
     @Override
     public List getAffectedFiles() {
@@ -155,8 +150,7 @@ public class SnapCommand extends AbstractTransactionalCommand {
 
                 PrecisionDimension moveDeltaDim = new PrecisionDimension(bounds.getX() - newEditPart.getFigure().getBounds().x, bounds.getY() - newEditPart.getFigure().getBounds().y);
                 /*
-                 * Distance in pixels needs to be scaled by the scaling
-                 * factor of the zoom tool, i.e. ScaledRootEditPart
+                 * Distance in pixels needs to be scaled by the scaling factor of the zoom tool, i.e. ScaledRootEditPart
                  */
                 newEditPart.getFigure().translateToAbsolute(moveDeltaDim);
                 PrecisionPoint moveDelta = new PrecisionPoint(moveDeltaDim.preciseWidth(), moveDeltaDim.preciseHeight());
@@ -188,8 +182,9 @@ public class SnapCommand extends AbstractTransactionalCommand {
 
                 // We compute the new GMF Absolute Location. The SnapToHelper works with absolute coordinates.
                 Point newGMFAbsoluteLocation = GMFHelper.getAbsoluteLocation((Node) newEditPart.getModel(), true);
-                double scale = GraphicalHelper.getZoom(newEditPart);
-                newGMFAbsoluteLocation.scale(scale);
+
+                // We convert in screen coordinate as it is expected by the SnapToHelper
+                GraphicalHelper.logical2screen(newGMFAbsoluteLocation, newEditPart);
                 SnapToHelper snapToHelper = newEditPart.getAdapter(SnapToHelper.class);
                 PrecisionRectangle baseRect = new PrecisionRectangle(figureBounds);
                 baseRect.setLocation(newGMFAbsoluteLocation);
@@ -230,8 +225,28 @@ public class SnapCommand extends AbstractTransactionalCommand {
             Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode, true);
             Point newValidRelativeLocation = newValidLocation.getTranslated(parentAbsoluteLocation.getNegated());
 
-            SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), getLabel(), new EObjectAdapter(newEditPart.getNotationView()), newValidRelativeLocation);
-            snapCommand.add(setBoundsCommand);
+            // We compute the move delta by calculating the difference between the current figure relative location and
+            // the new computed location.
+            EditPartQuery editPartQuery = new EditPartQuery(newEditPart);
+            IAbstractDiagramNodeEditPart parentEditPart = editPartQuery.getFirstAncestorOfType(IAbstractDiagramNodeEditPart.class);
+            Rectangle currentFigureBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(newEditPart, true);
+            Point figureParentAbsoluteLocation = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentEditPart, true).getLocation();
+            Point currentRelativeFigureLocation = currentFigureBounds.getLocation().getTranslated(figureParentAbsoluteLocation.getNegated());
+            Point moveDelta = newValidRelativeLocation.getTranslated(currentRelativeFigureLocation.getNegated());
+
+            // We create the ChangeBoundsRequest and get the new command.
+            ChangeBoundsRequest request = new ChangeBoundsRequest(RequestConstants.REQ_MOVE);
+            request.setEditParts(newEditPart);
+            // The move delta is always in screen coordinates, that means by considering the zoom level (the scroll
+            // position is not relevant since the move delta is a relative distance)
+            double scale = GraphicalHelper.getZoom(newEditPart);
+            moveDelta = new PrecisionPoint(moveDelta);
+            moveDelta.scale(scale);
+            request.setMoveDelta(moveDelta);
+            Command gefMove = newEditPart.getCommand(request);
+            if (gefMove != null) {
+                snapCommand.add(new CommandProxy(gefMove));
+            }
         }
 
     }
