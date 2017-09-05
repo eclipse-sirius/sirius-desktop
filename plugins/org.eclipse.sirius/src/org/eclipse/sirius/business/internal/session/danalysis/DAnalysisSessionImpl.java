@@ -53,6 +53,7 @@ import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
+import org.eclipse.sirius.business.api.query.SiriusReferenceFinder;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
@@ -123,6 +124,11 @@ import com.google.common.collect.Sets;
  * @author cbrun
  */
 public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient {
+    /**
+     * The inverse cross referencer to retrieve DRep and DRepElement.
+     */
+    protected SiriusReferenceFinder repElementInverseCrossReferencer;
+
     /** The custom saving policy the session should use. */
     private SavingPolicy savingPolicy;
 
@@ -1481,5 +1487,17 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
         }
         return repFiles;
+    }
+
+    /**
+     * Return the {@link SiriusReferenceFinder} of this Session.
+     * 
+     * @return the {@link SiriusReferenceFinder}
+     */
+    public SiriusReferenceFinder getSiriusRepElementInverseCrossReferencer() {
+        if (repElementInverseCrossReferencer == null) {
+            repElementInverseCrossReferencer = new SiriusReferenceFinderImpl(this);
+        }
+        return repElementInverseCrossReferencer;
     }
 }

@@ -170,6 +170,16 @@
 			<li><span class="label label-info">Modified</span> The filtering expression variables available in the properties view definition in the &#8216;Extends&#8217; tab were renamed to match the following pattern: featureName+&#8216;Description&#8217;.</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.business.api">Changes in 
+			<code>org.eclipse.sirius.business.api</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> (experimental) The new API 
+				<code>org.eclipse.sirius.business.api.query.SiriusReferenceFinder</code> and 
+				<code>org.eclipse.sirius.business.api.query.EObjectQuery.getSiriusReferenceFinder()</code> method to get it have been added. This API allows getting the DRepresentations or DRepresentationElements that reference the provided semantic object. It also allows getting the DRepresentationDescriptor which associated DRepresentation is or contains elements that reference the provided semantic object. This API will be useful for 
+				<a href="#replazyloading">representation lazy loading</a> as it may, in the future, not need to load all not yet loaded representations. For now, the use of this API will load all not loaded representations.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui.editor.api.pages">Changes in 
 			<code>org.eclipse.sirius.ui.editor.api.pages</code>
 		</h4>
@@ -212,7 +222,7 @@
 				<em>12.1.0.201708031200</em>.
 			</li>
 		</ul>
-		<h4 id="Representationslazyloadingexperimental.">Representations lazy loading (experimental).</h4>
+		<h4 id="replazyloading">Representations lazy loading (experimental).</h4>
 		<p>A new mode (currently experimental) is available to load representations on demand and not during session opening. This feature implies to serialize Sirius representations in separate resources. This mode can be activated by setting the system property 
 			<code>createLocalRepresentationInSeparateResource</code> at true. For more detail, see the developer documentation: 
 			<a href="./developer/representations_lazy_loading.html">Representations lazy loading (experimental)</a>.

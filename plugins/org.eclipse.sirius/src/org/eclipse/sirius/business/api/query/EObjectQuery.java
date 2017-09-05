@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.EClassQuery;
@@ -472,5 +473,17 @@ public class EObjectQuery {
             }
         }
         return dAnalysis;
+    }
+
+    /**
+     * Provides a mean to get SiriusReferenceFinder to some Sirius Elements (such as DRepresentationElement, DRepresentation or DRepresentationDescriptor) from some semantic objects
+     * within the scope of the Sirius {@link Session} the semanticObject belongs to.
+     * 
+     * @return the API
+     */
+    public SiriusReferenceFinder getSiriusReferenceFinder() {
+        SiriusReferenceFinder inverseCrossRef = Optional.ofNullable(getSession()).filter(DAnalysisSessionImpl.class::isInstance).map(DAnalysisSessionImpl.class::cast)
+                .map(DAnalysisSessionImpl::getSiriusRepElementInverseCrossReferencer).orElse(null);
+        return inverseCrossRef;
     }
 }

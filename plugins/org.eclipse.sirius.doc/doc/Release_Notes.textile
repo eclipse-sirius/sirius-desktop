@@ -34,6 +34,10 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+h4. Changes in @org.eclipse.sirius.business.api@
+
+* <span class="label label-success">Added</span> (experimental) The new API @org.eclipse.sirius.business.api.query.SiriusReferenceFinder@ and @org.eclipse.sirius.business.api.query.EObjectQuery.getSiriusReferenceFinder()@ method to get it have been added. This API allows getting the DRepresentations or DRepresentationElements that reference the provided semantic object. It also allows getting the DRepresentationDescriptor which associated DRepresentation is or contains elements that reference the provided semantic object. This API will be useful for "representation lazy loading":#replazyloading as it may, in the future, not need to load all not yet loaded representations. For now, the use of this API will load all not loaded representations.
+
 h4. Changes in @org.eclipse.sirius.ui.editor.api.pages@
 
 * <span class="label label-success">Added</span> New classes have been added in package @org.eclipse.sirius.ui.editor.api.pages@. They are the following: @AbstractSessionEditorPage@, @PageProvider@, @PageUpdateCOmmand@, @PositioningKind@, @PageUpdateCommandFactory@. These classes allow to provide custom pages to session editor instances.
@@ -48,7 +52,7 @@ h4. Migrations
 * <span class="label label-success">Added</span> A migration has been added to add an @uid@ to all instances of type DRepresentation.This @uid@ is used to reference the DRepresentation from the DRepresentationDescriptor. @DRepresentationDescriptor.repPath@ has been changed to have @uid@ as fragment.
 * <span class="label label-success">Added</span> A migration has been added to fix diagram with edge bend-points corrupted (see "bugzilla #519044":https://bugs.eclipse.org/bugs/show_bug.cgi?id=519044 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _12.1.0.201708031200_.
 
-h4. Representations lazy loading (experimental).
+h4(#replazyloading). Representations lazy loading (experimental).
 
 A new mode (currently experimental) is available to load representations on demand and not during session opening. This feature implies to serialize Sirius representations in separate resources. This mode can be activated by setting the system property @createLocalRepresentationInSeparateResource@ at true. For more detail, see the developer documentation: "Representations lazy loading (experimental)":./developer/representations_lazy_loading.html.
 
