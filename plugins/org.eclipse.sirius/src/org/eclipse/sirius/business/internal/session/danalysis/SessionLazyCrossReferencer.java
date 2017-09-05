@@ -45,6 +45,15 @@ public class SessionLazyCrossReferencer extends LazyCrossReferencer {
         this.session = session;
     }
 
+    /**
+     * Returns the session associated to this cross-reference.
+     * 
+     * @return the session.
+     */
+    public DAnalysisSessionImpl getSession() {
+        return session;
+    }
+
     @Override
     protected void initialize() {
         super.initialize();

@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.resources.IMarker;
@@ -28,6 +29,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -41,6 +43,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.internal.migration.resource.MigrationUtil;
+import org.eclipse.sirius.business.internal.session.danalysis.SessionLazyCrossReferencer;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.MarkerUtil;
 import org.eclipse.sirius.ext.base.Option;
@@ -179,37 +182,38 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     @Override
     public Session getSession(final EObject any) {
         Session found = null;
-        // CDO Bridge for Sirius
-        // As a CDOResource extends EObject
-        // we have to test if any is a resource
         if (any instanceof Resource) {
             found = getSession((Resource) any);
-        } else {
-            /*
-             * looks like some sequencers think it's a good idea to pass null as a parameter here.
-             */
-            if (any != null) {
+        } else if (any != null) {
+            // Fast path: try to leverage the SessionLazyCrossReferencer first if present
+            Optional<Adapter> slcr = any.eAdapters().stream().filter(SessionLazyCrossReferencer.class::isInstance).findFirst();
+            if (slcr.isPresent()) {
+                found = ((SessionLazyCrossReferencer) slcr.get()).getSession();
+            }
+            // Handle explicit SessionTransientAttachment
+            if (found == null) {
                 Option<SessionTransientAttachment> attachment = SessionTransientAttachment.getSessionTransientAttachement(any);
                 if (attachment.some()) {
-                    return attachment.get().getSession();
+                    found = attachment.get().getSession();
                 }
-                // TODO remove this try/catch once the offline mode will be
-                // supported
+            }
+            // Slow path: walk up to the Resource and call getSession(Resource) which will search in all currently
+            // opened sessions for that resource.
+            if (found == null) {
                 try {
-                    final EObject root = EcoreUtil.getRootContainer(any);
-                    final Resource res = root != null ? root.eResource() : null;
+                    EObject root = EcoreUtil.getRootContainer(any);
+                    Resource res = root != null ? root.eResource() : null;
                     if (res != null) {
                         found = getSession(res);
                     }
                     if (found == null) {
-                        final Resource resource = any.eResource();
+                        Resource resource = any.eResource();
                         if (resource != null) {
                             found = getSession(resource);
                         }
                     }
                 } catch (IllegalStateException e) {
-                    // An issue has been encountered while connecting to remote
-                    // CDO server
+                    // An issue has been encountered while connecting to remote CDO server
                     if (SiriusPlugin.getDefault().isDebugging()) {
                         SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, Messages.SessionManagerImpl_remoteServerConnectionErrorMsg));
                     }
