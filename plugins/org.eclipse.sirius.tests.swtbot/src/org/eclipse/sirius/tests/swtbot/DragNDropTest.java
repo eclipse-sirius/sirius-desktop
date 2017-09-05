@@ -129,8 +129,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      * Open "TC1041 representation 2 Blank" diagram.
      */
     private void openRepresentation2() {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_2,
-                REPRESENTATION_INSTANCE_2BLANK, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_2, REPRESENTATION_INSTANCE_2BLANK, DDiagram.class);
         if (snapToGrid) {
             editor.setSnapToGrid(true, GRID_STEP, 2);
         }
@@ -140,8 +139,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      * Open "TC1041 representation 5 Blank" diagram.
      */
     private void openRepresentation5() {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_5,
-                REPRESENTATION_INSTANCE_5BLANK, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_5, REPRESENTATION_INSTANCE_5BLANK, DDiagram.class);
         if (snapToGrid) {
             editor.setSnapToGrid(true, GRID_STEP, 2);
         }
@@ -149,8 +147,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of P1(EPackage) from the Model Content
-     *             view to the diagram. This test is done on a
+     *             Test the drag&drop of P1(EPackage) from the Model Content view to the diagram. This test is done on a
      *             "TC1041 representation 2 Blank" diagram.
      */
     @Test
@@ -166,15 +163,13 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             DndUtil util = new DndUtil(bot.getDisplay());
 
             // DnD P1(EPackage) from the Model Content view to the diagram
-            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .getNode(CONTAINER_TO_DRAG_P1);
+            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P1);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
 
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
-            IGraphicalEditPart p1EditPart = (IGraphicalEditPart) editor
-                    .getEditPart(CONTAINER_TO_DRAG_P1, DNodeContainerEditPart.class).part();
+            IGraphicalEditPart p1EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P1, DNodeContainerEditPart.class).part();
             checkEditPartLocation(p1EditPart);
         } finally {
             closeErrorLogView();
@@ -183,8 +178,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of P2 from the Model Content view to P1
-     *             previously created. This test is done on a
+     *             Test the drag&drop of P2 from the Model Content view to P1 previously created. This test is done on a
      *             "TC1041 representation 2 Blank" diagram.
      */
     @Test
@@ -204,16 +198,13 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point p1Location = editor.getBounds(p1Bot).getLocation();
 
             // DnD P2(EPackage) from the Model Content view to P1
-            final SWTBotTreeItem ecoreTreeItem1 = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .getNode(CONTAINER_TO_DRAG_P2);
-            util.dragAndDrop(ecoreTreeItem1, editor.getCanvas(),
-                    new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
+            final SWTBotTreeItem ecoreTreeItem1 = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P2);
+            util.dragAndDrop(ecoreTreeItem1, editor.getCanvas(), new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
-            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
-                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
             checkEditPartLocation(p2EditPart);
         } finally {
             closeErrorLogView();
@@ -222,8 +213,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of P2 from the Model Content view to P1
-     *             previously created. This test is done on a
+     *             Test the drag&drop of P2 from the Model Content view to P1 previously created. This test is done on a
      *             "TC1041 representation 2 Blank" diagram.
      */
     @Test
@@ -246,8 +236,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point targetLocation = editor.getBounds(p1Bot).getCenter();
 
             // DnD P2(EPackage) from the Model Content view to P1
-            final SWTBotTreeItem ecoreTreeItem1 = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .getNode(CONTAINER_TO_DRAG_P2);
+            final SWTBotTreeItem ecoreTreeItem1 = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P2);
             util.dragAndDrop(ecoreTreeItem1, editor.getCanvas(), targetLocation);
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
             bot.waitUntil(new CheckNumberOfDescendants(p1Bot, AbstractDiagramNodeEditPart.class, 1));
@@ -263,8 +252,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
-            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
-                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
             checkEditPartLocation(p2EditPart);
         } finally {
             closeErrorLogView();
@@ -275,8 +263,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of P2 from P1 to the diagram. This test is
-     *             done on a "TC1041 representation 2 Blank" diagram.
+     *             Test the drag&drop of P2 from P1 to the diagram. This test is done on a "TC1041 representation 2
+     *             Blank" diagram.
      */
     @Test
     public void test_DnDNodeFromContainer2DiagramBlank2() throws Exception {
@@ -321,8 +309,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of P2 from the diagram to P1. This test is
-     *             done on a "TC1041 representation 2 Blank" diagram.
+     *             Test the drag&drop of P2 from the diagram to P1. This test is done on a "TC1041 representation 2
+     *             Blank" diagram.
      */
     @Test
     public void test_DnDContainerFromDiagram2ContainerBlank2() throws Exception {
@@ -334,10 +322,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
-            SWTBotGefEditPart sourceSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P2,
-                    AbstractDiagramContainerEditPart.class);
-            SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P1,
-                    AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart sourceSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P2, AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P1, AbstractDiagramContainerEditPart.class);
 
             final IGraphicalEditPart targetPart = (IGraphicalEditPart) targetSwtBotPart.part();
             Point targetCenter = targetPart.getFigure().getBounds().getCenter();
@@ -347,8 +333,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
-            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
-                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
             checkEditPartLocation(p2EditPart);
 
         } finally {
@@ -358,8 +343,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of P2 from the diagram to P1. This test is
-     *             done using a "TC1041 representation 2 Blank" diagram.
+     *             Test the drag&drop of P2 from the diagram to P1. This test is done using a "TC1041 representation 2
+     *             Blank" diagram.
      */
     @Test
     public void test_DnDContainerFromContainer2ContainerBlank2() throws Exception {
@@ -378,24 +363,20 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point targetLocation = editor.getBounds(p1Bot).getLeft().getTranslated(-200, 0);
 
             // DnD P2.1(EPackage) from the Model Content view to the diagram
-            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .expandNode(CONTAINER_TO_DRAG_P1).expandNode(CONTAINER_TO_DRAG_P2).getNode(CONTAINER_TO_DRAG_P3);
-            util.dragAndDrop(ecoreTreeItem, editor.getCanvas(),
-                    new org.eclipse.swt.graphics.Point(targetLocation.x, targetLocation.y));
+            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).expandNode(CONTAINER_TO_DRAG_P2).getNode(CONTAINER_TO_DRAG_P3);
+            util.dragAndDrop(ecoreTreeItem, editor.getCanvas(), new org.eclipse.swt.graphics.Point(targetLocation.x, targetLocation.y));
 
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 2));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
-            IGraphicalEditPart p3EditPart = (IGraphicalEditPart) editor
-                    .getEditPart(CONTAINER_TO_DRAG_P3, DNodeContainerEditPart.class).part();
+            IGraphicalEditPart p3EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P3, DNodeContainerEditPart.class).part();
             checkEditPartLocation(p3EditPart);
 
             // Get the location of P2
             SWTBotGefEditPart p2Bot = editor.getEditPart(CONTAINER_TO_DRAG_P2).parent();
             Point p2Location = editor.getBounds(p2Bot).getCenter();
 
-            SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P3,
-                    AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P3, AbstractDiagramContainerEditPart.class);
             final IGraphicalEditPart targetPart = (IGraphicalEditPart) targetSwtBotPart.part();
             Point targetCenter = targetPart.getFigure().getBounds().getCenter();
 
@@ -404,8 +385,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
-            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
-                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
             checkEditPartLocation(p2EditPart);
 
         } finally {
@@ -415,8 +395,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of P2 from the diagram to P1. This test is
-     *             done using a "TC1041 representation 2 Blank" diagram.
+     *             Test the drag&drop of P2 from the diagram to P1. This test is done using a "TC1041 representation 2
+     *             Blank" diagram.
      */
     @Test
     public void test_DnDContainerFromContainer2ContainerBlank2_zoom200() throws Exception {
@@ -439,16 +419,14 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point targetLocation = editor.getBounds(p1Bot).getLeft().getTranslated(-200, 0);
 
             // DnD P2.1(EPackage) from the Model Content view to the diagram
-            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .expandNode(CONTAINER_TO_DRAG_P1).expandNode(CONTAINER_TO_DRAG_P2).getNode(CONTAINER_TO_DRAG_P3);
+            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).expandNode(CONTAINER_TO_DRAG_P2).getNode(CONTAINER_TO_DRAG_P3);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas(), targetLocation);
             bot.waitUntil(new CheckNumberOfDescendants(p1Bot, AbstractDiagramNodeEditPart.class, 1));
 
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 2));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
-            IGraphicalEditPart p3EditPart = (IGraphicalEditPart) editor
-                    .getEditPart(CONTAINER_TO_DRAG_P3, DNodeContainerEditPart.class).part();
+            IGraphicalEditPart p3EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P3, DNodeContainerEditPart.class).part();
             checkEditPartLocation(p3EditPart);
 
             SWTBotGefEditPart p21Bot = editor.getEditPart(CONTAINER_TO_DRAG_P3, AbstractDiagramContainerEditPart.class);
@@ -490,9 +468,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Asserts that the DnD of an EClass (C1) from the Model Content
-     *             view to the diagram is not allowed using
-     *             "TC1041 representation 2 Blank" diagram.
+     *             Asserts that the DnD of an EClass (C1) from the Model Content view to the diagram is not allowed
+     *             using "TC1041 representation 2 Blank" diagram.
      */
     @Test
     public void test_DnDEClassFromMC2DiagramBlank2() throws Exception {
@@ -509,8 +486,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             // DnD C1(EClass) from the Model Content view to P2. This
             // move shall not be allowed. Asserts that no error message is
             // generated
-            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
+            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
 
             // Asserts that C1 graphical element was not created on the diagram
@@ -528,9 +504,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Asserts that the DnD of an EClass(C1) from the Model Content
-     *             view inside a container (P1) is not allowed using
-     *             "TC1041 representation 2 Blank" diagram.
+     *             Asserts that the DnD of an EClass(C1) from the Model Content view inside a container (P1) is not
+     *             allowed using "TC1041 representation 2 Blank" diagram.
      */
     @Test
     public void test_DnDEClassMC2ContainerBlank2() throws Exception {
@@ -551,18 +526,13 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             // DnD C1(EClass) from the Model Content view to P2. This
             // move shall not be allowed. Asserts that no error message is
             // generated
-            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
-            util.dragAndDrop(ecoreTreeItem, editor.getCanvas(),
-                    new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
+            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
+            util.dragAndDrop(ecoreTreeItem, editor.getCanvas(), new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
 
             // Asserts that C1 was not created as child of P1 and no error
             // message was generated
-            SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P1,
-                    AbstractDiagramContainerEditPart.class);
-            Iterable<AbstractDiagramNodeEditPart> filter = Iterables.filter(
-                    ((CompartmentEditPart) targetSwtBotPart.part().getChildren().get(1)).getChildren(),
-                    AbstractDiagramNodeEditPart.class);
+            SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P1, AbstractDiagramContainerEditPart.class);
+            Iterable<AbstractDiagramNodeEditPart> filter = Iterables.filter(((CompartmentEditPart) targetSwtBotPart.part().getChildren().get(1)).getChildren(), AbstractDiagramNodeEditPart.class);
 
             assertEquals("Bad number of elements", 0, Sets.newLinkedHashSet(filter).size());
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
@@ -574,9 +544,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of P1(EPackage) from the Model Content
-     *             view to the diagram. This test is done using a
-     *             "TC1041 representation 5 Blank" diagram.
+     *             Test the drag&drop of P1(EPackage) from the Model Content view to the diagram. This test is done
+     *             using a "TC1041 representation 5 Blank" diagram.
      */
     @Test
     public void test_DnDPackageFromMC2DiagramBlank5() throws Exception {
@@ -591,15 +560,13 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             DndUtil util = new DndUtil(bot.getDisplay());
 
             // DnD P1(EPackage) from the Model Content view to the diagram
-            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .getNode(CONTAINER_TO_DRAG_P1);
+            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P1);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
 
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
-            IGraphicalEditPart p1EditPart = (IGraphicalEditPart) editor
-                    .getEditPart(CONTAINER_TO_DRAG_P1, DNodeContainerEditPart.class).part();
+            IGraphicalEditPart p1EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P1, DNodeContainerEditPart.class).part();
             checkEditPartLocation(p1EditPart);
         } finally {
             closeErrorLogView();
@@ -608,9 +575,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of C1 from the Model Content view to P1
-     *             previously created. This test is done using a
-     *             "TC1041 representation 5 Blank" diagram.
+     *             Test the drag&drop of C1 from the Model Content view to P1 previously created. This test is done
+     *             using a "TC1041 representation 5 Blank" diagram.
      */
     @Test
     public void test_DnDClassFromMC2ContainerBlank5() throws Exception {
@@ -629,16 +595,13 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point p1Location = editor.getBounds(p1Bot).getLocation();
 
             // DnD P2(EPackage) from the Model Content view to P1
-            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
-            util.dragAndDrop(ecoreTreeItem, editor.getCanvas(),
-                    new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
+            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
+            util.dragAndDrop(ecoreTreeItem, editor.getCanvas(), new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
-            IGraphicalEditPart c1EditPart = (IGraphicalEditPart) editor
-                    .getEditPart(CLASS_TO_DRAG_C1, DNodeContainerEditPart.class).part();
+            IGraphicalEditPart c1EditPart = (IGraphicalEditPart) editor.getEditPart(CLASS_TO_DRAG_C1, DNodeContainerEditPart.class).part();
             checkEditPartLocation(c1EditPart);
         } finally {
             closeErrorLogView();
@@ -647,8 +610,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of C1 from P1 to P2 . This test is done
-     *             using a "TC1041 representation 5 Blank" diagram.
+     *             Test the drag&drop of C1 from P1 to P2 . This test is done using a "TC1041 representation 5 Blank"
+     *             diagram.
      */
     @Test
     public void test_DnDClassFromContainer2ContainerBlank5() throws Exception {
@@ -667,15 +630,12 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point targetLocation = editor.getBounds(p1Bot).getLeft().getTranslated(-200, 0);
 
             // DnD P2(EPackage) from the Model Content view to the diagram
-            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .getNode(CONTAINER_TO_DRAG_P2);
-            util.dragAndDrop(ecoreTreeItem, editor.getCanvas(),
-                    new org.eclipse.swt.graphics.Point(targetLocation.x, targetLocation.y));
+            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P2);
+            util.dragAndDrop(ecoreTreeItem, editor.getCanvas(), new org.eclipse.swt.graphics.Point(targetLocation.x, targetLocation.y));
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 2));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
-            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor
-                    .getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
             checkEditPartLocation(p2EditPart);
 
             // Get the location of C1
@@ -683,8 +643,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point c1Location = editor.getBounds(c1Bot).getLocation();
 
             // Get the center of P2 (the target)
-            SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P2,
-                    AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P2, AbstractDiagramContainerEditPart.class);
             final IGraphicalEditPart targetPart = (IGraphicalEditPart) targetSwtBotPart.part();
             Point targetCenter = targetPart.getFigure().getBounds().getCenter();
 
@@ -693,8 +652,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
 
-            IGraphicalEditPart c1EditPart = (IGraphicalEditPart) editor
-                    .getEditPart(CLASS_TO_DRAG_C1, DNodeContainerEditPart.class).part();
+            IGraphicalEditPart c1EditPart = (IGraphicalEditPart) editor.getEditPart(CLASS_TO_DRAG_C1, DNodeContainerEditPart.class).part();
             checkEditPartLocation(c1EditPart);
 
         } finally {
@@ -704,9 +662,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of C1(EClass) from the Model Content view
-     *             to the diagram. This move should not be allowed and no error
-     *             message should be generated.
+     *             Test the drag&drop of C1(EClass) from the Model Content view to the diagram. This move should not be
+     *             allowed and no error message should be generated.
      */
     @Test
     public void test_DnDClassFromMC2DiagramBlank5() throws Exception {
@@ -721,8 +678,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             DndUtil util = new DndUtil(bot.getDisplay());
 
             // DnD P1(EPackage) from the Model Content view to the diagram
-            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
+            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
 
             // Asserts that C1 graphical element was not created on the diagram
@@ -739,9 +695,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of P2 from the Model Content view to P1
-     *             previously created. This move should not be allowed and no
-     *             error message should be generated.
+     *             Test the drag&drop of P2 from the Model Content view to P1 previously created. This move should not
+     *             be allowed and no error message should be generated.
      */
     @Test
     public void test_DnDPackageFromMC2ContainerBlank5() throws Exception {
@@ -760,18 +715,13 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point p1Location = editor.getBounds(p1Bot).getLocation();
 
             // DnD P2(EPackage) from the Model Content view to P1
-            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME)
-                    .getNode(CONTAINER_TO_DRAG_P2);
-            util.dragAndDrop(ecoreTreeItem, editor.getCanvas(),
-                    new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
+            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P2);
+            util.dragAndDrop(ecoreTreeItem, editor.getCanvas(), new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
 
             // Asserts that P2 was not created as child of P1 and no error
             // message was generated
-            SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P1,
-                    AbstractDiagramContainerEditPart.class);
-            Iterable<AbstractDiagramNodeEditPart> filter = Iterables.filter(
-                    ((CompartmentEditPart) targetSwtBotPart.part().getChildren().get(1)).getChildren(),
-                    AbstractDiagramNodeEditPart.class);
+            SWTBotGefEditPart targetSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P1, AbstractDiagramContainerEditPart.class);
+            Iterable<AbstractDiagramNodeEditPart> filter = Iterables.filter(((CompartmentEditPart) targetSwtBotPart.part().getChildren().get(1)).getChildren(), AbstractDiagramNodeEditPart.class);
 
             assertEquals("Bad number of elements", 0, Sets.newLinkedHashSet(filter).size());
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
