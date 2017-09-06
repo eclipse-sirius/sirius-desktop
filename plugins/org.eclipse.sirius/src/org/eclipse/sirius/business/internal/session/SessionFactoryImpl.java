@@ -174,7 +174,7 @@ public class SessionFactoryImpl implements SessionFactory {
                 DAnalysis analysis = null;
                 if (!sessionModelResource.getContents().isEmpty() && (sessionModelResource.getContents().get(0) instanceof DAnalysis)) {
                     analysis = (DAnalysis) sessionModelResource.getContents().get(0);
-                    session = createSession(analysis);
+                    session = createSession(analysis, transactionalEditingDomain);
                     monitor.worked(2);
                 } else {
                     session = createSessionResource(sessionResourceURI, transactionalEditingDomain, false, new SubProgressMonitor(monitor, 2));
@@ -241,7 +241,7 @@ public class SessionFactoryImpl implements SessionFactory {
             }
 
             DAnalysis analysis = prepareDAnalysis(sessionResourceURI, transactionalEditingDomain, monitor, sessionModelResource, SiriusPlugin.ID);
-            session = createSession(analysis);
+            session = createSession(analysis, transactionalEditingDomain);
 
             if (additionalTasks) {
                 completeSessionCreation(session, additionalResources, monitor);
@@ -301,9 +301,11 @@ public class SessionFactoryImpl implements SessionFactory {
      * 
      * @param analysis
      *            the main DAnalysis of the {@link Session} to create.
+     * @param transactionalEditingDomain
+     *            the editing domain, might be usefull to help subclasses to create their sessions.
      * @return a {@link Session}
      */
-    protected Session createSession(DAnalysis analysis) {
+    protected Session createSession(DAnalysis analysis, TransactionalEditingDomain transactionalEditingDomain) {
         return new DAnalysisSessionImpl(analysis);
     }
 
