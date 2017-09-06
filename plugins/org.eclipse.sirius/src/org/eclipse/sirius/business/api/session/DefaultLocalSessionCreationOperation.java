@@ -13,10 +13,14 @@ package org.eclipse.sirius.business.api.session;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
+import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A common operation to create a session and open it.
@@ -45,8 +49,7 @@ public class DefaultLocalSessionCreationOperation implements SessionCreationOper
      * @param sessionResourceURI
      *            the {@link URI} of the Resource {@link Session} model
      * @param monitor
-     *            {@link IProgressMonitor} to show progression of
-     *            {@link Session} creation
+     *            {@link IProgressMonitor} to show progression of {@link Session} creation
      */
     public DefaultLocalSessionCreationOperation(URI sessionResourceURI, IProgressMonitor monitor) {
         this.sessionResourceURI = sessionResourceURI;
@@ -71,6 +74,11 @@ public class DefaultLocalSessionCreationOperation implements SessionCreationOper
             session.open(new SubProgressMonitor(monitor, 1));
             monitor.subTask(Messages.DAnalysisSessionImpl_saveMsg);
             session.save(new SubProgressMonitor(monitor, 1));
+            try {
+                Job.getJobManager().join(SaveSessionJob.FAMILY, new SubProgressMonitor(monitor, 1));
+            } catch (OperationCanceledException | InterruptedException e) {
+                SiriusPlugin.getDefault().error(Messages.AbstractSavingPolicy_savingErrorMsg, e);
+            }
         } finally {
             monitor.done();
         }
