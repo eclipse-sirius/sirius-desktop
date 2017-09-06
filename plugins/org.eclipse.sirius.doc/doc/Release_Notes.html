@@ -125,7 +125,16 @@
 			<li><span class="label label-success">Added</span> Four new straighten actions are available (with top pinned, with bottom pinned, with left pinned, with right pinned) and allow to straighten edges from the opposed straightening axis point of view.</li>
 			<li><span class="label label-info">Modified</span> In a diagram, when selecting an edge or a node that are not fully displayed in the editor, now, the reveal is not done anymore, that is, the displayed content of the editor is not moved anymore. If the user want to fully see the selected element, he may drag the editor content using center mouse button. </li>
 			<li><span class="label label-info">Modified</span> In a diagram with 
-				<em>snapToGrid</em> enabled, when you create an edge with a tool that also create the associated border nodes, the border nodes are now snapped near the click location. Before, it was created to respect a shortest path.
+				<em>snapToGrid</em> enabled:
+				<ul>
+					<li>When performing a drag and drop from the model explorer or a palette tool to the diagram, the new created element is now snapped to the grid.</li>
+					<li>When performing an 
+						<em>Arrange all</em> or an 
+						<em>Arrange Linked Border Node</em> action, all diagram elements are now snapped to the grid.
+					</li>
+					<li>When performing a drag and drop or a tool that will create multiple elements, all created elements are still visible but now snapped to the grid. </li>
+					<li>When creating an edge with a tool that also create the associated border nodes, the border nodes are now snapped near the click location. Before, they were created to respect a shortest path.</li>
+				</ul>
 			</li>
 		</ul>
 		<p>
