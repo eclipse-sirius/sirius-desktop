@@ -74,6 +74,10 @@ h4. Changes in @org.eclipse.sirius.common@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer.setEObjectToBeIgnored(Predicate<EObject>)@ has  been added to filter inverse references to prevent some references resolution.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.common.tools.api.util.WorkspaceUtil.getFilesFromWorkspace(Collection<IProject>, String)@ signature has been modified in @getFilesFromWorkspace(Collection<IContainer>, String)@ to be more generic.
 
+h4. Changes in @org.eclipse.sirius.ext.emf.edit@
+
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.ext.emf.edit.EditingDomainServices@ does not use @Collection@ anymore as return type or parameter type in its services. @java.util.Collection@ has been replaced by @java.util.List@. As mentioned in the "specifier documentation":./specifier/general/Writing_Queries.html#service_methods, it is recommended to use List or Set instead of Collection in java services signature.
+
 h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.wizards.CreateEMFModelWizard@ is a new wizard that can be invoked to create instances of any metamodel. It will ask the end-user for a metamodel (@EPackage@), a concrete type to instanciate as root element, and finally the local path of the file to create. See the class Javadoc for sample usage. Note that the first two pages of the wizard (EPackage and root type selection) can be customized through the @org.eclipse.sirius.common.package_meta_data@ extension point to provide user-oriented name and documentation for an EPackage, and to suggest specific EClasses as good root candidates.

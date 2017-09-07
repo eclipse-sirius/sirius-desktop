@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 package org.eclipse.sirius.ext.emf.edit;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -46,9 +45,8 @@ import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 
 /**
- * Provides access to common {@link EditingDomain} and
- * {@link AdapterFactoryEditingDomain} methods in a way that is compatible with
- * "Java services" invocation from Sirius interpreted expressions.
+ * Provides access to common {@link EditingDomain} and {@link AdapterFactoryEditingDomain} methods in a way that is
+ * compatible with "Java services" invocation from Sirius interpreted expressions.
  * <p>
  * <h4>General EditingDomain-related Services</h4>
  * <p>
@@ -63,8 +61,8 @@ import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory
  * <p>
  * <h4>Item Providers Services</h4>
  * <p>
- * Most public methods of the following interfaces are available as services on
- * any {@link EObject} (typically from a Sirius session):
+ * Most public methods of the following interfaces are available as services on any {@link EObject} (typically from a
+ * Sirius session):
  * <ul>
  * <li>{@link org.eclipse.emf.edit.provider.IItemLabelProvider}</li>
  * <li>{@link org.eclipse.emf.edit.provider.IItemColorProvider}</li>
@@ -76,37 +74,30 @@ import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory
  * <li>{@link org.eclipse.emf.edit.provider.ITableItemFontProvider}</li>
  * </ul>
  * <p>
- * In all cases, a {@code getXXXProvider()} service method is also made
- * available (for example {@link #getLabelProvider(EObject)}, which returns the
- * item provider itself (or <code>null</code>). The item provider is located
- * using the {@code ItemProviderAdapter} returned by the {@link AdapterFactory}
- * associated to the element's editing domain. This assumes said domain is an
- * {@link AdapterFactoryEditingDomain} (which is true in practice in Sirius,
- * which uses a <code>TransactionalEditingDomain</code> that inherits from
- * this).
+ * In all cases, a {@code getXXXProvider()} service method is also made available (for example
+ * {@link #getLabelProvider(EObject)}, which returns the item provider itself (or <code>null</code>). The item provider
+ * is located using the {@code ItemProviderAdapter} returned by the {@link AdapterFactory} associated to the element's
+ * editing domain. This assumes said domain is an {@link AdapterFactoryEditingDomain} (which is true in practice in
+ * Sirius, which uses a <code>TransactionalEditingDomain</code> that inherits from this).
  * <p>
- * All service methods return an explicit <code>null</code> value (or
- * <code>false</code> for services that return a boolean) if the corresponding
- * item provider could not be found. Note that this is indistinguishable from an
- * item provider method which actually returns <code>null</code>/
- * <code>false</code>.
+ * All service methods return an explicit <code>null</code> value (or <code>false</code> for services that return a
+ * boolean) if the corresponding item provider could not be found. Note that this is indistinguishable from an item
+ * provider method which actually returns <code>null</code>/ <code>false</code>.
  * <h4>Item Property-Related Services</h4>
  * <p>
- * The {@link IItemPropertySource} associated with an element and its
- * {@link IItemPropertyDescriptor}s can be obtained using the following
- * services:
+ * The {@link IItemPropertySource} associated with an element and its {@link IItemPropertyDescriptor}s can be obtained
+ * using the following services:
  * <ul>
  * <li>{@link #getItemPropertySource(EObject)}</li>
- * <li>{@link #getPropertyDescriptors(EObject)} to obtain <em>all</em> the
- * {@link IItemPropertyDescriptor} of the element.</li>
- * <li>{@link #getPropertyDescriptorForFeature(EObject, String)} to obtain the
- * {@link IItemPropertyDescriptor} of an element's specific feature</li>
+ * <li>{@link #getPropertyDescriptors(EObject)} to obtain <em>all</em> the {@link IItemPropertyDescriptor} of the
+ * element.</li>
+ * <li>{@link #getPropertyDescriptorForFeature(EObject, String)} to obtain the {@link IItemPropertyDescriptor} of an
+ * element's specific feature</li>
  * </ul>
  * <p>
- * The following services, which all take a feature name as a second argument
- * (the first explicit one when invoked as a service) give access to the
- * corresponding methods in the {@link IItemPropertyDescriptor} associated to
- * the corresponding element's feature:
+ * The following services, which all take a feature name as a second argument (the first explicit one when invoked as a
+ * service) give access to the corresponding methods in the {@link IItemPropertyDescriptor} associated to the
+ * corresponding element's feature:
  * <ul>
  * <li>{@link #getPropertyDescriptorPropertyValue()}</li>
  * <li>{@link #isPropertyDescriptorPropertySet()}</li>
@@ -129,15 +120,12 @@ import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory
  * <p>
  * <h4>Command-related Services</h4>
  * <p>
- * A series of service methods can be used to invoke the standard EMF Commands
- * available from {@code ItemProviderAdapter}'s various
- * {@code createXXXCommand()} methods. Note that contrary to the
- * {@code createXXXCommand()} methods which simply returns a {@link Command}
- * instance, the service methods exposed in this class will directly
- * <em>execute</em> the command on the editing domains {@link CommandStack}.
- * Their names follow the {@code perfomXXXCommand()} pattern to reflect this.
- * They all return the {@code self} element (the {@link EObject} on which the
- * service was invoked.
+ * A series of service methods can be used to invoke the standard EMF Commands available from
+ * {@code ItemProviderAdapter}'s various {@code createXXXCommand()} methods. Note that contrary to the
+ * {@code createXXXCommand()} methods which simply returns a {@link Command} instance, the service methods exposed in
+ * this class will directly <em>execute</em> the command on the editing domains {@link CommandStack}. Their names follow
+ * the {@code perfomXXXCommand()} pattern to reflect this. They all return the {@code self} element (the {@link EObject}
+ * on which the service was invoked.
  * <p>
  * The command-related services available are:
  * <ul>
@@ -149,11 +137,9 @@ import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory
  * <li>{@link #performMoveCommand()}</li>
  * </ul>
  * <p>
- * The implementation of these services delegate to the
- * {@link EditingDomain#createCommand(Class, CommandParameter)} which delegates
- * to the IEditingDomainItemProvider#createCommand(Object, EditingDomain, Class,
- * CommandParameter) method, so any customization made in the
- * {@code IEditingDomainItemProvider}'s implementation will be taken into
+ * The implementation of these services delegate to the {@link EditingDomain#createCommand(Class, CommandParameter)}
+ * which delegates to the IEditingDomainItemProvider#createCommand(Object, EditingDomain, Class, CommandParameter)
+ * method, so any customization made in the {@code IEditingDomainItemProvider}'s implementation will be taken into
  * account.
  * 
  * @author pcdavid
@@ -277,10 +263,10 @@ public class EditingDomainServices {
         return getAdapter(self, IStructuredItemContentProvider.class);
     }
 
-    public Collection<?> getStructuredItemContentProviderElements(EObject self) {
+    public List<?> getStructuredItemContentProviderElements(EObject self) {
         IStructuredItemContentProvider scp = getStructuredItemContentProvider(self);
         if (scp != null) {
-            return scp.getElements(self);
+            return new ArrayList<>(scp.getElements(self));
         } else {
             return null;
         }
@@ -292,10 +278,10 @@ public class EditingDomainServices {
         return getAdapter(self, ITreeItemContentProvider.class);
     }
 
-    public Collection<?> getTreeContentProviderChildren(EObject self) {
+    public List<?> getTreeContentProviderChildren(EObject self) {
         ITreeItemContentProvider tp = getTreeContentProvider(self);
         if (tp != null) {
-            return tp.getChildren(self);
+            return new ArrayList<>(tp.getChildren(self));
         } else {
             return null;
         }
@@ -558,10 +544,10 @@ public class EditingDomainServices {
         }
     }
 
-    public Collection<?> getPropertyDescriptorChoiceOfValues(EObject self, String featureName) {
+    public List<?> getPropertyDescriptorChoiceOfValues(EObject self, String featureName) {
         IItemPropertyDescriptor desc = getPropertyDescriptorForFeature(self, featureName);
         if (desc != null) {
-            return desc.getChoiceOfValues(self);
+            return new ArrayList<>(desc.getChoiceOfValues(self));
         } else {
             return null;
         }
@@ -628,35 +614,35 @@ public class EditingDomainServices {
         return self;
     }
 
-    public EObject performAddCommand(EObject self, String featureName, Collection<?> collection, int index) {
+    public EObject performAddCommand(EObject self, String featureName, List<?> list, int index) {
         EStructuralFeature feature = self.eClass().getEStructuralFeature(featureName);
         if (feature != null) {
 
-            performCommand(self, AddCommand.class, new CommandParameter(self, feature, collection, index));
+            performCommand(self, AddCommand.class, new CommandParameter(self, feature, list, index));
         }
         return self;
     }
 
-    public EObject performAddCommand(EObject self, String featureName, Collection<?> collection) {
+    public EObject performAddCommand(EObject self, String featureName, List<?> list) {
         EStructuralFeature feature = self.eClass().getEStructuralFeature(featureName);
         if (feature != null) {
-            performCommand(self, AddCommand.class, new CommandParameter(self, feature, collection));
+            performCommand(self, AddCommand.class, new CommandParameter(self, feature, list));
         }
         return self;
     }
 
-    public EObject performRemoveCommand(EObject self, String featureName, Collection<?> collection) {
+    public EObject performRemoveCommand(EObject self, String featureName, List<?> list) {
         EStructuralFeature feature = self.eClass().getEStructuralFeature(featureName);
         if (feature != null) {
-            performCommand(self, RemoveCommand.class, new CommandParameter(self, feature, collection));
+            performCommand(self, RemoveCommand.class, new CommandParameter(self, feature, list));
         }
         return self;
     }
 
-    public EObject performReplaceCommand(EObject self, String featureName, Object value, Collection<?> collection) {
+    public EObject performReplaceCommand(EObject self, String featureName, Object value, List<?> list) {
         EStructuralFeature feature = self.eClass().getEStructuralFeature(featureName);
         if (feature != null) {
-            performCommand(self, ReplaceCommand.class, new CommandParameter(self, feature, value, collection));
+            performCommand(self, ReplaceCommand.class, new CommandParameter(self, feature, value, list));
         }
         return self;
     }

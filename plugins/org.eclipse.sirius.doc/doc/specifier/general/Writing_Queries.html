@@ -321,6 +321,9 @@
 			</li>
 			<li>A service method may return a value, which can have the same kinds of types as parameters.</li>
 		</ul>
+		<p>
+			<strong>WARNING:</strong> AQL only supports Sequences and Set as collection types. As a result, to get the full benefit from the AQL validation, it is recommended to write services that return a List or a Set as collection type.
+		</p>
 		<p>Here is an example of a Java service:</p>
 		<pre><code id="ecore_services">public class EObjectServices {
     public List&lt;EClass&gt; getEClasses(EPackage ePackage) {

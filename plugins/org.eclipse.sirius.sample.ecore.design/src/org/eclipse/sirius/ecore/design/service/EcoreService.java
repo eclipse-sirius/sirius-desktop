@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 package org.eclipse.sirius.ecore.design.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,25 +32,23 @@ import org.eclipse.sirius.ext.emf.AllContents;
  */
 public class EcoreService {
     /**
-     * Returns all the root objects of all the resources in the same
-     * resource-set as the specified object.
+     * Returns all the root objects of all the resources in the same resource-set as the specified object.
      * 
      * @param any
      *            an EObject.
-     * @return all the root objects in the same resource-set as <code>any</code>
-     *         or an empty collection if <code>any</code> is not inside a
-     *         resource-set.
+     * @return all the root objects in the same resource-set as <code>any</code> or an empty collection if
+     *         <code>any</code> is not inside a resource-set.
      */
-    public Collection<EObject> allRoots(EObject any) {
+    public List<EObject> allRoots(EObject any) {
         Resource res = any.eResource();
         if (res != null && res.getResourceSet() != null) {
-            Collection<EObject> roots = new ArrayList<EObject>();
+            List<EObject> roots = new ArrayList<EObject>();
             for (Resource childRes : res.getResourceSet().getResources()) {
                 roots.addAll(childRes.getContents());
             }
             return roots;
         } else {
-            return Collections.emptySet();
+            return Collections.emptyList();
         }
     }
 
@@ -136,17 +133,15 @@ public class EcoreService {
     }
 
     /**
-     * Finds a type matching the specified name (case-insensitive) in the same
-     * resource-set as obj, or inside Ecore itself if none could be found.
+     * Finds a type matching the specified name (case-insensitive) in the same resource-set as obj, or inside Ecore
+     * itself if none could be found.
      * 
      * @param obj
      *            the object defining the context in which to look.
      * @param name
-     *            the name of the type to look for (case-insensitive). Only
-     *            basic type names are supported (no qualified names).
-     *            Whitespace before or after the name is ignored.
-     * @return the first type found in the resource set or Ecore itself which
-     *         matches the specified name.
+     *            the name of the type to look for (case-insensitive). Only basic type names are supported (no qualified
+     *            names). Whitespace before or after the name is ignored.
+     * @return the first type found in the resource set or Ecore itself which matches the specified name.
      */
     public EClassifier findTypeByName(EObject obj, String name) {
         EClassifier result = findTypeByName(allRoots(obj), name);

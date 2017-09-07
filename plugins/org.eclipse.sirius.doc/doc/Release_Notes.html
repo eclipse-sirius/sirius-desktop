@@ -294,6 +294,18 @@
 				<code>getFilesFromWorkspace(Collection&lt;IContainer&gt;, String)</code> to be more generic.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ext.emf.edit">Changes in 
+			<code>org.eclipse.sirius.ext.emf.edit</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.ext.emf.edit.EditingDomainServices</code> does not use 
+				<code>Collection</code> anymore as return type or parameter type in its services. 
+				<code>java.util.Collection</code> has been replaced by 
+				<code>java.util.List</code>. As mentioned in the 
+				<a href="./specifier/general/Writing_Queries.html#service_methods">specifier documentation</a>, it is recommended to use List or Set instead of Collection in java services signature.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>

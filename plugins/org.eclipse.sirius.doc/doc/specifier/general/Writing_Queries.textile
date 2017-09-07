@@ -132,6 +132,7 @@ A service is simply a public Java methods which follows some conventions:
 ** EMF types (i.e. @EObject@ or a sub-type)
 ** Java collections of EMF types (note that array types are *not* supported).
 * A service method may return a value, which can have the same kinds of types as parameters.
+*WARNING:* AQL only supports Sequences and Set as collection types. As a result, to get the full benefit from the AQL validation, it is recommended to write services that return a List or a Set as collection type.
 
 Here is an example of a Java service:
 
