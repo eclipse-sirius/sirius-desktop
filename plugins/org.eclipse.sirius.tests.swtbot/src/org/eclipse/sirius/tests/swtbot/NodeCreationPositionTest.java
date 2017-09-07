@@ -312,6 +312,62 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test for the multiple EClass creation with a standard tool and snapToGrid
+     * enabled to check that created elements are selected after creation (and
+     * with a space of grid spacing).
+     */
+    public void testNodeMultipleSelectionAfterMultipleCreationOnPackageByStandardToolAndSnapToGrid() {
+        openDiagram();
+        SWTBotGefEditPart p3Bot = editor.getEditPart("p3").parent();
+        Point creationLocation = editor.getBounds(p3Bot).getCenter();
+        testNodeMultipleSelectionAfterMultipleCreationByStandardToolAndSnapToGrid(creationLocation);
+    }
+
+    /**
+     * Test for the multiple EClass creation with a standard tool and snapToGrid
+     * enabled to check that created elements are selected after creation (and
+     * with a space of grid spacing).
+     */
+    public void testNodeMultipleSelectionAfterMultipleCreationOnDiagramByStandardToolAndSnapToGrid() {
+        openDiagram();
+        testNodeMultipleSelectionAfterMultipleCreationByStandardToolAndSnapToGrid(new Point(10, 10));
+    }
+
+    /**
+     * Test for the multiple EClass creation with a standard tool and snapToGrid
+     * enabled to check that created elements are selected after creation (and
+     * with a space of grid spacing).
+     */
+    private void testNodeMultipleSelectionAfterMultipleCreationByStandardToolAndSnapToGrid(Point creationLocation) {
+        int gridSpacing = 50;
+        editor.setSnapToGrid(true, gridSpacing, 2);
+        // Create three EClass
+        editor.activateTool("ThreeClass");
+        editor.click(creationLocation);
+
+        // Checks their selection
+        SWTBotGefEditPart createdNewEClass1Bot = editor.getEditPart("new EClass 1").parent();
+        assertEquals("the created view should be selected as primary view", EditPart.SELECTED, createdNewEClass1Bot.part().getSelected());
+        Point c1Location = editor.getAbsoluteLocation((GraphicalEditPart) createdNewEClass1Bot.part());
+        checkLocationAlignOnGrid(c1Location, "new EClass 1", gridSpacing);
+
+        SWTBotGefEditPart createdNewEClass2Bot = editor.getEditPart("new EClass 2").parent();
+        assertEquals("the created view should be selected as primary view", EditPart.SELECTED, createdNewEClass2Bot.part().getSelected());
+        Point c2Location = editor.getAbsoluteLocation((GraphicalEditPart) createdNewEClass2Bot.part());
+        checkLocationAlignOnGrid(c2Location, "new EClass 2", gridSpacing);
+        assertEquals("The x coordinate of second class should have a delta of " + gridSpacing + " pixels with the x coordinate of the first class.", c1Location.x + gridSpacing, c2Location.x);
+        assertEquals("The y coordinate of second class should have a delta of " + gridSpacing + " pixels with the y coordinate of the first class.", c1Location.y + gridSpacing, c2Location.y);
+
+        SWTBotGefEditPart createdNewEClass3Bot = editor.getEditPart("new EClass 3").parent();
+        assertEquals("the created view should be selected as primary view", EditPart.SELECTED_PRIMARY, createdNewEClass3Bot.part().getSelected());
+        Point c3Location = editor.getAbsoluteLocation((GraphicalEditPart) createdNewEClass3Bot.part());
+        checkLocationAlignOnGrid(c3Location, "new EClass 3", gridSpacing);
+        assertEquals("The x coordinate of third class should have a delta of " + gridSpacing + " pixels with the x coordinate of the second class.", c2Location.x + gridSpacing, c3Location.x);
+        assertEquals("The y coordinate of third class should have a delta of " + gridSpacing + " pixels with the y coordinate of the second class.", c2Location.y + gridSpacing, c3Location.y);
+    }
+
+
+    /**
      * Test for the single EReference creation with a standard tool to check
      * that created element are selected after creation.
      */
@@ -1238,6 +1294,23 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
             found = false;
         } finally {
             assertFalse("Edit part should not exist", found);
+        }
+    }
+
+    /**
+     * Check that a diagram element is aligned on the grid.
+     * 
+     * @param location
+     *            location of the diagram element element to check
+     * @param elementNameToDisplay
+     *            The name of the element displayed in case of error
+     * @param gridSpacing
+     *            The current grid spacing
+     */
+    private void checkLocationAlignOnGrid(Point location, String elementNameToDisplay, int gridSpacing) {
+        boolean locationIsOK = (location.x % gridSpacing) == 0 || (location.y % gridSpacing) == 0;
+        if (!locationIsOK) {
+            fail("For " + elementNameToDisplay + ", the x or y coordinate of the top left corner should be on the grid (grid spacing = " + gridSpacing + "), but was: " + location + ".");
         }
     }
 }

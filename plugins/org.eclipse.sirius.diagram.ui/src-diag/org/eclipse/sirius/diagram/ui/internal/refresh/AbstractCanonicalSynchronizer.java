@@ -457,37 +457,24 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             Bounds bounds = (Bounds) ((Node) createdView).getLayoutConstraint();
             if (location == null && previousCreatedView instanceof Node && ((Node) previousCreatedView).getLayoutConstraint() instanceof Bounds) {
 
-                // if a location has been registered in
-                // SiriusLayoutDataManager but we were not able to
-                // retrieve it before -> Set a center location for child
-                // DNode of DNodeContainer
-                // like
-                // in AirXYLayoutEditPolicy#getConstraintFor(request)
+                // if a location has been registered in SiriusLayoutDataManager but we were not able to retrieve it
+                // before -> Set a center location for child DNode of DNodeContainer like in
+                // AirXYLayoutEditPolicy#getConstraintFor(request)
                 if (previousCreatedView.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker())) {
                     markCreatedViewsWithCenterLayout(createdView);
                 } else {
 
-                    // If no location is found in the layoutDataManager we can
-                    // use
-                    // the previous created View coordinates and translate it.
-                    // This
-                    // is the case for example in D'n'D or when several elements
-                    // are
-                    // created at same time.
+                    // If no location is found in the layoutDataManager we can use the previous created View coordinates
+                    // and translate it. This is the case for example in D'n'D or when several elements are created at
+                    // same time.
                     Bounds previousBounds = (Bounds) ((Node) previousCreatedView).getLayoutConstraint();
-                    int padding = SiriusLayoutDataManager.PADDING;
-                    if (isSnapToGrid()) {
-                        padding = getGridSpacing();
-                    }
+                    int padding = getPaddingForNextView();
                     location = new Point(previousBounds.getX(), previousBounds.getY()).getTranslated(padding, padding);
                 }
             }
-            // if a location has been registered in
-            // SiriusLayoutDataManager but we were not able to
-            // retrieve it before -> Set a center location for child
-            // DNode of DNodeContainer
-            // like
-            // in AirXYLayoutEditPolicy#getConstraintFor(request)
+            // if a location has been registered in SiriusLayoutDataManager but we were not able to retrieve it before
+            // -> Set a center location for child DNode of DNodeContainer like in
+            // AirXYLayoutEditPolicy#getConstraintFor(request)
             if (location == null && SiriusLayoutDataManager.INSTANCE.getData().some()) {
                 // mark with special layout
                 markCreatedViewsWithCenterLayout(createdView);
@@ -681,28 +668,23 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             if (location == null) {
                 if (previousCreatedView instanceof Node && ((Node) previousCreatedView).getLayoutConstraint() instanceof Bounds) {
 
-                    // if a location has been registered in
-                    // SiriusLayoutDataManager but we were not able to
-                    // retrieve it before -> Set a center location for child
-                    // DNode of DNodeContainer
-                    // like
-                    // in AirXYLayoutEditPolicy#getConstraintFor(request)
+                    // if a location has been registered in SiriusLayoutDataManager but we were not able to retrieve it
+                    // before -> Set a center location for child DNode of DNodeContainer like in
+                    // AirXYLayoutEditPolicy#getConstraintFor(request)
                     if (previousCreatedView.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker())) {
                         markCreatedViewsWithCenterLayout(createdView);
                     } else {
                         Bounds previousBounds = (Bounds) ((Node) previousCreatedView).getLayoutConstraint();
-                        location = new Point(previousBounds.getX(), previousBounds.getY()).getTranslated(SiriusLayoutDataManager.PADDING, SiriusLayoutDataManager.PADDING);
+                        int padding = getPaddingForNextView();
+                        location = new Point(previousBounds.getX(), previousBounds.getY()).getTranslated(padding, padding);
                     }
 
                     isAlreadylayouted = true;
                 } else {
-                    // if a location has been registered in
-                    // SiriusLayoutDataManager but we were not able to
-                    // retrieve it before -> Set a center location for child
-                    // DNode of DNodeContainer like
-                    // in AirXYLayoutEditPolicy#getConstraintFor(request),
-                    // except for children of regions container for which layout
-                    // is managed with RegionContainerUpdateLayoutOperation.
+                    // if a location has been registered in SiriusLayoutDataManager but we were not able to retrieve it
+                    // before -> Set a center location for child DNode of DNodeContainer like in
+                    // AirXYLayoutEditPolicy#getConstraintFor(request), except for children of regions container for
+                    // which layout is managed with RegionContainerUpdateLayoutOperation.
                     if (layoutData == null && SiriusLayoutDataManager.INSTANCE.getData().some() && !(new DNodeContainerExperimentalQuery((DNodeContainer) parent).isRegionContainer())) {
                         // mark with special layout
                         markCreatedViewsWithCenterLayout(createdView);
@@ -717,6 +699,14 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             }
         }
         return isAlreadylayouted;
+    }
+
+    private int getPaddingForNextView() {
+        int padding = SiriusLayoutDataManager.PADDING;
+        if (isSnapToGrid()) {
+            padding = getGridSpacing();
+        }
+        return padding;
     }
 
     private void updateLocationConstraint(Node createdNode, Dimension size, Point location, AbstractDNode abstractDNode) {
