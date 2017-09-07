@@ -22,6 +22,7 @@ h3. User-Visible Changes
 !./images/borderNodesWithSnapToGrid.png! 
 * <span class="label label-info">Modified</span> In a sequence diagram, it is now possible to resize the combined fragment when the first or the last operand is selected (increase the size of the first operand to the top, or increase the size of the last operand to the bottom). Before, it was necessary to select the combined fragment itself to resize it. 
 * <span class="label label-info">Modified</span> In a sequence diagram, it is now possible to resize an _Execution_ contained in an _Operand_ without previously resize its _Operand_ if more space is needed. The _Operand_, and if necessary the _Combined Fragment_, is resized too.
+* <span class="label label-info">Modified</span> In a diagram, the action _Show/Hide label_ is now visible even if the selection contains invalid elements (ie elements without label). The action is applied only on valid elements of the selection.
 
 h3. Specifier-Visible Changes
 

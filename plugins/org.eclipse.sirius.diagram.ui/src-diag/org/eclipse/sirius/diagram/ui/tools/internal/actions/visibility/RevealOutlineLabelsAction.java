@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
@@ -108,18 +109,20 @@ public class RevealOutlineLabelsAction extends AbstractRevealElementsAction<Obje
 
     private void runRevealCommand(final RootEditPart root, final DDiagramEditor editor, final DDiagramElement vpe) {
 
-        final Object adapter = editor.getAdapter(IDiagramCommandFactoryProvider.class);
-        final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
-        final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(editor.getEditingDomain().getResourceSet());
-        final IDiagramCommandFactory emfCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
+        if (vpe != null && new DDiagramElementQuery(vpe).isLabelHidden()) {
+            final Object adapter = editor.getAdapter(IDiagramCommandFactoryProvider.class);
+            final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
+            final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(editor.getEditingDomain().getResourceSet());
+            final IDiagramCommandFactory emfCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
 
-        final Command cmd = emfCommandFactory.buildRevealLabelCommand(vpe);
+            final Command cmd = emfCommandFactory.buildRevealLabelCommand(vpe);
 
-        final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(vpe);
+            final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(vpe);
 
-        CompoundCommand allInOne = new CompoundCommand(cmd.getLabel());
-        allInOne.append(cmd);
+            CompoundCommand allInOne = new CompoundCommand(cmd.getLabel());
+            allInOne.append(cmd);
 
-        domain.getCommandStack().execute(allInOne);
+            domain.getCommandStack().execute(allInOne);
+        }
     }
 }
