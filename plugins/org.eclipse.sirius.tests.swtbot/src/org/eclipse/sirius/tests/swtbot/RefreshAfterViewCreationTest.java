@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -227,7 +227,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testSelectionPackageInWizardAndCheckIfEdgeIsCreated() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_2026, REPRESENTATION_INSTANCE_NAME_2026, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_2026, REPRESENTATION_INSTANCE_NAME_2026, DDiagram.class, true, true);
 
         applyOneClicTool("Create Packages", SOMEWHERE_IN_DIAGRAM.x, SOMEWHERE_IN_DIAGRAM.y);
 
@@ -274,7 +274,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testEdgeCreationOnBorderedNodeOnNodeCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, DDiagram.class,
+                true, true);
 
         insertPackageP2(editor);
 
@@ -335,7 +336,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testEdgeCreationOnBorderedNodeOnNodeCreationWithoutAutoRefresh() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, DDiagram.class,
+                true, true);
 
         insertPackageP2(editor);
 
@@ -395,7 +397,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     public void testEdgeCreationOnBorderedNodeOnNodeInContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER,
-                REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER, DDiagram.class);
+                REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER, DDiagram.class, true, true);
 
         insertPackageP2(editor);
 
@@ -475,7 +477,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testEdgeCreationOnBorderedNodeOnNodeInContainerCreationWithoutAutoRefresh() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER,
-                REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER, DDiagram.class);
+                REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER, DDiagram.class, true, true);
 
         insertPackageP2(editor);
 
@@ -555,7 +557,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testEdgeCreationOnNodeCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE, REPRESENTATION_NAME_NODE, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE, REPRESENTATION_NAME_NODE, DDiagram.class, true, true);
 
         insertClassC2(editor);
 
@@ -593,7 +595,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testEdgeCreationOnNodeCreationWithoutAutoRefresh() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE, REPRESENTATION_NAME_NODE, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE, REPRESENTATION_NAME_NODE, DDiagram.class, true, true);
 
         insertClassC2(editor);
 
@@ -634,7 +636,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testEdgeCreationOnContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER, REPRESENTATION_NAME_CONTAINER, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER, REPRESENTATION_NAME_CONTAINER, DDiagram.class, true, true);
 
         insertClassC2(editor);
 
@@ -672,7 +674,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testEdgeCreationOnContainerCreationWithoutAutoRefresh() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER, REPRESENTATION_NAME_CONTAINER, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER, REPRESENTATION_NAME_CONTAINER, DDiagram.class, true, true);
 
         insertClassC2(editor);
 
@@ -701,7 +703,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testEdgeCreationOnListCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST, REPRESENTATION_NAME_LIST, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST, REPRESENTATION_NAME_LIST, DDiagram.class, true, true);
 
         insertClassC2(editor);
 
@@ -739,7 +741,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testEdgeCreationOnListCreationWithoutAutoRefresh() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST, REPRESENTATION_NAME_LIST, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST, REPRESENTATION_NAME_LIST, DDiagram.class, true, true);
 
         insertClassC2(editor);
 
@@ -768,7 +770,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testEdgeCreationOnNodeInContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class, true,
+                true);
 
         insertClassC2(editor);
 
@@ -806,7 +809,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testEdgeCreationOnNodeInContainerCreationWithoutAutoRefresh() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class, true,
+                true);
 
         insertClassC2(editor);
 
@@ -832,8 +836,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testNodeCreationInContainerPositionStabilityUsingSelectionWizardTool() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class);
-        editor.setSnapToGrid(false);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class, true,
+                true);
 
         editor.maximize();
 
@@ -873,8 +877,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testNodeCreationInContainerPositionStabilityUsingPaneBasedSelectionWizardTool() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class);
-        editor.setSnapToGrid(false);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class, true,
+                true);
 
         maximizeEditor(editor);
 
@@ -915,7 +919,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     public void testNodeCreationInContainerPositionStabilityUsingDragAndDropFromTreeview() throws Exception {
         Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
         final SWTBotSiriusDiagramEditor editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER,
-                REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class);
+                REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class, true, true);
 
         editor.maximize();
 
@@ -970,7 +974,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     public void testEdgeCreationOnContainerInContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, REPRESENTATION_NAME_CONTAINER_IN_CONTAINER,
-                DDiagram.class);
+                DDiagram.class, true, true);
 
         insertClassC2(editor);
 
@@ -1010,8 +1014,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testContainerCreationInContainerPositionStabilityUsingSelectionWizardTool() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, REPRESENTATION_NAME_CONTAINER_IN_CONTAINER,
-                DDiagram.class);
-        editor.setSnapToGrid(false);
+                DDiagram.class, true, true);
 
         editor.maximize();
         try {
@@ -1051,8 +1054,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testContainerCreationInContainerPositionStabilityUsingPaneBasedSelectionWizardTool() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, REPRESENTATION_NAME_CONTAINER_IN_CONTAINER,
-                DDiagram.class);
-        editor.setSnapToGrid(false);
+                DDiagram.class, true, true);
 
         editor.maximize();
 
@@ -1093,7 +1095,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     public void testContainerCreationInContainerPositionStabilityUsingDragAndDropTool() throws Exception {
         Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, REPRESENTATION_NAME_CONTAINER_IN_CONTAINER,
-                DDiagram.class);
+                DDiagram.class, true, true);
 
         editor.maximize();
 
@@ -1146,7 +1148,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testEdgeCreationOnContainerInContainerCreationWithoutAutoRefresh() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, REPRESENTATION_NAME_CONTAINER_IN_CONTAINER,
-                DDiagram.class);
+                DDiagram.class, true, true);
 
         insertClassC2(editor);
 
@@ -1175,7 +1177,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testEdgeCreationOnListInContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST_IN_CONTAINER, REPRESENTATION_NAME_LIST_IN_CONTAINER, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST_IN_CONTAINER, REPRESENTATION_NAME_LIST_IN_CONTAINER, DDiagram.class, true,
+                true);
 
         insertClassC2(editor);
 
@@ -1213,8 +1216,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testEdgeCreationOnListInContainerCreationWithoutAutoRefresh() throws Exception {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST_IN_CONTAINER, REPRESENTATION_NAME_LIST_IN_CONTAINER, DDiagram.class);
-        editor.setSnapToGrid(false);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST_IN_CONTAINER, REPRESENTATION_NAME_LIST_IN_CONTAINER, DDiagram.class, true,
+                true);
 
         insertClassC2(editor);
 
@@ -1242,7 +1245,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     public void testEdgeCreationOnBorderedNodeOnContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER, REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER,
-                DDiagram.class);
+                DDiagram.class, true, true);
 
         insertPackageP2(editor);
 
@@ -1304,7 +1307,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testEdgeCreationOnBorderedNodeOnContainerCreationWithoutAutoRefresh() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER, REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER,
-                DDiagram.class);
+                DDiagram.class, true, true);
 
         insertPackageP2(editor);
 
@@ -1362,7 +1365,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     public void testEdgeCreationOnBorderedNodeOnContainerInContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER,
-                REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER, DDiagram.class);
+                REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER, DDiagram.class, true, true);
 
         insertPackageP2(editor);
 
@@ -1442,7 +1445,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testEdgeCreationOnBorderedNodeOnContainerInContainerCreationWithoutAutoRefresh() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER,
-                REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER, DDiagram.class);
+                REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER, DDiagram.class, true, true);
 
         insertPackageP2(editor);
 
