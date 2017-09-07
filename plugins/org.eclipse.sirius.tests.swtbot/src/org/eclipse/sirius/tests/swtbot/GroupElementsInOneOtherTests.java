@@ -22,6 +22,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -161,19 +162,63 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
      * figure.
      */
     public void testMultiCreationOutsideCurrentSelection() {
-        // Select Class1 & Class3
-        editor.select(class1ChildOfDiagramBot, class3ChildOfDiagramBot);
-        // Launch the action that create 2 packages outside the current selected
-        // element
-        editor.clickContextMenu(CREATION_TOOL_NAME);
+        testMultiCreationOutsideCurrentSelection(false);
+    }
 
-        // Check that the two new packages top-left corner does not overlap each
-        // other.
-        Point package5AbsoluteLocation = editor.getAbsoluteLocation("Package5", AbstractDiagramContainerEditPart.class);
-        Point package6AbsoluteLocation = editor.getAbsoluteLocation("Package6", AbstractDiagramContainerEditPart.class);
+    /**
+     * Test that creating two elements outside the current selection (with
+     * snapToGrid enabled), does not overlapped this new packages (VP-2609).<BR>
+     * Currently there is no overlapping for the top-left corner. A specific
+     * issue VP-2399 must be fix to check that there is no overlap of all the
+     * figure.
+     */
+    public void testMultiCreationOutsideCurrentSelectionWithSnapToGridEnabled() {
+        testMultiCreationOutsideCurrentSelection(true);
+    }
 
-        assertFalse("The location (top-left corner) of the first created figure should not overlaped the location (top-left corner) of the second created figure.",
-                package5AbsoluteLocation.equals(package6AbsoluteLocation));
+    /**
+     * Test that creating two elements outside the current selection (with
+     * snapToGrid enabled), does not overlapped this new packages (VP-2609).<BR>
+     * Currently there is no overlapping for the top-left corner. A specific
+     * issue VP-2399 must be fix to check that there is no overlap of all the
+     * figure.
+     */
+    private void testMultiCreationOutsideCurrentSelection(boolean isSnapToGridEnabled) {
+        if (isSnapToGridEnabled) {
+            editor.setSnapToGrid(true, 50, 2);
+        }
+        try {
+            // Select Class1 & Class3
+            editor.select(class1ChildOfDiagramBot, class3ChildOfDiagramBot);
+            // Launch the action that create 2 packages outside the current
+            // selected
+            // element
+            editor.clickContextMenu(CREATION_TOOL_NAME);
+
+            // Check that the two new packages top-left corner does not overlap
+            // each
+            // other.
+            Point package5AbsoluteLocation = editor.getAbsoluteLocation("Package5", AbstractDiagramContainerEditPart.class);
+            Point package6AbsoluteLocation = editor.getAbsoluteLocation("Package6", AbstractDiagramContainerEditPart.class);
+
+            assertFalse("The location (top-left corner) of the first created figure should not overlaped the location (top-left corner) of the second created figure.",
+                    package5AbsoluteLocation.equals(package6AbsoluteLocation));
+            int padding = SiriusLayoutDataManager.PADDING;
+            if (isSnapToGridEnabled) {
+                padding = 50;
+
+            }
+            assertEquals("The x coordinate of Package6 should have a delta of " + padding + " pixels with the x coordinate of the Package5.", package5AbsoluteLocation.x + padding,
+                    package6AbsoluteLocation.x);
+            assertEquals("The y coordinate of Package6 should have a delta of " + padding + " pixels with the y coordinate of the Package5.", package5AbsoluteLocation.y + padding,
+                    package6AbsoluteLocation.y);
+            if (isSnapToGridEnabled) {
+                checkLocationAlignOnGrid(package5AbsoluteLocation, "Package5", padding);
+                checkLocationAlignOnGrid(package6AbsoluteLocation, "Package6", padding);
+            }
+        } finally {
+            editor.setSnapToGrid(false);
+        }
     }
 
     /**
@@ -234,4 +279,20 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         super.tearDown();
     }
 
+    /**
+     * Check that a diagram element is aligned on the grid.
+     * 
+     * @param location
+     *            location of the diagram element element to check
+     * @param elementNameToDisplay
+     *            The name of the element displayed in case of error
+     * @param gridSpacing
+     *            The current grid spacing
+     */
+    private void checkLocationAlignOnGrid(Point location, String elementNameToDisplay, int gridSpacing) {
+        boolean locationIsOK = (location.x % gridSpacing) == 0 || (location.y % gridSpacing) == 0;
+        if (!locationIsOK) {
+            fail("For " + elementNameToDisplay + ", the x or y coordinate of the top left corner should be on the grid (grid spacing = " + gridSpacing + "), but was: " + location + ".");
+        }
+    }
 }

@@ -54,6 +54,7 @@ import org.eclipse.sirius.diagram.ui.internal.operation.ShiftEdgeIdentityAnchorO
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewSizeHint;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
  * The {@link AirXYLayoutEditPolicy}. import
@@ -170,7 +171,11 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
             if (location != null) {
                 Point centerLocation = location.getCopy();
                 if (locationReference != null && !hasLayoutData) {
-                    locationReference.translate(SiriusLayoutDataManager.PADDING, SiriusLayoutDataManager.PADDING);
+                    int padding = SiriusLayoutDataManager.PADDING;
+                    if (GraphicalHelper.isSnapToGridEnabled(host)) {
+                        padding = GraphicalHelper.getGridSpacing(host);
+                    }
+                    locationReference.translate(padding, padding);
                     centerLocation = locationReference.getCopy();
                 }
 

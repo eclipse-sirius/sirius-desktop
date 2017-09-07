@@ -28,16 +28,20 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.FigureCanvas;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
+import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.util.ObjectAdapter;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
@@ -67,6 +71,7 @@ import org.eclipse.sirius.diagram.ui.graphical.figures.SiriusLayoutHelper;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
@@ -561,12 +566,30 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         rect.setSize(LayoutHelper.UNDEFINED.getSize());
         Point centerLocation;
         if (previousCenterLocation == null) {
-            Point result = getLayoutHelper().getReferencePosition(host.getContentPane(), ((FigureCanvas) host.getViewer().getControl()).getViewport(), host);
-            rect.setLocation(result);
+            // Get center (reference point)
+            Point referencePoint = getLayoutHelper().getReferencePosition(host.getContentPane(), ((FigureCanvas) host.getViewer().getControl()).getViewport(), host);
+            rect.setLocation(referencePoint);
+            // Get the first free location
             Point point = getLayoutHelper().validatePosition(host.getContentPane(), rect);
-            centerLocation = point.getCopy();
+            // Snap the first free location
+            PrecisionPoint result = new PrecisionPoint(point);
+            // We must apply the zoom to be compatible with what SnapToHelper expects
+            GraphicalHelper.logical2screen(result, host);
+            SnapToHelper helper = host.getAdapter(SnapToHelper.class);
+            if (helper != null) {
+                PrecisionPoint preciseLocation = new PrecisionPoint(result);
+                helper.snapPoint(new CreateRequest(), PositionConstants.HORIZONTAL | PositionConstants.VERTICAL, preciseLocation, result);
+            }
+            // Inverse zoom to retrieve expected coordinates here
+            GraphicalHelper.screen2logical(result, host);
+            rect.setLocation(result);
+            centerLocation = result.getCopy();
         } else {
-            centerLocation = new Point(previousCenterLocation).getTranslated(SiriusLayoutDataManager.PADDING, SiriusLayoutDataManager.PADDING);
+            int padding = SiriusLayoutDataManager.PADDING;
+            if (GraphicalHelper.isSnapToGridEnabled(host)) {
+                padding = GraphicalHelper.getGridSpacing(host);
+            }
+            centerLocation = new Point(previousCenterLocation).getTranslated(padding, padding);
         }
         IGraphicalEditPart part = (IGraphicalEditPart) host.getViewer().getEditPartRegistry().get(iAdaptable.getAdapter(View.class));
         cc.add(new ICommandProxy(new SetBoundsCommand(host.getEditingDomain(), DiagramUIMessages.SetLocationCommand_Label_Resize, part, centerLocation)));

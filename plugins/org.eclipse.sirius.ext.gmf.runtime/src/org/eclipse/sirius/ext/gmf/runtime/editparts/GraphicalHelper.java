@@ -635,4 +635,15 @@ public final class GraphicalHelper {
     public static boolean isSnapToGridEnabled(EditPart editPart) {
         return (Boolean) editPart.getViewer().getProperty(SnapToGrid.PROPERTY_GRID_ENABLED);
     }
+
+    /**
+     * Return the grid spacing in pixels for the diagram containing this edit part.
+     * 
+     * @param editPart
+     *            The edit part to use.
+     * @return the grid spacing in pixels.
+     */
+    public static int getGridSpacing(EditPart editPart) {
+        return ((Dimension) editPart.getViewer().getProperty(SnapToGrid.PROPERTY_GRID_SPACING)).width;
+    }
 }
