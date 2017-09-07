@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -525,25 +526,15 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      */
     @Override
     public Command buildHideLabelCommand(Set<EObject> elementsToHide) {
-        final Set<EObject> filteredSet = new HashSet<EObject>();
-        final Iterator<EObject> it = elementsToHide.iterator();
-        while (it.hasNext()) {
-            final EObject eObj = it.next();
-            if (getPermissionAuthority().canEditInstance(eObj)) {
-                filteredSet.add(eObj);
-            }
-        }
-        boolean canHideLabel = true;
-        for (Object selectedElement : filteredSet) {
-            if (selectedElement instanceof DDiagramElement) {
-                canHideLabel = canHideLabel & new DDiagramElementQuery((DDiagramElement) selectedElement).canHideLabel();
-            }
-        }
-        if (canHideLabel) {
-            return new HideDDiagramElementLabel(domain, filteredSet);
-        }
+        Set<DDiagramElement> ddeWithLabelToHide = elementsToHide.stream().filter(input -> {
+            return input instanceof DDiagramElement && new DDiagramElementQuery((DDiagramElement) input).canHideLabel() && getPermissionAuthority().canEditInstance(input);
+        }).map(DDiagramElement.class::cast).collect(Collectors.toSet());
 
-        return UnexecutableCommand.INSTANCE;
+        if (ddeWithLabelToHide.isEmpty()) {
+            return UnexecutableCommand.INSTANCE;
+        } else {
+            return new HideDDiagramElementLabel(domain, ddeWithLabelToHide);
+        }
     }
 
     /**

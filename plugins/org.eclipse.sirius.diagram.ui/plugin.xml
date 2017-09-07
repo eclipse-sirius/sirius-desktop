@@ -1230,15 +1230,7 @@
                checkEnabled="false">
             <with
                   variable="activeMenuSelection">
-               <iterate
-                     operator="and">
-                  <instanceof
-                        value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
-                  </instanceof>
-                  <test
-                        property="org.eclipse.sirius.diagram.ui.canHideLabel">
-                  </test>
-               </iterate>
+               <reference definitionId="canHideLabel" />
             </with>
          </visibleWhen>
       </command>
@@ -1760,7 +1752,7 @@
         </iterate>
      </definition>
      <definition id="canHideLabel">
-      <iterate operator="and">
+      <iterate operator="or">
          <and>
               <reference
                     definitionId="isInstanceOfIDiagramElementEditPart">

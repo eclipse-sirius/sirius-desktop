@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,6 +45,9 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+
 /**
  * Hide the label of a {@link DDiagramElement}.
  * 
@@ -52,6 +55,24 @@ import org.eclipse.ui.PlatformUI;
  * 
  */
 public class HideDDiagramElementLabelAction extends Action implements IObjectActionDelegate, Disposable {
+
+    private static Predicate<Object> isEnabledPredicate = new Predicate<Object>() {
+        @Override
+        public boolean apply(Object input) {
+            boolean result = false;
+            if (input instanceof IGraphicalEditPart) {
+                result = HideDDiagramElementLabelAction.isEnabled((IGraphicalEditPart) input);
+            } else if (input instanceof DDiagramElement) {
+                result = HideDDiagramElementLabelAction.isEnabled((DDiagramElement) input);
+            } else if (input instanceof AbstractDDiagramElementLabelItemProvider) {
+                Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) input).getDiagramElementTarget();
+                if (optionTarget.some()) {
+                    result = HideDDiagramElementLabelAction.isEnabled(optionTarget.get());
+                }
+            }
+            return result;
+        }
+    };
 
     /** The selection. */
     private ISelection selection;
@@ -87,25 +108,15 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
     }
 
     /**
-     * Check if all the elements have a label that can be hide.
+     * Check if at least on element has a label that can be hide.
      * 
      * @param elementsToCheck
      *            The elements to check.
-     * @return true if all the elements have a label that can be hide, false
+     * @return true if at least on element has a label that can be hide, false
      *         otherwise
      */
     public static boolean isEnabled(Collection<?> elementsToCheck) {
-        boolean canHideLabel = true;
-        for (Object selectedElement : elementsToCheck) {
-            if (selectedElement instanceof IGraphicalEditPart) {
-                canHideLabel = canHideLabel & HideDDiagramElementLabelAction.isEnabled((IGraphicalEditPart) selectedElement);
-            } else if (selectedElement instanceof DDiagramElement) {
-                canHideLabel = canHideLabel & HideDDiagramElementLabelAction.isEnabled((DDiagramElement) selectedElement);
-            } else {
-                canHideLabel = false;
-            }
-        }
-        return canHideLabel;
+        return Iterables.any(elementsToCheck, isEnabledPredicate);
     }
 
     private static boolean isEnabled(IGraphicalEditPart graphicalEditPart) {
@@ -165,12 +176,14 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
         final Iterator<Object> it = minimizedSelection.iterator();
         while (it.hasNext()) {
             final Object obj = it.next();
-            if (obj instanceof EObject) {
-                eObjectSelection.add((EObject) obj);
-            } else if (obj instanceof AbstractDDiagramElementLabelItemProvider) {
-                Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) obj).getDiagramElementTarget();
-                if (optionTarget.some()) {
-                    eObjectSelection.add(optionTarget.get());
+            if (isEnabledPredicate.apply(obj)) {
+                if (obj instanceof EObject) {
+                    eObjectSelection.add((EObject) obj);
+                } else if (obj instanceof AbstractDDiagramElementLabelItemProvider) {
+                    Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) obj).getDiagramElementTarget();
+                    if (optionTarget.some()) {
+                        eObjectSelection.add(optionTarget.get());
+                    }
                 }
             }
         }
@@ -241,7 +254,7 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
             // Action of the outline
             this.setEnabled(HideDDiagramElementLabelAction.isEnabled(((DiagramOutlinePage.TreeSelectionWrapper) s).toList()));
         } else if (s instanceof IStructuredSelection) {
-            // Action of the tabber or
+            // Action of the tabbar or of the contextual menu
             this.setEnabled(HideDDiagramElementLabelAction.isEnabled(((IStructuredSelection) s).toList()));
         }
     }
