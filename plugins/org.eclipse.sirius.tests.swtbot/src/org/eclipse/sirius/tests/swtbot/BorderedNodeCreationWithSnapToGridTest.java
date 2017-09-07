@@ -108,7 +108,10 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
 
         SWTBotGefEditPart packageP4 = editor.getEditPart(PACKAGE_4_NAME, AbstractDiagramContainerEditPart.class);
         Rectangle packageAbsoluteBounds = editor.getAbsoluteBounds(packageP4);
+        editor.reveal(packageP4.part());
 
+        // We convert to screen coordinates
+        ((GraphicalEditPart) packageP4.part()).getFigure().translateToAbsolute(packageAbsoluteBounds);
         // We compute the location according the top left package location
         Point creationLocation = packageAbsoluteBounds.getTopLeft().translate(20, 20);
 
@@ -116,10 +119,10 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
         createBorderedNode(BORDERED_NODE_CREATION_ON_PACKAGE_TOOL_NAME_2, creationLocation.x, creationLocation.y);
 
         IGraphicalEditPart firstNewNode = (IGraphicalEditPart) editor.getEditPart("new Enum2", AbstractDiagramBorderNodeEditPart.class).part();
-        checkLocationAlignOnGrid(firstNewNode, "BorderNode 'new Enum2'");
+        checkLocationAlignOnGrid(firstNewNode, "BorderNode 'new Enum2'", gridStep);
 
         IGraphicalEditPart secondNewNode = (IGraphicalEditPart) editor.getEditPart("new Enum3", AbstractDiagramBorderNodeEditPart.class).part();
-        checkLocationAlignOnGrid(secondNewNode, "BorderNode 'new Enum3'");
+        checkLocationAlignOnGrid(secondNewNode, "BorderNode 'new Enum3'", gridStep);
     }
 
     /**
@@ -184,17 +187,20 @@ public class BorderedNodeCreationWithSnapToGridTest extends BorderedNodeCreation
      *            edit part of the diagram element to check
      * @param elementNameToDisplay
      *            The name of the element displayed in case of error
+     * @param gridSpacing
+     *            The current grid spacing
      */
-    private void checkLocationAlignOnGrid(IGraphicalEditPart editPart, String elementNameToDisplay) {
+    private void checkLocationAlignOnGrid(IGraphicalEditPart editPart, String elementNameToDisplay, int gridSpacing) {
         Point location = editPart.getFigure().getBounds().getTopLeft();
-        boolean locationIsOK = (location.x % GRID_SPACING) == 0 || (location.y % GRID_SPACING) == 0;
+        boolean locationIsOK = (location.x % gridSpacing) == 0 || (location.y % gridSpacing) == 0;
         if (!locationIsOK) {
             IGraphicalEditPart parentPart = (IGraphicalEditPart) editPart.getParent();
             Rectangle parentBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentPart);
-            locationIsOK = (location.x == parentBounds.x || location.x == (parentBounds.x + parentBounds.width)) || (location.y == parentBounds.y || location.y == (parentBounds.y + parentBounds.height));
+            locationIsOK = (location.x == parentBounds.x || location.x == (parentBounds.x + parentBounds.width))
+                    || (location.y == parentBounds.y || location.y == (parentBounds.y + parentBounds.height));
         }
         if (!locationIsOK) {
-            fail("For " + elementNameToDisplay + ", the x or y coordinate of the top left corner should be on the grid (grid spacing = " + GRID_SPACING + "), but was: " + location + ".");
+            fail("For " + elementNameToDisplay + ", the x or y coordinate of the top left corner should be on the grid (grid spacing = " + gridSpacing + "), but was: " + location + ".");
         }
 
     }
