@@ -100,7 +100,7 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
         bot.viewById("org.eclipse.ui.views.ContentOutline").close();
         SWTBotUtils.waitAllUiEvents();
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), FIRST_REPRESENTATION_NAME, FIRST_REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), FIRST_REPRESENTATION_NAME, FIRST_REPRESENTATION_INSTANCE_NAME, DDiagram.class, true, true);
 
         editor.scrollTo(0, 0);
 
