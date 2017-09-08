@@ -557,6 +557,14 @@ h2(#extensibility_features). Extensibility Features
 
 Sirius has specific support for extending and overriding properties view descriptions without modifying the original one. The purpose is to be able to reuse or modify a part of a properties view. Its exits two different concepts to customize a properties view description: the "extension":#extends and the "overriding":#overrides. 
 
+Note that both mechanisms can be used to customize properties view descriptions which are defined in other projects. To allow references from you VSM to elements defined in other modelers, you must first _load_ them in your VSM editor, or you will not see the elements you need as targets for extension/overriding. To load an external VSM, right-click anywhere inside the VSM editor, and select _Load Resource..._. A dialog will appear asking for the URI of the model to load (the @.odesign@ file you want to refer to). Several forms of URIs are possible:
+* If you don't have the customized plug-in in your workspace, you must currently enter the URI manually, using the syntax @platform:/plugin/<projectName>/<path>/<to>/<example>.odesign@, for example @platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign@.
+* If the VSM you want to extend is already present in your development workspace, you can use the _Browse Workspace..._ button to select it.
+
+Note that in the later case (VSM selected from the workspace), if you want to test your modeler directly from your development environment, in your test session make sure to select the extended VSM *from the workspace*, as this is the one your own VSM refers to, and not the one which may also be avaible from your plug-ins. In the viewpoint selection dialog, the version from the workspace will have a small folder decorator in addition to the normal viewpoint icon. Once everything is deployed as plug-ins, which is the nominal case for end-users, this distinction disappears and everything should work fine.
+
+Note also that if you define in your project _A_ customizations for properties views defintions defined in another project _B_, you should make sure to declare the dependency in project _A_'s @MANIFEST.MF@, otherwise it will be possible for users to install _A_ without having _B_ available, which will prevent _A_ from working correctly.  
+
 h3(#extends). Extends
 
 A "page":#pages can extend another page defined somewhere else (in another "category":#categories or in another properties view description). This mechanism is used to _specialize_ (modify or re-use) an existing page. This feature is available for the "pages":#pages, the "groups":#groups, the "containers":#containers_and_layout, the "dynamic mappings":#dynamic_mappings and the "widgets":#widgets.

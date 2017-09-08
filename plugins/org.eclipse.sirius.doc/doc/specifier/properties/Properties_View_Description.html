@@ -1405,6 +1405,32 @@
 			<a href="#extends">extension</a> and the 
 			<a href="#overrides">overriding</a>. 
 		</p>
+		<p>Note that both mechanisms can be used to customize properties view descriptions which are defined in other projects. To allow references from you VSM to elements defined in other modelers, you must first 
+			<em>load</em> them in your VSM editor, or you will not see the elements you need as targets for extension/overriding. To load an external VSM, right-click anywhere inside the VSM editor, and select 
+			<em>Load Resource...</em>. A dialog will appear asking for the URI of the model to load (the 
+			<code>.odesign</code> file you want to refer to). Several forms of URIs are possible:
+		</p>
+		<ul>
+			<li>If you don&#8217;t have the customized plug-in in your workspace, you must currently enter the URI manually, using the syntax 
+				<code>platform:/plugin/&lt;projectName&gt;/&lt;path&gt;/&lt;to&gt;/&lt;example&gt;.odesign</code>, for example 
+				<code>platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign</code>.
+			</li>
+			<li>If the VSM you want to extend is already present in your development workspace, you can use the 
+				<em>Browse Workspace...</em> button to select it.
+			</li>
+		</ul>
+		<p>Note that in the later case (VSM selected from the workspace), if you want to test your modeler directly from your development environment, in your test session make sure to select the extended VSM 
+			<strong>from the workspace</strong>, as this is the one your own VSM refers to, and not the one which may also be avaible from your plug-ins. In the viewpoint selection dialog, the version from the workspace will have a small folder decorator in addition to the normal viewpoint icon. Once everything is deployed as plug-ins, which is the nominal case for end-users, this distinction disappears and everything should work fine.
+		</p>
+		<p>Note also that if you define in your project 
+			<em>A</em> customizations for properties views defintions defined in another project 
+			<em>B</em>, you should make sure to declare the dependency in project 
+			<em>A</em>'s 
+			<code>MANIFEST.MF</code>, otherwise it will be possible for users to install 
+			<em>A</em> without having 
+			<em>B</em> available, which will prevent 
+			<em>A</em> from working correctly.  
+		</p>
 		<h3 id="extends">Extends</h3>
 		<p>A 
 			<a href="#pages">page</a> can extend another page defined somewhere else (in another 
