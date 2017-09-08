@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,8 +11,10 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckTreeItemFontFormat;
@@ -87,15 +89,20 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
 
     /**
      * Ensures that the Hide and Reveal Actions works correctly when called from
-     * tabbar (right-click on edge).
+     * tabbar (button in tabbar with edge and optional invalid element
+     * selected).
      */
-    public void testHideLabelWithTabbarOnEdge() {
+    private void testHideLabelWithTabbarOnEdge(boolean selectInvalidElement) {
 
         // Step 1 : hide the label and check that it is correctly hidden
         SWTBotGefEditPart editPart = editor.getEditPart(EDGE_WITH_LABEL_NAME).parent();
 
         checkEdgeLabelIsVisible(EDGE_WITH_LABEL_NAME);
-        editor.select(Sets.newHashSet(editPart));
+        if (selectInvalidElement) {
+            editor.select(Sets.newHashSet(editPart, getInvalidElement()));
+        } else {
+            editor.select(Sets.newHashSet(editPart));
+        }
         editor.bot().toolbarButtonWithTooltip(HIDE_LABEL_TOOLTIP).click();
 
         checkEdgeLabelIsHidden(EDGE_WITH_LABEL_NAME);
@@ -118,6 +125,22 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
             SWTBotPreferences.TIMEOUT = oldTimeout;
             Assert.assertFalse("The tabbar shouldn't allow user to hide label of " + EDGE_WITH_LABEL_NAME + " (as it is already hidden)", hideLabelTabbarFound && button.isEnabled());
         }
+    }
+
+    /**
+     * Ensures that the Hide and Reveal Actions works correctly when called from
+     * tabbar (button in tabbar with edge).
+     */
+    public void testHideLabelWithTabbarOnEdge() {
+        testHideLabelWithTabbarOnEdge(false);
+    }
+
+    /**
+     * Ensures that the Hide and Reveal Actions works correctly when called from
+     * tabbar (button in tabbar with edge and an invalid element selected).
+     */
+    public void testHideLabelWithTabbarOnEdgeWithInvalidSelection() {
+        testHideLabelWithTabbarOnEdge(true);
     }
 
     /**
@@ -191,11 +214,15 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
      * Ensures that the Hide and Reveal Actions works correctly when called from
      * context menu (right-click on the Node).
      */
-    public void testHideLabelWithContextMenuOnNode() {
+    private void testHideLabelWithContextMenuOnNode(boolean selectInvalidElement) {
         // Step 1 : hide the label and check that it is correctly hidden
         SWTBotGefEditPart editPart = editor.getEditPart(NODE_WITH_LABEL_NAME).parent();
         checkLabelIsVisible(NODE_WITH_LABEL_NAME);
-        editor.select(Sets.newHashSet(editPart));
+        if (selectInvalidElement) {
+            editor.select(Sets.newHashSet(editPart, getInvalidElement()));
+        } else {
+            editor.select(Sets.newHashSet(editPart));
+        }
         editor.clickContextMenu(HIDE_LABEL_TOOLTIP);
 
         checkLabelIsHidden(NODE_WITH_LABEL_NAME);
@@ -218,13 +245,36 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
 
     /**
      * Ensures that the Hide and Reveal Actions works correctly when called from
+     * context menu (right-click on the Node).
+     */
+    public void testHideLabelWithContextMenuOnNode() {
+        testHideLabelWithContextMenuOnNode(false);
+    }
+
+    /**
+     * Ensures that the Hide and Reveal Actions works correctly when called from
+     * context menu (right-click on the Node and an invalid element).
+     */
+    public void testHideLabelWithContextMenuOnNodeWithInvalidSelection() {
+        testHideLabelWithContextMenuOnNode(true);
+    }
+
+    /**
+     * Ensures that the Hide and Reveal Actions works correctly when called from
      * context menu (right-click on the Edge).
      */
-    public void testHideLabelWithContextMenuOnEdge() {
-        // Step 1 : hide the label and check that it is correctly hidden
+    private void testHideLabelWithContextMenuOnEdge(boolean selectInvalidElement) {
+        // Step 0 : Create list of elements to select
         SWTBotGefEditPart editPart = editor.getEditPart(EDGE_WITH_LABEL_NAME).parent();
+        HashSet<SWTBotGefEditPart> elementsToSelect;
+        if (selectInvalidElement) {
+            elementsToSelect = Sets.newHashSet(editPart, getInvalidElement());
+        } else {
+            elementsToSelect = Sets.newHashSet(editPart);
+        }
+        // Step 1 : hide the label and check that it is correctly hidden
         checkEdgeLabelIsVisible(EDGE_WITH_LABEL_NAME);
-        editor.select(Sets.newHashSet(editPart));
+        editor.select(elementsToSelect);
         editor.clickContextMenu(HIDE_LABEL_TOOLTIP);
 
         checkEdgeLabelIsHidden(EDGE_WITH_LABEL_NAME);
@@ -232,7 +282,7 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         // Step 2 : ensure that the context menu doesn't propose user to hide
         // label anymore
         boolean hideLabelContextMenuActionFound = true;
-        editor.select(editPart);
+        editor.select(elementsToSelect);
         try {
             editor.clickContextMenu(HIDE_LABEL_TOOLTIP);
         } catch (WidgetNotFoundException e) {
@@ -240,17 +290,42 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         } finally {
             Assert.assertFalse("The context menu shouldn't allow user to hide label of " + EDGE_WITH_LABEL_NAME + " (as it is already hidden)", hideLabelContextMenuActionFound);
         }
+
+        // Step 3 : reveal the label and check that it is correctly reveal
+        editor.clickContextMenu(REVEAL_LABEL_TOOLTIP);
+
+        checkEdgeLabelIsVisible(EDGE_WITH_LABEL_NAME);
+    }
+
+    /**
+     * Ensures that the Hide and Reveal Actions works correctly when called from
+     * context menu (right-click on the Edge).
+     */
+    public void testHideLabelWithContextMenuOnEdge() {
+        testHideLabelWithContextMenuOnEdge(false);
+    }
+
+    /**
+     * Ensures that the Hide and Reveal Actions works correctly when called from
+     * context menu (right-click on the Edge and an invalid element).
+     */
+    public void testHideLabelWithContextMenuOnEdgeWithInvalidSelection() {
+        testHideLabelWithContextMenuOnEdge(true);
     }
 
     /**
      * Ensures that the Hide and Reveal Actions works correctly when called from
      * context menu (right-click on the Bordered Node).
      */
-    public void testHideLabelWithContextMenuOnBorderedNode() {
+    private void testHideLabelWithContextMenuOnBorderedNode(boolean selectInvalidElement) {
         // Step 1 : hide the label and check that it is correctly hidden
         SWTBotGefEditPart editPart = editor.getEditPart(BORDERED_NODE_WITH_LABEL_NAME).parent();
         checkLabelIsVisible(BORDERED_NODE_WITH_LABEL_NAME);
-        editor.select(Sets.newHashSet(editPart));
+        if (selectInvalidElement) {
+            editor.select(Sets.newHashSet(editPart, getInvalidElement()));
+        } else {
+            editor.select(Sets.newHashSet(editPart));
+        }
         editor.clickContextMenu(HIDE_LABEL_TOOLTIP);
 
         checkLabelIsHidden(BORDERED_NODE_WITH_LABEL_NAME);
@@ -270,14 +345,34 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
 
     /**
      * Ensures that the Hide and Reveal Actions works correctly when called from
+     * context menu (right-click on the Bordered Node).
+     */
+    public void testHideLabelWithContextMenuOnBorderedNode() {
+        testHideLabelWithContextMenuOnBorderedNode(false);
+    }
+
+    /**
+     * Ensures that the Hide and Reveal Actions works correctly when called from
+     * context menu (right-click on the Bordered Node and an invalid element).
+     */
+    public void testHideLabelWithContextMenuOnBorderedNodeWithInvalidSelection() {
+        testHideLabelWithContextMenuOnBorderedNode(true);
+    }
+
+    /**
+     * Ensures that the Hide and Reveal Actions works correctly when called from
      * context menu (right-click on the label).
      */
-    public void testHideLabelWithContextMenuOnLabel() {
+    private void testHideLabelWithContextMenuOnLabel(boolean selectInvalidElement) {
         // Step 1 : hide the label and check that it is correctly hidden
         SWTBotGefEditPart editPart = editor.getEditPart(NODE_WITH_LABEL_NAME);
         SWTBotGefEditPart parentEditPart = editPart.parent();
         checkLabelIsVisible(NODE_WITH_LABEL_NAME);
-        editor.select(Sets.newHashSet(editPart));
+        if (selectInvalidElement) {
+            editor.select(Sets.newHashSet(editPart, getInvalidElement()));
+        } else {
+            editor.select(Sets.newHashSet(editPart));
+        }
         editor.clickContextMenu(HIDE_LABEL_TOOLTIP);
 
         checkLabelIsHidden(NODE_WITH_LABEL_NAME);
@@ -293,6 +388,22 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         } finally {
             Assert.assertFalse("The context menu shouldn't allow user to hide label of " + NODE_WITH_LABEL_NAME + " (as it is already hidden)", hideLabelContextMenuActionFound);
         }
+    }
+
+    /**
+     * Ensures that the Hide and Reveal Actions works correctly when called from
+     * context menu (right-click on the label).
+     */
+    public void testHideLabelWithContextMenuOnLabel() {
+        testHideLabelWithContextMenuOnLabel(false);
+    }
+
+    /**
+     * Ensures that the Hide and Reveal Actions works correctly when called from
+     * context menu (right-click on the label and an invalid element).
+     */
+    public void testHideLabelWithContextMenuOnLabelWithInvalidSelection() {
+        testHideLabelWithContextMenuOnLabel(true);
     }
 
     /**
@@ -325,6 +436,7 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).select();
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(new TreeItemSelected(nodeItem));
+
         checkOutlineIsCorrectlyDecorated(labelItem, false);
         nodeItem.contextMenu(HIDE_LABEL_TOOLTIP).click();
 
@@ -759,5 +871,13 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         bot.waitUntil(new TreeItemSelected(item));
         item.contextMenu(REVEAL_ELEMENT_TOOLTIP).click();
         checkEdgeLabelIsVisible(EDGE_WITH_LABEL_NAME);
+    }
+
+    private SWTBotGefEditPart getInvalidElement() {
+        // Get the p1 package
+        SWTBotGefEditPart p1EditPart = editor.getEditPart("p1", AbstractDiagramContainerEditPart.class);
+        // Get the last border node (that is the one without label).
+        SWTBotGefEditPart borderNodeWithoutLabel = p1EditPart.children().get(p1EditPart.children().size() - 1);
+        return borderNodeWithoutLabel;
     }
 }
