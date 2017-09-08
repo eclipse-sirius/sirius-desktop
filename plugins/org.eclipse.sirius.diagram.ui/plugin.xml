@@ -139,7 +139,7 @@
            <partAction menubarPath="/edit/copyFormatGroup" id="pasteLayoutAction" />
            <partAction menubarPath="/edit/copyFormatGroup" id="pasteStyleAction" />
            <partAction menubarPath="/diagramMenu/arrangeMenu/arrangeGroup" id="arrangeBorderNodesAction"/>
-           <!--partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/-->
+           <partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/>
            <partAction toolbarPath="/arrangeMenu/arrangeGroup" id="arrangeBorderNodesActionToolBar"/>
            <!-- Add the DeselectAll action after selectAll action-->
            <partAction menubarPath="/edit/selectAll" id="deselectAll"/>
@@ -266,6 +266,15 @@
                removeFromMenubar="true"
                removeFromToolbar="true"
                toolbarPath="/toolbarCopyAppearanceGroup">
+         </partPredefinedItem>
+      </partContribution>
+      <partContribution
+            class="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor">
+         <partPredefinedItem
+               id="treeRouterAction"
+               menubarPath="/diagramMenu/routerMenu/routerGroup"
+               removeFromMenubar="true"
+               removeFromToolbar="false">
          </partPredefinedItem>
       </partContribution>
          <popupContribution

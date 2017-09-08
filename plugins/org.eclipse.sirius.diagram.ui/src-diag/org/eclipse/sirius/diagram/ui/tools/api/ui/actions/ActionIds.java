@@ -77,7 +77,9 @@ public interface ActionIds {
     /** Action for show/hide elements. */
     String SELECT_HIDDEN_ELEMENTS = "selectHiddenElementsAction"; //$NON-NLS-1$
 
-    /** Action for show/hide elements. */
+    /**
+     * Action to replace default GMF {@link org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds#ACTION_ROUTER_TREE}.
+     */
     String ROUTING_STYLE = "treeRoutingStyleAction"; //$NON-NLS-1$
 
     /** Action for Activating/Deactivating the Layouting mode. **/
