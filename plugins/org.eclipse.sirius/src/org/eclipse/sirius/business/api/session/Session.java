@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.api.session;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
@@ -36,6 +38,17 @@ public interface Session {
      * ID for dangling, broken or invalid sessions.
      */
     String INVALID_SESSION = "INVALID SESSION"; //$NON-NLS-1$
+
+    /**
+     * Retuns the Sirius session a given model element is part of, if any.
+     * 
+     * @param obj
+     *            an {@link EObject}.
+     * @return the Sirius session obj is part of, if any.
+     */
+    static Optional<Session> of(EObject obj) {
+        return Optional.ofNullable(new EObjectQuery(obj).getSession());
+    }
 
     /**
      * Open the session and add it to the {@link SessionManager}. Initialize a Session from a Session Resource URI with

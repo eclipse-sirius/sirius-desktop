@@ -231,6 +231,13 @@
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> A new convenience static method has been added on the 
+				<code>org.eclipse.sirius.business.api.session.Session</code> interface to retrieve the session an arbitrary 
+				<code>EObject</code> is part of: 
+				<code>Optional&lt;Session&gt; s = Session.of(myObject);</code>. It returns a 
+				<code>java.util.Optional&lt;Session&gt;</code> so all the usual patterns apply, e.g. 
+				<code>Session.of(obj).ifPresent(s -&gt; doSomething(s));</code>.
+			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.viewpoint.DRepresentationDescriptor.isLoadedRepresentation()</code> has been added to know if the representation linked with this {@link DRepresentationDescriptor} is loaded. By default, all representations are held in the same resource than the DRepresentationDescriptor, in that case the method will always return true.
 			</li>

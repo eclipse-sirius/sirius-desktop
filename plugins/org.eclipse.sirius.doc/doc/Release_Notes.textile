@@ -58,6 +58,7 @@ A new mode (currently experimental) is available to load representations on dema
 
 h4. Changes in @org.eclipse.sirius@
 
+* <span class="label label-success">Added</span> A new convenience static method has been added on the @org.eclipse.sirius.business.api.session.Session@ interface to retrieve the session an arbitrary @EObject@ is part of: @Optional<Session> s = Session.of(myObject);@. It returns a @java.util.Optional<Session>@ so all the usual patterns apply, e.g. @Session.of(obj).ifPresent(s -> doSomething(s));@.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.DRepresentationDescriptor.isLoadedRepresentation()@ has been added to know if the representation linked with this {@link DRepresentationDescriptor} is loaded. By default, all representations are held in the same resource than the DRepresentationDescriptor, in that case the method will always return true.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession.allAnalyses()@ has been added in the interface to reflect the already existing @org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl.allAnalyses()@ implementation.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.dialect.DialectManager.getLoadedRepresentations(EObject, Session)@ has been added to get all loaded representations in the given session with the given EObject as target.
