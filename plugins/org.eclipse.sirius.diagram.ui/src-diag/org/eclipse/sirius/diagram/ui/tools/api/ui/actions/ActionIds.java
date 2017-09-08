@@ -80,7 +80,18 @@ public interface ActionIds {
     /**
      * Action to replace default GMF {@link org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds#ACTION_ROUTER_TREE}.
      */
-    String ROUTING_STYLE = "treeRoutingStyleAction"; //$NON-NLS-1$
+    String TREE_ROUTING_STYLE = "treeRoutingStyleAction"; //$NON-NLS-1$
+
+    /**
+     * Action to replace default GMF {@link org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds#ACTION_ROUTER_OBLIQUE}.
+     */
+    String OBLIQUE_ROUTING_STYLE = "obliqueRoutingStyleAction"; //$NON-NLS-1$
+
+    /**
+     * Action to replace default GMF
+     * {@link org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds#ACTION_ROUTER_RECTILINEAR}.
+     */
+    String RECTILINEAR_ROUTING_STYLE = "rectilinearRoutingStyleAction"; //$NON-NLS-1$
 
     /** Action for Activating/Deactivating the Layouting mode. **/
     String SWITCH_LAYOUTING_MODE = "switchLayoutingMode"; //$NON-NLS-1$

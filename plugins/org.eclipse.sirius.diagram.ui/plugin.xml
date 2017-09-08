@@ -140,6 +140,8 @@
            <partAction menubarPath="/edit/copyFormatGroup" id="pasteStyleAction" />
            <partAction menubarPath="/diagramMenu/arrangeMenu/arrangeGroup" id="arrangeBorderNodesAction"/>
            <partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/>
+           <partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="obliqueRoutingStyleAction"/>
+           <partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="rectilinearRoutingStyleAction"/>
            <partAction toolbarPath="/arrangeMenu/arrangeGroup" id="arrangeBorderNodesActionToolBar"/>
            <!-- Add the DeselectAll action after selectAll action-->
            <partAction menubarPath="/edit/selectAll" id="deselectAll"/>
@@ -194,6 +196,13 @@
             <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToVerticalGroup" id="straightenToBottomSidePinned"/>
             <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToHorizontalGroup" id="straightenToLeftSidePinned"/>
             <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToHorizontalGroup" id="straightenToRightSidePinned"/>
+            <!-- Line Style contributions (replace removed GMF contributions) -->
+            <popupMenuGroup path="/formatMenu/" id="fontFillLineGroup"/>
+            <popupMenu path="/formatMenu/fontFillLineGroup" id="routerMenu"/>
+            <popupMenuGroup path="/formatMenu/routerMenu/" id="routerGroup"/>
+            <popupAction path="/formatMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/>
+            <popupAction path="/formatMenu/routerMenu/routerGroup" id="obliqueRoutingStyleAction"/>
+            <popupAction path="/formatMenu/routerMenu/routerGroup" id="rectilinearRoutingStyleAction"/>
          </popupContribution>
          <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart" />
@@ -202,7 +211,6 @@
             <popupAction path="/editMenu/copyFormatGroup" id="pasteFormatAction" />
             <popupAction path="/editMenu/copyFormatGroup" id="pasteLayoutAction" />
             <popupAction path="/editMenu/copyFormatGroup" id="pasteStyleAction" />
-            <popupAction path="/formatMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/>
 
             <popupMenuGroup path="/formatMenu/arrangeMenu/" id="pinGroup" />
             <popupAction path="/formatMenu/arrangeMenu/pinGroup" id="pinElementsAction" />
@@ -268,10 +276,23 @@
                toolbarPath="/toolbarCopyAppearanceGroup">
          </partPredefinedItem>
       </partContribution>
+      <!-- Remove default GMF global Eclipse menu for routing style (replaced by Sirius specific) -->
       <partContribution
             class="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor">
          <partPredefinedItem
                id="treeRouterAction"
+               menubarPath="/diagramMenu/routerMenu/routerGroup"
+               removeFromMenubar="true"
+               removeFromToolbar="false">
+         </partPredefinedItem>
+         <partPredefinedItem
+               id="obliqueRouterAction"
+               menubarPath="/diagramMenu/routerMenu/routerGroup"
+               removeFromMenubar="true"
+               removeFromToolbar="false">
+         </partPredefinedItem>
+         <partPredefinedItem
+               id="rectilinearRouterAction"
                menubarPath="/diagramMenu/routerMenu/routerGroup"
                removeFromMenubar="true"
                removeFromToolbar="false">
@@ -424,11 +445,21 @@
                   path="/filterFormatGroup"
                   remove="true">
             </popupPredefinedItem>
+            <!-- Remove default GMF contexual menu for routing style (replaced by Sirius specific context) -->
             <popupPredefinedItem
                   id="treeRouterAction"
                   path="/formatMenu/routerMenu/routerGroup"
                   remove="true">
             </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="obliqueRouterAction"
+                  path="/formatMenu/routerMenu/routerGroup"
+                  remove="true"/>
+            <popupPredefinedItem
+                  id="rectilinearRouterAction"
+                  path="/formatMenu/routerMenu/routerGroup"
+                  remove="true"/>
+            <!-- End of remove default GMF contexual menu for routing style -->
             <popupPredefinedItem
                   id="copyAppearancePropertiesAction"
                   path="/formatMenu/applyAppearanceGroup"

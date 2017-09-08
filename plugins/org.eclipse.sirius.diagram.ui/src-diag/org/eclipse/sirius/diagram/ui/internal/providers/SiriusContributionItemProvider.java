@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.internal.providers;
 
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.AbstractContributionItemProvider;
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
+import org.eclipse.gmf.runtime.diagram.ui.actions.internal.RouterMenuManager;
 import org.eclipse.gmf.runtime.diagram.ui.printing.actions.PrintPreviewAction;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
@@ -75,8 +76,12 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = new SaveAsImageFileAction();
         } else if (ActionIds.SELECT_HIDDEN_ELEMENTS.equals(actionId)) {
             result = new SelectHiddenElementsAction(workbenchPage);
-        } else if (ActionIds.ROUTING_STYLE.equals(actionId)) {
+        } else if (ActionIds.TREE_ROUTING_STYLE.equals(actionId)) {
             result = TabbarRouterAction.createTreeRouterAction(workbenchPage);
+        } else if (ActionIds.OBLIQUE_ROUTING_STYLE.equals(actionId)) {
+            result = TabbarRouterAction.createObliqueRouterAction(workbenchPage);
+        } else if (ActionIds.RECTILINEAR_ROUTING_STYLE.equals(actionId)) {
+            result = TabbarRouterAction.createRectilinearRouterAction(workbenchPage);
         } else if (ActionIds.EDGE_SNAP_BACK.equals(actionId)) {
             result = new SiriusEdgeSnapBackAction(workbenchPage);
         } else if (ActionIds.DESELECT_ALL.equals(actionId)) {
@@ -121,6 +126,8 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             return new DistributeMenuManager();
         } else if (menuId.equals(ActionIds.MENU_STRAIGHTEN_TO)) {
             return new StraightenToMenuManager();
+        } else if (menuId.equals(org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.MENU_ROUTER)) {
+            return new RouterMenuManager();
         }
         return super.createMenuManager(menuId, partDescriptor);
     }

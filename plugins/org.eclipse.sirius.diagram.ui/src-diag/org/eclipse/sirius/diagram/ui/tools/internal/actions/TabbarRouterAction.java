@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.RouterAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n.DiagramUIActionsMessages;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n.DiagramUIActionsPluginImages;
@@ -22,6 +21,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.l10n.DiagramUIPluginImages;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
@@ -50,7 +50,7 @@ public class TabbarRouterAction extends RouterAction {
     // CHECKSTYLE:OFF
     @Override
     protected boolean calculateEnabled() {
-        if (org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ROUTING_STYLE.equals(getId())) {
+        if (ActionIds.TREE_ROUTING_STYLE.equals(getId())) {
             List<?> selected = getSelectedObjects();
             if (selected.size() < 1) {
                 return false;
@@ -78,7 +78,7 @@ public class TabbarRouterAction extends RouterAction {
      */
     public static RouterAction createTreeRouterAction(IWorkbenchPage workbenchPage) {
         RouterAction action = new TabbarRouterAction(workbenchPage, Routing.TREE_LITERAL);
-        action.setId(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ROUTING_STYLE);
+        action.setId(ActionIds.TREE_ROUTING_STYLE);
         action.setText(DiagramUIActionsMessages.ChangeRouterAction_Tree_ActionLabelText);
         action.setToolTipText(DiagramUIActionsMessages.ChangeRouterAction_Tree_ActionToolTipText);
 
@@ -98,7 +98,7 @@ public class TabbarRouterAction extends RouterAction {
      */
     public static RouterAction createRectilinearRouterAction(IWorkbenchPage workbenchPage) {
         RouterAction action = new TabbarRouterAction(workbenchPage, Routing.RECTILINEAR_LITERAL);
-        action.setId(ActionIds.ACTION_ROUTER_RECTILINEAR);
+        action.setId(ActionIds.RECTILINEAR_ROUTING_STYLE);
         action.setText(DiagramUIActionsMessages.ChangeRouterAction_Rectilinear_ActionLabelText);
         action.setToolTipText(DiagramUIActionsMessages.ChangeRouterAction_Rectilinear_ActionToolTipText);
 
@@ -117,7 +117,7 @@ public class TabbarRouterAction extends RouterAction {
      */
     public static RouterAction createObliqueRouterAction(IWorkbenchPage workbenchPage) {
         RouterAction action = new TabbarRouterAction(workbenchPage, Routing.MANUAL_LITERAL);
-        action.setId(ActionIds.ACTION_ROUTER_OBLIQUE);
+        action.setId(ActionIds.OBLIQUE_ROUTING_STYLE);
         action.setText(DiagramUIActionsMessages.ChangeRouterAction_Oblique_ActionLabelText);
         action.setToolTipText(DiagramUIActionsMessages.ChangeRouterAction_Oblique_ActionToolTipText);
 

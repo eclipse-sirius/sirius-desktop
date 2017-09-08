@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -144,8 +144,11 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
         final IAction copyLayoutAction = new CopyFormatAction(getPage());
         addAction(copyLayoutAction);
 
-        final IAction routerAction = TabbarRouterAction.createTreeRouterAction(getPage());
-        addAction(routerAction);
+        addAction(TabbarRouterAction.createTreeRouterAction(getPage()));
+
+        addAction(TabbarRouterAction.createObliqueRouterAction(getPage()));
+
+        addAction(TabbarRouterAction.createRectilinearRouterAction(getPage()));
 
         final IAction pasteFormatAction = new PasteFormatAction(getPage());
         addAction(pasteFormatAction);
@@ -182,7 +185,9 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
             toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.COPY_FORMAT));
             toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.PASTE_FORMAT));
             toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.SELECT_HIDDEN_ELEMENTS));
-            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ROUTING_STYLE));
+            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.TREE_ROUTING_STYLE));
+            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.OBLIQUE_ROUTING_STYLE));
+            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.RECTILINEAR_ROUTING_STYLE));
         }
     }
 
