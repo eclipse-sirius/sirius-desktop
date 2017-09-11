@@ -405,8 +405,16 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                 };
                 session.getTransactionalEditingDomain().getCommandStack().addCommandStackListener(listener);
             }
-        } catch (InvocationTargetException | InterruptedException e) {
+        } catch (InvocationTargetException e) {
             ErrorDialog.openError(getSite().getShell(), MessageFormat.format(Messages.UI_SessionEditor_session_loading_error_message, new Object[0]), e.getMessage(), Status.CANCEL_STATUS);
+            // We cannot continue if one of those exception has been thrown ( if
+            // the Session cannot be loaded for instance). We throw a
+            // PartInitException.
+            throw new PartInitException(e.getTargetException().getMessage(), e.getTargetException());
+
+        } catch (InterruptedException e) {
+            ErrorDialog.openError(getSite().getShell(), MessageFormat.format(Messages.UI_SessionEditor_session_loading_error_message, new Object[0]), e.getMessage(), Status.CANCEL_STATUS);
+            throw new PartInitException(e.getMessage(), e);
         }
         pageRegistry = SessionEditorPlugin.getPlugin().getPageRegistry();
         pageRegistry.addRegistryListener(this);
