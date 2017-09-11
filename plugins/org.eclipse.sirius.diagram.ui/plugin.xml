@@ -165,25 +165,18 @@
                  toolbarPath="/toolbarCopyAppearanceGroup">
            </partAction>
          </partContribution>
-         
-		<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
-            <popupStructuredContributionCriteria
-                  policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.MultiSelectionEdgePolicy">
-            </popupStructuredContributionCriteria>
-            <popupMenu path="/filterFormatGroup" id="formatMenu">
-            </popupMenu>
-            <popupMenuGroup path="/formatMenu/" id="miscellaneousGroup">
-            </popupMenuGroup>
-            <popupAction path="/formatMenu/miscellaneousGroup" id="edgeSnapBackAction">
-            </popupAction>
-          </popupContribution>       
+
          <popupContribution
                class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider"
-               id="StraightenToContribution">
+               id="specificContributionsForEdgeSelection">
             <popupStructuredContributionCriteria
                   policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.MultiSelectionEdgePolicy">
             </popupStructuredContributionCriteria>
-            
+            <!-- Snapback Labels contributions -->
+            <popupMenu path="/filterFormatGroup" id="formatMenu"/>
+            <popupMenuGroup path="/formatMenu/" id="miscellaneousGroup"/>
+            <popupAction path="/formatMenu/miscellaneousGroup" id="edgeSnapBackAction"/>
+            <!-- Straighten To contributions -->
             <popupMenuGroup path="/formatMenu/arrangeMenu/" id="straightenToGroup" />
             <popupMenu path="/formatMenu/arrangeMenu/straightenToGroup" id="straightenToMenu"/>
             <popupMenuGroup path="/formatMenu/arrangeMenu/straightenToMenu/" id="straightenToHorizontalGroup"/>
