@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
@@ -20,6 +21,12 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondit
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.WrappedSWTBotRadio;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
+import org.hamcrest.Matcher;
 
 /**
  * Test the tree routing style UI
@@ -84,49 +91,58 @@ public class RoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test the routing style UI.
+     * Test the routing style UI with a selection containing only one edge.
      * 
      * @throws Exception
      *             Test error.
      */
-    public void testRoutingStyle() throws Exception {
+    public void testRoutingStyleWithOneEdgeSelected() throws Exception {
+        // Use "All Connectors" contextual menu; as there is only one edge, it works.
+        changeRoutingStyle("All Connectors", true);
+    }
 
-        // Select a diagram element named "ref"
-        CheckSelectedCondition cS = new CheckSelectedCondition(editor, REF, DEdgeEditPart.class);
+    /**
+     * Test the routing style UI with a selection that does not contain only
+     * edges.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testRoutingStyleWithMultiSelection() throws Exception {
+        // Use "All" contextual menu to select all elements of the diagram.
+        changeRoutingStyle("All", false);
+    }
+
+    private void changeRoutingStyle(String contextualMenuName, boolean checkPropertiesView) {
+        // Reveal the edge named "ref"
         editor.reveal(REF);
-        // Select all Connectors ; as there is only one edge, it works.
-        editor.clickContextMenu("All Connectors");
+        // Select elements and ensure that at least the edge named "ref" is
+        // selected
+        CheckSelectedCondition cS = new CheckSelectedCondition(editor, REF, DEdgeEditPart.class);
+        editor.clickContextMenu(contextualMenuName);
         bot.waitUntil(cS);
 
-        // select the routing style with the contextmenu
+        // select the routing style with the contextual menu
         editor.clickContextMenu(TREE_STYLE_ROUTING);
         editor.clickContextMenu(OBLIQUE_STYLE_ROUTING);
 
-        // select the routing style with properties view
-        bot.viewByTitle(PROPERTIES).setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE);
-        new WrappedSWTBotRadio(bot.viewByTitle(PROPERTIES).bot().radioInGroup("Tree", STYLES)).click();
-        new WrappedSWTBotRadio(bot.viewByTitle(PROPERTIES).bot().radioInGroup("Oblique", STYLES)).click();
+        // select the routing style from tabbar
+        SWTBotToolbarDropDownButton button = editor.bot().toolbarDropDownButtonWithTooltip(LINE_STYLE);
+        Matcher<MenuItem> withName = WidgetMatcherFactory.withText("&" + TREE_STYLE_ROUTING);
+        SWTBotMenu treeRoutingStyleButton = button.menuItem(withName);
+        treeRoutingStyleButton.click();
+        treeRoutingStyleButton.pressShortcut(KeyStroke.getInstance(SWT.ESC));
+
+        if (checkPropertiesView) {
+            // select the routing style with properties view
+            bot.viewByTitle(PROPERTIES).setFocus();
+            SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE);
+            new WrappedSWTBotRadio(bot.viewByTitle(PROPERTIES).bot().radioInGroup("Tree", STYLES)).click();
+            new WrappedSWTBotRadio(bot.viewByTitle(PROPERTIES).bot().radioInGroup("Oblique", STYLES)).click();
+        }
 
         // select the routing style with the diagram menu
         bot.menu(DIAGRAM2).menu(LINE_STYLE).menu(TREE_STYLE_ROUTING);
         bot.menu(DIAGRAM2).menu(LINE_STYLE).menu(OBLIQUE_STYLE_ROUTING);
-
-    }
-
-    /**
-     * test the tabbar routing style UI.
-     * 
-     * @throws Exception
-     *             Test error.
-     */
-    public void testTabBarRoutingStyle() throws Exception {
-        // Select a diagram element named "ref"
-        CheckSelectedCondition cS = new CheckSelectedCondition(editor, REF, DEdgeEditPart.class);
-        editor.reveal(REF);
-        // Select all Connectors ; as there is only one edge, it works.
-        editor.clickContextMenu("All Connectors");
-        bot.waitUntil(cS);
-        editor.bot().toolbarDropDownButtonWithTooltip(LINE_STYLE).click().menuItem(TREE_STYLE_ROUTING).click();
     }
 }
