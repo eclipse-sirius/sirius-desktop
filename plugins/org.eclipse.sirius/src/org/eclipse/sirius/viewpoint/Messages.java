@@ -400,6 +400,9 @@ public final class Messages {
     public static String ModelingProjectQuery_and;
 
     @TranslatableMessage
+    public static String ModelOperationToTask_cannotCreateTaskWarningMsg;
+
+    @TranslatableMessage
     public static String MoveElementInListAction_notAMemberErrorMsg;
 
     @TranslatableMessage

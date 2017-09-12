@@ -300,6 +300,14 @@
 			<em>Create if not existent</em> flag is not set.
 		</p>
 		<h2 id="dialogandwizard">Dialog &amp; Wizard</h2>
+		<p>
+			<strong>Warning:</strong> The model operations below are provided by the Sirius properties view plugins. To make sure those operations will be available to the end user, you should add the following plugins in your modeler dependencies:
+		</p>
+		<ul>
+			<li>org.eclipse.sirius.properties</li>
+			<li>org.eclipse.sirius.ui.properties</li>
+		</ul>
+		<p>If those plugins are missing at runtime, Open Dialog and Open Wizard operations will not be executable.</p>
 		<h3 id="dialog">Open Dialog</h3>
 		<p>The 
 			<em>Open Dialog</em> model operation is used in order to open a new dialog where the end user will be able to see and manipulate some pieces of information. You can change the title of the dialog with the 

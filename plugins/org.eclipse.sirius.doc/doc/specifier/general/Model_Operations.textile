@@ -112,6 +112,12 @@ The operation does nothing if the current element is not compatible with the spe
 
 h2(#dialogandwizard). Dialog & Wizard
 
+*Warning:* The model operations below are provided by the Sirius properties view plugins. To make sure those operations will be available to the end user, you should add the following plugins in your modeler dependencies:
+* org.eclipse.sirius.properties
+* org.eclipse.sirius.ui.properties
+If those plugins are missing at runtime, Open Dialog and Open Wizard operations will not be executable.
+
+
 h3(#dialog). Open Dialog
 
 The _Open Dialog_ model operation is used in order to open a new dialog where the end user will be able to see and manipulate some pieces of information. You can change the title of the dialog with the _Title expression_. This expression must return a string. You can specify one _Page_ with various _Groups_ to specify the content of the dialog. You can leverage existing _Pages_ and _Groups_ from existing definition of your _Properties View_.

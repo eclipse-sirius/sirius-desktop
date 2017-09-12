@@ -10,9 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task;
 
+import java.text.MessageFormat;
 import java.util.Iterator;
 import java.util.Optional;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
@@ -30,12 +33,15 @@ import org.eclipse.sirius.business.internal.helper.task.operations.MoveElementTa
 import org.eclipse.sirius.business.internal.helper.task.operations.RemoveElementTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.SetValueTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.SwitchTask;
+import org.eclipse.sirius.business.internal.helper.task.operations.UnexecutableOperationTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.UnsetTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
@@ -159,8 +165,11 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
                 ModelOperationManagerDescriptor descriptor = iterator.next();
                 optionalTask = descriptor.getModelOperationManager().createTask(op, extPackage, uiCallback, session, interpreter, context);
             }
-
-            if (optionalTask.isPresent() && optionalTask.get() instanceof AbstractOperationTask) {
+            if (!optionalTask.isPresent()) {
+                task = UnexecutableOperationTask.getInstance();
+                SiriusPlugin.getDefault().getLog()
+                        .log(new Status(IStatus.WARNING, SiriusPlugin.ID, MessageFormat.format(Messages.ModelOperationToTask_cannotCreateTaskWarningMsg, op.eClass().getName())));
+            } else if (optionalTask.isPresent() && optionalTask.get() instanceof AbstractOperationTask) {
                 task = (AbstractOperationTask) optionalTask.get();
             }
         }

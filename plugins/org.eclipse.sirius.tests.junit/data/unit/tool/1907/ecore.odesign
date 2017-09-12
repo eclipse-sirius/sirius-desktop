@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="Ecore Editing Workbench V4.6" version="10.1.0.201507271600">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="Ecore Editing Workbench V4.6" version="12.0.0.2017041100">
   <ownedViewpoints name="Design" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='External%20EClass%20from%20treeview']" name="Entities" titleExpression="aql:self.name + ' package entities'" domainClass="EPackage" enablePopupBars="true">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide class content">
@@ -180,6 +180,24 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'new Class ' + self.eContainer().eContents()->filter(ecore::EClass)->size()"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:NodeCreationDescription" name="unexecutableTool" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='EC%20EClass']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Dialog">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation/>
+                    </buttons>
+                    <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='Classifier']/@tools.5/@initialOperation/@firstModelOperations/@subModelOperations.0/@groups.0"/>
+                    <groups name="Default Group" labelExpression="Group" semanticCandidateExpression="var:self"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -1146,6 +1164,8 @@
       <ownedColumnMappings name="Available Tags" headerLabelExpression="aql:if self->oclIsKindOf(ecore::EStructuralFeature)  and  self.derived then '/' else '' endif + self.key" domainClass="EStringToStringMapEntry" semanticCandidatesExpression="aql:self.eResource().getContent()->first().eAnnotations->select( e | e.source='Tags').details"/>
       <intersection name="Elements to Tags" semanticElements="var:self" lineMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Tags']/@ownedLineMappings[name='Tags%20EClassifiers'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Tags']/@ownedLineMappings[name='Tags%20EClassifiers']/@ownedSubLines[name='Tag%20EStructural%20Features']" columnMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Tags']/@ownedColumnMappings.0" labelExpression="XXXXXX" useDomainClass="true" columnFinderExpression="aql:self.references" lineFinderExpression="feature:eContainer" semanticCandidatesExpression="aql:self.eAllContents(EAnnotation)->select( e | e.source='TagValues')" domainClass="EAnnotation">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
@@ -1206,6 +1226,8 @@
       <ownedColumnMappings name="Doc Root" headerLabelExpression="Domain Documentation" domainClass="EPackage" semanticCandidatesExpression="aql:self.eResource().getContents()->at(1)"/>
       <intersection name="EModelElements to Doc Annotation" semanticElements="var:self" lineMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedLineMappings[name='Doc%20EClassifiers'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedLineMappings[name='Doc%20EClassifiers']/@ownedSubLines[name='Doc%20EStructural%20Features']" columnMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedColumnMappings.0" labelExpression="aql:self.value" useDomainClass="true" columnFinderExpression="aql:self.eResource().getContents()->first()" lineFinderExpression="aql:self.eContainerOrSelf(ecore::EAnnotation).eContainer()" semanticCandidatesExpression="aql:self.eAllContents(ecore::EAnnotation)->select( e | e.source='http://www.eclipse.org/emf/2002/GenModel').details->select(d | d.key='documentation')" domainClass="EStringToStringMapEntry">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
