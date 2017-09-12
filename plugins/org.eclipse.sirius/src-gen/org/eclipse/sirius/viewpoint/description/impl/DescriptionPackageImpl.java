@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -2942,7 +2942,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 "container", "ecore.EObject | the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getDecorationDescription_PreconditionExpression(), source,
-                new String[] { "containerView", "viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
+                new String[] { "view", "viewpoint.DSemanticDecorator | the views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "element", "ecore.EObject | the semantic element of the view.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "containerView", "viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
                         "container", "ecore.EObject | the semantic element of the container view.", //$NON-NLS-1$ //$NON-NLS-2$
                         "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current diagram.", //$NON-NLS-1$ //$NON-NLS-2$
                         "diagram", "diagram.DSemanticDiagram | the current diagram." //$NON-NLS-1$ //$NON-NLS-2$

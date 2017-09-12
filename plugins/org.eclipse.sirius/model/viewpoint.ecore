@@ -563,6 +563,8 @@
           <details key="returnType" value="a boolean."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+          <details key="view" value="viewpoint.DSemanticDecorator | the views of the checked elements."/>
+          <details key="element" value="ecore.EObject | the semantic element of the view."/>
           <details key="containerView" value="viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements."/>
           <details key="container" value="ecore.EObject | the semantic element of the container view."/>
           <details key="viewpoint" value="diagram.DSemanticDiagram | (deprecated) the current diagram."/>

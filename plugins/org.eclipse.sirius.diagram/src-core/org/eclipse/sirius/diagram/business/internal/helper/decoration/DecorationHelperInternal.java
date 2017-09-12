@@ -120,7 +120,7 @@ public final class DecorationHelperInternal {
             }
         }
         // new decoration
-        if (checkDecoratorPrecondition(element.getTarget(), (DSemanticDecorator) element.eContainer(), decorationDescription)) {
+        if (checkDecoratorPrecondition(element.getTarget(), element, decorationDescription)) {
             final Decoration decoration = ViewpointFactory.eINSTANCE.createDecoration();
             decoration.setDescription(decorationDescription);
             if (LayerHelper.isTransientLayer((Layer) decorationDescription.eContainer().eContainer())) {
@@ -157,13 +157,17 @@ public final class DecorationHelperInternal {
         return result;
     }
 
-    private boolean checkDecoratorPrecondition(final EObject semantic, final DSemanticDecorator container, final DecorationDescription decorationDescription) {
+    private boolean checkDecoratorPrecondition(final EObject semantic, final DSemanticDecorator view, final DecorationDescription decorationDescription) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);
         boolean result = false;
         if (decorationDescription != null && !decorationDescription.eIsProxy()) {
             result = true;
             final String preconditionExpression = decorationDescription.getPreconditionExpression();
             if (!StringUtil.isEmpty(preconditionExpression)) {
+                DSemanticDecorator container = view != null ? (DSemanticDecorator) view.eContainer() : null;
+
+                this.interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, semantic);
+                this.interpreter.setVariable(IInterpreterSiriusVariables.VIEW, view);
                 this.interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, container);
                 this.interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, container != null ? container.getTarget() : null);
                 this.interpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT, this.diagram);
@@ -174,6 +178,8 @@ public final class DecorationHelperInternal {
                     RuntimeLoggerManager.INSTANCE.error(decorationDescription, org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getDecorationDescription_PreconditionExpression(),
                             e);
                 }
+                this.interpreter.unSetVariable(IInterpreterSiriusVariables.ELEMENT);
+                this.interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
                 this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER_VIEW);
                 this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
                 this.interpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT);
@@ -284,7 +290,7 @@ public final class DecorationHelperInternal {
         while (it.hasNext()) {
             Decoration decoration = it.next();
             final DecorationDescription description = decoration.getDescription();
-            if (!activatedLayers.contains(LayerHelper.getParentLayer(description)) || !checkDecoratorPrecondition(element.getTarget(), (DSemanticDecorator) element.eContainer(), description)) {
+            if (!activatedLayers.contains(LayerHelper.getParentLayer(description)) || !checkDecoratorPrecondition(element.getTarget(), element, description)) {
                 it.remove();
             } else {
                 // reset image in cache
