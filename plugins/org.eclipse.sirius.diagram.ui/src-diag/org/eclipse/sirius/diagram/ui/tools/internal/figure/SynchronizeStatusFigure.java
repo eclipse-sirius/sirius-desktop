@@ -21,6 +21,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.LayeredPane;
 import org.eclipse.draw2d.Viewport;
+import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
@@ -86,6 +87,7 @@ public class SynchronizeStatusFigure extends Ellipse {
         this.viewport = (Viewport) rootEditPart.getFigure();
         this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         this.setLineWidth(3);
+        this.setLayoutManager(new XYLayout());
         updateLocation();
 
         Label label = null;
@@ -117,6 +119,7 @@ public class SynchronizeStatusFigure extends Ellipse {
                     updateLocation();
                 }
             };
+            this.setConstraint(label, new Rectangle(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT));
         }
     }
 
@@ -142,16 +145,6 @@ public class SynchronizeStatusFigure extends Ellipse {
         super.removeNotify();
         viewport.removePropertyChangeListener(Viewport.PROPERTY_VIEW_LOCATION, propListener);
         viewport = null;
-    }
-
-    /**
-     * Override to use local coordinates.
-     * 
-     * {@inheritDoc}
-     */
-    @Override
-    protected boolean useLocalCoordinates() {
-        return true;
     }
 
     /**
