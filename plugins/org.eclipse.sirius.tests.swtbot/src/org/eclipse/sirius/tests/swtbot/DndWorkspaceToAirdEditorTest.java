@@ -15,12 +15,13 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.transaction.RunnableWithResult;
+import org.eclipse.jface.util.Geometry;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -28,6 +29,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.dnd.DragUtil;
 import org.eclipse.ui.part.FileEditorInput;
 import org.junit.Assume;
 import org.junit.Before;
@@ -77,6 +79,11 @@ public class DndWorkspaceToAirdEditorTest extends AbstractSiriusSwtBotGefTestCas
     @Test
     public void testDragAndDropModelFile() throws Exception {
         Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            // On some IC server this test is KO so we don't launch if the
+            // unreliable test must be skipped.
+            return;
+        }
         // open aird editor
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
 
@@ -121,8 +128,7 @@ public class DndWorkspaceToAirdEditorTest extends AbstractSiriusSwtBotGefTestCas
 
         bot.getDisplay().asyncExec(() -> {
             // compute drop point
-            Rectangle bounds = semanticAirdTree.widget.getBounds();
-            Point dropPoint = new Point(modelExplorerTree.widget.getBounds().width + bounds.width / 2, bounds.height);
+            Point dropPoint = Geometry.centerPoint(DragUtil.getDisplayBounds(semanticAirdTree.widget));
             // drag and drop
             sampleFile.select();
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -130,10 +136,12 @@ public class DndWorkspaceToAirdEditorTest extends AbstractSiriusSwtBotGefTestCas
         });
         bot.waitUntil(new DefaultCondition() {
 
+            @Override
             public boolean test() throws Exception {
                 return semanticAirdTree.getAllItems().length > modelNumber;
             }
 
+            @Override
             public String getFailureMessage() {
                 return "No model was added after the drag and drop.";
             }
