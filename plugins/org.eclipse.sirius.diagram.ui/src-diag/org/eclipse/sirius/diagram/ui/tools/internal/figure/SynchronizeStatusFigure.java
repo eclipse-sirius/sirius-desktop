@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
 
@@ -50,9 +51,14 @@ import com.google.common.collect.Lists;
 public class SynchronizeStatusFigure extends Ellipse {
 
     /**
-     * Border color of the notification figure when diagram is sync or unsync.
+     * Border color of the notification figure when diagram is sync.
      */
-    public static final RGB BORDER_COLOR_SYNC_UNSYNC_DIAG = new RGB(247, 226, 107);
+    public static final RGB BORDER_COLOR_SYNC_DIAG = new RGB(247, 226, 107);
+
+    /**
+     * Border color of the notification figure when diagram is unsync.
+     */
+    public static final RGB BORDER_COLOR_UNSYNC_DIAG = new RGB(247, 89, 18);
 
     private static final int DEFAULT_WIDTH = 25;
 
@@ -86,7 +92,6 @@ public class SynchronizeStatusFigure extends Ellipse {
         this.rootEditPart = rootEditPart;
         this.viewport = (Viewport) rootEditPart.getFigure();
         this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-        this.setLineWidth(3);
         this.setLayoutManager(new XYLayout());
         updateLocation();
 
@@ -96,12 +101,15 @@ public class SynchronizeStatusFigure extends Ellipse {
             Image image;
             boolean isSynchronized = diagram.get().isSynchronized();
             if (isSynchronized) {
-                this.setForegroundColor(DiagramColorRegistry.getInstance().getColor(BORDER_COLOR_SYNC_UNSYNC_DIAG));
+                this.setForegroundColor(DiagramColorRegistry.getInstance().getColor(BORDER_COLOR_SYNC_DIAG));
+                this.setLineWidth(3);
                 image = DiagramUIPlugin.getPlugin().getImage(SYNC_DIAG_IMAGE_DESCRIPTOR);
                 label = new Label((String) null, image);
                 label.setToolTip(new Label(Messages.SynchronizeStatusFigure_diagSynchronized));
             } else {
-                this.setForegroundColor(DiagramColorRegistry.getInstance().getColor(BORDER_COLOR_SYNC_UNSYNC_DIAG));
+                this.setForegroundColor(DiagramColorRegistry.getInstance().getColor(BORDER_COLOR_UNSYNC_DIAG));
+                this.setLineStyle(SWT.LINE_DASH);
+                this.setLineWidth(2);
                 image = DiagramUIPlugin.getPlugin().getImage(UNSYNC_DIAG_IMAGE_DESCRIPTOR);
                 label = new Label((String) null, image);
                 label.setToolTip(new Label(Messages.SynchronizeStatusFigure_diagUnsynchronized));
