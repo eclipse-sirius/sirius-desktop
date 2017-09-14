@@ -73,7 +73,12 @@ public enum SiriusDiagramUiPreferencesKeys {
      * 
      * Says if the decorations are printed.
      */
-    PREF_PRINT_DECORATION(boolean.class);
+    PREF_PRINT_DECORATION(boolean.class),
+
+    /**
+     * Says if the synchronize status decorator must be shown.
+     */
+    PREF_SHOW_SYNCHRONIZE_STATUS_DECORATOR(boolean.class);
 
     /** The type of the preference. */
     private Class<?> type;

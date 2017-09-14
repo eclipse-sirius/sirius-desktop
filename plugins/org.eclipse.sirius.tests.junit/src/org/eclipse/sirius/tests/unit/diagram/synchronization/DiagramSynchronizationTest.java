@@ -11,16 +11,22 @@
 package org.eclipse.sirius.tests.unit.diagram.synchronization;
 
 import java.lang.reflect.Field;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.gef.RootEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.SubStatusLineManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.SynchronizeStatusFigure;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -162,6 +168,57 @@ public class DiagramSynchronizationTest extends SiriusDiagramTestCase {
         // Close of the editor
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();
+    }
+
+    /**
+     * Check the synchronize status decorator according to the diagram
+     * synchronize status and the preference to display it (or not).
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testSynchronizeStatusDecorator() throws Exception {
+        // Change preference to display decorator
+        changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_SHOW_SYNCHRONIZE_STATUS_DECORATOR.name(), Boolean.TRUE);
+        // Create a new diagram and open it
+        initViewpoint(VIEWPOINT_NAME);
+        DDiagram diagram = (DDiagram) createRepresentation(REPRESENTATION_DESC_NAME, semanticModel);
+        IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        // Check the decorator
+        Optional<SynchronizeStatusFigure> syncStatusDecorator = getDiagramSynchronizeStatusFigure(editor);
+        assertTrue("The diagram synchronize status decorator is not displayed.", syncStatusDecorator.isPresent());
+        assertEquals("Wrong color for decorator icon.", SynchronizeStatusFigure.BORDER_COLOR_SYNC_DIAG, syncStatusDecorator.get().getForegroundColor().getRGB());
+        // Change status and check that decorator has been changed
+        assertTrue("Error while toggling synchronization mode.", setDDiagramAttribute(session.getTransactionalEditingDomain(), diagram, "synchronized", false));
+        syncStatusDecorator = getDiagramSynchronizeStatusFigure(editor);
+        assertEquals("Wrong color for decorator icon.", SynchronizeStatusFigure.BORDER_COLOR_UNSYNC_DIAG, syncStatusDecorator.get().getForegroundColor().getRGB());
+
+        // Close of the editor
+        DialectUIManager.INSTANCE.closeEditor(editor, false);
+        TestsUtil.synchronizationWithUIThread();
+        // Reset preference to not display decorator
+        resetDiagramUiPreference(SiriusDiagramUiPreferencesKeys.PREF_SHOW_SYNCHRONIZE_STATUS_DECORATOR.name());
+        // Open the editor
+        editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        // Check that the decorator is not here
+        assertFalse("The diagram synchronize status decorator is displayed.", getDiagramSynchronizeStatusFigure(editor).isPresent());
+    }
+
+    /**
+     * Returns the diagram sync status figure (if any).
+     * 
+     * @param editor
+     *            the editor to test
+     * @return an optional diagram sync figure (if any)
+     */
+    public Optional<SynchronizeStatusFigure> getDiagramSynchronizeStatusFigure(IEditorPart editor) {
+        assertTrue("The editor is expected to be a DiagramEditor.", editor instanceof DiagramEditor);
+        DiagramEditor diagramEditor = (DiagramEditor) editor;
+        RootEditPart rootEditPart = diagramEditor.getDiagramGraphicalViewer().getRootEditPart();
+        assertTrue("The root editpart is expected to be a DiagramRootEditPart.", rootEditPart instanceof DiagramRootEditPart);
+        return SynchronizeStatusFigure.getDiagramSynchronizeStatusFigure((DiagramRootEditPart) rootEditPart);
     }
 
     /**
