@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,19 +10,27 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.tools;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.business.api.helper.task.IModelOperationManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.impl.ModelOperationImpl;
 
 /**
  * Create view tool tests for Entities diagram of ecore modeler.
@@ -100,10 +108,9 @@ public class CreateNodeViewTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Call a tool that creates a view for a bordered node mapping on a List
-     * then ensure that the created element is a {@link DNode} and not a
-     * {@link DNodeListElement}. This test must be made in manual refresh mode.
-     * This test is for the issue VP-3794.
+     * Call a tool that creates a view for a bordered node mapping on a List then ensure that the created element is a
+     * {@link DNode} and not a {@link DNodeListElement}. This test must be made in manual refresh mode. This test is for
+     * the issue VP-3794.
      */
     public void testBorderedNodeViewOnListCreation() {
         // We should be in manual refresh for this test.
@@ -128,6 +135,32 @@ public class CreateNodeViewTest extends SiriusDiagramTestCase {
         assertNotNull("A DNode should be created for the new class.", nodeElementNewClass);
     }
 
+    /**
+     * Test that applying a tool with a missing {@link IModelOperationManager} (because of a missing plugin at runtime
+     * for instance) is not possible. This test adds a new ModelOperation in the tool description. This ModelOperation
+     * has no corresponding IModelOperationManager.
+     */
+    public void testUnexecutableToolWithMissingModelOperation() {
+
+        EPackage ePackage = (EPackage) semanticModel;
+        EPackage p2 = (EPackage) findElementByName(ePackage, "p2");
+        DDiagramElement nodeElement = getFirstDiagramElement(diagram, p2);
+        NodeCreationDescription tool = configureTool();
+        boolean applyNodeCreationTool = true;
+        final Command command = getCommand(nodeElement, tool);
+        applyNodeCreationTool = command.canExecute();
+        assertFalse("The unexecutableTool should not be executable since the properties view plugins are missing", applyNodeCreationTool);
+    }
+
+    private NodeCreationDescription configureTool() {
+        NodeCreationDescription tool = (NodeCreationDescription) getTool(diagram, "unexecutableTool");
+        ContainerModelOperation createInstance = (ContainerModelOperation) tool.getInitialOperation().getFirstModelOperations();
+        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(createInstance);
+        // We modify the tool by adding an "UnknownModelOperation"
+        domain.getCommandStack().execute(new AddCommand(domain, createInstance.getSubModelOperations(), new UnknownModelOperation()));
+        return tool;
+    }
+
     public ENamedElement findElementByName(final ENamedElement root, final String name) {
         if (root.getName().equals(name)) {
             return root;
@@ -149,5 +182,9 @@ public class CreateNodeViewTest extends SiriusDiagramTestCase {
         diagram = null;
 
         super.tearDown();
+    }
+
+    private class UnknownModelOperation extends ModelOperationImpl {
+
     }
 }
