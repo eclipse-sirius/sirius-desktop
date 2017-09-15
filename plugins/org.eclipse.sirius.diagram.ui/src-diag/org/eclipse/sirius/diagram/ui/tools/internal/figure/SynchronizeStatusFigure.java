@@ -124,14 +124,17 @@ public class SynchronizeStatusFigure extends Ellipse {
     }
 
     private void updateLocation() {
-        Point viewLocation = viewport.getViewLocation().getCopy();
         Dimension viewDimension = viewport.getSize().getCopy();
-        viewLocation.translate(viewDimension.preciseWidth(), viewDimension.preciseHeight());
-        viewLocation.translate(this.getSize().getNegated());
+        if (viewDimension.width() != 0 && viewDimension.height() != 0) {
+            // If the dimension of the diagram is {0, 0}, the diagram is not yet initialized so we don't compute
+            // location (it would be {-25, -25}).
+            Point viewLocation = viewport.getViewLocation().getCopy();
+            viewLocation.translate(viewDimension.preciseWidth(), viewDimension.preciseHeight());
+            viewLocation.translate(this.getSize().getNegated());
 
-        viewLocation.performScale(1.0d / rootEditPart.getZoomManager().getZoom());
-
-        this.setLocation(new Point(viewLocation.x, viewLocation.y));
+            viewLocation.performScale(1.0d / rootEditPart.getZoomManager().getZoom());
+            this.setLocation(new Point(viewLocation.x, viewLocation.y));
+        }
     }
 
     @Override
