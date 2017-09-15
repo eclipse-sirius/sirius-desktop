@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryRegistryImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.Iterators;
@@ -76,6 +77,11 @@ public class Session1MillionTests extends SiriusDiagramTestCase {
      * @throws Exception
      */
     public void testSessionCreationTime() throws Exception {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            // On some IC server the time is very variable and exceeds the
+            // expected time.
+            return;
+        }
         Stopwatch openingtimer = Stopwatch.createStarted();
         createAndOpenSession();
         openingtimer.stop();
