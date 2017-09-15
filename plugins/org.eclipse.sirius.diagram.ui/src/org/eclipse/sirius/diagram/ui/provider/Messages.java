@@ -402,6 +402,9 @@ public final class Messages {
     public static String DiagramGeneralPreferencePage_removeHideNoteLabel;
 
     @TranslatableMessage
+    public static String DiagramGeneralPreferencePage_showSynchronizeStatusDecoratorLabel;
+
+    @TranslatableMessage
     public static String DiagramGeneralPreferencePage_synchronizedModeLabel;
 
     @TranslatableMessage
