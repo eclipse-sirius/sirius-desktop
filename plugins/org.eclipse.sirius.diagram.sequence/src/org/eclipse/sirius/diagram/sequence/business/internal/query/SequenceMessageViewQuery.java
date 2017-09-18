@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.query;
 
+import org.eclipse.gmf.runtime.notation.Anchor;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -51,8 +52,7 @@ public class SequenceMessageViewQuery {
     }
 
     /**
-     * Tests whether this a reflective message, i.e. both its source and target
-     * are in the context of the same lifeline.
+     * Tests whether this a reflective message, i.e. both its source and target are in the context of the same lifeline.
      * 
      * @return <code>true</code> if this message is reflective.
      */
@@ -130,13 +130,12 @@ public class SequenceMessageViewQuery {
     }
 
     /**
-     * Use only to check stability. Returns the vertical range of the message
-     * calculated with anchor position from source or from target.
+     * Use only to check stability. Returns the vertical range of the message calculated with anchor position from
+     * source or from target.
      * 
      * @param source
      *            anchor selection for range computation.
-     * @return the vertical range of the message from source or target, as
-     *         requested.
+     * @return the vertical range of the message from source or target, as requested.
      */
     public Range getVerticalRange(boolean source) {
         Range result;
@@ -152,14 +151,12 @@ public class SequenceMessageViewQuery {
     }
 
     /**
-     * FIXME this workaround should be remove when business rules will be move from
-     * sequence ui to sequence core. This workaround is needed when dropping an
-     * execution on messages that will be reconnected.
+     * FIXME this workaround should be remove when business rules will be move from sequence ui to sequence core. This
+     * workaround is needed when dropping an execution on messages that will be reconnected.
      * 
      * @param firstY
      *            the vertical position of the first bendpoint
-     * @return if the range should be calculated with the other end of the
-     *         message.
+     * @return if the range should be calculated with the other end of the message.
      */
     private boolean validateFirstPointStability(int firstY) {
         // if (getSource() instanceof ISequenceEvent) {
@@ -247,10 +244,18 @@ public class SequenceMessageViewQuery {
      * @return .
      */
     public int getSourceAnchorVerticalPosition() {
-        IdentityAnchor srcAnchor = (IdentityAnchor) edge.getSourceAnchor();
-        Range sourceRange = new SequenceNodeQuery((Node) edge.getSource()).getVerticalRange();
+        IdentityAnchor srcAnchor = null;
+        Anchor sourceAnchor = edge.getSourceAnchor();
+        if (sourceAnchor instanceof IdentityAnchor) {
+            srcAnchor = (IdentityAnchor) sourceAnchor;
+        }
+        View source = edge.getSource();
+        Range sourceRange = new Range(0, 0);
+        if (source instanceof Node) {
+            sourceRange = new SequenceNodeQuery((Node) source).getVerticalRange();
+        }
         return getAnchorAbsolutePosition(srcAnchor, sourceRange);
-        // could not return 0 : other utility methode take 0,5 precision point
+        // could not return 0 : other utility method take 0,5 precision point
         // for null anchor.
         // return 0;
     }
@@ -261,13 +266,18 @@ public class SequenceMessageViewQuery {
      * @return target anchor absolute position.
      */
     public int getTargetAnchorVerticalPosition() {
-        IdentityAnchor tgtAnchor = (IdentityAnchor) edge.getTargetAnchor();
-        if (edge.getTarget() instanceof Node) {
-            Range targetRange = new SequenceNodeQuery((Node) edge.getTarget()).getVerticalRange();
+        IdentityAnchor tgtAnchor = null;
+        Anchor targetAnchor = edge.getTargetAnchor();
+        if (targetAnchor instanceof IdentityAnchor) {
+            tgtAnchor = (IdentityAnchor) targetAnchor;
+        }
+        View target = edge.getTarget();
+        if (target instanceof Node) {
+            Range targetRange = new SequenceNodeQuery((Node) target).getVerticalRange();
             return getAnchorAbsolutePosition(tgtAnchor, targetRange);
         }
         return getSourceAnchorVerticalPosition();
-        // could not return 0 : other utility methode take 0,5 precision point
+        // could not return 0 : other utility method take 0,5 precision point
         // for null anchor.
         // return 0;
     }

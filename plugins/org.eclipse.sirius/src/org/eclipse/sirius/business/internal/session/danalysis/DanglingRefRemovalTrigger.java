@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2016 Obeo.
+ * Copyright (c) 2014, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -257,7 +257,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
                     for (EObject root : getNotificationValues(notification)) {
                         // Add the element and all its contents to the
                         // changedEObjects set only once.
-                        if (!changedEObjects.contains(root)) {
+                        if (!root.eIsProxy() && !changedEObjects.contains(root)) {
                             changedEObjects.add(root);
                             Iterators.addAll(changedEObjects, root.eAllContents());
                         }
