@@ -24,44 +24,36 @@ public enum SiriusDiagramUiPreferencesKeys {
     PREF_OLD_UI(boolean.class),
 
     /**
-     * Indicates if diagram editors should display messages using pop-up or
-     * notification figures. See
-     * {@link org.eclipse.sirius.diagram.tools.internal.editor.DiagramDialectEditorDialogFactory}
-     * for more details.
+     * Indicates if diagram editors should display messages using pop-up or notification figures. See
+     * {@link org.eclipse.sirius.diagram.tools.internal.editor.DiagramDialectEditorDialogFactory} for more details.
      * 
      * @since 0.9.0
      */
     PREF_DIAGRAM_SHOULD_DISPLAY_MESSAGES_USING_POP_UPS(boolean.class),
 
     /**
-     * Says whether icons of the labels on diagram shapes should be hidden or
-     * not.
+     * Says whether icons of the labels on diagram shapes should be hidden or not.
      */
     PREF_HIDE_LABEL_ICONS_ON_SHAPES(boolean.class),
 
     /**
-     * Says whether icons of the labels on diagram connectors should be hidden
-     * or not.
+     * Says whether icons of the labels on diagram connectors should be hidden or not.
      */
     PREF_HIDE_LABEL_ICONS_ON_CONNECTORS(boolean.class),
 
     /**
-     * Says whether decorators (validation, lock statuses...) should be
-     * refreshed:
+     * Says whether decorators (validation, lock statuses...) should be refreshed:
      * <ul>
-     * <li>Synchronously: whenever a modification is performed, all decorators
-     * must be refreshed before the user can make any other modification (
-     * <b>Warning:</b> this can have severe impacts on performances)</li>
-     * <li>Asynchronously: whenever a modification is performed, all decorators
-     * are refreshed without blocking the end-user (he can make other
-     * modifications even if there are still non-updated decorators).</li>
+     * <li>Synchronously: whenever a modification is performed, all decorators must be refreshed before the user can
+     * make any other modification ( <b>Warning:</b> this can have severe impacts on performances)</li>
+     * <li>Asynchronously: whenever a modification is performed, all decorators are refreshed without blocking the
+     * end-user (he can make other modifications even if there are still non-updated decorators).</li>
      * </ul>
      */
     PREF_REFRESH_DECORATORS_SYNCHRONOUSLY(boolean.class),
 
     /**
-     * Says whether a link between edge and its labels must be show on edge or
-     * label selection.
+     * Says whether a link between edge and its labels must be show on edge or label selection.
      */
     PREF_SHOW_LINK_EDGE_LABEL_ON_SELECTION(boolean.class),
     /**
@@ -78,7 +70,23 @@ public enum SiriusDiagramUiPreferencesKeys {
     /**
      * Says if the synchronize status decorator must be shown.
      */
-    PREF_SHOW_SYNCHRONIZE_STATUS_DECORATOR(boolean.class);
+    PREF_SHOW_SYNCHRONIZE_STATUS_DECORATOR(boolean.class),
+
+    /**
+     * Indicates if by default exported diagrams are automatically scaled (instead of being export at 100% zoom level).
+     */
+    PREF_SCALE_DIAGRAMS_ON_EXPORT(boolean.class),
+
+    /**
+     * Maximum size (in pixels) of the image buffer used to render the diagrams.
+     */
+    PREF_MAXIMUM_EXPORT_BUFFER_SIZE(int.class),
+
+    /**
+     * Maximum size (in pixels) of the image buffer used to render the diagrams under Windows (which safely supports
+     * larger buffers).
+     */
+    PREF_MAXIMUM_EXPORT_BUFFER_SIZE_WINDOWS(int.class);
 
     /** The type of the preference. */
     private Class<?> type;

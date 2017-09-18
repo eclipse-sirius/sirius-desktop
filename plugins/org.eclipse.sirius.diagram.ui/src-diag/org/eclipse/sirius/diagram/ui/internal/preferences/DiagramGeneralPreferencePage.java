@@ -24,65 +24,37 @@ import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiI
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
 /**
- * @was-generated
+ * Defines the main "Sirius > Sirius Diagram" preferences page.
  */
 public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
 
-    private BooleanFieldEditor autosizeOnArrangeAll;
-
     private BooleanFieldEditor moveUnlinkedNotesDuringLayout;
-
-    private BooleanFieldEditor autoPinOnMove;
 
     private BooleanFieldEditor synchronizeOnDiagramCreation;
 
-    private BooleanFieldEditor showSynchronizeStatusDecorator;
-
-    private BooleanFieldEditor removeHideNoteWhenAnnotatedElementRemovedHidden;
-
-    /**
-     * @was-generated
-     */
     public DiagramGeneralPreferencePage() {
         setPreferenceStore(DiagramUIPlugin.getPlugin().getPreferenceStore());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.preference.FieldEditorPreferencePage#createFieldEditors()
-     */
     @Override
     protected void createFieldEditors() {
         super.createFieldEditors();
-
-        autosizeOnArrangeAll = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), Messages.DiagramGeneralPreferencePage_arrangeAndAutoSizeContainersLabel,
-                getFieldEditorParent());
-        addField(autosizeOnArrangeAll);
-
-        moveUnlinkedNotesDuringLayout = new BooleanFieldEditor(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), Messages.DiagramGeneralPreferencePage_moveUnlinkedNodeLabel, getFieldEditorParent());
-        addField(moveUnlinkedNotesDuringLayout);
-
-        autoPinOnMove = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name(), Messages.DiagramGeneralPreferencePage_pinMovedElementsLabel, getFieldEditorParent());
-        addField(autoPinOnMove);
-
-        synchronizeOnDiagramCreation = new BooleanFieldEditor(SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), Messages.DiagramGeneralPreferencePage_synchronizedModeLabel,
-                getFieldEditorParent());
-        addField(synchronizeOnDiagramCreation);
-
-
-        showSynchronizeStatusDecorator = new BooleanFieldEditor(SiriusDiagramUiPreferencesKeys.PREF_SHOW_SYNCHRONIZE_STATUS_DECORATOR.name(),
-                Messages.DiagramGeneralPreferencePage_showSynchronizeStatusDecoratorLabel, getFieldEditorParent());
-        addField(showSynchronizeStatusDecorator);
-
-        removeHideNoteWhenAnnotatedElementRemovedHidden = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name(),
-                Messages.DiagramGeneralPreferencePage_removeHideNoteLabel, getFieldEditorParent());
-        addField(removeHideNoteWhenAnnotatedElementRemovedHidden);
+        addBooleanPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), Messages.DiagramGeneralPreferencePage_arrangeAndAutoSizeContainersLabel);
+        moveUnlinkedNotesDuringLayout = addBooleanPreference(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), Messages.DiagramGeneralPreferencePage_moveUnlinkedNodeLabel);
+        addBooleanPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name(), Messages.DiagramGeneralPreferencePage_pinMovedElementsLabel);
+        synchronizeOnDiagramCreation = addBooleanPreference(SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(),
+                Messages.DiagramGeneralPreferencePage_synchronizedModeLabel);
+        addBooleanPreference(SiriusDiagramUiPreferencesKeys.PREF_SHOW_SYNCHRONIZE_STATUS_DECORATOR.name(), Messages.DiagramGeneralPreferencePage_showSynchronizeStatusDecoratorLabel);
+        addBooleanPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name(), Messages.DiagramGeneralPreferencePage_removeHideNoteLabel);
+        addBooleanPreference(SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT.name(), Messages.DiagramGeneralPreferencePage_scaleDiagramOnExport);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    private BooleanFieldEditor addBooleanPreference(String key, String label) {
+        BooleanFieldEditor fieldEditor = new BooleanFieldEditor(key, label, getFieldEditorParent());
+        addField(fieldEditor);
+        return fieldEditor;
+    }
+
     @Override
     protected void initialize() {
         super.initialize();
@@ -103,5 +75,8 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
         preferenceStore.setDefault(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name(), true);
         preferenceStore.setDefault(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name(), true);
         preferenceStore.setDefault(SiriusDiagramUiPreferencesKeys.PREF_SHOW_SYNCHRONIZE_STATUS_DECORATOR.name(), false);
+        preferenceStore.setDefault(SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT.name(), true);
+        preferenceStore.setDefault(SiriusDiagramUiPreferencesKeys.PREF_MAXIMUM_EXPORT_BUFFER_SIZE.name(), 4125000);
+        preferenceStore.setDefault(SiriusDiagramUiPreferencesKeys.PREF_MAXIMUM_EXPORT_BUFFER_SIZE_WINDOWS.name(), 50000000);
     }
 }

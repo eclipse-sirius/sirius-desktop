@@ -79,6 +79,7 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
                 final ImageFileFormat imageFormat = dialog.getImageFormat();
                 final boolean exportToHtml = dialog.isExportToHtml();
                 final boolean exportDecorations = dialog.isExportDecorations();
+                final boolean autoScale = dialog.isAutoScaleDiagram();
 
                 IRunnableWithProgress exportAllRepresentationsRunnable = new WorkspaceModifyOperation() {
 
@@ -92,6 +93,7 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
 
                             if (session != null) {
                                 ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml, exportDecorations);
+                                exportAction.setAutoScaleDiagram(autoScale);
                                 exportAction.run(new SubProgressMonitor(monitor, 7));
                             }
                         } finally {

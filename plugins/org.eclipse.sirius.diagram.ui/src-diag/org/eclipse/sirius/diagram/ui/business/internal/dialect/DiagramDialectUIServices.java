@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.business.internal.dialect;
 import java.io.File;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -88,6 +89,7 @@ import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
+import org.eclipse.sirius.diagram.ui.business.api.DiagramExportResult;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.command.CreateAndStoreGMFDiagramCommand;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
@@ -96,6 +98,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.decoration.SiriusDecoratorProvider;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
@@ -104,6 +107,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
+import org.eclipse.sirius.ui.business.api.dialect.ExportResult;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
@@ -143,9 +147,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
      */
     public static final String REFRESH_DIAGRAM = Messages.DiagramDialectUIServices_refreshDiagram;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public IEditorPart openEditor(Session session, DRepresentation dRepresentation, IProgressMonitor monitor) {
         DialectEditor result = null;
@@ -277,22 +278,11 @@ public class DiagramDialectUIServices implements DialectUIServices {
         canonicalSynchronizer.synchronize();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandleEditor(org.eclipse.ui.IEditorPart)
-     */
     @Override
     public boolean canHandleEditor(final IEditorPart editorPart) {
         return editorPart instanceof DiagramDocumentEditor;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#closeEditor(org.eclipse.ui.IEditorPart,
-     *      boolean)
-     */
     @Override
     public boolean closeEditor(final IEditorPart editorPart, final boolean save) {
         boolean result = false;
@@ -322,10 +312,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return result;
     }
 
-    /**
-     *
-     * {@inheritDoc}
-     */
     @Override
     public Collection<CommandParameter> provideNewChildDescriptors() {
         final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
@@ -333,10 +319,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return newChilds;
     }
 
-    /**
-     *
-     * {@inheritDoc}
-     */
     @Override
     public Collection<CommandParameter> provideRepresentationCreationToolDescriptors(final Object feature) {
         final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
@@ -344,10 +326,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return newChilds;
     }
 
-    /**
-     *
-     * {@inheritDoc}
-     */
     @Override
     public Collection<CommandParameter> provideRepresentationNavigationToolDescriptors(final Object feature) {
         final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
@@ -355,10 +333,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return newChilds;
     }
 
-    /**
-     *
-     * {@inheritDoc}
-     */
     @Override
     public AdapterFactory createAdapterFactory() {
         final ComposedAdapterFactory factory = new ComposedAdapterFactory();
@@ -377,12 +351,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return factory;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.viewpoint.DRepresentation,
-     *      org.eclipse.ui.IEditorPart)
-     */
     @Override
     public boolean isRepresentationManagedByEditor(final DRepresentation representation, final IEditorPart editorPart) {
         boolean isRepresentationManagedByEditor = false;
@@ -399,13 +367,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return isRepresentationManagedByEditor;
     }
 
-    // FXIME unit test this
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
-     *      org.eclipse.ui.IEditorPart)
-     */
     @Override
     public boolean isRepresentationDescriptionManagedByEditor(final RepresentationDescription representationDescription, final IEditorPart editor) {
         if (editor instanceof DiagramDocumentEditor) {
@@ -420,11 +381,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
-     */
     @Override
     public boolean canHandle(final DRepresentation representation) {
         return representation instanceof DSemanticDiagram;
@@ -435,30 +391,16 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return repDescriptor.getDescription() instanceof DiagramDescription;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
-     */
     @Override
     public boolean canHandle(final RepresentationDescription description) {
         return description instanceof DiagramDescription;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
-     *      )
-     */
     @Override
     public boolean canHandle(final RepresentationExtensionDescription description) {
         return description instanceof DiagramExtensionDescription;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean canExport(ExportFormat format) {
         if (format.getDocumentFormat().equals(ExportDocumentFormat.NONE) || (format.getDocumentFormat().equals(ExportDocumentFormat.HTML) && DiagramEditPartService.canExportToHtml())) {
@@ -468,12 +410,12 @@ public class DiagramDialectUIServices implements DialectUIServices {
     }
 
     @Override
-    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
-        export(representation, session, path, format, monitor, true);
+    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
+        return export(representation, session, path, format, monitor, true);
     }
 
     @Override
-    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
+    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
             throws SizeTooLargeException {
 
         final boolean exportToHtml = exportToHtml(format);
@@ -482,7 +424,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
         final Shell shell = new Shell();
         try {
-
+            DiagramExportResult result = null;
             final Collection<EObject> data = session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, representation);
             for (final EObject dataElement : data) {
                 if (dataElement instanceof Diagram) {
@@ -490,6 +432,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                     synchronizeDiagram(diagram);
 
                     final DiagramEditPartService tool = new DiagramEditPartService();
+                    configureScalingPolicy(tool, format.getScalingPolicy());
                     if (exportToHtml) {
                         tool.exportToHtml();
                     }
@@ -518,6 +461,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
                         /* do the effective export */
                         tool.copyToImage(diagramEditPart, correctPath, ImageFileFormat.resolveImageFormat(imageFileExtension), monitor);
+                        result = new DiagramExportResult((DDiagram) representation, tool.getScalingFactor(), new HashSet<>(Arrays.asList(path, correctPath)));
 
                         // We finally ensure that the image has been created
                         if (!new File(correctPath.toOSString()).exists()) {
@@ -554,9 +498,30 @@ public class DiagramDialectUIServices implements DialectUIServices {
                     }
                 }
             }
-
+            return result;
         } finally {
             disposeShell(shell);
+        }
+    }
+
+    private void configureScalingPolicy(DiagramEditPartService tool, ExportFormat.ScalingPolicy policy) {
+        switch (policy) {
+        case AUTO_SCALING:
+            tool.setAutoScalingEnabled(true);
+            break;
+        case NO_SCALING:
+            tool.setAutoScalingEnabled(false);
+            break;
+        case WORKSPACE_DEFAULT:
+            boolean workspaceDefault = DiagramUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT.name());
+            tool.setAutoScalingEnabled(workspaceDefault);
+            break;
+        case AUTO_SCALING_IF_LARGER:
+            tool.setAutoScalingEnabled(true);
+            tool.setAllowDownScaling(false);
+            break;
+        default:
+            throw new UnsupportedOperationException();
         }
     }
 
@@ -606,11 +571,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getEditorName(org.eclipse.sirius.viewpoint.DRepresentation)
-     */
     @Override
     public String getEditorName(final DRepresentation representation) {
         String editorName = representation.getName();
@@ -620,9 +580,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return editorName;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<CommandParameter> provideTools(EObject context) {
         Collection<CommandParameter> toolsParameters = Lists.newArrayList();
@@ -635,9 +592,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return toolsParameters;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<CommandParameter> provideAdditionalMappings(EObject context) {
         Collection<CommandParameter> mappings = Lists.newArrayList();
@@ -650,20 +604,11 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return mappings;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getHierarchyLabelProvider(ILabelProvider)
-     *
-     */
     @Override
     public ILabelProvider getHierarchyLabelProvider(ILabelProvider currentLabelProvider) {
         return new HierarchyLabelProvider(currentLabelProvider);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
         setSelection(dialectEditor, selection, false);
@@ -700,11 +645,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getSelection(org.eclipse.sirius.ui.business.api.dialect.DialectEditor)
-     */
     @Override
     public Collection<DSemanticDecorator> getSelection(DialectEditor editor) {
         Collection<DSemanticDecorator> selection = Sets.newLinkedHashSet();
@@ -760,12 +700,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return found;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String, EObject,
-     *      EStructuralFeature)
-     */
     @Override
     public String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature) {
         String toolTip = toolTipText;

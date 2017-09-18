@@ -442,7 +442,12 @@ If you do not specify the file extension, the extension is determined from the s
 If you enter a path with an unsupported extension the file path is created with the wrong extension with selected extension in image format append to.
 	
 	!images/diagram_export_wrong_extension.png!
-	
+
+Three checkboxes are available to customize the export:
+* _Export decorations_: if checked, some decorations which can appear in diagram elements and are declared as transient in the modeler definition (for example validation errors) are exported in the image.
+* _Export to HTLM_: if checked, the export will produce a @.html@ file which references the exported image in addition to the image file itself.
+* _Auto-scale_: if checked, the exported diagram will be scaled to the maximum possible size (limited by system-specific limitations) while keeping its aspect ratio. This can produce higher resolution images (but also larger files).
+
 _*Note:*_ Due to some technical limitations, not all export format support all the features of diagrams. For example, exporting to PNG files will not show gradients on diagram elements. The JPG format is the one which currently produces the best result in terms of fidelity to what you see in the diagram editors. 
 
 h3. Batch images export
@@ -988,6 +993,7 @@ The illustration above shows the default value of all these preferences.
 * %(#synchronized_preference)_Synchronized mode for new diagrams:_% If checked, all newly created diagrams will initially be in "synchronized":#synchronized_diagram mode. You can still change the mode manually after the diagram is created.
 * %(#show_sync_decorator)_Show synchronize status decorator on diagram:_% If checked, a decorator in the bottom-right corner of the diagram is displayed to show the "synchronize":#synchronized_diagram status of the diagram. A value change of this preference will be applied on the next status changed for already opened diagrams.
 * _Remove/hide note when the annotated element is removed/hidden:_ If checked, then notes attached to a diagram element will be deleted if the element is deleted, or hidden if the element is hidden.
+* _Auto-scale when exporting as image_: determines the default behavior when exporting diagrams programmatically, and the initial value of the corresponding checkbox in the _Export as image_ dialog.
 
 h3. Appearance
 

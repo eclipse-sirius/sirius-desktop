@@ -65,6 +65,11 @@ public class ExportAction extends WorkspaceModifyOperation {
     private boolean exportDecorations;
 
     /**
+     * Indicates if diagrams should be scaled on export.
+     */
+    private boolean autoScaleDiagram;
+
+    /**
      * Default constructor.
      *
      * @param session
@@ -87,6 +92,16 @@ public class ExportAction extends WorkspaceModifyOperation {
         this.imageFormat = imageFormat;
         this.exportToHtml = exportToHtml;
         this.exportDecorations = exportDecorations;
+    }
+
+    /**
+     * Sets the auto-scaling mode.
+     * 
+     * @param autoScaleDiagram
+     *            <code>true</code> if the exported diagram should be automatically scaled.
+     */
+    public void setAutoScaleDiagram(boolean autoScaleDiagram) {
+        this.autoScaleDiagram = autoScaleDiagram;
     }
 
     /**
@@ -132,7 +147,8 @@ public class ExportAction extends WorkspaceModifyOperation {
         final List<IAfterExport> afterContributors = EclipseUtil.getExtensionPlugins(IAfterExport.class, IExportRepresentationsAsImagesExtension.ID,
                 IExportRepresentationsAsImagesExtension.CLASS_ATTRIBUTE);
 
-        ExportFormat exportFormat = new ExportFormat(exportToHtml ? ExportDocumentFormat.HTML : ExportDocumentFormat.NONE, imageFormat);
+        ExportFormat.ScalingPolicy scalingPolicy = this.autoScaleDiagram ? ExportFormat.ScalingPolicy.AUTO_SCALING : ExportFormat.ScalingPolicy.NO_SCALING;
+        ExportFormat exportFormat = new ExportFormat(exportToHtml ? ExportDocumentFormat.HTML : ExportDocumentFormat.NONE, imageFormat, scalingPolicy);
         final String imageFileExtension = exportFormat.getImageFormat().getName().toLowerCase();
 
         /*

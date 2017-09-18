@@ -54,6 +54,7 @@ import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
+import org.eclipse.sirius.ui.business.api.dialect.ExportResult;
 import org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -75,7 +76,7 @@ import com.google.common.collect.Sets;
 
 /**
  * Implementation of the UI services for the tree dialect.
- * 
+ *
  * @author pcdavid
  */
 public class TreeDialectUIServices implements DialectUIServices {
@@ -203,8 +204,9 @@ public class TreeDialectUIServices implements DialectUIServices {
     }
 
     @Override
-    public void export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) {
+    public ExportResult export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) {
         // Nothing to do for trees.
+        return new ExportResult(representation, Collections.emptySet());
     }
 
     @Override
@@ -286,7 +288,7 @@ public class TreeDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String, EObject)
      * @deprecated this method has not access to the feature of eObject. This is supported in
      *             org.eclipse.sirius.tree.ui.business.internal.dialect

@@ -52,6 +52,16 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     public static final String FILE_SEPARATOR_ALTERNATIVE = "_"; //$NON-NLS-1$
 
     /**
+     * The id for the persistent settings for this dialog.
+     */
+    public static final String DIALOG_SETTINGS_ID = "ExportRepresentationsAsImagesDialog"; //$NON-NLS-1$
+    
+    /**
+     * The setting property key used to configure the dialog's initial value for the "Auto-Scale" checkbox.
+     */
+    public static final String AUTO_SCALE_SETTING_PROPERTY = "autoScaleDiagram"; //$NON-NLS-1$
+
+    /**
      * Default extension image.
      */
     protected static final ImageFileFormat DEFAULT_VALUE = ImageFileFormat.JPG;
@@ -96,10 +106,6 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
      */
     protected static final String FOLDER_NOT_EXIST_MESSAGE = Messages.AbstractExportRepresentationsAsImagesDialog_folderDoesNotExist;
 
-    /**
-     * The id for the persistent settings for this dialog.
-     */
-    private static final String DIALOG_SETTINGS_ID = "ExportRepresentationsAsImagesDialog"; //$NON-NLS-1$
 
     /**
      * Combo length history path.
@@ -152,6 +158,11 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     private boolean exportDecorations;
 
     /**
+     * <code>true</code> if the user wants diagrams to be scaled on export.
+     */
+    private boolean autoScaleDiagram;
+
+    /**
      * Creates an instance of the copy to image dialog.
      * 
      * @param shell
@@ -162,6 +173,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     public AbstractExportRepresentationsAsImagesDialog(final Shell shell, final IPath path) {
         super(shell);
         initDialogSettings(path);
+        this.autoScaleDiagram = getDialogSettings().getBoolean(AUTO_SCALE_SETTING_PROPERTY);
     }
 
     /**
@@ -217,6 +229,15 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
      */
     public boolean isExportDecorations() {
         return exportDecorations;
+    }
+
+    /**
+     * Check if the user chose to auto-scale exported diagrams.
+     * 
+     * @return <code>true</code> if the user asked for diagram auto-scaling.
+     */
+    public boolean isAutoScaleDiagram() {
+        return autoScaleDiagram;
     }
 
     /**
@@ -378,6 +399,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
         if (DialectUIManager.INSTANCE.canExport(new ExportFormat(ExportDocumentFormat.HTML, null))) {
             createGenerateHTMLGroup(composite);
         }
+        createAutoScaleGroup(composite);
         createMessageGroup(composite);
         initListeners();
         return composite;
@@ -452,6 +474,21 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
         });
     }
 
+    private void createAutoScaleGroup(Composite parent) {
+        Composite composite = SWTUtil.createCompositeHorizontalFill(parent, 1, false);
+        final Button autoScaleDiagramCheckBox = new Button(composite, SWT.CHECK | SWT.LEFT);
+        autoScaleDiagramCheckBox.setText(Messages.AbstractExportRepresentationsAsImagesDialog_autoScaleDiagram);
+        GridData data = new GridData(GridData.FILL, 0, true, false);
+        autoScaleDiagramCheckBox.setLayoutData(data);
+        autoScaleDiagramCheckBox.setSelection(this.autoScaleDiagram);
+        autoScaleDiagramCheckBox.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent event) {
+                autoScaleDiagram = autoScaleDiagramCheckBox.getSelection();
+            }
+        });
+    }
+    
     /**
      * Create the message group in the dialog used to display error messages.
      * 

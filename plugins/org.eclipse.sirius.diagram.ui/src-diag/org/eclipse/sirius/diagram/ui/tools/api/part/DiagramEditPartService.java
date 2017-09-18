@@ -47,11 +47,13 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.OffscreenEditPartFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusDiagramImageGenerator;
 import org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusDiagramSVGGenerator;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
@@ -60,12 +62,9 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Shell;
 
 /**
- * Utility class to render a diagram to an image file (with the use of specific
- * OffscreenEditPartFactory). This class is overridden for a problem in the
- * default
- * {@link org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer} used
- * by OffscreenEditPartFactory so we therefore use our
- * {@link OffscreenEditPartFactory} in place.
+ * Utility class to render a diagram to an image file (with the use of specific OffscreenEditPartFactory). This class is
+ * overridden for a problem in the default {@link org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer} used
+ * by OffscreenEditPartFactory so we therefore use our {@link OffscreenEditPartFactory} in place.
  *
  * Many methods are duplicated from {@link CopyToImageUtil} (version
  * org.eclipse.gmf.runtime.diagram.ui.render_1.4.1.v20100909-1300).
@@ -80,7 +79,21 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
 
     private boolean exportToHtml;
 
+    /**
+     * Determines if we should scale the diagram when exporting.
+     */
     private boolean autoScalingEnabled = true;
+
+    /**
+     * Determines if we allow downscaling (i.e. scaling to less than 100% of the original size). Only used if
+     * autoScalingEnabled is true.
+     */
+    private boolean allowDownScaling = true;
+
+    /**
+     * The actual scaling factor used when exporting. 1.0 means 100%; 2.0 means 200% etc.
+     */
+    private double scalingFactor;
 
     /**
      * Check if GMF is able to export in HTML.
@@ -101,12 +114,9 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
 
     /**
      * Layout GMF views created by a
-     * {@link org.eclipse.sirius.diagram.business.api.refresh.view.refresh.CanonicalSynchronizer#synchronize()}
-     * .
+     * {@link org.eclipse.sirius.diagram.business.api.refresh.view.refresh.CanonicalSynchronizer#synchronize()} .
      *
-     * NOTE : a set of
-     * {@link org.eclipse.emf.common.command.AbstractCommand.NonDirtying}
-     * commands will be executed.
+     * NOTE : a set of {@link org.eclipse.emf.common.command.AbstractCommand.NonDirtying} commands will be executed.
      *
      * @param diagramEditPart
      *            the <code>DiagramEditPart</code> to layout.
@@ -123,22 +133,19 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
-     * Creates a <code>DiagramEditPart</code> given the <code>Diagram</code>
-     * without opening an editor.
+     * Creates a <code>DiagramEditPart</code> given the <code>Diagram</code> without opening an editor.
      *
-     * NOTE : to avoid post-commit canonical refresh, execute
-     * DDiagramCanonicalSynchronizer#synchronize() on the GMF model before.
+     * NOTE : to avoid post-commit canonical refresh, execute DDiagramCanonicalSynchronizer#synchronize() on the GMF
+     * model before.
      *
      * @param diagram
      *            the <code>Diagram</code>
      * @param shell
-     *            An out parameter for the shell that must be disposed after the
-     *            copy to image operation has completed.
+     *            An out parameter for the shell that must be disposed after the copy to image operation has completed.
      * @param preferencesHint
-     *            The preference hint that is to be used to find the appropriate
-     *            preference store from which to retrieve diagram preference
-     *            values. The preference hint is mapped to a preference store in
-     *            the preference registry <@link DiagramPreferencesRegistry>.
+     *            The preference hint that is to be used to find the appropriate preference store from which to retrieve
+     *            diagram preference values. The preference hint is mapped to a preference store in the preference
+     *            registry <@link DiagramPreferencesRegistry>.
      * @return the new populated <code>DiagramEditPart</code>
      */
     @Override
@@ -157,9 +164,28 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
+     * Determines if we allow downscaling (i.e. scaling to less than 100% of the original size). Only used if
+     * Auto-Scaling is enabled. The default is true.
+     * 
+     * @param allowDownScaling
+     *            if we should allow downscaling on export.
+     */
+    public void setAllowDownScaling(boolean allowDownScaling) {
+        this.allowDownScaling = allowDownScaling;
+    }
+
+    /**
+     * Returns the scaling factor used to export the diagram.
+     * 
+     * @return the scaling factor used to export the diagram.
+     */
+    public double getScalingFactor() {
+        return scalingFactor;
+    }
+
+    /**
      * Only overridden to use {@link SiriusDiagramSVGGenerator} instead of
-     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator}
-     * .
+     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator} .
      */
     @Override
     public byte[] copyToImageByteArray(DiagramEditPart diagramEP, List editParts, int maxWidth, int maxHeight, ImageFileFormat format, IProgressMonitor monitor, boolean useMargins)
@@ -196,8 +222,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      * {@inheritDoc}
      *
      * @see org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil#copyToImage(org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart,
-     *      org.eclipse.core.runtime.IPath,
-     *      org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat,
+     *      org.eclipse.core.runtime.IPath, org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat,
      *      org.eclipse.core.runtime.IProgressMonitor)
      */
     @Override
@@ -230,34 +255,37 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
-     * Return the maximum total size the image can have, total size being
-     * defined by width*height. This is used as a safeguard to prevent out of
-     * memory errors.
+     * Return the maximum total size the image can have, total size being defined by width*height. This is used as a
+     * safeguard to prevent out of memory errors.
      * 
-     * This method is protected so that extenders can override the way this
-     * value is retrieved.
+     * This method is protected so that extenders can override the way this value is retrieved.
      * 
-     * @return an integer representing the maximum total size (width*size) up to
-     *         which the runtime will not even try to export the image.
+     * @return an integer representing the maximum total size (width*size) up to which the runtime will not even try to
+     *         export the image.
      */
     protected int getMaximumTotalSize() {
-        // Define max size in properties file.
-        return Integer.parseInt(DiagramUIPlugin.INSTANCE.getString("_Pref_DiagramExportSizeMax")); //$NON-NLS-1$ ;
+        SiriusDiagramUiPreferencesKeys pref = SiriusDiagramUiPreferencesKeys.PREF_MAXIMUM_EXPORT_BUFFER_SIZE;
+        if ("win32".equals(SWT.getPlatform())) { //$NON-NLS-1$
+            /*
+             * Windows has a separate preference as is can safely support larger image buffers.
+             */
+            pref = SiriusDiagramUiPreferencesKeys.PREF_MAXIMUM_EXPORT_BUFFER_SIZE_WINDOWS;
+        }
+        return DiagramUIPlugin.getPlugin().getPreferenceStore().getInt(pref.name());
     }
 
     /**
-     * Return a factor to apply on the width and height of the image when
-     * exporting. This is useful to adapt the image resolution based on the
-     * current context.
+     * Return a factor to apply on the width and height of the image when exporting. This is useful to adapt the image
+     * resolution based on the current context.
      * 
      * @param diagramEP
      *            the diagram edit part.
      * @param gen
      *            the image generator.
-     * @return a factor to apply on the width and height of the image when
-     *         exporting.
+     * @return a factor to apply on the width and height of the image when exporting.
      */
     protected double getExportResolutionFactor(DiagramEditPart diagramEP, SiriusDiagramImageGenerator gen) {
+        double factor = 1.0;
         if (this.autoScalingEnabled) {
             List<?> editParts = diagramEP.getPrimaryEditParts();
             org.eclipse.swt.graphics.Rectangle imageRect = gen.calculateImageRectangle(editParts);
@@ -268,18 +296,19 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
             // (w*c) * (h*c) == max
             // (c*c) == max/(w*h)
             // c == sqrt(max/(w*h))
-            return Math.floor(Math.sqrt(Double.valueOf(getMaximumTotalSize()) / ((imageRect.width) * (imageRect.height))) * 100) / 100;
-        } else {
-            return 1.0;
+            factor = Math.floor(Math.sqrt(Double.valueOf(getMaximumTotalSize()) / ((imageRect.width) * (imageRect.height))) * 100) / 100;
+            if (factor < 1.0 && !allowDownScaling) {
+                factor = 1.0;
+            }
         }
+        return factor;
     }
 
     /**
      * Only overridden to use {@link SiriusDiagramSVGGenerator} instead of
-     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator}
-     * and {@link SiriusDiagramImageGenerator} instead of
-     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramImageGenerator}
-     * .
+     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator} and
+     * {@link SiriusDiagramImageGenerator} instead of
+     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramImageGenerator} .
      */
     @Override
     protected DiagramGenerator getDiagramGenerator(DiagramEditPart diagramEP, ImageFileFormat format) {
@@ -290,6 +319,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
             double factor = getExportResolutionFactor(diagramEP, generator);
             if (!isTooBig(generator, diagramEP, format, factor)) {
                 generator.setResolutionScale(factor);
+                this.scalingFactor = factor;
             }
             return generator;
         }
@@ -297,8 +327,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
 
     /**
      * Only overridden to use {@link SiriusDiagramSVGGenerator} instead of
-     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator}
-     * .
+     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator} .
      */
     @Override
     protected void copyToImage(DiagramGenerator gen, List editParts, org.eclipse.swt.graphics.Rectangle imageRect, IPath destination, ImageFileFormat format, IProgressMonitor monitor)
@@ -341,8 +370,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      * {@inheritDoc}
      *
      * @see org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil#saveToFile(org.eclipse.core.runtime.IPath,
-     *      org.eclipse.swt.graphics.Image,
-     *      org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat,
+     *      org.eclipse.swt.graphics.Image, org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat,
      *      org.eclipse.core.runtime.IProgressMonitor)
      */
     @Override
@@ -401,8 +429,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      * Saves an SVG DOM to a file.<BR>
      * Method duplicated from
      * {@link #saveSVGToFile(IPath, org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator, IProgressMonitor)}
-     * to use a {@link SiriusDiagramSVGGenerator} instead of a
-     * DiagramSVGGenerator.
+     * to use a {@link SiriusDiagramSVGGenerator} instead of a DiagramSVGGenerator.
      * 
      * @param destination
      *            the destination file, including path and file name
@@ -421,8 +448,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      * Saves an SVG or PDF files.<BR>
      * Method duplicated from
      * {@link #saveToFile(IPath, org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator, ImageFileFormat, IProgressMonitor)}
-     * to use a {@link SiriusDiagramSVGGenerator} instead of a
-     * DiagramSVGGenerator.
+     * to use a {@link SiriusDiagramSVGGenerator} instead of a DiagramSVGGenerator.
      * 
      * @param destination
      *            the destination file, including path and file name
@@ -462,8 +488,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     /**
      * Method duplicated from
      * {@link #saveToOutputStream(OutputStream, org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator, ImageFileFormat, IProgressMonitor)}
-     * to use a {@link SiriusDiagramSVGGenerator} instead of a
-     * DiagramSVGGenerator.
+     * to use a {@link SiriusDiagramSVGGenerator} instead of a DiagramSVGGenerator.
      */
     private void saveToOutputStream(OutputStream stream, SiriusDiagramSVGGenerator generator, ImageFileFormat format, IProgressMonitor monitor) throws CoreException {
         if (format == ImageFileFormat.PDF) {
@@ -477,8 +502,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
-     * create a file in the workspace if the destination is in a project in the
-     * workspace.
+     * create a file in the workspace if the destination is in a project in the workspace.
      *
      * @param destination
      *            the destination file.
@@ -506,8 +530,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
-     * refresh the file in the workspace if the destination is in a project in
-     * the workspace.
+     * refresh the file in the workspace if the destination is in a project in the workspace.
      *
      * @param destination
      *            the destination file.
@@ -522,8 +545,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
-     * Retrieve the image data for the image, using a palette of at most 256
-     * colours.
+     * Retrieve the image data for the image, using a palette of at most 256 colours.
      *
      * @param image
      *            the SWT image.
@@ -534,8 +556,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         ImageData imageData = image.getImageData();
 
         /**
-         * If the image depth is 8 bits or less, then we can use the existing
-         * image data.
+         * If the image depth is 8 bits or less, then we can use the existing image data.
          */
         if (imageData.depth <= 8) {
             return imageData;
@@ -547,8 +568,8 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         ImageData newImageData = get8BitPaletteImageData(imageData);
 
         /**
-         * if newImageData is null, it has more than 256 colours. Use the web
-         * safe pallette to get an 8 bit image data for the image.
+         * if newImageData is null, it has more than 256 colours. Use the web safe pallette to get an 8 bit image data
+         * for the image.
          */
         if (newImageData == null) {
             newImageData = getWebSafePalletteImageData(imageData);
@@ -558,13 +579,11 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
-     * Retrieve an image data with an 8 bit palette for an image. We assume that
-     * the image has less than 256 colours.
+     * Retrieve an image data with an 8 bit palette for an image. We assume that the image has less than 256 colours.
      *
      * @param imageData
      *            the imageData for the image.
-     * @return the new 8 bit imageData or null if the image has more than 256
-     *         colours.
+     * @return the new 8 bit imageData or null if the image has more than 256 colours.
      */
     private ImageData get8BitPaletteImageData(ImageData imageData) {
         PaletteData palette = imageData.palette;
@@ -615,8 +634,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
-     * If the image has less than 256 colours, simply create a new 8 bit palette
-     * and map the colours to the new palatte.
+     * If the image has less than 256 colours, simply create a new 8 bit palette and map the colours to the new palatte.
      */
     private ImageData getWebSafePalletteImageData(ImageData imageData) {
         PaletteData palette = imageData.palette;
@@ -665,8 +683,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
-     * Retrieves a web safe pallette. Our palette will be 216 web safe colours
-     * and the remaining filled with white.
+     * Retrieves a web safe pallette. Our palette will be 216 web safe colours and the remaining filled with white.
      *
      * @return array of 256 colours.
      */
@@ -691,4 +708,5 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
 
         return colours;
     }
+
 }

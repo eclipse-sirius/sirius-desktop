@@ -116,6 +116,10 @@
 		<h2 id="sirius5.1.0">Changes in Sirius 5.1.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-success">Added</span> When exporting a diagram as an image, it is now possible to choose whether or not the diagram should be scaled. If disabled, the diagram will be exported with its normal size (equivalent to a 100% zoom level). If auto-scaling is enabled, the diagram will be scaled to the maximum size safely allowed by the system (this can be different on different OSes). Note that when auto-scaling is enabled, the image files produced may be larger than without. When exporting very large diagrams it is also possible that the diagram will be scaled 
+				<em>down</em> (i.e. with a zoom level smaller than 100%). Enabling auto-scaling can be chosen on a case by case basis from the export dialog; the initial value in the dialog can be controlled by a new preference available in the 
+				<em>Sirius &gt; Sirius Diagram</em> preference page.
+			</li>
 			<li><span class="label label-success">Added</span> The end user can now 
 				<a href="user/diagrams/Diagrams.html#RemoveBendpoints">remove all bend-points</a> on rectilinear edges. It was only possible on oblique edges before. This action is available on edge context menu &#8220;Remove Bend-points&#8221; or by using the shortcut &#8220;Ctrl&#8221; + &#8220;Shift&#8221; + &#8220;-&#8221;. If number of bend-points can not be reduced, remove action will be inefficient.
 			</li>
@@ -309,6 +313,30 @@
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> Three new preferences have been added to 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys</code>: 
+				<code>PREF_SCALE_DIAGRAMS_ON_EXPORT</code>, 
+				<code>PREF_MAXIMUM_EXPORT_BUFFER_SIZE</code>, 
+				<code>PREF_MAXIMUM_EXPORT_BUFFER_SIZE_WINDOWS</code>. They are used to control the auto-scaling behavior when exporting diagrams. Refer to the JavaDoc for the details.
+			</li>
+			<li><span class="label label-success">Added</span> In 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService</code>, two new methods have been added:
+				<ul>
+					<li>
+						<code>setAllowDownScaling(boolean)</code>: when auto-scaling is enabled (which is controlled by the already existing 
+						<code>setAutoScalingEnabled()</code>), this is used to control if down-scaling is allowed or not. 
+					</li>
+					<li>
+						<code>getScalingFactor()</code>: after the export has been performed, this can be used to obtain the scaling factor that was effectively used.
+					</li>
+				</ul>
+			</li>
+			<li><span class="label label-success">Added</span> The class 
+				<code>org.eclipse.sirius.diagram.ui.business.api.DiagramExportResult</code> has been added, which inherits from 
+				<code>ExportResult</code>. It is returned by the 
+				<code>DialectManager.export()</code> methods when the representation exported is a diagram, and in addition to the information provided by 
+				<code>ExportResult</code> gives access to the scaling factor that was used when exporting the diagram.
+			</li>
 			<li><span class="label label-success">Added</span> The new preference 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys.PREF_SHOW_SYNCHRONIZE_STATUS_DECORATOR</code> has been added to say if the 
 				<a href="user/diagrams/Diagrams.html#synchronized_diagram">synchronize status</a> decorator must be shown or not.
@@ -330,6 +358,30 @@
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> In 
+				<code>org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog</code> a new method 
+				<code>isAutoScaleDiagram()</code> has been added to indicate (once the dialog has been closed) if the user has requested to enable auto-scaling on diagram export. 
+			</li>
+			<li><span class="label label-success">Added</span> In 
+				<code>org.eclipse.sirius.ui.tools.api.actions.export.ExportAction</code>, a new method 
+				<code>setAutoScaleDiagram(boolean)</code> to ask for automatic scaling of diagrams on export.
+			</li>
+			<li><span class="label label-success">Added</span> In 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices</code>, the two 
+				<code>export()</code> methods now return a new type, 
+				<code>org.eclipse.sirius.ui.business.api.dialect.ExportResult</code> instead of 
+				<code>void</code>. This gives access to the list of all the actual files produced by the export operation. Note that in the case of the diagram dialect, 
+				<code>export()</code> actually returns a more specific 
+				<code>DiagramExportResult</code> with additional diagram-specific information.
+			</li>
+			<li><span class="label label-success">Added</span> The type 
+				<code>org.eclipse.sirius.ui.business.api.dialect.ExportFormat</code> has a new attribute representing the scaling policy to use for diagram. It is defined by a new enumerated type 
+				<code>ExportFormat.ScalingPolicy</code> which can have four different values: 
+				<code>WORKSPACE_DEFAULT</code>, 
+				<code>AUTO_SCALING</code>, 
+				<code>NO_SCALING</code>, 
+				<code>AUTO_SCALING_IF_LARGER</code>. Refer to the JavaDoc for details on their meanings.
+			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.ui.tools.api.wizards.CreateEMFModelWizard</code> is a new wizard that can be invoked to create instances of any metamodel. It will ask the end-user for a metamodel (
 				<code>EPackage</code>), a concrete type to instanciate as root element, and finally the local path of the file to create. See the class Javadoc for sample usage. Note that the first two pages of the wizard (EPackage and root type selection) can be customized through the 

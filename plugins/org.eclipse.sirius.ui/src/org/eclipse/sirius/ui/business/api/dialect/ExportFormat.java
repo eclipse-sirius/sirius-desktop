@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,9 +20,11 @@ import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
  */
 public class ExportFormat {
 
-    ExportDocumentFormat documentFormat;
+    private final ExportDocumentFormat documentFormat;
 
-    ImageFileFormat imageFomat;
+    private final ImageFileFormat imageFomat;
+
+    private final ScalingPolicy scalingPolicy;
 
     /**
      * Create a new export format.
@@ -31,10 +33,25 @@ public class ExportFormat {
      *            the document export format
      * @param imageFormat
      *            the image export format
+     * @param scalingPolicy
+     *            indicates if and how exported diagram should be scaled.
      */
-    public ExportFormat(final ExportDocumentFormat documentFormat, ImageFileFormat imageFormat) {
+    public ExportFormat(final ExportDocumentFormat documentFormat, ImageFileFormat imageFormat, ScalingPolicy scalingPolicy) {
         this.documentFormat = documentFormat;
         this.imageFomat = imageFormat;
+        this.scalingPolicy = scalingPolicy;
+    }
+
+    /**
+     * Create a new export format. Uses the value of the workspace preference for the scaling policy.
+     * 
+     * @param documentFormat
+     *            the document export format
+     * @param imageFormat
+     *            the image export format
+     */
+    public ExportFormat(final ExportDocumentFormat documentFormat, ImageFileFormat imageFormat) {
+        this(documentFormat, imageFormat, ScalingPolicy.WORKSPACE_DEFAULT);
     }
 
     /**
@@ -56,6 +73,15 @@ public class ExportFormat {
     }
 
     /**
+     * Get the diagram scaling policy.
+     * 
+     * @return the diagram scaling policy.
+     */
+    public ScalingPolicy getScalingPolicy() {
+        return scalingPolicy;
+    }
+
+    /**
      * Export document format:
      * <UL>
      * <LI>HTML (only using 3.5 platform) for all kind of diagrams,</LI>
@@ -71,6 +97,32 @@ public class ExportFormat {
         CSV,
         /** Used when we only export images. */
         NONE
+    }
+
+    /**
+     * Used to indicate if and how exported diagram should be scaled.
+     * 
+     * @author pcdavid
+     */
+    public enum ScalingPolicy {
+        /**
+         * Use the current value set in the workspace preference ({@code SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT}).
+         */
+        WORKSPACE_DEFAULT,
+        /**
+         * Automatically scale the image (up or down) to the maximum size that fits the max buffer size (while keeping
+         * the image ratio).
+         */
+        AUTO_SCALING,
+        /**
+         * Do not scale the diagram, export it at 100% zoom level.
+         */
+        NO_SCALING,
+        /**
+         * Same as AUTO_SCALING, but only if this would produce a higher resolution image, i.e. zoom level higher than
+         * 100%. Otherwise export at 100% (same as NO_SCALING).
+         */
+        AUTO_SCALING_IF_LARGER
     }
 
 }

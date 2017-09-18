@@ -34,6 +34,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUI;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
+import org.eclipse.sirius.ui.business.api.dialect.ExportResult;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -253,17 +254,18 @@ public class DialectUIManagerImpl implements DialectUIManager {
     }
 
     @Override
-    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
-        export(representation, session, path, format, monitor, true);
+    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
+        return export(representation, session, path, format, monitor, true);
     }
 
     @Override
-    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
+    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
             throws SizeTooLargeException {
+        ExportResult result = null;
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canHandle(representation)) {
                 try {
-                    dialect.getServices().export(representation, session, path, format, monitor, exportDecorations);
+                    result = dialect.getServices().export(representation, session, path, format, monitor, exportDecorations);
                 } catch (CoreException exception) {
                     if (exception instanceof SizeTooLargeException) {
                         throw (SizeTooLargeException) exception;
@@ -271,6 +273,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
                 }
             }
         }
+        return result;
     }
 
     @Override

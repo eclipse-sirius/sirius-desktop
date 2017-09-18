@@ -80,6 +80,9 @@ public final class Messages {
     public static String AbstractExportRepresentationsAsImagesDialog_invalidFolderPathError;
 
     @TranslatableMessage
+    public static String AbstractExportRepresentationsAsImagesDialog_autoScaleDiagram;
+
+    @TranslatableMessage
     public static String AbstractSWTCallback_askForDetailName_canceled;
 
     @TranslatableMessage

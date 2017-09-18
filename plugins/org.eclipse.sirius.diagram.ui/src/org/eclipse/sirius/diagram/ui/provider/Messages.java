@@ -409,6 +409,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String DiagramGeneralPreferencePage_synchronizedModeLabel;
+    
+    @TranslatableMessage
+    public static String DiagramGeneralPreferencePage_scaleDiagramOnExport;
 
     @TranslatableMessage
     public static String DiagramOutlineWithBookPages_filtersTooltip;

@@ -12,6 +12,7 @@ package org.eclipse.sirius.table.ui.business.internal.dialect;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -64,6 +65,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
+import org.eclipse.sirius.ui.business.api.dialect.ExportResult;
 import org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
@@ -246,12 +248,12 @@ public class TableDialectUIServices implements DialectUIServices {
     }
 
     @Override
-    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
-        export(representation, session, path, format, monitor, true);
+    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
+        return export(representation, session, path, format, monitor, true);
     }
 
     @Override
-    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat exportFormat, final IProgressMonitor monitor, boolean exportDecorations) {
+    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat exportFormat, final IProgressMonitor monitor, boolean exportDecorations) {
         String content = null;
         if (exportFormat.getDocumentFormat().equals(ExportDocumentFormat.CSV)) {
             content = TableExportHelper.INSTANCE.exportToCsv((DTable) representation);
@@ -259,6 +261,7 @@ public class TableDialectUIServices implements DialectUIServices {
         if (!StringUtil.isEmpty(content)) {
             TableExportHelper.INSTANCE.saveContent(content, path.toOSString());
         }
+        return new ExportResult(representation, Arrays.asList(path));
     }
 
     @Override

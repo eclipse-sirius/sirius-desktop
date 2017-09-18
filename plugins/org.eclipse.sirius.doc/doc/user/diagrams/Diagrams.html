@@ -676,6 +676,19 @@
 		<p>	
 			<img border="0" src="images/diagram_export_wrong_extension.png"/>
 		</p>
+		<p>Three checkboxes are available to customize the export:</p>
+		<ul>
+			<li>
+				<em>Export decorations</em>: if checked, some decorations which can appear in diagram elements and are declared as transient in the modeler definition (for example validation errors) are exported in the image.
+			</li>
+			<li>
+				<em>Export to HTLM</em>: if checked, the export will produce a 
+				<code>.html</code> file which references the exported image in addition to the image file itself.
+			</li>
+			<li>
+				<em>Auto-scale</em>: if checked, the exported diagram will be scaled to the maximum possible size (limited by system-specific limitations) while keeping its aspect ratio. This can produce higher resolution images (but also larger files).
+			</li>
+		</ul>
 		<p>
 			<em>
 				<strong>Note:</strong>
@@ -1532,6 +1545,10 @@
 			</li>
 			<li>
 				<em>Remove/hide note when the annotated element is removed/hidden:</em> If checked, then notes attached to a diagram element will be deleted if the element is deleted, or hidden if the element is hidden.
+			</li>
+			<li>
+				<em>Auto-scale when exporting as image</em>: determines the default behavior when exporting diagrams programmatically, and the initial value of the corresponding checkbox in the 
+				<em>Export as image</em> dialog.
 			</li>
 		</ul>
 		<h3 id="Appearance">Appearance</h3>
