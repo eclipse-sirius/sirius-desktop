@@ -175,6 +175,7 @@ public final class DecorationHelperInternal {
                 try {
                     result = interpreter.evaluateBoolean(semantic, preconditionExpression);
                 } catch (final EvaluationException e) {
+                    result = false;
                     RuntimeLoggerManager.INSTANCE.error(decorationDescription, org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getDecorationDescription_PreconditionExpression(),
                             e);
                 }
