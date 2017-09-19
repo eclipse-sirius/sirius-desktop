@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="VP-3535" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="VP-3535" version="12.0.0.2017041100">
   <ownedViewpoints name="VP-3535_Viewpoint" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3535_Diagram" domainClass="ecore.EPackage">
       <defaultLayer name="Default">
@@ -63,6 +63,13 @@
           <style xsi:type="style:WorkspaceImageDescription" labelExpression="[name+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/DesignerTestProject/image.bmp">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="EClassNodeWithBundledImageStyleError" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+          <style xsi:type="style:BundledImageDescription" labelExpression="[name+'WithBundledImageStyleError'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW" shape="providedShape" providedShapeID="sample.design.donut2">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
       </defaultLayer>

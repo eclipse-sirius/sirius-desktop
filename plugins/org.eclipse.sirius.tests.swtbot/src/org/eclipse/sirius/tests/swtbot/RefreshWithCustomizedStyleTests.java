@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Widget;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
@@ -269,6 +270,27 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
      */
     public void testBundledImageStyleCustomization() throws Exception {
         testStyleCustomization(eClass1WithBundledImageStyleBot);
+    }
+
+    /**
+     * Test bundled image style features customization leads to error in errorLog
+     * because its extension is not valid and do not thrown exception.
+     */
+    public void testBundledImageStyleCustomizationWithError() {
+        try {
+            openErrorLogViewByAPI();
+            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            String error1 = "The org.eclipse.sirius.diagram.bundledImageShape extension of id 'sample.design.donut2' should have the colorAttribute attribute with a value.";
+            assertNotNull("Error \'" + error1 + "\' should be detected.", errorLogBot.tree().getTreeItem(error1));
+            String error2 = "The org.eclipse.sirius.diagram.bundledImageShape extension of id 'sample.design.donut2' should have the borderColorAttribute attribute with a value.";
+            assertNotNull("Error \'" + error1 + "\' should be detected.", errorLogBot.tree().getTreeItem(error2));
+        } finally {
+            SWTBotView errorView = bot.viewByTitle("Error Log");
+            if (errorView.isActive()) {
+                errorView.close();
+            }
+            bot.viewByTitle(PROPERTIES).setFocus();
+        }
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and other.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -191,6 +191,8 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
 
     protected SWTBotGefEditPart eClass1WithBundledImageStyleBot;
 
+    protected SWTBotGefEditPart eClass1WithBundledImageStyleErrorBot;
+
     protected SWTBotGefEditPart eClass1WithNoteStyleBot;
 
     protected SWTBotGefEditPart eClass1WithDotStyleBot;
@@ -232,7 +234,10 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
         eClass1WithSquareStyleBot = editor.getEditPart("EClass1WithSquareStyle", AbstractDiagramNodeEditPart.class);
         eClass1WithLozengeStyleBot = editor.getEditPart("EClass1WithLozengeStyle", AbstractDiagramNodeEditPart.class);
         eClass1WithEllipseStyleBot = editor.getEditPart("EClass1WithEllipseStyle", AbstractDiagramNodeEditPart.class);
-        eClass1WithBundledImageStyleBot = editor.getEditPart("EClass1WithBundledImageStyle", AbstractDiagramNodeEditPart.class);
+        eClass1WithBundledImageStyleBot = editor.getEditPart("EClass1WithBundledImageStyle",
+                AbstractDiagramNodeEditPart.class);
+        eClass1WithBundledImageStyleErrorBot = editor.getEditPart("EClass1WithBundledImageStyleError",
+                AbstractDiagramNodeEditPart.class);
         eClass1WithNoteStyleBot = editor.getEditPart("EClass1WithNoteStyle", AbstractDiagramNodeEditPart.class);
         eClass1WithDotStyleBot = editor.getEditPart("EClass1WithDotStyle", AbstractDiagramNodeEditPart.class);
         eClass1WithGaugeStyleBot = editor.getEditPart("EClass1WithGaugeStyle", AbstractDiagramNodeEditPart.class);
@@ -1362,11 +1367,13 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
      */
     @Override
     protected void tearDown() throws Exception {
+        bot.activeEditor().close();
         propertiesBot = null;
         eClass1WithSquareStyleBot = null;
         eClass1WithLozengeStyleBot = null;
         eClass1WithEllipseStyleBot = null;
         eClass1WithBundledImageStyleBot = null;
+        eClass1WithBundledImageStyleErrorBot = null;
         eClass1WithNoteStyleBot = null;
         eClass1WithDotStyleBot = null;
         eClass1WithGaugeStyleBot = null;

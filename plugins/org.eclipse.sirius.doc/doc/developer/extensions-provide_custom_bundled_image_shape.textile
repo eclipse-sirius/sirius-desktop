@@ -28,7 +28,7 @@ The following example defines a new bundled image shape using an image file donu
 pre.. 
 	<extension
         id="org.eclipse.sirius.tests.swtbot.donut"
-        point="org.eclipse.sirius.diagram.bundleImageShape">
+        point="org.eclipse.sirius.diagram.bundledImageShape">
      <image
            imagePath="/org.eclipse.sirius.tests.swtbot/images/donut.svg"
            label="Donut">
@@ -58,7 +58,7 @@ p. In this sample, the identifier concerning the tags for the inner color (color
 pre.. 
 	<extension
         id="org.eclipse.sirius.tests.swtbot.donut"
-        point="org.eclipse.sirius.diagram.bundleImageShape">
+        point="org.eclipse.sirius.diagram.bundledImageShape">
      <image
            imagePath="/org.eclipse.sirius.tests.swtbot/images/donut.svg"
            label="Donut">

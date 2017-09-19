@@ -156,4 +156,24 @@
 	       name="bugzilla459993">
     </component>
   </extension>
+  <extension
+        id="sample.design.donut2"
+        point="org.eclipse.sirius.diagram.bundledImageShape">
+     <image
+           imagePath="/org.eclipse.sirius.tests.swtbot/data/unit/edgeOnFigureWithAlphaAnchor/donut.svg"
+           label="Donut2">
+        <colorIdentifier
+              colorIdentifier="stop8224-2">
+        </colorIdentifier>
+        <borderColorIdentifier
+              borderColorIdentifier="path10796-2-6-2-7">
+        </borderColorIdentifier>
+        <borderSizeIdentifier
+              borderSizeIdentifier="path10796-2-6-2-7">
+        </borderSizeIdentifier>
+        <borderSizeAttribute
+              borderSizeAttribute="style">
+        </borderSizeAttribute>
+     </image>
+  </extension>
 </plugin>

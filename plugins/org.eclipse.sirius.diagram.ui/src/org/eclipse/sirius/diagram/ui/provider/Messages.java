@@ -126,6 +126,9 @@ public final class Messages {
     public static String BundledImageEditPart_notBundleImageMsg;
 
     @TranslatableMessage
+    public static String BundledImageShape_attributeAbsent;
+
+    @TranslatableMessage
     public static String CenterEditPartEdgesCommand_label;
 
     @TranslatableMessage
