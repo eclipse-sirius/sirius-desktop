@@ -234,8 +234,8 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
 
                 if (validator.isValid(request, hostGraphicalEditPart)) {
                     Point absoluteRequestLocation = request.getLocation().getCopy();
-                    GraphicalHelper.screen2logical(absoluteRequestLocation, hostGraphicalEditPart);
                     absoluteRequestLocation = computeSnap(request, hostGraphicalEditPart, absoluteRequestLocation);
+                    GraphicalHelper.screen2logical(absoluteRequestLocation, hostGraphicalEditPart);
                     final Point locationRelativeToNewContainer = computeRelativeLocation(absoluteRequestLocation, false,
                             new RequestQuery(request).isDropOrCreationOfBorderNode() || validator.isConcerningOnlyBorderNodeFromView());
                     // Create an intermediate command. The "real" command is
