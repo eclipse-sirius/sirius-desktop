@@ -97,7 +97,7 @@ public class CreateInstanceTypeContentProposalProvider extends TextContentPropos
         final String referenceName = ((CreateInstance) interpreterContext.getElement()).getReferenceName();
         if (!StringUtil.isEmpty(referenceName)) {
             return interpreterContext.getTargetType().getPossibleTypes().stream().flatMap(type -> type.search(interpreterContext.getAvailableEPackages()).stream()).filter(EClass.class::isInstance)
-                    .flatMap(eClass -> ((EClass) eClass).getEStructuralFeatures().stream()).filter(eStructuralFeature -> {
+                    .flatMap(eClass -> ((EClass) eClass).getEAllStructuralFeatures().stream()).filter(eStructuralFeature -> {
                         return eStructuralFeature.getName().equals(referenceName) && eStructuralFeature.getEType() instanceof EClass;
                     }).map(eStructuralFeature -> (EClass) eStructuralFeature.getEType()).collect(Collectors.toList());
         }
