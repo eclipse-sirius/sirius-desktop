@@ -130,9 +130,8 @@ public class SynchronizeStatusFigure extends Ellipse {
             // location (it would be {-25, -25}).
             Point viewLocation = viewport.getViewLocation().getCopy();
             viewLocation.translate(viewDimension.preciseWidth(), viewDimension.preciseHeight());
-            viewLocation.translate(this.getSize().getNegated());
-
             viewLocation.performScale(1.0d / rootEditPart.getZoomManager().getZoom());
+            viewLocation.translate(this.getSize().negate());
             this.setLocation(new Point(viewLocation.x, viewLocation.y));
         }
     }
