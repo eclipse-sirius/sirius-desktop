@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,8 +16,11 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -25,8 +28,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import com.google.common.collect.Maps;
 
 /**
- * A {@link Adapter} to update the collection of semantic resources in a
- * Session.
+ * A {@link Adapter} to update the collection of semantic resources in a Session.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -37,9 +39,8 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
     private Collection<Resource> semanticResources;
 
     /**
-     * This map allows to retrieve the eObject of the
-     * {@link DAnalysis.getModels} from its resource. This is useful in the
-     * event of the resource has been unloaded and eObject.eResource()==null
+     * This map allows to retrieve the eObject of the {@link DAnalysis.getModels} from its resource. This is useful in
+     * the event of the resource has been unloaded and eObject.eResource()==null
      */
     private Map<String, EObject> resourceToRootEObjectMap = Maps.newHashMap();
 
@@ -47,8 +48,7 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
      * Default constructor.
      * 
      * @param dAnalysisSessionImpl
-     *            the {@link DAnalysisSessionImpl} referencing the semantic
-     *            resource
+     *            the {@link DAnalysisSessionImpl} referencing the semantic resource
      */
     public SemanticResourcesUpdater(DAnalysisSessionImpl dAnalysisSessionImpl) {
         this.dAnalysisSessionImpl = dAnalysisSessionImpl;
@@ -72,11 +72,26 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
     @Override
     public void notifyChanged(Notification msg) {
         // CHECKSTYLE:OFF
-        if (msg.getEventType() != Notification.REMOVING_ADAPTER
-                && (msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__REFERENCED_ANALYSIS
-                        || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__SEMANTIC_RESOURCES || msg
-                        .getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES)) {
+        if (msg.getEventType() != Notification.REMOVING_ADAPTER && (msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES
+                || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__REFERENCED_ANALYSIS || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES
+                || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__SEMANTIC_RESOURCES || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES)) {
             // CHECKSTYLE:ON
+
+            if (isRemoveSemanticResourceNotification(msg) && isRemoveManyStringNotification(msg)) {
+                Map<URI, Resource> uriResourceMap = ((ResourceSetImpl) semanticResources.iterator().next().getResourceSet()).getURIResourceMap();
+                BasicEList<?> oldValue = (BasicEList<?>) msg.getOldValue();
+                String uriString = (String) oldValue.get(0);
+                URI oldResourceURI = URI.createURI(uriString);
+                // Check in the URIResourceMap if the URI of the removed resource is associated with a different
+                // resource
+                if (uriResourceMap.containsKey(oldResourceURI) && !uriResourceMap.get(oldResourceURI).getURI().toString().equals(uriString)) {
+                    // The resource was not removed but renamed, the URIResourceMap needs to be updated to avoid
+                    // loading the resource twice
+                    Resource resource = uriResourceMap.get(oldResourceURI);
+                    uriResourceMap.remove(oldResourceURI);
+                    uriResourceMap.put(resource.getURI(), resource);
+                }
+            }
 
             Collection<Resource> updatedSemanticResources = SemanticResourceGetter.collectTopLevelSemanticResources(dAnalysisSessionImpl);
 
@@ -100,6 +115,15 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
                 dAnalysisSessionImpl.notifyListeners(SessionListener.SEMANTIC_CHANGE);
             }
         }
+    }
+
+    private boolean isRemoveSemanticResourceNotification(Notification msg) {
+        return msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__SEMANTIC_RESOURCES && !semanticResources.isEmpty();
+    }
+
+    private boolean isRemoveManyStringNotification(Notification msg) {
+        return msg.getEventType() == Notification.REMOVE_MANY && msg.getOldValue() instanceof BasicEList<?> && !((BasicEList<?>) msg.getOldValue()).isEmpty()
+                && ((BasicEList<?>) msg.getOldValue()).get(0) instanceof String;
     }
 
     /**
