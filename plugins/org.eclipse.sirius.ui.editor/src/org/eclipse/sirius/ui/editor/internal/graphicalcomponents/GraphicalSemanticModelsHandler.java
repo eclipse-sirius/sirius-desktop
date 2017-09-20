@@ -872,14 +872,18 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
             Resource sessionResource = session.getSessionResource();
             IFile file = WorkspaceSynchronizer.getFile(sessionResource);
             ProjectDependenciesItem projectDependenciesItem = new NoDynamicProjectDependencies(file.getProject(), session);
-            childrenList.add(projectDependenciesItem);
-            childrenList.addAll(Arrays.asList(children));
-
             List<Object> directChildOfProjectDependency = Arrays.asList(siriusCommonContentModelProvider.getChildren(projectDependenciesItem));
+            childrenList.add(projectDependenciesItem);
+
+            List<Object> itemsWithProjectDependenciesChildren = Arrays.asList(children);
+            childrenList.addAll(itemsWithProjectDependenciesChildren.stream().filter(input -> !(input instanceof ViewpointsFolderItemImpl) && !directChildOfProjectDependency.contains(input))
+                    .collect(Collectors.toList()));
+            childrenList.addAll(
+                    Arrays.asList(siriusCommonContentModelProvider.getChildren(file.getProject())).stream().filter(input -> !(input instanceof ProjectDependenciesItem)).collect(Collectors.toList()));
 
             // We put as input only the ProjectDependenciesItemImpl and all
             // Ecore resources not provided by this item.
-            treeViewer.setInput(childrenList.stream().filter(input -> !(input instanceof ViewpointsFolderItemImpl) && !directChildOfProjectDependency.contains(input)).collect(Collectors.toList()));
+            treeViewer.setInput(childrenList);
             treeViewer.expandToLevel(2);
             treeViewer.expandToLevel(projectDependenciesItem, 2);
         }
