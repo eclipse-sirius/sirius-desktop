@@ -13,6 +13,8 @@ package org.eclipse.sirius.diagram.ui.tools.internal.figure;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Optional;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.Graphics;
@@ -76,6 +78,8 @@ public class SynchronizeStatusFigure extends Ellipse {
 
     private Label label;
 
+    private ScheduledThreadPoolExecutor executor;
+
     /**
      * Create a new instance.
      * 
@@ -95,7 +99,21 @@ public class SynchronizeStatusFigure extends Ellipse {
             public void propertyChange(PropertyChangeEvent evt) {
                 // location need to be updated when the scroll bar is moved and particularly when this figure become
                 // outside the editor. In that case it is not repaint if not relocated.
-                updateLocation();
+
+                // We hide the figure during the moving of the scroll as a lot of PropertyChangeEvent can be sent. We
+                // only update location after a delay (100ms) and set the figure as visible after. This avoids to have
+                // blink effect or temporary wrong location.
+                setVisible(false);
+                executor.remove(executor.getQueue().peek());
+                executor.schedule(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        updateLocation();
+                        setVisible(true);
+
+                    }
+                }, 100, TimeUnit.MILLISECONDS);
             }
         };
         this.setConstraint(label, new Rectangle(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT));
@@ -139,6 +157,7 @@ public class SynchronizeStatusFigure extends Ellipse {
     @Override
     public void addNotify() {
         super.addNotify();
+        executor = new ScheduledThreadPoolExecutor(1);
         viewport.addPropertyChangeListener(Viewport.PROPERTY_VIEW_LOCATION, propListener);
     }
 
@@ -147,6 +166,8 @@ public class SynchronizeStatusFigure extends Ellipse {
         super.removeNotify();
         viewport.removePropertyChangeListener(Viewport.PROPERTY_VIEW_LOCATION, propListener);
         viewport = null;
+        executor.shutdown();
+        executor = null;
     }
 
     /**
