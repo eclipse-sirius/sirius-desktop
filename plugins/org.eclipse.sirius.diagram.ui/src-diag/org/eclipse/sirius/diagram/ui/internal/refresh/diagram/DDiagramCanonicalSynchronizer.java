@@ -35,7 +35,6 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.rulers.RulerProvider;
 import org.eclipse.gmf.runtime.common.ui.services.editor.EditorService;
 import org.eclipse.gmf.runtime.common.ui.util.DisplayUtils;
-import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
@@ -76,8 +75,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * Synchronizer allowing to synchronize a DSemanticDiagram with its
- * corresponding GMFDiagram.
+ * Synchronizer allowing to synchronize a DSemanticDiagram with its corresponding GMFDiagram.
  *
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  *
@@ -100,30 +98,26 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
      * Default constructor.
      *
      * @param gmfDiagram
-     *            the {@link Diagram} to update according to "semantic"
-     *            DSemanticDiagram.
+     *            the {@link Diagram} to update according to "semantic" DSemanticDiagram.
      */
     public DDiagramCanonicalSynchronizer(Diagram gmfDiagram) {
         super();
         this.gmfDiagram = gmfDiagram;
         this.connectionsFactory = new ConnectionsFactory(gmfDiagram, viewpointViewProvider);
         // Search if it possible to get snapToGrid and gridSpacing values from the store associated to an opened editor.
-        loadPreferencesFromOpenedDiagram(ViewUtil.getIdStr(gmfDiagram));
+        loadPreferencesFromOpenedDiagram();
     }
 
     /**
-     * Load the preferences from an opened diagram that has the given guid.<BR>
+     * Load the preferences from an opened diagram on the same GMF {@link Diagram}.<BR>
      * Inspired from
      * {@link org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusDiagramPrintPreviewHelper#loadPreferencesFromOpenDiagram(String)}.
-     * 
-     * @param id
-     *            guid of the opened diagram to load the preferences for
      */
-    private void loadPreferencesFromOpenedDiagram(String id) {
+    private void loadPreferencesFromOpenedDiagram() {
         List<? extends Object> diagramEditors = EditorService.getInstance().getRegisteredEditorParts();
         @SuppressWarnings("unchecked")
-        Optional<DiagramEditor> diagramEditor = (Optional<DiagramEditor>) diagramEditors.stream().filter(
-                de -> de instanceof DiagramEditor && ((DiagramEditor) de).getDiagramEditPart() != null && id.equals(ViewUtil.getIdStr(((DiagramEditor) de).getDiagramEditPart().getDiagramView())))
+        Optional<DiagramEditor> diagramEditor = (Optional<DiagramEditor>) diagramEditors.stream()
+                .filter(de -> de instanceof DiagramEditor && ((DiagramEditor) de).getDiagramEditPart() != null && gmfDiagram.equals(((DiagramEditor) de).getDiagramEditPart().getDiagramView()))
                 .findFirst();
         if (diagramEditor.isPresent()) {
             IDiagramGraphicalViewer viewer = diagramEditor.get().getDiagramGraphicalViewer();
@@ -266,10 +260,9 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
     }
 
     /**
-     * center layout must be only done on the super containers : filter the
-     * createdViewsWithCenterLayout : only the container(s) of all the new
-     * created views must have a center layout. the filtered views must have a
-     * "normal" layout.
+     * center layout must be only done on the super containers : filter the createdViewsWithCenterLayout : only the
+     * container(s) of all the new created views must have a center layout. the filtered views must have a "normal"
+     * layout.
      *
      * @param createdViewsWithSpecialLayout
      * @param createdViewsToLayout
