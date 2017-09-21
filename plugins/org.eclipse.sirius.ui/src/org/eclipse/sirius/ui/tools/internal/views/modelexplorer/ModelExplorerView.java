@@ -251,7 +251,6 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
                 tab.init(site);
             }
         }
-        lockDecorationUpdater.register(this);
     }
 
     /**
@@ -343,6 +342,9 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
         gridData3.grabExcessVerticalSpace = true;
 
         commonfilteredTree.setLayoutData(gridData3);
+
+        lockDecorationUpdater.register(commonfilteredTree.getViewer());
+
         /* Set model viewer providers */
         return commonfilteredTree.getViewer();
     }

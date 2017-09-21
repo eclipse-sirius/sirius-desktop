@@ -69,6 +69,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
+import org.eclipse.sirius.ui.tools.api.views.LockDecorationUpdater;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem;
 import org.eclipse.sirius.ui.tools.api.wizards.CreateEMFModelWizard;
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.AddModelDependencyAction;
@@ -232,6 +233,14 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     private IWorkbenchSite site;
 
     /**
+     * The updater in charge of refresh this view according to lock
+     * notifications send to
+     * {@link org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener}
+     * .
+     */
+    private LockDecorationUpdater lockDecorationUpdater;
+
+    /**
      * Initialize the component with the given session.
      * 
      * @param theSession
@@ -282,6 +291,8 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
 
         resourceSetListenerChangeListener = new ResourceSetListenerChangeListener();
         session.getTransactionalEditingDomain().addResourceSetListener(resourceSetListenerChangeListener);
+        lockDecorationUpdater = new LockDecorationUpdater();
+        lockDecorationUpdater.register(treeViewer);
     }
 
     /**
@@ -950,7 +961,10 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         }
         toolkit = null;
         ecoreActionsHandler = null;
-
+        if (lockDecorationUpdater != null) {
+            lockDecorationUpdater.unregister();
+            lockDecorationUpdater = null;
+        }
     }
 
     @Override

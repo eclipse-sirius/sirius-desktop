@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@ package org.eclipse.sirius.ui.tools.internal.views.modelexplorer;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.sirius.ext.jface.viewers.IToolTipProvider;
+import org.eclipse.jface.viewers.IToolTipProvider;
 import org.eclipse.ui.internal.navigator.NavigatorDecoratingLabelProvider;
 
 /**
@@ -23,6 +23,8 @@ import org.eclipse.ui.internal.navigator.NavigatorDecoratingLabelProvider;
 @SuppressWarnings("restriction")
 public class TooltipAwareNavigatorDecoratingLabelProvider extends NavigatorDecoratingLabelProvider {
 
+    private ILabelProvider commonLabelProvider;
+
     /**
      * Default constructor.
      * 
@@ -31,6 +33,7 @@ public class TooltipAwareNavigatorDecoratingLabelProvider extends NavigatorDecor
      */
     public TooltipAwareNavigatorDecoratingLabelProvider(ILabelProvider commonLabelProvider) {
         super(commonLabelProvider);
+        this.commonLabelProvider = commonLabelProvider;
     }
 
     @Override
@@ -39,6 +42,8 @@ public class TooltipAwareNavigatorDecoratingLabelProvider extends NavigatorDecor
         IToolTipProvider tooltipProvider = Platform.getAdapterManager().getAdapter(element, IToolTipProvider.class);
         if (tooltipProvider != null) {
             tooltip = tooltipProvider.getToolTipText(element);
+        } else if (commonLabelProvider instanceof IToolTipProvider) {
+            tooltip = ((IToolTipProvider) commonLabelProvider).getToolTipText(element);
         }
         return tooltip;
     }

@@ -52,6 +52,7 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.ui.tools.api.views.LockDecorationUpdater;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
@@ -66,6 +67,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonC
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHandler;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.RenameActionHandler;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.TooltipAwareNavigatorDecoratingLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.wizards.CreateRepresentationWizard;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SiriusRepresentationWithInactiveStatusLabelProvider;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -328,6 +330,12 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      * This listener refreshes the viewer of this component when a representation is created or removed.
      */
     private RefreshViewerOnChangeResourceSetListener refreshViewerOnChangeResourceSetListener;
+
+    /**
+     * The updater in charge of refresh this view according to lock notifications send to
+     * {@link org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener} .
+     */
+    private LockDecorationUpdater lockDecorationUpdater;
 
     /**
      * This builder allow to build the graphical componant handling viewpoint and representation with wanted optional
@@ -783,7 +791,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         if (labelProvider != null) {
             treeViewer.setLabelProvider(labelProvider);
         } else {
-            treeViewer.setLabelProvider(new SiriusRepresentationWithInactiveStatusLabelProvider());
+            treeViewer.setLabelProvider(new TooltipAwareNavigatorDecoratingLabelProvider(new SiriusRepresentationWithInactiveStatusLabelProvider()));
         }
         treeViewer.setSorter(new CommonItemSorter());
 
@@ -817,6 +825,9 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                 }
             });
         }
+
+        lockDecorationUpdater = new LockDecorationUpdater();
+        lockDecorationUpdater.register(treeViewer);
         return treeViewer;
     }
 
@@ -1026,6 +1037,10 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         siriusCommonContentProvider = null;
         menuManager = null;
         toolkit = null;
+        if (lockDecorationUpdater != null) {
+            lockDecorationUpdater.unregister();
+            lockDecorationUpdater = null;
+        }
     }
 
     @Override
