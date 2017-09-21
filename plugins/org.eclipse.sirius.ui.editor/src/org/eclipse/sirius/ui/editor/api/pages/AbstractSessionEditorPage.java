@@ -16,6 +16,7 @@ import java.util.Optional;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.sirius.ui.editor.SessionEditor;
+import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
 import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdateCommand;
 import org.eclipse.ui.forms.IManagedForm;
@@ -65,7 +66,7 @@ public abstract class AbstractSessionEditorPage extends FormPage {
      *         page. {@link Optional#empty()} if no positioning is provided.
      */
     public Optional<String> getLocationId() {
-        return Optional.of(DefaultSessionEditorPage.PAGE_ID);
+        return Optional.of(SessionEditorPlugin.DEFAULT_PAGE_ID);
     }
 
     /**

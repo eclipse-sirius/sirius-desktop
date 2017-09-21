@@ -15,9 +15,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.eclipse.sirius.ui.editor.SessionEditor;
+import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage;
-import org.eclipse.sirius.ui.editor.api.pages.DefaultSessionEditorPage;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
+import org.eclipse.sirius.ui.editor.internal.pages.DefaultSessionEditorPage;
 
 /**
  * Tests the component {@link PageRegistry}. To succeed, the plugin org.eclipse.sirius.ui.debug must not be loaded.
@@ -43,7 +44,7 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
         List<AbstractSessionEditorPage> pagesOrdered = pageRegistry.getPagesOrdered(sessionEditor, null, new ArrayList<>(), null);
         Optional<AbstractSessionEditorPage> defaultPage = pagesOrdered.stream().filter(DefaultSessionEditorPage.class::isInstance).findFirst();
         if (defaultPage.isPresent()) {
-            idToPageMap.put(DefaultSessionEditorPage.PAGE_ID, defaultPage.get());
+            idToPageMap.put(SessionEditorPlugin.DEFAULT_PAGE_ID, defaultPage.get());
         }
         int i = 0;
         for (String expectedPageId : orderedExpectedPages) {
@@ -59,8 +60,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * There are the default page "Overview". We add a page before the default one.
      */
     public void testPageOrderingBefore() {
-        initOnePageProvider(PositioningKind.BEFORE, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
-        assertRightPageOrdering(2, PAGE2_ID, DefaultSessionEditorPage.PAGE_ID);
+        initOnePageProvider(PositioningKind.BEFORE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
+        assertRightPageOrdering(2, PAGE2_ID, SessionEditorPlugin.DEFAULT_PAGE_ID);
     }
 
     /**
@@ -72,7 +73,7 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      */
     public void testPageOrderingBeforeMissingPage() {
         initOnePageProvider(PositioningKind.BEFORE, PAGE3_ID, PAGE2_ID);
-        assertRightPageOrdering(2, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
+        assertRightPageOrdering(2, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
     }
 
     /**
@@ -84,7 +85,7 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      */
     public void testPageOrderingAfterMissingPage() {
         initOnePageProvider(PositioningKind.AFTER, PAGE3_ID, PAGE2_ID);
-        assertRightPageOrdering(2, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
+        assertRightPageOrdering(2, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
     }
 
     /**
@@ -96,7 +97,7 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      */
     public void testPageOrderingReplaceMissingPage() {
         initOnePageProvider(PositioningKind.REPLACE, PAGE3_ID, PAGE2_ID);
-        assertRightPageOrdering(2, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
+        assertRightPageOrdering(2, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
     }
 
     /**
@@ -105,8 +106,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * There are the default page "Overview". We add a page after the default one.
      */
     public void testPageOrderingAfter() {
-        initOnePageProvider(PositioningKind.AFTER, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
-        assertRightPageOrdering(2, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
+        initOnePageProvider(PositioningKind.AFTER, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
+        assertRightPageOrdering(2, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
     }
 
     /**
@@ -115,7 +116,7 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * There are the default page "Overview". We add a page that replaces the default one.
      */
     public void testPageOrderingReplacement() {
-        initOnePageProvider(PositioningKind.REPLACE, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
+        initOnePageProvider(PositioningKind.REPLACE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
         assertRightPageOrdering(1, PAGE2_ID);
     }
 
@@ -126,8 +127,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * right position.
      */
     public void testPageOrderingNoPositioning() {
-        initOnePageProvider(null, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
-        assertRightPageOrdering(2, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
+        initOnePageProvider(null, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
+        assertRightPageOrdering(2, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
     }
 
     /**
@@ -137,8 +138,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * right position.
      */
     public void testMultiPageOrderingNoPositioning() {
-        initTwoPageProvider(null, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, null, DefaultSessionEditorPage.PAGE_ID, PAGE3_ID);
-        assertRightPageOrdering(3, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PAGE3_ID);
+        initTwoPageProvider(null, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, null, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE3_ID);
+        assertRightPageOrdering(3, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PAGE3_ID);
     }
 
     /**
@@ -153,8 +154,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P1, P3, P2.
      */
     public void testMultiPageOrderingBeforeConflict() {
-        initTwoPageProvider(PositioningKind.AFTER, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.BEFORE, PAGE2_ID, PAGE3_ID);
-        assertRightPageOrdering(3, DefaultSessionEditorPage.PAGE_ID, PAGE3_ID, PAGE2_ID);
+        initTwoPageProvider(PositioningKind.AFTER, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PositioningKind.BEFORE, PAGE2_ID, PAGE3_ID);
+        assertRightPageOrdering(3, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE3_ID, PAGE2_ID);
     }
 
     /**
@@ -169,8 +170,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P2, P3, P1.
      */
     public void testMultiPageOrderingAfterFirstPage() {
-        initTwoPageProvider(PositioningKind.BEFORE, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.AFTER, PAGE2_ID, PAGE3_ID);
-        assertRightPageOrdering(3, PAGE2_ID, PAGE3_ID, DefaultSessionEditorPage.PAGE_ID);
+        initTwoPageProvider(PositioningKind.BEFORE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PositioningKind.AFTER, PAGE2_ID, PAGE3_ID);
+        assertRightPageOrdering(3, PAGE2_ID, PAGE3_ID, SessionEditorPlugin.DEFAULT_PAGE_ID);
     }
 
     /**
@@ -185,8 +186,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P1,P3,P2.
      */
     public void testMultiPageOrderingAfterConflict() {
-        initTwoPageProvider(PositioningKind.AFTER, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.AFTER, DefaultSessionEditorPage.PAGE_ID, PAGE3_ID);
-        assertRightPageOrdering(3, DefaultSessionEditorPage.PAGE_ID, PAGE3_ID, PAGE2_ID);
+        initTwoPageProvider(PositioningKind.AFTER, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PositioningKind.AFTER, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE3_ID);
+        assertRightPageOrdering(3, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE3_ID, PAGE2_ID);
     }
 
     /**
@@ -201,8 +202,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P1,P3,P2.
      */
     public void testMultiPageOrderingAfterConflict2() {
-        initTwoPageProvider(PositioningKind.BEFORE, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.AFTER, PAGE2_ID, PAGE3_ID);
-        assertRightPageOrdering(3, PAGE2_ID, PAGE3_ID, DefaultSessionEditorPage.PAGE_ID);
+        initTwoPageProvider(PositioningKind.BEFORE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PositioningKind.AFTER, PAGE2_ID, PAGE3_ID);
+        assertRightPageOrdering(3, PAGE2_ID, PAGE3_ID, SessionEditorPlugin.DEFAULT_PAGE_ID);
     }
 
     /**
@@ -217,8 +218,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P2,P3,P1.
      */
     public void testMultiPageOrderingBeforeConflict2() {
-        initTwoPageProvider(PositioningKind.BEFORE, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.BEFORE, DefaultSessionEditorPage.PAGE_ID, PAGE3_ID);
-        assertRightPageOrdering(3, PAGE2_ID, PAGE3_ID, DefaultSessionEditorPage.PAGE_ID);
+        initTwoPageProvider(PositioningKind.BEFORE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PositioningKind.BEFORE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE3_ID);
+        assertRightPageOrdering(3, PAGE2_ID, PAGE3_ID, SessionEditorPlugin.DEFAULT_PAGE_ID);
     }
 
     /**
@@ -233,7 +234,7 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P2,P3 because P2 replace P1 and P3 has no P1 to replace after P2 replacement.
      */
     public void testMultiPageOrderingReplaceConflict() {
-        initTwoPageProvider(PositioningKind.REPLACE, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.REPLACE, DefaultSessionEditorPage.PAGE_ID, PAGE3_ID);
+        initTwoPageProvider(PositioningKind.REPLACE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PositioningKind.REPLACE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE3_ID);
         assertRightPageOrdering(2, PAGE2_ID, PAGE3_ID);
     }
 
@@ -254,8 +255,7 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * over pages attached to the replaced page.
      */
     public void testMultiPageOrderingReplaceConflict2() {
-        initThreePageProvider(PositioningKind.AFTER, PAGE2_ID, PAGE3_ID, PositioningKind.AFTER, DefaultSessionEditorPage.PAGE_ID, PAGE4_ID, PositioningKind.REPLACE, DefaultSessionEditorPage.PAGE_ID,
-                PAGE2_ID);
+        initThreePageProvider(PositioningKind.AFTER, PAGE2_ID, PAGE3_ID, PositioningKind.AFTER, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE4_ID, PositioningKind.REPLACE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
         assertRightPageOrdering(3, PAGE2_ID, PAGE3_ID, PAGE4_ID);
     }
 
@@ -271,7 +271,7 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P3 only.
      */
     public void testMultiPageOrderingReplace() {
-        initTwoPageProvider(PositioningKind.REPLACE, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.REPLACE, PAGE2_ID, PAGE3_ID);
+        initTwoPageProvider(PositioningKind.REPLACE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PositioningKind.REPLACE, PAGE2_ID, PAGE3_ID);
         assertRightPageOrdering(1, PAGE3_ID);
     }
 
@@ -287,8 +287,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P3,P2,P1.
      */
     public void testMultiPageOrderingBefore() {
-        initTwoPageProvider(PositioningKind.BEFORE, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.BEFORE, PAGE2_ID, PAGE3_ID);
-        assertRightPageOrdering(3, PAGE3_ID, PAGE2_ID, DefaultSessionEditorPage.PAGE_ID);
+        initTwoPageProvider(PositioningKind.BEFORE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PositioningKind.BEFORE, PAGE2_ID, PAGE3_ID);
+        assertRightPageOrdering(3, PAGE3_ID, PAGE2_ID, SessionEditorPlugin.DEFAULT_PAGE_ID);
     }
 
     /**
@@ -303,8 +303,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P1, P2, P3.
      */
     public void testMultiPageOrderingAfter() {
-        initTwoPageProvider(PositioningKind.AFTER, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.AFTER, PAGE2_ID, PAGE3_ID);
-        assertRightPageOrdering(3, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PAGE3_ID);
+        initTwoPageProvider(PositioningKind.AFTER, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PositioningKind.AFTER, PAGE2_ID, PAGE3_ID);
+        assertRightPageOrdering(3, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PAGE3_ID);
     }
 
     /**
@@ -319,8 +319,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P3, P1, P2.
      */
     public void testMultiPageOrderingNoPositioningAndBefore() {
-        initTwoPageProvider(null, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.BEFORE, DefaultSessionEditorPage.PAGE_ID, PAGE3_ID);
-        assertRightPageOrdering(3, PAGE3_ID, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
+        initTwoPageProvider(null, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PositioningKind.BEFORE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE3_ID);
+        assertRightPageOrdering(3, PAGE3_ID, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
     }
 
     /**
@@ -335,8 +335,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P3, P1, P2.
      */
     public void testMultiPageOrderingConflict() {
-        initTwoPageProvider(null, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, PositioningKind.BEFORE, DefaultSessionEditorPage.PAGE_ID, PAGE3_ID);
-        assertRightPageOrdering(3, PAGE3_ID, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
+        initTwoPageProvider(null, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, PositioningKind.BEFORE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE3_ID);
+        assertRightPageOrdering(3, PAGE3_ID, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
     }
 
     /**
@@ -355,8 +355,8 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P4, P3, P2, P1.
      */
     public void testMultiPageOrderingClustering() {
-        initThreePageProvider(PositioningKind.BEFORE, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID, null, null, PAGE3_ID, PositioningKind.BEFORE, PAGE3_ID, PAGE4_ID);
-        assertRightPageOrdering(4, PAGE4_ID, PAGE3_ID, PAGE2_ID, DefaultSessionEditorPage.PAGE_ID);
+        initThreePageProvider(PositioningKind.BEFORE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID, null, null, PAGE3_ID, PositioningKind.BEFORE, PAGE3_ID, PAGE4_ID);
+        assertRightPageOrdering(4, PAGE4_ID, PAGE3_ID, PAGE2_ID, SessionEditorPlugin.DEFAULT_PAGE_ID);
     }
 
     /**
@@ -375,7 +375,7 @@ public class PageOrdererTest extends AbstractSessionEditorTest {
      * The page order should be P4, P3, P1, P2.
      */
     public void testMultiPageOrderingClustering2() {
-        initThreePageProvider(null, null, PAGE2_ID, PositioningKind.BEFORE, DefaultSessionEditorPage.PAGE_ID, PAGE3_ID, PositioningKind.BEFORE, PAGE3_ID, PAGE4_ID);
-        assertRightPageOrdering(4, PAGE4_ID, PAGE3_ID, DefaultSessionEditorPage.PAGE_ID, PAGE2_ID);
+        initThreePageProvider(null, null, PAGE2_ID, PositioningKind.BEFORE, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE3_ID, PositioningKind.BEFORE, PAGE3_ID, PAGE4_ID);
+        assertRightPageOrdering(4, PAGE4_ID, PAGE3_ID, SessionEditorPlugin.DEFAULT_PAGE_ID, PAGE2_ID);
     }
 }

@@ -20,8 +20,8 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.editor.SessionEditor;
+import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage;
-import org.eclipse.sirius.ui.editor.api.pages.DefaultSessionEditorPage;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
 import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdateCommand;
 import org.eclipse.swt.SWT;
@@ -107,7 +107,7 @@ public class DebugPage extends AbstractSessionEditorPage {
 
     @Override
     public Optional<String> getLocationId() {
-        return Optional.of(DefaultSessionEditorPage.PAGE_ID);
+        return Optional.of(SessionEditorPlugin.DEFAULT_PAGE_ID);
     }
 
     @Override

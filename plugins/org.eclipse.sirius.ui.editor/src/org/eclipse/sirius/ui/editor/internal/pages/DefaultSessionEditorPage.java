@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.editor.api.pages;
+package org.eclipse.sirius.ui.editor.internal.pages;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -34,6 +34,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
+import org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
 import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdateCommand;
 import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalSemanticModelsHandler;
@@ -73,11 +74,6 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
  *
  */
 public class DefaultSessionEditorPage extends AbstractSessionEditorPage implements SessionListener {
-
-    /**
-     * The page's unique id.
-     */
-    public static final String PAGE_ID = "org.eclipse.sirius.ui.editor.DefaultSessionEditorPage"; //$NON-NLS-1$
 
     /**
      * Delimiter used to separate text part for the page title.
@@ -125,7 +121,7 @@ public class DefaultSessionEditorPage extends AbstractSessionEditorPage implemen
      *            the editor.
      */
     public DefaultSessionEditorPage(SessionEditor theEditor) {
-        super(theEditor, PAGE_ID, Messages.UI_SessionEditor_default_page_tab_label);
+        super(theEditor, SessionEditorPlugin.DEFAULT_PAGE_ID, Messages.UI_SessionEditor_default_page_tab_label);
         this.session = theEditor.getSession();
         this.editor = theEditor;
     }

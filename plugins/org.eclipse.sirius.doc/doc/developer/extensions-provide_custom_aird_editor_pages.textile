@@ -44,7 +44,7 @@ When contributing a custom page, you can tell where the editor tab corresponding
 * when the page position is updated by a reorder command in response to an aird editor's session's resource set event or a page visibility update.
 
 Whatever the context is, you always need to provide two kind of information to position your page regarding others:
-* The **id** of the page from which your page will be placed relatively to it.
+* The **id** of the page from which your page will be placed relatively to it. The default aird editor page id is accessible in @org.eclipse.sirius.ui.editor.SessionEditorPlugin.DEFAULT_PAGE_ID@
 * The kind of positioning you want to achieve. The different kinds are defined by the enum @org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind@:
 ** The @BEFORE@ kind will place your page's tab in the aird editor before the target page's tab. For example with the debug page before __Overview__:
 !images/customPageApi_debugPage_before.png!

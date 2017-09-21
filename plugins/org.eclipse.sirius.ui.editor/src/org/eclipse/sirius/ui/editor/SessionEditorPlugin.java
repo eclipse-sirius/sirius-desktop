@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry;
 import org.eclipse.sirius.ui.editor.internal.pages.DefaultPageProvider;
+import org.eclipse.sirius.ui.editor.internal.pages.DefaultSessionEditorPage;
 import org.eclipse.sirius.ui.editor.internal.pages.PluginPageProviderRegistry;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener.ISessionFileLoadingListener;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -36,6 +37,11 @@ public class SessionEditorPlugin extends EMFPlugin {
      * This plug-in's identifier.
      */
     public static final String ID = "org.eclipse.sirius.ui.editor"; //$NON-NLS-1$
+
+    /**
+     * The {@link DefaultSessionEditorPage} page's unique id.
+     */
+    public static final String DEFAULT_PAGE_ID = "org.eclipse.sirius.ui.editor.DefaultSessionEditorPage"; //$NON-NLS-1$
 
     /**
      * Keep track of the singleton.
