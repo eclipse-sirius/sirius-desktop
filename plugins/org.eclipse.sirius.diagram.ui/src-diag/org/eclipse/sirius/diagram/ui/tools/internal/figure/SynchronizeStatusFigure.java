@@ -99,25 +99,11 @@ public class SynchronizeStatusFigure extends Ellipse {
             public void propertyChange(PropertyChangeEvent evt) {
                 // location need to be updated when the scroll bar is moved and particularly when this figure become
                 // outside the editor. In that case it is not repaint if not relocated.
-
-                // We hide the figure during the moving of the scroll as a lot of PropertyChangeEvent can be sent. We
-                // only update location after a delay (100ms) and set the figure as visible after. This avoids to have
-                // blink effect or temporary wrong location.
-                setVisible(false);
-                executor.remove(executor.getQueue().peek());
-                executor.schedule(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        updateLocation();
-                        setVisible(true);
-
-                    }
-                }, 100, TimeUnit.MILLISECONDS);
+                updateLocation();
             }
         };
         this.setConstraint(label, new Rectangle(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT));
-        updateLocation();
+        updateLocation(true);
         refresh();
     }
 
@@ -141,16 +127,39 @@ public class SynchronizeStatusFigure extends Ellipse {
         }
     }
 
-    private void updateLocation() {
-        Dimension viewDimension = viewport.getSize().getCopy();
-        if (viewDimension.width() != 0 && viewDimension.height() != 0) {
-            // If the dimension of the diagram is {0, 0}, the diagram is not yet initialized so we don't compute
-            // location (it would be {-25, -25}).
-            Point viewLocation = viewport.getViewLocation().getCopy();
-            viewLocation.translate(viewDimension.preciseWidth(), viewDimension.preciseHeight());
-            viewLocation.performScale(1.0d / rootEditPart.getZoomManager().getZoom());
-            viewLocation.translate(this.getSize().negate());
-            this.setLocation(new Point(viewLocation.x, viewLocation.y));
+    /**
+     * Update the location of the figure according to viewport size and location.
+     */
+    public void updateLocation() {
+        updateLocation(false);
+    }
+
+    private void updateLocation(boolean force) {
+        // We hide the figure during the update location. As, for example, during moving of the scroll, a lot of
+        // PropertyChangeEvent can be sent and so a lot of updateLocation(). We only update location after a delay
+        // (100ms) and set the figure as visible after. This avoids to have blink effect or temporary wrong location.
+        setVisible(false);
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Dimension viewDimension = viewport.getSize().getCopy();
+                if (viewDimension.width() != 0 && viewDimension.height() != 0) {
+                    // If the dimension of the diagram is {0, 0}, the diagram is not yet initialized so we don't compute
+                    // location (it would be {-25, -25}).
+                    Point viewLocation = viewport.getViewLocation().getCopy();
+                    viewLocation.translate(viewDimension.preciseWidth(), viewDimension.preciseHeight());
+                    viewLocation.performScale(1.0d / rootEditPart.getZoomManager().getZoom());
+                    viewLocation.translate(getSize().negate());
+                    setLocation(new Point(viewLocation.x, viewLocation.y));
+                }
+                setVisible(true);
+            }
+        };
+        if (force) {
+            runnable.run();
+        } else if (executor != null) {
+            executor.remove(executor.getQueue().peek());
+            executor.schedule(runnable, 100, TimeUnit.MILLISECONDS);
         }
     }
 
@@ -214,9 +223,6 @@ public class SynchronizeStatusFigure extends Ellipse {
      */
     @Override
     public void paintFigure(Graphics g) {
-        // location need to be updated when the editor is resized
-        updateLocation();
-
         applyTransparency(g);
         super.paintFigure(g);
         g.setAlpha(255);

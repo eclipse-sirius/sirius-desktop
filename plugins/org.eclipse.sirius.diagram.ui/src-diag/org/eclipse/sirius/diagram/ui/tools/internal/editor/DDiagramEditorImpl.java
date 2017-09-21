@@ -69,6 +69,7 @@ import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
@@ -157,6 +158,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.header.DiagramHeaderComposite;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.Tabbar;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.TabbarRefresher;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.SynchronizeStatusFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramRootEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.handler.SiriusMouseWheelZoomHandler;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider;
@@ -200,6 +202,8 @@ import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTarget;
 import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -1350,6 +1354,19 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         }
         createHeaderSection(parentComposite);
         createMainDiagramSection(parentComposite);
+        // Add a listener to detect editor resize and update location of SynchronizeStatusFigure if it is enabled.
+        getGraphicalControl().addControlListener(new ControlAdapter() {
+            @Override
+            public void controlResized(final ControlEvent e) {
+                if (getDiagramGraphicalViewer().getRootEditPart() instanceof DiagramRootEditPart) {
+                    Optional<SynchronizeStatusFigure> syncStatusFigure = SynchronizeStatusFigure.getDiagramSynchronizeStatusFigure((DiagramRootEditPart) getDiagramGraphicalViewer().getRootEditPart());
+                    if (syncStatusFigure.isPresent()) {
+                        syncStatusFigure.get().updateLocation();
+                    }
+                }
+            }
+        });
+
     }
 
     private boolean isOldUIEnabled() {
