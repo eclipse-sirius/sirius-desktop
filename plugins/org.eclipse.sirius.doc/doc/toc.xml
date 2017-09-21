@@ -214,6 +214,12 @@
     <topic href="doc/developer/Architecture_Overview.html" label="Architecture Overview" />
     <topic href="doc/developer/Architecture.html" label="Architecture and Concepts" />
     <topic href="doc/developer/Meta-models.html" label="Meta-models" />
+    <topic label="API">
+       <topic href="doc/developer/siriusCrossReferenceAdapter.html" label="SiriusCrossReferenceAdapter">
+       </topic>
+       <topic href="doc/developer/representations_lazy_loading.html" label="Representations lazy loading (experimental)">
+       </topic>
+    </topic>
     <topic label="Extension Points">
       <topic href="doc/developer/integration-plm.html" label="Integration with Product Life Cycle Management" />
       <topic href="doc/developer/integration-modeler_description_file_deployment.html" label="Deploy a Modeler Description File" />
