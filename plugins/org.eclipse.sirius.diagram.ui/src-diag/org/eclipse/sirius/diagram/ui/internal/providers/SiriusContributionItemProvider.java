@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.ui.internal.providers;
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.AbstractContributionItemProvider;
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.RouterMenuManager;
-import org.eclipse.gmf.runtime.diagram.ui.printing.actions.PrintPreviewAction;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
@@ -36,8 +35,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.UnpinElement
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.straighten.StraightenToAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DistributeMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.StraightenToMenuManager;
-import org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusDiagramPrintPreviewAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusEnhancedPrintActionHelper;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
@@ -53,12 +50,7 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
     protected IAction createAction(final String actionId, final IWorkbenchPartDescriptor partDescriptor) {
         IAction result;
         final IWorkbenchPage workbenchPage = partDescriptor.getPartPage();
-        // if (actionId.equals(ActionIds.ACTION_DELETE_FROM_DIAGRAM)) {
-        // result = new DeleteFromDiagramAction(partDescriptor.getPartPage());
-        // } else
-        if (actionId.equals(PrintPreviewAction.ID)) {
-            result = new SiriusDiagramPrintPreviewAction(new SiriusEnhancedPrintActionHelper());
-        } else if (ActionIds.COPY_FORMAT.equals(actionId)) {
+        if (ActionIds.COPY_FORMAT.equals(actionId)) {
             result = new CopyFormatAction(workbenchPage);
         } else if (ActionIds.PASTE_FORMAT.equals(actionId)) {
             result = new PasteFormatAction(workbenchPage);
