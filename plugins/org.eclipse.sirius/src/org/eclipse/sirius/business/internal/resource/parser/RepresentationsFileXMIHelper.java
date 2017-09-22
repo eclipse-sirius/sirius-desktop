@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,8 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.osgi.framework.Version;
 
 /**
- * A GMFHelper implementation for RepresentationsFile. Delegates the setValue
- * method to {@link RepresentationsFileMigrationService}.
+ * A GMFHelper implementation for RepresentationsFile. Delegates the setValue method to
+ * {@link RepresentationsFileMigrationService}.
  * 
  * @author fbarbin
  * 
@@ -96,8 +96,7 @@ public class RepresentationsFileXMIHelper extends XMIHelperImpl {
     }
 
     /**
-     * Extracted from
-     * org.eclipse.gmf.runtime.emf.core.resources.GMFHelper.deresolve(URI).
+     * Extracted from org.eclipse.gmf.runtime.emf.core.resources.GMFHelper.deresolve(URI).
      * 
      * {@inheritDoc}
      * 
@@ -121,7 +120,7 @@ public class RepresentationsFileXMIHelper extends XMIHelperImpl {
     @Override
     public String convertToString(EFactory factory, EDataType dataType, Object value) {
         String str = null;
-        if (dataType.equals(ViewpointPackage.eINSTANCE.getDAnalysis_SemanticResources().getEAttributeType())) {
+        if (dataType.equals(ViewpointPackage.eINSTANCE.getResourceDescriptor())) {
             URI deresolvedURI = this.deresolve(((ResourceDescriptor) value).getResourceURI());
             if (deresolvedURI != null) {
                 str = deresolvedURI.toString();
@@ -133,7 +132,7 @@ public class RepresentationsFileXMIHelper extends XMIHelperImpl {
 
     @Override
     protected Object createFromString(EFactory eFactory, EDataType eDataType, String value) {
-        if (value != null && eDataType.equals(ViewpointPackage.eINSTANCE.getDAnalysis_SemanticResources().getEAttributeType())) {
+        if (value != null && eDataType.equals(ViewpointPackage.eINSTANCE.getResourceDescriptor())) {
             // ResourceDescriptor(String) constructor converts string into URI
             // That URI is used to get a relative URI
             URI resolvedURI = new ResourceDescriptor(value).getResourceURI().resolve(resourceURI);
