@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -357,14 +357,14 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
             IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
             FileEditorInput fileEditorInput = new FileEditorInput((IFile) element);
             IEditorReference[] airdEditorReferences = activePage.findEditors(fileEditorInput, SESSION_EDITOR_ID, IWorkbenchPage.MATCH_ID);
-            if (airdEditorReferences.length > 0) {
-                try {
+            try {
+                if (canOpenEditor(airdEditorReferences, fileEditorInput)) {
                     activePage.openEditor(fileEditorInput, SESSION_EDITOR_ID);
-                } catch (PartInitException e) {
-                    SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
+                } else {
+                    super.handleDoubleClick(anEvent);
                 }
-            } else {
-                super.handleDoubleClick(anEvent);
+            } catch (PartInitException e) {
+                SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
             }
         } else {
             super.handleDoubleClick(anEvent);
@@ -393,6 +393,15 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
                 }
             }
         }
+    }
+
+    private boolean canOpenEditor(IEditorReference[] airdEditorReferences, FileEditorInput fileEditorInput) throws PartInitException {
+        for (IEditorReference iEditorReference : airdEditorReferences) {
+            if (((FileEditorInput) iEditorReference.getEditorInput()).getPath().equals(fileEditorInput.getPath())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void hookGlobalActions() {
