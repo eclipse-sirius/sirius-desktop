@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_neon" sequenceNumber="1505205635">
+<target name="sirius_neon" sequenceNumber="1506088266">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -9,7 +9,7 @@
       <unit id="org.hamcrest.core" version="0.0.0"/>
       <unit id="org.hamcrest.library" version="0.0.0"/>
       <unit id="org.junit" version="4.12.0.v201504281640"/>
-      <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20170307180635/repository"/>
+      <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.1.1.201307101628"/>
@@ -38,11 +38,11 @@
       <unit id="org.eclipse.eef.sdk.feature.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.eef.ext.widgets.reference.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.eef.ext.widgets.reference.feature.source.feature.group" version="0.0.0"/>
-      <repository id="EEF-2.0.x" location="http://download.eclipse.org/modeling/emft/eef/updates/milestones/2.0/S20170531111419"/>
+      <repository id="EEF-2.0.0" location="http://download.eclipse.org/modeling/emft/eef/updates/releases/2.0/R20170531111419"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
-      <repository id="Sirius-Neon-Master" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon/"/>
+      <repository id="Sirius-Neon-Master" location="http://download.eclipse.org/sirius/updates/nightly/5.1.x/neon/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="0.0.0"/>

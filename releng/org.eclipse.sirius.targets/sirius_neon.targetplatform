@@ -9,7 +9,7 @@ include "modules/eef-2.0.tpd"
 
 with source, requirements
 
-location Sirius-Neon-Master "http://download.eclipse.org/sirius/updates/nightly/latest/neon/" {
+location Sirius-Neon-Master "http://download.eclipse.org/sirius/updates/nightly/5.1.x/neon/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 

@@ -1,11 +1,9 @@
-target "orbit"
+target "orbit" with source, requirements
 
-with source, requirements
-
-location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R20170307180635/repository" {
-        org.apache.log4j lazy
-        org.easymock lazy
-        org.hamcrest.core lazy
-        org.hamcrest.library lazy
-        org.junit [4.11.0,5.0.0)
+location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository" {
+    org.apache.log4j lazy
+    org.easymock lazy
+    org.hamcrest.core lazy
+    org.hamcrest.library lazy
+    org.junit [4.11.0,5.0.0)
 }
