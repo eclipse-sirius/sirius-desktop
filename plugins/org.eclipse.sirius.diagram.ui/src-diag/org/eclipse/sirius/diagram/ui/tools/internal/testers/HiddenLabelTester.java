@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,10 +19,9 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 
 /**
- * Tester to know if all selected elements have a label that is hidden.
+ * Tester to know if at least one element of the selected is kind of IDiagramElementEditPart and has label hidden.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
  */
 public class HiddenLabelTester extends PropertyTester {
 
@@ -32,6 +31,7 @@ public class HiddenLabelTester extends PropertyTester {
      * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object,
      *      java.lang.String, java.lang.Object[], java.lang.Object)
      */
+    @Override
     public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
         boolean result = false;
 
@@ -48,7 +48,7 @@ public class HiddenLabelTester extends PropertyTester {
     /**
      * @param selectedElement
      *            The current selection
-     * @return true if all selected element has label hidden.
+     * @return true if the selected element has label hidden.
      */
     private boolean testDiagramElementEditPart(IDiagramElementEditPart selectedElement) {
         DDiagramElement diagramElement = selectedElement.resolveDiagramElement();
@@ -61,24 +61,18 @@ public class HiddenLabelTester extends PropertyTester {
     /**
      * @param selectedElements
      *            The current selection
-     * @return true if all selected elements is kind of IDiagramElementEditPart
-     *         and has label hidden.
+     * @return true if at least one element of the selected is kind of IDiagramElementEditPart and has label hidden.
      */
     private boolean testStructuredSelection(IStructuredSelection selectedElements) {
-        boolean result = true;
+        boolean atLeastOneIsOK = false;
         final Iterator<?> iterator = selectedElements.iterator();
 
-        if (!iterator.hasNext()) {
-            result = false;
-        }
-        while (iterator.hasNext()) {
+        while (!atLeastOneIsOK && iterator.hasNext()) {
             final Object next = iterator.next();
             if (next instanceof IDiagramElementEditPart) {
-                result = result && testDiagramElementEditPart((IDiagramElementEditPart) next);
-            } else {
-                result = false;
+                atLeastOneIsOK = testDiagramElementEditPart((IDiagramElementEditPart) next);
             }
         }
-        return result;
+        return atLeastOneIsOK;
     }
 }

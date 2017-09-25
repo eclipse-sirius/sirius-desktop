@@ -1178,14 +1178,14 @@
        </propertyTester>
        <propertyTester
            id="org.eclipse.sirius.diagram.ui.HiddenLabelTester"
-           type="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart"
+           type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
            namespace="org.eclipse.sirius.diagram.ui"
            properties="isLabelHidden"
            class="org.eclipse.sirius.diagram.ui.tools.internal.testers.HiddenLabelTester">
        </propertyTester>
        <propertyTester
            id="org.eclipse.sirius.diagram.ui.CanHideLabelTester"
-           type="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart"
+           type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
            namespace="org.eclipse.sirius.diagram.ui"
            properties="canHideLabel"
            class="org.eclipse.sirius.diagram.ui.tools.internal.testers.CanHideLabelTester">
@@ -1325,7 +1325,7 @@
                   variable="selection">
                <iterate>
                   <instanceof
-                        value="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart">
+                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
                   </instanceof>
                   <not>
                      <instanceof
@@ -1768,23 +1768,13 @@
      </definition>
      <definition id="isLabelHidden">
       <iterate operator="or">
-         <and>
-              <reference
-                    definitionId="isInstanceOfIDiagramElementEditPart">
-              </reference>
-              <test property="org.eclipse.sirius.diagram.ui.isLabelHidden" />
-         </and>
-        </iterate>
+         <test property="org.eclipse.sirius.diagram.ui.isLabelHidden" />
+      </iterate>
      </definition>
      <definition id="canHideLabel">
       <iterate operator="or">
-         <and>
-              <reference
-                    definitionId="isInstanceOfIDiagramElementEditPart">
-              </reference>
-              <test property="org.eclipse.sirius.diagram.ui.canHideLabel" />
-         </and>
-        </iterate>
+         <test property="org.eclipse.sirius.diagram.ui.canHideLabel" />
+      </iterate>
      </definition>
   </extension>
   

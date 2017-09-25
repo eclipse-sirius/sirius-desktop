@@ -16,6 +16,8 @@ import java.util.List;
 
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusTextEditPart;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckTreeItemFontFormat;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
@@ -322,7 +324,7 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         SWTBotGefEditPart editPart = editor.getEditPart(BORDERED_NODE_WITH_LABEL_NAME).parent();
         checkLabelIsVisible(BORDERED_NODE_WITH_LABEL_NAME);
         if (selectInvalidElement) {
-            editor.select(Sets.newHashSet(editPart, getInvalidElement()));
+            editor.select(Sets.newHashSet(editPart, getInvalidElement(), editor.getEditPart("Text", SiriusTextEditPart.class), editor.getEditPart("Note", SiriusNoteEditPart.class)));
         } else {
             editor.select(Sets.newHashSet(editPart));
         }

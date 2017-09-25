@@ -182,6 +182,31 @@
           <styles xmi:type="notation:ShapeStyle" xmi:id="_uqODwfk3Ed-olLe834UWAw" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uqODwvk3Ed-olLe834UWAw" x="555" y="145" width="30" height="30"/>
         </children>
+        <children xmi:type="notation:Shape" xmi:id="_2baWEKHUEee_96cZ4T3DeQ" type="Text" fontName="Comic Sans MS" description="Text">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_2bbkMKHUEee_96cZ4T3DeQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_2bbkMaHUEee_96cZ4T3DeQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2baWEaHUEee_96cZ4T3DeQ" x="320" y="340"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_M4IawKHVEee_96cZ4T3DeQ" type="Note" fontName="Comic Sans MS" description="Note" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_M4IawaHVEee_96cZ4T3DeQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_M4IawqHVEee_96cZ4T3DeQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_M4JB0KHVEee_96cZ4T3DeQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_M4JB0aHVEee_96cZ4T3DeQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_M4Iaw6HVEee_96cZ4T3DeQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_M4IaxKHVEee_96cZ4T3DeQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M4IaxaHVEee_96cZ4T3DeQ" x="320" y="275"/>
+        </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_iT-ykuzQEd-T-fkKxdk2ZA"/>
         <edges xmi:type="notation:Edge" xmi:id="_ifv9sOzQEd-T-fkKxdk2ZA" type="4001" element="_7a-3EEg0EeCm95Tq9dtYWA" source="_icxiMOzQEd-T-fkKxdk2ZA" target="_iejq4OzQEd-T-fkKxdk2ZA">
           <children xmi:type="notation:Node" xmi:id="_if5usOzQEd-T-fkKxdk2ZA" type="6001">
