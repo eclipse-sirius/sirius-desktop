@@ -108,8 +108,10 @@ public abstract class AbstractNotSelectableShapeNodeEditPart extends ShapeNodeEd
 
     @Override
     public void deactivate() {
-        labelAndIconRefresher.dispose();
-        labelAndIconRefresher = null;
+        if (labelAndIconRefresher != null) {
+            labelAndIconRefresher.dispose();
+            labelAndIconRefresher = null;
+        }
         super.deactivate();
     }
 }

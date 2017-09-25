@@ -294,7 +294,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                 if (diagramEditPart != null) {
                     diagramEditPart.deactivate();
                 }
-            } catch (final NullPointerException e) {
+            } catch (final NullPointerException | IllegalStateException e) {
                 // we might have an exception closing an editor which is
                 // already in trouble
                 DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, Messages.DiagramDialectUIServices_diagramEditPartDeactivationError));

@@ -104,9 +104,13 @@ public final class DiagramElementEditPartOperation {
      * @return the diagram element that is represented by <code>self</code>.
      */
     public static DDiagramElement resolveDiagramElement(final IDiagramElementEditPart self) {
-        final EObject semanticHost = self.resolveSemanticElement();
-        if (semanticHost instanceof DDiagramElement) {
-            return (DDiagramElement) semanticHost;
+        try {
+            final EObject semanticHost = self.resolveSemanticElement();
+            if (semanticHost instanceof DDiagramElement) {
+                return (DDiagramElement) semanticHost;
+            }
+        } catch (IllegalStateException e) {
+            // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
         }
         return null;
     }
@@ -155,9 +159,13 @@ public final class DiagramElementEditPartOperation {
      * @return the target value of the {@link DSemanticDecorator} that is represented by this edit part.
      */
     public static EObject resolveTargetSemanticElement(final IDiagramElementEditPart self) {
-        final EObject semanticHost = self.resolveSemanticElement();
-        if (semanticHost instanceof DSemanticDecorator) {
-            return ((DSemanticDecorator) semanticHost).getTarget();
+        try {
+            final EObject semanticHost = self.resolveSemanticElement();
+            if (semanticHost instanceof DSemanticDecorator) {
+                return ((DSemanticDecorator) semanticHost).getTarget();
+            }
+        } catch (IllegalStateException e) {
+            // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
         }
         return null;
     }
