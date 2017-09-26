@@ -88,6 +88,11 @@ public class RepresentationSelectionWizardPage extends WizardPage {
     private EObject semanticElement;
 
     /**
+     * The component allowing to select representation descriptors.
+     */
+    private GraphicalRepresentationHandler graphicalRepresentationHandler;
+
+    /**
      * Create a new <code>RepresentationSelectionWizardPage</code>.
      *
      * @param root
@@ -226,6 +231,19 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         this.semanticSelectionWizard = selectionWizard;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see org.eclipse.jface.dialogs.DialogPage#dispose()
+     */
+    @Override
+    public void dispose() {
+        if (graphicalRepresentationHandler != null) {
+            graphicalRepresentationHandler.dispose();
+            graphicalRepresentationHandler = null;
+        }
+        super.dispose();
+    }
+
     @Override
     public void createControl(final Composite parent) {
         initializeDialogUnits(parent);
@@ -235,8 +253,8 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         pageComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
         SessionContentProvider theContentProvider = new SessionContentProvider(semanticElement);
         GraphicalRepresentationHandlerBuilder graphicalRepresentationHandlerBuilder = new GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder(session);
-        GraphicalRepresentationHandler graphicalRepresentationHandler = graphicalRepresentationHandlerBuilder.customizeContentAndLabel(theContentProvider, new SiriusRepresentationLabelProvider())
-                .filterEmptyViewpoints().activateBrowserWithViewpointAndRepresentationDescriptionInformation().build();
+        graphicalRepresentationHandler = graphicalRepresentationHandlerBuilder.customizeContentAndLabel(theContentProvider, new SiriusRepresentationLabelProvider()).filterEmptyViewpoints()
+                .activateBrowserWithViewpointAndRepresentationDescriptionInformation().build();
         graphicalRepresentationHandler.createControl(pageComposite);
         treeViewer = graphicalRepresentationHandler.getTreeViewer();
         Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);

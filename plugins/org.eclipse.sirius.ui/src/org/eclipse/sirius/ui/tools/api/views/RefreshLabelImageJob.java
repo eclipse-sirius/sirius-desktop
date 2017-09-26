@@ -75,7 +75,7 @@ public class RefreshLabelImageJob extends UIJob {
      */
     @Override
     public IStatus runInUIThread(IProgressMonitor monitor) {
-        if (commonViewer != null) {
+        if (commonViewer != null && commonViewer.getTree() != null && !commonViewer.getTree().isDisposed()) {
             if (elementsToRefresh == null || elementsToRefresh.isEmpty()) {
                 commonViewer.refresh();
             } else {
