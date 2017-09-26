@@ -222,6 +222,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(PinnedElementsTest.class);
         suite.addTestSuite(StraightenToTest.class);
         suite.addTest(new JUnit4TestAdapter(DndWorkspaceToAirdEditorTest.class));
+        suite.addTestSuite(SessionEditorTest.class);
     }
 
     /**

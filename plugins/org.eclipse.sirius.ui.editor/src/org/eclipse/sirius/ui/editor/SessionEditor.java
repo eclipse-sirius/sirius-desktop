@@ -112,10 +112,12 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                     }
                 }
             }
-            PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
-                commandsToExecute.stream().forEach(Runnable::run);
-                updatePages(event);
-            });
+            if (commandsToExecute.size() > 0) {
+                PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                    commandsToExecute.stream().forEach(Runnable::run);
+                    updatePages(event);
+                });
+            }
         }
 
         @Override
@@ -651,7 +653,12 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
      */
     private Runnable prepareRemoveCommand(RemovePageCommand pageUpdateCommand, SessionEditor editor, AbstractSessionEditorPage page) {
         return () -> {
-            editor.removePage(editor.pages.indexOf(page));
+            int pageToRemoveIndex = editor.pages.indexOf(page);
+            // we don't remove a page not existing anymore. This can occurs if
+            // many notifications leads to the same page removal.
+            if (pageToRemoveIndex != -1) {
+                editor.removePage(pageToRemoveIndex);
+            }
         };
     }
 

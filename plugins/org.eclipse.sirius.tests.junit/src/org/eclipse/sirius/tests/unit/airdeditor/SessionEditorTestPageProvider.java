@@ -20,15 +20,13 @@ import java.util.function.Supplier;
 
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.sirius.business.internal.resource.AirDResourceImpl;
-import org.eclipse.sirius.tests.support.api.SiriusTestCase;
-import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.ui.editor.SessionEditor;
-import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage;
 import org.eclipse.sirius.ui.editor.api.pages.PageProvider;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
 import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdateCommand;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * This abstract class provides methods to initialize test context for aird editor extensibility testing.
@@ -36,7 +34,7 @@ import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdat
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
  */
-public class AbstractSessionEditorTest extends SiriusTestCase {
+public class SessionEditorTestPageProvider {
     /**
      * This enum is used to synchronize the page creation/removal/update conditions between the static call from
      * {@link PageProvider} and the dynamic call from the methods {@link AbstractSessionEditorPage#pageChanged(boolean)}
@@ -45,24 +43,33 @@ public class AbstractSessionEditorTest extends SiriusTestCase {
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
      */
-    protected enum CommandSynchronization {
+    public enum CommandSynchronization {
         VISIBILITY_SYNCHRONIZATION, RESOURCE_SET_CHANGE_SYNCHRONIZATION, BOTH_SYNCHRONIZATION
 
     }
 
-    protected PageProviderRegistry pageRegistry;
+    public static final String PAGE2_ID = "page2"; // $NON-NLS-N$
 
-    protected SessionEditor sessionEditor;
+    public static final String PAGE3_ID = "page3"; // $NON-NLS-N$
 
-    protected static final String PAGE2_ID = "page2"; // $NON-NLS-N$
+    public static final String PAGE4_ID = "page4"; // $NON-NLS-N$
 
-    protected static final String PAGE3_ID = "page3"; // $NON-NLS-N$
+    private PageProviderRegistry pageRegistry;
 
-    protected static final String PAGE4_ID = "page4"; // $NON-NLS-N$
+    private SessionEditor sessionEditor;
 
-    protected List<PageProviderExtension> pageProviders;
+    private List<PageProviderExtension> pageProviders;
 
-    protected Map<String, AbstractSessionEditorPage> idToPageMap;
+    private Map<String, AbstractSessionEditorPage> idToPageMap;
+
+    public SessionEditorTestPageProvider(SessionEditor sessionEditor, Map<String, AbstractSessionEditorPage> idToPageMap, PageProviderRegistry pageRegistry,
+            List<PageProviderExtension> pageProviders) {
+        this.pageProviders = new ArrayList<PageProviderExtension>();
+        this.pageRegistry = pageRegistry;
+        this.idToPageMap = idToPageMap;
+        this.sessionEditor = sessionEditor;
+        this.pageProviders = pageProviders;
+    }
 
     /**
      * Test page that can have its display conditions parameterized as well as the dynamic update it can provides with
@@ -144,7 +151,7 @@ public class AbstractSessionEditorTest extends SiriusTestCase {
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
      */
-    protected final class PageProviderExtension extends PageProvider {
+    public final class PageProviderExtension extends PageProvider {
 
         private String newPageId;
 
@@ -193,14 +200,6 @@ public class AbstractSessionEditorTest extends SiriusTestCase {
         }
     }
 
-    @Override
-    public void setUp() throws Exception {
-        super.setUp();
-        pageProviders = new ArrayList<PageProviderExtension>();
-        pageRegistry = SessionEditorPlugin.getPlugin().getPageRegistry();
-        idToPageMap = new HashMap<String, AbstractSessionEditorPage>();
-    }
-
     /**
      * Initialize a page provider providing one page.
      * 
@@ -211,53 +210,48 @@ public class AbstractSessionEditorTest extends SiriusTestCase {
      * @param newPageId
      *            the id of the page produced by the provider.
      */
-    protected void initOnePageProvider(PositioningKind positioningKind, String targetPageId, String newPageId) {
-        PageProviderExtension pageProviderExtension = new PageProviderExtension(positioningKind, targetPageId, newPageId);
-        pageProviders.add(pageProviderExtension);
-        pageRegistry.addPageProvider(pageProviderExtension);
+    public void initOnePageProvider(PositioningKind positioningKind, String targetPageId, String newPageId) {
+        PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+            PageProviderExtension pageProviderExtension = new PageProviderExtension(positioningKind, targetPageId, newPageId);
+            pageProviders.add(pageProviderExtension);
+            pageRegistry.addPageProvider(pageProviderExtension);
+        });
     }
 
-    protected void initOnePageProvider(PositioningKind positioningKind, String targetPageId, String newPageId, Function<Boolean, Optional<PageUpdateCommand>> updateWhenVisibleSupplier,
+    public void initOnePageProvider(PositioningKind positioningKind, String targetPageId, String newPageId, Function<Boolean, Optional<PageUpdateCommand>> updateWhenVisibleSupplier,
             Supplier<Optional<PageUpdateCommand>> updateWhenChangedSupplier, CommandSynchronization commandSynchronization) {
-        PageProviderExtension pageProviderExtension = new PageProviderExtension(positioningKind, targetPageId, newPageId, updateWhenVisibleSupplier, updateWhenChangedSupplier, commandSynchronization);
-        pageProviders.add(pageProviderExtension);
-        pageRegistry.addPageProvider(pageProviderExtension);
+        PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+            PageProviderExtension pageProviderExtension = new PageProviderExtension(positioningKind, targetPageId, newPageId, updateWhenVisibleSupplier, updateWhenChangedSupplier,
+                    commandSynchronization);
+            pageProviders.add(pageProviderExtension);
+            pageRegistry.addPageProvider(pageProviderExtension);
+        });
     }
 
-    protected void initTwoPageProvider(PositioningKind positioningKind1, String pageId1, String newPageId1, PositioningKind positioningKind2, String pageId2, String newPageId2) {
-        PageProviderExtension pageProviderExtension1 = new PageProviderExtension(positioningKind1, pageId1, newPageId1);
-        PageProviderExtension pageProviderExtension2 = new PageProviderExtension(positioningKind2, pageId2, newPageId2);
-        pageProviders.add(pageProviderExtension1);
-        pageRegistry.addPageProvider(pageProviderExtension1);
-        pageProviders.add(pageProviderExtension2);
-        pageRegistry.addPageProvider(pageProviderExtension2);
+    public void initTwoPageProvider(PositioningKind positioningKind1, String pageId1, String newPageId1, PositioningKind positioningKind2, String pageId2, String newPageId2) {
+        PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+            PageProviderExtension pageProviderExtension1 = new PageProviderExtension(positioningKind1, pageId1, newPageId1);
+            PageProviderExtension pageProviderExtension2 = new PageProviderExtension(positioningKind2, pageId2, newPageId2);
+            pageProviders.add(pageProviderExtension1);
+            pageRegistry.addPageProvider(pageProviderExtension1);
+            pageProviders.add(pageProviderExtension2);
+            pageRegistry.addPageProvider(pageProviderExtension2);
+        });
     }
 
-    protected void initThreePageProvider(PositioningKind positioningKind1, String pageId1, String newPageId1, PositioningKind positioningKind2, String pageId2, String newPageId2,
+    public void initThreePageProvider(PositioningKind positioningKind1, String pageId1, String newPageId1, PositioningKind positioningKind2, String pageId2, String newPageId2,
             PositioningKind positioningKind3, String pageId3, String newPageId3) {
-        PageProviderExtension pageProviderExtension1 = new PageProviderExtension(positioningKind1, pageId1, newPageId1);
-        PageProviderExtension pageProviderExtension2 = new PageProviderExtension(positioningKind2, pageId2, newPageId2);
-        PageProviderExtension pageProviderExtension3 = new PageProviderExtension(positioningKind3, pageId3, newPageId3);
-        pageProviders.add(pageProviderExtension1);
-        pageRegistry.addPageProvider(pageProviderExtension1);
-        pageProviders.add(pageProviderExtension2);
-        pageRegistry.addPageProvider(pageProviderExtension2);
-        pageProviders.add(pageProviderExtension3);
-        pageRegistry.addPageProvider(pageProviderExtension3);
+        PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+            PageProviderExtension pageProviderExtension1 = new PageProviderExtension(positioningKind1, pageId1, newPageId1);
+            PageProviderExtension pageProviderExtension2 = new PageProviderExtension(positioningKind2, pageId2, newPageId2);
+            PageProviderExtension pageProviderExtension3 = new PageProviderExtension(positioningKind3, pageId3, newPageId3);
+            pageProviders.add(pageProviderExtension1);
+            pageRegistry.addPageProvider(pageProviderExtension1);
+            pageProviders.add(pageProviderExtension2);
+            pageRegistry.addPageProvider(pageProviderExtension2);
+            pageProviders.add(pageProviderExtension3);
+            pageRegistry.addPageProvider(pageProviderExtension3);
+        });
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        for (PageProviderExtension pageProviderExtension : pageProviders) {
-            pageRegistry.removePageProvider(pageProviderExtension);
-        }
-        idToPageMap.clear();
-
-        super.tearDown();
-    }
-
-    @Override
-    protected ICommandFactory getCommandFactory() {
-        return null;
-    }
 }

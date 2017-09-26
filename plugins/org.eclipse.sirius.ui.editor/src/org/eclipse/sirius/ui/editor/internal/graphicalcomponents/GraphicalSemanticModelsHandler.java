@@ -929,7 +929,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         switch (changeKind) {
         case SessionListener.SELECTED_VIEWS_CHANGE_KIND:
         case SessionListener.SEMANTIC_CHANGE:
-            PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+            PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
                 updateViewerInput();
             });
             break;
@@ -995,7 +995,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
             case SessionListener.REPLACED:
             case SessionListener.SYNC:
             case SessionListener.DIRTY:
-                PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 
                     @Override
                     public void run() {
