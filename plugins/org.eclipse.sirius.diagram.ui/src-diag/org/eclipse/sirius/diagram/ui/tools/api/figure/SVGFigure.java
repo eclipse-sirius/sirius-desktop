@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTransc
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
@@ -181,6 +182,14 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     /** The image ratio (width/height); computed during a SVG change detected {@link #contentChanged()}. */
     private double initialAspectRatio = 1;
 
+    /**
+     * True if the SVG document contains an attribute "viewBox", false otherwise. This attribute is not handled by the
+     * current version of batik used by Sirius (1.6). And it causes regression, shrinked image, since the fix of bug
+     * 463051.<BR>
+     * This field is set at each {@link #contentChanged()}.
+     */
+    protected boolean modeWithViewBox;
+
     protected static WeakHashMap<String, Document> documentsMap = new WeakHashMap<String, Document>();
 
     public SVGFigure() {
@@ -312,7 +321,20 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
      * re-rendered and figure will be repainted.
      */
     public void contentChanged() {
-        getDocument();
+        Document document = getDocument();
+        modeWithViewBox = false;
+        for (int i = 0; i < document.getChildNodes().getLength(); i++) {
+            org.w3c.dom.Node node = document.getChildNodes().item(i);
+            if (node instanceof Element) {
+                String viewBoxValue = ((Element) node).getAttribute("viewBox"); //$NON-NLS-1$
+                if (!StringUtil.isEmpty(viewBoxValue)) {
+                    // stretch the image is not supported as the current version of Batif used does not handled it
+                    // (org.apache.batik.dom.svg.SVGOMSVGElement.getViewBox()).
+                    modeWithViewBox = true;
+                }
+            }
+
+        }
         if (transcoder != null) {
             transcoder.contentChanged();
             // Each time that SVG document is changed, we store the real ratio of the image (width/height); the transcoder aspect ratio. Indeed, after the transcoder aspect ratio will be
@@ -381,16 +403,21 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
             if (image != null) {
                 synchronized (image) {
                     if (!image.isDisposed()) {
-                        // The scaled width (and height) must not be greater than area width (and height). So depending
-                        // on the initialAspectRatio and zoom factor, the reference can be the width or the height.
-                        double scaledWidth = svgArea.width() * graphics.getAbsoluteScale();
-                        double scaledHeight = scaledWidth / getImageAspectRatio();
-                        if ((scaledHeight / graphics.getAbsoluteScale()) > svgArea.height()) {
-                            // The height must be the reference to avoid an IllegalArgumentException later.
-                            scaledHeight = svgArea.height() * graphics.getAbsoluteScale();
-                            scaledWidth = scaledHeight * getImageAspectRatio();
+                        if (modeWithViewBox) {
+                            graphics.drawImage(image, 0, 0, scaledArea.width(), scaledArea.height(), svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
+                        } else {
+                            // The scaled width (and height) must not be greater than area width (and height). So
+                            // depending
+                            // on the initialAspectRatio and zoom factor, the reference can be the width or the height.
+                            double scaledWidth = svgArea.width() * graphics.getAbsoluteScale();
+                            double scaledHeight = scaledWidth / getImageAspectRatio();
+                            if ((scaledHeight / graphics.getAbsoluteScale()) > svgArea.height()) {
+                                // The height must be the reference to avoid an IllegalArgumentException later.
+                                scaledHeight = svgArea.height() * graphics.getAbsoluteScale();
+                                scaledWidth = scaledHeight * getImageAspectRatio();
+                            }
+                            graphics.drawImage(image, 0, 0, (int) scaledWidth, (int) scaledHeight, svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
                         }
-                        graphics.drawImage(image, 0, 0, (int) scaledWidth, (int) scaledHeight, svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
                     }
                 }
             }

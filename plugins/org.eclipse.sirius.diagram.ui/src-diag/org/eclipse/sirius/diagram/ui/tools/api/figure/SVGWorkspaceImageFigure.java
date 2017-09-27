@@ -20,6 +20,7 @@ import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.swt.graphics.Image;
@@ -33,6 +34,8 @@ import org.eclipse.swt.graphics.Image;
  *
  */
 public class SVGWorkspaceImageFigure extends SVGFigure implements IWorkspaceImageFigure {
+
+    private double imageAspectRatioForModeWithViewBox = 1.0;
 
     /**
      * Create a new {@link SVGWorkspaceImageFigure}.
@@ -53,6 +56,16 @@ public class SVGWorkspaceImageFigure extends SVGFigure implements IWorkspaceImag
         SVGWorkspaceImageFigure fig = new SVGWorkspaceImageFigure();
         fig.refreshFigure(image);
         return fig;
+    }
+
+    @Override
+    public void setSize(final int w, final int h) {
+        if (modeWithViewBox) {
+            final int newHeight = (int) (w / imageAspectRatioForModeWithViewBox);
+            super.setSize(w, newHeight);
+        } else {
+            super.setSize(w, h);
+        }
     }
 
     @Override
@@ -103,6 +116,10 @@ public class SVGWorkspaceImageFigure extends SVGFigure implements IWorkspaceImag
             boolean updated = this.updateImageURI(workspaceImage.getWorkspacePath());
             if (updated) {
                 this.contentChanged();
+                SimpleImageTranscoder transcoder = getTranscoder();
+                if (transcoder != null) {
+                    imageAspectRatioForModeWithViewBox = transcoder.getAspectRatio();
+                }
             }
         } else {
             this.setURI(null);
