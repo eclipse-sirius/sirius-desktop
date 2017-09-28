@@ -872,7 +872,7 @@ public class CanonicalDBorderItemLocator {
                     }
                     rightHorizontalGap = (optionalConflictingRectangle.get().x + optionalConflictingRectangle.get().width + 1) - rightTestPoint.x;
                     if (snapToGrid) {
-                        rightHorizontalGap = Math.max(rightHorizontalGap, getGapForNextGridStep(rightTestPoint.x));
+                        rightHorizontalGap = computeGapWithSnapToGrid(rightTestPoint.x, rightHorizontalGap);
                     }
                     if (rightTestPoint.x + rightHorizontalGap + borderItemSize.width > getParentBorder().getBottomRight().x) {
                         isStillFreeSpaceToTheRight = false;
@@ -893,7 +893,7 @@ public class CanonicalDBorderItemLocator {
                     }
                     leftHorizontalGap = leftTestPoint.x - (optionalConflictingRectangle.get().x - borderItemSize.width - 1);
                     if (snapToGrid) {
-                        leftHorizontalGap = Math.max(leftHorizontalGap, getGapForPreviousGridStep(leftTestPoint.x));
+                        leftHorizontalGap = computeGapWithSnapToGrid(leftTestPoint.x, leftHorizontalGap);
                     }
                     if (leftTestPoint.x - leftHorizontalGap < getParentBorder().getTopLeft().x) {
                         isStillFreeSpaceToTheLeft = false;
@@ -976,7 +976,7 @@ public class CanonicalDBorderItemLocator {
                     }
                     rightHorizontalGap = (optionalConflictingRectangle.get().x + optionalConflictingRectangle.get().width + 1) - rightTestPoint.x;
                     if (snapToGrid) {
-                        rightHorizontalGap = Math.max(rightHorizontalGap, getGapForNextGridStep(rightTestPoint.x));
+                        rightHorizontalGap = computeGapWithSnapToGrid(rightTestPoint.x, rightHorizontalGap);
                     }
                     if (rightTestPoint.x + rightHorizontalGap + borderItemSize.width > getParentBorder().getBottomRight().x) {
                         isStillFreeSpaceToTheRight = false;
@@ -997,7 +997,7 @@ public class CanonicalDBorderItemLocator {
                     }
                     leftHorizontalGap = leftTestPoint.x - (optionalConflictingRectangle.get().x - borderItemSize.width - 1);
                     if (snapToGrid) {
-                        leftHorizontalGap = Math.max(leftHorizontalGap, getGapForPreviousGridStep(leftTestPoint.x));
+                        leftHorizontalGap = computeGapWithSnapToGrid(leftTestPoint.x, leftHorizontalGap);
                     }
                     if (leftTestPoint.x - leftHorizontalGap < getParentBorder().getTopLeft().x) {
                         isStillFreeSpaceToTheLeft = false;
@@ -1080,7 +1080,7 @@ public class CanonicalDBorderItemLocator {
                     }
                     belowVerticalGap = optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height - belowTestPoint.y + 1;
                     if (snapToGrid) {
-                        belowVerticalGap = Math.max(belowVerticalGap, getGapForNextGridStep(belowTestPoint.y));
+                        belowVerticalGap = computeGapWithSnapToGrid(belowTestPoint.y, belowVerticalGap);
                     }
                     if (belowTestPoint.y + belowVerticalGap + borderItemSize.height > getParentBorder().getBottomLeft().y) {
                         isStillFreeSpaceBelow = false;
@@ -1101,7 +1101,7 @@ public class CanonicalDBorderItemLocator {
                     }
                     aboveVerticalGap = aboveTestPoint.y - (optionalConflictingRectangle.get().y - borderItemSize.height - 1);
                     if (snapToGrid) {
-                        aboveVerticalGap = Math.max(aboveVerticalGap, getGapForPreviousGridStep(aboveTestPoint.y));
+                        aboveVerticalGap = computeGapWithSnapToGrid(aboveTestPoint.y, aboveVerticalGap);
                     }
                     if (aboveTestPoint.y - aboveVerticalGap < getParentBorder().getTopRight().y) {
                         isStillFreeSpaceAbove = false;
@@ -1185,7 +1185,7 @@ public class CanonicalDBorderItemLocator {
                     }
                     belowVerticalGap = optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height - belowTestPoint.y + 1;
                     if (snapToGrid) {
-                        belowVerticalGap = Math.max(belowVerticalGap, getGapForNextGridStep(belowTestPoint.y));
+                        belowVerticalGap = computeGapWithSnapToGrid(belowTestPoint.y, belowVerticalGap);
                     }
                     if (belowTestPoint.y + belowVerticalGap + borderItemSize.height > getParentBorder().getBottomLeft().y) {
                         isStillFreeSpaceBelow = false;
@@ -1206,7 +1206,7 @@ public class CanonicalDBorderItemLocator {
                     }
                     aboveVerticalGap = aboveTestPoint.y - (optionalConflictingRectangle.get().y - borderItemSize.height - 1);
                     if (snapToGrid) {
-                        aboveVerticalGap = Math.max(aboveVerticalGap, getGapForPreviousGridStep(aboveTestPoint.y));
+                        aboveVerticalGap = computeGapWithSnapToGrid(aboveTestPoint.y, aboveVerticalGap);
                     }
                     if (aboveTestPoint.y - aboveVerticalGap < getParentBorder().getTopRight().y) {
                         isStillFreeSpaceAbove = false;
@@ -1242,6 +1242,11 @@ public class CanonicalDBorderItemLocator {
             resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNextSide, borderItemSize), next, circuitCount + 1, borderItem, portsNodesToIgnore);
         }
         return resultLocation;
+    }
+
+    private int computeGapWithSnapToGrid(int currentCoordinate, int proposedGap) {
+        int gapForNextGridStep = getGapForNextGridStep(currentCoordinate);
+        return gapForNextGridStep < proposedGap ? proposedGap + gridSpacing - (proposedGap % gridSpacing) : gapForNextGridStep;
     }
 
     /**
