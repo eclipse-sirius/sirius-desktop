@@ -221,12 +221,54 @@ public interface DialectUIServices {
      *            the export format.
      * @param monitor
      *            the progress monitor
+     * @throws SizeTooLargeException
+     *             if size image to export is too large.
+     */
+    default void export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) throws SizeTooLargeException {
+        exportWithResult(representation, session, path, format, monitor);
+    }
+
+    /**
+     * Export as image or as HTML/CSV document a representation.
+     * 
+     * @param representation
+     *            representation to export as image.
+     * @param session
+     *            the current session.
+     * @param path
+     *            the file path
+     * @param format
+     *            the export format.
+     * @param monitor
+     *            the progress monitor
+     * @param exportDecorations
+     *            true if we want the image to contain diagram element decorations
+     * @throws SizeTooLargeException
+     *             if size image to export is too large.
+     */
+    default void export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor, boolean exportDecorations) throws SizeTooLargeException {
+        exportWithResult(representation, session, path, format, monitor, exportDecorations);
+    }
+    
+    /**
+     * Export as image or as HTML/CSV document a representation.
+     * 
+     * @param representation
+     *            representation to export as image.
+     * @param session
+     *            the current session.
+     * @param path
+     *            the file path
+     * @param format
+     *            the export format.
+     * @param monitor
+     *            the progress monitor
      * @return an {@link ExportResult} with meta-data describing the result of the export operation. Concrete dialects
      *         may return subclasses with dialect-specific additional information. May be null if the export failed.
      * @throws SizeTooLargeException
      *             if size image to export is too large.
      */
-    ExportResult export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) throws SizeTooLargeException;
+    ExportResult exportWithResult(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) throws SizeTooLargeException;
 
     /**
      * Export as image or as HTML/CSV document a representation.
@@ -248,10 +290,10 @@ public interface DialectUIServices {
      * @throws SizeTooLargeException
      *             if size image to export is too large.
      */
-    default ExportResult export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor, boolean exportDecorations) throws SizeTooLargeException {
-        return export(representation, session, path, format, monitor);
+    default ExportResult exportWithResult(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor, boolean exportDecorations) throws SizeTooLargeException {
+        return exportWithResult(representation, session, path, format, monitor);
     }
-
+    
     /**
      * Tell whether the dialect is able to handle the given representation.
      * 

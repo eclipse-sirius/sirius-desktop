@@ -204,7 +204,7 @@ public class TreeDialectUIServices implements DialectUIServices {
     }
 
     @Override
-    public ExportResult export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) {
+    public ExportResult exportWithResult(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) {
         // Nothing to do for trees.
         return new ExportResult(representation, Collections.emptySet());
     }

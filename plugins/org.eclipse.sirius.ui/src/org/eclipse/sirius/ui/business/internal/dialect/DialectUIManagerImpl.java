@@ -254,18 +254,39 @@ public class DialectUIManagerImpl implements DialectUIManager {
     }
 
     @Override
-    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
-        return export(representation, session, path, format, monitor, true);
+    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
+        export(representation, session, path, format, monitor, true);
     }
 
     @Override
-    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
+    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
             throws SizeTooLargeException {
+        for (final DialectUI dialect : dialects.values()) {
+            if (dialect.getServices().canHandle(representation)) {
+                try {
+                    dialect.getServices().export(representation, session, path, format, monitor, exportDecorations);
+                } catch (CoreException exception) {
+                    if (exception instanceof SizeTooLargeException) {
+                        throw (SizeTooLargeException) exception;
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public ExportResult exportWithResult(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) throws SizeTooLargeException {
+        return exportWithResult(representation, session, path, format, monitor, true);
+    }
+
+    @Override
+    public ExportResult exportWithResult(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor,
+            boolean exportDecorations) throws SizeTooLargeException {
         ExportResult result = null;
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canHandle(representation)) {
                 try {
-                    result = dialect.getServices().export(representation, session, path, format, monitor, exportDecorations);
+                    result = dialect.getServices().exportWithResult(representation, session, path, format, monitor, exportDecorations);
                 } catch (CoreException exception) {
                     if (exception instanceof SizeTooLargeException) {
                         throw (SizeTooLargeException) exception;

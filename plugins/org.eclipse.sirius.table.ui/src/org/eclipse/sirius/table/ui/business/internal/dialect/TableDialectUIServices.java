@@ -246,14 +246,14 @@ public class TableDialectUIServices implements DialectUIServices {
     public boolean canExport(ExportFormat format) {
         return format.getDocumentFormat().equals(ExportDocumentFormat.CSV);
     }
-
+    
     @Override
-    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
-        return export(representation, session, path, format, monitor, true);
+    public ExportResult exportWithResult(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) throws SizeTooLargeException {
+        return exportWithResult(representation, session, path, format, monitor, true);
     }
 
     @Override
-    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat exportFormat, final IProgressMonitor monitor, boolean exportDecorations) {
+    public ExportResult exportWithResult(final DRepresentation representation, final Session session, final IPath path, final ExportFormat exportFormat, final IProgressMonitor monitor, boolean exportDecorations) {
         String content = null;
         if (exportFormat.getDocumentFormat().equals(ExportDocumentFormat.CSV)) {
             content = TableExportHelper.INSTANCE.exportToCsv((DTable) representation);

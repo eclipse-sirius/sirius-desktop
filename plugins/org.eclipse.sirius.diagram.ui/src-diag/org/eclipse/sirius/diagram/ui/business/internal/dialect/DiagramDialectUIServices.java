@@ -410,12 +410,12 @@ public class DiagramDialectUIServices implements DialectUIServices {
     }
 
     @Override
-    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
-        return export(representation, session, path, format, monitor, true);
+    public ExportResult exportWithResult(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
+        return exportWithResult(representation, session, path, format, monitor, true);
     }
 
     @Override
-    public ExportResult export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
+    public ExportResult exportWithResult(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
             throws SizeTooLargeException {
 
         final boolean exportToHtml = exportToHtml(format);

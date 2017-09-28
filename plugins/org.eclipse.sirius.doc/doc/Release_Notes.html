@@ -324,7 +324,7 @@
 			<li><span class="label label-success">Added</span> The class 
 				<code>org.eclipse.sirius.diagram.ui.business.api.DiagramExportResult</code> has been added, which inherits from 
 				<code>ExportResult</code>. It is returned by the 
-				<code>DialectManager.export()</code> methods when the representation exported is a diagram, and in addition to the information provided by 
+				<code>DialectManager.exportWithResult()</code> methods when the representation exported is a diagram, and in addition to the information provided by 
 				<code>ExportResult</code> gives access to the scaling factor that was used when exporting the diagram.
 			</li>
 			<li><span class="label label-success">Added</span> The new preference 
@@ -357,11 +357,12 @@
 				<code>setAutoScaleDiagram(boolean)</code> to ask for automatic scaling of diagrams on export.
 			</li>
 			<li><span class="label label-success">Added</span> In 
-				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices</code>, the two 
-				<code>export()</code> methods now return a new type, 
-				<code>org.eclipse.sirius.ui.business.api.dialect.ExportResult</code> instead of 
-				<code>void</code>. This gives access to the list of all the actual files produced by the export operation. Note that in the case of the diagram dialect, 
-				<code>export()</code> actually returns a more specific 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices</code>, two new methods 
+				<code>exportWithResult()</code> have been added. They are equivalent to the existing 
+				<code>export()</code> methods (which return 
+				<code>void</code>) except that they return an instance of the new type 
+				<code>org.eclipse.sirius.ui.business.api.dialect.ExportResult</code>. This gives access to the list of all the actual files produced by the export operation. Note that in the case of the diagram dialect, 
+				<code>exportWithResult()</code> actually returns a more specific 
 				<code>DiagramExportResult</code> with additional diagram-specific information.
 			</li>
 			<li><span class="label label-success">Added</span> The type 
