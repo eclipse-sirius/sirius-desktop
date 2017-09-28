@@ -143,6 +143,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
 
             createTabs(tabDescriptors);
         }
+        getCommonViewer().setComparer(new ModelExplorerItemComparer());
     }
 
     /**
