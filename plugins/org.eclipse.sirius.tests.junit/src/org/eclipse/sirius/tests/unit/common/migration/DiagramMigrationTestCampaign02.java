@@ -40,6 +40,8 @@ import org.junit.runners.Parameterized.Parameters;
  * 9 : test if an edge between a container and a bordered node has the same coordinates after a migration
  * 10 : test if a node (inside a container) has the same coordinates after a migration
  * 11 : test if a container (inside a container) has the same coordinates after a migration
+ * 12 : test layout using SVG without attribute viewBox 
+ * 13 : test layout using SVG with attribute viewBox
  * </pre>
  * 
  * @author MVenisse
@@ -53,7 +55,7 @@ public class DiagramMigrationTestCampaign02 extends AbstractMigrationTestCase {
 
     protected static final String SEMANTIC_RESOURCE_FILENAME = "TestCampaign_02.migrationmodeler";
 
-    private static final Integer nbDiagrams = 11;
+    private static final Integer nbDiagrams = 13;
 
     private static final String SEMANTIC_MODEL_PATH = TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_FILENAME;
 
@@ -87,6 +89,8 @@ public class DiagramMigrationTestCampaign02 extends AbstractMigrationTestCase {
                 + SESSION_RESOURCE_FILENAME);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + SEMANTIC_RESOURCE_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/"
                 + SEMANTIC_RESOURCE_FILENAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/dot.svg", "/" + TEMPORARY_PROJECT_NAME + "/dot.svg");
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/transparentRectangle.svg", "/" + TEMPORARY_PROJECT_NAME + "/transparentRectangle.svg");
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, SESSION_PATH);
     }
 

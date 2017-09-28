@@ -809,6 +809,156 @@
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_T5hzBsalEeGLbILlOYiLBg"/>
       <target xmi:type="migrationmodeler:Diagram" href="TestCampaign_02.migrationmodeler#//@representations.10"/>
     </ownedRepresentations>
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_QMvhwKQoEeefIK7Q2ArJAw" name="12">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_QM1BUKQoEeefIK7Q2ArJAw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_QM1BUaQoEeefIK7Q2ArJAw" type="Sirius" element="_QMvhwKQoEeefIK7Q2ArJAw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_RhJv8KQoEeefIK7Q2ArJAw" type="2001" element="_RhH6wKQoEeefIK7Q2ArJAw">
+          <children xmi:type="notation:Node" xmi:id="_RhKXAKQoEeefIK7Q2ArJAw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_RhKXAaQoEeefIK7Q2ArJAw" x="-1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_3JaN4KQsEeenepRv3-xNUA" type="3005" element="_3JYYsKQsEeenepRv3-xNUA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_3JaN4aQsEeenepRv3-xNUA" fontName="Comic Sans MS"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3JaN4qQsEeenepRv3-xNUA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_RhJv8aQoEeefIK7Q2ArJAw" fontName="Comic Sans MS" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RhJv8qQoEeefIK7Q2ArJAw" x="100" y="80" width="140" height="70"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_C9a5YKQrEeenepRv3-xNUA" type="2002" element="_C7pXwKQrEeenepRv3-xNUA">
+          <children xmi:type="notation:Node" xmi:id="_C9hnEKQrEeenepRv3-xNUA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_C9iOIKQrEeenepRv3-xNUA" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_C9iOIaQrEeenepRv3-xNUA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_C9iOIqQrEeenepRv3-xNUA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_C9a5YaQrEeenepRv3-xNUA" fontName="Comic Sans MS" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C9a5YqQrEeenepRv3-xNUA" x="400" y="140" width="140" height="80"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_QM1BUqQoEeefIK7Q2ArJAw"/>
+        <edges xmi:type="notation:Edge" xmi:id="_GnGV0KQrEeenepRv3-xNUA" type="4001" element="_Gm46cKQrEeenepRv3-xNUA" source="_RhJv8KQoEeefIK7Q2ArJAw" target="_C9a5YKQrEeenepRv3-xNUA">
+          <children xmi:type="notation:Node" xmi:id="_GnILAKQrEeenepRv3-xNUA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GnILAaQrEeenepRv3-xNUA" x="-13" y="-17"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_GnIyEKQrEeenepRv3-xNUA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GnIyEaQrEeenepRv3-xNUA" x="-17" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_GnJZIKQrEeenepRv3-xNUA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GnJZIaQrEeenepRv3-xNUA" x="-6" y="-14"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_GnGV0aQrEeenepRv3-xNUA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_GnGV0qQrEeenepRv3-xNUA" fontName="Comic Sans MS" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GnGV06QrEeenepRv3-xNUA" points="[-9, 39, -309, -25]$[-31, 142, -331, 78]$[269, 183, -31, 119]$[288, 110, -12, 46]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KKLJEKQtEeenepRv3-xNUA" id="(0.5,0.43209876543209874)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PE9oEKQtEeenepRv3-xNUA" id="(0.5,0.43209876543209874)"/>
+        </edges>
+      </data>
+      </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_RhH6wKQoEeefIK7Q2ArJAw" name="A" outgoingEdges="_Gm46cKQrEeenepRv3-xNUA" width="6" height="6" resizeKind="NSEW">
+      <target xmi:type="migrationmodeler:Node" href="TestCampaign_02.migrationmodeler#//@representations.11/@nodes.0"/>
+      <semanticElements xmi:type="migrationmodeler:Node" href="TestCampaign_02.migrationmodeler#//@representations.11/@nodes.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="viewpoint:WorkspaceImage" xmi:id="_3JYYsKQsEeenepRv3-xNUA" workspacePath="DesignerTestProject/transparentRectangle.svg">
+        <customFeatures>workspacePath</customFeatures>
+        <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_C7pXwKQrEeenepRv3-xNUA" name="B" incomingEdges="_Gm46cKQrEeenepRv3-xNUA">
+      <target xmi:type="migrationmodeler:Container" href="TestCampaign_02.migrationmodeler#//@representations.11/@containers.0"/>
+      <semanticElements xmi:type="migrationmodeler:Container" href="TestCampaign_02.migrationmodeler#//@representations.11/@containers.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="viewpoint:WorkspaceImage" xmi:id="_41_rgKQsEeenepRv3-xNUA" borderSizeComputationExpression="1" workspacePath="DesignerTestProject/transparentRectangle.svg">
+        <customFeatures>workspacePath</customFeatures>
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_Gm46cKQrEeenepRv3-xNUA" sourceNode="_RhH6wKQoEeefIK7Q2ArJAw" targetNode="_C7pXwKQrEeenepRv3-xNUA">
+      <target xmi:type="migrationmodeler:Edge" href="TestCampaign_02.migrationmodeler#//@representations.11/@edges.0"/>
+      <semanticElements xmi:type="migrationmodeler:Edge" href="TestCampaign_02.migrationmodeler#//@representations.11/@edges.0"/>
+      <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_Gm6IkKQrEeenepRv3-xNUA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']/@style"/>
+        <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_Gm6IkaQrEeenepRv3-xNUA"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']"/>
+    </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
+      <target xmi:type="migrationmodeler:Diagram" href="TestCampaign_02.migrationmodeler#//@representations.11"/>
+    </ownedRepresentations>
+   <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_RfJrMKQwEeenepRv3-xNUA" name="13">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_RfTcMKQwEeenepRv3-xNUA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_RfUDQKQwEeenepRv3-xNUA" type="Sirius" element="_RfJrMKQwEeenepRv3-xNUA" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_ZQ_24KQwEeenepRv3-xNUA" type="2001" element="_ZQ7lcKQwEeenepRv3-xNUA">
+          <children xmi:type="notation:Node" xmi:id="_ZRBFAKQwEeenepRv3-xNUA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_ZRBFAaQwEeenepRv3-xNUA" x="-1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_n4nLEKQxEeeOvY9t4ncMKQ" type="3005" element="_n4TCAKQxEeeOvY9t4ncMKQ">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_n4nLEaQxEeeOvY9t4ncMKQ" fontName="Comic Sans MS"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_n4nLEqQxEeeOvY9t4ncMKQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ZQ_24aQwEeenepRv3-xNUA" fontName="Comic Sans MS" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZQ_24qQwEeenepRv3-xNUA" x="100" y="80" width="140" height="80"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_a40wUKQwEeenepRv3-xNUA" type="2002" element="_a4ziMKQwEeenepRv3-xNUA">
+          <children xmi:type="notation:Node" xmi:id="_a41XYKQwEeenepRv3-xNUA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_a41XYaQwEeenepRv3-xNUA" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_a41XYqQwEeenepRv3-xNUA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_a41XY6QwEeenepRv3-xNUA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_a40wUaQwEeenepRv3-xNUA" fontName="Comic Sans MS" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_a40wUqQwEeenepRv3-xNUA" x="400" y="140" width="140" height="80"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_RfUDQaQwEeenepRv3-xNUA"/>
+        <edges xmi:type="notation:Edge" xmi:id="_bnfNIKQwEeenepRv3-xNUA" type="4001" element="_bnWqQKQwEeenepRv3-xNUA" source="_ZQ_24KQwEeenepRv3-xNUA" target="_a40wUKQwEeenepRv3-xNUA">
+          <children xmi:type="notation:Node" xmi:id="_bnf0MKQwEeenepRv3-xNUA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bnf0MaQwEeenepRv3-xNUA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bnf0MqQwEeenepRv3-xNUA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bnf0M6QwEeenepRv3-xNUA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bnf0NKQwEeenepRv3-xNUA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bnf0NaQwEeenepRv3-xNUA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_bnfNIaQwEeenepRv3-xNUA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_bnfNIqQwEeenepRv3-xNUA" fontName="Comic Sans MS" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_bnfNI6QwEeenepRv3-xNUA" points="[-9, 39, -309, -25]$[-31, 142, -331, 78]$[269, 183, -31, 119]$[288, 110, -12, 46]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bnf0NqQwEeenepRv3-xNUA" id="(0.5,0.7755618866729977)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bnf0N6QwEeenepRv3-xNUA" id="(0.5,0.3877809433364989)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_ZQ7lcKQwEeenepRv3-xNUA" name="A" outgoingEdges="_bnWqQKQwEeenepRv3-xNUA" width="6" height="6" resizeKind="NSEW">
+      <target xmi:type="migrationmodeler:Node" href="TestCampaign_02.migrationmodeler#//@representations.12/@nodes.0"/>
+      <semanticElements xmi:type="migrationmodeler:Node" href="TestCampaign_02.migrationmodeler#//@representations.12/@nodes.0"/>
+      <ownedStyle xmi:type="viewpoint:WorkspaceImage" xmi:id="_n4TCAKQxEeeOvY9t4ncMKQ" workspacePath="DesignerTestProject/dot.svg">
+        <customFeatures>workspacePath</customFeatures>
+        <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_a4ziMKQwEeenepRv3-xNUA" name="B" incomingEdges="_bnWqQKQwEeenepRv3-xNUA">
+      <target xmi:type="migrationmodeler:Container" href="TestCampaign_02.migrationmodeler#//@representations.12/@containers.0"/>
+      <semanticElements xmi:type="migrationmodeler:Container" href="TestCampaign_02.migrationmodeler#//@representations.12/@containers.0"/>
+      <ownedStyle xmi:type="viewpoint:WorkspaceImage" xmi:id="_pW-mgKQxEeeOvY9t4ncMKQ" borderSizeComputationExpression="1" workspacePath="DesignerTestProject/dot.svg">
+        <customFeatures>workspacePath</customFeatures>
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_bnWqQKQwEeenepRv3-xNUA" sourceNode="_ZQ7lcKQwEeenepRv3-xNUA" targetNode="_a4ziMKQwEeenepRv3-xNUA">
+      <target xmi:type="migrationmodeler:Edge" href="TestCampaign_02.migrationmodeler#//@representations.12/@edges.0"/>
+      <semanticElements xmi:type="migrationmodeler:Edge" href="TestCampaign_02.migrationmodeler#//@representations.12/@edges.0"/>
+      <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_bnXRUKQwEeenepRv3-xNUA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']/@style"/>
+        <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_bnXRUaQwEeenepRv3-xNUA"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']"/>
+    </ownedDiagramElements>
+	<description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
+      <target xmi:type="migrationmodeler:Diagram" href="TestCampaign_02.migrationmodeler#//@representations.12"/>
+    </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']"/>
   </ownedViews>
 </viewpoint:DAnalysis>

@@ -308,4 +308,69 @@
     <filters id="Test Filter"/>
     <layers id="Test Layer"/>
   </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="12">
+    <containers id="B">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
+        <layout x="400" y="140" width="140" height="80"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+    </containers>
+    <nodes id="A">
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']">
+        <layout x="100" y="80" width="140" height="70"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </nodeRepresentations>
+    </nodes>
+    <edges id="ab" source="//@representations.11/@nodes.0" target="//@representations.11/@containers.0">
+      <edgeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']">
+        <bendpoints x="161" y="149"/>
+        <bendpoints x="139" y="252"/>
+        <bendpoints x="439" y="293"/>
+        <bendpoints x="458" y="220"/>
+        <ownedStyle>
+          <color red="136" green="136" blue="136"/>
+          <centerLabelStyle>
+            <labelColor/>
+          </centerLabelStyle>
+        </ownedStyle>
+      </edgeRepresentations>
+    </edges>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="13">
+    <containers id="B">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
+        <layout x="400" y="140" width="140" height="80"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+    </containers>
+    <nodes id="A">
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']">
+        <layout x="100" y="80" width="140" height="140"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </nodeRepresentations>
+    </nodes>
+    <edges id="ab" source="//@representations.12/@nodes.0" target="//@representations.12/@containers.0">
+      <edgeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']">
+        <bendpoints x="161" y="219"/>
+        <bendpoints x="139" y="303"/>
+        <bendpoints x="439" y="317"/>
+        <bendpoints x="459" y="220"/>
+        <ownedStyle>
+          <color red="136" green="136" blue="136"/>
+          <centerLabelStyle>
+            <labelColor/>
+          </centerLabelStyle>
+        </ownedStyle>
+      </edgeRepresentations>
+    </edges>
+    <edges/>
+  </representations>
 </migrationmodeler:TestCase>
