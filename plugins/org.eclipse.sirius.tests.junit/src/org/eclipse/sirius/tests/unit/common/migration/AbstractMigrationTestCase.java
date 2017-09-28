@@ -227,7 +227,7 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
             for (Edge currentEdge : edges) {
                 // The bendpoints are not checked if the source or the target of
                 // the edge is autoSized.
-                if (isAutoSized(currentEdge.getSource()) || isAutoSized(currentEdge.getTarget())) {
+                if (!isAutoSized(currentEdge.getSource()) && !isAutoSized(currentEdge.getTarget())) {
                     for (EdgeRepresentation edgeRepresentation : currentEdge.getEdgeRepresentations()) {
                         checkBendpoints(edgeRepresentation);
                     }
