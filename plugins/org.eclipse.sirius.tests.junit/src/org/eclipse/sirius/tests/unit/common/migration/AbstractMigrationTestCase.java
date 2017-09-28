@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -130,10 +130,10 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
                 String mappingId = abstractRepresentation.getMappingId();
                 XMLResource odesignResource = getOdesignResource();
                 DiagramElementMapping diagramElementMapping = (DiagramElementMapping) odesignResource.getEObject(mappingId);
-                DDiagramElement diagramElement = getFirstDiagramElement(currentdRepresentation, element, diagramElementMapping);
+                DDiagramElement diagramElement = getFirstDiagramElement(currentdRepresentation, element.eContainer(), diagramElementMapping);
                 if (((AbstractRepresentation) element).isDisplayed()) {
-                    assertNotNull("DDiagram Element is missing for " + ((GraphicalElement) element).getId(), diagramElement);
-                    assertNotNull("EditPart is missing for " + ((GraphicalElement) element).getId(), getEditPart(diagramElement));
+                    assertNotNull("DDiagram Element is missing for " + ((GraphicalElement) element.eContainer()).getId(), diagramElement);
+                    assertNotNull("EditPart is missing for " + ((GraphicalElement) element.eContainer()).getId(), getEditPart(diagramElement));
                 } else {
                     assertNull("Diagram element should not be displayed", diagramElement);
                 }
@@ -155,10 +155,10 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
      */
     protected void checkBounds(AbstractRepresentation abstractRepresentation) {
         if (abstractRepresentation.isDisplayed()) {
-            DDiagramElement dDiagramElement = getFirstDiagramElement(currentdRepresentation, abstractRepresentation);
+            DDiagramElement dDiagramElement = getFirstDiagramElement(currentdRepresentation, abstractRepresentation.eContainer());
             Layout layout = abstractRepresentation.getLayout();
             Rectangle expected = new Rectangle(layout.getX(), layout.getY(), layout.getWidth(), layout.getHeight());
-            checkBounds(getDraw2DBounds(dDiagramElement), expected);
+            checkBounds(((GraphicalElement) abstractRepresentation.eContainer()).getId(), getDraw2DBounds(dDiagramElement), expected);
         }
 
     }
@@ -203,13 +203,15 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
     /**
      * This method tests if the bounds of two rectangles are equals.
      * 
+     * @param elementName
+     *            name of element to check
      * @param actual
      *            the rectangle to compare
      * @param expected
      *            the expected rectangle
      */
-    protected void checkBounds(Rectangle actual, Rectangle expected) {
-        assertEquals("Wrong figure bounds", expected, actual);
+    protected void checkBounds(String elementName, Rectangle actual, Rectangle expected) {
+        assertEquals("Wrong figure bounds for " + elementName, expected, actual);
     }
 
     /**
@@ -254,16 +256,17 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
      *            the {@link EdgeRepresentation} to check
      */
     protected void checkBendpoints(EdgeRepresentation edgeRepresentation) {
-        DDiagramElement dDiagramElement = getFirstDiagramElement(currentdRepresentation, edgeRepresentation.eContainer());
-        assertNotNull("Edge " + edgeRepresentation.getMappingId() + " DDiagram Element is missing from representation", dDiagramElement);
+        GraphicalElement graphicalEdge = (GraphicalElement) edgeRepresentation.eContainer();
+        DDiagramElement dDiagramElement = getFirstDiagramElement(currentdRepresentation, graphicalEdge);
+        assertNotNull("Edge " + graphicalEdge.getId() + " is missing from representation", dDiagramElement);
         List<Point> expectedBendpoints = edgeRepresentation.getBendpoints();
-        assertNotNull("Edge expected bendpoints list is null", expectedBendpoints);
+        assertNotNull("Edge expected bendpoints list is null for edge " + graphicalEdge.getId(), expectedBendpoints);
         PointList actualPointList = getDraw2DBendpoints((DEdge) dDiagramElement);
-        assertNotNull("Cannot retrieve edge bendpoint: " + edgeRepresentation.getMappingId(), actualPointList);
-        assertEquals("wrong bendpoint number: ", expectedBendpoints.size(), actualPointList.size());
+        assertNotNull("Cannot retrieve edge bendpoint for " + graphicalEdge.getId(), actualPointList);
+        assertEquals("wrong bendpoint number for " + graphicalEdge.getId(), expectedBendpoints.size(), actualPointList.size());
         for (int i = 0; i < expectedBendpoints.size(); i++) {
-            assertEquals("Edge " + edgeRepresentation.getMappingId() + ": wrong bendpoint position", expectedBendpoints.get(i).getX(), actualPointList.getPoint(i).x);
-            assertEquals("Edge " + edgeRepresentation.getMappingId() + ": wrong bendpoint position", expectedBendpoints.get(i).getY(), actualPointList.getPoint(i).y);
+            assertEquals("Edge " + graphicalEdge.getId() + ": wrong x bendpoint position for point " + i, expectedBendpoints.get(i).getX(), actualPointList.getPoint(i).x);
+            assertEquals("Edge " + graphicalEdge.getId() + ": wrong y bendpoint position for point " + i, expectedBendpoints.get(i).getY(), actualPointList.getPoint(i).y);
         }
     }
 

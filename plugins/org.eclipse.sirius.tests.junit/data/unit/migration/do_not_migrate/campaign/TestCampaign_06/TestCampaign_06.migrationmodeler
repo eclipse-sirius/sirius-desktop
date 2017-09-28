@@ -12,7 +12,7 @@
   </representations>
   <representations xsi:type="migrationmodeler:Diagram" name="3">
     <containers id="A">
-      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
         <layout x="371" y="139" width="150" height="70"/>
         <ownedStyle>
           <labelColor/>
@@ -25,7 +25,7 @@
   </representations>
   <representations xsi:type="migrationmodeler:Diagram" name="4">
     <nodes id="A">
-      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']" displayed="false">
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']">
         <layout x="309" y="121" width="60" height="60"/>
         <ownedStyle>
           <labelColor red="176" green="176" blue="176"/>
@@ -33,7 +33,7 @@
       </nodeRepresentations>
     </nodes>
     <nodes id="B">
-      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']" displayed="false">
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']">
         <layout x="659" y="121" width="60" height="60"/>
         <ownedStyle>
           <labelColor red="176" green="176" blue="176"/>
@@ -46,7 +46,7 @@
   </representations>
   <representations xsi:type="migrationmodeler:Diagram" name="5">
     <containers id="A">
-      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
         <layout x="185" y="125" width="150" height="70"/>
         <ownedStyle>
           <labelColor/>
@@ -54,7 +54,7 @@
       </containerRepresentations>
     </containers>
     <containers id="B">
-      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
         <layout x="640" y="125" width="150" height="70"/>
         <ownedStyle>
           <labelColor/>
@@ -67,14 +67,14 @@
   </representations>
   <representations xsi:type="migrationmodeler:Diagram" name="6">
     <containers id="A">
-      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
         <layout x="330" y="198" width="150" height="70"/>
         <ownedStyle>
           <labelColor/>
         </ownedStyle>
       </containerRepresentations>
       <elements xsi:type="migrationmodeler:Bordered" id="C">
-        <borderedRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']" displayed="false">
+        <borderedRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']">
           <layout x="470" y="215" width="30" height="30"/>
           <ownedStyle>
             <labelColor red="176" green="176" blue="176"/>
@@ -83,14 +83,14 @@
       </elements>
     </containers>
     <containers id="B">
-      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
         <layout x="795" y="200" width="150" height="70"/>
         <ownedStyle>
           <labelColor/>
         </ownedStyle>
       </containerRepresentations>
       <elements xsi:type="migrationmodeler:Bordered" id="D">
-        <borderedRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']" displayed="false">
+        <borderedRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']">
           <layout x="773" y="220" width="30" height="30"/>
           <ownedStyle>
             <labelColor red="176" green="176" blue="176"/>
@@ -104,7 +104,7 @@
   </representations>
   <representations xsi:type="migrationmodeler:Diagram" name="7">
     <containers id="B">
-      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
         <layout x="630" y="150" width="150" height="70"/>
         <ownedStyle>
           <labelColor/>
@@ -112,7 +112,7 @@
       </containerRepresentations>
     </containers>
     <nodes id="A">
-      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']" displayed="false">
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']">
         <layout x="281" y="151" width="60" height="60"/>
         <ownedStyle>
           <labelColor red="176" green="176" blue="176"/>
@@ -125,14 +125,14 @@
   </representations>
   <representations xsi:type="migrationmodeler:Diagram" name="8">
     <containers id="B">
-      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
         <layout x="645" y="145" width="150" height="70"/>
         <ownedStyle>
           <labelColor/>
         </ownedStyle>
       </containerRepresentations>
       <elements xsi:type="migrationmodeler:Bordered" id="C">
-        <borderedRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']" displayed="false">
+        <borderedRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']">
           <layout x="623" y="170" width="30" height="30"/>
           <ownedStyle>
             <labelColor red="176" green="176" blue="176"/>
@@ -141,7 +141,7 @@
       </elements>
     </containers>
     <nodes id="A">
-      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']" displayed="false">
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']">
         <layout x="285" y="155" width="60" height="60"/>
         <ownedStyle>
           <labelColor red="176" green="176" blue="176"/>
@@ -154,7 +154,7 @@
   </representations>
   <representations xsi:type="migrationmodeler:Diagram" name="9">
     <containers id="A">
-      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
         <layout x="315" y="135" width="150" height="70"/>
         <ownedStyle>
           <labelColor/>
@@ -162,14 +162,14 @@
       </containerRepresentations>
     </containers>
     <containers id="B">
-      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
         <layout x="705" y="135" width="150" height="70"/>
         <ownedStyle>
           <labelColor/>
         </ownedStyle>
       </containerRepresentations>
       <elements xsi:type="migrationmodeler:Bordered" id="C">
-        <borderedRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']" displayed="false">
+        <borderedRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']">
           <layout x="683" y="165" width="30" height="30"/>
           <ownedStyle>
             <labelColor red="176" green="176" blue="176"/>
@@ -183,7 +183,7 @@
   </representations>
   <representations xsi:type="migrationmodeler:Diagram" name="10">
     <containers id="A">
-      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
         <layout x="295" y="140" width="198" height="163"/>
         <ownedStyle>
           <labelColor/>
@@ -196,7 +196,7 @@
   </representations>
   <representations xsi:type="migrationmodeler:Diagram" name="11">
     <containers id="A">
-      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
         <layout x="426" y="113" width="287" height="175"/>
         <ownedStyle>
           <labelColor/>

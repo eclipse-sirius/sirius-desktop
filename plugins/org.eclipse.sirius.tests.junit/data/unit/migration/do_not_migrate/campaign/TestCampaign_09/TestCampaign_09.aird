@@ -128,13 +128,13 @@
         <target xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.0/@edges.1"/>
         <semanticElements xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.0/@edges.1"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_Cj8rsPHxEeGAT4rp7_I18Q">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_Cj8rsfHxEeGAT4rp7_I18Q" red="136" green="136" blue="136"/>
           <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_Cj8rsvHxEeGAT4rp7_I18Q">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Cj8rs_HxEeGAT4rp7_I18Q"/>
           </centerLabelStyle>
         </ownedStyle>
-        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']"/>
+        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']"/>
       </ownedDiagramElements>
       <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_wrxJQPHwEeGAT4rp7_I18Q"/>
@@ -251,13 +251,13 @@
         <target xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.1/@edges.1"/>
         <semanticElements xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.1/@edges.1"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_FNQQQPHxEeGAT4rp7_I18Q">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_FNQQQfHxEeGAT4rp7_I18Q" red="136" green="136" blue="136"/>
           <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_FNQQQvHxEeGAT4rp7_I18Q">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_FNQQQ_HxEeGAT4rp7_I18Q"/>
           </centerLabelStyle>
         </ownedStyle>
-        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']"/>
+        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']"/>
       </ownedDiagramElements>
       <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_x8kpx_HwEeGAT4rp7_I18Q"/>
@@ -399,13 +399,13 @@
         <target xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.2/@edges.1"/>
         <semanticElements xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.2/@edges.1"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_jQ8GUPHxEeGAT4rp7_I18Q">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_jQ8GUfHxEeGAT4rp7_I18Q" red="136" green="136" blue="136"/>
           <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_jQ8GUvHxEeGAT4rp7_I18Q">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_jQ8GU_HxEeGAT4rp7_I18Q"/>
           </centerLabelStyle>
         </ownedStyle>
-        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']"/>
+        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']"/>
       </ownedDiagramElements>
       <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_yW2LBvHwEeGAT4rp7_I18Q"/>
@@ -547,13 +547,13 @@
         <target xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.3/@edges.1"/>
         <semanticElements xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.3/@edges.1"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_k6T34fHxEeGAT4rp7_I18Q">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_k6T34vHxEeGAT4rp7_I18Q" red="136" green="136" blue="136"/>
           <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_k6T34_HxEeGAT4rp7_I18Q">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_k6T35PHxEeGAT4rp7_I18Q"/>
           </centerLabelStyle>
         </ownedStyle>
-        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']"/>
+        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']"/>
       </ownedDiagramElements>
       <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_y1hEBvHwEeGAT4rp7_I18Q"/>
@@ -695,13 +695,13 @@
         <target xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.4/@edges.1"/>
         <semanticElements xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.4/@edges.1"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_mHTPcfHxEeGAT4rp7_I18Q">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_mHTPcvHxEeGAT4rp7_I18Q" red="136" green="136" blue="136"/>
           <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_mHTPc_HxEeGAT4rp7_I18Q">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_mHTPdPHxEeGAT4rp7_I18Q"/>
           </centerLabelStyle>
         </ownedStyle>
-        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']"/>
+        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']"/>
       </ownedDiagramElements>
       <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_zRJ3IPHwEeGAT4rp7_I18Q"/>
@@ -905,13 +905,13 @@
         <target xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.5/@edges.2"/>
         <semanticElements xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.5/@edges.2"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_nupAsPHxEeGAT4rp7_I18Q">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nupAsfHxEeGAT4rp7_I18Q" red="136" green="136" blue="136"/>
           <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_nupAsvHxEeGAT4rp7_I18Q">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nupAs_HxEeGAT4rp7_I18Q"/>
           </centerLabelStyle>
         </ownedStyle>
-        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']"/>
+        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']"/>
       </ownedDiagramElements>
       <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_zqRh0fHwEeGAT4rp7_I18Q"/>
@@ -1074,13 +1074,13 @@
         <target xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.6/@edges.1"/>
         <semanticElements xmi:type="migrationmodeler:Edge" href="TestCampaign_09.migrationmodeler#//@representations.6/@edges.1"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_pkBN8PHxEeGAT4rp7_I18Q">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_pkBN8fHxEeGAT4rp7_I18Q" red="136" green="136" blue="136"/>
           <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_pkBN8vHxEeGAT4rp7_I18Q">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pkBN8_HxEeGAT4rp7_I18Q"/>
           </centerLabelStyle>
         </ownedStyle>
-        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']"/>
+        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge2']"/>
       </ownedDiagramElements>
       <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_0FL8LPHwEeGAT4rp7_I18Q"/>
