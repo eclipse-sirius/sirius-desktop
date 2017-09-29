@@ -19,7 +19,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView;
@@ -32,8 +31,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
- * Test that the "link with editor" feature works correctly in model explorer
- * view.
+ * Test that the "link with editor" feature works correctly in model explorer view.
  * 
  * @author <a href="mailto:belqassim.djafer@obeo.fr">Belqassim Djafer</a>
  */
@@ -84,16 +82,16 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
     }
 
     /**
-     * Ensure that the "link with editor" feature works correctly in model
-     * explorer view by checking if the opened element is the selected one in
-     * model explorer view.
+     * Ensure that the "link with editor" feature works correctly in model explorer view by checking if the
+     * representation item corresponding to the opened diagram and selected in the model explorer view is the one in the
+     * under semantic item owner.
      */
     public void testLinkWithEditorFeatureWithModelExplorerView() {
         SWTBotTreeItem projectTreeItemBot = modelExplorerViewBot.tree().expandNode(getProjectName(), true);
         SWTBotTreeItem representationsResourceTreeItemBot = projectTreeItemBot.getNode(REPRESENTATIONS_RESOURCE_NAME);
-        SWTBotTreeItem viewpointTreeItemBot = representationsResourceTreeItemBot.getNode(0).getNode(EcoreModeler.DESIGN_VIEWPOINT_NAME);
-        SWTBotTreeItem representationDescriptionTreeItemBot = viewpointTreeItemBot.getNode(0);
-        SWTBotTreeItem representationTreeItemBot = representationDescriptionTreeItemBot.getNode(0);
+        SWTBotTreeItem semanticTreeItemBot = representationsResourceTreeItemBot.getNode(1);
+        SWTBotTreeItem rootTreeItemBot = semanticTreeItemBot.getNode("root");
+        SWTBotTreeItem representationTreeItemBot = rootTreeItemBot.getNode(0);
         SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
         boolean linkWithEditorInitialStatus = modelExplorerView.toolbarToggleButton("Link with Editor").isChecked();
         try {
@@ -112,8 +110,8 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
     }
 
     /**
-     * Tests that when selecting an element which are not in the representation,
-     * this element is still selected. Deactivated because of unreliable.
+     * Tests that when selecting an element which are not in the representation, this element is still selected.
+     * Deactivated because of unreliable.
      */
     public void _testLinkWithEditorWithElementsNotInTheRepresentation() {
         final SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
@@ -143,9 +141,8 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
     }
 
     /**
-     * Tests that the link with editor (editor toward model explorer) works
-     * properly when selecting a diagram element. Deactivated because of
-     * unreliable.
+     * Tests that the link with editor (editor toward model explorer) works properly when selecting a diagram element.
+     * Deactivated because of unreliable.
      */
     public void _testLinkWithEditorWithDiagramElementSelection() {
         final SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
@@ -194,9 +191,8 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
     }
 
     /**
-     * Tests that the link with editor (editor toward model explorer) is not
-     * activated when the action is not checked. Deactivated because of
-     * unreliable.
+     * Tests that the link with editor (editor toward model explorer) is not activated when the action is not checked.
+     * Deactivated because of unreliable.
      */
     public void _testLinkWithEditorDeactivate() {
         final SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
@@ -220,9 +216,8 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
     }
 
     /**
-     * Tests that the link with editor (editor toward model explorer) works
-     * properly when selecting a table element. Deactivated because of
-     * unreliable.
+     * Tests that the link with editor (editor toward model explorer) works properly when selecting a table element.
+     * Deactivated because of unreliable.
      */
     public void _testLinkWithEditorWithTableElementSelection() {
         final SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
@@ -270,9 +265,8 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
     }
 
     /**
-     * Tests that the link with editor (editor toward model explorer) works
-     * properly when selecting a tree element. Deactivated because of
-     * unreliable.
+     * Tests that the link with editor (editor toward model explorer) works properly when selecting a tree element.
+     * Deactivated because of unreliable.
      */
     public void _testLinkWithEditorWithTreeElementSelection() {
         final SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
