@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.diagram.modeler.uml;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -27,6 +28,7 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
@@ -85,9 +87,13 @@ public class PortLocationTest extends SiriusDiagramTestCase {
      * Corresponds to ticket #1811. Check that after a creation of a diagram
      * with ports (on node) from the model content view , the layoutConstraint
      * of all ports is not {0, 0}.
+     * 
+     * @throws Exception
+     *             In case of problem
      */
-    public void testPortLocationForCreationFromModelContentView() {
-
+    public void testPortLocationForCreationFromModelContentView() throws Exception {
+        TestsUtil.synchronizationWithUIThread();
+        Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
         // Get the desired package
         final Model model = (Model) semanticModel;
         assertNotNull("Corrupted input data", model);
@@ -135,8 +141,13 @@ public class PortLocationTest extends SiriusDiagramTestCase {
      * Corresponds to ticket #1811. Check that after a creation of a diagram
      * with ports (on container) from the model content view , the
      * layoutConstraint of all ports is not {0, 0}.
+     * 
+     * @throws Exception
+     *             In case of problem
      */
-    public void testPortLocationForCreationFromModelContentView_containerCase() {
+    public void testPortLocationForCreationFromModelContentView_containerCase() throws Exception {
+        TestsUtil.synchronizationWithUIThread();
+        Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
         // Get the desired package
         final Model model = (Model) semanticModel;
         assertNotNull("Corrupted input data", model);
@@ -184,8 +195,13 @@ public class PortLocationTest extends SiriusDiagramTestCase {
      * Corresponds to ticket #1811. Check that after a creation of a diagram
      * with ports from an existing diagram, the layoutConstraint of all ports is
      * not {0, 0}.
+     * 
+     * @throws Exception
+     *             In case of problem
      */
-    public void testPortLocationForCreationFromNavigation() {
+    public void testPortLocationForCreationFromNavigation() throws Exception {
+        TestsUtil.synchronizationWithUIThread();
+        Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
         // Get the desired package
         final Model model = (Model) semanticModel;
         assertNotNull("Corrupted input data", model);
@@ -302,7 +318,9 @@ public class PortLocationTest extends SiriusDiagramTestCase {
      * Open the diagram, modify the semantic (causing creation of new ports),
      * check the position of new ports (not the same). See VP-3095
      */
-    protected void testPortLocationAfterRefresh(boolean activateCollapseFilter) {
+    protected void testPortLocationAfterRefresh(boolean activateCollapseFilter) throws Exception {
+        TestsUtil.synchronizationWithUIThread();
+        Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
         // Get the desired package
         final Model model = (Model) semanticModel;
         assertNotNull("Corrupted input data", model);
@@ -387,16 +405,22 @@ public class PortLocationTest extends SiriusDiagramTestCase {
     /**
      * Open the diagram, modify the semantic (causing creation of new ports),
      * check the position of new ports (not the same). See VP-3095
+     * 
+     * @throws Exception
+     *             In case of problem
      */
-    public void testPortLocationAfterRefresh() {
+    public void testPortLocationAfterRefresh() throws Exception {
         testPortLocationAfterRefresh(false);
     }
 
     /**
      * Open the diagram, modify the semantic (causing creation of new ports),
      * check the position of new ports (not the same). See VP-3095
+     * 
+     * @throws Exception
+     *             In case of problem
      */
-    public void testPortLocationAfterRefreshWithActivatedCollapseFilter() {
+    public void testPortLocationAfterRefreshWithActivatedCollapseFilter() throws Exception {
         testPortLocationAfterRefresh(true);
     }
 
@@ -472,16 +496,23 @@ public class PortLocationTest extends SiriusDiagramTestCase {
      * <LI>close the diagram,</LI>
      * <LI>undo the semantic modifications,</LI>
      * </UL>
-     * </LI><LI>Open a new diagram,</LI>
+     * </LI>
+     * <LI>Open a new diagram,</LI>
      * <UL>
      * <LI>enable the collapse filter,</LI>
      * <LI>make the same semantic modifications (causing creation of new ports),
      * </LI>
      * <LI>compare the size ans the space with previous diagram.</LI>
      * </UL>
-     * </UL> See VP-3833
+     * </UL>
+     * See VP-3833
+     * 
+     * @throws Exception
+     *             In case of problem
      */
-    public void testPortLocationsAndMoreWithForCollapseFilter() {
+    public void testPortLocationsAndMoreWithForCollapseFilter() throws Exception {
+        TestsUtil.synchronizationWithUIThread();
+        Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
         // Get the desired package
         final Model model = (Model) semanticModel;
         assertNotNull("Corrupted input data", model);
