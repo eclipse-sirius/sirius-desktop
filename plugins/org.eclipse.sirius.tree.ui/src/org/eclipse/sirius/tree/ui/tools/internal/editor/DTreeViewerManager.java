@@ -29,7 +29,7 @@ import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
-import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
+import org.eclipse.jface.viewers.FocusCellHighlighter;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.TreeViewerEditor;
@@ -203,7 +203,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         ColumnViewerToolTipSupport.enableFor(treeViewer);
 
         // Create a TreeViewerEditor
-        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
+        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer,
+                new FocusCellHighlighter(treeViewer) { /* Highlighter doing nothing */ });
 
         TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
                 ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
@@ -239,8 +240,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Initializes the Editing Support (allowing direct Edit) to associate to
-     * the current Tree.
+     * Initializes the Editing Support (allowing direct Edit) to associate to the current Tree.
      */
     protected void initializeEditingSupport() {
 
@@ -274,8 +274,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     /**
      * Returns the viewer column associated to the treeViewer.
      * 
-     * @return the viewer column of the treeViewer, or Options.newNone() if to
-     *         viewer column found.
+     * @return the viewer column of the treeViewer, or Options.newNone() if to viewer column found.
      */
     private Option<ViewerColumn> getViewerColumn() {
         Option<ViewerColumn> viewerColumn = Options.newNone();
@@ -307,10 +306,9 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Initialize a cache and add, if needed, the contextual menu for the table.
-     * <BR>
-     * Cached the actions of creation and deletion in order to increase
-     * performance and not calculate it on each contextual menu.<BR>
+     * Initialize a cache and add, if needed, the contextual menu for the table. <BR>
+     * Cached the actions of creation and deletion in order to increase performance and not calculate it on each
+     * contextual menu.<BR>
      */
     @Override
     public void fillMenu() {
@@ -357,8 +355,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Create the menus according to the {@link TreeMapping} and the associated
-     * {@link CreateTool} and {@link DeleteTool}.
+     * Create the menus according to the {@link TreeMapping} and the associated {@link CreateTool} and
+     * {@link DeleteTool}.
      * 
      */
     private void calculateAvailableMenus(final Map<TreeMapping, List<AbstractToolAction>> mappingToCreateActions, final List<AbstractToolAction> createActionsForTree) {
@@ -381,14 +379,13 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Create the menus according to the {@link LineMapping} and the associated
-     * {@link CreateTool} and {@link DeleteTool}.
+     * Create the menus according to the {@link LineMapping} and the associated {@link CreateTool} and
+     * {@link DeleteTool}.
      * 
      * @param lineMappings
      *            List of {@link LineMapping}
      * @param mappingToCreateActions
-     *            A map which associates {@link TreeMapping} with the
-     *            corresponding list of {@link AbstractToolAction} (
+     *            A map which associates {@link TreeMapping} with the corresponding list of {@link AbstractToolAction} (
      *            {@link CreateLineAction} or {@link CreateTargetColumnAction})
      */
     private void calculateAvailableMenusForLine(final EList<TreeItemMapping> lineMappings, final Map<TreeMapping, List<AbstractToolAction>> mappingToCreateActions,
@@ -426,8 +423,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
      * 
      * @param tree
      *            the tree to test
-     * @return true if the tree is equals to the dTree of this manager, false
-     *         otherwise
+     * @return true if the tree is equals to the dTree of this manager, false otherwise
      */
     public boolean isSameTree(final DTree tree) {
         return ((DTree) dRepresentation).equals(tree);
@@ -437,8 +433,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
      * Changed descriptionFileChanged state.
      * 
      * @param modified
-     *            Indicates whether the odesign file has changed since the last
-     *            load menus
+     *            Indicates whether the odesign file has changed since the last load menus
      */
     @Override
     public void setDescriptionFileChanged(final boolean modified) {
