@@ -55,6 +55,7 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocument
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -410,13 +411,14 @@ public class DiagramDialectUIServices implements DialectUIServices {
     }
 
     @Override
-    public ExportResult exportWithResult(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
+    public ExportResult exportWithResult(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor)
+            throws SizeTooLargeException {
         return exportWithResult(representation, session, path, format, monitor, true);
     }
 
     @Override
-    public ExportResult exportWithResult(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
-            throws SizeTooLargeException {
+    public ExportResult exportWithResult(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor,
+            boolean exportDecorations) throws SizeTooLargeException {
 
         final boolean exportToHtml = exportToHtml(format);
         final String imageFileExtension = getImageFileExtension(format);
@@ -439,6 +441,10 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
                     boolean isActivateSiriusDecorationPrevious = SiriusDecoratorProvider.isActivateSiriusDecoration();
                     SiriusDecoratorProvider.setActivateSiriusDecoration(exportDecorations);
+                    IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
+                    boolean printDecoration = prefs.getBoolean(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name());
+                    // to be exported, decorations have to be in a printable layer
+                    prefs.setValue(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name(), exportDecorations);
 
                     final DiagramEditPart diagramEditPart = tool.createDiagramEditPart(diagram, shell, PreferencesHint.USE_DEFAULTS);
 
@@ -486,6 +492,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                         throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representation.getName()));
                     } finally {
                         SiriusDecoratorProvider.setActivateSiriusDecoration(isActivateSiriusDecorationPrevious);
+                        prefs.setValue(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name(), printDecoration);
 
                         diagramEditPart.deactivate();
                         // Memory leak : also disposing the
