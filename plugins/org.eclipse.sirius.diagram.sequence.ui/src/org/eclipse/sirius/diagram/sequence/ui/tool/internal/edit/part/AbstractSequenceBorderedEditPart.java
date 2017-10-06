@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,8 +39,7 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import com.google.common.collect.Sets;
 
 /**
- * Special edit part for common behavior of Lifelines, Executions and States.
- * They are treated as bordered nodes.
+ * Special edit part for common behavior of Lifelines, Executions and States. They are treated as bordered nodes.
  * 
  * @author mporhel
  */
@@ -75,8 +74,7 @@ public abstract class AbstractSequenceBorderedEditPart extends DNode2EditPart im
     }
 
     /**
-     * Overridden to install a custom semantic edit policy and node creation
-     * policy.
+     * Overridden to install a custom semantic edit policy and node creation policy.
      * <p>
      * {@inheritDoc}
      */
@@ -91,10 +89,8 @@ public abstract class AbstractSequenceBorderedEditPart extends DNode2EditPart im
     }
 
     /**
-     * Overridden to make the whole figure's area a valid location for a
-     * SlidableAnchor. Executions are usually very narrow vertically, and the
-     * default setting makes the zone usable to anchor a message too small to be
-     * usable.
+     * Overridden to make the whole figure's area a valid location for a SlidableAnchor. Executions are usually very
+     * narrow vertically, and the default setting makes the zone usable to anchor a message too small to be usable.
      * <p>
      * {@inheritDoc}
      */
@@ -118,8 +114,8 @@ public abstract class AbstractSequenceBorderedEditPart extends DNode2EditPart im
     }
 
     /**
-     * Use the same y location as the corresponding source connection anchor,
-     * stored in ViewLocationHint, to improve user feedback.
+     * Use the same y location as the corresponding source connection anchor, stored in ViewLocationHint, to improve
+     * user feedback.
      * <p>
      * {@inheritDoc}
      */
@@ -139,15 +135,15 @@ public abstract class AbstractSequenceBorderedEditPart extends DNode2EditPart im
     }
 
     /**
-     * Overridden to have execution creation on existing execution and in same
-     * range of child execution, redirected to the most nested child execution.
+     * Overridden to have execution creation on existing execution and in same range of child execution, redirected to
+     * the most nested child execution.
      * 
      * {@inheritDoc}
      */
     @Override
     public EditPart getTargetEditPart(Request request) {
         Set<String> retargetTypes = Sets.newHashSet(RequestConstants.REQ_CREATE, RequestConstants.REQ_CONNECTION_START, RequestConstants.REQ_CONNECTION_END);
-        if (retargetTypes.contains(request.getType()) && request instanceof CreateRequest) {
+        if (retargetTypes.contains(request.getType()) && request instanceof CreateRequest && ((CreateRequest) request).getLocation() != null) {
             CreateRequest createRequest = (CreateRequest) request;
             Point location = createRequest.getLocation().getCopy();
             GraphicalHelper.screen2logical(location, this);
