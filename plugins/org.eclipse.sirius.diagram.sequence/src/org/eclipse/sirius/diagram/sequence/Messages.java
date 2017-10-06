@@ -176,6 +176,12 @@ public final class Messages {
     @TranslatableMessage
     public static String VerticalSpaceExpansion_operationName;
 
+    @TranslatableMessage
+    public static String ProxyAnchor_Source;
+
+    @TranslatableMessage
+    public static String ProxyAnchor_Target;
+
     // CHECKSTYLE:ON
     
     private Messages() {

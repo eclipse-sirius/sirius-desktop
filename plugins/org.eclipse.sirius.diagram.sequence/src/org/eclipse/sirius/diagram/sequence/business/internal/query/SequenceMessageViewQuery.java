@@ -10,12 +10,19 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.query;
 
+import java.text.MessageFormat;
+
+import org.eclipse.gmf.runtime.notation.Anchor;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
+import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.sequence.Messages;
+import org.eclipse.sirius.diagram.sequence.SequenceDiagramPlugin;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalRangeFunction;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -247,8 +254,19 @@ public class SequenceMessageViewQuery {
      * @return .
      */
     public int getSourceAnchorVerticalPosition() {
-        IdentityAnchor srcAnchor = (IdentityAnchor) edge.getSourceAnchor();
-        Range sourceRange = new SequenceNodeQuery((Node) edge.getSource()).getVerticalRange();
+        IdentityAnchor srcAnchor = null;
+        Anchor sourceAnchor = edge.getSourceAnchor();
+        if (sourceAnchor != null && sourceAnchor.eIsProxy()) {
+            SequenceDiagramPlugin.INSTANCE.log(MessageFormat.format(Messages.ProxyAnchor_Source, ((DEdge) edge.getElement()).getName(),
+                    (new DRepresentationElementQuery((DEdge) edge.getElement()).getParentRepresentation()).getName()));
+        } else if (sourceAnchor instanceof IdentityAnchor) {
+            srcAnchor = (IdentityAnchor) sourceAnchor;
+        }
+        View source = edge.getSource();
+        Range sourceRange = new Range(0, 0);
+        if (source instanceof Node) {
+            sourceRange = new SequenceNodeQuery((Node) source).getVerticalRange();
+        }
         return getAnchorAbsolutePosition(srcAnchor, sourceRange);
         // could not return 0 : other utility methode take 0,5 precision point
         // for null anchor.
@@ -261,9 +279,17 @@ public class SequenceMessageViewQuery {
      * @return target anchor absolute position.
      */
     public int getTargetAnchorVerticalPosition() {
-        IdentityAnchor tgtAnchor = (IdentityAnchor) edge.getTargetAnchor();
-        if (edge.getTarget() instanceof Node) {
-            Range targetRange = new SequenceNodeQuery((Node) edge.getTarget()).getVerticalRange();
+        IdentityAnchor tgtAnchor = null;
+        Anchor targetAnchor = edge.getTargetAnchor();
+        if (targetAnchor != null && targetAnchor.eIsProxy()) {
+            SequenceDiagramPlugin.INSTANCE.log(MessageFormat.format(Messages.ProxyAnchor_Target, ((DEdge) edge.getElement()).getName(),
+                    (new DRepresentationElementQuery((DEdge) edge.getElement()).getParentRepresentation()).getName()));
+        } else if (targetAnchor instanceof IdentityAnchor) {
+            tgtAnchor = (IdentityAnchor) targetAnchor;
+        }
+        View target = edge.getTarget();
+        if (target instanceof Node) {
+            Range targetRange = new SequenceNodeQuery((Node) target).getVerticalRange();
             return getAnchorAbsolutePosition(tgtAnchor, targetRange);
         }
         return getSourceAnchorVerticalPosition();

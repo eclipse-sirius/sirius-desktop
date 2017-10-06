@@ -12,6 +12,10 @@ h4. Migrations
 
 * <span class="label label-success">Added</span> A new class @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure@ has been added in plugin @org.eclipse.sirius.ext.gmf.runtime@. The goal of the class is to workaround a "GMF bug":https://bugs.eclipse.org/bugs/show_bug.cgi?id=519250. So if you have created class which inherits from @org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure@, you must now use the new @SiriusDefaultSizeNodeFigure@ instead.
 
+h3. User-Visible Changes
+
+* <span class="label label-success">Added</span> Opening a sequence diagram where there are message with proxy anchors now warn the user by logging a message in the error log about the message to move to reset it, or the diagram to delete (see "bugzilla #525684":https://bugs.eclipse.org/bugs/show_bug.cgi?id=525684 for more details).
+
 h2(#sirius4.1.6). Changes in Sirius 4.1.6
 
 h3. User-Visible Changes

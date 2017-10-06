@@ -18,13 +18,16 @@
 							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
 							</li>
+							<li>
+								<a href="#UserVisibleChanges">User-Visible Changes</a>
+							</li>
 						</ol>
 					</li>
 					<li>
 						<a href="#sirius4.1.6">Changes in Sirius 4.1.6</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges">User-Visible Changes</a>
+								<a href="#UserVisibleChanges2">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
@@ -38,7 +41,7 @@
 						<a href="#sirius4.1.5">Changes in Sirius 4.1.5</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges2">User-Visible Changes</a>
+								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
@@ -49,7 +52,7 @@
 						<a href="#sirius4.1.4">Changes in Sirius 4.1.4</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges3">User-Visible Changes</a>
+								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
@@ -68,7 +71,7 @@
 						<a href="#sirius4.1.2">Changes in Sirius 4.1.2</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges4">User-Visible Changes</a>
+								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
@@ -79,7 +82,7 @@
 						<a href="#sirius4.1.1">Changes in Sirius 4.1.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges5">User-Visible Changes</a>
+								<a href="#UserVisibleChanges6">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
@@ -90,7 +93,7 @@
 						<a href="#sirius4.1.0">Changes in Sirius 4.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges6">User-Visible Changes</a>
+								<a href="#UserVisibleChanges7">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
@@ -104,7 +107,7 @@
 						<a href="#sirius4.0.0">Changes in Sirius 4.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges7">User-Visible Changes</a>
+								<a href="#UserVisibleChanges8">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
@@ -118,7 +121,7 @@
 						<a href="#sirius3.1.0">Changes in Sirius 3.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges8">User-Visible Changes</a>
+								<a href="#UserVisibleChanges9">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
@@ -132,7 +135,7 @@
 						<a href="#sirius3.0.0">Changes in Sirius 3.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges9">User-Visible Changes</a>
+								<a href="#UserVisibleChanges10">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
@@ -160,8 +163,14 @@
 				<code>SiriusDefaultSizeNodeFigure</code> instead.
 			</li>
 		</ul>
-		<h2 id="sirius4.1.6">Changes in Sirius 4.1.6</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-success">Added</span> Opening a sequence diagram where there are message with proxy anchors now warn the user by logging a message in the error log about the message to move to reset it, or the diagram to delete (see 
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=525684">bugzilla #525684</a> for more details).
+			</li>
+		</ul>
+		<h2 id="sirius4.1.6">Changes in Sirius 4.1.6</h2>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> An 
 				<a href="./user/general/Modeling%20Project.html#Migration">automatic migration</a> has been added in this version to fix diagram with edge labels corrupted (see 
@@ -191,7 +200,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius4.1.5">Changes in Sirius 4.1.5</h2>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The label alignment of Notes from the Palette has been modified from Juno to Luna or newer versions of Eclipse. The label alignment changed from TOP &amp; CENTER to MIDDLE &amp; LEFT. The initial alignment (TOP &amp; CENTER) has been restored. This is done with an 
 				<a href="./user/general/Modeling%20Project.html#Migration">automatic migration</a> of the aird file.
@@ -215,7 +224,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius4.1.4">Changes in Sirius 4.1.4</h2>
-		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions previously had a limitation concerning overlap detection. This is no longer the case. The previous known limitation was removed from the documentation (
 				<i>In case of multi-selection, the overlap check is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.</i>).
@@ -279,7 +288,7 @@ SWTBotUtils.waitAllUiEvents();
 
 </pre>
 		<h2 id="sirius4.1.2">Changes in Sirius 4.1.2</h2>
-		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> </li>
 		</ul>
@@ -319,7 +328,7 @@ SWTBotUtils.waitAllUiEvents();
 			<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping.addFormatData(FormatDataKey, RepresentationElementMapping, AbstractFormatData)</code> to better handle copy/paste format cases.
 		</p>
 		<h2 id="sirius4.1.1">Changes in Sirius 4.1.1</h2>
-		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges6">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions were previously disabled when an edge is connected to border nodes that have several edges. It is now allowed.</li>
 		</ul>
@@ -330,7 +339,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius4.1.0">Changes in Sirius 4.1.0</h2>
-		<h3 id="UserVisibleChanges6">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges7">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Copy/Paste Layout has been completed with Copy/Paste Style and Copy/Paste Format. 
 				<em>Paste Format</em> is equivalent to paste 
@@ -848,7 +857,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
-		<h3 id="UserVisibleChanges7">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges8">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> The user can now filter elements according to a Typed variable (String, Integer, EEnum or any EDataType). If a user applies a filter containing Typed Variables, a dialog is displayed to allow user entering the Typed Variable values. That values can be used as variables in the Condition Expression of the Variable Filter.</li>
 			<li><span class="label label-success">Added</span> When the diagram is larger than the editor, you can move it in all directions pressing the middle-button and dragging the mouse (keeping the button pressed).</li>
@@ -1330,7 +1339,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius3.1.0">Changes in Sirius 3.1.0</h2>
-		<h3 id="UserVisibleChanges8">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges9">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new feature allows to snap to all shapes (instead of just to snap to sibling shapes). The <kdb>F4</kdb> shortcut key activates this mode when you resize a node, move a node or move a bendpoint of an edge, see 
 				<a href="./user/diagrams/Diagrams.html#snap_to_shapes">the documentation</a> for details.
@@ -1874,7 +1883,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius3.0.0">Changes in Sirius 3.0.0</h2>
-		<h3 id="UserVisibleChanges9">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges10">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> The ability to print table representations has been re-introduced.</li>
 			<li><span class="label label-success">Added</span> The quick outline feature has been added for tree and table editors, see documentation for details.</li>
