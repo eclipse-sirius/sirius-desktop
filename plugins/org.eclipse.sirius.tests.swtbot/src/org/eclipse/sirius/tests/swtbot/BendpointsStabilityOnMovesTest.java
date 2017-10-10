@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
-import junit.framework.AssertionFailedError;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.Point;
@@ -60,6 +58,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
+
+import junit.framework.AssertionFailedError;
 
 /**
  * Ensures that when moving, dropping, aligning or arranging nodes, only the
@@ -554,6 +554,53 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                 }
             }
 
+        } finally {
+            rectilinearDiagramEditor.close();
+            SWTBotUtils.waitAllUiEvents();
+        }
+    }
+
+    /**
+     * Tests a use case when source and target intersect (bugzilla 525799)..
+     */
+    public void testSourceAndTargetOverlap() {
+        // Step 1: open diagram editor
+        SWTBotSiriusDiagramEditor rectilinearDiagramEditor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESCRIPTION_NAME, "SimpleCaseForOverlap",
+                DSemanticDiagram.class);
+        PointList previousBendPoints = ((PolylineConnectionEx) rectilinearDiagramEditor.getConnectionsEditPart().get(0).part().getFigure()).getPoints();
+        assertEquals("The egde must have 2 bendpoints before move of source", 2, previousBendPoints.size());
+
+        try {
+            // Step 2: when moving edge source over the target, a loop is
+            // created visually (at least 4 bend-points)
+            // change
+            SWTBotGefEditPart editParWithSource = rectilinearDiagramEditor.getEditPart("B", IAbstractDiagramNodeEditPart.class);
+            rectilinearDiagramEditor.select(editParWithSource);
+            SWTBotUtils.waitAllUiEvents();
+            Collection<Point> moveSourceDeltas = Lists.newArrayList();
+            moveSourceDeltas.add(new Point(-42, -42));
+            moveSourceDeltas.add(new Point(-40, -100));
+            for (Point moveSourceDelta : moveSourceDeltas) {
+                Point fromLocation = rectilinearDiagramEditor.getBounds(editParWithSource).getCenter();
+                Point toLocation = new Point(fromLocation.x + moveSourceDelta.x, fromLocation.y + moveSourceDelta.y);
+                rectilinearDiagramEditor.drag(fromLocation, toLocation);
+                SWTBotUtils.waitAllUiEvents();
+                PointList actualBendPoints = ((PolylineConnectionEx) rectilinearDiagramEditor.getConnectionsEditPart().get(0).part().getFigure()).getPoints();
+                try {
+                    assertTrue("The egde must have 4 or 5 bendpoints after move of source over target: expected 4 or 5 but was " + actualBendPoints.size(), actualBendPoints.size() >= 4);
+                    // Step 3: when moving edge source away from edge target the
+                    // loop must no be kept (only 2 points again)
+                    rectilinearDiagramEditor.drag(toLocation, new Point(300, 200));
+                    SWTBotUtils.waitAllUiEvents();
+                    actualBendPoints = ((PolylineConnectionEx) rectilinearDiagramEditor.getConnectionsEditPart().get(0).part().getFigure()).getPoints();
+                    assertEquals("The egde must have 2 bendpoints after move of source away from target", 2, actualBendPoints.size());
+                } finally {
+                    undo("Set Location or Size");
+                    SWTBotUtils.waitAllUiEvents();
+                    undo("Set Location or Size");
+                    SWTBotUtils.waitAllUiEvents();
+                }
+            }
         } finally {
             rectilinearDiagramEditor.close();
             SWTBotUtils.waitAllUiEvents();
