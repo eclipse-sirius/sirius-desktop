@@ -21,6 +21,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
+import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
@@ -95,10 +97,28 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
      */
     public static void adaptPointListAndRefPoints(boolean sourceMove, Point moveDelta, org.eclipse.gef.ConnectionEditPart connectionEditPart, Point sourceRefPoint, Point targetRefPoint,
             PointList connectionPointList) {
-        // Get the bounds of the source and target nodes
+        ConnectionEditPartQuery connectionEditPartQuery = new ConnectionEditPartQuery(connectionEditPart);
+        // Check overlap case
+        if (connectionEditPart.getModel() instanceof Edge && ((Edge) connectionEditPart.getModel()).getBendpoints() instanceof RelativeBendpoints) {
+            // If visually the egde contains more points (connectionPointList) than the model (GMF Edge points) and the
+            // model contains only 2 points, we are probably in the case where the source and the target intersect and
+            // the router
+            // (org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ObliqueRouter.checkShapesIntersect(Connection,
+            // PointList)) adds virtual bend-points to allow drawing of the edge. In this case, we ignore
+            // the intermediate points and only consider source and target.
+            int nbVisualPoints = connectionPointList.size();
+            int nbModelPoints = ((RelativeBendpoints) ((Edge) connectionEditPart.getModel()).getBendpoints()).getPoints().size();
+            if (nbVisualPoints > nbModelPoints && nbModelPoints == 2 && connectionEditPartQuery.checkShapesIntersect()) {
+                for (int i = 0; i < nbVisualPoints - 2; i++) {
+                    // Remove intermediate points
+                    connectionPointList.removePoint(1);
+                }
+            }
+        }
+        // Get the bounds of the source and target nodes.
         PrecisionRectangle sourceBounds = new PrecisionRectangle(GraphicalHelper.getAbsoluteBoundsIn100Percent((IGraphicalEditPart) connectionEditPart.getSource()));
         PrecisionRectangle targetBounds = new PrecisionRectangle(GraphicalHelper.getAbsoluteBoundsIn100Percent((IGraphicalEditPart) connectionEditPart.getTarget()));
-        boolean isEdgeWithRectilinearRoutingStyle = new ConnectionEditPartQuery(connectionEditPart).isEdgeWithRectilinearRoutingStyle();
+        boolean isEdgeWithRectilinearRoutingStyle = connectionEditPartQuery.isEdgeWithRectilinearRoutingStyle();
         if (sourceMove) {
             moveFirstSegmentAndRefPointAccordingToSourceMove(moveDelta, isEdgeWithRectilinearRoutingStyle, sourceBounds, targetBounds, sourceRefPoint, targetRefPoint, connectionPointList);
         } else {

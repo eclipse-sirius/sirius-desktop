@@ -87,6 +87,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 ** @getScalingFactor()@: after the export has been performed, this can be used to obtain the scaling factor that was effectively used.
 * <span class="label label-success">Added</span> The class @org.eclipse.sirius.diagram.ui.business.api.DiagramExportResult@ has been added, which inherits from @ExportResult@. It is returned by the @DialectManager.exportWithResult()@ methods when the representation exported is a diagram, and in addition to the information provided by @ExportResult@ gives access to the scaling factor that was used when exporting the diagram.
 * <span class="label label-success">Added</span> The new preference @org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys.PREF_SHOW_SYNCHRONIZE_STATUS_DECORATOR@ has been added to say if the "synchronize status":user/diagrams/Diagrams.html#synchronized_diagram decorator must be shown or not.
+* <span class="label label-success">Added</span> A new method @checkShapesIntersect()@ has been added in @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery@ to check if source and target of the connection intersect (only intersect - not one contained in another).
 
 h4. Changes in @org.eclipse.sirius.ext.emf.edit@
 

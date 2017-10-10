@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.query;
 
+import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.IOvalAnchorableFigure;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.IPolygonAnchorableFigure;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -133,5 +140,41 @@ public class ConnectionEditPartQuery {
             }
         }
         return isLayout;
+    }
+
+    /**
+     * Checks if source shape and target shape of the connection intersect (only intersect - not one contained in another).
+     * Method inspired from what is done in {@link org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ObliqueRouter#checkShapesIntersect(Connection, PointList)}.
+     * 
+     * @return true if the source and target intersect, false otherwise. 
+     */
+    @SuppressWarnings("restriction")
+    public boolean checkShapesIntersect() {
+        boolean result = false;
+        if (connectionEditPart instanceof AbstractConnectionEditPart) {
+            Connection conn = ((AbstractConnectionEditPart) connectionEditPart).getConnectionFigure();
+            if (!(conn.getSourceAnchor().getOwner() == null || conn.getSourceAnchor().getOwner() instanceof Connection || conn.getTargetAnchor().getOwner() == null
+                    || conn.getTargetAnchor().getOwner() instanceof Connection)) {
+                PrecisionRectangle sourceBounds = getShapeBounds(conn.getSourceAnchor().getOwner());
+                PrecisionRectangle targetBounds = getShapeBounds(conn.getTargetAnchor().getOwner());
+                conn.getSourceAnchor().getOwner().translateToAbsolute(sourceBounds);
+                conn.getTargetAnchor().getOwner().translateToAbsolute(targetBounds);
+                if (sourceBounds.intersects(targetBounds) && !sourceBounds.contains(targetBounds) && !targetBounds.contains(sourceBounds) || sourceBounds.equals(targetBounds)) {
+                    result = true;
+                }
+            }
+        }
+        return result;
+    }
+
+    private PrecisionRectangle getShapeBounds(IFigure figure) {
+        PrecisionRectangle result = new PrecisionRectangle(figure.getBounds());
+        if (figure instanceof IOvalAnchorableFigure) {
+            result = new PrecisionRectangle(((IOvalAnchorableFigure) figure).getOvalBounds());
+        } else if (figure instanceof IPolygonAnchorableFigure) {
+            result = new PrecisionRectangle(((IPolygonAnchorableFigure) figure).getPolygonPoints().getBounds());
+        }
+        return result;
+
     }
 }
