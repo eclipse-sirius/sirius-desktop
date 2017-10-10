@@ -27,6 +27,8 @@ import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.LayerConstants;
+import org.eclipse.gef.editparts.ZoomListener;
+import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramColorRegistry;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.TransparentBorder;
@@ -72,7 +74,11 @@ public class SynchronizeStatusFigure extends Ellipse {
 
     private PropertyChangeListener propListener;
 
+    private ZoomListener zoomListener;
+
     private Viewport viewport;
+
+    private ZoomManager zoomManager;
 
     private DiagramRootEditPart rootEditPart;
 
@@ -89,6 +95,8 @@ public class SynchronizeStatusFigure extends Ellipse {
     public SynchronizeStatusFigure(DiagramRootEditPart rootEditPart) {
         this.rootEditPart = rootEditPart;
         this.viewport = (Viewport) rootEditPart.getFigure();
+        this.zoomManager = (ZoomManager) rootEditPart.getViewer().getProperty(ZoomManager.class.toString());
+
         this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         this.setLayoutManager(new XYLayout());
         label = new Label((String) null);
@@ -99,6 +107,12 @@ public class SynchronizeStatusFigure extends Ellipse {
             public void propertyChange(PropertyChangeEvent evt) {
                 // location need to be updated when the scroll bar is moved and particularly when this figure become
                 // outside the editor. In that case it is not repaint if not relocated.
+                updateLocation();
+            }
+        };
+        zoomListener = new ZoomListener() {
+            @Override
+            public void zoomChanged(double newZoom) {
                 updateLocation();
             }
         };
@@ -168,6 +182,8 @@ public class SynchronizeStatusFigure extends Ellipse {
         super.addNotify();
         executor = new ScheduledThreadPoolExecutor(1);
         viewport.addPropertyChangeListener(Viewport.PROPERTY_VIEW_LOCATION, propListener);
+        // Add a listener on zoom manager
+        zoomManager.addZoomListener(zoomListener);
     }
 
     @Override
@@ -175,6 +191,8 @@ public class SynchronizeStatusFigure extends Ellipse {
         super.removeNotify();
         viewport.removePropertyChangeListener(Viewport.PROPERTY_VIEW_LOCATION, propListener);
         viewport = null;
+        zoomManager.removeZoomListener(zoomListener);
+        zoomManager = null;
         executor.shutdown();
         executor = null;
     }
