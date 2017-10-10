@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
 import org.eclipse.sirius.ext.base.Option;
@@ -23,8 +24,10 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
+import org.eclipse.swt.SWTException;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
+import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 import com.google.common.collect.Iterables;
 
@@ -453,6 +456,50 @@ public class StateBasicTests extends AbstractStatesSequenceTests {
         bot.sleep(500);
         assertStateHasValidScreenBounds((StateEditPart) state.get().part(), stateBoundsAResize, true);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 2, secondExecution, true);
+    }
+
+    /**
+     * Scenario that checks that resizing a state close to the message of the parent sync call is possible and does not
+     * throw class cast exceptions.
+     */
+    public void test_Resize_State_On_Execution() {
+        editor.reveal(LIFELINE_A);
+        arrangeAll();
+        editor.maximize();
+        // Create a sync call from lifeLine B to A
+        createSyncCall(new Point(getLifelineScreenX(LIFELINE_B), 150), new Point(getLifelineScreenX(LIFELINE_A), 150));
+        Rectangle firstSyncCall = getExecutionScreenBounds(LIFELINE_A, 0);
+        ExecutionEditPart executionEP = getExecutionEditPart(LIFELINE_A, 0);
+        Rectangle firstExecutionBoundsA = assertExecutionHasValidScreenBounds(LIFELINE_A, 0, new Rectangle(0, 150, 0, 50), false);
+
+        // Resize the execution
+        editor.click(firstExecutionBoundsA.getBottom());
+        Point expectedTranslation = new Point(0, 200);
+        CheckEditPartResized cR = new CheckEditPartResized(executionEP);
+        editor.drag(firstExecutionBoundsA.getBottom(), firstExecutionBoundsA.getBottom().getCopy().getTranslated(expectedTranslation));
+        bot.waitUntil(cR);
+
+        // Create a state on the execution
+        Option<SWTBotGefEditPart> state = createStateWithResult(new Point(getLifelineScreenX(LIFELINE_A), 250));
+        Rectangle stateBoundsA = assertStateHasValidScreenBounds((StateEditPart) state.get().part(), new Rectangle(0, 250, 0, 30), false);
+
+        // Resize state close to the execution upper bound or close to m1
+        editor.select(state.get());
+        expectedTranslation = new Point(0, -95);
+        cR = new CheckEditPartResized(state.get());
+        editor.drag(stateBoundsA.getTop(), stateBoundsA.getTop().getCopy().getTranslated(expectedTranslation));
+        try {
+            bot.waitUntil(cR);
+        } catch (TimeoutException e) {
+            boolean doesAnErrorOccurs = doesAnErrorOccurs();
+            if (doesAnErrorOccurs) {
+                Throwable exception = errors.values().iterator().next().getException();
+                if (exception instanceof ClassCastException || (exception instanceof SWTException && exception.getCause() instanceof ClassCastException)) {
+                    fail("The resize of the state next to the message m1 causes a ClassCastException");
+                }
+            }
+            fail(e.getMessage());
+        }
     }
 
     /**

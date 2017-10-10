@@ -466,21 +466,23 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
     }
 
     private boolean hasBothEndMoving(Message smep) {
-        Set<Execution> movingExecutionEditPart = getMovingExecutions();
+        Set<AbstractNodeEvent> movingExecutionEditPart = getMovingExecutions();
         return movingExecutionEditPart.contains(smep.getSourceElement()) && movingExecutionEditPart.contains(smep.getTargetElement());
     }
 
-    private Set<Execution> getMovingExecutions() {
+    private Set<AbstractNodeEvent> getMovingExecutions() {
         EditPartViewer viewer = getHost().getViewer();
-        Set<Execution> movingExecutions = Sets.newHashSet();
+        Set<AbstractNodeEvent> movingExecutions = Sets.newHashSet();
         for (ExecutionEditPart eep : Iterables.filter(viewer.getSelectedEditParts(), ExecutionEditPart.class)) {
-            Execution exec = (Execution) eep.getISequenceEvent();
+            AbstractNodeEvent exec = (AbstractNodeEvent) eep.getISequenceEvent();
             movingExecutions.add(exec);
-            movingExecutions.addAll(exec.findLinkedExecutions(true));
+            if (exec instanceof Execution) {
+                movingExecutions.addAll(((Execution) exec).findLinkedExecutions(true));
+            }
         }
 
         ArrayList<Execution> subExecutions = Lists.newArrayList();
-        for (Execution eep : movingExecutions) {
+        for (Execution eep : Iterables.filter(movingExecutions, Execution.class)) {
             subExecutions.addAll(new ISequenceEventQuery(eep).getAllExecutions());
         }
         movingExecutions.addAll(subExecutions);

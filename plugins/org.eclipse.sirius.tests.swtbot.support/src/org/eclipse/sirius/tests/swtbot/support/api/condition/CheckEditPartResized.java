@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,17 @@ public class CheckEditPartResized extends DefaultCondition {
      *            bot to check if resized
      */
     public CheckEditPartResized(SWTBotGefEditPart editPartBot) {
-        this.graphicalEditPart = (GraphicalEditPart) editPartBot.part();
+        this((GraphicalEditPart) editPartBot.part());
+    }
+
+    /**
+     * Default Constructor.
+     * 
+     * @param editPart
+     *            {@link GraphicalEditPart} to check if resized
+     */
+    public CheckEditPartResized(GraphicalEditPart editPart) {
+        this.graphicalEditPart = editPart;
         this.initialSize = graphicalEditPart.getFigure().getBounds().getSize().getCopy();
     }
 
