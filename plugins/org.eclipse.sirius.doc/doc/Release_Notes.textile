@@ -14,7 +14,7 @@ h4. Migrations
 
 h3. User-Visible Changes
 
-* <span class="label label-success">Added</span> Opening a sequence diagram where there are message with proxy anchors now warn the user by logging a message in the error log about the message to move to reset it, or the diagram to delete (see "bugzilla #525684":https://bugs.eclipse.org/bugs/show_bug.cgi?id=525684 for more details).
+* <span class="label label-success">Added</span> In previous versions, it was not possible to open or delete a corrupted sequence diagram (actually a sequence diagram with a corrupted message because of a proxy anchor). In this version, opening or deleting the corrupted sequence diagram is possible but the cause of the corruption has not yet been found and fix. Opening a corrupted sequence diagram now warns the user by logging a warning in the error log about the corrupted message and how to fix it (see "bugzilla #525684":https://bugs.eclipse.org/bugs/show_bug.cgi?id=525684 for more details).
 
 h2(#sirius4.1.6). Changes in Sirius 4.1.6
 

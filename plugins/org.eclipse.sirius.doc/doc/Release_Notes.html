@@ -165,7 +165,7 @@
 		</ul>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-success">Added</span> Opening a sequence diagram where there are message with proxy anchors now warn the user by logging a message in the error log about the message to move to reset it, or the diagram to delete (see 
+			<li><span class="label label-success">Added</span> In previous versions, it was not possible to open or delete a corrupted sequence diagram (actually a sequence diagram with a corrupted message because of a proxy anchor). In this version, opening or deleting the corrupted sequence diagram is possible but the cause of the corruption has not yet been found and fix. Opening a corrupted sequence diagram now warns the user by logging a warning in the error log about the corrupted message and how to fix it (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=525684">bugzilla #525684</a> for more details).
 			</li>
 		</ul>
