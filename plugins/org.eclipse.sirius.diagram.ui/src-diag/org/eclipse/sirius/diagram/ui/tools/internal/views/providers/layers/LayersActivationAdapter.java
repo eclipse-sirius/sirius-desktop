@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,6 +57,7 @@ public class LayersActivationAdapter extends AdapterImpl {
 
     private void update(final DDiagram diagram, final Layer layer, final boolean activate) {
         EclipseUIUtil.displayAsyncExec(new Runnable() {
+            @Override
             public void run() {
                 if (viewer != null) {
                     viewer.update(layer, null);
@@ -85,7 +86,7 @@ public class LayersActivationAdapter extends AdapterImpl {
         final Object notifier = msg.getNotifier();
         if (notifier instanceof DDiagram) {
             final int featureID = msg.getFeatureID(DDiagram.class);
-            if (featureID == DiagramPackage.DDIAGRAM__ACTIVATED_LAYERS) {
+            if (featureID == DiagramPackage.DDIAGRAM__ACTIVATED_LAYERS || featureID == DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS) {
 
                 switch (msg.getEventType()) {
 
