@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,6 +56,7 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
 import org.eclipse.sirius.diagram.business.api.helper.layers.LayerService;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
@@ -319,7 +320,7 @@ public class PaletteManagerImpl implements PaletteManager {
         HashSet<Layer> layersInActivatedViewpoints = new HashSet<Layer>(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), description));
         // Copy of diagram activated layers (in all Viewpoints: activated or
         // not)
-        HashSet<Layer> activatedLayers = new HashSet<Layer>(dDiagram.getActivatedLayers());
+        Set<Layer> activatedLayers = new HashSet<Layer>(new DDiagramQuery(dDiagram).getAllActivatedLayers());
         // Get the list of activated layers (of selected viewpoints)
         final List<Layer> activatedLayersOfSelectedViewpoints = Lists.newArrayList(Sets.intersection(layersInActivatedViewpoints, activatedLayers));
         // Get the list of deactivated layers (deactivated layers of selected

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.query;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
@@ -23,6 +25,7 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsM
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
+import org.eclipse.sirius.diagram.description.Layer;
 
 import com.google.common.collect.Sets;
 
@@ -123,4 +126,15 @@ public class DDiagramQuery extends DRepresentationQuery {
         return !(dDiagram == null) && !(dDiagram.getHiddenElements() == null) && !dDiagram.getHiddenElements().isEmpty();
     }
 
+    /**
+     * Returns all the activated layers (transient or not) of the given diagram.
+     * 
+     * @return all the activated layers (transient or not) of the given diagram.
+     */
+    public List<Layer> getAllActivatedLayers() {
+        final List<Layer> activatedLayers = new ArrayList<Layer>();
+        activatedLayers.addAll(dDiagram.getActivatedLayers());
+        activatedLayers.addAll(dDiagram.getActivatedTransientLayers());
+        return activatedLayers;
+    }
 }

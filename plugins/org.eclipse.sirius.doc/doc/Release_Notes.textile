@@ -79,6 +79,10 @@ h4. Changes in @org.eclipse.sirius.common@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer.setEObjectToBeIgnored(Predicate<EObject>)@ has  been added to filter inverse references to prevent some references resolution.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.common.tools.api.util.WorkspaceUtil.getFilesFromWorkspace(Collection<IProject>, String)@ signature has been modified in @getFilesFromWorkspace(Collection<IContainer>, String)@ to be more generic.
 
+h4. Changes in @org.eclipse.sirius.diagram@
+
+* <span class="label label-success">Added</span> A new query has been added in @org.eclipse.sirius.diagram.business.api.query.DDiagramQuery@. This query, @getAllActivatedLayers@, returns all the activated layers (transient or not) of the given diagram. It should replace @DDiagram.getActivatedLayers@ in several cases if you directly use it.
+
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> Three new preferences have been added to @org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys@: @PREF_SCALE_DIAGRAMS_ON_EXPORT@, @PREF_MAXIMUM_EXPORT_BUFFER_SIZE@, @PREF_MAXIMUM_EXPORT_BUFFER_SIZE_WINDOWS@. They are used to control the auto-scaling behavior when exporting diagrams. Refer to the JavaDoc for the details.
