@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *      Obeo - Initial API and implementation
  */
-package org.eclipse.sirius.tests.swtbot.support.api.matcher;
+package org.eclipse.sirius.tests.support.api.matcher;
 
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
@@ -24,7 +24,7 @@ public class DeletedDecoratorMatcher extends AbstractDecoratorMatcher {
     @Override
     protected Image getImage() {
 
-        return DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
+        return DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON));
     }
 
     @Override

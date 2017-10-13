@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.support.api.matcher.DeletedDecoratorMatcher;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -146,10 +147,15 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
         // Check the number of diagram elements
         assertEquals("The diagram should not be modify because we are in manual refresh mode.", 5, diagram.getOwnedDiagramElements().size());
         // Check edit part for a DNode
-        assertFalse("The editMode of editPart which target the class C1InSubRoot must be disabled.", getEditPart(testedClass).isEditModeEnabled());
+        IGraphicalEditPart testedClassEditPart = getEditPart(testedClass);
+        assertFalse("The editMode of editPart which target the class C1InSubRoot must be disabled.", testedClassEditPart.isEditModeEnabled());
+        // Check edit part for a DNode is decorated with a red cross
+        assertTrue("No deleted decorator found on editPart which target the class C1InSubRoot", new DeletedDecoratorMatcher().matches(testedClassEditPart));
+        IGraphicalEditPart testedPackageEditPart = getEditPart(testedPackage);
         // Check edit part for a DContainer
-        assertFalse("The editMode of editPart which target the package p1InSubRoot must be disabled.", getEditPart(testedPackage).isEditModeEnabled());
-
+        assertFalse("The editMode of editPart which target the package p1InSubRoot must be disabled.", testedPackageEditPart.isEditModeEnabled());
+        // Check edit part for a DNode is decorated with a red cross
+        assertTrue("No deleted decorator found on editPart which target the package p1InSubRoot", new DeletedDecoratorMatcher().matches(testedPackageEditPart));
         // Launch a manual refresh and check again the number of diagram
         // elements
         refresh(diagram);
@@ -295,6 +301,7 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
         // reloaded.
         if (Display.getCurrent() != null) {
             PlatformUI.getWorkbench().getProgressService().busyCursorWhile(new IRunnableWithProgress() {
+                @Override
                 public void run(IProgressMonitor monitor) throws InterruptedException {
                     Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, monitor);
                 }

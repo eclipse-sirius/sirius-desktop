@@ -8,7 +8,7 @@
  * Contributors:
  *      Obeo - Initial API and implementation
  */
-package org.eclipse.sirius.tests.swtbot.support.api.matcher;
+package org.eclipse.sirius.tests.support.api.matcher;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -22,7 +22,7 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoration;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.ImageFigureEx;
 import org.eclipse.sirius.tests.support.api.ImageEquality;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swtbot.swt.finder.matchers.AbstractMatcher;
+import org.hamcrest.BaseMatcher;
 
 /**
  * 
@@ -30,7 +30,7 @@ import org.eclipse.swtbot.swt.finder.matchers.AbstractMatcher;
  * 
  * @author amartin
  */
-public abstract class AbstractDecoratorMatcher extends AbstractMatcher<EditPart> {
+public abstract class AbstractDecoratorMatcher extends BaseMatcher<EditPart> {
 
     /**
      * return the image of the targeted decorator.
@@ -40,7 +40,7 @@ public abstract class AbstractDecoratorMatcher extends AbstractMatcher<EditPart>
     protected abstract Image getImage();
 
     @Override
-    protected boolean doMatch(final Object item) {
+    public boolean matches(final Object item) {
         if (item instanceof EditPart) {
             EditPart part = (EditPart) item;
             EditPartViewer viewer = part.getViewer();

@@ -198,7 +198,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest.class);
         suite.addTestSuite(EdgeCreationTest.class);
         suite.addTestSuite(DragAndDropFromTableAndTreeToDiagramTest.class);
-        suite.addTestSuite(DeleteSemanticElementToCheckDecorator.class);
         suite.addTestSuite(DeleteFromDiagramTest.class);
         suite.addTestSuite(DeleteDiagramWithListeningPaletteToolTest.class);
         suite.addTestSuite(BoldItalicFontSynchronizationTest.class);
