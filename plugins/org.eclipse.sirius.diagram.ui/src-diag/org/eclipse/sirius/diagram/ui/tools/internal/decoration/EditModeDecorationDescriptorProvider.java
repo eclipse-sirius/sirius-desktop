@@ -71,12 +71,10 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
      *            the edit part to check
      * @return <code>true</code> if the editPart is not broken to be decorated, <code>false</code> otherwise
      */
-    protected boolean isBroken(EditPart editPart) {
-        if (editPart instanceof IDiagramElementEditPart) {
-            final EObject target = ((IDiagramElementEditPart) editPart).resolveTargetSemanticElement();
-            if (isBroken(target)) {
-                return true;
-            }
+    protected boolean isBroken(IDiagramElementEditPart editPart) {
+        final EObject target = editPart.resolveTargetSemanticElement();
+        if (isBroken(target)) {
+            return true;
         }
         return false;
     }
@@ -116,22 +114,26 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
         if (editPart instanceof IDiagramElementEditPart) {
             IDiagramElementEditPart part = (IDiagramElementEditPart) editPart;
 
+            Boolean isBroken = null;
             // Case 1 : permission authority forbids the edition of the semantic
             // element associated to this edit part
             if (isDecorableEditPart(part)) {
                 IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(part.getEditingDomain().getResourceSet());
                 if (auth != null) {
                     EObject representedObject = part.resolveTargetSemanticElement();
-                    if (!isBroken(representedObject)) {
+                    isBroken = isBroken(representedObject);
+                    if (!isBroken) {
                         decorationImage = getLockStatusDecorationImage(auth.getLockStatus(representedObject));
                     }
                 }
             }
 
             // Case 2 : edit part is broken
-            if (decorationImage == null && isBroken(editPart)) {
-                // If the edit part is broken, we return a "deleted" image (red cross)
-                decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON));
+            if (decorationImage == null) {
+                if ((isBroken != null && isBroken.booleanValue()) || (isBroken == null && isBroken(part))) {
+                    // If the edit part is broken, we return a "deleted" image (red cross)
+                    decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON));
+                }
             }
         }
         return decorationImage;
