@@ -8,18 +8,21 @@
  * Contributors:
  *      Obeo - Initial API and implementation
  */
-package org.eclipse.sirius.tests.swtbot.support.api.matcher;
+package org.eclipse.sirius.tests.support.api.matcher;
 
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoration;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.ImageFigureEx;
+import org.eclipse.sirius.tests.support.api.ImageEquality;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swtbot.swt.finder.matchers.AbstractMatcher;
+import org.hamcrest.BaseMatcher;
 
 /**
  * 
@@ -27,7 +30,7 @@ import org.eclipse.swtbot.swt.finder.matchers.AbstractMatcher;
  * 
  * @author amartin
  */
-public abstract class AbstractDecoratorMatcher extends AbstractMatcher<EditPart> {
+public abstract class AbstractDecoratorMatcher extends BaseMatcher<EditPart> {
 
     /**
      * return the image of the targeted decorator.
@@ -36,11 +39,8 @@ public abstract class AbstractDecoratorMatcher extends AbstractMatcher<EditPart>
      */
     protected abstract Image getImage();
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    protected boolean doMatch(final Object item) {
+    public boolean matches(final Object item) {
         if (item instanceof EditPart) {
             EditPart part = (EditPart) item;
             EditPartViewer viewer = part.getViewer();
@@ -50,7 +50,7 @@ public abstract class AbstractDecoratorMatcher extends AbstractMatcher<EditPart>
                 final EditPart currentPart = entry.getValue();
                 final IFigure visual = entry.getKey();
                 if (currentPart.equals(part) && visual instanceof IDecoration) {
-                    return isTheRightDecoration(visual);
+                    return findFigureWithImage(visual, getImage());
                 }
 
             }
@@ -59,12 +59,21 @@ public abstract class AbstractDecoratorMatcher extends AbstractMatcher<EditPart>
         return false;
     }
 
-    private boolean isTheRightDecoration(final IFigure item) {
-        final IFigure decoration = item;
-        if (!decoration.getChildren().isEmpty() && decoration.getChildren().get(0) instanceof ImageFigureEx) {
-            return ((ImageFigureEx) decoration.getChildren().get(0)).getImage().equals(getImage());
+    @SuppressWarnings("restriction")
+    private boolean findFigureWithImage(IFigure figure, Image image) {
+        if (figure instanceof ImageFigureEx) {
+            if (ImageEquality.areEqualImages(((ImageFigureEx) figure).getImage(), image)) {
+                return true;
+            }
         }
-        return false;
-    }
 
+        boolean imageFigureExFound = false;
+        Iterator<Figure> it = figure.getChildren().iterator();
+        while (it.hasNext() && !imageFigureExFound) {
+            Figure innerFigure = it.next();
+            imageFigureExFound = findFigureWithImage(innerFigure, image);
+        }
+
+        return imageFigureExFound;
+    }
 }

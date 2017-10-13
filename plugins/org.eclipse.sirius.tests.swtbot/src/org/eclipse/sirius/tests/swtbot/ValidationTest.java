@@ -13,12 +13,12 @@ package org.eclipse.sirius.tests.swtbot;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.tests.support.api.matcher.AbstractDecoratorMatcher;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UISessionCreationWizardFlow.SessionChoice;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OpenedSessionCondition;
-import org.eclipse.sirius.tests.swtbot.support.api.matcher.AbstractDecoratorMatcher;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
@@ -118,8 +118,8 @@ public class ValidationTest extends AbstractScenarioTestCase {
         assertEquals(activeEditor.getReference(), editor.getReference());
         assertEquals("The wrong editor was opened", "ecore package entities", editor.getTitle());
         assertEquals("There should not be more than one open session.", 1, SessionManager.INSTANCE.getSessions().size());
-        assertEquals("The selection should be the element concerned by the marker", NEW_ECLASS_1, ((IDiagramElementEditPart) ((IStructuredSelection) editor.getSelection()).iterator().next())
-                .resolveDiagramElement().getName());
+        assertEquals("The selection should be the element concerned by the marker", NEW_ECLASS_1,
+                ((IDiagramElementEditPart) ((IStructuredSelection) editor.getSelection()).iterator().next()).resolveDiagramElement().getName());
 
         // Close the session and save it
         editor.close();
