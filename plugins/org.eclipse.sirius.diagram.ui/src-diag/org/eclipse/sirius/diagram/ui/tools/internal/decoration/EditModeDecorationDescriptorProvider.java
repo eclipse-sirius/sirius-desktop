@@ -74,11 +74,22 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
     protected boolean isBroken(EditPart editPart) {
         if (editPart instanceof IDiagramElementEditPart) {
             final EObject target = ((IDiagramElementEditPart) editPart).resolveTargetSemanticElement();
-            if (target == null || target.eResource() == null) {
+            if (isBroken(target)) {
                 return true;
             }
         }
         return false;
+    }
+
+    /**
+     * Check if an EObject is broken (ie null or without eResource).
+     * 
+     * @param eObject
+     *            the eObject to check
+     * @return <code>true</code> if the eObject is broken, <code>false</code> otherwise
+     */
+    protected boolean isBroken(EObject eObject) {
+        return eObject == null || eObject.eResource() == null;
     }
 
     /**
@@ -111,7 +122,7 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
                 IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(part.getEditingDomain().getResourceSet());
                 if (auth != null) {
                     EObject representedObject = part.resolveTargetSemanticElement();
-                    if (representedObject != null) {
+                    if (!isBroken(representedObject)) {
                         decorationImage = getLockStatusDecorationImage(auth.getLockStatus(representedObject));
                     }
                 }
