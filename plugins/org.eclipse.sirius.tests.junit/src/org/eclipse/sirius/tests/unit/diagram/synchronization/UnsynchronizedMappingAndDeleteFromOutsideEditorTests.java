@@ -37,6 +37,8 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
@@ -156,11 +158,31 @@ public class UnsynchronizedMappingAndDeleteFromOutsideEditorTests extends Sirius
         assertFalse("The editMode of editPart which target the package p1InSubRoot must be disabled.", testedPackageEditPart.isEditModeEnabled());
         // Check edit part for a DNode is decorated with a red cross
         assertTrue("No deleted decorator found on editPart which target the package p1InSubRoot", new DeletedDecoratorMatcher().matches(testedPackageEditPart));
-        // Launch a manual refresh and check again the number of diagram
-        // elements
-        refresh(diagram);
-        assertFalse("At least one error occurs during the manual refresh.", doesAnErrorOccurs());
-        assertEquals("The diagram should only contain elements that are not deleted.", 2, diagram.getOwnedDiagramElements().size());
+        // The behind checks are done only if we are not in read only mode
+        if (PermissionAuthorityRegistry.getDefault().getPermissionAuthority(diagram).canEditInstance(diagram)) {
+            // Launch a manual refresh and check again the number of diagram
+            // elements
+            refresh(diagram);
+            assertFalse("At least one error occurs during the manual refresh.", doesAnErrorOccurs());
+            assertEquals("The diagram should only contain elements that are not deleted.", 2, diagram.getOwnedDiagramElements().size());            
+        }
+    }
+
+    /**
+     * Checks that the behavior is OK in manual refresh for DDiagramElement with
+     * mapping unsynchronized and whose target is a semantic that was deleted
+     * outside of the diagram (in read only mode).
+     * 
+     * @throws Exception
+     *             In case of problem during semantic modification outside the
+     *             editor.
+     */
+    public void testRefreshOfNotSynchroMapping_ManualRefresh_WithReadOnlyPermissionEnabled() throws Exception {
+        // activate the ReadOnlyPermission Authority on the representation
+        assertTrue("The current editor should be a DialectEditor.", editor instanceof DialectEditor);
+        DialectEditor dialectEditor = (DialectEditor) editor;
+        ((ReadOnlyPermissionAuthority) PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dialectEditor.getRepresentation())).activate();
+        testRefreshOfNotSynchroMapping_ManualRefresh();
     }
 
     /**
