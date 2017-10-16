@@ -917,7 +917,7 @@ The tab-bar contains a different set of actions when at least one element is sel
 
 !images/tabbar_apply_style.png! _Apply Style_. Use this button to reproduce the visual style of an element onto others. This action will apply the style of the last selected element to the others. When you click on this button, all the visual attributes from the last element which can are compatible with the other elements will be applied to them.
 
-!images/tabbar_make_same_size.png! _Make Same Size_. When multiple elements are selected, clicking on this tool will resize all of them to have the same size (both width and height). The element used for reference to decide the size to apply is the last selected.
+!images/tabbar_make_same_size.png! _Make Same Size_. When multiple elements are selected, clicking on this tool will resize all of them to have the same size (both width and height). The element used for reference to decide the size to apply is the last selected. For region containers, if the selected region containers have the same number of regions, the regions will have the same size. If the region container used for reference has more regions than the other(s), the last region of others will have the size of all remaining regions in the one used for reference. If the region container used for reference has less region than the other(s), the action has no effect.
 
 !images/tabbar_auto_size.png! _Auto-Size_. This button marks the selected elements as auto-sized. Auto-sized elements will adjust their width an height dynamically according to their contents.
 
