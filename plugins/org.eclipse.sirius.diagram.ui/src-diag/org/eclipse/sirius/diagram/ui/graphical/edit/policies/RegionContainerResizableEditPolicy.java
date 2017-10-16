@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,16 +77,14 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     /**
-     * Returns a composite command with the given initial command and the
-     * RegionContainer specific auto-size commands to propagate the auto-size to
-     * the regions.
+     * Returns a composite command with the given initial command and the RegionContainer specific auto-size commands to
+     * propagate the auto-size to the regions.
      * 
      * @param request
      *            the initial request
      * @param autoSizeCommand
      *            the initial command
-     * @return a composite command with the initial command and the region
-     *         container specific additional commands.
+     * @return a composite command with the initial command and the region container specific additional commands.
      */
     protected Command getRegionContainerAutoSizeCommand(Request request, Command autoSizeCommand) {
         IDiagramElementEditPart host = (IDiagramElementEditPart) getHost();
@@ -99,10 +97,8 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
         Request req = new Request();
         req.setType(request.getType());
         req.getExtendedData().put(REGION_AUTO_SIZE_PROPAGATOR, host);
-
-        Object object = request.getExtendedData().get(REGION_AUTO_SIZE_PROPAGATOR);
         for (EditPart regionPart : getRegionParts()) {
-            if (object != regionPart) {
+            if (host != regionPart) {
                 ctc.add(new CommandProxy(regionPart.getCommand(req)));
             }
         }
@@ -112,9 +108,8 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     /**
-     * Complete the given composite command with RegionContainer specific resize
-     * commands: the commands to report the RegionContainer resize on its
-     * regions.
+     * Complete the given composite command with RegionContainer specific resize commands: the commands to report the
+     * RegionContainer resize on its regions.
      */
     @Override
     protected void completeResizeCommand(CompositeTransactionalCommand ctc, ChangeBoundsRequest request) {

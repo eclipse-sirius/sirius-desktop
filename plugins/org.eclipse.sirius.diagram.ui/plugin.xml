@@ -159,6 +159,11 @@
                  toolbarPath="/toolbarFormatGroup">
            </partAction>
            <partAction
+                 id="autoSizeAction"
+                 menubarPath="/diagramMenu/sizeGroup"
+                 toolbarPath="/toolbarFormatGroup">
+           </partAction>
+           <partAction
                  global="false"
                  id="siriusCopyAppearancePropertiesAction"
                  menubarPath="/diagramMenu/copyAppearanceGroup"
@@ -222,6 +227,10 @@
                   path="/formatMenu/sizeGroup">
             </popupAction>
             <popupAction
+                  id="autoSizeAction"
+                  path="/formatMenu/sizeGroup">
+            </popupAction>
+            <popupAction
                   id="siriusCopyAppearancePropertiesAction"
                   path="/formatMenu/applyAppearanceGroup">
             </popupAction>
@@ -269,9 +278,9 @@
                toolbarPath="/toolbarCopyAppearanceGroup">
          </partPredefinedItem>
       </partContribution>
-      <!-- Remove default GMF global Eclipse menu for routing style (replaced by Sirius specific) -->
       <partContribution
             class="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor">
+      <!-- Remove default GMF global Eclipse menu for routing style (replaced by Sirius specific) -->
          <partPredefinedItem
                id="treeRouterAction"
                menubarPath="/diagramMenu/routerMenu/routerGroup"
@@ -289,6 +298,14 @@
                menubarPath="/diagramMenu/routerMenu/routerGroup"
                removeFromMenubar="true"
                removeFromToolbar="false">
+         </partPredefinedItem>
+      <!-- Remove default GMF global Eclipse menu for auto size action (replaced by Sirius specific) -->
+         <partPredefinedItem
+               id="autoSizeAction"
+               menubarPath="/diagramMenu/sizeGroup"
+               toolbarPath="/toolbarFormatGroup"
+               removeFromMenubar="true"
+               removeFromToolbar="true">
          </partPredefinedItem>
       </partContribution>
          <popupContribution
@@ -453,6 +470,12 @@
                   path="/formatMenu/routerMenu/routerGroup"
                   remove="true"/>
             <!-- End of remove default GMF contexual menu for routing style -->
+            <!-- Remove default GMF contexual menu for auto size action (replaced by Sirius specific context) -->
+            <popupPredefinedItem
+                  id="autoSizeAction"
+                  path="/formatMenu/sizeGroup"
+                  remove="true"/>
+            <!-- End of remove default GMF contexual menu for auto size action -->
             <popupPredefinedItem
                   id="copyAppearancePropertiesAction"
                   path="/formatMenu/applyAppearanceGroup"

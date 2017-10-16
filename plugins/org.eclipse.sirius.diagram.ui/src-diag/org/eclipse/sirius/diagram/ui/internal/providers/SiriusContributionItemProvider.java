@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.DeselectAllAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusAutoSizeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusCopyAppearancePropertiesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusEdgeSnapBackAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
@@ -42,6 +43,7 @@ import org.eclipse.ui.IWorkbenchPage;
 /**
  * @was-generated
  */
+@SuppressWarnings("restriction")
 public class SiriusContributionItemProvider extends AbstractContributionItemProvider {
 
     /**
@@ -96,6 +98,8 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = DistributeAction.createDistributeCentersVerticallyAction(workbenchPage, false);
         } else if (org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.ACTION_MAKE_SAME_SIZE_BOTH.equals(actionId)) {
             result = new SizeBothAction(workbenchPage);
+        } else if (org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.ACTION_AUTOSIZE.equals(actionId)) {
+            result = new SiriusAutoSizeAction(workbenchPage);
         } else if (actionId.equals(ActionIds.ACTION_SIRIUS_COPY_APPEARANCE_PROPERTIES)) {
             return new SiriusCopyAppearancePropertiesAction(workbenchPage);
         } else if (ActionIds.STRAIGHTEN_TO_TOP.equals(actionId)) {

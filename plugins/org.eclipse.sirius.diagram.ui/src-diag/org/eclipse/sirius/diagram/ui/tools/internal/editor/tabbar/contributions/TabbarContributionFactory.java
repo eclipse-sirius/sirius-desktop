@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectPinnedElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusAutoSizeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusCopyAppearancePropertiesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
@@ -643,7 +644,7 @@ public class TabbarContributionFactory {
     public IContributionItem createAutoSizeContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
         if (site != null) {
-            AutoSizeAction autoSizeAction = new AutoSizeAction(site.getPage());
+            AutoSizeAction autoSizeAction = new SiriusAutoSizeAction(site.getPage());
             return new ActionContributionItem(autoSizeAction);
         }
         return null;
