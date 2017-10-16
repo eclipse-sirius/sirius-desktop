@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -320,7 +320,7 @@ public final class DiagramEdgeEditPartOperation {
     public static void refreshLineStyle(final IDiagramEdgeEditPart self) {
         final EObject semanticElement = self.resolveSemanticElement();
         PolylineConnectionEx polylineConnectionFigure = self.getPolylineConnectionFigure();
-        
+
         if (semanticElement instanceof DEdge && polylineConnectionFigure != null) {
             final DEdge edge = (DEdge) semanticElement;
             if (edge.getOwnedStyle() != null) {
@@ -337,7 +337,7 @@ public final class DiagramEdgeEditPartOperation {
             }
         }
     }
-    
+
     /**
      * Return the computed line width.
      * 
@@ -355,7 +355,7 @@ public final class DiagramEdgeEditPartOperation {
     }
 
     private static int getLineWidth(final DEdge edge) {
-        Integer sizeObject = ((EdgeStyle) edge.getStyle()).getSize();
+        Integer sizeObject = edge.getStyle() != null ? ((EdgeStyle) edge.getStyle()).getSize() : null;
         int size = sizeObject != null ? sizeObject.intValue() : 0;
 
         // avoid to have only the 1 or 2 pixels shadow lines when the
