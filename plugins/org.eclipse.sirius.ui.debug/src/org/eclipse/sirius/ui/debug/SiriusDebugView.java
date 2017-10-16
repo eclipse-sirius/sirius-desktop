@@ -225,6 +225,7 @@ public class SiriusDebugView extends AbstractDebugView {
 
     private String getTextFor(IDiagramElementEditPart part) {
         StringBuilder sb = new StringBuilder();
+        sb.append(part.toString() + "\n");
         if (part instanceof ShapeEditPart) {
             appendSequenceEventInfo(part, sb);
             appendBoundsDetails(part, sb);
@@ -294,6 +295,7 @@ public class SiriusDebugView extends AbstractDebugView {
     private String getTextForConnection(ConnectionEditPart conn) {
         Edge edge = (Edge) conn.getNotationView();
         StringBuilder sb = new StringBuilder();
+        sb.append(conn.toString());
 
         if (conn instanceof IDiagramElementEditPart) {
             appendSequenceEventInfo((IDiagramElementEditPart) conn, sb);
