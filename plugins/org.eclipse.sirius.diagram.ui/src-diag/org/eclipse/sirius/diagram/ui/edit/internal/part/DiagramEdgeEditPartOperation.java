@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,8 +84,8 @@ public final class DiagramEdgeEditPartOperation {
     public static final PointList INVERSE_TRIANGLE_TIP = new PointList();
 
     /**
-     * A zoom error margin to determine if a bendpoint of a path exist. An error
-     * margin is needed because the zoom can modify coordinates.
+     * A zoom error margin to determine if a bendpoint of a path exist. An error margin is needed because the zoom can
+     * modify coordinates.
      */
     private static final int ZOOM_ERROR_MARGIN = 4;
 
@@ -156,8 +156,7 @@ public final class DiagramEdgeEditPartOperation {
     }
 
     /**
-     * Converts a GMF routing-style into the equivalent Sirius
-     * {@link EdgeRouting}.
+     * Converts a GMF routing-style into the equivalent Sirius {@link EdgeRouting}.
      * 
      * @param rstyle
      *            the GMF routing-style
@@ -320,7 +319,7 @@ public final class DiagramEdgeEditPartOperation {
     public static void refreshLineStyle(final IDiagramEdgeEditPart self) {
         final EObject semanticElement = self.resolveSemanticElement();
         PolylineConnectionEx polylineConnectionFigure = self.getPolylineConnectionFigure();
-        
+
         if (semanticElement instanceof DEdge && polylineConnectionFigure != null) {
             final DEdge edge = (DEdge) semanticElement;
             if (edge.getOwnedStyle() != null) {
@@ -337,7 +336,7 @@ public final class DiagramEdgeEditPartOperation {
             }
         }
     }
-    
+
     /**
      * Return the computed line width.
      * 
@@ -355,7 +354,7 @@ public final class DiagramEdgeEditPartOperation {
     }
 
     private static int getLineWidth(final DEdge edge) {
-        Integer sizeObject = ((EdgeStyle) edge.getStyle()).getSize();
+        Integer sizeObject = edge.getStyle() != null ? ((EdgeStyle) edge.getStyle()).getSize() : null;
         int size = sizeObject != null ? sizeObject.intValue() : 0;
 
         // avoid to have only the 1 or 2 pixels shadow lines when the
@@ -690,8 +689,8 @@ public final class DiagramEdgeEditPartOperation {
     }
 
     /**
-     * Refresh the bendpoints of the figure from the bendpoints of the GMF Edge
-     * (for edge with path). This method use code from GMF.
+     * Refresh the bendpoints of the figure from the bendpoints of the GMF Edge (for edge with path). This method use
+     * code from GMF.
      * 
      * @See {@link org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart#refreshBendpoints}
      * @param self
@@ -745,8 +744,8 @@ public final class DiagramEdgeEditPartOperation {
     }
 
     /**
-     * Check if the point is contains is the list with an margin of error. The
-     * getDistance method of Point if used for checking the error margin.
+     * Check if the point is contains is the list with an margin of error. The getDistance method of Point if used for
+     * checking the error margin.
      * 
      * @param point
      *            The point to check
