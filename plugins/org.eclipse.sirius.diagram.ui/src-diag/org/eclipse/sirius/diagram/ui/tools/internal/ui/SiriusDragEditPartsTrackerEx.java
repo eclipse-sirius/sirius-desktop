@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -199,6 +199,33 @@ public class SiriusDragEditPartsTrackerEx extends SnapToAllDragEditPartsTracker 
         } else {
             return super.handleButtonDown(button);
         }
+    }
+
+    @Override
+    protected boolean handleButtonUp(int button) {
+        // The above code is copied from the super classes (SnapToAllDragEditPartsTracker, DragEditPartsTracker and
+        // SelectEditPartTracker) to disable the reveal.
+        boolean result = false;
+        if (stateTransition(STATE_DRAG_IN_PROGRESS, STATE_TERMINAL)) {
+            eraseSourceFeedback();
+            eraseTargetFeedback();
+            performDrag();
+            result = true;
+        } else if (isInState(STATE_DRAG)) {
+            performSelection();
+            if (getFlag(org.eclipse.gef.tools.SelectEditPartTracker.MAX_FLAG))
+                // SelectEditPartTracker.MAX_FLAG is a protected constant equals to
+                // SelectEditPartTracker.FLAG_ENABLE_DIRECT_EDIT (that must be originally used here).
+                performDirectEdit();
+            // The SelectEditPartTracker behavior is overridden here to never reveal the selected element.
+            // if (button == 1 && getSourceEditPart().getSelected() != EditPart.SELECTED_NONE)
+            // getCurrentViewer().reveal(getSourceEditPart());
+            setState(STATE_TERMINAL);
+            result = true;
+        }
+        // Clean up the mode to original state.
+        snapToAllShape = SnapToAllDragEditPartsTracker.DEFAULT_SNAP_TO_SHAPE_MODE;
+        return result;
     }
 
     @Override

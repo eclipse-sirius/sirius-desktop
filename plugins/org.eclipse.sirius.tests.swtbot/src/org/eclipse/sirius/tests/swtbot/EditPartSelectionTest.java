@@ -10,15 +10,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -36,6 +41,8 @@ public class EditPartSelectionTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String SESSION_FILE = "TestSelection.aird";
 
+    private static final String VSM_FILE = "My.odesign";
+
     private static final String REPRESENTATION_DECRIPTION_NAME = "Entities";
 
     private static final String REPRESENTATION_NAME = "diagram";
@@ -46,7 +53,7 @@ public class EditPartSelectionTest extends AbstractSiriusSwtBotGefTestCase {
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
-        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE);
+        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
     @Override
@@ -64,16 +71,21 @@ public class EditPartSelectionTest extends AbstractSiriusSwtBotGefTestCase {
      * editor that is not move the scroll bars.
      */
     public void testEditorContentPositionAfterEdgeSelection() {
-        // check the initial position
+        // Select an element on the top left to always have the same initial
+        // scroll
+        editor.scrollTo(0, 0);
+        editor.getEditPart("C1", AbstractBorderedShapeEditPart.class).click();
+
+        // check the initial position of node C2
         checkBottomRightCornerNodeAbsolutePosition("Bad diagram test data");
 
         // Select the edge
         SWTBotGefEditPart edgeEditPart = editor.getEditPart("[0..1] ref", ConnectionEditPart.class);
-        edgeEditPart.click();
-        SWTBotUtils.waitAllUiEvents();
+        edgeEditPart.click(getBounds(edgeEditPart).getTopLeft().getTranslated(2, 2));
+        bot.waitUntil(new CheckSelectedCondition(editor, edgeEditPart.part()), 2000);
 
-        // Check that the node has not moved
-        checkBottomRightCornerNodeAbsolutePosition("The selection of an edge moved the editor content. Bad node position");
+        // Check that the node C2 has not moved
+        checkBottomRightCornerNodeAbsolutePosition("The selection of an edge moves the editor content. Bad node position");
     }
 
     /**
@@ -81,22 +93,65 @@ public class EditPartSelectionTest extends AbstractSiriusSwtBotGefTestCase {
      * editor that is not move the scroll bars.
      */
     public void testEditorContentPositionAfterNodeSelection() {
-        // check the initial position
-        SWTBotGefEditPart swtNodeEditPart = editor.getEditPart("C2", AbstractBorderedShapeEditPart.class);
+        // Select an element on the top left to always have the same initial
+        // scroll
+        editor.scrollTo(0, 0);
+        editor.getEditPart("C1", AbstractBorderedShapeEditPart.class).click();
+
+        // check the initial position of node C2
         checkBottomRightCornerNodeAbsolutePosition("Bad diagram test data");
 
+        // Select the node C2
+        SWTBotGefEditPart swtNodeEditPart = editor.getEditPart("C2", AbstractBorderedShapeEditPart.class);
         swtNodeEditPart.click();
-        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new CheckSelectedCondition(editor, swtNodeEditPart.part()), 2000);
 
-        // Check that the node has not moved
-        checkBottomRightCornerNodeAbsolutePosition("The selection of an Node moved the editor content. Bad node position");
+        // Check that the node C2 has not moved
+        checkBottomRightCornerNodeAbsolutePosition("The selection of an Node moves the editor content. Bad node position");
     }
 
+    /**
+     * Check that the selection of a border node that is not fully displayed in
+     * the editor will not move the content of the editor that is not move the
+     * scroll bars.
+     */
+    public void testEditorContentPositionAfterBorderNodeSelection() {
+        editor.close();
+        SWTBotUtils.waitAllUiEvents();
+
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(session, "MyDiagram", "diagram2", DDiagram.class, true);
+        // Select an element on the top left to always have the same initial
+        // scroll
+        editor.scrollTo(0, 0);
+        editor.getEditPart("C1", AbstractBorderedShapeEditPart.class).click();
+
+        // check the initial position of node C2
+        checkBottomRightCornerNodeAbsolutePosition("Bad diagram test data");
+
+        // Select the border node C2Border
+        SWTBotGefEditPart swtNodeEditPart = editor.getEditPart("C2Border", AbstractDiagramBorderNodeEditPart.class);
+        swtNodeEditPart.click(getBounds(swtNodeEditPart).getRight().getTranslated(-10, 0));
+        bot.waitUntil(new CheckSelectedCondition(editor, swtNodeEditPart.part()), 2000);
+
+        // Check that the node C2 has not moved
+        checkBottomRightCornerNodeAbsolutePosition("The selection of a BorderNode moves the editor content. Bad node position");
+    }
+    
     void checkBottomRightCornerNodeAbsolutePosition(String message) {
         IGraphicalEditPart nodeEditPart = (IGraphicalEditPart) editor.getEditPart("C2", AbstractBorderedShapeEditPart.class).part();
         Rectangle bounds = nodeEditPart.getFigure().getBounds().getCopy();
         nodeEditPart.getFigure().translateToAbsolute(bounds);
-        assertEquals("The selection of an edge moved the editor content. Bad node position", INITIAL_NODE_CENTER_POSITION, bounds.getCenter());
+        assertEquals(message, INITIAL_NODE_CENTER_POSITION, bounds.getCenter());
+    }
+
+    private Rectangle getBounds(SWTBotGefEditPart swtBotGefEditPart) {
+        final IFigure figure = ((GraphicalEditPart) swtBotGefEditPart.part()).getFigure();
+        Rectangle bounds = figure.getBounds().getCopy();
+        if (figure instanceof PolylineConnectionEx) {
+            bounds = ((PolylineConnectionEx) figure).getSimpleBounds();
+        }
+        figure.translateToAbsolute(bounds);
+        return bounds;
     }
 
 }
