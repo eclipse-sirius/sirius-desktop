@@ -37,6 +37,7 @@ import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.ui.tools.api.actions.export.ExportAction;
 import org.eclipse.sirius.ui.tools.api.dialogs.ExportSeveralRepresentationsAsImagesDialog;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
@@ -67,8 +68,9 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
         final URI sessionResourceURI = URI.createPlatformResourceURI(sessionResourceFile.getFullPath().toOSString(), true);
         Session session = SessionManager.INSTANCE.getSession(sessionResourceURI, new SubProgressMonitor(new NullProgressMonitor(), 1));
         if (session != null) {
-            final Collection<DRepresentation> dRepresentationsToExportAsImage = DialectManager.INSTANCE.getAllRepresentations(session);
-            if (!dRepresentationsToExportAsImage.isEmpty()) {
+            // Get only rep desc to avoid loading representation here if we are in lazy.
+            final Collection<DRepresentationDescriptor> dRepresentationsDescToExportAsImage = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+            if (!dRepresentationsDescToExportAsImage.isEmpty()) {
                 final ExportSeveralRepresentationsAsImagesDialog dialog = new ExportSeveralRepresentationsAsImagesDialog(shell, targetPath);
                 if (dialog.open() == Window.CANCEL) {
                     dialog.close();
@@ -92,6 +94,8 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
                             session = SessionManager.INSTANCE.openSession(sessionResourceURI, new SubProgressMonitor(monitor, 2), SiriusEditPlugin.getPlugin().getUiCallback());
 
                             if (session != null) {
+                                // Get explicitly all representations (with loading them)
+                                final Collection<DRepresentation> dRepresentationsToExportAsImage = DialectManager.INSTANCE.getAllRepresentations(session);
                                 ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml, exportDecorations);
                                 exportAction.setAutoScaleDiagram(autoScale);
                                 exportAction.run(new SubProgressMonitor(monitor, 7));
@@ -136,5 +140,4 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
             }
         }
     }
-
 }
