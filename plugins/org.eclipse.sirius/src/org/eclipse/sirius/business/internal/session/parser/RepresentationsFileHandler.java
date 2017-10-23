@@ -77,6 +77,11 @@ public class RepresentationsFileHandler extends DefaultHandler {
             throw new SiriusSaxParserNormalAbortException(Messages.XMIModelFileHandler_parsingStopedMsg);
         }
     }
+    
+    @Override
+    public void endDocument() throws SAXException {
+        throw new SiriusSaxParserNormalAbortException(Messages.XMIModelFileHandler_parsingStopedMsg);
+    }
 
     /**
      * Get the semantic models used by this analysis.
