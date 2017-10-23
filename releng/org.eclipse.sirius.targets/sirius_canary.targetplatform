@@ -9,7 +9,7 @@ location Sirius-Oxygen-Master "http://download.eclipse.org/sirius/updates/nightl
     org.eclipse.sirius.common.interpreter lazy
 }
 
-location Eclipse-Oxygen-Integration "http://download.eclipse.org/eclipse/updates/4.7-I-builds/" {
+location Eclipse-Oxygen-Integration "http://download.eclipse.org/eclipse/updates/4.8-I-builds/" {
 	org.eclipse.platform.ide lazy
 	org.eclipse.platform.sdk lazy
 	org.eclipse.sdk.ide lazy
