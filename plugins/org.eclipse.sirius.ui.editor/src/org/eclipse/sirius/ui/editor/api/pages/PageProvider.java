@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo
+ * Copyright (c) 2017, 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -65,8 +65,10 @@ public abstract class PageProvider {
      * @param pageId
      *            the page's id from which we want to know if this provider
      *            provides pages with this id.
+     * @param editor 
+     *            the aird editor's session from which page request is done.
      * @return true if this provider provides pages with the given id. False
      *         otherwise.
      */
-    public abstract boolean provides(String pageId);
+    public abstract boolean provides(String pageId, SessionEditor editor);
 }

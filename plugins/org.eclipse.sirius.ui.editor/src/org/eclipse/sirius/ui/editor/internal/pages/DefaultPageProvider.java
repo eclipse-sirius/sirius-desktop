@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo
+ * Copyright (c) 2017, 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,7 +40,7 @@ public class DefaultPageProvider extends PageProvider {
     }
 
     @Override
-    public boolean provides(String pageId) {
+    public boolean provides(String pageId, SessionEditor editor) {
         return SessionEditorPlugin.DEFAULT_PAGE_ID.equals(pageId);
     }
 }

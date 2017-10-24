@@ -4,6 +4,14 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.2.0). Changes in Sirius 6.2.0
+
+h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius.ui.editor@
+
+* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.editor.api.pages.PageProvider.provides()@ now takes the @SessionEditor@ as an additional parameter to allow implementation to decide if it should provide an additional page or not.
+
 h2(#sirius6.1.2). Changes in Sirius 6.1.2
 
 h3. User-Visible Changes

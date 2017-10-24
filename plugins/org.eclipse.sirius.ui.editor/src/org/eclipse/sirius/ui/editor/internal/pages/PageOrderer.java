@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo
+ * Copyright (c) 2017, 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -391,7 +391,7 @@ public class PageOrderer {
                 // should be kept, we ask this provider to know if some
                 // additional already initialized pages should be kept.
                 for (AbstractSessionEditorPage page : alreadyInitializedPages) {
-                    if (pageProvider.provides(page.getId())) {
+                    if (pageProvider.provides(page.getId(), editor)) {
                         pagesToKeep.add(page);
                         PagePositioning pagePositioning = new PagePositioning();
                         pageIdToPageMap.put(page.getId(), pagePositioning);

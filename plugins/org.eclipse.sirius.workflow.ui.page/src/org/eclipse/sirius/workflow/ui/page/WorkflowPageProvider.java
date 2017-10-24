@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ public class WorkflowPageProvider extends PageProvider {
     }
 
     @Override
-    public boolean provides(String pageId) {
+    public boolean provides(String pageId, SessionEditor editor) {
         if (pageId.startsWith(PREFIX)) {
             String sid = pageId.substring(PREFIX.length());
             return SessionManager.INSTANCE.getSessions().stream().anyMatch(s -> s.getID().equals(sid));
