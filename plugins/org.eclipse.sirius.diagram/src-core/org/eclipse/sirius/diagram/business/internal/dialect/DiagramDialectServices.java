@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
@@ -365,14 +366,12 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             if (layer instanceof AdditionalLayer) {
                 AdditionalLayer additionalLayer = (AdditionalLayer) layer;
 
-                // Change Layer Activation if the Sirius is activated and
-                // layer deactivated
-                Boolean shouldChangeLayerActivation = activated && !diagram.getActivatedLayers().contains(additionalLayer);
-                // Change Layer Activation if the Sirius is deactivated and
-                // layer activated
-                shouldChangeLayerActivation = shouldChangeLayerActivation || (!activated && diagram.getActivatedLayers().contains(additionalLayer));
-                // Change Layer Activation if the layer is mandatory or active
-                // by default
+                List<Layer> allActivatedLayers = new DDiagramQuery(diagram).getAllActivatedLayers();
+                // Change Layer Activation if the Viewpoint is activated and layer deactivated
+                Boolean shouldChangeLayerActivation = activated && !allActivatedLayers.contains(additionalLayer);
+                // Change Layer Activation if the Viewpoint is deactivated and layer activated
+                shouldChangeLayerActivation = shouldChangeLayerActivation || (!activated && allActivatedLayers.contains(additionalLayer));
+                // Change Layer Activation if the layer is mandatory or active by default
                 shouldChangeLayerActivation = shouldChangeLayerActivation && (!additionalLayer.isOptional() || additionalLayer.isActiveByDefault());
 
                 if (shouldChangeLayerActivation) {

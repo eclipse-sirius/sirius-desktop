@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.ImageProvider;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
@@ -65,7 +66,7 @@ public class LayersLabelProvider extends ColumnLabelProvider {
             if (obj instanceof View) {
                 final EObject designerElement = ((View) obj).getElement();
                 if (designerElement instanceof DDiagram) {
-                    final List<Layer> activatedLayers = ((DDiagram) designerElement).getActivatedLayers();
+                    final List<Layer> activatedLayers = new DDiagramQuery((DDiagram) designerElement).getAllActivatedLayers();
                     Image img = null;
                     if (EqualityHelper.contains(activatedLayers, (EObject) element)) {
                         img = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.ACTIVE_LAYER_ICON);

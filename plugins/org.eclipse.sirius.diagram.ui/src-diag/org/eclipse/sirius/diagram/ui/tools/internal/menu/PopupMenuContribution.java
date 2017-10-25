@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
@@ -51,6 +52,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.ToolSectionQuery;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
@@ -115,7 +117,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
             final EObject element = diagrampart.getDiagramEditPart().resolveSemanticElement();
             if (element instanceof DSemanticDiagram) {
                 final DSemanticDiagram designerDiag = (DSemanticDiagram) element;
-                final EList<Layer> layers = designerDiag.getActivatedLayers();
+                final List<Layer> layers = new DDiagramQuery(designerDiag).getAllActivatedLayers();
 
                 final Session session = SessionManager.INSTANCE.getSession(designerDiag.getTarget());
 

@@ -24,6 +24,7 @@ import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.helper.decoration.DecorationHelper;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -57,7 +58,7 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
      *            activation changes
      */
     public ChangeLayerActivationCommand(TransactionalEditingDomain domain, DDiagram dDiagram, Layer layer, IProgressMonitor monitor) {
-        super(domain, dDiagram.getActivatedLayers().contains(layer) ? Messages.ChangeLayerActivationCommand_hideLabel
+        super(domain, new DDiagramQuery(dDiagram).getAllActivatedLayers().contains(layer) ? Messages.ChangeLayerActivationCommand_hideLabel
                 : MessageFormat.format(Messages.ChangeLayerActivationCommand_showLabel, new IdentifiedElementQuery(layer).getLabel()));
         this.dDiagram = dDiagram;
         this.layer = layer;

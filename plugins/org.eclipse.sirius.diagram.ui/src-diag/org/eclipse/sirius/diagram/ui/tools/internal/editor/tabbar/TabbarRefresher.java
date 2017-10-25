@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.ui.PlatformUI;
  * @author nlepine
  */
 public class TabbarRefresher extends ResourceSetListenerImpl {
+
     /**
      * Default constructor.
      * 
@@ -36,6 +37,27 @@ public class TabbarRefresher extends ResourceSetListenerImpl {
     public TabbarRefresher(TransactionalEditingDomain domain) {
         super(new TabbarRefresherFilter());
         domain.addResourceSetListener(this);
+    }
+
+    /**
+     * Reinit the toolbar.
+     */
+    public static void reinitToolbar() {
+        EclipseUIUtil.displayAsyncExec(new Runnable() {
+            @Override
+            public void run() {
+                IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                if (activeWorkbenchWindow != null) {
+                    IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
+                    if (activePage != null) {
+                        IEditorPart activeEditor = activePage.getActiveEditor();
+                        if (activeEditor instanceof DDiagramEditorImpl && ((DDiagramEditorImpl) activeEditor).getTabbar() != null) {
+                            ((DDiagramEditorImpl) activeEditor).getTabbar().reinitToolBar(((DDiagramEditorImpl) activeEditor).getDiagramGraphicalViewer().getSelection());
+                        }
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -55,27 +77,7 @@ public class TabbarRefresher extends ResourceSetListenerImpl {
      */
     @Override
     public void resourceSetChanged(ResourceSetChangeEvent event) {
-        reinitToolbar();
-    }
-
-    /**
-     * Reinit the toolbar
-     */
-    private void reinitToolbar() {
-        EclipseUIUtil.displayAsyncExec(new Runnable() {
-            public void run() {
-                IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                if (activeWorkbenchWindow != null) {
-                    IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
-                    if (activePage != null) {
-                        IEditorPart activeEditor = activePage.getActiveEditor();
-                        if (activeEditor instanceof DDiagramEditorImpl && ((DDiagramEditorImpl) activeEditor).getTabbar() != null) {
-                            ((DDiagramEditorImpl) activeEditor).getTabbar().reinitToolBar(((DDiagramEditorImpl) activeEditor).getDiagramGraphicalViewer().getSelection());
-                        }
-                    }
-                }
-            }
-        });
+        TabbarRefresher.reinitToolbar();
     }
 
     /**

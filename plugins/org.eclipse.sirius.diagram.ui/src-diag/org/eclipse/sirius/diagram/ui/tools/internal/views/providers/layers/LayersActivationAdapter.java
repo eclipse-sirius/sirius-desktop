@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.TabbarRefresher;
 
 /**
  * An adapter to listen layer activation change.
@@ -55,7 +56,7 @@ public class LayersActivationAdapter extends AdapterImpl {
         this.paletteManager = paletteManager;
     }
 
-    private void update(final DDiagram diagram, final Layer layer, final boolean activate) {
+    private void update(final DDiagram diagram, final Layer layer, final boolean activate, final boolean isTransient) {
         EclipseUIUtil.displayAsyncExec(new Runnable() {
             @Override
             public void run() {
@@ -72,6 +73,12 @@ public class LayersActivationAdapter extends AdapterImpl {
                     }
                 }
 
+                if (isTransient) {
+                    // This change is a transient change and does not trigger a postCommit
+                    // (TabbarRefresher.resourceSetChanged is not called as for other kind of layer). So
+                    // reinitialisation of the tabbar is directly called to refresh the Layers icon in the tabbar.
+                    TabbarRefresher.reinitToolbar();
+                }
             }
         });
     }
@@ -92,11 +99,11 @@ public class LayersActivationAdapter extends AdapterImpl {
 
                 case Notification.ADD:
                     final Layer layerToAdd = (Layer) msg.getNewValue();
-                    update((DDiagram) notifier, layerToAdd, true);
+                    update((DDiagram) notifier, layerToAdd, true, featureID == DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS);
                     break;
                 case Notification.REMOVE:
                     final Layer layerToRemove = (Layer) msg.getOldValue();
-                    update((DDiagram) notifier, layerToRemove, false);
+                    update((DDiagram) notifier, layerToRemove, false, featureID == DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS);
                     break;
                 default:
                     break;

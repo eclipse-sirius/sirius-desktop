@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.jface.viewers.ICellModifier;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -100,7 +101,7 @@ public class LayersCellModifier implements ICellModifier {
             if (obj instanceof View) {
                 final EObject designerElement = ((View) obj).getElement();
                 if (designerElement instanceof DDiagram) {
-                    final List<Layer> activatedLayers = ((DDiagram) designerElement).getActivatedLayers();
+                    final List<Layer> activatedLayers = new DDiagramQuery((DDiagram) designerElement).getAllActivatedLayers();
                     if (EqualityHelper.contains(activatedLayers, (EObject) element)) {
                         result = Boolean.TRUE;
                     } else {

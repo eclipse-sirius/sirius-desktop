@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.Messages;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
@@ -379,7 +380,7 @@ public final class DDiagramElementContainerSpecOperations {
         if (diagram.getDescription().getDefaultLayer() != null) {
             final Collection<AbstractToolDescription> allActivatedTools = Sets.newHashSet();
             allActivatedTools.addAll(diagram.getDescription().getDefaultLayer().getAllTools());
-            for (Layer layer : diagram.getActivatedLayers()) {
+            for (Layer layer : new DDiagramQuery(diagram).getAllActivatedLayers()) {
                 allActivatedTools.addAll(layer.getAllTools());
             }
             Collection<ContainerDropDescription> dropTools = DDiagramElementContainerSpecOperations.getDropTools(mapping);

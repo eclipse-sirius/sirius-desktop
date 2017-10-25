@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -73,7 +74,7 @@ public class PasteTargetQuery {
         if (dDiagram.getDescription().getDefaultLayer() != null) {
             final Collection<AbstractToolDescription> allActivatedTools = Sets.newHashSet();
             allActivatedTools.addAll(dDiagram.getDescription().getDefaultLayer().getAllTools());
-            for (Layer layer : dDiagram.getActivatedLayers()) {
+            for (Layer layer : new DDiagramQuery(dDiagram).getAllActivatedLayers()) {
                 allActivatedTools.addAll(layer.getAllTools());
             }
             Collection<PasteDescription> pasteTools = getAllPasteTools(pasteTargetDescription);

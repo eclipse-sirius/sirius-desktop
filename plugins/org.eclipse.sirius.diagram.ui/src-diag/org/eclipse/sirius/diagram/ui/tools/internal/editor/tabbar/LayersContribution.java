@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -27,6 +28,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.ImageProvider;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -66,7 +68,7 @@ public class LayersContribution extends AbstractMenuContributionItem {
             EObject diagram = gmfDiagram.getElement();
             if (diagram instanceof DDiagram) {
                 super.setDiagram((DDiagram) diagram);
-                if (!getActivatedLayers().isEmpty()) {
+                if (!getActivatedOptionalLayers().isEmpty()) {
                     return DiagramUIPlugin.Implementation.getDecoratedCheckedImage(DESC_LAYER);
                 }
             }
@@ -140,10 +142,13 @@ public class LayersContribution extends AbstractMenuContributionItem {
         return allLayers;
     }
 
-    private Collection<Layer> getActivatedLayers() {
-        DiagramDescription diagramDesc = diagram.getDescription();
-        Collection<Layer> allLayers = new ArrayList<Layer>(diagram.getActivatedLayers());
-        allLayers.remove(diagramDesc.getDefaultLayer());
+    private Collection<Layer> getActivatedOptionalLayers() {
+        Collection<Layer> allLayers = new ArrayList<Layer>(new DDiagramQuery(diagram).getAllActivatedLayers()).stream().filter(layer -> {
+            if (layer instanceof AdditionalLayer) {
+                return ((AdditionalLayer) layer).isOptional();
+            }
+            return false;
+        }).collect(Collectors.toList());
         return allLayers;
     }
 
