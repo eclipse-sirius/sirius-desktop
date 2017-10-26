@@ -485,7 +485,7 @@
 			<li><span class="label label-info">Modified</span> The notion of transient layer has been introduced in Sirius 5.0. (Refer to 
 				<a href="specifier/diagrams/Diagrams.html#Transientlayer">Sirius Specifier</a> and 
 				<a href="user/diagrams/Diagrams.html#transientLayer">Sirius User</a> documentation in Diagram chapter). A transient layer is an additional layer containing only decorations or tools. If you have such layer in your VSM, users may encounter some unexpected behaviors. If the layer is not 
-				<em>active by default</em> then it will not be applied when opening your diagram even if it was activated before. If the layer is 
+				<em>active by default</em>, its activation state will not be persisted at session close. In other words, if a transient layer is enabled in a diagram and then the session is closed, at the next diagram opening, the layer will be disabled. If users have existing representations file, made with previous version, with such kind of layers activated, they will no longer enabled at the next opening in Sirius 5.0.0. If the layer is 
 				<em>active by default</em> then it will be automatically applied when opening your diagram. We consider this behavior as a known limitation and an enhancement may be done in a further release. In the meantime, there is a workaround which consists to add a fake mapping (that is any mapping with its fields empty) so that the layer will not be considered as transient.
 			</li>
 			<li><span class="label label-info">Modified</span> The tab used to configure the metamodels used by the Properties view description is now using the same interface as the metamodels tab used to configure the representations.</li>
