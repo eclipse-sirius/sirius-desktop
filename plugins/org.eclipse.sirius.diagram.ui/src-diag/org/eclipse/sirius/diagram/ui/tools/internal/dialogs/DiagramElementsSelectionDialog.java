@@ -84,23 +84,18 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * A dialog box which allows the user to edit a boolean property/flag of a
- * sub-set of the elements in a diagram. The dialog presents all the elements in
- * the diagram and indicates their state (selected or not). The user can edit
- * this state individually for each element. When the operation is validated by
- * the user (by closing the dialog with the OK button) the specified editing
- * operations are applied to the elements whose state has been changed (i.e.
- * they have been selected or deselected).
+ * A dialog box which allows the user to edit a boolean property/flag of a sub-set of the elements in a diagram. The
+ * dialog presents all the elements in the diagram and indicates their state (selected or not). The user can edit this
+ * state individually for each element. When the operation is validated by the user (by closing the dialog with the OK
+ * button) the specified editing operations are applied to the elements whose state has been changed (i.e. they have
+ * been selected or deselected).
  * <p>
- * What the notion of "selected" means can be customized through 3
- * programmer-specified functions:
+ * What the notion of "selected" means can be customized through 3 programmer-specified functions:
  * <ul>
- * <li>a predicate to detect whether an element is selected or not (e.g.
- * "the element is hidden")</li>
- * <li>an action to apply to an element to make it selected (e.g.
- * "set the element as hidden")</li>
- * <li>an action to apply to an element to make it deselected (e.g.
- * "set the element as not-hidden/reveal the element")</li>
+ * <li>a predicate to detect whether an element is selected or not (e.g. "the element is hidden")</li>
+ * <li>an action to apply to an element to make it selected (e.g. "set the element as hidden")</li>
+ * <li>an action to apply to an element to make it deselected (e.g. "set the element as not-hidden/reveal the
+ * element")</li>
  * </ul>
  * 
  * @author pcdavid
@@ -150,18 +145,16 @@ public class DiagramElementsSelectionDialog {
     private FilteredTreeContentProvider contentProvider;
 
     /**
-     * A customized version of CheckedTreeSelectionDialog with a combo to filter
-     * the view to show all elements/only checked elements/only unchecked
-     * elements.
+     * A customized version of CheckedTreeSelectionDialog with a combo to filter the view to show all elements/only
+     * checked elements/only unchecked elements.
      * 
      * @author pcdavid
      */
     protected final class CustomTreeSelectionDialog extends CheckedTreeSelectionDialog {
 
         /**
-         * A matcher used to determine if a given DDiagramElement is matching
-         * the regular expression typed by user. It's updated each time the user
-         * modify the regular expression.
+         * A matcher used to determine if a given DDiagramElement is matching the regular expression typed by user. It's
+         * updated each time the user modify the regular expression.
          */
         protected DiagramElementsSelectionDialogPatternMatcher patternMatcher;
 
@@ -249,8 +242,8 @@ public class DiagramElementsSelectionDialog {
         }
 
         /**
-         * This method has been overridden to be able to insert selection
-         * buttons between the top label and the tree viewer.
+         * This method has been overridden to be able to insert selection buttons between the top label and the tree
+         * viewer.
          * 
          * {@inheritDoc}
          */
@@ -266,10 +259,8 @@ public class DiagramElementsSelectionDialog {
         }
 
         /**
-         * This method has been overridden to remove the selection buttons that
-         * are generically created after the tree viewer. This method should not
-         * return a null value. Otherwise, in case of empty list we will have a
-         * NPE.
+         * This method has been overridden to remove the selection buttons that are generically created after the tree
+         * viewer. This method should not return a null value. Otherwise, in case of empty list we will have a NPE.
          * 
          * {@inheritDoc}
          */
@@ -277,11 +268,9 @@ public class DiagramElementsSelectionDialog {
         protected Composite createSelectionButtons(Composite composite) {
             Composite buttonComposite = new Composite(composite, SWT.RIGHT) {
                 /**
-                 * This method has been overridden to have an "empty" size for
-                 * this composite. {@inheritDoc}
+                 * This method has been overridden to have an "empty" size for this composite. {@inheritDoc}
                  * 
-                 * @see org.eclipse.swt.widgets.Composite#computeSize(int, int,
-                 *      boolean)
+                 * @see org.eclipse.swt.widgets.Composite#computeSize(int, int, boolean)
                  */
                 @Override
                 public Point computeSize(int wHint, int hHint, boolean b) {
@@ -354,38 +343,40 @@ public class DiagramElementsSelectionDialog {
                 }
             }).setLayoutData(data);
 
-            addButton(buttonComposite, Messages.CustomTreeSelectionDialog_uncheckAllButtonTooltip, DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.UNCHECK_ALL_ICON), new SelectionAdapter() {
-                @Override
-                public void widgetSelected(SelectionEvent e) {
-                    uncheckAll();
-                    if (choices.getSelectionIndex() == 1) {
-                        updateFilteringMode(FilteringMode.SHOW_ONLY_CHECKED_ELEMENTS);
-                    } else if (choices.getSelectionIndex() == 2) {
-                        updateFilteringMode(FilteringMode.SHOW_ONLY_UNCHECKED_ELEMENTS);
-                    }
-                }
-            }).setLayoutData(data);
+            addButton(buttonComposite, Messages.CustomTreeSelectionDialog_uncheckAllButtonTooltip, DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.UNCHECK_ALL_ICON),
+                    new SelectionAdapter() {
+                        @Override
+                        public void widgetSelected(SelectionEvent e) {
+                            uncheckAll();
+                            if (choices.getSelectionIndex() == 1) {
+                                updateFilteringMode(FilteringMode.SHOW_ONLY_CHECKED_ELEMENTS);
+                            } else if (choices.getSelectionIndex() == 2) {
+                                updateFilteringMode(FilteringMode.SHOW_ONLY_UNCHECKED_ELEMENTS);
+                            }
+                        }
+                    }).setLayoutData(data);
 
-            addButton(buttonComposite, Messages.CustomTreeSelectionDialog_expandAllButtonTooltip, DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.EXPAND_ALL_ICON), new SelectionAdapter() {
-                @Override
-                public void widgetSelected(SelectionEvent e) {
-                    expandAll();
-                }
-            }).setLayoutData(data);
+            addButton(buttonComposite, Messages.CustomTreeSelectionDialog_expandAllButtonTooltip, DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.EXPAND_ALL_ICON),
+                    new SelectionAdapter() {
+                        @Override
+                        public void widgetSelected(SelectionEvent e) {
+                            expandAll();
+                        }
+                    }).setLayoutData(data);
 
-            addButton(buttonComposite, Messages.CustomTreeSelectionDialog_collapaseAllTooltip, DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.COLLAPSE_ALL_ICON), new SelectionAdapter() {
-                @Override
-                public void widgetSelected(SelectionEvent e) {
-                    collapseAll();
-                }
-            }).setLayoutData(data);
+            addButton(buttonComposite, Messages.CustomTreeSelectionDialog_collapaseAllTooltip, DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.COLLAPSE_ALL_ICON),
+                    new SelectionAdapter() {
+                        @Override
+                        public void widgetSelected(SelectionEvent e) {
+                            collapseAll();
+                        }
+                    }).setLayoutData(data);
 
             return buttonComposite;
         }
 
         /**
-         * Creates a zone in which user will be able to type a Regular
-         * Expression to filter the shown elements.
+         * Creates a zone in which user will be able to type a Regular Expression to filter the shown elements.
          * 
          * @param composite
          *            the parent composite
@@ -423,8 +414,8 @@ public class DiagramElementsSelectionDialog {
         }
 
         /**
-         * Sets the matcher used to determine if a given DDiagramElement is
-         * matching the regular expression typed by user.
+         * Sets the matcher used to determine if a given DDiagramElement is matching the regular expression typed by
+         * user.
          * 
          * @param patternMatcher
          *            the patternMatcher to set
@@ -474,8 +465,7 @@ public class DiagramElementsSelectionDialog {
         }
 
         /**
-         * Updates the treeViewer after a change in the filteringMode or the
-         * typed regular expression.
+         * Updates the treeViewer after a change in the filteringMode or the typed regular expression.
          * 
          * @param filteringMode
          *            the new filtering mode
@@ -493,13 +483,12 @@ public class DiagramElementsSelectionDialog {
         }
 
         /**
-         * Indicates if the given element is checked <b>AND</b> is matching the
-         * currently typed regular expression.
+         * Indicates if the given element is checked <b>AND</b> is matching the currently typed regular expression.
          * 
          * @param element
          *            the element to test
-         * @return true if the given element is checked <b>AND</b> is matching
-         *         the currently typed regular expression, false otherwise.
+         * @return true if the given element is checked <b>AND</b> is matching the currently typed regular expression,
+         *         false otherwise.
          */
         public boolean isMatchingExpregOrHasMatchingExpregDescendantsCheckedMode(Object element) {
             Predicate<Object> isCheckedElementPredicate = Predicates.in(checkedElements);
@@ -508,13 +497,12 @@ public class DiagramElementsSelectionDialog {
         }
 
         /**
-         * Indicates if the given element is unchecked <b>AND</b> is matching
-         * the currently typed regular expression.
+         * Indicates if the given element is unchecked <b>AND</b> is matching the currently typed regular expression.
          * 
          * @param element
          *            the element to test
-         * @return true if the given element is unchecked <b>AND</b> is matching
-         *         the currently typed regular expression, false otherwise.
+         * @return true if the given element is unchecked <b>AND</b> is matching the currently typed regular expression,
+         *         false otherwise.
          */
         public boolean isMatchingExpregOrHasMatchingExpregDescendantsUncheckedMode(Object element) {
             Predicate<Object> isUncheckedElementPredicate = Predicates.not(Predicates.in(checkedElements));
@@ -523,28 +511,24 @@ public class DiagramElementsSelectionDialog {
         }
 
         /**
-         * Indicates if the given element is matching the currently typed
-         * regular expression.
+         * Indicates if the given element is matching the currently typed regular expression.
          * 
          * @param element
          *            the element to test
-         * @return true if the given element is matching the currently typed
-         *         regular expression, false otherwise.
+         * @return true if the given element is matching the currently typed regular expression, false otherwise.
          */
         public boolean isMatchingExpregOrHasMatchingExpregDescendantsAllMode(Object element) {
             return isOrHasDescendant(element, getRegexpMatchPredicate());
         }
 
         /**
-         * Indicates if the given element or at least one of its children checks
-         * the given predicate.
+         * Indicates if the given element or at least one of its children checks the given predicate.
          * 
          * @param element
          *            the element to check
          * @param pred
          *            the predicate to sue
-         * @return true if the given element or at least one of its children
-         *         checks the given predicate, false otherwise
+         * @return true if the given element or at least one of its children checks the given predicate, false otherwise
          */
         public boolean isOrHasDescendant(Object element, final Predicate<Object> pred) {
             boolean matches = pred.apply(element);
@@ -568,11 +552,9 @@ public class DiagramElementsSelectionDialog {
         }
 
         /**
-         * Returns a Predicate indicating if an object is matching the Regular
-         * Expression currently typed by user.
+         * Returns a Predicate indicating if an object is matching the Regular Expression currently typed by user.
          * 
-         * @return a Predicate indicating if an object is matching the Regular
-         *         Expression currently typed by user
+         * @return a Predicate indicating if an object is matching the Regular Expression currently typed by user
          */
         public Predicate<Object> getRegexpMatchPredicate() {
             return patternMatcher.getMatchPredicate();
@@ -623,24 +605,22 @@ public class DiagramElementsSelectionDialog {
     }
 
     /**
-     * Sets the predicate to use to detect which elements of the diagram are
-     * selected, in the sense of the criterion to be edited.
+     * Sets the predicate to use to detect which elements of the diagram are selected, in the sense of the criterion to
+     * be edited.
      * 
      * @param isSelectedPredicate
-     *            the predicate to used to detect selected elements of the
-     *            diagram.
+     *            the predicate to used to detect selected elements of the diagram.
      */
     public void setSelectionPredicate(Predicate<Object> isSelectedPredicate) {
         this.isSelected = isSelectedPredicate;
     }
 
     /**
-     * Sets the predicate to use to detect which elements of the diagram are
-     * selected, in the sense of the criterion to be edited.
+     * Sets the predicate to use to detect which elements of the diagram are selected, in the sense of the criterion to
+     * be edited.
      * 
      * @param isGrayedPredicate
-     *            the predicate to used to detect selected elements of the
-     *            diagram.
+     *            the predicate to used to detect selected elements of the diagram.
      */
     public void setGrayedPredicate(Predicate<Object> isGrayedPredicate) {
         this.isGrayed = isGrayedPredicate != null ? isGrayedPredicate : Predicates.alwaysFalse();
@@ -661,8 +641,7 @@ public class DiagramElementsSelectionDialog {
     }
 
     /**
-     * Sets the operation to be applied on elements which are newly selected by
-     * the user.
+     * Sets the operation to be applied on elements which are newly selected by the user.
      * 
      * @param selectedAction
      *            the operation to apply to newly selected elements.
@@ -672,8 +651,7 @@ public class DiagramElementsSelectionDialog {
     }
 
     /**
-     * Sets the operation to be applied on elements which are deselected by the
-     * user.
+     * Sets the operation to be applied on elements which are deselected by the user.
      * 
      * @param deselectedAction
      *            the operation to apply to deselected elements.
@@ -683,18 +661,16 @@ public class DiagramElementsSelectionDialog {
     }
 
     /**
-     * Asks the end-user for a list of elements to select/de-select, and applies
-     * the corresponding changes.
+     * Asks the end-user for a list of elements to select/de-select, and applies the corresponding changes.
      * 
      * @param parent
      *            the shell to use to interact with the user, if required.
      * @param ddiagram
      *            the diagram whose elements to edit.
      * @param includeNodeLabel
-     *            include node label (if there are on border) in the tree
-     *            content
-     * @return <code>true</code> if the operation was correctly executed,
-     *         <code>false</code> if it was canceled by the user.
+     *            include node label (if there are on border) in the tree content
+     * @return <code>true</code> if the operation was correctly executed, <code>false</code> if it was canceled by the
+     *         user.
      */
     public boolean open(Shell parent, DDiagram ddiagram, boolean includeNodeLabel) {
         boolean result = false;
@@ -707,7 +683,7 @@ public class DiagramElementsSelectionDialog {
         if (response.some()) {
             Set<Object> selectedAfter = response.get();
             applyRequestedChanges(allSelectedElements, selectedAfter);
-            assert selectedAfter.equals(allSelectedElements);
+            assert selectedAfter.equals(getAllSelectedElements());
             result = true;
         }
         diagram = null;
@@ -720,8 +696,8 @@ public class DiagramElementsSelectionDialog {
      * Init the content provider.
      * 
      * @param includeLabel
-     *            include label (containers, lists, edges and nodes if there are
-     *            on border for nodes) in the tree content
+     *            include label (containers, lists, edges and nodes if there are on border for nodes) in the tree
+     *            content
      */
     protected void initContentProvider(boolean includeLabel) {
         AdapterFactory adapterFactory = getAdapterFactory(includeLabel);
@@ -735,8 +711,7 @@ public class DiagramElementsSelectionDialog {
     /**
      * Return all selected elements of the diagram that are display in the tree.
      * 
-     * @return All selected elements of the diagram that are display in the
-     *         tree.
+     * @return All selected elements of the diagram that are display in the tree.
      */
     protected Set<Object> getAllSelectedElements() {
         Set<Object> treeElements = getAllChildren(diagram);
@@ -744,17 +719,14 @@ public class DiagramElementsSelectionDialog {
     }
 
     /**
-     * Asks the user to edit the set of elements which should be selected/match
-     * the criterion being edited.
+     * Asks the user to edit the set of elements which should be selected/match the criterion being edited.
      * 
      * @param parent
-     *            the parent shell to use if user interaction requires opening
-     *            new windows.
+     *            the parent shell to use if user interaction requires opening new windows.
      * @param initialSelection
      *            the set of elements to display as checked on dialog opening.
-     * @return the new set of all the elements in the diagram which were
-     *         selected by the user, or <code>Options.newNone()</code> if the
-     *         user canceled the operation.
+     * @return the new set of all the elements in the diagram which were selected by the user, or
+     *         <code>Options.newNone()</code> if the user canceled the operation.
      */
     protected Option<Set<Object>> askUserForNewSelection(Shell parent, Set<Object> initialSelection) {
         setupDialog(parent, initialSelection);
@@ -768,8 +740,7 @@ public class DiagramElementsSelectionDialog {
     }
 
     /**
-     * Create an configure a selection dialog which allows the user to select a
-     * sub-set of the elements in the diagram.
+     * Create an configure a selection dialog which allows the user to select a sub-set of the elements in the diagram.
      * 
      * @param parent
      *            the parent shell.
@@ -814,11 +785,9 @@ public class DiagramElementsSelectionDialog {
      * Updates the status of the elements according to the user request.
      * 
      * @param selectedBefore
-     *            all (and only) the elements in the diagram which were actually
-     *            pinned before the action.
+     *            all (and only) the elements in the diagram which were actually pinned before the action.
      * @param selectedAfter
-     *            all (and only) the elements in the diagram which should be
-     *            pinned as requested by the user.
+     *            all (and only) the elements in the diagram which should be pinned as requested by the user.
      */
     protected void applyRequestedChanges(Set<Object> selectedBefore, Set<Object> selectedAfter) {
         for (Object dde : Sets.difference(selectedBefore, selectedAfter)) {
@@ -848,15 +817,14 @@ public class DiagramElementsSelectionDialog {
     }
 
     /**
-     * Specific diagram item provider adapter factory to create item provider
-     * for DNodeContainer and DNodelist able to display their label as virtual
-     * children.
+     * Specific diagram item provider adapter factory to create item provider for DNodeContainer and DNodelist able to
+     * display their label as virtual children.
      */
     private class DiagramItemProviderWithLabelAdapterFactory extends DiagramItemProviderAdapterFactory {
 
         /**
-         * The item provider used to simulate another child for Container and
-         * List regarding the node label configuration.
+         * The item provider used to simulate another child for Container and List regarding the node label
+         * configuration.
          */
         private final HashMap<Object, DDiagramElementContainerLabelItemProvider> labelItemProviders = new HashMap<>();
 
