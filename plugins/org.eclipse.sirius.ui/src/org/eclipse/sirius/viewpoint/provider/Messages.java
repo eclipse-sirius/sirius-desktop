@@ -80,7 +80,7 @@ public final class Messages {
     public static String AbstractExportRepresentationsAsImagesDialog_invalidFolderPathError;
 
     @TranslatableMessage
-    public static String AbstractExportRepresentationsAsImagesDialog_autoScaleDiagram;
+    public static String AbstractExportRepresentationsAsImagesDialog_scalingLevelDiagramLabel;
 
     @TranslatableMessage
     public static String AbstractSWTCallback_askForDetailName_canceled;
@@ -398,6 +398,21 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ExportAction_memAllocError;
+
+    @TranslatableMessage
+    public static String ExportAction_invalidLevel;
+
+    @TranslatableMessage
+    public static String ExportAsImage_dialogSizeGroupName;
+
+    @TranslatableMessage
+    public static String ExportAsImage_maxLevelLabel;
+
+    @TranslatableMessage
+    public static String ExportAsImage_nominalLevelLabel;
+
+    @TranslatableMessage
+    public static String ExportAsImage_sizeTooltip;
 
     @TranslatableMessage
     public static String ExportOneRepresentationAsImageDialog_dialogTitle;

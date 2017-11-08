@@ -109,6 +109,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportResult;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
@@ -123,6 +124,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -434,7 +436,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                     synchronizeDiagram(diagram);
 
                     final DiagramEditPartService tool = new DiagramEditPartService();
-                    configureScalingPolicy(tool, format.getScalingPolicy());
+                    configureScalingPolicy(tool, format.getScalingPolicy(), format.getScalingLevel());
                     if (exportToHtml) {
                         tool.exportToHtml();
                     }
@@ -511,20 +513,38 @@ public class DiagramDialectUIServices implements DialectUIServices {
         }
     }
 
-    private void configureScalingPolicy(DiagramEditPartService tool, ExportFormat.ScalingPolicy policy) {
+    private void configureScalingPolicy(DiagramEditPartService tool, ExportFormat.ScalingPolicy policy, Integer scalingLevel) {
+        Integer workspaceLevelDefault = null;
         switch (policy) {
         case AUTO_SCALING:
             tool.setAutoScalingEnabled(true);
+            if (scalingLevel == null) {
+                workspaceLevelDefault = SiriusEditPlugin.getPlugin().getPreferenceStore().getInt(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name()) * 10;
+                tool.setDiagramScaleLevel(workspaceLevelDefault);
+            } else {
+                tool.setDiagramScaleLevel(scalingLevel);
+            }
             break;
         case NO_SCALING:
             tool.setAutoScalingEnabled(false);
+            tool.setDiagramScaleLevel(0);
             break;
         case WORKSPACE_DEFAULT:
             boolean workspaceDefault = DiagramUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT.name());
             tool.setAutoScalingEnabled(workspaceDefault);
+            if (workspaceDefault) {
+                workspaceLevelDefault = SiriusEditPlugin.getPlugin().getPreferenceStore().getInt(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name()) * 10;
+                tool.setDiagramScaleLevel(workspaceLevelDefault);
+            }
             break;
         case AUTO_SCALING_IF_LARGER:
             tool.setAutoScalingEnabled(true);
+            if (scalingLevel == null) {
+                workspaceLevelDefault = SiriusEditPlugin.getPlugin().getPreferenceStore().getInt(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name());
+                tool.setDiagramScaleLevel(workspaceLevelDefault);
+            } else {
+                tool.setDiagramScaleLevel(scalingLevel);
+            }
             tool.setAllowDownScaling(false);
             break;
         default:

@@ -19,24 +19,31 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IDialogSettings;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
+import org.eclipse.sirius.ui.tools.internal.preference.ScaleWithLegendFieldEditorWithHelp;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Shell;
 
 /**
@@ -55,11 +62,6 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
      * The id for the persistent settings for this dialog.
      */
     public static final String DIALOG_SETTINGS_ID = "ExportRepresentationsAsImagesDialog"; //$NON-NLS-1$
-    
-    /**
-     * The setting property key used to configure the dialog's initial value for the "Auto-Scale" checkbox.
-     */
-    public static final String AUTO_SCALE_SETTING_PROPERTY = "autoScaleDiagram"; //$NON-NLS-1$
 
     /**
      * Default extension image.
@@ -106,11 +108,25 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
      */
     protected static final String FOLDER_NOT_EXIST_MESSAGE = Messages.AbstractExportRepresentationsAsImagesDialog_folderDoesNotExist;
 
-
     /**
      * Combo length history path.
      */
     private static final int COMBO_HISTORY_LENGTH = 5;
+
+    /**
+     * Max quality level used to export diagram as image
+     */
+    private static final int MAX_QUALITY = 10;
+
+    /**
+     * Min quality level used to export diagram as image
+     */
+    private static final int MIN_QUALITY = 0;
+
+    /**
+     * Quality increment used to export diagram as image
+     */
+    private static final int INCREMENT_QUALITY = 1;
 
     /**
      * the folder combo field.
@@ -163,6 +179,11 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     private boolean autoScaleDiagram;
 
     /**
+     * Scale level when exporting diagrams as image.
+     */
+    private Integer diagramScaleLevel;
+
+    /**
      * Creates an instance of the copy to image dialog.
      * 
      * @param shell
@@ -173,7 +194,8 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     public AbstractExportRepresentationsAsImagesDialog(final Shell shell, final IPath path) {
         super(shell);
         initDialogSettings(path);
-        this.autoScaleDiagram = getDialogSettings().getBoolean(AUTO_SCALE_SETTING_PROPERTY);
+        this.diagramScaleLevel = SiriusEditPlugin.getPlugin().getPreferenceStore().getInt(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name());
+        this.autoScaleDiagram = diagramScaleLevel != 0;
     }
 
     /**
@@ -232,12 +254,21 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     }
 
     /**
-     * Check if the user chose to auto-scale exported diagrams.
+     * Check if the user choose to auto-scale exported diagrams.
      * 
      * @return <code>true</code> if the user asked for diagram auto-scaling.
      */
     public boolean isAutoScaleDiagram() {
         return autoScaleDiagram;
+    }
+
+    /**
+     * Get the scale level for exported diagrams.
+     * 
+     * @return scale level in percent
+     */
+    public Integer getDiagramScaleLevelInPercent() {
+        return diagramScaleLevel * 10;
     }
 
     /**
@@ -395,11 +426,11 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
         final Composite composite = (Composite) super.createDialogArea(parent);
         createFolderGroup(composite);
         createImageFormatGroup(composite);
+        createImageSizeGroup(composite);
         createExportDecorationsGroup(composite);
         if (DialectUIManager.INSTANCE.canExport(new ExportFormat(ExportDocumentFormat.HTML, null))) {
             createGenerateHTMLGroup(composite);
         }
-        createAutoScaleGroup(composite);
         createMessageGroup(composite);
         initListeners();
         return composite;
@@ -474,21 +505,33 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
         });
     }
 
-    private void createAutoScaleGroup(Composite parent) {
-        Composite composite = SWTUtil.createCompositeHorizontalFill(parent, 1, false);
-        final Button autoScaleDiagramCheckBox = new Button(composite, SWT.CHECK | SWT.LEFT);
-        autoScaleDiagramCheckBox.setText(Messages.AbstractExportRepresentationsAsImagesDialog_autoScaleDiagram);
-        GridData data = new GridData(GridData.FILL, 0, true, false);
-        autoScaleDiagramCheckBox.setLayoutData(data);
-        autoScaleDiagramCheckBox.setSelection(this.autoScaleDiagram);
-        autoScaleDiagramCheckBox.addSelectionListener(new SelectionAdapter() {
+    private void createImageSizeGroup(Composite parent) {
+        Group imageSizeGroup = new Group(parent, SWT.NONE);
+        GridLayout gridLayout = new GridLayout(1, false);
+        imageSizeGroup.setLayout(gridLayout);
+        GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
+        gridData.grabExcessHorizontalSpace = true;
+        gridData.horizontalSpan = 2;
+        imageSizeGroup.setLayoutData(gridData);
+        imageSizeGroup.setText(Messages.ExportAsImage_dialogSizeGroupName);
+
+        ScaleWithLegendFieldEditorWithHelp scaleWithLegendFieldEditor = new ScaleWithLegendFieldEditorWithHelp(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(),
+                Messages.ExportAsImage_dialogSizeGroupName, Messages.ExportAsImage_sizeTooltip, imageSizeGroup);
+        scaleWithLegendFieldEditor.setMinimum(MIN_QUALITY);
+        scaleWithLegendFieldEditor.setMaximum(MAX_QUALITY);
+        scaleWithLegendFieldEditor.setPageIncrement(INCREMENT_QUALITY);
+
+        Scale scale = scaleWithLegendFieldEditor.getScaleControl();
+        scale.setSelection(this.diagramScaleLevel);
+        scale.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent event) {
-                autoScaleDiagram = autoScaleDiagramCheckBox.getSelection();
+                diagramScaleLevel = scale.getSelection();
+                autoScaleDiagram = diagramScaleLevel != 0;
             }
         });
     }
-    
+
     /**
      * Create the message group in the dialog used to display error messages.
      * 
@@ -558,5 +601,15 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
         if (history.size() > COMBO_HISTORY_LENGTH) {
             history.remove(COMBO_HISTORY_LENGTH);
         }
+    }
+
+    /**
+     * Create and return the help icon to show in our label.
+     * 
+     * @return The help icon to show in our label.
+     */
+    protected Image getHelpIcon() {
+        ImageDescriptor findImageDescriptor = SiriusEditPlugin.Implementation.findImageDescriptor("icons/full/others/prefshelp.gif"); //$NON-NLS-1$
+        return SiriusEditPlugin.getPlugin().getImage(findImageDescriptor);
     }
 }

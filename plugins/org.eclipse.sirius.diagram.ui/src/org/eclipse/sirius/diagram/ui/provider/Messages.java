@@ -408,10 +408,10 @@ public final class Messages {
     public static String DiagramGeneralPreferencePage_showSynchronizeStatusDecoratorLabel;
 
     @TranslatableMessage
-    public static String DiagramGeneralPreferencePage_synchronizedModeLabel;
-    
+    public static String DiagramGeneralPreferencePage_sizeGroupLabel;
+
     @TranslatableMessage
-    public static String DiagramGeneralPreferencePage_scaleDiagramOnExport;
+    public static String DiagramGeneralPreferencePage_synchronizedModeLabel;
 
     @TranslatableMessage
     public static String DiagramOutlineWithBookPages_filtersTooltip;

@@ -676,7 +676,7 @@
 		<p>	
 			<img border="0" src="images/diagram_export_wrong_extension.png"/>
 		</p>
-		<p>Three checkboxes are available to customize the export:</p>
+		<p>Two checkboxes are available to customize the export:</p>
 		<ul>
 			<li>
 				<em>Export decorations</em>: if checked, some decorations which can appear in diagram elements and are declared as transient in the modeler definition (for example validation errors) are exported in the image.
@@ -685,10 +685,20 @@
 				<em>Export to HTLM</em>: if checked, the export will produce a 
 				<code>.html</code> file which references the exported image in addition to the image file itself.
 			</li>
-			<li>
-				<em>Auto-scale</em>: if checked, the exported diagram will be scaled to the maximum possible size (limited by system-specific limitations) while keeping its aspect ratio. This can produce higher resolution images (but also larger files).
-			</li>
 		</ul>
+		<p>Besides, an image size control is available to determine the size level of exported diagrams. If 
+			<em>Image Size</em> is set to 
+			<em>Max</em>, diagram will be exported with the maximum possible size (limited by system-specific limitations) while keeping its aspect ratio. This can produce higher resolution images (but also larger files and so long export time). If 
+			<em>Image Size</em> is set to level 
+			<em>Nominal</em>, diagram will be exported with nominal size (quality will be lower but export time will be shorter).
+		</p>
+		<p>For example, on this Family diagram:
+			<br/>	
+			<img border="0" src="images/exportSampleSource.png"/>
+			<br/>You can observe these different quality, file size and time generation with nominal size, max size and between both of them:
+			<br/>	
+			<img border="0" src="images/exportSample.png"/>
+		</p>
 		<p>
 			<em>
 				<strong>Note:</strong>
@@ -1547,8 +1557,10 @@
 				<em>Remove/hide note when the annotated element is removed/hidden:</em> If checked, then notes attached to a diagram element will be deleted if the element is deleted, or hidden if the element is hidden.
 			</li>
 			<li>
-				<em>Auto-scale when exporting as image</em>: determines the default behavior when exporting diagrams programmatically, and the initial value of the corresponding checkbox in the 
-				<em>Export as image</em> dialog.
+				<em>Export as image Scaling</em>: determines default level of scaling when exporting diagrams as image and its initial value in the 
+				<em>Export as image</em> dialog. 
+				<em>Max</em> level means an optimal quality export whereas 
+				<em>nominal</em> means nominal quality export. 
 			</li>
 		</ul>
 		<h3 id="Appearance">Appearance</h3>

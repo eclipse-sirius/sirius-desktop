@@ -74,6 +74,10 @@ public enum SiriusDiagramUiPreferencesKeys {
 
     /**
      * Indicates if by default exported diagrams are automatically scaled (instead of being export at 100% zoom level).
+     * 
+     * @deprecated Currently only the scale level is visible in the UI. This boolean value is kept for compatibility
+     *             reason and will be removed on the next major version.
+     *             SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT must be used instead.
      */
     PREF_SCALE_DIAGRAMS_ON_EXPORT(boolean.class),
 

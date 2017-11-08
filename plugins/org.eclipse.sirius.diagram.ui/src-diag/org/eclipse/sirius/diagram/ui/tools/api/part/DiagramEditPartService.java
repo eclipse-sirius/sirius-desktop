@@ -85,6 +85,11 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     private boolean autoScalingEnabled = true;
 
     /**
+     * Scale level when exporting diagrams as image.
+     */
+    private Integer diagramScaleLevel = 100;
+
+    /**
      * Determines if we allow downscaling (i.e. scaling to less than 100% of the original size). Only used if
      * autoScalingEnabled is true.
      */
@@ -161,6 +166,16 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      */
     public void setAutoScalingEnabled(boolean autoScalingEnabled) {
         this.autoScalingEnabled = autoScalingEnabled;
+    }
+
+    /**
+     * Set the diagram scale level..
+     * 
+     * @param theDiagramScaleLevel
+     *            diagram scale level in percent
+     */
+    public void setDiagramScaleLevel(Integer theDiagramScaleLevel) {
+        this.diagramScaleLevel = theDiagramScaleLevel;
     }
 
     /**
@@ -299,7 +314,11 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
             factor = Math.floor(Math.sqrt(Double.valueOf(getMaximumTotalSize()) / ((imageRect.width) * (imageRect.height))) * 100) / 100;
             if (factor < 1.0 && !allowDownScaling) {
                 factor = 1.0;
+            } else {
+                // Apply Scale level : 100% means full autoScale whereas 0% means no autoScale
+                factor = 1.0 + (factor - 1.0) * this.diagramScaleLevel / 100.;
             }
+
         }
         return factor;
     }

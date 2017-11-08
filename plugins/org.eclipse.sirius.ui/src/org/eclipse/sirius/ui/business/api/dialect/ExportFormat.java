@@ -27,6 +27,13 @@ public class ExportFormat {
     private final ScalingPolicy scalingPolicy;
 
     /**
+     * Scaling level from 0 to 100 by step of 10. It is used only if scaling policy is set to WORKSPACE_DEFAULT,
+     * AUTO_SCALING or AUTO_SCALING_IF_LARGER. A scaling level set to 0 corresponds to the NO_SCALING scaling policy
+     * (even with other policies).
+     */
+    private final Integer scalingLevel;
+
+    /**
      * Create a new export format.
      * 
      * @param documentFormat
@@ -34,12 +41,32 @@ public class ExportFormat {
      * @param imageFormat
      *            the image export format
      * @param scalingPolicy
-     *            indicates if and how exported diagram should be scaled.
+     *            indicates if and how exported diagram should be scaled
      */
     public ExportFormat(final ExportDocumentFormat documentFormat, ImageFileFormat imageFormat, ScalingPolicy scalingPolicy) {
         this.documentFormat = documentFormat;
         this.imageFomat = imageFormat;
         this.scalingPolicy = scalingPolicy;
+        this.scalingLevel = null;
+    }
+
+    /**
+     * Create a new export format.
+     * 
+     * @param documentFormat
+     *            the document export format
+     * @param imageFormat
+     *            the image export format
+     * @param scalingPolicy
+     *            indicates if and how exported diagram should be scaled
+     * @param scalingLevel
+     *            indicates level of scaling when diagrams are exported (value from 0 to 100 by step of 10).
+     */
+    public ExportFormat(final ExportDocumentFormat documentFormat, ImageFileFormat imageFormat, ScalingPolicy scalingPolicy, Integer scalingLevel) {
+        this.documentFormat = documentFormat;
+        this.imageFomat = imageFormat;
+        this.scalingPolicy = scalingPolicy;
+        this.scalingLevel = scalingLevel;
     }
 
     /**
@@ -51,7 +78,7 @@ public class ExportFormat {
      *            the image export format
      */
     public ExportFormat(final ExportDocumentFormat documentFormat, ImageFileFormat imageFormat) {
-        this(documentFormat, imageFormat, ScalingPolicy.WORKSPACE_DEFAULT);
+        this(documentFormat, imageFormat, ScalingPolicy.WORKSPACE_DEFAULT, null);
     }
 
     /**
@@ -82,6 +109,15 @@ public class ExportFormat {
     }
 
     /**
+     * Get the diagram scaling level.
+     * 
+     * @return the diagram scaling level.
+     */
+    public Integer getScalingLevel() {
+        return scalingLevel;
+    }
+
+    /**
      * Export document format:
      * <UL>
      * <LI>HTML (only using 3.5 platform) for all kind of diagrams,</LI>
@@ -106,7 +142,8 @@ public class ExportFormat {
      */
     public enum ScalingPolicy {
         /**
-         * Use the current value set in the workspace preference ({@code SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT}).
+         * Use the current value set in the workspace preference
+         * ({@code SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT}).
          */
         WORKSPACE_DEFAULT,
         /**

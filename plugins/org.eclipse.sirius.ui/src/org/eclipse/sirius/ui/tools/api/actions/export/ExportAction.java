@@ -70,6 +70,11 @@ public class ExportAction extends WorkspaceModifyOperation {
     private boolean autoScaleDiagram;
 
     /**
+     * Indicates scale level when exporting diagrams as image (value from 0 to 100 by step of 10).
+     */
+    private Integer diagramScaleLevel;
+
+    /**
      * Default constructor.
      *
      * @param session
@@ -99,9 +104,25 @@ public class ExportAction extends WorkspaceModifyOperation {
      * 
      * @param autoScaleDiagram
      *            <code>true</code> if the exported diagram should be automatically scaled.
+     * 
+     * @deprecated Kept only for compatibility reason.
      */
     public void setAutoScaleDiagram(boolean autoScaleDiagram) {
         this.autoScaleDiagram = autoScaleDiagram;
+    }
+
+    /**
+     * Set the diagram scale level.
+     * 
+     * @param theDiagramScaleLevel
+     *            diagram scale level in percent
+     */
+    public void setDiagramScaleLevel(Integer theDiagramScaleLevel) {
+        if (theDiagramScaleLevel < 0 && theDiagramScaleLevel > 100) {
+            throw new IllegalArgumentException(Messages.ExportAction_invalidLevel);
+        } else {
+            this.diagramScaleLevel = theDiagramScaleLevel;
+        }
     }
 
     /**
@@ -148,7 +169,7 @@ public class ExportAction extends WorkspaceModifyOperation {
                 IExportRepresentationsAsImagesExtension.CLASS_ATTRIBUTE);
 
         ExportFormat.ScalingPolicy scalingPolicy = this.autoScaleDiagram ? ExportFormat.ScalingPolicy.AUTO_SCALING : ExportFormat.ScalingPolicy.NO_SCALING;
-        ExportFormat exportFormat = new ExportFormat(exportToHtml ? ExportDocumentFormat.HTML : ExportDocumentFormat.NONE, imageFormat, scalingPolicy);
+        ExportFormat exportFormat = new ExportFormat(exportToHtml ? ExportDocumentFormat.HTML : ExportDocumentFormat.NONE, imageFormat, scalingPolicy, this.diagramScaleLevel);
         final String imageFileExtension = exportFormat.getImageFormat().getName().toLowerCase();
 
         /*

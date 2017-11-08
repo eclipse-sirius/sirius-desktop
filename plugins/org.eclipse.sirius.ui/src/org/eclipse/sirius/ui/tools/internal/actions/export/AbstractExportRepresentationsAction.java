@@ -135,6 +135,7 @@ public abstract class AbstractExportRepresentationsAction extends Action {
             List<DRepresentation> toExport = Lists.<DRepresentation> newArrayList(dRepresentations);
             final ExportAction exportAction = new ExportAction(session, toExport, dialog.getOutputPath(), dialog.getImageFormat(), dialog.isExportToHtml(), dialog.isExportDecorations());
             exportAction.setAutoScaleDiagram(dialog.isAutoScaleDiagram());
+            exportAction.setDiagramScaleLevel(dialog.getDiagramScaleLevelInPercent());
             final ProgressMonitorDialog pmd = new ProgressMonitorDialog(shell);
             try {
                 pmd.run(false, false, exportAction);

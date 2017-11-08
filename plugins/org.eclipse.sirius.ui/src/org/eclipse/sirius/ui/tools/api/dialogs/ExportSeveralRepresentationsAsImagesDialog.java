@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,7 +100,7 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
 
     @Override
     protected void createFolderGroup(final Composite parent) {
-        final Composite composite = SWTUtil.createCompositeHorizontalFill(parent, 4, false);
+        final Composite composite = SWTUtil.createCompositeHorizontalFill(parent, 3, false);
         SWTUtil.createLabel(composite, ExportSeveralRepresentationsAsImagesDialog.TO_DIRECTORY);
 
         folderText = new Combo(composite, SWT.SINGLE | SWT.BORDER);
@@ -123,7 +123,7 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
 
     @Override
     protected void createImageFormatGroup(final Composite parent) {
-        final Composite composite = SWTUtil.createCompositeHorizontalFill(parent, 3, false);
+        final Composite composite = SWTUtil.createCompositeHorizontalFill(parent, 2, false);
         SWTUtil.createLabel(composite, AbstractExportRepresentationsAsImagesDialog.IMAGE_FORMAT_LABEL);
 
         String[] imageSafeFormatItems = getImageSafeFormatItems();

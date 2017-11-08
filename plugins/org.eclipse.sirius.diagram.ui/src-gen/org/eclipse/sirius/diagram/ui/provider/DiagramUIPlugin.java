@@ -36,11 +36,8 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
-import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.util.IPropertyChangeListener;
-import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -61,7 +58,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.Format
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistryListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.CustomSiriusDocumentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.ResourceMissingDocumentProvider;
-import org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -155,8 +151,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
         private DynamicDiagramUIPreferences dynamicPreferences;
 
-        private IPropertyChangeListener exportDialogDefaultSettingsUpdater;
-
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
@@ -178,26 +172,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
             super.start(context);
             PreferencesHint.registerPreferenceStore(DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
             dynamicPreferences = new DynamicDiagramUIPreferences(getPreferenceStore());
-            /*
-             * The "Export as Image" dialog is defined in the core org.eclipse.sirius.ui plug-in, so it can not access
-             * to the PREF_SCALE_DIAGRAMS_ON_EXPORT. We use the IDialogSetting to tell it the value of the preference.
-             */
-            exportDialogDefaultSettingsUpdater = new IPropertyChangeListener() {
-                @Override
-                public void propertyChange(PropertyChangeEvent event) {
-                    if (SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT.name().equals(event.getProperty())) {
-                        Object value = event.getNewValue();
-                        if (value instanceof Boolean) {
-                            updateExportDialogSettings(((Boolean) value).booleanValue());
-                        } else {
-                            updateExportDialogSettings(false);
-                        }
-                    }
-                }
-
-            };
-            updateExportDialogSettings(getPreferenceStore().getBoolean(SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT.name()));
-            getPreferenceStore().addPropertyChangeListener(exportDialogDefaultSettingsUpdater);
 
             adapterFactory = createAdapterFactory();
             descriptorsToImages = new HashMap<ImageWithDimensionDescriptor, Image>();
@@ -216,16 +190,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
             layoutDataManagerRegistryListener.init();
 
             registerCoreDecorationProviders();
-        }
-
-        private void updateExportDialogSettings(boolean value) {
-            IDialogSettings settings = SiriusEditPlugin.getPlugin().getDialogSettings();
-            settings = settings.getSection(AbstractExportRepresentationsAsImagesDialog.DIALOG_SETTINGS_ID);
-            if (settings == null) {
-                // Create if needed, which can occur if the dialog has never been opened in this workspace.
-                settings = SiriusEditPlugin.getPlugin().getDialogSettings().addNewSection(AbstractExportRepresentationsAsImagesDialog.DIALOG_SETTINGS_ID);
-            }
-            settings.put(AbstractExportRepresentationsAsImagesDialog.AUTO_SCALE_SETTING_PROPERTY, value);
         }
 
         private void registerCoreDecorationProviders() {
@@ -256,9 +220,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
                 // can occur when using CDO (if the view is
                 // closed when transactions have been closed)
             }
-
-            getPreferenceStore().removePropertyChangeListener(exportDialogDefaultSettingsUpdater);
-            exportDialogDefaultSettingsUpdater = null;
 
             formatDataManagerRegistryListener.dispose();
             formatDataManagerRegistryListener = null;

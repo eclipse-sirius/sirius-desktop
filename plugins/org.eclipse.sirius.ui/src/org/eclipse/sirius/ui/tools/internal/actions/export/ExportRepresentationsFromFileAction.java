@@ -47,8 +47,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
- * An eclipse action to export all representations of representations file to
- * images.
+ * An eclipse action to export all representations of representations file to images.
  *
  * @author mchauvin
  */
@@ -82,6 +81,7 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
                 final boolean exportToHtml = dialog.isExportToHtml();
                 final boolean exportDecorations = dialog.isExportDecorations();
                 final boolean autoScale = dialog.isAutoScaleDiagram();
+                final Integer scaleLevel = dialog.getDiagramScaleLevelInPercent();
 
                 IRunnableWithProgress exportAllRepresentationsRunnable = new WorkspaceModifyOperation() {
 
@@ -98,6 +98,7 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
                                 final Collection<DRepresentation> dRepresentationsToExportAsImage = DialectManager.INSTANCE.getAllRepresentations(session);
                                 ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml, exportDecorations);
                                 exportAction.setAutoScaleDiagram(autoScale);
+                                exportAction.setDiagramScaleLevel(scaleLevel);
                                 exportAction.run(new SubProgressMonitor(monitor, 7));
                             }
                         } finally {
