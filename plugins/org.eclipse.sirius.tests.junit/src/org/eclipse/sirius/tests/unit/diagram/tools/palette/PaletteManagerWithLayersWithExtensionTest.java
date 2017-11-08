@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,14 +17,25 @@ import java.util.Collections;
 import java.util.List;
 import java.util.SortedSet;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.gef.EditDomain;
+import org.eclipse.gef.palette.PaletteRoot;
+import org.eclipse.gef.ui.palette.PaletteViewer;
+import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
+import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers.LayersActivationAdapter;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
@@ -57,7 +68,37 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     private static final String TOOL_SECTION_EXTENSION_VIEWPOINT_NAME = "toolSectionExtension"; //$NON-NLS-1$
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_PALETTE = Sets.newTreeSet(Arrays.asList(
+            //
+            createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
+            //
+            createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
+            //
+            createNewEntry("L1NotEmptySection5", "NCD5-1"),
+            //
+            createNewEntry("L1EmptySectionButWithReuseTool7", "Tool1-2-1"),
+            //
+            createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1", "ToolL4-A-1")
     //
+    ));
+
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_EDITOR_PALETTE = Sets.newTreeSet(Arrays.asList(
+            //
+            createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
+            //
+            createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
+            //
+            createNewEntry("L1NotEmptySection5", "NCD5-1"),
+            //
+            createNewEntry("L1EmptySectionButWithReuseTool7", "Tool1-2-1"),
+            //
+            createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1", "ToolL4-A-1"),
+            //
+            createNewEntry("Standard", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
+            //
+    ));
+
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_VIEWPOINT_EXTENSION_DEACTIVATE = Sets.newTreeSet(Arrays.asList(
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -66,12 +107,28 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("L1EmptySectionButWithReuseTool7", "Tool1-2-1"),
             //
-            createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1")
+            createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1"),
+            //
+            createNewEntry("Standard", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
     //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L3_SHOWN = Sets.newTreeSet(Arrays.asList(
+            //
+            createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
+            //
+            createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
+            //
+            createNewEntry("L1NotEmptySection5", "NCD5-1"),
+            //
+            createNewEntry("L1EmptySectionButWithReuseTool7", "Tool1-2-1"),
+            //
+            createNewEntry("SectionSharedWithOtherLayersA", "PBSWDL3-A-2", "ToolL2-A-1", "ToolL3-A-1", "ToolL4-A-1")
     //
+    ));
+
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_HIDDEN = Sets.newTreeSet(Arrays.asList(
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -80,25 +137,13 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("L1EmptySectionButWithReuseTool7", "Tool1-2-1"),
             //
-            createNewEntry("SectionSharedWithOtherLayersA", "PBSWDL3-A-2", "ToolL2-A-1", "ToolL3-A-1")
+            createNewEntry("SectionSharedWithOtherLayersA", "ToolL4-A-1")
     //
-            ));
-
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_HIDDEN = Sets.newTreeSet(Arrays.asList(
-    //
-            createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2"),
-            //
-            createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
-            //
-            createNewEntry("L1NotEmptySection5", "NCD5-1"),
-            //
-            createNewEntry("L1EmptySectionButWithReuseTool7", "Tool1-2-1")
-    //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_HIDDEN_L3_SHOWN = Sets.newTreeSet(Arrays.asList(
-    //
-            createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2"),
+            //
+            createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
             //
@@ -106,12 +151,12 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("L1EmptySectionButWithReuseTool7", "Tool1-2-1"),
             //
-            createNewEntry("SectionSharedWithOtherLayersA", "PBSWDL3-A-2", "ToolL3-A-1")
+            createNewEntry("SectionSharedWithOtherLayersA", "PBSWDL3-A-2", "ToolL3-A-1", "ToolL4-A-1")
     //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L4_SHOWN = Sets.newTreeSet(Arrays.asList(
-    //
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -122,10 +167,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL4-A-1", "ToolL2-A-1")
     //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L4_L5_SHOWN = Sets.newTreeSet(Arrays.asList(
-    //
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -136,10 +181,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL4-A-1", "ToolL2-A-1", "PBSWDL5-A-2", "ToolL5-A-1")
     //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L4_L5_L6_SHOWN = Sets.newTreeSet(Arrays.asList(
-    //
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -152,10 +197,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("L6Section", "ToolL6")
     //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L5_SHOWN = Sets.newTreeSet(Arrays.asList(
-    //
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -166,10 +211,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1", "PBSWDL5-A-2", "ToolL5-A-1")
     //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L4_SHOWN = Sets.newTreeSet(Arrays.asList(
-    //
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -180,10 +225,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL4-A-1")
     //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L5_SHOWN = Sets.newTreeSet(Arrays.asList(
-    //
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -194,10 +239,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "PBSWDL5-A-2", "ToolL5-A-1", "ToolL4-A-1")
     //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L6_SHOWN = Sets.newTreeSet(Arrays.asList(
-    //
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -208,10 +253,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("L6Section", "ToolL6")
     //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L3_L4_L5_L6_SHOWN = Sets.newTreeSet(Arrays.asList(
-    //
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -224,10 +269,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("L6Section", "ToolL6")
     //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L3_L5_SHOWN = Sets.newTreeSet(Arrays.asList(
-    //
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -238,10 +283,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "PBSWDL5-A-2", "ToolL5-A-1", "PBSWDL3-A-2", "ToolL3-A-1")
     //
-            ));
+    ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L3_L4_SHOWN = Sets.newTreeSet(Arrays.asList(
-    //
+            //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -252,7 +297,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL4-A-1", "PBSWDL3-A-2", "ToolL3-A-1")
     //
-            ));
+    ));
 
     private Layer layerL3;
 
@@ -303,8 +348,6 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
 
         // Layer L6 to show
         layerL6 = getLayer(dDiagram, "L6");
-
-        deactivateLayer(dDiagram, "L4 enabled");
     }
 
     /**
@@ -333,6 +376,49 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
         PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
         paletteManager.update(diagram);
         doContentPaletteTest(EXPECTED_ENTRIES_STD_PALETTE);
+    }
+
+    /**
+     * Test that palette is correctly changed after deactivation/activation of a
+     * viewpoint extension containing a transient layer. Here we must check the
+     * palette root of the editor because it is reloaded by the
+     * {@link org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorSessionListenerDelegate}.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testUpdatePaletteAfterViewpointChange() throws Exception {
+        // Open the editor before testing to be sure to have mandatory transient
+        // layer enabled (done in
+        // org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl.activateTransientLayers())
+        IEditorPart dDiagramEditor = DialectUIManager.INSTANCE.openEditor(session, dDiagram, new NullProgressMonitor());
+        try {
+            TestsUtil.synchronizationWithUIThread();
+            assertTrue("Impossible to open editor part, wrong type: " + dDiagramEditor.getClass(), dDiagramEditor instanceof DiagramDocumentEditor);
+            EditDomain editDomain = (EditDomain) ReflectionHelper.invokeMethodWithoutExceptionWithReturn(dDiagramEditor, org.eclipse.gef.ui.parts.GraphicalEditor.class, "getEditDomain",
+                    new Class[] {}, new Object[] {}, true);
+            final PaletteViewer viewer = editDomain.getPaletteViewer();
+            PaletteRoot paletteRoot = viewer.getPaletteRoot();
+
+            doContentPaletteTest(paletteRoot, EXPECTED_ENTRIES_STD_EDITOR_PALETTE);
+
+            // Add an adapter like it is done when menu is shown, otherwise, it is not called and so neither paletteManager.showLayer/hideLayer. 
+            LayersActivationAdapter adapter = new LayersActivationAdapter();
+            adapter.setPaletteManager(((DDiagramEditor) dDiagramEditor).getPaletteManager());
+            dDiagram.eAdapters().add(adapter);
+
+            deactivateViewpoint(TOOL_SECTION_EXTENSION_VIEWPOINT_NAME);
+            TestsUtil.synchronizationWithUIThread();
+            doContentPaletteTest(paletteRoot, EXPECTED_ENTRIES_VIEWPOINT_EXTENSION_DEACTIVATE);
+
+            activateViewpoint(TOOL_SECTION_EXTENSION_VIEWPOINT_NAME);
+            TestsUtil.synchronizationWithUIThread();
+            doContentPaletteTest(paletteRoot, EXPECTED_ENTRIES_STD_EDITOR_PALETTE);
+        } finally {
+            if (dDiagramEditor != null) {
+                DialectUIManager.INSTANCE.closeEditor(dDiagramEditor, false);
+            }
+        }
     }
 
     /**

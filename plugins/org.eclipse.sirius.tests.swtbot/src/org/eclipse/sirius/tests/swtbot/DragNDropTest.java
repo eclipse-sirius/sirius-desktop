@@ -701,9 +701,45 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test the drag&drop of C1(EClass) from the Model Content view to the
+     * diagram. This move should be allowed (as it is in a transient layer
+     * enabled by default) and no error message should be generated.
+     * 
      * @throws Exception
-     *             Test the drag&drop of P2 from the Model Content view to P1 previously created. This move should not
-     *             be allowed and no error message should be generated.
+     *             In case of problem
+     */
+    @Test
+    public void test_DnDClassFromMC2DiagramBlank5FromATransientLayerTool() throws Exception {
+
+        openRepresentation5();
+
+        try {
+            openErrorLogViewByAPI();
+            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            int rowCount = errorLogBot.tree().rowCount();
+
+            DndUtil util = new DndUtil(bot.getDisplay());
+
+            // DnD P1(EPackage) from the Model Content view to the diagram
+            final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
+            util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
+
+            // Asserts that C1 graphical element was created on the diagram and
+            // no error message was generated
+            List<SWTBotGefEditPart> allEditParts = editor.mainEditPart().children();
+
+            assertEquals("Bad number of elements!", 1, allEditParts.size());
+            assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
+        } finally {
+            closeErrorLogView();
+        }
+    }
+
+    /**
+     * @throws Exception
+     *             Test the drag&drop of P2 from the Model Content view to P1
+     *             previously created. This move should not be allowed and no
+     *             error message should be generated.
      */
     @Test
     public void test_DnDPackageFromMC2ContainerBlank5() throws Exception {

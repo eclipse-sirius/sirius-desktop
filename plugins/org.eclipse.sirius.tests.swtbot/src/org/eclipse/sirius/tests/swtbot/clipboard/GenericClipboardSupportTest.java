@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -275,7 +275,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
         listElementCopy.add(editor2.getEditPart("attributee2"));
         Map<String, Integer> pasteElements = new Hashtable<String, Integer>();
         pasteElements.put("attributee1", 2);
-        pasteElements.put("attributee2", 4);
+        pasteElements.put("attributee2", 5);
         checkCopyPaste(editor2, listElementCopy, editor2, true, editor2.getEditPart("pastable_Class", AbstractBorderedShapeEditPart.class), pasteElements);
     }
 

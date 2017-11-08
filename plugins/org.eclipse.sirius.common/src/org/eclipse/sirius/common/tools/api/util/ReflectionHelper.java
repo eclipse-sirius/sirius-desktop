@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -215,12 +215,45 @@ public final class ReflectionHelper {
     }
 
     /**
+     * Invoke a method and return the result.
+     * 
+     * @param object
+     *            The object on which we must invoke method
+     * @param aClass
+     *            The class which declares the method
+     * @param methodName
+     *            The name of the method to invoke
+     * @param parameterTypes
+     *            The type of the parameters
+     * @param parameters
+     *            The parameters of the method
+     * @param setVisible
+     *            true to set the method visible before calling.
+     * @return the result if the method is invoke without exception, null otherwise.
+     */
+    public static Object invokeMethodWithoutExceptionWithReturn(Object object, Class aClass, String methodName, Class<?>[] parameterTypes, Object[] parameters, boolean setVisible) {
+        try {
+            return invokeMethod(object, aClass, methodName, parameterTypes, parameters, setVisible);
+        } catch (SecurityException e) {
+            // Do nothing
+        } catch (IllegalArgumentException e) {
+            // Do nothing
+        } catch (NoSuchMethodException e) {
+            // Do nothing
+        } catch (IllegalAccessException e) {
+            // Do nothing
+        } catch (InvocationTargetException e) {
+            // Do nothing
+        }
+        return null;
+    }
+
+    /**
      * Get the class corresponding to his name.
      * 
      * @param className
      *            The name of the searched class
-     * @return an empty option if there is no corresponding class, an option
-     *         with the corresponding class otherwise.
+     * @return an empty option if there is no corresponding class, an option with the corresponding class otherwise.
      */
     public static Option<Class> getClassForNameWithoutException(String className) {
         try {

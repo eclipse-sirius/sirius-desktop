@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,6 +56,14 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
     public void testCopyPasteFromEditMenuWithAlwaysPasteClassTool() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
         checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable_Class"), editor2, true, (SWTBotGefEditPart) null, "pasted_pastable_Class", 1);
+    }
+
+    /**
+     * Test copy and paste for menu on Edit Part from a transient layer.
+     */
+    public void testCopyPasteFromEditMenuWithAlwaysPasteClassToolFromTransientLayer() {
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable2_Class"), editor2, true, (SWTBotGefEditPart) null, "pasted_pastable2_Class", 1);
     }
 
     /**

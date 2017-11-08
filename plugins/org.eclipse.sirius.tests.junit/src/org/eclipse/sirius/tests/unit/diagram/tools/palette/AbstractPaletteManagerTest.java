@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.EditDomain;
 import org.eclipse.gef.palette.PaletteContainer;
@@ -26,13 +25,10 @@ import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.PaletteStack;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.ui.palette.PaletteViewer;
-import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -40,7 +36,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * Comon code for palette tests
+ * Common code for palette tests.
  * 
  * @author dlecan
  */
@@ -189,27 +185,14 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
      */
     protected abstract String getRepresentationDescriptionName();
 
-    protected void doContentPaletteTest(SortedSet<Entry> expected) {
-        SortedSet<Entry> visiblePaletteEntries = getVisiblePaletteEntries(editDomain.getPaletteViewer().getPaletteRoot());
+    protected void doContentPaletteTest(PaletteRoot paletteRoot, SortedSet<Entry> expected) {
+        SortedSet<Entry> visiblePaletteEntries = getVisiblePaletteEntries(paletteRoot);
 
         checkEquality(visiblePaletteEntries, expected);
+    }
 
-        IEditorPart editorPart = null;
-        try {
-            editorPart = DialectUIManager.INSTANCE.openEditor(session, dDiagram, new NullProgressMonitor());
-            TestsUtil.synchronizationWithUIThread();
-            assertTrue("Impossible to open editor part, wrong type: " + editorPart.getClass(), editorPart instanceof DiagramDocumentEditor);
-        } finally {
-            if (editorPart != null) {
-                try {
-                    DialectUIManager.INSTANCE.closeEditor(editorPart, false);
-                    // CHECKSTYLE:OFF
-                } catch (Exception e) {
-                    // CHECKSTYLE:ON
-                    // Nothing
-                }
-            }
-        }
+    protected void doContentPaletteTest(SortedSet<Entry> expected) {
+        doContentPaletteTest(editDomain.getPaletteViewer().getPaletteRoot(), expected);
     }
 
     private void checkEquality(SortedSet<Entry> value, SortedSet<Entry> expected) {

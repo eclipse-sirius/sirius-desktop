@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,6 +63,8 @@ public class ElementCreationWithPopupMenuTests extends AbstractSiriusSwtBotGefTe
     private static final String REPRESENTATION_INSTANCE_NAME = "new " + REPRESENTATION_NAME;
 
     private static final String TOOL_NAME = "1 EClass";
+
+    private static final String TOOL_NAME_IN_TRANSIENT_LAYER = "Transient-1 EClass";
 
     private static final String TOOL_NAME_ON_EDGE = "EClass On Edge";
 
@@ -172,6 +174,35 @@ public class ElementCreationWithPopupMenuTests extends AbstractSiriusSwtBotGefTe
         GraphicalHelper.logical2screen(screenCreationLocation, (IGraphicalEditPart) diagramEditPartBot.part());
 
         editor.clickContextMenu(screenCreationLocation, TOOL_NAME);
+        SWTBotUtils.waitAllUiEvents();
+
+        // 2. Assert the location of the created EClass
+        SWTBotGefEditPart newClassBot = editor.getEditPart("Class6", DNodeEditPart.class);
+        assertNotNull("No class has been created for this location", newClassBot);
+
+        Point absoluteNewClassBotLocation = editor.getAbsoluteLocation((IGraphicalEditPart) newClassBot.part()).getCopy();
+
+        assertEquals("Creation with contextual menu is not at the correct location", absoluteCreationLocation, absoluteNewClassBotLocation);
+    }
+
+    /**
+     * Test that one EClass creation on DiagramEditPart via the tool from a
+     * transient layer in the popup menu creates the View at the clicked
+     * position.
+     */
+    public void testOneEClassCreationOnDiagramEditPartViaPopupMenuToolFromTransientLayer() {
+        IGraphicalEditPart class3Part = (IGraphicalEditPart) class3ChildOfDiagramBot.part();
+
+        editor.reveal(class3Part);
+        // 1. Create a new EClass
+        // The creation location in logical coordinates (not in screen
+        // coordinates)
+        Point absoluteCreationLocation = editor.getAbsoluteLocation(class3Part).getCopy().translate(-100, 0);
+        // The creation location in screen coordinates
+        Point screenCreationLocation = absoluteCreationLocation.getCopy();
+        GraphicalHelper.logical2screen(screenCreationLocation, (IGraphicalEditPart) diagramEditPartBot.part());
+
+        editor.clickContextMenu(screenCreationLocation, TOOL_NAME_IN_TRANSIENT_LAYER);
         SWTBotUtils.waitAllUiEvents();
 
         // 2. Assert the location of the created EClass

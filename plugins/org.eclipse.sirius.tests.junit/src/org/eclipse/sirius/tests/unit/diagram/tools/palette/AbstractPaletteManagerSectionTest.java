@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import com.google.common.collect.Iterables;
 
 /**
- * Comon code for palette tests
+ * Common code for palette tests
  * 
  * @author dlecan
  */
@@ -47,24 +47,30 @@ public abstract class AbstractPaletteManagerSectionTest extends AbstractPaletteM
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, SESSION_PATH);
         SessionUIManager.INSTANCE.createUISession(session);
 
-        Collection<DRepresentation> representations = getRepresentations(getRepresentationDescriptionName());
+        diagram = getDiagram(getRepresentationDescriptionName(), getRepresentationDescriptionInstanceName());
+    }
+
+    /**
+     * Get the representation with the given representation description name and
+     * the given name.
+     * 
+     * @param diagramDescriptionName
+     *            the name of the diagram description. <code>null</code> is not
+     *            excepted.
+     * @param diagramName
+     *            the name of the diagram. <code>null</code> is not excepted.
+     * @return The corresponding diagram
+     */
+    protected Diagram getDiagram(String diagramDescriptionName, String diagramName) {
+        Collection<DRepresentation> representations = getRepresentations(diagramDescriptionName);
         for (DRepresentation repr : representations) {
-            if (repr.getName().equals(getRepresentationDescriptionInstanceName())) {
+            if (repr.getName().equals(diagramName)) {
                 dDiagram = (DDiagram) repr;
                 break;
             }
         }
         assertNotNull("DDiagram not found", dDiagram);
 
-        diagram = (Diagram) Iterables.get(session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, dDiagram), 0);
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+        return (Diagram) Iterables.get(session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, dDiagram), 0);
     }
 }
