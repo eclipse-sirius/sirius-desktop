@@ -351,6 +351,7 @@ public class AllTestSuite extends TestCase {
         // be based on matcher.
         // suite.addTestSuite(ToolWizardTest.class);
         suite.addTestSuite(ExportDiagramsAsImagesTest.class);
+        suite.addTestSuite(ExportDiagramAsImageFromCloseSessionTest.class);
         suite.addTestSuite(ExportDiagramsAsImagesAndHtmlTest.class);
         suite.addTestSuite(TabBarTest.class);
         suite.addTestSuite(NotInvisibleTabBarTest.class);
