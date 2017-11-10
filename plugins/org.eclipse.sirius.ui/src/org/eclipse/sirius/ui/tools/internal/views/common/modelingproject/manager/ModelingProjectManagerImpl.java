@@ -49,7 +49,6 @@ import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
-import org.eclipse.sirius.ui.tools.internal.preference.SessionEditorUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener.ISessionFileLoadingListener;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -251,11 +250,10 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                         if (createAndOpenBlankRepresentationsFile) {
                             monitor.subTask(Messages.ModelingProjectManagerImpl_createRepresentationFileTask);
                             Session newSession = createLocalRepresentationsFile(project, new SubProgressMonitor(monitor, 1));
-                            if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_ON_SESSION_OPEN.name())) {
-                                Set<ISessionFileLoadingListener> sessionFileLoadingListeners = SiriusEditPlugin.getPlugin().getSessionFileLoadingListeners();
-                                for (ISessionFileLoadingListener sessionFileLoadingListener : sessionFileLoadingListeners) {
-                                    sessionFileLoadingListener.notifySessionLoadedFromModelingProject(newSession);
-                                }
+
+                            Set<ISessionFileLoadingListener> sessionFileLoadingListeners = SiriusEditPlugin.getPlugin().getSessionFileLoadingListeners();
+                            for (ISessionFileLoadingListener sessionFileLoadingListener : sessionFileLoadingListeners) {
+                                sessionFileLoadingListener.notifySessionLoadedFromModelingProject(newSession);
                             }
                         }
                     }

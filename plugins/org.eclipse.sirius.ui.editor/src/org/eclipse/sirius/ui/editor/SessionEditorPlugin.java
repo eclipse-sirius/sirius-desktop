@@ -25,6 +25,7 @@ import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry;
 import org.eclipse.sirius.ui.editor.internal.pages.DefaultPageProvider;
 import org.eclipse.sirius.ui.editor.internal.pages.DefaultSessionEditorPage;
 import org.eclipse.sirius.ui.editor.internal.pages.PluginPageProviderRegistry;
+import org.eclipse.sirius.ui.tools.internal.preference.SessionEditorUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener.ISessionFileLoadingListener;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PartInitException;
@@ -87,7 +88,7 @@ public class SessionEditorPlugin extends EMFPlugin {
          * Listener used to open the session's editor when the modeling project
          * has been expanded whereas it's session was not loaded.
          */
-        private ISessionFileLoadingListener modelingProjectExpansionListener;
+        private ISessionFileLoadingListener airdEditorOpeningListener;
 
         /**
          * The registry providing custom pages to aird editor.
@@ -115,25 +116,26 @@ public class SessionEditorPlugin extends EMFPlugin {
         @Override
         public void start(BundleContext context) throws Exception {
             super.start(context);
-            modelingProjectExpansionListener = new ISessionFileLoadingListener() {
+            airdEditorOpeningListener = new ISessionFileLoadingListener() {
 
                 @Override
                 public void notifySessionLoadedFromModelingProject(Session session) {
-                    URI uri = session.getSessionResource().getURI();
+                    if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_ON_SESSION_OPEN.name())) {
+                        URI uri = session.getSessionResource().getURI();
 
-                    PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
-                        try {
-                            PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-                                    .openEditor(new FileEditorInput(ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)))), SessionEditor.EDITOR_ID);
-                        } catch (PartInitException e) {
-                            error("An error occurred while opening the session's editor.", e); //$NON-NLS-1$
-                        }
+                        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                            try {
+                                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                                        .openEditor(new FileEditorInput(ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)))), SessionEditor.EDITOR_ID);
+                            } catch (PartInitException e) {
+                                error("An error occurred while opening the session's editor.", e); //$NON-NLS-1$
+                            }
 
-                    });
-
+                        });
+                    }
                 }
             };
-            SiriusEditPlugin.getPlugin().addSessionFileLoadingListener(modelingProjectExpansionListener);
+            SiriusEditPlugin.getPlugin().addSessionFileLoadingListener(airdEditorOpeningListener);
             pageRegistry = new PageProviderRegistry();
             pageRegistry.addPageProvider(new DefaultPageProvider());
             pluginPageProviderRegistry = new PluginPageProviderRegistry(pageRegistry);
@@ -142,9 +144,9 @@ public class SessionEditorPlugin extends EMFPlugin {
 
         @Override
         public void stop(BundleContext context) throws Exception {
-            SiriusEditPlugin.getPlugin().removeSessionFileLoadingListener(modelingProjectExpansionListener);
+            SiriusEditPlugin.getPlugin().removeSessionFileLoadingListener(airdEditorOpeningListener);
             Platform.getExtensionRegistry().removeListener(pluginPageProviderRegistry);
-            modelingProjectExpansionListener = null;
+            airdEditorOpeningListener = null;
             pageRegistry = null;
             pluginPageProviderRegistry = null;
             super.stop(context);

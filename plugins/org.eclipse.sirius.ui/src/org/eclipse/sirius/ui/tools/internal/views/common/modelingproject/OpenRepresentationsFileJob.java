@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,6 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionHelper;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
-import org.eclipse.sirius.ui.tools.internal.preference.SessionEditorUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener.ISessionFileLoadingListener;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -156,12 +155,11 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
                 subMonitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadReferencedModelsTask, representationsFileURI.lastSegment()));
                 session = SessionManager.INSTANCE.openSession(representationsFileURI, subMonitor.newChild(14), SiriusEditPlugin.getPlugin().getUiCallback());
                 if (session != null) {
-                    if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_ON_SESSION_OPEN.name())) {
-                        Set<ISessionFileLoadingListener> sessionFileLoadingListeners = SiriusEditPlugin.getPlugin().getSessionFileLoadingListeners();
-                        for (ISessionFileLoadingListener sessionFileLoadingListener : sessionFileLoadingListeners) {
-                            sessionFileLoadingListener.notifySessionLoadedFromModelingProject(session);
-                        }
+                    Set<ISessionFileLoadingListener> sessionFileLoadingListeners = SiriusEditPlugin.getPlugin().getSessionFileLoadingListeners();
+                    for (ISessionFileLoadingListener sessionFileLoadingListener : sessionFileLoadingListeners) {
+                        sessionFileLoadingListener.notifySessionLoadedFromModelingProject(session);
                     }
+
                     IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
                     if (!editingSession.isOpen()) {
                         editingSession.open();
