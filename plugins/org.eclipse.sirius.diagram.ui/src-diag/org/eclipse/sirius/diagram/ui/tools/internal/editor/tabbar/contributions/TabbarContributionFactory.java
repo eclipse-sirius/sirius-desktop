@@ -46,6 +46,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiag
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.FiltersContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.LayersContribution;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.LayoutingModeSwitchingAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.ShowingModeSwitchingAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DiagramActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarAlignMenuManager;
@@ -540,6 +541,29 @@ public class TabbarContributionFactory {
                 LayoutingModeSwitchingAction layoutingModeSwitchingAction = new LayoutingModeSwitchingAction(site.getPage(), editorDiagram);
                 return new TabbarActionContributionItem(layoutingModeSwitchingAction);
             }
+        }
+        return null;
+    }
+
+    /**
+     * Creates the Showing Mode contribution item. This button enables a special "showing mode" in which invisible
+     * diagram elements are temporarily revealed to allow user to easily make them visible.
+     * 
+     * @param part
+     *            the current IDiagramWorkbenchPart.
+     * @param manager
+     *            the toolbar manager
+     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
+     */
+    public IContributionItem createShowingModeContributionItem(IDiagramWorkbenchPart part, ToolBarManager manager) {
+        IWorkbenchPartSite site = part.getSite();
+        if (site != null && part instanceof DDiagramEditor) {
+            final DDiagramEditor editor = (DDiagramEditor) part;
+            DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
+            ShowingModeSwitchingAction showingModeSwitchingAction = new ShowingModeSwitchingAction(site.getPage(), editorDiagram);
+            TabbarActionContributionItem tabbarActionContributionItem = new TabbarActionContributionItem(showingModeSwitchingAction);
+
+            return tabbarActionContributionItem;
         }
         return null;
     }

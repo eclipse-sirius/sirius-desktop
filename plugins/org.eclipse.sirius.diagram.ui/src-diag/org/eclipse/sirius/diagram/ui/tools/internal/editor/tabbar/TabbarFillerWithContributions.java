@@ -33,6 +33,8 @@ import com.google.common.collect.Lists;
  */
 public class TabbarFillerWithContributions extends AbstractTabbarFiller {
 
+    private static final String SHOWING_MODE_SYSTEM_PROPERTY = "org.eclipse.sirius.ui.activateShowingMode"; //$NON-NLS-1$
+
     private static final String ARRANGE_SELECTION = "org.eclipse.sirius.diagram.ui.tabbar.arrangeselection"; //$NON-NLS-1$
 
     private static final String REFRESH = "org.eclipse.sirius.diagram.ui.tabbar.refresh"; //$NON-NLS-1$
@@ -182,6 +184,9 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
         addContributionItem(diagramContributionItems, ZOOM, contributionFactory.createZoomOutContribution(part));
         addContributionItem(diagramContributionItems, ZOOM, contributionFactory.createZoomInContribution(part));
 
+        if (Boolean.getBoolean(SHOWING_MODE_SYSTEM_PROPERTY)) {
+            addContributionItem(diagramContributionItems, EXPORT, contributionFactory.createShowingModeContributionItem(part, manager));
+        }
         addContributionItem(diagramContributionItems, EXPORT, contributionFactory.createLayoutingModeContributionItem(part));
         addContributionItem(diagramContributionItems, EXPORT, contributionFactory.createSaveAsImageContributionItem());
     }

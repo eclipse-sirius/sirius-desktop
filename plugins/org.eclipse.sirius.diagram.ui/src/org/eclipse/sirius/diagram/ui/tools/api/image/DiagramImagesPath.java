@@ -131,8 +131,11 @@ public interface DiagramImagesPath {
     /** expand all icon. */
     String EXPAND_ALL_ICON = "icons/expandall.gif"; //$NON-NLS-1$
 
-    /** pin elements icon. */
+    /** Layouting mode icon. */
     String LAYOUTING_MODE_ACTIVE_ICON = "icons/layoutingMode_activate.png"; //$NON-NLS-1$
+
+    /** Showing mode icon. */
+    String SHOWING_MODE_ACTIVE_ICON = "icons/showingMode_activate.gif"; //$NON-NLS-1$
 
     /** path of the image displayed thanks to this decorator. */
     String HAS_DIAG_IMG = "icons/HasLink.gif"; //$NON-NLS-1$

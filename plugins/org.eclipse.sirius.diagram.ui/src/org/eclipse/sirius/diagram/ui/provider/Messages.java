@@ -675,6 +675,15 @@ public final class Messages {
     public static String LayoutingModeSwitchingAction_deactivate;
 
     @TranslatableMessage
+    public static String ShowingModeSwitchingAction_activate;
+
+    @TranslatableMessage
+    public static String ShowingModeSwitchingAction_deactivate;
+
+    @TranslatableMessage
+    public static String ShowingModeSwitchingAction_statusOn;
+
+    @TranslatableMessage
     public static String LayoutingModeSwitchingAction_statusOn;
 
     @TranslatableMessage
@@ -988,6 +997,12 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SetLayoutingModeCommandAndUpdateActionImage_activateLabel;
+
+    @TranslatableMessage
+    public static String SetShowingModeCommandAndUpdateActionImage_deactivateLabel;
+
+    @TranslatableMessage
+    public static String SetShowingModeCommandAndUpdateActionImage_activateLabel;
 
     @TranslatableMessage
     public static String SetLayoutingModeCommandAndUpdateActionImage_deactivateLabel;

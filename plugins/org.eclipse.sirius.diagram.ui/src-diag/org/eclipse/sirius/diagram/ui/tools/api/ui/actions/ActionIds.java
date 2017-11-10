@@ -96,6 +96,9 @@ public interface ActionIds {
     /** Action for Activating/Deactivating the Layouting mode. **/
     String SWITCH_LAYOUTING_MODE = "switchLayoutingMode"; //$NON-NLS-1$
 
+    /** Action for Activating/Deactivating the Showing mode. **/
+    String SWITCH_SHOWING_MODE = "switchShowingMode"; //$NON-NLS-1$
+
     /** Action to deselect all elements (select diagram). **/
     String DESELECT_ALL = "deselectAll"; //$NON-NLS-1$
 
