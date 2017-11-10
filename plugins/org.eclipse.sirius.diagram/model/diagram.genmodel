@@ -97,6 +97,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagram/synchronized"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/hiddenElements"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagram/isInLayoutingMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagram/isInShowingMode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagram/headerHeight"/>
       <genOperations ecoreOperation="diagram.ecore#//DDiagram/getNodesFromMapping">
         <genParameters ecoreParameter="diagram.ecore#//DDiagram/getNodesFromMapping/mapping"/>

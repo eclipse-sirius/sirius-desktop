@@ -787,8 +787,18 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
-    public EAttribute getDDiagram_HeaderHeight() {
+    public EAttribute getDDiagram_IsInShowingMode() {
         return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(18);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDDiagram_HeaderHeight() {
+        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(19);
     }
 
     /**
@@ -2490,6 +2500,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEAttribute(dDiagramEClass, DiagramPackage.DDIAGRAM__SYNCHRONIZED);
         createEReference(dDiagramEClass, DiagramPackage.DDIAGRAM__HIDDEN_ELEMENTS);
         createEAttribute(dDiagramEClass, DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE);
+        createEAttribute(dDiagramEClass, DiagramPackage.DDIAGRAM__IS_IN_SHOWING_MODE);
         createEAttribute(dDiagramEClass, DiagramPackage.DDIAGRAM__HEADER_HEIGHT);
 
         dSemanticDiagramEClass = createEClass(DiagramPackage.DSEMANTIC_DIAGRAM);
@@ -2861,6 +2872,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEAttribute(getDDiagram_IsInLayoutingMode(), theEcorePackage.getEBoolean(), "isInLayoutingMode", null, 0, 1, DDiagram.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDDiagram_IsInShowingMode(), theEcorePackage.getEBoolean(), "isInShowingMode", null, 0, 1, DDiagram.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getDDiagram_HeaderHeight(), theEcorePackage.getEInt(), "headerHeight", "1", 0, 1, DDiagram.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);

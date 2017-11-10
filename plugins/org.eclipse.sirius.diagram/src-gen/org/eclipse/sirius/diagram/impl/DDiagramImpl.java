@@ -69,6 +69,7 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#isSynchronized <em>Synchronized</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getHiddenElements <em>Hidden Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#isIsInLayoutingMode <em>Is In Layouting Mode</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#isIsInShowingMode <em>Is In Showing Mode</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getHeaderHeight <em>Header Height</em>}</li>
  * </ul>
  *
@@ -214,6 +215,26 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * @ordered
      */
     protected boolean isInLayoutingMode = DDiagramImpl.IS_IN_LAYOUTING_MODE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isIsInShowingMode() <em>Is In Showing Mode</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #isIsInShowingMode()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean IS_IN_SHOWING_MODE_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isIsInShowingMode() <em>Is In Showing Mode</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #isIsInShowingMode()
+     * @generated
+     * @ordered
+     */
+    protected boolean isInShowingMode = DDiagramImpl.IS_IN_SHOWING_MODE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeaderHeight() <em>Header Height</em>}' attribute. <!-- begin-user-doc -->
@@ -674,6 +695,30 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * @generated
      */
     @Override
+    public boolean isIsInShowingMode() {
+        return isInShowingMode;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setIsInShowingMode(boolean newIsInShowingMode) {
+        boolean oldIsInShowingMode = isInShowingMode;
+        isInShowingMode = newIsInShowingMode;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__IS_IN_SHOWING_MODE, oldIsInShowingMode, isInShowingMode));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public int getHeaderHeight() {
         return headerHeight;
     }
@@ -809,6 +854,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             return getHiddenElements();
         case DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE:
             return isIsInLayoutingMode();
+        case DiagramPackage.DDIAGRAM__IS_IN_SHOWING_MODE:
+            return isIsInShowingMode();
         case DiagramPackage.DDIAGRAM__HEADER_HEIGHT:
             return getHeaderHeight();
         }
@@ -867,6 +914,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         case DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE:
             setIsInLayoutingMode((Boolean) newValue);
             return;
+        case DiagramPackage.DDIAGRAM__IS_IN_SHOWING_MODE:
+            setIsInShowingMode((Boolean) newValue);
+            return;
         case DiagramPackage.DDIAGRAM__HEADER_HEIGHT:
             setHeaderHeight((Integer) newValue);
             return;
@@ -917,6 +967,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             return;
         case DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE:
             setIsInLayoutingMode(DDiagramImpl.IS_IN_LAYOUTING_MODE_EDEFAULT);
+            return;
+        case DiagramPackage.DDIAGRAM__IS_IN_SHOWING_MODE:
+            setIsInShowingMode(DDiagramImpl.IS_IN_SHOWING_MODE_EDEFAULT);
             return;
         case DiagramPackage.DDIAGRAM__HEADER_HEIGHT:
             setHeaderHeight(DDiagramImpl.HEADER_HEIGHT_EDEFAULT);
@@ -969,6 +1022,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             return hiddenElements != null && !hiddenElements.isEmpty();
         case DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE:
             return isInLayoutingMode != DDiagramImpl.IS_IN_LAYOUTING_MODE_EDEFAULT;
+        case DiagramPackage.DDIAGRAM__IS_IN_SHOWING_MODE:
+            return isInShowingMode != DDiagramImpl.IS_IN_SHOWING_MODE_EDEFAULT;
         case DiagramPackage.DDIAGRAM__HEADER_HEIGHT:
             return headerHeight != DDiagramImpl.HEADER_HEIGHT_EDEFAULT;
         }
@@ -991,6 +1046,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         result.append(synchronized_);
         result.append(", isInLayoutingMode: "); //$NON-NLS-1$
         result.append(isInLayoutingMode);
+        result.append(", isInShowingMode: "); //$NON-NLS-1$
+        result.append(isInShowingMode);
         result.append(", headerHeight: "); //$NON-NLS-1$
         result.append(headerHeight);
         result.append(')');

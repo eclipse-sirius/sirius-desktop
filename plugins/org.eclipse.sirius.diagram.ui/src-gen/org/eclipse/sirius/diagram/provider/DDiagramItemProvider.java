@@ -70,6 +70,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
             addSynchronizedPropertyDescriptor(object);
             addHiddenElementsPropertyDescriptor(object);
             addIsInLayoutingModePropertyDescriptor(object);
+            addIsInShowingModePropertyDescriptor(object);
             addHeaderHeightPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
@@ -268,6 +269,18 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Is In Showing Mode feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addIsInShowingModePropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DDiagram_isInShowingMode_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DDiagram_isInShowingMode_feature", "_UI_DDiagram_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.DDIAGRAM__IS_IN_SHOWING_MODE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This adds a property descriptor for the Header Height feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -346,6 +359,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
         switch (notification.getFeatureID(DDiagram.class)) {
         case DiagramPackage.DDIAGRAM__SYNCHRONIZED:
         case DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE:
+        case DiagramPackage.DDIAGRAM__IS_IN_SHOWING_MODE:
         case DiagramPackage.DDIAGRAM__HEADER_HEIGHT:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

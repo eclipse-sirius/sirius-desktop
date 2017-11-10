@@ -289,12 +289,21 @@ public interface DiagramPackage extends EPackage {
     int DDIAGRAM__IS_IN_LAYOUTING_MODE = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 17;
 
     /**
+     * The feature id for the '<em><b>Is In Showing Mode</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DDIAGRAM__IS_IN_SHOWING_MODE = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 18;
+
+    /**
      * The feature id for the '<em><b>Header Height</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DDIAGRAM__HEADER_HEIGHT = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 18;
+    int DDIAGRAM__HEADER_HEIGHT = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 19;
 
     /**
      * The number of structural features of the '<em>DDiagram</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -302,7 +311,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 19;
+    int DDIAGRAM_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 20;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.impl.DSemanticDiagramImpl <em>DSemantic
@@ -530,6 +539,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DSEMANTIC_DIAGRAM__IS_IN_LAYOUTING_MODE = DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE;
+
+    /**
+     * The feature id for the '<em><b>Is In Showing Mode</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DSEMANTIC_DIAGRAM__IS_IN_SHOWING_MODE = DiagramPackage.DDIAGRAM__IS_IN_SHOWING_MODE;
 
     /**
      * The feature id for the '<em><b>Header Height</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -5394,6 +5412,17 @@ public interface DiagramPackage extends EPackage {
     EAttribute getDDiagram_IsInLayoutingMode();
 
     /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.diagram.DDiagram#isIsInShowingMode <em>Is In
+     * Showing Mode</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Is In Showing Mode</em>'.
+     * @see org.eclipse.sirius.diagram.DDiagram#isIsInShowingMode()
+     * @see #getDDiagram()
+     * @generated
+     */
+    EAttribute getDDiagram_IsInShowingMode();
+
+    /**
      * Returns the meta object for the attribute '{@link org.eclipse.sirius.diagram.DDiagram#getHeaderHeight <em>Header
      * Height</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -7372,6 +7401,14 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EAttribute DDIAGRAM__IS_IN_LAYOUTING_MODE = DiagramPackage.eINSTANCE.getDDiagram_IsInLayoutingMode();
+
+        /**
+         * The meta object literal for the '<em><b>Is In Showing Mode</b></em>' attribute feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DDIAGRAM__IS_IN_SHOWING_MODE = DiagramPackage.eINSTANCE.getDDiagram_IsInShowingMode();
 
         /**
          * The meta object literal for the '<em><b>Header Height</b></em>' attribute feature. <!-- begin-user-doc -->

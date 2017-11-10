@@ -54,6 +54,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#isSynchronized <em>Synchronized</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getHiddenElements <em>Hidden Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#isIsInLayoutingMode <em>Is In Layouting Mode</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#isIsInShowingMode <em>Is In Showing Mode</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getHeaderHeight <em>Header Height</em>}</li>
  * </ul>
  *
@@ -381,6 +382,33 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * @generated
      */
     void setIsInLayoutingMode(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Is In Showing Mode</b></em>' attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Is In Showing Mode</em>' attribute isn't clear, there really should be more of a
+     * description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Is In Showing Mode</em>' attribute.
+     * @see #setIsInShowingMode(boolean)
+     * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_IsInShowingMode()
+     * @model transient="true"
+     * @generated
+     */
+    boolean isIsInShowingMode();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#isIsInShowingMode <em>Is In Showing Mode</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Is In Showing Mode</em>' attribute.
+     * @see #isIsInShowingMode()
+     * @generated
+     */
+    void setIsInShowingMode(boolean value);
 
     /**
      * Returns the value of the '<em><b>Header Height</b></em>' attribute. The default value is <code>"1"</code>. <!--
