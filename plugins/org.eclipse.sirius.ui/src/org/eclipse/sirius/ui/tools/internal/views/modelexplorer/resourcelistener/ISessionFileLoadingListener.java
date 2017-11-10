@@ -20,10 +20,10 @@ import org.eclipse.sirius.business.api.session.Session;
  */
 public interface ISessionFileLoadingListener {
     /**
-     * Notify the listener that a session has been loaded from a session file.
+     * Notify the listener that a session has been loaded from a session file from a modeling project.
      * 
      * @param session
      *            the session loaded.
      */
-    void notifySessionLoadedFromModelingProjectExpansion(Session session);
+    void notifySessionLoadedFromModelingProject(Session session);
 }

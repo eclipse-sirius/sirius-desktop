@@ -118,7 +118,7 @@ public class SessionEditorPlugin extends EMFPlugin {
             modelingProjectExpansionListener = new ISessionFileLoadingListener() {
 
                 @Override
-                public void notifySessionLoadedFromModelingProjectExpansion(Session session) {
+                public void notifySessionLoadedFromModelingProject(Session session) {
                     URI uri = session.getSessionResource().getURI();
 
                     PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {

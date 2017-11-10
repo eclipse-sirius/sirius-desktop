@@ -159,7 +159,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
                     if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_ON_SESSION_OPEN.name())) {
                         Set<ISessionFileLoadingListener> sessionFileLoadingListeners = SiriusEditPlugin.getPlugin().getSessionFileLoadingListeners();
                         for (ISessionFileLoadingListener sessionFileLoadingListener : sessionFileLoadingListeners) {
-                            sessionFileLoadingListener.notifySessionLoadedFromModelingProjectExpansion(session);
+                            sessionFileLoadingListener.notifySessionLoadedFromModelingProject(session);
                         }
                     }
                     IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
