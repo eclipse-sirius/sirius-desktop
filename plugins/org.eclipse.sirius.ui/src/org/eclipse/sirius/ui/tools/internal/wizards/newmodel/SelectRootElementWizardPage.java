@@ -54,6 +54,11 @@ import org.eclipse.swt.widgets.Text;
 public class SelectRootElementWizardPage extends WizardPage implements PropertyChangeListener {
 
     /**
+     * .
+     */
+    protected Composite container;
+
+    /**
      * The icon used to represent EClasses.
      */
     private Image eClassIcon = ExtendedImageRegistry.getInstance().getImage(EcoreEditPlugin.INSTANCE.getImage("full/obj16/EClass")); //$NON-NLS-1$
@@ -115,7 +120,7 @@ public class SelectRootElementWizardPage extends WizardPage implements PropertyC
      */
     @Override
     public void createControl(Composite parent) {
-        Composite container = new Composite(parent, SWT.NULL);
+        container = new Composite(parent, SWT.NULL);
 
         setControl(container);
         container.setLayout(new GridLayout(1, false));
