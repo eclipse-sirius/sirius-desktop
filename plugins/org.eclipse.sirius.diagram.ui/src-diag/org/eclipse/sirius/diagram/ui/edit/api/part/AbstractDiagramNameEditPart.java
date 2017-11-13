@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
@@ -25,13 +26,17 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.DirectEditCommandBuilder;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LabelDeletionEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LabelSemanticEditPolicy;
@@ -65,6 +70,37 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
     public void activate() {
         super.activate();
         labelAndIconRefresher = new LabelAndIconRefresher(this);
+    }
+
+    @Override
+    protected List getModelChildren() {
+        return ShowingViewUtil.getModelChildren(getModel());
+    }
+
+    @Override
+    protected void addNotationalListeners() {
+        super.addNotationalListeners();
+        if (hasNotationView()) {
+            ViewQuery viewQuery = new ViewQuery((View) getModel());
+            Optional<DDiagram> diagram = viewQuery.getDDiagram();
+            if (diagram.isPresent()) {
+                addListenerFilter("ShowingMode", this, diagram.get(), DiagramPackage.eINSTANCE.getDDiagram_IsInShowingMode()); //$NON-NLS-1$
+            }
+        }
+    }
+
+    @Override
+    protected void removeNotationalListeners() {
+        super.removeNotationalListeners();
+        removeListenerFilter("ShowingMode"); //$NON-NLS-1$
+    }
+    /*
+     * (non-Javadoc)
+     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#setVisibility(boolean)
+     */
+    @Override
+    protected void setVisibility(boolean vis) {
+        ShowingViewUtil.setVisibility(this, vis, SELECTED_NONE, getFlag(FLAG__AUTO_CONNECTIONS_VISIBILITY));
     }
 
     /**
@@ -181,9 +217,8 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
     /**
      * Test if this edit part must provides the direct edit.
      * 
-     * @return true if the semantic element have a mapping with a direct edit
-     *         tool and if the parent diagram is not in LayoutingMode, false
-     *         otherwise
+     * @return true if the semantic element have a mapping with a direct edit tool and if the parent diagram is not in
+     *         LayoutingMode, false otherwise
      */
     protected boolean isDirectEditEnabled() {
         boolean directEditEnabled = false;
@@ -202,8 +237,7 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
     }
 
     /**
-     * Activate directEdit only if there is a directEdit tool on the mapping.
-     * {@inheritDoc}
+     * Activate directEdit only if there is a directEdit tool on the mapping. {@inheritDoc}
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#performRequest(org.eclipse.gef.Request)
      */
@@ -223,8 +257,7 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
     }
 
     /**
-     * Checks whether a {@link EditPolicy#DIRECT_EDIT_ROLE} is already install,
-     * otherwise we install it.
+     * Checks whether a {@link EditPolicy#DIRECT_EDIT_ROLE} is already install, otherwise we install it.
      */
     private void addDirectEditPolicyIfNotInstalled() {
         if (getEditPolicy(EditPolicy.DIRECT_EDIT_ROLE) == null) {
@@ -245,8 +278,7 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
     }
 
     /**
-     * Sets the tool-tip of an {@link IAbstractDiagramNodeEditPart} to the
-     * specified text.
+     * Sets the tool-tip of an {@link IAbstractDiagramNodeEditPart} to the specified text.
      * 
      * @param text
      *            the tool-tip's text.

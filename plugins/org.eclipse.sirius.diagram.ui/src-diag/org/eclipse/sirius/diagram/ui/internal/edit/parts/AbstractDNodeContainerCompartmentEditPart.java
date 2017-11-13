@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.draw2d.Border;
@@ -56,17 +57,20 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DCompartmentConnectionRefreshMgr;
-import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirXYLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
@@ -94,8 +98,7 @@ import com.google.common.collect.Maps;
 
 /**
  * <p>
- * Abstract {@link EditPart} representing the Compartment zone of a
- * DNodeContainer.
+ * Abstract {@link EditPart} representing the Compartment zone of a DNodeContainer.
  * </p>
  * 
  * @see {@link ShapeCompartmentEditPart}
@@ -104,8 +107,7 @@ import com.google.common.collect.Maps;
 public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCompartmentEditPart implements INotableEditPart, ISiriusEditPart {
 
     /**
-     * Default margin. Added to the border size to set the border insets of
-     * FreeForm containers.
+     * Default margin. Added to the border size to set the border insets of FreeForm containers.
      */
     public static final int DEFAULT_MARGIN = 4;
 
@@ -354,18 +356,41 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         }
     }
 
-    /*
-     * Hide non-visible elements
-     */
     @Override
     protected List getModelChildren() {
-        // create a new view to avoid to change the super.getModelChildren list.
-        List<View> modelChildren = Lists.newArrayList(Iterables.filter(super.getModelChildren(), View.class));
-        DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-        if (isRegionContainerCompartment() && getModel() instanceof View) {
-            RegionContainerUpdateLayoutOperation.sortRegions((DNodeContainer) resolveSemanticElement(), modelChildren);
+        List<View> modelChildren = ShowingViewUtil.getModelChildren(getModel());
+        if (!modelChildren.isEmpty()) {
+            if (isRegionContainerCompartment() && getModel() instanceof View) {
+                RegionContainerUpdateLayoutOperation.sortRegions((DNodeContainer) resolveSemanticElement(), modelChildren);
+            }
         }
         return modelChildren;
+    }
+
+    @Override
+    protected void addNotationalListeners() {
+        super.addNotationalListeners();
+        if (hasNotationView()) {
+            ViewQuery viewQuery = new ViewQuery((View) getModel());
+            Optional<DDiagram> diagram = viewQuery.getDDiagram();
+            if (diagram.isPresent()) {
+                addListenerFilter("ShowingMode", this, diagram.get(), DiagramPackage.eINSTANCE.getDDiagram_IsInShowingMode()); //$NON-NLS-1$
+            }
+        }
+    }
+
+    @Override
+    protected void removeNotationalListeners() {
+        super.removeNotationalListeners();
+        removeListenerFilter("ShowingMode"); //$NON-NLS-1$
+    }
+    /*
+     * (non-Javadoc)
+     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#setVisibility(boolean)
+     */
+    @Override
+    protected void setVisibility(boolean vis) {
+        ShowingViewUtil.setVisibility(this, vis, SELECTED_NONE, getFlag(FLAG__AUTO_CONNECTIONS_VISIBILITY));
     }
 
     private boolean isRegionContainerCompartment() {
@@ -384,8 +409,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
     }
 
     /**
-     * Return the set of {@link ConnectionNodeEditPart}s contained in the
-     * supplied shape compartment.
+     * Return the set of {@link ConnectionNodeEditPart}s contained in the supplied shape compartment.
      * 
      * @param scep
      *            a shape compartment.
@@ -428,8 +452,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
     }
 
     /**
-     * Return <tt>true</tt> if <tt>parent</tt> child's ancestor; otherwise
-     * <tt>false</tt>
+     * Return <tt>true</tt> if <tt>parent</tt> child's ancestor; otherwise <tt>false</tt>
      * 
      * @param parent
      *            parent to consider
@@ -646,8 +669,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
     };
 
     /**
-     * Specific shape compartment figure to allow collapse of region, ie nested
-     * compartment.
+     * Specific shape compartment figure to allow collapse of region, ie nested compartment.
      */
     private static class RegionShapeCompartmentFigure extends ShapeCompartmentFigure {
 
@@ -659,11 +681,9 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
          * @param title
          *            figure's title.
          * @param mm
-         *            the <code>IMapMode</code> that is used to initialize the
-         *            default values of of the scrollpane contained inside the
-         *            figure. This is necessary since the figure is not attached
-         *            at construction time and consequently can't get access to
-         *            the owned IMapMode in the parent containment hierarchy.
+         *            the <code>IMapMode</code> that is used to initialize the default values of of the scrollpane
+         *            contained inside the figure. This is necessary since the figure is not attached at construction
+         *            time and consequently can't get access to the owned IMapMode in the parent containment hierarchy.
          */
         public RegionShapeCompartmentFigure(String title, IMapMode mm) {
             super(title, mm);

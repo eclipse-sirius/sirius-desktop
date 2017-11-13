@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.api.part;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -48,12 +48,16 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DefaultDirectEditOperation;
@@ -80,7 +84,6 @@ import org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Basic implementation of top level edit part for nodes that on the border of another node.
@@ -237,36 +240,65 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
     }
 
     @Override
-    protected List<?> getModelChildren() {
-        // create a new view to avoid to change the super.getModelChildren list.
-        final List<?> modelChildren = new ArrayList<Object>(super.getModelChildren());
-        DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-        final EObject diagramElement = this.resolveDiagramElement();
-        if (diagramElement instanceof DNode) {
-            final DNode node = (DNode) diagramElement;
-            if (((NodeStyle) node.getStyle()).getLabelPosition() == LabelPosition.NODE_LITERAL || StringUtil.isEmpty(node.getName())) {
-                DiagramNodeEditPartOperation.removeLabel(this, modelChildren);
+    protected List getModelChildren() {
+        List<View> modelChildren = ShowingViewUtil.getModelChildren(getModel());
+        if (!modelChildren.isEmpty()) {
+            final EObject diagramElement = this.resolveDiagramElement();
+            if (diagramElement instanceof DNode) {
+                final DNode node = (DNode) diagramElement;
+                if (((NodeStyle) node.getStyle()).getLabelPosition() == LabelPosition.NODE_LITERAL || StringUtil.isEmpty(node.getName())) {
+                    DiagramNodeEditPartOperation.removeLabel(this, modelChildren);
+                }
             }
         }
         return modelChildren;
     }
 
     @Override
-    protected List<?> getModelSourceConnections() {
-        // create a new view to avoid to change the
-        // super.getModelSourceConnections list.
-        List<View> modelChildren = Lists.newArrayList(Iterables.filter(super.getModelSourceConnections(), View.class));
-        DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-        return modelChildren;
+    protected void addNotationalListeners() {
+        super.addNotationalListeners();
+        if (hasNotationView()) {
+            ViewQuery viewQuery = new ViewQuery((View) getModel());
+            Optional<DDiagram> diagram = viewQuery.getDDiagram();
+            if (diagram.isPresent()) {
+                addListenerFilter("ShowingMode", this, diagram.get(), DiagramPackage.eINSTANCE.getDDiagram_IsInShowingMode()); //$NON-NLS-1$
+            }
+        }
     }
 
     @Override
-    protected List<View> getModelTargetConnections() {
-        // create a new view to avoid to change the
-        // super.getModelTargetConnections list.
-        final List<View> modelChildren = Lists.newArrayList(Iterables.filter(super.getModelTargetConnections(), View.class));
-        DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-        return modelChildren;
+    protected void removeNotationalListeners() {
+        super.removeNotationalListeners();
+        removeListenerFilter("ShowingMode"); //$NON-NLS-1$
+    }
+    /*
+     * (non-Javadoc)
+     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#setVisibility(boolean)
+     */
+    @Override
+    protected void setVisibility(boolean vis) {
+        ShowingViewUtil.setVisibility(this, vis, SELECTED_NONE, getFlag(FLAG__AUTO_CONNECTIONS_VISIBILITY));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected List getModelSourceConnections() {
+        return ShowingViewUtil.getSourceConnectionsConnectingVisibleViews((View) getModel());
+    }
+
+    @Override
+    protected void setConnectionsVisibility(boolean visibility) {
+        ShowingViewUtil.setConnectionsVisibility(this, (View) getModel(), SELECTED_NONE, visibility);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected List getModelTargetConnections() {
+        return ShowingViewUtil.getTargetConnectionsConnectingVisibleViews((View) getModel());
     }
 
     @Override

@@ -79,7 +79,6 @@ import org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * The default behaviours of nodes, lists and containers.
@@ -129,11 +128,8 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     protected List getModelChildren() {
-        // create a new view to avoid to change the super.getModelChildren list.
-        List<?> modelChildren = Lists.newArrayList(super.getModelChildren());
-        DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
+        List<?> modelChildren = super.getModelChildren();
         EObject diagramElement = this.resolveDiagramElement();
         if (diagramElement instanceof DNode) {
             final DNode node = (DNode) diagramElement;

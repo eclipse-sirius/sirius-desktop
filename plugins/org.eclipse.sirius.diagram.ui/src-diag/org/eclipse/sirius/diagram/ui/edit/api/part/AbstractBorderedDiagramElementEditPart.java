@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
@@ -21,7 +22,11 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPar
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.EditStatusUpdater;
@@ -32,11 +37,8 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.swt.graphics.Image;
 
-import com.google.common.collect.Lists;
-
 /**
- * Some Default behaviors for non border IAbstractDiagramNodeEditPart: nodes,
- * lists and containers.
+ * Some Default behaviors for non border IAbstractDiagramNodeEditPart: nodes, lists and containers.
  * 
  * @author mporhel
  */
@@ -100,6 +102,16 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
             this.adapterDiagramElement = DiagramElementEditPartOperation.createEApdaterDiagramElement(this);
         }
         return this.adapterDiagramElement;
+    }
+
+    @Override
+    protected void setVisibility(boolean vis) {
+        ShowingViewUtil.setVisibility(this, vis, SELECTED_NONE, getFlag(FLAG__AUTO_CONNECTIONS_VISIBILITY));
+    }
+
+    @Override
+    protected void setConnectionsVisibility(boolean visibility) {
+        ShowingViewUtil.setConnectionsVisibility(this, (View) getModel(), SELECTED_NONE, visibility);
     }
 
     /**
@@ -180,8 +192,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
     @Override
     public void enableEditMode() {
         /*
-         * We want to be sure nobody is enabling the edit mode if the element is
-         * locked.
+         * We want to be sure nobody is enabling the edit mode if the element is locked.
          */
         if (!this.getEditPartAuthorityListener().isLocked()) {
             super.enableEditMode();
@@ -201,30 +212,37 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    @SuppressWarnings("unchecked")
-    protected List getModelSourceConnections() {
-        // create a new view to avoid to change the
-        // super.getModelSourceConnections list.
-        List<?> modelChildren = Lists.newArrayList(super.getModelSourceConnections());
-        DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-        return modelChildren;
+    protected List getModelChildren() {
+        return ShowingViewUtil.getModelChildren(getModel());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    @SuppressWarnings("unchecked")
+    protected void addNotationalListeners() {
+        super.addNotationalListeners();
+        if (hasNotationView()) {
+            ViewQuery viewQuery = new ViewQuery((View) getModel());
+            Optional<DDiagram> diagram = viewQuery.getDDiagram();
+            if (diagram.isPresent()) {
+                addListenerFilter("ShowingMode", this, diagram.get(), DiagramPackage.eINSTANCE.getDDiagram_IsInShowingMode()); //$NON-NLS-1$
+            }
+        }
+    }
+
+    @Override
+    protected void removeNotationalListeners() {
+        super.removeNotationalListeners();
+        removeListenerFilter("ShowingMode"); //$NON-NLS-1$
+    }
+
+    @Override
+    protected List getModelSourceConnections() {
+        return ShowingViewUtil.getSourceConnectionsConnectingVisibleViews((View) getModel());
+    }
+
+    @Override
     protected List getModelTargetConnections() {
-        // create a new view to avoid to change the
-        // super.getModelTargetConnections list.
-        List<?> modelChildren = Lists.newArrayList(super.getModelTargetConnections());
-        DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-        return modelChildren;
+        return ShowingViewUtil.getTargetConnectionsConnectingVisibleViews((View) getModel());
     }
 
     /**
@@ -249,8 +267,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
     }
 
     /**
-     * Sets the tooltip of this {@link org.eclipse.gef.EditPart} to the
-     * specified text.
+     * Sets the tooltip of this {@link org.eclipse.gef.EditPart} to the specified text.
      * 
      * @param text
      *            the tooltip's text.

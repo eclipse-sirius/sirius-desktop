@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.draw2d.BendpointConnectionRouter;
 import org.eclipse.draw2d.Connection;
@@ -43,6 +44,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -50,6 +52,9 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.tool.RequestDescription;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DEdgeQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramEdgeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
@@ -172,6 +177,42 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
     public Command getCommand(final Request request) {
         final Command cmd = super.getCommand(request);
         return CommonEditPartOperation.handleAutoPinOnInteractiveMove(this, request, cmd);
+    }
+
+    @Override
+    protected void addNotationalListeners() {
+        super.addNotationalListeners();
+        Object model = getModel();
+        if (model instanceof View) {
+            ViewQuery viewQuery = new ViewQuery((View) getModel());
+            Optional<DDiagram> diagram = viewQuery.getDDiagram();
+            if (diagram.isPresent()) {
+                addListenerFilter("ShowingMode", this, diagram.get(), DiagramPackage.eINSTANCE.getDDiagram_IsInShowingMode()); //$NON-NLS-1$
+            }
+        }
+    }
+
+    @Override
+    protected void removeNotationalListeners() {
+        super.removeNotationalListeners();
+        removeListenerFilter("ShowingMode"); //$NON-NLS-1$
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#setVisibility(boolean)
+     */
+    @Override
+    public void setVisibility(boolean vis) {
+        if (!vis && getSelected() != SELECTED_NONE)
+            getViewer().deselect(this);
+        ViewQuery viewQuery = new ViewQuery((View) getModel());
+        if (viewQuery.isInShowingMode()) {
+            figure.setVisible(true);
+        } else {
+            figure.setVisible(vis);
+        }
+        getFigure().revalidate();
     }
 
     /**
@@ -632,8 +673,15 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             final EObject element = resolveSemanticElement();
             if (element != null && DEdge.class.isInstance(element)) {
                 final DEdge viewEdge = (DEdge) element;
-                if (!viewEdge.isIsMockEdge() && viewEdge.isVisible()) {
-                    super.paintFigure(graphics);
+                DDiagram diagram = viewEdge.getParentDiagram();
+                if ((!viewEdge.isIsMockEdge() && viewEdge.isVisible()) || (diagram != null && diagram.isIsInShowingMode())) {
+                    ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
+                    try {
+                        super.paintFigure(graphics);
+                        graphics.restoreState();
+                    } finally {
+                        graphics.popState();
+                    }
                 }
             }
         }
@@ -646,7 +694,9 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             final EObject element = resolveSemanticElement();
             if (element != null && DEdge.class.isInstance(element)) {
                 final DEdge viewEdge = (DEdge) element;
-                if (viewEdge.isVisible()) {
+                DEdgeQuery dEdgeQuery = new DEdgeQuery(viewEdge);
+                Optional<DDiagram> diagram = dEdgeQuery.getDDiagram();
+                if (viewEdge.isVisible() || (diagram.isPresent() && diagram.get().isIsInShowingMode())) {
                     super.paintChildren(graphics);
                 }
             }

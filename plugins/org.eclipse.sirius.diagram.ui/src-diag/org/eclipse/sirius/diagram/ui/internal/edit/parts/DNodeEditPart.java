@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.FlowLayout;
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
@@ -35,6 +36,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
@@ -110,8 +112,10 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
     /**
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy() {
+            @Override
             public Command getCommand(final Request request) {
                 if (understandsRequest(request)) {
                     if (request instanceof CreateViewRequest) {
@@ -142,6 +146,7 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
 
         final FlowLayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.FlowLayoutEditPolicy() {
 
+            @Override
             protected EditPolicy createChildEditPolicy(final EditPart child) {
                 if (child instanceof AbstractDiagramNameEditPart) {
                     return new SpecificBorderItemSelectionEditPolicy();
@@ -159,14 +164,17 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
                 return super.getFeedbackIndexFor(request);
             }
 
+            @Override
             protected Command createAddCommand(final EditPart child, final EditPart after) {
                 return null;
             }
 
+            @Override
             protected Command createMoveChildCommand(final EditPart child, final EditPart after) {
                 return null;
             }
 
+            @Override
             protected Command getCreateCommand(final CreateRequest request) {
                 return null;
             }
@@ -176,6 +184,7 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
              * 
              * @see org.eclipse.gef.editpolicies.LayoutEditPolicy#getCommand(org.eclipse.gef.Request)
              */
+            @Override
             public Command getCommand(final Request request) {
                 if (REQ_RESIZE_CHILDREN.equals(request.getType()) && request instanceof ChangeBoundsRequest) {
                     final Command command = DNodeEditPart.this.getResizeBorderItemCommand((ChangeBoundsRequest) request);
@@ -194,7 +203,18 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
      */
     @Override
     protected NodeFigure createNodeFigure() {
-        DBorderedNodeFigure nodeFigure = new DBorderedNodeFigure(createMainFigure());
+        DBorderedNodeFigure nodeFigure = new DBorderedNodeFigure(createMainFigure()) {
+            @Override
+            public void paint(Graphics graphics) {
+                ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
+                try {
+                    super.paint(graphics);
+                    graphics.restoreState();
+                } finally {
+                    graphics.popState();
+                }
+            }
+        };
         nodeFigure.getBorderItemContainer().add(new FoldingToggleImageFigure(this));
         nodeFigure.getBorderItemContainer().setClippingStrategy(new FoldingToggleAwareClippingStrategy());
         return nodeFigure;
@@ -225,6 +245,7 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
     /**
      * @not-generated
      */
+    @Override
     protected void addBorderItem(final IFigure borderItemContainer, final IBorderItemEditPart borderItemEditPart) {
         if (borderItemEditPart instanceof DNodeNameEditPart) {
             if (this.resolveSemanticElement() instanceof DNode) {
@@ -271,6 +292,7 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
      * 
      * @not-generated : remove the layout manager to fix the size
      */
+    @Override
     protected NodeFigure createMainFigure() {
         final NodeFigure figure = createNodePlate();
         if (figure != null) {
@@ -302,6 +324,7 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
     /**
      * @was-generated
      */
+    @Override
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;
@@ -312,6 +335,7 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
     /**
      * @was-generated
      */
+    @Override
     public EditPart getPrimaryChildEditPart() {
         return getChildBySemanticHint(SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_EDIT_PART_VISUAL_ID));
     }
@@ -319,6 +343,7 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
     /**
      * @not-generated
      */
+    @Override
     public SiriusWrapLabel getNodeLabel() {
         return getPrimaryShape().getNodeLabel();
     }
@@ -326,14 +351,17 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
     /**
      * @was-generated
      */
+    @Override
     public IFigure getPrimaryFigure() {
         return getPrimaryShape();
     }
 
+    @Override
     public Class<?> getMetamodelType() {
         return DNode.class;
     }
 
+    @Override
     protected void reorderChild(final EditPart child, final int index) {
         if (child instanceof DNode2EditPart) {
             this.savedConstraint = ((DNode2EditPart) child).getBorderItemLocator();

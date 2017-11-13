@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.query;
 
+import java.util.Optional;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Routing;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
@@ -43,11 +47,11 @@ public class DEdgeQuery {
      * 
      * @param style
      *            the style to test for.
-     * @return a predicate on DEdge which returns <code>true</code> if the DEdge
-     *         has the specified folding style.
+     * @return a predicate on DEdge which returns <code>true</code> if the DEdge has the specified folding style.
      */
     public static Predicate<DEdge> hasFoldingStyle(final FoldingStyle style) {
         return new Predicate<DEdge>() {
+            @Override
             public boolean apply(DEdge input) {
                 return new DEdgeQuery(input).getFoldingStyle() == style;
             }
@@ -57,9 +61,8 @@ public class DEdgeQuery {
     /**
      * Returns the folding style of the edge.
      * 
-     * @return the folding style of the edge, or
-     *         {@link FoldingStyle#NONE_LITERAL} if none is specified. Never
-     *         returns <code>null</code>.
+     * @return the folding style of the edge, or {@link FoldingStyle#NONE_LITERAL} if none is specified. Never returns
+     *         <code>null</code>.
      */
     public FoldingStyle getFoldingStyle() {
         EdgeStyle style = edge.getOwnedStyle();
@@ -101,4 +104,31 @@ public class DEdgeQuery {
         return routing;
     }
 
+    /**
+     * Return the {@link DDiagram} recursively parent of the edge if such element exists.
+     * 
+     * @return the {@link DDiagram} recursively parent of the edge if such element exists.
+     */
+    public Optional<DDiagram> getDDiagram() {
+        return getDDiagram(edge.eContainer());
+    }
+
+    /**
+     * Return the {@link DDiagram} recursively parent of given object if such element exists.
+     * 
+     * @param object
+     *            the object from which we want to retrieve the {@link DDiagram} that is either the direct parent or
+     *            recursively the parent.
+     * @return the {@link DDiagram} recursively parent of given object if such element exists.
+     */
+    private Optional<DDiagram> getDDiagram(EObject object) {
+        Optional<DDiagram> result = Optional.empty();
+        if (object instanceof DDiagram) {
+            result = Optional.of((DDiagram) object);
+        } else if (object != null) {
+            result = getDDiagram(object.eContainer());
+        }
+        return result;
+
+    }
 }

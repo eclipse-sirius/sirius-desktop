@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.draw2d.Border;
@@ -46,14 +47,17 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.OneLineBorder;
 import org.eclipse.gmf.runtime.notation.DrawerStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
-import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
@@ -68,7 +72,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * <p>
@@ -228,19 +231,42 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         }
     }
 
-    /*
-     * hide non visible elements
-     */
     @Override
-    protected List<?> getModelChildren() {
-        @SuppressWarnings("unchecked")
-        List<View> modelChildren = Lists.newArrayList(super.getModelChildren());
-        DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-        EObject semanticElement = resolveSemanticElement();
-        if (semanticElement instanceof DNodeList) {
-            new DNodeListElementComparisonHelper((DNodeList) semanticElement).sort(modelChildren);
+    protected List getModelChildren() {
+        List<View> modelChildren = ShowingViewUtil.getModelChildren(getModel());
+        if (!modelChildren.isEmpty()) {
+            EObject semanticElement = resolveSemanticElement();
+            if (semanticElement instanceof DNodeList) {
+                new DNodeListElementComparisonHelper((DNodeList) semanticElement).sort(modelChildren);
+            }
         }
         return modelChildren;
+    }
+
+    @Override
+    protected void addNotationalListeners() {
+        super.addNotationalListeners();
+        if (hasNotationView()) {
+            ViewQuery viewQuery = new ViewQuery((View) getModel());
+            Optional<DDiagram> diagram = viewQuery.getDDiagram();
+            if (diagram.isPresent()) {
+                addListenerFilter("ShowingMode", this, diagram.get(), DiagramPackage.eINSTANCE.getDDiagram_IsInShowingMode()); //$NON-NLS-1$
+            }
+        }
+    }
+
+    @Override
+    protected void removeNotationalListeners() {
+        super.removeNotationalListeners();
+        removeListenerFilter("ShowingMode"); //$NON-NLS-1$
+    }
+    /*
+     * (non-Javadoc)
+     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#setVisibility(boolean)
+     */
+    @Override
+    protected void setVisibility(boolean vis) {
+        ShowingViewUtil.setVisibility(this, vis, SELECTED_NONE, getFlag(FLAG__AUTO_CONNECTIONS_VISIBILITY));
     }
 
     @Override
@@ -285,15 +311,13 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
     }
 
     /**
-     * This method searches an edit part for a child that is a border item edit
-     * part
+     * This method searches an edit part for a child that is a border item edit part
      * 
      * @not-generated : need for copy/paste support
      * @param parent
      *            part needed to search
      * @param set
-     *            to be modified of border item edit parts that are direct
-     *            children of the parent
+     *            to be modified of border item edit parts that are direct children of the parent
      */
     private void getBorderItemEditParts(EditPart parent, Set retval) {
 
@@ -309,8 +333,7 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
     }
 
     /**
-     * Overridden to refresh {@link DNodeListElementEditPart} for example to
-     * refresh label alignment.
+     * Overridden to refresh {@link DNodeListElementEditPart} for example to refresh label alignment.
      */
     @Override
     public void refresh() {

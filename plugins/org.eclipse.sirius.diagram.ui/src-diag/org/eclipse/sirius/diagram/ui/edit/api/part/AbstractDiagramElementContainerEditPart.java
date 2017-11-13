@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.draw2d.ConnectionAnchor;
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.StackLayout;
@@ -63,6 +64,7 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
@@ -91,8 +93,6 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
-
-import com.google.common.collect.Lists;
 
 /**
  * Basic implementation of top Level type of Diagram an List Containers.
@@ -231,15 +231,6 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             EditPart editPart = (EditPart) children.get(i);
             editPart.refresh();
         }
-    }
-
-    @SuppressWarnings({ "unchecked" })
-    @Override
-    protected List getModelChildren() {
-        // create a new view to avoid to change the super.getModelChildren list.
-        List<?> modelChildren = Lists.newArrayList(super.getModelChildren());
-        DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-        return modelChildren;
     }
 
     public IFigure getBackgroundFigure() {
@@ -486,7 +477,18 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      */
     @Override
     protected NodeFigure createNodeFigure() {
-        BorderedNodeFigure nodeFigure = new BorderedNodeFigure(createMainFigure());
+        BorderedNodeFigure nodeFigure = new BorderedNodeFigure(createMainFigure()) {
+            @Override
+            public void paint(Graphics graphics) {
+                ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
+                try {
+                    super.paint(graphics);
+                    graphics.restoreState();
+                } finally {
+                    graphics.popState();
+                }
+            }
+        };
         nodeFigure.getBorderItemContainer().add(new FoldingToggleImageFigure(this));
         nodeFigure.getBorderItemContainer().setClippingStrategy(new FoldingToggleAwareClippingStrategy());
         return nodeFigure;

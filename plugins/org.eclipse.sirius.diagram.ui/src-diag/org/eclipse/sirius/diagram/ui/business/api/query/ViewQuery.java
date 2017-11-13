@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.business.api.query;
 
 import java.util.LinkedHashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -20,12 +21,14 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.notation.Connector;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
@@ -46,8 +49,7 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.RGB;
 
 /**
- * A class aggregating all the queries (read-only!) having a {@link View} as a
- * starting point.
+ * A class aggregating all the queries (read-only!) having a {@link View} as a starting point.
  * 
  * @author lredor
  */
@@ -66,8 +68,7 @@ public class ViewQuery {
     public static final String VERTICAL_ALIGNMENT = "verticalAlignment"; //$NON-NLS-1$
 
     /**
-     * The set of GMF style attributes customizable for which not corresponding
-     * Sirius style property exists.
+     * The set of GMF style attributes customizable for which not corresponding Sirius style property exists.
      */
     public static final Set<EAttribute> CUSTOMIZABLE_GMF_EXCLUSIVE_STYLE_ATTRIBUTES = new LinkedHashSet<EAttribute>();
 
@@ -121,11 +122,9 @@ public class ViewQuery {
     }
 
     /**
-     * Tells if at least one of styles of this {@link View} has some
-     * customizations.
+     * Tells if at least one of styles of this {@link View} has some customizations.
      * 
-     * @return true if at least one of styles of this {@link View} has some
-     *         customizations, false else
+     * @return true if at least one of styles of this {@link View} has some customizations, false else
      */
     public boolean isCustomized() {
         boolean isCustomized = false;
@@ -167,14 +166,11 @@ public class ViewQuery {
     }
 
     /**
-     * Get the default value of the specified {@link EAttribute} of the
-     * specified {@link View}.
+     * Get the default value of the specified {@link EAttribute} of the specified {@link View}.
      * 
      * @param eAttribute
-     *            the specified {@link EAttribute} of the
-     *            {@link View#getStyles()}
-     * @return the default value of the specified {@link EAttribute} of the
-     *         {@link View#getStyles()}
+     *            the specified {@link EAttribute} of the {@link View#getStyles()}
+     * @return the default value of the specified {@link EAttribute} of the {@link View#getStyles()}
      */
     public Object getDefaultValue(EAttribute eAttribute) {
         Object defaultValue = null;
@@ -228,8 +224,7 @@ public class ViewQuery {
     /**
      * Tests whether the queried View corresponds to a NameEditPart.
      * 
-     * @return <code>true</code> if the queried View corresponds to a
-     *         NameEditPart.
+     * @return <code>true</code> if the queried View corresponds to a NameEditPart.
      */
     public boolean isForNameEditPart() {
         int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
@@ -245,8 +240,7 @@ public class ViewQuery {
     /**
      * Tests whether the queried View corresponds to an edge name edit part.
      * 
-     * @return <code>true</code> if the queried View corresponds to an edge name
-     *         edit part.
+     * @return <code>true</code> if the queried View corresponds to an edge name edit part.
      */
     public boolean isForEdgeNameEditPart() {
         int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
@@ -257,11 +251,9 @@ public class ViewQuery {
     }
 
     /**
-     * Tests whether the queried View corresponds to a NameEditPart that is
-     * located on the border of its node.
+     * Tests whether the queried View corresponds to a NameEditPart that is located on the border of its node.
      * 
-     * @return <code>true</code> if the queried View corresponds to a
-     *         NameEditPart.
+     * @return <code>true</code> if the queried View corresponds to a NameEditPart.
      */
     public boolean isForNameEditPartOnBorder() {
         boolean result = false;
@@ -279,8 +271,7 @@ public class ViewQuery {
     }
 
     /**
-     * Get the first ancestor, or itself, that has at least one of the
-     * <code>visualID</code>.
+     * Get the first ancestor, or itself, that has at least one of the <code>visualID</code>.
      * 
      * @param visualID
      *            List of visual ID that the ancestor must be.
@@ -298,6 +289,48 @@ public class ViewQuery {
         }
         if (!result.some() && view.eContainer() instanceof View) {
             result = new ViewQuery((View) view.eContainer()).getAncestor(visualID);
+        }
+        return result;
+    }
+
+    /**
+     * Return the {@link DDiagram} of the {@link Diagram} that is either the given view or a parent of the given view if
+     * such element exists.
+     * 
+     * @return the {@link DDiagram} of the {@link Diagram} that is either the given view or a parent of the given view
+     *         if such element exists.
+     */
+    public Optional<DDiagram> getDDiagram() {
+        return getDDiagram(view);
+
+    }
+
+    /**
+     * Return true if the view belong to a {@link DDiagram} with showing mode activated. False otherwise.
+     * 
+     * @return true if the view belong to a {@link DDiagram} with showing mode activated. False otherwise.
+     */
+    public boolean isInShowingMode() {
+        Optional<DDiagram> dDiagram = getDDiagram(view);
+        return dDiagram.isPresent() && dDiagram.get().isIsInShowingMode();
+
+    }
+
+    /**
+     * Return the {@link DDiagram} of the {@link Diagram} that is either the given view or a parent of the given view if
+     * such element exists.
+     * 
+     * @param tempView
+     *            the {@link View} from which we try to get the {@link DDiagram}.
+     * @return the {@link DDiagram} of the {@link Diagram} that is either the given view or a parent of the given view
+     *         if such element exists.
+     */
+    private Optional<DDiagram> getDDiagram(View tempView) {
+        Optional<DDiagram> result = Optional.empty();
+        if (tempView instanceof Diagram && ((Diagram) tempView).getElement() instanceof DDiagram) {
+            result = Optional.of((DDiagram) ((Diagram) tempView).getElement());
+        } else if (tempView.eContainer() instanceof View) {
+            result = getDDiagram((View) tempView.eContainer());
         }
         return result;
     }
