@@ -31,7 +31,7 @@ provided by the Hudson build.
 set -e
 
 # The full version (should be taken as an argument)
-export VERSION="4.1.7"
+export VERSION="4.1.8"
 
 # The type of build being published
 export BUILD_TYPE="nightly"
