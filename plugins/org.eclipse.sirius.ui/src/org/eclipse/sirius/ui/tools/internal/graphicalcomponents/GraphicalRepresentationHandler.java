@@ -62,7 +62,6 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDesc
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.ManageSessionActionProvider;
-import org.eclipse.sirius.ui.tools.internal.views.common.navigator.OpenRepresentationListenerWithViewpointActivation;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHandler;
@@ -784,7 +783,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         if (contentProvider != null) {
             contentProviderToUse = contentProvider;
         } else {
-            siriusCommonContentProvider = new SiriusCommonContentProvider(new OpenRepresentationListenerWithViewpointActivation(session));
+            siriusCommonContentProvider = new SiriusCommonContentProvider(session);
             contentProviderToUse = siriusCommonContentProvider;
         }
         treeViewer.setContentProvider(contentProviderToUse);

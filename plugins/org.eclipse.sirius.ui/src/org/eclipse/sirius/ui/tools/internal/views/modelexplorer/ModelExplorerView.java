@@ -15,9 +15,7 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.Action;
@@ -57,16 +55,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IViewSite;
-import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.navigator.CommonViewer;
-import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -80,11 +74,6 @@ import com.google.common.collect.Sets;
  * @author mporhel
  */
 public class ModelExplorerView extends CommonNavigator implements IModelExplorerView, IExpandSelectionTarget, ITabbedPropertySheetPageContributor {
-
-    /**
-     * The session editor's id used to open automatically this editor when double clicking on an aird file.
-     */
-    private static final String SESSION_EDITOR_ID = "org.eclipse.sirius.ui.editor.session"; //$NON-NLS-1$
 
     private CTabFolder tabFolder;
 
@@ -353,20 +342,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
         IStructuredSelection selection = (IStructuredSelection) anEvent.getSelection();
         Object element = selection.getFirstElement();
 
-        if (element instanceof IFile && new FileQuery((IFile) element).isSessionResourceFile()) {
-            IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-            FileEditorInput fileEditorInput = new FileEditorInput((IFile) element);
-            IEditorReference[] airdEditorReferences = activePage.findEditors(fileEditorInput, SESSION_EDITOR_ID, IWorkbenchPage.MATCH_ID);
-            try {
-                if (canOpenEditor(airdEditorReferences, fileEditorInput)) {
-                    activePage.openEditor(fileEditorInput, SESSION_EDITOR_ID);
-                } else {
-                    super.handleDoubleClick(anEvent);
-                }
-            } catch (PartInitException e) {
-                SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
-            }
-        } else {
+        if (!(element instanceof IFile && new FileQuery((IFile) element).isSessionResourceFile())) {
             super.handleDoubleClick(anEvent);
         }
         // Just after the restart of Eclipse, the listener of the
@@ -393,15 +369,6 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
                 }
             }
         }
-    }
-
-    private boolean canOpenEditor(IEditorReference[] airdEditorReferences, FileEditorInput fileEditorInput) throws PartInitException {
-        for (IEditorReference iEditorReference : airdEditorReferences) {
-            if (((FileEditorInput) iEditorReference.getEditorInput()).getPath().equals(fileEditorInput.getPath())) {
-                return false;
-            }
-        }
-        return true;
     }
 
     private void hookGlobalActions() {

@@ -113,21 +113,22 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
      * Constructor.
      */
     public SiriusCommonContentProvider() {
-        this(new OpenRepresentationListener());
+        this(null);
     }
 
     /**
      * Constructor.
      * 
-     * @param theDoubleClickListener
-     *            Listener that should be used instead of the default one that is an {@link OpenRepresentationListener}.
-     *            This component takes care of disposing the given listener when disposed from associated viewer.
+     * @param session
+     *            Listener that should be used instead of the default one that is an
+     *            {@link OpenEditorDoubleClickListener}. This component takes care of disposing the given listener when
+     *            disposed from associated viewer.
      */
-    public SiriusCommonContentProvider(IDoubleClickListener theDoubleClickListener) {
+    public SiriusCommonContentProvider(Session session) {
         defaultContentProvider = ViewHelper.INSTANCE.createContentProvider();
 
         initSessionManager();
-        doubleClickListener = theDoubleClickListener;
+        doubleClickListener = new OpenEditorDoubleClickListener(session);
         initExpandListener();
     }
 
@@ -445,7 +446,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         }
 
         if (viewer != myViewer) {
-            removeDoubleClickListener();
+            removeDoubleClickListener(doubleClickListener);
             removeExpandListener();
             if (linkWithEditorSelectionListener != null) {
                 linkWithEditorSelectionListener.dispose();
@@ -453,7 +454,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
             myViewer = viewer;
 
-            addDoubleClickListener();
+            addDoubleClickListener(doubleClickListener);
             addExpandListener();
             createLWESelectionListener();
         }
@@ -470,15 +471,15 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         }
     }
 
-    private void addDoubleClickListener() {
+    private void addDoubleClickListener(IDoubleClickListener listener) {
         if (myViewer instanceof StructuredViewer) {
-            ((StructuredViewer) myViewer).addDoubleClickListener(doubleClickListener);
+            ((StructuredViewer) myViewer).addDoubleClickListener(listener);
         }
     }
 
-    private void removeDoubleClickListener() {
+    private void removeDoubleClickListener(IDoubleClickListener listener) {
         if (myViewer instanceof StructuredViewer) {
-            ((StructuredViewer) myViewer).removeDoubleClickListener(doubleClickListener);
+            ((StructuredViewer) myViewer).removeDoubleClickListener(listener);
         }
     }
 
@@ -506,7 +507,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
      */
     @Override
     public void dispose() {
-        removeDoubleClickListener();
+        removeDoubleClickListener(doubleClickListener);
         removeExpandListener();
         myViewer = null;
 

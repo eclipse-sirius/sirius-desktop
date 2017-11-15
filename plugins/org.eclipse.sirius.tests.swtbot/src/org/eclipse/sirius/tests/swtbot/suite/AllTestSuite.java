@@ -61,6 +61,7 @@ import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectsConcurrentCloseTest
 import org.eclipse.sirius.tests.swtbot.modelexplorer.PropertyViewOnModelExplorerSelectionTests;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.PropertyViewOnModelExplorerSelectionWithLockedObjectTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.RepresentationVisibilityAfterSessionReloadTest;
+import org.eclipse.sirius.tests.swtbot.sessioneditor.SessionEditorOpeningTests;
 import org.eclipse.sirius.tests.swtbot.tabbar.LockedTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.NotInvisibleTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.ResetToDefaultFiltersActionTests;
@@ -415,6 +416,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ShowTypeActionButtonTest.class);
         suite.addTestSuite(ChildrenPositionStabilityAfterParentResizeTest.class);
         suite.addTestSuite(VSMEditorPropertiesTest.class);
+        suite.addTestSuite(SessionEditorOpeningTests.class);
 
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
@@ -427,6 +429,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ControlUncontrolWithOpenedRepresentationTest.class);
         suite.addTestSuite(SiriusInternationalizationTest.class);
         suite.addTestSuite(DecoratorTest.class);
+
     }
 
     /**

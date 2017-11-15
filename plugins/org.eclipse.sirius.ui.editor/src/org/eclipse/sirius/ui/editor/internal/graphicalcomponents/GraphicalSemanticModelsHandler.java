@@ -403,7 +403,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         // setting height hint avoids the composite to grow outside visible
         // port when too much item are present.
         layoutData.heightHint = 50;
-        siriusCommonContentModelProvider = new SiriusCommonContentProvider();
+        siriusCommonContentModelProvider = new SiriusCommonContentProvider(session);
 
         updateViewerInput();
 
