@@ -156,7 +156,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     /**
      * Session from which semantic models are handled.
      */
-    private Session session;
+    protected Session session;
 
     /**
      * The Form Toolkit to use to create & configure the controls.
@@ -314,8 +314,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         });
         newButton.setToolTipText(Messages.GraphicalSemanticModelsHandler_newModelButton_tooltip);
         Button addButton = addButton(buttonsComposite, Messages.UI_SessionEditor_models_button_newSemanticModel, () -> {
-            AddModelDependencyAction addModelDependencyAction = new AddModelDependencyAction(session, false);
-            addModelDependencyAction.run();
+            addExistingSemanticModel();
         });
         addButton.setToolTipText(Messages.GraphicalSemanticModelsHandler_addModelButton_tooltip);
         removeSemanticModelDependencyButton = addButton(buttonsComposite, Messages.UI_SessionEditor_models_button_removeSemanticModel, () -> {
@@ -340,7 +339,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * Use the generic model creation wizard to create a new resource, and if
      * successful register it as a new semantic resource in the session.
      */
-    private void createAndRegisterNewSemanticModel() {
+    protected void createAndRegisterNewSemanticModel() {
         IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
         IContainer context = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(session.getSessionResource().getURI().toPlatformString(true))).getParent();
         CreateEMFModelWizard wizard = new CreateEMFModelWizard(EPackage.Registry.INSTANCE, new StructuredSelection(context));
@@ -361,6 +360,15 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                 }
             }
         }
+    }
+
+    /**
+     * Use the generic wizard to add a dependency to an already existing
+     * semantic model.
+     */
+    protected void addExistingSemanticModel() {
+        AddModelDependencyAction addModelDependencyAction = new AddModelDependencyAction(session, false);
+        addModelDependencyAction.run();
     }
 
     /**

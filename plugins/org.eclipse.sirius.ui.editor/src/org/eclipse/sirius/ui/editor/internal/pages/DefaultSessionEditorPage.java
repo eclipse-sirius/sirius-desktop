@@ -81,20 +81,25 @@ public class DefaultSessionEditorPage extends AbstractSessionEditorPage implemen
     private static final String DELIMITER = "/"; //$NON-NLS-1$
 
     /**
-     * Session to describe and edit.
+     * Current editor.
      */
-    private Session session;
+    protected SessionEditor editor;
 
     /**
-     * Label used to provides information regarding editor's context.
+     * Session to describe and edit.
      */
-    private FormText informativeLabel;
+    protected Session session;
 
     /**
      * This graphical component provides a viewer showing all semantic models
      * loaded in the given session.
      */
     private GraphicalSemanticModelsHandler graphicalSemanticModelsHandler;
+
+    /**
+     * Label used to provides information regarding editor's context.
+     */
+    private FormText informativeLabel;
 
     /**
      * The graphical component providing a viewer showing all representations
@@ -112,8 +117,6 @@ public class DefaultSessionEditorPage extends AbstractSessionEditorPage implemen
      */
     private FilterActionGroup filterActionGroup;
 
-    private SessionEditor editor;
-
     /**
      * Constructor.
      * 
@@ -121,9 +124,23 @@ public class DefaultSessionEditorPage extends AbstractSessionEditorPage implemen
      *            the editor.
      */
     public DefaultSessionEditorPage(SessionEditor theEditor) {
-        super(theEditor, SessionEditorPlugin.DEFAULT_PAGE_ID, Messages.UI_SessionEditor_default_page_tab_label);
-        this.session = theEditor.getSession();
-        this.editor = theEditor;
+        this(theEditor, SessionEditorPlugin.DEFAULT_PAGE_ID, Messages.UI_SessionEditor_default_page_tab_label);
+    }
+
+    /**
+     * A constructor that creates the page and initializes it with the editor.
+     *
+     * @param editor
+     *            the parent editor
+     * @param id
+     *            the unique identifier
+     * @param title
+     *            the page title
+     */
+    public DefaultSessionEditorPage(SessionEditor editor, String id, String title) {
+        super(editor, id, title);
+        this.session = editor.getSession();
+        this.editor = editor;
     }
 
     @Override
@@ -216,12 +233,24 @@ public class DefaultSessionEditorPage extends AbstractSessionEditorPage implemen
         modelSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
         modelSection.setClient(modelSectionClient);
 
-        graphicalSemanticModelsHandler = new GraphicalSemanticModelsHandler(session, toolkit, ((IEditorSite) editor.getSite()).getActionBars(), ((IEditorSite) editor.getSite()).getSelectionProvider(),
-                this.getSite());
+        graphicalSemanticModelsHandler = createGraphicalSemanticModelsHandler(toolkit);
         graphicalSemanticModelsHandler.createControl(modelSectionClient);
         getSite().setSelectionProvider(graphicalSemanticModelsHandler.getTreeViewer());
 
         initModelSectionToolbar(modelSection, graphicalSemanticModelsHandler.getTreeViewer());
+    }
+
+    /**
+     * Initialize the {@link GraphicalSemanticModelsHandler} used for the aird
+     * editor.
+     * 
+     * @param toolkit
+     *            the tool allowing to create form UI component.
+     * @return the {@link GraphicalSemanticModelsHandler} used for the aird
+     *         editor.
+     */
+    protected GraphicalSemanticModelsHandler createGraphicalSemanticModelsHandler(FormToolkit toolkit) {
+        return new GraphicalSemanticModelsHandler(session, toolkit, ((IEditorSite) editor.getSite()).getActionBars(), ((IEditorSite) editor.getSite()).getSelectionProvider(), this.getSite());
     }
 
     /**
