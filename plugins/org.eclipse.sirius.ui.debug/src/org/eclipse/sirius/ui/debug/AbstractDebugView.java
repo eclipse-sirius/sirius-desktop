@@ -85,8 +85,18 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
      * Helper method to add an action button to the view.
      */
     protected void addAction(String name, final Runnable body) {
+        addAction(name, null, body);
+    }
+
+    /**
+     * Helper method to add an action button to the view.
+     */
+    protected void addAction(String name, String tooltip, final Runnable body) {
         Button button = new Button(buttons, SWT.PUSH);
         button.setText(name);
+        if (tooltip != null) {
+            button.setToolTipText(tooltip);
+        }
         button.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {

@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.core.commands.operations.IOperationHistory;
 import org.eclipse.core.commands.operations.IUndoContext;
@@ -476,7 +477,29 @@ public class SiriusDebugView extends AbstractDebugView {
         addShowResourceSetTopologyAction();
         addShowAdaptersAction();
         addShowSessionStructureAction();
+        addShowResourceInformationAction();
         // addShowCrossReferencerMap();
+    }
+
+    private void addShowResourceInformationAction() {
+        addAction("Show resource information", "Show general information on the selected resource or the resource of the selected object\n * number of contained objects", new Runnable() {
+            @Override
+            public void run() {
+                EObject current = getCurrentEObject();
+                if (current instanceof Resource) {
+                    setText(appendNbElement((Resource) current));
+                } else if (current instanceof EObject) {
+                    setText(appendNbElement(current.eResource()));
+                }
+            }
+
+            private String appendNbElement(Resource res) {
+                Iterable<EObject> it = () -> res.getAllContents();
+                long nbElem = StreamSupport.stream(it.spliterator(), false).count();
+
+                return "Resource " + res.getURI() + " contains " + nbElem + " elements \n";
+            }
+        });
     }
 
     private void addShowSessionStructureAction() {
