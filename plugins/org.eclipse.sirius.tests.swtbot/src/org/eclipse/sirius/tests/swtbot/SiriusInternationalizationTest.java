@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,9 +22,16 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
+import org.eclipse.sirius.diagram.ui.tools.internal.palette.SiriusPaletteViewer;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIProject;
@@ -248,8 +255,8 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * The scenario uses a custom odesign and the plugin.properties in order to
-     * test the localization of VSM texts on a Diagram.
+     * The scenario uses a custom odesign and the plugin.properties in order to test the localization of VSM texts on a
+     * Diagram.
      * 
      * @param locale
      *            the {@link Locale} to use in the scenario
@@ -326,11 +333,23 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         SWTBotUtils.checkContextualMenus(bot.getDisplay(), editor.getDiagramEditPart().getViewer().getControl(), contextMenusToCheck);
 
         checkLabelsInModelExplorerView(getDiagramDescriptionLabel());
+
+        // Bug 522368 test that there is no duplicated entries in the palette after an external modification.
+        URI ecoreURI = URI.createPlatformResourceURI(getProjectName() + "/" + MODEL, false);
+        Resource resource = new ResourceSetImpl().getResource(ecoreURI, true);
+        EPackage ePackage = (EPackage) resource.getContents().get(0);
+        ePackage.getEAnnotations().add(EcoreFactory.eINSTANCE.createEAnnotation());
+        PaletteRoot paletteRoot = ((SiriusPaletteViewer) editor.getPaletteRootEditPartBot().part().getViewer()).getPaletteRoot();
+        int before = paletteRoot.getChildren().size();
+        resource.save(Collections.emptyMap());
+        SWTBotUtils.waitAllUiEvents();
+        int after = paletteRoot.getChildren().size();
+        assertEquals("The number of elements in the palette should be the same after a refresh following an external modification.", before, after);
     }
 
     /**
-     * The scenario uses a custom odesign and the plugin.properties in order to
-     * test the localization of VSM texts on a Tree.
+     * The scenario uses a custom odesign and the plugin.properties in order to test the localization of VSM texts on a
+     * Tree.
      * 
      * @param locale
      *            {@link Locale} to use in the current scenario.
@@ -376,8 +395,8 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * The scenario uses a custom odesign and the plugin.properties in order to
-     * test the localization of VSM texts on an Edition Table.
+     * The scenario uses a custom odesign and the plugin.properties in order to test the localization of VSM texts on an
+     * Edition Table.
      * 
      * @param locale
      *            {@link Locale} to use in the current scenario.
@@ -421,8 +440,8 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * The scenario uses a custom odesign and the plugin.properties in order to
-     * test the localization of VSM texts on an Cross Table.
+     * The scenario uses a custom odesign and the plugin.properties in order to test the localization of VSM texts on an
+     * Cross Table.
      * 
      * @param locale
      *            {@link Locale} to use in the current scenario.
@@ -467,9 +486,8 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Validate that the Viewpoint and Representation Description are displayed
-     * with localization in the Model Explorer view under the
-     * representations.aird file
+     * Validate that the Viewpoint and Representation Description are displayed with localization in the Model Explorer
+     * view under the representations.aird file
      * 
      * @param representationDescriptionLabel
      *            expected {@link RepresentationDescription} label
