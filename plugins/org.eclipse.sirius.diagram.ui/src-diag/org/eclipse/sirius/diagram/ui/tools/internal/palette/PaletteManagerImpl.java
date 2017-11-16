@@ -331,8 +331,7 @@ public class PaletteManagerImpl implements PaletteManager {
             updateFilters(session, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
         }
         for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedViewpoints(false), description)) {
-            Option<SectionPaletteDrawer> paletteEntry = getPaletteEntry(paletteRoot, MessageTranslator.INSTANCE.getMessage(section, new IdentifiedElementQuery(section).getLabel()),
-                    SectionPaletteDrawer.class);
+            Option<SectionPaletteDrawer> paletteEntry = getPaletteEntry(paletteRoot, PaletteManagerImpl.getToolSectionId(section), SectionPaletteDrawer.class);
             if (!paletteEntry.some()) {
                 final PaletteContainer container = PaletteManagerImpl.createPaletteDrawner(section);
                 updateContainer(session, dDiagram, container, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
