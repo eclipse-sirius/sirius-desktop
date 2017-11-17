@@ -112,12 +112,13 @@ public class TableLifecycleManagerProvider implements IEEFLifecycleManagerProvid
 		</p>
 		<pre>package com.example.awesomeproject.eef.ide.ui.ext.widgets.table.internal;
 
+import java.util.function.Consumer;
+
 import com.example.awesomeproject.eef.core.ext.widgets.table.TableController;
 import org.eclipse.eef.EEFCustomWidgetDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.common.ui.api.IEEFFormContainer;
 import org.eclipse.eef.core.api.EditingContextAdapter;
-import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.eef.core.api.controllers.IEEFWidgetController;
 import org.eclipse.eef.ide.ui.api.widgets.AbstractEEFWidgetLifecycleManager;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -147,7 +148,7 @@ public class TableLifecycleManager extends AbstractEEFWidgetLifecycleManager {
 
 	private TableController controller;
 
-	private IConsumer&lt;Object&gt; newValueConsumer;
+	private Consumer&lt;Object&gt; newValueConsumer;
 
 	public TableLifecycleManager(EEFCustomWidgetDescription description, IVariableManager variableManager, IInterpreter interpreter,
 			EditingContextAdapter contextAdapter) {
