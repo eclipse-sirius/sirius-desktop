@@ -1215,6 +1215,12 @@ public final class Messages {
     @TranslatableMessage
     public static String UpdateRepresentationsLocationHandler_errorMsg;
 
+    @TranslatableMessage
+    public static String OpenViewpointSelectionBrowser_Error_Message;
+
+    @TranslatableMessage
+    public static String No_Browser_Error_Message;
+
     // CHECKSTYLE:ON
 
     private Messages() {

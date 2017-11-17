@@ -21,9 +21,12 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.layout.GridLayoutFactory;
@@ -43,9 +46,11 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.browser.Browser;
@@ -69,6 +74,15 @@ import com.google.common.collect.Sets;
  *
  */
 public class ViewpointsSelectionGraphicalHandler {
+
+    private static final String HTML_TAG_REGEXP = "<[^/>]*/>"; //$NON-NLS-1$
+
+    private static final String HTML_TAG_REGEXP_WITHOUT_CLOSING_CHARACTER = "<[^>]*>"; //$NON-NLS-1$
+
+    private static final String BROWSER_SUFFIX = "</b></center>"; //$NON-NLS-1$
+
+    private static final String BROWSER_PREFIX = "<br><br><center><b>"; //$NON-NLS-1$
+
     /**
      * The layout of the main composite of this graphic component.
      */
@@ -119,6 +133,10 @@ public class ViewpointsSelectionGraphicalHandler {
      */
     private Composite browserRootComposite;
 
+    private Composite browserReplacementComposite;
+
+    private Text browserReplacementText;
+
     /**
      * Return the composite enclosing all graphical parts of this component.
      * 
@@ -133,8 +151,12 @@ public class ViewpointsSelectionGraphicalHandler {
      * 
      * @return the browser providing descriptions for viewpoints taking focus.
      */
-    public Browser getBrowser() {
-        return browser;
+    public Composite getBrowser() {
+        if (browser != null) {
+            return browser;
+        } else {
+            return browserRootComposite;
+        }
     }
 
     /**
@@ -197,7 +219,7 @@ public class ViewpointsSelectionGraphicalHandler {
      *            the parent composite to be attached to.
      * @return the newly created {@link Browser}.
      */
-    public Browser createBrowser(final Composite parent) {
+    public Composite createBrowser(final Composite parent) {
 
         browserRootComposite = new Composite(parent, SWT.BORDER);
         browserRootComposite.setLayout(GridLayoutFactory.fillDefaults().create());
@@ -218,19 +240,36 @@ public class ViewpointsSelectionGraphicalHandler {
         browserErrorMessageText.setText(""); //$NON-NLS-1$
         browserErrorMessageText.setForeground(browserRootComposite.getDisplay().getSystemColor(SWT.COLOR_RED));
         try {
-            Browser aBrowser = new Browser(browserComposite, SWT.FILL);
+            browser = new Browser(browserComposite, SWT.FILL);
             browserGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
             // necessary to avoid bad interaction with expandable toolkit sections
             browserGridData.widthHint = 0;
             browserGridData.heightHint = 0;
-            aBrowser.setLayoutData(browserGridData);
-            this.browser = aBrowser;
-            return aBrowser;
-        } catch (SWTError error) {
-            /*
-             * the browser could not be created, do not display further information
-             */
-            return null;
+            browser.setLayoutData(browserGridData);
+            return browser;
+        } catch (SWTError e) {
+            if (e.code == SWT.ERROR_NO_HANDLES) {
+                // Browser component could no be instantiated: log and fall back to a degraded mode using a plain text
+                // widget
+                SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, Messages.OpenViewpointSelectionBrowser_Error_Message, e));
+
+                browserReplacementComposite = new Composite(browserComposite, SWT.None);
+                browserReplacementComposite.setLayout(GridLayoutFactory.fillDefaults().create());
+                browserGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+                // necessary to avoid bad interaction with expandable toolkit sections
+                browserGridData.widthHint = 0;
+                browserGridData.heightHint = 0;
+                browserReplacementComposite.setLayoutData(browserGridData);
+
+                browserReplacementText = new Text(browserReplacementComposite, SWT.MULTI | SWT.WRAP);
+                browserReplacementText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+                browserReplacementText.setText(""); //$NON-NLS-1$
+
+                setBrowserErrorMessageText(Messages.No_Browser_Error_Message);
+                return browserReplacementComposite;
+            } else {
+                throw e;
+            }
         }
 
     }
@@ -327,24 +366,23 @@ public class ViewpointsSelectionGraphicalHandler {
     }
 
     /***
-     * Set the browser input.A jface like browser viewer would have been better.
+     * Set the browser input. A JFace like browser viewer would have been better.
      *
      * @param viewpoint
      *            the viewpoint to document
      */
     public void setBrowserInput(final Viewpoint viewpoint) {
-
         /* browser may be null if its creation fail */
         if (browser != null && viewpoint != null) {
-            String content = null;
-            if (containsHTMLDocumentation(viewpoint.getEndUserDocumentation())) {
-                content = getContentWhenHtml(viewpoint.getEndUserDocumentation(), viewpoint.eResource().getURI());
-            } else {
-                content = getContentWhenNoHtml(viewpoint.getEndUserDocumentation());
-            }
+            String content = getDocumentation(viewpoint.getEndUserDocumentation(), viewpoint, true);
             browser.setText(content);
+        } else if (browserReplacementText != null && viewpoint != null) {
+            String content = getDocumentation(viewpoint.getEndUserDocumentation(), viewpoint, false);
+            browserReplacementText.setText(content);
         } else if (browser != null) {
-            browser.setText("<br><br><center><b>" + Messages.ViewpointsSelectionWizardPage_documentation_title + "</b></center>"); //$NON-NLS-1$ //$NON-NLS-2$
+            browser.setText(BROWSER_PREFIX + Messages.ViewpointsSelectionWizardPage_documentation_none + BROWSER_SUFFIX);
+        } else if (browserReplacementText != null) {
+            browserReplacementText.setText(BROWSER_PREFIX + Messages.ViewpointsSelectionWizardPage_documentation_none + BROWSER_SUFFIX);
         }
     }
 
@@ -358,22 +396,52 @@ public class ViewpointsSelectionGraphicalHandler {
 
         /* browser may be null if its creation fail */
         if (browser != null && representationDescription != null && viewpoint != null) {
-            String userDocumentation;
-            if (!StringUtil.isEmpty(representationDescription.getEndUserDocumentation())) {
-                userDocumentation = representationDescription.getEndUserDocumentation();
-            } else {
-                userDocumentation = viewpoint.getEndUserDocumentation();
-            }
-            String content = null;
-            if (containsHTMLDocumentation(userDocumentation)) {
-                content = getContentWhenHtml(userDocumentation, representationDescription.eResource().getURI());
-            } else {
-                content = getContentWhenNoHtml(userDocumentation);
-            }
+            String content = getRepresentationDescription(viewpoint, representationDescription, true);
             browser.setText(content);
+        } else if (browserReplacementText != null && viewpoint != null) {
+            String content = getRepresentationDescription(viewpoint, representationDescription, false);
+            browserReplacementText.setText(content);
         } else if (browser != null) {
-            browser.setText("<br><br><center><b>" + Messages.ViewpointsSelectionWizardPage_documentation_title + "</b></center>"); //$NON-NLS-1$ //$NON-NLS-2$
+            browser.setText(BROWSER_PREFIX + Messages.ViewpointsSelectionWizardPage_documentation_none + BROWSER_SUFFIX);
+        } else if (browserReplacementText != null) {
+            browserReplacementText.setText(BROWSER_PREFIX + Messages.ViewpointsSelectionWizardPage_documentation_none + BROWSER_SUFFIX);
         }
+    }
+
+    private String getRepresentationDescription(final Viewpoint viewpoint, final RepresentationDescription representationDescription, boolean addHtmlContent) {
+        String userDocumentation;
+        EObject resource;
+        if (!StringUtil.isEmpty(representationDescription.getEndUserDocumentation())) {
+            userDocumentation = representationDescription.getEndUserDocumentation();
+            resource = representationDescription;
+        } else {
+            userDocumentation = viewpoint.getEndUserDocumentation();
+            resource = viewpoint;
+        }
+        return getDocumentation(userDocumentation, resource, addHtmlContent);
+    }
+
+    /**
+     * Returns user documentation with HTML markers if supported and without if not.
+     * 
+     * @param endUserDocumentation
+     *            the raw documentation
+     * @param resource
+     *            containing images and used to compute paths to show these images.
+     * @param addHtmlContent
+     *            true if HTML is supported. False otherwise.
+     * @return user documentation with HTML markers if supported and without if not.
+     */
+    private String getDocumentation(String endUserDocumentation, EObject resource, boolean addHtmlContent) {
+        String content;
+        if (addHtmlContent && containsHTMLDocumentation(endUserDocumentation)) {
+            content = getContentWhenHtml(endUserDocumentation, resource.eResource().getURI());
+        } else if (addHtmlContent) {
+            content = getContentWhenNoHtml(endUserDocumentation);
+        } else {
+            content = endUserDocumentation.replaceAll(HTML_TAG_REGEXP, "").replaceAll(HTML_TAG_REGEXP_WITHOUT_CLOSING_CHARACTER, ""); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        return content;
     }
 
     /*
@@ -531,4 +599,5 @@ public class ViewpointsSelectionGraphicalHandler {
         viewerGridData.grabExcessVerticalSpace = false;
         viewerGridData.heightHint = height;
     }
+
 }
