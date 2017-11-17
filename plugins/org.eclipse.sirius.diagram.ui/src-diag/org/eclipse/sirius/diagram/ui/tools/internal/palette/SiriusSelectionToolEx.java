@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.palette.SelectionToolEx;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
@@ -64,7 +65,12 @@ public class SiriusSelectionToolEx extends SelectionToolEx {
             return false;
     }
 
+    @SuppressWarnings("restriction")
     private boolean isEditPartWithMouseEventTargetFigure(EditPart editPart) {
+        return isSiriusSpecificEditPart(editPart) || editPart instanceof NoteAttachmentEditPart;
+    }
+
+    private boolean isSiriusSpecificEditPart(EditPart editPart) {
         return editPart instanceof DNodeNameEditPart || editPart instanceof AbstractDiagramEdgeEditPart || editPart instanceof AbstractDEdgeNameEditPart
                 || editPart instanceof DNodeListElementEditPart;
     }
