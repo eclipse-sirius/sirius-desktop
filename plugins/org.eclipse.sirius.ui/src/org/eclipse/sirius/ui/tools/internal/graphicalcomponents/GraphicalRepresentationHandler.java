@@ -1092,7 +1092,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
             case SessionListener.REPRESENTATION_CHANGE:
             case SessionListener.VSM_UPDATED:
             case SessionListener.REPLACED:
-                PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+                PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
                     if (session != null && !treeViewer.getControl().isDisposed()) {
                         // we refresh the content of the representations block as it may have changed for example when a
                         // new project containing a design has been opened
