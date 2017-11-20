@@ -13,7 +13,7 @@
           </style>
         </containerMappings>
         <toolSections name="toolsSection" label="%toolsSectionLabel">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EPackageCreationTool" label="%EPackageCreationTool" containerMappings="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Diag']/@defaultLayer/@containerMappings[name='EPackage']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="%toolDocumentation" name="EPackageCreationTool" label="%EPackageCreationTool" containerMappings="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Diag']/@defaultLayer/@containerMappings[name='EPackage']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

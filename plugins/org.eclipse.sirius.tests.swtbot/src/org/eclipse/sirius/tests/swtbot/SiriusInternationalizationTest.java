@@ -28,9 +28,11 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.gef.palette.PaletteRoot;
+import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
+import org.eclipse.sirius.diagram.ui.tools.internal.palette.SectionPaletteDrawer;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.SiriusPaletteViewer;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -137,6 +139,10 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
     private static final String DATA_UNIT_DIR = "data/unit/internationalization/";
 
     private static final String FILE_DIR = "/";
+
+    private static final String TOOL_DOCUMENTATION_TOOLTIP_ENG = "Tool documentation";
+
+    private static final String TOOL_DOCUMENTATION_TOOLTIP_FR = "Documentation de l'outil";
 
     private UIResource sessionAirdResource;
 
@@ -345,6 +351,10 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         SWTBotUtils.waitAllUiEvents();
         int after = paletteRoot.getChildren().size();
         assertEquals("The number of elements in the palette should be the same after a refresh following an external modification.", before, after);
+
+        String description = ((PaletteToolEntry) ((SectionPaletteDrawer) paletteRoot.getChildren().get(1)).getChildren().get(0)).getDescription();
+        assertEquals("The tool documentation tooltip is not the expected one.", description, getToolDocumentationTooltip());
+
     }
 
     /**
@@ -673,5 +683,12 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
             return OPERATION_ACTION2_LABEL_ENG;
         }
         return OPERATION_ACTION2_LABEL_FR;
+    }
+
+    private String getToolDocumentationTooltip() {
+        if ("en".equals(selected_language)) {
+            return TOOL_DOCUMENTATION_TOOLTIP_ENG;
+        }
+        return TOOL_DOCUMENTATION_TOOLTIP_FR;
     }
 }

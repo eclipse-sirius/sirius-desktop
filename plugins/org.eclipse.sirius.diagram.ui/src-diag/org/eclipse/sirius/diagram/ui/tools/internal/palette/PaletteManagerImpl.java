@@ -803,7 +803,7 @@ public class PaletteManagerImpl implements PaletteManager {
                 final AbstractToolDescription toolDescription = (AbstractToolDescription) toolEntry;
                 final ImageDescriptor imageEntry = paletteImageProvider.getImageDescriptor(toolDescription);
                 final String nameEntry = MessageTranslator.INSTANCE.getMessage(toolDescription, new IdentifiedElementQuery(toolDescription).getLabel());
-                final String descriptionEntry = toolDescription.getDocumentation();
+                final String descriptionEntry = MessageTranslator.INSTANCE.getMessage(toolDescription, toolDescription.getDocumentation());
                 final CreationFactory creationFactory = new PaletteToolBasedCreationFactory(toolDescription);
                 CreationToolEntry paletteEntry = null;
                 if (toolDescription instanceof EdgeCreationDescription) {
