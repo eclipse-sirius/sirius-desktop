@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -37,8 +38,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public class DeleteTargetColumnAction extends AbstractTargetColumnAction {
 
     /**
-     * Constructor. The deleteTool can be null if there is nothing specific to
-     * do.
+     * Constructor. The deleteTool can be null if there is nothing specific to do.
      *
      * @param deleteTool
      *            The tool to do some other actions
@@ -50,9 +50,10 @@ public class DeleteTargetColumnAction extends AbstractTargetColumnAction {
     public DeleteTargetColumnAction(final DeleteTool deleteTool, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory) {
         super(Messages.DeleteTargetColumnAction_label, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.DELETE_IMG), editingDomain, tableCommandFactory, deleteTool);
         setToolTipText(Messages.DeleteTargetColumnAction_tooltip);
-        if (getDeleteTool() != null) {
-            setText(new IdentifiedElementQuery(getDeleteTool()).getLabel());
-            setToolTipText(getDeleteTool().getDocumentation());
+        DeleteTool tool = getDeleteTool();
+        if (tool != null) {
+            setText(new IdentifiedElementQuery(tool).getLabel());
+            setToolTipText(MessageTranslator.INSTANCE.getMessage(tool, tool.getDocumentation()));
         }
     }
 
@@ -94,8 +95,7 @@ public class DeleteTargetColumnAction extends AbstractTargetColumnAction {
     /**
      * The tool of this action or null if there is no specific delete action.
      *
-     * @return The tool of this action or null if there is no specific delete
-     *         action
+     * @return The tool of this action or null if there is no specific delete action
      */
     public DeleteTool getDeleteTool() {
         DeleteTool tool = null;

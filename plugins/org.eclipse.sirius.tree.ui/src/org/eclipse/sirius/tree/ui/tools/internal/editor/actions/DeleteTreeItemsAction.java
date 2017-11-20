@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
 import org.eclipse.sirius.tree.business.internal.metamodel.query.DTreeItemInternalQuery;
@@ -39,8 +40,7 @@ public class DeleteTreeItemsAction extends Action {
     private final Collection<DTreeItem> items = Lists.newArrayList();
 
     /**
-     * Constructor. The deleteTool can be null if there is nothing specific to
-     * do (only the delete of the line). <BR>
+     * Constructor. The deleteTool can be null if there is nothing specific to do (only the delete of the line). <BR>
      * When a {@link DeleteTool} is specified the normal delete is not done.
      * 
      * @param editingDomain
@@ -102,7 +102,7 @@ public class DeleteTreeItemsAction extends Action {
             TreeItemDeletionTool deleteTool = getDeleteTool(items.iterator().next());
             if (deleteTool != null) {
                 setText(new IdentifiedElementQuery(deleteTool).getLabel());
-                setToolTipText(deleteTool.getDocumentation());
+                setToolTipText(MessageTranslator.INSTANCE.getMessage(deleteTool, deleteTool.getDocumentation()));
             }
         } else if (items.size() > 1) {
             setText(Messages.DeleteTreeItemsAction_deleteTreeItems);

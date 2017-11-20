@@ -798,7 +798,7 @@ public class PaletteManagerImpl implements PaletteManager {
                     descriptionEntry = MessageTranslator.INSTANCE.getMessage(DiagramPlugin.getPlugin().getBundle(), toolDescription.getDocumentation());
                 } else {
                     nameEntry = MessageTranslator.INSTANCE.getMessage(toolDescription, new IdentifiedElementQuery(toolDescription).getLabel());
-                    descriptionEntry = toolDescription.getDocumentation();
+                    descriptionEntry = MessageTranslator.INSTANCE.getMessage(toolDescription, toolDescription.getDocumentation());
                 }
                 final CreationFactory creationFactory = new PaletteToolBasedCreationFactory(toolDescription);
                 CreationToolEntry paletteEntry = null;
