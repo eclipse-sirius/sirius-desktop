@@ -25,6 +25,11 @@ public class DiagramExportResult extends ExportResult {
     private final double scalingFactor;
 
     /**
+     * The blank margin that was used to generate the image.
+     */
+    private int margin;
+
+    /**
      * Create a new DiagramExportResult.
      *
      * @param diagram
@@ -37,6 +42,24 @@ public class DiagramExportResult extends ExportResult {
     public DiagramExportResult(DDiagram diagram, double scalingFactor, Collection<IPath> exportedFiles) {
         super(diagram, exportedFiles);
         this.scalingFactor = scalingFactor;
+        margin = -1;
+    }
+
+    /**
+     * Create a new DiagramExportResult.
+     *
+     * @param diagram
+     *            the diagram the was exported.
+     * @param scalingFactor
+     *            the scaling factor that was used when exporting the diagram.
+     * @param margin
+     *            the blank margin that was used to generate the image.
+     * @param exportedFiles
+     *            the files produced by this export.
+     */
+    public DiagramExportResult(DDiagram diagram, double scalingFactor, int margin, Collection<IPath> exportedFiles) {
+        this(diagram, scalingFactor, exportedFiles);
+        this.margin = margin;
     }
 
     /**
@@ -47,5 +70,14 @@ public class DiagramExportResult extends ExportResult {
      */
     public double getScalingFactor() {
         return scalingFactor;
+    }
+
+    /**
+     * Returns the blank margin that was used to generate the image.
+     * 
+     * @return the blank margin that was used to generate the image. -1 if information about margin is unavailable.
+     */
+    public int getMargin() {
+        return margin;
     }
 }

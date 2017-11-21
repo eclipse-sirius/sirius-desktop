@@ -1,61 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_CdBOcN0hEd-m3t59tF3Hzg" selectedViews="_C6ktIN0hEd-m3t59tF3Hzg" version="8.0.0">
-  <models xmi:type="ecore:EPackage" href="My.ecore#/"/>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_C6ktIN0hEd-m3t59tF3Hzg" initialized="true">
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_dXTEUN21Ed-6kr0omQH9Yg" name="new diagExportAsImage">
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_dXc1UN21Ed-6kr0omQH9Yg" source="GMF_DIAGRAMS">
-        <data xmi:type="notation:Diagram" xmi:id="_dXc1Ud21Ed-6kr0omQH9Yg" type="Sirius" element="_dXTEUN21Ed-6kr0omQH9Yg" measurementUnit="Pixel">
-          <children xmi:type="notation:Node" xmi:id="_dfog8N21Ed-6kr0omQH9Yg" type="2002" element="_JYQfsJjFEeCTjf2eRUPO7Q">
-            <children xmi:type="notation:Node" xmi:id="_dfxq4N21Ed-6kr0omQH9Yg" type="5006"/>
-            <children xmi:type="notation:Node" xmi:id="_df7b4N21Ed-6kr0omQH9Yg" type="7001">
-              <children xmi:type="notation:Node" xmi:id="_dgOW0N21Ed-6kr0omQH9Yg" type="3007" element="_JYSU4JjFEeCTjf2eRUPO7Q">
-                <children xmi:type="notation:Node" xmi:id="_dgrCwN21Ed-6kr0omQH9Yg" type="5003">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_dgrCwd21Ed-6kr0omQH9Yg" y="5"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_JYV_QJjFEeCTjf2eRUPO7Q" type="3003" element="_JYSU4ZjFEeCTjf2eRUPO7Q">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_JYV_QZjFEeCTjf2eRUPO7Q" fontName="Sans Serif"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JYV_QpjFEeCTjf2eRUPO7Q"/>
-                </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_dgOW0d21Ed-6kr0omQH9Yg" fontName="Segoe UI" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dgOW0t21Ed-6kr0omQH9Yg" x="30" y="30" width="16" height="16"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_CdBOcN0hEd-m3t59tF3Hzg" selectedViews="_C6ktIN0hEd-m3t59tF3Hzg" version="12.1.0.201708031200">
+    <semanticResources>My.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_C6ktIN0hEd-m3t59tF3Hzg">
+      <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_A-N5sM7IEeewqYZN9gk8bQ" name="new diagExportAsImage" repPath="#_A-DhoM7IEeewqYZN9gk8bQ">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_buVtQM7IEeewqYZN9gk8bQ" name="NoScaleIfLarger" repPath="#_buNKYM7IEeewqYZN9gk8bQ">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram xmi:id="_dXTEUN21Ed-6kr0omQH9Yg" name="new diagExportAsImage" uid="_A-DhoM7IEeewqYZN9gk8bQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_dXc1UN21Ed-6kr0omQH9Yg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_dXc1Ud21Ed-6kr0omQH9Yg" type="Sirius" element="_dXTEUN21Ed-6kr0omQH9Yg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_dfog8N21Ed-6kr0omQH9Yg" type="2002" element="_JYQfsJjFEeCTjf2eRUPO7Q">
+          <children xmi:type="notation:Node" xmi:id="_dfxq4N21Ed-6kr0omQH9Yg" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_df7b4N21Ed-6kr0omQH9Yg" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_dgOW0N21Ed-6kr0omQH9Yg" type="3007" element="_JYSU4JjFEeCTjf2eRUPO7Q">
+              <children xmi:type="notation:Node" xmi:id="_dgrCwN21Ed-6kr0omQH9Yg" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_dgrCwd21Ed-6kr0omQH9Yg" y="5"/>
               </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_df7b4d21Ed-6kr0omQH9Yg"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_df7b4t21Ed-6kr0omQH9Yg"/>
+              <children xmi:type="notation:Node" xmi:id="_JYV_QJjFEeCTjf2eRUPO7Q" type="3003" element="_JYSU4ZjFEeCTjf2eRUPO7Q">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JYV_QZjFEeCTjf2eRUPO7Q" fontName="Sans Serif"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JYV_QpjFEeCTjf2eRUPO7Q"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_dgOW0d21Ed-6kr0omQH9Yg" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dgOW0t21Ed-6kr0omQH9Yg" x="30" y="30" width="16" height="16"/>
             </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_dfog8d21Ed-6kr0omQH9Yg" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dfog8t21Ed-6kr0omQH9Yg"/>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_df7b4d21Ed-6kr0omQH9Yg"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_df7b4t21Ed-6kr0omQH9Yg"/>
           </children>
-          <styles xmi:type="notation:DiagramStyle" xmi:id="_dXc1Ut21Ed-6kr0omQH9Yg"/>
-        </data>
-      </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JYQfsJjFEeCTjf2eRUPO7Q" name="p1">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JYRt0JjFEeCTjf2eRUPO7Q">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JYRt0ZjFEeCTjf2eRUPO7Q"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JYRt0pjFEeCTjf2eRUPO7Q"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JYRt05jFEeCTjf2eRUPO7Q" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JYRt1JjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_dfog8d21Ed-6kr0omQH9Yg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dfog8t21Ed-6kr0omQH9Yg"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_dXc1Ut21Ed-6kr0omQH9Yg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_A-PH0M7IEeewqYZN9gk8bQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_A-PH0c7IEeewqYZN9gk8bQ"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JYQfsJjFEeCTjf2eRUPO7Q" name="p1">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JYRt0JjFEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JYSU4JjFEeCTjf2eRUPO7Q" name="C1" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_JYSU4ZjFEeCTjf2eRUPO7Q">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']"/>
-        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JYSU4JjFEeCTjf2eRUPO7Q" name="C1" width="3" height="3">
-          <target xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_JYSU4ZjFEeCTjf2eRUPO7Q">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JYSU4pjFEeCTjf2eRUPO7Q"/>
-            <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JYSU45jFEeCTjf2eRUPO7Q"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_JYSU5JjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']"/>
-        </ownedDiagramElements>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']"/>
       </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']"/>
-      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_dXTEUd21Ed-6kr0omQH9Yg"/>
-      <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer"/>
-      <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
-    </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']"/>
-  </ownedViews>
-</viewpoint:DAnalysis>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_dXTEUd21Ed-6kr0omQH9Yg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram xmi:id="_buT4EM7IEeewqYZN9gk8bQ" name="NoScaleIfLarger" uid="_buNKYM7IEeewqYZN9gk8bQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_buT4Ec7IEeewqYZN9gk8bQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_buT4Es7IEeewqYZN9gk8bQ"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_bvmRgM7IEeewqYZN9gk8bQ" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_bvmRgc7IEeewqYZN9gk8bQ" type="Sirius" element="_buT4EM7IEeewqYZN9gk8bQ" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_fQx5QM7IEeewqYZN9gk8bQ" type="2002" element="_fQp9cM7IEeewqYZN9gk8bQ">
+          <children xmi:type="notation:Node" xmi:id="_fQ1joM7IEeewqYZN9gk8bQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_fQ2KsM7IEeewqYZN9gk8bQ" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_fQ6cIM7IEeewqYZN9gk8bQ" type="3007" element="_fQtAwM7IEeewqYZN9gk8bQ">
+              <children xmi:type="notation:Node" xmi:id="_fQ7qQM7IEeewqYZN9gk8bQ" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_fQ7qQc7IEeewqYZN9gk8bQ" x="31" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_fRCX8M7IEeewqYZN9gk8bQ" type="3003" element="_fQtAwc7IEeewqYZN9gk8bQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_fRCX8c7IEeewqYZN9gk8bQ" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fRCX8s7IEeewqYZN9gk8bQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_fQ6cIc7IEeewqYZN9gk8bQ" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fQ6cIs7IEeewqYZN9gk8bQ" x="34" y="27" width="30" height="30"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_fQ2Ksc7IEeewqYZN9gk8bQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_fQ2Kss7IEeewqYZN9gk8bQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_fQx5Qc7IEeewqYZN9gk8bQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fQx5Qs7IEeewqYZN9gk8bQ"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_fQ4m9M7IEeewqYZN9gk8bQ" type="2002" element="_fQsZss7IEeewqYZN9gk8bQ">
+          <children xmi:type="notation:Node" xmi:id="_fQ5OAM7IEeewqYZN9gk8bQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_fQ5OAc7IEeewqYZN9gk8bQ" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_fRIekM7IEeewqYZN9gk8bQ" type="3007" element="_fQu18M7IEeewqYZN9gk8bQ">
+              <children xmi:type="notation:Node" xmi:id="_fRJFoM7IEeewqYZN9gk8bQ" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_fRJFoc7IEeewqYZN9gk8bQ" x="31" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_fRJssM7IEeewqYZN9gk8bQ" type="3003" element="_fQu18c7IEeewqYZN9gk8bQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_fRJssc7IEeewqYZN9gk8bQ" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fRJsss7IEeewqYZN9gk8bQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_fRIekc7IEeewqYZN9gk8bQ" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fRIeks7IEeewqYZN9gk8bQ" x="175" y="19" width="30" height="30"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_fQ5OAs7IEeewqYZN9gk8bQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_fQ5OA87IEeewqYZN9gk8bQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_fQ4m9c7IEeewqYZN9gk8bQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fQ4m9s7IEeewqYZN9gk8bQ" x="4685" y="10000"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_bvmRgs7IEeewqYZN9gk8bQ"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fQp9cM7IEeewqYZN9gk8bQ" name="p1">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fQqkgM7IEeewqYZN9gk8bQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQtAwM7IEeewqYZN9gk8bQ" name="C1" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_fQtAwc7IEeewqYZN9gk8bQ">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fQsZss7IEeewqYZN9gk8bQ" name="p5">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p5"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p5"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fQsZs87IEeewqYZN9gk8bQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQu18M7IEeewqYZN9gk8bQ" name="C1" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="My.ecore#//p5/C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p5/C1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_fQu18c7IEeewqYZN9gk8bQ">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_buT4FM7IEeewqYZN9gk8bQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='ExportAsImage']/@ownedRepresentations[name='diagExportAsImage']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

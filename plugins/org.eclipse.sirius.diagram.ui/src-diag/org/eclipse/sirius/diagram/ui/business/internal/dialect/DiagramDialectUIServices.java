@@ -51,6 +51,7 @@ import org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
+import org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
@@ -468,8 +469,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
                         diagramEditPart.getRoot().getViewer().flush();
 
                         /* do the effective export */
-                        tool.copyToImage(diagramEditPart, correctPath, ImageFileFormat.resolveImageFormat(imageFileExtension), monitor);
-                        result = new DiagramExportResult((DDiagram) representation, tool.getScalingFactor(), new HashSet<>(Arrays.asList(path, correctPath)));
+                        DiagramGenerator diagramGenerator = tool.copyToImage(diagramEditPart, correctPath, ImageFileFormat.resolveImageFormat(imageFileExtension), monitor);
+                        result = new DiagramExportResult((DDiagram) representation, tool.getScalingFactor(), diagramGenerator.getImageMargin(), new HashSet<>(Arrays.asList(path, correctPath)));
 
                         // We finally ensure that the image has been created
                         if (!new File(correctPath.toOSString()).exists()) {

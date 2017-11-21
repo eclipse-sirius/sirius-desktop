@@ -131,15 +131,6 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
-		<ul>
-			<li><span class="label label-info">Modified</span> If you previously override the default Sirius value for 
-				<code>SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT</code>, you must replace this override by an override of the new preference 
-				<code>SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT</code>. Example: 
-			</li>
-		</ul>
-		<pre>SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(),0); 
-
-</pre>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -164,7 +155,20 @@
 				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys</code>: 
 				<code>PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT</code>.
 			</li>
+			<li><span class="label label-success">Added</span> A new attribute 
+				<code>margin</code> has been added in 
+				<code>org.eclipse.sirius.diagram.ui.business.api.DiagramExportResult</code>. This attribute indicates what margin has been used to produce a white frame during diagram export. This attribute is available from the getter 
+				<code>getMargin()</code>. A new constructor is also available to pass on the margin 
+				<code>org.eclipse.sirius.diagram.ui.business.api.DiagramExportResult.DiagramExportResult(DDiagram, double, int, Collection&lt;IPath&gt;)</code>. 
+			</li>
+			<li><span class="label label-info">Modified</span> If you previously override the default Sirius value for 
+				<code>SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT</code>, you must replace this override by an override of the new preference 
+				<code>SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT</code>. Example: 
+			</li>
 		</ul>
+		<pre>SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(),0); 
+
+</pre>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
@@ -173,8 +177,6 @@
 				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys</code>: 
 				<code>PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT</code>. It is used to control the scaling level behavior when exporting diagrams. Refer to the JavaDoc for the details. 
 			</li>
-		</ul>
-		<ul>
 			<li><span class="label label-success">Added</span> The type 
 				<code>org.eclipse.sirius.ui.business.api.dialect.ExportFormat</code> has a new attribute representing the scaling level to use for diagram export. It is defined by an integer type. Refer to the JavaDoc for details on its meaning.
 			</li>
