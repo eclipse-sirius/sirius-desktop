@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,7 +77,7 @@ public class CrossTableIntersectionExpressionTest extends AbstractSiriusSwtBotGe
      */
     public void testLoggerExpressionValue() {
         openRepresentation(localSession.getOpenedSession(), "CrossTableDesc", "new CrossTableDesc", DTable.class);
-        SWTBotView problemViewBot = bot.viewByTitle("Problems");
+        SWTBotView problemViewBot = bot.viewByPartName("Problems");
         assertTrue("Find column expression error does not appear in the problems view.", checkProblemLogMessage(problemViewBot));
     }
 

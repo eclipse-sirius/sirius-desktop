@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,12 +25,12 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 /**
  * Test that context menu on tree is refreshed when VSM changes. Test VP-2270.
@@ -149,7 +149,7 @@ public class ContextMenuTreeTest extends AbstractSiriusSwtBotGefTestCase {
             tree.getTree().getTreeItem(CLASS1).select().contextMenu(CREATION_TOOL);
             fail("This tool should not be present");
 
-        } catch (TimeoutException tme) {
+        } catch (WidgetNotFoundException e) {
             // DO NOTHINGS, it's the good behavior
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;

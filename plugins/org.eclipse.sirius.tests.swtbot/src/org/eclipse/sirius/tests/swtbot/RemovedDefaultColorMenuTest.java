@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,6 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
-import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 /**
  * Test the default color menu was removed from Contextual menu, property view
@@ -132,8 +131,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             editor.clickContextMenu(DEFAULT_COLOR);
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -146,8 +145,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             editor.clickContextMenu(DEFAULT_COLOR);
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -160,8 +159,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             editor.clickContextMenu(DEFAULT_COLOR);
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -174,8 +173,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             editor.clickContextMenu(DEFAULT_COLOR);
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -188,8 +187,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             editor.clickContextMenu(DEFAULT_COLOR);
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -203,8 +202,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             editor.clickContextMenu(DEFAULT_COLOR);
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -218,8 +217,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             editor.clickContextMenu(DEFAULT_COLOR);
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -233,8 +232,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             editor.clickContextMenu(DEFAULT_COLOR);
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -249,8 +248,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fontColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -265,8 +264,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             lineColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -281,8 +280,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -297,8 +296,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -313,8 +312,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -329,8 +328,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -345,8 +344,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fontColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -361,8 +360,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             lineColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -377,8 +376,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -393,8 +392,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -409,8 +408,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -425,8 +424,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -441,8 +440,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -457,8 +456,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -473,8 +472,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -489,8 +488,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fontColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -504,8 +503,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             ((SWTBotToolbarDropDownButton) editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR).click()).menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -520,8 +519,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -536,8 +535,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -552,8 +551,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
-        } catch (WidgetNotFoundException wnfe) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -568,8 +567,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -584,8 +583,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -600,8 +599,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -616,8 +615,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -632,8 +631,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         }
     }
 
@@ -649,8 +648,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
             SWTBotPreferences.TIMEOUT = 1000;
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -668,8 +667,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
             SWTBotPreferences.TIMEOUT = 1000;
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -687,8 +686,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -706,8 +705,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -725,8 +724,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -744,8 +743,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -763,8 +762,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -782,8 +781,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -801,8 +800,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -820,8 +819,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -839,8 +838,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -858,8 +857,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -877,8 +876,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -896,8 +895,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -915,8 +914,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -935,8 +934,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -955,8 +954,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
@@ -975,8 +974,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();
-        } catch (TimeoutException tme) {
-            assertTrue(true);
+        } catch (WidgetNotFoundException e) {
+            // Expected exception, do nothing.
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }

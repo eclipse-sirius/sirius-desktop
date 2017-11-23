@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,11 +11,13 @@
 package org.eclipse.sirius.tests.swtbot.tree;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -150,7 +152,8 @@ public class OpenCloseCreateDeleteTreeRepresentationTest extends AbstractTreeSir
 
         bot.activeShell().bot().text(0).setText(editor);
         bot.button(OK).click();
-
+        // waiting for editor opening
+        SWTBotSiriusHelper.getTreeDialectEditorBots(editor);
         treeItem = localSession.getLocalSessionBrowser().perSemantic().expandNode(P1).expandNode(editor).select();
 
         assertTrue(treeItem != null);
@@ -188,7 +191,7 @@ public class OpenCloseCreateDeleteTreeRepresentationTest extends AbstractTreeSir
             assertFalse("The DTree editor must be close", true);
         } catch (Exception e) {
             String message = e.getMessage();
-            assertThat(message, equalTo("Could not find widget."));
+            assertThat(message, containsString("Could not find editor"));
         }
 
     }

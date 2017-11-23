@@ -245,7 +245,7 @@ public class ElementCreationWithPopupMenuTests extends AbstractSiriusSwtBotGefTe
     public void testOneEClassCreationOnContainerEditPartAWithScrollViaPopupMenuTool() {
         // Reveal ContainerA (to scroll in the diagram)
         editor.reveal(dNodeContainerABot.part());
-
+        editor.select(dNodeContainerABot);
         double zoomLevel = GraphicalHelper.getZoom(diagramEditPartBot.part());
         Point screenCreationLocation = editor.getBounds(class2ChildOfContainerABot).getLocation().getCopy().translate(new Point(100, 0).getScaled(zoomLevel));
 

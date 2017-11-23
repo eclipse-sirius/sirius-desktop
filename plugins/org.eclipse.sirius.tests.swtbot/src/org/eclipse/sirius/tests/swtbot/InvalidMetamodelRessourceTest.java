@@ -105,7 +105,8 @@ public class InvalidMetamodelRessourceTest extends AbstractSiriusSwtBotGefTestCa
         bot.text().setText("Error");
         SWTBotTreeItem expandNode = viewsTreeBot.expandNode("General");
         bot.waitUntil(new TreeItemExpanded(expandNode, expandNode.getText()));
-        expandNode.getNode("Error Log").doubleClick();
+        expandNode.getNode("Error Log").click();
+        bot.button("Open").click();
     }
 
     /**

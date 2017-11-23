@@ -77,7 +77,7 @@ public class ValidationEmptyNameTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private Boolean checkProblemValue() {
         // accesses to problems view
-        final SWTBotView problemViewBot = bot.viewByTitle("Problems");
+        final SWTBotView problemViewBot = bot.viewByPartName("Problems");
         problemViewBot.setFocus();
         final SWTBotTree problemTree = problemViewBot.bot().tree();
         bot.waitUntil(new CheckTreeItemEnabled(problemTree.getTreeItem(ERROR_NODE)));

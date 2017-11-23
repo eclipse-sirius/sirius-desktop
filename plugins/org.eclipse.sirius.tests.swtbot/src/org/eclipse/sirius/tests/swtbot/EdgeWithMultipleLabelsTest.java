@@ -986,7 +986,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
         final long oldTimeout = SWTBotPreferences.TIMEOUT;
         try {
             SWTBotPreferences.TIMEOUT = 1000;
-            editor.directEdgeEditTypeBeginLabel("EC1", "EC3", "EClass1");
+            directEdit = editor.directEdgeEditTypeBeginLabel("EC1", "EC3", "EClass1");
         } catch (SWTException e) {
             directEdit = false;
         } finally {
@@ -1098,7 +1098,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
         editor.select(editor.getEditPart("EC1 end"));
         boolean directEdit = true;
         try {
-            editor.directEdgeEditTypeEndLabel("EC1", "EC3", "EClass1");
+            directEdit = editor.directEdgeEditTypeEndLabel("EC1", "EC3", "EClass1");
         } catch (SWTException e) {
             directEdit = false;
         } finally {
@@ -1163,7 +1163,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
         editor.select(editor.getEditPart("ec2 begin"));
         boolean directEdit = true;
         try {
-            editor.directEdgeEditTypeBeginLabel("EC1", "EC2", "eclass2");
+            directEdit = editor.directEdgeEditTypeBeginLabel("EC1", "EC2", "eclass2");
         } catch (SWTException e) {
             directEdit = false;
         } finally {
@@ -1214,7 +1214,6 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
         // Select the begin label and focus something else
         editor.select(editor.getEditPart("ec2 center"));
-        boolean directEdit = true;
         editor.directEdgeEditTypeCenterLabel("EC1", "EC2", "eclass2");
         Assert.assertNotNull(editor.getEditPart("eclass2 begin"));
         validateSelectedLabel("eclass2 center", DEdgeNameEditPart.class);
@@ -1281,7 +1280,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
         final long oldTimeout = SWTBotPreferences.TIMEOUT;
         try {
             SWTBotPreferences.TIMEOUT = 1000;
-            editor.directEdgeEditTypeEndLabel("EC1", "EC2", "eclass2");
+            directEdit = editor.directEdgeEditTypeEndLabel("EC1", "EC2", "eclass2");
         } catch (SWTException e) {
             directEdit = false;
         } finally {

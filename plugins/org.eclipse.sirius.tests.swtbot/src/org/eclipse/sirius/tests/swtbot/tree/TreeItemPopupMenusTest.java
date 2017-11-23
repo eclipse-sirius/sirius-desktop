@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,9 +15,9 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 /**
  * Tests for ensuring that pop-up menu associated to TreeItemMappings are
@@ -121,7 +121,7 @@ public class TreeItemPopupMenusTest extends AbstractTreeSiriusSWTBotGefTestCase 
         SWTBotTreeItem unaplicableNode = editor.bot().tree().getTreeItem(TREE_ITEM_WITH_UNAPLICABLE_POPUP_CONTAINER_NAME).expand().getNode(TREE_ITEM_WITH_UNAPLICABLE_POPUP_NAME);
         try {
             unaplicableNode.contextMenu(POP_UP_MENU_NAME);
-        } catch (TimeoutException e) {
+        } catch (WidgetNotFoundException e) {
             foundContextMenu = false;
         }
         assertFalse("Pop-up Menu " + POP_UP_MENU_NAME + " should not be displayed on TreeITem " + TREE_ITEM_WITH_UNAPLICABLE_POPUP_NAME, foundContextMenu);
@@ -146,7 +146,7 @@ public class TreeItemPopupMenusTest extends AbstractTreeSiriusSWTBotGefTestCase 
         setErrorCatchActive(false);
         try {
             node.contextMenu(OPERATION_ACTION_NAME);
-        } catch (TimeoutException e) {
+        } catch (WidgetNotFoundException e) {
             foundContextMenu = false;
         }
         assertFalse("Operation Action " + OPERATION_ACTION_NAME + " should not be displayed on TreeITem " + TREE_ITEM_WITH_JAVA_ACTION_CALL_NAME, foundContextMenu);
@@ -170,7 +170,7 @@ public class TreeItemPopupMenusTest extends AbstractTreeSiriusSWTBotGefTestCase 
         setErrorCatchActive(false);
         try {
             node.contextMenu(JAVA_ACTION_NAME);
-        } catch (TimeoutException e) {
+        } catch (WidgetNotFoundException e) {
             foundContextMenu = false;
         }
         assertFalse("Java Action " + JAVA_ACTION_NAME + " should not be displayed on TreeITem " + TREE_ITEM_WITH_JAVA_ACTION_CALL_NAME, foundContextMenu);
@@ -195,7 +195,7 @@ public class TreeItemPopupMenusTest extends AbstractTreeSiriusSWTBotGefTestCase 
         setErrorCatchActive(false);
         try {
             node.contextMenu(JAVA_ACTION_CALL_NAME);
-        } catch (TimeoutException e) {
+        } catch (WidgetNotFoundException e) {
             foundContextMenu = false;
         }
         assertFalse("Java Action Call  " + JAVA_ACTION_CALL_NAME + " should not be displayed on TreeITem " + TREE_ITEM_WITH_JAVA_ACTION_NAME, foundContextMenu);

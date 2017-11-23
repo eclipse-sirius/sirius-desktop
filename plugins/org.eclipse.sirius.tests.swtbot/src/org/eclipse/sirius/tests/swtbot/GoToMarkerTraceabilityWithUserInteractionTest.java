@@ -213,7 +213,7 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         }
 
         // Reopen the editor using a marker created during the validation
-        SWTBotView problemsView = bot.viewByTitle("Problems");
+        SWTBotView problemsView = bot.viewByPartName("Problems");
         problemsView.setFocus();
         SWTBotTree problemsTree = problemsView.bot().tree();
         problemsTree.getTreeItem("Errors (3 items)").expand();

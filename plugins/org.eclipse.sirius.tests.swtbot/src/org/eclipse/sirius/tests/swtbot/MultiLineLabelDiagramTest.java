@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -566,23 +566,21 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
         final long oldTimeout = SWTBotPreferences.TIMEOUT;
         boolean oldErrorCatchActive = isErrorCatchActive();
         setErrorCatchActive(false);
+        SWTBotPreferences.TIMEOUT = 1000;
         try {
-            SWTBotPreferences.TIMEOUT = 1000;
             assertLabelMultiLines(nameFigure, 1);
-            editor.directEditType("O\n1\n2", dEdgeNameEditPartBot);
-
-            fail("DirectEdit should not be enabled on begin and end edge labels.");
-        } catch (Exception e) {
-            // Ok.
+            boolean noException = editor.directEditType("O\n1\n2", dEdgeNameEditPartBot);
+            if (noException) {
+                fail("DirectEdit should not be enabled on begin and end edge labels.");
+            }
+            SWTBotUtils.waitAllUiEvents();
+            assertEquals("DirectEdit should not be enabled on begin and end edge labels.", wrapText, viewpointWrapLabel.getText());
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
+            setErrorCatchActive(oldErrorCatchActive);
+            editor.close();
+            SWTBotUtils.waitAllUiEvents();
         }
-        SWTBotUtils.waitAllUiEvents();
-        assertEquals("DirectEdit should not be enabled on begin and end edge labels.", wrapText, viewpointWrapLabel.getText());
-
-        setErrorCatchActive(oldErrorCatchActive);
-        editor.close();
-        SWTBotUtils.waitAllUiEvents();
     }
 
     /**

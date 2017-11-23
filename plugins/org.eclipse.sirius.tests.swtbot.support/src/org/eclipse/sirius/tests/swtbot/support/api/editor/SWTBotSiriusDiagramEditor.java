@@ -141,7 +141,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
             public GraphicalViewer run() {
 
                 final IEditorPart editor = partReference.getEditor(true);
-                return (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
+                return editor.getAdapter(GraphicalViewer.class);
             }
         });
 
@@ -618,44 +618,34 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      *            text to put
      * @param swtBotGefEditPart
      *            bot editPart to edit
+     * @return true if no exception occurs, otherwise false.
      */
-    public void directEditType(final String text, final SWTBotGefEditPart swtBotGefEditPart) {
+    public boolean directEditType(final String text, final SWTBotGefEditPart swtBotGefEditPart) {
         final EditPart editPart = swtBotGefEditPart.part();
-        final DirectEditRequest request = new DirectEditRequest();
-
-        /*
-         * Workaround for GMF based modelers -> need to be in a SWTBotGMFEditor
-         */
-        request.getExtendedData().put(RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR, '_');
-
-        if (editPart instanceof GraphicalEditPart) {
-            // Sets the location to avoid having NPE later
-            GraphicalEditPart gep = (GraphicalEditPart) editPart;
-            request.setLocation(gep.getFigure().getBounds().getLocation());
-        }
-
-        UIThreadRunnable.syncExec(new VoidResult() {
-            @Override
-            public void run() {
-                editPart.performRequest(request);
-                directEditType(text);
-            }
-        });
+        return directEditType(text, editPart);
 
     }
 
-    private void directEditType(final String text, final EditPart editPart) {
+    private boolean directEditType(final String text, final EditPart editPart) {
         final Request request = new DirectEditRequest();
 
         /*
          * Workaround for GMF based modelers -> need to be in a SWTBotGMFEditor
          */
         request.getExtendedData().put(RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR, '_');
-        UIThreadRunnable.syncExec(new VoidResult() {
+        return UIThreadRunnable.syncExec(new Result<Boolean>() {
             @Override
-            public void run() {
-                editPart.performRequest(request);
-                directEditType(text);
+            public Boolean run() {
+                Boolean result = false;
+                try {
+                    editPart.performRequest(request);
+                    directEditType(text);
+                    result = true;
+                    // CHECKSTYLE:OFF
+                } catch (Exception e) {
+                    // CHECKSTYLE:ON
+                }
+                return result;
             }
         });
     }
@@ -670,9 +660,10 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * 
      * @param text
      *            New text to use to edit edit part name.
+     * @return true if no exception occurs, otherwise false.
      */
-    public void directEdgeEditType(final String sourceEditPartLabel, final String targetEditPartLabel, final String text) {
-        directEdgeEditType(sourceEditPartLabel, targetEditPartLabel, text, 0, DEdgeNameEditPart.class);
+    public boolean directEdgeEditType(final String sourceEditPartLabel, final String targetEditPartLabel, final String text) {
+        return directEdgeEditType(sourceEditPartLabel, targetEditPartLabel, text, 0, DEdgeNameEditPart.class);
     }
 
     /**
@@ -685,9 +676,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * 
      * @param text
      *            New text to use to edit edit part name.
+     * 
+     * @return true if no exception occurs, otherwise false.
      */
-    public void directEdgeEditTypeBeginLabel(final String sourceEditPartLabel, final String targetEditPartLabel, final String text) {
-        directEdgeEditType(sourceEditPartLabel, targetEditPartLabel, text, 0, DEdgeBeginNameEditPart.class);
+    public boolean directEdgeEditTypeBeginLabel(final String sourceEditPartLabel, final String targetEditPartLabel, final String text) {
+        return directEdgeEditType(sourceEditPartLabel, targetEditPartLabel, text, 0, DEdgeBeginNameEditPart.class);
     }
 
     /**
@@ -715,9 +708,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * 
      * @param text
      *            New text to use to edit edit part name.
+     * 
+     * @return true if no exception occurs, otherwise false.
      */
-    public void directEdgeEditTypeEndLabel(final String sourceEditPartLabel, final String targetEditPartLabel, final String text) {
-        directEdgeEditType(sourceEditPartLabel, targetEditPartLabel, text, 0, DEdgeEndNameEditPart.class);
+    public boolean directEdgeEditTypeEndLabel(final String sourceEditPartLabel, final String targetEditPartLabel, final String text) {
+        return directEdgeEditType(sourceEditPartLabel, targetEditPartLabel, text, 0, DEdgeEndNameEditPart.class);
     }
 
     /**
@@ -765,18 +760,13 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @param index
      *            Position of edge to edit.
      * @param labelClass
-     *            used to choose between begin, center and end label
+     *            used to choose between begin, center and end label.
+     * @return true if no exception occurs, otherwise false.
      */
-    public void directEdgeEditType(final String sourceEditPartLabel, final String targetEditPartLabel, final String text, final int index, Class<? extends EditPart> labelClass) {
+    public boolean directEdgeEditType(final String sourceEditPartLabel, final String targetEditPartLabel, final String text, final int index, Class<? extends EditPart> labelClass) {
         final List<SWTBotGefConnectionEditPart> connectionEditPart = getConnectionEditPart(getEditPart(sourceEditPartLabel).parent(), getEditPart(targetEditPartLabel).parent());
         final SWTBotGefConnectionEditPart swtBotGefConnectionEditPart = connectionEditPart.get(index);
-
-        // Retreive first children, as this is this edit part which owns edge
-        // label
-
-        // directEditType(text, (EditPart)
-        // swtBotGefConnectionEditPart.part().getChildren().get(0));
-        directEditType(text, Iterables.getOnlyElement(Iterables.filter(swtBotGefConnectionEditPart.part().getChildren(), labelClass)));
+        return directEditType(text, Iterables.getOnlyElement(Iterables.filter(swtBotGefConnectionEditPart.part().getChildren(), labelClass)));
     }
 
     /**
@@ -1618,7 +1608,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
             diagramPart = (IDiagramWorkbenchPart) editorPart;
 
         } else if (editorPart != null) {
-            diagramPart = (IDiagramWorkbenchPart) editorPart.getAdapter(IDiagramWorkbenchPart.class);
+            diagramPart = editorPart.getAdapter(IDiagramWorkbenchPart.class);
         }
 
         return diagramPart;
@@ -1648,7 +1638,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
         UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
             @Override
             public void run() {
-                ZoomManager zoomManager = (ZoomManager) partReference.getEditor(false).getAdapter(ZoomManager.class);
+                ZoomManager zoomManager = partReference.getEditor(false).getAdapter(ZoomManager.class);
                 zoomManager.setZoomAsText(zoomLevel.getLevel());
             }
         });
