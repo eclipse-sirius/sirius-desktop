@@ -44,11 +44,6 @@ public class DoubleClickEditPolicyProvider implements IEditPolicyProvider {
         this.listeners = new ArrayList<IProviderChangeListener>();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider#createEditPolicies(org.eclipse.gef.EditPart)
-     */
     @Override
     public void createEditPolicies(EditPart editPart) {
         if (editPart instanceof IAbstractDiagramNodeEditPart || editPart instanceof IDiagramEdgeEditPart || editPart instanceof IDiagramNameEditPart) {
@@ -56,21 +51,11 @@ public class DoubleClickEditPolicyProvider implements IEditPolicyProvider {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.core.service.IProvider#addProviderChangeListener(org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener)
-     */
     @Override
     public void addProviderChangeListener(IProviderChangeListener listener) {
         this.listeners.add(listener);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.core.service.IProvider#provides(org.eclipse.gmf.runtime.common.core.service.IOperation)
-     */
     @Override
     public boolean provides(IOperation operation) {
         if (operation instanceof CreateEditPoliciesOperation) {
@@ -87,11 +72,6 @@ public class DoubleClickEditPolicyProvider implements IEditPolicyProvider {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.core.service.IProvider#removeProviderChangeListener(org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener)
-     */
     @Override
     public void removeProviderChangeListener(IProviderChangeListener listener) {
         this.listeners.remove(listener);

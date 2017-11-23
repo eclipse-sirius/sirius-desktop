@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,19 @@ package org.eclipse.sirius.tests.swtbot;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import org.eclipse.emf.edit.command.AbstractOverrideableCommand;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.LayerSpec;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.ToolSectionSpec;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
+import org.eclipse.sirius.diagram.description.tool.ElementDoubleClickVariable;
+import org.eclipse.sirius.diagram.description.tool.ToolFactory;
+import org.eclipse.sirius.editor.tools.internal.presentation.CustomSiriusEditor;
+import org.eclipse.sirius.tests.support.api.ICondition;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -21,9 +32,17 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
+import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.SetValue;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
+import org.eclipse.ui.PlatformUI;
 import org.hamcrest.Matchers;
 
 /**
@@ -58,6 +77,7 @@ public class DoubleClickToolNavigationOperationTest extends AbstractSiriusSwtBot
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean test() throws Exception {
             int newNumberOfEditors = bot.editors().size();
             return initialNumberOfEditors < newNumberOfEditors;
@@ -66,11 +86,37 @@ public class DoubleClickToolNavigationOperationTest extends AbstractSiriusSwtBot
         /**
          * {@inheritDoc}
          */
+        @Override
         public String getFailureMessage() {
             return null;
         }
     }
 
+    /**
+     * Condition testing that the label of the class edit part has been upodated after the double click.
+     * 
+     * @author <a href=mailto:pierre.guilet@obeo.fr>Pierre Guilet</a>
+     *
+     */
+    private final class DoubleClickChangeCondition implements ICondition {
+
+        private SWTBotSiriusDiagramEditor diagramEditor;
+
+        public DoubleClickChangeCondition(SWTBotSiriusDiagramEditor diagramEditor) {
+            this.diagramEditor = diagramEditor;
+        }
+
+        @Override
+        public boolean test() throws Exception {
+            SWTBotGefEditPart editPart = diagramEditor.getEditPart("test");
+            return editPart != null;
+        }
+
+        @Override
+        public String getFailureMessage() {
+            return "Double click tool has not been taken in consideration. No change has been applied after double click.";
+        }
+    }
     private static final String REPRESENTATION_INSTANCE_NAME_R1_Root = "TC1054 representation 1 root";
 
     private static final String REPRESENTATION_INSTANCE_NAME_R1_SP2 = "TC1054 representation 1 sp2";
@@ -103,6 +149,12 @@ public class DoubleClickToolNavigationOperationTest extends AbstractSiriusSwtBot
      */
     protected UIDiagramRepresentation diagram;
 
+    private AdapterFactoryEditingDomain editingDomain;
+
+    private LayerSpec layer;
+
+    private ToolSectionSpec toolDescription;
+
     /**
      * {@inheritDoc}
      */
@@ -118,7 +170,6 @@ public class DoubleClickToolNavigationOperationTest extends AbstractSiriusSwtBot
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME_R1_Root, DDiagram.class);
     }
 
@@ -215,6 +266,75 @@ public class DoubleClickToolNavigationOperationTest extends AbstractSiriusSwtBot
     }
 
     /**
+     * Tests that a double click tool created in a workspace VSM is immediately available in a representation using this
+     * VSM in the same workspace.
+     */
+    public void testDoubleClickToolApplicationInWorkspaceContext() {
+        SWTBotView projectExplorer = bot.viewByTitle("Model Explorer");
+        projectExplorer.setFocus();
+        SWTBot projectExplorerBot = projectExplorer.bot();
+        projectExplorerBot.tree().expandNode(getProjectName()).expandNode(VSM_FILE).doubleClick();
+        CustomSiriusEditor customSiriusEditor = (CustomSiriusEditor) PlatformUI.getWorkbench().getWorkbenchWindows()[0].getActivePage().getActiveEditor();
+        editingDomain = (AdapterFactoryEditingDomain) customSiriusEditor.getEditingDomain();
+        layer = (LayerSpec) editingDomain.getResourceSet().getResources().get(0).getContents().get(0).eContents().get(0).eContents().get(0).eContents().get(0);
+        toolDescription = (ToolSectionSpec) layer.eContents().get(1);
+
+        editingDomain.getCommandStack().execute(new AbstractOverrideableCommand(editingDomain) {
+
+            @Override
+            public void doUndo() {
+            }
+
+            @Override
+            public void doRedo() {
+            }
+
+            @Override
+            public boolean doCanExecute() {
+                return true;
+            }
+
+            @Override
+            public void doExecute() {
+                DoubleClickDescription newDoubleClickDescription = ToolFactory.eINSTANCE.createDoubleClickDescription();
+                newDoubleClickDescription.setName("test");
+                ElementDoubleClickVariable newElementDoubleClickVariable = ToolFactory.eINSTANCE.createElementDoubleClickVariable();
+                newElementDoubleClickVariable.setName("element");
+                newDoubleClickDescription.setElement(newElementDoubleClickVariable);
+                newElementDoubleClickVariable = ToolFactory.eINSTANCE.createElementDoubleClickVariable();
+                newElementDoubleClickVariable.setName("elementView");
+                newDoubleClickDescription.setElementView(newElementDoubleClickVariable);
+
+                InitialOperation initialOperation = newDoubleClickDescription.getInitialOperation();
+                ChangeContext newChangeContext = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createChangeContext();
+                newChangeContext.setBrowseExpression("var:element");
+                initialOperation.setFirstModelOperations(newChangeContext);
+
+                SetValue newSetValue = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createSetValue();
+                newSetValue.setFeatureName("name");
+                newSetValue.setValueExpression("aql:'test'");
+                newChangeContext.getSubModelOperations().add(newSetValue);
+
+                DiagramElementMapping mapping = (DiagramElementMapping) layer.eContents().get(0).eContents().get(0);
+                newDoubleClickDescription.getMappings().add(mapping);
+
+                toolDescription.getOwnedTools().add(newDoubleClickDescription);
+
+            }
+        });
+
+        SWTBotEditor customSiriusEditorBot = bot.editorByTitle(VSM_FILE);
+        customSiriusEditorBot.save();
+
+        editor.show();
+        editor.doubleClick("Sous-package1");
+
+
+        ICondition doubleClickChangeCondition = new DoubleClickChangeCondition(editor);
+        TestsUtil.waitUntil(doubleClickChangeCondition);
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -222,6 +342,10 @@ public class DoubleClickToolNavigationOperationTest extends AbstractSiriusSwtBot
         sessionAirdResource = null;
         localSession.save();
         localSession = null;
+        sessionAirdResource = null;
+        editingDomain = null;
+        toolDescription = null;
+        layer = null;
         super.tearDown();
     }
 }
