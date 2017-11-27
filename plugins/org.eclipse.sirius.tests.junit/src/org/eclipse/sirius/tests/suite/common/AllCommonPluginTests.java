@@ -187,7 +187,6 @@ public class AllCommonPluginTests extends TestCase {
 
         suite.addTestSuite(ConvertProjectToModelingProjectTest.class);
 
-        suite.addTestSuite(RepairOnStyleCustomizationsTest.class);
         suite.addTestSuite(RepairOnLabelHiddenTest.class);
         suite.addTestSuite(RepairTest.class);
         // suite.addTestSuite(ModelBasedTransformationEngineTests.class);
@@ -355,6 +354,7 @@ public class AllCommonPluginTests extends TestCase {
         // one false-negative Gerrit Verification job
         suite.addTestSuite(SessionManagerListener2Tests.class);
         suite.addTestSuite(RepairWithActivatedFiltersTest.class);
+        suite.addTestSuite(RepairOnStyleCustomizationsTest.class);
         // We don't officially handle Sirius editors inside MultiPageEditorPart
         // so it is not necessary to run it in Gerrit.
         suite.addTestSuite(SiriusMultiPageEditorTest.class);
