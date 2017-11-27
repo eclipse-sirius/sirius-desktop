@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright (c) 2016 Obeo
+  Copyright (c) 2016, 2017 Obeo
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -35,7 +35,20 @@
         <artifactId>tycho-surefire-plugin</artifactId>
         <version>${tycho-version}</version>
         <configuration>
-          <testClass>org.eclipse.sirius.tests.ui.properties.internal.AllTests</testClass>
+          <systemProperties>
+            <org.eclipse.sirius.tests.skipLongTests>${tests.skipLongTests}</org.eclipse.sirius.tests.skipLongTests>
+            <org.eclipse.sirius.tests.skipUnreliableTests>${tests.skipUnreliableTests}</org.eclipse.sirius.tests.skipUnreliableTests>
+            <createLocalRepresentationInSeparateResource>${createLocalRepresentationInSeparateResource}</createLocalRepresentationInSeparateResource>
+          </systemProperties>
+          <skipTests>${tests.junit.skip}</skipTests>
+          <includes>
+            <include>${tests.junit.include}</include>
+          </includes>
+          <useUIHarness>true</useUIHarness>
+          <useUIThread>true</useUIThread>
+          <argLine>${tests.vmargs}</argLine>
+          <testFailureIgnore>${tests.ignoreFailures}</testFailureIgnore>
+          <forkedProcessTimeoutInSeconds>${tests.timeout}</forkedProcessTimeoutInSeconds>
         </configuration>
       </plugin>
     </plugins>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (c) 2007, 2015 THALES GLOBAL SERVICES All rights reserved. This program and the accompanying materials are made available under the terms
+<!-- Copyright (c) 2007, 2017 THALES GLOBAL SERVICES All rights reserved. This program and the accompanying materials are made available under the terms
   of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html Contributors: Obeo
   - Initial API and implementation -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -89,7 +89,7 @@
       <properties>
         <tests.junit.skip>false</tests.junit.skip>
         <tests.timeout>${tests.timeout.junit}</tests.timeout>
-        <tests.junit.include>org/eclipse/sirius/tests/suite/AllSiriusTestSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java</tests.junit.include>
+        <tests.junit.include>org/eclipse/sirius/tests/suite/AllSiriusTestSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java, org/eclipse/sirius/tests/ui/properties/internal/AllTests.java</tests.junit.include>
         <tests.vmargs>${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
       </properties>
     </profile>
@@ -101,7 +101,7 @@
       <properties>
         <tests.junit.skip>false</tests.junit.skip>
         <tests.timeout>${tests.timeout.junit}</tests.timeout>
-        <tests.junit.include>org/eclipse/sirius/tests/suite/GerritJUnitSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java</tests.junit.include>
+        <tests.junit.include>org/eclipse/sirius/tests/suite/GerritJUnitSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java, org/eclipse/sirius/tests/ui/properties/internal/AllTests.java</tests.junit.include>
         <tests.vmargs>${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
         <tests.ignoreFailures>false</tests.ignoreFailures>
       </properties>
