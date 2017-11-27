@@ -279,13 +279,13 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
     public void testBundledImageStyleCustomizationWithError() {
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             String error1 = "The org.eclipse.sirius.diagram.bundledImageShape extension of id 'sample.design.donut2' should have the colorAttribute attribute with a value.";
             assertNotNull("Error \'" + error1 + "\' should be detected.", errorLogBot.tree().getTreeItem(error1));
             String error2 = "The org.eclipse.sirius.diagram.bundledImageShape extension of id 'sample.design.donut2' should have the borderColorAttribute attribute with a value.";
             assertNotNull("Error \'" + error1 + "\' should be detected.", errorLogBot.tree().getTreeItem(error2));
         } finally {
-            SWTBotView errorView = bot.viewByTitle("Error Log");
+            SWTBotView errorView = bot.viewByPartName("Error Log");
             if (errorView.isActive()) {
                 errorView.close();
             }

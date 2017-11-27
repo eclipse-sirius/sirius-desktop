@@ -512,7 +512,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     public int getNbStatusInErrorLog() {
         openErrorLogViewByAPI();
 
-        SWTBotView logViewBot = bot.viewByTitle("Error Log");
+        SWTBotView logViewBot = bot.viewByPartName("Error Log");
         logViewBot.show();
         SWTBotTree tree = logViewBot.bot().tree();
         int nbStatus = tree.getAllItems().length;

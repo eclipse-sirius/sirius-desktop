@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -544,7 +544,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
 
     private void testSetWkpImageStyleCancel(String name, Class<? extends IGraphicalEditPart> type, boolean tabbar) throws Exception {
         openErrorLogViewByAPI();
-        SWTBotView errorLogView = bot.viewByTitle("Error Log");
+        SWTBotView errorLogView = bot.viewByPartName("Error Log");
         errorLogView.setFocus();
         int errorCount = errorLogView.bot().tree().rowCount();
 
@@ -761,6 +761,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             any exception
      */
     protected void closeErrorLogView() throws Exception {
-        bot.viewByTitle("Error Log").close();
+        bot.viewByPartName("Error Log").close();
     }
 }

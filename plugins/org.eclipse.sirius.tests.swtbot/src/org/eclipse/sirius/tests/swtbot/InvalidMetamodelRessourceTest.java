@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -87,7 +87,7 @@ public class InvalidMetamodelRessourceTest extends AbstractSiriusSwtBotGefTestCa
     private void checkMessageErrorLog() {
         try {
             openErrorLogView();
-            SWTBotView logViewBot = bot.viewByTitle("Error Log");
+            SWTBotView logViewBot = bot.viewByPartName("Error Log");
             assertTrue("Invalid Metamodel URI does not appear in the error log.", isMessageInErrorLog(logViewBot));
             logViewBot.close();
         } finally {

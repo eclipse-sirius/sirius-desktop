@@ -172,7 +172,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -203,7 +203,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -241,7 +241,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             // editor.zoom(ZoomLevel.ZOOM_200);
 
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -294,7 +294,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             // DnD P2 from P1 to the diagram
@@ -338,7 +338,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             SWTBotGefEditPart sourceSwtBotPart = editor.getEditPart(CONTAINER_TO_DRAG_P2, AbstractDiagramContainerEditPart.class);
@@ -372,7 +372,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -427,7 +427,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             // TODO Reactivate once #521937 is fixed.
             // editor.zoom(ZoomLevel.ZOOM_200);
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -500,7 +500,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -536,7 +536,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -576,7 +576,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -607,7 +607,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -642,7 +642,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -694,7 +694,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -716,9 +716,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test the drag&drop of C1(EClass) from the Model Content view to the
-     * diagram. This move should be allowed (as it is in a transient layer
-     * enabled by default) and no error message should be generated.
+     * Test the drag&drop of C1(EClass) from the Model Content view to the diagram. This move should be allowed (as it
+     * is in a transient layer enabled by default) and no error message should be generated.
      * 
      * @throws Exception
      *             In case of problem
@@ -730,7 +729,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -752,9 +751,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * @throws Exception
-     *             Test the drag&drop of P2 from the Model Content view to P1
-     *             previously created. This move should not be allowed and no
-     *             error message should be generated.
+     *             Test the drag&drop of P2 from the Model Content view to P1 previously created. This move should not
+     *             be allowed and no error message should be generated.
      */
     @Test
     public void test_DnDPackageFromMC2ContainerBlank5() throws Exception {
@@ -763,7 +761,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             openErrorLogViewByAPI();
-            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
             DndUtil util = new DndUtil(bot.getDisplay());
@@ -793,7 +791,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      *             Close the Error log view
      */
     protected void closeErrorLogView() throws Exception {
-        SWTBotView errorView = bot.viewByTitle("Error Log");
+        SWTBotView errorView = bot.viewByPartName("Error Log");
         if (errorView.isActive()) {
             errorView.close();
         }

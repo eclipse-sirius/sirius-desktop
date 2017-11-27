@@ -420,7 +420,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
      */
     @Deprecated
     protected void closeErrorLogView() throws Exception {
-        bot.viewByTitle("Error Log").close();
+        bot.viewByPartName("Error Log").close();
     }
 
     protected void closeErrorLogViewByAPI() throws Exception {

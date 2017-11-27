@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -244,7 +244,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromContainerMappingFontColor() {
         selectAndCheckEditPart(NODE_CONTAINER, DNodeContainerEditPart.class);
-        SWTBotToolbarDropDownButton fontColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR).click();
+        SWTBotToolbarDropDownButton fontColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR);
+        fontColor.click();
         try {
             fontColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -259,7 +260,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromContainerMappingLineColor() {
         selectAndCheckEditPart(NODE_CONTAINER, DNodeContainerEditPart.class);
-        SWTBotToolbarDropDownButton lineColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR).click();
+        SWTBotToolbarDropDownButton lineColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR);
+        lineColor.click();
         try {
             lineColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -274,7 +276,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromContainerMappingFillColor() {
         selectAndCheckEditPart(NODE_CONTAINER, DNodeContainerEditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -289,7 +292,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromContainer2MappingFillColor() {
         selectAndCheckEditPart(NODE_CONTAINER2, DNodeContainer2EditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -304,7 +308,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromContainer2MappingFontColor() {
         selectAndCheckEditPart(NODE_CONTAINER2, DNodeContainer2EditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -319,7 +324,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromContainer2MappingLineColor() {
         selectAndCheckEditPart(NODE_CONTAINER2, DNodeContainer2EditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -334,7 +340,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromNode3MappingFontColor() {
         selectAndCheckEditPart(NODE3, DNode3EditPart.class);
-        SWTBotToolbarDropDownButton fontColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR).click();
+        SWTBotToolbarDropDownButton fontColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR);
+        fontColor.click();
         try {
             fontColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -349,7 +356,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromNode3MappingLineColor() {
         selectAndCheckEditPart(NODE3, DNode3EditPart.class);
-        SWTBotToolbarDropDownButton lineColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR).click();
+        SWTBotToolbarDropDownButton lineColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR);
+        lineColor.click();
         try {
             lineColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -364,7 +372,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromNode3MappingFillColor() {
         selectAndCheckEditPart(NODE3, DNode3EditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -379,7 +388,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromNodeMappingFillColor() {
         selectAndCheckEditPart(NODE, DNodeEditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -394,7 +404,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromNodeMappingFontColor() {
         selectAndCheckEditPart(NODE, DNodeEditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -409,7 +420,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromNodeMappingLineColor() {
         selectAndCheckEditPart(NODE, DNodeEditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -424,7 +436,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromNode2MappingFontColor() {
         selectAndCheckEditPart(NODE2, DNode2EditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -439,7 +452,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromNode2MappingFillColor() {
         selectAndCheckEditPart(NODE2, DNode2EditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -454,7 +468,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromNode2MappingLineColor() {
         selectAndCheckEditPart(NODE2, DNode2EditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -469,7 +484,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromRelationBaseEdgeMappingFontColor() {
         selectAndCheckEditPart(REF, DEdgeEditPart.class);
-        SWTBotToolbarDropDownButton fontColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR).click();
+        SWTBotToolbarDropDownButton fontColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR);
+        fontColor.click();
         try {
             fontColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -486,7 +502,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         selectAndCheckEditPart(REF, DEdgeEditPart.class);
         editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR).click();
         try {
-            editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR).click().menuItem(DEFAULT_COLOR).click();
+            ((SWTBotToolbarDropDownButton) editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR).click()).menuItem(DEFAULT_COLOR).click();
             fail();
         } catch (WidgetNotFoundException wnfe) {
             assertTrue(true);
@@ -499,7 +515,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromBorderedNodeMappingFontColor() {
         selectAndCheckEditPart(NODE4, DNode4EditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FONT_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -514,7 +531,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromBorderedNodeMappingFillColor() {
         selectAndCheckEditPart(NODE4, DNode4EditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(FILL_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
@@ -529,7 +547,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testNoDefaulColortMenuInToolBarFromBorderedNodeMappingLineColor() {
         selectAndCheckEditPart(NODE4, DNode4EditPart.class);
-        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR).click();
+        SWTBotToolbarDropDownButton fillColor = editor.bot().toolbarDropDownButtonWithTooltip(LINE_COLOR);
+        fillColor.click();
         try {
             fillColor.menuItem(DEFAULT_COLOR).click();
             fail();
