@@ -32,6 +32,7 @@ import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.editor.properties.api.DefaultWidgetDescription;
 import org.eclipse.sirius.editor.properties.api.IDefaultWidgetDescriptionFactory;
 import org.eclipse.sirius.editor.properties.internal.Messages;
@@ -44,8 +45,6 @@ import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.core.internal.EditSupportSpec;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.IEditorPart;
-
-import com.google.common.base.Strings;
 
 /**
  * Generates the appropriate widgets menu entries for the domain class of a group, based on its structural features.
@@ -246,8 +245,7 @@ public class CreateWidgetFromDomainClassMenuBuilder extends AbstractMenuBuilder 
 
         String packageName = null;
         String className = null;
-
-        if (!Strings.isNullOrEmpty(domainClassQualifiedName)) {
+        if (!StringUtil.isEmpty(domainClassQualifiedName)) {
             Matcher m = SEPARATOR.matcher(domainClassQualifiedName);
             if (m.find()) {
                 packageName = domainClassQualifiedName.substring(0, m.start());
