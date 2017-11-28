@@ -483,6 +483,104 @@
   </profile>
 
     <profile>
+      <id>capella</id>
+      <!-- This profile is used in replacement of "full" profile when we want to launch test in the same environment as Capella. For example, in Capella, the "properties" plug-ins are not present.-->
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <target-platform-path>capella</target-platform-path>
+      </properties>
+      <modules>
+        <!-- plugins -->
+        <module>../../plugins/org.eclipse.sirius.ext.draw2d</module>
+        <module>../../plugins/org.eclipse.sirius.ext.e3.ui</module>
+        <module>../../plugins/org.eclipse.sirius.ext.emf.ui</module>
+        <module>../../plugins/org.eclipse.sirius.ext.gef</module>
+        <module>../../plugins/org.eclipse.sirius.ext.gmf.runtime</module>
+        <module>../../plugins/org.eclipse.sirius.ext.jface</module>
+        <module>../../plugins/org.eclipse.sirius.ext.swt</module>
+        <module>../../plugins/org.eclipse.sirius.common.acceleo.aql.ide</module>
+        <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl.ide</module>
+        <module>../../plugins/org.eclipse.sirius.common.ui</module>
+        <module>../../plugins/org.eclipse.sirius.common.ui.ext</module>
+        <module>../../plugins/org.eclipse.sirius.common.xtext</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.sequence.edit</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.sequence.ui</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.sequence</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.ui</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.ui.ext</module>
+        <module>../../plugins/org.eclipse.sirius.doc</module>
+        <module>../../plugins/org.eclipse.sirius.editor.diagram</module>
+        <module>../../plugins/org.eclipse.sirius.editor.sequence</module>
+        <module>../../plugins/org.eclipse.sirius.editor.table</module>
+        <module>../../plugins/org.eclipse.sirius.editor.tree</module>
+        <module>../../plugins/org.eclipse.sirius.editor</module>
+        <module>../../plugins/org.eclipse.sirius.eef.adapters</module>
+        <module>../../plugins/org.eclipse.sirius.interpreter</module>
+        <module>../../plugins/org.eclipse.sirius.table.ui</module>
+        <module>../../plugins/org.eclipse.sirius.table.ui.ext</module>
+        <module>../../plugins/org.eclipse.sirius.tree.ui</module>
+        <module>../../plugins/org.eclipse.sirius.tree.ui.ext</module>
+        <module>../../plugins/org.eclipse.sirius.ui</module>
+        <module>../../plugins/org.eclipse.sirius.ui.ext</module>
+        <module>../../plugins/org.eclipse.sirius.ui.editor</module>
+        <module>../../plugins/org.eclipse.sirius.tests.junit.support</module>
+        <module>../../plugins/org.eclipse.sirius.tests.swtbot.support</module>
+
+        <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily</module>
+        <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily.edit</module>
+        <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily.editor</module>
+        <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily.design</module>
+        <module>../../plugins/org.eclipse.sirius.samples.family</module>
+
+        <module>../../plugins/org.eclipse.sirius.common.interpreter</module>
+        <module>../../plugins/org.eclipse.sirius.common.interpreter.aql</module>
+
+        <!-- features -->
+        <module>../../packaging/org.eclipse.sirius.aql</module>
+        <module>../../packaging/org.eclipse.sirius.doc.feature</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.eef</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.acceleo</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.ui</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
+        <module>../../packaging/org.eclipse.sirius.samples</module>
+        <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.acceleo</module>
+        <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.aql</module>
+        <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
+        <module>../../packaging/org.eclipse.sirius.tests.support</module>
+        
+        <module>../../packaging/org.eclipse.sirius.interpreter.feature</module>
+
+        <!-- Test metamodels and modelers -->
+        <module>../../plugins/org.eclipse.sirius.sample.ecore.design</module>
+        <module>../../plugins/org.eclipse.sirius.sample.interactions</module>
+        <module>../../plugins/org.eclipse.sirius.sample.interactions.design</module>
+        <module>../../plugins/org.eclipse.sirius.sample.interactions.edit</module>
+        <module>../../plugins/org.eclipse.sirius.sample.interactions.editor</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.benchmark</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.design</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.edit</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.editor</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.migration</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.migration.design</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.component</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.component.design</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.scxml</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.scxml.design</module>
+        <module>../../plugins/org.eclipse.sirius.tests.junit</module>
+        <module>../../plugins/org.eclipse.sirius.tests.tree</module>
+        <module>../../plugins/org.eclipse.sirius.tests.swtbot</module>
+        <!-- features -->
+        <module>../../packaging/org.eclipse.sirius.tests</module>
+
+        <!-- update sites -->
+        <module>../../packaging/org.eclipse.sirius.tests.update</module>
+     </modules>
+    </profile>
+
+    <profile>
       <id>rcptt</id>
       <activation>
         <activeByDefault>false</activeByDefault>

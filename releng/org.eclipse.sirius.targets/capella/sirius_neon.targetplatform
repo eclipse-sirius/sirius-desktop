@@ -1,0 +1,46 @@
+target "sirius_capella_neon"
+
+include "../modules/orbit.tpd"
+include "../modules/swtbot-2.1.tpd"
+include "../modules/shared-license.tpd"
+include "../modules/aql-3.7.tpd"
+include "../modules/acceleo-3.7.tpd"
+
+with source, requirements
+
+location Sirius-Neon-Master "http://download.eclipse.org/sirius/updates/nightly/5.1.x/neon/" {
+    org.eclipse.sirius.common.interpreter lazy
+}
+
+location Sirius-Query-Legacy-1.1.0 "http://download.eclipse.org/sirius/updates/legacy/1.1.0" {
+    org.eclipse.sirius.query.legacy.feature.feature.group lazy
+    org.eclipse.sirius.query.legacy.feature.source.feature.group lazy
+}
+
+location Eclipse-Neon "http://download.eclipse.org/releases/neon" {
+    com.google.guava lazy
+    com.ibm.icu lazy
+    org.eclipse.draw2d.sdk.feature.group lazy
+    org.eclipse.emf.common.feature.group lazy
+    org.eclipse.emf.compare.feature.group lazy
+    org.eclipse.emf.ecore.feature.group lazy
+    org.eclipse.emf.edit.feature.group lazy
+    org.eclipse.emf.eef.runtime lazy
+    org.eclipse.emf.feature.group lazy
+    org.eclipse.emf.sdk.feature.group lazy
+    org.eclipse.emf.transaction.feature.group lazy
+    org.eclipse.emf.transaction.sdk.feature.group lazy
+    org.eclipse.emf.validation.sdk.feature.group lazy
+    org.eclipse.emf.workspace.feature.group lazy
+    org.eclipse.equinox.sdk.feature.group lazy
+    org.eclipse.gef.feature.group lazy
+    org.eclipse.gef.sdk.feature.group lazy
+    org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
+    org.eclipse.gmf.runtime.sdk.feature.group lazy
+    org.eclipse.ocl.all.feature.group lazy
+    org.eclipse.ocl.core.sdk.feature.group lazy
+    org.eclipse.platform.feature.group lazy
+    org.eclipse.sdk.feature.group lazy
+    org.eclipse.xtext.sdk.feature.group lazy
+    org.eclipse.uml2.sdk.feature.group lazy
+}
