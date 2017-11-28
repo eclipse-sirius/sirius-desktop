@@ -27,8 +27,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 
-import com.google.common.collect.Sets;
-
 /**
  * An utility class to convert types denotations.
  * 
@@ -83,11 +81,11 @@ public final class TypesUtil {
     }
 
     private static Collection<IType> searchEClassifierType(IQueryEnvironment queryEnvironment, TypeName targetTypeName) {
-        Collection<IType> types = Sets.newLinkedHashSet();
+        Collection<IType> types = new LinkedHashSet<>();
         if (targetTypeName.getJavaClass().some()) {
             types.add(new ClassType(queryEnvironment, targetTypeName.getJavaClass().get()));
         } else {
-            Collection<EClassifier> found = Sets.newLinkedHashSet();
+            Collection<EClassifier> found = new LinkedHashSet<>();
             if (targetTypeName.getPackagePrefix().some()) {
                 String typeName = targetTypeName.getClassifierName();
                 String name = targetTypeName.getPackagePrefix().get();

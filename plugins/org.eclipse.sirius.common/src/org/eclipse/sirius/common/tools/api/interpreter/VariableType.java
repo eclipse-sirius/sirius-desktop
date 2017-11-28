@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.tools.api.interpreter;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -146,7 +147,7 @@ public final class VariableType {
         if (types.size() > 1) {
 
             Iterator<TypeName> typeNameIt = types.iterator();
-            Set<EClass> commonSuperTypes = Sets.newLinkedHashSet();
+            Set<EClass> commonSuperTypes = new LinkedHashSet<>();
             if (typeNameIt.hasNext()) {
                 TypeName first = typeNameIt.next();
                 commonSuperTypes = getAllSuperTypes(first, availableEPackages);
@@ -168,7 +169,7 @@ public final class VariableType {
     }
 
     private Set<EClass> getAllSuperTypes(TypeName type, Collection<EPackage> collection) {
-        Set<EClass> allSuperTypes = Sets.newLinkedHashSet();
+        Set<EClass> allSuperTypes = new LinkedHashSet<>();
         Iterator<EClass> it = Iterators.filter(type.search(collection).iterator(), EClass.class);
         while (it.hasNext()) {
             EClass curEClass = it.next();

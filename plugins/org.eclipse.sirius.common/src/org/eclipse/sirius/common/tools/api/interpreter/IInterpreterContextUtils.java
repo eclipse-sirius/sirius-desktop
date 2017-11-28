@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.tools.api.interpreter;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -49,7 +50,7 @@ public final class IInterpreterContextUtils {
         Set<String> projectsOrBundleInScope = collectProjectsOrPlugins(context);
         interpreter.setProperty(IInterpreter.FILES, projectsOrBundleInScope);
 
-        Collection<MetamodelDescriptor> availableMetamodels = Sets.newLinkedHashSet();
+        Collection<MetamodelDescriptor> availableMetamodels = new LinkedHashSet<>();
         for (EPackage pak : context.getAvailableEPackages()) {
             if (pak != null && pak.eResource() != null) {
                 availableMetamodels.add(new EcoreMetamodelDescriptor(pak));
@@ -69,7 +70,7 @@ public final class IInterpreterContextUtils {
          * use the VSM resource to declare dependent project/bundles.
          */
         EObject vsmElement = context.getElement();
-        Set<String> projectsOrBundleInScope = Sets.newLinkedHashSet();
+        Set<String> projectsOrBundleInScope = new LinkedHashSet<>();
         if (vsmElement != null && vsmElement.eResource() != null) {
             collectProjectName(vsmElement.eResource(), projectsOrBundleInScope);
             if (vsmElement.eResource().getResourceSet() != null) {
@@ -122,7 +123,7 @@ public final class IInterpreterContextUtils {
     }
 
     private static Set<String> collectNSUris(IInterpreterContext a) {
-        Set<String> aNSURI = Sets.newLinkedHashSet();
+        Set<String> aNSURI = new LinkedHashSet<>();
         for (EPackage pak : a.getAvailableEPackages()) {
             String nsURI = pak.getNsURI();
             if (!StringUtil.isEmpty(nsURI)) {

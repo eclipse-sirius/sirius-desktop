@@ -10,15 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.swtbot.uml.UmlClassDragAndDropTest;
 import org.eclipse.sirius.tests.swtbot.uml.UmlPackageDragAndDropTest;
 import org.eclipse.sirius.tests.swtbot.uml.UmlPortDragAndDropTest;
 import org.eclipse.sirius.tests.swtbot.uml.UmlPortMoveTest;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * 

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -27,7 +28,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -90,7 +90,7 @@ public class DeleteWithoutToolTask extends AbstractCompoundTask {
 
     @Override
     protected List<ICommandTask> prepareSubTasks() {
-        List<ICommandTask> subTasks = Lists.newArrayList();
+        List<ICommandTask> subTasks = new ArrayList<>();
         Option<DRepresentation> parentRepresentation = new EObjectQuery(element).getRepresentation();
         if (parentRepresentation.some()) {
 

@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.find;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import com.google.common.collect.Lists;
 
 /**
  * Abstract state machine which filters a list of labels according to a search
@@ -46,7 +45,7 @@ public abstract class AbstractFindLabelEngine {
     public AbstractFindLabelEngine() {
         lastSearchIndex = 0;
         lastSearchText = ""; //$NON-NLS-1$
-        lastFilteredLabels = Lists.newArrayList();
+        lastFilteredLabels = new ArrayList<>();
         direction = FORWARD;
     }
 

@@ -15,6 +15,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -90,8 +91,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
-import com.google.common.collect.Maps;
 
 import junit.framework.TestCase;
 
@@ -1356,7 +1355,7 @@ public class ProfiledCommandFactory {
              */
             protected Map<Object, Object> lowMemoryOptions() {
 
-                Map<Object, Object> options = Maps.newHashMap();
+                Map<Object, Object> options = new HashMap<>();
                 options.put(Transaction.OPTION_NO_UNDO, Boolean.TRUE);
                 options.put(Transaction.OPTION_NO_TRIGGERS, Boolean.TRUE);
                 options.put(Transaction.OPTION_NO_NOTIFICATIONS, Boolean.TRUE);
@@ -1418,7 +1417,7 @@ public class ProfiledCommandFactory {
     }
 
     private Map<?, ?> getSaveOptions() {
-        final Map<Object, Object> options = Maps.newHashMap();
+        final Map<Object, Object> options = new HashMap<>();
         options.put(XMLResource.OPTION_USE_FILE_BUFFER, true);
         options.put(XMLResource.OPTION_FLUSH_THRESHOLD, true);
         return options;

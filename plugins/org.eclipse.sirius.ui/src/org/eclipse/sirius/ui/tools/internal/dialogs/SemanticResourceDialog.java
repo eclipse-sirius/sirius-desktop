@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.dialogs;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,7 +33,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Shell;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Specific resource dialog to avoid representation file selection. The browse
@@ -67,7 +67,7 @@ public class SemanticResourceDialog extends ResourceDialog {
 
     @Override
     protected boolean processResources() {
-        final List<URI> representationFiles = Lists.newArrayList();
+        final List<URI> representationFiles = new ArrayList<>();
         final List<URI> urIs = getURIs();
         for (URI uri : urIs) {
             if (new FileQuery(uri.fileExtension()).isSessionResourceFile()) {

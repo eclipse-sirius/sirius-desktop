@@ -14,7 +14,9 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.support.api.TreeTestCase;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -22,9 +24,6 @@ import org.junit.Assert;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.support.api.TreeTestCase;
 
 /**
  * Tests for ensuring that the Tree Item Edition Tool works as expected.

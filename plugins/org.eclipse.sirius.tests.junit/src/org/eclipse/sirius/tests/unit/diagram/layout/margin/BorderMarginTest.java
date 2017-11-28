@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.diagram.layout.margin;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,8 +52,6 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
-import com.google.common.collect.Maps;
 
 /**
  * Test border margin computation for Container and Lists edit parts. The margin
@@ -247,7 +246,7 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
         // Open "auto-size" diagram to retrieve the real figure size
         // according to each OS (fonts have not the same size on each OS)
         openDiagram(AUTO_SIZE);
-        Map<EObject, Map<DiagramElementMapping, Dimension>> autoSizedDimensions = Maps.newHashMap();
+        Map<EObject, Map<DiagramElementMapping, Dimension>> autoSizedDimensions = new HashMap<>();
 
         List<DDiagramElement> autoSizedOwnedDiagramElements = diagram.getOwnedDiagramElements();
         for (int i = 0; i < autoSizedOwnedDiagramElements.size(); i++) {
@@ -257,7 +256,7 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
             Dimension figureSize = part.getFigure().getBounds().getSize();
             Map<DiagramElementMapping, Dimension> currentSemanticDimensions = autoSizedDimensions.get(dde.getTarget());
             if (autoSizedDimensions.get(dde.getTarget()) == null) {
-                currentSemanticDimensions = Maps.newHashMap();
+                currentSemanticDimensions = new HashMap<>();
                 autoSizedDimensions.put(dde.getTarget(), currentSemanticDimensions);
             }
             currentSemanticDimensions.put(dde.getDiagramElementMapping(), figureSize);

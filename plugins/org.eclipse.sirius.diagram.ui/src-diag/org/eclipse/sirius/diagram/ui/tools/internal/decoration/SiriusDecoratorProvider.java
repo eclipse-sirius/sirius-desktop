@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.decoration;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
@@ -18,6 +19,7 @@ import org.eclipse.gmf.runtime.common.core.service.AbstractProvider;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.CreateDecoratorsOperation;
+import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
@@ -25,8 +27,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationDescriptorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationProviderRegistry;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
-import com.google.common.collect.Sets;
 
 /**
  * This {@link IDecoratorProvider} should be the only one for Sirius Diagram. Indeed, it will install a
@@ -98,7 +98,7 @@ public class SiriusDecoratorProvider extends AbstractProvider implements IDecora
     public void createDecorators(IDecoratorTarget decoratorTarget) {
         final EditPart editPart = decoratorTarget.getAdapter(EditPart.class);
         if (editPart instanceof IDiagramElementEditPart) {
-            Set<SiriusDecorationDescriptorProvider> decorationDescriptorProviders = Sets.newHashSet();
+            Set<SiriusDecorationDescriptorProvider> decorationDescriptorProviders = new HashSet<>();
             for (SiriusDecorationDescriptorProvider decorationDescriptorProvider : SiriusDecorationProviderRegistry.INSTANCE.getDecorationDescriptorProviders()) {
                 if (decorationDescriptorProvider.provides((IDiagramElementEditPart) editPart)) {
                     decorationDescriptorProviders.add(decorationDescriptorProvider);

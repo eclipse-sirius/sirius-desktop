@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.session;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistryFilter;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import junit.framework.TestCase;
 
 public class SiriusRegistryTests extends TestCase {
 

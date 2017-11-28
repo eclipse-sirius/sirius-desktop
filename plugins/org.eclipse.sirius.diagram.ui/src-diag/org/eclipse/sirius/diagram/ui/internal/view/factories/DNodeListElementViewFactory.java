@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.view.factories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -24,8 +25,6 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSync
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
-import com.google.common.collect.Lists;
-
 /**
  * @was-generated
  */
@@ -36,7 +35,7 @@ public class DNodeListElementViewFactory extends AbstractLabelViewFactory {
      */
     @Override
     protected List<?> createStyles(View view) {
-        List<Style> styles = Lists.newArrayList();
+        List<Style> styles = new ArrayList<>();
         styles.add(NotationFactory.eINSTANCE.createFontStyle());
         return styles;
     }

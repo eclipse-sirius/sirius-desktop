@@ -12,8 +12,6 @@ package org.eclipse.sirius.tests.unit.common.interpreter;
 
 import java.util.List;
 
-import junit.framework.TestCase;
-
 import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
@@ -27,6 +25,8 @@ import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContext
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+
+import junit.framework.TestCase;
 
 /**
  * Tests for {@link CompoundInterpreter}

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
@@ -20,6 +18,8 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+
+import junit.framework.TestCase;
 
 /**
  * Test to add a DAnnotation to a representation (Diagram, tree, table and

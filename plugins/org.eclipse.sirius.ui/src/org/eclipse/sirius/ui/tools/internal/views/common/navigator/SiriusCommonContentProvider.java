@@ -14,9 +14,12 @@ package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -76,7 +79,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Sirius content provider for common navigator.
@@ -99,7 +101,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
     private IDoubleClickListener doubleClickListener;
 
-    private Collection<RefreshViewerTrigger> viewerRefreshTriggers = Sets.newHashSet();
+    private Collection<RefreshViewerTrigger> viewerRefreshTriggers = new HashSet<>();
 
     // This field will be set to false when a call to default content provider
     // is done, it allows to call children from extensions only once.
@@ -184,7 +186,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
      */
     @Override
     public Object[] getChildren(Object parentElement) {
-        Collection<Object> allChildren = Lists.newArrayList();
+        Collection<Object> allChildren = new ArrayList<>();
         // Init view extension getChildren call detection.
         shouldAskExtension = true;
 
@@ -217,7 +219,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     private Collection<Object> doGetFileChildren(IFile parentFile) {
-        final Collection<Object> fileChildren = Lists.newArrayList();
+        final Collection<Object> fileChildren = new ArrayList<>();
         IProject parentProject = parentFile.getProject();
         if (parentProject == null) {
             return fileChildren;
@@ -311,7 +313,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     private List<Object> doGetChildrenForTransientSession(Session transientSession, IFile semanticFile) {
-        List<Object> children = Lists.newArrayList();
+        List<Object> children = new ArrayList<>();
         if (defaultContentProvider != null && semanticFile != null && semanticFile.getFullPath() != null) {
             URI semUri = getFileUri(semanticFile);
             for (Object child : safeGetDefaultContentProviderChildren(transientSession, semanticFile)) {
@@ -564,7 +566,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
      *            session to refresh
      */
     private void updateViewer(Session session) {
-        Collection<IResource> resourcesToUpdate = Sets.newLinkedHashSet();
+        Collection<IResource> resourcesToUpdate = new LinkedHashSet<>();
 
         if (session != null) {
             Iterable<Resource> resources = Iterables.concat(session.getAllSessionResources(), session.getSemanticResources());
@@ -653,7 +655,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     private Set<IProject> getProjectsToRefresh(Session session) {
-        Set<IProject> projectsToRefresh = Sets.newHashSet();
+        Set<IProject> projectsToRefresh = new HashSet<>();
 
         if (session != null) {
             Iterable<Resource> resources = Iterables.concat(session.getAllSessionResources(), session.getSemanticResources());
@@ -1003,11 +1005,11 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     private class RefreshViewerTriggerScope implements Predicate<Notification> {
         private final Session session;
 
-        private Set<Resource> allSemanticResources = Sets.newHashSet();
+        private Set<Resource> allSemanticResources = new HashSet<>();
 
         RefreshViewerTriggerScope(Session session) {
             this.session = session;
-            allSemanticResources = Sets.newHashSet();
+            allSemanticResources = new HashSet<>();
             allSemanticResources.addAll(session.getSemanticResources());
             if (session instanceof DAnalysisSessionEObject) {
                 allSemanticResources.addAll(((DAnalysisSessionEObject) session).getControlledResources());

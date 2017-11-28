@@ -16,6 +16,7 @@ import static org.junit.Assert.assertSame;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.EMFPlugin;
@@ -40,7 +41,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.google.common.base.Function;
-import com.google.common.collect.Maps;
 
 /**
  * Unit tests for the in-place model {@link Updater}.
@@ -112,7 +112,7 @@ public class UpdaterTest {
         Copier copier = new EcoreUtil.Copier();
         EObject v1Copy = copier.copy(v1);
         copier.copyReferences();
-        final Map<EObject, Object> inputIds = Maps.newHashMap();
+        final Map<EObject, Object> inputIds = new HashMap<>();
         addIntrinsicIds(v0, inputIds);
         for (EObject obj : AllContents.of(v1, true)) {
             inputIds.put(copier.get(obj), getIntrinsicId(obj));

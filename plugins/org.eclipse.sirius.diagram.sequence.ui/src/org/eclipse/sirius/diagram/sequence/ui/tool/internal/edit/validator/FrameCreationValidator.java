@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -108,7 +109,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
         this.sequenceDiagramQuery = new SequenceDiagramQuery(sequenceDiagram);
         this.sequenceEventsInCreationRange = HashMultimap.create();
         this.eventsToShift = Sets.newTreeSet(new RangeComparator());
-        this.localParents = Sets.newHashSet();
+        this.localParents = new HashSet<>();
     }
 
     @Override
@@ -215,7 +216,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
     }
 
     private void computeCoverage() {
-        coverage = Sets.newLinkedHashSet();
+        coverage = new LinkedHashSet<>();
 
         Set<Lifeline> graphicallyCoveredLifelines = sequenceDiagram.getGraphicallyCoveredLifelines(creationBounds);
         Object originalTarget = request.getExtendedData().get(ORIGINAL_TARGET);
@@ -242,7 +243,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
     }
 
     private boolean categorizeOverlappedEvents(Range creationRange) {
-        Set<ISequenceEvent> checkedSequenceEvents = Sets.newHashSet();
+        Set<ISequenceEvent> checkedSequenceEvents = new HashSet<>();
         for (Lifeline lifeline : coverage) {
             categorizeOverlappedEvents(lifeline, creationRange, checkedSequenceEvents);
         }

@@ -12,7 +12,6 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.resource.ImageDescriptor;
-
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;

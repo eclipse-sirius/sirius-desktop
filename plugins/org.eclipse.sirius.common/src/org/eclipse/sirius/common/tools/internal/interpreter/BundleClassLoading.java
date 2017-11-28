@@ -11,8 +11,10 @@
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -34,9 +36,7 @@ import org.osgi.framework.wiring.BundleWiring;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 
 /**
  * A {@link ClassLoading} implementation which look for a class in a list of
@@ -109,8 +109,8 @@ public class BundleClassLoading implements ClassLoading {
 
     @Override
     public Collection<EPackageLoadingCallback.EPackageDeclarationSource> findEcoreDeclarations(Set<String> projects, Set<String> plugins) {
-        Set<String> analyzed = Sets.newLinkedHashSet();
-        Set<String> bundlesIDependOn = Sets.newLinkedHashSet();
+        Set<String> analyzed = new LinkedHashSet<>();
+        Set<String> bundlesIDependOn = new LinkedHashSet<>();
 
         for (String currentBundle : Iterables.concat(plugins, projects)) {
             addDependencies(currentBundle, analyzed, bundlesIDependOn);
@@ -128,7 +128,7 @@ public class BundleClassLoading implements ClassLoading {
      *         those bundles.
      */
     protected Collection<EPackageLoadingCallback.EPackageDeclarationSource> getEPackagesDeclaredInBundles(Collection<String> bundles) {
-        Collection<EPackageLoadingCallback.EPackageDeclarationSource> result = Lists.newArrayList();
+        Collection<EPackageLoadingCallback.EPackageDeclarationSource> result = new ArrayList<>();
         if (EMFPlugin.IS_ECLIPSE_RUNNING) {
             final IExtensionRegistry reg = Platform.getExtensionRegistry();
             Multimap<String, EPackageDeclaration> contributions = HashMultimap.create();
@@ -197,7 +197,7 @@ public class BundleClassLoading implements ClassLoading {
      *         set if the bundle has not been found.
      */
     protected Set<String> getBundleDependencies(String bundleSymbolicName) {
-        Set<String> dependencies = Sets.newLinkedHashSet();
+        Set<String> dependencies = new LinkedHashSet<>();
         Bundle currentBundle = Platform.getBundle(bundleSymbolicName);
         if (currentBundle != null) {
             BundleWiring wiring = currentBundle.adapt(BundleWiring.class);

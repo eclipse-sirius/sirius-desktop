@@ -231,7 +231,6 @@ import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -514,8 +513,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // Activate only the first time
         if (diagram != null && !diagram.isSetActivatedTransientLayers()) {
             // activate layer
-            List<AdditionalLayer> transientLayersToActivate = Lists.newArrayList();
-            LayerHelper.getInitialActiveLayers(diagram.getDescription(), session.getSelectedViewpoints(false), Lists.newArrayList(), transientLayersToActivate);
+            List<AdditionalLayer> transientLayersToActivate = new ArrayList<>();
+            LayerHelper.getInitialActiveLayers(diagram.getDescription(), session.getSelectedViewpoints(false), new ArrayList<>(), transientLayersToActivate);
 
             org.eclipse.emf.common.command.CommandStack commandStack = session.getTransactionalEditingDomain().getCommandStack();
             //@formatter:off

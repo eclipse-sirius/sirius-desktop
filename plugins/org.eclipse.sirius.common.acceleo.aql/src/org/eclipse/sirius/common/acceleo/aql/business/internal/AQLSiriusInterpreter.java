@@ -11,9 +11,12 @@
 package org.eclipse.sirius.common.acceleo.aql.business.internal;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -72,9 +75,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * A Sirius interpreter using the Acceleo Query Language. It only supports
@@ -162,7 +162,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
     @Override
     public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
-        Set<EPackage> additionalEPackages = Sets.newLinkedHashSet();
+        Set<EPackage> additionalEPackages = new LinkedHashSet<>();
         for (MetamodelDescriptor descriptor : metamodels) {
             if (descriptor instanceof EcoreMetamodelDescriptor) {
                 EPackage pkg = ((EcoreMetamodelDescriptor) descriptor).resolve();
@@ -281,11 +281,11 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
                 @Override
                 public Map<String, VariableType> getInferredVariableTypes(Boolean value) {
-                    Map<String, VariableType> mapResult = Maps.newLinkedHashMap();
+                    Map<String, VariableType> mapResult = new LinkedHashMap<>();
                     Map<String, Set<IType>> types = aqlValidationResult.getInferredVariableTypes(aqlValidationResult.getAstResult().getAst(), value);
                     Iterator<Map.Entry<String, Set<IType>>> it = types.entrySet().iterator();
                     while (it.hasNext()) {
-                        Set<EClassifier> eClassifiers = Sets.newLinkedHashSet();
+                        Set<EClassifier> eClassifiers = new LinkedHashSet<>();
                         Map.Entry<String, Set<IType>> entry = it.next();
                         for (IType type : entry.getValue()) {
                             if (type.getType() instanceof EClassifier) {
@@ -309,8 +309,8 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
                 }
                 result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, severity, message.getMessage()));
             }
-            List<EClassifier> classifierNames = Lists.newArrayList();
-            List<Class<?>> javaClasses = Lists.newArrayList();
+            List<EClassifier> classifierNames = new ArrayList<>();
+            List<Class<?>> javaClasses = new ArrayList<>();
             for (IType type : aqlValidationResult.getPossibleTypes(aqlValidationResult.getAstResult().getAst())) {
                 IType actualType = type;
                 /*

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.contribution;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -34,7 +35,6 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Locates all the representation extensions which apply to some representation
@@ -107,7 +107,7 @@ public class RepresentationExtensionsFinder {
      */
     public LinkedHashSet<Viewpoint> findAllRelevantViewpoints(Session session) {
         RepresentationDescription mainRepresentationDescription = extensionTarget;
-        LinkedHashSet<Viewpoint> result = Sets.newLinkedHashSet();
+        LinkedHashSet<Viewpoint> result = new LinkedHashSet<>();
         Viewpoint mainVP = new RepresentationDescriptionQuery(mainRepresentationDescription).getParentViewpoint();
         if (mainVP != null) {
             BiMap<URI, Viewpoint> candidates = HashBiMap.create();
@@ -159,7 +159,7 @@ public class RepresentationExtensionsFinder {
     }
 
     private List<RepresentationExtensionDescription> findApplicableExtensions(Iterable<Viewpoint> context, String targetSiriusURI, String targetRepresentationName) {
-        List<RepresentationExtensionDescription> result = Lists.newArrayList();
+        List<RepresentationExtensionDescription> result = new ArrayList<>();
         for (Viewpoint vp : context) {
             for (RepresentationExtensionDescription ext : vp.getOwnedRepresentationExtensions()) {
                 if (appliesTo(ext, targetSiriusURI, targetRepresentationName)) {

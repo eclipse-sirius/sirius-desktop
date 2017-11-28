@@ -12,8 +12,6 @@ package org.eclipse.sirius.tests.unit.diagram.operations;
 
 import java.util.Iterator;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -36,6 +34,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 import com.google.common.collect.Lists;
+
+import junit.framework.TestCase;
 
 /**
  * Test elementary operations.

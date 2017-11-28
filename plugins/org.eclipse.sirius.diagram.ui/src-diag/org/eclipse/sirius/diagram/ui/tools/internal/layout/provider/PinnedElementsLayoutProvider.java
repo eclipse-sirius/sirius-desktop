@@ -104,7 +104,7 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
 
         // Finds if there are unpinned diagram elements to keep fixed stored in
         // the LayoutHint as a Collection
-        ArrayList<IDiagramElementEditPart> elementsToKeepFixed = Lists.newArrayList();
+        ArrayList<IDiagramElementEditPart> elementsToKeepFixed = new ArrayList<>();
         if (layoutHint.getAdapter(Collection.class) instanceof ArrayList<?>
                 && Iterables.all((ArrayList<?>) layoutHint.getAdapter(Collection.class), validateAllElementInArrayListAreIDiagramElementEditPart)) {
             elementsToKeepFixed = (ArrayList<IDiagramElementEditPart>) layoutHint.getAdapter(Collection.class);

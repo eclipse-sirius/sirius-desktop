@@ -32,8 +32,6 @@ import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
-import com.google.common.collect.Lists;
-
 /**
  * Constraint to validate image references.
  * 
@@ -75,7 +73,7 @@ public class ValidImageConstraint extends AbstractConstraint {
     }
 
     private IStatus validateImagePath(IValidationContext ctx, ResourceSet rs, String path) {
-        Collection<IStatus> failures = Lists.newArrayList();
+        Collection<IStatus> failures = new ArrayList<>();
         // when path is empty, success (even when a path is needed, because
         // there is another validation rule for that)
         if (!StringUtil.isEmpty(path)) {

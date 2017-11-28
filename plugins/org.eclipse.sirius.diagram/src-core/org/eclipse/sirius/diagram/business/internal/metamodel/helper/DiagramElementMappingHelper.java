@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -46,7 +47,6 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Utility class to factor customizations for DiagramElementMapping and related.
@@ -75,7 +75,7 @@ public final class DiagramElementMappingHelper {
      *            the current interpreter.
      */
     public static void refreshSemanticElements(DiagramElementMapping self, DDiagramElement dde, final IInterpreter interpreter) {
-        Collection<EObject> semanticElements = Lists.newArrayList();
+        Collection<EObject> semanticElements = new ArrayList<>();
 
         if (!StringUtil.isEmpty(self.getSemanticElements())) {
             semanticElements = DiagramElementMappingHelper.evaluateSemanticElements(self, dde, interpreter);
@@ -251,7 +251,7 @@ public final class DiagramElementMappingHelper {
 
     @SuppressWarnings("unchecked")
     private static Iterator<EObject> extEAllContents(final EObject eObj) {
-        List<Iterator<EObject>> eAllContentsIterators = Lists.newArrayList();
+        List<Iterator<EObject>> eAllContentsIterators = new ArrayList<>();
         final ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(eObj);
         final Session session = SessionManager.INSTANCE.getSession(eObj);
         for (final Resource resource : session.getSemanticResources()) {

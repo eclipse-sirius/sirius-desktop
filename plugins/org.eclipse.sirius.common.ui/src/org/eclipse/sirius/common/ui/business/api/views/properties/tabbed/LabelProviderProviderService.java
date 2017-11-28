@@ -11,7 +11,6 @@
 package org.eclipse.sirius.common.ui.business.api.views.properties.tabbed;
 
 import org.eclipse.jface.viewers.ILabelProvider;
-
 import org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed.LabelProviderProviderDescriptor;
 import org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed.LabelProviderProviderRegistry;
 

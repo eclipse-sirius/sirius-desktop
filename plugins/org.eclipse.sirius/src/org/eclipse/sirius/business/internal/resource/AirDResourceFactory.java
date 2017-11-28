@@ -26,8 +26,6 @@ import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersion
 import org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker;
 import org.osgi.framework.Version;
 
-import com.google.common.collect.Maps;
-
 /**
  * A resource factory decorator to set XMI encodings.
  * 
@@ -97,7 +95,7 @@ public class AirDResourceFactory extends SiriusResourceFactory {
         loadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, true);
         loadOptions.put(XMLResource.OPTION_USE_DEPRECATED_METHODS, false);
         loadOptions.put(XMLResource.OPTION_USE_PARSER_POOL, new XMLParserPoolImpl(true));
-        loadOptions.put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, Maps.newHashMap());
+        loadOptions.put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, new HashMap<>());
 
         // extendedMetaData and resourceHandler
 

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.layout;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
@@ -24,7 +25,6 @@ import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
 
 /**
  * Computes the appropriate graphical locations of sequence events and lifelines
@@ -59,7 +59,7 @@ public abstract class AbstractSequenceLayout<S, T> {
     public AbstractSequenceLayout(SequenceDiagram sequenceDiagram) {
         this.sequenceDiagram = sequenceDiagram;
 
-        this.oldLayoutData = Maps.newHashMap();
+        this.oldLayoutData = new HashMap<>();
     }
 
     /**

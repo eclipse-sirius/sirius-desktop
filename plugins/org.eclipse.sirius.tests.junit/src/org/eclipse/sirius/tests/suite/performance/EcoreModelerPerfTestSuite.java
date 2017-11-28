@@ -10,15 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.performance;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.unit.perf.scenario.modeler.ecore.EntitiesDiagramDeletePerfsTests;
 import org.eclipse.sirius.tests.unit.perf.scenario.modeler.ecore.EntitiesDiagramLayersPerfsTests;
 import org.eclipse.sirius.tests.unit.perf.scenario.modeler.ecore.EntitiesDiagramOpenPerfsTests;
 import org.eclipse.sirius.tests.unit.perf.scenario.modeler.ecore.EntitiesDiagramRefreshPerfTests;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 public class EcoreModelerPerfTestSuite extends TestCase {
 

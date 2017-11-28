@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -153,7 +153,7 @@ public class SequenceToolInterpretedExpressionSwitch extends ToolSwitch<Option<C
         case ToolPackage.MESSAGE_CREATION_TOOL__PRECONDITION:
         case ToolPackage.MESSAGE_CREATION_TOOL__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
-            Collection<String> targets = Sets.newLinkedHashSet();
+            Collection<String> targets = new LinkedHashSet<>();
             for (RepresentationElementMapping correspondingMapping : Iterables.concat(object.getEdgeMappings(), object.getExtraSourceMappings())) {
                 Option<Collection<String>> targetsFromMapping = globalSwitch.doSwitch(correspondingMapping, false);
                 if (targetsFromMapping.some()) {
@@ -178,7 +178,7 @@ public class SequenceToolInterpretedExpressionSwitch extends ToolSwitch<Option<C
         case ToolPackage.REORDER_TOOL__PRECONDITION:
         case ToolPackage.REORDER_TOOL__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
-            Collection<String> targets = Sets.newLinkedHashSet();
+            Collection<String> targets = new LinkedHashSet<>();
             for (EventMapping correspondingMapping : object.getMappings()) {
                 Option<Collection<String>> targetsFromMapping = globalSwitch.doSwitch(correspondingMapping, false);
                 if (targetsFromMapping.some()) {
@@ -203,7 +203,7 @@ public class SequenceToolInterpretedExpressionSwitch extends ToolSwitch<Option<C
         case ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PRECONDITION:
         case ToolPackage.INSTANCE_ROLE_REORDER_TOOL__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
-            Collection<String> targets = Sets.newLinkedHashSet();
+            Collection<String> targets = new LinkedHashSet<>();
             for (InstanceRoleMapping correspondingMapping : object.getMappings()) {
                 Option<Collection<String>> targetsFromMapping = globalSwitch.doSwitch(correspondingMapping, false);
                 if (targetsFromMapping.some()) {

@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.table;
 
+import org.eclipse.sirius.tests.unit.api.vsm.interpreted.expression.variables.TableVariablesTest;
+import org.eclipse.sirius.tests.unit.table.unit.vsm.color.TableColorTest;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-
-import org.eclipse.sirius.tests.unit.api.vsm.interpreted.expression.variables.TableVariablesTest;
-import org.eclipse.sirius.tests.unit.table.unit.vsm.color.TableColorTest;
 
 public class AllTableStandaloneTests {
 

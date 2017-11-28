@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.common.interpreter.variable;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,7 +29,6 @@ import org.eclipse.sirius.tests.unit.common.interpreter.AbstractCompletionTestCa
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
-import com.google.common.collect.Sets;
 
 /**
  * Tests for the {@link VariableInterpreter} utility class.
@@ -154,7 +154,7 @@ public class VariableCompletionTests extends AbstractCompletionTestCase {
         // implicit context
         List<ContentProposal> contentProposals = getProposals(cc);
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("self");
 
@@ -170,7 +170,7 @@ public class VariableCompletionTests extends AbstractCompletionTestCase {
 
         List<ContentProposal> contentProposals = getProposals(cic);
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("self");
 
@@ -187,7 +187,7 @@ public class VariableCompletionTests extends AbstractCompletionTestCase {
 
         List<ContentProposal> contentProposals = getProposals(cc);
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.add("self");
 
         checkCompletionProposal(dNode.eClass(), contentProposals, vars);
@@ -201,7 +201,7 @@ public class VariableCompletionTests extends AbstractCompletionTestCase {
         ContentInstanceContext cic = new ContentInstanceContext(dNode, "var:", 4);
         List<ContentProposal> contentProposals = getProposals(cic);
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("self");
 

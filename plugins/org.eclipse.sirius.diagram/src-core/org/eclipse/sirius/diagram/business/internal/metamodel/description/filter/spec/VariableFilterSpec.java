@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.description.filte
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.TypedVariable;
 
 import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 
 /**
@@ -116,7 +116,7 @@ public class VariableFilterSpec extends VariableFilterImpl {
     private void getVariablesFromDiagram(final DDiagram dDiagram) {
         if (curDiagram == null || dDiagram != curDiagram) {
             variables = ArrayListMultimap.create();
-            typedVariables = Maps.newLinkedHashMap();
+            typedVariables = new LinkedHashMap<>();
 
             if (dDiagram.getFilterVariableHistory() != null) {
                 final Iterator<VariableValue> it = dDiagram.getFilterVariableHistory().getOwnedValues().iterator();

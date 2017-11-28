@@ -12,6 +12,7 @@ package org.eclipse.sirius.synchronizer;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import com.google.common.collect.HashMultimap;
@@ -63,7 +64,7 @@ public class MappingHiearchyTable {
     }
 
     private Collection<? extends Mapping> getLeaves(Collection<? extends Mapping> mappings) {
-        Set<Mapping> hasChildren = Sets.newLinkedHashSet();
+        Set<Mapping> hasChildren = new LinkedHashSet<>();
         for (Mapping mapping : mappings) {
             if (mapping.getSuper().some()) {
                 hasChildren.add(mapping.getSuper().get());

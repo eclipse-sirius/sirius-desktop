@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -72,7 +73,6 @@ import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -101,7 +101,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * </UL>
      * .
      */
-    protected Map<View, Boolean> regionsContainersToLayoutWithImpactStatus = Maps.newHashMap();
+    protected Map<View, Boolean> regionsContainersToLayoutWithImpactStatus = new HashMap<>();
 
     /**
      * True if the snap to grid is considered as activated. In this case, the returned location, by
@@ -133,7 +133,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * @return the create {@link View}s
      */
     protected Set<View> refreshSemantic(final View view) {
-        final Set<View> createdViews = Sets.newLinkedHashSet();
+        final Set<View> createdViews = new LinkedHashSet<>();
         createdViews.addAll(refreshSemanticChildren(view, ViewUtil.resolveSemanticElement(view)));
         for (View childView : Iterables.filter(view.getChildren(), View.class)) {
             createdViews.addAll(refreshSemantic(childView));
@@ -326,8 +326,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             }
         }
 
-        Set<View> createdViews = Sets.newLinkedHashSet();
-        Set<View> createdViewsToLayout = Sets.newLinkedHashSet();
+        Set<View> createdViews = new LinkedHashSet<>();
+        Set<View> createdViewsToLayout = new LinkedHashSet<>();
         View previousCreatedView = null;
         for (ViewDescriptor viewDescriptor : descriptors) {
 
@@ -922,7 +922,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * @return list of edges
      */
     private List<Edge> getIncomingOutgoingEdges(View view) {
-        List<Edge> edgesToDelete = Lists.newArrayList();
+        List<Edge> edgesToDelete = new ArrayList<>();
         Iterables.addAll(edgesToDelete, Iterables.filter(view.getSourceEdges(), Edge.class));
         Iterables.addAll(edgesToDelete, Iterables.filter(view.getTargetEdges(), Edge.class));
 

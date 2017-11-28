@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.diagram.tools.palette;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -199,7 +200,7 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
         // that should appear on the tabbar
         Set<PaletteEntry> paletteEntriesAfterSecondCreation = getAllVisiblePaletteEntries(paleteRoot);
         differencesWithPreviousPalette = Sets.difference(paletteEntriesAfterSecondCreation, paletteEntriesAfterFilterDisablement);
-        assertEquals("As the applied creation tool did not changed filters state, the palette should be the same", Sets.newLinkedHashSet(), differencesWithPreviousPalette);
+        assertEquals("As the applied creation tool did not changed filters state, the palette should be the same", new LinkedHashSet<>(), differencesWithPreviousPalette);
         assertEquals(ERROR_MESSAGE_WHEN_PALETTE_ELEMENTS_ARE_RE_CREATED, paletteEntriesAfterSecondCreation.size(), paletteEntriesAfterFilterDisablement.size());
 
         // Step 3: we delete all nodes
@@ -215,7 +216,7 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
 
         // All other tools should have been re-used (an not re-created)
         differencesWithPreviousPalette = Sets.difference(paletteEntriesAfterDeletion, initialPaletteEntries);
-        assertEquals(ERROR_MESSAGE_WHEN_PALETTE_ELEMENTS_ARE_RE_CREATED, Sets.newLinkedHashSet(), differencesWithPreviousPalette);
+        assertEquals(ERROR_MESSAGE_WHEN_PALETTE_ELEMENTS_ARE_RE_CREATED, new LinkedHashSet<>(), differencesWithPreviousPalette);
         assertEquals(ERROR_MESSAGE_WHEN_PALETTE_ELEMENTS_ARE_RE_CREATED, initialPaletteEntries.size(), paletteEntriesAfterDeletion.size());
     }
 

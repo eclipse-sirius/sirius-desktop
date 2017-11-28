@@ -49,7 +49,6 @@ import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -149,7 +148,7 @@ public class DiagramElementMappingQuery {
      * @return the paste tools in the mapping hierarchy.
      */
     private Collection<PasteDescription> getPasteToolsInHierarchy() {
-        Collection<PasteDescription> descs = Lists.newArrayList();
+        Collection<PasteDescription> descs = new ArrayList<>();
         for (final DiagramElementMapping mappingInHier : hierachy()) {
             if (mappingInHier instanceof DragAndDropTargetDescription) {
                 descs.addAll(((PasteTargetDescription) mappingInHier).getPasteDescriptions());
@@ -166,7 +165,7 @@ public class DiagramElementMappingQuery {
      * @return the paste tools of the mapping.
      */
     public Collection<PasteDescription> getAllPasteTools() {
-        Collection<PasteDescription> pasteTools = Lists.newArrayList();
+        Collection<PasteDescription> pasteTools = new ArrayList<>();
         Collection<PasteDescription> pasteToolsInHierarchy = getPasteToolsInHierarchy();
 
         if (mapping instanceof AbstractMappingImport) {

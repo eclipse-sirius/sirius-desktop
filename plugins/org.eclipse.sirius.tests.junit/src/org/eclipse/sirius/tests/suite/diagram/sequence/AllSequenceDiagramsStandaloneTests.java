@@ -10,17 +10,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram.sequence;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.unit.common.AllContentsTests;
 import org.eclipse.sirius.tests.unit.common.ContentsTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.actions.ReorderingJavaActionTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.util.RangeTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.vsm.color.SequenceColorTest;
 import org.eclipse.sirius.tests.unit.diagram.sequence.vsm.interpreted.expression.variables.SequenceVariablesTest;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * Test suite to run all the non plug-in unit tests relative to sequence

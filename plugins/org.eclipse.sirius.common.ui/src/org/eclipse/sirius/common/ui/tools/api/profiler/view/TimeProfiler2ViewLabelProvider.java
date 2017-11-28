@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.ui.tools.api.profiler.view;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.jface.viewers.IFontProvider;
@@ -22,8 +23,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-
-import com.google.common.collect.Maps;
 
 /**
  * Label provider for the
@@ -54,7 +53,7 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
     /** The index of the average time. */
     private static final int AVERAGE = 6;
 
-    private Map<Boolean, Font> fontCache = Maps.newHashMap();
+    private Map<Boolean, Font> fontCache = new HashMap<>();
 
     @Override
     public Image getColumnImage(final Object element, final int columnIndex) {

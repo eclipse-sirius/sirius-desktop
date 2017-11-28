@@ -12,7 +12,6 @@ package org.eclipse.sirius.table.business.internal.metamodel.description.spec.ut
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;

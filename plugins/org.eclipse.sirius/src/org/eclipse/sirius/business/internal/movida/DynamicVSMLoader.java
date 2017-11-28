@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.movida;
 
 import java.text.MessageFormat;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -50,14 +51,14 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
     /**
      * The logical URIs of all the Viewpoints which are explicitly required.
      */
-    private final Set<URI> requiredViewpoints = Sets.newHashSet();
+    private final Set<URI> requiredViewpoints = new HashSet<>();
 
     /**
      * The physical URIs of all the VSMs which provide the required Viewpoints.
      */
-    private final Set<URI> requiredProviders = Sets.newHashSet();
+    private final Set<URI> requiredProviders = new HashSet<>();
 
-    private final Set<URI> protectedResources = Sets.newHashSet();
+    private final Set<URI> protectedResources = new HashSet<>();
 
     private Runnable errorHandler;
 
@@ -186,7 +187,7 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
     }
 
     private Set<URI> computeRequiredProviders() {
-        Set<URI> newProviders = Sets.newHashSet();
+        Set<URI> newProviders = new HashSet<>();
         for (URI uri : requiredViewpoints) {
             Option<URI> provider = registry.getProvider(uri);
             assert provider.some();
@@ -196,7 +197,7 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
     }
 
     private Set<Resource> getAndUnloadPotentialUnneededProviders(Set<URI> required) {
-        Set<Resource> maybeUnneeded = Sets.newHashSet();
+        Set<Resource> maybeUnneeded = new HashSet<>();
         for (Resource res : resourceSet.getResources()) {
             if (!required.contains(res.getURI()) && res.getURI().isPlatform() && !protectedResources.contains(res.getURI())) {
                 maybeUnneeded.add(res);

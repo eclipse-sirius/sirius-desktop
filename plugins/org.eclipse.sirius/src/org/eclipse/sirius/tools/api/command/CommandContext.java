@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.api.command;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Stack;
@@ -166,7 +167,7 @@ public class CommandContext {
 
         final Object result = safeInterpreter.evaluate(context.getCurrentTarget(), forOp, ToolPackage.eINSTANCE.getFor_Expression());
         if (result == null) {
-            contextTargets = Lists.newArrayList();
+            contextTargets = new ArrayList<>();
         } else if (result instanceof Collection) {
             contextTargets = Lists.newArrayList((Collection<?>) result);
         } else if (result.getClass().isArray()) {

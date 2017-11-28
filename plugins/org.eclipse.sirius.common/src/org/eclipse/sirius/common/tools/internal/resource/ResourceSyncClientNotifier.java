@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient.ResourceStatusChange;
 
 /**
  * A {@link Job} to notify {@link ResourceSyncClient}.

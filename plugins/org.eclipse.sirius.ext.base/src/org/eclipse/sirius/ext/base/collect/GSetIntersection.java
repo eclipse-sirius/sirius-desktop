@@ -10,13 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.base.collect;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -32,7 +33,7 @@ public class GSetIntersection<E> extends SetIntersection<E> {
     /**
      * The new elements.
      */
-    private Set<E> newElements = Sets.newLinkedHashSet();
+    private Set<E> newElements = new LinkedHashSet<>();
 
     /**
      * the old elements indexed by hashcode, we need to duplicate this info to
@@ -43,7 +44,7 @@ public class GSetIntersection<E> extends SetIntersection<E> {
     /**
      * list used only elements which have several equivalents in "old".
      */
-    private List<E> extraElementsToDelete = Lists.newArrayList();
+    private List<E> extraElementsToDelete = new ArrayList<>();
 
     /**
      * {@inheritDoc}
@@ -75,7 +76,7 @@ public class GSetIntersection<E> extends SetIntersection<E> {
     @Override
     public Iterable<E> getAllElements() {
         /* keep the order of new elements */
-        List<E> intersection = Lists.newArrayList();
+        List<E> intersection = new ArrayList<>();
         for (E newElement : newElements) {
             E alreadyThere = oldElements.get(newElement.hashCode());
             if (alreadyThere != null) {
@@ -93,7 +94,7 @@ public class GSetIntersection<E> extends SetIntersection<E> {
     @Override
     public Iterable<E> getKeptElements() {
         /* keep the order of new elements */
-        List<E> intersection = Lists.newArrayList();
+        List<E> intersection = new ArrayList<>();
         for (E newElement : newElements) {
             E alreadyThere = oldElements.get(newElement.hashCode());
             if (alreadyThere != null) {

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.diagram.control;
 
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
@@ -41,8 +42,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 
-import com.google.common.collect.Sets;
-
 /**
  * Tests ensuring that if Control/Uncontrol grandson when the grand father is in
  * read only, there is no pop up Read-only File Encountered was opened. This
@@ -63,7 +62,7 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
 
     class ExplicitFileModificationValidator implements IResourceChangeListener {
 
-        Set<IPath> readOnlyfullPaths = Sets.newLinkedHashSet();
+        Set<IPath> readOnlyfullPaths = new LinkedHashSet<>();
 
         public void setReadOnly(IFile file) {
             readOnlyfullPaths.add(file.getFullPath());

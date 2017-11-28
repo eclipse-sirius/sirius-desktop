@@ -14,6 +14,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,7 +86,6 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * The table dialect ui services.
@@ -275,12 +275,12 @@ public class TableDialectUIServices implements DialectUIServices {
 
     @Override
     public Collection<CommandParameter> provideTools(EObject context) {
-        return Lists.newArrayList();
+        return new ArrayList<>();
     }
 
     @Override
     public Collection<CommandParameter> provideAdditionalMappings(EObject object) {
-        return Lists.newArrayList();
+        return new ArrayList<>();
     }
 
     @Override
@@ -307,7 +307,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     @Override
     public Collection<DSemanticDecorator> getSelection(DialectEditor editor) {
-        Collection<DSemanticDecorator> selection = Sets.newLinkedHashSet();
+        Collection<DSemanticDecorator> selection = new LinkedHashSet<>();
         if (editor instanceof DTableEditor) {
             DTableEditor dEditor = (DTableEditor) editor;
             if (editor.getSite() != null && editor.getSite().getSelectionProvider() != null) {

@@ -92,7 +92,7 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
         }
     };
 
-    private ArrayList<IDiagramElementEditPart> elementsToKeepFixed = Lists.newArrayList();
+    private ArrayList<IDiagramElementEditPart> elementsToKeepFixed = new ArrayList<>();
 
     /**
      * {@inheritDoc}

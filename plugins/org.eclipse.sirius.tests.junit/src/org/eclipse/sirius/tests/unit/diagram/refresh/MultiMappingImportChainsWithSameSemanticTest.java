@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.refresh;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -33,8 +34,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import com.google.common.collect.Maps;
 
 /**
  * Test the behavior of the MappingUpdateVisitor's cache on layer (de)activation
@@ -100,8 +99,8 @@ public class MultiMappingImportChainsWithSameSemanticTest extends SiriusDiagramT
         assertEquals("The default layer only shoud be activated.", 1, diagram.getActivatedLayers().size());
         assertEquals("The test data should present only 4 diagram elements.", 4, diagram.getOwnedDiagramElements().size());
 
-        Map<DDiagramElement, Rectangle> gmfBounds = Maps.newHashMap();
-        Map<DDiagramElement, Rectangle> partBounds = Maps.newHashMap();
+        Map<DDiagramElement, Rectangle> gmfBounds = new HashMap<>();
+        Map<DDiagramElement, Rectangle> partBounds = new HashMap<>();
 
         // Register the current bounds of the DDiagramElements
         for (DDiagramElement dde : diagram.getOwnedDiagramElements()) {

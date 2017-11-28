@@ -11,11 +11,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.e3.ui.dialogs;
 
-import com.ibm.icu.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -23,6 +23,8 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.ui.internal.misc.StringMatcher;
+
+import com.ibm.icu.text.BreakIterator;
 
 /**
  * A filter used in conjunction with <code>FilteredTree</code>. In order to

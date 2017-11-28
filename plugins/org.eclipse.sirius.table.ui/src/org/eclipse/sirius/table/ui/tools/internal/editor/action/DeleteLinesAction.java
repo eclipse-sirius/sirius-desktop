@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -25,8 +26,6 @@ import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 
-import com.google.common.collect.Lists;
-
 /**
  * This action delete the lines (the corresponding semantic element).
  * 
@@ -38,7 +37,7 @@ public class DeleteLinesAction extends Action {
 
     private final ITableCommandFactory tableCommandFactory;
 
-    private final Collection<DLine> lines = Lists.newArrayList();
+    private final Collection<DLine> lines = new ArrayList<>();
 
     /**
      * Constructor.

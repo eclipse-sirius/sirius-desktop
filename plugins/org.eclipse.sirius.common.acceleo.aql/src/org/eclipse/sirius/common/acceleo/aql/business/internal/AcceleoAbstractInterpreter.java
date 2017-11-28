@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.acceleo.aql.business.internal;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -19,8 +20,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 import org.eclipse.sirius.common.tools.internal.interpreter.AbstractInterpreter;
-
-import com.google.common.collect.Sets;
 
 /**
  * An abstract class which handles the variables and classloading status.
@@ -44,7 +43,7 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
     private VariableManager variables;
 
     /** This will contain the listeners interested in our variables' status. */
-    private final Set<IVariableStatusListener> variableStatusListeners = Sets.newHashSet();
+    private final Set<IVariableStatusListener> variableStatusListeners = new HashSet<>();
 
     /**
      * Create a new Interpreter.

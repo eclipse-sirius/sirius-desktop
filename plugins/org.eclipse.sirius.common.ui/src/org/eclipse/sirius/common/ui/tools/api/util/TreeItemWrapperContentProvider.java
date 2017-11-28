@@ -13,7 +13,6 @@ package org.eclipse.sirius.common.ui.tools.api.util;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 
 /**

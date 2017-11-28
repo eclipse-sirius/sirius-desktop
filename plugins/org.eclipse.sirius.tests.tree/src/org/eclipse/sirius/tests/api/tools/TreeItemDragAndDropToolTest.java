@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -49,7 +50,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Tests for ensuring that the Tree Item DnD Tool works as expected.
@@ -112,7 +112,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
 
         // Step 2 : getting the corresponding TreeItems
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee1);
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(itemEmploye1);
 
         DTreeItem itemRichCompany1 = (DTreeItem) getFirstRepresentationElement(tree, richDepartment1);
@@ -160,7 +160,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee1);
         DTreeItem itemEmploye2 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee2);
         DTreeItem itemEmploye3 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee3);
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(itemEmploye1);
         itemSources.add(itemEmploye2);
         itemSources.add(itemEmploye3);
@@ -204,7 +204,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
 
         // Step 2 : getting the corresponding TreeItems
         DTreeItem itemRichCompany1 = (DTreeItem) getFirstRepresentationElement(tree, richDepartment1);
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(itemRichCompany1);
 
         // Step 3 : apply the tool on TreeItem
@@ -244,7 +244,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, poorEmployee1);
         DTreeItem itemEmploye2 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee2);
 
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(itemEmploye1);
         itemSources.add(itemEmploye2);
 
@@ -269,7 +269,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
 
         // Step 2 : getting the corresponding TreeItems
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee1);
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(itemEmploye1);
 
         DTreeItem itemRichCompany1 = (DTreeItem) getFirstRepresentationElement(tree, richDepartment1);
@@ -316,7 +316,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
 
         // Step 4 : getting the corresponding TreeItems
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee1);
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(itemEmploye1);
 
         DTreeItem itemRichCompany1 = (DTreeItem) getRepresentationElementWithName(tree2, "Juridiction");
@@ -354,7 +354,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         Assert.assertEquals(2000, richEmployee1.eGet(wageFeature));
 
         // Step 2 : getting the corresponding TreeItems
-        Set<EObject> semanticSources = Sets.newLinkedHashSet();
+        Set<EObject> semanticSources = new LinkedHashSet<>();
         semanticSources.add(richEmployee1);
 
         DTreeItem itemRichCompany1 = (DTreeItem) getFirstRepresentationElement(tree, richDepartment1);
@@ -364,7 +364,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         applyDnDTool(this.dropListener, semanticSources, itemRichCompany1, true);
 
         // We now get the created TreeItems from this dragAndDrop
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(getFirstRepresentationElement(tree, richEmployee1));
 
         checkDTreeItemContainment(itemSources, itemRichCompany1, true);
@@ -403,7 +403,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         Assert.assertEquals(2000, richEmployee2.eGet(wageFeature));
 
         // Step 2 : getting the corresponding TreeItems
-        Set<EObject> semanticSources = Sets.newLinkedHashSet();
+        Set<EObject> semanticSources = new LinkedHashSet<>();
         semanticSources.add(richEmployee1);
         semanticSources.add(richEmployee2);
         semanticSources.add(richEmployee3);
@@ -415,7 +415,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         applyDnDTool(this.dropListener, semanticSources, itemRichCompany1, true);
 
         // We now get the created TreeItems from this dragAndDrop
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee1);
         DTreeItem itemEmploye2 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee2);
         itemSources.add(itemEmploye1);
@@ -455,7 +455,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
 
         // Step 2 : getting the corresponding TreeItems
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee1);
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(itemEmploye1);
 
         DTreeItem itemRichCompany1 = (DTreeItem) getFirstRepresentationElement(tree, richDepartment1);
@@ -499,7 +499,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
 
         // Step 2 : getting the corresponding TreeItems
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee1);
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(itemEmploye1);
 
         DTreeItem itemRichCompany1 = (DTreeItem) getFirstRepresentationElement(tree, richDepartment1);
@@ -542,7 +542,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
 
         // Step 2 : getting the corresponding TreeItems
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee1);
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(itemEmploye1);
 
         DTreeItem itemRichCompany1 = (DTreeItem) getFirstRepresentationElement(tree, richDepartment1);
@@ -574,7 +574,7 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee1);
         DTreeItem itemEmploye2 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee2);
 
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(itemEmploye1);
         itemSources.add(itemEmploye2);
         // itemSources.add(itemEmploye3);

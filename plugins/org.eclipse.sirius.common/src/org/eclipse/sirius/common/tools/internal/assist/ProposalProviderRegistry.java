@@ -10,14 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.assist;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 
 import com.google.common.collect.Lists;
-
-import java.util.Collections;
-import java.util.List;
 
 /**
  * This will contain all of the proposal providers that can be used by the
@@ -27,7 +28,7 @@ import java.util.List;
  */
 public final class ProposalProviderRegistry {
     /** List of providers parsed from the extension point. */
-    private static final List<ProposalProviderDescriptor> DESCRIPTORS = Lists.newArrayList();
+    private static final List<ProposalProviderDescriptor> DESCRIPTORS = new ArrayList<>();
 
     /** Utility classes don't need a default constructor. */
     private ProposalProviderRegistry() {
@@ -55,7 +56,7 @@ public final class ProposalProviderRegistry {
      * @return A list of all available proposal providers.
      */
     public static List<IProposalProvider> getAllProviders() {
-        final List<IProposalProvider> providers = Lists.newArrayList();
+        final List<IProposalProvider> providers = new ArrayList<>();
 
         for (ProposalProviderDescriptor descriptor : DESCRIPTORS) {
             providers.add(descriptor.createProposalProvider());
@@ -103,7 +104,7 @@ public final class ProposalProviderRegistry {
             return Collections.emptyList();
         }
 
-        final List<IProposalProvider> providers = Lists.newArrayList();
+        final List<IProposalProvider> providers = new ArrayList<>();
 
         for (ProposalProviderDescriptor descriptor : DESCRIPTORS) {
             if (interpreter.equals(descriptor.getInterpreter())) {

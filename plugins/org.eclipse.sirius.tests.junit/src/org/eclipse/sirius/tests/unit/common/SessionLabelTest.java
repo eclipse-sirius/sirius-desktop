@@ -15,8 +15,6 @@ import static org.easymock.EasyMock.replay;
 
 import java.util.LinkedHashSet;
 
-import junit.framework.TestCase;
-
 import org.easymock.EasyMock;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -24,6 +22,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback;
+
+import junit.framework.TestCase;
 
 /**
  * Check the result of the method getSessionNameToDisplayWhileSaving of

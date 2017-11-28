@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.find;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -83,7 +84,7 @@ public class BasicFindLabelEngine extends AbstractFindLabelEngine {
      */
     @Override
     protected List filterLabels(final String search) {
-        final List<EditPart> result = Lists.newArrayList();
+        final List<EditPart> result = new ArrayList<>();
         for (Object obj : allLabels()) {
             final AbstractGraphicalEditPart label = (AbstractGraphicalEditPart) obj;
             if (matches(label, search)) {
@@ -131,7 +132,7 @@ public class BasicFindLabelEngine extends AbstractFindLabelEngine {
      * thus candidates for text matching.
      */
     private void findAllDiagramLabels() {
-        allDiagramLabels = Lists.newArrayList();
+        allDiagramLabels = new ArrayList<>();
         allDiagramLabels.addAll(Collections2.filter((Collection<? extends EditPart>) findAllEditParts(), IS_LABEL_EDIT_PART));
     }
 
@@ -139,7 +140,7 @@ public class BasicFindLabelEngine extends AbstractFindLabelEngine {
         final DiagramEditPart diagram = editor.getDiagramEditPart();
         final Collection<? extends EditPart> roots = Lists.newArrayList(diagram);
         roots.addAll(diagram.getConnections());
-        final Collection<? extends EditPart> editParts = Lists.newArrayList();
+        final Collection<? extends EditPart> editParts = new ArrayList<>();
         for (EditPart root : roots) {
             addAllContainedEditParts(root, editParts);
         }

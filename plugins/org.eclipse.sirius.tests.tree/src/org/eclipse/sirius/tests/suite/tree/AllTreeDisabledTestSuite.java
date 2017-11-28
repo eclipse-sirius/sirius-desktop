@@ -10,11 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.tree;
 
+import org.eclipse.sirius.tests.api.tools.TreeItemRefreshTest;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-import org.eclipse.sirius.tests.api.tools.TreeItemRefreshTest;
 
 /**
  * This special test suite contains all the tests which are known to currently

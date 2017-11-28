@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -33,8 +35,6 @@ import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Delete helper to execute specific operations on delete request.
@@ -91,7 +91,7 @@ public final class DeleteHelper {
     }
 
     private static List<Command> getWrappedCommands(Command command) {
-        List<Command> result = Lists.newArrayList();
+        List<Command> result = new ArrayList<>();
         if (command instanceof NoNullResourceCommand) {
             Object adapter = ((NoNullResourceCommand) command).getAdapter(DCommand.class);
             if (adapter instanceof Command) {
@@ -121,7 +121,7 @@ public final class DeleteHelper {
 
         private View view;
 
-        private Set<View> noteToHide = Sets.newHashSet();
+        private Set<View> noteToHide = new HashSet<>();
 
         DeleteRelatedNotesTask(final View deletedView) {
             super();
@@ -130,7 +130,7 @@ public final class DeleteHelper {
 
         @Override
         public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
-            Set<View> allViewsToDelete = Sets.newHashSet();
+            Set<View> allViewsToDelete = new HashSet<>();
 
             allContentsViewsToDelete(view, allViewsToDelete);
             final Iterator<View> allContents = Iterators.filter(view.eAllContents(), View.class);
@@ -155,12 +155,12 @@ public final class DeleteHelper {
         }
 
         private Set<View> getAllRelatedNotesToDelete(View viewToDelete) {
-            Set<View> linkedViews = Sets.newHashSet();
+            Set<View> linkedViews = new HashSet<>();
 
             for (Edge sourceEdge : Iterables.filter(viewToDelete.getSourceEdges(), Edge.class)) {
                 View target = sourceEdge.getTarget();
                 if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {
-                    Set<View> linked = Sets.newHashSet();
+                    Set<View> linked = new HashSet<>();
                     linked.add(viewToDelete);
                     collectLinkedViews(target, linked);
                     linked.remove(viewToDelete);
@@ -173,7 +173,7 @@ public final class DeleteHelper {
             for (Edge targetEdge : Iterables.filter(viewToDelete.getTargetEdges(), Edge.class)) {
                 View source = targetEdge.getSource();
                 if (GMFNotationHelper.isNoteAttachment(targetEdge)) {
-                    Set<View> linked = Sets.newHashSet();
+                    Set<View> linked = new HashSet<>();
                     linked.add(viewToDelete);
                     collectLinkedViews(source, linked);
                     linked.remove(viewToDelete);
@@ -266,7 +266,7 @@ public final class DeleteHelper {
 
         @Override
         public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
-            List<View> linkedViews = Lists.newArrayList();
+            List<View> linkedViews = new ArrayList<>();
 
             for (Edge sourceEdge : Iterables.filter(view.getSourceEdges(), Edge.class)) {
                 if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {

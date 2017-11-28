@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
+import org.eclipse.sirius.tests.swtbot.pseudoclearcase.DiagramPseudoClearCaseTest;
+import org.eclipse.sirius.tests.swtbot.pseudoclearcase.TablePseudoClearCaseTest;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-
-import org.eclipse.sirius.tests.swtbot.pseudoclearcase.DiagramPseudoClearCaseTest;
-import org.eclipse.sirius.tests.swtbot.pseudoclearcase.TablePseudoClearCaseTest;
 
 /**
  * 

@@ -11,7 +11,10 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -40,8 +43,6 @@ import org.eclipse.sirius.ext.base.Options;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Represents an execution on a lifeline or another parent execution.
@@ -112,7 +113,7 @@ public class Execution extends AbstractNodeEvent {
 
     @Override
     public List<Message> getLinkedMessages() {
-        List<Message> linkedMessages = Lists.newArrayList();
+        List<Message> linkedMessages = new ArrayList<>();
 
         Option<Message> startMessage = getStartMessage();
         if (startMessage.some()) {
@@ -139,7 +140,7 @@ public class Execution extends AbstractNodeEvent {
 
     private Option<Message> getCompoundMessage(boolean start) {
         Node node = getNotationNode();
-        Set<Edge> edges = Sets.newHashSet();
+        Set<Edge> edges = new HashSet<>();
         Iterables.addAll(edges, Iterables.filter(node.getSourceEdges(), Edge.class));
         Iterables.addAll(edges, Iterables.filter(node.getTargetEdges(), Edge.class));
 
@@ -281,7 +282,7 @@ public class Execution extends AbstractNodeEvent {
 
     @Override
     public Collection<ISequenceEvent> getEventsToMoveWith() {
-        Set<ISequenceEvent> toMove = Sets.newLinkedHashSet();
+        Set<ISequenceEvent> toMove = new LinkedHashSet<>();
         List<ISequenceEvent> subEvents = getSubEvents();
         toMove.addAll(findLinkedExecutions(subEvents));
         toMove.addAll(getLinkedMessages());
@@ -291,7 +292,7 @@ public class Execution extends AbstractNodeEvent {
     }
 
     private Collection<? extends ISequenceEvent> findLinkedExecutions(List<ISequenceEvent> subEvents) {
-        Set<Execution> linkedExecutions = Sets.newLinkedHashSet();
+        Set<Execution> linkedExecutions = new LinkedHashSet<>();
         for (Message message : Iterables.filter(subEvents, Message.class)) {
             if (this.equals(message.getSourceElement()) && message.getTargetElement() instanceof Execution) {
                 Execution targetExecution = (Execution) message.getTargetElement();
@@ -310,7 +311,7 @@ public class Execution extends AbstractNodeEvent {
     }
 
     private Collection<? extends ISequenceEvent> findCoveredExecutions(List<ISequenceEvent> subEvents) {
-        Collection<Execution> coveredExecutions = Lists.newArrayList();
+        Collection<Execution> coveredExecutions = new ArrayList<>();
         for (AbstractFrame frame : Iterables.filter(subEvents, AbstractFrame.class)) {
             Collection<ISequenceEvent> parentEvents = frame.computeParentEvents();
             parentEvents.remove(this);
@@ -380,7 +381,7 @@ public class Execution extends AbstractNodeEvent {
      * @return the list of linked {@link Execution} from executionEditPart
      */
     public List<Execution> findLinkedExecutions(boolean recurse) {
-        List<Execution> impactedExecutions = Lists.newArrayList();
+        List<Execution> impactedExecutions = new ArrayList<>();
         findLinkedExecutions(impactedExecutions, this, recurse);
         return impactedExecutions;
     }

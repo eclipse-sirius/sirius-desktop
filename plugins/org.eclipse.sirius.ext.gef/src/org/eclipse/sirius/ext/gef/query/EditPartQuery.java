@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.gef.query;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,7 +18,6 @@ import org.eclipse.gef.EditPart;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Queries on GEF edit parts.
@@ -60,7 +60,7 @@ public class EditPartQuery {
      * @return list of children
      */
     public Set<EditPart> getAllChildren(boolean includeSelf, List<Class<?>> includedKind) {
-        Set<EditPart> result = Sets.newHashSet();
+        Set<EditPart> result = new HashSet<>();
         if (includeSelf) {
             if (includedKind == null || isAssignable(part.getClass(), includedKind)) {
                 result.add(part);
@@ -74,7 +74,7 @@ public class EditPartQuery {
      * Returns a list including all of the children of the edit part passed in.
      */
     private Set<EditPart> getAllChildren(EditPart editPart, List<Class<?>> includedKind) {
-        Set<EditPart> result = Sets.newHashSet();
+        Set<EditPart> result = new HashSet<>();
         for (EditPart child : Iterables.filter(editPart.getChildren(), EditPart.class)) {
             if (includedKind == null || isAssignable(child.getClass(), includedKind)) {
                 result.add(child);

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.experimental.sync;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
@@ -36,7 +37,6 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
 /**
@@ -173,7 +173,7 @@ public abstract class AbstractSynchronizerHelper {
      */
     protected Iterable<EObject> getSemanticCandidates(DragAndDropTarget container, DiagramElementMapping mapping) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.GET_NODE_CANDIDATES_KEY);
-        Iterable<EObject> semantics = Lists.newArrayList();
+        Iterable<EObject> semantics = new ArrayList<>();
         boolean synchronizedAndCreateElement = new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram);
         synchronizedAndCreateElement = tool || synchronizedAndCreateElement;
         if (new DiagramElementMappingQuery(mapping).hasCandidatesExpression()) {

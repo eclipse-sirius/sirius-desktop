@@ -14,6 +14,8 @@ import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
 
+import java.util.HashMap;
+
 import org.eclipse.core.commands.operations.DefaultOperationHistory;
 import org.eclipse.core.commands.operations.IOperationHistory;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -37,8 +39,6 @@ import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
-
-import com.google.common.collect.Maps;
 
 import junit.framework.TestCase;
 
@@ -70,7 +70,7 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
         URI semanticResourceURI = URI.createURI(URIQuery.INMEMORY_URI_SCHEME + ":/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME);
         final Resource resource = editingDomain.getResourceSet().createResource(semanticResourceURI);
         ePackage = createEPackage(resource);
-        resource.save(Maps.newHashMap());
+        resource.save(new HashMap<>());
 
         URI sessionResourceURI = URI.createURI(URIQuery.INMEMORY_URI_SCHEME + ":/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME);
         final Resource airdResource = editingDomain.getResourceSet().createResource(sessionResourceURI);

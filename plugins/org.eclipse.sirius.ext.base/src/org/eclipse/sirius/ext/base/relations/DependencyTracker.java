@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ext.base.relations;
 
 import java.text.MessageFormat;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.ext.base.Messages;
@@ -19,7 +20,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 
 /**
  * Tracks the dependencies and reverse dependencies from a given set of elements
@@ -42,7 +42,7 @@ public class DependencyTracker<T> {
      * which have no dependencies: these would not appear in
      * <code>dependencies.keySet()</code>.
      */
-    private final Set<T> trackedElements = Sets.newHashSet();
+    private final Set<T> trackedElements = new HashSet<>();
 
     /**
      * From an element to the elements it depends on.

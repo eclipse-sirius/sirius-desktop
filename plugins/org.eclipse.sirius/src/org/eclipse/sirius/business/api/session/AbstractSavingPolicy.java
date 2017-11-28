@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.session;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +26,6 @@ import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -51,7 +51,7 @@ public abstract class AbstractSavingPolicy implements SavingPolicy {
 
     @Override
     public Collection<Resource> save(final Iterable<Resource> allResources, final Map<?, ?> options, IProgressMonitor monitor) {
-        final Collection<Resource> resourcesToSave = Lists.newArrayList();
+        final Collection<Resource> resourcesToSave = new ArrayList<>();
         try {
             monitor.beginTask(Messages.AbstractSavingPolicy_saveMsg, IProgressMonitor.UNKNOWN);
             resourcesToSave.addAll(computeResourcesToSave(Sets.newLinkedHashSet(allResources), options, monitor));

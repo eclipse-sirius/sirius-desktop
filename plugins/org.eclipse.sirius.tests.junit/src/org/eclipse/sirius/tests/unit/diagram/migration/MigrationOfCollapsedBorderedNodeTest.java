@@ -53,7 +53,6 @@ import org.osgi.framework.Version;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Test if the migration of VP-3833 is correctly launched. This migration
@@ -194,7 +193,7 @@ public class MigrationOfCollapsedBorderedNodeTest extends SiriusDiagramTestCase 
                     }
                 } else {
                     assertTrue("A CollapseFilter should be in the list of graphical filters.", Iterators.any(dde.getGraphicalFilters().iterator(), Predicates.instanceOf(CollapseFilter.class)));
-                    List<DDiagramElement> children = Lists.newArrayList();
+                    List<DDiagramElement> children = new ArrayList<>();
                     if (dde instanceof AbstractDNode) {
                         AbstractDNode abstractDNode = (AbstractDNode) dde;
                         children.addAll(abstractDNode.getOwnedBorderedNodes());

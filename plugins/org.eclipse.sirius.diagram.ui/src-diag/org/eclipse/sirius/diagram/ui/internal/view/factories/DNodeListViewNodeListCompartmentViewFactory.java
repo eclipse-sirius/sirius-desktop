@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.view.factories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -26,8 +27,6 @@ import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContain
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
-import com.google.common.collect.Lists;
-
 /**
  * @was-generated
  */
@@ -37,7 +36,7 @@ public class DNodeListViewNodeListCompartmentViewFactory extends BasicNodeViewFa
      * @was-generated
      */
     protected List<?> createStyles(View view) {
-        List<Style> styles = Lists.newArrayList();
+        List<Style> styles = new ArrayList<>();
         styles.add(NotationFactory.eINSTANCE.createSortingStyle());
         styles.add(NotationFactory.eINSTANCE.createFilteringStyle());
 

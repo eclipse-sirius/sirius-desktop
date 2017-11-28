@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.api.resource;
 
 import java.io.ByteArrayInputStream;
+import java.util.HashMap;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -41,8 +42,6 @@ import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
 import org.junit.Assert;
-
-import com.google.common.collect.Maps;
 
 /**
  * Tests on workspace drag and drop support based on entities diagram of ecore
@@ -95,7 +94,7 @@ public class WorkspaceDragAndDropSupportTests extends SiriusDiagramTestCase impl
 
         });
         /* save it */
-        rs.save(Maps.newHashMap());
+        rs.save(new HashMap<>());
         return WorkspaceSynchronizer.getFile(rs);
     }
 

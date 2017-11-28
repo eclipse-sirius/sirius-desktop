@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.vsm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -18,8 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.sample.interactions.Execution;
 import org.eclipse.sirius.sample.interactions.Participant;
-
-import com.google.common.collect.Lists;
 
 /**
  * Services used for in the VSM of the {@link VSMVariableTypesValidationTest}
@@ -31,7 +30,7 @@ import com.google.common.collect.Lists;
 public class VSMVariableTypesValidationServices {
 
     public List<EPackage> returnsAListOfEPackages(EObject cur) {
-        return Lists.newArrayList();
+        return new ArrayList<>();
     }
 
     public EClassifier returnsAnEClassifier(EObject cur) {

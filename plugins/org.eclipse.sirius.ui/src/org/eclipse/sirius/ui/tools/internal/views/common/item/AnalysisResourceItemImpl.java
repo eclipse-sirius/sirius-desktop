@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.item;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +26,6 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Lists;
 
 /**
  * Resource item wrapper class.
@@ -121,7 +121,7 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
 
     @Override
     public Collection<?> getChildren() {
-        final List<ViewpointItemImpl> all = Lists.newArrayList();
+        final List<ViewpointItemImpl> all = new ArrayList<>();
         if (resource != null) {
             for (final Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
                 all.add(new ViewpointItemImpl(session, viewpoint, resource, linkChildrenToParentMode ? parent : this));

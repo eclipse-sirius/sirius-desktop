@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -21,8 +22,6 @@ import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTableItem;
-
-import com.google.common.collect.Lists;
 
 /**
  * Test class.
@@ -59,7 +58,7 @@ public class HideRevealTableColumnsTest extends AbstractHideRevealTableElementsT
     protected List<String> getElementsHeader() {
         return UIThreadRunnable.syncExec(new Result<List<String>>() {
             public List<String> run() {
-                final List<String> result = Lists.newArrayList();
+                final List<String> result = new ArrayList<>();
                 final int columnCount = getElementCount();
 
                 for (int i = 1; i <= columnCount; i++) {
@@ -164,7 +163,7 @@ public class HideRevealTableColumnsTest extends AbstractHideRevealTableElementsT
     protected List<String> uncheckAllElements(final DialogTable<SWTBotTable> dialogTable, final int[] relativeElementIndex) {
         final SWTBotTable swtBotTable = dialogTable.getDialogTable();
 
-        final List<String> result = Lists.newArrayList();
+        final List<String> result = new ArrayList<>();
 
         for (final int i : relativeElementIndex) {
             final SWTBotTableItem tableItem = swtBotTable.getTableItem(i);

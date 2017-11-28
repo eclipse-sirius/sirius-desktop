@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.actions.export;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -128,7 +129,7 @@ public abstract class AbstractExportRepresentationsAction extends Action {
         }
 
         if (dialog.open() == Window.OK) {
-            Collection<DRepresentation> dRepresentations = Lists.newArrayList();
+            Collection<DRepresentation> dRepresentations = new ArrayList<>();
             for (DRepresentationDescriptor dRepresentationDescriptor : representationsToExport) {
                 dRepresentations.add(dRepresentationDescriptor.getRepresentation());
             }

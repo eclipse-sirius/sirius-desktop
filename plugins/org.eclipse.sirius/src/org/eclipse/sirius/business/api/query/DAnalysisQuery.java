@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.api.query;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
@@ -22,8 +23,6 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.collect.Sets;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DAnalysis}
@@ -88,7 +87,7 @@ public class DAnalysisQuery {
      *         analysis (and its sub referenced analysis).
      */
     public Collection<DAnalysis> getAllReferencedAnalyses() {
-        Collection<DAnalysis> referenced = Sets.newLinkedHashSet();
+        Collection<DAnalysis> referenced = new LinkedHashSet<>();
         for (final DAnalysis referencedAnalysis : this.analysis.getReferencedAnalysis()) {
             /* analysis could be null */
             if (referencedAnalysis != null) {
@@ -131,7 +130,7 @@ public class DAnalysisQuery {
         Option<EObject> optionalMainModel = getMainModel();
         // We need a list with the "main model" and other root models to allow
         // control on project with many models
-        Set<EObject> releventModels = Sets.newLinkedHashSet();
+        Set<EObject> releventModels = new LinkedHashSet<>();
         if (optionalMainModel.some()) {
             releventModels.add(optionalMainModel.get());
             for (EObject model : analysis.getModels()) {

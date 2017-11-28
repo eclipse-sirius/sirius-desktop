@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,7 +39,6 @@ import org.eclipse.sirius.ext.base.Option;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Queries on GEF and GMF requests.
@@ -89,7 +89,7 @@ public class RequestQuery extends org.eclipse.sirius.diagram.ui.business.interna
             return Collections.emptySet();
         }
 
-        Set<AbstractNodeEvent> result = Sets.newHashSet();
+        Set<AbstractNodeEvent> result = new HashSet<>();
         for (IGraphicalEditPart part : editParts) {
             Option<AbstractNodeEvent> execution = ISequenceElementAccessor.getAbstractNodeEvent(part.getNotationView());
             if (execution.some()) {
@@ -111,7 +111,7 @@ public class RequestQuery extends org.eclipse.sirius.diagram.ui.business.interna
             return Collections.emptySet();
         }
 
-        Set<Execution> result = Sets.newHashSet();
+        Set<Execution> result = new HashSet<>();
         for (IGraphicalEditPart part : editParts) {
             Option<Execution> execution = ISequenceElementAccessor.getExecution(part.getNotationView());
             if (execution.some()) {
@@ -133,7 +133,7 @@ public class RequestQuery extends org.eclipse.sirius.diagram.ui.business.interna
             return Collections.emptySet();
         }
 
-        Set<ISequenceEvent> result = Sets.newHashSet();
+        Set<ISequenceEvent> result = new HashSet<>();
         for (IGraphicalEditPart part : editParts) {
             Option<ISequenceEvent> ise = ISequenceElementAccessor.getISequenceEvent(part.getNotationView());
             if (ise.some()) {

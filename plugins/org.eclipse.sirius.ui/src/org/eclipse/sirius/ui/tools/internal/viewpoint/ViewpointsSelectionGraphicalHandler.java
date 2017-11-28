@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.resources.IResource;
@@ -63,8 +64,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 import org.osgi.framework.Bundle;
-
-import com.google.common.collect.Sets;
 
 /**
  * A graphic component providing a {@link CheckboxTableViewer} with a checkbox for each viewpoint activable/deactivable
@@ -456,7 +455,7 @@ public class ViewpointsSelectionGraphicalHandler {
 
     private String getContentWhenHtml(String endUserDocumentation, URI uri) {
 
-        Set<String> urlToRewrite = Sets.newLinkedHashSet();
+        Set<String> urlToRewrite = new LinkedHashSet<>();
         extractUrlToRewrite(endUserDocumentation, urlToRewrite);
 
         return rewriteURLs(uri, endUserDocumentation, urlToRewrite);

@@ -10,18 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.interpreter;
 
-import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
-import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
-import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
-import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-
-import com.google.common.collect.Sets;
-
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.acceleo.ui.interpreter.language.IInterpreterSourceViewer;
@@ -29,6 +19,14 @@ import org.eclipse.acceleo.ui.interpreter.language.InterpreterContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.source.IVerticalRuler;
 import org.eclipse.jface.text.source.SourceViewer;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
+import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
+import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.swt.widgets.Composite;
 
 /**
@@ -110,7 +108,7 @@ public class SiriusInterpreterSourceViewer extends SourceViewer implements IInte
                 computedProposals = ((IProposalProvider) vpInterpreter).getProposals(vpInterpreter, contentContext);
             } else {
                 // Case 2.2: can be provided by extension point
-                computedProposals = Sets.newLinkedHashSet();
+                computedProposals = new LinkedHashSet<>();
                 final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getProvidersFor(vpInterpreter);
                 for (IProposalProvider provider : proposalProviders) {
                     computedProposals.addAll(provider.getProposals(vpInterpreter, contentContext));

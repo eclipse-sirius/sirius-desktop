@@ -136,7 +136,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
     public AbstractDiagramElementState(Identifier id, final DiagramCrossReferencer crossReferencer) {
         this.identifier = id;
         this.crossReferencer = crossReferencer;
-        this.boundsFilters = Lists.newArrayList();
+        this.boundsFilters = new ArrayList<>();
     }
 
     /**

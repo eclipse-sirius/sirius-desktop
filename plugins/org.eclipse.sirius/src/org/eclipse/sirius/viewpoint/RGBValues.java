@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.viewpoint;
 
+import java.util.HashMap;
 import java.util.Map;
-
-import com.google.common.collect.Maps;
 
 /**
  * RGBValues are descriptions of colors in terms of the primary additive color
@@ -30,7 +29,7 @@ import com.google.common.collect.Maps;
  */
 public final class RGBValues {
 
-    private static final Map<String, RGBValues> INTERN = Maps.newHashMap();
+    private static final Map<String, RGBValues> INTERN = new HashMap<>();
 
     // CHECKSTYLE:OFF
     // Disable checkstyle to be able to intern the DEFAULT public constant with

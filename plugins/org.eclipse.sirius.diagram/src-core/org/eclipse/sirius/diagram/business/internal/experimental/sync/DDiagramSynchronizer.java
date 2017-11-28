@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -109,10 +110,8 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.SetMultimap;
-import com.google.common.collect.Sets;
 
 /**
  * This class is able to synchronize a {@link DSemanticDiagram} instance from a semantic model and a
@@ -284,8 +283,8 @@ public class DDiagramSynchronizer {
      * Activates {@link Layer} that should be active on initialization.
      */
     public void activateInitialLayers() {
-        List<Layer> layersToActivate = Lists.newArrayList();
-        List<AdditionalLayer> transientLayersToActivate = Lists.newArrayList();
+        List<Layer> layersToActivate = new ArrayList<>();
+        List<AdditionalLayer> transientLayersToActivate = new ArrayList<>();
         LayerHelper.getInitialActiveLayers(description, session.getSelectedViewpoints(false), layersToActivate, transientLayersToActivate);
         this.diagram.getActivatedLayers().addAll(layersToActivate);
         this.diagram.getActivatedTransientLayers().addAll(transientLayersToActivate);
@@ -295,8 +294,8 @@ public class DDiagramSynchronizer {
      * If new additional layers have been added into the VSM, we have to activate them.
      */
     private void activateNewMandatoryAdditionalLayers() {
-        List<Layer> layersToActivate = Lists.newArrayList();
-        List<AdditionalLayer> transientLayersToActivate = Lists.newArrayList();
+        List<Layer> layersToActivate = new ArrayList<>();
+        List<AdditionalLayer> transientLayersToActivate = new ArrayList<>();
         LayerHelper.getMandatoriesAdditionalLayers(description, session.getSelectedViewpoints(false), layersToActivate, transientLayersToActivate);
 
         layersToActivate.removeAll(this.diagram.getActivatedLayers());
@@ -700,8 +699,8 @@ public class DDiagramSynchronizer {
 
             deleteCandidatesToRemove(status, new SubProgressMonitor(monitor, 1));
             // kept and created nodes
-            final Collection<AbstractDNode> keptNodes = Lists.newArrayList();
-            final Collection<AbstractDNode> createdNodes = Lists.newArrayList();
+            final Collection<AbstractDNode> keptNodes = new ArrayList<>();
+            final Collection<AbstractDNode> createdNodes = new ArrayList<>();
 
             if (orderBySemantic) {
                 handleKeptAndNewNodesWithOrder(viewContainer, mapping, status, keptNodes, createdNodes, new SubProgressMonitor(monitor, 1));
@@ -803,8 +802,8 @@ public class DDiagramSynchronizer {
             deleteCandidatesToRemove(status, new SubProgressMonitor(monitor, 1));
 
             // kept and created nodes
-            final Collection<AbstractDNode> keptNodes = Lists.newArrayList();
-            final Collection<AbstractDNode> createdNodes = Lists.newArrayList();
+            final Collection<AbstractDNode> keptNodes = new ArrayList<>();
+            final Collection<AbstractDNode> createdNodes = new ArrayList<>();
 
             handleKeptAndNewNodesWithOrder(viewContainer, mapping, status, keptNodes, createdNodes, new SubProgressMonitor(monitor, 1));
 
@@ -846,8 +845,8 @@ public class DDiagramSynchronizer {
                     deleteCandidatesToRemove(borderStatus, new SubProgressMonitor(monitor, 1));
 
                     // kept and created nodes
-                    final Collection<AbstractDNode> keptNodes = Lists.newArrayList();
-                    final Collection<AbstractDNode> createdNodes = Lists.newArrayList();
+                    final Collection<AbstractDNode> keptNodes = new ArrayList<>();
+                    final Collection<AbstractDNode> createdNodes = new ArrayList<>();
 
                     createdNodes.addAll(createNewContent(borderStatus.getNewElements(), newNodeDDT, bordermapping, true, new SubProgressMonitor(monitor, 1)));
                     handleKeptNodes(newNodeDDT, borderStatus, keptNodes, true, new SubProgressMonitor(monitor, 1));
@@ -1012,7 +1011,7 @@ public class DDiagramSynchronizer {
      */
     protected Set<DDiagramElement> getPreviousDiagramElements(final DragAndDropTarget container, final DiagramElementMapping mapping) {
         if (forceRetrieve) {
-            final Set<DDiagramElement> previousDiagramElements = Sets.newLinkedHashSet();
+            final Set<DDiagramElement> previousDiagramElements = new LinkedHashSet<>();
             for (final DDiagramElement element : DiagramElementsHierarchyVisitor.INSTANCE.getChildren(container)) {
                 final DiagramElementMapping elementMapping = element.getDiagramElementMapping();
                 if (elementMapping instanceof AbstractNodeMapping && new DiagramElementMappingQuery(elementMapping).areInSameHiearchy(mapping)) {
@@ -1253,7 +1252,7 @@ public class DDiagramSynchronizer {
         handleSubMappings(mapping);
         handleSuperMappings(mapping);
 
-        final List<DEdgeCandidate> invalidCandidates = Lists.newArrayList();
+        final List<DEdgeCandidate> invalidCandidates = new ArrayList<>();
 
         /*
          * Collect existing edges.
@@ -1454,7 +1453,7 @@ public class DDiagramSynchronizer {
     private static final class RefreshOrderHelper {
         final DragAndDropTarget viewContainer;
 
-        final Map<EObject, Integer> oldChildPositionInGlobalList = Maps.newHashMap();
+        final Map<EObject, Integer> oldChildPositionInGlobalList = new HashMap<>();
 
         private RepresentationElementMapping mapping;
 

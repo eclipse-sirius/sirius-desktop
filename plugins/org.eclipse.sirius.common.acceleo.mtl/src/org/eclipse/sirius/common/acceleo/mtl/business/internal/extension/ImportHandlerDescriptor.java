@@ -10,10 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.internal.extension;
 
-import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.AbstractImportHandler;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.AbstractImportHandler;
 
 /**
  * Describes an import handler as contributed to the extension point.

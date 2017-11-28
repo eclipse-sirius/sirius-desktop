@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -41,8 +42,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePageLis
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.widgets.Display;
-
-import com.google.common.collect.Sets;
 
 /**
  * This class is an EMF Transaction resource listener which listen post commit
@@ -84,15 +83,15 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
     @Override
     public void resourceSetChanged(ResourceSetChangeEvent event) {
         if (active) {
-            toRefresh = Sets.newHashSet();
-            toUpdate = Sets.newHashSet();
+            toRefresh = new HashSet<>();
+            toUpdate = new HashSet<>();
             super.resourceSetChanged(event);
             refreshOutline();
             toRefresh = null;
             toUpdate = null;
         } else {
-            toRefresh = Sets.newHashSet();
-            toUpdate = Sets.newHashSet();
+            toRefresh = new HashSet<>();
+            toUpdate = new HashSet<>();
             deferredRefresh = true;
             super.resourceSetChanged(event);
         }

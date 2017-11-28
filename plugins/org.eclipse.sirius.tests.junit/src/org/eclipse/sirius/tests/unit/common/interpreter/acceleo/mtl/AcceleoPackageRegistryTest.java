@@ -12,8 +12,6 @@ package org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl;
 
 import java.util.Collections;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
@@ -27,6 +25,8 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescript
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.unit.contribution.Freezer;
+
+import junit.framework.TestCase;
 
 /**
  * Test that {@link AcceleoMTLInterpreter} dispose does not impact

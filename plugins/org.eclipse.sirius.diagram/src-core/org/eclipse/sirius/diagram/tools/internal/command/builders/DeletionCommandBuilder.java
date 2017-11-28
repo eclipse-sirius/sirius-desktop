@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.tools.internal.command.builders;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -54,7 +55,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Delete command builder.
@@ -328,7 +328,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
      * semantic tree, the result can be not minimized.
      */
     private Set<EObject> getRootSemanticElementsToDestroy(final DDiagramElement currentDiagramElement) {
-        Set<EObject> elementsToDestroy = Sets.newLinkedHashSet();
+        Set<EObject> elementsToDestroy = new LinkedHashSet<>();
         boolean canDelete = appendRootSemanticElementsToDestroy(currentDiagramElement, elementsToDestroy);
         return canDelete ? elementsToDestroy : null;
     }

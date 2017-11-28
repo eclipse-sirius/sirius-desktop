@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -143,7 +144,7 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     private Collection<ChangeBoundsRequest> getConstrainedRegionRequests(ChangeBoundsRequest request) {
-        Collection<ChangeBoundsRequest> constrainedRequests = Lists.newArrayList();
+        Collection<ChangeBoundsRequest> constrainedRequests = new ArrayList<>();
 
         RequestQuery query = new RequestQuery(request);
         Dimension sizeDelta = request.getSizeDelta().getCopy();

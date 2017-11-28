@@ -13,7 +13,6 @@ package org.eclipse.sirius.common.tools.internal.resource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.sirius.common.tools.api.resource.AbstractResourceSyncBackend;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;

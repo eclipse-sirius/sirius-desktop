@@ -11,7 +11,6 @@
 package org.eclipse.sirius.table.business.internal.metamodel.description.spec;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.sirius.table.business.internal.metamodel.description.spec.util.TableVariableContainmentEList;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;

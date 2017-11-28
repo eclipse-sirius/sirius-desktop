@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.gmf.runtime.editparts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.FigureCanvas;
@@ -37,7 +38,6 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 /**
  * Utility class to collect helper methods which deal with GraphicalOrdering but
@@ -508,7 +508,7 @@ public final class GraphicalHelper {
                 linePointToConsider = lineOrigin;
             }
 
-            List<Point> nearestPoints = Lists.newArrayList();
+            List<Point> nearestPoints = new ArrayList<>();
             List rectangleBorders = PointListUtilities.getLineSegments(partBoundsPointList);
             for (Object rectangleBorder : rectangleBorders) {
                 if (rectangleBorder instanceof LineSeg) {

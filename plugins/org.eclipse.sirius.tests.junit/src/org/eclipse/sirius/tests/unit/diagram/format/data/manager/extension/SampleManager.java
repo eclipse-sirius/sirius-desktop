@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -34,7 +35,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Sample {@link SiriusFormatDataManager} to able to copy/paste format regarding
@@ -55,7 +55,7 @@ public class SampleManager extends AbstractSiriusFormatDataManager implements Si
      */
     public static final String SAMPLE_SOURCE = "refinement.link.format";
 
-    private final Map<AbstractSampleFormatDataKey, AbstractFormatData> formatDataMap = Maps.newHashMap();
+    private final Map<AbstractSampleFormatDataKey, AbstractFormatData> formatDataMap = new HashMap<>();
 
     private final SessionManagerListener sessionMgrListener = new SampleSessionManagerListener();
 

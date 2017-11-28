@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
@@ -43,7 +44,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -209,7 +209,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
 
             // Predicate to ignore attachments to detached elements.
-            Collection<Notifier> allDetachedObjectsAsNotifier = Lists.newArrayList();
+            Collection<Notifier> allDetachedObjectsAsNotifier = new ArrayList<>();
             for (Notifier notifier : allDetachedObjects) {
                 allDetachedObjectsAsNotifier.add(notifier);
             }
@@ -249,7 +249,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
      *         and their children.
      */
     protected Set<EObject> getChangedEObjectsAndChildren(Iterable<Notification> notifications, Predicate<Notifier> notifierToIgnore) {
-        final Set<EObject> changedEObjects = Sets.newLinkedHashSet();
+        final Set<EObject> changedEObjects = new LinkedHashSet<>();
         for (Notification notification : notifications) {
             Object notifier = notification.getNotifier();
             if (notifier instanceof Notifier) {
@@ -278,7 +278,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
      *         notification.
      */
     protected Set<EObject> getNotificationValues(Notification notification) {
-        final Set<EObject> values = Sets.newLinkedHashSet();
+        final Set<EObject> values = new LinkedHashSet<>();
         Object value = notification.getOldValue();
         if (IS_ATTACHMENT.apply(notification)) {
             // IS_DETACHMENT is the default case : notification.getOldValue and
@@ -303,7 +303,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
      */
     private static class RemoveDanglingReferencesCommand extends RecordingCommand {
 
-        private final Collection<EObject> toRemoveXRefFrom = Sets.newLinkedHashSet();
+        private final Collection<EObject> toRemoveXRefFrom = new LinkedHashSet<>();
 
         private final EReferencePredicate isReferenceToIgnorePredicate;
 
@@ -360,7 +360,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
                     @Override
                     public Collection<Setting> getInverseReferences(EObject eObject, boolean resolve) {
                         Collection<Setting> settings = xReferencer.getInverseReferences(eObject, resolve);
-                        Collection<Setting> settingsToTryToUnset = Lists.newArrayList();
+                        Collection<Setting> settingsToTryToUnset = new ArrayList<>();
                         for (Setting s : settings) {
                             if (!toRemoveXRefFrom.contains(s.getEObject())) {
                                 settingsToTryToUnset.add(s);

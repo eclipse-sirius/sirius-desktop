@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.api.refresh;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,8 +40,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IEditorPart;
-
-import com.google.common.collect.Maps;
 
 /**
  * Test modification of header Label expression in VSM when table representation
@@ -102,7 +101,7 @@ public class ModifyHeaderLabelExpressionTest extends SiriusTestCase {
         // representation
         assertEquals("The data is incorrect (bad number of representations).", 1, getRepresentations(REPRESENTATION_DESC_NAME).size());
         try {
-            final Map<Object, Object> options = Maps.newHashMap();
+            final Map<Object, Object> options = new HashMap<>();
             // Modify the VSM in another resource set (as if it was modified in
             // VSM editor)
             URI viewpointResourceURI = viewpoints.iterator().next().eResource().getURI();

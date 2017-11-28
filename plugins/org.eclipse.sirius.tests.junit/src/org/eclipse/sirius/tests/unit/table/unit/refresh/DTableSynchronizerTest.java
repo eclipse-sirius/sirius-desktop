@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.table.unit.refresh;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -43,8 +44,6 @@ import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Model;
-
-import com.google.common.collect.Maps;
 
 /**
  * Test the table synchronizer.
@@ -384,7 +383,7 @@ public class DTableSynchronizerTest extends TableTestCase {
      */
     public void testPreconditionInIntersectionMappingNoDomainBased() throws Exception {
 
-        final Map<String, String> expectedMatrix = Maps.newHashMap();
+        final Map<String, String> expectedMatrix = new HashMap<>();
 
         final TableDescription desc = find("VariablesAccess");
         assertNotNull("Unit test data is not correct", desc);
@@ -438,7 +437,7 @@ public class DTableSynchronizerTest extends TableTestCase {
      */
     public void testPreconditionInIntersectionMappingDomainBased() throws Exception {
 
-        final Map<String, String> expectedMatrix = Maps.newHashMap();
+        final Map<String, String> expectedMatrix = new HashMap<>();
 
         final TableDescription desc = find("Model Association Cross Table");
         assertNotNull("Unit test data is not correct", desc);

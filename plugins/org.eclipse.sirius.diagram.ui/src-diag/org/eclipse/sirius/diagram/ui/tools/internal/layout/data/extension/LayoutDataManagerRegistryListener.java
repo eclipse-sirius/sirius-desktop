@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -20,8 +21,6 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IRegistryChangeEvent;
 import org.eclipse.core.runtime.IRegistryChangeListener;
 import org.eclipse.core.runtime.Platform;
-
-import com.google.common.collect.Sets;
 
 /**
  * This listener will allow us to be aware of contribution changes against the
@@ -99,7 +98,7 @@ public class LayoutDataManagerRegistryListener implements IRegistryChangeListene
      * @see org.eclipse.core.runtime.IRegistryChangeListener#registryChanged(org.eclipse.core.runtime.IRegistryChangeEvent)
      */
     public void registryChanged(IRegistryChangeEvent event) {
-        Set<IExtension> addedExtensions = Sets.newLinkedHashSet();
+        Set<IExtension> addedExtensions = new LinkedHashSet<>();
         for (IExtensionDelta extensionDelta : event.getExtensionDeltas()) {
             addedExtensions.add(extensionDelta.getExtension());
         }

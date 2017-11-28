@@ -10,10 +10,10 @@
  */
 package org.eclipse.sirius.tests.support.api;
 
+import org.junit.Assert;
+
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
-
-import org.junit.Assert;
 
 /**
  * Base class for equality tests.

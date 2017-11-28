@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.layers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -19,8 +20,6 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-
-import com.google.common.collect.Lists;
 
 /**
  * A mapping node is wrapper to a mapping with references to its importer and
@@ -57,7 +56,7 @@ public class MappingTableEntry {
         this.mapping = mapping;
         this.parentLayer = parentLayer;
         this.indirectParentLayers = indirectParentLayers;
-        this.mappingImporters = Lists.newArrayList();
+        this.mappingImporters = new ArrayList<>();
     }
 
     /**
@@ -132,7 +131,7 @@ public class MappingTableEntry {
      */
     public void setImporter(final MappingTableEntry mNode) {
         if (mappingImporters == null) {
-            mappingImporters = Lists.newArrayList();
+            mappingImporters = new ArrayList<>();
         }
         if (!mappingImporters.isEmpty()) {
             mappingImporters.remove(0);
@@ -191,7 +190,7 @@ public class MappingTableEntry {
     public void addOtherImporters(final MappingTableEntry importer) {
         this.mappingImporters.add(importer);
         if (otherImporters == null) {
-            otherImporters = Lists.newArrayList();
+            otherImporters = new ArrayList<>();
         }
         otherImporters.add(importer);
     }

@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.base.cache;
 
+import java.util.HashMap;
 import java.util.Map;
-
-import com.google.common.collect.Maps;
 
 /**
  * A simple registry which assigns a unique integer identifier to each set of
@@ -42,7 +41,7 @@ public class KeyCache {
 	 * the first object seen in an equivalence class defined by
 	 * {@link #equals(Object)}, values are the unique identifier for this class.
 	 */
-	private final Map<Object, Integer> registered = Maps.newHashMap();
+	private final Map<Object, Integer> registered = new HashMap<>();
 
 	/**
 	 * Returns the unique integer key associated to this object and all the

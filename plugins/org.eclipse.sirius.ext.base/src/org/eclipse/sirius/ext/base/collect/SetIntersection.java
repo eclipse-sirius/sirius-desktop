@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.base.collect;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -66,7 +67,7 @@ public class SetIntersection<E> {
         keptElements = new HashMap<Integer, E>();
         removedElements = new HashMap<Integer, E>();
         allElements = new LinkedHashMap<Integer, E>();
-        duplicateOldElements = Lists.newArrayList();
+        duplicateOldElements = new ArrayList<>();
     }
 
     /**

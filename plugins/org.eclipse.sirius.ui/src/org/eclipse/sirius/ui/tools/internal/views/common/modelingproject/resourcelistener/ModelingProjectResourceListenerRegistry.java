@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.resourcelistener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -18,8 +19,6 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.IModelingProjectResourceListener;
-
-import com.google.common.collect.Lists;
 
 /**
  * Registry mainiting a list of all contributed
@@ -37,7 +36,7 @@ public final class ModelingProjectResourceListenerRegistry {
     /**
      * The list of all contributed {@link IModelingProjectResourceListener}s.
      */
-    private static List<IModelingProjectResourceListener> registeredModelingProjectResourceListeners = Lists.newArrayList();
+    private static List<IModelingProjectResourceListener> registeredModelingProjectResourceListeners = new ArrayList<>();
 
     private static IModelingProjectResourceListener defaultModelingProjectResourceListener;
 

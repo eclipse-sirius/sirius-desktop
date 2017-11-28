@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.common.interpreter.service;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,7 +28,6 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.tests.unit.common.interpreter.AbstractCompletionTestCase;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Sets;
 
 /**
  * Tests for the {@link ServiceInterpreter} utility class.
@@ -109,7 +109,7 @@ public class ServiceCompletionTests extends AbstractCompletionTestCase {
         List<ContentProposal> contentProposals = getProposals(cc);
 
         // ServiceProposalProvider add "." at the end of a variable
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         for (String variable : concreteInterpreter.getVariables().keySet()) {
             vars.add(variable + ".");
         }
@@ -128,7 +128,7 @@ public class ServiceCompletionTests extends AbstractCompletionTestCase {
         List<ContentProposal> contentProposals = getProposals(cic);
 
         // ServiceProposalProvider add "." at the end of a variable
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         for (String variable : concreteInterpreter.getVariables().keySet()) {
             vars.add(variable + ".");
         }
@@ -147,7 +147,7 @@ public class ServiceCompletionTests extends AbstractCompletionTestCase {
 
         List<ContentProposal> contentProposals = getProposals(cc);
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
 
         // ServiceProposalProvider add "." at the end of a variable
         vars.add("self.");
@@ -164,7 +164,7 @@ public class ServiceCompletionTests extends AbstractCompletionTestCase {
         List<ContentProposal> contentProposals = getProposals(cic);
 
         // ServiceProposalProvider add "." at the end of a variable
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         for (String variable : concreteInterpreter.getVariables().keySet()) {
             vars.add(variable + ".");
         }

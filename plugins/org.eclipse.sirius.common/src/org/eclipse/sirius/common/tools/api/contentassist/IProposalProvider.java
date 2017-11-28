@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.contentassist;
 
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-
 import java.util.List;
+
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 
 /**
  * The content assist interface.

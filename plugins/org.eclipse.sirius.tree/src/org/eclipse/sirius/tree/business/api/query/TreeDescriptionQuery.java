@@ -12,11 +12,11 @@ package org.eclipse.sirius.tree.business.api.query;
 
 import java.util.Collections;
 
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
+
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * Query for {@link TreeDescription}.

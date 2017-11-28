@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005-2008 Obeo
+ * Copyright (c) 2005, 2017 Obeo
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -51,14 +51,11 @@ import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.osgi.framework.Bundle;
 
-import com.google.common.collect.Lists;
-
 // Disable checkstyle. This class comes from Acceleo.
 // CHECKSTYLE:OFF
 
 /**
- * The role of this wizard page is to make a collection of all of the checked
- * resources.
+ * The role of this wizard page is to make a collection of all of the checked resources.
  * 
  * @author www.obeo.fr
  */
@@ -136,11 +133,13 @@ public class SelectFilesWizardPage extends WizardPage {
         checkboxGroup = new CheckboxTreeAndListGroup(container, ResourcesPlugin.getWorkspace().getRoot(), getContentProvider(IResource.FOLDER | IResource.PROJECT | IResource.ROOT), treeLabelProvider,
                 getContentProvider(IResource.FILE), listLabelProvider, SWT.NONE, SELECTION_WIDGET_WIDTH, SELECTION_WIDGET_HEIGHT);
         checkboxGroup.addCheckStateListener(new ICheckStateListener() {
+            @Override
             public void checkStateChanged(CheckStateChangedEvent event) {
                 dialogChanged();
             }
         });
         checkboxGroup.getTreeViewer().addOpenListener(new IOpenListener() {
+            @Override
             public void open(OpenEvent event) {
                 ISelection selection = event.getSelection();
                 if (!selection.isEmpty() && selection instanceof StructuredSelection) {
@@ -154,9 +153,11 @@ public class SelectFilesWizardPage extends WizardPage {
         }
 
         container.addControlListener(new ControlListener() {
+            @Override
             public void controlMoved(ControlEvent e) {
             }
 
+            @Override
             public void controlResized(ControlEvent e) {
                 TableColumn[] columns = checkboxGroup.getListTable().getColumns();
                 for (TableColumn column : columns) {
@@ -182,6 +183,7 @@ public class SelectFilesWizardPage extends WizardPage {
             public Object[] getChildren(Object o) {
                 if (resourceType != IResource.FILE && o instanceof IExtensionRegistry) {
                     Set<Bundle> result = new TreeSet<Bundle>(new Comparator<Bundle>() {
+                        @Override
                         public int compare(Bundle bundle0, Bundle bundle1) {
                             return bundle0.getSymbolicName().compareTo(bundle1.getSymbolicName());
                         }
@@ -193,7 +195,7 @@ public class SelectFilesWizardPage extends WizardPage {
                     for (String extension : extensions) {
                         if (JOKER.equals(extension)) {
                             result.clear();
-                            final Enumeration<?> enumeration = bundle.findEntries("/", JOKER, true); //$NON-NLS-1$ 
+                            final Enumeration<?> enumeration = bundle.findEntries("/", JOKER, true); //$NON-NLS-1$
                             while (enumeration != null && enumeration.hasMoreElements()) {
                                 final Object child = enumeration.nextElement();
                                 if (child instanceof URL) {
@@ -242,7 +244,7 @@ public class SelectFilesWizardPage extends WizardPage {
                     }
                     return results.toArray();
                 } else if (o instanceof List) {
-                    List<Object> result = Lists.newArrayList();
+                    List<Object> result = new ArrayList<>();
                     Iterator<?> it = ((List<?>) o).iterator();
                     while (it.hasNext()) {
                         Object element = it.next();

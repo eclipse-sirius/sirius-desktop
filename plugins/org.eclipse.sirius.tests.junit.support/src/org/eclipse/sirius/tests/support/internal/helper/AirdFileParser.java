@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -32,8 +33,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import com.google.common.collect.Lists;
 
 /**
  * Helper to get specific informations in aird file without EMF loading.
@@ -53,7 +52,7 @@ public final class AirdFileParser {
      * @return list of semantic resources string
      */
     public static List<String> parseSemanticResourcesTag(String projectName) {
-        List<String> semanticResourcesTagContent = Lists.newArrayList();
+        List<String> semanticResourcesTagContent = new ArrayList<>();
 
         // get the workspace
         IWorkspace workspace = ResourcesPlugin.getWorkspace();
@@ -95,7 +94,7 @@ public final class AirdFileParser {
     private static class TestHandler extends DefaultHandler {
         private final String dAnalysisSemanticResourcesTag = ViewpointPackage.eINSTANCE.getDAnalysis_SemanticResources().getName();
 
-        private List<String> semanticResourcesTagContent = Lists.newArrayList();
+        private List<String> semanticResourcesTagContent = new ArrayList<>();
 
         private String currentTagContent;
 

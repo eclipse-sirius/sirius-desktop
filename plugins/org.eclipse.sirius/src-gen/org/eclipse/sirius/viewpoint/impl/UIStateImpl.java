@@ -12,6 +12,7 @@
 package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -25,8 +26,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-
-import com.google.common.collect.Maps;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>UI State</b></em>'. <!-- end-user-doc -->
@@ -90,7 +89,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
      */
     protected UIStateImpl() {
         super();
-        setDecorationImage(Maps.newHashMap());
+        setDecorationImage(new HashMap<>());
     }
 
     /**

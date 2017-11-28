@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.unit.api.tools.DisabledDragAndDropForEdgesonEdgesFromDiagramTest;
 import org.eclipse.sirius.tests.unit.common.EMFTransansactionTests;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.documentation.EntitiesDiagramDropTests;
@@ -26,6 +21,11 @@ import org.eclipse.sirius.tests.unit.diagram.sequence.InstanceRoleResizableEditP
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionUseTests;
 import org.eclipse.sirius.tests.unit.diagram.session.SessionOpeningWithAirdNoDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.PaneBasedSelectionWizardTests;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * This special test suite contains all the tests which are known to currently

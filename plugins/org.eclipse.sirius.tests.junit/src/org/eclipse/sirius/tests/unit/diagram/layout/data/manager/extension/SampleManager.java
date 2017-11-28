@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -33,7 +34,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Sample {@link SiriusLayoutDataManager} to able to copy/paste layout regarding
@@ -54,7 +54,7 @@ public class SampleManager extends AbstractSiriusLayoutDataManager implements Si
      */
     public static final String SAMPLE_SOURCE = "refinement.link";
 
-    private final Map<AbstractSampleLayouDataKey, AbstractLayoutData> layoutDataMap = Maps.newHashMap();
+    private final Map<AbstractSampleLayouDataKey, AbstractLayoutData> layoutDataMap = new HashMap<>();
 
     private final SessionManagerListener sessionMgrListener = new SampleSessionManagerListener();
 

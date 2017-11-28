@@ -81,8 +81,6 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
 
-import com.google.common.collect.Lists;
-
 /**
  * This class manages the tree viewer for display the DTree.
  * 
@@ -342,7 +340,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
      * @return the selected tree items or an empty collection
      */
     public Collection<DTreeItem> getSelectedItems() {
-        Collection<DTreeItem> result = Lists.newArrayList();
+        Collection<DTreeItem> result = new ArrayList<>();
         if (treeViewer.getTree().getSelectionCount() > 0) {
             for (TreeItem item : treeViewer.getTree().getSelection()) {
                 Object data = item.getData();

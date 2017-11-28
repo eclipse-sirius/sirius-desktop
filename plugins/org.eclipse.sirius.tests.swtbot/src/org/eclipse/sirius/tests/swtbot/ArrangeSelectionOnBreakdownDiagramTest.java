@@ -28,8 +28,6 @@ import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 
-import com.google.common.collect.Lists;
-
 /**
  * 
  * @author smonnier
@@ -135,7 +133,7 @@ public class ArrangeSelectionOnBreakdownDiagramTest extends AbstractSiriusSwtBot
         }
 
         // Select node for Arrange Selection
-        ArrayList<SWTBotGefEditPart> editPartToSelect = Lists.newArrayList();
+        ArrayList<SWTBotGefEditPart> editPartToSelect = new ArrayList<>();
         for (int i = 0; i < NODE_SELECTION_TO_ARRANGE.length; i++) {
             editPartToSelect.add(editor.getEditPart(NODE_SELECTION_TO_ARRANGE[i], AbstractDiagramNodeEditPart.class));
         }

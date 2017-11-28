@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.WeakHashMap;
@@ -41,7 +42,6 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.RemovalListener;
 import com.google.common.cache.RemovalNotification;
 import com.google.common.cache.Weigher;
-import com.google.common.collect.Lists;
 
 //CHECKSTYLE:OFF
 public class SVGFigure extends Figure implements StyledFigure, ITransparentFigure, ImageFigureWithAlpha {
@@ -136,7 +136,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         public synchronized boolean doRemoveFromCache(String documentKey) {
             if (!StringUtil.isEmpty(documentKey)) {
                 boolean remove = false;
-                Collection<String> keyToRemove = Lists.newArrayList();
+                Collection<String> keyToRemove = new ArrayList<>();
                 for (String key : images.asMap().keySet()) {
                     if (key.startsWith(documentKey)) {
                         keyToRemove.add(key);

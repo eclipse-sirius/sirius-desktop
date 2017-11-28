@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,11 +60,8 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.swt.graphics.RGB;
 
-import com.google.common.collect.Lists;
-
 /**
- * Update the GMF {@link View} properties according to Sirius properties and
- * vice versa.
+ * Update the GMF {@link View} properties according to Sirius properties and vice versa.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -89,8 +86,7 @@ public class ViewPropertiesSynchronizer {
     private static final String DEFAULT_FONT_STYLE = "Arial"; //$NON-NLS-1$
 
     /**
-     * Update the specified GMF {@link View} properties according to Sirius
-     * properties.
+     * Update the specified GMF {@link View} properties according to Sirius properties.
      * 
      * @param view
      *            the {@link View} for which to update properties.
@@ -159,9 +155,8 @@ public class ViewPropertiesSynchronizer {
     }
 
     /**
-     * Update the {@link DDiagramElement}'s style properties (labelstyle),
-     * element of the specified {@link View} according to specified GMF
-     * {@link View} properties.
+     * Update the {@link DDiagramElement}'s style properties (labelstyle), element of the specified {@link View}
+     * according to specified GMF {@link View} properties.
      * 
      * @param view
      *            the specified GMF {@link View}
@@ -187,10 +182,8 @@ public class ViewPropertiesSynchronizer {
     }
 
     /**
-     * Update the {@link DDiagramElement}'s style properties (color), element of
-     * the specified {@link View} according to specified GMF {@link View}
-     * properties and add the modify property to the custom features list of
-     * this style.
+     * Update the {@link DDiagramElement}'s style properties (color), element of the specified {@link View} according to
+     * specified GMF {@link View} properties and add the modify property to the custom features list of this style.
      * 
      * @param view
      *            the specified GMF {@link View}
@@ -321,7 +314,7 @@ public class ViewPropertiesSynchronizer {
     private void updateLabelStyle(View notationView, BasicLabelStyle labelStyle) {
 
         if (labelStyle != null) {
-            List<FontFormat> newFontFormats = Lists.newArrayList();
+            List<FontFormat> newFontFormats = new ArrayList<>();
             final FontStyle fontStyle = (FontStyle) createOrFindStyle(notationView, NotationPackage.eINSTANCE.getFontStyle());
 
             if (fontStyle.isBold()) {

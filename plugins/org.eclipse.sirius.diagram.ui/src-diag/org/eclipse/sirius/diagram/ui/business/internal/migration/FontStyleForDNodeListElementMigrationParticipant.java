@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
@@ -30,7 +31,6 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Add a GMF {@link FontStyle} instance on existing {@link View} with an element
@@ -55,7 +55,7 @@ public class FontStyleForDNodeListElementMigrationParticipant extends AbstractRe
             EClass fontStyleClass = NotationPackage.eINSTANCE.getFontStyle();
 
             // Step 1: get all view to update
-            final Collection<View> allViewsToUpdate = Sets.newLinkedHashSet();
+            final Collection<View> allViewsToUpdate = new LinkedHashSet<>();
             for (DView dView : dAnalysis.getOwnedViews()) {
                 for (DDiagram dDiagram : Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DDiagram.class)) {
                     DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);

@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.ui.tools.internal.preference;
 
 import java.lang.reflect.Field;
 import java.text.MessageFormat;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -20,7 +21,6 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.sirius.common.ui.Messages;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Maps;
 
 /**
  * Helper class to manage configurable settings needed in the code but which are
@@ -39,7 +39,7 @@ import com.google.common.collect.Maps;
 public class DynamicConfigurationHelper implements IPropertyChangeListener {
     private final IPreferenceStore store;
 
-    private final Map<String, String> bindings = Maps.newHashMap();
+    private final Map<String, String> bindings = new HashMap<>();
 
     /**
      * Create a new configuration which listens to the specifed store.

@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.style;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.swt.graphics.Color;
+
+import junit.framework.TestCase;
 
 /**
  * Class to test the ColorManager and its cache.

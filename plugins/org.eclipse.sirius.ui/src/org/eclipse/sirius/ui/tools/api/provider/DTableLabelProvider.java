@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.api.provider;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -31,7 +32,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
 
 /**
  * Label provider of the DTable tabbed property sheet page.
@@ -108,7 +108,7 @@ public class DTableLabelProvider extends LabelProvider {
             }
 
             if (selectionSize > 1) {
-                List<String> labels = Lists.newArrayList();
+                List<String> labels = new ArrayList<>();
                 for (Object selected : semanticSelection) {
                     labels.add(getAdapterFactoryLabelProvider().getText(selected));
                 }
@@ -147,7 +147,7 @@ public class DTableLabelProvider extends LabelProvider {
      *         their targets.
      */
     private List<?> extractSemanticSelection(List<?> selection) {
-        List<Object> semanticSelection = Lists.newArrayList();
+        List<Object> semanticSelection = new ArrayList<>();
         for (Object obj : selection) {
             Object sel = obj;
             if (obj instanceof DSemanticDecorator) {

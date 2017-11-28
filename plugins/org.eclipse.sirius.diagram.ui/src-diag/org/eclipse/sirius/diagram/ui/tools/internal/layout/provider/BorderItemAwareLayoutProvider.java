@@ -107,7 +107,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Layout provider that arranges all border items after another layout provider (<code>initialLayoutProvider</code>)
@@ -510,7 +509,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
 
         // Finds if there are unpinned diagram elements to keep fixed stored in
         // the LayoutHint as a Collection
-        ArrayList<IDiagramElementEditPart> elementsToKeepFixed = Lists.newArrayList();
+        ArrayList<IDiagramElementEditPart> elementsToKeepFixed = new ArrayList<>();
         if (layoutHint.getAdapter(Collection.class) instanceof ArrayList<?>
                 && Iterables.all((ArrayList<?>) layoutHint.getAdapter(Collection.class), validateAllElementInArrayListAreIDiagramElementEditPart)) {
             elementsToKeepFixed = (ArrayList<IDiagramElementEditPart>) layoutHint.getAdapter(Collection.class);

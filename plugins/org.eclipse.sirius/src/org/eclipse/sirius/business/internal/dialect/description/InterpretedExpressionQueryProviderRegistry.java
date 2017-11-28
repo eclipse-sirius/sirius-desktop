@@ -14,6 +14,7 @@ import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -31,11 +32,9 @@ import org.eclipse.sirius.viewpoint.Messages;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
- * Maintains the set of {@link IInterpretedExpressionQueryProvider} currently
- * registered.
+ * Maintains the set of {@link IInterpretedExpressionQueryProvider} currently registered.
  *
  * @author pcdavid
  */
@@ -89,13 +88,12 @@ public class InterpretedExpressionQueryProviderRegistry {
      * @param registry
      *            the registry to look for registered providers.
      * @param context
-     *            the plug-in in the context of which we're running; used for
-     *            logging.
+     *            the plug-in in the context of which we're running; used for logging.
      */
     public InterpretedExpressionQueryProviderRegistry(IExtensionRegistry registry, Plugin context) {
         this.registry = Preconditions.checkNotNull(registry);
         this.context = context;
-        this.entries = Sets.newConcurrentHashSet();
+        this.entries = Collections.newSetFromMap(new ConcurrentHashMap<>());
     }
 
     /**
@@ -108,8 +106,7 @@ public class InterpretedExpressionQueryProviderRegistry {
     }
 
     /**
-     * Stop listening for further registry changes and forget about all
-     * currently known entries.
+     * Stop listening for further registry changes and forget about all currently known entries.
      */
     public void dispose() {
         registry.removeListener(listener);
@@ -117,11 +114,9 @@ public class InterpretedExpressionQueryProviderRegistry {
     }
 
     /**
-     * Returns all the currently registered
-     * {@link IInterpretedExpressionQueryProvider}.
+     * Returns all the currently registered {@link IInterpretedExpressionQueryProvider}.
      * 
-     * @return the currently registered
-     *         {@link IInterpretedExpressionQueryProvider}.
+     * @return the currently registered {@link IInterpretedExpressionQueryProvider}.
      */
     public Collection<IInterpretedExpressionQueryProvider> getEntries() {
         return Collections.unmodifiableList(Lists.newArrayList(entries));

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.api.tools;
 
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -38,8 +39,6 @@ import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.DTreeItemDropLi
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.junit.Assert;
-
-import com.google.common.collect.Sets;
 
 /**
  * Test class containing 2 tests that cannot pass with Eclipse 3.3 without
@@ -112,7 +111,7 @@ public class TreeItemDragAndDropToolUsingRecordingCommandCompositionTest extends
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee1);
         DTreeItem itemEmploye2 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee2);
 
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         itemSources.add(itemEmploye1);
         itemSources.add(itemEmploye2);
         // itemSources.add(itemEmploye3);
@@ -161,7 +160,7 @@ public class TreeItemDragAndDropToolUsingRecordingCommandCompositionTest extends
         Assert.assertEquals(2000, richEmployee2.eGet(wageFeature));
 
         // Step 2 : getting the corresponding TreeItems
-        Set<EObject> semanticSources = Sets.newLinkedHashSet();
+        Set<EObject> semanticSources = new LinkedHashSet<>();
         semanticSources.add(richEmployee1);
         semanticSources.add(richEmployee2);
 
@@ -172,7 +171,7 @@ public class TreeItemDragAndDropToolUsingRecordingCommandCompositionTest extends
         applyDnDTool(this.dropListener, semanticSources, itemRichCompany1, true);
 
         // We now get the created TreeItems from this dragAndDrop
-        Set<EObject> itemSources = Sets.newLinkedHashSet();
+        Set<EObject> itemSources = new LinkedHashSet<>();
         DTreeItem itemEmploye1 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee1);
         DTreeItem itemEmploye2 = (DTreeItem) getFirstRepresentationElement(tree, richEmployee2);
         itemSources.add(itemEmploye1);

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.business.internal.session;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -30,8 +31,6 @@ import org.eclipse.sirius.ui.business.api.session.EditingSessionEvent;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-
-import com.google.common.collect.Sets;
 
 /**
  * A listener to resource set change which save session if there is no dialect editor opens.
@@ -162,7 +161,7 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
     }
 
     private boolean wasProjectDeletedOrRenamed(Collection<ResourceStatusChange> changes) {
-        Collection<IProject> projects = Sets.newHashSet();
+        Collection<IProject> projects = new HashSet<>();
         for (ResourceStatusChange change : changes) {
             IFile file = WorkspaceSynchronizer.getFile(change.getResource());
             if (file != null) {

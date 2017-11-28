@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.movida.registry;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -22,7 +23,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * The default implementation of {@link ViewpointResourceHandler} for
@@ -42,7 +42,7 @@ public class DefaultViewpointResourceHandler implements ViewpointResourceHandler
      * {@inheritDoc}
      */
     public Set<Viewpoint> collectViewpointDefinitions(Resource res) {
-        Set<Viewpoint> viewpoints = Sets.newHashSet();
+        Set<Viewpoint> viewpoints = new HashSet<>();
         for (Group group : Iterables.filter(res.getContents(), Group.class)) {
             for (Viewpoint viewpoint : group.getOwnedViewpoints()) {
                 viewpoints.add(viewpoint);

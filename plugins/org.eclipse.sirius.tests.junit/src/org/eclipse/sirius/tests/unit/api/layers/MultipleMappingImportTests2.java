@@ -34,7 +34,6 @@ import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 public class MultipleMappingImportTests2 extends SiriusDiagramTestCase implements MultipleMapppingImportsModeler {
 
@@ -85,31 +84,31 @@ public class MultipleMappingImportTests2 extends SiriusDiagramTestCase implement
         compareBounds(beforeBounds, afterBounds);
         beforeBounds = afterBounds;
 
-        List<DDiagramElement> elementsWithDefaultMapping = Lists.newArrayList();
+        List<DDiagramElement> elementsWithDefaultMapping = new ArrayList<>();
         elementsWithDefaultMapping.add(findByTargetName(diagramElements, F));
         checkMapping(elementsWithDefaultMapping, defaultNodeMapping);
 
-        List<DDiagramElement> elementsMapping = Lists.newArrayList();
+        List<DDiagramElement> elementsMapping = new ArrayList<>();
         elementsMapping.add(findByTargetName(diagramElements, F1));
         checkMapping(elementsMapping, f1Mapping);
 
-        elementsMapping = Lists.newArrayList();
+        elementsMapping = new ArrayList<>();
         elementsMapping.add(findByTargetName(diagramElements, F2));
         checkMapping(elementsMapping, f2Mapping);
 
-        elementsMapping = Lists.newArrayList();
+        elementsMapping = new ArrayList<>();
         elementsMapping.add(findByTargetName(diagramElements, F11));
         checkMapping(elementsMapping, f11Mapping);
 
-        elementsMapping = Lists.newArrayList();
+        elementsMapping = new ArrayList<>();
         elementsMapping.add(findByTargetName(diagramElements, F12));
         checkMapping(elementsMapping, f12Mapping);
 
-        elementsMapping = Lists.newArrayList();
+        elementsMapping = new ArrayList<>();
         elementsMapping.add(findByTargetName(diagramElements, F21));
         checkMapping(elementsMapping, f21Mapping);
 
-        elementsMapping = Lists.newArrayList();
+        elementsMapping = new ArrayList<>();
         elementsMapping.add(findByTargetName(diagramElements, F22));
         checkMapping(elementsMapping, f22Mapping);
     }

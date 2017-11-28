@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common;
 
-import junit.framework.TestCase;
-
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -27,6 +25,8 @@ import org.eclipse.ui.operations.OperationHistoryActionHandler;
 import org.eclipse.ui.operations.UndoActionHandler;
 import org.eclipse.ui.texteditor.IAbstractTextEditorHelpContextIds;
 import org.eclipse.ui.texteditor.ITextEditorActionConstants;
+
+import junit.framework.TestCase;
 
 public class GMFTests extends TestCase {
 

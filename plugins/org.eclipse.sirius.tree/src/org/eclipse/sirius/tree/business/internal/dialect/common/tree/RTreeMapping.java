@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.sirius.ext.base.Option;
@@ -20,8 +21,6 @@ import org.eclipse.sirius.synchronizer.SemanticPartition;
 import org.eclipse.sirius.synchronizer.SemanticPartitions;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
-
-import com.google.common.collect.Lists;
 
 /**
  * A {@link Mapping}
@@ -61,7 +60,7 @@ class RTreeMapping implements Mapping {
     }
 
     public List<Mapping> getChildMappings() {
-        List<Mapping> result = Lists.newArrayList();
+        List<Mapping> result = new ArrayList<>();
         for (TreeItemMapping mapping : treeDescription.getSubItemMappings()) {
             result.add(provider.getOrCreate(mapping));
         }

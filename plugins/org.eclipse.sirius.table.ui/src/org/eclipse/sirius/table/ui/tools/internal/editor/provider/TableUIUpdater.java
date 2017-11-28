@@ -105,12 +105,12 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
 
     @Override
     public void resourceSetChanged(final ResourceSetChangeEvent event) {
-        toRefreshInViewerWithUpdateLabels = Sets.newLinkedHashSet();
-        toUpdateInViewer = Sets.newLinkedHashSet();
+        toRefreshInViewerWithUpdateLabels = new LinkedHashSet<>();
+        toUpdateInViewer = new LinkedHashSet<>();
         dColumnsToUpdateDirectly = new LinkedHashSet<DColumn>();
         dColumnsWidthToUpdate = new LinkedHashSet<DColumn>();
-        toCollapses = Sets.newLinkedHashSet();
-        toExpands = Sets.newLinkedHashSet();
+        toCollapses = new LinkedHashSet<>();
+        toExpands = new LinkedHashSet<>();
         dColumnsToRemove = new LinkedHashSet<DColumn>();
         dColumnsToAdd = new LinkedHashMap<DColumn, Integer>();
         dColumnsToVisibilityChanged = new LinkedHashMap<DColumn, Boolean>();

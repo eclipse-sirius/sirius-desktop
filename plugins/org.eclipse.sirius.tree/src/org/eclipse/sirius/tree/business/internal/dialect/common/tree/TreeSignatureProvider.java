@@ -12,6 +12,7 @@ package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -25,8 +26,6 @@ import org.eclipse.sirius.synchronizer.SignatureProvider;
 import org.eclipse.sirius.synchronizer.StringSignature;
 import org.eclipse.sirius.tree.tools.internal.Messages;
 
-import com.google.common.collect.Maps;
-
 /**
  * A {@link SignatureProvider}.
  * 
@@ -34,7 +33,7 @@ import com.google.common.collect.Maps;
  */
 class TreeSignatureProvider implements SignatureProvider {
 
-    private Map<String, Signature> allSignatures = Maps.newHashMap();
+    private Map<String, Signature> allSignatures = new HashMap<>();
 
     private MappingHiearchyTable hierarchyTable;
 

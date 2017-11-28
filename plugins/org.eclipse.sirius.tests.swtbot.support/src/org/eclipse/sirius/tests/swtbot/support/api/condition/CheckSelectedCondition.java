@@ -10,6 +10,7 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.condition;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.gef.EditPart;
@@ -17,8 +18,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
-
-import com.google.common.collect.Lists;
 
 /**
  * Class to check if the edit part is selected.
@@ -153,7 +152,7 @@ public class CheckSelectedCondition extends DefaultCondition {
      * @return a compound condition to check the selection of the given parts.
      */
     public static CompoundCondition multipleSelection(SWTBotSiriusDiagramEditor editor, Class<? extends IGraphicalEditPart> editPartClass, String... editPartLabels) {
-        Collection<ICondition> conditions = Lists.newArrayList();
+        Collection<ICondition> conditions = new ArrayList<>();
         for (String label : editPartLabels) {
             conditions.add(new CheckSelectedCondition(editor, label, editPartClass));
         }
@@ -170,7 +169,7 @@ public class CheckSelectedCondition extends DefaultCondition {
      * @return a compound condition to check the selection of the given parts.
      */
     public static CompoundCondition multipleSelection(SWTBotSiriusDiagramEditor editor, EditPart... editPartsToWaitForSelection) {
-        Collection<ICondition> conditions = Lists.newArrayList();
+        Collection<ICondition> conditions = new ArrayList<>();
         for (EditPart part : editPartsToWaitForSelection) {
             conditions.add(new CheckSelectedCondition(editor, part));
         }

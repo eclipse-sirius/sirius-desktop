@@ -10,11 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.internal.extension;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.AbstractImportHandler;
 
 import com.google.common.collect.Lists;
-
-import java.util.List;
 
 /**
  * This will contain all of the import handlers that can be used by the Acceleo
@@ -24,7 +25,7 @@ import java.util.List;
  */
 public final class ImportHandlerRegistry {
     /** List of handlers parsed from the extension point contributions. */
-    private static final List<ImportHandlerDescriptor> HANDLERS = Lists.newArrayList();
+    private static final List<ImportHandlerDescriptor> HANDLERS = new ArrayList<>();
 
     /** Utility classes don't need a default constructor. */
     private ImportHandlerRegistry() {
@@ -52,7 +53,7 @@ public final class ImportHandlerRegistry {
      * @return A copy of the registered handlers' list.
      */
     public static List<AbstractImportHandler> getRegisteredHandlers() {
-        final List<AbstractImportHandler> importHandlers = Lists.newArrayList();
+        final List<AbstractImportHandler> importHandlers = new ArrayList<>();
 
         for (ImportHandlerDescriptor descriptor : HANDLERS) {
             importHandlers.add(descriptor.getImportHandler());

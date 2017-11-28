@@ -54,7 +54,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Migration contribution for sequence diagram part of representations file.
@@ -217,7 +216,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      *            GMF Diagram to migrate.
      */
     private void migrateChildrenOfCollapsedNode(Diagram diagram) {
-        List<DDiagramElement> indirectlyCollaspedDDEs = Lists.newArrayList();
+        List<DDiagramElement> indirectlyCollaspedDDEs = new ArrayList<>();
         Iterator<Node> viewIterator = Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class), isDirectlyCollapsedNode);
         while (viewIterator.hasNext()) {
             final Node node = viewIterator.next();

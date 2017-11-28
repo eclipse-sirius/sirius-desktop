@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.refresh;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -71,7 +72,6 @@ import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * GMF Helper.
@@ -695,7 +695,7 @@ public final class GMFHelper {
      */
     public static List<Point> getPointsFromSource(ConnectionEditPart edgeEditPart) throws IllegalArgumentException {
         if (edgeEditPart.getModel() instanceof Edge && edgeEditPart.getFigure() instanceof Connection) {
-            List<Point> result = Lists.newArrayList();
+            List<Point> result = new ArrayList<>();
             Edge gmfEdge = (Edge) edgeEditPart.getModel();
             Connection connectionFigure = (Connection) edgeEditPart.getFigure();
             Point srcAnchorLoc = connectionFigure.getSourceAnchor().getReferencePoint();
@@ -724,7 +724,7 @@ public final class GMFHelper {
      */
     public static List<Point> getPointsFromTarget(ConnectionEditPart edgeEditPart) throws IllegalArgumentException {
         if (edgeEditPart.getModel() instanceof Edge && edgeEditPart.getFigure() instanceof Connection) {
-            List<Point> result = Lists.newArrayList();
+            List<Point> result = new ArrayList<>();
             Edge gmfEdge = (Edge) edgeEditPart.getModel();
             Connection connectionFigure = (Connection) edgeEditPart.getFigure();
             Point tgtAnchorLoc = connectionFigure.getTargetAnchor().getReferencePoint();

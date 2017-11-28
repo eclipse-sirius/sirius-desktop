@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.layers;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
@@ -20,6 +18,8 @@ import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.Layer;
+
+import junit.framework.TestCase;
 
 /**
  * Tests edge mapping import basic functionalities;

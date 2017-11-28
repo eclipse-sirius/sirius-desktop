@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.api.query;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.tree.description.TreePopupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
@@ -48,7 +47,7 @@ public class TreePopupMenuQuery {
      *         flattening the referenced ones.
      */
     public Iterable<MenuItemDescription> getMenuItems() {
-        List<MenuItemDescription> items = Lists.newArrayList();
+        List<MenuItemDescription> items = new ArrayList<>();
         for (MenuItemOrRef absMenuItem : menu.getMenuItemDescriptions()) {
             if (absMenuItem instanceof MenuItemDescription) {
                 items.add((MenuItemDescription) absMenuItem);

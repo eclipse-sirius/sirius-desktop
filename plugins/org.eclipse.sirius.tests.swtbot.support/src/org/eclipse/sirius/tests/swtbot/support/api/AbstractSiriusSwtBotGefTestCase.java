@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.NoSuchElementException;
@@ -399,7 +400,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
             @Override
             public void run() {
-                Collection<Session> sessionsToClose = Sets.newLinkedHashSet();
+                Collection<Session> sessionsToClose = new LinkedHashSet<>();
                 for (final Session sess : Sets.newLinkedHashSet(SessionManager.INSTANCE.getSessions())) {
                     if (sess.isOpen()) {
                         sessionsToClose.add(sess);
@@ -874,7 +875,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     private void assertNoDiagramCorePreferenceChangedinDiagramUIStore(String preferenceKey) {
-        Collection<String> coreKeys = Lists.newArrayList();
+        Collection<String> coreKeys = new ArrayList<>();
         for (SiriusDiagramInternalPreferencesKeys key : SiriusDiagramInternalPreferencesKeys.values()) {
             coreKeys.add(key.name());
         }
@@ -887,7 +888,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     private void assertNoDiagramUIPreferenceChangedinDiagramCoreStore(String preferenceKey) {
-        Collection<String> uiKeys = Lists.newArrayList();
+        Collection<String> uiKeys = new ArrayList<>();
         for (SiriusDiagramUiInternalPreferencesKeys key : SiriusDiagramUiInternalPreferencesKeys.values()) {
             uiKeys.add(key.name());
         }
@@ -1676,7 +1677,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                         result.add(new SWTBotShell(shell));
                     }
                 }
-                final Set<Shell> workbenchWindowsWidgets = Sets.newHashSet();
+                final Set<Shell> workbenchWindowsWidgets = new HashSet<>();
                 for (IWorkbenchWindow w : PlatformUI.getWorkbench().getWorkbenchWindows()) {
                     workbenchWindowsWidgets.add(w.getShell());
                 }

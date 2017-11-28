@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Point;
@@ -25,8 +26,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-
-import com.google.common.collect.Lists;
 
 /**
  * This class test moving ports simultaneously.
@@ -67,7 +66,7 @@ public class MoveBorderNodeTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveSeveralBorderNodes() {
         // Select the border nodes
-        final List<SWTBotGefEditPart> partsToSelect = Lists.newArrayList();
+        final List<SWTBotGefEditPart> partsToSelect = new ArrayList<>();
         partsToSelect.add(editor.getEditPart("A", AbstractDiagramBorderNodeEditPart.class));
         partsToSelect.add(editor.getEditPart("B", AbstractDiagramBorderNodeEditPart.class));
         partsToSelect.add(editor.getEditPart("C", AbstractDiagramBorderNodeEditPart.class));

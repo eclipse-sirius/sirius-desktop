@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manage
 
 import java.text.MessageFormat;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -59,7 +60,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A manager for modeling projects.
@@ -101,7 +101,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
      * Set of representations files that are currently loading. There can be only one representations file in loading at
      * same time. However there may be many waiting to be loaded.
      */
-    private Set<URI> sessionFileLoading = Sets.newHashSet();
+    private Set<URI> sessionFileLoading = new HashSet<>();
 
     /**
      * Avoid instantiation.

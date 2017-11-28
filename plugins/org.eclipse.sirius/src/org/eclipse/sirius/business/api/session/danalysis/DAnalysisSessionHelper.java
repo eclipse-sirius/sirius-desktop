@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -186,7 +187,7 @@ public final class DAnalysisSessionHelper {
             return null;
         }
 
-        final Collection<DAnalysis> candidates = Sets.newLinkedHashSet();
+        final Collection<DAnalysis> candidates = new LinkedHashSet<>();
         for (final DView container : containers) {
             if (container.eContainer() instanceof DAnalysis) {
                 candidates.add((DAnalysis) container.eContainer());

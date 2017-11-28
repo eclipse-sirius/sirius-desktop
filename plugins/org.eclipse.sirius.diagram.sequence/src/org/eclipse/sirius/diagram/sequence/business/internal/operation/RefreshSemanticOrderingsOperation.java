@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +40,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * An operation to re-compute the global semantic orderings of events and
@@ -109,7 +109,7 @@ public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperat
     }
     
     private List<EventEnd> computeEventEndsOrdering(EventEndsOrdering semanticOrdering, Iterable<? extends EventEnd> allEnds) {
-        Map<EObject, EventEnd> index = Maps.newHashMap();
+        Map<EObject, EventEnd> index = new HashMap<>();
         for (EventEnd eventEnd : allEnds) {
             index.put(eventEnd.getSemanticEnd(), eventEnd);
         }
@@ -144,7 +144,7 @@ public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperat
     }
 
     private List<EObject> computeInstanceRolesOrdering(InstanceRolesOrdering semanticOrdering, Iterable<? extends DNode> allInstanceRoles) {
-        List<EObject> semanticInstanceRoles = Lists.newArrayList();
+        List<EObject> semanticInstanceRoles = new ArrayList<>();
         for (DNode node : allInstanceRoles) {
             semanticInstanceRoles.add(node.getTarget());
         }

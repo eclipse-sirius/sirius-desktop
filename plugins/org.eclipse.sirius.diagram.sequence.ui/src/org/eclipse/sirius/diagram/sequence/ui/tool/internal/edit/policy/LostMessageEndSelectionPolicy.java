@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.PositionConstants;
@@ -25,7 +26,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirResizableEditPolicy;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 /**
  * This policy controls the moves of {@link LostMessageEndEditPart}s.
@@ -34,7 +34,7 @@ import com.google.common.collect.Lists;
  */
 public class LostMessageEndSelectionPolicy extends AirResizableEditPolicy {
 
-    private static List<Integer> handledAlignments = Lists.newArrayList();
+    private static List<Integer> handledAlignments = new ArrayList<>();
     {
         handledAlignments.add(PositionConstants.LEFT);
         handledAlignments.add(PositionConstants.CENTER);

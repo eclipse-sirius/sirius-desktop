@@ -10,6 +10,7 @@
  */
 package org.eclipse.sirius.tests.support.api;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -34,7 +35,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
@@ -73,7 +73,7 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        interpretedExpressions = Sets.newLinkedHashSet();
+        interpretedExpressions = new LinkedHashSet<>();
         Assert.assertNotNull("Base package should not be null.", basePackage);
         handleEPackage(basePackage);
     }
@@ -156,7 +156,7 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
     }
 
     private Collection<EPackage> getAvailablePackages() {
-        LinkedHashSet<EPackage> availablePackages = Sets.newLinkedHashSet();
+        LinkedHashSet<EPackage> availablePackages = new LinkedHashSet<>();
         availablePackages.add(basePackage);
         availablePackages.add(getDialectPackage());
         availablePackages.add(ViewpointPackage.eINSTANCE);
@@ -194,7 +194,7 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
      * Test that all interpreted expression variables have a known type.
      */
     public void testVariablesInInterpretedExpressionEAnnotation() {
-        List<EAttribute> nonDocumented = Lists.newArrayList();
+        List<EAttribute> nonDocumented = new ArrayList<>();
 
         Predicate<EAttribute> needsDocumentation = new Predicate<EAttribute>() {
             @Override
@@ -216,7 +216,7 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
      * Test that all interpreted expression has a result type documentation.
      */
     public void testReturnTypeInterpretedExpressionEAnnotation() {
-        List<EAttribute> nonDocumented = Lists.newArrayList();
+        List<EAttribute> nonDocumented = new ArrayList<>();
 
         Predicate<EAttribute> needsReturnType = new Predicate<EAttribute>() {
             @Override

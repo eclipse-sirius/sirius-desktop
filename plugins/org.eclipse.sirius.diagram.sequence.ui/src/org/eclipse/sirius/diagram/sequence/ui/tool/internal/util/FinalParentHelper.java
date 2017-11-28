@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -34,7 +35,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 public class FinalParentHelper {
     private final AbstractNodeEvent self;
@@ -142,7 +142,7 @@ public class FinalParentHelper {
 
     private ISequenceEvent getFinalParentOnResize(final Range fullFinalRange) {
         Preconditions.checkArgument(request.isResize());
-        final Collection<ISequenceEvent> remoteErrors = Sets.newHashSet();
+        final Collection<ISequenceEvent> remoteErrors = new HashSet<>();
 
         /*
          * A simple resizing can not change the parent of an execution.
@@ -246,7 +246,7 @@ public class FinalParentHelper {
      * @return list of {@link ISequenceEvent}
      */
     public static ArrayList<ISequenceEvent> computeLinkedSiblings(RequestQuery request) {
-        final ArrayList<ISequenceEvent> linkedSiblings = Lists.newArrayList();
+        final ArrayList<ISequenceEvent> linkedSiblings = new ArrayList<>();
         Set<Execution> parts = request.getExecutions();
         for (Execution execution : parts) {
             linkedSiblings.add(execution);

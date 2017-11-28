@@ -13,11 +13,11 @@ package org.eclipse.sirius.tests.unit.api.refresh;
 import java.util.Collection;
 import java.util.List;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.ext.base.collect.SetIntersection;
 
 import com.google.common.collect.Lists;
+
+import junit.framework.TestCase;
 
 public class SetIntersectionTest extends TestCase {
 

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.views.common.item;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -26,7 +27,6 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Abstract implementation of {@link ProjectDependenciesItem} providing common methods for all implementations. The
@@ -60,7 +60,7 @@ public abstract class AbstractProjectDependenciesItem implements ProjectDependen
      */
     @Override
     public Collection<?> getChildren() {
-        Collection<Object> children = Sets.newLinkedHashSet();
+        Collection<Object> children = new LinkedHashSet<>();
 
         Option<Session> optionalSession = getSession();
         if (optionalSession.some()) {
@@ -83,7 +83,7 @@ public abstract class AbstractProjectDependenciesItem implements ProjectDependen
     }
 
     private Collection<Resource> extractProjectDependencies(Iterable<Resource> dependencies) {
-        Collection<Resource> deps = Sets.newLinkedHashSet();
+        Collection<Resource> deps = new LinkedHashSet<>();
         for (Resource resource : dependencies) {
             final URI uri = resource.getURI();
             if (uri.isPlatformResource()) {

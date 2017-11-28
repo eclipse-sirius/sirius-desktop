@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tree.business.internal.dialect.description;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -28,8 +29,6 @@ import org.eclipse.sirius.tree.description.TreeNavigationDescription;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
 import org.eclipse.sirius.tree.description.util.DescriptionSwitch;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
-
-import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -97,7 +96,7 @@ public class TreeInterpretedExpressionTargetSwitch extends DescriptionSwitch<Opt
         if (doSwitch != null) {
             return doSwitch;
         }
-        Collection<String> defaultResult = Sets.newLinkedHashSet();
+        Collection<String> defaultResult = new LinkedHashSet<>();
         return Options.newSome(defaultResult);
     }
 
@@ -117,7 +116,7 @@ public class TreeInterpretedExpressionTargetSwitch extends DescriptionSwitch<Opt
     @Override
     public Option<Collection<String>> caseTreeDescription(TreeDescription object) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
+        Collection<String> target = new LinkedHashSet<>();
         switch (featureID) {
         case DescriptionPackage.TREE_DESCRIPTION__PRECONDITION_EXPRESSION:
         case DescriptionPackage.TREE_DESCRIPTION__TITLE_EXPRESSION:
@@ -141,7 +140,7 @@ public class TreeInterpretedExpressionTargetSwitch extends DescriptionSwitch<Opt
     @Override
     public Option<Collection<String>> caseTreeItemMapping(TreeItemMapping object) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
+        Collection<String> target = new LinkedHashSet<>();
         switch (featureID) {
         case DescriptionPackage.TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
             result = globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
@@ -164,7 +163,7 @@ public class TreeInterpretedExpressionTargetSwitch extends DescriptionSwitch<Opt
     @Override
     public Option<Collection<String>> caseTreeCreationDescription(TreeCreationDescription toolDescription) {
         Option<Collection<String>> result = null;
-        Collection<String> targets = Sets.newLinkedHashSet();
+        Collection<String> targets = new LinkedHashSet<>();
         switch (featureID) {
         case DescriptionPackage.TREE_CREATION_DESCRIPTION__TITLE_EXPRESSION:
         case DescriptionPackage.TREE_CREATION_DESCRIPTION__BROWSE_EXPRESSION:
@@ -190,7 +189,7 @@ public class TreeInterpretedExpressionTargetSwitch extends DescriptionSwitch<Opt
     @Override
     public Option<Collection<String>> caseTreeNavigationDescription(TreeNavigationDescription toolDescription) {
         Option<Collection<String>> result = null;
-        Collection<String> targets = Sets.newLinkedHashSet();
+        Collection<String> targets = new LinkedHashSet<>();
         switch (featureID) {
         case DescriptionPackage.TREE_NAVIGATION_DESCRIPTION__BROWSE_EXPRESSION:
         case DescriptionPackage.TREE_NAVIGATION_DESCRIPTION__NAVIGATION_NAME_EXPRESSION:

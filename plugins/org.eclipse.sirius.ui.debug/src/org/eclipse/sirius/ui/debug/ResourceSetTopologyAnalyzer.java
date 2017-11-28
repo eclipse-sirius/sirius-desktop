@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.debug;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
@@ -25,7 +26,6 @@ import org.eclipse.sirius.ext.emf.AllContents;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 
 /**
  * Analyzes the inter-resource references inside a ResourceSet to discover its
@@ -90,7 +90,7 @@ public class ResourceSetTopologyAnalyzer {
     }
 
     private Set<Reference> analyzeReferences(Resource res) {
-        Set<Reference> outgoing = Sets.newHashSet();
+        Set<Reference> outgoing = new HashSet<>();
         for (EObject root : res.getContents()) {
             for (EObject obj : AllContents.of(root, true)) {
                 outgoing.addAll(collectCrossResourceReferences(obj));
@@ -100,7 +100,7 @@ public class ResourceSetTopologyAnalyzer {
     }
 
     private Set<Reference> collectCrossResourceReferences(EObject src) {
-        Set<Reference> result = Sets.newHashSet();
+        Set<Reference> result = new HashSet<>();
         Resource sourceResource = src.eResource();
         for (EContentsEList.FeatureIterator<?> featureIterator = (EContentsEList.FeatureIterator<?>) src.eCrossReferences().iterator(); featureIterator.hasNext();) {
             EObject tgt = (EObject) featureIterator.next();

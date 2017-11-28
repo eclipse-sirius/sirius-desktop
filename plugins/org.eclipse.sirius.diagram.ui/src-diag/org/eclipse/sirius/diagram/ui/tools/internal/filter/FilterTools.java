@@ -40,8 +40,6 @@ import org.eclipse.sirius.viewpoint.description.TypedVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
-import com.google.common.collect.Lists;
-
 /**
  * Utility classes for Filters user interfaces.
  *
@@ -173,7 +171,7 @@ public final class FilterTools {
     }
 
     private static List<String> computeDefaultValues(List<TypedVariable> typedVariableList, DSemanticDiagram diagram) {
-        List<String> defaultValues = Lists.newArrayList();
+        List<String> defaultValues = new ArrayList<>();
 
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(diagram);
         EObject diagramSemanticObject = diagram.getTarget();

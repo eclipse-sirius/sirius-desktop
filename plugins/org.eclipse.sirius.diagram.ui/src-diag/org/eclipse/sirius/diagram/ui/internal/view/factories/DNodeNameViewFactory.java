@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.view.factories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -22,8 +23,6 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-
-import com.google.common.collect.Lists;
 
 /**
  * @was-generated
@@ -48,6 +47,6 @@ public class DNodeNameViewFactory extends AbstractLabelViewFactory {
      * @was-generated
      */
     protected List<?> createStyles(View view) {
-        return Lists.newArrayList();
+        return new ArrayList<>();
     }
 }

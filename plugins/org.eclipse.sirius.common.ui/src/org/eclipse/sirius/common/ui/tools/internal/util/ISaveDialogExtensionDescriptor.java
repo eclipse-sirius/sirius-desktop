@@ -12,7 +12,6 @@ package org.eclipse.sirius.common.ui.tools.internal.util;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.util.ISaveDialogExtension;
 

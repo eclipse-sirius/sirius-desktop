@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.business.api.session;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -32,8 +33,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Maps;
 
 /**
  * Utility class for clients wanting to start their own sessions.
@@ -98,7 +97,7 @@ public final class SessionHelper {
         Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
 
         if (!selectedViewpoints.isEmpty()) {
-            Map<RepresentationDescription, Boolean> alreadyCheckedDescriptions = Maps.newHashMap();
+            Map<RepresentationDescription, Boolean> alreadyCheckedDescriptions = new HashMap<>();
             candidates = DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream().filter(repDesc -> {
                 RepresentationDescription description = repDesc.getDescription();
                 return description != null && SessionHelper.checkStartupDescInSelectedVps(description, alreadyCheckedDescriptions, selectedViewpoints);

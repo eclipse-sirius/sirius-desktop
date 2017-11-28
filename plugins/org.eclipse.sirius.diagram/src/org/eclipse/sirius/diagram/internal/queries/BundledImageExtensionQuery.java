@@ -10,13 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.internal.queries;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.internal.registry.ExtensionHandle;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-
-import com.google.common.collect.Lists;
 
 /**
  * Queries manipulating the extension providing new shapes in the bundled image
@@ -103,7 +102,7 @@ public class BundledImageExtensionQuery {
      * @return the labels to display in the VSM.
      */
     public List<String> getExtendedLabelsForVSM() {
-        List<String> labels = Lists.newArrayList();
+        List<String> labels = new ArrayList<>();
         for (IConfigurationElement configurationElement : extensions) {
             labels.add(getExtendedLabelForVSM(configurationElement));
         }

@@ -13,13 +13,13 @@ package org.eclipse.sirius.tests.unit.api.session;
 import java.util.HashSet;
 import java.util.Set;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import junit.framework.TestCase;
 
 public class ViewpointSelectionTests extends TestCase {
 

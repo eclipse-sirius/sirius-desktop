@@ -290,7 +290,7 @@ public class DiagramHeaderComposite extends Composite {
      * @return a list of {@link HeaderData}
      */
     private LinkedList<HeaderData> getHeaderData() {
-        LinkedList<HeaderData> headerDatas = Lists.newLinkedList();
+        LinkedList<HeaderData> headerDatas = new LinkedList<>();
         if (dDiagram != null) {
             for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
                 if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(dDiagram.getDescription().eClass().getEPackage())) {

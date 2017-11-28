@@ -12,7 +12,10 @@ package org.eclipse.sirius.tests.swtbot;
 
 import static org.junit.Assert.assertNotEquals;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -55,7 +58,6 @@ import org.eclipse.ui.PlatformUI;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
@@ -80,7 +82,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
 
     private static final String ROUTING_STYLE_MANHATTAN_BORDERED = "Manhattan_Bordered";
 
-    private Set<AssertionFailedError> failures = Sets.newLinkedHashSet();
+    private Set<AssertionFailedError> failures = new LinkedHashSet<>();
 
     private SWTBotSiriusDiagramEditor diagramEditor;
 
@@ -188,8 +190,8 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
 
             // Step 2: try to move each node on the lifeline : all bendpoints of
             // related edges should move
-            Set<SWTBotGefEditPart> editPartsToMove = Sets.newLinkedHashSet();
-            Map<SWTBotGefConnectionEditPart, PointList> previousBendPoints = Maps.newLinkedHashMap();
+            Set<SWTBotGefEditPart> editPartsToMove = new LinkedHashSet<>();
+            Map<SWTBotGefConnectionEditPart, PointList> previousBendPoints = new LinkedHashMap<>();
 
             for (SWTBotGefConnectionEditPart connectionEditPart : sequenceDiagramEditor.getConnectionsEditPart()) {
                 editPartsToMove.add(connectionEditPart.source());
@@ -231,7 +233,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
         try {
 
             // Step 2: try to move the nodes: all bendpoints should move
-            Map<SWTBotGefConnectionEditPart, PointList> previousBendPoints = Maps.newLinkedHashMap();
+            Map<SWTBotGefConnectionEditPart, PointList> previousBendPoints = new LinkedHashMap<>();
             for (SWTBotGefConnectionEditPart connectionEditPart : bracketEdgesDiagramEditor.getConnectionsEditPart()) {
                 PointList points = ((PolylineConnectionEx) connectionEditPart.part().getFigure()).getPoints();
                 previousBendPoints.put(connectionEditPart, points);
@@ -461,7 +463,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                 SWTBotGefEditPart editParWithSource = rectilinearDiagramEditor.getEditPart(editPartToMove, IAbstractDiagramNodeEditPart.class);
                 rectilinearDiagramEditor.select(editParWithSource);
                 SWTBotUtils.waitAllUiEvents();
-                Collection<Point> moveSourceDeltas = Lists.newArrayList();
+                Collection<Point> moveSourceDeltas = new ArrayList<>();
                 moveSourceDeltas.add(new Point(50, 50));
                 moveSourceDeltas.add(new Point(500, 500));
                 moveSourceDeltas.add(new Point(500, -500));
@@ -505,7 +507,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
             SWTBotGefEditPart editParWithSource = rectilinearDiagramEditor.getEditPart("B", IAbstractDiagramNodeEditPart.class);
             rectilinearDiagramEditor.select(editParWithSource);
             SWTBotUtils.waitAllUiEvents();
-            Collection<Point> moveSourceDeltas = Lists.newArrayList();
+            Collection<Point> moveSourceDeltas = new ArrayList<>();
             moveSourceDeltas.add(new Point(50, 50));
             moveSourceDeltas.add(new Point(500, 500));
             moveSourceDeltas.add(new Point(500, -500));
@@ -532,7 +534,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
             SWTBotGefEditPart editParWithTarget = rectilinearDiagramEditor.getEditPart("A", IAbstractDiagramNodeEditPart.class);
             rectilinearDiagramEditor.select(editParWithTarget);
             SWTBotUtils.waitAllUiEvents();
-            Collection<Point> moveTargetDeltas = Lists.newArrayList();
+            Collection<Point> moveTargetDeltas = new ArrayList<>();
             moveTargetDeltas.add(new Point(50, 5));
             moveTargetDeltas.add(new Point(500, 5));
             moveTargetDeltas.add(new Point(500, 500));
@@ -577,7 +579,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
             SWTBotGefEditPart editParWithSource = rectilinearDiagramEditor.getEditPart("B", IAbstractDiagramNodeEditPart.class);
             rectilinearDiagramEditor.select(editParWithSource);
             SWTBotUtils.waitAllUiEvents();
-            Collection<Point> moveSourceDeltas = Lists.newArrayList();
+            Collection<Point> moveSourceDeltas = new ArrayList<>();
             moveSourceDeltas.add(new Point(-42, -42));
             moveSourceDeltas.add(new Point(-40, -100));
             for (Point moveSourceDelta : moveSourceDeltas) {
@@ -664,8 +666,8 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                 try {
                     // Step 2: storing the previous
                     // bendpoints
-                    Map<SWTBotGefConnectionEditPart, PointList> previousBendPoints = Maps.newLinkedHashMap();
-                    Collection<SWTBotGefEditPart> editPartsToMove = Sets.newLinkedHashSet();
+                    Map<SWTBotGefConnectionEditPart, PointList> previousBendPoints = new LinkedHashMap<>();
+                    Collection<SWTBotGefEditPart> editPartsToMove = new LinkedHashSet<>();
                     for (String nodeToMove : nodesToMove) {
                         SWTBotGefEditPart nodeEditPart = diagramEditor.getEditPart(nodeToMove, IAbstractDiagramNodeEditPart.class);
                         editPartsToMove.add(nodeEditPart);
@@ -757,8 +759,8 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                 }
                 try {
                     // Step 2: storing the previous bendpoints
-                    Map<SWTBotGefConnectionEditPart, PointList> previousBendPoints = Maps.newLinkedHashMap();
-                    Collection<SWTBotGefEditPart> editPartsToMove = Sets.newLinkedHashSet();
+                    Map<SWTBotGefConnectionEditPart, PointList> previousBendPoints = new LinkedHashMap<>();
+                    Collection<SWTBotGefEditPart> editPartsToMove = new LinkedHashSet<>();
                     for (int i = 0; i < sourceAndTargetOfEdgeToMove.length; i += 2) {
                         SWTBotGefEditPart sourceNodeEditPart = diagramEditor.getEditPart(sourceAndTargetOfEdgeToMove[i], IAbstractDiagramNodeEditPart.class);
                         SWTBotGefEditPart targetNodeEditPart = diagramEditor.getEditPart(sourceAndTargetOfEdgeToMove[i + 1], IAbstractDiagramNodeEditPart.class);

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,8 +37,6 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 
-import com.google.common.collect.Lists;
-
 /**
  * .
  * 
@@ -57,7 +56,7 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
 
     private MenuContributionItemArmListener listener;
 
-    private List<String> tooltips = Lists.newArrayList();
+    private List<String> tooltips = new ArrayList<>();
 
     /**
      * {@inheritDoc}

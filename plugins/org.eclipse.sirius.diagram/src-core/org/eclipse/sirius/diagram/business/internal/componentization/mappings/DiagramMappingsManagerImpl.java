@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.business.internal.componentization.mappings;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -41,8 +42,6 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.collect.Sets;
 
 /**
  * A manager of mappings available for a given diagram depending of the
@@ -383,7 +382,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
 
     private void iterateOnMappings(final List<? extends DiagramElementMapping> mappings, final MappingsListVisitor visitor) {
 
-        final Set<AbstractDNodeCandidate> candidateFilter = Sets.newHashSet();
+        final Set<AbstractDNodeCandidate> candidateFilter = new HashSet<>();
 
         for (final DiagramElementMapping mapping : mappings) {
             Collection<AbstractDNodeCandidate> candidateElementsProceed = visitor.visit(mapping, candidateFilter);

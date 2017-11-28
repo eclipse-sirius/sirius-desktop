@@ -10,7 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.dialect.description;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
@@ -64,8 +68,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -185,7 +187,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
             getAvailableVariables();
 
             if (selfType != null && selfType.hasDefinition()) {
-                Collection<String> possibleTypes = Sets.newLinkedHashSet();
+                Collection<String> possibleTypes = new LinkedHashSet<>();
                 for (TypeName typeName : selfType.getPossibleTypes()) {
                     possibleTypes.add(typeName.getCompleteName());
                 }
@@ -207,7 +209,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     @Override
     public Collection<EPackage> getPackagesToImport() {
         if (packagesToImport == null) {
-            packagesToImport = Sets.newLinkedHashSet();
+            packagesToImport = new LinkedHashSet<>();
 
             EObject representation = target.eContainer();
             // We get the RepresentationDescription of the target
@@ -253,7 +255,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     @Override
     public Collection<String> getDependencies() {
         if (dependencies == null) {
-            dependencies = Sets.newLinkedHashSet();
+            dependencies = new LinkedHashSet<>();
 
             if (target != null) {
                 EObject vp = target;
@@ -282,7 +284,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     @Override
     public Map<String, VariableType> getAvailableVariables() {
         if (availableVariables == null) {
-            availableVariables = Maps.newLinkedHashMap();
+            availableVariables = new LinkedHashMap<>();
         }
         Option<EObject> toolContext = getToolContext();
         if (toolContext.some()) {
@@ -499,7 +501,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         // A map with multiple values is not strictly required as we only use
         // one value, but it is useful when debugging to have all the
         // information.
-        Map<String, Collection<VariableType>> definitions = Maps.newHashMap();
+        Map<String, Collection<VariableType>> definitions = new HashMap<>();
         // Walk up from bottom to top and gather every definition in the scope.
         EObject context = bottom;
 
@@ -782,7 +784,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         if (name != null) {
             Collection<VariableType> defs = definitions.get(name);
             if (defs == null) {
-                defs = Lists.newArrayList();
+                defs = new ArrayList<>();
                 definitions.put(name, defs);
             }
             defs.add(type);

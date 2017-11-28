@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -34,7 +35,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
 
 /**
  * .
@@ -111,7 +111,7 @@ public final class ParentOperandFinder {
         // Map to store the result of the covered lifelines of a
         // CombinedFragment to avoid to make this call for each Operand of the
         // same CombinedFragment.
-        final Map<CombinedFragment, Collection<Lifeline>> combinedFragmentToCoveredLifelines = Maps.newHashMap();
+        final Map<CombinedFragment, Collection<Lifeline>> combinedFragmentToCoveredLifelines = new HashMap<>();
 
         Predicate<Operand> coveredLifeline = new Predicate<Operand>() {
             // Filter the operands that cover the execution parent lifeline

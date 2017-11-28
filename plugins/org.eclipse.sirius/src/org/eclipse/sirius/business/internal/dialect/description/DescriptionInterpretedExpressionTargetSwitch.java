@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.dialect.description;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -30,8 +31,6 @@ import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.TypedVariable;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
-
-import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element (part of the {@link DescriptionPackage}) and
@@ -94,7 +93,7 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
         if (doSwitch != null) {
             return doSwitch;
         }
-        Collection<String> defaultResult = Sets.newLinkedHashSet();
+        Collection<String> defaultResult = new LinkedHashSet<>();
         return Options.newSome(defaultResult);
     }
 
@@ -131,7 +130,7 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
     @Override
     public Option<Collection<String>> caseSemanticBasedDecoration(SemanticBasedDecoration object) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
+        Collection<String> target = new LinkedHashSet<>();
         switch (featureID) {
         case DescriptionPackage.SEMANTIC_BASED_DECORATION__PRECONDITION_EXPRESSION:
         case DescriptionPackage.DECORATION_DESCRIPTION__TOOLTIP_EXPRESSION:
@@ -171,7 +170,7 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
      */
     @Override
     public Option<Collection<String>> caseConditionalStyleDescription(ConditionalStyleDescription styleDescription) {
-        Collection<String> target = Sets.newLinkedHashSet();
+        Collection<String> target = new LinkedHashSet<>();
         Option<Collection<String>> result = Options.newSome(target);
         switch (featureID) {
         case DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION:

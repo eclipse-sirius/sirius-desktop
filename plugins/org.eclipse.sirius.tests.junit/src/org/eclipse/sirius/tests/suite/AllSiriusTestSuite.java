@@ -10,12 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.suite.common.AllCommonPluginTests;
 import org.eclipse.sirius.tests.suite.common.AllCommonStandaloneTests;
@@ -24,6 +18,12 @@ import org.eclipse.sirius.tests.suite.diagram.AllDiagramStandaloneTests;
 import org.eclipse.sirius.tests.suite.table.AllTablePluginTests;
 import org.eclipse.sirius.tests.suite.table.AllTableStandaloneTests;
 import org.eclipse.sirius.tests.unit.common.EnvironmentReportTest;
+
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 public class AllSiriusTestSuite extends TestCase {
 

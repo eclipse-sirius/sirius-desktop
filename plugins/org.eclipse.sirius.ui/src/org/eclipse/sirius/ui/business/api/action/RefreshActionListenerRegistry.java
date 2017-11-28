@@ -10,11 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.api.action;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
-import com.google.common.collect.Sets;
 
 /**
  * A registry listing all the listeners that will be notified any time a user
@@ -30,7 +29,7 @@ public final class RefreshActionListenerRegistry {
      */
     public static final RefreshActionListenerRegistry INSTANCE = new RefreshActionListenerRegistry();
 
-    private Set<IRefreshActionListener> listeners = Sets.newLinkedHashSet();
+    private Set<IRefreshActionListener> listeners = new LinkedHashSet<>();
 
     /**
      * Private constructor.

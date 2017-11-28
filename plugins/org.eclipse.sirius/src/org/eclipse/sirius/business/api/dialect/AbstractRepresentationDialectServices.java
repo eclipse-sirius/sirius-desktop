@@ -15,6 +15,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Optional;
@@ -56,8 +57,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Basic class to extend for each dialect services implementation.
@@ -71,7 +70,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      * All standard references to find {@link org.eclipse.sirius.viewpoint.DRepresentationElement} from corresponding
      * semantic elements by cross reference.
      */
-    protected static final Set<EReference> REPRESENTATION_ELEMENTS_INVERSE_REFERENCES = Sets.newHashSet();
+    protected static final Set<EReference> REPRESENTATION_ELEMENTS_INVERSE_REFERENCES = new HashSet<>();
 
     static {
         REPRESENTATION_ELEMENTS_INVERSE_REFERENCES.add(ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target());
@@ -275,7 +274,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      */
     @Override
     public Collection<RepresentationDescription> getAvailableRepresentationDescriptions(Collection<Viewpoint> vps, EObject semantic) {
-        final Collection<RepresentationDescription> result = Lists.newArrayList();
+        final Collection<RepresentationDescription> result = new ArrayList<>();
         for (Viewpoint vp : vps) {
             Iterables.addAll(result, getAvailableRepresentationDescriptions(vp, semantic));
         }

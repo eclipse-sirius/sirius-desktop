@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.commands.emf;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.command.Command;
@@ -24,7 +25,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A copy command which is a proxy to {@link CopyToClipboardCommand} but set the
@@ -36,12 +36,12 @@ public class CopyToSiriusClipboardCommand extends RecordingCommand implements Ab
     /**
      * The elements to copy.
      */
-    private final Collection<DSemanticDecorator> dElementsToCopy = Sets.newHashSet();
+    private final Collection<DSemanticDecorator> dElementsToCopy = new HashSet<>();
 
     /**
      * The semantic elements to copy.
      */
-    private final Collection<EObject> elementsToCopy = Sets.newHashSet();
+    private final Collection<EObject> elementsToCopy = new HashSet<>();
 
     private final TransactionalEditingDomain domain;
 

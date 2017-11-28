@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram.sequence;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.unit.diagram.sequence.CollapseFilterSequenceMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.sequence.ExecutionTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.HeaderHeightTests;
@@ -31,6 +26,11 @@ import org.eclipse.sirius.tests.unit.diagram.sequence.structure.SequenceDiagramE
 import org.eclipse.sirius.tests.unit.diagram.sequence.template.TemplateToDiagramDescriptionTest;
 import org.eclipse.sirius.tests.unit.diagram.sequence.vsm.edit.SequenceAdapterFactoryRegistryTest;
 import org.eclipse.sirius.tests.unit.diagram.sequence.vsm.interpreted.expression.variables.AbstractToolDescription_Precondition_AbstractVariable_Access_Tests;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * Test suite to run all the plug-in tests relative to sequence diagrams.

@@ -13,8 +13,6 @@ package org.eclipse.sirius.tests.unit.diagram.sequence.template;
 import java.io.IOException;
 import java.util.Collections;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -35,6 +33,8 @@ import org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.template.TemplateFactory;
 import org.eclipse.sirius.diagram.sequence.template.TemplateToDiagramDescriptionTransformer;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+
+import junit.framework.TestCase;
 
 public class TemplateToDiagramDescriptionTest extends TestCase {
 

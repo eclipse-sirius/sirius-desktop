@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -35,7 +36,6 @@ import org.eclipse.ui.PlatformUI;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 import com.google.common.collect.UnmodifiableIterator;
 
 /**
@@ -80,7 +80,7 @@ public abstract class AbstractPinUnpinElementsEclipseAction extends Action imple
     private Collection<DDiagramElement> getSelectedDiagramElements(final ISelection selection) {
         if (selection instanceof IStructuredSelection) {
             final UnmodifiableIterator<IGraphicalEditPart> iter = Iterators.filter(((IStructuredSelection) selection).iterator(), IGraphicalEditPart.class);
-            final Collection<DDiagramElement> elements = Lists.newArrayList();
+            final Collection<DDiagramElement> elements = new ArrayList<>();
             while (iter.hasNext()) {
                 final IGraphicalEditPart part = iter.next();
 

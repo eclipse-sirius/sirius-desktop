@@ -11,6 +11,8 @@
 package org.eclipse.sirius.ui.tools.internal.views.modelexplorer;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -65,9 +67,6 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-
 /**
  * An Eclipse view to see the viewpoint resource set content.
  * 
@@ -79,7 +78,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
 
     private String initialSelection = ""; //$NON-NLS-1$
 
-    private Map<CTabItem, TabInfo> tabItems = Maps.newLinkedHashMap();
+    private Map<CTabItem, TabInfo> tabItems = new LinkedHashMap<>();
 
     private Action deleteActionHandler;
 
@@ -173,7 +172,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
 
     private void createTabs(Collection<ModelExplorerTabDescriptor> tabDescriptors) {
 
-        Collection<TabInfo> tabs = Sets.newLinkedHashSet();
+        Collection<TabInfo> tabs = new LinkedHashSet<>();
 
         final CommonNavigatorTab navigatorTab = new CommonNavigatorTab(this);
         tabs.add(new TabInfo(CommonNavigatorTab.TAB_ID, navigatorTab.getImage(), navigatorTab));

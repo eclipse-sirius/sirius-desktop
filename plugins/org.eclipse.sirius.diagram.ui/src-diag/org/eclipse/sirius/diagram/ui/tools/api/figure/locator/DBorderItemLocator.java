@@ -77,7 +77,7 @@ public class DBorderItemLocator extends BorderItemLocator {
      * to be able to know the figures to ignore when draw2d will launch the
      * redraw.
      */
-    private List<IFigure> figuresToIgnoreDuringNextRelocate = Lists.newArrayList();
+    private List<IFigure> figuresToIgnoreDuringNextRelocate = new ArrayList<>();
 
     /**
      * Create an {@link DBorderItemLocator} with the specified parentFigure.
@@ -238,7 +238,7 @@ public class DBorderItemLocator extends BorderItemLocator {
 
     @Override
     protected Point locateOnBorder(Point suggestedLocation, int suggestedSide, int circuitCount, IFigure borderItem) {
-        List<IFigure> figuresToIgnore = Lists.newArrayList();
+        List<IFigure> figuresToIgnore = new ArrayList<>();
         figuresToIgnore.add(borderItem);
         return locateOnBorder(new Rectangle(suggestedLocation, getSize(borderItem)), suggestedSide, circuitCount, borderItem, figuresToIgnore, new ArrayList<IFigure>());
     }
@@ -1081,7 +1081,7 @@ public class DBorderItemLocator extends BorderItemLocator {
     public Rectangle getValidLocation(final Rectangle proposedLocation, final IFigure borderItem) {
         BitSet authorizedSides = getAuthorizedSides(borderItem);
         final int side = DBorderItemLocator.findClosestSideOfParent(proposedLocation, getParentBorder(), authorizedSides);
-        List<IFigure> figuresToIgnore = Lists.newArrayList();
+        List<IFigure> figuresToIgnore = new ArrayList<>();
         figuresToIgnore.add(borderItem);
         final Point newTopLeft = locateOnBorder(proposedLocation, side, NB_SIDES - getNumberOfAuthorizedSides(authorizedSides), borderItem, figuresToIgnore, new ArrayList<IFigure>());
         Rectangle realLocation = proposedLocation.getCopy();

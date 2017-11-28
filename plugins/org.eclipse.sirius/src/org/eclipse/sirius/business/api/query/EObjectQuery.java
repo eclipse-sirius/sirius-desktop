@@ -54,7 +54,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link EObject} as a starting point.
@@ -223,7 +222,7 @@ public class EObjectQuery {
         if (xref == null) {
             return Collections.emptySet();
         } else {
-            Collection<EObject> result = Sets.newHashSet();
+            Collection<EObject> result = new HashSet<>();
             for (EStructuralFeature.Setting setting : Iterables.filter(xref.getInverseReferences(eObject), predicate)) {
                 result.add(setting.getEObject());
             }
@@ -308,7 +307,7 @@ public class EObjectQuery {
      *         loaded/resolved.
      */
     public Collection<URI> getResolvedDependencies() {
-        Collection<URI> dependencies = Sets.newHashSet();
+        Collection<URI> dependencies = new HashSet<>();
         TreeIterator<Object> iter = EcoreUtil.getAllProperContents(eObject, false);
         while (iter.hasNext()) {
             Object obj = iter.next();
@@ -355,7 +354,7 @@ public class EObjectQuery {
      * @return the URIs of all the Resources this one depends on but which is not yet loaded/resolved.
      */
     public Collection<URI> getUnresolvedDependencies() {
-        Collection<URI> dependencies = Sets.newHashSet();
+        Collection<URI> dependencies = new HashSet<>();
         TreeIterator<Object> iter = EcoreUtil.getAllProperContents(eObject, false);
         while (iter.hasNext()) {
             Object obj = iter.next();

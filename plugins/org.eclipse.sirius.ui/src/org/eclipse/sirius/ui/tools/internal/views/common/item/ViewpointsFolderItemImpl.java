@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.item;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -17,8 +18,6 @@ import java.util.List;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-
-import com.google.common.collect.Lists;
 
 /**
  * Represents viewpoint folder item in session view.
@@ -45,7 +44,7 @@ public class ViewpointsFolderItemImpl extends AbstractFolderItem implements org.
 
     @Override
     public Collection<?> getChildren() {
-        final List<ViewpointItemImpl> all = Lists.newArrayList();
+        final List<ViewpointItemImpl> all = new ArrayList<>();
         for (final Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
             all.add(new ViewpointItemImpl(session, viewpoint, this));
         }

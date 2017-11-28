@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -81,7 +82,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
      */
     @Override
     public Object[] getChildren(final Object parentElement) {
-        Collection<Object> allChildren = Lists.newArrayList();
+        Collection<Object> allChildren = new ArrayList<>();
         try {
             allChildren.addAll(doGetChildren(parentElement));
             allChildren.addAll(getChildrenFromExtensions(parentElement));
@@ -101,7 +102,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
      * @return custom children computed by declared extensions.
      */
     public Collection<Object> getChildrenFromExtensions(final Object parentElement) {
-        Collection<Object> extensionsChildren = Lists.newArrayList();
+        Collection<Object> extensionsChildren = new ArrayList<>();
         if (extensions != null) {
             for (final ITreeContentProvider extension : extensions) {
                 extensionsChildren.addAll(Arrays.asList(extension.getChildren(parentElement)));
@@ -111,7 +112,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
     }
 
     private Collection<Object> doGetChildren(final Object parentElement) {
-        Collection<Object> result = Lists.newArrayList();
+        Collection<Object> result = new ArrayList<>();
 
         if (parentElement instanceof Session) {
             result.addAll(getSessionChildren((Session) parentElement));
@@ -150,7 +151,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
     }
 
     private Collection<Object> getSessionChildren(final Session session) {
-        final List<Object> all = Lists.newArrayList();
+        final List<Object> all = new ArrayList<>();
 
         if (session instanceof DAnalysisSession && !session.getReferencedSessionResources().isEmpty()) {
             all.add(new ResourcesFolderItemImpl(session, session));
@@ -177,7 +178,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
      * @return list of semantic resources
      */
     private Collection<Resource> getSemanticResources(final Session session) {
-        final Collection<Resource> allSemanticRes = Lists.newArrayList();
+        final Collection<Resource> allSemanticRes = new ArrayList<>();
 
         // Add semantic resources
         allSemanticRes.addAll(session.getSemanticResources());

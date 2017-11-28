@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -30,7 +31,7 @@ public final class ModelExplorerTabRegistry {
     /**
      * The registered {@link ModelExplorerTabDescriptor}s.
      */
-    private static final Collection<ModelExplorerTabDescriptor> EXTENSIONS = Lists.newArrayList();
+    private static final Collection<ModelExplorerTabDescriptor> EXTENSIONS = new ArrayList<>();
 
     /**
      * Utility classes don't need a default constructor.

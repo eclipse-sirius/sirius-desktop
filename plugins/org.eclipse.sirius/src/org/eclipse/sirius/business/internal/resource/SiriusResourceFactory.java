@@ -10,13 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.resource;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
-
-import com.google.common.collect.Maps;
 
 /**
  * An abstract class that bring common options between Aird Resource Factory and Sirius Representation File Resource
@@ -35,12 +34,12 @@ public abstract class SiriusResourceFactory extends XMIResourceFactoryImpl {
     /**
      * default load options.
      */
-    protected static final Map<Object, Object> DEFAULT_LOAD_OPTIONS = Maps.newHashMap();
+    protected static final Map<Object, Object> DEFAULT_LOAD_OPTIONS = new HashMap<>();
 
     /**
      * default save options.
      */
-    protected static final Map<Object, Object> DEFAULT_SAVE_OPTIONS = Maps.newHashMap();
+    protected static final Map<Object, Object> DEFAULT_SAVE_OPTIONS = new HashMap<>();
     static {
 
         XMIResource resource = new XMIResourceImpl();

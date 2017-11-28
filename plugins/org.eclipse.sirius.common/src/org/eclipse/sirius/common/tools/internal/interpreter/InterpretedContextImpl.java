@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -19,8 +20,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
-
-import com.google.common.collect.Sets;
 
 /**
  * Default implementation for of {@link IInterpreterContext}.
@@ -151,7 +150,7 @@ public class InterpretedContextImpl implements IInterpreterContext {
 
     @Override
     public Collection<String> getTargetTypes() {
-        Collection<String> typeNames = Sets.newLinkedHashSet();
+        Collection<String> typeNames = new LinkedHashSet<>();
         for (TypeName type : getTargetType().getPossibleTypes()) {
             typeNames.add(type.getCompleteName());
         }

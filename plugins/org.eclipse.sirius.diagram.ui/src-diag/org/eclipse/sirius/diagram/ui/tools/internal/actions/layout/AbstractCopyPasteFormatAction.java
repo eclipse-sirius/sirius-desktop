@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -30,7 +31,6 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Abstract class to define a common enablement computation.
@@ -124,7 +124,7 @@ public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramActio
      */
     private Collection<DSemanticDecorator> getDSelection(Collection<?> selection) {
         if (selection != null && !selection.isEmpty()) {
-            final Collection<DSemanticDecorator> elements = Lists.newArrayList();
+            final Collection<DSemanticDecorator> elements = new ArrayList<>();
             for (IGraphicalEditPart part : Iterables.filter(selection, IGraphicalEditPart.class)) {
                 EObject semanticElement = part.resolveSemanticElement();
                 if (semanticElement instanceof DDiagramElement) {

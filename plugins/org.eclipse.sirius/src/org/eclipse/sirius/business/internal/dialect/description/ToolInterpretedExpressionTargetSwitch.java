@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.internal.dialect.description;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -52,8 +53,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
-
-import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element (part of the {@link ToolPackage}) and
@@ -253,7 +252,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         case ToolPackage.PASTE_DESCRIPTION__PRECONDITION:
         case ToolPackage.PASTE_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
-            Collection<String> targets = Sets.newLinkedHashSet();
+            Collection<String> targets = new LinkedHashSet<>();
             for (PasteTargetDescription container : object.getContainers()) {
                 Option<Collection<String>> targetsFromMapping = globalSwitch.doSwitch(container, false);
                 if (targetsFromMapping.some()) {
@@ -396,7 +395,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
 
     @Override
     public Option<Collection<String>> caseRepresentationCreationDescription(RepresentationCreationDescription toolDescription) {
-        Collection<String> targets = Sets.newLinkedHashSet();
+        Collection<String> targets = new LinkedHashSet<>();
         Option<Collection<String>> result = Options.newSome(targets);
         switch (getFeatureId(ToolPackage.eINSTANCE.getRepresentationCreationDescription())) {
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__TITLE_EXPRESSION:
@@ -421,7 +420,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
 
     @Override
     public Option<Collection<String>> caseRepresentationNavigationDescription(RepresentationNavigationDescription toolDescription) {
-        Collection<String> targets = Sets.newLinkedHashSet();
+        Collection<String> targets = new LinkedHashSet<>();
         Option<Collection<String>> result = Options.newSome(targets);
         switch (getFeatureId(ToolPackage.eINSTANCE.getRepresentationNavigationDescription())) {
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__BROWSE_EXPRESSION:

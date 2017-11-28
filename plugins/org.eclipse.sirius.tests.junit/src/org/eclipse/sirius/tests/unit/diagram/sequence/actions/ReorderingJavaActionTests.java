@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.sequence.actions;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.sirius.business.api.action.MoveElementInListAction;
+
+import junit.framework.TestCase;
 
 /**
  * Tests.

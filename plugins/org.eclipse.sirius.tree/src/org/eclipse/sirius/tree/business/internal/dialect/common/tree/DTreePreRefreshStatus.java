@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -22,8 +23,6 @@ import org.eclipse.sirius.synchronizer.PreRefreshStatus;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
-
-import com.google.common.collect.Lists;
 
 /**
  * A {@link PreRefreshStatus}.
@@ -57,12 +56,12 @@ class DTreePreRefreshStatus implements PreRefreshStatus {
         if (computedOutputs.some()) {
             return computedOutputs.get();
         }
-        return Lists.newArrayList();
+        return new ArrayList<>();
     }
 
     @Override
     public void computeStatus(CreatedOutput container, Collection<? extends Mapping> childMappings) {
-        List<CreatedOutput> result = Lists.newArrayList();
+        List<CreatedOutput> result = new ArrayList<>();
         int i = 0;
         DTreeItemContainer viewContainer = (DTreeItemContainer) container.getCreatedElement();
         Iterator<DTreeItem> it = viewContainer.getOwnedTreeItems().iterator();

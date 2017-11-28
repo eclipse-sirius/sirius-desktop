@@ -13,8 +13,6 @@ package org.eclipse.sirius.tests.unit.api.dialect;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -26,6 +24,8 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Model;
+
+import junit.framework.TestCase;
 
 /**
  * Test the good early registration of dialect manager

@@ -13,6 +13,7 @@ package org.eclipse.sirius.tree.ui.provider;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,8 +48,6 @@ import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import com.google.common.collect.Maps;
-
 /**
  * This is the central singleton for the Tree edit plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
@@ -77,7 +76,7 @@ public final class TreeUIPlugin extends EMFPlugin {
     /**
      * A map associating an ImageDescriptor witht the corresponding Image.
      */
-    private static Map<ImageDescriptor, Image> descriptorsToImages = Maps.newHashMap();
+    private static Map<ImageDescriptor, Image> descriptorsToImages = new HashMap<>();
 
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->

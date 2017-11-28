@@ -13,6 +13,7 @@ package org.eclipse.sirius.tools.internal.validation.description.constraints;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Optional;
 
 import org.eclipse.core.runtime.IStatus;
@@ -48,7 +49,7 @@ public class ValidFeatureNameConstraint extends AbstractConstraint {
     @Override
     public IStatus validate(IValidationContext ctx) {
         final EObject target = ctx.getTarget();
-        Collection<IStatus> statuses = Sets.newLinkedHashSet();
+        Collection<IStatus> statuses = new LinkedHashSet<>();
 
         // For each structural features of the element to validate
         for (EAttribute feature : target.eClass().getEAllAttributes()) {

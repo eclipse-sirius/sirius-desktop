@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
@@ -31,7 +32,6 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * A {@link AbstractRepresentationsFileMigrationParticipant} that makes sure
@@ -72,7 +72,7 @@ public class SetGMFViewsToNillMigrationParticipant extends AbstractRepresentatio
     protected void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
         if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
             // Step 1: get all views to update
-            final Collection<View> allViewsToUpdate = Sets.newLinkedHashSet();
+            final Collection<View> allViewsToUpdate = new LinkedHashSet<>();
             for (DView view : dAnalysis.getOwnedViews()) {
                 for (DDiagram dDiagram : Iterables.filter(new DViewQuery(view).getLoadedRepresentations(), DDiagram.class)) {
                     DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
@@ -101,7 +101,7 @@ public class SetGMFViewsToNillMigrationParticipant extends AbstractRepresentatio
      * @return all views to update
      */
     private Collection<View> getViewsToUpdate(Diagram gmdDiagram) {
-        Collection<View> viewsToUpdate = Sets.newLinkedHashSet();
+        Collection<View> viewsToUpdate = new LinkedHashSet<>();
         TreeIterator<EObject> childIterator = gmdDiagram.eAllContents();
         EReference elementReference = NotationPackage.eINSTANCE.getView_Element();
         while (childIterator.hasNext()) {

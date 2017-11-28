@@ -187,7 +187,7 @@ final class DViewOperations {
 
     public void updateSelectedViewpointsData(IProgressMonitor monitor) {
         try {
-            Set<Viewpoint> selectedViewpoints = Sets.newLinkedHashSet();
+            Set<Viewpoint> selectedViewpoints = new LinkedHashSet<>();
             for (Viewpoint viewpoint : getSelectedViewpoints(false)) {
                 if (viewpoint.eResource() != null) {
                     selectedViewpoints.add(SiriusResourceHelper.getCorrespondingViewpoint(session, viewpoint));

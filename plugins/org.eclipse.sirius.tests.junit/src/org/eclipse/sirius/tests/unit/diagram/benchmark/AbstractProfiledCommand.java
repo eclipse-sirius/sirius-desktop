@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.benchmark;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.ui.PlatformUI;
+
+import junit.framework.TestCase;
 
 /**
  * A profiled command.

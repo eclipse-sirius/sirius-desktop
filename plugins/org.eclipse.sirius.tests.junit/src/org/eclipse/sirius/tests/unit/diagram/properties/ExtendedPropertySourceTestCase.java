@@ -16,8 +16,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
@@ -48,6 +46,8 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.junit.Assert;
+
+import junit.framework.TestCase;
 
 /**
  * Test case for {@link ExtendedPropertySource}.

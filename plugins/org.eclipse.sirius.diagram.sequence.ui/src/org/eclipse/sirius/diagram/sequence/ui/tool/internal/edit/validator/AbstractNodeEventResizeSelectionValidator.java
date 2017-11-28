@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -80,7 +81,7 @@ public class AbstractNodeEventResizeSelectionValidator {
 
     private boolean initialized;
 
-    private Collection<Integer> invalidPositions = Lists.newArrayList();
+    private Collection<Integer> invalidPositions = new ArrayList<>();
 
     private RequestQuery requestQuery;
 

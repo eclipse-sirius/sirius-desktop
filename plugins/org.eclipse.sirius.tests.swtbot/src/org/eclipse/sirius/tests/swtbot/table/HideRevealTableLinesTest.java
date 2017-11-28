@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -87,7 +88,7 @@ public class HideRevealTableLinesTest extends AbstractHideRevealTableElementsTes
             }
 
             private List<TreeItem> getVisibleChildrenCount(final TreeItem[] items) {
-                final List<TreeItem> result = Lists.newArrayList();
+                final List<TreeItem> result = new ArrayList<>();
                 for (final TreeItem item : items) {
                     result.add(item);
                     result.addAll(getVisibleChildrenCount(item.getItems()));
@@ -173,7 +174,7 @@ public class HideRevealTableLinesTest extends AbstractHideRevealTableElementsTes
     protected List<String> uncheckAllElements(final DialogTable<SWTBotTree> dialogTable, final int[] relativeElementIndex) {
         final SWTBotTree swtBotTree = dialogTable.getDialogTable();
 
-        final List<String> result = Lists.newArrayList();
+        final List<String> result = new ArrayList<>();
 
         final List<TreeItem> allTreeItems = getAllTreeItems(swtBotTree.widget);
 

@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -24,6 +22,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+
+import junit.framework.TestCase;
 
 public class EqualityHelperTestCase extends TestCase {
 

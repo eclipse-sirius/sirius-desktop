@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tree.business.internal.dialect.description;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -28,8 +29,6 @@ import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
-
-import com.google.common.collect.Sets;
 
 /**
  * Query allowing to get the target domain classes and available packages for a
@@ -123,7 +122,7 @@ public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressio
          * @see org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
          */
         public Option<Collection<String>> doSwitch(EObject target, boolean considerFeature) {
-            Collection<String> targetTypes = Sets.newLinkedHashSet();
+            Collection<String> targetTypes = new LinkedHashSet<>();
             Option<Collection<String>> expressionTarget = Options.newSome(targetTypes);
             if (target != null) {
                 String packageURI = target.eClass().getEPackage().getNsURI();

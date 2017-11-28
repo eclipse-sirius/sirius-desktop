@@ -384,7 +384,7 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
                         // label: Check if the distance between center of label
                         // and edge is highest that "4*the size of the nearest
                         // segment".
-                        List<Point> result = Lists.newArrayList();
+                        List<Point> result = new ArrayList<>();
                         PointList ptList = new PointList();
                         Anchor anchor = edge.getSourceAnchor();
                         // We only handle case with node as source and identity

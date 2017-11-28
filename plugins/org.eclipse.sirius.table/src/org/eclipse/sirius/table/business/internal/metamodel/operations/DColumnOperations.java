@@ -12,6 +12,7 @@ package org.eclipse.sirius.table.business.internal.metamodel.operations;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +22,6 @@ import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.tools.internal.Messages;
 
-import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
 /**
@@ -43,7 +43,7 @@ public final class DColumnOperations {
      * @return a sorted set of cells.
      */
     public static Collection<DCell> getOrderedCells(final DColumn column) {
-        final Map<DLine, Integer> lineIndices = Maps.newHashMap();
+        final Map<DLine, Integer> lineIndices = new HashMap<>();
         fillIndices(column.getTable(), lineIndices, 0);
         Ordering<DCell> ordering = Ordering.from(new Comparator<DCell>() {
             @Override

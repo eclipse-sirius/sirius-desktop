@@ -10,8 +10,11 @@
  */
 package org.eclipse.sirius.tests.support.internal.helper;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -102,7 +105,7 @@ public class ModelInitializer {
     public List<EObject> initializeContents(EObject root) {
         Preconditions.checkNotNull(root);
         refToCandidatesMap.clear();
-        List<EObject> created = Lists.newArrayList();
+        List<EObject> created = new ArrayList<>();
         initializeContents(root, created);
         return created;
     }
@@ -236,7 +239,7 @@ public class ModelInitializer {
      *         compatabible with the given reference's type)
      */
     protected Set<EClass> findCompatibleCandidates(EObject container, EReference containmentReference) {
-        Set<EClass> candidates = Sets.newLinkedHashSet();
+        Set<EClass> candidates = new LinkedHashSet<>();
         for (EPackage pkg : scope.getScope()) {
             candidates.addAll(findCompatibleCandidates(container, containmentReference, pkg));
         }
@@ -259,7 +262,7 @@ public class ModelInitializer {
      */
     protected Collection<? extends EClass> findCompatibleCandidates(EObject container, EReference reference, EPackage currentScope) {
         EClass type = reference.getEReferenceType();
-        Set<EClass> result = Sets.newLinkedHashSet();
+        Set<EClass> result = new LinkedHashSet<>();
         for (EClass klass : Iterables.filter(currentScope.getEClassifiers(), EClass.class)) {
             boolean isCompatible = klass.equals(type) || klass.getEAllSuperTypes().contains(type);
             if (isCompatible) {
@@ -270,9 +273,9 @@ public class ModelInitializer {
     }
 
     public static class Scope {
-        private final Set<EPackage> scope = Sets.newLinkedHashSet();
+        private final Set<EPackage> scope = new LinkedHashSet<>();
 
-        private final Set<EClass> eclassesToAvoid = Sets.newHashSet();
+        private final Set<EClass> eclassesToAvoid = new HashSet<>();
 
         public Scope(Collection<? extends EPackage> packages, Collection<EClass> doNotIns) {
             this.scope.addAll(Preconditions.checkNotNull(packages));

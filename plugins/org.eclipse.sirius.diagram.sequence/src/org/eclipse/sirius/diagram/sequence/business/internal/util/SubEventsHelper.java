@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -52,7 +54,7 @@ import com.google.common.collect.Sets;
  */
 public final class SubEventsHelper {
 
-    private static Collection<Class<?>> types = Lists.newArrayList();
+    private static Collection<Class<?>> types = new ArrayList<>();
     {
         types.add(Execution.class);
         types.add(Lifeline.class);
@@ -97,10 +99,10 @@ public final class SubEventsHelper {
      * @return the sub events.
      */
     private List<ISequenceEvent> getValidSubEvents() {
-        List<ISequenceEvent> childrenEvents = Lists.newArrayList();
+        List<ISequenceEvent> childrenEvents = new ArrayList<>();
 
-        Set<ISequenceEvent> localParents = Sets.newLinkedHashSet();
-        Set<Lifeline> coveredLifelines = Sets.newLinkedHashSet();
+        Set<ISequenceEvent> localParents = new LinkedHashSet<>();
+        Set<Lifeline> coveredLifelines = new LinkedHashSet<>();
         if (parentEvent instanceof AbstractNodeEvent || parentEvent instanceof Lifeline) {
             localParents.add(parentEvent);
             coveredLifelines.add(parentEvent.getLifeline().get());
@@ -126,7 +128,7 @@ public final class SubEventsHelper {
         }
 
         Option<Lifeline> lifeline = ise.getLifeline();
-        Collection<Lifeline> coveredLifelines = Sets.newLinkedHashSet();
+        Collection<Lifeline> coveredLifelines = new LinkedHashSet<>();
         if (lifeline.some()) {
             coveredLifelines.add(lifeline.get());
         } else if (ise instanceof Operand) {
@@ -149,7 +151,7 @@ public final class SubEventsHelper {
     }
 
     private Collection<ISequenceEvent> getCarryingParents(AbstractFrame frame, Set<Lifeline> coveredLifelines) {
-        Set<ISequenceEvent> coveredEvents = Sets.newLinkedHashSet();
+        Set<ISequenceEvent> coveredEvents = new LinkedHashSet<>();
         for (Lifeline lifeline : coveredLifelines) {
             EventFinder localParentFinder = new EventFinder(lifeline);
             localParentFinder.setReparent(true);
@@ -169,9 +171,9 @@ public final class SubEventsHelper {
      * @return
      */
     private Set<ISequenceEvent> getNotationDirectChildrenInParentRange(Collection<ISequenceEvent> localParents) {
-        Collection<View> childViews = Sets.newLinkedHashSet();
-        Collection<View> parentConnections = Sets.newHashSet();
-        Set<ISequenceEvent> childrenEvents = Sets.newLinkedHashSet();
+        Collection<View> childViews = new LinkedHashSet<>();
+        Collection<View> parentConnections = new HashSet<>();
+        Set<ISequenceEvent> childrenEvents = new LinkedHashSet<>();
 
         for (ISequenceEvent ise : localParents) {
             View notationView = ise.getNotationView();
@@ -205,9 +207,9 @@ public final class SubEventsHelper {
     }
 
     private Set<ISequenceEvent> getFrameChildrenInParentRange(Set<Lifeline> coveredLifelines) {
-        Set<ISequenceEvent> childrenEvents = Sets.newHashSet();
+        Set<ISequenceEvent> childrenEvents = new HashSet<>();
         SequenceDiagram diagram = parentEvent.getDiagram();
-        Set<AbstractFrame> frames = Sets.newHashSet();
+        Set<AbstractFrame> frames = new HashSet<>();
         frames.addAll(diagram.getAllFrames());
 
         for (AbstractFrame frame : frames) {
@@ -220,7 +222,7 @@ public final class SubEventsHelper {
     }
 
     private Set<ISequenceEvent> getTopLevelEvents(Set<ISequenceEvent> events, Collection<ISequenceEvent> potentialParents, Set<Lifeline> coveredLifelines) {
-        HashSet<ISequenceEvent> topLevel = Sets.newLinkedHashSet();
+        HashSet<ISequenceEvent> topLevel = new LinkedHashSet<>();
         boolean parentFrames = Iterables.size(Iterables.filter(potentialParents, AbstractFrame.class)) != 0;
 
         for (ISequenceEvent event : events) {

@@ -11,6 +11,8 @@
 package org.eclipse.sirius.ui.business.api.dialect.marker;
 
 import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -52,9 +54,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.CheckedTreeSelectionDialog;
 import org.eclipse.ui.ide.IGotoMarker;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * <p>
@@ -478,8 +477,8 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
 
         if (currentSession != null) {
 
-            final Set<DRepresentation> candidateRepresentations = Sets.newLinkedHashSet();
-            final Map<DRepresentation, DRepresentationElement> representationToElements = Maps.newHashMap();
+            final Set<DRepresentation> candidateRepresentations = new LinkedHashSet<>();
+            final Map<DRepresentation, DRepresentationElement> representationToElements = new HashMap<>();
 
             /*
              * step 1 : retrieve all representations that reference the searched

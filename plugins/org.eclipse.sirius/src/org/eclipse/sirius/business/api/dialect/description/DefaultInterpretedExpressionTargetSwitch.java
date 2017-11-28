@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.dialect.description;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
@@ -24,8 +25,6 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
-
-import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element and
@@ -69,7 +68,7 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
      *      boolean)
      */
     public Option<Collection<String>> doSwitch(EObject theEObject, boolean considerFeature) {
-        Collection<String> targetTypes = Sets.newLinkedHashSet();
+        Collection<String> targetTypes = new LinkedHashSet<>();
         Option<Collection<String>> expressionTarget = Options.newSome(targetTypes);
         if (theEObject != null) {
             descriptionSwitch.setConsiderFeature(considerFeature);

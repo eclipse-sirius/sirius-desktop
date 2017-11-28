@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tools.internal.validation.description.constraints;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**

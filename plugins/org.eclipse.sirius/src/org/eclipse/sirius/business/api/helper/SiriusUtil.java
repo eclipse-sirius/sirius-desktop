@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.helper;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -35,7 +36,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Useful operations to manipulate a DDiagram model.
@@ -286,7 +286,7 @@ public final class SiriusUtil {
 
     private static Iterator<Viewpoint> getViewpoints(final Resource resource) {
         if (DESCRIPTION_MODEL_EXTENSION.equals(resource.getURI().fileExtension())) {
-            Collection<Viewpoint> result = Lists.newArrayList();
+            Collection<Viewpoint> result = new ArrayList<>();
             for (Group group : Iterables.filter(resource.getContents(), Group.class)) {
                 result.addAll(group.getOwnedViewpoints());
             }

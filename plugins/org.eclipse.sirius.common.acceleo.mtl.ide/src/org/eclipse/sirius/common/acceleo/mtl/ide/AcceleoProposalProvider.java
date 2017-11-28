@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.acceleo.mtl.ide;
 
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +32,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * This implementation of the {@link IProposalProvider} interface will be used
@@ -83,7 +83,7 @@ public class AcceleoProposalProvider implements IProposalProvider {
             final AcceleoMTLInterpreter acceleoInterpreter = (AcceleoMTLInterpreter) interpreter;
             final IInterpreterContext interpreterContext = context.getInterpreterContext();
 
-            final Map<String, String> validationVariables = Maps.newLinkedHashMap();
+            final Map<String, String> validationVariables = new LinkedHashMap<>();
             for (Map.Entry<String, VariableType> contextVariable : interpreterContext.getVariables().entrySet()) {
                 final String varName = contextVariable.getKey();
                 final VariableType varType = contextVariable.getValue();

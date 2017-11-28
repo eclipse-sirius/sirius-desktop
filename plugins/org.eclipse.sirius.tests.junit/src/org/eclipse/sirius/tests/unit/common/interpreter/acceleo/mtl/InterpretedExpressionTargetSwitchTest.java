@@ -11,8 +11,11 @@
 package org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -92,7 +95,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
 
     private Multiset<EAttribute> test_expression_ok = HashMultiset.create();
 
-    private Set<EAttribute> data_defined_expressions = Sets.newHashSet();
+    private Set<EAttribute> data_defined_expressions = new HashSet<>();
 
     private int data_expression_without_instance;
 
@@ -134,7 +137,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
     }
 
     private Scope getGlobalScope() {
-        List<EPackage> scope = Lists.newArrayList();
+        List<EPackage> scope = new ArrayList<>();
         scope.add(org.eclipse.sirius.diagram.sequence.description.DescriptionPackage.eINSTANCE);
         scope.add(DescriptionPackage.eINSTANCE);
         scope.add(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE);
@@ -146,7 +149,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
             scope.addAll(pkg.getESubpackages());
         }
 
-        List<EClass> doNotInstanciate = Lists.newArrayList();
+        List<EClass> doNotInstanciate = new ArrayList<>();
         // doNotInstanciate.add(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.eINSTANCE.getEditionTableExtensionDescription());
 
         return new Scope(scope, doNotInstanciate);
@@ -185,7 +188,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
         StringBuilder dataIssues = checkTestedData(scope, createdElements);
 
         // Step 3: Check Interpreted Expression Switches.
-        Collection<String> targetIssues = Sets.newLinkedHashSet();
+        Collection<String> targetIssues = new LinkedHashSet<>();
         doTestInterpretedExpressionTargetSwitch(root, targetIssues);
 
         // Step 4: Report error if needed.
@@ -279,14 +282,14 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
     private StringBuilder checkTestedData(Scope scope, List<EObject> createdElements) {
         StringBuilder sb = new StringBuilder();
 
-        final Collection<EClass> instanciatedEClasses = Sets.newHashSet();
+        final Collection<EClass> instanciatedEClasses = new HashSet<>();
         for (EObject instance : createdElements) {
             instanciatedEClasses.add(instance.eClass());
         }
 
-        final Collection<EAttribute> abstractIntExp = Sets.newLinkedHashSet();
-        final Collection<EAttribute> instanciatedIntExp = Sets.newLinkedHashSet();
-        final Collection<EAttribute> nonDirectlyIntExp = Lists.newArrayList();
+        final Collection<EAttribute> abstractIntExp = new LinkedHashSet<>();
+        final Collection<EAttribute> instanciatedIntExp = new LinkedHashSet<>();
+        final Collection<EAttribute> nonDirectlyIntExp = new ArrayList<>();
 
         // Check all classes of the scope.
         inspectTestedData(scope, instanciatedEClasses, abstractIntExp, instanciatedIntExp, nonDirectlyIntExp);
@@ -372,7 +375,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
         sb.append(" . Defined InterpretedExpression: " + data_defined_expressions.size() + NEW_LINE);
         sb.append(" . Non instanciated expressions: " + data_expression_without_instance + NEW_LINE);
 
-        Set<EAttribute> tested = Sets.newHashSet();
+        Set<EAttribute> tested = new HashSet<>();
         tested.addAll(test_expression_ok.elementSet());
         tested.addAll(test_expression_issue.elementSet());
 
@@ -545,7 +548,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
                 Iterables.addAll(ptd.iterator().next().getPasteDescriptions(), Iterables.filter(allCreatedElements, PasteDescription.class));
             }
 
-            Set<DiagramElementMapping> linkedElements = Sets.newHashSet();
+            Set<DiagramElementMapping> linkedElements = new HashSet<>();
             for (DeleteElementDescription ded : Iterables.filter(allCreatedElements, DeleteElementDescription.class)) {
                 if (ded.getMappings().isEmpty()) {
                     for (DiagramElementMapping mapping : dem) {

@@ -16,6 +16,9 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.common.TreeCommonTest;
+import org.eclipse.sirius.tests.unit.common.TreeEcoreModeler;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.description.TreeDescription;
@@ -26,10 +29,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.ui.IEditorPart;
 import org.junit.Assert;
-
-import org.eclipse.sirius.tests.unit.common.TreeCommonTest;
-import org.eclipse.sirius.tests.unit.common.TreeEcoreModeler;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Test for navigation description.

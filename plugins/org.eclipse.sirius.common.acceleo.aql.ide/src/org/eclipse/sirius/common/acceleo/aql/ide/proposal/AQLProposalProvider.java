@@ -99,7 +99,7 @@ public class AQLProposalProvider implements IProposalProvider {
     }
 
     private Set<ContentProposal> getProposals(ExpressionTrimmer trimmer, int position, IQueryEnvironment queryEnvironment, Map<String, Set<IType>> variableTypes) {
-        Set<ContentProposal> proposals = Sets.newLinkedHashSet();
+        Set<ContentProposal> proposals = new LinkedHashSet<>();
         IQueryCompletionEngine engine = QueryCompletion.newEngine(queryEnvironment);
         final ICompletionResult completionResult = engine.getCompletion(trimmer.getExpression(), trimmer.getPositionWithinAQL(position), variableTypes);
         /*

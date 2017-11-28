@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -58,8 +59,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
-
-import com.google.common.collect.Lists;
 
 /**
  * Common utils between
@@ -489,7 +488,7 @@ public final class EdgeMappingHelper {
             } else {
                 final ModelAccessor extPackage = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(model);
 
-                semanticCandidates = Lists.newArrayList();
+                semanticCandidates = new ArrayList<>();
                 final Session session = SessionManager.INSTANCE.getSession(model);
                 for (final Resource resource : session.getSemanticResources()) {
                     for (final EObject root : resource.getContents()) {

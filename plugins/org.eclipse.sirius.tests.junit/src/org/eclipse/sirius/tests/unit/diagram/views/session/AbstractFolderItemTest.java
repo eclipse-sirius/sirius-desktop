@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.views.session;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.ui.tools.internal.views.common.item.AbstractFolderItem;
+
+import junit.framework.TestCase;
 
 /**
  * Common behavior for all *FolderItemTest classes.

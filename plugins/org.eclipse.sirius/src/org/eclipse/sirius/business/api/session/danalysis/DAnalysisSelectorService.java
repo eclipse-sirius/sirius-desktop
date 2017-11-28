@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.session.danalysis;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +20,6 @@ import java.util.Map.Entry;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-
-import com.google.common.collect.Lists;
 
 /**
  * Service to get analysis selectors.
@@ -110,7 +109,7 @@ public final class DAnalysisSelectorService {
         if (defaults != null && defaults.size() > 1) {
             SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DAnalysisSelectorService_multipleDefaultErrorMsg, ID), null);
         }
-        customerProviders = Lists.newArrayList();
+        customerProviders = new ArrayList<>();
         for (Entry<String, Collection<DAnalysisSelectorProvider>> entry : providers.entrySet()) {
             if (!DAnalysisSelectorService.DEFAULT_PROVIDER_ID.equals(entry.getKey())) {
                 customerProviders.addAll(entry.getValue());

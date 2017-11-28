@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -84,7 +85,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Specialization of the default policy for executions, in order to validate and
@@ -103,7 +103,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
     /**
      * Additional figures for feedback.
      */
-    protected Collection<Figure> guides = Lists.newArrayList();
+    protected Collection<Figure> guides = new ArrayList<>();
 
     /**
      * {@inheritDoc}
@@ -393,7 +393,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         bounds.resize(logicalDelta.getSize());
         Range thisFinalRange = RangeHelper.verticalRange(bounds);
 
-        List<ISequenceEvent> toIgnore = Lists.newArrayList();
+        List<ISequenceEvent> toIgnore = new ArrayList<>();
         boolean isReplyMessage = message.getKind() == Message.Kind.REPLY;
         boolean isReflective = message.isReflective();
         ISequenceNode sourceElement = message.getSourceElement();
@@ -472,7 +472,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
 
     private Set<AbstractNodeEvent> getMovingExecutions() {
         EditPartViewer viewer = getHost().getViewer();
-        Set<AbstractNodeEvent> movingExecutions = Sets.newHashSet();
+        Set<AbstractNodeEvent> movingExecutions = new HashSet<>();
         for (ExecutionEditPart eep : Iterables.filter(viewer.getSelectedEditParts(), ExecutionEditPart.class)) {
             AbstractNodeEvent exec = (AbstractNodeEvent) eep.getISequenceEvent();
             movingExecutions.add(exec);
@@ -481,7 +481,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             }
         }
 
-        ArrayList<Execution> subExecutions = Lists.newArrayList();
+        ArrayList<Execution> subExecutions = new ArrayList<>();
         for (Execution eep : Iterables.filter(movingExecutions, Execution.class)) {
             subExecutions.addAll(new ISequenceEventQuery(eep).getAllExecutions());
         }

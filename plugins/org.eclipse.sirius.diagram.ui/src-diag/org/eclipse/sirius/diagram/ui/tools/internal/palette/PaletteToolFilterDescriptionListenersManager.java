@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -20,8 +21,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
-
-import com.google.common.collect.Sets;
 
 /**
  * Manager the listeners for tool filter.
@@ -54,7 +53,7 @@ public class PaletteToolFilterDescriptionListenersManager implements Runnable {
 
         this.diagram = gmfDiagram;
         this.domain = TransactionUtil.getEditingDomain(diagram);
-        listeners = Sets.newLinkedHashSet();
+        listeners = new LinkedHashSet<>();
     }
 
     /**

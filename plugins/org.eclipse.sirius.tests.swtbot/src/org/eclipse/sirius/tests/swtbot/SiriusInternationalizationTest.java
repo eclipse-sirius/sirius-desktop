@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -52,7 +53,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Assert;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -304,7 +304,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
 
         // Check that labels in the palette are properly displayed, especially
         // the ones with localization
-        List<String> labelsToCheck = Lists.newArrayList();
+        List<String> labelsToCheck = new ArrayList<>();
         labelsToCheck.add(getToolSectionLabel());
         labelsToCheck.add(getEPackageCreationToolLabel());
         labelsToCheck.add(TOOL2_LABEL);
@@ -313,7 +313,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
 
         // Check that labels in the filters tool are properly displayed and internationalized
         editor.click(100, 100);
-        labelsToCheck = Lists.newArrayList();
+        labelsToCheck = new ArrayList<>();
         labelsToCheck.add(getToolFilterLabel());
         SWTBotUtils.checkLabelsInDiagramToolBar(editor, FILTERS, labelsToCheck);
 
@@ -349,7 +349,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         // Check that the popup menu and 2 operation actions are properly
         // translated
         // checkContextualMenus();
-        List<String> contextMenusToCheck = Lists.newArrayList();
+        List<String> contextMenusToCheck = new ArrayList<>();
         contextMenusToCheck.add(getPopupMenuLabel());
         contextMenusToCheck.add(getOperationAction1Label());
         contextMenusToCheck.add(getOperationAction2Label());
@@ -360,7 +360,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
 
         // Check that labels in the layers tool are properly displayed and internationalized
         editor.click(100, 100);
-        labelsToCheck = Lists.newArrayList();
+        labelsToCheck = new ArrayList<>();
         labelsToCheck.add(getToolLayerLabel());
         SWTBotUtils.checkLabelsInDiagramToolBar(editor, LAYERS, labelsToCheck);
 
@@ -418,7 +418,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         });
 
         final SWTBotTree rootTreeItem = bot.activeEditor().bot().tree().select(0);
-        List<String> contextMenusToCheck = Lists.newArrayList();
+        List<String> contextMenusToCheck = new ArrayList<>();
         contextMenusToCheck.add(getEPackageCreationToolLabel());
         contextMenusToCheck.add(getPopupMenuLabel());
         contextMenusToCheck.add(getOperationAction1Label());
@@ -465,7 +465,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         });
 
         final SWTBotTree rootTreeItem = bot.activeEditor().bot().tree().select(0);
-        List<String> contextMenusToCheck = Lists.newArrayList();
+        List<String> contextMenusToCheck = new ArrayList<>();
         contextMenusToCheck.add(getEPackageCreationToolLabel());
         SWTBotUtils.checkContextualMenus(bot.getDisplay(), rootTreeItem.widget, contextMenusToCheck);
 
@@ -510,7 +510,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         });
 
         final SWTBotTree rootTreeItem = bot.activeEditor().bot().tree().select(0);
-        List<String> contextMenusToCheck = Lists.newArrayList();
+        List<String> contextMenusToCheck = new ArrayList<>();
         contextMenusToCheck.add(getEPackageCreationToolLabel());
         contextMenusToCheck.add(getEClassCreationToolLabel());
         SWTBotUtils.checkContextualMenus(bot.getDisplay(), rootTreeItem.widget, contextMenusToCheck);

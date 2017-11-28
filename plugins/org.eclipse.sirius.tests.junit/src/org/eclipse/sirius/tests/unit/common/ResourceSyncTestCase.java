@@ -12,8 +12,6 @@ package org.eclipse.sirius.tests.unit.common;
 
 import java.util.Collections;
 
-import junit.framework.TestCase;
-
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -34,6 +32,8 @@ import org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdate
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.ui.PlatformUI;
+
+import junit.framework.TestCase;
 
 /**
  * A test class validating {@link ResourceStatus} and {@link ResourceSetSync}

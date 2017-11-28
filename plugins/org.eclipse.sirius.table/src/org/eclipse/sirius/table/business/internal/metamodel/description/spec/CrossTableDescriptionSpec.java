@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.metamodel.description.spec;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -21,8 +22,6 @@ import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
-
-import com.google.common.collect.Lists;
 
 /**
  * Specialization of the default implementation for
@@ -36,7 +35,7 @@ public class CrossTableDescriptionSpec extends CrossTableDescriptionImpl {
      */
     @Override
     public EList<CreateLineTool> getAllCreateLine() {
-        List<CreateLineTool> result = Lists.newArrayList();
+        List<CreateLineTool> result = new ArrayList<>();
         result.addAll(this.getOwnedCreateLine());
         result.addAll(this.getReusedCreateLine());
         return unionReference(DescriptionPackage.eINSTANCE.getTableDescription_AllCreateLine(), result);
@@ -47,7 +46,7 @@ public class CrossTableDescriptionSpec extends CrossTableDescriptionImpl {
      */
     @Override
     public EList<RepresentationCreationDescription> getAllRepresentationCreationDescriptions() {
-        List<RepresentationCreationDescription> result = Lists.newArrayList(); 
+        List<RepresentationCreationDescription> result = new ArrayList<>(); 
         result.addAll(this.getOwnedRepresentationCreationDescriptions());
         result.addAll(this.getReusedRepresentationCreationDescriptions());
         return unionReference(DescriptionPackage.eINSTANCE.getTableDescription_AllRepresentationCreationDescriptions(), result);
@@ -58,7 +57,7 @@ public class CrossTableDescriptionSpec extends CrossTableDescriptionImpl {
      */
     @Override
     public EList<RepresentationNavigationDescription> getAllRepresentationNavigationDescriptions() {
-        List<RepresentationNavigationDescription> result = Lists.newArrayList();
+        List<RepresentationNavigationDescription> result = new ArrayList<>();
         result.addAll(this.getOwnedRepresentationNavigationDescriptions());
         result.addAll(this.getReusedRepresentationNavigationDescriptions());
         return unionReference(DescriptionPackage.eINSTANCE.getTableDescription_AllRepresentationNavigationDescriptions(), result);
@@ -69,7 +68,7 @@ public class CrossTableDescriptionSpec extends CrossTableDescriptionImpl {
      */
     @Override
     public EList<LineMapping> getAllLineMappings() {
-        List<LineMapping> result = Lists.newArrayList();
+        List<LineMapping> result = new ArrayList<>();
         result.addAll(this.getOwnedLineMappings());
         result.addAll(this.getReusedLineMappings());
         return unionReference(DescriptionPackage.eINSTANCE.getTableDescription_AllLineMappings(), result);

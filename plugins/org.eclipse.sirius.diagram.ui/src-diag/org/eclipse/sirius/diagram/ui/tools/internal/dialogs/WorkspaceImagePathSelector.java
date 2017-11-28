@@ -27,8 +27,6 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 
-import com.google.common.collect.Lists;
-
 /**
  * A {@link SelectionAdapter} to select a image path in the workspace.
  * 
@@ -62,7 +60,7 @@ public class WorkspaceImagePathSelector extends SelectionAdapter {
      */
     @Override
     public void widgetSelected(SelectionEvent e) {
-        List<ViewerFilter> filters = Lists.newArrayList();
+        List<ViewerFilter> filters = new ArrayList<>();
         if (IMAGE_FILE_EXTENSIONS != null) {
             filters.add(new FileExtensionFilter(IMAGE_FILE_EXTENSIONS));
         }

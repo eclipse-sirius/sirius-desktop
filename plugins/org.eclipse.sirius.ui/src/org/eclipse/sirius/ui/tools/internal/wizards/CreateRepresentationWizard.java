@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
@@ -35,8 +36,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Composite;
-
-import com.google.common.collect.Maps;
 
 /**
  * This wizard allows to create a representation by specifying the representation description and the semantic element
@@ -169,7 +168,7 @@ public class CreateRepresentationWizard extends Wizard {
             Viewpoint viewpoint = representationWizardPage.getViewpoint();
             if (!ViewpointHelper.isViewpointEnabledInSession(session, viewpoint)) {
                 // if the viewpoint is not enabled in the session we activate it with all its potential dependencies.
-                final SortedMap<Viewpoint, Boolean> originalViewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+                final SortedMap<Viewpoint, Boolean> originalViewpointsMap = new TreeMap<>(new ViewpointRegistry.ViewpointComparator());
                 Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
                 Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
                 for (final Viewpoint availableViewpoint : availableViewpoints) {
@@ -183,7 +182,7 @@ public class CreateRepresentationWizard extends Wizard {
                     }
                     originalViewpointsMap.put(availableViewpoint, Boolean.valueOf(selected));
                 }
-                SortedMap<Viewpoint, Boolean> newViewpointToSelectionStateMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+                SortedMap<Viewpoint, Boolean> newViewpointToSelectionStateMap = new TreeMap<>(new ViewpointRegistry.ViewpointComparator());
                 newViewpointToSelectionStateMap.putAll(originalViewpointsMap);
                 newViewpointToSelectionStateMap.put(viewpoint, true);
 

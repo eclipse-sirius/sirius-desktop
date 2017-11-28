@@ -12,6 +12,7 @@ package org.eclipse.sirius.table.business.api.helper;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -57,7 +58,7 @@ public final class TableHelper {
     /**
      * Cache for quick access to DCells by DLine/DColumn.
      */
-    private static final Map<DLine, Map<DColumn, DCell>> CACHE = Maps.newLinkedHashMap();
+    private static final Map<DLine, Map<DColumn, DCell>> CACHE = new LinkedHashMap<>();
 
     /**
      * The table whose cells are currently cached. May be null.

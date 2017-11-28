@@ -11,6 +11,7 @@
 
 package org.eclipse.sirius.diagram.ui.internal.operation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.Connection;
@@ -38,8 +39,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.routers.RectilinearEdgeUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-
-import com.google.common.collect.Lists;
 
 /**
  * Operation that removes all edge bendpoints and recreates only the figure
@@ -145,7 +144,7 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
                         edge.setTargetAnchor(tgtAnchor);
                     }
                     // Remove bend-points
-                    relativeBendpoints.setPoints(Lists.newArrayList());
+                    relativeBendpoints.setPoints(new ArrayList<>());
                     // Add new bend-points
                     setNewBendpoints(pointList, absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates);
                 }

@@ -11,7 +11,6 @@
 package org.eclipse.sirius.tree.business.internal.metamodel.spec;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeVariable;
 import org.eclipse.sirius.tree.description.impl.TreeItemDeletionToolImpl;

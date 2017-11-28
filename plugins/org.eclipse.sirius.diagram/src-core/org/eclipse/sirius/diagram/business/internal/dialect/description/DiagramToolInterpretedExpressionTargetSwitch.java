@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.business.internal.dialect.description;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -34,7 +35,6 @@ import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -194,7 +194,7 @@ public class DiagramToolInterpretedExpressionTargetSwitch extends ToolSwitch<Opt
         switch (getFeatureId(ToolPackage.eINSTANCE.getEdgeCreationDescription())) {
         case ToolPackage.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION:
         case DO_NOT_CONSIDER_FEATURE:
-            Collection<String> targets = Sets.newLinkedHashSet();
+            Collection<String> targets = new LinkedHashSet<>();
             for (RepresentationElementMapping correspondingMapping : Iterables.concat(object.getEdgeMappings(), object.getExtraSourceMappings())) {
                 Option<Collection<String>> targetsFromMapping = globalSwitch.doSwitch(correspondingMapping, false);
                 if (targetsFromMapping.some()) {
@@ -234,7 +234,7 @@ public class DiagramToolInterpretedExpressionTargetSwitch extends ToolSwitch<Opt
         case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION:
         case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
-            Collection<String> targets = Sets.newLinkedHashSet();
+            Collection<String> targets = new LinkedHashSet<>();
             for (RepresentationElementMapping correspondingMapping : new MappingBasedToolDescriptionQuery(tool).getMappings()) {
                 Option<Collection<String>> targetsFromMapping = globalSwitch.doSwitch(correspondingMapping, false);
                 if (targetsFromMapping.some()) {

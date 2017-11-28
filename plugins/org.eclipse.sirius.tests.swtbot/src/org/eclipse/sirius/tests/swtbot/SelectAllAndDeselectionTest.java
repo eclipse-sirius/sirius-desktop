@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,9 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -44,11 +46,10 @@ import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.junit.Assert;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
- * A test for ensuring that the 'SelectAll' Action selects the right Edit Parts,
- * and that elements can be correctly deselected.
+ * A test for ensuring that the 'SelectAll' Action selects the right Edit Parts, and that elements can be correctly
+ * deselected.
  * 
  * @author alagarde
  */
@@ -86,7 +87,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
     /**
      * A map associating an edit Part Name with a location.
      */
-    private static final Map<String, Point> LOCATIONS = Maps.newHashMap();
+    private static final Map<String, Point> LOCATIONS = new HashMap<>();
 
     static {
         LOCATIONS.put(PACKAGE_1_NAME, new Point(25, 70));
@@ -102,7 +103,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
 
     SWTBotSiriusDiagramEditor editor;
 
-    private Map<Point, SWTBotGefEditPart> locationToEditParts = Maps.newHashMap();
+    private Map<Point, SWTBotGefEditPart> locationToEditParts = new HashMap<>();
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -130,8 +131,8 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Ensures that the 'Select All' action selects the expected EditParts and
-     * the escape key deselects all (only DDiagramEditPart remains selected).
+     * Ensures that the 'Select All' action selects the expected EditParts and the escape key deselects all (only
+     * DDiagramEditPart remains selected).
      */
     public void testSelectAllAndDeselectAll() {
         // Wait all UI events to ensure that the tabbar is correctly refreshed.
@@ -144,9 +145,8 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Ensures that the 'Select All' action selects the expected EditParts and
-     * that the attempt to select a container label does not lead to
-     * IllegalArgumentException.
+     * Ensures that the 'Select All' action selects the expected EditParts and that the attempt to select a container
+     * label does not lead to IllegalArgumentException.
      */
     public void testSelectAllAndTryContainerLabelSelection() {
         // Wait all UI events to ensure that the tabbar is correctly refreshed.
@@ -192,8 +192,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Ensures that deselection works on container located inside another
-     * container.
+     * Ensures that deselection works on container located inside another container.
      */
     public void testSelectAllAndUnselectOneContainerInContainer() {
         // Wait all UI events to ensure that the tabbar is correctly refreshed.
@@ -206,8 +205,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Ensures that it is possible to deselect a node located inside a
-     * container.
+     * Ensures that it is possible to deselect a node located inside a container.
      */
     public void testSelectAllAndUnselectOneNodeInContainer() {
         // Wait all UI events to ensure that the tabbar is correctly refreshed.
@@ -356,7 +354,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
      * @return all the editParts associated to the given collection of names
      */
     protected Collection<? extends SWTBotGefEditPart> getEditPartsFromNames(String... names) {
-        List<SWTBotGefEditPart> editPartsThatSouldBeSelected = Lists.newArrayList();
+        List<SWTBotGefEditPart> editPartsThatSouldBeSelected = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
             SWTBotGefEditPart editPart = editor.getEditPart(names[i], ShapeNodeEditPart.class);
             editPartsThatSouldBeSelected.add(editPart);
@@ -397,12 +395,11 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Ensures that all editPart contained in the given list are selected in the
-     * diagram, and that no other {@link EditPart} is selected.
+     * Ensures that all editPart contained in the given list are selected in the diagram, and that no other
+     * {@link EditPart} is selected.
      * 
      * @param editPartsSWTThatSouldBeSelected
-     *            a collection containing all {@link EditPart}s that should be
-     *            selected
+     *            a collection containing all {@link EditPart}s that should be selected
      */
     protected void checkSelectedEditParts(final Collection<? extends SWTBotGefEditPart> editPartsSWTThatSouldBeSelected) {
 
@@ -415,14 +412,14 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
         // referenced by
         // the SWTBotEditParts that should be selected
         Iterator<? extends SWTBotGefEditPart> iterator = editPartsSWTThatSouldBeSelected.iterator();
-        Collection<EditPart> editPartsThatShouldBeSelected = Lists.newArrayList();
+        Collection<EditPart> editPartsThatShouldBeSelected = new ArrayList<>();
         while (iterator.hasNext()) {
             editPartsThatShouldBeSelected.add(iterator.next().part());
         }
 
         // Step 2 : we get the selected elements as a collection
         Iterator<?> selectedEditPartsIterator = ((IStructuredSelection) editor.getSelection()).iterator();
-        Collection<EditPart> selectedEditPartsAsCollection = Lists.newArrayList();
+        Collection<EditPart> selectedEditPartsAsCollection = new ArrayList<>();
         while (selectedEditPartsIterator.hasNext()) {
             selectedEditPartsAsCollection.add((EditPart) selectedEditPartsIterator.next());
         }

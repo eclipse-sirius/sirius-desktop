@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
@@ -29,8 +30,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
-import com.google.common.collect.Sets;
-
 /**
  * Test class for VP-1546. Test open diagram without refresh.
  * 
@@ -49,7 +48,7 @@ public class SequenceOpeningFilteredEventEndsTests extends AbstractSequenceDiagr
 
     private static final String SESSION_FILE = "vp-1546.aird";
 
-    private final Set<Viewpoint> viewpoints = Sets.newHashSet();
+    private final Set<Viewpoint> viewpoints = new HashSet<>();
 
     /**
      * {@inheritDoc}

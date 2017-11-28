@@ -384,9 +384,9 @@ public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalAction
         SiriusClipboardManager.getInstance().setDomainClipboard(domain);
 
         // Init context
-        Collection<DSemanticDecorator> dCopies = Sets.newLinkedHashSet();
-        Collection<EObject> dTargetcopies = Sets.newLinkedHashSet();
-        Collection<EObject> strictSemanticCopies = Sets.newLinkedHashSet();
+        Collection<DSemanticDecorator> dCopies = new LinkedHashSet<>();
+        Collection<EObject> dTargetcopies = new LinkedHashSet<>();
+        Collection<EObject> strictSemanticCopies = new LinkedHashSet<>();
         fillPasteContext(domain.getClipboard(), dCopies, dTargetcopies, strictSemanticCopies);
 
         final IDiagramCommandFactory factory = getDiagramCommandFactory(activePart, domain);
@@ -473,7 +473,7 @@ public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalAction
     }
 
     private PasteDescription getBestPasteTool(DSemanticDecorator pasteTarget, DSemanticDecorator semDecCopy, EObject copy, Collection<PasteDescription> tools) {
-        final Collection<PasteDescription> candidates = Sets.newLinkedHashSet();
+        final Collection<PasteDescription> candidates = new LinkedHashSet<>();
         for (PasteDescription tool : tools) {
             if (PasteCommandBuilder.checkPastePrecondition(tool, copy, pasteTarget.getTarget(), pasteTarget, semDecCopy)) {
                 candidates.add(tool);

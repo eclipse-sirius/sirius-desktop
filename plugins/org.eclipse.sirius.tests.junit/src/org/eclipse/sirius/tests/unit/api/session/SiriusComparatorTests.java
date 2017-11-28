@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.session;
 
+import java.util.HashSet;
 import java.util.Set;
-
-import junit.framework.TestCase;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
@@ -22,7 +21,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
-import com.google.common.collect.Sets;
+import junit.framework.TestCase;
 
 public class SiriusComparatorTests extends TestCase {
 
@@ -130,7 +129,7 @@ public class SiriusComparatorTests extends TestCase {
         if (Movida.isEnabled()) {
             return;
         }
-        registeredInTest = Sets.newHashSet();
+        registeredInTest = new HashSet<>();
 
         initProject1();
         initProject2();

@@ -1060,7 +1060,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * @return collection of searchedClass instances with the label
      */
     public <T extends DDiagramElement> List<T> getDiagramElementsFromLabel(final DDiagram diagram, final String label, final Class<T> searchedClass) {
-        final List<T> found = Lists.newArrayList();
+        final List<T> found = new ArrayList<>();
         final Iterator<EObject> it = diagram.eAllContents();
         while (it.hasNext()) {
             final EObject cur = it.next();

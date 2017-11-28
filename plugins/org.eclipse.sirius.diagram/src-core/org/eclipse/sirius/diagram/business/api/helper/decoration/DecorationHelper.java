@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.business.internal.helper.decoration.Decoration
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;

@@ -15,10 +15,9 @@ import java.net.MalformedURLException;
 
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * Provider for images.

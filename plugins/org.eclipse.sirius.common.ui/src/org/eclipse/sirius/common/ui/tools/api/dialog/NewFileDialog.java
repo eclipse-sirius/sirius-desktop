@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005-2008 Obeo
+ * Copyright (c) 2005, 2017 Obeo
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -15,6 +15,8 @@ package org.eclipse.sirius.common.ui.tools.api.dialog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.sirius.common.ui.Messages;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -24,8 +26,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.sirius.common.ui.Messages;
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 
 /**
  * A standard file creation dialog.
@@ -86,6 +86,7 @@ public class NewFileDialog extends FolderSelectionDialog {
         newFileNameText.setLayoutData(data);
         newFileNameText.setText(newFileName);
         newFileNameText.addModifyListener(new ModifyListener() {
+            @Override
             public void modifyText(final ModifyEvent e) {
                 updateOKStatus();
             }

@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.internal.operation;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 import com.google.common.base.Function;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
 /**
@@ -66,7 +66,7 @@ public abstract class ComparisonHelper {
          * indices with a linear scan to avoid repeated calls to indexOf for
          * each comparison.
          */
-        final Map<DRepresentationElement, Integer> indices = Maps.newHashMap();
+        final Map<DRepresentationElement, Integer> indices = new HashMap<>();
         Collection<? extends DRepresentationElement> elements = getDElementsToSort();
 
         int i = 0;

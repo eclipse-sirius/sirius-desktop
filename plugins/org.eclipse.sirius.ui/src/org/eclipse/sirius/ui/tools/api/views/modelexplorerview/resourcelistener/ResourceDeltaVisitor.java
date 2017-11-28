@@ -31,8 +31,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.query.ResourceDeltaQuery;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.collect.Sets;
-
 /**
  * The visitor used to detect emf resources changes.
  * 
@@ -44,12 +42,12 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
      * List of projects to initialize (force a reset to compute again the main
      * representations file).
      */
-    protected Set<IProject> projectsToInitialize = Sets.newHashSet();
+    protected Set<IProject> projectsToInitialize = new HashSet<>();
 
     /**
      * List of modeling projects to initialize and load.
      */
-    protected Set<ModelingProject> projectsToInitializeAndLoad = Sets.newHashSet();
+    protected Set<ModelingProject> projectsToInitializeAndLoad = new HashSet<>();
 
     /**
      * The {@link Set} of semantic resource {@link URI} to attach to each

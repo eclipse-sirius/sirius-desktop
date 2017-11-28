@@ -22,8 +22,6 @@ import java.util.WeakHashMap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 
-import com.google.common.collect.Lists;
-
 /**
  * This class encapsulates the functionality required for entering and
  * retrieving from the 'element to editparts' map required by our viewers.
@@ -55,7 +53,7 @@ public class SemanticElementToEditPartsMap {
         if (allEPs == null) {
             return Collections.emptyList();
         }
-        final List<T> specificEPs = Lists.newArrayList();
+        final List<T> specificEPs = new ArrayList<>();
         for (final EditPart ep : allEPs) {
             if (editPartClass.isInstance(ep)) {
                 specificEPs.add((T) ep);
@@ -115,7 +113,7 @@ public class SemanticElementToEditPartsMap {
      * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPart(org.eclipse.gef.EditPart)
      */
     public void unregisterEditPart(final EditPart ep) {
-        Collection<EObject> keysToRemove = Lists.newArrayList();
+        Collection<EObject> keysToRemove = new ArrayList<>();
         for (Entry<EObject, List<EditPart>> entry : map.entrySet()) {
             List<EditPart> epList = entry.getValue();
             if (epList != null) {

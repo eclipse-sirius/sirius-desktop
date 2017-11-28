@@ -13,11 +13,10 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.provider;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.TextCellEditor;
+import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
 import org.eclipse.ui.actions.ActionFactory;
-
-import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 
 /**
  * A focusListener which replaces the EMF copy/cut/paste actions with standard

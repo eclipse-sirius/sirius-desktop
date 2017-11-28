@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -29,8 +30,6 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-
-import com.google.common.collect.Lists;
 
 /**
  * Utilities for GMF notation model modifications.
@@ -199,7 +198,7 @@ public final class GMFNotationUtilities {
      *            RelativeBendpoints)
      */
     public static void setGMFBendpoints(Edge edge, PointList newPoints, Point sourceRefPoint, Point targetRefPoint) {
-        List<Object> newBendpoints = Lists.newArrayList();
+        List<Object> newBendpoints = new ArrayList<>();
         int numOfPoints = newPoints.size();
         for (short i = 0; i < numOfPoints; i++) {
             Dimension s = newPoints.getPoint(i).getDifference(sourceRefPoint);
@@ -333,7 +332,7 @@ public final class GMFNotationUtilities {
             Object objectSecondRelativeBendpointOfMovedEdge = ((RelativeBendpoints) referenceEdge.getBendpoints()).getPoints().get(1);
             if (objectSecondRelativeBendpointOfMovedEdge instanceof RelativeBendpoint) {
                 RelativeBendpoint secondRelativeBendpointOfMovedEdge = (RelativeBendpoint) objectSecondRelativeBendpointOfMovedEdge;
-                List<Object> brotherNewBendpoints = Lists.newArrayList();
+                List<Object> brotherNewBendpoints = new ArrayList<>();
                 brotherNewBendpoints.add(new RelativeBendpoint(0, sourceBounds.y - sourceLocation.y, sourceLocation.x - targetLocation.x, sourceBounds.y - targetLocation.y));
                 brotherNewBendpoints.add(new RelativeBendpoint(0, targetLocation.y + secondRelativeBendpointOfMovedEdge.getTargetY() - sourceLocation.y, sourceLocation.x - targetLocation.x,
                         secondRelativeBendpointOfMovedEdge.getTargetY()));
@@ -407,7 +406,7 @@ public final class GMFNotationUtilities {
         } else if (edgeQuery.isEdgeOnTreeOnTargetSide()) {
             brothers = edgeQuery.getBrothersOnTreeOnTargetSide();
         } else {
-            brothers = Lists.newArrayList();
+            brothers = new ArrayList<>();
         }
         for (Edge brother : brothers) {
             if (sourceSide) {

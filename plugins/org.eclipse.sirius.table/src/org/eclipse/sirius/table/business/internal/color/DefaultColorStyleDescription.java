@@ -11,7 +11,6 @@
 package org.eclipse.sirius.table.business.internal.color;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
 import org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch;

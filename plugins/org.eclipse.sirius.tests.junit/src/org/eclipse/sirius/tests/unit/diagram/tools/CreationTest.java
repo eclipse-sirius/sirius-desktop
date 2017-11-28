@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.tools;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,8 +25,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-
-import com.google.common.collect.Lists;
 
 /**
  * Test object creation.
@@ -72,7 +71,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateContainerInDiagram() {
         createChapter();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer)");
@@ -89,7 +88,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateContainerInContainer() {
         createBigSection();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer)->select( e | e.target.eClass().name ='Chapter').eContents()->select(e | e.eClass().name='DNodeContainer')");
@@ -106,7 +105,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateNodeInContainer() {
         createMediumSection();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer).ownedDiagramElements->select( e | e.eClass().name='DNode')");
@@ -123,7 +122,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateNodeInDiagram() {
         createTinySection();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eContents()->select(e |e.eClass().name='DNode')");
@@ -140,7 +139,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateBorderNodeOnNode() {
         createTinyNote();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DNode).eAllContents(diagram::DNode)");
@@ -157,7 +156,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateBorderNodeOnContainer() {
         createChapter();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer).ownedBorderedNodes->select(e | e.eClass().name='DNode')");
@@ -174,7 +173,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateEdgeBetweenTwoNodes() {
         createTinySection();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select(e | (e.sourceNode.eClass().name = 'DNode') and (e.sourceNode.eContainer().eClass().name <> 'DNode') and "
@@ -195,7 +194,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateEdgeBetweenBorderNodeAndContainer() {
         createChapter();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select( e | ((e.sourceNode.eClass().name = 'DNode') and ((e.sourceNode.eContainer().eClass().name = 'DNode') or "
@@ -215,7 +214,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateEdgeBetweenTwoContainers() {
         createTwoChapters();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select(e | (e.sourceNode.eClass().name = 'DNodeContainer') and (e.targetNode.eClass().name = 'DNodeContainer'))");
@@ -233,7 +232,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateEdgeBetweenTwoBorderNodes() {
         createTwoTinyNotes();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select( e | (e.sourceNode.eClass().name = 'DNode') and ((e.sourceNode.eContainer().eClass().name = 'DNode') or "
@@ -254,7 +253,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateEdgeBetweenBorderNodeAndNode() {
         createNote();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER
@@ -276,7 +275,7 @@ public class CreationTest extends DocbookTestCase {
      */
     public void testCreateEdgeBetweenNodeAndContainer() {
         createMediumSection();
-        final List<EObject> containers = Lists.newArrayList();
+        final List<EObject> containers = new ArrayList<>();
         Collection<EObject> nodes = null;
         try {
             nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select( e | (((e.sourceNode.eClass().name = 'DNode') and not(e.sourceNode.eContainer().eClass().name = 'DNode') and "

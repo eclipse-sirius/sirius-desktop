@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.text.MessageFormat;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -21,7 +22,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A service which corresponds to more than one Java method. Which of the
@@ -32,7 +32,7 @@ import com.google.common.collect.Sets;
 class PolymorphicService implements IPolymorphicService {
     private final String name;
 
-    private final Set<IMonomorphicService> implementers = Sets.newLinkedHashSet();
+    private final Set<IMonomorphicService> implementers = new LinkedHashSet<>();
 
     PolymorphicService(String name) {
         this.name = Preconditions.checkNotNull(name);

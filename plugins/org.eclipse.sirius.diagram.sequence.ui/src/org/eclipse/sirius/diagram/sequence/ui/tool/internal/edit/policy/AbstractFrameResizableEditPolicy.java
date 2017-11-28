@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -42,8 +43,6 @@ import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.swt.graphics.Color;
 
-import com.google.common.collect.Lists;
-
 /**
  * A specific AirResizableEditPolicy to manage interaction use roles move &
  * resize requests.
@@ -58,7 +57,7 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
      */
     private static final Color FRAME_FEEDBACK_COLOR = ColorConstants.lightGray;
 
-    private Collection<Figure> guides = Lists.newArrayList();
+    private Collection<Figure> guides = new ArrayList<>();
 
     /**
      * Constructor.

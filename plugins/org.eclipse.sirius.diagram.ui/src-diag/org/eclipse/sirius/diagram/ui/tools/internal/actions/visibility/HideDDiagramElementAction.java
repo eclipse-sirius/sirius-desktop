@@ -55,7 +55,6 @@ import org.eclipse.ui.PlatformUI;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Hide a {@link DDiagramElement} on a
@@ -135,7 +134,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
         }
 
         if (currentSelection instanceof IStructuredSelection && !currentSelection.isEmpty()) {
-            Collection<DDiagramElement> ddes = Sets.newHashSet();
+            Collection<DDiagramElement> ddes = new HashSet<>();
             for (Object selected : ((IStructuredSelection) currentSelection).toList()) {
                 if (selected instanceof IDiagramElementEditPart) {
                     IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) selected;

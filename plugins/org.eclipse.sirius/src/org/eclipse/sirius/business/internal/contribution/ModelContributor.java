@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.contribution;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -24,8 +26,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 /**
  * Applies a set of contributions on a whole target model.
  * 
@@ -87,7 +87,7 @@ public class ModelContributor {
         List<Contribution> allContributions = findAllContributions(targetModel, allSources);
         List<ResolvedContribution> resolvedContributions = resolve(allContributions, allSources);
 
-        additions = Sets.newHashSet();
+        additions = new HashSet<>();
         for (ResolvedContribution rc : resolvedContributions) {
             for (ResolvedFeatureContribution rfc : rc.getResolvedFeatureContributions()) {
                 additions.addAll(rfc.apply());
@@ -123,9 +123,9 @@ public class ModelContributor {
     }
 
     private List<ResolvedContribution> resolve(Collection<Contribution> contributions, List<EObject> roots) {
-        List<ResolvedContribution> result = Lists.newArrayList();
+        List<ResolvedContribution> result = new ArrayList<>();
         for (Contribution contribution : contributions) {
-            HashMap<String, Object> context = Maps.newHashMap();
+            HashMap<String, Object> context = new HashMap<>();
             context.put("self", contribution); //$NON-NLS-1$
             context.put("sources", roots); //$NON-NLS-1$
             Option<EObject> source = resolver.resolve(contribution.getSource(), context);

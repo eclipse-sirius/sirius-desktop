@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Point;
@@ -664,7 +665,7 @@ public class DistributeActionTests extends AbstractUmlDragAndDropTest {
      *            name of the Edit parts to distribute
      */
     private List<SWTBotGefEditPart> getEditParts(String... nodesToDistribute) {
-        List<SWTBotGefEditPart> editPartsToDistribute = Lists.newLinkedList();
+        List<SWTBotGefEditPart> editPartsToDistribute = new LinkedList<>();
         for (String nodeToDistribute : nodesToDistribute) {
             SWTBotGefEditPart nodeEditPart = editor.getEditPart(nodeToDistribute, IAbstractDiagramNodeEditPart.class);
             editPartsToDistribute.add(nodeEditPart);

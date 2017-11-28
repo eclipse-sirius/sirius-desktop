@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -28,8 +29,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
-import com.google.common.collect.Maps;
-
 /**
  * Factory for {@link IDiagramElementState}.
  * 
@@ -37,7 +36,7 @@ import com.google.common.collect.Maps;
  */
 public class DiagramElementStateFactory {
 
-    private static final Map<Class<? extends DDiagramElement>, Class<? extends IDiagramElementState<? extends DDiagramElement>>> ASSOCIATION = Maps.newLinkedHashMap();
+    private static final Map<Class<? extends DDiagramElement>, Class<? extends IDiagramElementState<? extends DDiagramElement>>> ASSOCIATION = new LinkedHashMap<>();
 
     static {
         ASSOCIATION.put(DEdge.class, DEdgeDiagramElementState.class);
@@ -47,7 +46,7 @@ public class DiagramElementStateFactory {
         ASSOCIATION.put(AbstractDNode.class, AbstractDNodeDiagramElementState.class);
     }
 
-    private static final Map<Class<? extends DDiagramElement>, Constructor<? extends IDiagramElementState<? extends DDiagramElement>>> CACHE = Maps.newLinkedHashMap();
+    private static final Map<Class<? extends DDiagramElement>, Constructor<? extends IDiagramElementState<? extends DDiagramElement>>> CACHE = new LinkedHashMap<>();
 
     private static final Class<DefaultDiagramElementState> DEFAULT_DIAGRAM_ELT_STATE = DefaultDiagramElementState.class;
 

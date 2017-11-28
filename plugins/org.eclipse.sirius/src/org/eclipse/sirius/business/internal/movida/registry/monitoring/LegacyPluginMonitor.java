@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.movida.registry.monitoring;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -25,7 +26,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * A monitor which provides compatibility with the legacy APIs used for Sirius
@@ -36,7 +36,7 @@ import com.google.common.collect.Sets;
 public class LegacyPluginMonitor extends AbstractViewpointResourceMonitor {
     private final ViewpointRegistry registry;
 
-    private final Set<URI> knownURIs = Sets.newHashSet();
+    private final Set<URI> knownURIs = new HashSet<>();
 
     /**
      * Constructor.

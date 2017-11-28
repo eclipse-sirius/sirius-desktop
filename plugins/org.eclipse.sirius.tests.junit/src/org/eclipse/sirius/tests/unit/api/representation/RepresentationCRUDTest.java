@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.representation;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -28,8 +29,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-
-import com.google.common.collect.Lists;
 
 /**
  * @author lfasani
@@ -94,7 +93,7 @@ public class RepresentationCRUDTest extends GenericTestCase {
      *            true if representation have to be found
      */
     private void checkRepresentation(EObject target, DRepresentation representation, boolean expected) {
-        Collection<DRepresentation> representations = Lists.newArrayList();
+        Collection<DRepresentation> representations = new ArrayList<>();
         ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
         for (EStructuralFeature.Setting setting : xref.getInverseReferences(target)) {
             if (ViewpointPackage.Literals.DREPRESENTATION.isInstance(setting.getEObject()) && setting.getEStructuralFeature() == ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET) {

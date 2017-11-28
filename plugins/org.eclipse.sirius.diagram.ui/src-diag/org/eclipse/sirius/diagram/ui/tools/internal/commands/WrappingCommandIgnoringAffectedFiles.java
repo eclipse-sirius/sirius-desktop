@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -20,8 +21,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
-
-import com.google.common.collect.Lists;
 
 /**
  * ICommand forwarding calls to a wrapped instance, except for the
@@ -212,7 +211,7 @@ public class WrappingCommandIgnoringAffectedFiles implements ICommand {
      * {@inheritDoc}
      */
     public List getAffectedFiles() {
-        return Lists.newArrayList();
+        return new ArrayList<>();
     }
 
     /**

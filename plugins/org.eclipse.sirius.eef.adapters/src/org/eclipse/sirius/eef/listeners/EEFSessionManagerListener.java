@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.api.notify.ResourceSetAdapter;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.SessionManagerListener.Stub;
 
 /**

@@ -11,7 +11,6 @@
 package org.eclipse.sirius.table.business.api.refresh;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-
 import org.eclipse.sirius.table.metamodel.table.DTable;
 
 /**

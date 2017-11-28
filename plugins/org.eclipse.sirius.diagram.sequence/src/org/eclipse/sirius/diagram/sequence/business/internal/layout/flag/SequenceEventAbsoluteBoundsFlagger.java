@@ -10,13 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.layout.flag;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
-
-import com.google.common.collect.Lists;
 
 /**
  * Helper to compute and attach absolute bounds flag for sequence events.
@@ -42,7 +41,7 @@ public class SequenceEventAbsoluteBoundsFlagger extends AbstractSequenceAbsolute
      */
     @Override
     protected Collection<ISequenceElement> getEventsToFlag() {
-        List<ISequenceElement> eventsToFlag = Lists.newArrayList();
+        List<ISequenceElement> eventsToFlag = new ArrayList<>();
         if (ise != null) {
             eventsToFlag.add(ise);
         }

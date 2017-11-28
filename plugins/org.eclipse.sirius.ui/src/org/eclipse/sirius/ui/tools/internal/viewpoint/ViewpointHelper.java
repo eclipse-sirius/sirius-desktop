@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.regex.Matcher;
@@ -56,7 +57,6 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Maps;
 
 /**
  * Utility class containing method to handle viewpoints.
@@ -396,7 +396,7 @@ public final class ViewpointHelper {
     public static void handleViewpointActivation(Session session, Set<Viewpoint> viewpointsToHandle, boolean activateViewpoint, boolean askUserForDependencyActivation) {
         Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
 
-        final SortedMap<Viewpoint, Boolean> originalViewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+        final SortedMap<Viewpoint, Boolean> originalViewpointsMap = new TreeMap<>(new ViewpointRegistry.ViewpointComparator());
         Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
         for (final Viewpoint viewpoint : availableViewpoints) {
             boolean selected = false;
@@ -409,7 +409,7 @@ public final class ViewpointHelper {
             }
             originalViewpointsMap.put(viewpoint, Boolean.valueOf(selected));
         }
-        SortedMap<Viewpoint, Boolean> newViewpointToSelectionStateMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+        SortedMap<Viewpoint, Boolean> newViewpointToSelectionStateMap = new TreeMap<>(new ViewpointRegistry.ViewpointComparator());
         newViewpointToSelectionStateMap.putAll(originalViewpointsMap);
         for (Viewpoint viewpoint : viewpointsToHandle) {
             newViewpointToSelectionStateMap.put(viewpoint, activateViewpoint);

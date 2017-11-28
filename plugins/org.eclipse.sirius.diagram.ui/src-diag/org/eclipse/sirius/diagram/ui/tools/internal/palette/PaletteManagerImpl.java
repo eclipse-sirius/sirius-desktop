@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -616,7 +617,7 @@ public class PaletteManagerImpl implements PaletteManager {
         final Resource diagramEnvResource = context.getResource(URI.createURI(SiriusDiagramUtil.DIAGRAM_ENVIRONMENT_RESOURCE_URI, true), true);
         final Environment diagramEnv = (Environment) diagramEnvResource.getContents().get(0);
 
-        List<ToolEntry> defaultTools = Lists.newArrayList();
+        List<ToolEntry> defaultTools = new ArrayList<>();
         defaultTools.addAll(coreEnv.getDefaultTools());
         defaultTools.addAll(diagramEnv.getDefaultTools());
         return defaultTools;

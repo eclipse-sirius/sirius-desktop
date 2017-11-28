@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.view.factories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -33,8 +34,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
-import com.google.common.collect.Lists;
-
 /**
  * @was-generated
  */
@@ -44,7 +43,7 @@ public class DEdgeViewFactory extends AbstractDesignerEdgeFactory {
      * @was-generated
      */
     protected List<?> createStyles(final View view) {
-        final List<Style> styles = Lists.newArrayList();
+        final List<Style> styles = new ArrayList<>();
         styles.add(NotationFactory.eINSTANCE.createConnectorStyle());
         styles.add(NotationFactory.eINSTANCE.createFontStyle());
         return styles;

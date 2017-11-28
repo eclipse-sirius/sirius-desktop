@@ -11,7 +11,6 @@
 package org.eclipse.sirius.table.tools.internal.command;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactoryProvider;
 

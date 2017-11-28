@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.filter;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -26,7 +27,6 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -61,7 +61,7 @@ public class DiagramElementSelectionDialogPatternMatcherTest extends SiriusDiagr
         DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
 
-        nameToDiagramElements = Maps.newHashMap();
+        nameToDiagramElements = new HashMap<>();
         Iterator<DDiagramElement> iterator = diagram.getDiagramElements().iterator();
         while (iterator.hasNext()) {
             DDiagramElement next = iterator.next();

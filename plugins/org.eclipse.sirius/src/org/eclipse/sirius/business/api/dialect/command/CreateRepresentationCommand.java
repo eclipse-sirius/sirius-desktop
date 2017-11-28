@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.api.dialect.command;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -28,8 +29,6 @@ import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-
-import com.google.common.collect.Sets;
 
 /**
  * Create representation command.
@@ -127,7 +126,7 @@ public class CreateRepresentationCommand extends RecordingCommand {
      */
     @Override
     public Collection<?> getResult() {
-        final Set<DRepresentation> result = Sets.newHashSet();
+        final Set<DRepresentation> result = new HashSet<>();
         result.add(representation);
         /* do not leak */
         clearData();

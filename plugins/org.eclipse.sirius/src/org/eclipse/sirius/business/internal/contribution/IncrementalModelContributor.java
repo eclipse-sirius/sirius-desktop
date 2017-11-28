@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.contribution;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -96,14 +98,14 @@ public class IncrementalModelContributor extends ModelContributor {
         List<EObject> inputs = Lists.newArrayList(currentCopier.copyAll(referenceInputs));
         currentCopier.copyReferences();
 
-        Map<EObject, Object> inputIds = Maps.newHashMap();
+        Map<EObject, Object> inputIds = new HashMap<>();
         for (EObject root : referenceInputs) {
             for (EObject obj : AllContents.of(root, true)) {
                 inputIds.put(currentCopier.get(obj), idFunction.apply(obj));
             }
         }
 
-        viewpointUris = Maps.newHashMap();
+        viewpointUris = new HashMap<>();
         for (Viewpoint originalVP : Iterables.filter(currentCopier.keySet(), Viewpoint.class)) {
             Option<URI> uri = new ViewpointQuery(originalVP).getViewpointURI();
             if (uri.some()) {
@@ -124,7 +126,7 @@ public class IncrementalModelContributor extends ModelContributor {
             }));
         } else {
             Function<EObject, Object> f = update(result, inputIds);
-            Map<EObject, Object> newIds = Maps.newHashMap();
+            Map<EObject, Object> newIds = new HashMap<>();
             for (EObject obj : AllContents.of(model, true)) {
                 newIds.put(obj, f.apply(obj));
             }
@@ -208,7 +210,7 @@ public class IncrementalModelContributor extends ModelContributor {
                 result.add(contribution);
             }
         }
-        targetsWithEOpposites = Lists.newArrayList();
+        targetsWithEOpposites = new ArrayList<>();
         for (Contribution contribution : result) {
             for (FeatureContribution fc : contribution.getFeatureMask()) {
                 if (fc.getTargetFeature() instanceof EReference && ((EReference) fc.getTargetFeature()).getEOpposite() != null) {

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Adapter;
@@ -43,8 +44,6 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
-
-import com.google.common.collect.Sets;
 
 /**
  * A ResourceSet listener to refresh visibility when graphical filters are
@@ -111,7 +110,7 @@ public class VisibilityUpdater extends ResourceSetListenerImpl {
         // if needs needs refresh, we are doing it so, we deactivate the updater
         needsRefresh = false;
 
-        Collection<DDiagramElement> elementsToRefresh = Sets.newHashSet();
+        Collection<DDiagramElement> elementsToRefresh = new HashSet<>();
         for (Notification notif : event.getNotifications()) {
             Object notifier = notif.getNotifier();
             if (notifier instanceof DDiagramElement) {

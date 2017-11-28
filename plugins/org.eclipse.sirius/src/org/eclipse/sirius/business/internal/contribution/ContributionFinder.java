@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.contribution;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +21,6 @@ import org.eclipse.sirius.ext.emf.AllContents;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 /**
  * Implementations of a
  * {@code Function&lt;EObject, Iterable&lt;Contribution&gt;&gt;} for the common
@@ -74,7 +74,7 @@ public final class ContributionFinder {
     public static Function<Iterable<EObject>, Iterable<Contribution>> intrinsic() {
         return new Function<Iterable<EObject>, Iterable<Contribution>>() {
             public Iterable<Contribution> apply(Iterable<EObject> from) {
-                List<Contribution> result = Lists.newArrayList();
+                List<Contribution> result = new ArrayList<>();
                 for (EObject root : from) {
                     Iterables.addAll(result, Iterables.filter(AllContents.of(root, ContributionPackage.eINSTANCE.getContribution(), true), Contribution.class));
                 }

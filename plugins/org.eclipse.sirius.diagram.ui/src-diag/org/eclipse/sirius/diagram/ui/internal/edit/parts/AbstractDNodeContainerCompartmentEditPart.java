@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -94,7 +95,6 @@ import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescriptio
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * <p>
@@ -549,7 +549,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
             int maxWidth = 0;
             int maxHeight = 0;
             int minY = Integer.MAX_VALUE;
-            Map<IFigure, Rectangle> regionsBounds = Maps.newHashMap();
+            Map<IFigure, Rectangle> regionsBounds = new HashMap<>();
 
             Rectangle bounds;
             // First step : compute freeform layout bounds and keep the common

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.view.factories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -18,8 +19,6 @@ import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DotEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
-
-import com.google.common.collect.Lists;
 
 /**
  * @was-generated
@@ -30,7 +29,7 @@ public class DotViewFactory extends AbstractDesignerNodeFactory {
      * @was-generated
      */
     protected List<?> createStyles(View view) {
-        List<Style> styles = Lists.newArrayList();
+        List<Style> styles = new ArrayList<>();
         styles.add(NotationFactory.eINSTANCE.createShapeStyle());
         return styles;
     }

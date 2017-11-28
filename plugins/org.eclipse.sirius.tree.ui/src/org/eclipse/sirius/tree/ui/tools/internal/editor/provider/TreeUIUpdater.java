@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -78,10 +79,10 @@ public class TreeUIUpdater extends ResourceSetListenerImpl {
 
     @Override
     public void resourceSetChanged(ResourceSetChangeEvent event) {
-        this.toRefreshInViewer = Sets.newLinkedHashSet();
-        this.toUpdateInViewer = Sets.newLinkedHashSet();
-        this.toCollapses = Sets.newLinkedHashSet();
-        this.toExpands = Sets.newLinkedHashSet();
+        this.toRefreshInViewer = new LinkedHashSet<>();
+        this.toUpdateInViewer = new LinkedHashSet<>();
+        this.toCollapses = new LinkedHashSet<>();
+        this.toExpands = new LinkedHashSet<>();
         analyseNotifications(event.getNotifications());
         updateDTreeViewer();
     }

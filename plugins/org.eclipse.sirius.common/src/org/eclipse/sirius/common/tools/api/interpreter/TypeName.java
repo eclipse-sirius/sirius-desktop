@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.tools.api.interpreter;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
@@ -20,8 +21,6 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore.EMFUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-
-import com.google.common.collect.Sets;
 
 /**
  * A class representing a type name.
@@ -110,7 +109,7 @@ public final class TypeName {
      * @return all the EClassifiers matching the typename.
      */
     public Collection<EClassifier> search(Collection<EPackage> availableEPackages) {
-        Collection<EClassifier> matches = Sets.newLinkedHashSet();
+        Collection<EClassifier> matches = new LinkedHashSet<>();
         Iterator<EPackage> it = availableEPackages.iterator();
         while (it.hasNext()) {
             EPackage pak = it.next();

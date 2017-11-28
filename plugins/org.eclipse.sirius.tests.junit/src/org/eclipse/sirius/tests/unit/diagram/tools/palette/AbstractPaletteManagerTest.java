@@ -10,11 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.tools.palette;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.EditDomain;
@@ -32,7 +35,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -216,7 +218,7 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
 
     @SuppressWarnings("unchecked")
     private SortedSet<Entry> getVisiblePaletteEntries(PaletteRoot root) {
-        SortedSet<Entry> result = Sets.newTreeSet();
+        SortedSet<Entry> result = new TreeSet<>();
 
         Iterable<PaletteEntry> filtered = Iterables.filter(root.getChildren(), VISIBLE_ENTRY);
         for (PaletteEntry paletteEntry : filtered) {
@@ -238,7 +240,7 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
     }
 
     private List<String> getLabelEntries(PaletteEntry paletteEntry) {
-        List<String> result = Lists.newArrayList();
+        List<String> result = new ArrayList<>();
 
         Iterable<PaletteEntry> filtered2 = Iterables.filter((List<PaletteEntry>) ((PaletteContainer) paletteEntry).getChildren(), VISIBLE_ENTRY);
 
@@ -264,7 +266,7 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
      */
     protected Set<PaletteEntry> getAllVisiblePaletteEntries(PaletteRoot root) {
         TestsUtil.synchronizationWithUIThread();
-        Set<PaletteEntry> paletteEntries = Sets.newLinkedHashSet();
+        Set<PaletteEntry> paletteEntries = new LinkedHashSet<>();
 
         @SuppressWarnings("unchecked")
         Iterable<PaletteEntry> allVisibleChildren = Iterables.<PaletteEntry> filter(root.getChildren(), VISIBLE_ENTRY);
@@ -289,7 +291,7 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
      * @return
      */
     private Collection<? extends PaletteEntry> getAllVisiblePaletteEntries(PaletteEntry paletteEntry) {
-        Set<PaletteEntry> paletteEntries = Sets.newLinkedHashSet();
+        Set<PaletteEntry> paletteEntries = new LinkedHashSet<>();
 
         Iterable<PaletteEntry> children = Iterables.filter((List<PaletteEntry>) ((PaletteContainer) paletteEntry).getChildren(), VISIBLE_ENTRY);
 

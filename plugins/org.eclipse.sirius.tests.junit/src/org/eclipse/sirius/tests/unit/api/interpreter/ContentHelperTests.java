@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.interpreter;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.common.tools.internal.assist.ContentContextHelper;
+
+import junit.framework.TestCase;
 
 /**
  * Tests for the completion proposal start computation.

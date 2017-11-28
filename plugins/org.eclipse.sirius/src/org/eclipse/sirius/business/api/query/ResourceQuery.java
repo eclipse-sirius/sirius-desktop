@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.query;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Optional;
 
 import org.eclipse.emf.common.util.EList;
@@ -22,7 +23,6 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Sets;
 
 /**
  * Queries on EMF Resources.
@@ -54,7 +54,7 @@ public class ResourceQuery {
      * @return the URIs of all the Resources this one depends on and which are loaded/resolved.
      */
     public Collection<URI> getResolvedDependencies() {
-        Collection<URI> dependencies = Sets.newHashSet();
+        Collection<URI> dependencies = new HashSet<>();
         for (EObject root : resource.getContents()) {
             dependencies.addAll(new EObjectQuery(root).getResolvedDependencies());
         }
@@ -70,7 +70,7 @@ public class ResourceQuery {
      * @return the URIs of all the Resources this one depends on but which is not yet loaded/resolved.
      */
     public Collection<URI> getUnresolvedDependencies() {
-        Collection<URI> dependencies = Sets.newHashSet();
+        Collection<URI> dependencies = new HashSet<>();
         for (EObject root : resource.getContents()) {
             dependencies.addAll(new EObjectQuery(root).getUnresolvedDependencies());
         }

@@ -10,10 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter;
 
+import org.eclipse.acceleo.common.IAcceleoConstants;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
-
-import org.eclipse.acceleo.common.IAcceleoConstants;
 
 /**
  * This will be used in order to provides interpreters for Acceleo 3 expressions

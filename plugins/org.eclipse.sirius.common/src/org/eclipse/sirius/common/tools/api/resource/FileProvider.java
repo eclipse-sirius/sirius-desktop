@@ -13,6 +13,7 @@ package org.eclipse.sirius.common.tools.api.resource;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -29,13 +30,10 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.Constants;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ext.base.cache.LRUCache;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.Constants;
 
 /**
  * To find a module file in the workspace or in the plugins.
@@ -296,7 +294,7 @@ public class FileProvider {
     private List<URL> getMTs(final Map<String, List<URL>> mtName2mtURLs, final String name) {
         List<URL> mt = mtName2mtURLs.get(name);
         if (mt == null) {
-            mt = Lists.newArrayList();
+            mt = new ArrayList<>();
             mtName2mtURLs.put(name, mt);
         }
         return mt;

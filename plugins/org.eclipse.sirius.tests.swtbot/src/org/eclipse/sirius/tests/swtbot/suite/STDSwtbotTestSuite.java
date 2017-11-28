@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.swtbot.std.STD001;
 import org.eclipse.sirius.tests.swtbot.std.STD002;
 import org.eclipse.sirius.tests.swtbot.std.STD004;
@@ -37,6 +32,11 @@ import org.eclipse.sirius.tests.swtbot.std.STD043;
 import org.eclipse.sirius.tests.swtbot.std.STD044;
 import org.eclipse.sirius.tests.swtbot.std.STD048;
 import org.eclipse.sirius.tests.swtbot.std.STD049;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * 

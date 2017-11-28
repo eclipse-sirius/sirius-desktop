@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -31,7 +33,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Helper class with utilities to deal with GMF edit parts.
@@ -75,7 +76,7 @@ public final class EditPartsHelper {
      * @return the messages found without duplicates.
      */
     public static Set<SequenceMessageEditPart> getAllMessages(IGraphicalEditPart element) {
-        Set<SequenceMessageEditPart> allMessages = Sets.newHashSet();
+        Set<SequenceMessageEditPart> allMessages = new HashSet<>();
         allMessages.addAll(EditPartsHelper.getAllMessagesFrom(element));
         allMessages.addAll(EditPartsHelper.getAllMessagesTo(element));
         return allMessages;
@@ -90,7 +91,7 @@ public final class EditPartsHelper {
      * @return the messages found.
      */
     public static List<SequenceMessageEditPart> getAllMessagesFrom(IGraphicalEditPart element) {
-        List<SequenceMessageEditPart> messagesParts = Lists.newArrayList();
+        List<SequenceMessageEditPart> messagesParts = new ArrayList<>();
         EditPartsHelper.addAllMessagesFrom(element, messagesParts);
         return messagesParts;
     }
@@ -104,7 +105,7 @@ public final class EditPartsHelper {
      * @return the messages found.
      */
     private static List<SequenceMessageEditPart> getAllMessagesTo(IGraphicalEditPart element) {
-        List<SequenceMessageEditPart> messagesParts = Lists.newArrayList();
+        List<SequenceMessageEditPart> messagesParts = new ArrayList<>();
         EditPartsHelper.addAllMessagesTo(element, messagesParts);
         return messagesParts;
     }

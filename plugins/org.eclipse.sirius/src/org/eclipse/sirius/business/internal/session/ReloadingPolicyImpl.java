@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +21,6 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStat
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 /**
  * A policy returning synchronization actions needed after a workspace change.
@@ -57,7 +57,7 @@ public class ReloadingPolicyImpl implements ReloadingPolicy {
      *         nothing to do.
      */
     public List<Action> getActions(final Session session, final Resource resource, final ResourceStatus newStatus) {
-        List<Action> actions = Lists.newArrayList();
+        List<Action> actions = new ArrayList<>();
 
         switch (newStatus) {
         case EXTERNAL_CHANGED:
@@ -87,7 +87,7 @@ public class ReloadingPolicyImpl implements ReloadingPolicy {
     }
 
     private List<Action> handleExternalChangeConflict(final Session session, final Resource resource, final ResourceStatus newStatus) {
-        final List<Action> actions = Lists.newArrayList();
+        final List<Action> actions = new ArrayList<>();
         if (shouldReload(resource)) {
             actions.add(Action.RELOAD);
         }
@@ -95,7 +95,7 @@ public class ReloadingPolicyImpl implements ReloadingPolicy {
     }
 
     private List<Action> handleExternalDeleteConflict(final Session session, final Resource resource, final ResourceStatus newStatus) {
-        final List<Action> actions = Lists.newArrayList();
+        final List<Action> actions = new ArrayList<>();
         if (shouldRemove(resource)) {
             actions.add(Action.REMOVE);
         }
@@ -103,7 +103,7 @@ public class ReloadingPolicyImpl implements ReloadingPolicy {
     }
 
     private List<Action> handleExternalDelete(final Session session, final Resource resource, final ResourceStatus newStatus) {
-        final List<Action> actions = Lists.newArrayList();
+        final List<Action> actions = new ArrayList<>();
 
         if (isRepresentationsResourceOwnedBySession(session, resource)) {
             if (shouldClose(session, resource)) {
@@ -121,7 +121,7 @@ public class ReloadingPolicyImpl implements ReloadingPolicy {
     }
 
     private List<Action> handleExternalChange(final Session session, final Resource resource, final ResourceStatus newStatus) {
-        final List<Action> actions = Lists.newArrayList();
+        final List<Action> actions = new ArrayList<>();
         actions.add(Action.RELOAD);
         return actions;
     }

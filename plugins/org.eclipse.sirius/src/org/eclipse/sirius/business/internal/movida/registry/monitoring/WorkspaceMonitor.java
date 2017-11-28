@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.movida.registry.monitoring;
 
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.resources.IResource;
@@ -27,7 +28,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Sets;
 
 /**
  * Monitors VSMs in the Eclipse workspace.
@@ -56,7 +56,7 @@ public class WorkspaceMonitor extends AbstractViewpointResourceMonitor {
      * workspace.
      */
     private final class VSMProxyVisitor implements IResourceProxyVisitor {
-        Set<URI> detected = Sets.newLinkedHashSet();
+        Set<URI> detected = new LinkedHashSet<>();
 
         /**
          * {@inheritDoc}
@@ -95,11 +95,11 @@ public class WorkspaceMonitor extends AbstractViewpointResourceMonitor {
      * The visitor used to detect VSM workspace changes.
      */
     private final class VSMDeltaVisitor implements IResourceDeltaVisitor {
-        Set<URI> added = Sets.newLinkedHashSet();
+        Set<URI> added = new LinkedHashSet<>();
 
-        Set<URI> removed = Sets.newLinkedHashSet();
+        Set<URI> removed = new LinkedHashSet<>();
 
-        Set<URI> changed = Sets.newLinkedHashSet();
+        Set<URI> changed = new LinkedHashSet<>();
 
         /**
          * {@inheritDoc}

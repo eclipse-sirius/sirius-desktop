@@ -11,12 +11,11 @@
 package org.eclipse.sirius.table.ui.tools.internal.properties.propertysource;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.ui.IEditorPart;
-
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractEObjectPropertySource;
+import org.eclipse.ui.IEditorPart;
 
 public class TableCompositeEObjectPropertySource extends AbstractEObjectPropertySource {
 

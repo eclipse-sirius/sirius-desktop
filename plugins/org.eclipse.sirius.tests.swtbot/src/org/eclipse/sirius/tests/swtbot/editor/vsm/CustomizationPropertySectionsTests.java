@@ -13,7 +13,6 @@ package org.eclipse.sirius.tests.swtbot.editor.vsm;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;

@@ -75,7 +75,6 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
 
 /**
  * Manage the LayoutData during node creation or drag'n'drop.
@@ -679,7 +678,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         // get the created views and remove the layout adapter
         @SuppressWarnings("unchecked")
         Collection<View> createdViews = Collections2.filter(containerView.getChildren(), predicate);
-        LinkedList<IAdaptable> createdViewstoLayout = Lists.newLinkedList();
+        LinkedList<IAdaptable> createdViewstoLayout = new LinkedList<>();
         int size = createdViews.size();
         for (Object view : createdViews) {
             createdViewstoLayout.add(new EObjectAdapter((View) view));

@@ -14,8 +14,10 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -56,7 +58,6 @@ import org.eclipse.sirius.viewpoint.impl.SessionManagerEObjectImpl;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -75,11 +76,11 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     /**
      * Listeners added programmatically using SessionManager.addSessionsListener.
      */
-    private Set<SessionManagerListener> programmaticListeners = Sets.newLinkedHashSet();
+    private Set<SessionManagerListener> programmaticListeners = new LinkedHashSet<>();
 
     private Set<Viewpoint> selectedViewpoints = new HashSet<Viewpoint>();
 
-    private final Map<Session, SessionListener> sessionsToListeners = Maps.newHashMap();
+    private final Map<Session, SessionListener> sessionsToListeners = new HashMap<>();
 
     /**
      * Default initialization of a {@link SessionManagerImpl}.
@@ -370,7 +371,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
      */
     private synchronized Set<SessionManagerListener> getExtensionPointListeners() {
         if (extensionPointListeners == null) {
-            extensionPointListeners = Sets.newLinkedHashSet();
+            extensionPointListeners = new LinkedHashSet<>();
             extensionPointListeners.addAll(EclipseUtil.getExtensionPlugins(SessionManagerListener.class, SessionManagerListener.ID, SessionManagerListener.CLASS_ATTRIBUTE));
         }
         return extensionPointListeners;

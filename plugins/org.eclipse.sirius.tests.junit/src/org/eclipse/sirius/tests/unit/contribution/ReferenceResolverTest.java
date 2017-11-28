@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.unit.contribution;
 import static org.eclipse.sirius.tests.unit.contribution.OptionAssert.assertHasExactValue;
 import static org.eclipse.sirius.tests.unit.contribution.OptionAssert.assertHasNoValue;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -30,15 +31,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.google.common.collect.Maps;
-
 /**
  * Tests for {@link SiriusReferenceResolver}.
  * 
  * @author pierre-charles.david@obeo.fr
  */
 public class ReferenceResolverTest {
-    private static final Map<String, Object> NO_CONTEXT = Maps.newHashMap();
+    private static final Map<String, Object> NO_CONTEXT = new HashMap<>();
 
     private static ContributionFactory factory;
 
@@ -101,7 +100,7 @@ public class ReferenceResolverTest {
         EObject self = EcoreFactory.eINSTANCE.createEObject();
         ComputedEObjectReference ref = factory.createComputedEObjectReference();
         ref.setValueExpression("aql:self");
-        Map<String, Object> context = Maps.newHashMap();
+        Map<String, Object> context = new HashMap<>();
         context.put("self", self);
         Option<EObject> result = resolver.resolve(ref, context);
         assertHasExactValue(self, result);

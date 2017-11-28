@@ -19,8 +19,8 @@ import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION;
 import org.eclipse.sirius.properties.FillLayoutDescription;
-import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.api.IDescriptionConverter;
+import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.Messages;
 
 /**

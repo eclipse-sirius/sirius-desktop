@@ -23,6 +23,11 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
+import org.eclipse.sirius.common.tools.api.resource.FileProvider;
+import org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed.LabelProviderProviderRegistryListener;
+import org.eclipse.sirius.common.ui.tools.internal.util.ISaveDialogExtensionRegistryListener;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.graphics.Image;
@@ -30,12 +35,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
-import org.eclipse.sirius.common.tools.api.resource.FileProvider;
-import org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed.LabelProviderProviderRegistryListener;
-import org.eclipse.sirius.common.ui.tools.internal.util.ISaveDialogExtensionRegistryListener;
 
 /**
  * This is the central singleton for the SystemInterfaces edit plugin. <!--

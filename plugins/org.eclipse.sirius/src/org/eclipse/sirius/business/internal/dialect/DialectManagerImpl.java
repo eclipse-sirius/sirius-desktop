@@ -56,8 +56,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescripti
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
-import com.google.common.collect.Lists;
-
 /**
  * Class able to manage a set of dialects to provides the usual dialect services using the Eclipse environment.
  * 
@@ -267,7 +265,7 @@ public class DialectManagerImpl implements DialectManager {
     }
 
     private Collection<DRepresentation> findAllRepresentations(EObject semantic, Session session) {
-        Collection<DRepresentation> result = Lists.newArrayList();
+        Collection<DRepresentation> result = new ArrayList<>();
         ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
         for (EStructuralFeature.Setting setting : xref.getInverseReferences(semantic)) {
             if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(setting.getEObject())
@@ -313,7 +311,7 @@ public class DialectManagerImpl implements DialectManager {
     }
 
     private Collection<DRepresentationDescriptor> findAllRepresentationDescriptors(EObject semantic, Session session) {
-        Collection<DRepresentationDescriptor> result = Lists.newArrayList();
+        Collection<DRepresentationDescriptor> result = new ArrayList<>();
         ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
         for (EStructuralFeature.Setting setting : xref.getInverseReferences(semantic)) {
             if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(setting.getEObject())

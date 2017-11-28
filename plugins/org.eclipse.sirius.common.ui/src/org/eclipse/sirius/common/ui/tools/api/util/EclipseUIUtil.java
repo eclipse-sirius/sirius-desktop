@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.ui.tools.api.util;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -33,8 +34,6 @@ import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Lists;
 
 /**
  * Static useful eclipse ui methods.
@@ -217,7 +216,7 @@ public final class EclipseUIUtil {
         }
 
         // get all the view and editor parts
-        List<IWorkbenchPart> parts = Lists.newArrayList();
+        List<IWorkbenchPart> parts = new ArrayList<>();
         IWorkbenchPartReference[] refs = page.getViewReferences();
         for (int i = 0; i < refs.length; i++) {
             IWorkbenchPart part = refs[i].getPart(false);

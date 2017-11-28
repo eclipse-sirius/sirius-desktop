@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -34,7 +36,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * This class is responsible to check whether a request on an interaction use
@@ -80,7 +81,7 @@ public abstract class AbstractInteractionFrameValidator {
     /**
      * Other moved elements.
      */
-    protected final Set<ISequenceEvent> movedElements = Sets.newHashSet();
+    protected final Set<ISequenceEvent> movedElements = new HashSet<>();
 
     /**
      * Not in moved elements.
@@ -89,7 +90,7 @@ public abstract class AbstractInteractionFrameValidator {
 
     private boolean initialized;
 
-    private final Collection<Integer> invalidPositions = Lists.newArrayList();
+    private final Collection<Integer> invalidPositions = new ArrayList<>();
 
     private Predicate<Object> unMove = Predicates.instanceOf(Lifeline.class);
 
@@ -184,7 +185,7 @@ public abstract class AbstractInteractionFrameValidator {
     }
 
     private Collection<ISequenceEvent> getFinalParentsWithAutoExpand() {
-        Collection<ISequenceEvent> finalParentsWithAutoExpand = Lists.newArrayList();
+        Collection<ISequenceEvent> finalParentsWithAutoExpand = new ArrayList<>();
         Collection<ISequenceEvent> finalParents = getFinalParents();
         Collection<Lifeline> coveredLifelines = frame.computeCoveredLifelines();
         for (ISequenceEvent localParent : finalParents) {

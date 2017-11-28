@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.internal.template;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,8 +21,6 @@ import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEdit;
 import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
-
-import com.google.common.collect.Lists;
 
 /**
  * Implementation of the aggregation service.
@@ -37,7 +36,7 @@ public class RepresentationTemplateEditManagerImpl implements RepresentationTemp
      * {@inheritDoc}
      */
     public Collection<? extends Object> provideNewChildDescriptors() {
-        Collection result = Lists.newArrayList();
+        Collection result = new ArrayList<>();
         for (RepresentationTemplateEdit edit : edits) {
             result.add(edit.getNewChildDescriptor());
         }

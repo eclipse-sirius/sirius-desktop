@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -23,7 +24,6 @@ import org.eclipse.sirius.tree.description.TreeItemMapping;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
 
 /**
  * A {@link AutomaticCreator}.
@@ -60,7 +60,7 @@ class TreeItemCreator implements AutomaticCreator {
                 return new TreeItemMappingExpression(castedContext.getGlobalContext(), input.getMapping().getDescription()).checkPrecondition(input.getSourceElement(), input.getViewContainer());
             }
         };
-        List<OutputTreeItemDescriptor> outputs = Lists.newArrayList();
+        List<OutputTreeItemDescriptor> outputs = new ArrayList<>();
         int i = 0;
         while (it.hasNext()) {
             EObject from = it.next();

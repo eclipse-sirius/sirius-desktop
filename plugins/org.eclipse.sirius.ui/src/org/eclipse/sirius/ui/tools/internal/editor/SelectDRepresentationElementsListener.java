@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.editor;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -41,7 +43,6 @@ import org.eclipse.ui.IEditorPart;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A post commit listener which select the representation elements specified
@@ -131,7 +132,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      */
     private List<DRepresentationElement> extractElementsToSelect(ResourceSetChangeEvent event, DRepresentation currentRep) {
         List<DRepresentationElement> elementsToSelect = null;
-        final List<DRepresentationElement> notifiedElements = Lists.newArrayList();
+        final List<DRepresentationElement> notifiedElements = new ArrayList<>();
         boolean elementsToSelectUpdated = analyseNotifications(event, currentRep, notifiedElements);
         if (elementsToSelectUpdated) {
             List<DRepresentationElement> elementsToSelectFromUiState = extractSelectionFromUIState(currentRep, notifiedElements);
@@ -179,8 +180,8 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      */
     private List<DRepresentationElement> extractSelectionFromUIState(DRepresentation currentRep, List<DRepresentationElement> notifiedElements) {
         List<DRepresentationElement> selectedElements = null;
-        List<DRepresentationElement> dRepElements = Lists.newArrayList();
-        List<EObject> semanticElements = Lists.newArrayList();
+        List<DRepresentationElement> dRepElements = new ArrayList<>();
+        List<EObject> semanticElements = new ArrayList<>();
 
         UIState uiState = currentRep.getUiState();
         if (uiState != null && uiState.isSetElementsToSelect()) {
@@ -204,7 +205,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
             }
 
             if (hasSemanticElement && !hasRepresentation && !hasRepElement) {
-                selectedElements = Lists.newArrayList();
+                selectedElements = new ArrayList<>();
                 caseHasSemanticElement(selectedElements, notifiedElements, semanticElements, currentRep);
             } else if (hasRepElement && !hasRepresentation && !hasSemanticElement) {
                 // Selected elements are filtered with the notified only
@@ -214,7 +215,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
                 }
                 selectedElements = Lists.newArrayList(dRepElements);
             } else {
-                selectedElements = Lists.newArrayList();
+                selectedElements = new ArrayList<>();
             }
         }
         return selectedElements;
@@ -224,7 +225,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
         // use crossReferencer to get DRepresentationElement from
         // semantic elements.
         for (EObject semanticElement : semanticElements) {
-            List<DRepresentationElement> repElementsFromSemantic = Lists.newArrayList();
+            List<DRepresentationElement> repElementsFromSemantic = new ArrayList<>();
             EObjectQuery eObjectQuery = new EObjectQuery(semanticElement);
             Collection<EObject> referencers = eObjectQuery.getInverseReferences(ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET);
             for (EObject referencer : referencers) {
@@ -300,7 +301,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
     }
 
     private Set<DRepresentationElement> getNotificationValues(Notification notification) {
-        final Set<DRepresentationElement> values = Sets.newLinkedHashSet();
+        final Set<DRepresentationElement> values = new LinkedHashSet<>();
         Object value = notification.getNewValue();
         if (value instanceof Collection) {
             Iterables.addAll(values, Iterables.filter((Collection<?>) value, DRepresentationElement.class));

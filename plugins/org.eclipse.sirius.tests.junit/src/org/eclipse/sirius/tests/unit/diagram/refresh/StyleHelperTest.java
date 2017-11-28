@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.refresh;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
@@ -79,6 +77,8 @@ import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
+
+import junit.framework.TestCase;
 
 /**
  * Class to test the StyleHelper class.

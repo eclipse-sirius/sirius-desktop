@@ -43,8 +43,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
-import com.google.common.collect.Sets;
-
 /**
  * Helper for get tasks from ModelOperation. Provide some utilities reused in
  * different EMFCommandFactory
@@ -118,7 +116,7 @@ public class TaskHelper {
      * @return all the {@link DSemanticDecorator} elements to delete.
      */
     public Set<DSemanticDecorator> getDElementToClearFromSemanticElements(final EObject context, final Set<EObject> semanticElements) {
-        Set<DSemanticDecorator> decoratorsToDestroy = Sets.newHashSet();
+        Set<DSemanticDecorator> decoratorsToDestroy = new HashSet<>();
         if (context != null) {
             final ECrossReferenceAdapter xref = getSemanticCrossReferencer(context);
             if (xref != null) {

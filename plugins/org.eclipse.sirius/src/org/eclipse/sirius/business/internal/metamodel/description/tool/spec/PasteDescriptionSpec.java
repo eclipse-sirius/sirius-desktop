@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.metamodel.description.tool.spec;
 
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -23,8 +24,6 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.impl.PasteDescriptionImpl;
-
-import com.google.common.collect.Lists;
 
 /**
  * Implementation of PasteDescription.
@@ -48,7 +47,7 @@ public class PasteDescriptionSpec extends PasteDescriptionImpl {
         if (crossReferencer == null) {
             throw new UnsupportedOperationException();
         }
-        final List<PasteTargetDescription> pasteTargetDescriptions = Lists.newLinkedList();
+        final List<PasteTargetDescription> pasteTargetDescriptions = new LinkedList<>();
         final Collection<Setting> settings = crossReferencer.getInverseReferences(this, true);
         for (final Setting setting : settings) {
             final EObject eReferencer = setting.getEObject();

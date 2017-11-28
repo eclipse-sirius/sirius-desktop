@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -20,6 +18,8 @@ import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+
+import junit.framework.TestCase;
 
 /**
  * Tests the use of variables with interpreter.

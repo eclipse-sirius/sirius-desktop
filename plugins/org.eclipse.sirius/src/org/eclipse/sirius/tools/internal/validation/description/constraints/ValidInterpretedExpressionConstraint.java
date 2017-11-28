@@ -12,6 +12,7 @@ package org.eclipse.sirius.tools.internal.validation.description.constraints;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EAttribute;
@@ -28,8 +29,6 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-
-import com.google.common.collect.Sets;
 
 /**
  * Constraint ensuring that all Interpreted Expressions of the Odesign are
@@ -49,7 +48,7 @@ public class ValidInterpretedExpressionConstraint extends AbstractConstraint {
     @Override
     public IStatus validate(IValidationContext ctx) {
         final EObject target = ctx.getTarget();
-        Collection<IStatus> statuses = Sets.newLinkedHashSet();
+        Collection<IStatus> statuses = new LinkedHashSet<>();
 
         // For each structural features of the element to validate
         for (EAttribute feature : target.eClass().getEAllAttributes()) {
@@ -77,8 +76,8 @@ public class ValidInterpretedExpressionConstraint extends AbstractConstraint {
     private IStatus checkExpression(IValidationContext ctx, EObject target, EStructuralFeature feature) {
         String expression = (String) target.eGet(feature);
 
-        Collection<IStatus> statuses = Sets.newLinkedHashSet();
-        Collection<IInterpreterStatus> errors = Sets.newLinkedHashSet();
+        Collection<IStatus> statuses = new LinkedHashSet<>();
+        Collection<IInterpreterStatus> errors = new LinkedHashSet<>();
         Collection<EObject> locus = Collections.singleton(target);
         if (!StringUtil.isEmpty(expression)) {
             try {

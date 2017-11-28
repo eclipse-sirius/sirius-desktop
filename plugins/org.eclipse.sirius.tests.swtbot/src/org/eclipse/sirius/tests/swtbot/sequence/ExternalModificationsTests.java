@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -201,7 +202,7 @@ public class ExternalModificationsTests extends AbstractSequenceDiagramTestCase 
         assertEquals(2, executions.size());
         sortEvents(executions);
 
-        List<SWTBotGefConnectionEditPart> messages = Lists.newArrayList();
+        List<SWTBotGefConnectionEditPart> messages = new ArrayList<>();
         for (SWTBotGefEditPart seqNodes : Iterables.concat(lifelines, executions)) {
             messages.addAll(seqNodes.sourceConnections());
         }

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.business.api.query;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
@@ -22,8 +23,6 @@ import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
-
-import com.google.common.collect.Sets;
 
 /**
  * /** A class aggregating all the queries (read-only!) having a Diagram
@@ -55,7 +54,7 @@ public class MappingBasedToolDescriptionQuery {
      *         {@link MappingBasedToolDescription}
      */
     public Collection<RepresentationElementMapping> getMappings() {
-        Collection<RepresentationElementMapping> mappings = Sets.newLinkedHashSet();
+        Collection<RepresentationElementMapping> mappings = new LinkedHashSet<>();
         if (toolDescription instanceof ContainerCreationDescription) {
             ContainerCreationDescription ccd = (ContainerCreationDescription) toolDescription;
             mappings.addAll(ccd.getContainerMappings());

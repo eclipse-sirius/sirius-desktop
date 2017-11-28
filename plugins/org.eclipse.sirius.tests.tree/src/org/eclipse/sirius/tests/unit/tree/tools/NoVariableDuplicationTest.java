@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.tree.tools;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.tree.business.internal.metamodel.TreeToolVariables;
@@ -21,6 +19,8 @@ import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
 import org.eclipse.sirius.tree.description.TreeVariable;
+
+import junit.framework.TestCase;
 
 /**
  * Test copy paste tool not duplicates variables

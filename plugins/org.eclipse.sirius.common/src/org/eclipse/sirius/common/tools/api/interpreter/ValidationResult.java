@@ -10,12 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.interpreter;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
-import com.google.common.collect.Lists;
 
 /**
  * The result of an expression validation.
@@ -26,7 +25,7 @@ import com.google.common.collect.Lists;
  */
 public class ValidationResult {
 
-    private List<IInterpreterStatus> statuses = Lists.newArrayList();
+    private List<IInterpreterStatus> statuses = new ArrayList<>();
 
     private VariableType returnType = VariableType.ANY_EOBJECT;
 

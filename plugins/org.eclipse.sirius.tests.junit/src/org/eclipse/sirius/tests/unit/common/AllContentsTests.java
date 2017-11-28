@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
@@ -25,6 +24,8 @@ import org.eclipse.sirius.ext.emf.Contents;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
+import junit.framework.TestCase;
 
 /**
  * Tests for the {@link AllContents} utility class.
@@ -73,7 +74,7 @@ public class AllContentsTests extends TestCase {
     public void testIterationOnEObjectWithSeveralChildren() {
         final int n = 10;
         EPackage parent = EcoreFactory.eINSTANCE.createEPackage();
-        List<EObject> children = Lists.newArrayList();
+        List<EObject> children = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             EClass child = EcoreFactory.eINSTANCE.createEClass();
             parent.getEClassifiers().add(child);
@@ -144,7 +145,7 @@ public class AllContentsTests extends TestCase {
     public void testAllContentsIterablesIsNotRecursive() {
         EPackage pkg = EcoreFactory.eINSTANCE.createEPackage();
         EClass klass = EcoreFactory.eINSTANCE.createEClass();
-        List<EObject> expected = Lists.newArrayList();
+        List<EObject> expected = new ArrayList<>();
         pkg.getEClassifiers().add(klass);
         expected.add(klass);
         EAttribute attr = EcoreFactory.eINSTANCE.createEAttribute();

@@ -35,8 +35,6 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.collect.Maps;
-
 /**
  * Computes the appropriate graphical locations of observation points on a
  * sequence diagram.
@@ -56,7 +54,7 @@ public class SequenceObservationLayout extends AbstractSequenceLayout<Observatio
      */
     public SequenceObservationLayout(SequenceDiagram sequenceDiagram) {
         super(sequenceDiagram);
-        this.endToObservationPoint = Maps.newHashMap();
+        this.endToObservationPoint = new HashMap<>();
     }
 
     @Override
@@ -73,7 +71,7 @@ public class SequenceObservationLayout extends AbstractSequenceLayout<Observatio
 
     @Override
     protected Map<? extends ObservationPoint, Point> computeLayout(boolean pack) {
-        HashMap<ObservationPoint, Point> computedLayout = Maps.newHashMap();
+        HashMap<ObservationPoint, Point> computedLayout = new HashMap<>();
 
         for (ISequenceEvent ise : sequenceDiagram.getAllDelimitedSequenceEvents()) {
             Rectangle bounds = ise.getProperLogicalBounds();

@@ -11,7 +11,9 @@
 package org.eclipse.sirius.business.internal.movida.registry.monitoring;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -21,8 +23,6 @@ import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Aggregates an ordered set of resource monitors.
@@ -33,19 +33,19 @@ public class CompositeResourceMonitor extends AbstractViewpointResourceMonitor i
     /**
      * The aggregated monitors.
      */
-    private final List<ViewpointResourceMonitor> monitors = Lists.newArrayList();
+    private final List<ViewpointResourceMonitor> monitors = new ArrayList<>();
 
     /**
      * The names of the aggregated monitors, in the same order as in
      * <code>monitors</code>.
      */
-    private final List<String> names = Lists.newArrayList();
+    private final List<String> names = new ArrayList<>();
 
     /**
      * A map to keep track of which monitor detected each of the currently
      * active URIs;
      */
-    private final Map<URI, ViewpointResourceMonitor> origins = Maps.newHashMap();
+    private final Map<URI, ViewpointResourceMonitor> origins = new HashMap<>();
 
     /**
      * Adds a new monitor to this composite.

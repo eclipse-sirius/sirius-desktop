@@ -60,7 +60,6 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
 /**
@@ -119,7 +118,7 @@ public class EditPartQuery {
         if (part == null) {
             return null;
         }
-        ArrayList<T> result = Lists.newArrayList();
+        ArrayList<T> result = new ArrayList<>();
         EditPart current = part.getParent();
         while (current != null) {
             if (type.isInstance(current)) {
@@ -376,7 +375,7 @@ public class EditPartQuery {
         }
         // Fix the expected shifting according to the BorderItemLocator (to
         // avoid conflicts)
-        HashMap<IGraphicalEditPart, IFigure> partToFigureToIgnore = Maps.newHashMap();
+        HashMap<IGraphicalEditPart, IFigure> partToFigureToIgnore = new HashMap<>();
         for (IBorderItemEditPart editPart : defaultComputedShifting.keySet()) {
             partToFigureToIgnore.put(editPart, editPart.getFigure());
         }
@@ -472,7 +471,7 @@ public class EditPartQuery {
         }
         // Fix the expected shifting according to the borderItemLocator (to
         // avoid conflicts)
-        HashMap<IGraphicalEditPart, IFigure> partToFigureToIgnore = Maps.newHashMap();
+        HashMap<IGraphicalEditPart, IFigure> partToFigureToIgnore = new HashMap<>();
         for (IBorderItemEditPart editPart : defaultComputedShifting.keySet()) {
             partToFigureToIgnore.put(editPart, editPart.getFigure());
         }

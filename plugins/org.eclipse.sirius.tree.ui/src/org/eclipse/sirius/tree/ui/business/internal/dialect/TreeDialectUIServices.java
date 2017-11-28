@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.ui.business.internal.dialect;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,7 +74,6 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Implementation of the UI services for the tree dialect.
@@ -211,7 +212,7 @@ public class TreeDialectUIServices implements DialectUIServices {
 
     @Override
     public Collection<CommandParameter> provideNewChildDescriptors() {
-        Collection<CommandParameter> newChilds = Lists.newArrayList();
+        Collection<CommandParameter> newChilds = new ArrayList<>();
         TreeDescription treeDescription = org.eclipse.sirius.tree.description.DescriptionFactory.eINSTANCE.createTreeDescription();
         newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, treeDescription));
         return newChilds;
@@ -219,7 +220,7 @@ public class TreeDialectUIServices implements DialectUIServices {
 
     @Override
     public Collection<CommandParameter> provideRepresentationCreationToolDescriptors(Object feature) {
-        Collection<CommandParameter> newChilds = Lists.newArrayList();
+        Collection<CommandParameter> newChilds = new ArrayList<>();
         TreeCreationDescription treeCreationDescription = DescriptionFactory.eINSTANCE.createTreeCreationDescription();
         new TreeToolVariables().doSwitch(treeCreationDescription);
         newChilds.add(new CommandParameter(null, feature, treeCreationDescription));
@@ -228,7 +229,7 @@ public class TreeDialectUIServices implements DialectUIServices {
 
     @Override
     public Collection<CommandParameter> provideRepresentationNavigationToolDescriptors(Object feature) {
-        Collection<CommandParameter> newChilds = Lists.newArrayList();
+        Collection<CommandParameter> newChilds = new ArrayList<>();
         TreeNavigationDescription treeNavigationDescription = DescriptionFactory.eINSTANCE.createTreeNavigationDescription();
         new TreeToolVariables().doSwitch(treeNavigationDescription);
         newChilds.add(new CommandParameter(null, feature, treeNavigationDescription));
@@ -268,7 +269,7 @@ public class TreeDialectUIServices implements DialectUIServices {
 
     @Override
     public Collection<DSemanticDecorator> getSelection(DialectEditor editor) {
-        Collection<DSemanticDecorator> selection = Sets.newLinkedHashSet();
+        Collection<DSemanticDecorator> selection = new LinkedHashSet<>();
         if (editor instanceof DTreeEditor) {
             DTreeEditor dEditor = (DTreeEditor) editor;
             if (editor.getSite() != null && editor.getSite().getSelectionProvider() != null) {

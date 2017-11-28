@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -33,7 +34,6 @@ import org.eclipse.ui.dialogs.SelectionDialog;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
 
 /**
  * Hide/reveal lines action. It opens a selection dialog.
@@ -164,7 +164,7 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
     }
 
     private List<DLine> getAllLines(final List<DLine> lines) {
-        final List<DLine> result = Lists.newArrayList();
+        final List<DLine> result = new ArrayList<>();
         for (final DLine dLine : lines) {
             result.add(dLine);
             result.addAll(getAllLines(dLine.getLines()));

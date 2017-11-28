@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.query;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -21,6 +19,8 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+
+import junit.framework.TestCase;
 
 /**
  * Class to test the {@link DDiagramElementQuery} class.

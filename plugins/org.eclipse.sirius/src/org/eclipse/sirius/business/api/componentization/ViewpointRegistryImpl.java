@@ -15,6 +15,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -72,7 +73,6 @@ import com.google.common.cache.LoadingCache;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 public class ViewpointRegistryImpl extends ViewpointRegistry {
     private ResourceSet resourceSet;
@@ -97,7 +97,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * Avoid instantiation.
      */
     public ViewpointRegistryImpl() {
-        collectors = Maps.newHashMap();
+        collectors = new HashMap<>();
         collectors.put(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, new ViewpointFileCollector() {
 
             @Override

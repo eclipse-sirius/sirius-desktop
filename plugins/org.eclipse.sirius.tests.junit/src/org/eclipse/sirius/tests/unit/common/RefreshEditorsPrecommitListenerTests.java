@@ -13,8 +13,6 @@ package org.eclipse.sirius.tests.unit.common;
 import java.util.Collection;
 import java.util.Collections;
 
-import junit.framework.TestCase;
-
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.command.Command;
@@ -43,6 +41,8 @@ import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+
+import junit.framework.TestCase;
 
 /**
  * Test that {@link RefreshEditorsPrecommitListener} return a {@link Command} to

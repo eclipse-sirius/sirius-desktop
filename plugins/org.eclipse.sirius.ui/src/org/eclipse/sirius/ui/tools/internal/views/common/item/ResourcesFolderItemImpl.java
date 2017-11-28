@@ -10,14 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.item;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.api.views.common.item.AnalysisResourceItem;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-
-import com.google.common.collect.Lists;
 
 /**
  * Represents resource folder item in session view.
@@ -45,7 +44,7 @@ public class ResourcesFolderItemImpl extends AbstractFolderItem implements org.e
 
     @Override
     public Collection<?> getChildren() {
-        final Collection<AnalysisResourceItem> all = Lists.newArrayList();
+        final Collection<AnalysisResourceItem> all = new ArrayList<>();
         final Collection<Resource> resources = session.getAllSessionResources();
         for (final Resource resource : resources) {
             all.add(new AnalysisResourceItemImpl(session, resource, this));

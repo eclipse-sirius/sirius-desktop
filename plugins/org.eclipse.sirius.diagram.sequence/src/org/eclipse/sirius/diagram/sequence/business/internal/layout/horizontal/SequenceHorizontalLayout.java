@@ -73,21 +73,21 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
 
     private final Insets padding = new Insets(LayoutConstants.LIFELINES_START_Y, LayoutConstants.LIFELINES_START_X, 0, LayoutConstants.LIFELINES_MIN_X_GAP - LayoutConstants.LIFELINES_START_X);
 
-    private final Collection<AbstractFrame> frames = Lists.newArrayList();
+    private final Collection<AbstractFrame> frames = new ArrayList<>();
 
     private final Multimap<AbstractFrame, Lifeline> coverage = HashMultimap.create();
 
     private final Multimap<Lifeline, AbstractFrame> invCoverage = HashMultimap.create();
 
-    private final Map<AbstractFrame, Range> ranges = Maps.newHashMap();
+    private final Map<AbstractFrame, Range> ranges = new HashMap<>();
 
-    private final Map<AbstractFrame, Integer> frameChildrenDepths = Maps.newHashMap();
+    private final Map<AbstractFrame, Integer> frameChildrenDepths = new HashMap<>();
 
-    private final Map<Lifeline, Integer> lifelineChildrenDepths = Maps.newHashMap();
+    private final Map<Lifeline, Integer> lifelineChildrenDepths = new HashMap<>();
 
     private LostMessageEndHorizontalLayoutHelper lostMessageEndHorizontalLayoutHelper;
 
-    private final Map<Message, Integer> reflexiveMessagesToLayout = Maps.newHashMap();
+    private final Map<Message, Integer> reflexiveMessagesToLayout = new HashMap<>();
 
     /**
      * Constructor.
@@ -132,7 +132,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
      */
     @Override
     protected Map<ISequenceElement, Rectangle> computeLayout(boolean pack) {
-        LinkedHashMap<ISequenceElement, Rectangle> allMoves = Maps.newLinkedHashMap();
+        LinkedHashMap<ISequenceElement, Rectangle> allMoves = new LinkedHashMap<>();
 
         Map<LostMessageEnd, Integer> lostEndsDelta = lostMessageEndHorizontalLayoutHelper.computeLostMessageEndDeltaWithLifeline(pack);
         Map<Message, Rectangle> reflexiveMessagesMoves = computeReflexiveMessagesHorizontalBounds();
@@ -258,7 +258,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
     }
 
     private void populateFrames() {
-        Collection<AbstractFrame> allFrames = Lists.newArrayList();
+        Collection<AbstractFrame> allFrames = new ArrayList<>();
         allFrames.addAll(sequenceDiagram.getAllInteractionUses());
         allFrames.addAll(sequenceDiagram.getAllCombinedFragments());
 
@@ -325,7 +325,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
     }
 
     private Map<AbstractFrame, Rectangle> computeFrameHorizontalBounds(Map<InstanceRole, Rectangle> irMoves, Map<LostMessageEnd, Integer> lostEndsDelta) {
-        Map<AbstractFrame, Rectangle> frameMoves = Maps.newHashMap();
+        Map<AbstractFrame, Rectangle> frameMoves = new HashMap<>();
 
         for (AbstractFrame frame : frames) {
             Rectangle newBounds = null;
@@ -617,7 +617,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
                     RelativeBendpoint newP1 = new RelativeBendpoint(p1.getSourceX() + deltaX, p1.getSourceY(), p1.getTargetX() + deltaX, p1.getTargetY());
                     RelativeBendpoint newP2 = new RelativeBendpoint(p2.getSourceX() + deltaX, p2.getSourceY(), p2.getTargetX() + deltaX, p2.getTargetY());
 
-                    List<RelativeBendpoint> newPoints = Lists.newArrayList();
+                    List<RelativeBendpoint> newPoints = new ArrayList<>();
                     newPoints.add(p0);
                     newPoints.add(newP1);
                     newPoints.add(newP2);

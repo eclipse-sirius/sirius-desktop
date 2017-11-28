@@ -13,6 +13,7 @@ package org.eclipse.sirius.table.ui.tools.internal.editor;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -91,9 +92,6 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * This class manages the tree viewer for display the DTable.
@@ -397,9 +395,9 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         if (descriptionFileChanged || dRepresentationReplaced) {
             descriptionFileChanged = false;
 
-            final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions = Maps.newHashMap();
-            final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions = Maps.newHashMap();
-            final List<AbstractToolAction> createActionsForTable = Lists.newArrayList();
+            final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions = new HashMap<>();
+            final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions = new HashMap<>();
+            final List<AbstractToolAction> createActionsForTable = new ArrayList<>();
             calculateAvailableMenus(mappingToDeleteActions, mappingToCreateActions, createActionsForTable);
 
             mgr.setRemoveAllWhenShown(true);
@@ -596,7 +594,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      * @return the selected tree items or an empty collection
      */
     public Collection<DLine> getSelectedLines() {
-        Collection<DLine> result = Lists.newArrayList();
+        Collection<DLine> result = new ArrayList<>();
         if (treeViewer.getTree().getSelectionCount() > 0) {
             for (TreeItem item : treeViewer.getTree().getSelection()) {
                 Object data = item.getData();

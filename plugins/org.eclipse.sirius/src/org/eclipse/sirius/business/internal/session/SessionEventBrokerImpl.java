@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.session;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 
@@ -59,7 +59,7 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
 
     private Multimap<EObject, ModelChangeTrigger> eObjectsToListeners = HashMultimap.create();
 
-    private Map<EStructuralFeature, Multimap<EObject, ModelChangeTrigger>> featuresToListeners = Maps.newHashMap();
+    private Map<EStructuralFeature, Multimap<EObject, ModelChangeTrigger>> featuresToListeners = new HashMap<>();
 
     private Multimap<NotificationFilter, ModelChangeTrigger> scopedTriggers = HashMultimap.create();
 

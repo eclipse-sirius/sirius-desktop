@@ -13,6 +13,7 @@ package org.eclipse.sirius.tree.tools.internal.command;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -64,14 +65,12 @@ import org.eclipse.sirius.tree.description.TreeItemEditionTool;
 import org.eclipse.sirius.tree.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-
-import com.google.common.collect.Sets;
 
 /**
  * A command factory that creates commands that can be undone.
@@ -463,7 +462,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
     public Command buildJavaActionFromTool(ExternalJavaAction javaActionItem, DTreeItem selectedItem, IExternalJavaAction javaAction) {
         final CompoundCommand compoundCommand = new CompoundCommand();
         // Step 1 : creating the command from the java action tool
-        Set<DSemanticDecorator> views = Sets.newLinkedHashSet();
+        Set<DSemanticDecorator> views = new LinkedHashSet<>();
         views.add(selectedItem);
         final JavaActionFromToolCommand javaActionFromToolCommand = new JavaActionFromToolCommand(this.domain, javaAction, javaActionItem, views);
         compoundCommand.append(javaActionFromToolCommand);

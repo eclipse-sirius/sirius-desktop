@@ -103,7 +103,6 @@ import org.hamcrest.Matcher;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Override some methods to GEF editor.
@@ -856,7 +855,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @return all SWTBotGefEditPart children
      */
     private List<SWTBotGefEditPart> getAllChildrenSWTBotGefEditPart(SWTBotGefEditPart swtbotGefEditPart) {
-        ArrayList<SWTBotGefEditPart> swtbotGefEditPartList = Lists.newArrayList();
+        ArrayList<SWTBotGefEditPart> swtbotGefEditPartList = new ArrayList<>();
         swtbotGefEditPartList.addAll(swtbotGefEditPart.children());
         for (SWTBotGefEditPart swtBotGefEditPartChild : swtbotGefEditPart.children()) {
             swtbotGefEditPartList.addAll(getAllChildrenSWTBotGefEditPart(swtBotGefEditPartChild));

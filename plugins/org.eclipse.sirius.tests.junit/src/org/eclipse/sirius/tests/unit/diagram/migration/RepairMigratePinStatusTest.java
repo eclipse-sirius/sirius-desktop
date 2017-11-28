@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -97,7 +98,7 @@ public class RepairMigratePinStatusTest extends AbstractRepairMigrateTest {
         for (DAnalysis dAnalysis : data) {
             for (DView view : dAnalysis.getOwnedViews()) {
                 List<DRepresentation> loadedRepresentations = new DViewQuery(view).getLoadedRepresentations();
-                Collection<DNodeList> dNodeLists = Lists.newArrayList();
+                Collection<DNodeList> dNodeLists = new ArrayList<>();
                 for (DRepresentation dRepresentation : loadedRepresentations) {
                     Iterators.addAll(dNodeLists, Iterators.filter(dRepresentation.eAllContents(), DNodeList.class));
                 }

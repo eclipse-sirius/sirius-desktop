@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.draw2d.ColorConstants;
@@ -29,7 +30,6 @@ import org.eclipse.swt.graphics.Color;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A builder for complex sequence move feedback.
@@ -71,7 +71,7 @@ public class SequenceInteractionFeedBackBuilder {
      * @return a composite transactional command.
      */
     public Collection<Figure> buildFeedBack() {
-        Collection<Figure> feedbacks = Lists.newArrayList();
+        Collection<Figure> feedbacks = new ArrayList<>();
 
         // validation on the first call;
         validator.validate();

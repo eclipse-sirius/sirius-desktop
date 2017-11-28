@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -52,8 +53,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.operations.IWorkbenchOperationSupport;
-
-import com.google.common.collect.Maps;
 
 /**
  * This class launch the scenario of the benchmark.
@@ -300,7 +299,7 @@ public class BenchmarkScenario {
     private void saveModel(EObject model) {
         if (model != null && model.eResource() != null) {
             try {
-                final Map<Object, Object> options = Maps.newHashMap();
+                final Map<Object, Object> options = new HashMap<>();
                 options.put(XMLResource.OPTION_USE_FILE_BUFFER, true);
 
                 model.eResource().save(Collections.EMPTY_MAP);

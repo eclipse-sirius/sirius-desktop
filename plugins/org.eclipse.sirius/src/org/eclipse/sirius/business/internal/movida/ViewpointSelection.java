@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.movida;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -41,7 +42,7 @@ public class ViewpointSelection {
     /**
      * The set of logical Sirius URIs which make up the selection itself.
      */
-    private final Set<URI> logicalViewpoints = Sets.newHashSet();
+    private final Set<URI> logicalViewpoints = new HashSet<>();
 
     /**
      * The registry to use for viewpoint informations.
@@ -219,7 +220,7 @@ public class ViewpointSelection {
     }
 
     private boolean noConflictsBetweenRequiredViewpoints() {
-        Set<URI> forbidden = Sets.newHashSet();
+        Set<URI> forbidden = new HashSet<>();
         for (URI uri : logicalViewpoints) {
             Viewpoint vp = viewpointImplementation.apply(uri);
             if (vp != null) {

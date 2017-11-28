@@ -11,7 +11,10 @@
 package org.eclipse.sirius.diagram.business.internal.dialect;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -86,9 +89,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * Services for diagram.
@@ -479,19 +479,19 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     }
 
     private Set<DDiagramElement> getDiagramElementsToRefresh(Collection<Notification> notifications, DSemanticDiagram diagram) {
-        Set<DDiagramElement> diagramElementsToRefresh = Sets.newHashSet();
+        Set<DDiagramElement> diagramElementsToRefresh = new HashSet<>();
         Session session = new EObjectQuery(diagram.getTarget()).getSession();
         if (session != null) {
             ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
             // Group the notifications by notifiers
-            Map<EObject, List<Notification>> notificationsByNotifer = Maps.newHashMap();
+            Map<EObject, List<Notification>> notificationsByNotifer = new HashMap<>();
             for (Notification notification : notifications) {
                 Object notifier = notification.getNotifier();
                 if (notifier instanceof EObject) {
                     EObject eObjectNotifier = (EObject) notifier;
                     List<Notification> currentNotifications = notificationsByNotifer.get(eObjectNotifier);
                     if (currentNotifications == null) {
-                        currentNotifications = Lists.newArrayList();
+                        currentNotifications = new ArrayList<>();
                         notificationsByNotifer.put(eObjectNotifier, currentNotifications);
                     }
                     currentNotifications.add(notification);
@@ -507,7 +507,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
                 }
             });
             // Get the list of notifiers that have been changed
-            List<EObject> changedNotifiers = Lists.newArrayList();
+            List<EObject> changedNotifiers = new ArrayList<>();
             for (final Map.Entry<EObject, List<Notification>> entry : notificationsByNotifer.entrySet()) {
                 if (Iterables.any(entry.getValue(), new Predicate<Notification>() {
                     @Override
@@ -547,7 +547,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     }
 
     private Set<DDiagramElement> getDiagramElementsToRefresh(EObject notifier, DSemanticDiagram diagram, ECrossReferenceAdapter xref) {
-        Set<DDiagramElement> diagramElementsToRefresh = Sets.newHashSet();
+        Set<DDiagramElement> diagramElementsToRefresh = new HashSet<>();
         Collection<EObject> inverseReferencers = new EObjectQuery(notifier, xref).getInverseReferences(REPRESENTATION_ELEMENTS_INVERSE_REFERENCES);
         for (EObject inverseReferencer : inverseReferencers) {
             if (inverseReferencer instanceof DDiagramElement) {

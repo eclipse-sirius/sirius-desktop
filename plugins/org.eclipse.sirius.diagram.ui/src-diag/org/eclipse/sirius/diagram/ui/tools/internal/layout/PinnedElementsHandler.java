@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -161,7 +163,7 @@ public class PinnedElementsHandler {
      * The currently computed bounds of the edit parts. Stored separately so
      * they can be easily reset.
      */
-    private final Map<IGraphicalEditPart, Rectangle> currentBounds = Maps.newHashMap();
+    private final Map<IGraphicalEditPart, Rectangle> currentBounds = new HashMap<>();
 
     /**
      * Provides access to additional layout constraints and preferences
@@ -504,7 +506,7 @@ public class PinnedElementsHandler {
         for (Entry<Direction, SortedSet<IGraphicalEditPart>> group : groupedOverlaps.entrySet()) {
             // For a same group, we kept the movedPositions to allow a complete
             // rollback to move again several parts in same time
-            Map<IGraphicalEditPart, Point> previousMovedPositionsBefore = Maps.newHashMap();
+            Map<IGraphicalEditPart, Point> previousMovedPositionsBefore = new HashMap<>();
             for (IGraphicalEditPart part : group.getValue()) {
                 assert overlaps(fixedPart, part);
                 previousMovedPositionsBefore = moveAside(Collections.singleton(part), Collections.singleton(fixedPart), group.getKey(), previousMovedPositionsBefore);
@@ -726,7 +728,7 @@ public class PinnedElementsHandler {
     }
 
     private Map<Direction, SortedSet<IGraphicalEditPart>> groupByDirection(final IGraphicalEditPart origin, final Set<IGraphicalEditPart> parts) {
-        final Map<Direction, SortedSet<IGraphicalEditPart>> result = Maps.newHashMap();
+        final Map<Direction, SortedSet<IGraphicalEditPart>> result = new HashMap<>();
         for (IGraphicalEditPart part : parts) {
             final Direction dir = getDirection(origin, part);
             if (!result.containsKey(dir)) {
@@ -777,7 +779,7 @@ public class PinnedElementsHandler {
      * not consider internal overlap between the specified elements themselves.
      */
     private Set<IGraphicalEditPart> findOverlappingParts(final Set<IGraphicalEditPart> parts) {
-        final Set<IGraphicalEditPart> result = Sets.newHashSet();
+        final Set<IGraphicalEditPart> result = new HashSet<>();
         for (IGraphicalEditPart part : parts) {
             result.addAll(findOverlappingParts(part));
         }
@@ -786,7 +788,7 @@ public class PinnedElementsHandler {
     }
 
     private Set<IGraphicalEditPart> findOverlappingParts(final IGraphicalEditPart part) {
-        final Set<IGraphicalEditPart> result = Sets.newHashSet();
+        final Set<IGraphicalEditPart> result = new HashSet<>();
         for (IGraphicalEditPart candidate : allEditParts) {
             if (overlaps(candidate, part)) {
                 result.add(candidate);
@@ -825,7 +827,7 @@ public class PinnedElementsHandler {
     }
 
     private Map<IGraphicalEditPart, Point> getSolution() {
-        final Map<IGraphicalEditPart, Point> result = Maps.newHashMap();
+        final Map<IGraphicalEditPart, Point> result = new HashMap<>();
         for (IGraphicalEditPart part : currentBounds.keySet()) {
             result.put(part, currentBounds.get(part).getTopLeft());
         }

@@ -22,7 +22,6 @@ import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
 
 /**
  * A {@link LabelProvider} to display Sirius model description element in a
@@ -55,7 +54,7 @@ public class HierarchyLabelProvider extends LabelProvider {
     @Override
     public String getText(Object element) {
         if (element instanceof EObject && handles((EObject) element)) {
-            LinkedList<String> segments = Lists.newLinkedList();
+            LinkedList<String> segments = new LinkedList<>();
             for (EObject current = (EObject) element; current != null; current = current.eContainer()) {
                 segments.addFirst(getLabel(current));
             }

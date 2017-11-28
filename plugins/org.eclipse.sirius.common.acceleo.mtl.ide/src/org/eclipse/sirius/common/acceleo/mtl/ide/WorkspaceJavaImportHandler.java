@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.ide;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -42,7 +43,6 @@ import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.DynamicJavaM
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * This import handler will try and import a dependency as a Java class
@@ -63,7 +63,7 @@ public class WorkspaceJavaImportHandler extends AbstractImportHandler {
      *             Thrown if the compilation unit does not exist.
      */
     private static List<IMethod> getPublicMethods(ICompilationUnit compilationUnit) throws JavaModelException {
-        final List<IMethod> methods = Lists.newArrayList();
+        final List<IMethod> methods = new ArrayList<>();
         final IType[] types = compilationUnit.getTypes();
 
         for (int i = 0; i < types.length; i++) {
@@ -90,7 +90,7 @@ public class WorkspaceJavaImportHandler extends AbstractImportHandler {
      *         from the given Java file.
      */
     private static List<String> getPublicSignaturesFrom(IFile javaFile) {
-        final List<String> signatures = Lists.newArrayList();
+        final List<String> signatures = new ArrayList<>();
 
         final IJavaElement javaElement = JavaCore.create(javaFile);
         if (javaElement instanceof ICompilationUnit) {
@@ -331,7 +331,7 @@ public class WorkspaceJavaImportHandler extends AbstractImportHandler {
      *         projects.
      */
     private List<IFile> findJavaCandidates(String qualifiedName) {
-        final List<IFile> candidates = Lists.newArrayList();
+        final List<IFile> candidates = new ArrayList<>();
 
         String javaPath = qualifiedName.replace('.', '/');
         // only consider "java" extensions

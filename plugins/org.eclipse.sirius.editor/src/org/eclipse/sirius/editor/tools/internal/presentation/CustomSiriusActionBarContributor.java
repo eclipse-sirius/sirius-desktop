@@ -68,7 +68,6 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 
 import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
 /**
@@ -199,7 +198,7 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
     }
 
     private void initMenusBuilders() {
-        Collection<AbstractMenuBuilder> allMenusBuilders = Lists.newArrayList();
+        Collection<AbstractMenuBuilder> allMenusBuilders = new ArrayList<>();
         allMenusBuilders.add(new EditToolsMenuBuilder());
         allMenusBuilders.add(new RepresentationCreationToolsMenuBuilder());
         allMenusBuilders.add(new MenuToolsMenuBuilder());
@@ -223,7 +222,7 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
         for (AbstractMenuBuilder builder : allMenusBuilders) {
             c.put(builder.getLabel(), builder);
         }
-        List<AbstractMenuBuilder> computedBuilders = Lists.newArrayList();
+        List<AbstractMenuBuilder> computedBuilders = new ArrayList<>();
         for (String label : c.keySet()) {
             if (c.get(label).size() > 1) {
                 computedBuilders.add(new CompositeMenuBuilder(label, c.get(label)));

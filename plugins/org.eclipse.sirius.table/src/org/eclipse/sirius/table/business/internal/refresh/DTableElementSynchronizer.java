@@ -72,8 +72,6 @@ import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 
-import com.google.common.collect.Lists;
-
 /**
  * Synchronizer for the table elements.
  * 
@@ -520,7 +518,7 @@ public class DTableElementSynchronizer {
                 // if featureObject is multivalue, return the label of all its
                 // objects
                 if (featureObject instanceof EList<?>) {
-                    List<String> texts = Lists.newArrayList();
+                    List<String> texts = new ArrayList<>();
                     for (Object obj : (EList<?>) featureObject) {
                         String text;
                         if (obj instanceof EObject) {
@@ -1037,7 +1035,7 @@ public class DTableElementSynchronizer {
      *            cell to update.
      */
     public void refreshSemanticElements(final DCell newCell) {
-        final Collection<EObject> newElements = Lists.newArrayList();
+        final Collection<EObject> newElements = new ArrayList<>();
         IntersectionMapping intersectionMapping = newCell.getIntersectionMapping();
         if (intersectionMapping != null) {
             refreshSemanticElements(newCell, intersectionMapping);

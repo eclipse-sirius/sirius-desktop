@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +23,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerForSemanticElementsFactory;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Registry containing all format data manager providers that have been parsed
@@ -36,7 +37,7 @@ public final class FormatDataManagerRegistry {
     /**
      * The registered {@link FormatDataManagerDescriptor}s.
      */
-    private static final Map<FormatDataManagerDescriptor, SiriusFormatDataManager> EXTENSIONS = Maps.newLinkedHashMap();
+    private static final Map<FormatDataManagerDescriptor, SiriusFormatDataManager> EXTENSIONS = new LinkedHashMap<>();
 
     /**
      * Utility classes don't need a default constructor.
@@ -118,7 +119,7 @@ public final class FormatDataManagerRegistry {
      * @return a list of {@link SiriusFormatDataManager} instances.
      */
     public static List<SiriusFormatDataManager> getSiriusFormatDataManagers(DDiagram diagram) {
-        List<SiriusFormatDataManager> applicableManagers = Lists.newArrayList();
+        List<SiriusFormatDataManager> applicableManagers = new ArrayList<>();
         for (FormatDataManagerDescriptor descriptor : getRegisteredExtensions()) {
             IFormatDataManagerProvider provider = descriptor.getFormatDataManagerProvider();
             if (provider != null && provider.provides(diagram)) {
@@ -143,7 +144,7 @@ public final class FormatDataManagerRegistry {
      * @return a list of {@link SiriusFormatDataManager} instances.
      */
     public static List<SiriusFormatDataManager> getAllSiriusFormatDataManagers() {
-        List<SiriusFormatDataManager> applicableManagers = Lists.newArrayList();
+        List<SiriusFormatDataManager> applicableManagers = new ArrayList<>();
         for (FormatDataManagerDescriptor descriptor : getRegisteredExtensions()) {
             IFormatDataManagerProvider provider = descriptor.getFormatDataManagerProvider();
             if (provider != null) {

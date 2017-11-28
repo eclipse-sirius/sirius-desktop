@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -33,8 +34,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.Inter
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
-
-import com.google.common.collect.Lists;
 
 /**
  * A specific AirResizableEditPolicy to manage interaction use roles move &
@@ -115,6 +114,6 @@ public class InteractionUseResizableEditPolicy extends AbstractFrameResizableEdi
      */
     @Override
     protected Collection<ISequenceEventEditPart> getChildrenToFeedBack(ChangeBoundsRequest request) {
-        return Lists.newArrayList();
+        return new ArrayList<>();
     }
 }

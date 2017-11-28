@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.common.interpreter.ocl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -36,7 +37,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Ensures that the OCL interpreter provides correct completion (e.g. in the
@@ -153,7 +153,7 @@ public class OCLCompletionTest extends AbstractCompletionTestCase {
         // Check completion on 'ocl:'
         cic = new ContentInstanceContext(c, OclInterpreter.OCL_DISCRIMINANT, OclInterpreter.OCL_DISCRIMINANT.length());
         contentProposals = getProposals(cic);
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("self");
         checkCompletionProposal(c.eClass(), contentProposals, vars);
@@ -180,7 +180,7 @@ public class OCLCompletionTest extends AbstractCompletionTestCase {
         // Check completion on 'ocl:'
         cic = new ContentInstanceContext(dNode, OclInterpreter.OCL_DISCRIMINANT, OclInterpreter.OCL_DISCRIMINANT.length());
         contentProposals = getProposals(cic);
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.add("self");
         checkCompletionProposal(dNode.eClass(), contentProposals, vars);
 
@@ -207,7 +207,7 @@ public class OCLCompletionTest extends AbstractCompletionTestCase {
         List<String> mockVsms = new ArrayList<String>();
         mockVsms.add(SiriusTestsPlugin.PLUGIN_ID);
         concreteInterpreter.setProperty(IInterpreter.FILES, mockVsms);
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("self");
 

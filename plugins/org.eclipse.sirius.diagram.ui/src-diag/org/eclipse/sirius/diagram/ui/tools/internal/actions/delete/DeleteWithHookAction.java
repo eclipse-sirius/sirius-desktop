@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.delete;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -23,8 +24,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.business.api.helper.delete.DeleteHookHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IWorkbenchPart;
-
-import com.google.common.collect.Sets;
 
 /**
  * Delete Action originating via keyboard using the 'Delete' hot/shortcut key.
@@ -77,7 +76,7 @@ public class DeleteWithHookAction extends PromptingDeleteAction {
 
     private Collection<DSemanticDecorator> computeSelections() {
 
-        final Set<DSemanticDecorator> diagramElements = Sets.newLinkedHashSet();
+        final Set<DSemanticDecorator> diagramElements = new LinkedHashSet<>();
 
         for (final Object selectedObject : getSelectedObjects()) {
             if (selectedObject instanceof IGraphicalEditPart) {

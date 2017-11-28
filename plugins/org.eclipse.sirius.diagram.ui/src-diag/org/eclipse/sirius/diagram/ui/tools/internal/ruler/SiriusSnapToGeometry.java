@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.ruler;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -102,7 +103,7 @@ public class SiriusSnapToGeometry extends SnapToGeometryEx {
             Iterable<Object> filteredChildren = Iterables.filter(children, Predicates.not(Predicates.instanceOf(IStyleEditPart.class)));
 
             // Don't snap to hidden figures
-            List hiddenChildren = Lists.newArrayList();
+            List hiddenChildren = new ArrayList<>();
             for (Iterator iter = filteredChildren.iterator(); iter.hasNext(); /* */) {
                 GraphicalEditPart child = (GraphicalEditPart) iter.next();
                 if (!child.getFigure().isVisible()) {
@@ -113,12 +114,12 @@ public class SiriusSnapToGeometry extends SnapToGeometryEx {
             return Lists.newArrayList(filteredChildren);
         } else {
             // Get all potential snap targets
-            List<Class<?>> expectedClasses = Lists.newArrayList();
+            List<Class<?>> expectedClasses = new ArrayList<>();
             expectedClasses.add(AbstractBorderedDiagramElementEditPart.class);
             expectedClasses.add(AbstractDiagramBorderNodeEditPart.class);
             List<EditPart> snapPartsList = Lists.newArrayList(new EditPartQuery(container.getRoot()).getAllChildren(false, expectedClasses));
             // Add children of elements that are being dragged
-            List<EditPart> exclusionsWithChildren = Lists.newArrayList();
+            List<EditPart> exclusionsWithChildren = new ArrayList<>();
             for (Object editPart : exclusions) {
                 if (editPart instanceof EditPart) {
                     exclusionsWithChildren.add((EditPart) editPart);

@@ -62,8 +62,6 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.ui.IEditorPart;
 
-import com.google.common.collect.Lists;
-
 /**
  * Test the style customization features with conditional style description.
  * 
@@ -575,7 +573,7 @@ public class RefreshWithCustomizedStyleTests extends SiriusDiagramTestCase {
                 Command customizeStyleCmd = SetCommand.create(domain, style, feature, red);
                 domain.getCommandStack().execute(customizeStyleCmd);
             } else if (feature.getEType() instanceof EEnum && currentValue instanceof List && ((List) currentValue).isEmpty()) {
-                List newList = Lists.newArrayList();
+                List newList = new ArrayList<>();
                 EEnum eEnum = (EEnum) feature.getEType();
                 for (EEnumLiteral literal : eEnum.getELiterals()) {
                     Enumerator newEnumerator = literal.getInstance();

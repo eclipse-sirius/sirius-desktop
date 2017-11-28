@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.business.internal.experimental.sync;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -33,7 +34,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -174,7 +174,7 @@ public class MappingsUpdater {
          */
         private Set<AbstractDNodeCandidate> getHierarchyCandidateFilter(final AbstractNodeMapping mapping, final Set<AbstractDNodeCandidate> semanticFilter) {
             final DiagramElementMappingQuery diagramElementMappingQuery = new DiagramElementMappingQuery(mapping);
-            final Map<AbstractNodeMapping, Boolean> knownMappingHierarchy = Maps.newHashMap();
+            final Map<AbstractNodeMapping, Boolean> knownMappingHierarchy = new HashMap<>();
 
             return Sets.newLinkedHashSet(Iterables.transform(semanticFilter, new Function<AbstractDNodeCandidate, AbstractDNodeCandidate>() {
                 public AbstractDNodeCandidate apply(final AbstractDNodeCandidate from) {

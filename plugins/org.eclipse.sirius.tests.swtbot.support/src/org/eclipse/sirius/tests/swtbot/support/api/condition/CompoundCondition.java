@@ -11,12 +11,12 @@
 package org.eclipse.sirius.tests.swtbot.support.api.condition;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
-
-import com.google.common.collect.Sets;
 
 /**
  * An aggregation of multiple {@link ICondition}.
@@ -27,9 +27,9 @@ import com.google.common.collect.Sets;
  */
 public class CompoundCondition extends DefaultCondition {
 
-    private final Collection<ICondition> conditions = Sets.newLinkedHashSet();
+    private final Collection<ICondition> conditions = new LinkedHashSet<>();
 
-    private final Set<ICondition> failures = Sets.newHashSet();
+    private final Set<ICondition> failures = new HashSet<>();
 
     /**
      * Constructor.

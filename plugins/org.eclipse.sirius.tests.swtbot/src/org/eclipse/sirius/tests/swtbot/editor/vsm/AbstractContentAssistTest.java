@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot.editor.vsm;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widgetOfType;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -35,8 +36,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SiriusSWTBotTable;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.keys.IBindingService;
 import org.hamcrest.Matcher;
-
-import com.google.common.collect.Lists;
 
 /**
  * Abstract class to handle completion.
@@ -100,7 +99,7 @@ public abstract class AbstractContentAssistTest extends AbstractSiriusSwtBotGefT
 
                 // Get the displayed proposals.
                 SWTBotTable contentAssistTable = contentAssistShell.bot().table();
-                List<String> proposals = Lists.newArrayList();
+                List<String> proposals = new ArrayList<>();
                 for (TableItem item : contentAssistTable.widget.getItems()) {
                     proposals.add(item.getText());
                 }

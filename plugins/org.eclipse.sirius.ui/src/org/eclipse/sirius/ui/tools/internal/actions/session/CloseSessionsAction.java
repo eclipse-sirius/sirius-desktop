@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.tools.internal.actions.session;
 import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -30,7 +31,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.SelectionListenerAction;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Action to close a list of sessions.
@@ -40,7 +40,7 @@ import com.google.common.collect.Sets;
  */
 public class CloseSessionsAction extends SelectionListenerAction {
 
-    private Collection<URI> sessionsToCloseURI = Sets.newLinkedHashSet();
+    private Collection<URI> sessionsToCloseURI = new LinkedHashSet<>();
 
     /**
      * Constructor.

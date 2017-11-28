@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.delete;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
@@ -271,7 +272,7 @@ public class DeleteFromDiagramAction extends RetargetAction implements IObjectAc
         if (s instanceof StructuredSelection) {
             return Iterables.filter(((StructuredSelection) s).toList(), class1);
         }
-        return Lists.newArrayList();
+        return new ArrayList<>();
     }
 
     @Override

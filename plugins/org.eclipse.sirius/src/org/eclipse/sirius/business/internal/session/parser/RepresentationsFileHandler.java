@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session.parser;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -18,8 +19,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import com.google.common.collect.Sets;
 
 /**
  * An event handler for representations files.
@@ -39,9 +38,9 @@ public class RepresentationsFileHandler extends DefaultHandler {
 
     private final URI sessionURI;
 
-    private Set<URI> usedModels = Sets.newLinkedHashSet();
+    private Set<URI> usedModels = new LinkedHashSet<>();
 
-    private Set<URI> referencedAnalysis = Sets.newLinkedHashSet();
+    private Set<URI> referencedAnalysis = new LinkedHashSet<>();
 
     /**
      * Constructor.

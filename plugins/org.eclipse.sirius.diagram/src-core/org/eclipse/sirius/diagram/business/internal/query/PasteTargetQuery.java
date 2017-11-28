@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.query;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -25,7 +27,6 @@ import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -57,7 +58,7 @@ public class PasteTargetQuery {
      *         PasteTargetDescription.
      */
     public Collection<PasteDescription> getAvailablePasteTools() {
-        final Collection<PasteDescription> result = Lists.newArrayList();
+        final Collection<PasteDescription> result = new ArrayList<>();
         if (semDec instanceof DDiagram) {
             DDiagram diag = (DDiagram) semDec;
             result.addAll(getPasteToolsOnActivatedLayers(diag, diag.getDescription()));
@@ -72,7 +73,7 @@ public class PasteTargetQuery {
 
     private Collection<PasteDescription> getPasteToolsOnActivatedLayers(final DDiagram dDiagram, final PasteTargetDescription pasteTargetDescription) {
         if (dDiagram.getDescription().getDefaultLayer() != null) {
-            final Collection<AbstractToolDescription> allActivatedTools = Sets.newHashSet();
+            final Collection<AbstractToolDescription> allActivatedTools = new HashSet<>();
             allActivatedTools.addAll(dDiagram.getDescription().getDefaultLayer().getAllTools());
             for (Layer layer : new DDiagramQuery(dDiagram).getAllActivatedLayers()) {
                 allActivatedTools.addAll(layer.getAllTools());
@@ -91,7 +92,7 @@ public class PasteTargetQuery {
      * @return the paste tools of the pasteTargetDescription
      */
     private Collection<PasteDescription> getAllPasteTools(final PasteTargetDescription pasteTargetDescription) {
-        Collection<PasteDescription> pasteTools = Sets.newHashSet();
+        Collection<PasteDescription> pasteTools = new HashSet<>();
         if (pasteTargetDescription instanceof DiagramElementMapping) {
             pasteTools = Sets.newHashSet(new DiagramElementMappingQuery((DiagramElementMapping) pasteTargetDescription).getAllPasteTools());
         } else if (pasteTargetDescription instanceof DiagramDescription) {

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.support.api.business;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -70,7 +71,7 @@ public class UIResource {
         path = pPath;
         this.name = name;
         if (pPath == null || pPath.length() == 0) {
-            nodePath = Lists.newArrayList();
+            nodePath = new ArrayList<>();
         } else {
             nodePath = Lists.newArrayList(pPath.split("/"));
         }

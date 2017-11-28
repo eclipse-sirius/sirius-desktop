@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.ordering;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -40,9 +42,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 
 /**
  * Helper class to factor common code for semantic and graphical orders
@@ -113,7 +113,7 @@ public final class RefreshOrderingHelper {
      */
     public static Iterable<? extends EventEnd> getAllEventEnds(SequenceDDiagram sequenceDiagram) {
         Multimap<EObject, SingleEventEnd> semanticEndToSingleEventEnds = ArrayListMultimap.<EObject, SingleEventEnd> create();
-        List<EventEnd> result = Lists.newArrayList();
+        List<EventEnd> result = new ArrayList<>();
 
         RefreshOrderingHelper.addAllSingleEventEnds(sequenceDiagram, semanticEndToSingleEventEnds);
 
@@ -150,7 +150,7 @@ public final class RefreshOrderingHelper {
     }
 
     private static int countEvents(Collection<SingleEventEnd> sees) {
-        Set<EObject> events = Sets.newHashSet();
+        Set<EObject> events = new HashSet<>();
         for (SingleEventEnd see : sees) {
             events.add(see.getSemanticEvent());
         }

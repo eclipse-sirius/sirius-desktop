@@ -99,7 +99,7 @@ public class PaletteManagerAfterVSMSelectionChange extends AbstractSiriusSwtBotG
     private TreeSet<String> getVisiblePaletteEntries() {
         Iterable<SectionPaletteDrawer> filtered = Iterables.filter(((SiriusPaletteViewer) editor.getSiriusPaletteGroupEditPartBot().part().getViewer()).getPaletteRoot().getChildren(),
                 SectionPaletteDrawer.class);
-        TreeSet<String> result = Sets.newTreeSet();
+        TreeSet<String> result = new TreeSet<>();
         for (PaletteEntry paletteEntry : filtered) {
             Iterable<PaletteEntry> visibleEntries = Iterables.filter(((SectionPaletteDrawer) paletteEntry).getChildren(), VISIBLE_ENTRY);
             for (PaletteEntry visiblePaletteEntry : visibleEntries) {

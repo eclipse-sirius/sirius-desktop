@@ -15,6 +15,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -22,8 +23,6 @@ import java.util.regex.Pattern;
 import org.eclipse.ui.internal.about.ConfigurationLogDefaultSection;
 import org.junit.Test;
 import org.osgi.framework.Bundle;
-
-import com.google.common.collect.Lists;
 
 /**
  * Dumps a text file with information about the environment in which the test is
@@ -52,7 +51,7 @@ public abstract class EnvironmentReportTest {
         try {
             out.println("OSGi bundles available from " + toString(testBundle));
             out.println();
-            List<String> bundles = Lists.newArrayList();
+            List<String> bundles = new ArrayList<>();
             for (Bundle b : testBundle.getBundleContext().getBundles()) {
                 bundles.add(toString(b));
             }

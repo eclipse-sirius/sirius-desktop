@@ -70,8 +70,6 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.actions.WorkspaceModifyDelegatingOperation;
 
-import com.google.common.collect.Lists;
-
 /**
  * @was-generated
  */
@@ -191,7 +189,7 @@ public class ValidateAction extends Action {
                 createMarkers(target, status, diagramEditPart);
 
                 if (element instanceof DSemanticDecorator) {
-                    List<EObject> elementsToValidate = Lists.newArrayList();
+                    List<EObject> elementsToValidate = new ArrayList<>();
                     final EObject semanticElement = ((DSemanticDecorator) element).getTarget();
 
                     elementsToValidate.add(semanticElement);

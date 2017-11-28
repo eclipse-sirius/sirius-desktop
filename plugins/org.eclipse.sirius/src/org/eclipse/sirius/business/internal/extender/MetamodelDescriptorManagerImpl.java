@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.internal.extender;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
@@ -22,7 +23,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Implementation for the manager.
@@ -60,7 +60,7 @@ public class MetamodelDescriptorManagerImpl implements MetamodelDescriptorManage
      * {@inheritDoc}
      */
     public Collection<MetamodelDescriptor> provides(final Collection<Viewpoint> enabledViewpoints) {
-        final Collection<MetamodelDescriptor> result = Sets.newLinkedHashSet();
+        final Collection<MetamodelDescriptor> result = new LinkedHashSet<>();
         for (MetamodelDescriptorProvider provider : Iterables.filter(providers, MetamodelDescriptorProvider.class)) {
             final Collection<MetamodelDescriptor> provided = provider.provides(enabledViewpoints);
             if (provided != null) {

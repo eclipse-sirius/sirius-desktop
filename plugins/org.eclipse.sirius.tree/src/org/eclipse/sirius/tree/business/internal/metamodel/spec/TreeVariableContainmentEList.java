@@ -12,7 +12,6 @@ package org.eclipse.sirius.tree.business.internal.metamodel.spec;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 import org.eclipse.sirius.tree.description.TreeItemTool;
 import org.eclipse.sirius.tree.description.TreeVariable;

@@ -110,7 +110,7 @@ public class RemoveRepresentationResourceAction extends Action {
      */
     private class RemoveRepresentationResourcesCommand extends RecordingCommand {
 
-        private Collection<Resource> analysisResources = Sets.newHashSet();
+        private Collection<Resource> analysisResources = new HashSet<>();
 
         private final DAnalysisSession session;
 

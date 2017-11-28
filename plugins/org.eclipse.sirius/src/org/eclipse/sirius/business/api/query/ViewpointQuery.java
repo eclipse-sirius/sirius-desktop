@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
@@ -23,7 +24,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a Sirius as a
@@ -54,7 +54,7 @@ public class ViewpointQuery {
      *         viewpoint.
      */
     public Iterable<RepresentationDescription> getAllRepresentationDescriptions() {
-        List<RepresentationDescription> representations = Lists.newArrayList();
+        List<RepresentationDescription> representations = new ArrayList<>();
         representations.addAll(vp.getOwnedRepresentations());
         for (RepresentationTemplate template : vp.getOwnedTemplates()) {
             representations.addAll(template.getOwnedRepresentations());
@@ -71,7 +71,7 @@ public class ViewpointQuery {
      *         contained in this viewpoint.
      */
     public Iterable<RepresentationExtensionDescription> getAllRepresentationExtensionDescriptions() {
-        List<RepresentationExtensionDescription> representations = Lists.newArrayList();
+        List<RepresentationExtensionDescription> representations = new ArrayList<>();
         representations.addAll(vp.getOwnedRepresentationExtensions());
         return representations;
     }

@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.api.query;
 
-import com.google.common.base.Preconditions;
-
 import org.eclipse.sirius.table.metamodel.table.DColumn;
+
+import com.google.common.base.Preconditions;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DColumn} as

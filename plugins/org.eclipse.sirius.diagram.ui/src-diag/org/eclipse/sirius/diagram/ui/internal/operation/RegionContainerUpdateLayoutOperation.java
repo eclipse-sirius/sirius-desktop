@@ -12,7 +12,9 @@ package org.eclipse.sirius.diagram.ui.internal.operation;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,7 +65,6 @@ import org.eclipse.swt.graphics.Image;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
 /**
@@ -120,7 +121,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
     }
 
     private List<Node> getRegionsToLayout() {
-        List<Node> regionsToLayout = Lists.newArrayList();
+        List<Node> regionsToLayout = new ArrayList<>();
         if (regionsContainer != null) {
             Node labelNode = SiriusGMFHelper.getLabelNode(regionsContainer);
             List<Node> nodes = Lists.newArrayList(Iterables.filter(regionsContainer.getChildren(), Node.class));
@@ -188,7 +189,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
         }
 
         // The current bounds of the regions.
-        Map<Node, Rectangle> regionsBounds = Maps.newHashMap();
+        Map<Node, Rectangle> regionsBounds = new HashMap<>();
         for (Node node : regionsToLayout) {
             Rectangle bounds = GMFHelper.getBounds(node, true, true);
             regionsBounds.put(node, bounds);
@@ -368,7 +369,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
      *         others)
      */
     private List<Dimension> computeRegionsSizeAccordingToContainerSize(int nbRegionsToLayout, boolean vertical, boolean containerIsRegion, Size regionsContainerSize) {
-        List<Dimension> result = Lists.newArrayList();
+        List<Dimension> result = new ArrayList<>();
         Dimension regionContainerContentPaneSize = new Dimension(regionsContainerSize.getWidth(), regionsContainerSize.getHeight());
         Dimension regionSize = new Dimension();
         // headerHeight includes the title height (with the icon), the label

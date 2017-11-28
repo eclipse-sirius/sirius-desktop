@@ -12,7 +12,6 @@ package org.eclipse.sirius.common.ui.tools.api.profiler;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.TreeViewer;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 
 /**

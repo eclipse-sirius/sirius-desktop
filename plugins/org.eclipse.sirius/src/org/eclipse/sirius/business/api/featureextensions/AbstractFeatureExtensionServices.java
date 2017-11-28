@@ -21,8 +21,6 @@ import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
-import com.google.common.collect.Lists;
-
 /**
  * Base implementation to subclass.
  * 
@@ -52,7 +50,7 @@ public abstract class AbstractFeatureExtensionServices implements FeatureExtensi
      */
     public <T extends FeatureExtensionDescription> List<T> getFeatureExtensionDescriptions(final Viewpoint viewpoint, final Class<T> clazz) {
         if (getFeatureExtensionDescriptionClass().isAssignableFrom(clazz)) {
-            final List<? super FeatureExtensionDescription> descs = Lists.newArrayList();
+            final List<? super FeatureExtensionDescription> descs = new ArrayList<>();
             for (FeatureExtensionDescription desc : viewpoint.getOwnedFeatureExtensions()) {
                 if (getFeatureExtensionDescriptionClass().isInstance(desc)) {
                     descs.add(desc);

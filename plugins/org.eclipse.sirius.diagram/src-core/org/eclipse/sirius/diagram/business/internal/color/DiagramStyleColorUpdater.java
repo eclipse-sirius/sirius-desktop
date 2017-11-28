@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.color;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import com.google.common.collect.Lists;
 
 /**
  * Class responsible to reflectively update a style color using the given
@@ -139,7 +139,7 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
      * @param eAllReferences
      */
     private List<EAttribute> getAllStyleAttributes(final EObject style) {
-        List<EAttribute> eAllAttributes = Lists.newArrayList();
+        List<EAttribute> eAllAttributes = new ArrayList<>();
         EList<EAttribute> styleReferences = style.eClass().getEAllAttributes();
         eAllAttributes.addAll(styleReferences);
         return eAllAttributes;

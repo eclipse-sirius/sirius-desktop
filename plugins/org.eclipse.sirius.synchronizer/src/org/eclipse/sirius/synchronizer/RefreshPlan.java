@@ -11,13 +11,14 @@
 package org.eclipse.sirius.synchronizer;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 
 /**
@@ -46,10 +47,10 @@ public class RefreshPlan {
      *            the {@link SignatureProvider} to use
      */
     public RefreshPlan(SignatureProvider signProvider) {
-        outputToCreate = Maps.newLinkedHashMap();
-        outputToRefresh = Maps.newLinkedHashMap();
+        outputToCreate = new LinkedHashMap<>();
+        outputToRefresh = new LinkedHashMap<>();
         outputToRemove = HashMultimap.create();
-        outputToUpdateMapping = Maps.newHashMap();
+        outputToUpdateMapping = new HashMap<>();
         this.signatureProvider = signProvider;
 
     }

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.jface.util.LocalSelectionTransfer;
@@ -21,8 +22,6 @@ import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.swt.dnd.DragSourceAdapter;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
-
-import com.google.common.collect.Sets;
 
 /**
  * .
@@ -52,7 +51,7 @@ public class DTreeItemDragListener extends DragSourceAdapter implements DragSour
         // We set the data of the drag to all selected DTreeItem (if any)
         ISelection selection = this.selectionProvider.getSelection();
         if (selection instanceof IStructuredSelection) {
-            Set<DTreeItem> dragData = Sets.newLinkedHashSet();
+            Set<DTreeItem> dragData = new LinkedHashSet<>();
             Iterator<Object> selectionIterator = ((IStructuredSelection) selection).iterator();
             while (selectionIterator.hasNext()) {
                 Object selectedElement = selectionIterator.next();

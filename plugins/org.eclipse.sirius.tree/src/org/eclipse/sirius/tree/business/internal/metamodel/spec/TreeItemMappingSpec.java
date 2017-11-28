@@ -17,7 +17,6 @@ import java.util.Iterator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.description.impl.TreeItemMappingImpl;

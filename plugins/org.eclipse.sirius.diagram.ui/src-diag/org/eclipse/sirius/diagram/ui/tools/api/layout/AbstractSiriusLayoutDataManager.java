@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.api.layout;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -87,8 +88,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * An abstract implementation for {@link SiriusLayoutDataManager}. <BR>
@@ -113,7 +112,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      */
     @Override
     public void storeLayoutData(final IGraphicalEditPart rootEditPart) {
-        final Collection<LayoutDataKey> discoveredKeys = Sets.newHashSet();
+        final Collection<LayoutDataKey> discoveredKeys = new HashSet<>();
         final EObject semanticElement = rootEditPart.resolveSemanticElement();
         final View toStoreView = (View) rootEditPart.getModel();
         if (toStoreView instanceof Edge && semanticElement instanceof DEdge) {
@@ -498,7 +497,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
     protected void applyGMFStyle(View newView, AbstractLayoutData layoutData) {
         if (newView != null && layoutData.getGmfView() != null) {
             @SuppressWarnings("rawtypes")
-            List excludedStyles = Lists.newArrayList();
+            List excludedStyles = new ArrayList<>();
             if (newView instanceof Edge) {
                 // The style of RoutingStyle class is considered as layout
                 // properties. So they have already been pasted during paste
@@ -578,8 +577,8 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      *            The layoutData of the parent of the borderedNodes
      */
     private void applyFormatForBorderedNodes(EList<DNode> borderedNodes, EditPartViewer editPartViewer, NodeLayoutData parentLayoutData, boolean applyLayout, boolean applyStyle) {
-        HashMap<Node, NodeLayoutData> nodesWithLayoutDataToApply = Maps.newHashMap();
-        HashMap<Node, DSemanticDecorator> nodesWithCoresspondingDSemanticDecorator = Maps.newHashMap();
+        HashMap<Node, NodeLayoutData> nodesWithLayoutDataToApply = new HashMap<>();
+        HashMap<Node, DSemanticDecorator> nodesWithCoresspondingDSemanticDecorator = new HashMap<>();
         // Search each bordered nodes that have layoutData to apply
         for (final DNode child : borderedNodes) {
             // Search the GMF node corresponding to the child

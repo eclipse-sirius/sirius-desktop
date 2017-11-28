@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.control;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.resources.IWorkspaceRunnable;
@@ -27,8 +28,6 @@ import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotif
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-
-import com.google.common.collect.Sets;
 
 /**
  * An abstract class for control/uncontrol tests.
@@ -55,7 +54,7 @@ public abstract class AbstractControlTest extends SiriusDiagramTestCase {
      * @throws Exception
      */
     protected void siriusControl(EObject semanticRoot, URI semanticDest, Set<DRepresentation> representations, URI representationsDest) throws Exception {
-        Set<DRepresentationDescriptor> repDescriptors = Sets.newLinkedHashSet();
+        Set<DRepresentationDescriptor> repDescriptors = new LinkedHashSet<>();
         for (DRepresentation dRepresentation : representations) {
             repDescriptors.add(new DRepresentationQuery(dRepresentation).getRepresentationDescriptor());
         }

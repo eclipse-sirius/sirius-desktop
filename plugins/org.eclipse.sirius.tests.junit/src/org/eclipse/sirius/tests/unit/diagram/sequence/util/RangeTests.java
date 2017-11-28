@@ -15,10 +15,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+
+import junit.framework.TestCase;
 
 /**
  * Tests for the {@link Range} utility class.

@@ -15,8 +15,6 @@ import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import junit.framework.TestCase;
-
 import org.eclipse.core.commands.operations.DefaultOperationHistory;
 import org.eclipse.core.commands.operations.IOperationHistory;
 import org.eclipse.core.runtime.ILogListener;
@@ -44,6 +42,8 @@ import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.internal.EMFTransactionPlugin;
 import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
+
+import junit.framework.TestCase;
 
 /**
  * This class contains tests for EMF transaction. It should not be added

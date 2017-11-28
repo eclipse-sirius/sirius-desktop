@@ -20,9 +20,9 @@ import org.eclipse.sirius.editor.properties.api.IDefaultWidgetDescriptionFactory
 import org.eclipse.sirius.editor.properties.internal.Messages;
 import org.eclipse.sirius.editor.properties.internal.SiriusEditorPropertiesPlugin;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractUndoRecordingCommand;
-import org.eclipse.sirius.properties.core.internal.EditSupportSpec;
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.core.internal.EditSupportSpec;
 
 /**
  * Creates all the widget descriptions with values for each structural feature of the selected domain class.

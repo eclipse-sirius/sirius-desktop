@@ -49,7 +49,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiI
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Sets;
 
 /**
  * This class update the notation model views visibility attribute when it
@@ -135,12 +134,12 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
     }
 
     private Set<View> getAllRelatedNotesVisibilityScope(View viewToDelete, Map<View, Boolean> viewsToUpdate) {
-        Set<View> linkedViews = Sets.newHashSet();
+        Set<View> linkedViews = new HashSet<>();
 
         for (Edge sourceEdge : Iterables.filter(viewToDelete.getSourceEdges(), Edge.class)) {
             View target = sourceEdge.getTarget();
             if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {
-                Set<View> linked = Sets.newHashSet();
+                Set<View> linked = new HashSet<>();
                 linked.add(viewToDelete);
                 collectLinkedViews(target, linked, viewsToUpdate);
                 linked.remove(viewToDelete);
@@ -153,7 +152,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
         for (Edge targetEdge : Iterables.filter(viewToDelete.getTargetEdges(), Edge.class)) {
             View source = targetEdge.getSource();
             if (GMFNotationHelper.isNoteAttachment(targetEdge)) {
-                Set<View> linked = Sets.newHashSet();
+                Set<View> linked = new HashSet<>();
                 linked.add(viewToDelete);
                 collectLinkedViews(source, linked, viewsToUpdate);
                 linked.remove(viewToDelete);

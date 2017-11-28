@@ -21,6 +21,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -68,7 +69,6 @@ import org.osgi.framework.Constants;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -93,7 +93,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
             if (event.getType() != IResourceChangeEvent.POST_CHANGE)
                 return;
 
-            final Set<String> changed = Sets.newLinkedHashSet();
+            final Set<String> changed = new LinkedHashSet<>();
 
             IResourceDeltaVisitor projectClassesInvalidator = new IResourceDeltaVisitor() {
 
@@ -144,7 +144,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
     private Set<String> doNotLoadFromWorkspace;
 
     public WorkspaceClassLoading() {
-        doNotLoadFromWorkspace = Sets.newLinkedHashSet();
+        doNotLoadFromWorkspace = new LinkedHashSet<>();
         for (String siriusBundle : SiriusEditorPlugin.getSiriusRuntimeBundles()) {
             doNotLoadFromWorkspace.add(siriusBundle);
             doNotLoadFromWorkspace.addAll(super.getBundleDependencies(siriusBundle));
@@ -290,7 +290,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
         }
     }
 
-    private Map<String, URLClassLoader> projectsToClassLoader = Maps.newHashMap();
+    private Map<String, URLClassLoader> projectsToClassLoader = new HashMap<>();
 
     private ClasspathChangeCallback callback;
 
@@ -347,9 +347,9 @@ public class WorkspaceClassLoading extends BundleClassLoading {
 
     @Override
     protected Collection<EPackageLoadingCallback.EPackageDeclarationSource> getEPackagesDeclaredInBundles(Collection<String> bundles) {
-        Collection<EPackageLoadingCallback.EPackageDeclarationSource> result = Lists.newArrayList();
+        Collection<EPackageLoadingCallback.EPackageDeclarationSource> result = new ArrayList<>();
         IWorkspaceRoot root = EcorePlugin.getWorkspaceRoot();
-        Set<String> bundlesToSearchInPlatform = Sets.newLinkedHashSet();
+        Set<String> bundlesToSearchInPlatform = new LinkedHashSet<>();
         if (root != null) {
             Map<String, IPluginModelBase> symbolicNamestoModels = getBundlesInWorkspace();
             for (String bundleID : bundles) {
@@ -358,7 +358,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
                     for (IPluginExtension extensions : workspaceVersion.getExtensions().getExtensions()) {
                         if (EMF_GENERATED_PACKAGE_EXTENSIONPOINT.equals(extensions.getPoint())) {
                             String symbolicNameForProject = workspaceVersion.getBundleDescription().getSymbolicName();
-                            List<EPackageLoadingCallback.EPackageDeclaration> declarations = Lists.newArrayList();
+                            List<EPackageLoadingCallback.EPackageDeclaration> declarations = new ArrayList<>();
 
                             for (IPluginObject object : extensions.getChildren()) {
                                 if (object instanceof IPluginElement) {
@@ -405,7 +405,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
     }
 
     protected Set<String> getDependenciesFromPDE(IPluginModelBase pdeModel) {
-        Set<String> dependenciesRetrievedThroughPDE = Sets.newLinkedHashSet();
+        Set<String> dependenciesRetrievedThroughPDE = new LinkedHashSet<>();
         /*
          * we have this bundle in the workspace.
          */
@@ -433,8 +433,8 @@ public class WorkspaceClassLoading extends BundleClassLoading {
     private URLClassLoader createClassLoader(String projectName, IWorkspaceRoot root) {
         Map<String, IPluginModelBase> symbolicNamestoModels = getBundlesInWorkspace();
 
-        final Collection<IPluginModelBase> workspaceDependencies = Lists.newArrayList();
-        final Collection<Bundle> installedDependencies = Lists.newArrayList();
+        final Collection<IPluginModelBase> workspaceDependencies = new ArrayList<>();
+        final Collection<Bundle> installedDependencies = new ArrayList<>();
 
         collectAllClassPath(projectName, root, symbolicNamestoModels, workspaceDependencies, installedDependencies);
 
@@ -513,7 +513,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
     }
 
     private Map<String, IPluginModelBase> getBundlesInWorkspace() {
-        Map<String, IPluginModelBase> symbolicNamestoModels = Maps.newHashMap();
+        Map<String, IPluginModelBase> symbolicNamestoModels = new HashMap<>();
         IPluginModelBase[] wrkspcesModels = PluginRegistry.getWorkspaceModels();
         for (int i = 0; i < wrkspcesModels.length; i++) {
             IPluginModelBase iPluginModelBase = wrkspcesModels[i];

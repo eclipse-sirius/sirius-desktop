@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.sequence;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -58,7 +59,6 @@ import org.junit.Assert;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
 
 /**
  * Test class for syncCall
@@ -2634,7 +2634,7 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
     private Map<EObject, Integer> readVerticalPositions(SequenceDiagram sequenceDiagram) {
         SequenceDDiagram sequenceDDiagram = sequenceDiagram.getSequenceDDiagram();
         VerticalPositionFunction vpf = new VerticalPositionFunction(sequenceDDiagram);
-        Map<EObject, Integer> positions = Maps.newHashMap();
+        Map<EObject, Integer> positions = new HashMap<>();
         for (EventEnd end : sequenceDDiagram.getGraphicalOrdering().getEventEnds()) {
             positions.put(end.getSemanticEnd(), (int) vpf.apply(end));
         }

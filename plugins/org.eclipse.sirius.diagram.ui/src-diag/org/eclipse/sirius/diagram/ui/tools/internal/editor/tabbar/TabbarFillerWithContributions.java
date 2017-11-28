@@ -24,8 +24,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.TabbarContributionFactory;
 import org.eclipse.ui.IWorkbenchPage;
 
-import com.google.common.collect.Lists;
-
 /**
  * Fill the toolbar when a diagram is selected.
  * 
@@ -59,9 +57,9 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
 
     private List<IContributionItem> dynamicContributions = new ArrayList<IContributionItem>();
 
-    private ArrayList<IContributionItem> diagramContributionItems = Lists.newArrayList();
+    private ArrayList<IContributionItem> diagramContributionItems = new ArrayList<>();
 
-    private ArrayList<IContributionItem> diagramElementContributionItems = Lists.newArrayList();
+    private ArrayList<IContributionItem> diagramElementContributionItems = new ArrayList<>();
 
     private TabbarContributionFactory contributionFactory = new TabbarContributionFactory();
 

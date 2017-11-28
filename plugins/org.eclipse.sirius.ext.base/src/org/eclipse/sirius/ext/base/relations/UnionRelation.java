@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.base.relations;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Sets;
 
 /**
  * The union of two or more relations.
@@ -42,7 +42,7 @@ public class UnionRelation<T> implements Relation<T> {
      * {@inheritDoc}
      */
     public Set<T> apply(T from) {
-        Set<T> result = Sets.newHashSet();
+        Set<T> result = new HashSet<>();
         for (Relation<T> rel : baseRelations) {
             result.addAll(rel.apply(from));
         }

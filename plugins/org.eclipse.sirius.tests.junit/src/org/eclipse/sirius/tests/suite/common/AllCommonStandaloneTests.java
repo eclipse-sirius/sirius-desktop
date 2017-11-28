@@ -10,12 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.common;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.unit.api.interpreter.ContentHelperTests;
 import org.eclipse.sirius.tests.unit.api.refresh.GSetIntersectionTest;
 import org.eclipse.sirius.tests.unit.api.refresh.SetIntersectionTest;
@@ -36,6 +30,12 @@ import org.eclipse.sirius.tests.unit.common.SessionLabelTest;
 import org.eclipse.sirius.tests.unit.common.VisualBindingManagerTestCase;
 import org.eclipse.sirius.tests.unit.common.logger.MarkerRuntimeLoggerTest;
 import org.eclipse.sirius.tests.unit.contribution.SiriusURIQueryTest;
+
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 public class AllCommonStandaloneTests extends TestCase {
 

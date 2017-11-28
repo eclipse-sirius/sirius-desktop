@@ -11,6 +11,7 @@
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -22,8 +23,6 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
-
-import com.google.common.collect.Lists;
 
 /**
  * Hide the line.
@@ -49,7 +48,7 @@ public class HideLinesAction extends AbstractTransactionalTableAction {
      */
     public HideLinesAction(final DTable dTable, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory) {
         super(dTable, Messages.HideLinesAction_label, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.HIDE_IMG), editingDomain, tableCommandFactory);
-        this.lines = Lists.newArrayList();
+        this.lines = new ArrayList<>();
     }
 
     /**

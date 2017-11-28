@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -28,7 +29,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTableItem;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -145,7 +145,7 @@ public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCas
 
         if (viewpointToSelect != null) {
             Set<String> allSiriusNames = viewpointToSelect;
-            Map<String, Boolean> viewpointSelection = Maps.newHashMap();
+            Map<String, Boolean> viewpointSelection = new HashMap<>();
             for (String vpName : allSiriusNames) {
                 viewpointSelection.put(vpName, viewpointToSelect.contains(vpName));
             }

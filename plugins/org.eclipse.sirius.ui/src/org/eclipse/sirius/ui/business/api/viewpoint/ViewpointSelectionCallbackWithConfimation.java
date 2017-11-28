@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.business.api.viewpoint;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -29,8 +30,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 
-import com.google.common.collect.Sets;
-
 /**
  * Asks the user for confirmation when de-selecting a viewpoint if there are
  * opened editors using this viewpoint.
@@ -45,7 +44,7 @@ public class ViewpointSelectionCallbackWithConfimation extends ViewpointSelectio
     @Override
     public void deselectViewpoint(Viewpoint deselectedViewpoint, Session session, IProgressMonitor monitor) {
         IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
-        Collection<IEditorPart> openedEditors = Sets.newHashSet();
+        Collection<IEditorPart> openedEditors = new HashSet<>();
         if (editingSession != null) {
             openedEditors = getConcernedEditors(deselectedViewpoint, editingSession.getEditors());
         }
@@ -77,7 +76,7 @@ public class ViewpointSelectionCallbackWithConfimation extends ViewpointSelectio
     }
 
     private Collection<IEditorPart> getConcernedEditors(Viewpoint viewpoint, Collection<? extends IEditorPart> editors) {
-        Collection<IEditorPart> result = Sets.newHashSet();
+        Collection<IEditorPart> result = new HashSet<>();
         for (RepresentationDescription representationDescription : new ViewpointQuery(viewpoint).getAllRepresentationDescriptions()) {
             for (IEditorPart editor : editors) {
                 if (DialectUIManager.INSTANCE.isRepresentationDescriptionManagedByEditor(representationDescription, editor)) {

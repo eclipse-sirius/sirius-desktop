@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.acceleo.interpreter;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
@@ -40,7 +41,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescript
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * This task delegates to the viewpoint's CompoundInterpreter for expression
@@ -98,7 +98,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
              * session. As such we at least make sure the current EPackage of
              * the current selection is known by the interpreter.
              */
-            Collection<MetamodelDescriptor> mmDescriptors = Sets.newLinkedHashSet();
+            Collection<MetamodelDescriptor> mmDescriptors = new LinkedHashSet<>();
 
             final Set<EPackage> knownEPackages = collectEPackagesToRegister(target);
             for (EPackage ePackage : knownEPackages) {
@@ -137,8 +137,8 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
     }
 
     private Set<EPackage> collectEPackagesToRegister(final EObject target) {
-        final Set<EPackage.Registry> localEPackageRegistries = Sets.newLinkedHashSet();
-        final Set<EPackage> knownEPackages = Sets.newLinkedHashSet();
+        final Set<EPackage.Registry> localEPackageRegistries = new LinkedHashSet<>();
+        final Set<EPackage> knownEPackages = new LinkedHashSet<>();
 
         for (EObject targetEObject : Iterables.filter(context.getTargetNotifiers(), EObject.class)) {
 
@@ -151,7 +151,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
                 localEPackageRegistries.add(targetEObjectResource.getResourceSet().getPackageRegistry());
             }
         }
-        Set<String> localyRegisteredNsURIs = Sets.newLinkedHashSet();
+        Set<String> localyRegisteredNsURIs = new LinkedHashSet<>();
         for (EPackage.Registry registry : localEPackageRegistries) {
             localyRegisteredNsURIs.addAll(registry.keySet());
             for (String nsURI : registry.keySet()) {

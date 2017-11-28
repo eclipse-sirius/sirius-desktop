@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.movida.registry;
 
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -53,9 +54,9 @@ public class MaskingPolicy {
      * masked or unmasked.
      */
     public static class MaskingChange {
-        Set<Resource> masked = Sets.newHashSet();
+        Set<Resource> masked = new HashSet<>();
 
-        Set<Resource> unmasked = Sets.newHashSet();
+        Set<Resource> unmasked = new HashSet<>();
 
         /**
          * Checks the internal consistency of this object.
@@ -322,7 +323,7 @@ public class MaskingPolicy {
      * @return all the unmasked resources.
      */
     public synchronized Set<Resource> getUnmaskedResources() {
-        Set<Resource> unmasked = Sets.newHashSet();
+        Set<Resource> unmasked = new HashSet<>();
         for (Resource resource : score.asMap().keySet()) {
             if (!isMasked(resource)) {
                 unmasked.add(resource);

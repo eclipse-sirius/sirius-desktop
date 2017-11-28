@@ -15,7 +15,9 @@ import java.net.UnknownServiceException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -50,8 +52,6 @@ import org.eclipse.sirius.ext.base.Options;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * A new implementation of a common synchronizer for the EMF Resource with
@@ -79,13 +79,13 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
 
     private boolean notificationIsRequired = true;
 
-    private final List<AbstractResourceSyncBackend> backends = Lists.newArrayList();
+    private final List<AbstractResourceSyncBackend> backends = new ArrayList<>();
 
-    private final List<ResourceSyncClient> clients = Lists.newArrayList();
+    private final List<ResourceSyncClient> clients = new ArrayList<>();
 
-    private final Map<Resource, ResourceStatus> statuses = Maps.newHashMap();
+    private final Map<Resource, ResourceStatus> statuses = new HashMap<>();
 
-    private Collection<Resource> savedResources = Sets.newLinkedHashSet();
+    private Collection<Resource> savedResources = new LinkedHashSet<>();
 
     private final ArrayList<IFileModificationValidator> fileModificationValidators;
     
@@ -121,7 +121,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
      */
     @Override
     public void resourceSetChanged(final ResourceSetChangeEvent event) {
-        Collection<ResourceStatusChange> changes = Lists.newArrayList();
+        Collection<ResourceStatusChange> changes = new ArrayList<>();
         for (Notification notif : Iterables.filter(event.getNotifications(), Notification.class)) {
             if (!isCustom(notif)) {
                 notifyChanged(notif, changes);
@@ -432,7 +432,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
      */
     @Override
     public void statusesChanged(Collection<ResourceStatusChange> changesFromBackend) {
-        Collection<ResourceStatusChange> changesToTransmit = Sets.newLinkedHashSet();
+        Collection<ResourceStatusChange> changesToTransmit = new LinkedHashSet<>();
         for (ResourceStatusChange changeFromWorkspace : changesFromBackend) {
             if (!itsAChangeWeReExpectingFromOurSave(changeFromWorkspace.getResource(), changeFromWorkspace.getNewStatus())) {
 
@@ -505,7 +505,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
      */
 
     public void save(final Iterable<Resource> resourcesToSave, final Iterable<Resource> resourcesToUpdateStatus, final Map<?, ?> saveOptions) throws IOException, InterruptedException {
-        Collection<ResourceStatusChange> changesToTransmit = Sets.newLinkedHashSet();
+        Collection<ResourceStatusChange> changesToTransmit = new LinkedHashSet<>();
         doSave(resourcesToSave, saveOptions, changesToTransmit);
         for (Resource resource : resourcesToUpdateStatus) {
             ResourceStatus oldStatus = retrieveOldStatus(resource);
@@ -517,7 +517,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     }
 
     private void doSave(final Iterable<Resource> resourcesToSave, final Map<?, ?> saveOptions, Collection<ResourceStatusChange> changesToTransmit) throws InterruptedException, IOException {
-        final Collection<IFile> files2Validate = Lists.newArrayList();
+        final Collection<IFile> files2Validate = new ArrayList<>();
         for (Resource resourceToSave : resourcesToSave) {
             if (resourceToSave.getURI().isPlatformResource()) {
                 IFile file = WorkspaceSynchronizer.getFile(resourceToSave);
@@ -549,7 +549,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
             }
         }
 
-        this.savedResources = Sets.newLinkedHashSet();
+        this.savedResources = new LinkedHashSet<>();
 
         for (final Resource resource : resourcesToSave) {
             try {

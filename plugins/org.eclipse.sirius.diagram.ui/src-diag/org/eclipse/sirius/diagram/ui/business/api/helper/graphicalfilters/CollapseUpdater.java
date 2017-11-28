@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.gmf.runtime.notation.Bounds;
@@ -317,7 +318,7 @@ public class CollapseUpdater implements ICollapseUpdater {
      * @return the direct children list.
      */
     private List<DDiagramElement> getAllChildren(DDiagramElement element) {
-        List<DDiagramElement> allChildren = Lists.newArrayList();
+        List<DDiagramElement> allChildren = new ArrayList<>();
         if (element instanceof AbstractDNode) {
             AbstractDNode abstractDNode = (AbstractDNode) element;
             allChildren.addAll(abstractDNode.getOwnedBorderedNodes());

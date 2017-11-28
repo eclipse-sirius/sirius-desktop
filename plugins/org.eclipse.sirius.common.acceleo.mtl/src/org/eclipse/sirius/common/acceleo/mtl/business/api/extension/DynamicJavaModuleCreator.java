@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.api.extension;
 
-import com.google.common.base.Joiner;
-
 import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -28,6 +26,8 @@ import org.eclipse.ocl.ecore.EcoreEnvironmentFactory;
 import org.eclipse.ocl.expressions.CollectionKind;
 import org.eclipse.ocl.types.OCLStandardLibrary;
 import org.eclipse.ocl.util.Bag;
+
+import com.google.common.base.Joiner;
 
 /**
  * This will be used to create an in-memory module wrapping java service

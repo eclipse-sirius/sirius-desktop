@@ -14,13 +14,12 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
-import org.eclipse.ui.views.properties.IPropertySource;
-
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.ui.tools.internal.properties.propertysource.TableCompositeEObjectPropertySource;
 import org.eclipse.sirius.table.ui.tools.internal.properties.section.common.AbstractDTablePropertySection;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractEObjectPropertySource;
+import org.eclipse.ui.views.properties.IPropertySource;
 
 /**
  * Properties for the semantic model.

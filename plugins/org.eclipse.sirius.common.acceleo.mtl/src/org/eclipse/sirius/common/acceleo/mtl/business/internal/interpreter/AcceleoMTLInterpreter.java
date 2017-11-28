@@ -14,10 +14,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.CodeSource;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
@@ -87,7 +91,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
@@ -122,7 +125,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * <code>my.package.MyClass</code>, values are the Modules returned by the
      * handlers.
      */
-    protected final Set<ModuleDescriptor> extendedDependencies = Sets.newLinkedHashSet();
+    protected final Set<ModuleDescriptor> extendedDependencies = new LinkedHashSet<>();
 
     /**
      * This will hold all dependencies added to this interpreter. Keys are the
@@ -132,7 +135,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     protected final Multimap<String, URI> mtlDependencies = LinkedHashMultimap.create();
 
     /** Keeps a reference to the workspace files we are using as imports. */
-    private final Map<String, URI> javaFiles = Maps.newHashMap();
+    private final Map<String, URI> javaFiles = new HashMap<>();
 
     /**
      * This will contain the "dummy" module we use for the compilation. All
@@ -150,24 +153,24 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      */
     private final ListMultimap<String, Object> variables = AcceleoCollections.newCircularArrayDequeMultimap();
 
-    private final Map<String, String> compilationVariables = Maps.newLinkedHashMap();
+    private final Map<String, String> compilationVariables = new LinkedHashMap<>();
 
-    private final Set<String> variableNsURIs = Sets.newLinkedHashSet();
+    private final Set<String> variableNsURIs = new LinkedHashSet<>();
 
     /** This will contain the listeners interested in our variables' status. */
-    private final Set<IVariableStatusListener> variableStatusListeners = Sets.newHashSet();
+    private final Set<IVariableStatusListener> variableStatusListeners = new HashSet<>();
 
     /**
      * This will be updated with the list of accessible viewpoint plugins, if
      * any.
      */
-    private final Set<String> viewpointPlugins = Sets.newLinkedHashSet();
+    private final Set<String> viewpointPlugins = new LinkedHashSet<>();
 
     /**
      * This will be updated with the list of accessible viewpoint projects
      * present in the workspace, if any.
      */
-    private final Set<String> viewpointProjects = Sets.newLinkedHashSet();
+    private final Set<String> viewpointProjects = new LinkedHashSet<>();
 
     /**
      * This will be used in order to provide our own CrossReferencer to Acceleo.
@@ -275,7 +278,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @return The extracted URIs.
      */
     private static Set<String> extractNsURIs(Object object) {
-        Set<String> uris = Sets.newLinkedHashSet();
+        Set<String> uris = new LinkedHashSet<>();
 
         if (object instanceof EObject) {
             final String uri = extractNsURI((EObject) object);
@@ -334,7 +337,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @return The qualified name of the given EClassifier.
      */
     private static String getQualifiedName(EClassifier classifier) {
-        final List<String> ancestors = Lists.newArrayList();
+        final List<String> ancestors = new ArrayList<>();
 
         EObject current = classifier;
         // this will allow us to break the loop as soon as we encounter a "root"
@@ -416,7 +419,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      */
     @Override
     public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
-        Set<EPackage> additionalEPackages = Sets.newLinkedHashSet();
+        Set<EPackage> additionalEPackages = new LinkedHashSet<>();
         for (MetamodelDescriptor descriptor : metamodels) {
             if (descriptor instanceof EcoreMetamodelDescriptor) {
                 EPackage pkg = ((EcoreMetamodelDescriptor) descriptor).resolve();
@@ -555,7 +558,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     public CompilationContext createCompilationContext(IInterpreterContext context, String expression, String targetType, Map<String, String> variableTypes) {
         addContextImports(context);
 
-        final Set<String> nsURIs = Sets.newLinkedHashSet();
+        final Set<String> nsURIs = new LinkedHashSet<>();
         for (EPackage pack : context.getAvailableEPackages()) {
             nsURIs.add(pack.getNsURI());
         }
@@ -635,7 +638,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         EvaluationResult evaluationResult = internalEvaluate(context, expression);
         Object result = evaluationResult.getEvaluationResult();
 
-        Collection<EObject> coercedResult = Lists.newArrayList();
+        Collection<EObject> coercedResult = new ArrayList<>();
         if (result instanceof Collection<?>) {
             Iterables.addAll(coercedResult, Iterables.filter((Collection<?>) result, EObject.class));
         } else if (result != null && result.getClass().isArray()) {
@@ -709,7 +712,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      */
     @Override
     public Collection<String> getImports() {
-        Set<String> extendedImports = Sets.newLinkedHashSet();
+        Set<String> extendedImports = new LinkedHashSet<>();
         for (ModuleDescriptor moduleDescriptor : extendedDependencies) {
             extendedImports.add(moduleDescriptor.getQualifiedName().replace(IAcceleoConstants.NAMESPACE_SEPARATOR, ".")); //$NON-NLS-1$
         }
@@ -1039,7 +1042,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         final QueryIdentifier query = module.ensureQueryExists(compilationContext);
         final CompilationResult compilationResult = module.compile(compilationContext, query);
 
-        final Set<IInterpreterStatus> validationStatus = Sets.newLinkedHashSet();
+        final Set<IInterpreterStatus> validationStatus = new LinkedHashSet<>();
 
         if (compilationResult.getStatus() != null && compilationResult.getStatus().getSeverity() != IStatus.OK) {
             if (compilationResult.getStatus() instanceof MultiStatus) {
@@ -1073,7 +1076,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @return
      */
     private Set<URI> findPluginCandidates(String emtlPath) {
-        Set<URI> result = Sets.newLinkedHashSet();
+        Set<URI> result = new LinkedHashSet<>();
 
         for (String viewpointPluginSymbolicName : viewpointPlugins) {
             final Bundle viewpointPlugin = Platform.getBundle(viewpointPluginSymbolicName);
@@ -1111,7 +1114,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      */
     private Set<URI> findProjectCandidates(String emtlPath) {
         final IWorkspace workspace = ResourcesPlugin.getWorkspace();
-        final Set<URI> result = Sets.newLinkedHashSet();
+        final Set<URI> result = new LinkedHashSet<>();
 
         for (String viewpointProjectPath : viewpointProjects) {
             if (workspace.getRoot().exists(new Path(viewpointProjectPath))) {
@@ -1240,7 +1243,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
 
         ValidationResult result = new ValidationResult();
 
-        final Map<String, String> validationVariables = Maps.newLinkedHashMap();
+        final Map<String, String> validationVariables = new LinkedHashMap<>();
         for (Map.Entry<String, VariableType> contextVariable : context.getVariables().entrySet()) {
             final String varName = contextVariable.getKey();
             final VariableType varType = contextVariable.getValue();

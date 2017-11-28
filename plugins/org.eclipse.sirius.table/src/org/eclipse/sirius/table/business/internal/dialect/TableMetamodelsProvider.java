@@ -12,14 +12,13 @@
 package org.eclipse.sirius.table.business.internal.dialect;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.collect.Sets;
 
 /**
  * Provides the descriptors for the table metamodels of Sirius.
@@ -31,7 +30,7 @@ public class TableMetamodelsProvider implements MetamodelDescriptorProvider {
 
     @Override
     public Collection<MetamodelDescriptor> provides(Collection<Viewpoint> vp) {
-        Set<MetamodelDescriptor> result = Sets.newLinkedHashSet();
+        Set<MetamodelDescriptor> result = new LinkedHashSet<>();
         result.add(new EcoreMetamodelDescriptor(org.eclipse.sirius.table.metamodel.table.TablePackage.eINSTANCE));
         result.add(new EcoreMetamodelDescriptor(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.eINSTANCE));
         return result;

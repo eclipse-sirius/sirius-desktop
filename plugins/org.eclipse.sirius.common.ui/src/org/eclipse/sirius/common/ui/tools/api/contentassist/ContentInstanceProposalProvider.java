@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.ui.tools.api.contentassist;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalProvider;
-
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
@@ -26,8 +26,6 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.internal.assist.ContentContextHelper;
 import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.common.ui.tools.internal.contentassist.ContentProposalConverter;
-
-import com.google.common.collect.Lists;
 
 /**
  * Provider for the completion on Request Interpreter View.
@@ -76,7 +74,7 @@ public class ContentInstanceProposalProvider implements IContentProposalProvider
             if (StringUtil.isEmpty(arg0)) {
                 contentProposalsList = CompoundInterpreter.INSTANCE.getAllNewEmtpyExpressions();
             } else {
-                contentProposalsList = Lists.newArrayList();
+                contentProposalsList = new ArrayList<>();
                 if (interpreter instanceof IProposalProvider) {
                     contentProposalsList.addAll(((IProposalProvider) interpreter).getProposals(interpreter, new ContentInstanceContext(currentEObject, arg0, arg1, editingDomain)));
                 }

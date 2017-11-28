@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
@@ -25,8 +26,6 @@ import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
-
-import com.google.common.collect.Sets;
 
 /**
  * Dispatch a collection of {@link Notification}s to a EMF Command.
@@ -51,7 +50,7 @@ public class SiriusGMFSynchronizerDispatcher {
      */
     public Command getGMFNotationModelSynchronizationCmd(TransactionalEditingDomain domain, Collection<Notification> notifications) {
         Command gmfNotationModelSynchronizationCmd = null;
-        final Set<Diagram> gmfDiagramToSynchronizes = Sets.newLinkedHashSet();
+        final Set<Diagram> gmfDiagramToSynchronizes = new LinkedHashSet<>();
 
         for (Notification notification : notifications) {
             Diagram gmfDiagram = getGMFDiagram(notification);

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.vsm.editor;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -25,6 +23,8 @@ import org.eclipse.sirius.diagram.description.provider.ContainerMappingItemProvi
 import org.eclipse.sirius.diagram.description.provider.NodeMappingImportItemProvider;
 import org.eclipse.sirius.diagram.description.provider.NodeMappingItemProvider;
 import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
+
+import junit.framework.TestCase;
 
 /**
  * Simulate drag and drop in odesign editor of Node mapping to Node mapping or

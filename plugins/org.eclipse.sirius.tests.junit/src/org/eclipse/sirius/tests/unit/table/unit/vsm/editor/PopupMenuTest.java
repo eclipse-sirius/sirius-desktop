@@ -13,8 +13,6 @@ package org.eclipse.sirius.tests.unit.table.unit.vsm.editor;
 import java.util.Collection;
 import java.util.Iterator;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
@@ -23,6 +21,8 @@ import org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdap
 import org.eclipse.sirius.diagram.description.tool.provider.ToolSectionItemProvider;
 import org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
+
+import junit.framework.TestCase;
 
 /**
  * Check the custom menu for the vsm editor.

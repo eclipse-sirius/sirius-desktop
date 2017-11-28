@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.modelingproject.manager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IMarker;
@@ -31,7 +32,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * A job to compute the main representations file of each modeling project of
@@ -124,7 +124,7 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
      * @return resulting status of the initialization
      */
     public static IStatus initializeModelingProjects(List<IProject> projects, boolean forceInit, IProgressMonitor monitor) {
-        List<IStatus> errorStatus = Lists.newArrayList();
+        List<IStatus> errorStatus = new ArrayList<>();
         try {
             IProject[] projectsTable;
             if (projects != null) {

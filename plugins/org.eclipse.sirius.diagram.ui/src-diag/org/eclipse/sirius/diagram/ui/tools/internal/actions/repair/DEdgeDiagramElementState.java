@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -21,7 +22,6 @@ import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChange
 import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Diagram element state for {@link DEdge}.
@@ -45,7 +45,7 @@ public class DEdgeDiagramElementState extends AbstractDiagramElementState<DEdge>
      */
     public DEdgeDiagramElementState(Identifier id, DiagramCrossReferencer crossReferencer) {
         super(id, crossReferencer);
-        this.arrangeConstraints = Lists.newArrayList();
+        this.arrangeConstraints = new ArrayList<>();
     }
 
     /**

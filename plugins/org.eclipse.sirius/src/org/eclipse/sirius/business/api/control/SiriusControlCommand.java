@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.control;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -247,7 +248,7 @@ public class SiriusControlCommand extends ControlCommand {
      */
     private void updateReferencedAnalysisReferences(final DAnalysis newDAnalysis) {
         EObject semanticParentRoot = getRootContainer(semanticObjectToControl.eContainer());
-        Set<DAnalysis> referencers = Sets.newLinkedHashSet();
+        Set<DAnalysis> referencers = new LinkedHashSet<>();
 
         for (Resource aird : session.getAllSessionResources()) {
             DAnalysis currentAnalysis = getDAnalysis(aird);

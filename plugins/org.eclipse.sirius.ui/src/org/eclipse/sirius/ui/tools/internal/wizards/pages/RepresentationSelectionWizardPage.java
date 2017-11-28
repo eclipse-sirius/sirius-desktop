@@ -48,8 +48,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TreeItem;
 
-import com.google.common.collect.Lists;
-
 /**
  * This page allows selection of a representation descriptor from which a representation instance will be created.
  *
@@ -360,7 +358,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
 
         @Override
         public Object[] getElements(final Object inputElement) {
-            Collection<Object> allChildren = Lists.newArrayList();
+            Collection<Object> allChildren = new ArrayList<>();
             if (inputElement instanceof Collection<?>) {
                 allChildren.addAll((Collection<?>) inputElement);
             }

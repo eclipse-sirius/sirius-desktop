@@ -14,7 +14,6 @@ import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
-import junit.framework.TestCase;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -22,6 +21,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.ui.tools.api.views.common.item.AnalysisResourceItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.AnalysisResourceItemImpl;
+
+import junit.framework.TestCase;
 
 /**
  * Test class.

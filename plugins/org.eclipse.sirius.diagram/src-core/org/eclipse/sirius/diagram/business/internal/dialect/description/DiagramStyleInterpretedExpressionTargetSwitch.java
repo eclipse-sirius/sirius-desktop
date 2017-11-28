@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.dialect.description;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -19,8 +20,6 @@ import org.eclipse.sirius.diagram.description.style.GaugeSectionDescription;
 import org.eclipse.sirius.diagram.description.style.util.StyleSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-
-import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -85,7 +84,7 @@ public class DiagramStyleInterpretedExpressionTargetSwitch extends StyleSwitch<O
         if (doSwitch != null) {
             return doSwitch;
         }
-        Collection<String> targets = Sets.newLinkedHashSet();
+        Collection<String> targets = new LinkedHashSet<>();
         return Options.newSome(targets);
     }
 

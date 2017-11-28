@@ -64,8 +64,6 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.part.PageBook;
 
-import com.google.common.collect.Lists;
-
 /**
  * <p>
  * This class originates in GMF but was adapted to be more powerful.
@@ -134,9 +132,9 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
     private GraphicalViewer graphicalViewer;
 
     /** */
-    private final Collection<IObjectActionDelegateWrapper> menuContributions = Lists.newArrayList();
+    private final Collection<IObjectActionDelegateWrapper> menuContributions = new ArrayList<>();
 
-    private final Collection<DiagramOutlinePageListener> listeners = Lists.newArrayList();
+    private final Collection<DiagramOutlinePageListener> listeners = new ArrayList<>();
 
     /**
      * Constructor.

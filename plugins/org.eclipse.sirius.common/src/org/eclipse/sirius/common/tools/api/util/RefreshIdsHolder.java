@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.util;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -17,8 +18,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Maps;
 
 /**
  * This class is responsible for providing an ID used during the refresh to
@@ -36,7 +35,7 @@ public final class RefreshIdsHolder {
 
     private static Integer lastID = 0;
 
-    private Map<EObject, Integer> knownObjects = Maps.newHashMap();
+    private Map<EObject, Integer> knownObjects = new HashMap<>();
 
     /**
      * Return the element Id if there is one, create a new one if it's not

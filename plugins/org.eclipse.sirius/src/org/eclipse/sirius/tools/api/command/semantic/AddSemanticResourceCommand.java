@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tools.api.command.semantic;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -19,8 +20,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.Messages;
-
-import com.google.common.collect.Sets;
 
 /**
  * Specific command to add semantic resources to the given sessions.
@@ -48,7 +47,7 @@ public class AddSemanticResourceCommand extends RecordingCommand {
      */
     protected IProgressMonitor monitor;
 
-    private Collection<Session> result = Sets.newLinkedHashSet();
+    private Collection<Session> result = new LinkedHashSet<>();
 
     /**
      * Specific command to add semantic resources to the given sessions.

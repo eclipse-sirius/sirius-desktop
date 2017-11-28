@@ -15,6 +15,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.not;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +46,6 @@ import org.hamcrest.StringDescription;
 import org.hamcrest.core.IsAnything;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Tests for the "pin elements" feature.
@@ -132,7 +132,7 @@ public class AbstractPinnedElementsTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     protected Map<IGraphicalEditPart, Rectangle> saveBounds() {
-        final Map<IGraphicalEditPart, Rectangle> bounds = Maps.newHashMap();
+        final Map<IGraphicalEditPart, Rectangle> bounds = new HashMap<>();
 
         @SuppressWarnings("unchecked")
         final List<SWTBotGefEditPart> parts = editor.editParts((Matcher<? extends EditPart>) IsAnything.anything());

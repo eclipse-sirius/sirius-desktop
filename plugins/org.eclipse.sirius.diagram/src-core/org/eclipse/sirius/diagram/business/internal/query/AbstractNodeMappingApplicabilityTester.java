@@ -33,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Class dedicated to tools applicability test. Should not be used directly but
@@ -156,7 +155,7 @@ public class AbstractNodeMappingApplicabilityTester {
     }
 
     private List<DiagramDescription> createSelfAndSuperType(DiagramDescription description) {
-        List<DiagramDescription> selfAndSuperTypes = Lists.newArrayList();
+        List<DiagramDescription> selfAndSuperTypes = new ArrayList<>();
         selfAndSuperTypes.add(description);
         Iterators.addAll(selfAndSuperTypes, new DiagramDescriptionQuery(description).superTypes());
         return selfAndSuperTypes;
@@ -220,7 +219,7 @@ public class AbstractNodeMappingApplicabilityTester {
     }
 
     private List<DiagramElementMapping> createSelfAndSuperType(final AbstractNodeMapping containerMapping) {
-        List<DiagramElementMapping> selfAndSuperTypes = Lists.newArrayList();
+        List<DiagramElementMapping> selfAndSuperTypes = new ArrayList<>();
         selfAndSuperTypes.add(containerMapping);
         Iterators.addAll(selfAndSuperTypes, new DiagramElementMappingQuery(containerMapping).superTypes());
         return selfAndSuperTypes;

@@ -12,6 +12,7 @@ package org.eclipse.sirius.table.business.internal.dialect.description;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -43,8 +44,6 @@ import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
-
-import com.google.common.collect.Sets;
 
 /**
  * Query allowing to get the target domain classes and available packages for a
@@ -162,7 +161,7 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
     }
 
     private Set<String> collectTypes(EObject container) {
-        Set<String> possibleTypes = Sets.newLinkedHashSet();
+        Set<String> possibleTypes = new LinkedHashSet<>();
         if (container instanceof TableDescription) {
             String domainClass = ((TableDescription) container).getDomainClass();
             if (!StringUtil.isEmpty(domainClass)) {
@@ -206,7 +205,7 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
 
     private void declareLineAndColumnSemantic(Map<String, VariableType> availableVariables, IntersectionMapping interMapping) {
         ColumnMapping cMapping = interMapping.getColumnMapping();
-        Collection<String> possibleLineTypes = Sets.newLinkedHashSet();
+        Collection<String> possibleLineTypes = new LinkedHashSet<>();
 
         for (LineMapping lineMapping : interMapping.getLineMapping()) {
             if (!StringUtil.isEmpty(lineMapping.getDomainClass())) {
@@ -214,7 +213,7 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
             }
         }
 
-        Collection<String> possibleColumnTypes = Sets.newLinkedHashSet();
+        Collection<String> possibleColumnTypes = new LinkedHashSet<>();
         if (cMapping instanceof ElementColumnMapping) {
             String columnDomain = ((ElementColumnMapping) cMapping).getDomainClass();
             if (!StringUtil.isEmpty(columnDomain)) {
@@ -265,7 +264,7 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
 
         @Override
         public Option<Collection<String>> doSwitch(EObject target, boolean considerFeature) {
-            Collection<String> targetTypes = Sets.newLinkedHashSet();
+            Collection<String> targetTypes = new LinkedHashSet<>();
             Option<Collection<String>> expressionTarget = Options.newSome(targetTypes);
             if (target != null) {
                 String packageURI = target.eClass().getEPackage().getNsURI();

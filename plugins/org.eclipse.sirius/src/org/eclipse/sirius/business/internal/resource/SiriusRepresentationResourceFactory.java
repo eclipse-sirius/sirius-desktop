@@ -19,8 +19,6 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 
-import com.google.common.collect.Maps;
-
 /**
  * A new Factory to create a specific resource for *.srm files. A srm file contains one or several Sirius
  * representations contained in its own resource.
@@ -72,7 +70,7 @@ public class SiriusRepresentationResourceFactory extends SiriusResourceFactory {
         loadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, true);
         loadOptions.put(XMLResource.OPTION_USE_DEPRECATED_METHODS, false);
         loadOptions.put(XMLResource.OPTION_USE_PARSER_POOL, new XMLParserPoolImpl(true));
-        loadOptions.put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, Maps.newHashMap());
+        loadOptions.put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, new HashMap<>());
 
         loadOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
         saveOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);

@@ -11,8 +11,10 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -70,15 +72,15 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
 
     private ISequenceEvent event;
 
-    private final Set<ISequenceEvent> selection = Sets.newLinkedHashSet();
+    private final Set<ISequenceEvent> selection = new LinkedHashSet<>();
 
     private final SequenceDDiagram sequenceDiagram;
 
     private final SequenceDiagram diagram;
 
-    private final Set<ISequenceEvent> reordered = Sets.newHashSet();
+    private final Set<ISequenceEvent> reordered = new HashSet<>();
 
-    private final Set<ISequenceEvent> allElementsToReorder = Sets.newLinkedHashSet();
+    private final Set<ISequenceEvent> allElementsToReorder = new LinkedHashSet<>();
 
     /**
      * Constructor.
@@ -224,7 +226,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
 
         EventEnd startEventEnd = null;
         EventEnd endEventEnd = null;
-        List<EObject> startSemanticEvents = Lists.newArrayList();
+        List<EObject> startSemanticEvents = new ArrayList<>();
 
         // The main event has been reordered, the order of its ends might have
         // changed.

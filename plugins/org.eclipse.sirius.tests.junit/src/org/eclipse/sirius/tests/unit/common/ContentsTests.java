@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
@@ -23,6 +22,8 @@ import org.eclipse.sirius.ext.emf.Contents;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
+import junit.framework.TestCase;
 
 /**
  * Tests for the {@link Contents} utility class.
@@ -71,7 +72,7 @@ public class ContentsTests extends TestCase {
     public void testIterationOnEObjectWithSeveralChildren() {
         final int n = 10;
         EPackage parent = EcoreFactory.eINSTANCE.createEPackage();
-        List<EObject> children = Lists.newArrayList();
+        List<EObject> children = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             EClass child = EcoreFactory.eINSTANCE.createEClass();
             parent.getEClassifiers().add(child);

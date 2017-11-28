@@ -12,6 +12,7 @@ package org.eclipse.sirius.ext.base.relations;
 
 import java.text.MessageFormat;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.ext.base.Messages;
@@ -45,7 +46,7 @@ public class TransitiveClosure<T> implements Relation<T> {
 
         Set<T> startingPoints = ImmutableSet.copyOf(result);
         while (!startingPoints.isEmpty()) {
-            Set<T> newDependencies = Sets.newHashSet();
+            Set<T> newDependencies = new HashSet<>();
             for (T startPoint : startingPoints) {
                 newDependencies.addAll(relation.apply(startPoint));
             }

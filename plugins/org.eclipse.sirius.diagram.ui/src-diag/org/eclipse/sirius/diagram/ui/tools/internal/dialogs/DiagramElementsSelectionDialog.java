@@ -78,7 +78,6 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -166,7 +165,7 @@ public class DiagramElementsSelectionDialog {
         /**
          * Collection of elements currently checked by user.
          */
-        private final Set<Object> checkedElements = Sets.newHashSet();
+        private final Set<Object> checkedElements = new HashSet<>();
 
         private CustomTreeSelectionDialog(Shell parent, ILabelProvider labelProvider, ITreeContentProvider contentProvider) {
             super(parent, labelProvider, contentProvider);
@@ -780,7 +779,7 @@ public class DiagramElementsSelectionDialog {
      * @return the elements selected when the dialog is about to close
      */
     protected Set<Object> getElementsSelectedAfter() {
-        Set<Object> selectedElements = Sets.newHashSet();
+        Set<Object> selectedElements = new HashSet<>();
         for (Object obj : dialog.checkedElements) {
             if (obj instanceof DDiagramElement) {
                 selectedElements.add(obj);
@@ -839,7 +838,7 @@ public class DiagramElementsSelectionDialog {
          * The item provider used to simulate another child for Container and
          * List regarding the node label configuration.
          */
-        private final HashMap<Object, DDiagramElementContainerLabelItemProvider> labelItemProviders = Maps.newHashMap();
+        private final HashMap<Object, DDiagramElementContainerLabelItemProvider> labelItemProviders = new HashMap<>();
 
         private boolean includeLabel;
 

@@ -13,8 +13,6 @@ package org.eclipse.sirius.tests.unit.common.interpreter.feature;
 import java.util.Collection;
 import java.util.Iterator;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -35,6 +33,8 @@ import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+
+import junit.framework.TestCase;
 
 /**
  * A Test case for the {@link FeatureInterpreter}.

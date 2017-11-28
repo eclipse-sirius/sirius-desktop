@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.actions.copy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
@@ -33,7 +34,6 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * An action to copy selected representations.
@@ -92,7 +92,7 @@ public class CopyRepresentationAction extends Action {
             final String newName = dialog.getNewName();
             DRepresentationDescriptor dRepDescriptor = repDescriptors.iterator().next();
             final TransactionalEditingDomain transDomain = TransactionUtil.getEditingDomain(dRepDescriptor);
-            Collection<DRepresentation> representations = Lists.newArrayList();
+            Collection<DRepresentation> representations = new ArrayList<>();
             for (DRepresentationDescriptor dRepresentationDescriptor : repDescriptors) {
                 representations.add(dRepresentationDescriptor.getRepresentation());
             }

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -19,8 +20,6 @@ import org.eclipse.sirius.business.api.migration.AbstractMigrationParticipant;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.osgi.framework.Version;
-
-import com.google.common.collect.Lists;
 
 /**
  * Remove the old font format attribute values used before the multi valued label font format attribute.
@@ -49,7 +48,7 @@ public class FontFormatMigrationParticipant extends AbstractMigrationParticipant
             // The previous "normal" value correspond to an empty list, it was
             // the default value and was not serialized.
             if (feature.getEType() == ViewpointPackage.Literals.FONT_FORMAT && value instanceof String) {
-                List<FontFormat> labelFormat = Lists.newArrayList();
+                List<FontFormat> labelFormat = new ArrayList<>();
                 String oldFontFormat = (String) value;
                 if (oldFontFormat.contains(ITALIC)) {
                     FontFormatHelper.setFontFormat(labelFormat, FontFormat.ITALIC_LITERAL);

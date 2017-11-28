@@ -10,9 +10,6 @@
  *****************************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,6 +30,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ocl.ecore.OperationCallExp;
 import org.eclipse.ocl.ecore.Variable;
 import org.eclipse.ocl.utilities.ASTNode;
+
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 
 /**
  * Utility class used during the compilation. This class contains methods

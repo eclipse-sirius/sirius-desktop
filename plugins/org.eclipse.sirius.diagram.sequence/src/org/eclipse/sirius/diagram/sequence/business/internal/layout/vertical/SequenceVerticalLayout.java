@@ -13,8 +13,10 @@ package org.eclipse.sirius.diagram.sequence.business.internal.layout.vertical;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -66,10 +68,8 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
 
 /**
  * Computes the appropriate graphical locations of sequence events and lifelines on a sequence diagram to reflect the
@@ -102,7 +102,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     /**
      * Semantic flagged event ends at creation.
      */
-    protected final List<EventEnd> toolCreatedEnds = Lists.newArrayList();
+    protected final List<EventEnd> toolCreatedEnds = new ArrayList<>();
 
     /**
      * A map to link an {@link EventEnd} to the attached {@link ISequenceEvent}.
@@ -204,10 +204,10 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         this.iSequenceEventsToEventEnds = LinkedHashMultimap.create();
         this.endToISequencEvents = HashMultimap.create();
 
-        this.creators = Maps.newHashMap();
-        this.destructors = Maps.newHashMap();
-        this.losts = Maps.newHashMap();
-        this.unconnectedLostEnds = Lists.newArrayList();
+        this.creators = new HashMap<>();
+        this.destructors = new HashMap<>();
+        this.losts = new HashMap<>();
+        this.unconnectedLostEnds = new ArrayList<>();
     }
 
     /**
@@ -349,7 +349,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
      * @return a map associating each message edit part to the new absolute vertical location it should have.
      */
     private Map<EventEnd, Integer> computeEndBounds(boolean pack) {
-        final Map<EventEnd, Integer> result = Maps.newLinkedHashMap();
+        final Map<EventEnd, Integer> result = new LinkedHashMap<>();
 
         if (semanticOrdering == null || semanticOrdering.isEmpty()) {
             return result;
@@ -957,14 +957,14 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
     private void registerEventEnd(EventEnd end) {
         Collection<EObject> semanticEvents = EventEndHelper.getSemanticEvents(end);
-        Collection<ISequenceEvent> eventParts = Sets.newLinkedHashSet();
+        Collection<ISequenceEvent> eventParts = new LinkedHashSet<>();
         for (EObject semanticEvent : semanticEvents) {
             eventParts.addAll(ISequenceElementAccessor.getEventsForSemanticElement(sequenceDiagram, semanticEvent));
         }
 
         // ISequenceEvent has not been created
         if (eventParts.isEmpty()) {
-            Collection<DDiagramElement> ddes = Sets.newLinkedHashSet();
+            Collection<DDiagramElement> ddes = new LinkedHashSet<>();
             for (EObject semanticEvent : semanticEvents) {
                 ddes.addAll(ISequenceElementAccessor.getDiagramElementsForSemanticElement(sequenceDiagram, semanticEvent));
             }

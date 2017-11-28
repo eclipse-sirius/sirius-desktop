@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -39,7 +40,6 @@ import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Refreshes the semantic ordering of a an element of a sequence diagram to
@@ -58,11 +58,11 @@ public class SynchronizeInstanceRoleSemanticOrderingOperation extends AbstractMo
 
     private final SequenceDiagram diagram;
 
-    private final Set<InstanceRole> reordered = Sets.newLinkedHashSet();
+    private final Set<InstanceRole> reordered = new LinkedHashSet<>();
 
     private InstanceRole instanceRole;
 
-    private Set<InstanceRole> selection = Sets.newLinkedHashSet();
+    private Set<InstanceRole> selection = new LinkedHashSet<>();
 
     /**
      * Constructor.

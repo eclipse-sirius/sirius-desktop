@@ -13,6 +13,11 @@ package org.eclipse.sirius.common.ui.tools.api.selection.page;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
+import org.eclipse.sirius.common.ui.Messages;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingItem;
+import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -20,11 +25,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
-import org.eclipse.sirius.common.ui.Messages;
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingItem;
-import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 
 /**
  * An abstract class to extend to provide selection.

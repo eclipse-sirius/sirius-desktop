@@ -10,20 +10,19 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.interpreter;
 
-import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
-import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement;
-import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement.ImageKind;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.jface.text.contentassist.IContextInformationValidator;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement.ImageKind;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 
 /**
  * Allows us to provide content assist for the viewpoint dialect.

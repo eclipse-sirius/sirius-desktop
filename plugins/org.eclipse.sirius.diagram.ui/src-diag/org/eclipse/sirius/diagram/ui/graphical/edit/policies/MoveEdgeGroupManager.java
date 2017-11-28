@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -49,8 +50,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * This class is responsible for managing the move edge group tool. see #471104
@@ -119,7 +118,7 @@ public class MoveEdgeGroupManager {
     private void showGroupFeedback(ConnectionEditPart connectionEditPart) {
         AbstractDiagramBorderNodeEditPart sourceEditPart = (AbstractDiagramBorderNodeEditPart) connectionEditPart.getSource();
         AbstractDiagramBorderNodeEditPart targetEditPart = (AbstractDiagramBorderNodeEditPart) connectionEditPart.getTarget();
-        Set<EditPart> movedBorderNodes = Sets.newLinkedHashSet();
+        Set<EditPart> movedBorderNodes = new LinkedHashSet<>();
         for (ConnectionEditPart cep : Iterables.filter(sourceEditPart.getViewer().getSelectedEditParts(), ConnectionEditPart.class)) {
             movedBorderNodes.add(cep.getSource());
             movedBorderNodes.add(cep.getTarget());
@@ -235,7 +234,7 @@ public class MoveEdgeGroupManager {
             ConnectionEditPart connectionEditPart = ((BendpointRequest) request).getSource();
             // The selected diagram element should only contain edges otherwise
             // the move is not valid
-            final Set<Integer> edgeDirections = Sets.newLinkedHashSet();
+            final Set<Integer> edgeDirections = new LinkedHashSet<>();
             boolean result = Iterables.all(connectionEditPart.getViewer().getSelectedEditParts(), Predicates.and(Predicates.instanceOf(ConnectionEditPart.class), new Predicate<ConnectionEditPart>() {
                 /**
                  * Determines if the given edge respects the following rules:
@@ -307,7 +306,7 @@ public class MoveEdgeGroupManager {
             bounds.setBounds(newBounds);
         }
 
-        List<IFigure> figureToIgnore = Lists.newArrayList();
+        List<IFigure> figureToIgnore = new ArrayList<>();
         figureToIgnore.add(figure);
         for (ConnectionEditPart connectionEditPart : Iterables.filter(editPart.getViewer().getSelectedEditParts(), ConnectionEditPart.class)) {
             EditPart source = connectionEditPart.getSource();

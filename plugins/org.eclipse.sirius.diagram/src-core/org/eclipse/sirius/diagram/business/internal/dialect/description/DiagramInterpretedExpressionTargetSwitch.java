@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.dialect.description;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -32,8 +33,6 @@ import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
 import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-
-import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element (here all elements are diagram-specific) and
@@ -98,7 +97,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
         if (doSwitch != null) {
             return doSwitch;
         }
-        Collection<String> defaultResult = Sets.newLinkedHashSet();
+        Collection<String> defaultResult = new LinkedHashSet<>();
         return Options.newSome(defaultResult);
     }
 
@@ -137,7 +136,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
     @Override
     public Option<Collection<String>> caseDiagramDescription(DiagramDescription diagramDescription) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
+        Collection<String> target = new LinkedHashSet<>();
         switch (getFeatureId(diagramDescription.eClass())) {
         case DescriptionPackage.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION:
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ROOT_EXPRESSION:
@@ -177,7 +176,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
     @Override
     public Option<Collection<String>> caseDiagramImportDescription(DiagramImportDescription object) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
+        Collection<String> target = new LinkedHashSet<>();
         switch (getFeatureId(object.eClass())) {
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__TITLE_EXPRESSION:
         case DO_NOT_CONSIDER_FEATURE:
@@ -194,7 +193,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
     @Override
     public Option<Collection<String>> caseMappingBasedDecoration(MappingBasedDecoration object) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
+        Collection<String> target = new LinkedHashSet<>();
         switch (getFeatureId(object.eClass())) {
         case DescriptionPackage.MAPPING_BASED_DECORATION__PRECONDITION_EXPRESSION:
         case org.eclipse.sirius.viewpoint.description.DescriptionPackage.DECORATION_DESCRIPTION__TOOLTIP_EXPRESSION:
@@ -224,7 +223,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
     @Override
     public Option<Collection<String>> caseAbstractNodeMapping(AbstractNodeMapping object) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
+        Collection<String> target = new LinkedHashSet<>();
         switch (getFeatureId(object.eClass())) {
         case DescriptionPackage.ABSTRACT_NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
             result = globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
@@ -250,7 +249,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
     @Override
     public Option<Collection<String>> caseEdgeMapping(EdgeMapping edgeMapping) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
+        Collection<String> target = new LinkedHashSet<>();
         if (edgeMapping.isUseDomainElement()) {
             // DOMAIN-BASED EDGE MAPPING
             switch (getFeatureId(edgeMapping.eClass())) {
@@ -325,7 +324,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      */
     @Override
     public Option<Collection<String>> caseOrderedTreeLayout(OrderedTreeLayout layout) {
-        Collection<String> target = Sets.newLinkedHashSet();
+        Collection<String> target = new LinkedHashSet<>();
         Option<Collection<String>> result = Options.newSome(target);
         switch (getFeatureId(DescriptionPackage.eINSTANCE.getOrderedTreeLayout())) {
         case DescriptionPackage.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION:

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.commands;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,7 +58,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Command to straighten edge.<BR>
@@ -114,9 +115,9 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
     }
 
     /** Edge edit parts to straighten with associated data. */
-    Map<AbstractDiagramEdgeEditPart, StraightenToCommandData> edgeEditParts = Maps.newHashMap();
+    Map<AbstractDiagramEdgeEditPart, StraightenToCommandData> edgeEditParts = new HashMap<>();
 
-    Map<AbstractDiagramEdgeEditPart, StraightenToCommandData> edgeEditPartsToStraighten = Maps.newHashMap();
+    Map<AbstractDiagramEdgeEditPart, StraightenToCommandData> edgeEditPartsToStraighten = new HashMap<>();
 
     /**
      * The straighten type must by one of:
@@ -237,7 +238,7 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
      * @return list of border nodes that will be moved during this command.
      */
     private List<Node> getMovedBorderNodes() {
-        List<Node> movedNodes = Lists.newArrayList();
+        List<Node> movedNodes = new ArrayList<>();
         for (StraightenToCommandData data : edgeEditParts.values()) {
             if ((data.moveSource && data.isSourceABorderNode)) {
                 // The source border node will be moved

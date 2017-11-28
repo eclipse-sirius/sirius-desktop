@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,7 +45,6 @@ import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.eclipse.ui.IEditorPart;
 import org.osgi.framework.Version;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -162,7 +162,7 @@ public class RepairOnStyleCustomizationsTest extends AbstractRepairMigrateTest {
         assertEquals(assertMessage, Collections.singletonList(labelFormatFeature.getName()), dEdgeOfEReference.getOwnedStyle().getCenterLabelStyle().getCustomFeatures());
         assertEquals(assertMessage, FontFormat.BOLD_LITERAL, ((List<FontFormat>) dEdgeOfEReference.getOwnedStyle().getCenterLabelStyle().eGet(labelFormatFeature)).get(1));
         assertEquals(assertMessage, FontFormat.ITALIC_LITERAL, ((List<FontFormat>) dEdgeOfEReference.getOwnedStyle().getCenterLabelStyle().eGet(labelFormatFeature)).get(0));
-        List<String> expectedDnodeListCustomFeatures = Lists.newArrayList();
+        List<String> expectedDnodeListCustomFeatures = new ArrayList<>();
         expectedDnodeListCustomFeatures.add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName());
         expectedDnodeListCustomFeatures.add(labelFormatFeature.getName());
         assertEquals(assertMessage, Sets.newHashSet(expectedDnodeListCustomFeatures), Sets.newHashSet(dNodeListOfEClass.getStyle().getCustomFeatures()));

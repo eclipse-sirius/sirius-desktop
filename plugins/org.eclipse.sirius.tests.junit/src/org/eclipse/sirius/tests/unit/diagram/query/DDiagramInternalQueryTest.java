@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.query;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
@@ -22,6 +20,8 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
 
 import com.google.common.collect.Iterables;
+
+import junit.framework.TestCase;
 
 /**
  * Class to test the {@link DDiagramInternalQuery} class.

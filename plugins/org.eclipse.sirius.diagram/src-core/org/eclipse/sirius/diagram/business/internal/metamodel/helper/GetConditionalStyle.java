@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -36,7 +37,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Switch to get the conditional styles of a mapping.
@@ -141,7 +141,7 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
      */
     @Override
     public List<? extends ConditionalStyleDescription> caseContainerMappingImport(final ContainerMappingImport object) {
-        List<ConditionalContainerStyleDescription> result = Lists.newArrayList();
+        List<ConditionalContainerStyleDescription> result = new ArrayList<>();
         result.addAll(object.getConditionnalStyles());
         if (object.getImportedMapping() != null) {
             List<? extends ConditionalStyleDescription> importedContionalStyles = doSwitch(object.getImportedMapping());
@@ -157,7 +157,7 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
      */
     @Override
     public List<? extends ConditionalStyleDescription> caseNodeMappingImport(final NodeMappingImport object) {
-        List<ConditionalNodeStyleDescription> result = Lists.newArrayList();
+        List<ConditionalNodeStyleDescription> result = new ArrayList<>();
         result.addAll(object.getConditionnalStyles());
         if (object.getImportedMapping() != null) {
             List<? extends ConditionalStyleDescription> importedContionalStyles = doSwitch(object.getImportedMapping());

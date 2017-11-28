@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.decoration;
 
+import java.util.HashSet;
 import java.util.Set;
-
-import com.google.common.collect.Sets;
 
 /**
  * Manage registered {@link SiriusDecorationDescriptorProvider}.
@@ -26,7 +25,7 @@ public final class SiriusDecorationProviderRegistry {
      */
     public static final SiriusDecorationProviderRegistry INSTANCE = new SiriusDecorationProviderRegistry();
 
-    private Set<SiriusDecorationDescriptorProvider> decorationDescriptorProviders = Sets.newHashSet();
+    private Set<SiriusDecorationDescriptorProvider> decorationDescriptorProviders = new HashSet<>();
 
     private SiriusDecorationProviderRegistry() {
     }

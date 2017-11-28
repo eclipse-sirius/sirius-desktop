@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -158,7 +159,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
          * case the URIs to the referenced elements in these resource *may*
          * havechanged)...
          */
-        Set<Resource> dependOnLogicallyModified = Sets.newLinkedHashSet();
+        Set<Resource> dependOnLogicallyModified = new LinkedHashSet<>();
         if (logicallyModified.size() > 0) {
             Iterables.addAll(dependOnLogicallyModified, Iterables.filter(Sets.difference(saveable, logicallyModified), new ResourceHasReferenceTo(isModified)));
         }
@@ -186,7 +187,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
          * or the underlying file is out of date and must be recreated/updated
          * to match the version in memory.
          */
-        Set<Resource> toSave = Sets.newLinkedHashSet();
+        Set<Resource> toSave = new LinkedHashSet<>();
         for (Resource resource : Sets.union(logicallyModified, dependOnLogicallyModified)) {
             if (hasDifferentSerialization(resource, mergedOptions)) {
                 toSave.add(resource);

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.edit.command.CommandParameter;
@@ -50,7 +51,7 @@ public class DiagramRefactoringMenu extends AbstractMenuBuilder {
     private Collection generateRefactoringActions(final ISelection selection, final IEditorPart editor) {
 
         // We first build all candidate Actions
-        Set<AbstractEObjectRefactoringAction> allActions = Sets.newLinkedHashSet();
+        Set<AbstractEObjectRefactoringAction> allActions = new LinkedHashSet<>();
         allActions.add(new BorderRefactoringAction(editor, selection));
         allActions.add(new EdgeMappingRefactoringAction(editor, selection));
 

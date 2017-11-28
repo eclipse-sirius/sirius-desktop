@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -69,8 +70,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
-import com.google.common.collect.Lists;
-
 /**
  * An extension of the standard Sirius ContainerCreationEditPolicy which knows
  * how to handle the specific tools use to create frames (i.e. Interaction Uses
@@ -83,7 +82,7 @@ public class SequenceContainerCreationPolicy extends ContainerCreationEditPolicy
     /**
      * Additional figures for feedback.
      */
-    protected Collection<Figure> guides = Lists.newArrayList();
+    protected Collection<Figure> guides = new ArrayList<>();
 
     @Override
     protected Command getCreateNodeOnDiagramCommand(CreateRequest request, NodeCreationDescription tool, DDiagram diagram) {

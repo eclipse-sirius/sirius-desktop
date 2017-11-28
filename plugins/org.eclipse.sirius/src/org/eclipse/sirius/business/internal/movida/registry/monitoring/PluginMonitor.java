@@ -11,6 +11,8 @@
 package org.eclipse.sirius.business.internal.movida.registry.monitoring;
 
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.ContributorFactoryOSGi;
@@ -30,7 +32,6 @@ import org.osgi.framework.BundleEvent;
 import org.osgi.framework.BundleListener;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Sets;
 
 /**
  * Monitors VSMs installed in Eclipse plug-ins and registered through the
@@ -153,7 +154,7 @@ public class PluginMonitor extends AbstractViewpointResourceMonitor {
         if (extensions == null) {
             return Collections.emptySet();
         } else {
-            Set<URI> discovered = Sets.newHashSet();
+            Set<URI> discovered = new HashSet<>();
             for (IExtension ext : extensions) {
                 if (ext.getExtensionPointUniqueIdentifier().equals(VSM_REGISTRATION_EXTENSION_POINT)) {
                     Set<URI> registered = detectRegisteredVSMs(ext.getConfigurationElements());
@@ -166,7 +167,7 @@ public class PluginMonitor extends AbstractViewpointResourceMonitor {
 
     private Set<URI> detectRegisteredVSMs(IConfigurationElement[] elements) {
         Preconditions.checkNotNull(elements);
-        Set<URI> discovered = Sets.newLinkedHashSet();
+        Set<URI> discovered = new LinkedHashSet<>();
         for (IConfigurationElement element : elements) {
             String contributingPlugin = element.getContributor().getName();
             String localPath = element.getAttribute("path"); //$NON-NLS-1$

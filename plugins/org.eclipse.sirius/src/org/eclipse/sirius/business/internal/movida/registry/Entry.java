@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.movida.registry;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -26,8 +29,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Represents Sirius definition known to the registry, with all the
@@ -54,19 +55,19 @@ public class Entry {
     /**
      * The entries representing the Viewpoints we declares a conflict with.
      */
-    private final Set<URI> conflicts = Sets.newHashSet();
+    private final Set<URI> conflicts = new HashSet<>();
 
     /**
      * The entries representing the Viewpoints we declares a "reuses" relation
      * with.
      */
-    private final Set<URI> reused = Sets.newHashSet();
+    private final Set<URI> reused = new HashSet<>();
 
     /**
      * The entries representing the Viewpoints we declares a "extends" relation
      * with.
      */
-    private final Set<URI> customizes = Sets.newHashSet();
+    private final Set<URI> customizes = new HashSet<>();
 
     /**
      * The current life-cycle state of the Sirius represented by this entry.
@@ -79,7 +80,7 @@ public class Entry {
      * Any diagnostics related to this entry, in particular errors and warnings
      * which can explain the state of the entry.
      */
-    private final Collection<Diagnostic> diagnostics = Lists.newArrayList();
+    private final Collection<Diagnostic> diagnostics = new ArrayList<>();
 
     /**
      * Creates a new entry representing a Sirius.
@@ -166,7 +167,7 @@ public class Entry {
      * @return all the dependencies of the Sirius represented by this entry.
      */
     public Set<URI> getDeclaredDependencies() {
-        Set<URI> result = Sets.newLinkedHashSet();
+        Set<URI> result = new LinkedHashSet<>();
         /*
          * Note that Sirius we declare a conflict with are not part of our
          * dependencies, because the whole point is that this Sirius should
@@ -201,7 +202,7 @@ public class Entry {
      * @return the set of actual physical dependencies of this Sirius.
      */
     public Set<URI> getActualDependencies() {
-        Set<URI> result = Sets.newHashSet();
+        Set<URI> result = new HashSet<>();
         EObjectQuery q = new EObjectQuery(viewpoint);
         result.addAll(q.getResolvedDependencies());
         result.addAll(q.getUnresolvedDependencies());

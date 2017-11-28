@@ -12,6 +12,7 @@ package org.eclipse.sirius.editor.tree.tools.internal.menu;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
@@ -78,7 +79,7 @@ public class TreeWizardMenuBuilder extends AbstractMenuBuilder {
     }
 
     private Collection generateRefactoringActions(final ISelection selection, final IEditorPart editor) {
-        Set<AbstractEObjectRefactoringAction> allActions = Sets.newLinkedHashSet();
+        Set<AbstractEObjectRefactoringAction> allActions = new LinkedHashSet<>();
         allActions.add(new InitializeTreeFromEClass(editor, selection));
 
         return Sets.filter(allActions, new Predicate<AbstractEObjectRefactoringAction>() {
@@ -359,7 +360,7 @@ class EClassHierarchy {
 
         Set<EClass> allClasses = Sets.newLinkedHashSet(Lists.newArrayList(Iterators.filter(resourceSet.getAllContents(), EClass.class)));
 
-        Set<EClass> somebodyIsExtendingMe = Sets.newLinkedHashSet();
+        Set<EClass> somebodyIsExtendingMe = new LinkedHashSet<>();
         for (EClass eClass : allClasses) {
             // TODO open a popup to allow selection of types to browse..
             if (!"DiagramImportDescription".equals(eClass.getName())) {

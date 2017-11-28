@@ -15,8 +15,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Collections;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -49,6 +47,8 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import junit.framework.TestCase;
 
 /**
  * Test for VP-2075 (but adapted for each kind of mapping), local refresh should

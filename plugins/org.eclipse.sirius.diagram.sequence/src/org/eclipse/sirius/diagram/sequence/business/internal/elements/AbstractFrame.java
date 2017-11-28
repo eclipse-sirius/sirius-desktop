@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -39,7 +41,6 @@ import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Represents a frame container.
@@ -90,8 +91,8 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
      */
     public Collection<Lifeline> computeCoveredLifelines() {
         DslCommonPlugin.PROFILER.startWork(COVERAGE);
-        Collection<EObject> semLifelines = Lists.newArrayList();
-        Collection<Lifeline> coveredLifelines = Lists.newArrayList();
+        Collection<EObject> semLifelines = new ArrayList<>();
+        Collection<Lifeline> coveredLifelines = new ArrayList<>();
 
         EObject element = getNotationNode().getElement();
         if (element instanceof DDiagramElement) {
@@ -144,7 +145,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
      * @return the covered lifelines.
      */
     public Collection<ISequenceEvent> computeParentEvents(Collection<Lifeline> coveredLifelines) {
-        Collection<ISequenceEvent> parentEvents = Sets.newHashSet();
+        Collection<ISequenceEvent> parentEvents = new HashSet<>();
         for (Lifeline lifeline : coveredLifelines) {
             EventFinder finder = new EventFinder(lifeline);
             finder.setEventsToIgnore(Predicates.equalTo((ISequenceEvent) this));

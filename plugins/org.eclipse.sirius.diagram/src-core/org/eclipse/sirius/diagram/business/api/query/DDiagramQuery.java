@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.business.api.query;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -26,8 +27,6 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsM
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.description.Layer;
-
-import com.google.common.collect.Sets;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DDiagram} as
@@ -72,7 +71,7 @@ public class DDiagramQuery extends DRepresentationQuery {
      *         <code>null</code>.
      */
     public Set<DDiagramElement> findHiddenElements() {
-        final Set<DDiagramElement> result = Sets.newHashSet();
+        final Set<DDiagramElement> result = new HashSet<>();
         if (dDiagram != null) {
             Session session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) dDiagram).getTarget());
             for (final DDiagramElement diagramElement : dDiagram.getDiagramElements()) {

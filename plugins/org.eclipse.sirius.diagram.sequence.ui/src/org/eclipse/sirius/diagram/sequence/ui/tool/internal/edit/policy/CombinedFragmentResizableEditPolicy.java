@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -58,7 +59,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A specific AirResizableEditPolicy to combined fragment roles move & resize
@@ -401,7 +401,7 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
      */
     @Override
     protected Collection<ISequenceEventEditPart> getChildrenToFeedBack(ChangeBoundsRequest request) {
-        Collection<ISequenceEventEditPart> feedback = Lists.newArrayList();
+        Collection<ISequenceEventEditPart> feedback = new ArrayList<>();
         if (getHost() instanceof CombinedFragmentEditPart && new RequestQuery(request).isMove()) {
             CombinedFragmentEditPart cfep = (CombinedFragmentEditPart) getHost();
             for (CombinedFragmentCompartmentEditPart cpt : Iterables.filter(cfep.getChildren(), CombinedFragmentCompartmentEditPart.class)) {

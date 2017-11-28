@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.experimental.sync;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
@@ -19,8 +20,6 @@ import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.api.query.AbstractNodeMappingQuery;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-
-import com.google.common.collect.Lists;
 
 /**
  * An helper for node.
@@ -61,7 +60,7 @@ public class DNodeSynchronizerHelper extends AbstractSynchronizerHelper {
     public Collection<AbstractDNodeCandidate> computeNodeCandidates(final DragAndDropTarget container, final AbstractNodeMapping mapping, final Collection<AbstractDNodeCandidate> candidateFilter,
             RefreshIdsHolder ids) {
 
-        final Collection<AbstractDNodeCandidate> nowCandidates = Lists.newArrayList();
+        final Collection<AbstractDNodeCandidate> nowCandidates = new ArrayList<>();
         final Iterable<EObject> semantics = getSemanticCandidates(container, mapping);
 
         /*

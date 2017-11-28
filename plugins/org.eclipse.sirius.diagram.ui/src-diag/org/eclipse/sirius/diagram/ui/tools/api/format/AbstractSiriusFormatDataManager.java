@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.api.format;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -88,8 +89,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * An abstract implementation for {@link SiriusFormatDataManager}. <BR>
@@ -112,7 +111,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      */
     @Override
     public void storeFormatData(final IGraphicalEditPart rootEditPart) {
-        final Collection<FormatDataKey> discoveredKeys = Sets.newHashSet();
+        final Collection<FormatDataKey> discoveredKeys = new HashSet<>();
         final EObject semanticElement = rootEditPart.resolveSemanticElement();
         final View toStoreView = (View) rootEditPart.getModel();
         if (toStoreView instanceof Edge && semanticElement instanceof DEdge) {
@@ -496,7 +495,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
     protected void applyGMFStyle(View newView, AbstractFormatData formatData) {
         if (newView != null && formatData.getGmfView() != null) {
             @SuppressWarnings("rawtypes")
-            List excludedStyles = Lists.newArrayList();
+            List excludedStyles = new ArrayList<>();
             if (newView instanceof Edge) {
                 // The style of RoutingStyle class is considered as format
                 // properties. So they have already been pasted during paste
@@ -576,8 +575,8 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      *            The formatData of the parent of the borderedNodes
      */
     private void applyFormatForBorderedNodes(EList<DNode> borderedNodes, EditPartViewer editPartViewer, NodeFormatData parentFormatData, boolean applyFormat, boolean applyStyle) {
-        HashMap<Node, NodeFormatData> nodesWithFormatDataToApply = Maps.newHashMap();
-        HashMap<Node, DSemanticDecorator> nodesWithCoresspondingDSemanticDecorator = Maps.newHashMap();
+        HashMap<Node, NodeFormatData> nodesWithFormatDataToApply = new HashMap<>();
+        HashMap<Node, DSemanticDecorator> nodesWithCoresspondingDSemanticDecorator = new HashMap<>();
         // Search each bordered nodes that have formatData to apply
         for (final DNode child : borderedNodes) {
             // Search the GMF node corresponding to the child

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
@@ -26,7 +27,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multiset;
-import com.google.common.collect.Sets;
 
 /**
  * Helper to check position of events on the diagram.
@@ -103,7 +103,7 @@ public class PositionsChecker {
             }
         }
 
-        Set<Integer> invalidPositions = Sets.newHashSet();
+        Set<Integer> invalidPositions = new HashSet<>();
         Iterables.addAll(invalidPositions, Iterables.filter(positions, new Predicate<Integer>() {
             public boolean apply(Integer input) {
                 int count = positions.count(input);

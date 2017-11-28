@@ -12,8 +12,6 @@ package org.eclipse.sirius.tests.unit.api.tools.tasks;
 
 import java.io.File;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -24,6 +22,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+
+import junit.framework.TestCase;
 
 /**
  * Check the behavior and scope of the static methods of

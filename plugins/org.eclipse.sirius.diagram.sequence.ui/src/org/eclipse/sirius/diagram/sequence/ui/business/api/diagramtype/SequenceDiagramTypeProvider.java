@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -73,8 +75,6 @@ import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Provides diagram description for Sequence diagram.
@@ -123,7 +123,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      */
     @Override
     public Collection<? extends CommandParameter> collectToolCommands(EObject context) {
-        Collection<CommandParameter> result = Lists.newArrayList();
+        Collection<CommandParameter> result = new ArrayList<>();
         Collection<EReference> refs = Arrays.asList(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, ToolPackage.Literals.TOOL_GROUP__TOOLS);
         for (EReference ref : refs) {
             if (ref.getEContainingClass().equals(context.eClass())) {
@@ -146,7 +146,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      */
     @Override
     public Collection<? extends CommandParameter> collectMappingsCommands() {
-        Collection<CommandParameter> result = Lists.newArrayList();
+        Collection<CommandParameter> result = new ArrayList<>();
         // Nodes
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createExecutionMapping()));
@@ -329,7 +329,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      */
     @Override
     public LinkedList<HeaderData> getHeaderData(DDiagram diagram) {
-        LinkedList<HeaderData> result = Lists.newLinkedList();
+        LinkedList<HeaderData> result = new LinkedList<>();
         if (diagram instanceof SequenceDDiagram) {
             Diagram gmfDiagram = getGmfDiagram(diagram);
 
@@ -397,7 +397,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
          */
         @Override
         public Option<Collection<String>> doSwitch(EObject target, boolean considerFeature) {
-            Collection<String> targetTypes = Sets.newLinkedHashSet();
+            Collection<String> targetTypes = new LinkedHashSet<>();
             Option<Collection<String>> expressionTarget = Options.newSome(targetTypes);
             if (target != null) {
                 // Step 1 : apply the sequence diagram specific switch

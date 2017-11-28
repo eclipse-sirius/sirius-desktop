@@ -10,14 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.metamodel.description.spec;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl;
@@ -36,7 +34,7 @@ public class LineMappingSpec extends LineMappingImpl {
      */
     @Override
     public EList<LineMapping> getAllSubLines() {
-        List<LineMapping> result = Lists.newArrayList();
+        List<LineMapping> result = new ArrayList<>();
         result.addAll(this.getOwnedSubLines());
         result.addAll(this.getReusedSubLines());
         return unionReference(DescriptionPackage.eINSTANCE.getLineMapping_AllSubLines(), result);

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.dialect.description;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -26,7 +27,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.util.ValidationSwitch;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -92,7 +92,7 @@ public class ValidationInterpretedExpressionTargetSwitch extends ValidationSwitc
         if (doSwitch != null) {
             return doSwitch;
         }
-        Collection<String> targets = Sets.newLinkedHashSet();
+        Collection<String> targets = new LinkedHashSet<>();
         return Options.newSome(targets);
     }
 

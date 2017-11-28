@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session.danalysis;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -186,7 +187,7 @@ class SessionResourcesTracker {
      *            The analysis of this session (owned analysis or referenced analysis by this session).
      */
     private void resolveAllVSMResources(Collection<DAnalysis> allAnalysis) {
-        List<Resource> resolvedResources = Lists.newArrayList();
+        List<Resource> resolvedResources = new ArrayList<>();
         for (DAnalysis dAnalysis : allAnalysis) {
             for (DView dView : dAnalysis.getOwnedViews()) {
                 if (dView.getViewpoint() != null) {

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.query;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -26,8 +27,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
-
-import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the graphical queries (read-only!) having a
@@ -69,7 +68,7 @@ public class DiagramDescriptionQuery {
      * @return the drop tools in the mapping hierarchy.
      */
     public Collection<PasteDescription> getAllPasteTools() {
-        Collection<PasteDescription> descs = Lists.newArrayList();
+        Collection<PasteDescription> descs = new ArrayList<>();
         for (final DiagramDescription diagHier : new SuperTypes(diagramDescription)) {
             descs.addAll(diagHier.getPasteDescriptions());
         }

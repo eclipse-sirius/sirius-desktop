@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.layout;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +21,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Computes the appropriate graphical locations of sequence events and lifelines
@@ -67,10 +68,10 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
     public AbstractSequenceOrderingLayout(SequenceDiagram sequenceDiagram) {
         super(sequenceDiagram);
 
-        this.semanticOrdering = Lists.newArrayList();
-        this.graphicalOrdering = Lists.newArrayList();
-        this.flaggedEnds = Lists.newArrayList();
-        this.oldFlaggedLayoutData = Maps.newHashMap();
+        this.semanticOrdering = new ArrayList<>();
+        this.graphicalOrdering = new ArrayList<>();
+        this.flaggedEnds = new ArrayList<>();
+        this.oldFlaggedLayoutData = new HashMap<>();
     }
 
     /**

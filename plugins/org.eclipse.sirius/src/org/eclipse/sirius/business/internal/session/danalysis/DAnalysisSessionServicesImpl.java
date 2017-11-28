@@ -50,7 +50,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 /**
  * The session services for DAnalysis.
@@ -101,7 +100,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     }
 
     private Collection<DRepresentation> getAllRepresentations(final Collection<DAnalysis> analysisAndReferenced) {
-        final Collection<DRepresentation> representations = Lists.newArrayList();
+        final Collection<DRepresentation> representations = new ArrayList<>();
         for (DAnalysis analysis : analysisAndReferenced) {
             for (final DView view : analysis.getOwnedViews()) {
                 representations.addAll(new DViewQuery(view).getLoadedRepresentations());
@@ -111,7 +110,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     }
 
     private void clearGMFDiagramsData(final EObject associatedInstance, final Collection<Resource> resources, Collection<DAnalysis> analysisAndReferenced) {
-        final Collection<EObject> toRemove = Lists.newArrayList();
+        final Collection<EObject> toRemove = new ArrayList<>();
         for (final Resource res : resources) {
             toRemove.addAll(getGMFDiagramsData(associatedInstance, res));
         }
@@ -152,7 +151,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     }
 
     private Collection<EObject> getCustomKeyData(Collection<Resource> resources) {
-        final Collection<EObject> datas = Lists.newArrayList();
+        final Collection<EObject> datas = new ArrayList<>();
         for (final Resource res : resources) {
             for (final EObject object : res.getContents()) {
                 if (object instanceof DAnalysisCustomData) {
@@ -207,7 +206,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     }
 
     private Collection<EObject> getRepresentationFromDescData(final EObject associatedInstance, Collection<DAnalysis> analysisAndReferenced) {
-        final Collection<EObject> datas = Lists.newArrayList();
+        final Collection<EObject> datas = new ArrayList<>();
         for (DAnalysis analysis : analysisAndReferenced) {
             for (final DView view : analysis.getOwnedViews()) {
                 final Iterator<DRepresentation> it = new DViewQuery(view).getLoadedRepresentations().iterator();
@@ -224,7 +223,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     }
 
     private Collection<EObject> getGMFDiagramsData(final EObject associatedInstance, Collection<Resource> resources) {
-        final Collection<EObject> datas = Lists.newArrayList();
+        final Collection<EObject> datas = new ArrayList<>();
         for (final Resource res : resources) {
             datas.addAll(getGMFDiagramsData(associatedInstance, res));
         }
@@ -232,7 +231,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     }
 
     private Collection<EObject> getGMFDiagramsData(final EObject representation) {
-        final Collection<EObject> datas = Lists.newArrayList();
+        final Collection<EObject> datas = new ArrayList<>();
         if (representation instanceof DRepresentation) {
             DRepresentation dRepresentation = (DRepresentation) representation;
             for (AnnotationEntry annotation : new DRepresentationQuery(dRepresentation).getAnnotation(CustomDataConstants.GMF_DIAGRAMS)) {
@@ -243,7 +242,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     }
 
     private Collection<EObject> getGMFDiagramsData(final EObject associatedInstance, final Resource res) {
-        final Collection<EObject> datas = Lists.newArrayList();
+        final Collection<EObject> datas = new ArrayList<>();
         for (final EObject object : res.getContents()) {
             if (isAGMFDiagramOnAssociatedInstance(object, associatedInstance)) {
                 datas.add(object);
@@ -253,8 +252,8 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     }
 
     private Collection<EObject> getFeatureExtensionsData(final EObject associatedInstance, Collection<Resource> resources) {
-        final Collection<EObject> datas = Lists.newArrayList();
-        Collection<Resource> allResources = Lists.newArrayList();
+        final Collection<EObject> datas = new ArrayList<>();
+        Collection<Resource> allResources = new ArrayList<>();
         allResources.addAll(resources);
         // We also need to looking for the data in the given associatedInstance resource. (srm file for instance)
         if (associatedInstance != null) {
@@ -310,7 +309,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     }
 
     private Collection<Resource> getResources(Collection<DAnalysis> analysisAndReferenced) {
-        final Collection<Resource> resources = Lists.newArrayList();
+        final Collection<Resource> resources = new ArrayList<>();
         for (DAnalysis analysis : analysisAndReferenced) {
             final Resource res = analysis.eResource();
             if (res != null) {

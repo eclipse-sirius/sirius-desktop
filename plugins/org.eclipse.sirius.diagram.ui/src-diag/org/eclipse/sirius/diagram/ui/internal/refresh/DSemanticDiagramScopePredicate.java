@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.refresh;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -18,7 +19,6 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.DiagramPackage;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Sets;
 
 /**
  * Pridicate to filter {@link Notification} concerning only the DSemanticDiagram
@@ -28,7 +28,7 @@ import com.google.common.collect.Sets;
  */
 public class DSemanticDiagramScopePredicate implements Predicate<Notification> {
 
-    private Set<EStructuralFeature> featureToContainDDiagramElements = Sets.newLinkedHashSet();
+    private Set<EStructuralFeature> featureToContainDDiagramElements = new LinkedHashSet<>();
 
     /**
      * Create the predicate.

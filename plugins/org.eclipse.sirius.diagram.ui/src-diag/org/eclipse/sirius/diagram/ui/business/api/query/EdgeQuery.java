@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.gmf.runtime.notation.ConnectorStyle;
@@ -20,8 +21,6 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-
-import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link Edge} as a
@@ -144,7 +143,7 @@ public class EdgeQuery {
      * @return the list of brothers
      */
     public List<Edge> getBrothersOnTreeOnTargetSide() {
-        List<Edge> brothers = Lists.newArrayList();
+        List<Edge> brothers = new ArrayList<>();
         for (Object brother : edge.getTarget().getTargetEdges()) {
             if (!edge.equals(brother) && brother instanceof Edge && new EdgeQuery((Edge) brother).usedTreeRouter()) {
                 brothers.add((Edge) brother);
@@ -160,7 +159,7 @@ public class EdgeQuery {
      * @return the list of brothers
      */
     public List<Edge> getBrothersOnTreeOnSourceSide() {
-        List<Edge> brothers = Lists.newArrayList();
+        List<Edge> brothers = new ArrayList<>();
         for (Object brother : edge.getSource().getSourceEdges()) {
             if (!edge.equals(brother) && brother instanceof Edge && new EdgeQuery((Edge) brother).usedTreeRouter()) {
                 brothers.add((Edge) brother);

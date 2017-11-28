@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.movida.registry;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -21,7 +22,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A {@link ViewpointResourceHandler} which handles all the resources handled by
@@ -32,7 +32,7 @@ import com.google.common.collect.Lists;
  * @author pierre-charles.david@obeo.fr
  */
 public class CompositeViewpointResourceHandler implements ViewpointResourceHandler {
-    private final List<ViewpointResourceHandler> handlers = Lists.newArrayList();
+    private final List<ViewpointResourceHandler> handlers = new ArrayList<>();
 
     /**
      * Registers a new {@link ViewpointResourceHandler}. Does nothing if it is

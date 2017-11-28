@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -66,7 +67,7 @@ public class ActionDisabledOnSequenceDiagramTest extends AbstractActionDisabledO
      *         fragment, a lost message, a found message.
      */
     protected Collection<SWTBotGefEditPart> getEditPartsToCheckDisabledActionsOn() {
-        Collection<SWTBotGefEditPart> partsToTest = Lists.newArrayList();
+        Collection<SWTBotGefEditPart> partsToTest = new ArrayList<>();
         // Retrieve instance role (do not retrieve the lifeline : it is not
         // selectable).
         partsToTest.add(instanceRoleEditPartBBot);
@@ -94,7 +95,7 @@ public class ActionDisabledOnSequenceDiagramTest extends AbstractActionDisabledO
      */
     @Override
     protected Collection<List<String>> getElementPathsToCheckNoEffectInWizard() {
-        Collection<List<String>> pathsToTest = Lists.newArrayList();
+        Collection<List<String>> pathsToTest = new ArrayList<>();
         // Retrieve instance role
         pathsToTest.add(Lists.newArrayList("Participant b"));
         // Retrieve lifeline

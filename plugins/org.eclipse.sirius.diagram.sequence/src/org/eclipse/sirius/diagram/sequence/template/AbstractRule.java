@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.template;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,7 +21,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * The base contract a transformation rule has :
@@ -131,7 +131,7 @@ public abstract class AbstractRule<F extends TTransformer, T extends EObject> im
      * @return a list of output elements having the expected type.
      */
     public static Collection<EObject> collectGeneratedElements(AbstractRule<?, ?> rule, EClass expected, List<? extends EObject> source) {
-        Collection<EObject> found = Lists.newArrayList();
+        Collection<EObject> found = new ArrayList<>();
         for (TTransformer srcElement : Iterables.filter(source, TTransformer.class)) {
             EObject transformed = rule.getEObject(srcElement, expected);
             if (transformed != null) {

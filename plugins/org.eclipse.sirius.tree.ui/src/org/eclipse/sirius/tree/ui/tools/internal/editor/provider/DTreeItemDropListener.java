@@ -11,7 +11,10 @@
 package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -52,8 +55,6 @@ import org.eclipse.swt.dnd.TransferData;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * Drop Listener used to validate and perform Drag and Drop operations on
@@ -71,12 +72,12 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
     /**
      * A cache memorizing the sources of the current dragAndDrop.
      */
-    private final Set<DSemanticDecorator> droppedData = Sets.newLinkedHashSet();
+    private final Set<DSemanticDecorator> droppedData = new LinkedHashSet<>();
 
     /**
      * A cache memorizing the semantic sources of the current dragAndDrop.
      */
-    private final Map<EObject, TreeItemContainerDropTool> semanticDroppedData = Maps.newLinkedHashMap();
+    private final Map<EObject, TreeItemContainerDropTool> semanticDroppedData = new LinkedHashMap<>();
 
     /**
      * The cache value of the DnD target.
@@ -86,7 +87,7 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
     /**
      * The preceding siblings of the current DnD operation.
      */
-    private final Collection<DTreeItem> precedingSiblings = Lists.newArrayList();
+    private final Collection<DTreeItem> precedingSiblings = new ArrayList<>();
 
     /**
      * Creates a new DTreeItemDropListener.
@@ -502,7 +503,7 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
             }
         };
 
-        Collection<TreeItemContainerDropTool> availableTools = Lists.newArrayList();
+        Collection<TreeItemContainerDropTool> availableTools = new ArrayList<>();
         if (dropTarget instanceof DTree) {
             availableTools.addAll(((DTree) dropTarget).getDescription().getDropTools());
         } else if (dropTarget instanceof DTreeItem) {

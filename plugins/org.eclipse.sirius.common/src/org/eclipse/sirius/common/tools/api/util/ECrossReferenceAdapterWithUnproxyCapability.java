@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.util;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -23,9 +25,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.common.tools.internal.util.FastInverseCrossReferencesList;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * {@link ECrossReferenceAdapter} that provides the capability to resolve all proxy cross reference to a given resource.
@@ -68,7 +67,7 @@ public class ECrossReferenceAdapterWithUnproxyCapability extends SiriusCrossRefe
          * @return map of proxies with the URI as key.
          */
         public Map<URI, List<EObject>> getProxiesOf(URI resourceURI) {
-            Map<URI, List<EObject>> result = Maps.newHashMap();
+            Map<URI, List<EObject>> result = new HashMap<>();
             if (resourceURI != null) {
                 for (Iterator<EObject> iterator = keySet().iterator(); iterator.hasNext(); /* */) {
                     EObject eObject = iterator.next();
@@ -77,7 +76,7 @@ public class ECrossReferenceAdapterWithUnproxyCapability extends SiriusCrossRefe
                         if (resourceURI.equals(keyURI.trimFragment())) {
                             List<EObject> correspondingEObjects = result.get(keyURI);
                             if (correspondingEObjects == null) {
-                                correspondingEObjects = Lists.newArrayList();
+                                correspondingEObjects = new ArrayList<>();
                             }
                             correspondingEObjects.add(eObject);
                             result.put(keyURI, correspondingEObjects);

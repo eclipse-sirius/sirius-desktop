@@ -10,14 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite;
 
+import org.eclipse.sirius.tests.suite.common.AllCommonStandaloneTests;
+import org.eclipse.sirius.tests.suite.diagram.AllDiagramStandaloneTests;
+import org.eclipse.sirius.tests.suite.table.AllTableStandaloneTests;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-
-import org.eclipse.sirius.tests.suite.common.AllCommonStandaloneTests;
-import org.eclipse.sirius.tests.suite.diagram.AllDiagramStandaloneTests;
-import org.eclipse.sirius.tests.suite.table.AllTableStandaloneTests;
 
 /**
  * A test suite which contains only the standalone JUnit tests which do not

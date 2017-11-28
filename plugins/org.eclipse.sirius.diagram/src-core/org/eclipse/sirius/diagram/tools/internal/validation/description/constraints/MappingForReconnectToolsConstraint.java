@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.validation.description.constraints;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
@@ -27,8 +29,6 @@ import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Checks that a {@link ReconnectEdgeDescription} tool does not reference Region
@@ -68,7 +68,7 @@ public class MappingForReconnectToolsConstraint extends AbstractModelConstraint 
             }
         };
 
-        Collection<EdgeMapping> edgeToRegions = Sets.newLinkedHashSet();
+        Collection<EdgeMapping> edgeToRegions = new LinkedHashSet<>();
         for (EdgeMapping em : tool.getMappings()) {
             if (tool.getReconnectionKind() == ReconnectionKind.RECONNECT_SOURCE_LITERAL || tool.getReconnectionKind() == ReconnectionKind.RECONNECT_BOTH_LITERAL) {
                 if (Iterables.any(Iterables.filter(em.getSourceMapping(), ContainerMapping.class), isRegionMapping)) {
@@ -83,7 +83,7 @@ public class MappingForReconnectToolsConstraint extends AbstractModelConstraint 
             }
         }
 
-        Collection<String> mappingsLabel = Lists.newArrayList();
+        Collection<String> mappingsLabel = new ArrayList<>();
         for (EdgeMapping mapping : edgeToRegions) {
             mappingsLabel.add(new IdentifiedElementQuery(mapping).getLabel());
         }

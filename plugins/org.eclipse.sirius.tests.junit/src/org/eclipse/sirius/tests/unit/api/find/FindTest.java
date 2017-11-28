@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.find;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -21,8 +22,6 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
-import com.google.common.collect.Sets;
 
 public class FindTest extends SiriusDiagramTestCase {
 
@@ -71,7 +70,7 @@ public class FindTest extends SiriusDiagramTestCase {
 
     private Set<Object> search(final String text) {
         engine.initFind(text);
-        Set<Object> result = Sets.newHashSet();
+        Set<Object> result = new HashSet<>();
         Object found = engine.getNext();
         while (found != null && !result.contains(found)) {
             result.add(found);

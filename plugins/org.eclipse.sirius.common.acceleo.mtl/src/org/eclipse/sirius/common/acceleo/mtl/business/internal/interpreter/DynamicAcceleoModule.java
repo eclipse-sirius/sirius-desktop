@@ -131,7 +131,7 @@ public class DynamicAcceleoModule {
      * example, EPackages located in the workspace, which code has not been
      * generated yet), they can be registered through this.
      */
-    private Set<EPackage> additionalEPackages = Sets.newLinkedHashSet();
+    private Set<EPackage> additionalEPackages = new LinkedHashSet<>();
 
     /**
      * Remembers the result of the last compilation. This will be reset to
@@ -368,7 +368,7 @@ public class DynamicAcceleoModule {
             expressionBuffer.append(buildImportDeclarations(context.getDependencies().keySet()));
         }
         if (context.getExtendedDependencies() != null) {
-            final Set<String> oclNamespaceImport = Sets.newLinkedHashSet();
+            final Set<String> oclNamespaceImport = new LinkedHashSet<>();
             for (ModuleDescriptor descriptor : context.getExtendedDependencies()) {
                 oclNamespaceImport.add(descriptor.getQualifiedName());
             }
@@ -712,7 +712,7 @@ public class DynamicAcceleoModule {
      * @return The set of all of the compiled dependencies URIs.
      */
     public Set<URI> compileExtendedDependencies(CompilationContext context, ResourceSet targetResourceSet) {
-        final Set<URI> extendedDependenciesURIs = Sets.newLinkedHashSet();
+        final Set<URI> extendedDependenciesURIs = new LinkedHashSet<>();
 
         for (ModuleDescriptor extended : context.getExtendedDependencies()) {
             ModuleDescriptor actualModule = extended;

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -28,7 +29,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 /**
  * Represents the LostMEssageEnd marker which can appear at at the end of a
  * message. This element can be present if a message do not have a starting end
@@ -60,7 +60,7 @@ public class LostMessageEnd extends AbstractSequenceNode {
                 result = result && Iterables.any(Iterables.concat(et.getIncomingEdges(), et.getOutgoingEdges()), Message.viewpointElementPredicate());
             }
 
-            List<Predicate<DDiagramElement>> potentialMessageTarget = Lists.newArrayList();
+            List<Predicate<DDiagramElement>> potentialMessageTarget = new ArrayList<>();
             potentialMessageTarget.add(EndOfLife.viewpointElementPredicate());
             potentialMessageTarget.add(AbstractNodeEvent.viewpointElementPredicate());
             potentialMessageTarget.add(Lifeline.viewpointElementPredicate());

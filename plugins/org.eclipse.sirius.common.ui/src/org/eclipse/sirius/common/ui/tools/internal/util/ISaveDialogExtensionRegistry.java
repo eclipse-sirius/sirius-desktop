@@ -11,12 +11,10 @@
 package org.eclipse.sirius.common.ui.tools.internal.util;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.ui.tools.api.util.ISaveDialogExtension;
 
@@ -33,7 +31,7 @@ public final class ISaveDialogExtensionRegistry {
     /**
      * The registered {@link ISaveDialogExtension}s.
      */
-    private static final Map<ISaveDialogExtension, Collection<ISaveDialogExtensionDescriptor>> EXTENSIONS = Maps.newHashMap();
+    private static final Map<ISaveDialogExtension, Collection<ISaveDialogExtensionDescriptor>> EXTENSIONS = new HashMap<>();
 
     /**
      * Utility classes don't need a default constructor.
@@ -71,7 +69,7 @@ public final class ISaveDialogExtensionRegistry {
      * @return A copy of the registered extensions list.
      */
     public static Collection<ISaveDialogExtensionDescriptor> getRegisteredExtensions() {
-        Set<ISaveDialogExtensionDescriptor> registeredExtensions = Sets.newHashSet();
+        Set<ISaveDialogExtensionDescriptor> registeredExtensions = new HashSet<>();
         for (Collection<ISaveDialogExtensionDescriptor> extensions : EXTENSIONS.values()) {
             registeredExtensions.addAll(extensions);
         }

@@ -12,7 +12,6 @@ package org.eclipse.sirius.tree.business.internal.refresh;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.description.TreeItemMapping;

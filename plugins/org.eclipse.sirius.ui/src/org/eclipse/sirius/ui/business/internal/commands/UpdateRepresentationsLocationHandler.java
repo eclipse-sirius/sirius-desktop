@@ -14,6 +14,7 @@ package org.eclipse.sirius.ui.business.internal.commands;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -47,8 +48,6 @@ import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.handlers.HandlerUtil;
-
-import com.google.common.collect.Lists;
 
 /**
  * The class will handle the Update representation location command from a project, a folder or an aird context menu.
@@ -91,7 +90,7 @@ public class UpdateRepresentationsLocationHandler extends AbstractHandler {
      * @return the collection of IFile with aird extension found
      */
     public static Collection<IFile> getAirdFiles(List<?> selection) {
-        Collection<IFile> files = Lists.newArrayList();
+        Collection<IFile> files = new ArrayList<>();
         selection.iterator().forEachRemaining(el -> {
             if (el instanceof IContainer) {
                 files.addAll(WorkspaceUtil.getFilesFromWorkspace(Collections.singleton((IContainer) el), SiriusUtil.SESSION_RESOURCE_EXTENSION));

@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +23,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManagerForSemanticElementsFactory;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Registry containing all layout data manager providers that have been parsed
@@ -36,7 +37,7 @@ public final class LayoutDataManagerRegistry {
     /**
      * The registered {@link LayoutDataManagerDescriptor}s.
      */
-    private static final Map<LayoutDataManagerDescriptor, SiriusLayoutDataManager> EXTENSIONS = Maps.newLinkedHashMap();
+    private static final Map<LayoutDataManagerDescriptor, SiriusLayoutDataManager> EXTENSIONS = new LinkedHashMap<>();
 
     /**
      * Utility classes don't need a default constructor.
@@ -118,7 +119,7 @@ public final class LayoutDataManagerRegistry {
      * @return a list of {@link SiriusLayoutDataManager} instances.
      */
     public static List<SiriusLayoutDataManager> getSiriusLayoutDataManagers(DDiagram diagram) {
-        List<SiriusLayoutDataManager> applicableManagers = Lists.newArrayList();
+        List<SiriusLayoutDataManager> applicableManagers = new ArrayList<>();
         for (LayoutDataManagerDescriptor descriptor : getRegisteredExtensions()) {
             ILayoutDataManagerProvider provider = descriptor.getLayoutDataManagerProvider();
             if (provider != null && provider.provides(diagram)) {
@@ -143,7 +144,7 @@ public final class LayoutDataManagerRegistry {
      * @return a list of {@link SiriusLayoutDataManager} instances.
      */
     public static List<SiriusLayoutDataManager> getAllSiriusLayoutDataManagers() {
-        List<SiriusLayoutDataManager> applicableManagers = Lists.newArrayList();
+        List<SiriusLayoutDataManager> applicableManagers = new ArrayList<>();
         for (LayoutDataManagerDescriptor descriptor : getRegisteredExtensions()) {
             ILayoutDataManagerProvider provider = descriptor.getLayoutDataManagerProvider();
             if (provider != null) {

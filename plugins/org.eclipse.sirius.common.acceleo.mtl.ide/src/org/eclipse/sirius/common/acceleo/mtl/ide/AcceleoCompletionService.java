@@ -10,10 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.ide;
 
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -34,6 +31,9 @@ import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.Dynam
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement.ImageKind;
+
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 
 /**
  * Service to provide completion for the Acceleo MTL interpreter.
@@ -80,7 +80,7 @@ public class AcceleoCompletionService {
      * @return a list of {@link ContentProposal}
      */
     public synchronized List<ContentProposal> getProposals(String contextText, int cursorPosition, String moduleElementName) {
-        List<ContentProposal> proposals = Lists.newArrayList();
+        List<ContentProposal> proposals = new ArrayList<>();
 
         AcceleoSourceContent src = new AcceleoSourceContent() {
             {
@@ -177,7 +177,7 @@ public class AcceleoCompletionService {
     }
 
     private List<URI> getDeclaredImports() {
-        List<URI> accessibleOutputFiles = Lists.newArrayList();
+        List<URI> accessibleOutputFiles = new ArrayList<>();
         if (dependencies != null) {
             Iterables.addAll(accessibleOutputFiles, Iterables.filter(dependencies, Predicates.notNull()));
         }

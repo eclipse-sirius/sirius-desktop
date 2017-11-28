@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -60,7 +61,6 @@ import org.eclipse.ui.part.FileEditorInput;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * An {@link EditingSession} is responsible of keeping track of the opened editors on a given model and cleaning stuffs
@@ -164,7 +164,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     }
 
     private void reorderEditorsIfNeeded(ISiriusEditor justAddedEditor) {
-        List<ISiriusEditor> reorderedList = Lists.newArrayList();
+        List<ISiriusEditor> reorderedList = new ArrayList<>();
         IEditorReference[] editorReferences = null;
 
         IWorkbenchPage page = EclipseUIUtil.getActivePage();
@@ -482,7 +482,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
      */
     private class NeedSaveOnCloseDetector {
 
-        private Set<IEditorPart> closingEditors = Sets.newHashSet();
+        private Set<IEditorPart> closingEditors = new HashSet<>();
 
         /**
          * 
@@ -538,7 +538,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
          */
         public void reInit() {
             closingEditors.clear();
-            closingEditors = Sets.newHashSet();
+            closingEditors = new HashSet<>();
         }
 
     }

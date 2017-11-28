@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.operations;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.business.internal.helper.task.operations.AbstractOperationTask;
@@ -28,6 +26,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 import com.google.common.collect.Lists;
+
+import junit.framework.TestCase;
 
 /**
  * Test elementary operations.

@@ -13,28 +13,25 @@ package org.eclipse.sirius.business.api.action;
 import java.util.Collection;
 import java.util.Map;
 import java.util.SortedMap;
+import java.util.TreeMap;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 
 import com.google.common.base.Function;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
 /**
- * An action designed to help debugging VSMs by dumping on <code>stdout</code>
- * all the variables accessible to model operations at the invocation point.
+ * An action designed to help debugging VSMs by dumping on <code>stdout</code> all the variables accessible to model
+ * operations at the invocation point.
  * <p>
  * Action parameters:
  * <ul>
- * <li><code>title</code>: an optional header <code>String</code> to print
- * before the list of variables, for example to distinguish different uses of
- * this action in the same VSM.</li>
- * <li><code>enabled</code>: an optional <code>boolean</code> (defaults to
- * <code>true</code>) to indicate if the action should be executed or not. This
- * is useful to quickly enable/disable an action with minimal editing of the
- * VSM.</li>
+ * <li><code>title</code>: an optional header <code>String</code> to print before the list of variables, for example to
+ * distinguish different uses of this action in the same VSM.</li>
+ * <li><code>enabled</code>: an optional <code>boolean</code> (defaults to <code>true</code>) to indicate if the action
+ * should be executed or not. This is useful to quickly enable/disable an action with minimal editing of the VSM.</li>
  * </ul>
  * 
  * @author pcdavid
@@ -55,8 +52,7 @@ public class PrintInterpreterVariablesAction extends AbstractExternalJavaAction 
     }
 
     /**
-     * Expects at least one {@link EObject} in the selection, to obtain the
-     * corresponding interpreter.
+     * Expects at least one {@link EObject} in the selection, to obtain the corresponding interpreter.
      * <p>
      * {@inheritDoc}
      */
@@ -75,7 +71,7 @@ public class PrintInterpreterVariablesAction extends AbstractExternalJavaAction 
     private SortedMap<String, Object> getSortedVariables(Collection<? extends EObject> selections) {
         EObject context = selections.iterator().next();
         IInterpreter interpreter = InterpreterUtil.getInterpreter(context);
-        SortedMap<String, Object> allVariables = Maps.newTreeMap(Ordering.natural());
+        SortedMap<String, Object> allVariables = new TreeMap<>(Ordering.natural());
         allVariables.putAll(interpreter.getVariables());
         allVariables.put("self", context); //$NON-NLS-1$
         return allVariables;

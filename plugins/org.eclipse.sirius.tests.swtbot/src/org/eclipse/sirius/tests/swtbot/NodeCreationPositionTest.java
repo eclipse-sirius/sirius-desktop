@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -56,8 +57,6 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-
-import com.google.common.collect.Lists;
 
 /**
  * Tests
@@ -659,7 +658,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * 
      */
     private void checkAdapters() {
-        List<View> result = Lists.newArrayList();
+        List<View> result = new ArrayList<>();
         View diagramView = (View) editor.mainEditPart().part().getModel();
         for (Object view : diagramView.getChildren()) {
             if (view instanceof View && hasAdapter(((View) view))) {
@@ -676,7 +675,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * @param view
      */
     private List<View> checkAdaptersRec(View containerView) {
-        List<View> result = Lists.newArrayList();
+        List<View> result = new ArrayList<>();
         for (Object view : containerView.getChildren()) {
             if (view instanceof View && hasAdapter(((View) view))) {
                 result.add((View) view);

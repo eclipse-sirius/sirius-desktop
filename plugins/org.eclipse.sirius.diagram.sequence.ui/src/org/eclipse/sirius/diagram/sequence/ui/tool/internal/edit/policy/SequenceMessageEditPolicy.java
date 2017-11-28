@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -111,7 +112,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
      */
     private static final Color MESSAGE_FEEDBACK_COLOR = ColorConstants.lightGray;
 
-    private final Collection<Figure> guides = Lists.newArrayList();
+    private final Collection<Figure> guides = new ArrayList<>();
 
     /**
      * Saves the validation status of the command on bendpoint move.

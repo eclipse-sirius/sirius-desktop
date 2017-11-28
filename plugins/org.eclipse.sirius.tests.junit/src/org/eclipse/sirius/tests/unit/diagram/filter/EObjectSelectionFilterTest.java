@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.filter;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.ENamedElement;
@@ -24,6 +22,8 @@ import org.eclipse.sirius.common.ui.tools.api.selection.page.EObjectSelectionFil
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+
+import junit.framework.TestCase;
 
 /**
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>

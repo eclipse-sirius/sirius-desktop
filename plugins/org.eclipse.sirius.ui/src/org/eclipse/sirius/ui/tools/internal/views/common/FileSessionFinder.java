@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -24,8 +26,6 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Utility class to extract session from selection.
@@ -49,7 +49,7 @@ public final class FileSessionFinder {
      * @return list of session associated to selection
      */
     public static List<Session> getSelectedSessions(final Collection<?> listObject) {
-        final List<Session> selectedSessions = Lists.newArrayList();
+        final List<Session> selectedSessions = new ArrayList<>();
 
         if (listObject == null) {
             return selectedSessions;
@@ -92,7 +92,7 @@ public final class FileSessionFinder {
      * @return list of session associated to the given files.
      */
     public static List<Session> getRelatedSessions(final Collection<IFile> files, boolean lookFromSemanticAndControlled, boolean getOnlyMainSessionForNoModelingProject) {
-        final List<Session> selectedSessions = Lists.newArrayList();
+        final List<Session> selectedSessions = new ArrayList<>();
 
         if (files == null) {
             return selectedSessions;
@@ -113,7 +113,7 @@ public final class FileSessionFinder {
      * Get session linked to an aird or transient session linked to its semantic resource.
      */
     private static Collection<Session> getSessionFromFile(IFile file, boolean lookFromSemanticAndControlled, boolean getOnlyMainSessionForNoModelingProject) {
-        Collection<Session> sessions = Sets.newLinkedHashSet();
+        Collection<Session> sessions = new LinkedHashSet<>();
         boolean lookForTransientSession = !SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(file.getFileExtension());
         URI fileURI = getFileUri(file);
         for (Session session : SessionManager.INSTANCE.getSessions()) {

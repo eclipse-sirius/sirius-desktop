@@ -14,6 +14,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -27,8 +29,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * @author pierre-charles.david@obeo.fr
@@ -36,7 +36,7 @@ import com.google.common.collect.Sets;
 public class DependencyTrackingTest {
     private final Relation<EClass> deps = new Relation<EClass>() {
         public Set<EClass> apply(EClass from) {
-            Set<EClass> result = Sets.newHashSet();
+            Set<EClass> result = new HashSet<>();
             for (EReference ref : Iterables.filter(from.getEStructuralFeatures(), EReference.class)) {
                 result.add((EClass) ref.getEType());
             }
@@ -46,7 +46,7 @@ public class DependencyTrackingTest {
 
     private EcoreFactory factory = EcoreFactory.eINSTANCE;
 
-    private Map<String, EClass> classes = Maps.newHashMap();
+    private Map<String, EClass> classes = new HashMap<>();
 
     @Before
     public void buildModel() {

@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.figure;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.Ellipse;
@@ -35,7 +36,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A figure to display a lock notification for the semantic element represented
@@ -235,7 +235,7 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
      */
     public static void removeNotification(DiagramRootEditPart rootEditPart) {
         final LayeredPane pane = (LayeredPane) rootEditPart.getLayer(LayerConstants.PRINTABLE_LAYERS);
-        List<IFigure> figuresToRemove = Lists.newArrayList();
+        List<IFigure> figuresToRemove = new ArrayList<>();
         // Collects notification figures that needs to be removed
         for (DiagramSemanticElementLockedNotificationFigure diagramSemanticElementLockedNotificationFigure : Iterables.filter(pane.getChildren(), DiagramSemanticElementLockedNotificationFigure.class)) {
             figuresToRemove.add(diagramSemanticElementLockedNotificationFigure);

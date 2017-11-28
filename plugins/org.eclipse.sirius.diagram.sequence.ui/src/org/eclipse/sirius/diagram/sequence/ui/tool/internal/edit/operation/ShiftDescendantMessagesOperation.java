@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -38,8 +39,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * This operation is called when an execution is moved or resized vertically. It
@@ -128,14 +127,14 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
      */
     @Override
     public Void execute() {
-        final Set<ISequenceEvent> descendants = Sets.newHashSet();
+        final Set<ISequenceEvent> descendants = new HashSet<>();
         populateMessageToShift(descendants);
 
         // Handle messages.
         super.execute();
 
         // Handle notes.
-        Set<Edge> allConnections = Sets.newHashSet();
+        Set<Edge> allConnections = new HashSet<>();
 
         Iterator<ISequenceEvent> iter = new ISequenceEventsTreeIterator(parent, true);
         while (iter.hasNext()) {
@@ -245,7 +244,7 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
             movedElements.add(parent);
         }
         // Finds compounds events of each ExecutionEditPart found in descendants
-        ArrayList<ISequenceEvent> compoundEvents = Lists.newArrayList();
+        ArrayList<ISequenceEvent> compoundEvents = new ArrayList<>();
         for (AbstractNodeEvent eep : Iterables.filter(descendants, AbstractNodeEvent.class)) {
             compoundEvents.addAll(EventEndHelper.getCompoundEvents(eep));
         }

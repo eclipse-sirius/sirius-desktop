@@ -10,10 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.tree;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import junit.framework.TestCase;
 
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -25,6 +24,8 @@ import org.eclipse.sirius.synchronizer.SemanticPartition;
 import org.junit.Assert;
 
 import com.google.common.collect.Lists;
+
+import junit.framework.TestCase;
 
 public class MappingHierarchyTableTest extends TestCase {
 
@@ -116,7 +117,7 @@ public class MappingHierarchyTableTest extends TestCase {
         }
 
         public List<Mapping> getChildMappings() {
-            return Lists.newArrayList();
+            return new ArrayList<>();
         }
 
         public boolean isEnabled() {

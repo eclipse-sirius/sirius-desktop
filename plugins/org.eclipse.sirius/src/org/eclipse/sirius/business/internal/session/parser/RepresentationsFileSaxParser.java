@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,8 +27,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.xml.sax.SAXException;
-
-import com.google.common.collect.Sets;
 
 /**
  * A parser to collect shortly some informations in representations file.
@@ -43,7 +42,7 @@ public class RepresentationsFileSaxParser {
 
     private final URI representationsFileURI;
 
-    private Set<URI> referencedAnalysis = Sets.newLinkedHashSet();
+    private Set<URI> referencedAnalysis = new LinkedHashSet<>();
 
     /**
      * Constructor.

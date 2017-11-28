@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.contribution;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -20,7 +21,6 @@ import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import com.google.common.collect.Maps;
 
 /**
  * A matcher that uses logical identifiers to match elements from two different
@@ -68,7 +68,7 @@ public class IdentifierBasedMatcher implements Matcher {
     }
 
     private Map<Object, EObject> computeIds(Iterable<EObject> elements) {
-        Map<Object, EObject> result = Maps.newHashMap();
+        Map<Object, EObject> result = new HashMap<>();
         for (EObject obj : elements) {
             result.put(idFunction.apply(obj), obj);
         }

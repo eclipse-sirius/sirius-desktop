@@ -12,9 +12,8 @@ package org.eclipse.sirius.table.ui.tools.internal.commands;
 
 import java.util.Comparator;
 
-import org.eclipse.swt.SWT;
-
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
+import org.eclipse.swt.SWT;
 
 /**
  * An abstract {@link Comparator} for {@link DTableElement}s.

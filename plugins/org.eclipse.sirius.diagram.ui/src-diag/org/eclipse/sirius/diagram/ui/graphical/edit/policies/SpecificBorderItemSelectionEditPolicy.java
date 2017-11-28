@@ -77,8 +77,6 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * The specific
@@ -204,7 +202,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
         if (result instanceof Map<?, ?>) {
             return (Map<DDiagramElement, Point>) result;
         } else {
-            return Maps.newHashMap();
+            return new HashMap<>();
         }
     }
 
@@ -699,7 +697,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      * @return list of all figure that will be moved
      */
     protected List<IFigure> getFiguresToIgnore(final ChangeBoundsRequest request) {
-        List<IFigure> figuresToIgnore = Lists.newArrayList();
+        List<IFigure> figuresToIgnore = new ArrayList<>();
         for (Object part : request.getEditParts()) {
             if (part instanceof org.eclipse.gef.GraphicalEditPart) {
                 figuresToIgnore.add(((org.eclipse.gef.GraphicalEditPart) part).getFigure());

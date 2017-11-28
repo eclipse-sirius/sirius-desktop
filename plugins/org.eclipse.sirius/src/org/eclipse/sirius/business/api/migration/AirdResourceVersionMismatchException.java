@@ -7,9 +7,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.migration;
 
+import java.util.ArrayList;
 import java.util.Collection;
-
-import com.google.common.collect.Lists;
 
 /**
  * A {@link RuntimeException} used when the VSM version is more recent than the
@@ -21,7 +20,7 @@ public class AirdResourceVersionMismatchException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    private final Collection<ResourceVersionMismatchDiagnostic> diagnostics = Lists.newArrayList();
+    private final Collection<ResourceVersionMismatchDiagnostic> diagnostics = new ArrayList<>();
 
     /**
      * Default constructor.

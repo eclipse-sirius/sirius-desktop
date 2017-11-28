@@ -11,7 +11,6 @@
 package org.eclipse.sirius.ecore.extender.business.internal.permission;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionProvider;
 

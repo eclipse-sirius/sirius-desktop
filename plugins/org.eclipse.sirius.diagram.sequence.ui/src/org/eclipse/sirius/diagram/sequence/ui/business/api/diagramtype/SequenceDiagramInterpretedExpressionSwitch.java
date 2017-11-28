@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -25,8 +26,6 @@ import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescriptio
 import org.eclipse.sirius.diagram.sequence.description.util.DescriptionSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-
-import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -93,7 +92,7 @@ public class SequenceDiagramInterpretedExpressionSwitch extends DescriptionSwitc
         if (doSwitch != null) {
             return doSwitch;
         }
-        Collection<String> defaultResult = Sets.newLinkedHashSet();
+        Collection<String> defaultResult = new LinkedHashSet<>();
         return Options.newSome(defaultResult);
     }
 
@@ -126,7 +125,7 @@ public class SequenceDiagramInterpretedExpressionSwitch extends DescriptionSwitc
         switch (getFeatureId(DescriptionPackage.eINSTANCE.getSequenceDiagramDescription())) {
         case DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING:
         case DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING:
-            Collection<String> target = Sets.newLinkedHashSet();
+            Collection<String> target = new LinkedHashSet<>();
             target.add(object.getDomainClass());
             result = Options.newSome(target);
             break;
@@ -145,7 +144,7 @@ public class SequenceDiagramInterpretedExpressionSwitch extends DescriptionSwitc
         switch (getFeatureId(DescriptionPackage.eINSTANCE.getDelimitedEventMapping())) {
         case DescriptionPackage.DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION:
         case DescriptionPackage.DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION:
-            Collection<String> target = Sets.newLinkedHashSet();
+            Collection<String> target = new LinkedHashSet<>();
             // LEt the global swith return the same types than precondition.
             Option<Collection<String>> types = globalSwitch.doSwitch(object, false);
             if (types.some()) {
@@ -169,7 +168,7 @@ public class SequenceDiagramInterpretedExpressionSwitch extends DescriptionSwitc
         case DescriptionPackage.FRAME_MAPPING__CENTER_LABEL_EXPRESSION:
         case DescriptionPackage.FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION:
         case DO_NOT_CONSIDER_FEATURE:
-            Collection<String> target = Sets.newLinkedHashSet();
+            Collection<String> target = new LinkedHashSet<>();
             target.add(object.getDomainClass());
             result = Options.newSome(target);
             break;
@@ -188,7 +187,7 @@ public class SequenceDiagramInterpretedExpressionSwitch extends DescriptionSwitc
         switch (getFeatureId(DescriptionPackage.eINSTANCE.getMessageMapping())) {
         case DescriptionPackage.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION:
         case DescriptionPackage.MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION:
-            Collection<String> target = Sets.newLinkedHashSet();
+            Collection<String> target = new LinkedHashSet<>();
             // LEt the global swith return the same types than precondition.
             Option<Collection<String>> types = globalSwitch.doSwitch(object, false);
             if (types.some()) {
@@ -210,7 +209,7 @@ public class SequenceDiagramInterpretedExpressionSwitch extends DescriptionSwitc
         Option<Collection<String>> result = null;
         switch (getFeatureId(DescriptionPackage.eINSTANCE.getReturnMessageMapping())) {
         case DescriptionPackage.RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION:
-            Collection<String> target = Sets.newLinkedHashSet();
+            Collection<String> target = new LinkedHashSet<>();
             // LEt the global switch return the same types than precondition.
             Option<Collection<String>> types = globalSwitch.doSwitch(object, false);
             if (types.some()) {

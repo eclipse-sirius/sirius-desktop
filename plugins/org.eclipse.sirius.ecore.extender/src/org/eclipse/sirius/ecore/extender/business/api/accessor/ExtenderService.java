@@ -20,7 +20,6 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.sirius.ecore.extender.business.internal.common.AbstractProviderDescriptor;
 import org.eclipse.sirius.ecore.extender.business.internal.common.ExtenderProviderDescriptor;
 

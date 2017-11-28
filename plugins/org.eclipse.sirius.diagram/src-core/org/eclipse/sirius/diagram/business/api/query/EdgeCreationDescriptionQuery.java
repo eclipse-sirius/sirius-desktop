@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.query;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -17,8 +18,6 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.DMappingBased;
-
-import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -53,8 +52,8 @@ public class EdgeCreationDescriptionQuery {
      *         target checking the mapping consistency.
      */
     public boolean canCreate(DMappingBased source, DMappingBased target) {
-        Collection<DiagramElementMapping> sources = Lists.newArrayList();
-        Collection<DiagramElementMapping> targets = Lists.newArrayList();
+        Collection<DiagramElementMapping> sources = new ArrayList<>();
+        Collection<DiagramElementMapping> targets = new ArrayList<>();
         for (EdgeMapping edge : tool.getEdgeMappings()) {
             sources.addAll(edge.getSourceMapping());
             targets.addAll(edge.getTargetMapping());
@@ -117,7 +116,7 @@ public class EdgeCreationDescriptionQuery {
     }
 
     private Iterable<DiagramElementMapping> collectApplicableToolSourceMappings() {
-        Collection<DiagramElementMapping> sources = Lists.newArrayList();
+        Collection<DiagramElementMapping> sources = new ArrayList<>();
         for (EdgeMapping edge : tool.getEdgeMappings()) {
             sources.addAll(edge.getSourceMapping());
         }
@@ -126,7 +125,7 @@ public class EdgeCreationDescriptionQuery {
     }
 
     private Iterable<DiagramElementMapping> collectApplicableToolTargetMappings() {
-        Collection<DiagramElementMapping> targets = Lists.newArrayList();
+        Collection<DiagramElementMapping> targets = new ArrayList<>();
         for (EdgeMapping edge : tool.getEdgeMappings()) {
             targets.addAll(edge.getTargetMapping());
         }

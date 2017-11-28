@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.commands;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -43,7 +44,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * This command distributes shapes.<BR>
@@ -96,7 +96,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
         if (wrappedCommand == null) {
             wrappedCommand = new CompositeTransactionalCommand(getEditingDomain(), this.getLabel());
 
-            HashMap<IGraphicalEditPart, Rectangle> partToBounds = Maps.newHashMap();
+            HashMap<IGraphicalEditPart, Rectangle> partToBounds = new HashMap<>();
             for (IGraphicalEditPart part : editPartsToDistribute) {
                 Rectangle bounds = part.getFigure().getBounds().getCopy();
                 partToBounds.put(part, bounds);
@@ -572,8 +572,8 @@ public class DistributeCommand extends AbstractTransactionalCommand {
                 previousPartBounds = newBounds;
             }
         } else {
-            HashMap<IGraphicalEditPart, IFigure> partToFigureToIgnore = Maps.newHashMap();
-            List<IFigure> additionalFiguresForConflictsDetection = Lists.newArrayList();
+            HashMap<IGraphicalEditPart, IFigure> partToFigureToIgnore = new HashMap<>();
+            List<IFigure> additionalFiguresForConflictsDetection = new ArrayList<>();
             for (IGraphicalEditPart editPart : partsToMove) {
                 partToFigureToIgnore.put(editPart, editPart.getFigure());
             }

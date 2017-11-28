@@ -209,7 +209,7 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
 
     protected static final String[][] ENCODED_CHARS = { { " ", "__" } };
 
-    protected final List<IEditorPart> editorParts = Lists.newArrayList();
+    protected final List<IEditorPart> editorParts = new ArrayList<>();
 
     protected static final double LOW_ZOOM_LEVEL = 0.50;
 
@@ -256,7 +256,7 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
 
     protected List<Diagram> openAllDiagramsInRepresentation(final Representation representation, boolean rawFiltered) {
 
-        final List<Diagram> result = Lists.newArrayList();
+        final List<Diagram> result = new ArrayList<>();
 
         final List<DRepresentation> allDDiagrams = Lists.newArrayList(getRepresentations(representation.name));
 
@@ -348,7 +348,7 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
     }
 
     protected List<Diagram> getAndOpenAllDiagrams(boolean rawFiltered) {
-        final List<Diagram> result = Lists.newArrayList();
+        final List<Diagram> result = new ArrayList<>();
         for (final Representation representation : ALL_REPRESENTATIONS) {
             result.addAll(openAllDiagramsInRepresentation(representation, rawFiltered));
         }

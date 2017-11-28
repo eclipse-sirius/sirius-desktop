@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.actions.session;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,7 +29,6 @@ import org.eclipse.ui.actions.SelectionListenerAction;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Open a session and wanted diagram when double click on aird files.
@@ -111,7 +111,7 @@ public class OpenCloseSessionAction extends SelectionListenerAction {
     }
 
     private List<Session> getSelectedOpenedSessions(final Collection<IFile> selectedFiles) {
-        final Set<URI> selectedUris = Sets.newHashSet();
+        final Set<URI> selectedUris = new HashSet<>();
         // Look for opened session. Do not expose open actionfor already opened
         // session.
         for (IFile selectedFile : selectedFiles) {
@@ -120,7 +120,7 @@ public class OpenCloseSessionAction extends SelectionListenerAction {
             }
         }
 
-        final Collection<Session> openedSession = Sets.newHashSet();
+        final Collection<Session> openedSession = new HashSet<>();
         for (Session session : SessionManager.INSTANCE.getSessions()) {
             if (session.isOpen()) {
                 for (Resource res : session.getAllSessionResources()) {

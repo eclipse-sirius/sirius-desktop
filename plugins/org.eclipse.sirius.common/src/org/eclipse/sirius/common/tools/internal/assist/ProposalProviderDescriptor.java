@@ -10,11 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.assist;
 
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 
 /**
  * Describes a proposal provider as contributed to the extension point.

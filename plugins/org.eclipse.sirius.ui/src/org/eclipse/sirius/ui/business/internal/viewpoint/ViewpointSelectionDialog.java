@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -287,7 +288,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         // CHECKSTYLE:ON
 
         // clone the selection in order to modify it
-        final SortedMap<Viewpoint, Boolean> newSelection = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+        final SortedMap<Viewpoint, Boolean> newSelection = new TreeMap<>(new ViewpointRegistry.ViewpointComparator());
         newSelection.putAll(Preconditions.checkNotNull(selection));
         this.selection = newSelection;
 

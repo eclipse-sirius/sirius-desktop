@@ -12,6 +12,8 @@ package org.eclipse.sirius.common.ui.tools.api.find;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.common.tools.api.find.AbstractFindLabelEngine;
+import org.eclipse.sirius.common.tools.api.find.FindMessages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -25,9 +27,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.sirius.common.tools.api.find.AbstractFindLabelEngine;
-import org.eclipse.sirius.common.tools.api.find.FindMessages;
 
 /**
  * An Abstract class that define a "Find" dialog for a GraphicalEditor.

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.format.data;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
@@ -36,7 +37,6 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
 
 /**
  * Test class for {@link SiriusFormatDataManagerForSemanticElements}.
@@ -100,7 +100,7 @@ public class SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTe
         // We could use @Theories and @Datapoints but the theory stops as soon
         // as there is a failure. With parameters, we have feedback for all
         // scenarii.
-        Collection<Object[]> data = Lists.newArrayList();
+        Collection<Object[]> data = new ArrayList<>();
         for (Representation copyRep : ALL_REPRESENTATIONS) {
             for (Representation pasteRep : ALL_REPRESENTATIONS) {
                 for (double[] copyZoomData : ALL_ZOOM_DATA) {

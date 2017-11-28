@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -186,13 +187,13 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
 
     private void refreshSemantic() {
         if (gmfDiagram != null && gmfDiagram.getElement() != null) {
-            final Set<View> createdNodeViews = Sets.newLinkedHashSet();
+            final Set<View> createdNodeViews = new LinkedHashSet<>();
             createdNodeViews.addAll(refreshSemanticChildren(gmfDiagram, gmfDiagram.getElement()));
             for (final Object object : gmfDiagram.getChildren()) {
                 createdNodeViews.addAll(refreshSemantic((View) object));
             }
 
-            final Set<Edge> createdConnectionViews = Sets.newLinkedHashSet();
+            final Set<Edge> createdConnectionViews = new LinkedHashSet<>();
             createdConnectionViews.addAll(refreshConnections(gmfDiagram));
 
             Set<View> createdViews = Sets.union(createdNodeViews, createdConnectionViews);

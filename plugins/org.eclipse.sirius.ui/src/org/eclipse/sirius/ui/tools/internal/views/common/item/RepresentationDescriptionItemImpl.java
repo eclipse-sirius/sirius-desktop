@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.item;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -27,7 +28,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Function;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 
 /**
@@ -176,7 +176,7 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
         // get all DRepresentationDescriptor of the Session
         Collection<DRepresentationDescriptor> repDescriptorsCandidates = DialectManager.INSTANCE.getRepresentationDescriptors(representationDescription, session);
 
-        List<RepresentationItemImpl> representations = Lists.newArrayList();
+        List<RepresentationItemImpl> representations = new ArrayList<>();
         if (filterForResource) {
             for (final DRepresentationDescriptor repDescriptor : repDescriptorsCandidates) {
                 Resource representationResource = repDescriptor.eResource();

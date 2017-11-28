@@ -32,7 +32,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 
 /**
@@ -55,9 +54,9 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
 
     private static final Pattern SPLIT_PATTERN = Pattern.compile("[(,)]"); //$NON-NLS-1$
 
-    private final Map<Object, Object> properties = Maps.newHashMap();
+    private final Map<Object, Object> properties = new HashMap<>();
 
-    private final Map<String, PolymorphicService> services = Maps.newHashMap();
+    private final Map<String, PolymorphicService> services = new HashMap<>();
 
     /**
      * Used to retrieve the services instances we create so that we can

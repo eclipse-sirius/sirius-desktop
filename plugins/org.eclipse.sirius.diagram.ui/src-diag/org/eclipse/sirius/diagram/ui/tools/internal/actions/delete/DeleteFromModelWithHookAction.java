@@ -13,7 +13,9 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.delete;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -59,7 +61,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Delete Action which can call hooks.
@@ -150,7 +151,7 @@ public class DeleteFromModelWithHookAction extends DeleteFromModelAction {
 
     private Collection<DSemanticDecorator> computeSelections() {
 
-        final Set<DSemanticDecorator> diagramElements = Sets.newLinkedHashSet();
+        final Set<DSemanticDecorator> diagramElements = new LinkedHashSet<>();
         final List<?> operationSet = getOperationSet();
         for (IGraphicalEditPart gEditPart : Iterables.filter(operationSet, IGraphicalEditPart.class)) {
             final View view = (View) gEditPart.getModel();
@@ -180,7 +181,7 @@ public class DeleteFromModelWithHookAction extends DeleteFromModelAction {
     private boolean canExecute() {
         List<?> operationSet = getOperationSet();
         Iterator<EditPart> editParts = Iterables.filter(operationSet, EditPart.class).iterator();
-        Collection<DDiagramElement> potentialDeletion = Sets.newHashSet();
+        Collection<DDiagramElement> potentialDeletion = new HashSet<>();
         boolean delete = editParts.hasNext();
         while (editParts.hasNext() && delete) {
             EditPart editPart = editParts.next();

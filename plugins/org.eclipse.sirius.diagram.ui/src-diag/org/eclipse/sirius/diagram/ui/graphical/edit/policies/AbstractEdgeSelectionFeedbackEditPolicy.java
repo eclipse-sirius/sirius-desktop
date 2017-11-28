@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.BendpointLocator;
@@ -35,8 +36,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPa
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabelWithAttachment;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
-
-import com.google.common.collect.Lists;
 
 /**
  * An abstract edit policy to handle feedback for selection of
@@ -97,7 +96,7 @@ public abstract class AbstractEdgeSelectionFeedbackEditPolicy extends SelectionH
      */
     @Override
     protected List<Handle> createSelectionHandles() {
-        final List<Handle> list = Lists.newArrayList();
+        final List<Handle> list = new ArrayList<>();
 
         list.addAll(createNameSelectionHandles());
 
@@ -148,7 +147,7 @@ public abstract class AbstractEdgeSelectionFeedbackEditPolicy extends SelectionH
      * @return list of handles corresponding to the name figure
      */
     protected List<Handle> createNameSelectionHandles() {
-        final List<Handle> list = Lists.newArrayList();
+        final List<Handle> list = new ArrayList<>();
         for (final AbstractDiagramNameEditPart edgeNameEditPart : getEdgeNameEditPart()) {
             if (edgeNameEditPart != null && !StringUtil.isEmpty(edgeNameEditPart.getEditText())) {
                 list.add(new MoveHandle(edgeNameEditPart) {

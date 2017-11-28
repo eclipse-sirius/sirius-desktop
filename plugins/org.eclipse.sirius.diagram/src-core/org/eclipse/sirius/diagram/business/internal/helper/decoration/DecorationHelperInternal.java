@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.helper.decoration;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -257,7 +258,7 @@ public final class DecorationHelperInternal {
      */
     public void computeDecorations(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration,
             final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration) {
-        final List<Layer> activatedLayers = Lists.newArrayList();
+        final List<Layer> activatedLayers = new ArrayList<>();
         activatedLayers.addAll(diagram.getActivatedLayers());
         activatedLayers.addAll(diagram.getActivatedTransientLayers());
 

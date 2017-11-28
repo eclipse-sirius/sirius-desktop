@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task.operations;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -29,7 +30,6 @@ import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
 
 /**
  * An Switch task.
@@ -79,7 +79,7 @@ public class SwitchTask extends AbstractOperationTask {
         final EObject context = this.getContext().getCurrentTarget();
         final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(this.getContext().getCurrentTarget());
         boolean conditionAccepted = false;
-        Collection<ModelOperation> operations = Lists.newArrayList();
+        Collection<ModelOperation> operations = new ArrayList<>();
 
         /*
          * retrieve the good model operations to execute

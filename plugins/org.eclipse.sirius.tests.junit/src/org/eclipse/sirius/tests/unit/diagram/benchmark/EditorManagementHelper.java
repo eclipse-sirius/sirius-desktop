@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.benchmark;
 
-import junit.framework.TestCase;
-
 import org.eclipse.core.commands.operations.IOperationHistory;
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -23,6 +21,8 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.ErrorEditorPart;
+
+import junit.framework.TestCase;
 
 /**
  * An helper to open and close properly an editor.

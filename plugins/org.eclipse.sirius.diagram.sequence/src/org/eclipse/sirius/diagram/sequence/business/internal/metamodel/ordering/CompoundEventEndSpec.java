@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.metamodel.ordering;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -18,8 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.impl.CompoundEventEndImpl;
-
-import com.google.common.collect.Sets;
 
 /**
  * Implementation of <code>CompoundEventEnd</code>.
@@ -34,7 +33,7 @@ public class CompoundEventEndSpec extends CompoundEventEndImpl {
     @Override
     public EList<EObject> getSemanticEvents() {
         EList<EObject> result = new BasicEList<EObject>();
-        Set<EObject> semantics = Sets.newHashSet();
+        Set<EObject> semantics = new HashSet<>();
         for (SingleEventEnd see : getEventEnds()) {
             semantics.add(see.getSemanticEvent());
         }

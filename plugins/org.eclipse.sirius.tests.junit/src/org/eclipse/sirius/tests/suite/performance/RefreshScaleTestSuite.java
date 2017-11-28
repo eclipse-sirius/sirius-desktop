@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.performance;
 
+import org.eclipse.sirius.tests.unit.perf.diagram.refresh.DiagramSynchronizerMappingScaleTest;
+import org.eclipse.sirius.tests.unit.perf.diagram.refresh.DiagramSynchronizerModelScaleTest;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-
-import org.eclipse.sirius.tests.unit.perf.diagram.refresh.DiagramSynchronizerMappingScaleTest;
-import org.eclipse.sirius.tests.unit.perf.diagram.refresh.DiagramSynchronizerModelScaleTest;
 
 /**
  * Test suite for all of the viewpoint tests.

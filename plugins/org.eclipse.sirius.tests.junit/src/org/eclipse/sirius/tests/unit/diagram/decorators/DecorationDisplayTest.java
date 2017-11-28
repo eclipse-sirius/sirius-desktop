@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.diagram.decorators;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -229,7 +230,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(652, 112, 10, 10), Lists.newArrayList(new Rectangle(652, 112, 10, 10)), false);
 
         // SOUTH_EAST should be a list decorator
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.SOUTH_EAST_LITERAL, new Rectangle(646, 163, 16, 16), Lists.newArrayList(), true);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.SOUTH_EAST_LITERAL, new Rectangle(646, 163, 16, 16), new ArrayList<>(), true);
 
         // test decoration tooltip
         Figure groupFigure = getGroupFigure(dDiagramElementDecorationFigures, Position.SOUTH_EAST_LITERAL, new Rectangle(646, 163, 16, 16));
@@ -254,14 +255,14 @@ public class DecorationDisplayTest extends GenericTestCase {
         // check that decoration don't overlap the diagram element
         // NORTH_WEST should be a list decorator because it overlaps the diagram
         // element
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_WEST_LITERAL, new Rectangle(290, 8, 16, 16), Lists.newArrayList(), true);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_WEST_LITERAL, new Rectangle(290, 8, 16, 16), new ArrayList<>(), true);
 
         // EAST should NOT be a list decorator because it is smaller than the
         // list decorator size
         checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(424, 25, 10, 10), Lists.newArrayList(new Rectangle(424, 25, 10, 10)), false);
 
         // SOUTH_EAST should be a list decorator
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.SOUTH_EAST_LITERAL, new Rectangle(418, 37, 16, 16), Lists.newArrayList(), true);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.SOUTH_EAST_LITERAL, new Rectangle(418, 37, 16, 16), new ArrayList<>(), true);
     }
 
     /**
@@ -276,11 +277,11 @@ public class DecorationDisplayTest extends GenericTestCase {
         assertEquals("There should be 2 decoration groups", 2, dDiagramElementDecorationFigures.size());
 
         // NORTH_WEST should be a list decorator
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_WEST_LITERAL, new Rectangle(92, 32, 16, 16), Lists.newArrayList(), true);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_WEST_LITERAL, new Rectangle(92, 32, 16, 16), new ArrayList<>(), true);
 
         // There should be a list decorator at SOUTH_EAST representing
         // SOUTH_EAST and EAST
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(220, 40, 16, 16), Lists.newArrayList(), true);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(220, 40, 16, 16), new ArrayList<>(), true);
 
         /// =========================
 
@@ -291,7 +292,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         assertEquals("There should be 1 decoration group", 1, dDiagramElementDecorationFigures.size());
 
         // All decorators should be merged in SOUTH_EAST list decorator
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(155, 103, 16, 16), Lists.newArrayList(), true);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(155, 103, 16, 16), new ArrayList<>(), true);
 
     }
 
@@ -352,7 +353,7 @@ public class DecorationDisplayTest extends GenericTestCase {
     }
 
     private List<Figure> getDDiagramElementDecorationFigures(DDiagramElement diagElement, DDiagramEditor editor) {
-        List<Figure> decorationFigures = Lists.newArrayList();
+        List<Figure> decorationFigures = new ArrayList<>();
         IGraphicalEditPart editPart = getEditPart(diagElement, editor);
         final DecorationEditPolicy policy = (DecorationEditPolicy) editPart.getEditPolicy(EditPolicyRoles.DECORATION_ROLE);
         final Map<Object, IDecorator> decorators = getDecorators(policy);

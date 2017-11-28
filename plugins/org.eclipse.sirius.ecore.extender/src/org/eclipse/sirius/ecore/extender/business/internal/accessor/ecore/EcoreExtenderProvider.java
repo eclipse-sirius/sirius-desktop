@@ -11,7 +11,6 @@
 package org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.sirius.ecore.extender.business.api.accessor.IExtenderProvider;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.IMetamodelExtender;
 

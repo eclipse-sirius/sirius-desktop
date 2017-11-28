@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.layout;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
@@ -57,7 +58,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiI
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * This class capture all the needed changes to make to the arrange all behavior
@@ -169,7 +169,7 @@ public class ArrangeAllWithAutoSize {
      *            list of elements to keep fixed even if they are not pinned.
      */
     public void prepareForArrangeAll(Iterator<AbstractDiagramElementContainerEditPart> unmodifiableIterator, ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
-        final Set<IFigure> parentFiguresToValidateToGetAutosizeDimensions = Sets.newLinkedHashSet();
+        final Set<IFigure> parentFiguresToValidateToGetAutosizeDimensions = new LinkedHashSet<>();
         while (unmodifiableIterator.hasNext()) {
             final AbstractDiagramElementContainerEditPart ep = unmodifiableIterator.next();
             if ((elementsToKeepFixed == null || !elementsToKeepFixed.contains(ep)) && ArrangeAllWithAutoSize.shouldBeAutosized(ep)) {

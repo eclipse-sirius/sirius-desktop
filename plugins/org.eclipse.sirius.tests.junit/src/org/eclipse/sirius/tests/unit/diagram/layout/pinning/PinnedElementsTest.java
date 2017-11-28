@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.diagram.layout.pinning;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -44,7 +45,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -177,7 +177,7 @@ public class PinnedElementsTest extends SiriusDiagramTestCase {
     }
 
     private Map<DDiagramElement, Rectangle> saveBounds(final Collection<? extends DDiagramElement> elements) {
-        final Map<DDiagramElement, Rectangle> bounds = Maps.newHashMap();
+        final Map<DDiagramElement, Rectangle> bounds = new HashMap<>();
         for (DDiagramElement dde : elements) {
             final IGraphicalEditPart part = getEditPart(dde);
             if (part != null) {

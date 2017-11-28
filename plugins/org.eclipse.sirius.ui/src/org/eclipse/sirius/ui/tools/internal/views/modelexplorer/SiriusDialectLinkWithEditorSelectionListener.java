@@ -44,8 +44,6 @@ import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.CommonNavigator;
 
-import com.google.common.collect.Lists;
-
 /**
  * This listener provides the synchronized behavior between the dialect selected element(s) and the given
  * CommonNavigator. As a {@link IPropertyListener}, it will listen to the property
@@ -152,7 +150,7 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
     }
 
     private List<DRepresentationElement> getRepresentationElements(final DRepresentation representation, final List<?> selection) {
-        List<DRepresentationElement> result = Lists.newArrayList();
+        List<DRepresentationElement> result = new ArrayList<>();
         if (representation != null) {
             for (final DRepresentationElement element : representation.getRepresentationElements()) {
                 if (selection != null && selection.contains(element.getTarget()))

@@ -46,7 +46,6 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Class test for the new feature that straighten edges. See bug #499991 for details.
@@ -517,9 +516,9 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void checkEdgeActions(boolean[] availableDirections, boolean checkOtherEdges, Map<Integer, EdgeImpact> directionsIndexToConcernedEdge, String... edgeNames) {
         for (int i = 0; i < 8; i++) {
-            Map<TestPart, List<Point>> gefEditParts2ExpectedPointList = Maps.newHashMap();
+            Map<TestPart, List<Point>> gefEditParts2ExpectedPointList = new HashMap<>();
             // Map only used if checkOtherEdges is true
-            Map<TestPart, PointList> otherEdgeEditParts2ExpectedPointList = Maps.newHashMap();
+            Map<TestPart, PointList> otherEdgeEditParts2ExpectedPointList = new HashMap<>();
             for (String edgeName : edgeNames) {
                 gefEditParts2ExpectedPointList.put(new TestPart(edgeName, editor.getEditPart(edgeName, AbstractDiagramEdgeEditPart.class)), Lists.<Point> newArrayList());
             }

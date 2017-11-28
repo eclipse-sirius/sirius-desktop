@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class ActionDisabledOnExtendedMessagesTest extends AbstractActionDisabled
      * @return an extended message.
      */
     protected Collection<SWTBotGefEditPart> getEditPartsToCheckDisabledActionsOn() {
-        Collection<SWTBotGefEditPart> partsToTest = Lists.newArrayList();
+        Collection<SWTBotGefEditPart> partsToTest = new ArrayList<>();
         // Retrieve an extended message.
         partsToTest.add(editor.getEditPart("m1_extended").parent());
         return partsToTest;
@@ -71,7 +72,7 @@ public class ActionDisabledOnExtendedMessagesTest extends AbstractActionDisabled
      */
     @Override
     protected Collection<List<String>> getElementPathsToCheckNoEffectInWizard() {
-        Collection<List<String>> pathsToTest = Lists.newArrayList();
+        Collection<List<String>> pathsToTest = new ArrayList<>();
         // Retrieve the same extended message than the other method. The label
         // is different because the label provider in the wizard is the semantic
         // label provider.

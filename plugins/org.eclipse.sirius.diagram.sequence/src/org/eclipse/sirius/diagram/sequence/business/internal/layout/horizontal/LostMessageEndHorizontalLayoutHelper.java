@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.layout.horizontal;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -36,10 +39,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 
 /**
  * Computes the appropriate graphical locations of sequence events and lifelines
@@ -49,21 +49,21 @@ import com.google.common.collect.Sets;
  */
 public class LostMessageEndHorizontalLayoutHelper {
 
-    private final Map<LostMessageEnd, Message> lostMessages = Maps.newHashMap();
+    private final Map<LostMessageEnd, Message> lostMessages = new HashMap<>();
 
     private final Multimap<Lifeline, LostMessageEnd> lostSources = HashMultimap.create();
 
     private final Multimap<Lifeline, LostMessageEnd> lostTargets = HashMultimap.create();
 
-    private Map<LostMessageEnd, Operand> operands = Maps.newHashMap();
+    private Map<LostMessageEnd, Operand> operands = new HashMap<>();
 
     private Multimap<Operand, LostMessageEnd> operands2lostEnds = HashMultimap.create();
 
-    private Set<LostMessageEnd> diagramLostEnds = Sets.newHashSet();
+    private Set<LostMessageEnd> diagramLostEnds = new HashSet<>();
 
     private SequenceDiagram sequenceDiagram;
 
-    private Set<LostMessageEnd> unconnectedLostEnds = Sets.newHashSet();
+    private Set<LostMessageEnd> unconnectedLostEnds = new HashSet<>();
 
     /**
      * Constructor.
@@ -168,13 +168,13 @@ public class LostMessageEndHorizontalLayoutHelper {
      * @return computed deltas.
      */
     public Map<LostMessageEnd, Integer> computeLostMessageEndDeltaWithLifeline(boolean pack) {
-        Map<LostMessageEnd, Integer> deltas = Maps.newHashMap();
+        Map<LostMessageEnd, Integer> deltas = new HashMap<>();
 
         for (Lifeline lifeline : sequenceDiagram.getAllLifelines()) {
             int lifelineX = lifeline.getProperLogicalBounds().x;
 
             // Align sources on left
-            Map<Operand, Integer> maxOpSourceDeltas = Maps.newHashMap();
+            Map<Operand, Integer> maxOpSourceDeltas = new HashMap<>();
             int maxLifelineSourceDelta = 0;
             for (LostMessageEnd lostSource : lostSources.get(lifeline)) {
                 Rectangle bounds = lostSource.getProperLogicalBounds().getCopy();
@@ -203,7 +203,7 @@ public class LostMessageEndHorizontalLayoutHelper {
             }
 
             // Align targets on right
-            Map<Operand, Integer> maxOpTargetDeltas = Maps.newHashMap();
+            Map<Operand, Integer> maxOpTargetDeltas = new HashMap<>();
             int maxLifelineTargetDelta = 0;
             for (LostMessageEnd lostTarget : lostTargets.get(lifeline)) {
                 Rectangle bounds = lostTarget.getProperLogicalBounds().getCopy();
@@ -336,7 +336,7 @@ public class LostMessageEndHorizontalLayoutHelper {
     // Get the first known event in hierarchy.
     private ISequenceEvent getISequenceEvent(EdgeTarget lostNode) {
         ISequenceEvent correspondingEvent = null;
-        List<ISequenceEvent> knownEnds = Lists.newArrayList();
+        List<ISequenceEvent> knownEnds = new ArrayList<>();
         knownEnds.addAll(sequenceDiagram.getAllLifelines());
         knownEnds.addAll(sequenceDiagram.getAllExecutions());
 
@@ -416,7 +416,7 @@ public class LostMessageEndHorizontalLayoutHelper {
      * @return lost message ends locations.
      */
     public Map<LostMessageEnd, Rectangle> computeLostMessageEndsHorizontalBounds(Map<InstanceRole, Rectangle> irMoves, Map<LostMessageEnd, Integer> lostEndsDelta) {
-        Map<LostMessageEnd, Rectangle> lostMessageEndMoves = Maps.newHashMap();
+        Map<LostMessageEnd, Rectangle> lostMessageEndMoves = new HashMap<>();
 
         for (Lifeline lifeline : sequenceDiagram.getAllLifelines()) {
             int newLifelineX = getNewLifelineX(lifeline, irMoves);

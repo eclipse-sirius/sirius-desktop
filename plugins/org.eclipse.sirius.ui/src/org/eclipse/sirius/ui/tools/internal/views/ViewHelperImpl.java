@@ -29,7 +29,6 @@ import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.ISessi
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
 
 /**
  * An helper to provide facilities to view which extends viewpoint.
@@ -38,7 +37,7 @@ import com.google.common.collect.Lists;
  */
 public final class ViewHelperImpl implements ViewHelper {
 
-    private static Collection<ISessionViewExtension> extensions = Lists.newArrayList();
+    private static Collection<ISessionViewExtension> extensions = new ArrayList<>();
 
     /**
      * Avoid instantiation.

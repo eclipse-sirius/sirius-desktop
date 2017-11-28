@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -44,7 +46,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Specific sequence viewpoint command to flag created elements from tool.
@@ -117,7 +118,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
      * Flag directly created by tool elements and register main semantics.
      */
     private Collection<EObject> flagAndRegisterMainCreatedElements() {
-        final Collection<EObject> mainSemantics = Sets.newHashSet();
+        final Collection<EObject> mainSemantics = new HashSet<>();
         final Collection<DDiagramElement> createdDDE = Lists.newArrayList(Iterables.filter(getCreatedRepresentationElements(), DDiagramElement.class));
         for (DDiagramElement dde : createdDDE) {
             if (shouldFlag != null && shouldFlag.apply(dde)) {
@@ -135,7 +136,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
      * from other semantics elements.
      */
     private Collection<DDiagramElement> flagPostRefresh(final Collection<EObject> mainSemantics, final Collection<EObject> createdSemantics) {
-        Collection<DDiagramElement> flags = Lists.newArrayList();
+        Collection<DDiagramElement> flags = new ArrayList<>();
 
         if (parentDiagram != null && shouldFlag != null) {
             for (DDiagramElement dde : Iterables.filter(parentDiagram.getDiagramElements(), shouldFlag)) {
@@ -196,9 +197,9 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
      */
     private final class SequencePostRefreshFactory implements PostRefreshCommandFactory {
 
-        private final Collection<EObject> mainSemantics = Lists.newArrayList();
+        private final Collection<EObject> mainSemantics = new ArrayList<>();
 
-        private final Collection<EObject> createdObjects = Lists.newArrayList();
+        private final Collection<EObject> createdObjects = new ArrayList<>();
 
         private final Session session;
 
@@ -235,9 +236,9 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
      */
     private final class SequenceFlagAndSyncCommand extends RecordingCommand {
 
-        private final Collection<EObject> mainSemantics = Lists.newArrayList();
+        private final Collection<EObject> mainSemantics = new ArrayList<>();
 
-        private final Collection<EObject> createdObjects = Lists.newArrayList();
+        private final Collection<EObject> createdObjects = new ArrayList<>();
 
         private final Diagram gmfDiag;
 

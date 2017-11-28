@@ -136,8 +136,6 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * The default diagram ui services.
@@ -610,7 +608,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     @Override
     public Collection<CommandParameter> provideTools(EObject context) {
-        Collection<CommandParameter> toolsParameters = Lists.newArrayList();
+        Collection<CommandParameter> toolsParameters = new ArrayList<>();
         for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
             DiagramDescription diagramType = diagramTypeDescriptor.getDiagramDescriptionProvider().createDiagramDescription();
             if (hasParentOfType(context, diagramType.eClass())) {
@@ -622,7 +620,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     @Override
     public Collection<CommandParameter> provideAdditionalMappings(EObject context) {
-        Collection<CommandParameter> mappings = Lists.newArrayList();
+        Collection<CommandParameter> mappings = new ArrayList<>();
         for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
             DiagramDescription diagramType = diagramTypeDescriptor.getDiagramDescriptionProvider().createDiagramDescription();
             if (hasParentOfType(context, diagramType.eClass())) {
@@ -651,7 +649,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     private void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection, boolean reveal) {
         if (dialectEditor instanceof DiagramEditor && selection != null) {
             DiagramEditor diagramEditor = (DiagramEditor) dialectEditor;
-            List<EditPart> selectedParts = Lists.newArrayList();
+            List<EditPart> selectedParts = new ArrayList<>();
             final EditPartViewer graphicalViewer = diagramEditor.getDiagramGraphicalViewer();
 
             Iterable<DDiagramElement> ddeSelection = Iterables.filter(selection, DDiagramElement.class);
@@ -675,7 +673,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     @Override
     public Collection<DSemanticDecorator> getSelection(DialectEditor editor) {
-        Collection<DSemanticDecorator> selection = Sets.newLinkedHashSet();
+        Collection<DSemanticDecorator> selection = new LinkedHashSet<>();
         if (editor instanceof DiagramEditor) {
             DiagramEditor dEditor = (DiagramEditor) editor;
             IDiagramGraphicalViewer graphicalViewer = dEditor.getDiagramGraphicalViewer();

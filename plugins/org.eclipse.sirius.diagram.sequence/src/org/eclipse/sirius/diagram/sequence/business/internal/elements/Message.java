@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -46,7 +47,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
 
 /**
  * Common interface for all the elements of a sequence diagram.
@@ -483,8 +483,8 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
                 int start = semanticOrdering.getEventEnds().indexOf(msgEnds.get(0));
                 int end = semanticOrdering.getEventEnds().indexOf(msgEnds.get(1));
                 if (Math.abs(start - end) > 1) {
-                    Collection<SingleEventEnd> sees = Sets.newHashSet();
-                    Collection<ISequenceEvent> interEvents = Sets.newHashSet();
+                    Collection<SingleEventEnd> sees = new HashSet<>();
+                    Collection<ISequenceEvent> interEvents = new HashSet<>();
 
                     for (int i = start + 1; i < end; i++) {
                         EventEnd eventEnd = semanticOrdering.getEventEnds().get(i);

@@ -12,8 +12,11 @@ package org.eclipse.sirius.tests.unit.diagram.filter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -46,7 +49,6 @@ import org.eclipse.ui.dialogs.CheckedTreeSelectionDialog;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
@@ -216,7 +218,7 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
     }
 
     private String[] getElementNamesAndLabels(String... elementNames) {
-        List<String> namesAndLabels = Lists.newArrayList();
+        List<String> namesAndLabels = new ArrayList<>();
         for (int i = 0; i < elementNames.length; i++) {
             namesAndLabels.add(elementNames[i]);
             namesAndLabels.add(elementNames[i] + " label");
@@ -366,8 +368,8 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
          *            the list of expected elements visible in the TreeViewer
          */
         public void checkVisibleElementByNames(String... elementNames) {
-            Set<String> expectedVisibleNames = Sets.newLinkedHashSet();
-            Set<String> actualNames = Sets.newLinkedHashSet();
+            Set<String> expectedVisibleNames = new LinkedHashSet<>();
+            Set<String> actualNames = new LinkedHashSet<>();
             Object[] visibleElements = getVisibleElements();
 
             for (int i = 0; i < elementNames.length; i++) {
@@ -395,8 +397,8 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
          *            the list of expected checked elements
          */
         public void checkCheckedElementByNames(String... elementNames) {
-            Set<String> expectedCheckedNames = Sets.newLinkedHashSet();
-            Set<String> actualNames = Sets.newLinkedHashSet();
+            Set<String> expectedCheckedNames = new LinkedHashSet<>();
+            Set<String> actualNames = new LinkedHashSet<>();
             Set<Object> checkedElements = getElementsSelectedAfter();
 
             for (int i = 0; i < elementNames.length; i++) {
@@ -509,7 +511,7 @@ public class DiagramElementSelectionDialogTest extends SiriusDiagramTestCase imp
          */
         public Object[] getVisibleElements() {
             Control tree = getDialogTreeViewer().getControl();
-            Collection<Object> result = Sets.newHashSet();
+            Collection<Object> result = new HashSet<>();
             getVisibleChildren(result, tree);
             return result.toArray();
         }

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.debug;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.common.collect.Lists;
@@ -27,7 +28,7 @@ public class TabularReport {
 
     public TabularReport(String... headers) {
         this.headers = Lists.newArrayList(headers);
-        this.lines = Lists.newArrayList();
+        this.lines = new ArrayList<>();
     }
 
     public void addLine(List<String> data) {

@@ -15,8 +15,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -141,7 +143,6 @@ import org.eclipse.team.internal.core.streams.ProgressMonitorInputStream;
 import com.google.common.base.Functions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multiset;
 import com.google.common.collect.Ordering;
@@ -892,7 +893,7 @@ public class SiriusDebugView extends AbstractDebugView {
                 FileDialog dia = new FileDialog(getSite().getShell(), SWT.OPEN | SWT.MULTI);
                 dia.setFilterExtensions(new String[] { "*.odesign" });
                 String path = dia.open();
-                List<String[]> lines = Lists.newArrayList();
+                List<String[]> lines = new ArrayList<>();
                 if (path != null) {
                     for (String file : dia.getFileNames()) {
                         ResourceSet rs = new ResourceSetImpl();
@@ -1195,7 +1196,7 @@ public class SiriusDebugView extends AbstractDebugView {
     private Map<EObject, Integer> readVerticalPositions(SequenceDiagramEditPart sdep) {
         SequenceDDiagram diag = (SequenceDDiagram) sdep.resolveSemanticElement();
         VerticalPositionFunction vpf = new VerticalPositionFunction(diag);
-        Map<EObject, Integer> positions = Maps.newHashMap();
+        Map<EObject, Integer> positions = new HashMap<>();
         for (EventEnd end : diag.getGraphicalOrdering().getEventEnds()) {
             positions.put(end.getSemanticEnd(), (int) vpf.apply(end));
         }
@@ -1219,7 +1220,7 @@ public class SiriusDebugView extends AbstractDebugView {
                     Iterator<EventEnd> so = diag.getSemanticOrdering().getEventEnds().iterator();
                     TabularReport report = new TabularReport("Semantic", "Graphical", "Sync?", "Y");
                     while (so.hasNext() || go.hasNext()) {
-                        List<String> line = Lists.newArrayList();
+                        List<String> line = new ArrayList<>();
 
                         final EObject sosEnd;
                         if (so.hasNext()) {

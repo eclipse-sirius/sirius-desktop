@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.tools.api.editing;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
@@ -39,7 +40,6 @@ import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * ResourceSetListener responsible for asking for file edit validation before
@@ -79,7 +79,7 @@ public class FileStatusPrecommitListener extends ResourceSetListenerImpl {
         final boolean defensiveEditValidation = Platform.getPreferencesService().getBoolean("org.eclipse.sirius.common.ui", CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, true, null); //$NON-NLS-1$
         final Command cmd = super.transactionAboutToCommit(event);
         if (defensiveEditValidation) {
-            final Set<Resource> changedRes = Sets.newLinkedHashSet();
+            final Set<Resource> changedRes = new LinkedHashSet<>();
             if (!event.getTransaction().isReadOnly()) {
                 for (org.eclipse.emf.common.notify.Notification notif : Iterables.filter(event.getNotifications(), org.eclipse.emf.common.notify.Notification.class)) {
                     if (notif.getNotifier() instanceof EObject) {

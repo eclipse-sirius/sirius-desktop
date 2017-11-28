@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.movida;
 
 import java.text.MessageFormat;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -24,7 +25,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Resolves a set of logical Sirius URIs into the complete set of physical VSM
@@ -64,7 +64,7 @@ public class VSMResolver {
     public Set<URI> resolve(Set<URI> logicalURIs) throws IllegalArgumentException {
         Preconditions.checkNotNull(logicalURIs);
         Set<URI> allLogical = computeAllLogicalRequirements(logicalURIs);
-        final Set<URI> missing = Sets.newHashSet();
+        final Set<URI> missing = new HashSet<>();
         Iterable<URI> allPhysical = Iterables.transform(allLogical, new Function<URI, URI>() {
             @Override
             public URI apply(URI from) {
@@ -86,7 +86,7 @@ public class VSMResolver {
     }
 
     private Set<URI> computeAllLogicalRequirements(Set<URI> logicalURIs) {
-        Set<URI> allLogical = Sets.newHashSet();
+        Set<URI> allLogical = new HashSet<>();
         Relation<URI> requires = registry.getRelations().getTransitiveRequires();
         for (URI uri : logicalURIs) {
             allLogical.add(uri);

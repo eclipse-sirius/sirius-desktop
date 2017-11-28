@@ -37,8 +37,8 @@ import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
-import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.SubVariable;
+import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
 /**

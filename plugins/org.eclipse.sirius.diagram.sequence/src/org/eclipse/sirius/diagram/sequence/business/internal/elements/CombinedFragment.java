@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -132,7 +133,7 @@ public class CombinedFragment extends AbstractFrame {
      * @return the operands of the current combined fragment.
      */
     public List<Operand> getOperands() {
-        List<Operand> result = Lists.newArrayList();
+        List<Operand> result = new ArrayList<>();
         Predicate<View> compartementView = new Predicate<View>() {
 
             @Override

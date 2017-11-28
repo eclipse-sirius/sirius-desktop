@@ -36,7 +36,6 @@ import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 public class MultipleMappingImportTests extends SiriusDiagramTestCase implements MultipleMapppingImportsModeler {
 
@@ -114,12 +113,12 @@ public class MultipleMappingImportTests extends SiriusDiagramTestCase implements
         compareBounds(beforeBounds, afterBounds);
         beforeBounds = afterBounds;
 
-        List<DDiagramElement> elementsWithDefaultMapping = Lists.newArrayList();
+        List<DDiagramElement> elementsWithDefaultMapping = new ArrayList<>();
         elementsWithDefaultMapping.add(findByTargetName(diagramElements, DEFAULT_SEMANTIC));
         elementsWithDefaultMapping.add(findByTargetName(diagramElements, BETA_SEMANTIC));
         checkMapping(elementsWithDefaultMapping, defaultNodeMapping);
 
-        List<DDiagramElement> elementsWithAlhaMapping = Lists.newArrayList();
+        List<DDiagramElement> elementsWithAlhaMapping = new ArrayList<>();
         elementsWithAlhaMapping.add(findByTargetName(diagramElements, ALPHA_SEMANTIC));
         checkMapping(elementsWithAlhaMapping, alphaNodeMapping);
 
@@ -196,12 +195,12 @@ public class MultipleMappingImportTests extends SiriusDiagramTestCase implements
         compareBounds(beforeBounds, afterBounds);
         beforeBounds = afterBounds;
 
-        List<DDiagramElement> notVisibleElements = Lists.newArrayList();
+        List<DDiagramElement> notVisibleElements = new ArrayList<>();
         notVisibleElements.add(findByTargetName(diagramElements, DEFAULT_SEMANTIC));
         notVisibleElements.add(findByTargetName(diagramElements, BETA_SEMANTIC));
         assertNotVisible(notVisibleElements);
 
-        List<DDiagramElement> elementsWithAlhaMapping = Lists.newArrayList();
+        List<DDiagramElement> elementsWithAlhaMapping = new ArrayList<>();
         elementsWithAlhaMapping.add(findByTargetName(diagramElements, ALPHA_SEMANTIC));
         checkMapping(elementsWithAlhaMapping, alphaNodeMapping);
 
@@ -284,12 +283,12 @@ public class MultipleMappingImportTests extends SiriusDiagramTestCase implements
         compareBounds(beforeBounds, afterBounds);
         beforeBounds = afterBounds;
 
-        List<DDiagramElement> elementsWithDefaultMapping = Lists.newArrayList();
+        List<DDiagramElement> elementsWithDefaultMapping = new ArrayList<>();
         elementsWithDefaultMapping.add(findByTargetName(diagramElements, DEFAULT_SEMANTIC));
         elementsWithDefaultMapping.add(findByTargetName(diagramElements, BETA_SEMANTIC_CONTAINER));
         checkMapping(elementsWithDefaultMapping, defaultContainerMapping);
 
-        List<DDiagramElement> elementsWithAlhaMapping = Lists.newArrayList();
+        List<DDiagramElement> elementsWithAlhaMapping = new ArrayList<>();
         elementsWithAlhaMapping.add(findByTargetName(diagramElements, ALPHA_SEMANTIC_CONTAINER));
         checkMapping(elementsWithAlhaMapping, alphaContainerMapping);
 
@@ -367,12 +366,12 @@ public class MultipleMappingImportTests extends SiriusDiagramTestCase implements
         compareBounds(beforeBounds, afterBounds);
         beforeBounds = afterBounds;
 
-        List<DDiagramElement> elementsNotVisible = Lists.newArrayList();
+        List<DDiagramElement> elementsNotVisible = new ArrayList<>();
         elementsNotVisible.add(findByTargetName(diagramElements, DEFAULT_SEMANTIC));
         elementsNotVisible.add(findByTargetName(diagramElements, BETA_SEMANTIC_CONTAINER));
         assertNotVisible(elementsNotVisible);
 
-        List<DDiagramElement> elementsWithAlhaMapping = Lists.newArrayList();
+        List<DDiagramElement> elementsWithAlhaMapping = new ArrayList<>();
         elementsWithAlhaMapping.add(findByTargetName(diagramElements, ALPHA_SEMANTIC_CONTAINER));
         checkMapping(elementsWithAlhaMapping, alphaNodeMapping);
 

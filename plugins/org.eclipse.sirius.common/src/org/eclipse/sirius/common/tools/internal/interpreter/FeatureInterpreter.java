@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.text.MessageFormat;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A specialized interpreter which only supports direct access to a named
@@ -111,7 +111,7 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
             String featureName = expression.substring(PREFIX.length());
             VariableType targetType = context.getTargetType();
             if (!isDefaultFeatureName(featureName)) {
-                Set<EClassifier> possibleReturnTypes = Sets.newLinkedHashSet();
+                Set<EClassifier> possibleReturnTypes = new LinkedHashSet<>();
                 for (TypeName typeName : targetType.getPossibleTypes()) {
                     Iterator<EClass> possibleEClasses = Iterators.filter(typeName.search(context.getAvailableEPackages()).iterator(), EClass.class);
                     boolean foundAtLeastOneValid = false;

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -370,7 +371,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         Collection<String> mtlServices = Lists.newArrayList("getName() : String", "getNameQuery() : String", "getImportedName() : String", "getImportedQueryName() : String",
                 "isAbstractQuery() : Boolean", "eContentsQuery() : Collection(EObject)", "selfQuery() : EObject", "selfImportedQuery() : EObject");
 
-        Collection<String> unfoundServices = Lists.newArrayList();
+        Collection<String> unfoundServices = new ArrayList<>();
         for (String mtlService : mtlServices) {
             if (!contentAssistProposal.contains(mtlService)) {
                 unfoundServices.add(mtlService);

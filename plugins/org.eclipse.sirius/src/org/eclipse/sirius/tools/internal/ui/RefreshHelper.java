@@ -11,14 +11,13 @@
 package org.eclipse.sirius.tools.internal.ui;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
-
-import com.google.common.collect.Sets;
 
 /**
  * A class providing useful methods for refresh.
@@ -41,7 +40,7 @@ public final class RefreshHelper {
      */
     public static boolean isImpactingNotification(final Collection<Notification> notifications) {
         boolean isImpactingNotification = false;
-        Set<EObject> alreadyDoneNotifiers = Sets.newHashSet();
+        Set<EObject> alreadyDoneNotifiers = new HashSet<>();
         for (Notification notification : notifications) {
             Object notifier = notification.getNotifier();
             if (notifier instanceof EObject) {

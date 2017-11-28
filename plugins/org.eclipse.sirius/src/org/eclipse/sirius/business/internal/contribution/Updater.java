@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.internal.contribution;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +37,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
 
 /**
  * An updater can modify a model in place to match the structure of a new
@@ -100,7 +100,7 @@ public class Updater {
      * @return the old model, updated to match the structure of the new one.
      */
     public EObject update() {
-        orphaned = Sets.newHashSet();
+        orphaned = new HashSet<>();
         if (!matcher.areSameLogicalElement(element, reference)) {
             throw new IllegalArgumentException(Messages.Updater_updateElementLogicallyDifferentErrorMsg);
         } else if (element.eClass() != reference.eClass()) {

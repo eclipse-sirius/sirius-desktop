@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -37,7 +38,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Add a GMF {@link DrawerStyle} instance on existing {@link View} with an
@@ -62,7 +62,7 @@ public class CollapseSupportOnRegionMigrationParticipant extends AbstractReprese
             EClass drawerStyleClass = NotationPackage.eINSTANCE.getDrawerStyle();
 
             // Step 1: get all view to update
-            final Collection<View> allViewsToUpdate = Sets.newLinkedHashSet();
+            final Collection<View> allViewsToUpdate = new LinkedHashSet<>();
             for (DView dView : dAnalysis.getOwnedViews()) {
                 for (DDiagram dDiagram : Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DDiagram.class)) {
                     DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);

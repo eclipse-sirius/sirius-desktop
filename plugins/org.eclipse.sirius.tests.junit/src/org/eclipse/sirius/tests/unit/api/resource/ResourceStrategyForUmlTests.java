@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.api.resource;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -27,8 +28,6 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.uml.NamedElement;
-
-import com.google.common.collect.Lists;
 
 /**
  * Check ResourceStrategy mechanisms for uml special case. Default resource
@@ -75,7 +74,7 @@ public class ResourceStrategyForUmlTests extends SiriusTestCase {
         // As CacheAdapter crossReferencer is static, it may contain elements
         // added with previous test in the suite
         // So we get only the crossReferenced object of this test
-        List<EObject> refObbjects = Lists.newArrayList();
+        List<EObject> refObbjects = new ArrayList<>();
         TreeIterator<EObject> eAllContents = eObject.eAllContents();
         while (eAllContents.hasNext()) {
             EObject eObj = (EObject) eAllContents.next();

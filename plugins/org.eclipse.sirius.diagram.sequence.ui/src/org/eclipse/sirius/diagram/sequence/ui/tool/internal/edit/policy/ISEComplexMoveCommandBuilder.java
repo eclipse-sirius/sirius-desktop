@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -43,7 +45,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * A builder for complex sequence move commands.
@@ -105,7 +106,7 @@ public class ISEComplexMoveCommandBuilder {
 
     private void handleNodes(CompositeTransactionalCommand ctc, Integer vMove) {
         Collection<ISequenceNode> seqNodesToMove = Lists.newArrayList(validator.getSequenceNodeToMove());
-        Map<AbstractNodeEvent, ISequenceEvent> reparents = Maps.newHashMap();
+        Map<AbstractNodeEvent, ISequenceEvent> reparents = new HashMap<>();
 
         computeReparents(seqNodesToMove, reparents);
 
@@ -221,7 +222,7 @@ public class ISEComplexMoveCommandBuilder {
     }
 
     private Collection<Reconnection> computeReconnections() {
-        Collection<Reconnection> reconnections = Lists.newArrayList();
+        Collection<Reconnection> reconnections = new ArrayList<>();
         // Reconnect moved and unmoved messages
         for (Message message : validator.getDiagram().getAllMessages()) {
 

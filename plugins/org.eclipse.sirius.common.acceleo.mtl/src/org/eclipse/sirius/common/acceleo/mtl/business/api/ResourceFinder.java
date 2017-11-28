@@ -10,8 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.api;
 
-import com.google.common.collect.Lists;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
@@ -42,7 +41,7 @@ public class ResourceFinder implements IResourceVisitor {
     protected final String[] path;
 
     /** The list of resources matching {@link #path} we found. */
-    private final List<IResource> matches = Lists.newArrayList();
+    private final List<IResource> matches = new ArrayList<>();
 
     /**
      * Creates our resource finder given the path of the sought emtl.

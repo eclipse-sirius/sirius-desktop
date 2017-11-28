@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.unit.api.componentization.DiagramComponentizationManagerTest;
 import org.eclipse.sirius.tests.unit.api.convert.ConvertProjectToModelingProjectTest;
 import org.eclipse.sirius.tests.unit.api.modelingproject.SaveWhenNoEditorsTests;
@@ -27,6 +22,11 @@ import org.eclipse.sirius.tests.unit.common.WorkspaceResourceSyncTestCase;
 import org.eclipse.sirius.tests.unit.diagram.control.ControlTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.CompositeFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.synchronization.UnsynchronizedMappingAndDeleteFromOutsideEditorTests;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * This special test suite contains all the tests which are known to currently

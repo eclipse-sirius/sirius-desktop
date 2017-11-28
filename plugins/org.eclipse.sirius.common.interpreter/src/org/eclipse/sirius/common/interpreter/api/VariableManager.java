@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.interpreter.api;
 
-import com.google.common.collect.Maps;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.google.common.collect.Maps;
 
 /**
  * The implementation of the {@link IVariableManager}.

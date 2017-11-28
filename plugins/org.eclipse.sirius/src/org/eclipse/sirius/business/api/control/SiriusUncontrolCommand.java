@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
@@ -34,7 +35,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -195,7 +195,7 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
      * @return list of DAnalysis of this resource
      */
     protected Collection<DAnalysis> getAnalyses(final Resource aird) {
-        final Collection<DAnalysis> analyses = Lists.newArrayList();
+        final Collection<DAnalysis> analyses = new ArrayList<>();
         for (EObject root : aird.getContents()) {
             if (root instanceof DAnalysis) {
                 analyses.add((DAnalysis) root);

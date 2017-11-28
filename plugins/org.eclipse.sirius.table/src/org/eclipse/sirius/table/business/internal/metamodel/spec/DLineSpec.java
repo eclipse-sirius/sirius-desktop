@@ -12,6 +12,7 @@ package org.eclipse.sirius.table.business.internal.metamodel.spec;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
@@ -25,7 +26,6 @@ import org.eclipse.sirius.table.metamodel.table.impl.DLineImpl;
 import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
-import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
 /**
@@ -52,7 +52,7 @@ public class DLineSpec extends DLineImpl {
                     result = 1;
                 } else {
                     if (columnIndices == null) {
-                        columnIndices = Maps.newHashMap();
+                        columnIndices = new HashMap<>();
                         int i = 0;
                         for (DColumn col : columnA.getTable().getColumns()) {
                             columnIndices.put(col, i++);

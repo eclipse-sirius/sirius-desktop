@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.query;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -29,7 +32,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * General queries on {@link ISequenceEvent}s.
@@ -124,7 +126,7 @@ public class ISequenceEventQuery {
      * @return all the proper descendant events of the given execution.
      */
     public Set<ISequenceEvent> getAllDescendants(boolean includeSelf, Predicate<? super View> predicate) {
-        Set<ISequenceEvent> result = Sets.newHashSet();
+        Set<ISequenceEvent> result = new HashSet<>();
         addAllDescendants(predicate, result);
         if (!includeSelf) {
             result.remove(event);
@@ -177,7 +179,7 @@ public class ISequenceEventQuery {
      * @return the messages found without duplicates.
      */
     public Set<Message> getAllMessages() {
-        Set<Message> allMessages = Sets.newHashSet();
+        Set<Message> allMessages = new HashSet<>();
         allMessages.addAll(getAllMessagesFrom());
         allMessages.addAll(getAllMessagesTo());
         return allMessages;
@@ -190,7 +192,7 @@ public class ISequenceEventQuery {
      * @return the messages found.
      */
     public List<Message> getAllMessagesFrom() {
-        List<Message> messagesParts = Lists.newArrayList();
+        List<Message> messagesParts = new ArrayList<>();
         addAllMessagesFrom(event.getNotationView(), messagesParts);
         return messagesParts;
     }
@@ -202,7 +204,7 @@ public class ISequenceEventQuery {
      * @return the messages found.
      */
     public List<Message> getAllMessagesTo() {
-        List<Message> messagesParts = Lists.newArrayList();
+        List<Message> messagesParts = new ArrayList<>();
         addAllMessagesTo(event.getNotationView(), messagesParts);
         return messagesParts;
     }
@@ -275,7 +277,7 @@ public class ISequenceEventQuery {
      * @return the all moved elements.
      */
     public Set<ISequenceEvent> getAllSequenceEventToMoveWith() {
-        Set<ISequenceEvent> entryPoints = Sets.newLinkedHashSet();
+        Set<ISequenceEvent> entryPoints = new LinkedHashSet<>();
         return getAllSequenceEventToMoveWith(entryPoints);
     }
 
@@ -287,11 +289,11 @@ public class ISequenceEventQuery {
      * @return the all moved elements.
      */
     public Set<ISequenceEvent> getAllSequenceEventToMoveWith(Collection<ISequenceEvent> additionnalEntryPoints) {
-        Set<ISequenceEvent> entryPoints = Sets.newLinkedHashSet();
+        Set<ISequenceEvent> entryPoints = new LinkedHashSet<>();
         entryPoints.add(event);
         entryPoints.addAll(additionnalEntryPoints);
 
-        Set<ISequenceEvent> moved = Sets.newLinkedHashSet();
+        Set<ISequenceEvent> moved = new LinkedHashSet<>();
         for (ISequenceEvent ise : entryPoints) {
             populateMovedElements(ise, moved);
         }

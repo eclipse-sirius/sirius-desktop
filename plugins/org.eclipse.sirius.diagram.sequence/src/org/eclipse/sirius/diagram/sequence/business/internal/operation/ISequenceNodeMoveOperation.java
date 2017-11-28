@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
@@ -20,7 +21,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceN
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Sets;
 
 /**
  * Move an execution, interaction use of combined fragment vertically.
@@ -29,7 +29,7 @@ import com.google.common.collect.Sets;
  */
 public class ISequenceNodeMoveOperation extends AbstractModelChangeOperation<Void> {
 
-    private final Collection<ISequenceNode> seqNodes = Sets.newHashSet();
+    private final Collection<ISequenceNode> seqNodes = new HashSet<>();
 
     private final int logicalShift;
 

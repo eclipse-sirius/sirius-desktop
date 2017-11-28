@@ -10,14 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketRelativeBendpoint;
 import org.eclipse.sirius.diagram.ui.business.internal.bracket.Direction;
 import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
-
-import com.google.common.collect.Lists;
 
 /**
  * A custom bracket edit part to force default bracket direction.
@@ -43,7 +42,7 @@ public class SequenceBracketEdgeEditPart extends BracketEdgeEditPart {
      */
     @Override
     protected List<BracketRelativeBendpoint> getDefaultFigureConstraint() {
-        final List<BracketRelativeBendpoint> defaultFigureConstraint = Lists.newArrayList();
+        final List<BracketRelativeBendpoint> defaultFigureConstraint = new ArrayList<>();
         defaultFigureConstraint.add(new BracketRelativeBendpoint(getConnectionFigure(), Direction.LEFT.ordinal(), Direction.LEFT.ordinal(), 50));
         return defaultFigureConstraint;
     }

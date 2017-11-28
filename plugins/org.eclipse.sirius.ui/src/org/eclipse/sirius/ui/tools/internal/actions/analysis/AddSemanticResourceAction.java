@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.actions.analysis;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
@@ -26,9 +28,6 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
 /**
  * Action to add a semantic resource in a session.
  * 
@@ -36,7 +35,7 @@ import com.google.common.collect.Sets;
  */
 public class AddSemanticResourceAction extends Action {
 
-    private Collection<URI> sessionsURI = Sets.newLinkedHashSet();
+    private Collection<URI> sessionsURI = new LinkedHashSet<>();
 
     /**
      * Creates a new {@link AddSemanticResourceAction}.
@@ -70,7 +69,7 @@ public class AddSemanticResourceAction extends Action {
     public void run() {
         super.run();
 
-        List<Session> sessions = Lists.newArrayList();
+        List<Session> sessions = new ArrayList<>();
         for (final URI sessionURI : sessionsURI) {
             Session session = SessionManager.INSTANCE.getExistingSession(sessionURI);
             if (session != null) {
@@ -101,7 +100,7 @@ public class AddSemanticResourceAction extends Action {
      *         {@link Session}s
      */
     private static Collection<URI> collectURIsFromSessions(List<Session> sessions) {
-        Collection<URI> sessionsURIs = Sets.newLinkedHashSet();
+        Collection<URI> sessionsURIs = new LinkedHashSet<>();
         for (Session concernedSession : sessions) {
             sessionsURIs.add(concernedSession.getSessionResource().getURI());
         }

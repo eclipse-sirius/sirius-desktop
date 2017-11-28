@@ -12,8 +12,6 @@ package org.eclipse.sirius.tests.unit.api.vsm.editor;
 
 import java.util.Collection;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -29,6 +27,8 @@ import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+
+import junit.framework.TestCase;
 
 /**
  * Check the custom menu for the vsm editor.

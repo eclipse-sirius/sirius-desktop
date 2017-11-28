@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -28,8 +30,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 /**
  * Helper to locate sequence events inside a given context event.
  * 
@@ -54,7 +54,7 @@ public class EventFinder {
         }
     };
 
-    private Map<AbstractNodeEvent, ISequenceEvent> reparented = Maps.newHashMap();
+    private Map<AbstractNodeEvent, ISequenceEvent> reparented = new HashMap<>();
 
     /**
      * Constructor.
@@ -158,7 +158,7 @@ public class EventFinder {
         }
         if (contextIncludesRange(range) || isReparent()) {
             Predicate<ISequenceEvent> sameLifeline = new SameLifelinePredicate(lifeline);
-            List<ISequenceEvent> eventsToInspect = Lists.newArrayList();
+            List<ISequenceEvent> eventsToInspect = new ArrayList<>();
             if ((reconnect || reparent) && (context instanceof AbstractNodeEvent || context instanceof Lifeline)) {
                 for (View view : Iterables.filter(context.getNotationView().getChildren(), View.class)) {
                     Option<ISequenceEvent> ise = ISequenceElementAccessor.getISequenceEvent(view);

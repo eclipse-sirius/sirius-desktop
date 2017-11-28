@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.api.viewpoint;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -92,7 +93,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
 
         public final Item parent;
 
-        public final List<Item> descendants = Lists.newArrayList();
+        public final List<Item> descendants = new ArrayList<>();
 
         public Item(Item parent, Viewpoint vp) {
             this.parent = parent;

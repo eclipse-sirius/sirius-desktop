@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.query;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.draw2d.AbsoluteBendpoint;
@@ -26,7 +27,6 @@ import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link Connection}
@@ -206,7 +206,7 @@ public class ConnectionQuery {
         if (cons instanceof List) {
             List<?> constraintsList = (List<?>) cons;
             if (Iterators.all(constraintsList.iterator(), Predicates.instanceOf(AbsoluteBendpoint.class))) {
-                List<AbsoluteBendpoint> result = Lists.newLinkedList();
+                List<AbsoluteBendpoint> result = new LinkedList<>();
                 for (Object object : constraintsList) {
                     result.add((AbsoluteBendpoint) object);
                 }
@@ -228,7 +228,7 @@ public class ConnectionQuery {
         if (cons instanceof List) {
             List<?> constraintsList = (List<?>) cons;
             if (Iterators.all(constraintsList.iterator(), Predicates.instanceOf(RelativeBendpoint.class))) {
-                List<RelativeBendpoint> result = Lists.newLinkedList();
+                List<RelativeBendpoint> result = new LinkedList<>();
                 for (Object object : constraintsList) {
                     result.add((RelativeBendpoint) object);
                 }

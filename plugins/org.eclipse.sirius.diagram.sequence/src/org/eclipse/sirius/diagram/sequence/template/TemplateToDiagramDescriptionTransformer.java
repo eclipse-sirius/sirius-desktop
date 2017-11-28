@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.template;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -39,7 +41,6 @@ import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Class responsible for refreshing the computed representations based on the
@@ -264,7 +265,7 @@ public class TemplateToDiagramDescriptionTransformer {
                     to.getSourceMapping().clear();
                     to.getSourceMapping().addAll(Lists.newArrayList(Iterables.filter(sourceOutputs, AbstractNodeMapping.class)));
 
-                    Collection<EObject> targetOutputs = Lists.newArrayList();
+                    Collection<EObject> targetOutputs = new ArrayList<>();
                     targetOutputs.addAll(AbstractRule.collectGeneratedElements(lifeline2InstanceRoleMapping, DescriptionPackage.eINSTANCE.getInstanceRoleMapping(), from.getTarget()));
                     to.getTargetMapping().clear();
                     to.getTargetMapping().addAll(Lists.newArrayList(Iterables.filter(targetOutputs, AbstractNodeMapping.class)));
@@ -300,7 +301,7 @@ public class TemplateToDiagramDescriptionTransformer {
                     to.getSourceMapping().clear();
                     to.getSourceMapping().addAll(Lists.newArrayList(Iterables.filter(sourceOutputs, AbstractNodeMapping.class)));
 
-                    Collection<EObject> targetOutputs = Lists.newArrayList();
+                    Collection<EObject> targetOutputs = new ArrayList<>();
                     targetOutputs.addAll(AbstractRule.collectGeneratedElements(lifeline2EndOfLineMapping, DescriptionPackage.eINSTANCE.getEndOfLifeMapping(), from.getTarget()));
                     to.getTargetMapping().clear();
                     to.getTargetMapping().addAll(Lists.newArrayList(Iterables.filter(targetOutputs, AbstractNodeMapping.class)));
@@ -480,7 +481,7 @@ public class TemplateToDiagramDescriptionTransformer {
      */
     public TemplateToDiagramDescriptionTransformer(TSequenceDiagram template) {
         this.template = template;
-        posts = Lists.newArrayList();
+        posts = new ArrayList<>();
     }
 
     private void copyMappingData(final TSourceTargetMessageMapping from, final MessageMapping to) {
@@ -540,7 +541,7 @@ public class TemplateToDiagramDescriptionTransformer {
      * 
      */
     public boolean isOverriding(EObject eObj, EStructuralFeature feature) {
-        Collection<EStructuralFeature> overriden = Sets.newLinkedHashSet();
+        Collection<EStructuralFeature> overriden = new LinkedHashSet<>();
         overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getIdentifiedElement_Name());
         overriden.add(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramDescription_DomainClass());
         overriden.add(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramDescription_NodeMappings());

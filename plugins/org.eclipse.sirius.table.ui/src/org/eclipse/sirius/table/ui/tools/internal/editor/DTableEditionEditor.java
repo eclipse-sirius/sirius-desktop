@@ -11,9 +11,8 @@
 package org.eclipse.sirius.table.ui.tools.internal.editor;
 
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * Editor for a DTable with a description of type EditionTable.

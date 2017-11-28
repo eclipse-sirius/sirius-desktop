@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -40,7 +41,6 @@ import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Tests only zoom and creation with single/double click, others features to
@@ -474,7 +474,7 @@ public class InteractionUseMoveDownTests extends AbstractInteractionUseSequenceT
         SequenceDiagram sequenceDiagram = getSequenceDiagram();
         SequenceDDiagram sequenceDDiagram = sequenceDiagram.getSequenceDDiagram();
         List<EventEnd> initalSemanticOrdering = Lists.newArrayList(sequenceDDiagram.getSemanticOrdering().getEventEnds());
-        Map<ISequenceEvent, Range> initalState = Maps.newHashMap();
+        Map<ISequenceEvent, Range> initalState = new HashMap<>();
         Set<ISequenceEvent> initalEvents = sequenceDiagram.getAllOrderedDelimitedSequenceEvents();
         for (ISequenceEvent ise : initalEvents) {
             initalState.put(ise, ise.getVerticalRange());

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.commands;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -45,7 +46,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * This command avoids time consumption as long as it does not executed. The
@@ -326,7 +326,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
     }
 
     private List<AbstractGraphicalEditPart> getMovedChildren(Iterable<AbstractGraphicalEditPart> parentEditParts, boolean addSelf) {
-        List<AbstractGraphicalEditPart> result = Lists.newArrayList();
+        List<AbstractGraphicalEditPart> result = new ArrayList<>();
         for (AbstractGraphicalEditPart abstractGraphicalEditPart : parentEditParts) {
             if (!(ignorePrimarySelection && abstractGraphicalEditPart.getSelected() == EditPart.SELECTED_PRIMARY)) {
                 result.addAll(getMovedChildren(abstractGraphicalEditPart, true));
@@ -336,7 +336,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
     }
 
     private List<AbstractGraphicalEditPart> getMovedChildren(AbstractGraphicalEditPart parentEditPart, boolean addSelf) {
-        List<AbstractGraphicalEditPart> result = Lists.newArrayList();
+        List<AbstractGraphicalEditPart> result = new ArrayList<>();
         if (addSelf) {
             result.add(parentEditPart);
         }

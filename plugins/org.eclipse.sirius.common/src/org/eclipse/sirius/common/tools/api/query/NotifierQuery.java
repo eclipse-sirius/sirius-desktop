@@ -12,11 +12,10 @@ package org.eclipse.sirius.common.tools.api.query;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
-import com.google.common.base.Preconditions;
-
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Queries on EMF Notifier.

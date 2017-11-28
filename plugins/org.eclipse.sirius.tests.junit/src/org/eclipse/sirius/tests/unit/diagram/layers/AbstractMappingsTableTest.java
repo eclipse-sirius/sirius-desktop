@@ -13,8 +13,6 @@ package org.eclipse.sirius.tests.unit.diagram.layers;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
@@ -23,6 +21,8 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
+
+import junit.framework.TestCase;
 
 public class AbstractMappingsTableTest extends TestCase {
 

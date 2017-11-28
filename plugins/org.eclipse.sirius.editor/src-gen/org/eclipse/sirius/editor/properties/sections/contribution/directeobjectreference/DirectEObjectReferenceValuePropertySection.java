@@ -52,7 +52,6 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 // End of user code imports
 
@@ -136,7 +135,7 @@ public class DirectEObjectReferenceValuePropertySection extends AbstractComboPro
 
         // Start of user code choice of values
         if (Movida.isEnabled()) {
-            List<EObject> elementsInScope = Lists.newArrayList();
+            List<EObject> elementsInScope = new ArrayList<>();
             ViewpointResourceHandler vrh = ((org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance()).getSiriusResourceHandler();
             ResourceSet rs = eObject.eResource().getResourceSet();
             for (Resource res : rs.getResources()) {
@@ -187,7 +186,7 @@ public class DirectEObjectReferenceValuePropertySection extends AbstractComboPro
             @Override
             public void widgetSelected(SelectionEvent e) {
                 if (eObject instanceof DirectEObjectReference) {
-                    List<EObject> roots = Lists.newArrayList();
+                    List<EObject> roots = new ArrayList<>();
                     roots.addAll(new EObjectQuery(eObject).getAvailableViewpointsInResourceSet());
                     AdapterFactory af = SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory();
                     TreeItemWrapper wrapper = buildWrapper(roots);

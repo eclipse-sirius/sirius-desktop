@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.tools.internal.actions.nature;
 
 import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -34,8 +35,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import com.google.common.collect.Sets;
-
 /**
  * Enable toggle to modeling project.
  *
@@ -53,7 +52,7 @@ public class ModelingToggleNatureAction extends AbstractHandler {
     }
 
     private Set<IProject> getSelectedProjects(ExecutionEvent event) {
-        Set<IProject> selectedProjects = Sets.newHashSet();
+        Set<IProject> selectedProjects = new HashSet<>();
         ISelection currentSelection = HandlerUtil.getCurrentSelection(event);
         if (currentSelection instanceof IStructuredSelection) {
             for (Object object : ((IStructuredSelection) currentSelection).toList()) {

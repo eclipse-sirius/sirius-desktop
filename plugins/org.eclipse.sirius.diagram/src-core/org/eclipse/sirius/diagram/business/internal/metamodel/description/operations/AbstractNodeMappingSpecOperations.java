@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.description.operations;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -47,8 +48,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-
-import com.google.common.collect.Lists;
 
 /**
  * Implementation of AbstractNodeMappingImpl.java.
@@ -94,7 +93,7 @@ public final class AbstractNodeMappingSpecOperations {
 
     private static Iterator<EObject> extEAllContents(final AbstractNodeMapping mapping, final EObject eObj) {
 
-        final Collection<EObject> targetCandidates = Lists.newArrayList();
+        final Collection<EObject> targetCandidates = new ArrayList<>();
         final ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(eObj);
         final Session session = SessionManager.INSTANCE.getSession(eObj);
         if (session != null) {

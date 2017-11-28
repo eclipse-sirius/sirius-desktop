@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
@@ -24,8 +25,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
-
-import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -74,7 +73,7 @@ public class DRepresentationQuery {
      * @return the annotation entries
      */
     public Collection<AnnotationEntry> getAnnotation(final String source) {
-        final Collection<AnnotationEntry> annotationEntries = Lists.newArrayList();
+        final Collection<AnnotationEntry> annotationEntries = new ArrayList<>();
         for (AnnotationEntry annotation : representation.getOwnedAnnotationEntries()) {
             if (source.equals(annotation.getSource())) {
                 annotationEntries.add(annotation);

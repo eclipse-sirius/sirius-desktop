@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -30,7 +31,6 @@ import org.eclipse.sirius.tree.tools.internal.Messages;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * A {@link SemanticPartition} based on a domanClass for a specified
@@ -94,7 +94,7 @@ public class MappingBasedPartition implements SemanticPartition {
     }
 
     private Iterator<EObject> allEObjectsOfTheSession() {
-        final Collection<Iterator<EObject>> iterators = Lists.newArrayList();
+        final Collection<Iterator<EObject>> iterators = new ArrayList<>();
         for (EObject obj : getAllSessionSemanticRoots()) {
             iterators.add(obj.eAllContents());
         }
@@ -106,7 +106,7 @@ public class MappingBasedPartition implements SemanticPartition {
         if (semanticResources == null) {
             semanticResources = Collections.emptyList();
         }
-        Collection<EObject> semanticRoots = Lists.newArrayList();
+        Collection<EObject> semanticRoots = new ArrayList<>();
         for (Resource semanticResource : semanticResources) {
             semanticRoots.addAll(semanticResource.getContents());
         }

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.ui.tools.api.util;
 
 import java.text.MessageFormat;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -42,8 +43,6 @@ import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.internal.WorkbenchMessages;
 import org.eclipse.ui.part.PageBook;
-
-import com.google.common.collect.Maps;
 
 /**
  * Utility class to avoid verbose SWT code.
@@ -430,7 +429,7 @@ public final class SWTUtil {
      */
     private static int showStandardSaveDialog(final String label, final boolean canCancel, boolean stillOpenElsewhere) {
         // Step 1: getting the save buttons
-        Map<String, Integer> buttons = Maps.newLinkedHashMap();
+        Map<String, Integer> buttons = new LinkedHashMap<>();
         buttons.put(IDialogConstants.YES_LABEL, IDialogConstants.YES_ID);
         buttons.put(IDialogConstants.NO_LABEL, IDialogConstants.NO_ID);
 

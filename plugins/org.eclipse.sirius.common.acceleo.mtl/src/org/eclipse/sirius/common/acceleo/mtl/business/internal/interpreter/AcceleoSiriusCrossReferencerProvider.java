@@ -10,8 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter;
 
-import com.google.common.collect.Sets;
-
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.acceleo.common.utils.IAcceleoCrossReferenceProvider;
@@ -46,7 +45,7 @@ public class AcceleoSiriusCrossReferencerProvider implements IAcceleoCrossRefere
      * @see org.eclipse.acceleo.common.utils.IAcceleoCrossReferenceProvider#getInverseReferences(org.eclipse.emf.ecore.EObject)
      */
     public Set<EObject> getInverseReferences(EObject eObject) {
-        final Set<EObject> result = Sets.newLinkedHashSet();
+        final Set<EObject> result = new LinkedHashSet<>();
         for (EStructuralFeature.Setting setting : crossReferencer.getInverseReferences(eObject)) {
             result.add(setting.getEObject());
         }
@@ -60,7 +59,7 @@ public class AcceleoSiriusCrossReferencerProvider implements IAcceleoCrossRefere
      *      org.eclipse.emf.ecore.EClassifier)
      */
     public Set<EObject> getInverseReferences(EObject eObject, EClassifier filter) {
-        final Set<EObject> result = Sets.newLinkedHashSet();
+        final Set<EObject> result = new LinkedHashSet<>();
         for (EStructuralFeature.Setting setting : crossReferencer.getInverseReferences(eObject)) {
             final EObject eObj = setting.getEObject();
             if (filter == null || filter.isInstance(eObj)) {

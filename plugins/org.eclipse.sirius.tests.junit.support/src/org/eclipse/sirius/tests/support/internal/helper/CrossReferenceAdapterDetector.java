@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.support.internal.helper;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notifier;
@@ -24,7 +25,6 @@ import org.junit.Assert;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Sirius specific test checks.
@@ -39,7 +39,7 @@ public final class CrossReferenceAdapterDetector {
      */
     public static final String SKIP_CROSS_REFERENCE_ADAPTER_DETECTION = "org.eclipse.sirius.tests.skipCrossReferenceAdapterDetection";
 
-    private final Collection<URI> resourcesWithDetectedCrossReferenceAdapter = Lists.newArrayList();
+    private final Collection<URI> resourcesWithDetectedCrossReferenceAdapter = new ArrayList<>();
 
     /**
      * Check that there is no session whose resources have a

@@ -13,7 +13,6 @@ package org.eclipse.sirius.common.tools.api.resource;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 
 /**

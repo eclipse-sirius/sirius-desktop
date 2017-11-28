@@ -443,7 +443,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         if (modelingProjects.size() == 1) {
             computeModelingProjectMenu(menu, modelingProjects.iterator().next());
         } else {
-            Set<IProject> impactedProjects = Sets.newHashSet();
+            Set<IProject> impactedProjects = new HashSet<>();
             for (IResource res : Iterables.filter(selection, IResource.class)) {
                 impactedProjects.add(res.getProject());
             }
@@ -712,7 +712,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
     private Collection<DRepresentationDescriptor> getRepresentationDescriptors(Collection<?> selection) {
         Collection<DRepresentationDescriptor> selectedRepDescriptors = Collections.emptyList();
         if (selection != null) {
-            selectedRepDescriptors = Sets.newLinkedHashSet();
+            selectedRepDescriptors = new LinkedHashSet<>();
             Iterables.addAll(selectedRepDescriptors, Iterables.filter(selection, DRepresentationDescriptor.class));
             Iterables.addAll(selectedRepDescriptors, Iterables.transform(Iterables.filter(selection, RepresentationItemImpl.class), RepresentationItemImpl.REPRESENTATION_ITEM_TO_REPRESENTATION));
         }
@@ -745,7 +745,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         // As the menu is about to be hidden, and because all actions filled by
         // this menu filler will be re-calculated,
         // we dispose all the contributed actions
-        Collection<IContributionItem> toRemove = Sets.newLinkedHashSet();
+        Collection<IContributionItem> toRemove = new LinkedHashSet<>();
         for (IContributionItem item : manager.getItems()) {
             if (addedIContributionItemCache.keySet().contains(item)) {
                 toRemove.add(item);

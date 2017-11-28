@@ -13,6 +13,8 @@ package org.eclipse.sirius.business.internal.movida.registry;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -63,7 +65,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 
@@ -79,11 +80,11 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      * Internal class used to record entries changes.
      */
     static class RegistryChange {
-        Set<URI> removed = Sets.newHashSet();
+        Set<URI> removed = new HashSet<>();
 
-        Set<URI> added = Sets.newHashSet();
+        Set<URI> added = new HashSet<>();
 
-        Set<URI> changed = Sets.newHashSet();
+        Set<URI> changed = new HashSet<>();
 
         public RegistryChange normalize() {
             // Elements which were both added and removed are considered as
@@ -135,7 +136,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      * (viewpoint:/...). Each entry corresponds to a single, visible Sirius
      * provided by an unmasked Resource.
      */
-    private final Map<URI, Entry> entries = Maps.newHashMap();
+    private final Map<URI, Entry> entries = new HashMap<>();
 
     /**
      * The listeners which are notified of changes in the registry entries.
@@ -481,7 +482,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      * @return the old entries removed from the registry.
      */
     private Set<Entry> unregisterViewpointsFrom(Resource vsm) {
-        Set<Entry> unregistered = Sets.newHashSet();
+        Set<Entry> unregistered = new HashSet<>();
         for (Entry entry : Lists.newArrayList(entries.values())) {
             if (Objects.equal(entry.getResource(), vsm)) {
                 removeEntry(entry);
@@ -508,7 +509,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      */
     private Set<Entry> createNewEntries(Resource vsm) {
         ensureLoaded(vsm);
-        Set<Entry> newEntries = Sets.newHashSet();
+        Set<Entry> newEntries = new HashSet<>();
         for (Viewpoint viewpoint : compositeResourceHandler.collectViewpointDefinitions(vsm)) {
             newEntries.add(new Entry(viewpoint));
         }

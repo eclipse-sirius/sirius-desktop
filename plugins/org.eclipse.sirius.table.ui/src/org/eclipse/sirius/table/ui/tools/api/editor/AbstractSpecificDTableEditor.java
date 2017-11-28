@@ -11,14 +11,13 @@
 package org.eclipse.sirius.table.ui.tools.api.editor;
 
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
+import org.eclipse.sirius.ui.business.api.editor.SpecificEditor;
+import org.eclipse.sirius.ui.business.api.editor.SpecificEditorInputTranformer;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
-
-import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
-import org.eclipse.sirius.ui.business.api.editor.SpecificEditor;
-import org.eclipse.sirius.ui.business.api.editor.SpecificEditorInputTranformer;
 
 /**
  * A specific editor you may extend, which includes a session. The session

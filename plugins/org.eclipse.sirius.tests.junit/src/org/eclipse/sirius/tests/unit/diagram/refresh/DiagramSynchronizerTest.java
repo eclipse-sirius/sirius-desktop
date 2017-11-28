@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.refresh;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -47,8 +48,6 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.UMLFactory;
-
-import com.google.common.collect.Lists;
 
 /**
  * Test the experimental diagram synchronizer.
@@ -749,7 +748,7 @@ public class DiagramSynchronizerTest extends AbstractSynchronizerTest {
      * @param diagram
      */
     private List<DDiagramElement> computeHiddenElements(DDiagram diagram) {
-        List<DDiagramElement> hiddenElements = Lists.newArrayList();
+        List<DDiagramElement> hiddenElements = new ArrayList<>();
         DDiagramQuery dDiagramQuery = new DDiagramQuery(diagram);
         for (final DDiagramElement diagramElement : diagram.getDiagramElements()) {
             if (dDiagramQuery.isHidden(session, diagramElement)) {

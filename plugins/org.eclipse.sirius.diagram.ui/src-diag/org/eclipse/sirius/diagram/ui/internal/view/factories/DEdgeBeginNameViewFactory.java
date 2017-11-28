@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.view.factories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -29,8 +30,6 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLabelLayoutData;
-
-import com.google.common.collect.Lists;
 
 /**
  * @was-generated
@@ -84,6 +83,6 @@ public class DEdgeBeginNameViewFactory extends AbstractLabelViewFactory {
      * @was-generated
      */
     protected List<?> createStyles(final View view) {
-        return Lists.newArrayList();
+        return new ArrayList<>();
     }
 }

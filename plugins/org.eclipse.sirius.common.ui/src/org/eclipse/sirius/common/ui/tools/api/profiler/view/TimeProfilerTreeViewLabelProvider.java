@@ -13,12 +13,11 @@ package org.eclipse.sirius.common.ui.tools.api.profiler.view;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 
 /**
  * The label provider of a

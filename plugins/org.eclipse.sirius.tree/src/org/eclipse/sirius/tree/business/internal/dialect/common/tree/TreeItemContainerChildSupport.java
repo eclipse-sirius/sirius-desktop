@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.ECollections;
@@ -28,7 +29,6 @@ import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
 import com.google.common.collect.LinkedHashMultiset;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multiset;
 
 /**
@@ -58,7 +58,7 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
     @Override
     public void reorderChilds(Iterable<CreatedOutput> outDesc) {
         final Multiset<TreeItemMapping> subMappings = LinkedHashMultiset.create();
-        final Map<EObject, CreatedOutput> outputToItem = Maps.newHashMap();
+        final Map<EObject, CreatedOutput> outputToItem = new HashMap<>();
         for (CreatedOutput createdOutput : outDesc) {
             EObject createdElement = createdOutput.getCreatedElement();
             outputToItem.put(createdElement, createdOutput);
@@ -73,14 +73,14 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
         // order (items have been created regarding the semantic candidates
         // order)
         int startIndex = 0;
-        final Map<TreeItemMapping, Integer> startIndexes = Maps.newHashMap();
+        final Map<TreeItemMapping, Integer> startIndexes = new HashMap<>();
         for (TreeItemMapping itemMapping : subMappings) {
             startIndexes.put(itemMapping, startIndex);
             startIndex += subMappings.count(itemMapping);
         }
 
         // Pre-compute the new indices
-        final Map<DTreeItem, Integer> newIndices = Maps.newHashMap();
+        final Map<DTreeItem, Integer> newIndices = new HashMap<>();
         for (DTreeItem treeItem : container.getOwnedTreeItems()) {
             // init with element count : elements with unknown mapping
             // will be placed at the end.

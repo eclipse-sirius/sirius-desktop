@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.operations;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -50,7 +51,6 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -317,7 +317,7 @@ public final class DDiagramElementContainerSpecOperations {
         ContainerDropDescription bestDropDescription = null;
 
         /* find valid candidates */
-        final Collection<ContainerDropDescription> candidates = Lists.newArrayList();
+        final Collection<ContainerDropDescription> candidates = new ArrayList<>();
         for (final ContainerDropDescription dropTool : DDiagramElementContainerSpecOperations.getDropToolsOnActivatedLayers(diagram, description)) {
             if (DDiagramElementContainerSpecOperations.checkDragSource(dropTool, dragSource)
                     && DDiagramElementContainerSpecOperations.checkDroppedDiagramElement(dropTool, droppedDiagramElement, newViewContainer)) {
@@ -378,7 +378,7 @@ public final class DDiagramElementContainerSpecOperations {
 
     private static Collection<ContainerDropDescription> getDropToolsOnActivatedLayers(final DDiagram diagram, final DragAndDropTargetDescription mapping) {
         if (diagram.getDescription().getDefaultLayer() != null) {
-            final Collection<AbstractToolDescription> allActivatedTools = Sets.newHashSet();
+            final Collection<AbstractToolDescription> allActivatedTools = new HashSet<>();
             allActivatedTools.addAll(diagram.getDescription().getDefaultLayer().getAllTools());
             for (Layer layer : new DDiagramQuery(diagram).getAllActivatedLayers()) {
                 allActivatedTools.addAll(layer.getAllTools());

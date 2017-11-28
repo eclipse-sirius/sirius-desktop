@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -33,7 +34,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Sets;
 
 /**
  * Tests working with a Session of almost 1 million model elements.
@@ -63,7 +63,7 @@ public class Session1MillionTests extends SiriusDiagramTestCase {
     }
 
     private void createAndOpenSession() throws Exception {
-        Collection<String> rootsInWorkspace = Sets.newLinkedHashSet();
+        Collection<String> rootsInWorkspace = new LinkedHashSet<>();
         for (String semanticRoot : SEMANTIC_ROOTS) {
             rootsInWorkspace.add(TEMPORARY_PROJECT_NAME + semanticRoot);
         }

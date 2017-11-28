@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.tools.internal.views.modelexplorer;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.ISelection;
@@ -24,7 +25,6 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItem
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * An handler which redirect to the appropriate delete action depending on the
@@ -60,7 +60,7 @@ public class DeleteActionHandler extends Action {
         if (selection instanceof IStructuredSelection) {
             Collection<?> selections = ((IStructuredSelection) selection).toList();
             if (selections != null && !selections.isEmpty()) {
-                Collection<DRepresentationDescriptor> selectedRepDescriptors = Sets.newLinkedHashSet();
+                Collection<DRepresentationDescriptor> selectedRepDescriptors = new LinkedHashSet<>();
                 Iterables.addAll(selectedRepDescriptors, Iterables.filter(selections, DRepresentationDescriptor.class));
                 Iterables.addAll(selectedRepDescriptors, Iterables.transform(Iterables.filter(selections, RepresentationItemImpl.class), RepresentationItemImpl.REPRESENTATION_ITEM_TO_REPRESENTATION));
                 return selectedRepDescriptors;

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.api.views;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -19,7 +20,6 @@ import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.PermissionAuthor
 import org.eclipse.ui.navigator.CommonViewer;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * This class is an helper to refresh lock decoration on a {@link CommonViewer} according to the notifications send to
@@ -109,7 +109,7 @@ public class LockDecorationUpdater implements IAuthorityListener {
      */
     protected void launchRefreshViewerJob(Collection<EObject> elements) {
         // Step 1 : collect new elements to refresh
-        final Collection<Object> toRefresh = Sets.newLinkedHashSet();
+        final Collection<Object> toRefresh = new LinkedHashSet<>();
         toRefresh.addAll(elements);
 
         // Step 2 : refresh the Model Explorer View inside a job (to avoid

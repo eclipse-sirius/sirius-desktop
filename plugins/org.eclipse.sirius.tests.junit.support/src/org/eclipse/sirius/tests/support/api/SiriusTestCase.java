@@ -335,12 +335,12 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected void genericSetUp(final Collection<String> semanticModelPaths, final Collection<String> modelerDescriptionPaths, final String representationsModelPath) throws Exception {
 
-        final List<URI> semanticModelUris = Lists.newArrayList();
+        final List<URI> semanticModelUris = new ArrayList<>();
         for (final String semanticModelPath : semanticModelPaths) {
             semanticModelUris.add(toURI(semanticModelPath));
         }
 
-        final List<URI> modelerDescUris = Lists.newArrayList();
+        final List<URI> modelerDescUris = new ArrayList<>();
         for (final String modelerDescriptionPath : modelerDescriptionPaths) {
             modelerDescUris.add(toURI(modelerDescriptionPath));
         }
@@ -1723,7 +1723,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     private void assertNoDiagramCorePreferenceChangedinDiagramUIStore(String preferenceKey) {
-        Collection<String> coreKeys = Lists.newArrayList();
+        Collection<String> coreKeys = new ArrayList<>();
         for (SiriusDiagramInternalPreferencesKeys key : SiriusDiagramInternalPreferencesKeys.values()) {
             coreKeys.add(key.name());
         }
@@ -1736,7 +1736,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     private void assertNoDiagramUIPreferenceChangedinDiagramCoreStore(String preferenceKey) {
-        Collection<String> uiKeys = Lists.newArrayList();
+        Collection<String> uiKeys = new ArrayList<>();
         for (SiriusDiagramUiInternalPreferencesKeys key : SiriusDiagramUiInternalPreferencesKeys.values()) {
             uiKeys.add(key.name());
         }

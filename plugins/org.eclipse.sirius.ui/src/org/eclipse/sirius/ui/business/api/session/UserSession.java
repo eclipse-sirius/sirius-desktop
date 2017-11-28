@@ -14,6 +14,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -44,8 +46,6 @@ import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Sets;
 
 /**
  * An API to manipulate user session easily.
@@ -231,7 +231,7 @@ public class UserSession {
             PlatformUI.getWorkbench().getProgressService().busyCursorWhile(new IRunnableWithProgress() {
                 @Override
                 public void run(IProgressMonitor monitor) {
-                    Set<Viewpoint> viewpoints = Sets.newLinkedHashSet();
+                    Set<Viewpoint> viewpoints = new LinkedHashSet<>();
                     for (final String viewpointName : viewpointNames) {
                         Viewpoint viewpoint = findViewpointByName(viewpointName);
                         viewpoints.add(viewpoint);
@@ -251,8 +251,8 @@ public class UserSession {
 
         Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
 
-        Set<Viewpoint> viewpointsToDeselect = Sets.newHashSet();
-        Set<Viewpoint> viewpointsToSelect = Sets.newHashSet();
+        Set<Viewpoint> viewpointsToDeselect = new HashSet<>();
+        Set<Viewpoint> viewpointsToSelect = new HashSet<>();
 
         for (final Viewpoint viewpoint : viewpoints) {
             final Viewpoint vp = SiriusResourceHelper.getCorrespondingViewpoint(session, viewpoint);

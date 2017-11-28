@@ -11,6 +11,8 @@
 package org.eclipse.sirius.tools.api.interpreter.context;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -22,9 +24,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContext
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.ext.base.Option;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * Provides facilities for creating {@link IInterpreterContext}s, using the
@@ -55,10 +54,10 @@ public final class SiriusInterpreterContextFactory {
      *         feature
      */
     public static IInterpreterContext createInterpreterContext(EObject element, EStructuralFeature feature) {
-        Collection<String> targetDomainClasses = Sets.newLinkedHashSet();
-        Collection<EPackage> avalaiblePackages = Sets.newLinkedHashSet();
-        Collection<String> dependencies = Sets.newLinkedHashSet();
-        Map<String, VariableType> variables = Maps.newLinkedHashMap();
+        Collection<String> targetDomainClasses = new LinkedHashSet<>();
+        Collection<EPackage> avalaiblePackages = new LinkedHashSet<>();
+        Collection<String> dependencies = new LinkedHashSet<>();
+        Map<String, VariableType> variables = new LinkedHashMap<>();
         boolean requiresTargetType = true;
 
         // Step 1 : getting the InterpretedExpressionQuery from the given

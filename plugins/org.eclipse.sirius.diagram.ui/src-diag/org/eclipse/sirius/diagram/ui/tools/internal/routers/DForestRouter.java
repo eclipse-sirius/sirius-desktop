@@ -13,6 +13,7 @@
 
 package org.eclipse.sirius.diagram.ui.tools.internal.routers;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.draw2d.BendpointConnectionRouter;
@@ -28,8 +29,6 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.OrthogonalRouter;
 
-import com.google.common.collect.Maps;
-
 /**
  * A router for Sirius .
  * 
@@ -37,9 +36,9 @@ import com.google.common.collect.Maps;
  */
 public class DForestRouter extends BendpointConnectionRouter implements OrthogonalRouter {
 
-    private final Map<AnchorKey, DTreeRouter> connections = Maps.newHashMap();
+    private final Map<AnchorKey, DTreeRouter> connections = new HashMap<>();
 
-    private final Map<AnchorKey, Boolean> trunkVertexes = Maps.newHashMap();
+    private final Map<AnchorKey, Boolean> trunkVertexes = new HashMap<>();
 
     @Override
     public void remove(final Connection conn) {

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -44,9 +46,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.osgi.framework.Version;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * The migration code of Sirius 6.5.0.
@@ -131,7 +130,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
      * 
      */
     public static List<Diagram> getDiagramsAtRoot(DAnalysis dAnalysis) {
-        List<Diagram> diagrams = Lists.newArrayList();
+        List<Diagram> diagrams = new ArrayList<>();
         for (final EObject object : dAnalysis.eResource().getContents()) {
             if (object instanceof Diagram) {
                 diagrams.add((Diagram) object);
@@ -215,8 +214,8 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
      */
     private void fixAnchorsOfGMFTreeEdge(final DView view) {
         // Sort the edges per common source or common target
-        Map<View, List<Edge>> edgesSortPerSource = Maps.newHashMap();
-        Map<View, List<Edge>> edgesSortPerTarget = Maps.newHashMap();
+        Map<View, List<Edge>> edgesSortPerSource = new HashMap<>();
+        Map<View, List<Edge>> edgesSortPerTarget = new HashMap<>();
         Iterator<EObject> viewIterator = new DViewQuery(view).getAllContentInRepresentations(edgeWithTreeRoutingPredicate);
         while (viewIterator.hasNext()) {
             final EObject next = viewIterator.next();
@@ -224,13 +223,13 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
                 Edge edge = (Edge) next;
                 List<Edge> edgesWithSameSource = edgesSortPerSource.get(edge.getSource());
                 if (edgesWithSameSource == null) {
-                    edgesWithSameSource = Lists.newArrayList();
+                    edgesWithSameSource = new ArrayList<>();
                 }
                 edgesWithSameSource.add(edge);
                 edgesSortPerSource.put(edge.getSource(), edgesWithSameSource);
                 List<Edge> edgesWithSameTarget = edgesSortPerTarget.get(edge.getTarget());
                 if (edgesWithSameTarget == null) {
-                    edgesWithSameTarget = Lists.newArrayList();
+                    edgesWithSameTarget = new ArrayList<>();
                 }
                 edgesWithSameTarget.add(edge);
                 edgesSortPerTarget.put(edge.getTarget(), edgesWithSameTarget);

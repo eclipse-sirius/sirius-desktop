@@ -23,8 +23,6 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 
-import com.google.common.collect.Lists;
-
 /**
  * Command to refresh the graphical layout of the whole diagram.
  * 
@@ -56,7 +54,7 @@ public class SetBestHeightHeaderCommand extends RecordingCommand {
      */
     @Override
     protected void doExecute() {
-        LinkedList<HeaderData> headerDatas = Lists.newLinkedList();
+        LinkedList<HeaderData> headerDatas = new LinkedList<>();
         if (diagram.getElement() instanceof DDiagram) {
             DDiagram dDiagram = (DDiagram) diagram.getElement();
             for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {

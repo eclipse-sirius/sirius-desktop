@@ -16,17 +16,16 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import com.google.common.base.Function;
-
-import org.eclipse.sirius.description.contribution.Contribution;
-import org.eclipse.sirius.description.contribution.ContributionProvider;
-import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.contribution.IncrementalModelContributor;
 import org.eclipse.sirius.business.internal.contribution.ReferenceResolver;
+import org.eclipse.sirius.description.contribution.Contribution;
+import org.eclipse.sirius.description.contribution.ContributionProvider;
+import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.base.Function;
 
 /**
  * Customization of the generic IncrementalModelContributor for computing

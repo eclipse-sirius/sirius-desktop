@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.business.api.accessor;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -27,7 +28,6 @@ import org.eclipse.sirius.ext.emf.EReferencePredicate;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Aggregate more {@link IMetamodelExtender}'s using a priority system.
@@ -37,9 +37,9 @@ import com.google.common.collect.Lists;
  */
 public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
 
-    private List<ExtenderDescriptor> extenderDescs = Lists.newArrayList();
+    private List<ExtenderDescriptor> extenderDescs = new ArrayList<>();
 
-    private List<IMetamodelExtender> extenders = Lists.newArrayList();
+    private List<IMetamodelExtender> extenders = new ArrayList<>();
 
     private Iterable<IMetamodelExtender> activeExtenders;
 
@@ -185,7 +185,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
 
     @Override
     public Iterator<EObject> eContents(final EObject root) {
-        final List<Iterator<EObject>> iterators = Lists.newArrayList();
+        final List<Iterator<EObject>> iterators = new ArrayList<>();
         final IMetamodelExtender browsingBlocker = hasBrowsingBlocker(root);
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             if (browsingBlocker == null || extender == browsingBlocker) {
@@ -330,7 +330,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
 
     @Override
     public Iterator<String> getContributedAttributeNames(final EObject next) {
-        final List<Iterator<String>> iterators = Lists.newArrayList();
+        final List<Iterator<String>> iterators = new ArrayList<>();
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             iterators.add(extender.getContributedAttributeNames(next));
         }
@@ -339,7 +339,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
 
     @Override
     public Iterator<String> getContributedReferenceNames(final EObject instance) {
-        final List<Iterator<String>> iterators = Lists.newArrayList();
+        final List<Iterator<String>> iterators = new ArrayList<>();
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             iterators.add(extender.getContributedReferenceNames(instance));
         }
@@ -384,7 +384,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
      *         references.
      */
     public Collection<EObject> eAllContents(final EObject target, final String typeName) {
-        final Collection<EObject> result = Lists.newArrayList();
+        final Collection<EObject> result = new ArrayList<>();
         final Iterator<EObject> it = eAllContents(target);
         while (it.hasNext()) {
             final EObject cur = it.next();
@@ -421,7 +421,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
 
     @Override
     public Collection<ExtensionFeatureDescription> getAllExtensionFeatureDescriptions(final EObject target) {
-        final Collection<ExtensionFeatureDescription> result = Lists.newArrayList();
+        final Collection<ExtensionFeatureDescription> result = new ArrayList<>();
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             result.addAll(extender.getAllExtensionFeatureDescriptions(target));
         }

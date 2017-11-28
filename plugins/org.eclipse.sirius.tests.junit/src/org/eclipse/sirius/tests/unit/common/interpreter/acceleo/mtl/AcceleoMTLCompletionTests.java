@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -38,7 +39,6 @@ import org.eclipse.sirius.tests.unit.common.interpreter.AbstractCompletionTestCa
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Tests for the {@link AcceleoMTLInterpreter} utility class.
@@ -217,7 +217,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         cc = createContentContext("[/]", 1, "EClass");
         contentProposals = getProposals(cc);
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
@@ -254,7 +254,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         cic = new ContentInstanceContext(c, "[/]", 1);
         contentProposals = getProposals(cic);
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
@@ -285,7 +285,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         cc = createContentContext("[/]", 1, "DNode", DiagramPackage.eINSTANCE, Collections.<String, VariableType> emptyMap(), Collections.<String> emptyList());
         contentProposals = getProposals(cc);
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.add("thisEObject");
         vars.add("self");
 
@@ -319,7 +319,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         cic = new ContentInstanceContext(dNode, "[/]", 1);
         contentProposals = getProposals(cic);
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
@@ -375,7 +375,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         concreteInterpreter.setVariable(varName, c);
         assertEquals("Variables was not declared", 1, concreteInterpreter.getVariables().size());
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
@@ -438,7 +438,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
             concreteInterpreter.addImport(dep);
         }
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
@@ -500,7 +500,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         concreteInterpreter.setProperty(IInterpreter.FILES, mockVsms);
         concreteInterpreter.addImport(IMPORT);
 
-        Set<String> vars = Sets.newHashSet();
+        Set<String> vars = new HashSet<>();
         vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
@@ -597,7 +597,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
     }
 
     private Collection<String> getDependenciesProposals(Collection<String> dependencies, boolean implicitContext) {
-        Collection<String> services = Lists.newArrayList();
+        Collection<String> services = new ArrayList<>();
         if (dependencies == null) {
             return services;
         }

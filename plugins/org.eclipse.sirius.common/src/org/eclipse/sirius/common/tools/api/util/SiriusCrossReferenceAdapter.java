@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.util;
 
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+
 /**
  * Contract for {@link ECrossReferenceAdapter} which resolve proxy ability can
  * be disabled.

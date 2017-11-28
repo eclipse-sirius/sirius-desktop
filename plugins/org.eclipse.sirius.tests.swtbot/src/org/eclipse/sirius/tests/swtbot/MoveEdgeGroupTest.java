@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -37,10 +39,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * Tests for the move edge group feature. See #471104 for more details.
@@ -253,7 +251,7 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
         editor.zoom(zoomLevel);
         editor.scrollTo(0, 0);
 
-        Set<SWTBotGefEditPart> elementsToMove = Sets.newLinkedHashSet();
+        Set<SWTBotGefEditPart> elementsToMove = new LinkedHashSet<>();
         for (String name : names) {
 
             // SWTBotGefEditPart elementToMove = editor.getEditPart(name);
@@ -337,7 +335,7 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
             editor.setSnapToGrid(false);
             editor.setSnapToShape(false);
 
-            HashMap<SWTBotGefEditPart, List<Rectangle>> initialLocations = Maps.newHashMap();
+            HashMap<SWTBotGefEditPart, List<Rectangle>> initialLocations = new HashMap<>();
             for (SWTBotGefEditPart elementToMove : elementsToMove) {
                 if (elementToMove.part() instanceof ConnectionEditPart) {
                     ConnectionEditPart connectionEditPart = (ConnectionEditPart) elementToMove.part();
@@ -349,7 +347,7 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
                     IGraphicalEditPart target = (IGraphicalEditPart) connectionEditPart.getTarget();
                     Rectangle targetInitalBounds = target.getFigure().getBounds().getCopy();
                     target.getFigure().translateToAbsolute(targetInitalBounds);
-                    List<Rectangle> locations = Lists.newArrayList();
+                    List<Rectangle> locations = new ArrayList<>();
                     locations.add(sourceInitalBounds);
                     locations.add(targetInitalBounds);
                     initialLocations.put(elementToMove, locations);

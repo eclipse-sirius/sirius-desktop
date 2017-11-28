@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.navigation;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,8 +36,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Lists;
 
 public class OpenMenuTest extends SiriusDiagramTestCase {
 
@@ -187,7 +186,7 @@ public class OpenMenuTest extends SiriusDiagramTestCase {
         final IMenuManager openMenu = (IMenuManager) popupMenu.find("popup.open");
         final IContributionItem[] items = openMenu.getItems();
 
-        final List<ActionContributionItem> actionContributions = Lists.newArrayList();
+        final List<ActionContributionItem> actionContributions = new ArrayList<>();
         for (int i = 0; i < items.length; i++) {
             if (items[i] instanceof ActionContributionItem) {
                 actionContributions.add((ActionContributionItem) items[i]);

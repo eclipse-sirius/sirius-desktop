@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -41,10 +42,6 @@ import org.eclipse.sirius.common.tools.internal.assist.ContentContextHelper;
 import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * Compound interpreter.
@@ -81,7 +78,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      * If viewpoint knows of any additional metamodel that may be necessary for
      * the interpreter, they'll be registered here.
      */
-    private Collection<MetamodelDescriptor> additionalMetamodels = Sets.newLinkedHashSet();
+    private Collection<MetamodelDescriptor> additionalMetamodels = new LinkedHashSet<>();
 
     /** The dependencies. */
     private final List<String> dependencies;
@@ -111,8 +108,8 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         this.variableManager = new VariableManager();
         this.dependencies = new LinkedList<String>();
         this.listeners = new ArrayList<IVariableStatusListener>();
-        this.interpreterIdentifiers = Maps.newHashMap();
-        this.properties = Maps.newHashMap();
+        this.interpreterIdentifiers = new HashMap<>();
+        this.properties = new HashMap<>();
     }
 
     /**
@@ -640,7 +637,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
         @Override
         public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
-            return Sets.newLinkedHashSet();
+            return new LinkedHashSet<>();
         }
 
         @Override
@@ -668,7 +665,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
          * that expression (blame it on the interpreter that is not really an
          * interpreter :p).
          */
-        List<ContentProposal> proposals = Lists.newArrayList();
+        List<ContentProposal> proposals = new ArrayList<>();
         IInterpreter interpreter = getInterpreterForExpression(context.getContents());
         if (interpreter != null) {
             if (interpreter instanceof IProposalProvider) {
@@ -724,7 +721,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      * @since 0.9.0
      */
     public List<ContentProposal> getAllNewEmtpyExpressions() {
-        List<ContentProposal> prefixes = Lists.newArrayList();
+        List<ContentProposal> prefixes = new ArrayList<>();
 
         final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getAllProviders();
         for (IProposalProvider provider : proposalProviders) {
@@ -797,7 +794,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
          * that expression (blame it on the interpreter that is not really an
          * interpreter :p).
          */
-        List<ContentProposal> proposals = Lists.newArrayList();
+        List<ContentProposal> proposals = new ArrayList<>();
         IInterpreter interpreterForExpression = getInterpreterForExpression(context.getTextSoFar());
         if (interpreterForExpression != null) {
             if (interpreterForExpression instanceof IProposalProvider) {
@@ -865,7 +862,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      * @return list of proposal for empty expressions
      */
     private List<ContentProposal> getEmptyExpressionProposals(String context) {
-        List<ContentProposal> proposals = Lists.newArrayList();
+        List<ContentProposal> proposals = new ArrayList<>();
 
         // Provides all interpreters compatible with the context
         final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getAllProviders();

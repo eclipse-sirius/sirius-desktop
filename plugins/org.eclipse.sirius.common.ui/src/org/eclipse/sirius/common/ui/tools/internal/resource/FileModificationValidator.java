@@ -15,10 +15,9 @@ import java.util.Collection;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
 
 /**
  * Implements file modification validator. The default process of Eclipse is

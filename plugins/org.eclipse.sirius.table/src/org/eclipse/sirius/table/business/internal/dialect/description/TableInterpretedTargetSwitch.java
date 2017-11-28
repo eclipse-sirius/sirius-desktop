@@ -12,6 +12,7 @@ package org.eclipse.sirius.table.business.internal.dialect.description;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -40,7 +41,6 @@ import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescr
 import org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -102,7 +102,7 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
         if (doSwitch != null) {
             return doSwitch;
         }
-        Collection<String> defaultResult = Sets.newLinkedHashSet();
+        Collection<String> defaultResult = new LinkedHashSet<>();
         return Options.newSome(defaultResult);
     }
 
@@ -133,7 +133,7 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
     @Override
     public Option<Collection<String>> caseTableDescription(TableDescription object) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
+        Collection<String> target = new LinkedHashSet<>();
         switch (featureID) {
         case DescriptionPackage.TABLE_DESCRIPTION__PRECONDITION_EXPRESSION:
         case DescriptionPackage.TABLE_DESCRIPTION__TITLE_EXPRESSION:
@@ -150,7 +150,7 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
     @Override
     public Option<Collection<String>> caseLineMapping(LineMapping object) {
         Option<Collection<String>> result = null;
-        Collection<String> targets = Sets.newLinkedHashSet();
+        Collection<String> targets = new LinkedHashSet<>();
         switch (featureID) {
         case DescriptionPackage.LINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
             result = globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
@@ -170,7 +170,7 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
     @Override
     public Option<Collection<String>> caseElementColumnMapping(ElementColumnMapping object) {
         Option<Collection<String>> result = null;
-        Collection<String> targets = Sets.newLinkedHashSet();
+        Collection<String> targets = new LinkedHashSet<>();
         switch (featureID) {
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
             result = globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
@@ -222,7 +222,7 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
     @Override
     public Option<Collection<String>> caseIntersectionMapping(IntersectionMapping object) {
         Option<Collection<String>> result = null;
-        Collection<String> targets = Sets.newLinkedHashSet();
+        Collection<String> targets = new LinkedHashSet<>();
         if (object.isUseDomainClass()) {
             // for Domain based IntersectionMappings
             switch (featureID) {

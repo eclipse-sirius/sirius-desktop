@@ -12,6 +12,7 @@ package org.eclipse.sirius.editor.tools.internal.marker;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.resources.IMarker;
@@ -22,7 +23,6 @@ import org.eclipse.emf.ecore.EValidator;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Allows to manage markers that will be integrated in the Sirius ODesign
@@ -68,7 +68,7 @@ public final class SiriusEditorInterpreterMarkerService {
         if (markers != null) {
             validationMarkers = Lists.newArrayList(markers);
         } else {
-            validationMarkers = Lists.newArrayList();
+            validationMarkers = new ArrayList<>();
         }
         ArrayList<IMarker> validationMarkersRelativeToElement = Lists.newArrayList(Iterables.filter(validationMarkers, new Predicate<IMarker>() {
 
@@ -98,9 +98,9 @@ public final class SiriusEditorInterpreterMarkerService {
         if (markers != null) {
             validationMarkers = Lists.newArrayList(markers);
         } else {
-            validationMarkers = Lists.newArrayList();
+            validationMarkers = new ArrayList<>();
         }
-        Set<IMarker> elementMarkers = Sets.newLinkedHashSet();
+        Set<IMarker> elementMarkers = new LinkedHashSet<>();
         for (IMarker marker : validationMarkers) {
 
             Object attribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);

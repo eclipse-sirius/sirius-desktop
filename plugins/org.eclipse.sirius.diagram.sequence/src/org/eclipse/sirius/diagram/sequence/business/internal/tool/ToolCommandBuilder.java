@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.tool;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -71,8 +72,6 @@ import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDes
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 
-import com.google.common.collect.Maps;
-
 /**
  * Helper class to build the concrete commands executing the user-specified
  * tools on specific parameters.
@@ -119,7 +118,7 @@ public final class ToolCommandBuilder {
     }
 
     private static InitInterpreterVariablesTask buildVariablesInitializationTask(ReorderTool reorderTool, EObject event, EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor) {
-        Map<AbstractVariable, Object> variables = Maps.newHashMap();
+        Map<AbstractVariable, Object> variables = new HashMap<>();
         variables.put(reorderTool.getStartingEndPredecessorAfter(), startingEndPredecessor);
         variables.put(reorderTool.getFinishingEndPredecessorAfter(), finishingEndPredecessor);
         return new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(event), null);
@@ -161,7 +160,7 @@ public final class ToolCommandBuilder {
     }
 
     private static InitInterpreterVariablesTask buildVariablesInitializationTask(InstanceRoleReorderTool reorderTool, EObject element, EObject predecessorBefore, EObject predecessorAfter) {
-        Map<AbstractVariable, Object> variables = Maps.newHashMap();
+        Map<AbstractVariable, Object> variables = new HashMap<>();
         variables.put(reorderTool.getPredecessorBefore(), predecessorBefore);
         variables.put(reorderTool.getPredecessorAfter(), predecessorAfter);
         return new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(element), null);

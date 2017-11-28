@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.contentassist;
 
-import com.google.common.base.Preconditions;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+
+import com.google.common.base.Preconditions;
 
 /**
  * This class contains some informations about the context.

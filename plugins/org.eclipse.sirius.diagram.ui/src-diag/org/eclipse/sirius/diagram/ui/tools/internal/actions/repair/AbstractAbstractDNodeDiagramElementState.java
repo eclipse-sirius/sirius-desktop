@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -19,7 +20,6 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Diagram element state for {@link AbstractDNode}.
@@ -45,7 +45,7 @@ public abstract class AbstractAbstractDNodeDiagramElementState<D extends Abstrac
      */
     public AbstractAbstractDNodeDiagramElementState(Identifier id, DiagramCrossReferencer crossReferencer) {
         super(id, crossReferencer);
-        this.arrangeConstraints = Lists.newArrayList();
+        this.arrangeConstraints = new ArrayList<>();
     }
 
     /**

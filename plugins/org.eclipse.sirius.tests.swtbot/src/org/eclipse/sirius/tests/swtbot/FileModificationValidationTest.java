@@ -53,7 +53,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
@@ -129,7 +128,7 @@ public class FileModificationValidationTest extends AbstractSiriusSwtBotGefTestC
      */
     public void testFileModificationValidationReadOnly() throws Exception {
 
-        final List<IFile> expected = Lists.newArrayList();
+        final List<IFile> expected = new ArrayList<>();
         final Collection<Resource> analysisResources = localSession.getOpenedSession().getAllSessionResources();
         for (final Resource resource : analysisResources) {
             final IFile file = WorkspaceSynchronizer.getFile(resource);

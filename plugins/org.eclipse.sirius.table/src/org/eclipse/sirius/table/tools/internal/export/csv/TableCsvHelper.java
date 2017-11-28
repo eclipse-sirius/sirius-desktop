@@ -10,12 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.tools.internal.export.csv;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
@@ -54,7 +52,7 @@ public final class TableCsvHelper {
          * Create the descriptors structure i.e a list of line. Each line is a
          * list of cell value.
          */
-        final List<List<String>> descriptors = Lists.newArrayList();
+        final List<List<String>> descriptors = new ArrayList<>();
 
         descriptors.add(TableCsvHelper.getHeader(table, filler));
 
@@ -72,7 +70,7 @@ public final class TableCsvHelper {
 
     private static List<String> getHeader(final DTable table, final TableFiller filler) {
         /* Header line. */
-        final List<String> header = Lists.newArrayList();
+        final List<String> header = new ArrayList<>();
         /* Add blank cell to shift the header line against the first row labels. */
         header.add(StringUtil.EMPTY_STRING);
         /* Loop over table columns to get header cell values. */
@@ -95,7 +93,7 @@ public final class TableCsvHelper {
     private static void addLineToDescriptor(final DLine line, final List<List<String>> descriptors, final TableFiller filler, final short baseOffset) {
         // If line is hidden, not added to CSV export
         if (line.isVisible()) {
-            final List<String> lineCellValues = Lists.newArrayList();
+            final List<String> lineCellValues = new ArrayList<>();
             // Blank character according to the specified offset.
             if (baseOffset > 0) {
                 for (int i = 0; i < baseOffset; i++) {

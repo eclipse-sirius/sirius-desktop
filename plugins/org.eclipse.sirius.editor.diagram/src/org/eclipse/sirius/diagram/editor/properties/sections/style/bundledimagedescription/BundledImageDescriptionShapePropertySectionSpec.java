@@ -26,8 +26,6 @@ import org.eclipse.sirius.diagram.description.style.BundledImageDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.internal.queries.BundledImageExtensionQuery;
 
-import com.google.common.collect.Lists;
-
 public class BundledImageDescriptionShapePropertySectionSpec extends BundledImageDescriptionShapePropertySection {
 
     /**
@@ -35,7 +33,7 @@ public class BundledImageDescriptionShapePropertySectionSpec extends BundledImag
      */
     @Override
     protected List<?> getChoiceOfValues() {
-        ArrayList values = Lists.newArrayList();
+        ArrayList values = new ArrayList<>();
         for (int i = 0; i < BundledImageShape.VALUES.size(); i++) {
             BundledImageShape bundledImageShape = BundledImageShape.VALUES.get(i);
             if (!bundledImageShape.equals(BundledImageShape.PROVIDED_SHAPE_LITERAL)) {

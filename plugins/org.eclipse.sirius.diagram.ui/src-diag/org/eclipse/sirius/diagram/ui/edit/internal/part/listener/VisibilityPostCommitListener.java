@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part.listener;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -94,7 +95,7 @@ public class VisibilityPostCommitListener extends ResourceSetListenerImpl {
 
     private void forceNodeAndEdgeEditPartsRefresh(ResourceSetChangeEvent event) {
         final Set<View> changedElements = getElementsWhoseVisibilityChanged(event);
-        final Set<IGraphicalEditPart> parts = Sets.newHashSet();
+        final Set<IGraphicalEditPart> parts = new HashSet<>();
         for (View view : changedElements) {
             Option<IGraphicalEditPart> elementParts = getEditPartsFor(view);
             if (elementParts.some()) {

@@ -13,7 +13,6 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.actions;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
-
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
 import org.eclipse.sirius.tree.description.TreeItemTool;
 

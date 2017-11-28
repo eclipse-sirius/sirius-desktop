@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -33,6 +31,8 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.ecore.design.service.EcoreSamplePlugin;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+
+import junit.framework.TestCase;
 
 /**
  * A Test case for the {@link ServiceProposalProvider}.

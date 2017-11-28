@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -44,8 +45,6 @@ import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
-import com.google.common.collect.Sets;
-
 /**
  * A generic interpreter.
  * 
@@ -57,13 +56,13 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider, IInt
     private final Map<IInterpreterProvider, IInterpreter> loadedInterpreters = new HashMap<IInterpreterProvider, IInterpreter>();
 
     /** The dependencies. */
-    private Collection<String> dependencies = Sets.newLinkedHashSet();
+    private Collection<String> dependencies = new LinkedHashSet<>();
 
     /**
      * If Sirius knows of any additional metamodel that may be necessary for the interpreter, they'll be registered
      * here.
      */
-    private Collection<MetamodelDescriptor> additionalMetamodels = Sets.newLinkedHashSet();
+    private Collection<MetamodelDescriptor> additionalMetamodels = new LinkedHashSet<>();
 
     /** The variables. */
     private final VariableManager variables = new VariableManager();

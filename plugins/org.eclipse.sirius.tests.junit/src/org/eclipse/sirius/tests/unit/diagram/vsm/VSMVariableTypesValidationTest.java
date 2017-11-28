@@ -13,8 +13,10 @@ package org.eclipse.sirius.tests.unit.diagram.vsm;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
@@ -44,7 +46,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * Test checking the variable types are correctly infered when validating a VSM.
@@ -80,7 +81,7 @@ public class VSMVariableTypesValidationTest {
     public static Collection<Object[]> data() throws IOException {
         URI uri = URI.createPlatformPluginURI(ORG_ECLIPSE_SIRIUS_TESTS_JUNIT_DATA_UNIT_VSM_VALIDATE_VARIABLE_TYPES_ODESIGN, true);
 
-        List<Object[]> parameters = Lists.newArrayList();
+        List<Object[]> parameters = new ArrayList<>();
         Group group = loadVSM(uri);
         if (group != null) {
             for (Viewpoint vp : group.getOwnedViewpoints()) {
@@ -135,7 +136,7 @@ public class VSMVariableTypesValidationTest {
         String expression = this.underTest.getExpression();
         IInterpreter interpreterForExpression = CompoundInterpreter.INSTANCE.getInterpreterForExpression(expression);
 
-        Collection<IInterpreterStatus> errors = Sets.newLinkedHashSet();
+        Collection<IInterpreterStatus> errors = new LinkedHashSet<>();
         if (interpreterForExpression.supportsValidation()) {
             IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(this.underTest.getDeclaration(), this.underTest.getFeature());
             errors = MultiLanguagesValidator.getInstance().validateExpression(context, expression).getStatuses();
@@ -224,7 +225,7 @@ class InterpretedExpression {
     }
 
     private String qualifiedName(EObject declaration) {
-        List<String> segments = Lists.newArrayList();
+        List<String> segments = new ArrayList<>();
 
         EObject cur = declaration;
         while (cur != null) {

@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.layoutdata.tools.api.util;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.Configuration;

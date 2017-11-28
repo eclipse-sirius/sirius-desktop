@@ -11,7 +11,6 @@
 package org.eclipse.sirius.tree.tools.internal.command;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactoryProvider;
 

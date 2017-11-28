@@ -12,8 +12,6 @@ package org.eclipse.sirius.tests.unit.diagram.tools;
 
 import java.util.Iterator;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -29,6 +27,8 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.tests.unit.diagram.tools.data.GroupToolsApplicability;
 import org.eclipse.sirius.viewpoint.description.Group;
+
+import junit.framework.TestCase;
 
 public class ToolsApplicabilityTest extends TestCase {
 

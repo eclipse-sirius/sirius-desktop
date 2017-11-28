@@ -13,11 +13,10 @@ package org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -36,7 +35,8 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+
+import junit.framework.TestCase;
 
 /**
  * Tests for the {@link AcceleoMTLInterpreter} utility class.
@@ -579,7 +579,7 @@ public class AcceleoMTLInterpreterTests extends TestCase {
         c2.setName("c2");
         p2.getEClassifiers().add(c2);
 
-        Map<String, Object> variables = Maps.newLinkedHashMap();
+        Map<String, Object> variables = new LinkedHashMap<>();
 
         variables.put("c1", c);
         variables.put("p1", p);
@@ -657,7 +657,7 @@ public class AcceleoMTLInterpreterTests extends TestCase {
         eClass.setName("c2");
 
         final String varName = "c";
-        final List<Object> varVals = Lists.newArrayList();
+        final List<Object> varVals = new ArrayList<>();
 
         IVariableStatusListener listener = new IVariableStatusListener() {
 

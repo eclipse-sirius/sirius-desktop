@@ -11,12 +11,12 @@
 package org.eclipse.sirius.ui.tools.internal.actions.analysis;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard;
-
-import com.google.common.collect.Sets;
 
 /**
  * Registry containing all the {@link IAddModelDependencyWizard}s that have been
@@ -32,7 +32,7 @@ public final class IAddModelDependencyWizardRegistry {
     /**
      * The registered {@link IAddModelDependencyWizard}s.
      */
-    private static final Collection<IAddModelDependencyWizardDescriptor> WIZARDS = Sets.newLinkedHashSet();
+    private static final Collection<IAddModelDependencyWizardDescriptor> WIZARDS = new LinkedHashSet<>();
 
     /**
      * Utility classes don't need a default constructor.
@@ -85,7 +85,7 @@ public final class IAddModelDependencyWizardRegistry {
      * @return A copy of the registered extensions list.
      */
     private static Collection<IAddModelDependencyWizardDescriptor> getRegisteredExtensions() {
-        Set<IAddModelDependencyWizardDescriptor> registeredExtensions = Sets.newHashSet();
+        Set<IAddModelDependencyWizardDescriptor> registeredExtensions = new HashSet<>();
         for (IAddModelDependencyWizardDescriptor extension : WIZARDS) {
             registeredExtensions.add(extension);
         }

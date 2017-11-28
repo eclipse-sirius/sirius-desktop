@@ -17,13 +17,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.sirius.common.tools.api.util.CartesianProduct;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
+
+import junit.framework.TestCase;
 
 /**
  * Cartesian product test case.

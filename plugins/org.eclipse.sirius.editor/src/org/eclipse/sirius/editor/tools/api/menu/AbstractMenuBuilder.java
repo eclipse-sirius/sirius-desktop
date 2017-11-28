@@ -11,9 +11,12 @@
 package org.eclipse.sirius.editor.tools.api.menu;
 
 import java.text.Collator;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -46,8 +49,6 @@ import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * Abstract class to dynamically build treeview menus.
@@ -245,14 +246,14 @@ public abstract class AbstractMenuBuilder {
      * Map associating type keys (as computed by EClassHelper.getPath()), with
      * the priority of the corresponding type.
      */
-    private Map<String, Integer> priorityMap = Maps.newHashMap();
+    private Map<String, Integer> priorityMap = new HashMap<>();
 
     /**
      * Create a new builder.
      */
     public AbstractMenuBuilder() {
         super();
-        descriptors = Sets.newLinkedHashSet();
+        descriptors = new LinkedHashSet<>();
         getMenu();
     }
 
@@ -378,7 +379,7 @@ public abstract class AbstractMenuBuilder {
      * Depopulate the menu.
      */
     protected void depopulate() {
-        descriptors = Sets.newLinkedHashSet();
+        descriptors = new LinkedHashSet<>();
         if (myMenuManager != null) {
             depopulateManager(myMenuManager, advancedChildActions);
         }
@@ -430,7 +431,7 @@ public abstract class AbstractMenuBuilder {
      * @return the list of actions.
      */
     protected Collection<CreateChildAction> generateCreateChildActions(final Collection<?> actionDescriptors, final ISelection selection, final IEditorPart editor) {
-        final Collection<CreateChildAction> actions = Lists.newArrayList();
+        final Collection<CreateChildAction> actions = new ArrayList<>();
         if (actionDescriptors != null) {
             for (final Object actionDescriptor : actionDescriptors) {
                 final CreateChildAction cca;

@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.business.api.viewpoint;
 
 import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,6 +21,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
 
@@ -87,7 +89,6 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
@@ -322,7 +323,7 @@ public final class ViewpointSelection {
             }
         };
         StringBuilder sb = new StringBuilder(Messages.ViewpointSelection_missingDependencies_header).append("\n"); //$NON-NLS-1$
-        List<String> lines = Lists.newArrayList();
+        List<String> lines = new ArrayList<>();
         for (Map.Entry<String, Collection<String>> entry : missingDependencies.entrySet()) {
             lines.add("- " + MessageFormat.format(Messages.ViewpointSelection_missingDependencies_requirements, entry.getKey(), toStringList.apply(entry.getValue()))); //$NON-NLS-1$
         }
@@ -416,7 +417,7 @@ public final class ViewpointSelection {
 
     private static SortedMap<Viewpoint, Boolean> getViewpointsWithMonitor(final Session session) {
         final SortedSet<Viewpoint> allViewpoints = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
-        final SortedMap<Viewpoint, Boolean> viewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+        final SortedMap<Viewpoint, Boolean> viewpointsMap = new TreeMap<>(new ViewpointRegistry.ViewpointComparator());
         final IProgressService ps = PlatformUI.getWorkbench().getProgressService();
         try {
             ps.busyCursorWhile(new IRunnableWithProgress() {

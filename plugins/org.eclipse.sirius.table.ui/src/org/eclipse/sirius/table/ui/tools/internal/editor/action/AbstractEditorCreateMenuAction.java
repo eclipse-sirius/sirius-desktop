@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.action.Action;
@@ -26,8 +27,6 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
-
-import com.google.common.collect.Lists;
 
 /**
  * This implementation is used to create the structure viewer's "Create Line"
@@ -51,7 +50,7 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
      */
     private final String defaultName;
 
-    private final List<T> createActionsForTable = Lists.newArrayList();
+    private final List<T> createActionsForTable = new ArrayList<>();
 
     // menu item selection listener: listens to selection events
     private final Listener menuItemListener = new Listener() {

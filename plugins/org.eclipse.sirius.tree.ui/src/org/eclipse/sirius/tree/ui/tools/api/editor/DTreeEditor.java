@@ -11,9 +11,8 @@
 package org.eclipse.sirius.tree.ui.tools.api.editor;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.swt.widgets.Control;
-
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.swt.widgets.Control;
 
 /**
  * {@link DialectEditor} for TreeDialect.

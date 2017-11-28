@@ -42,7 +42,6 @@ import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Contribute a menu to tab bar to activate and deactivate layers.
@@ -103,8 +102,8 @@ public class LayersContribution extends AbstractMenuContributionItem {
     @Override
     protected void menuShow(IMenuManager manager) {
         Collection<Layer> layers = getOptionalLayers();
-        List<Layer> nonTransientlayers = Lists.newArrayList();
-        List<Layer> transientLayers = Lists.newArrayList();
+        List<Layer> nonTransientlayers = new ArrayList<>();
+        List<Layer> transientLayers = new ArrayList<>();
         for (Layer layer : layers) {
             if (LayerHelper.isTransientLayer(layer)) {
                 transientLayers.add(layer);

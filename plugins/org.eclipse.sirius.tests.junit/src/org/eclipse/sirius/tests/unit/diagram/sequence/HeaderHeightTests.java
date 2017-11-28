@@ -19,8 +19,6 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
-import com.google.common.collect.Lists;
-
 /**
  * Test that the initial Header Height is not equal to 1 on Sequence Diagram
  * creation, if a participant have a long name.
@@ -71,7 +69,7 @@ public class HeaderHeightTests extends AbstractSequenceSiriusDiagramTests {
      */
     public void testHeaderHeightSize() {
         // Compute the height needed for the current header data.
-        LinkedList<HeaderData> headerDatas = Lists.newLinkedList();
+        LinkedList<HeaderData> headerDatas = new LinkedList<>();
         for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
             if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(sequenceDDiagram.getDescription().eClass().getEPackage())) {
                 headerDatas = diagramTypeDescriptor.getDiagramDescriptionProvider().getHeaderData(sequenceDDiagram);

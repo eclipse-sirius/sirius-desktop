@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.ordering;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,7 +26,6 @@ import org.eclipse.sirius.ext.base.Option;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Helper class to factor common code for semantic and graphical orders
@@ -86,7 +86,7 @@ public final class EventEndHelper {
      * @return a list of semantic element representing the event itself.
      */
     public static List<EObject> getSemanticEvents(EventEnd eventEnd) {
-        List<EObject> result = Lists.newArrayList();
+        List<EObject> result = new ArrayList<>();
         if (eventEnd instanceof SingleEventEnd) {
             result.add(((SingleEventEnd) eventEnd).getSemanticEvent());
         } else if (eventEnd instanceof CompoundEventEnd) {
@@ -133,7 +133,7 @@ public final class EventEndHelper {
      * @return the EventEnds corresponding to the given part
      */
     public static List<EventEnd> findEndsFromSemanticOrdering(ISequenceEvent part) {
-        List<EventEnd> ends = Lists.newArrayList();
+        List<EventEnd> ends = new ArrayList<>();
         SequenceDiagram sdep = part.getDiagram();
         SequenceDDiagram seqDiag = (SequenceDDiagram) sdep.getNotationDiagram().getElement();
         Option<EObject> semanticEvent = part.getSemanticTargetElement();
@@ -179,7 +179,7 @@ public final class EventEndHelper {
      *         chronological order.
      */
     public static List<ISequenceEvent> getCompoundEvents(ISequenceEvent self) {
-        List<ISequenceEvent> compoundEvents = Lists.newArrayList();
+        List<ISequenceEvent> compoundEvents = new ArrayList<>();
         SequenceDiagram sdep = self.getDiagram();
         EObject semanticEvent = self.getSemanticTargetElement().get();
         List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(self);

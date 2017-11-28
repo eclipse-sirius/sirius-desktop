@@ -12,6 +12,7 @@ package org.eclipse.sirius.tree.business.internal.dialect;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -58,8 +59,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.collect.Sets;
 
 /**
  * The {@link AbstractRepresentationDialectServices} implementation for the Tree dialect.
@@ -277,12 +276,12 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     }
 
     private Set<DTreeElement> getTreeElementsToRefresh(Collection<Notification> notifications, DTree tree) {
-        Set<DTreeElement> treeElementsToRefresh = Sets.newHashSet();
+        Set<DTreeElement> treeElementsToRefresh = new HashSet<>();
         Session session = new org.eclipse.sirius.business.api.query.EObjectQuery(tree.getTarget()).getSession();
         if (session != null) {
             ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
             // Deal with each notifier only one time.
-            Set<EObject> alreadyDoneNotifiers = Sets.newHashSet();
+            Set<EObject> alreadyDoneNotifiers = new HashSet<>();
             for (Notification notification : notifications) {
                 Object notifier = notification.getNotifier();
                 if (notifier instanceof EObject) {
@@ -297,7 +296,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     }
 
     private Set<DTreeElement> getTreeElementsToRefresh(EObject notifier, DTree tree, ECrossReferenceAdapter xref) {
-        Set<DTreeElement> treeElementsToRefresh = Sets.newHashSet();
+        Set<DTreeElement> treeElementsToRefresh = new HashSet<>();
         Collection<EObject> inverseReferencers = new EObjectQuery(notifier, xref).getInverseReferences(REPRESENTATION_ELEMENTS_INVERSE_REFERENCES);
         for (EObject inverseReferencer : inverseReferencers) {
             if (inverseReferencer instanceof DTreeElement) {

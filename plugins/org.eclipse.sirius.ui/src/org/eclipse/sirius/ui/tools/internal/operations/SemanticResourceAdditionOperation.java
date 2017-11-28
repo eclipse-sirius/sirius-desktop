@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.operations;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
@@ -22,8 +23,6 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-
-import com.google.common.collect.Sets;
 
 /**
  * Operation to add a semantic resource to a session.
@@ -55,7 +54,7 @@ public class SemanticResourceAdditionOperation implements IRunnableWithProgress 
     public void run(IProgressMonitor monitor) throws java.lang.reflect.InvocationTargetException, InterruptedException {
         try {
             monitor.beginTask(Messages.SemanticResourceAdditionOperation_semanticResourceAdditionTask, uris.size() * sessions.size());
-            results = Sets.newLinkedHashSet();
+            results = new LinkedHashSet<>();
             for (Session session : sessions) {
                 TransactionalEditingDomain transDomain = session.getTransactionalEditingDomain();
                 CompoundCommand command = new CompoundCommand();

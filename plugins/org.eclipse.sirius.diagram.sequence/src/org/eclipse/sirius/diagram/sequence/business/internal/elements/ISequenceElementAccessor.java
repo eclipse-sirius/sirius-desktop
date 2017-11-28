@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -35,7 +36,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Accessor to get the sequence element corresponding to a notation one.
@@ -325,7 +325,7 @@ public final class ISequenceElementAccessor {
         if (xref == null) {
             return Collections.emptySet();
         } else {
-            Collection<ISequenceEvent> result = Lists.newArrayList();
+            Collection<ISequenceEvent> result = new ArrayList<>();
             for (Setting setting : xref.getInverseReferences(semanticElement)) {
                 if (ISequenceElementAccessor.isDiagramElementTargetReference(setting)) {
                     DDiagramElement dde = (DDiagramElement) setting.getEObject();
@@ -358,7 +358,7 @@ public final class ISequenceElementAccessor {
         if (xref == null || diagram == null) {
             return Collections.emptySet();
         } else {
-            Collection<View> result = Lists.newArrayList();
+            Collection<View> result = new ArrayList<>();
             for (Setting setting : xref.getInverseReferences(semanticElement)) {
                 if (ISequenceElementAccessor.isDiagramElementTargetReference(setting)) {
                     DDiagramElement dde = (DDiagramElement) setting.getEObject();
@@ -394,7 +394,7 @@ public final class ISequenceElementAccessor {
         if (xref == null) {
             return Collections.emptySet();
         } else {
-            Collection<DDiagramElement> result = Lists.newArrayList();
+            Collection<DDiagramElement> result = new ArrayList<>();
             for (Setting setting : xref.getInverseReferences(semanticElement)) {
                 if (ISequenceElementAccessor.isDiagramElementTargetReference(setting)) {
                     result.add((DDiagramElement) setting.getEObject());

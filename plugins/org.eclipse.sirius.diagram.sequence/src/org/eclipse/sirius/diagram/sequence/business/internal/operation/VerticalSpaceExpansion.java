@@ -12,6 +12,9 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -37,8 +40,6 @@ import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * An operation to shift all the atomic events on a sequence diagram below a certain point to make room. The space is
@@ -87,7 +88,7 @@ public class VerticalSpaceExpansion extends AbstractModelChangeOperation<Void> {
         this.insertionPoint = shift.getLowerBound();
         this.expansionSize = shift.width();
         // Complete the specified eventsToIgnore with all their descendants.
-        this.eventsToIgnore = Sets.newHashSet();
+        this.eventsToIgnore = new HashSet<>();
         for (ISequenceEvent evt : eventsToIgnore) {
             this.eventsToIgnore.add(evt);
             this.eventsToIgnore.addAll(new ISequenceEventQuery(evt).getAllDescendants());
@@ -116,7 +117,7 @@ public class VerticalSpaceExpansion extends AbstractModelChangeOperation<Void> {
     }
 
     private void computeFinalMessageRanges() {
-        finalMessagesRanges = Maps.newHashMap();
+        finalMessagesRanges = new HashMap<>();
         Set<Message> messages = sequenceDiagram.getAllMessages();
         for (Message msg : messages) {
             if (messagesToShift.contains(msg)) {
@@ -178,7 +179,7 @@ public class VerticalSpaceExpansion extends AbstractModelChangeOperation<Void> {
      * explicitly told to ignore (and their descendants).
      */
     private Set<ISequenceNode> findAllSequenceNodesToConsider() {
-        Set<ISequenceNode> sequenceNodes = Sets.newLinkedHashSet();
+        Set<ISequenceNode> sequenceNodes = new LinkedHashSet<>();
         sequenceNodes.addAll(sequenceDiagram.getAllAbstractNodeEvents());
         sequenceNodes.addAll(sequenceDiagram.getAllInteractionUses());
         sequenceNodes.addAll(sequenceDiagram.getAllCombinedFragments());
@@ -188,7 +189,7 @@ public class VerticalSpaceExpansion extends AbstractModelChangeOperation<Void> {
     }
 
     private Set<Message> findAllMessagesToConsider() {
-        Set<Message> messages = Sets.newHashSet();
+        Set<Message> messages = new HashSet<>();
         for (Message msg : sequenceDiagram.getAllMessages()) {
             if (!isBetweenTwoMovedEvents(msg) || isContainedReflexiveMessage(msg)) {
                 messages.add(msg);
@@ -215,8 +216,8 @@ public class VerticalSpaceExpansion extends AbstractModelChangeOperation<Void> {
     }
 
     private void categorizeMessages(Set<Message> messages) {
-        messagesToResize = Sets.newHashSet();
-        messagesToShift = Sets.newHashSet();
+        messagesToResize = new HashSet<>();
+        messagesToShift = new HashSet<>();
         for (Message ise : Iterables.filter(messages, Predicates.not(Predicates.in(eventsToIgnore)))) {
             if (containsInsertionPoint(ise)) {
                 messagesToResize.add(ise);
@@ -240,8 +241,8 @@ public class VerticalSpaceExpansion extends AbstractModelChangeOperation<Void> {
      * executions which need to be shifted.
      */
     private void categorizeSequenceNodes(Set<? extends ISequenceNode> sequenceNodes) {
-        eventsToResize = Sets.newHashSet();
-        eventsToShift = Sets.newHashSet();
+        eventsToResize = new HashSet<>();
+        eventsToShift = new HashSet<>();
         for (ISequenceNode isn : sequenceNodes) {
             if (isn instanceof ISequenceEvent) {
                 ISequenceEvent ise = (ISequenceEvent) isn;

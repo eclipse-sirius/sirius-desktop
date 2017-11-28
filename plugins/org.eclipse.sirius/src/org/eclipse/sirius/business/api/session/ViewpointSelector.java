@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.session;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -23,7 +24,6 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 /**
  * Class to select or deselect Viewpoints for a given session.
@@ -67,7 +67,7 @@ public class ViewpointSelector {
         if (editingDomainViewpoint != null && !SiriusResourceHelper.isViewExistForSirius(session, editingDomainViewpoint)) {
             if (!session.getSemanticResources().isEmpty()) {
                 /* get all the roots */
-                final List<EObject> roots = Lists.newArrayList();
+                final List<EObject> roots = new ArrayList<>();
                 for (final Resource resource : session.getSemanticResources()) {
                     if (resource != null) {
                         roots.addAll(resource.getContents());

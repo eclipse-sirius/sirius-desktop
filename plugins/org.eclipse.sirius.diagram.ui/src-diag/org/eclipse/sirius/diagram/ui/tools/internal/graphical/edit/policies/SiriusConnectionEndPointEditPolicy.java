@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
@@ -39,8 +40,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.handles.Siriu
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.draw2d.ui.geometry.LineSegQuery;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-
-import com.google.common.collect.Lists;
 
 /**
  * Override ConnectionEndPointEditPolicy to call our connection end point handle
@@ -165,7 +164,7 @@ public class SiriusConnectionEndPointEditPolicy extends ConnectionEndpointEditPo
     @SuppressWarnings("unchecked")
     private void saveOriginalConstraint() {
         if (getConnection().getRoutingConstraint() instanceof List) {
-            List<RelativeBendpoint> listBendpoint = Lists.newArrayList();
+            List<RelativeBendpoint> listBendpoint = new ArrayList<>();
             ArrayList<Object> originListBendpoint = new ArrayList<Object>((List<Object>) getConnection().getRoutingConstraint());
             try {
                 // Unfortunately, the vectors (stored as dimensions) and weight
@@ -278,7 +277,7 @@ public class SiriusConnectionEndPointEditPolicy extends ConnectionEndpointEditPo
                 getConnection().setRoutingConstraint(optionalAsboluteBendpointsContraint.get());
             }
         } else {
-            List<RelativeBendpoint> newConstraint = Lists.newLinkedList();
+            List<RelativeBendpoint> newConstraint = new LinkedList<>();
             for (int i = 0; i < points.size(); i++) {
                 Dimension s = points.getPoint(i).getDifference(sourceRefPoint);
                 Dimension t = points.getPoint(i).getDifference(targetRefPoint);

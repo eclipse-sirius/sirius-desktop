@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EObjectVariableValue;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.osgi.framework.Version;
 

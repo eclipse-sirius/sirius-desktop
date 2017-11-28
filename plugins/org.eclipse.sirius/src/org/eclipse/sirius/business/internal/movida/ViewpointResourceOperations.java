@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.movida;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -23,7 +24,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
 
 /**
  * Operations to manipulate Viewpoints Resources (VSMs).
@@ -70,7 +70,7 @@ public class ViewpointResourceOperations {
     private Map<EObject, URI> computeLogicalURIs() {
         Preconditions.checkState(resource.isLoaded());
 
-        Map<EObject, URI> logicalURIs = Maps.newHashMap();
+        Map<EObject, URI> logicalURIs = new HashMap<>();
         URI currentSiriusURI = null;
         Iterator<EObject> allContents = EcoreUtil.getAllProperContents(resource, false);
         while (allContents.hasNext()) {

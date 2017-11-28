@@ -14,6 +14,8 @@ import static org.junit.Assert.assertNotEquals;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -66,8 +68,6 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 import junit.framework.AssertionFailedError;
 
@@ -156,7 +156,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
 
     private static final String PROPERTIES_VIEW_ID = "org.eclipse.ui.views.PropertySheet";
 
-    private Set<AssertionFailedError> failures = Sets.newLinkedHashSet();
+    private Set<AssertionFailedError> failures = new LinkedHashSet<>();
 
     private SWTBotSiriusDiagramEditor diagramEditor;
 
@@ -230,7 +230,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
     public void testLabelStabilityOnBracketEdges() {
         String diagramDescriptionName = "DiagramWithBracketEdge";
         String diagramName = "diagramWithBracketEdge";
-        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
         // Move down the middle segment
         edgeLabelExpectedPosition.put("refToC1BBegin", new Dimension(0, 30));
         edgeLabelExpectedPosition.put("refToC1BCenter", new Dimension(0, 30));
@@ -288,7 +288,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // Part 1: Case Rectilinear C and D in spec -the ref point is on the 2nd
         // segment
         // test when label anchor remains on 2nd segment
-        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
         edgeLabelExpectedPosition.put("refToBCenter", new Dimension(0, 0));
         doTestMoveNodesOnlyMovesFirstOrLastBendpoint(DIAGRAM_DESCRIPTION_NAME, diagramName, Lists.newArrayList(new Point(-10, 0), new Point(10, 0)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_125,
                 "B");
@@ -388,7 +388,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // RECTILINEAR STYLE
         // Segments are horizontal,vertical and horizontal
         String diagramName = "EdgeWith3SegmentsHVH";
-        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
 
         // Case Rectilinear A, B and B' of the spec - The reference point is on
         // a segment
@@ -427,7 +427,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      */
     public void testLabelMoveForEdgeInContainer() {
         String diagramName = "EdgeWith3SegmentsHVH";
-        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
         edgeLabelExpectedPosition.put("refToC1BBegin", new Dimension(0, -31));
         edgeLabelExpectedPosition.put("refToC1BCenter", new Dimension(0, 0));
         edgeLabelExpectedPosition.put("refToC1BEnd", new Dimension(0, 0));
@@ -473,7 +473,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // RECTILINEAR STYLE
         // Segments are horizontal,vertical and horizontal
         String diagramName = "EdgeWith3SegmentsHVH";
-        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
 
         // Case Rectilinear G of the spec - The reference point is on a segment
         // that is removed but merged with another one --> The label is moved
@@ -517,7 +517,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // There are two nodes connected by an edge with 3 segments with
         // OBLIQUE STYLE
         String diagramName = "EdgeWithObliqueSegments";
-        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
         // edgeLabelExpectedPosition.put("refToBBegin", new Dimension(0, 0));
         edgeLabelExpectedPosition.put("refToBCenter", new Dimension(0, 0));
         edgeLabelExpectedPosition.put("refToBEnd", new Dimension(0, 0));
@@ -565,7 +565,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // There are two nodes connected by an edge with 3 segments with
         // OBLIQUE STYLE
         String diagramName = "DiagramWithSmallObliqueEdge";
-        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
 
         // If the edge is moved "away", the label is "reseted" to its default
         // location. This case corresponds to an old ratio less than 0 or more
@@ -615,13 +615,13 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      */
     public void testLabelStabilityWhenMovingNodeOfObliqueEdgeSeveralTimes() {
         String diagramName = "EdgeWithObliqueSegments";
-        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
         edgeLabelExpectedPosition.put("refToBBegin", new Dimension(0, 0));
         Point moveDelta = new Point(10, 10);
 
         // Step 1: Open the corresponding diagram
         diagramEditor = setUpEditorAccordingToDimensions(diagramName, ZoomLevel.ZOOM_100);
-        Collection<SWTBotGefEditPart> editPartsToMove = Sets.newLinkedHashSet();
+        Collection<SWTBotGefEditPart> editPartsToMove = new LinkedHashSet<>();
         SWTBotGefEditPart nodeEditPart = diagramEditor.getEditPart("B", IAbstractDiagramNodeEditPart.class);
         editPartsToMove.add(nodeEditPart);
 
@@ -694,7 +694,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // There are two nodes connected by an edge with 3 segments with
         // OBLIQUE STYLE
         String diagramName = "EdgeWithObliqueSegments";
-        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
 
         // Case Oblique A of the spec - The reference point is on a segment that
         // is not impacted by the move --> The label does not move.
@@ -778,7 +778,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         for (Point moveDelta : moveDeltas) {
             // Step 1: Open the corresponding diagram
             diagramEditor = setUpEditorAccordingToDimensions(diagramDescriptionName, diagramName, zoomLevel);
-            Collection<SWTBotGefEditPart> editPartsToMove = Sets.newLinkedHashSet();
+            Collection<SWTBotGefEditPart> editPartsToMove = new LinkedHashSet<>();
             for (String nodeToMove : nodesToMove) {
                 SWTBotGefEditPart nodeEditPart = diagramEditor.getEditPart(nodeToMove, IAbstractDiagramNodeEditPart.class);
                 editPartsToMove.add(nodeEditPart);
@@ -963,7 +963,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * @return
      */
     private Map<String, LabelPositionData> computeExpectedLabelLocations(Map<String, Dimension> edgeLabelDeltas, Connection figure) {
-        Map<String, LabelPositionData> expectedLabelPositions = Maps.newHashMap();
+        Map<String, LabelPositionData> expectedLabelPositions = new HashMap<>();
         for (Entry<String, Dimension> labelNameToDelta : edgeLabelDeltas.entrySet()) {
             SWTBotGefEditPart labelEditPart = diagramEditor.getEditPart(labelNameToDelta.getKey(), AbstractDEdgeNameEditPart.class);
             Rectangle labelBounds = ((AbstractGraphicalEditPart) labelEditPart.part()).getFigure().getBounds();
@@ -1324,7 +1324,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // There are two nodes connected by an edge with 3 segments with
         // TREE STYLE
         String diagramName = "DiagWithNodeAndTreeLayoutAndIconOnEdgeLabel";
-        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        Map<String, Dimension> edgeLabelExpectedPosition = new LinkedHashMap<>();
         edgeLabelExpectedPosition.put("superTypesOf K11", new Dimension(-2150, 225));
         doTestMoveNodesOnlyMovesFirstOrLastBendpoint(diagramName, diagramName, Lists.newArrayList(new Point(-2150, 225)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, true, "K1", "K11");
         edgeLabelExpectedPosition.clear();

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.actions.analysis;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -20,8 +21,6 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IRegistryChangeEvent;
 import org.eclipse.core.runtime.IRegistryChangeListener;
 import org.eclipse.core.runtime.Platform;
-
-import com.google.common.collect.Sets;
 
 /**
  * This listener allows to be aware of contribution changes against the
@@ -90,7 +89,7 @@ public final class IAddModelDependencyWizardRegistryListener implements IRegistr
      * @see org.eclipse.core.runtime.IRegistryChangeListener#registryChanged(org.eclipse.core.runtime.IRegistryChangeEvent)
      */
     public void registryChanged(IRegistryChangeEvent event) {
-        Set<IExtension> addedExtensions = Sets.newLinkedHashSet();
+        Set<IExtension> addedExtensions = new LinkedHashSet<>();
         for (IExtensionDelta extensionDelta : event.getExtensionDeltas()) {
             addedExtensions.add(extensionDelta.getExtension());
         }

@@ -10,16 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.tools.tasks;
 
+import java.util.HashMap;
 import java.util.Map;
-
-import junit.framework.TestCase;
 
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 
-import com.google.common.collect.Maps;
+import junit.framework.TestCase;
 
 /**
  * Test the parsing of mask variables and the variable duplication for integer
@@ -53,7 +52,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Empty_Mask_And_New_Empty_Value() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "");
 
         doTestParsedVariableTask("", "", expectedParsedVariables);
@@ -63,7 +62,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Default_Mask_And_New_Empty_Value() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "");
 
         doTestParsedVariableTask("{0}", "", expectedParsedVariables);
@@ -73,7 +72,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Default_Mask() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "i");
 
         doTestParsedVariableTask("{0}", "i", expectedParsedVariables);
@@ -83,7 +82,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Simple_Mask_And_Empty_Message() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "");
 
         doTestParsedVariableTask("{0} {1} {2}", "", expectedParsedVariables);
@@ -93,7 +92,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Simple_Mask() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "i");
         expectedParsedVariables.put(1, "j");
         expectedParsedVariables.put(2, "k");
@@ -105,7 +104,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Complex_Mask_And_Empty_Message() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "");
 
         doTestParsedVariableTask("{0} : {1} ( {2} )", "", expectedParsedVariables);
@@ -115,7 +114,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Complex_Mask() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "i");
         expectedParsedVariables.put(1, "j");
         expectedParsedVariables.put(2, "k");
@@ -127,7 +126,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Empty_Mask_And_New_Empty_Value2() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "");
 
         doTestParsedVariableTask2("", "", expectedParsedVariables);
@@ -137,7 +136,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Default_Mask2() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "i");
 
         doTestParsedVariableTask2("{0}", "i", expectedParsedVariables);
@@ -147,7 +146,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Default_Mask_And_New_Empty_Value2() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "");
 
         doTestParsedVariableTask2("{0}", "", expectedParsedVariables);
@@ -157,7 +156,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Simple_Mask_And_Empty_Message_2() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "");
 
         doTestParsedVariableTask2("{0} {1} {2}", "", expectedParsedVariables);
@@ -167,7 +166,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Simple_Mask_2() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "i");
         expectedParsedVariables.put(1, "j");
         expectedParsedVariables.put(2, "k");
@@ -179,7 +178,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Complex_Mask_And_Empty_Message_2() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "");
 
         doTestParsedVariableTask2("{0} : {1} ( {2} )", "", expectedParsedVariables);
@@ -189,7 +188,7 @@ public class InitInterpreterFromParsedVariableTaskTest extends TestCase {
      * Test.
      */
     public void test_VariableDuplication_With_Complex_Mask_2() {
-        Map<Integer, String> expectedParsedVariables = Maps.newHashMap();
+        Map<Integer, String> expectedParsedVariables = new HashMap<>();
         expectedParsedVariables.put(0, "i");
         expectedParsedVariables.put(1, "j");
         expectedParsedVariables.put(2, "k");

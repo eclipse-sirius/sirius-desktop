@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.sequence.action;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +20,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.action.AbstractExternalJavaAction;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
@@ -88,7 +88,7 @@ public class InvocationRecorderAction extends AbstractExternalJavaAction {
      */
     private static final AtomicBoolean RECORDING = new AtomicBoolean(false);
 
-    private static final List<InvocationData> LOG = Lists.newArrayList();
+    private static final List<InvocationData> LOG = new ArrayList<>();
 
     /**
      * Clears the log of previously stored invocation data.

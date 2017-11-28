@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.session;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +28,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
 
 /**
  * Validation tests.
@@ -130,7 +130,7 @@ public class MultiAirdResourcesSessionTest extends SiriusDiagramTestCase {
 
         assertTrue("There must be at least two diagram", Iterables.size(allDiagrams) > 1);
 
-        Map<DDiagram, IEditorPart> openEditors = Maps.newHashMap();
+        Map<DDiagram, IEditorPart> openEditors = new HashMap<>();
         for (final DDiagram dDiagram : allDiagrams) {
             IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, dDiagram, new NullProgressMonitor());
             TestsUtil.synchronizationWithUIThread();

@@ -10,13 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.api.query;
 
-import com.google.common.base.Preconditions;
-
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
@@ -24,6 +22,8 @@ import org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+
+import com.google.common.base.Preconditions;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DLine} as a

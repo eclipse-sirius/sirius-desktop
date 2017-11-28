@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -251,7 +252,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      *            GMF Diagram to migrate.
      */
     private void migrateChildrenOfCollapsedNode(Diagram diagram) {
-        List<DDiagramElement> indirectlyCollaspedDDEs = Lists.newArrayList();
+        List<DDiagramElement> indirectlyCollaspedDDEs = new ArrayList<>();
         Iterator<Node> viewIterator = Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class), isDirectlyCollapsedNode);
         while (viewIterator.hasNext()) {
             final Node node = viewIterator.next();

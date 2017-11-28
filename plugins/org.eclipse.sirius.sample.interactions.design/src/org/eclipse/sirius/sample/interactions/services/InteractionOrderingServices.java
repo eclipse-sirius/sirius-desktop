@@ -48,7 +48,6 @@ import org.eclipse.sirius.sample.interactions.StateEnd;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Java services for the sample 'Interactions' sequence diagrams.
@@ -125,7 +124,7 @@ public class InteractionOrderingServices {
     }
 
     public Collection<EObject> lostMessageEndSemanticCandidates(Interaction i) {
-        Collection<EObject> result = Lists.newArrayList();
+        Collection<EObject> result = new ArrayList<>();
         for (Message msg : i.getMessages()) {
             if ((msg.getSendingEnd() == null && msg.getReceivingEnd() != null) || (msg.getSendingEnd() != null && msg.getReceivingEnd() == null)) {
                 result.add(msg);

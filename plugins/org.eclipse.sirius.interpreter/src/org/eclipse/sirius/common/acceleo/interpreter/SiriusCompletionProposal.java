@@ -11,8 +11,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.interpreter;
 
-import com.google.common.base.Throwables;
-
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.DocumentEvent;
@@ -23,6 +21,8 @@ import org.eclipse.jface.text.contentassist.ICompletionProposalExtension2;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
+
+import com.google.common.base.Throwables;
 
 /**
  * Implementation of a completion proposal for Sirius.

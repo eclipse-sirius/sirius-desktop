@@ -10,10 +10,10 @@
  */
 package org.eclipse.sirius.tests.support.api;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
-
-import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -25,8 +25,8 @@ import org.junit.Assert;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+
+import junit.framework.TestCase;
 
 /**
  * Test cardinality and initialization of Color references.
@@ -59,8 +59,8 @@ public abstract class AbstractColorReferenceTestCase extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        colorReferences = Sets.newLinkedHashSet();
-        classesWithColorReferences = Sets.newLinkedHashSet();
+        colorReferences = new LinkedHashSet<>();
+        classesWithColorReferences = new LinkedHashSet<>();
         Assert.assertNotNull("Base package should not be null.", basePackage);
         lookForColorReferences(basePackage);
     }
@@ -86,7 +86,7 @@ public abstract class AbstractColorReferenceTestCase extends TestCase {
      * Test that all color references are required.
      */
     public void testColorReferencesCardinality() {
-        List<EReference> referencesWithWrongCardinality = Lists.newArrayList();
+        List<EReference> referencesWithWrongCardinality = new ArrayList<>();
 
         Predicate<EReference> shouldBeRequired = new Predicate<EReference>() {
             @Override

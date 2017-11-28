@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.api.interpreter;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -33,7 +34,6 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -76,7 +76,7 @@ public class CompletionTests extends SiriusDiagramTestCase implements EcoreModel
     }
 
     private ContentContext getContext(EObject element, EStructuralFeature feature, String domainClass, String text, int cursorPosition) {
-        Map<String, VariableType> variables = Maps.newLinkedHashMap();
+        Map<String, VariableType> variables = new LinkedHashMap<>();
         if (element != null && feature != null) {
             variables = SiriusInterpreterContextFactory.createInterpreterContext(element, feature).getVariables();
         }

@@ -65,8 +65,8 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         super(Messages.ViewpointsSelectionWizardPage_title);
         this.setTitle(Messages.ViewpointsSelectionWizardPage_title);
         this.setMessage(Messages.ViewpointsSelectionWizardPage_message);
-        this.viewpoints = Lists.newArrayList();
-        this.viewpointsNamesToActivateByDefault = Lists.newArrayList();
+        this.viewpoints = new ArrayList<>();
+        this.viewpointsNamesToActivateByDefault = new ArrayList<>();
         viewpointsSelectionGraphicalHandler = new ViewpointsSelectionGraphicalHandler();
         this.session = theSession;
     }
@@ -84,7 +84,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         super(Messages.ViewpointsSelectionWizardPage_title);
         this.setTitle(Messages.ViewpointsSelectionWizardPage_title);
         this.setMessage(Messages.ViewpointsSelectionWizardPage_message);
-        this.viewpoints = Lists.newArrayList();
+        this.viewpoints = new ArrayList<>();
         this.viewpointsNamesToActivateByDefault = Lists.newArrayList(viewpointsNamesToActivateByDefault);
         viewpointsSelectionGraphicalHandler = new ViewpointsSelectionGraphicalHandler();
         this.session = theSession;

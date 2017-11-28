@@ -11,7 +11,10 @@
 package org.eclipse.sirius.table.business.internal.dialect;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -75,9 +78,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Function;
 import com.google.common.base.Supplier;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * Services for the table dialect.
@@ -223,7 +223,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         Function<EObject, Object> idFunction = new ContributionTrakingIdentifier(efSupplier, cpSupplier, new IntrinsicPathIdentifier());
         IncrementalModelContributor imc = new TableModelContributor(new TableContributionsFinder(table.getDescription()), resolver, idFunction);
         if (efSupplier.get() != null) {
-            Map<EObject, Object> restoredIdentifiers = Maps.newHashMap();
+            Map<EObject, Object> restoredIdentifiers = new HashMap<>();
             for (EObject obj : AllContents.of(efSupplier.get(), true)) {
                 restoredIdentifiers.put(obj, idFunction.apply(obj));
             }
@@ -233,7 +233,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     }
 
     private void updateContributionPoints(DTable table, Supplier<EObject> efSupplier, Supplier<EList<ContributionPoint>> cpSupplier, IncrementalModelContributor imc) {
-        List<ContributionPoint> newPoints = Lists.newArrayList();
+        List<ContributionPoint> newPoints = new ArrayList<>();
         newPoints.add(ContributionPointHelper.make(efSupplier.get(), new IntrinsicPathIdentifier().apply(table.getDescription())));
         Map<EObject, Object> cps = imc.getContributionPoints();
         for (Map.Entry<EObject, Object> entry : cps.entrySet()) {
@@ -314,12 +314,12 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     }
 
     private Set<DTableElement> getTableElementsToRefresh(Collection<Notification> notifications, DTable table) {
-        Set<DTableElement> tableElementsToRefresh = Sets.newHashSet();
+        Set<DTableElement> tableElementsToRefresh = new HashSet<>();
         Session session = new org.eclipse.sirius.business.api.query.EObjectQuery(table.getTarget()).getSession();
         if (session != null) {
             ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
             // Deal with each notifier only one time.
-            Set<EObject> alreadyDoneNotifiers = Sets.newHashSet();
+            Set<EObject> alreadyDoneNotifiers = new HashSet<>();
             for (Notification notification : notifications) {
                 Object notifier = notification.getNotifier();
                 if (notifier instanceof EObject) {
@@ -334,7 +334,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     }
 
     private Set<DTableElement> getTableElementsToRefresh(EObject notifier, DTable table, ECrossReferenceAdapter xref) {
-        Set<DTableElement> tableElementsToRefresh = Sets.newHashSet();
+        Set<DTableElement> tableElementsToRefresh = new HashSet<>();
         Collection<EObject> inverseReferencers = new org.eclipse.sirius.business.api.query.EObjectQuery(notifier, xref).getInverseReferences(REPRESENTATION_ELEMENTS_INVERSE_REFERENCES);
         for (EObject inverseReferencer : inverseReferencers) {
             if (inverseReferencer instanceof DTableElement) {

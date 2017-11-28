@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.synchronizer;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -20,7 +21,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.synchronizer.internal.Messages;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * The core of the process, this class orchestrate the whole synchronization
@@ -75,7 +75,7 @@ public class ModelToModelSynchronizer {
                         monitor.worked(1);
                     }
 
-                    Collection<CreatedOutput> newlyCreated = Lists.newArrayList();
+                    Collection<CreatedOutput> newlyCreated = new ArrayList<>();
                     for (OutputDescriptor outDesc : descriptorsToCreate) {
                         CreatedOutput newOne = containerChildSupport.createChild(outDesc);
                         newOne.refresh();

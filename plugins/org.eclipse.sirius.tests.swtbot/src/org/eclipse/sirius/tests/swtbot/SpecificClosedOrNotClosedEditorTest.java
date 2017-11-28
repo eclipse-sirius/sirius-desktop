@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.swtbot;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -208,7 +209,7 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
             localSession.save();
 
             final EditorWillBeClosedInformationDialogCallerDetector editorWillCloseDetector = new EditorWillBeClosedInformationDialogCallerDetector();
-            final Collection<DRepresentation> openedRepresentations = Lists.newArrayList();
+            final Collection<DRepresentation> openedRepresentations = new ArrayList<>();
             IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(localSession.getOpenedSession());
             for (DialectEditor ed : uiSession.getEditors()) {
                 DRepresentation representation = ed.getRepresentation();

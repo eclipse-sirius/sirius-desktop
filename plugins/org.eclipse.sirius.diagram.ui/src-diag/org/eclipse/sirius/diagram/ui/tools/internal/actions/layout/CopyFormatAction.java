@@ -11,6 +11,7 @@
 
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -46,8 +47,6 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
-
-import com.google.common.collect.Lists;
 
 /**
  * Copy the format of the selected diagram or of the selected diagram elements.
@@ -188,7 +187,7 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
      * @return The current selected {@link IGraphicalEditPart}
      */
     private List<IGraphicalEditPart> cleanSelectedObjects(List<?> selectedObjects) {
-        List<IGraphicalEditPart> result = Lists.newArrayList();
+        List<IGraphicalEditPart> result = new ArrayList<>();
         // Transform List to Set to optimize the contains() called in the below
         // loop
         final Set<Object> selection = new HashSet<Object>(selectedObjects);

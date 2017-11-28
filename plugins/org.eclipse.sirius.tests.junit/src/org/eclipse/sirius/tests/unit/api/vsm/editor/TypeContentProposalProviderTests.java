@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.vsm.editor;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
@@ -20,6 +18,8 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.assist.TypeAssistant;
+
+import junit.framework.TestCase;
 
 /**
  * Standalone test for {@link TypeContentProposalProvider}. See VP-2811.

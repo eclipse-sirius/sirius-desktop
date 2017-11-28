@@ -14,8 +14,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -42,8 +44,6 @@ import org.eclipse.sirius.common.tools.internal.interpreter.ClassLoadingService;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
@@ -64,13 +64,13 @@ public final class JavaExtensionsManager {
      * This will be updated with the list of accessible viewpoint plugins, if
      * any.
      */
-    private Set<String> viewpointPlugins = Sets.newLinkedHashSet();
+    private Set<String> viewpointPlugins = new LinkedHashSet<>();
 
     /**
      * This will be updated with the list of accessible viewpoint projects
      * present in the workspace, if any.
      */
-    private Set<String> viewpointProjects = Sets.newLinkedHashSet();
+    private Set<String> viewpointProjects = new LinkedHashSet<>();
 
     private final Set<String> imports = new LinkedHashSet<String>();
 
@@ -81,13 +81,13 @@ public final class JavaExtensionsManager {
      */
     private final Set<String> couldNotBeLoaded = new LinkedHashSet<String>();
 
-    private final Map<String, Class<?>> loadedClasses = Maps.newLinkedHashMap();
+    private final Map<String, Class<?>> loadedClasses = new LinkedHashMap<>();
 
     private ClassLoading classLoading;
 
-    private List<ClassLoadingCallback> callbacks = Lists.newArrayList();
+    private List<ClassLoadingCallback> callbacks = new ArrayList<>();
 
-    private List<EPackageLoadingCallback> ePackageCallbacks = Lists.newArrayList();
+    private List<EPackageLoadingCallback> ePackageCallbacks = new ArrayList<>();
 
     private boolean shouldLoadServices = true;
 
@@ -248,9 +248,9 @@ public final class JavaExtensionsManager {
 
     private void reloadEPackages() {
         Multimap<String, EPackage> newDeclarations = HashMultimap.create();
-        Set<String> newDeclarersAsBundles = Sets.newLinkedHashSet();
+        Set<String> newDeclarersAsBundles = new LinkedHashSet<>();
         Collection<EPackageDeclarationSource> ecoreDeclarationSources = this.classLoading.findEcoreDeclarations(this.viewpointProjects, this.viewpointPlugins);
-        Collection<EPackageDeclarationSource> workspaceDeclarations = Lists.newArrayList();
+        Collection<EPackageDeclarationSource> workspaceDeclarations = new ArrayList<>();
         for (EPackageLoadingCallback.EPackageDeclarationSource declarer : ecoreDeclarationSources) {
             if (declarer.isBundle()) {
                 newDeclarersAsBundles.add(declarer.getSymbolicName());
@@ -295,7 +295,7 @@ public final class JavaExtensionsManager {
              * clean all the
              */
             for (EPackageDeclarationSource workspaceSource : workspaceDeclarations) {
-                Map<String, EPackage> ecorePackages = Maps.newLinkedHashMap();
+                Map<String, EPackage> ecorePackages = new LinkedHashMap<>();
                 /*
                  * a first iteration to populate the map of loaded Ecore
                  * packages.
@@ -471,7 +471,7 @@ public final class JavaExtensionsManager {
     public synchronized void removeImport(String classQualifiedName) {
         if (this.imports.contains(classQualifiedName)) {
             couldNotBeLoaded.remove(classQualifiedName);
-            Set<String> removedImport = Sets.newLinkedHashSet();
+            Set<String> removedImport = new LinkedHashSet<>();
             removedImport.add(classQualifiedName);
             this.imports.remove(classQualifiedName);
             unloadJavaExtensions(removedImport);
@@ -497,9 +497,9 @@ public final class JavaExtensionsManager {
     }
 
     private void loadJavaExtensions(Set<String> addedImports) {
-        Map<String, Class> toUnload = Maps.newLinkedHashMap();
-        Map<String, Class> toLoad = Maps.newLinkedHashMap();
-        Set<String> notFound = Sets.newLinkedHashSet();
+        Map<String, Class> toUnload = new LinkedHashMap<>();
+        Map<String, Class> toLoad = new LinkedHashMap<>();
+        Set<String> notFound = new LinkedHashSet<>();
         for (String qualifiedName : addedImports) {
             Class<?> found = classLoading.findClass(viewpointProjects, viewpointPlugins, qualifiedName);
             if (found == null) {
@@ -608,8 +608,8 @@ public final class JavaExtensionsManager {
      *            a project which can be in the workspace or not.
      */
     public void updateScope(Collection<String> value) {
-        Set<String> prjs = Sets.newLinkedHashSet();
-        Set<String> plugins = Sets.newLinkedHashSet();
+        Set<String> prjs = new LinkedHashSet<>();
+        Set<String> plugins = new LinkedHashSet<>();
         if (value != null) {
             for (final String odesignPath : value) {
                 final URI workspaceCandidate = URI.createPlatformResourceURI(odesignPath, true);
