@@ -99,6 +99,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchSite;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
@@ -106,8 +107,11 @@ import org.eclipse.ui.actions.ActionContext;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.navigator.CommonViewer;
+import org.eclipse.ui.navigator.CommonViewerSiteFactory;
+import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.eclipse.ui.navigator.INavigatorContentService;
 import org.eclipse.ui.navigator.INavigatorFilterService;
+import org.eclipse.ui.navigator.NavigatorActionService;
 import org.eclipse.ui.navigator.NavigatorContentServiceFactory;
 
 /**
@@ -421,6 +425,19 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         manageSessionActionProvider.initFromViewer(treeViewer);
         treeViewer.getControl().setMenu(menu);
 
+        ICommonViewerSite createCommonViewerSite = CommonViewerSiteFactory.createCommonViewerSite(SEMANTIC_MODELS_VIEWER_ID, selectionProvider, treeViewer.getControl().getShell());
+
+        NavigatorActionService actionService = new NavigatorActionService(createCommonViewerSite, treeViewer, treeViewer.getNavigatorContentService());
+
+        actionService.prepareMenuForPlatformContributions(menuManager, treeViewer, true);
+
+        menuManager.addMenuListener((manager) -> {
+            actionService.setContext(new ActionContext(treeViewer.getSelection()));
+            actionService.fillContextMenu(menuManager);
+
+        });
+        menuManager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+
         commandStackListener = new CommandStackListener() {
             @Override
             public void commandStackChanged(final EventObject event) {
@@ -451,6 +468,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
             }
         };
         session.getTransactionalEditingDomain().getCommandStack().addCommandStackListener(commandStackListener);
+
         return treeViewer;
     }
 
