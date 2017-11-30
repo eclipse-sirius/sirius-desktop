@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,10 +19,15 @@ import java.lang.reflect.Method;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.jface.util.Geometry;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DragSource;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefFigureCanvas;
@@ -77,7 +82,7 @@ public class DndUtil {
      *            To perform the drop on
      */
     public void dragAndDrop(final AbstractSWTBot<? extends Widget> source, final AbstractSWTBot<? extends Widget> target) {
-        dragAndDrop(source, DndUtil.on(target));
+        dragAndDrop(source, target, DndUtil.on(target));
     }
 
     /**
@@ -96,7 +101,7 @@ public class DndUtil {
     public void dragAndDrop(final AbstractSWTBot<? extends Widget> source, final AbstractSWTBot<? extends Widget> target, final Point locationOnTarget) {
         Rectangle targetRectangle = DndUtil.absoluteLocation(target);
         Point dropTarget = new Point(targetRectangle.x + locationOnTarget.x, targetRectangle.y + locationOnTarget.y);
-        dragAndDrop(source, dropTarget);
+        doDragAndDrop(source, dropTarget);
     }
 
     /**
@@ -130,28 +135,16 @@ public class DndUtil {
      * @see #after(AbstractSWTBot)
      */
     public void dragAndDrop(final AbstractSWTBot<? extends Widget> source, final Point target) {
-        final Rectangle sourceLocation = DndUtil.absoluteLocation(source);
-        final Point slightOffset = Geometry.add(Geometry.getLocation(sourceLocation), new Point(DndUtil.DRAG_THRESHOLD, DndUtil.DRAG_THRESHOLD));
-        doDragAndDrop(Geometry.min(Geometry.centerPoint(sourceLocation), slightOffset), target);
+        doDragAndDrop(source, target);
     }
 
-    /**
-     * Performs a DND operation starting at an arbitrary location, targeting the
-     * given widget.
-     * 
-     * @param source
-     *            From where to start dragging
-     * @param target
-     *            Where to drop onto
-     */
-    protected void dragAndDrop(final Point source, final AbstractSWTBot<? extends Widget> target) {
-        doDragAndDrop(source, DndUtil.on(target));
-    }
-
-    private void doDragAndDrop(final Point source, final Point dest) {
+    private void doDragAndDrop(final AbstractSWTBot<? extends Widget> source, final Point dest) {
         // log.debug(MessageFormat.format("Drag-and-dropping from ({0},{1}) to
         // ({2},{3})",
         // source.x, source.y, dest.x, dest.y));
+        final Rectangle sourceLocation = DndUtil.absoluteLocation(source);
+        final Point slightOffset = Geometry.add(Geometry.getLocation(sourceLocation), new Point(DndUtil.DRAG_THRESHOLD, DndUtil.DRAG_THRESHOLD));
+        final Point sourcePoint = Geometry.min(Geometry.centerPoint(sourceLocation), slightOffset);
         try {
             final Robot awtRobot = new Robot();
             // the x+10 motion is needed to let native functions register a drag
@@ -161,11 +154,13 @@ public class DndUtil {
             syncExec(new VoidResult() {
                 @Override
                 public void run() {
-                    awtRobot.mouseMove(source.x, source.y);
+                    awtRobot.mouseMove(sourcePoint.x, sourcePoint.y);
                     awtRobot.mousePress(InputEvent.BUTTON1_MASK);
-                    awtRobot.mouseMove(source.x + DndUtil.DRAG_THRESHOLD, source.y);
+                    awtRobot.mouseMove(sourcePoint.x + DndUtil.DRAG_THRESHOLD, sourcePoint.y);
                 }
             });
+            SWTBotWrapper botWrapper = new SWTBotWrapper(source);
+            botWrapper.notifyDragDetect();
 
             /* drag delay */
             SWTUtils.sleep(DndUtil.DRAG_DELAY);
@@ -359,6 +354,73 @@ public class DndUtil {
             }
         }
         return false;
+    }
+
+    /**
+     * An AbstractSWTBot wrapper to make public some protected fields.
+     * 
+     * @author fbarbin
+     *
+     */
+    private class SWTBotWrapper extends AbstractSWTBot<Widget> {
+        AbstractSWTBot<? extends Widget> wrappedSWTBot;
+        SWTBotWrapper(AbstractSWTBot<? extends Widget> w) throws WidgetNotFoundException {
+            super(w.widget);
+            wrappedSWTBot = w;
+        }
+
+        /**
+         * From org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot.notifyDragDetect(Event).
+         */
+        public void notifyDragDetect() {
+            Event dragDetectEvent = createMouseEvent(1, SWT.NONE, 0);
+            // Don't send SWT.DragDetect to the DragSource listener,
+            // otherwise the cursor gets stuck in drag mode
+            final Control control = getDNDControl();
+            final Listener dragSourceListener = syncExec(new Result<Listener>() {
+                @Override
+                public Listener run() {
+                    // The DragSource listener is an anonymous class of DragSource
+                    for (Listener listener : control.getListeners(SWT.DragDetect)) {
+                        if (DragSource.class.equals(listener.getClass().getEnclosingClass())) {
+                            return listener;
+                        }
+                    }
+                    return null;
+                }
+            });
+            try {
+                if (dragSourceListener != null) {
+                    syncExec(new VoidResult() {
+                        @Override
+                        public void run() {
+                            control.removeListener(SWT.DragDetect, dragSourceListener);
+                        }
+                    });
+                }
+                notify(SWT.DragDetect, dragDetectEvent, control);
+            } finally {
+                if (dragSourceListener != null) {
+                    syncExec(new VoidResult() {
+                        @Override
+                        public void run() {
+                            control.addListener(SWT.DragDetect, dragSourceListener);
+                        }
+                    });
+                }
+            }
+        }
+
+        @Override
+        protected Control getDNDControl() {
+            return (Control) ReflectionHelper.invokeMethodWithoutExceptionWithReturn(wrappedSWTBot, AbstractSWTBot.class, "getDNDControl", new Class[0], new Object[0], true);
+        }
+
+        @Override
+        protected Rectangle getBounds() {
+            return (Rectangle) ReflectionHelper.invokeMethodWithoutExceptionWithReturn(wrappedSWTBot, AbstractSWTBot.class, "getBounds", new Class[0], new Object[0], true);
+        }
+
     }
 
 }
