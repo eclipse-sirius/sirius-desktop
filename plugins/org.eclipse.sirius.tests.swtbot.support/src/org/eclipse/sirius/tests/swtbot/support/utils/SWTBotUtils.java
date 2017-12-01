@@ -19,12 +19,15 @@ import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
+import org.eclipse.jface.util.Geometry;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.sirius.tests.swtbot.support.utils.menu.SWTBotContextMenu;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -37,6 +40,7 @@ import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
+import org.eclipse.swtbot.eclipse.gef.finder.SWTGefBot;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
@@ -45,6 +49,7 @@ import org.eclipse.swtbot.swt.finder.results.BoolResult;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.results.WidgetResult;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
@@ -52,6 +57,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
+import org.eclipse.ui.internal.dnd.DragUtil;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -773,6 +779,41 @@ public final class SWTBotUtils {
 
         // else we throw the exception.
         throw new WidgetNotFoundException("The menu item \"" + label + "\" has not been found.");
+    }
+
+    /**
+     * Drag and drop a local file to the session editor.
+     * 
+     * @param currentBot
+     *            current {@link SWTGefBot}
+     * @param semanticAirdTree
+     *            {@link SWTBotTree} in the aird editor.
+     * @param sampleFile
+     *            {@link SWTBotTreeItem} to drag and drop in the aird editor
+     */
+    public static void dragAndDropFileToAirdEditor(SWTGefBot currentBot, SWTBotTree semanticAirdTree, SWTBotTreeItem sampleFile) {
+        int modelNumber = semanticAirdTree.getAllItems().length;
+
+        currentBot.getDisplay().asyncExec(() -> {
+            // compute drop point
+            Point dropPoint = Geometry.centerPoint(DragUtil.getDisplayBounds(semanticAirdTree.widget));
+            // drag and drop
+            sampleFile.select();
+            DndUtil util = new DndUtil(currentBot.getDisplay());
+            util.dragAndDrop(sampleFile, dropPoint);
+        });
+        currentBot.waitUntil(new DefaultCondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return semanticAirdTree.getAllItems().length > modelNumber;
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "No model was added after the drag and drop.";
+            }
+        });
     }
 
 }

@@ -15,21 +15,18 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.transaction.RunnableWithResult;
-import org.eclipse.jface.util.Geometry;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.sirius.ui.editor.SessionEditor;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
-import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.dnd.DragUtil;
 import org.eclipse.ui.part.FileEditorInput;
 import org.junit.Assume;
 import org.junit.Before;
@@ -124,28 +121,7 @@ public class DndWorkspaceToAirdEditorTest extends AbstractSiriusSwtBotGefTestCas
         SWTBotTree modelExplorerTree = bot.viewByTitle("Model Explorer").bot().tree();
         SWTBotTreeItem sampleFile = modelExplorerTree.expandNode(designerProject.getName())
                 .expandNode(SAMPLE_MODEL_FILE);
-        int modelNumber = semanticAirdTree.getAllItems().length;
-
-        bot.getDisplay().asyncExec(() -> {
-            // compute drop point
-            Point dropPoint = Geometry.centerPoint(DragUtil.getDisplayBounds(semanticAirdTree.widget));
-            // drag and drop
-            sampleFile.select();
-            DndUtil util = new DndUtil(bot.getDisplay());
-            util.dragAndDrop(sampleFile, dropPoint);
-        });
-        bot.waitUntil(new DefaultCondition() {
-
-            @Override
-            public boolean test() throws Exception {
-                return semanticAirdTree.getAllItems().length > modelNumber;
-            }
-
-            @Override
-            public String getFailureMessage() {
-                return "No model was added after the drag and drop.";
-            }
-        });
+        SWTBotUtils.dragAndDropFileToAirdEditor(bot, semanticAirdTree, sampleFile);
         // check item of the semantic aird tree
         boolean isDragAndDropOk = false;
         for (SWTBotTreeItem swtBotTreeItem : semanticAirdTree.getAllItems()) {

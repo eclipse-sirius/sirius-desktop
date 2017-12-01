@@ -50,7 +50,9 @@ public class ModelCommonDropAdapterAssistant extends CommonDropAdapterAssistant 
     public IStatus validateDrop(Object target, int operation, TransferData transferType) {
         if (DND.DROP_MOVE == operation) {
             Optional<Session> session = findCurrentSession();
-            if (session.isPresent()) {
+            // Drag and drop of models is only authorized if existing semantic
+            // resources are all local
+            if (session.isPresent() && session.get().getSemanticResources().stream().allMatch(res -> res.getURI().isPlatformResource())) {
                 Collection<IFile> droppedModelFiles = collectDroppedSemanticModelCandidates(LocalSelectionTransfer.getTransfer().getSelection(), session.get());
                 if (!droppedModelFiles.isEmpty()) {
                     // Found at least one potential semantic model in the
