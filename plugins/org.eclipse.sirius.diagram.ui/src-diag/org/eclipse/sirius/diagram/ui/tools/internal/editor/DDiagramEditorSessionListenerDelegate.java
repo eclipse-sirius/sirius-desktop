@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,8 +35,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * {@link SessionListener} used to manage {@link DDiagramEditorImpl}
- * {@link SessionListener} events.
+ * {@link SessionListener} used to manage {@link DDiagramEditorImpl} {@link SessionListener} events.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -67,8 +66,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
     private Image frozenRepresentationImage;
 
     /**
-     * A {@link ToolFilter} that hides any tool that cannot be applied if the
-     * DDiagram is locked.
+     * A {@link ToolFilter} that hides any tool that cannot be applied if the DDiagram is locked.
      */
     private ToolFilter toolFilterWhenRepresentationIsLocked;
 
@@ -82,8 +80,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
      * @param dDiagramEditorImpl
      *            the {@link DDiagramEditorImpl}
      * @param toolFilterWhenRepresentationIsLocked
-     *            the {@link ToolFilter} used to hide the tools of the pallette
-     *            when the diagram is LOCKED_BY_OTHER
+     *            the {@link ToolFilter} used to hide the tools of the pallette when the diagram is LOCKED_BY_OTHER
      * @param changeKind
      *            the type of change
      */
@@ -119,15 +116,24 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             /* clean and reload the palette when a .odesign is reloaded */
             reloadPalette(paletteManager, gmfDiagram, true);
             break;
+        case SessionListener.ABOUT_TO_BE_REPLACED:
+            // We clear the contents of the graphical viewer now before {@link
+            // SessionResourcesSynchronizer#reloadResource()} clears the {@link AirdResource} because we need the aird
+            // resource to contains old input when executing {@link
+            // DiagramElementEditPartOperation#removeNavigateDecoratorRefresher}
+            // to be able to retrieve the session.
+            if (dDiagramEditorImpl.getDiagramGraphicalViewer().getContents() != null) {
+                dDiagramEditorImpl.getDiagramGraphicalViewer().getContents().deactivate();
+            }
+            break;
         case SessionListener.REPLACED:
             /* session was reloaded, we need to reload the diagram */
             if (dDiagramEditorImpl.getDocumentProvider() != null) {
                 final IEditorInput input = dDiagramEditorImpl.getEditorInput();
                 dDiagramEditorImpl.setInput(input);
                 /*
-                 * Tool filters may reference invalid semantic elements, we need
-                 * to reload the palette. The setInput can potentially cause a
-                 * change on gmfDiagram of the current editor, so we must use
+                 * Tool filters may reference invalid semantic elements, we need to reload the palette. The setInput can
+                 * potentially cause a change on gmfDiagram of the current editor, so we must use
                  * dDiagramEditorImpl.getDiagram() instead of using the
                  */
                 reloadPalette(paletteManager, dDiagramEditorImpl.getDiagram(), false);
@@ -135,8 +141,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             break;
         case SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED:
             /*
-             * removing the tool filter so that all tools available when
-             * representation is not locked are accessible
+             * removing the tool filter so that all tools available when representation is not locked are accessible
              */
             if (paletteManager != null) {
                 paletteManager.removeToolFilter(toolFilterWhenRepresentationIsLocked);
@@ -275,11 +280,9 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
     }
 
     /**
-     * Lazily gets the image to use when there is no write permission for the
-     * DRepresentation.
+     * Lazily gets the image to use when there is no write permission for the DRepresentation.
      * 
-     * @return the image to use when there is no write permission for the
-     *         DRepresentation
+     * @return the image to use when there is no write permission for the DRepresentation
      */
     private Image getNoWritePermissionImage() {
         if (noWritePermissionImage == null || noWritePermissionImage.isDisposed()) {
