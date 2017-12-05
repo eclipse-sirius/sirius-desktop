@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,6 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.CreateEditPolicies
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
@@ -50,6 +49,7 @@ public class DoubleClickEditPolicyProvider implements IEditPolicyProvider {
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider#createEditPolicies(org.eclipse.gef.EditPart)
      */
+    @Override
     public void createEditPolicies(EditPart editPart) {
         if (editPart instanceof IAbstractDiagramNodeEditPart || editPart instanceof IDiagramEdgeEditPart || editPart instanceof IDiagramNameEditPart) {
             editPart.installEditPolicy(EditPolicyRoles.OPEN_ROLE, new DoubleClickEditPolicy());
@@ -61,6 +61,7 @@ public class DoubleClickEditPolicyProvider implements IEditPolicyProvider {
      * 
      * @see org.eclipse.gmf.runtime.common.core.service.IProvider#addProviderChangeListener(org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener)
      */
+    @Override
     public void addProviderChangeListener(IProviderChangeListener listener) {
         this.listeners.add(listener);
     }
@@ -70,6 +71,7 @@ public class DoubleClickEditPolicyProvider implements IEditPolicyProvider {
      * 
      * @see org.eclipse.gmf.runtime.common.core.service.IProvider#provides(org.eclipse.gmf.runtime.common.core.service.IOperation)
      */
+    @Override
     public boolean provides(IOperation operation) {
         if (operation instanceof CreateEditPoliciesOperation) {
             CreateEditPoliciesOperation castedOperation = (CreateEditPoliciesOperation) operation;
@@ -78,8 +80,7 @@ public class DoubleClickEditPolicyProvider implements IEditPolicyProvider {
             if (model instanceof View) {
                 EObject element = ((View) model).getElement();
                 if (element instanceof DDiagramElement) {
-                    DiagramElementMapping diagramElementMapping = ((DDiagramElement) element).getDiagramElementMapping();
-                    return diagramElementMapping.getDoubleClickDescription() != null;
+                    return true;
                 }
             }
         }
@@ -91,6 +92,7 @@ public class DoubleClickEditPolicyProvider implements IEditPolicyProvider {
      * 
      * @see org.eclipse.gmf.runtime.common.core.service.IProvider#removeProviderChangeListener(org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener)
      */
+    @Override
     public void removeProviderChangeListener(IProviderChangeListener listener) {
         this.listeners.remove(listener);
     }

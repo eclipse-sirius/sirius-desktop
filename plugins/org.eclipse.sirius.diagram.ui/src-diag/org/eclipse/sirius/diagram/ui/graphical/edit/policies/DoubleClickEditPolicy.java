@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
@@ -20,7 +21,9 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.OpenEditPolicy;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
@@ -42,6 +45,7 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
      */
     @Override
     protected Command getOpenCommand(Request request) {
+        Command result = null;
         EditPart editPart = this.getHost();
         Object model = editPart.getModel();
         if (model instanceof View) {
@@ -49,7 +53,25 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
             if (element instanceof DDiagramElement) {
                 final DDiagramElement ddiagramElement = (DDiagramElement) element;
                 DiagramElementMapping diagramElementMapping = ddiagramElement.getDiagramElementMapping();
-                if (diagramElementMapping.getDoubleClickDescription() != null) {
+                DDiagram parentDiagram = ddiagramElement.getParentDiagram();
+                if (parentDiagram.isIsInShowingMode()) {
+                    final TransactionalEditingDomain transactionalEditingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
+                    RecordingCommand cmd = new RecordingCommand(transactionalEditingDomain) {
+                        @Override
+                        protected void doExecute() {
+                            ddiagramElement.setVisible(!ddiagramElement.isVisible());
+                        }
+
+                        @Override
+                        public String getLabel() {
+                            if (ddiagramElement.isVisible()) {
+                                return Messages.HideDDiagramElement_hideElementLabel;
+                            }
+                            return Messages.RevealDDiagramElements_revealElementLabel;
+                        }
+                    };
+                    result = new ICommandProxy(new GMFCommandWrapper(transactionalEditingDomain, cmd));
+                } else if (diagramElementMapping.getDoubleClickDescription() != null) {
                     final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(element);
                     final DDiagramEditor diagramEditor = (DDiagramEditor) this.getHost().getViewer().getProperty(DDiagramEditor.EDITOR_ID);
                     final Object adapter = diagramEditor.getAdapter(IDiagramCommandFactoryProvider.class);
@@ -57,11 +79,11 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
                     final IDiagramCommandFactory emfCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
                     final org.eclipse.emf.common.command.Command cmd = emfCommandFactory.buildDoubleClickOnElementCommandFromTool(ddiagramElement, diagramElementMapping.getDoubleClickDescription());
                     final TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
-                    return new ICommandProxy(new GMFCommandWrapper(editingDomain, cmd));
+                    result = new ICommandProxy(new GMFCommandWrapper(editingDomain, cmd));
                 }
             }
         }
-        return null;
+        return result;
     }
 
 }
