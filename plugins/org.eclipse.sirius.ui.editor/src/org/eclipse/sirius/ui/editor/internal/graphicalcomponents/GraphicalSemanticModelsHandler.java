@@ -15,8 +15,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.EventObject;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -67,6 +72,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.tools.api.views.LockDecorationUpdater;
@@ -651,6 +657,12 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                         actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), deleteActionHandler);
                         actionBars.setGlobalActionHandler(ActionFactory.RENAME.getId(), renameActionHandler);
                     }
+                    // Compute enablement of the Delete contextual action
+                    Stream<?> selectionAsStream = StreamSupport.stream(Spliterators.spliteratorUnknownSize((Iterator<?>) selection.iterator(), Spliterator.ORDERED), false);
+                    boolean allSelectionCanBeEdited = selectionAsStream.filter(object -> object instanceof EObject).map(EObject.class::cast)
+                            .allMatch(eObject -> PermissionAuthorityRegistry.getDefault().getPermissionAuthority(eObject).canEditInstance(eObject));
+                    deleteAction.setEnabled(allSelectionCanBeEdited);
+
                     deleteAction.updateSelection(selection);
                     cutAction.updateSelection(selection);
                     copyAction.updateSelection(selection);
