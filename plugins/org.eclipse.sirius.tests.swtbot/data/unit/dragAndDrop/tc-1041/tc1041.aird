@@ -24,6 +24,17 @@
       <activatedLayers xmi:type="description_1:Layer" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%205%20Blank']/@defaultLayer"/>
       <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
     </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Vk3lgA2nEeC5sN0Dpug5Px" name="new TC1041 representation 6 Blank">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Vk3lgg2nEeC5sN0Dpug5Px" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_Vk3lgw2nEeC5sN0Dpug5Px" type="Sirius" element="_Vk3lgA2nEeC5sN0Dpug5Px" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_Vk3lhA2nEeC5sN0Dpug5Px"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Vk3lgQ2nEeC5sN0Dpug5Px"/>
+      <activatedLayers xmi:type="description_1:Layer" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
+    </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']"/>
   </ownedViews>
 </viewpoint:DAnalysis>

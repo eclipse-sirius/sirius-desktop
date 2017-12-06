@@ -142,7 +142,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%205%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20EPackage%20R5'] //@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%205%20Blank']/@additionalLayers[name='transientLayer']/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20EClass%20R5-transient']" name="TC1041 representation 5 Blank" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%205%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20EPackage%20R5']" name="TC1041 representation 5 Blank" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
         <nodeMappings name="Node EClass R5" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" createElements="false" domainClass="EClass">
           <style xsi:type="style:SquareDescription">
@@ -188,9 +188,56 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20EPackage%20R5'] //@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']/@additionalLayers[name='transientLayer']/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20EClass%20R5-transient']" name="TC1041 representation 6 Blank" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="Node EClass R5" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" createElements="false" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="Container EPackage R5" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" createElements="false" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20EClass%20R5']" reusedNodeMappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']/@defaultLayer/@nodeMappings[name='Node%20EClass%20R5']">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drag &amp; Drop EPackage R5" forceRefresh="true" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R5']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.oclIsTypeOf(ecore::EPackage)">
+                  <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drag &amp; Drop EClass R5" forceRefresh="true" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']/@defaultLayer/@nodeMappings[name='Node%20EClass%20R5']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.oclIsTypeOf(ecore::EClass)">
+                  <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
       <additionalLayers name="transientLayer" activeByDefault="true">
         <toolSections name="tools">
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drag &amp; Drop EClass R5-transient" forceRefresh="true" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%205%20Blank']/@defaultLayer/@nodeMappings[name='Node%20EClass%20R5']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drag &amp; Drop EClass R5-transient" forceRefresh="true" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']/@defaultLayer/@nodeMappings[name='Node%20EClass%20R5']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>

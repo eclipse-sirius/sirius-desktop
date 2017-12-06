@@ -61,9 +61,13 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_INSTANCE_5BLANK = "new TC1041 representation 5 Blank";
 
+    private static final String REPRESENTATION_INSTANCE_6BLANK = "new TC1041 representation 6 Blank";
+
     private static final String REPRESENTATION_NAME_2 = "TC1041 representation 2 Blank";
 
     private static final String REPRESENTATION_NAME_5 = "TC1041 representation 5 Blank";
+
+    private static final String REPRESENTATION_NAME_6 = "TC1041 representation 6 Blank";
 
     private static final String MODEL = "tc1041.ecore";
 
@@ -146,9 +150,20 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Open "TC1041 representation 6 Blank" diagram.
+     */
+    private void openRepresentation6() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_6, REPRESENTATION_INSTANCE_6BLANK, DDiagram.class);
+        if (snapToGrid) {
+            editor.setSnapToGrid(true, GRID_STEP, 2);
+        }
+    }
+
+    /**
      * @throws Exception
-     *             Test the drag&drop of P1(EPackage) from the Model Content view to the diagram. This test is done on a
-     *             "TC1041 representation 2 Blank" diagram.
+     *             Test the drag&drop of P1(EPackage) from the Model Content
+     *             view to the diagram. This test is done on a "TC1041
+     *             representation 2 Blank" diagram.
      */
     @Test
     public void test_DnDPackageFromMC2DiagramBlank2() throws Exception {
@@ -709,9 +724,9 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      *             In case of problem
      */
     @Test
-    public void test_DnDClassFromMC2DiagramBlank5FromATransientLayerTool() throws Exception {
+    public void test_DnDClassFromMC2DiagramBlank6FromATransientLayerTool() throws Exception {
 
-        openRepresentation5();
+        openRepresentation6();
 
         try {
             openErrorLogViewByAPI();
