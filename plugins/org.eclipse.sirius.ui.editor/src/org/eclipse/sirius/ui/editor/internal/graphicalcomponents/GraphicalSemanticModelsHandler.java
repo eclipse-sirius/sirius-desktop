@@ -681,7 +681,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                                 removeSemanticModelDependencyButton.setEnabled(false);
                             }
                         }
-                        treeViewer.refresh();
                     }
                 }
             });
