@@ -15,8 +15,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.EventObject;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -67,6 +72,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.tools.api.views.LockDecorationUpdater;
@@ -99,6 +105,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchSite;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
@@ -106,8 +113,11 @@ import org.eclipse.ui.actions.ActionContext;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.navigator.CommonViewer;
+import org.eclipse.ui.navigator.CommonViewerSiteFactory;
+import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.eclipse.ui.navigator.INavigatorContentService;
 import org.eclipse.ui.navigator.INavigatorFilterService;
+import org.eclipse.ui.navigator.NavigatorActionService;
 import org.eclipse.ui.navigator.NavigatorContentServiceFactory;
 
 /**
@@ -421,6 +431,19 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         manageSessionActionProvider.initFromViewer(treeViewer);
         treeViewer.getControl().setMenu(menu);
 
+        ICommonViewerSite createCommonViewerSite = CommonViewerSiteFactory.createCommonViewerSite(SEMANTIC_MODELS_VIEWER_ID, selectionProvider, treeViewer.getControl().getShell());
+
+        NavigatorActionService actionService = new NavigatorActionService(createCommonViewerSite, treeViewer, treeViewer.getNavigatorContentService());
+
+        actionService.prepareMenuForPlatformContributions(menuManager, treeViewer, true);
+
+        menuManager.addMenuListener((manager) -> {
+            actionService.setContext(new ActionContext(treeViewer.getSelection()));
+            actionService.fillContextMenu(menuManager);
+
+        });
+        menuManager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+
         commandStackListener = new CommandStackListener() {
             @Override
             public void commandStackChanged(final EventObject event) {
@@ -451,6 +474,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
             }
         };
         session.getTransactionalEditingDomain().getCommandStack().addCommandStackListener(commandStackListener);
+
         return treeViewer;
     }
 
@@ -633,6 +657,12 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                         actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), deleteActionHandler);
                         actionBars.setGlobalActionHandler(ActionFactory.RENAME.getId(), renameActionHandler);
                     }
+                    // Compute enablement of the Delete contextual action
+                    Stream<?> selectionAsStream = StreamSupport.stream(Spliterators.spliteratorUnknownSize((Iterator<?>) selection.iterator(), Spliterator.ORDERED), false);
+                    boolean allSelectionCanBeEdited = selectionAsStream.filter(object -> object instanceof EObject).map(EObject.class::cast)
+                            .allMatch(eObject -> PermissionAuthorityRegistry.getDefault().getPermissionAuthority(eObject).canEditInstance(eObject));
+                    deleteAction.setEnabled(allSelectionCanBeEdited);
+
                     deleteAction.updateSelection(selection);
                     cutAction.updateSelection(selection);
                     copyAction.updateSelection(selection);
@@ -651,7 +681,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                                 removeSemanticModelDependencyButton.setEnabled(false);
                             }
                         }
-                        treeViewer.refresh();
                     }
                 }
             });
