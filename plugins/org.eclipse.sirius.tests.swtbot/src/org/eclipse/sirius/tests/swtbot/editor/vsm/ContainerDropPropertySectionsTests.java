@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -97,7 +97,7 @@ public class ContainerDropPropertySectionsTests extends AbstractContentAssistTes
         SWTBotShell appliedOnSelectorShell = bot.activeShell();
         SWTBot appliedOnSelectorShellBot = appliedOnSelectorShell.bot();
         SWTBotTable table1 = appliedOnSelectorShellBot.table(0);
-        assertEquals("The left containers selection table does not contains all elements it should.", 13, table1.rowCount());
+        assertEquals("The left containers selection table does not contains all elements it should.", 16, table1.rowCount());
         SWTBotTable table2 = appliedOnSelectorShellBot.table(1);
         assertEquals("The right containers selection table does not contains all elements it should.", 2, table2.rowCount());
         assertEquals(GROUP_NAME + QUALIFIED_NAME_SEPARATOR + VIEWPOINT_NAME + QUALIFIED_NAME_SEPARATOR + DIAGRAM_DESCRIPTION_NAME1, table1.getTableItem(1).getText());
