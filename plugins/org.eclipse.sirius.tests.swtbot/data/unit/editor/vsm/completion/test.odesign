@@ -7,6 +7,7 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.test.design.BasicService"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.test.design.BasicService2"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::sirius::test::design::AcceleoMtlInterpreterTestModule"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.test.design.ServicesWithDependencies"/>
   </ownedViewpoints>

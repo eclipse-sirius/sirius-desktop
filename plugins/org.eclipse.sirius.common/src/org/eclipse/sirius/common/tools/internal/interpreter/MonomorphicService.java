@@ -14,6 +14,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.sirius.common.tools.Messages;
@@ -44,6 +46,7 @@ class MonomorphicService implements IMonomorphicService {
         Preconditions.checkArgument(ServiceInterpreter.isValidServiceMethod(serviceMethod));
     }
 
+    @Override
     public String getName() {
         return serviceMethod.getName();
     }
@@ -65,6 +68,7 @@ class MonomorphicService implements IMonomorphicService {
         return apply;
     }
 
+    @Override
     public Object call(Object[] target) throws EvaluationException {
         Object result = null;
         try {
@@ -103,6 +107,11 @@ class MonomorphicService implements IMonomorphicService {
             parametersTypes.add(type.getSimpleName());
         }
         return parametersTypes;
+    }
+
+    @Override
+    public Collection<Method> getImplementations() {
+        return Collections.singleton(this.serviceMethod);
     }
 
 }

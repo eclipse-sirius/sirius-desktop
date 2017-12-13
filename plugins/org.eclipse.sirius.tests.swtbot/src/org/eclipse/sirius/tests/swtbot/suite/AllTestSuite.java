@@ -36,6 +36,7 @@ import org.eclipse.sirius.tests.swtbot.editor.vsm.MetamodelPropertyTabTests;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.MigrationOnVsmEditorReloadTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.OpeningContextTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ResizeKindEditorTest;
+import org.eclipse.sirius.tests.swtbot.editor.vsm.ServiceNavigationTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.VSMEditorPropertiesTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.VSMFieldTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ValidationEmptyNameTest;
@@ -125,6 +126,7 @@ public class AllTestSuite extends TestCase {
      */
     public static void addGerritPart1(TestSuite suite) {
         suite.addTest(new JUnit4TestAdapter(SWTBotBundlesReport.class));
+        suite.addTestSuite(ServiceNavigationTest.class);
         suite.addTestSuite(ContentAssistTest.class);
         suite.addTestSuite(FeatureAssistTest.class);
         suite.addTestSuite(ResizeKindEditorTest.class);

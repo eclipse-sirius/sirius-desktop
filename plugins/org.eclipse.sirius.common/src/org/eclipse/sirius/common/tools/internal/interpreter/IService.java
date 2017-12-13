@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,9 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.interpreter;
+
+import java.lang.reflect.Method;
+import java.util.Collection;
 
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 
@@ -30,8 +33,7 @@ public interface IService {
      * 
      * @param target
      *            a potential target object on which to invoke the service.
-     * @return <code>true</code> iff this service can be invoked on the
-     *         specified target object.
+     * @return <code>true</code> iff this service can be invoked on the specified target object.
      */
     boolean appliesTo(Object[] target);
 
@@ -45,4 +47,11 @@ public interface IService {
      *             if an error occurred during the invocation of the service.
      */
     Object call(Object[] target) throws EvaluationException;
+
+    /**
+     * Returns the concrete methods which implement this service.
+     * 
+     * @return the concrete methods which implement this service.
+     */
+    Collection<Method> getImplementations();
 }

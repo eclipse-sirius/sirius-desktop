@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -14,6 +15,7 @@ import java.util.LinkedHashSet;
 // Start of user code imports
 
 import java.util.Set;
+import java.util.function.Supplier;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.EMFPlugin;
@@ -22,6 +24,9 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.sirius.editor.internal.navigation.INavigatorFromVSMExpression;
+import org.eclipse.sirius.editor.internal.navigation.NavigationFromVSMExpressionRegistry;
+import org.eclipse.sirius.editor.internal.navigation.ServiceNavigator;
 import org.eclipse.sirius.editor.tools.api.ecore.WorkspaceEPackageRegistry;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
@@ -79,6 +84,7 @@ public final class SiriusEditorPlugin extends EMFPlugin {
      * 
      * @return the singleton instance.
      */
+    @Override
     public ResourceLocator getPluginResourceLocator() {
         return plugin;
     }
@@ -184,6 +190,7 @@ public final class SiriusEditorPlugin extends EMFPlugin {
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
     public static class Implementation extends EclipseUIPlugin {
+
         /**
          * Creates an instance.
          */
@@ -196,6 +203,11 @@ public final class SiriusEditorPlugin extends EMFPlugin {
         }
 
         // Start of user code Implementation specifics
+        /**
+         * The {@link NavigationFromVSMExpressionRegistry} allowing to navigate to JAVA implementation from VSM expressions.
+         */
+        private NavigationFromVSMExpressionRegistry navigationRegistry;
+
         @Override
         public void start(BundleContext context) throws Exception {
             super.start(context);
@@ -208,6 +220,14 @@ public final class SiriusEditorPlugin extends EMFPlugin {
                     }
                 }
             }
+            navigationRegistry = new NavigationFromVSMExpressionRegistry();
+            Supplier<INavigatorFromVSMExpression> serviceNavigatorSupplier = new Supplier<INavigatorFromVSMExpression>() {
+                @Override
+                public INavigatorFromVSMExpression get() {
+                    return new ServiceNavigator();
+                }
+            };
+            navigationRegistry.addNavigator(serviceNavigatorSupplier);
         }
 
         @Override
@@ -217,6 +237,16 @@ public final class SiriusEditorPlugin extends EMFPlugin {
                 workspaceEPackageRegistry.dispose(ResourcesPlugin.getWorkspace());
             }
             workspaceEPackageRegistry = null;
+            navigationRegistry = null;
+        }
+
+        /**
+         * Returns the {@link NavigationFromVSMExpressionRegistry} allowing to navigate to JAVA implementation from VSM expressions.
+         * 
+         * @return the {@link NavigationFromVSMExpressionRegistry} allowing to navigate to JAVA implementation from VSM expressions.
+         */
+        public NavigationFromVSMExpressionRegistry getNavigationRegistry() {
+            return navigationRegistry;
         }
 
         /**

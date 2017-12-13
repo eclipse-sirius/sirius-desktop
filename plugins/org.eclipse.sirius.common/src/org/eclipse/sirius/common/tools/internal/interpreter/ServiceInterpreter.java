@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -26,6 +27,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
+import org.eclipse.sirius.common.tools.api.interpreter.IJavaAwareInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.ext.base.Option;
@@ -35,12 +37,11 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 /**
- * A specialized interpreter which can only directly invoke Java service
- * methods.
+ * A specialized interpreter which can only directly invoke Java service methods.
  * 
  * @author pcdavid
  */
-public class ServiceInterpreter extends VariableInterpreter implements org.eclipse.sirius.common.tools.api.interpreter.IInterpreter, IInterpreterProvider {
+public class ServiceInterpreter extends VariableInterpreter implements IJavaAwareInterpreter, org.eclipse.sirius.common.tools.api.interpreter.IInterpreter, IInterpreterProvider {
 
     /** The Service interpreter prefix. */
     public static final String PREFIX = "service:"; //$NON-NLS-1$
@@ -59,8 +60,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     private final Map<String, PolymorphicService> services = new HashMap<>();
 
     /**
-     * Used to retrieve the services instances we create so that we can
-     * un-register those.
+     * Used to retrieve the services instances we create so that we can un-register those.
      */
     private final Multimap<String, PolymorphicService> qualifiedNameToServices = HashMultimap.create();
 
@@ -135,7 +135,8 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
                 if (objectReceiver instanceof EObject) {
                     receiver = (EObject) objectReceiver;
                 } else {
-                    throw new EvaluationException(MessageFormat.format(Messages.ServiceInterpreter_invalidReceiver, serviceCall, objectReceiver != null ? objectReceiver.getClass().getName() : "null")); //$NON-NLS-1$
+                    throw new EvaluationException(
+                            MessageFormat.format(Messages.ServiceInterpreter_invalidReceiver, serviceCall, objectReceiver != null ? objectReceiver.getClass().getName() : "null")); //$NON-NLS-1$
                 }
             }
             int indexOfParenthesis = serviceCall.indexOf("("); //$NON-NLS-1$
@@ -163,6 +164,19 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
         } else {
             throw new EvaluationException(MessageFormat.format(Messages.ServiceInterpreter_unknownService, serviceName));
         }
+    }
+
+    @Override
+    public Collection<Method> getImplementation(String serviceCall) {
+        javaExtensions.reloadIfNeeded();
+        String serviceName = serviceCall;
+
+        if (services.containsKey(serviceName)) {
+            IService service = services.get(serviceName);
+            return service.getImplementations();
+        }
+
+        return Collections.emptyList();
     }
 
     @Override
@@ -202,8 +216,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     }
 
     /**
-     * Checks whether a Java method can be used as a service (in the sense of
-     * this interpreter).
+     * Checks whether a Java method can be used as a service (in the sense of this interpreter).
      * 
      * @param m
      *            the method to test.
@@ -261,9 +274,8 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
      */
     public Map<String, IService> getServices() {
         /*
-         * The callback registered to the java extension manager might update
-         * this.services depending on what is loaded. We make sure any pending
-         * reload is done before returning this list.
+         * The callback registered to the java extension manager might update this.services depending on what is loaded.
+         * We make sure any pending reload is done before returning this list.
          */
         javaExtensions.reloadIfNeeded();
 

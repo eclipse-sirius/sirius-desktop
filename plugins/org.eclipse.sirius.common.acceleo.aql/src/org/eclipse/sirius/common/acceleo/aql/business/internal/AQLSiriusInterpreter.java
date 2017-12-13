@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.aql.business.internal;
 
+import java.lang.reflect.Method;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,6 +40,7 @@ import org.eclipse.acceleo.query.runtime.QueryParsing;
 import org.eclipse.acceleo.query.runtime.QueryValidation;
 import org.eclipse.acceleo.query.runtime.ServiceUtils;
 import org.eclipse.acceleo.query.runtime.ValidationMessageLevel;
+import org.eclipse.acceleo.query.runtime.impl.JavaMethodService;
 import org.eclipse.acceleo.query.validation.type.ClassType;
 import org.eclipse.acceleo.query.validation.type.EClassifierType;
 import org.eclipse.acceleo.query.validation.type.ICollectionType;
@@ -65,6 +67,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.EPackageLoadingCallback;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
+import org.eclipse.sirius.common.tools.api.interpreter.IJavaAwareInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
@@ -77,12 +80,12 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
 /**
- * A Sirius interpreter using the Acceleo Query Language. It only supports
- * expressions which are not using implicit variables.
+ * A Sirius interpreter using the Acceleo Query Language. It only supports expressions which are not using implicit
+ * variables.
  *
  * @author cedric
  */
-public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
+public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter implements IJavaAwareInterpreter {
 
     private LoadingCache<String, AstResult> parsedExpressions;
 
@@ -314,11 +317,9 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
             for (IType type : aqlValidationResult.getPossibleTypes(aqlValidationResult.getAstResult().getAst())) {
                 IType actualType = type;
                 /*
-                 * Sirius has no notion of "multiple" or "collection" type in
-                 * its typesystem and will unwrap the collection when using its
-                 * result as the root of a new expression. It seems better to
-                 * return the type information than hide which leads to a
-                 * fall-back to EObject.
+                 * Sirius has no notion of "multiple" or "collection" type in its typesystem and will unwrap the
+                 * collection when using its result as the root of a new expression. It seems better to return the type
+                 * information than hide which leads to a fall-back to EObject.
                  */
                 if (type instanceof ICollectionType) {
                     actualType = ((ICollectionType) type).getCollectionType();
@@ -354,6 +355,20 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         return result;
     }
 
+    @Override
+    public Collection<Method> getImplementation(String serviceCall) {
+        javaExtensions.reloadIfNeeded();
+        Set<org.eclipse.acceleo.query.runtime.IService> registeredServices = queryEnvironment.getLookupEngine().getRegisteredServices();
+        List<Method> results = new ArrayList<Method>();
+        registeredServices.iterator().forEachRemaining(s -> {
+            if (s instanceof JavaMethodService) {
+                results.add(((JavaMethodService) s).getMethod());
+            }
+        });
+
+        return results;
+    }
+
     /**
      * return the cross reference provider used by this interpreter instance.
      * 
@@ -380,10 +395,8 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
      */
     public IQueryEnvironment getQueryEnvironment() {
         /*
-         * The JavaExtensionManager might impact the query environment when
-         * loading classes. We trigger the reload before returning the
-         * IQueryEnvironment so that it is properly configured with EPackages
-         * and imports.
+         * The JavaExtensionManager might impact the query environment when loading classes. We trigger the reload
+         * before returning the IQueryEnvironment so that it is properly configured with EPackages and imports.
          */
         this.javaExtensions.reloadIfNeeded();
 

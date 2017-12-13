@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
+import java.lang.reflect.Method;
 import java.text.MessageFormat;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,8 +26,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * A service which corresponds to more than one Java method. Which of the
- * methods will actually be invoked will depend on the target object.
+ * A service which corresponds to more than one Java method. Which of the methods will actually be invoked will depend
+ * on the target object.
  * 
  * @author pcdavid
  */
@@ -82,5 +84,14 @@ class PolymorphicService implements IPolymorphicService {
     @Override
     public Set<IMonomorphicService> getImplementers() {
         return implementers;
+    }
+
+    @Override
+    public Collection<Method> getImplementations() {
+        Collection<Method> result = Lists.newArrayList();
+        for (IMonomorphicService svc : this.implementers) {
+            result.addAll(svc.getImplementations());
+        }
+        return result;
     }
 }

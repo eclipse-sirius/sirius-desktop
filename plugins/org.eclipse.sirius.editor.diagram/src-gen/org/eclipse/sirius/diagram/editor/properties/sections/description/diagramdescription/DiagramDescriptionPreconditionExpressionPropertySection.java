@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.editor.properties.sections.description.diagra
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.internal.navigation.NavigationByKeyListener;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
@@ -41,6 +42,7 @@ public class DiagramDescriptionPreconditionExpressionPropertySection extends Abs
     /**
      * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
      */
+    @Override
     public void refresh() {
         super.refresh();
 
@@ -53,6 +55,7 @@ public class DiagramDescriptionPreconditionExpressionPropertySection extends Abs
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "PreconditionExpression"; //$NON-NLS-1$
     }
@@ -60,6 +63,7 @@ public class DiagramDescriptionPreconditionExpressionPropertySection extends Abs
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -72,6 +76,7 @@ public class DiagramDescriptionPreconditionExpressionPropertySection extends Abs
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getDiagramDescription_PreconditionExpression();
     }
@@ -79,6 +84,7 @@ public class DiagramDescriptionPreconditionExpressionPropertySection extends Abs
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -86,6 +92,7 @@ public class DiagramDescriptionPreconditionExpressionPropertySection extends Abs
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -93,6 +100,7 @@ public class DiagramDescriptionPreconditionExpressionPropertySection extends Abs
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         /*
@@ -111,6 +119,7 @@ public class DiagramDescriptionPreconditionExpressionPropertySection extends Abs
         help.setToolTipText(getToolTipText());
 
         TypeContentProposalProvider.bindPluginsCompletionProcessors(this, text);
+        text.addKeyListener(new NavigationByKeyListener(this, text, eObject));
 
         // Start of user code create controls
 
@@ -121,6 +130,7 @@ public class DiagramDescriptionPreconditionExpressionPropertySection extends Abs
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), DiagramDescriptionPreconditionExpressionPropertySection.this, text.getText());
                 dialog.open();
@@ -133,6 +143,7 @@ public class DiagramDescriptionPreconditionExpressionPropertySection extends Abs
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "The precondition is an expression preventing the creation of a diagram.\n If the precondition is set and the expression returns false on the root diagram\n element, then the diagram won't be created.";
     }
