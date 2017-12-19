@@ -20,7 +20,11 @@
     <version>5.1.1-SNAPSHOT</version>
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
-  
+
+  <properties>
+    <sonar.skip>true</sonar.skip>
+  </properties>
+
   <artifactId>org.eclipse.sirius.sample.interactions.edit</artifactId>
   <packaging>eclipse-plugin</packaging>
   <version>5.1.1-SNAPSHOT</version>
