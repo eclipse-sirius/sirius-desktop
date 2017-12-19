@@ -56,6 +56,7 @@
     <sonar.language>java</sonar.language>
     <sonar.jacoco.reportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco.exec</sonar.jacoco.reportPath>
     <sonar.jacoco.itReportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco-it.exec</sonar.jacoco.itReportPath>
+    <sonar.java.source>8</sonar.java.source>
     <sonar.exclusions>src-gen/**/*</sonar.exclusions>
   </properties>
 
