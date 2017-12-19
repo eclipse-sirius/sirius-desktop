@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
@@ -26,6 +27,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
@@ -105,11 +107,21 @@ public class BackgroundStyleUpdateTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotSiriusHelper.selectPropertyTabItem("Semantic");
         SWTBotTreeItem style = propertiesBot.bot().tree(0).getAllItems()[0].getNode("Liquid");
         style.click();
-        SWTBotCCombo lineStyle = bot.viewByTitle(PROPERTIES).bot().ccomboBox();
-        if (liquid) {
-            lineStyle.setSelection(1);
+        // In photon, the feature widget is not a combo anymore.
+        if (TestsUtil.isPhotonPlatformOrLater()) {
+            SWTBotCheckBox lineStyle = bot.viewByTitle(PROPERTIES).bot().checkBox();
+            if (liquid) {
+                lineStyle.select();
+            } else {
+                lineStyle.deselect();
+            }
         } else {
-            lineStyle.setSelection(0);
+            SWTBotCCombo lineStyle = bot.viewByTitle(PROPERTIES).bot().ccomboBox();
+            if (liquid) {
+                lineStyle.setSelection(1);
+            } else {
+                lineStyle.setSelection(0);
+            }
         }
         editor.setFocus();
     }

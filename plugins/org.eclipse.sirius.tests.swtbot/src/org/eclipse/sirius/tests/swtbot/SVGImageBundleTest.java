@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.BundledImageEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.EllipseEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ODesignEllipseFigure;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -35,6 +36,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCombo;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 
@@ -237,8 +239,13 @@ public class SVGImageBundleTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC);
         SWTBotTree tree = propertiesBot.bot().tree();
         tree.expandNode("Class1 -> Class2").select().getNode("Abstract").doubleClick();
-        SWTBotCCombo comboBox = propertiesBot.bot().ccomboBox(0);
-        comboBox.setSelection(1);
+        if (TestsUtil.isPhotonPlatformOrLater()) {
+            SWTBotCheckBox checkBox = propertiesBot.bot().checkBox(0);
+            checkBox.select();
+        } else {
+            SWTBotCCombo comboBox = propertiesBot.bot().ccomboBox(0);
+            comboBox.setSelection(1);
+        }
     }
 
     /**

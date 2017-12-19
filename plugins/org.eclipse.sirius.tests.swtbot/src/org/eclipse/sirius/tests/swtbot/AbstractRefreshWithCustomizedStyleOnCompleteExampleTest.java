@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and other.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and other.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -116,6 +116,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.routers.DForestRouter;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.DTreeRouter;
 import org.eclipse.sirius.tests.support.api.ImageEquality;
 import org.eclipse.sirius.tests.support.api.SiriusAssert;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
@@ -139,10 +140,12 @@ import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.keyboard.Keystrokes;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -332,13 +335,28 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
                     Enumerator newValueLiteral = getNewValueLiteral(value, choiceOfValues);
                     String text = propertyDescriptor.getLabelProvider(style).getText(newValueLiteral);
                     ccomboBox.setSelection(text);
-                } else if (feature.getEType() == EcorePackage.Literals.EBOOLEAN) {
-                    SWTBotCCombo ccomboBox = propertiesBot.bot().ccomboBox();
-                    String newSelection = Boolean.TRUE.toString();
-                    if (value == Boolean.TRUE) {
-                        newSelection = Boolean.FALSE.toString();
+                    // In photon we need to press ENTER to leave the combo
+                    if (TestsUtil.isPhotonPlatformOrLater()) {
+                        ccomboBox.pressShortcut(Keystrokes.CR);
                     }
-                    ccomboBox.setSelection(newSelection);
+                } else if (feature.getEType() == EcorePackage.Literals.EBOOLEAN) {
+                    
+                    // In photon, the feature widget is not a combo anymore.
+                    if (TestsUtil.isPhotonPlatformOrLater()) {
+                        SWTBotCheckBox botCheckBox = propertiesBot.bot().checkBox();
+                        if (value == Boolean.TRUE) {
+                            botCheckBox.deselect();
+                        } else {
+                            botCheckBox.select();
+                        }
+                    } else {
+                        SWTBotCCombo ccomboBox = propertiesBot.bot().ccomboBox();
+                        String newSelection = Boolean.TRUE.toString();
+                        if (value == Boolean.TRUE) {
+                            newSelection = Boolean.FALSE.toString();
+                        }
+                        ccomboBox.setSelection(newSelection);
+                    }
                 } else if (feature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH) {
                     propertiesBot.bot().text().setText("/" + getProjectName() + "/" + NEW_IMAGE_NAME);
                 } else if (feature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR || feature == DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR

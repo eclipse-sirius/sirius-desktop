@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.componentization.mappings.table.CandidateMappingManager;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -164,8 +165,13 @@ public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase
                 return "Two projects should be selected.";
             }
         });
+        String closeProjects = "Close Project";
+        if (TestsUtil.isPhotonPlatformOrLater()) {
 
-        SWTBotUtils.clickContextMenu(modelExplorerViewBot.tree(), "Close Project");
+            closeProjects = "Close Projects";
+        }
+        SWTBotUtils.clickContextMenu(modelExplorerViewBot.tree(), closeProjects);
+
         SWTBotUtils.waitAllUiEvents();
 
         bot.waitUntil(new OpenedSessionCondition(0));

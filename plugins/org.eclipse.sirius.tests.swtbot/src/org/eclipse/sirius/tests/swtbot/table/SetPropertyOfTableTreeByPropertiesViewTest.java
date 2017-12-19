@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.table;
 
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -20,6 +21,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -368,8 +370,13 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
         SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC);
         SWTBotTree tree = propertiesBot.bot().tree();
         tree.expandNode(content).select().getNode("Abstract").doubleClick();
-        SWTBotCCombo comboBox = propertiesBot.bot().ccomboBox(0);
-        comboBox.setSelection(1);
+        if (TestsUtil.isPhotonPlatformOrLater()) {
+            SWTBotCheckBox checkBox = propertiesBot.bot().checkBox(0);
+            checkBox.select();
+        } else {
+            SWTBotCCombo comboBox = propertiesBot.bot().ccomboBox(0);
+            comboBox.setSelection(1);
+        }
     }
 
     /**
@@ -431,7 +438,14 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
         SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC);
         SWTBotTree tree = propertiesBot.bot().tree();
         tree.expandNode(element).select().getNode("Abstract").doubleClick();
-        assertEquals("The value of abstract field must be true", isAbstract, Boolean.parseBoolean(propertiesBot.bot().ccomboBox().getText()));
+        boolean value;
+        if (TestsUtil.isPhotonPlatformOrLater()) {
+            value = propertiesBot.bot().checkBox().isChecked();
+        } else {
+            value = Boolean.parseBoolean(propertiesBot.bot().ccomboBox().getText());
+        }
+        assertEquals("The value of abstract field must be true", isAbstract, value);
+
     }
 
     /**

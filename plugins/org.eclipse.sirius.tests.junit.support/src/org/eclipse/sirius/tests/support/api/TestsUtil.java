@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,6 +48,8 @@ public final class TestsUtil {
     private static final String UI_WORKBENCH_LUNA_START = "3.106";
 
     private static final String UI_WORKBENCH_OXYGEN_START = "3.110";
+
+    private static final String UI_WORKBENCH_PHOTON_START = "3.111";
 
     private static final String CREATE_REPRESENTATATION_IN_SEPARATE_RESOURCE = "createLocalRepresentationInSeparateResource";
 
@@ -241,6 +243,15 @@ public final class TestsUtil {
      */
     public static boolean isOxygenPlatform() {
         return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_OXYGEN_START), null);
+    }
+
+    /**
+     * Tells if the current platform corresponds to Photon or later.
+     * 
+     * @return true if the current platform corresponds to Photon or later, false otherwise.
+     */
+    public static boolean isPhotonPlatformOrLater() {
+        return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_PHOTON_START), null);
     }
 
     /**
