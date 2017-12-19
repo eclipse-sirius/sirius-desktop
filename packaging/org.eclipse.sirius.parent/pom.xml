@@ -549,7 +549,7 @@
              <tests.junit.skip>false</tests.junit.skip>
              <tests.timeout>${tests.timeout.junit}</tests.timeout>
              <tests.junit.include>org/eclipse/sirius/tests/suite/AllSiriusTestSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java, org/eclipse/sirius/tests/ui/properties/internal/AllTests.java</tests.junit.include>
-             <tests.vmargs>${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
      <profile>
@@ -561,7 +561,7 @@
              <tests.junit.skip>false</tests.junit.skip>
              <tests.timeout>${tests.timeout.junit}</tests.timeout>
              <tests.junit.include>org/eclipse/sirius/tests/suite/GerritJUnitSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java, org/eclipse/sirius/tests/ui/properties/internal/AllTests.java</tests.junit.include>
-             <tests.vmargs>${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
              <tests.ignoreFailures>false</tests.ignoreFailures>
          </properties>
      </profile>
@@ -574,7 +574,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
              <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/AllTestSuite.java</tests.swtbot.include>
-             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
      <profile>
@@ -586,7 +586,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
              <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/SWTBotPart1Suite.java</tests.swtbot.include>
-             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
      <profile>
@@ -598,7 +598,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
              <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/SWTBotPart2Suite.java</tests.swtbot.include>
-             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
      <profile>
@@ -610,7 +610,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
              <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/GerritSWTBotSuite.java</tests.swtbot.include>
-             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
              <tests.ignoreFailures>false</tests.ignoreFailures>
          </properties>
      </profile>
@@ -623,7 +623,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot-sequence}</tests.timeout>
              <tests.swtbot-sequence.include>org/eclipse/sirius/tests/swtbot/suite/SequenceSwtBotTestSuite.java</tests.swtbot-sequence.include>
-             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
      <profile>
@@ -635,7 +635,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot-sequence}</tests.timeout>
              <tests.swtbot-sequence.include>org/eclipse/sirius/tests/swtbot/suite/GerritSequenceSWTBotSuite.java</tests.swtbot-sequence.include>
-             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
              <tests.ignoreFailures>false</tests.ignoreFailures>
          </properties>
      </profile>
