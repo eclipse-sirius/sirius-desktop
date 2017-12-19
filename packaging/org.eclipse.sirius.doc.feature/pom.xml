@@ -20,7 +20,12 @@
     <version>5.1.1-SNAPSHOT</version>
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
-  
+
+  <properties>
+    <!-- Skip feature in Sonar analysis -->
+    <sonar.skip>true</sonar.skip>
+  </properties>
+
   <artifactId>org.eclipse.sirius.doc.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 

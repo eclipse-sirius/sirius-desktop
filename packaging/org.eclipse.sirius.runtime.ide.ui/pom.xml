@@ -24,6 +24,11 @@
   <artifactId>org.eclipse.sirius.runtime.ide.ui</artifactId>
   <packaging>eclipse-feature</packaging>
 
+  <properties>
+    <!-- Skip feature in Sonar analysis -->
+    <sonar.skip>true</sonar.skip>
+  </properties>
+
   <build>
     <plugins>
       <plugin>

@@ -21,6 +21,10 @@
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
+  <properties>
+    <sonar.skip>true</sonar.skip>
+  </properties>
+
   <artifactId>org.eclipse.sirius.tests.update</artifactId>
   <packaging>eclipse-repository</packaging>
 

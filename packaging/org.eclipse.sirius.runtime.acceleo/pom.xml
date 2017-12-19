@@ -21,6 +21,11 @@
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
+  <properties>
+    <!-- Skip feature in Sonar analysis -->
+    <sonar.skip>true</sonar.skip>
+  </properties>
+
   <artifactId>org.eclipse.sirius.runtime.acceleo</artifactId>
   <packaging>eclipse-feature</packaging>
 
