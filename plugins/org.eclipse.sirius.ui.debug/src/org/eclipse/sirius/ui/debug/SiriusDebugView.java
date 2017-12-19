@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.eclipse.core.commands.operations.IOperationHistory;
@@ -76,6 +77,7 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.business.api.query.SiriusReferenceFinder;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
@@ -478,6 +480,7 @@ public class SiriusDebugView extends AbstractDebugView {
         addShowAdaptersAction();
         addShowSessionStructureAction();
         addShowResourceInformationAction();
+        addShowSiriusInverseReferences();
         // addShowCrossReferencerMap();
     }
 
@@ -500,6 +503,45 @@ public class SiriusDebugView extends AbstractDebugView {
                 return "Resource " + res.getURI() + " contains " + nbElem + " elements \n";
             }
         });
+    }
+
+    private void addShowSiriusInverseReferences() {
+        addAction("Show Sirius inverse references",
+                "Show, starting from a semantic object:\n * all DRep or DRepElem that reference the semantic object with DSEMANTIC_DECORATOR__TARGET and DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS\n * The corresponding DrepresentationDescriptor\nThe search scope is loaded and not loaded representations. Not loaded representations may be loaded after this action.",
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        Session.of(getCurrentEObject()).map(DAnalysisSessionImpl.class::cast).ifPresent(session -> {
+                            List<DRepresentationDescriptor> repDescriptors = session.getSiriusReferenceFinder()
+                                    .getImpactedRepresentationDescriptors(Collections.singletonList(getCurrentEObject()), SiriusReferenceFinder.SearchScope.ALL_REPRESENTATIONS_SCOPE).values().stream()
+                                    .flatMap(coll -> coll.stream()).collect(Collectors.toList());
+
+                            List<EObject> siriusElements = session.getSiriusReferenceFinder()
+                                    .getReferencingSiriusElements(Collections.singletonList(getCurrentEObject()), SiriusReferenceFinder.SearchScope.ALL_REPRESENTATIONS_SCOPE).values().stream()
+                                    .flatMap(coll -> coll.stream()).collect(Collectors.toList());
+
+                            setText(appendImpactedRepDesc(repDescriptors) + "\n" + appendImpactedSiriusElements(siriusElements));
+                        });
+                    }
+
+                    private String appendImpactedRepDesc(List<DRepresentationDescriptor> repDescriptors) {
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("Impacted DRepresentationDescriptors (SiriusReferenceFinder.getImpactedRepresentationDescriptors):\n");
+                        repDescriptors.stream().forEach(repDesc -> {
+                            sb.append(repDesc.getName() + "\n");
+                        });
+                        return sb.toString();
+                    }
+
+                    private String appendImpactedSiriusElements(List<EObject> siriusElements) {
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("Impacted DRepresentation and DRepresentationElement (SiriusReferenceFinder.getReferencingSiriusElements):\n");
+                        siriusElements.stream().forEach(elem -> {
+                            sb.append(elem + "\n");
+                        });
+                        return sb.toString();
+                    }
+                });
     }
 
     private void addShowSessionStructureAction() {
