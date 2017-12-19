@@ -52,7 +52,7 @@
     <tests.swtbot-sequence.include />
     <tests.ignoreFailures>true</tests.ignoreFailures>
     <!-- Sonar properties -->
-    <jacoco-version>0.7.4.201502262128</jacoco-version>
+    <jacoco-version>0.7.9</jacoco-version>
     <sonar.language>java</sonar.language>
     <sonar.jacoco.reportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco.exec</sonar.jacoco.reportPath>
     <sonar.jacoco.itReportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco-it.exec</sonar.jacoco.itReportPath>
