@@ -55,6 +55,7 @@
     <jacoco-version>0.7.4.201502262128</jacoco-version>
     <sonar.language>java</sonar.language>
     <sonar.jacoco.reportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco.exec</sonar.jacoco.reportPath>
+    <sonar.jacoco.itReportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco-it.exec</sonar.jacoco.itReportPath>
     <sonar.exclusions>src-gen/**/*</sonar.exclusions>
   </properties>
 
@@ -173,16 +174,32 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>${jacoco-version}</version>
-        <configuration>
-          <append>true</append>
-          <destFile>${sonar.jacoco.reportPath}</destFile>
-        </configuration>
         <executions>
+          <!-- Prepares a variable, jacoco.agent.ut.arg, that contains the info 
+               to be passed to the JVM hosting the code being tested. -->
           <execution>
             <id>agent-for-ut</id>
             <goals>
               <goal>prepare-agent</goal>
             </goals>
+            <configuration>
+              <append>true</append>
+              <destFile>${sonar.jacoco.reportPath}</destFile>
+              <propertyName>jacoco.agent.ut.arg</propertyName>
+            </configuration>
+          </execution>
+          <!-- Prepares a variable, jacoco.agent.it.arg, that contains the info 
+               to be passed to the JVM hosting the code being tested. -->
+          <execution>
+            <id>agent-for-it</id>
+            <goals>
+              <goal>prepare-agent-integration</goal>
+            </goals>
+            <configuration>
+              <append>true</append>
+              <destFile>${sonar.jacoco.itReportPath}</destFile>
+              <propertyName>jacoco.agent.it.arg</propertyName>
+            </configuration>
           </execution>
           <execution>
             <id>jacoco-site</id>
@@ -549,7 +566,7 @@
              <tests.junit.skip>false</tests.junit.skip>
              <tests.timeout>${tests.timeout.junit}</tests.timeout>
              <tests.junit.include>org/eclipse/sirius/tests/suite/AllSiriusTestSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java, org/eclipse/sirius/tests/ui/properties/internal/AllTests.java</tests.junit.include>
-             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
      <profile>
@@ -561,7 +578,7 @@
              <tests.junit.skip>false</tests.junit.skip>
              <tests.timeout>${tests.timeout.junit}</tests.timeout>
              <tests.junit.include>org/eclipse/sirius/tests/suite/GerritJUnitSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java, org/eclipse/sirius/tests/ui/properties/internal/AllTests.java</tests.junit.include>
-             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
              <tests.ignoreFailures>false</tests.ignoreFailures>
          </properties>
      </profile>
@@ -574,7 +591,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
              <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/AllTestSuite.java</tests.swtbot.include>
-             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
      <profile>
@@ -586,7 +603,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
              <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/SWTBotPart1Suite.java</tests.swtbot.include>
-             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
      <profile>
@@ -598,7 +615,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
              <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/SWTBotPart2Suite.java</tests.swtbot.include>
-             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
      <profile>
@@ -610,7 +627,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
              <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/GerritSWTBotSuite.java</tests.swtbot.include>
-             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
              <tests.ignoreFailures>false</tests.ignoreFailures>
          </properties>
      </profile>
@@ -623,7 +640,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot-sequence}</tests.timeout>
              <tests.swtbot-sequence.include>org/eclipse/sirius/tests/swtbot/suite/SequenceSwtBotTestSuite.java</tests.swtbot-sequence.include>
-             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
      <profile>
@@ -635,7 +652,7 @@
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot-sequence}</tests.timeout>
              <tests.swtbot-sequence.include>org/eclipse/sirius/tests/swtbot/suite/GerritSequenceSWTBotSuite.java</tests.swtbot-sequence.include>
-             <tests.vmargs>${tycho.testArgLine} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
              <tests.ignoreFailures>false</tests.ignoreFailures>
          </properties>
      </profile>
