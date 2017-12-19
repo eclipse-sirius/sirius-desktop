@@ -19,6 +19,10 @@
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
+  <properties>
+    <sonar.coverage.exclusions>src/**/*</sonar.coverage.exclusions>
+  </properties>
+
   <artifactId>org.eclipse.sirius.tests.ui.properties</artifactId>
   <packaging>eclipse-test-plugin</packaging>
   <version>5.1.1-SNAPSHOT</version>
