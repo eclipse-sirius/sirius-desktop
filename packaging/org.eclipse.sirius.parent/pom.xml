@@ -51,6 +51,10 @@
     <tests.swtbot.include />
     <tests.swtbot-sequence.include />
     <tests.ignoreFailures>true</tests.ignoreFailures>
+    <!-- Sonar properties -->
+    <jacoco-version>0.7.4.201502262128</jacoco-version>
+    <sonar.language>java</sonar.language>
+    <sonar.jacoco.reportPath>${project.basedir}/../../org.eclipse.sirius.parent/target/jacoco.exec</sonar.jacoco.reportPath>
   </properties>
 
 <!--Add specific repositories, pluginRepositories and dependencies for Acceleo3 compilation. See http://wiki.eclipse.org/Acceleo/Maven for more details. -->
@@ -164,7 +168,30 @@
           </execution>
         </executions>
       </plugin>
-
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco-version}</version>
+        <configuration>
+          <append>true</append>
+          <destFile>${sonar.jacoco.reportPath}</destFile>
+        </configuration>
+        <executions>
+          <execution>
+            <id>agent-for-ut</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>jacoco-site</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
     <pluginManagement>
       <plugins>
