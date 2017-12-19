@@ -483,7 +483,7 @@ public class EObjectQuery {
      */
     public SiriusReferenceFinder getSiriusReferenceFinder() {
         SiriusReferenceFinder inverseCrossRef = Optional.ofNullable(getSession()).filter(DAnalysisSessionImpl.class::isInstance).map(DAnalysisSessionImpl.class::cast)
-                .map(DAnalysisSessionImpl::getSiriusRepElementInverseCrossReferencer).orElse(null);
+                .map(DAnalysisSessionImpl::getSiriusReferenceFinder).orElse(null);
         return inverseCrossRef;
     }
 }
