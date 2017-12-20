@@ -54,6 +54,8 @@
     <!-- Sonar properties -->
     <jacoco-version>0.7.9</jacoco-version>
     <sonar.language>java</sonar.language>
+    <sonar.skipPackageDesign>true</sonar.skipPackageDesign>
+    <sonar.skipDesign>true</sonar.skipDesign>
     <sonar.jacoco.reportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco.exec</sonar.jacoco.reportPath>
     <sonar.jacoco.itReportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco-it.exec</sonar.jacoco.itReportPath>
     <sonar.java.source>8</sonar.java.source>
