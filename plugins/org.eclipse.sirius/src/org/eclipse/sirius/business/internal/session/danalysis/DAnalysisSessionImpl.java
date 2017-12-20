@@ -127,7 +127,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * The inverse cross referencer to retrieve DRep and DRepElement.
      */
-    protected SiriusReferenceFinder repElementInverseCrossReferencer;
+    protected SiriusReferenceFinder siriusReferenceFinder;
 
     /** The custom saving policy the session should use. */
     private SavingPolicy savingPolicy;
@@ -1494,10 +1494,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * 
      * @return the {@link SiriusReferenceFinder}
      */
-    public SiriusReferenceFinder getSiriusRepElementInverseCrossReferencer() {
-        if (repElementInverseCrossReferencer == null) {
-            repElementInverseCrossReferencer = new SiriusReferenceFinderImpl(this);
+    public SiriusReferenceFinder getSiriusReferenceFinder() {
+        if (siriusReferenceFinder == null) {
+            siriusReferenceFinder = new SiriusReferenceFinderImpl(this);
         }
-        return repElementInverseCrossReferencer;
+        return siriusReferenceFinder;
     }
 }

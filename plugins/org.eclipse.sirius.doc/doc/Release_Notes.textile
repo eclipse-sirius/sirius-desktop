@@ -17,6 +17,10 @@ h3. Developer-Visible Changes
 * <span class="label label-info">Modified</span> If you previously override the default Sirius value for @SiriusDiagramUiPreferencesKeys.PREF_SCALE_DIAGRAMS_ON_EXPORT@, you must replace this override by an override of the new preference @SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT@. Example: 
 pre.. SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(),0); 
 
+h4. Changes in @org.eclipse.sirius@
+
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.business.api.query.SiriusReferenceFinder.of(EObject)@ has been added to provide an easy way to get the @SiriusReferenceFinder@ from an @EObject@ in the Sirius @Session@. 
+
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-warning">Deprecated</span> Preference @PREF_SCALE_DIAGRAMS_ON_EXPORT@ from @org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys@ is now deprecated. User should use new preference @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys@: @PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT@.

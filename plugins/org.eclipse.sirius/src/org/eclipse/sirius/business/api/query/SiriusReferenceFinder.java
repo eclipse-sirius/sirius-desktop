@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.api.query;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -49,6 +50,17 @@ public interface SiriusReferenceFinder {
          */
         ALL_REPRESENTATIONS_SCOPE
     };
+
+    /**
+     * Returns the SiriusReferenceFinder of the session a given model element is part of, if any.
+     * 
+     * @param obj
+     *            an {@link EObject}.
+     * @return the SiriusReferenceFinder.
+     */
+    static Optional<SiriusReferenceFinder> of(EObject obj) {
+        return Optional.ofNullable(new EObjectQuery(obj).getSiriusReferenceFinder());
+    }
 
     /**
      * Return the {@link DRepresentation}s or {@link DRepresentationElement}s referencing the semanticObjects.</br>

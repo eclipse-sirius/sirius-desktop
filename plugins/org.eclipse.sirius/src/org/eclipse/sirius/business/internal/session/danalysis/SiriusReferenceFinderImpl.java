@@ -36,7 +36,8 @@ public class SiriusReferenceFinderImpl implements SiriusReferenceFinder {
     /**
      * EReferences used to find inverse cross references.
      */
-    protected final List<EReference> refs = Arrays.asList(ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS);
+    protected final List<EReference> refs = Arrays.asList(ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS,
+            ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Target());
 
     /**
      * The session.
