@@ -40,10 +40,12 @@ import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalView
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.SiriusPaletteToolDropTargetListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.graphics.Color;
 
 /**
  * {@link org.eclipse.gef.GraphicalViewer} used for the {@link org.eclipse.sirius.diagram.DDiagram} modeler.
- * 
+ *
  * @author mchauvin
  */
 @SuppressWarnings("restriction")
@@ -58,63 +60,54 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
     private final SemanticElementToEditPartsMap elementToEditPartsMap = new SemanticElementToEditPartsMap();
 
     /**
+     * The background color used for the diagram. Stored here so that we can properly dispose if on close.
+     */
+    private Color backgroundColor;
+
+    /**
      * return the viewer's change bound request recorder.
-     * 
+     *
      * @return the viewer's change bound request recorder.
      */
     public ChangeBoundRequestRecorder getChangeBoundRequestRecorder() {
         return recorder;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#registerEditPartForSemanticElement(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.gef.EditPart)
-     */
     @Override
     public void registerEditPartForSemanticElement(final EObject element, final EditPart ep) {
         elementToEditPartsMap.registerEditPartForElement(element, ep);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPartForSemanticElement(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.gef.EditPart)
-     */
     @Override
     public void unregisterEditPartForSemanticElement(final EObject element, final EditPart ep) {
         elementToEditPartsMap.unregisterEditPartForElement(element, ep);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPart(org.eclipse.gef.EditPart)
-     */
     @Override
     public void unregisterEditPart(final EditPart ep) {
         elementToEditPartsMap.unregisterEditPart(ep);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#findEditPartsForElement(String,
-     *      Class)
-     */
     @Override
     public <T extends EditPart> List<T> findEditPartsForElement(final EObject element, final Class<T> editPartClass) {
         return elementToEditPartsMap.findEditPartsForElement(element, editPartClass);
     }
 
+    @Override
+    protected void handleDispose(DisposeEvent e) {
+        super.handleDispose(e);
+        if (this.backgroundColor != null) {
+            this.backgroundColor.dispose();
+            this.backgroundColor = null;
+        }
+    }
+
     /**
      * <code>boolean</code> <code>true</code> if client wishes to disable updates on the figure canvas,
      * <code>false</code> indicates normal updates are to take place.
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer#enableUpdates(boolean)
      */
     @Override
@@ -126,11 +119,6 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer#areUpdatesDisabled()
-     */
     @Override
     public boolean areUpdatesDisabled() {
         return getLightweightSystemWithUpdateToggle().getToggleUpdateManager().shouldDisableUpdates();
@@ -139,7 +127,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
     /**
      * Special version of the ToggleUpdateManager normally used in the super-class, with a workaround to avoid infinite
      * loops triggered during figure validation.
-     * 
+     *
      * @author ymortier
      */
     private static class ToggleUpdateManager extends DeferredUpdateManager {
@@ -175,9 +163,6 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
             return disableUpdates;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         protected void sendUpdateRequest() {
             EclipseUIUtil.displayAsyncExec(new UpdateRequest());
@@ -195,9 +180,6 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
             }
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public synchronized void performUpdate() {
             if (!shouldDisableUpdates()) {
@@ -205,9 +187,6 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
             }
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void performValidation() {
             if (!shouldDisableUpdates()) {
@@ -231,7 +210,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
 
         /**
          * Return the list of figures that are invalids.
-         * 
+         *
          * @return list of invalids figures.
          */
         public List getInvalidFigures() {
@@ -249,7 +228,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
 
         /**
          * Return the value of validating.
-         * 
+         *
          * @return the value of validating.
          */
         public boolean getValidating() {
@@ -267,7 +246,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
 
         /**
          * Define the validating attribute.
-         * 
+         *
          * @param validating
          *            the new validating value.
          */
@@ -283,9 +262,6 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
             }
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void queueWork() {
             if (!shouldDisableUpdates()) {
@@ -325,11 +301,6 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
         return (LightweightSystemWithUpdateToggle) getLightweightSystem();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer#createLightweightSystem()
-     */
     @Override
     protected LightweightSystem createLightweightSystem() {
         final LightweightSystem lws = new LightweightSystemWithUpdateToggle();
@@ -360,7 +331,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
 
     /**
      * Returns the EditPart located at the given location which will accept mouse events.
-     * 
+     *
      * @param location
      *            The mouse location
      * @return The EditPart located at the given location which will accept mouse events
@@ -372,8 +343,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
             part = (EditPart) getVisualPartMap().get(figure);
             figure = figure.getParent();
         }
-        if (part == null)
+        if (part == null) {
             return getContents();
+        }
         return part;
     }
 
@@ -388,9 +360,23 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
             getToolTipHelperMethod = SWTEventDispatcher.class.getDeclaredMethod("getToolTipHelper"); //$NON-NLS-1$
             getToolTipHelperMethod.setAccessible(true);
             ToolTipHelper toolTipHelper = (ToolTipHelper) getToolTipHelperMethod.invoke(eventDispatcher);
-            toolTipHelper.setHideDelay(TOOLTIP_HIDE_DELAY);
+            toolTipHelper.setHideDelay(SiriusDiagramGraphicalViewer.TOOLTIP_HIDE_DELAY);
         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
             SiriusPlugin.getDefault().error(Messages.SiriusDiagramGraphicalViewer_tooltipDisplayDelay, e);
         }
+    }
+
+    /**
+     * Remember the current background color used by the diagram, so that it can be properly disposed when the viewer is
+     * closed.
+     * 
+     * @param color
+     *            the background color used by the diagram.
+     */
+    public void setBackgroundColor(Color color) {
+        if (this.backgroundColor != null) {
+            this.backgroundColor.dispose();
+        }
+        this.backgroundColor = color;
     }
 }

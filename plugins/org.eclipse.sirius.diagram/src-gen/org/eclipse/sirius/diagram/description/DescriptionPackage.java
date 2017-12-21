@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -411,13 +411,22 @@ public interface DescriptionPackage extends EPackage {
     int DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 34;
 
     /**
+     * The feature id for the '<em><b>Background Color</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIAGRAM_DESCRIPTION__BACKGROUND_COLOR = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 35;
+
+    /**
      * The number of structural features of the '<em>Diagram Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION_FEATURE_COUNT = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 35;
+    int DIAGRAM_DESCRIPTION_FEATURE_COUNT = DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 36;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl
@@ -742,13 +751,22 @@ public interface DescriptionPackage extends EPackage {
     int DIAGRAM_IMPORT_DESCRIPTION__ENABLE_POPUP_BARS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 27;
 
     /**
+     * The feature id for the '<em><b>Background Color</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIAGRAM_IMPORT_DESCRIPTION__BACKGROUND_COLOR = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 28;
+
+    /**
      * The feature id for the '<em><b>Imported Diagram</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 28;
+    int DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 29;
 
     /**
      * The number of structural features of the '<em>Diagram Import Description</em>' class. <!-- begin-user-doc -->
@@ -757,7 +775,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 29;
+    int DIAGRAM_IMPORT_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 30;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.description.impl.DiagramExtensionDescriptionImpl
@@ -3422,6 +3440,18 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getDiagramDescription_EnablePopupBars();
 
     /**
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.diagram.description.DiagramDescription#getBackgroundColor <em>Background Color</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference '<em>Background Color</em>'.
+     * @see org.eclipse.sirius.diagram.description.DiagramDescription#getBackgroundColor()
+     * @see #getDiagramDescription()
+     * @generated
+     */
+    EReference getDiagramDescription_BackgroundColor();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.DiagramImportDescription
      * <em>Diagram Import Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -4690,6 +4720,14 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EAttribute DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = DescriptionPackage.eINSTANCE.getDiagramDescription_EnablePopupBars();
+
+        /**
+         * The meta object literal for the '<em><b>Background Color</b></em>' reference feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference DIAGRAM_DESCRIPTION__BACKGROUND_COLOR = DescriptionPackage.eINSTANCE.getDiagramDescription_BackgroundColor();
 
         /**
          * The meta object literal for the

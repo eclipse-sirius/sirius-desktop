@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.support.api;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -25,8 +26,6 @@ import org.junit.Assert;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
-import junit.framework.TestCase;
 
 import junit.framework.TestCase;
 
@@ -68,6 +67,8 @@ public abstract class AbstractColorReferenceTestCase extends TestCase {
         classesWithColorReferences = new LinkedHashSet<>();
         Assert.assertNotNull("Base package should not be null.", basePackage);
         lookForColorReferences(basePackage);
+        specialColorRefs = Arrays.asList(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE
+                .getDiagramDescription_BackgroundColor());
     }
 
     private void lookForColorReferences(EPackage pkg) {

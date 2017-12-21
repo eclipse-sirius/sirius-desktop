@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -87,6 +87,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
             addReusedMappingsPropertyDescriptor(object);
             addReusedToolsPropertyDescriptor(object);
             addEnablePopupBarsPropertyDescriptor(object);
+            addBackgroundColorPropertyDescriptor(object);
             addImportedDiagramPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
@@ -394,6 +395,19 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
                         getString("_UI_DiagramDescription_enablePopupBars_description"), //$NON-NLS-1$
                         org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
                         getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
+    }
+
+    /**
+     * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addBackgroundColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DiagramDescription_backgroundColor_feature"), //$NON-NLS-1$
+                        getString("_UI_DiagramDescription_backgroundColor_description"), //$NON-NLS-1$
+                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__BACKGROUND_COLOR, true, false, true, null, getString("_UI_BackgroundPropertyCategory"), //$NON-NLS-1$
                         null));
     }
 

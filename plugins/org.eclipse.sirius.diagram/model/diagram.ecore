@@ -1148,6 +1148,11 @@
           <details key="documentation" value="Boolean indicating whether or not to show dynamic popup bars with creation tools."/>
         </eAnnotations>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Color of the diagram background, white if unset."/>
+        </eAnnotations>
+      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DiagramImportDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/RepresentationImportDescription #//description/DiagramDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="importedDiagram" eType="#//description/DiagramDescription">

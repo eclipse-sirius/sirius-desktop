@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.sirius.diagram.description.concern.ConcernSet;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
@@ -123,6 +124,8 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * Tools</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#isEnablePopupBars <em>Enable
  * Popup Bars</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getBackgroundColor <em>Background
+ * Color</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getImportedDiagram <em>Imported
  * Diagram</em>}</li>
  * </ul>
@@ -519,6 +522,16 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * @ordered
      */
     protected boolean enablePopupBars = DiagramImportDescriptionImpl.ENABLE_POPUP_BARS_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getBackgroundColor()
+     * @generated
+     * @ordered
+     */
+    protected ColorDescription backgroundColor;
 
     /**
      * The cached value of the '{@link #getImportedDiagram() <em>Imported Diagram</em>}' reference. <!-- begin-user-doc
@@ -1590,6 +1603,48 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * @generated
      */
     @Override
+    public ColorDescription getBackgroundColor() {
+        if (backgroundColor != null && backgroundColor.eIsProxy()) {
+            InternalEObject oldBackgroundColor = (InternalEObject) backgroundColor;
+            backgroundColor = (ColorDescription) eResolveProxy(oldBackgroundColor);
+            if (backgroundColor != oldBackgroundColor) {
+                if (eNotificationRequired()) {
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+                }
+            }
+        }
+        return backgroundColor;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public ColorDescription basicGetBackgroundColor() {
+        return backgroundColor;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setBackgroundColor(ColorDescription newBackgroundColor) {
+        ColorDescription oldBackgroundColor = backgroundColor;
+        backgroundColor = newBackgroundColor;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public DiagramDescription getImportedDiagram() {
         if (importedDiagram != null && importedDiagram.eIsProxy()) {
             InternalEObject oldImportedDiagram = (InternalEObject) importedDiagram;
@@ -1776,6 +1831,11 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             return getReusedTools();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ENABLE_POPUP_BARS:
             return isEnablePopupBars();
+        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__BACKGROUND_COLOR:
+            if (resolve) {
+                return getBackgroundColor();
+            }
+            return basicGetBackgroundColor();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM:
             if (resolve) {
                 return getImportedDiagram();
@@ -1896,6 +1956,9 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ENABLE_POPUP_BARS:
             setEnablePopupBars((Boolean) newValue);
             return;
+        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__BACKGROUND_COLOR:
+            setBackgroundColor((ColorDescription) newValue);
+            return;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM:
             setImportedDiagram((DiagramDescription) newValue);
             return;
@@ -2001,6 +2064,9 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ENABLE_POPUP_BARS:
             setEnablePopupBars(DiagramImportDescriptionImpl.ENABLE_POPUP_BARS_EDEFAULT);
             return;
+        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__BACKGROUND_COLOR:
+            setBackgroundColor((ColorDescription) null);
+            return;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM:
             setImportedDiagram((DiagramDescription) null);
             return;
@@ -2088,6 +2154,8 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             return reusedTools != null && !reusedTools.isEmpty();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ENABLE_POPUP_BARS:
             return enablePopupBars != DiagramImportDescriptionImpl.ENABLE_POPUP_BARS_EDEFAULT;
+        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__BACKGROUND_COLOR:
+            return backgroundColor != null;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM:
             return importedDiagram != null;
         }
@@ -2189,6 +2257,8 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_TOOLS;
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ENABLE_POPUP_BARS:
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS;
+            case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__BACKGROUND_COLOR:
+                return DescriptionPackage.DIAGRAM_DESCRIPTION__BACKGROUND_COLOR;
             default:
                 return -1;
             }
@@ -2291,6 +2361,8 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__REUSED_TOOLS;
             case DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS:
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ENABLE_POPUP_BARS;
+            case DescriptionPackage.DIAGRAM_DESCRIPTION__BACKGROUND_COLOR:
+                return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__BACKGROUND_COLOR;
             default:
                 return -1;
             }

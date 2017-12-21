@@ -1073,6 +1073,14 @@
         <input type="org.eclipse.sirius.diagram.description.DiagramImportDescription"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.diagramdescription.DiagramDescriptionBackgroundColorPropertySection"
+               id="description.section.diagramDescription.BackgroundColor"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.diagramdescription.DiagramDescriptionBackgroundColorFilter"
+               afterSection="description.section.diagramDescription.EnablePopupBars"
+                tab="viewpoint.tab.background">
+        <input type="org.eclipse.sirius.diagram.description.DiagramDescription"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.description.diagramdescription.DiagramDescriptionEnablePopupBarsPropertySection"
                id="description.section.diagramDescription.EnablePopupBars"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.description.diagramdescription.DiagramDescriptionEnablePopupBarsFilter"

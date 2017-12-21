@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -150,6 +150,7 @@ import org.eclipse.sirius.tests.unit.diagram.layoutingmode.LayoutingModeOnCustom
 import org.eclipse.sirius.tests.unit.diagram.layoutingmode.LayoutingModeOnECoreModelerTest;
 import org.eclipse.sirius.tests.unit.diagram.mapping.EdgeMappingCreationDescriptionTests;
 import org.eclipse.sirius.tests.unit.diagram.modelaccessor.ModelAccessorTest;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design.EntitiesDiagramBackgroundTests;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design.EntitiesDiagramContainerList;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design.EntitiesDiagramDeleteFromDiagramTests;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design.EntitiesDiagramDerivedReferenceTests;
@@ -325,6 +326,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(EntitiesDiagramSiriussConflictTest.class);
         suite.addTestSuite(LayoutingModeOnECoreModelerTest.class);
         suite.addTestSuite(LayoutingModeOnCustomModelerTest.class);
+        suite.addTestSuite(EntitiesDiagramBackgroundTests.class);
 
         // end of ecore modeler
         suite.addTestSuite(LayersTest.class);

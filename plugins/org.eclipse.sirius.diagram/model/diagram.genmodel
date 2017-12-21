@@ -383,6 +383,9 @@
             propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/reusedTools"/>
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="If true, creation tools which are visible in the palette will also be available as pop-up toolbars in the diagram itself."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/DiagramDescription/enablePopupBars"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Background"
+            propertyDescription="Color of the diagram background, white if unset."
+            propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/backgroundColor"/>
         <genOperations ecoreOperation="diagram.ecore#//description/DiagramDescription/createDiagram"/>
       </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/DiagramImportDescription">

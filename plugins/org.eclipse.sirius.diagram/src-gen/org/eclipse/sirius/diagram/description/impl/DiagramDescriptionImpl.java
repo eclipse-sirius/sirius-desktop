@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.concern.ConcernSet;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
@@ -117,6 +118,8 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * Tools</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl#isEnablePopupBars <em>Enable Popup
  * Bars</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl#getBackgroundColor <em>Background
+ * Color</em>}</li>
  * </ul>
  *
  * @generated
@@ -521,6 +524,16 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @ordered
      */
     protected boolean enablePopupBars = DiagramDescriptionImpl.ENABLE_POPUP_BARS_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getBackgroundColor()
+     * @generated
+     * @ordered
+     */
+    protected ColorDescription backgroundColor;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1593,6 +1606,48 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      */
     @Override
+    public ColorDescription getBackgroundColor() {
+        if (backgroundColor != null && backgroundColor.eIsProxy()) {
+            InternalEObject oldBackgroundColor = (InternalEObject) backgroundColor;
+            backgroundColor = (ColorDescription) eResolveProxy(oldBackgroundColor);
+            if (backgroundColor != oldBackgroundColor) {
+                if (eNotificationRequired()) {
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+                }
+            }
+        }
+        return backgroundColor;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public ColorDescription basicGetBackgroundColor() {
+        return backgroundColor;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setBackgroundColor(ColorDescription newBackgroundColor) {
+        ColorDescription oldBackgroundColor = backgroundColor;
+        backgroundColor = newBackgroundColor;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public DSemanticDiagram createDiagram() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -1737,6 +1792,11 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             return getReusedTools();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS:
             return isEnablePopupBars();
+        case DescriptionPackage.DIAGRAM_DESCRIPTION__BACKGROUND_COLOR:
+            if (resolve) {
+                return getBackgroundColor();
+            }
+            return basicGetBackgroundColor();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -1851,6 +1911,9 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS:
             setEnablePopupBars((Boolean) newValue);
             return;
+        case DescriptionPackage.DIAGRAM_DESCRIPTION__BACKGROUND_COLOR:
+            setBackgroundColor((ColorDescription) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -1953,6 +2016,9 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS:
             setEnablePopupBars(DiagramDescriptionImpl.ENABLE_POPUP_BARS_EDEFAULT);
             return;
+        case DescriptionPackage.DIAGRAM_DESCRIPTION__BACKGROUND_COLOR:
+            setBackgroundColor((ColorDescription) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -2036,6 +2102,8 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             return reusedTools != null && !reusedTools.isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS:
             return enablePopupBars != DiagramDescriptionImpl.ENABLE_POPUP_BARS_EDEFAULT;
+        case DescriptionPackage.DIAGRAM_DESCRIPTION__BACKGROUND_COLOR:
+            return backgroundColor != null;
         }
         return super.eIsSet(featureID);
     }

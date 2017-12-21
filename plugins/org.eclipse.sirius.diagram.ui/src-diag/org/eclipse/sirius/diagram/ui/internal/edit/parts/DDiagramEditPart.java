@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
+import org.eclipse.sirius.business.api.color.RGBValuesProvider;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirXYLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ContainerCreationEditPolicy;
@@ -32,8 +37,12 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.DDiagramItemSemantic
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
+import org.eclipse.swt.graphics.Color;
 
 /**
  * @was-generated
@@ -49,11 +58,8 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
      * @was-generated
      */
     public static final int VISUAL_ID = 1000;
-
-    @Override
-    protected void refreshBackgroundColor() {
-        super.refreshBackgroundColor();
-    };
+    
+    private static final RGBValues WHITE = RGBValues.create(255, 255, 255);
 
     /**
      * @was-generated
@@ -96,6 +102,19 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
     public void deactivate() {
         deactivateLayoutingMode();
         super.deactivate();
+    }
+
+    @Override
+    protected IFigure createFigure() {
+        IFigure fig = super.createFigure();
+        configureBackground(fig);
+        return fig;
+    }
+
+    @Override
+    protected void refreshVisuals() {
+        super.refreshVisuals();
+        configureBackground(getFigure());
     }
 
     /**
@@ -143,11 +162,9 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
          * @param editingDomain
          *            the editing domain
          * @param diagram
-         *            the {@link DDiagram} on witch the layouting mode should be
-         *            switched
+         *            the {@link DDiagram} on witch the layouting mode should be switched
          * @param layoutingModeShouldBeEnabled
-         *            indicates whether the layouting mode should be enabled or
-         *            disabled
+         *            indicates whether the layouting mode should be enabled or disabled
          */
         public SetLayoutingModeCommand(TransactionalEditingDomain editingDomain, DDiagram diagram, boolean layoutingModeShouldBeEnabled) {
             super(editingDomain, Messages.SetLayoutingModeCommand_deactivateLabel);
@@ -158,12 +175,6 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
             }
         }
 
-        /**
-         *
-         * {@inheritDoc}
-         *
-         * @see org.eclipse.sirius.tools.api.command.SiriusCommand#doExecute()
-         */
         @Override
         protected void doExecute() {
             this.diagram.setIsInLayoutingMode(layoutingModeShouldBeEnabled);
@@ -177,5 +188,44 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
             return SiriusSnapToHelperUtil.getSnapHelper(this);
         }
         return super.getAdapter(key);
+    }
+
+    /**
+     * Configure the background of a given figure by using color defined on semantic diagram description.
+     *
+     * @param fig
+     *            figure with the background to configure
+     */
+    public synchronized void configureBackground(IFigure fig) {
+        if (resolveDDiagram().some() && fig != null) {
+            DSemanticDiagram dSemanticDiagram = (DSemanticDiagram) this.resolveDDiagram().get();
+            ColorDescription colorDesc = dSemanticDiagram.getDescription().getBackgroundColor();
+            RGBValues rgb = WHITE;
+            if (colorDesc != null) {
+                rgb = new AbstractColorUpdater().getRGBValuesFromColorDescription(dSemanticDiagram.getTarget(), colorDesc);
+            }
+
+            Color previousColor = fig.getBackgroundColor();
+            if (!sameColor(previousColor, rgb)) {
+                SiriusDiagramGraphicalViewer viewer = (SiriusDiagramGraphicalViewer) this.getViewer();
+                Color backgroundColor;
+                if (WHITE.equals(rgb)) {
+                    backgroundColor = null;
+                } else {
+                    backgroundColor = new Color(viewer.getControl().getDisplay(), rgb.getRed(), rgb.getGreen(), rgb.getBlue());
+                }
+                fig.setBackgroundColor(backgroundColor);
+                fig.setOpaque(backgroundColor != null);
+                viewer.setBackgroundColor(backgroundColor);
+            }
+        }
+    }
+
+    private boolean sameColor(Color current, RGBValues expected) {
+        if (current == null) {
+            return WHITE.equals(expected);
+        } else {
+            return current.getRed() == expected.getRed() && current.getGreen() == expected.getGreen() && current.getBlue() == expected.getBlue();
+        }
     }
 }

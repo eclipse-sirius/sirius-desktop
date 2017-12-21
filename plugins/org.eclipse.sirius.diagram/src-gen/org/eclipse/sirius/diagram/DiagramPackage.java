@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -131,6 +131,14 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DDIAGRAM__UI_STATE = ViewpointPackage.DREPRESENTATION__UI_STATE;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DDIAGRAM__UID = ViewpointPackage.DREPRESENTATION__UID;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>' containment reference list. <!-- begin-user-doc
@@ -383,6 +391,14 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DSEMANTIC_DIAGRAM__UI_STATE = DiagramPackage.DDIAGRAM__UI_STATE;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DSEMANTIC_DIAGRAM__UID = DiagramPackage.DDIAGRAM__UID;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>' containment reference list. <!-- begin-user-doc

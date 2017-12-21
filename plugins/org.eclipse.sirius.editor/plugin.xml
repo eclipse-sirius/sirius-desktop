@@ -66,6 +66,7 @@
       <propertyTab category="default" id="viewpoint.tab.documentation" label="Documentation" afterTab="viewpoint.tab.import"/>
       <propertyTab category="default" id="viewpoint.tab.color" label="Color" afterTab="viewpoint.tab.label"/>
       <propertyTab category="default" id="viewpoint.tab.behavior" label="Behavior" afterTab="viewpoint.tab.label "/>
+      <propertyTab category="default" id="viewpoint.tab.background" label="Background" afterTab="viewpoint.tab.behavior"/>
       <propertyTab category="default" id="viewpoint.tab.metamodels" label="Metamodels" afterTab="viewpoint.tab.behavior"/>
       <propertyTab category="default" id="viewpoint.tab.border" label="Border" afterTab="viewpoint.tab.color"/>
       <propertyTab category="default" id="viewpoint.tab.advanced" label="Advanced" afterTab="viewpoint.tab.border"/>

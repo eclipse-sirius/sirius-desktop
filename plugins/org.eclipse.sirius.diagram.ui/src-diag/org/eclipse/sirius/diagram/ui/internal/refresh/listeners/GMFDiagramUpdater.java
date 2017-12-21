@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,8 @@ public class GMFDiagramUpdater {
 
     private GMFBoundsUpdater gmfBoundsUpdater;
 
+    private BackgroundUpdater backgroundUpdater;
+
     private VisibilityUpdater visibilityUpdater;
 
     private DDiagramHiddenElementsUpdater dDiagramHiddenElementsUpdater;
@@ -63,6 +65,7 @@ public class GMFDiagramUpdater {
         eventBroker.addLocalTrigger(SessionEventBrokerImpl.asFilter(new FilterListenerScope()), filterListener);
         edgeLayoutUpdaterChangeTrigger = new EdgeLayoutUpdaterModelChangeTrigger(session, dDiagram);
         gmfBoundsUpdater = new GMFBoundsUpdater(domain, dDiagram);
+        backgroundUpdater = new BackgroundUpdater(domain, dDiagram);
         visibilityUpdater = new VisibilityUpdater(domain, dDiagram);
         dDiagramHiddenElementsUpdater = new DDiagramHiddenElementsUpdater(domain, dDiagram);
         visibilityPropagator = new VisibilityPropagatorAdapter(session, dDiagram);
@@ -78,6 +81,7 @@ public class GMFDiagramUpdater {
         notationVisibilityUpdater.dispose();
         viewFontChangesRefactorer.dispose();
         gmfBoundsUpdater.dispose();
+        backgroundUpdater.dispose();
         visibilityUpdater.dispose();
         dDiagramHiddenElementsUpdater.dispose();
         edgeStyleUpdater.dispose();

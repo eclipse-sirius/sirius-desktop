@@ -28,6 +28,8 @@ The _Initialization_ and _Show on startup_ flags control whether diagram instanc
 
 If _Enable Popup Bars_ flag is set, then when the end-user leaves the mouse pointer still on a diagram (or diagram element) for a small time, a _popup bar_ will appear with shortcut buttons to all the tools which can be applied in this context. It can be useful to create elements without going to the palette to select tools, but it can also become visually distracting if too many tools are available in the popup bar.
 
+By default, diagrams are displayed with white background. In the _Background_ property section of the _Diagram Description_, you can add either one of the pre-defined system colors or one which you have defined yourself in a _Users Color Palette_. See "the general section on colors":../general/Colors.html on colors for more details on dynamic and computed color of the _Users Color Palette_. Note that when dynamic/computed colors are re-computed because of model change for example, background color is refreshed.
+
 The content of the _Diagram Description_ is mostly made of "graphical elements mappings":#graphical_elements, organized in "layers":#layers, and their associated "tools":#tools. In addition, it can also contain "validation rules":#validation, "filters":#filters and "layout configuration":#layout information.
 
 Note that the _Window Title_ label and _Message_ label are "_Translatable Messages_":../general/Specifying_Viewpoints.html#translatable_messages and can therefore be localized.

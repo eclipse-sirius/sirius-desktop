@@ -17,6 +17,7 @@ import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.concern.ConcernSet;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -70,6 +71,8 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getReusedTools <em>Reused Tools</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#isEnablePopupBars <em>Enable Popup
  * Bars</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getBackgroundColor <em>Background
+ * Color</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription()
@@ -562,6 +565,34 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * @generated
      */
     void setEnablePopupBars(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Background Color</b></em>' reference. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Background Color</em>' reference isn't clear, there really should be more of a
+     * description here...
+     * </p>
+     * <!-- end-user-doc --> <!-- begin-model-doc --> Color of the diagram background, white if unset. <!--
+     * end-model-doc -->
+     *
+     * @return the value of the '<em>Background Color</em>' reference.
+     * @see #setBackgroundColor(ColorDescription)
+     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_BackgroundColor()
+     * @model
+     * @generated
+     */
+    ColorDescription getBackgroundColor();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.DiagramDescription#getBackgroundColor
+     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Background Color</em>' reference.
+     * @see #getBackgroundColor()
+     * @generated
+     */
+    void setBackgroundColor(ColorDescription value);
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
