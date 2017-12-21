@@ -493,7 +493,9 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                 public void run() {
                     // Try to select the items in the current content viewer of
                     // the editor.
-                    treeViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
+                    if (treeViewer != null) {
+                        treeViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
+                    }
                 }
             };
             site.getShell().getDisplay().asyncExec(runnable);
