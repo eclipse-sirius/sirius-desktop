@@ -20,6 +20,7 @@ pre.. SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPrefe
 h4. Changes in @org.eclipse.sirius@
 
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.business.api.query.SiriusReferenceFinder.of(EObject)@ has been added to provide an easy way to get the @SiriusReferenceFinder@ from an @EObject@ in the Sirius @Session@. 
+* <span class="label label-info">Modified</span> (experimental) The method @org.eclipse.sirius.business.api.query.SiriusReferenceFinder.getReferencingSiriusElements(Collection<EObject>, SearchScope)@. The SearchScope.LOADED_REPRESENTATIONS_SCOPE scope covers the search and result scope. Then, no additional resource will be loaded using this scope.
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
