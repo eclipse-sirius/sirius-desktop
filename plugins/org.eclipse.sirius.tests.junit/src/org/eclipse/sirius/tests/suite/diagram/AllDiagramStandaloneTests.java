@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.sirius.tests.unit.diagram.views.session.ResourceFolderItemTes
 import org.eclipse.sirius.tests.unit.diagram.views.session.ResourceItemTest;
 import org.eclipse.sirius.tests.unit.diagram.views.session.ViewpointItemTest;
 import org.eclipse.sirius.tests.unit.diagram.views.session.ViewpointsFolderItemTest;
+import org.eclipse.sirius.tests.unit.diagram.vsm.DiagramColorTest;
 
 import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
@@ -84,6 +85,7 @@ public class AllDiagramStandaloneTests {
         suite.addTestSuite(ChangeContextOperationTest.class);
         suite.addTestSuite(DDiagramDAnnotationTest.class);
         suite.addTestSuite(DDiagramElementSynchronizerTest.class);
+        suite.addTestSuite(DiagramColorTest.class);
         suite.addTest(AllSequenceDiagramsStandaloneTests.suite());
         // Ecore modeler services
         suite.addTest(new JUnit4TestAdapter(EcoreServiceTest.class));
