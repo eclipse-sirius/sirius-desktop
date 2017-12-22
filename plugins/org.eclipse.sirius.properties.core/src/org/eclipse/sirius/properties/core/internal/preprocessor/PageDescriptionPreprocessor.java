@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -33,7 +34,11 @@ import org.eclipse.sirius.properties.core.api.OverridesProvider;
 import org.eclipse.sirius.properties.core.api.PreconfiguredPreprocessor;
 import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
+import org.eclipse.sirius.properties.core.internal.converter.SiriusInitialOperationAdapter;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
 
 /**
  * Preprocessor for {@link PageDescription}.
@@ -100,14 +105,74 @@ public class PageDescriptionPreprocessor extends PreconfiguredPreprocessor<Abstr
             currentDescription.getValidationSet().getSemanticValidationRules().forEach(rule -> {
                 if (!this.isFiltered(PropertiesPackage.eINSTANCE.getPageValidationSetDescription_SemanticValidationRules(), processedDescription, rule, cache, interpreter, variableManager,
                         overridesProvider)) {
-                    newValue.add(EcoreUtil.copy(rule));
+                    newValue.add(this.processSemanticValidationRule(rule));
                 }
             });
-            newValue.addAll(processedDescription.getValidationSet().getSemanticValidationRules());
+
+            // @formatter:off
+            processedDescription.getValidationSet().getSemanticValidationRules().stream()
+                .map(this::processSemanticValidationRule)
+                .forEach(newValue::add);
+            // @formatter:on
 
             processedDescription.getValidationSet().getSemanticValidationRules().clear();
             processedDescription.getValidationSet().getSemanticValidationRules().addAll(newValue);
         }
+    }
+
+    /**
+     * Processes the given validation rules to ensure that its initial operations are properly decorated with an
+     * instance of {@link SiriusInitialOperationAdapter}.
+     * 
+     * @param unprocessedValidationRule
+     *            The unprocessed validation rule
+     * @return The processed validation rule
+     */
+    private SemanticValidationRule processSemanticValidationRule(SemanticValidationRule unprocessedValidationRule) {
+        SemanticValidationRule processedValidationRule = ValidationFactory.eINSTANCE.createSemanticValidationRule();
+        processedValidationRule.setLabel(unprocessedValidationRule.getLabel());
+        processedValidationRule.setLevel(unprocessedValidationRule.getLevel());
+        processedValidationRule.setName(unprocessedValidationRule.getName());
+        processedValidationRule.setMessage(unprocessedValidationRule.getMessage());
+        processedValidationRule.setTargetClass(unprocessedValidationRule.getTargetClass());
+
+        // @formatter:off
+        unprocessedValidationRule.getAudits().stream()
+            .map(EcoreUtil::copy)
+            .forEach(processedValidationRule.getAudits()::add);
+        
+        unprocessedValidationRule.getFixes().stream()
+            .map(this::processValidationFix)
+            .forEach(processedValidationRule.getFixes()::add);
+        //@formatter:on
+
+        return processedValidationRule;
+    }
+
+    /**
+     * Preprocesses the given validation fix to ensure that the initial operation processed has a proper
+     * {@link SiriusInitialOperationAdapter}.
+     * 
+     * @param unprocessedValidationFix
+     *            The unprocessed validation fix
+     * @return The validation fix processed
+     */
+    private ValidationFix processValidationFix(ValidationFix unprocessedValidationFix) {
+        ValidationFix processedValidationFix = ValidationFactory.eINSTANCE.createValidationFix();
+        processedValidationFix.setName(unprocessedValidationFix.getName());
+
+        // @formatter:off
+        Optional.ofNullable(unprocessedValidationFix.getInitialOperation())
+            .map(unprocessedInitialOperation -> {
+                InitialOperation processedInitialOperation = EcoreUtil.copy(unprocessedInitialOperation);
+                Adapter adapter = new SiriusInitialOperationAdapter(EcoreUtil.getURI(unprocessedInitialOperation));
+                processedInitialOperation.eAdapters().add(adapter);
+                return processedInitialOperation;
+            })
+            .ifPresent(processedValidationFix::setInitialOperation);
+        // @formatter:on
+
+        return processedValidationFix;
     }
 
     @Override
