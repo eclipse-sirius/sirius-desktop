@@ -32,6 +32,7 @@ import org.eclipse.sirius.tests.unit.api.initialization.InitializationTest;
 import org.eclipse.sirius.tests.unit.api.interpreter.CompletionTests;
 import org.eclipse.sirius.tests.unit.api.interpreter.crossReferencer.AcceleoCrossReferencerTest;
 import org.eclipse.sirius.tests.unit.api.mm.DAnnotationTest;
+import org.eclipse.sirius.tests.unit.api.modelingproject.ModelingProjectDetectionTest;
 import org.eclipse.sirius.tests.unit.api.modelingproject.SaveWhenNoEditorsTests;
 import org.eclipse.sirius.tests.unit.api.modelingproject.SemanticResourcesManagementTests;
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderByContainingTest;
@@ -337,6 +338,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(DAnnotationTest.class);
 
         suite.addTestSuite(PageOrdererTest.class);
+        suite.addTestSuite(ModelingProjectDetectionTest.class);
     }
 
     /**
