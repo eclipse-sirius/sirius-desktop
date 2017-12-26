@@ -428,13 +428,13 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             assertFieldsAreDisposed(item, Predicates.or(privateEnclosingClassAccessor, acceptedNonDisposedField));
         }
     }
-
+    
     // Check that non primitive or String fields are disposed, ie have a null
     // value.
     private void assertFieldsAreDisposed(Object obj, Predicate<Field> skippedFieldPredicate) {
         // Reflectively check the disposal
         for (Field field : obj.getClass().getDeclaredFields()) {
-            if (!(field.getType().isPrimitive() || String.class == field.getType())) {
+            if (!(field.getType().isPrimitive() || String.class == field.getType() || field.isSynthetic())) {
                 if (skippedFieldPredicate != null && skippedFieldPredicate.apply(field)) {
                     // Accepted non null field.
                     continue;
