@@ -417,6 +417,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ChildrenPositionStabilityAfterParentResizeTest.class);
         suite.addTestSuite(VSMEditorPropertiesTest.class);
         suite.addTestSuite(SessionEditorOpeningTests.class);
+        suite.addTestSuite(NoteAttachmentTest.class);
 
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
