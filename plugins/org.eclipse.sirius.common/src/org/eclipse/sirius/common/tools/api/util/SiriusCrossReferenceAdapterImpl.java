@@ -16,11 +16,10 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.sirius.common.tools.internal.util.FastInverseCrossReferencesList;
 
 /**
  * Specific {@link ECrossReferenceAdapter} which resolve proxy ability can be disabled. All
@@ -74,33 +73,8 @@ public class SiriusCrossReferenceAdapterImpl extends ECrossReferenceAdapter impl
         return new InverseCrossReferencer() {
             private static final long serialVersionUID = 1L;
 
-            @Override
             protected Collection<EStructuralFeature.Setting> newCollection() {
-                return new BasicEList<EStructuralFeature.Setting>() {
-                    private static final long serialVersionUID = 1L;
-
-                    @Override
-                    protected Object[] newData(int capacity) {
-                        return new EStructuralFeature.Setting[capacity];
-                    }
-
-                    @Override
-                    public boolean add(EStructuralFeature.Setting setting) {
-                        if (!isSettingTargets || SiriusCrossReferenceAdapterImpl.this.resolve()) {
-                            EObject eObject = setting.getEObject();
-                            EStructuralFeature eStructuralFeature = setting.getEStructuralFeature();
-                            EStructuralFeature.Setting[] settingData = (EStructuralFeature.Setting[]) data;
-                            for (int i = 0; i < size; ++i) {
-                                EStructuralFeature.Setting containedSetting = settingData[i];
-                                if (containedSetting.getEObject() == eObject && containedSetting.getEStructuralFeature() == eStructuralFeature) {
-                                    return false;
-                                }
-                            }
-                        }
-                        addUnique(setting);
-                        return true;
-                    }
-                };
+                return new FastInverseCrossReferencesList(() -> !SiriusCrossReferenceAdapterImpl.this.settingTargets || SiriusCrossReferenceAdapterImpl.this.resolve());
             }
         };
     }

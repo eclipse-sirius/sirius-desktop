@@ -15,7 +15,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -23,21 +22,21 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.common.tools.internal.util.FastInverseCrossReferencesList;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
- * {@link ECrossReferenceAdapter} that provides the capability to resolve all
- * proxy cross reference to a given resource.
+ * {@link ECrossReferenceAdapter} that provides the capability to resolve all proxy cross reference to a given resource.
  * 
  * @noextend This class is not intended to be subclassed by clients.
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class ECrossReferenceAdapterWithUnproxyCapability extends SiriusCrossReferenceAdapterImpl {
+
     /**
-     * InverseCrossReferencer to allow access to {@link #removeProxies(URI)} in
-     * '@link InternalCrossReferencer}.
+     * InverseCrossReferencer to allow access to {@link #removeProxies(URI)} in '@link InternalCrossReferencer}.
      * 
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
@@ -50,10 +49,9 @@ public class ECrossReferenceAdapterWithUnproxyCapability extends SiriusCrossRefe
         }
 
         /**
-         * Check if the proxyMap is null or not. Since change in
-         * ECrossReferenceAdapter (bugzilla 400891), the proxyMap is no longer
-         * used if the resolve() method returns true. In this case, we must
-         * iterate on all crossReferences to retrieve corresponding proxies.
+         * Check if the proxyMap is null or not. Since change in ECrossReferenceAdapter (bugzilla 400891), the proxyMap
+         * is no longer used if the resolve() method returns true. In this case, we must iterate on all crossReferences
+         * to retrieve corresponding proxies.
          * 
          * @return true if the proxy map is null.
          */
@@ -62,13 +60,11 @@ public class ECrossReferenceAdapterWithUnproxyCapability extends SiriusCrossRefe
         }
 
         /**
-         * Get all proxy {@link EObject EObjects} that have URI corresponding to
-         * the <code>resourceURI</code>. Warning: this map is computed at each
-         * call and can be costly.
+         * Get all proxy {@link EObject EObjects} that have URI corresponding to the <code>resourceURI</code>. Warning:
+         * this map is computed at each call and can be costly.
          * 
          * @param resourceURI
-         *            The URI of the resource for which we want to get the proxy
-         *            EObjects.
+         *            The URI of the resource for which we want to get the proxy EObjects.
          * @return map of proxies with the URI as key.
          */
         public Map<URI, List<EObject>> getProxiesOf(URI resourceURI) {
@@ -94,31 +90,7 @@ public class ECrossReferenceAdapterWithUnproxyCapability extends SiriusCrossRefe
 
         @Override
         protected Collection<EStructuralFeature.Setting> newCollection() {
-            return new BasicEList<EStructuralFeature.Setting>() {
-                private static final long serialVersionUID = 1L;
-
-                @Override
-                protected Object[] newData(int capacity) {
-                    return new EStructuralFeature.Setting[capacity];
-                }
-
-                @Override
-                public boolean add(EStructuralFeature.Setting setting) {
-                    if (!isSettingTargets || ECrossReferenceAdapterWithUnproxyCapability.this.resolve()) {
-                        EObject eObject = setting.getEObject();
-                        EStructuralFeature eStructuralFeature = setting.getEStructuralFeature();
-                        EStructuralFeature.Setting[] settingData = (EStructuralFeature.Setting[]) data;
-                        for (int i = 0; i < size; ++i) {
-                            EStructuralFeature.Setting containedSetting = settingData[i];
-                            if (containedSetting.getEObject() == eObject && containedSetting.getEStructuralFeature() == eStructuralFeature) {
-                                return false;
-                            }
-                        }
-                    }
-                    addUnique(setting);
-                    return true;
-                }
-            };
+            return new FastInverseCrossReferencesList(() -> !ECrossReferenceAdapterWithUnproxyCapability.this.settingTargets || ECrossReferenceAdapterWithUnproxyCapability.this.resolve());
         }
     }
 
@@ -128,15 +100,13 @@ public class ECrossReferenceAdapterWithUnproxyCapability extends SiriusCrossRefe
     }
 
     /**
-     * Look at all EObjects of the specified resource and resolve proxy cross
-     * reference that reference these EObjects.<BR>
-     * A part of {@link #resolveAll(EObject)} has been duplicated to avoid the
-     * time consumption of accessing to resourceURI for each objects of the same
-     * resource.
+     * Look at all EObjects of the specified resource and resolve proxy cross reference that reference these
+     * EObjects.<BR>
+     * A part of {@link #resolveAll(EObject)} has been duplicated to avoid the time consumption of accessing to
+     * resourceURI for each objects of the same resource.
      * 
      * @param resource
-     *            Each cross reference pointing to a proxy of this
-     *            <code>resource</code> will be resolved.
+     *            Each cross reference pointing to a proxy of this <code>resource</code> will be resolved.
      */
     public void resolveProxyCrossReferences(Resource resource) {
         if (resource != null) {
