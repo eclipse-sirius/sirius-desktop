@@ -19,11 +19,12 @@ Export-Package: org.eclipse.sirius.common.tools;version="3.0.0",
  org.eclipse.sirius.common.tools.api.query;version="2.0.4",
  org.eclipse.sirius.common.tools.api.resource;version="2.1.0",
  org.eclipse.sirius.common.tools.api.util;version="3.1.0",
- org.eclipse.sirius.common.tools.internal.assist;x-internal:=true;version="2.0.4",
- org.eclipse.sirius.common.tools.internal.ecore;x-internal:=true;version="2.0.4",
- org.eclipse.sirius.common.tools.internal.editing;x-internal:=true;version="2.0.4",
- org.eclipse.sirius.common.tools.internal.interpreter;x-internal:=true;version="3.1.0",
- org.eclipse.sirius.common.tools.internal.resource;x-internal:=true;version="2.0.4"
+ org.eclipse.sirius.common.tools.internal.assist;version="2.0.4";x-internal:=true,
+ org.eclipse.sirius.common.tools.internal.ecore;version="2.0.4";x-internal:=true,
+ org.eclipse.sirius.common.tools.internal.editing;version="2.0.4";x-internal:=true,
+ org.eclipse.sirius.common.tools.internal.interpreter;version="3.1.0";x-internal:=true,
+ org.eclipse.sirius.common.tools.internal.resource;version="2.0.4";x-internal:=true,
+ org.eclipse.sirius.common.tools.internal.util;version="5.1.1";x-internal:=true
 Bundle-Activator: org.eclipse.sirius.common.tools.DslCommonPlugin$Implementation
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

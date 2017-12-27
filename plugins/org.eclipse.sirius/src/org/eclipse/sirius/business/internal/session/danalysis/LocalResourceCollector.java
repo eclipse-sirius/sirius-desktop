@@ -17,7 +17,6 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -28,6 +27,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl;
+import org.eclipse.sirius.common.tools.internal.util.FastInverseCrossReferencesList;
 
 /**
  * A {@link IResourceCollector} for local {@link Resource}.
@@ -231,33 +231,8 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapterImpl impl
 
         @Override
         protected Collection<EStructuralFeature.Setting> newCollection() {
-            return new BasicEList<EStructuralFeature.Setting>() {
-                private static final long serialVersionUID = 1L;
-
-                @Override
-                protected Object[] newData(int capacity) {
-                    return new EStructuralFeature.Setting[capacity];
-                }
-
-                @Override
-                public boolean add(EStructuralFeature.Setting setting) {
-                    if (!isSettingTargets || LocalResourceCollector.this.resolve()) {
-                        EObject eObject = setting.getEObject();
-                        EStructuralFeature eStructuralFeature = setting.getEStructuralFeature();
-                        EStructuralFeature.Setting[] settingData = (EStructuralFeature.Setting[]) data;
-                        for (int i = 0; i < size; ++i) {
-                            EStructuralFeature.Setting containedSetting = settingData[i];
-                            if (containedSetting.getEObject() == eObject && containedSetting.getEStructuralFeature() == eStructuralFeature) {
-                                return false;
-                            }
-                        }
-                    }
-                    addUnique(setting);
-                    return true;
-                }
-            };
+            return new FastInverseCrossReferencesList(() -> !LocalResourceCollector.this.settingTargets || LocalResourceCollector.this.resolve());
         }
-
     }
 
 }
