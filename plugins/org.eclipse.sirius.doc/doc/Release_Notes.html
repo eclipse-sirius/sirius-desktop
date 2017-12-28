@@ -133,6 +133,16 @@
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li><span class="label label-danger">Removed</span> The interface 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.IExpressionProposal</code> and its only implementation 
+				<code>DefaultExpressionProposal</code> (in the same package) have been removed. They were not used anywhere, expression completion API is actually defined in package 
+				<code>org.eclipse.sirius.common.tools.api.contentassist</code> which has its own types.  
+			</li>
+		</ul>
 		<h4 id="Migrations">Migrations</h4>
 		<h4 id="TranslationKeysChanges">Translation Keys Changes</h4>
 		<h2 id="sirius5.1.1">Changes in Sirius 5.1.1</h2>
@@ -398,7 +408,7 @@
 				<code>DialectManagerImpl</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -623,7 +633,7 @@
 		<p>See 
 			<a href="i18n_changes.html#sirius50">this document</a> for the complete list of message keys added or removed in Sirius 5.0.
 		</p>
-		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
 			<code>org.eclipse.sirius.common</code> 
 		</h4>
 		<ul>
@@ -1887,7 +1897,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>MetamodelDescriptorProvider</code>. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>

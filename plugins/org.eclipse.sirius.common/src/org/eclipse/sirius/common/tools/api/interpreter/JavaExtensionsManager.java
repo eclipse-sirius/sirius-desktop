@@ -394,6 +394,7 @@ public final class JavaExtensionsManager {
                 if (genModel != null) {
                     EClass eClass = genModel.eClass();
                     if (eClass.getEPackage() != null && "GenModel".equals(eClass.getName()) && "genmodel".equals(eClass.getEPackage().getName())) { //$NON-NLS-1$ //$NON-NLS-2$
+                        @SuppressWarnings("unchecked")
                         Collection<EObject> genPackages = (Collection<EObject>) genModel.eGet(eClass.getEStructuralFeature("genPackages")); //$NON-NLS-1$
                         collectEPackages(ecorePackages, genPackages);
                     }
@@ -408,6 +409,7 @@ public final class JavaExtensionsManager {
             if (ePak instanceof EPackage && !StringUtil.isEmpty(((EPackage) ePak).getNsURI())) {
                 ecorePackages.put(((EPackage) ePak).getNsURI(), (EPackage) ePak);
             }
+            @SuppressWarnings("unchecked")
             Collection<EObject> subGenPackages = (Collection<EObject>) genPackage.eGet(genPackage.eClass().getEStructuralFeature("nestedGenPackages")); //$NON-NLS-1$
             collectEPackages(ecorePackages, subGenPackages);
         }
