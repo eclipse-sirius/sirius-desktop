@@ -654,7 +654,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         int heightComputed = image.getHeight();
         assertEquals("The image height is wrong. Auto scale failed.", height, heightComputed, 1.0);
         int widthComputed = image.getWidth();
-        assertEquals("The image width is wrong. Auto scale failed.", width, widthComputed, 1.0);
+        assertEquals("The image width is wrong. Auto scale failed.", width, widthComputed, 2.0);
     }
 
     private void checkResults(DiagramExportResult exportResult, boolean upscale) throws IOException {
