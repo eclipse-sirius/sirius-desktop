@@ -44,6 +44,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -77,6 +78,7 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.SiriusReferenceFinder;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -482,6 +484,73 @@ public class SiriusDebugView extends AbstractDebugView {
         addShowResourceInformationAction();
         addShowSiriusInverseReferences();
         // addShowCrossReferencerMap();
+        addDeferredChangeAction();
+        addDeferredUnrelatedChangeAction();
+    }
+
+    private void addDeferredChangeAction() {
+        addAction("Deffered Change", new Runnable() {
+            @Override
+            public void run() {
+                EObject current = getCurrentEObject();
+                if (current instanceof DSemanticDecorator && ((DSemanticDecorator) current).getTarget() instanceof ENamedElement) {
+                    final EClass target = (EClass) ((DSemanticDecorator) current).getTarget();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(6000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            Session s = new EObjectQuery(target).getSession();
+                            if (s != null) {
+                                TransactionalEditingDomain ted = s.getTransactionalEditingDomain();
+                                ted.getCommandStack().execute(new RecordingCommand(ted) {
+                                    @Override
+                                    protected void doExecute() {
+                                        // target.setName(target.getName() + "X");
+                                        target.setInstanceClassName(target.getInstanceClassName() + "X");
+                                    }
+                                });
+                            }
+                        }
+                    }).start();
+                }
+            }
+        });
+    }
+
+    private void addDeferredUnrelatedChangeAction() {
+        addAction("Deffered Change (Unrelated)", new Runnable() {
+            @Override
+            public void run() {
+                EObject current = getCurrentEObject();
+                if (current instanceof DSemanticDecorator && ((DSemanticDecorator) current).getTarget() instanceof ENamedElement) {
+                    final EClass target = (EClass) ((DSemanticDecorator) current).getTarget();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(6000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            Session s = new EObjectQuery(target).getSession();
+                            if (s != null) {
+                                TransactionalEditingDomain ted = s.getTransactionalEditingDomain();
+                                ted.getCommandStack().execute(new RecordingCommand(ted) {
+                                    @Override
+                                    protected void doExecute() {
+                                        target.setAbstract(!target.isAbstract());
+                                    }
+                                });
+                            }
+                        }
+                    }).start();
+                }
+            }
+        });
     }
 
     private void addShowResourceInformationAction() {
