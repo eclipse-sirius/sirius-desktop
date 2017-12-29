@@ -1,0 +1,24 @@
+target "sirius_headless_photon"
+
+include "../modules/shared-license.tpd"
+
+with source, requirements
+
+location Acceleo-3.7 "http://download.eclipse.org/acceleo/updates/releases/3.7/R201708211328" {
+    org.eclipse.acceleo.engine lazy
+    org.eclipse.acceleo.parser lazy
+    org.eclipse.acceleo.query.feature.group lazy
+    org.antlr.runtime [4.3.0,4.4.0)
+}
+
+location Eclipse-Oxygen "http://download.eclipse.org/releases/photon" {
+    com.google.guava lazy
+    org.eclipse.emf lazy
+    org.eclipse.emf.common lazy
+    org.eclipse.emf.ecore lazy
+    org.eclipse.emf.ecore.xmi lazy
+    org.eclipse.emf.edit lazy
+    org.eclipse.emf.workspace lazy
+    org.eclipse.gmf.runtime.emf.core lazy
+    org.eclipse.gmf.runtime.diagram.core lazy
+}
