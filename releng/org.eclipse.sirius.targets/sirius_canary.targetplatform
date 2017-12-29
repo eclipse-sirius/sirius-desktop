@@ -9,13 +9,13 @@ location Sirius-Oxygen-Master "http://download.eclipse.org/sirius/updates/nightl
     org.eclipse.sirius.common.interpreter lazy
 }
 
-location Eclipse-Oxygen-Integration "http://download.eclipse.org/eclipse/updates/4.8-I-builds/" {
+location Eclipse-Photon-Integration "http://download.eclipse.org/eclipse/updates/4.8-I-builds/" {
 	org.eclipse.platform.ide lazy
 	org.eclipse.platform.sdk lazy
 	org.eclipse.sdk.ide lazy
 }
 
-location Orbit-Recommended "http://download.eclipse.org/tools/orbit/downloads/drops/R20170307180635/repository" {
+location Orbit-Stable "http://download.eclipse.org/tools/orbit/downloads/drops/S20171130170529/repository" {
 	com.google.guava lazy
 	org.junit lazy
 	org.hamcrest.core lazy
@@ -24,7 +24,7 @@ location Orbit-Recommended "http://download.eclipse.org/tools/orbit/downloads/dr
 	org.easymock lazy
 }
 
-location GEF-LastSuccessful "https://hudson.eclipse.org/gef/job/gef-legacy-master/lastSuccessfulBuild/artifact/update-site/" {
+location GEF-LastSuccessful "https://ci.eclipse.org/gef/job/gef-legacy-master/lastSuccessfulBuild/artifact/update-site/" {
 	org.eclipse.draw2d.sdk.feature.group lazy
 	org.eclipse.gef.feature.group lazy
 	org.eclipse.gef.sdk.feature.group lazy
@@ -33,7 +33,7 @@ location GEF-LastSuccessful "https://hudson.eclipse.org/gef/job/gef-legacy-maste
 // We can not depend on the actual latest SWTbot build, it has too many API breaks compared to our reference version
 include "modules/swtbot-2.1.tpd"
 
-location EMF-LastSuccessful "https://hudson.eclipse.org/xtext/view/EMF/job/emf-core/lastSuccessfulBuild/artifact/build-result/p2.repository/" {
+location EMF-LastSuccessful "https://ci.eclipse.org/xtext/view/EMF/job/emf-core/lastSuccessfulBuild/artifact/build-result/p2.repository/" {
 	org.eclipse.emf.feature.group lazy
 	org.eclipse.emf.sdk.feature.group lazy
 	org.eclipse.emf.edit.feature.group lazy
@@ -41,11 +41,11 @@ location EMF-LastSuccessful "https://hudson.eclipse.org/xtext/view/EMF/job/emf-c
 	org.eclipse.emf.ecore.feature.group lazy
 }
 
-location UML2-LastSuccessful "https://hudson.eclipse.org/uml2/job/mdt-uml2-master/lastSuccessfulBuild/artifact/UML2.p2.repository/" {
+location UML2-LastSuccessful "https://ci.eclipse.org/uml2/job/mdt-uml2-master/ws/releng/org.eclipse.uml2.build-feature/target/repository/" {
 	org.eclipse.uml2.sdk.feature.group lazy
 }
 
-location OCL-LastSuccessful "https://hudson.eclipse.org/ocl/job/buckminster-ocl-core-luna-master/lastSuccessfulBuild/artifact/MDT-OCL.p2.repository/" {
+location OCL-LastSuccessful "https://ci.eclipse.org/ocl/job/buckminster-ocl-core-luna-master/lastSuccessfulBuild/artifact/MDT-OCL.p2.repository/" {
 	org.eclipse.ocl.all.feature.group lazy
 	org.eclipse.ocl.core.sdk.feature.group lazy
 }
@@ -65,7 +65,7 @@ location EMF-Transaction-LastSuccessful "https://ci.eclipse.org/emfservices/job/
 
 include "modules/eef-1.5.tpd"
 
-location Acceleo-LastSuccessful "https://hudson.eclipse.org/acceleo/job/acceleo-master/lastSuccessfulBuild/artifact/releng/org.eclipse.acceleo-updatesite/target/repository/" {
+location Acceleo-LastSuccessful "https://ci.eclipse.org/acceleo/job/acceleo-master/lastSuccessfulBuild/artifact/releng/org.eclipse.acceleo-updatesite/target/repository/" {
     org.eclipse.acceleo.feature.group lazy
     org.eclipse.acceleo.ide.ui lazy
     org.eclipse.acceleo.ui.interpreter.feature.group lazy
