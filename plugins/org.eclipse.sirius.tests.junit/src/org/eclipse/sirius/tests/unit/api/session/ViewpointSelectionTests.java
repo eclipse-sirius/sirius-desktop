@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,7 +63,9 @@ public class ViewpointSelectionTests extends TestCase {
 
         Set<Viewpoint> viewpoints = ViewpointSelection.getViewpoints("lolita");
         assertFalse(viewpoints.isEmpty());
-        assertEquals(1, viewpoints.size());
+        StringBuilder sb = new StringBuilder("ViewpointSelection.getViewpoints('lolita')\n");
+        viewpoints.stream().forEach(vp -> sb.append(vp + "\n"));
+        assertEquals(sb.toString(), 1, viewpoints.size());
         
         viewpoints = ViewpointSelection.getViewpoints("tatata");
         assertFalse(viewpoints.isEmpty());
@@ -104,8 +106,11 @@ public class ViewpointSelectionTests extends TestCase {
         ViewpointRegistry.getInstance().registerFromWorkspace(createdViewpoints);
 
         Set<Viewpoint> viewpoints = ViewpointSelection.getViewpoints("treztattaaaazzz");
+        StringBuilder sb = new StringBuilder("ViewpointSelection.getViewpoints('treztattaaaazzz')\n");
+        viewpoints.stream().forEach(vp -> sb.append(vp + "\n"));
+
         assertFalse(viewpoints.isEmpty());
-        assertEquals(1, viewpoints.size());
+        assertEquals(sb.toString(), 1, viewpoints.size());
         
         viewpoints = ViewpointSelection.getViewpoints("toto");
         assertFalse(viewpoints.isEmpty());

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and Obeo.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,7 +52,7 @@ public class SessionVSMUpdater implements ViewpointRegistryListener2 {
     @Override
     public void modelerDesciptionFilesLoaded() {
         Collection<Resource> allResources = Lists.newArrayList(session.getTransactionalEditingDomain().getResourceSet().getResources());
-        for (Resource res : Iterables.filter(allResources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, true))) {
+        for (Resource res : Iterables.filter(allResources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, false))) {
             // Unload emtpy odesign.
             if (!res.isModified() && res.isLoaded() && res.getContents().isEmpty()) {
                 session.unregisterResourceInCrossReferencer(res);
@@ -61,6 +61,21 @@ public class SessionVSMUpdater implements ViewpointRegistryListener2 {
             // Reload unloaded odesign (ViewpointRegistry can unload them).
             IFile correspondingFile = WorkspaceSynchronizer.getFile(res);
             if (!res.isLoaded() && correspondingFile != null && correspondingFile.exists()) {
+                try {
+                    res.load(Collections.emptyMap());
+                    if (res.isLoaded() && !res.getContents().isEmpty()) {
+                        session.registerResourceInCrossReferencer(res);
+                        // Refresh the imports of interpreter in case of new
+                        // Java Extension
+                        InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
+                    }
+                } catch (IOException e) {
+                    SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.SessionVSMUpdater_VSMLoadErrorMsg, res.getURI()), e);
+                }
+            } else if (res.getURI().isPlatformPlugin()) {
+                if (res.isLoaded()) {
+                    res.unload();
+                }
                 try {
                     res.load(Collections.emptyMap());
                     if (res.isLoaded() && !res.getContents().isEmpty()) {

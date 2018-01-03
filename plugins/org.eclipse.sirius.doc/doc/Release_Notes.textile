@@ -12,12 +12,19 @@ h3. User-Visible Changes
 
 h3. Specifier-Visible Changes
 
+* <span class="label label-success">Added</span> An action is added in main toolbar to reload the VSM of installed plug-ins that may have changed. Refer to the "specifier documentation":specifier/general/Specifying_Viewpoints.html#reloadVSM for details.
+
+
 h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius.common@
 
 * <span class="label label-danger">Removed</span> The interface @org.eclipse.sirius.common.tools.api.interpreter.IExpressionProposal@ and its only implementation @DefaultExpressionProposal@ (in the same package) have been removed. They were not used anywhere, expression completion API is actually defined in package @org.eclipse.sirius.common.tools.api.contentassist@ which has its own types.  
 
+h4. Changes in @org.eclipse.sirius@
+
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.business.api.componentization.ViewpointRegistry.reloadAllFromPlugins()@ has been added to reload, from the runtime, all the VSMs of installed plug-ins and have the effect dynamically in the runtime.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.business.api.componentization.ViewpointRegistryImpl()@ has been moved to @org.eclipse.sirius.business.internal.componentization@ package.
 
 h4. Migrations
 

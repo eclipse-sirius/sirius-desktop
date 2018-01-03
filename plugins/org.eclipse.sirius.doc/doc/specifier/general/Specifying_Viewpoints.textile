@@ -201,6 +201,18 @@ Keep both your representations and the VSM that define them open at the same tim
 
 Note that Sirius does its best to take into account any change in the VSM, even for existing and opened representations. Sometimes, if the changes are too complex or in some corner cases not yet supported, you may need to close and reopen your representation, or in extreme case delete it and create a new one, in order to take the VSM changes into account properly.
 
+h4(#reloadVSM). Reload installed VSM
+
+Even though having your VSP in the runtime environment workspace is the best way to do dynamic development of your VSM, if your VSP is in the installed runtime plug-ins (that is the VSP plug-in is in the development environment workspace), you have the ability the reload it from your runtime to take external changes into account.
+This is done with the _Reload installed VSM_ action from the main eclipse tool bar. 
+Click on _Reload installed VSM_ will have automatically effects in opened representations(depending on refresh options).
+
+_Limitations_:
+* The action is available only if specifier plug-ins are installed.
+* The action is available only if the Eclipse Runtime is a started from PDE (that is, is not a stand alone application).
+* Only the VSM is reloaded. The java classes that may have been changed in the VSP are updated as normal java classes managed in debug mode.
+
 h3(#migration). Migration from Previous Versions
 
 The _Viewpoint Specification Model_ can evolve between two versions of Sirius. The migration process is done automatically. That means all VSM are migrated at loading time without any action from the user. While a VSM is not saved, the automatic migration will be replayed at the next opening.
+

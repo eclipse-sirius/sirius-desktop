@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.componentization;
+package org.eclipse.sirius.business.internal.componentization;
 
 import java.io.IOException;
 import java.text.MessageFormat;
@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -43,9 +44,15 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.resource.impl.URIMappingRegistryImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.componentization.ISiriusComponent;
+import org.eclipse.sirius.business.api.componentization.ViewpointFileCollector;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistryFilter;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -77,7 +84,7 @@ import com.google.common.collect.Lists;
 public class ViewpointRegistryImpl extends ViewpointRegistry {
     private ResourceSet resourceSet;
 
-    private Set<Viewpoint> viewpointsFromPlugin;
+    private Map<URI, Viewpoint> viewpointsFromPlugin;
 
     private Set<Viewpoint> viewpointsFromWorkspace;
 
@@ -169,7 +176,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      */
     @Override
     public void init(final int size) {
-        this.viewpointsFromPlugin = new HashSet<Viewpoint>(size);
+        this.viewpointsFromPlugin = new LinkedHashMap<>();
         this.viewpointsFromWorkspace = new HashSet<Viewpoint>(size);
         this.resourceSet = new ResourceSetImpl();
 
@@ -315,20 +322,33 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         final Set<Viewpoint> addedViewpoints = new HashSet<Viewpoint>();
 
         try {
-            final URI fileURI = URI.createPlatformPluginURI(modelerModelResourcePath, true);
-            final EObject root = load(fileURI, resourceSet);
-            Option<ViewpointFileCollector> collector = getCollectorFromURI(fileURI);
+            final URI resourceURI = URI.createPlatformPluginURI(modelerModelResourcePath, true);
+            Resource resource = resourceSet.getResource(resourceURI, false);
+            if (resource != null) {
+                unloadAndRemove(resource);
+            }
+            final EObject root = load(resourceURI, resourceSet);
+            Option<ViewpointFileCollector> collector = getCollectorFromURI(resourceURI);
             if (collector.some() && collector.get().isValid(root)) {
                 for (final Viewpoint viewpoint : collector.get().collect(root)) {
-                    viewpointsFromPlugin.add(viewpoint);
+                    Option<URI> uri = new ViewpointQuery(viewpoint).getViewpointURI();
+                    if (uri.some()) {
+                        viewpointsFromPlugin.put(uri.get(), viewpoint);
+                    } else {
+                        viewpointsFromPlugin.put(EcoreUtil.getURI(viewpoint), viewpoint);
+                    }
                     mapToViewpointProtocol(viewpoint);
                     addedViewpoints.add(viewpoint);
                 }
+                // needed so that invalidateCache works correctly.
+                // DiagramDescriptionMappingsRegistryImpl.cleanDiagramDescriptionNoMoreInResource() required that vp is
+                // not in a resource.
+                unloadInExistingSessions(resourceURI.toPlatformString(true), false);
 
                 /* add cross referencer */
                 addCrossReferencer(root.eResource());
             } else {
-                unloadAndRemove(fileURI);
+                unloadAndRemove(resourceURI);
             }
 
         } catch (final IOException e) {
@@ -342,6 +362,24 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         }
         invalidateCache();
         return addedViewpoints;
+    }
+    
+    @Override
+    public void reloadAllFromPlugins() {
+        boolean[] touched = { false };
+        this.viewpointsFromPlugin.values().stream().map(vp -> vp.eResource()).distinct().filter(r -> r != null).forEach(res -> {
+            URI uri = res.getURI();
+            if (uri != null) {
+                String path = uri.toPlatformString(true);
+                this.registerFromPlugin(path);
+                touched[0] = true;
+            }
+        });
+        if (touched[0] && newListeners != null) {
+            for (final ViewpointRegistryListener2 listener : newListeners) {
+                listener.modelerDesciptionFilesLoaded();
+            }
+        }
     }
 
     private Option<ViewpointFileCollector> getCollectorFromURI(URI fileURI) {
@@ -404,7 +442,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             final String pluginName = vpResource.getURI().segment(1);
 
             if (vpName != null && pluginName != null) {
-                Iterable<Viewpoint> sameNameAndPluginViewpoints = Iterables.filter(viewpointsFromPlugin, new Predicate<Viewpoint>() {
+                Iterable<Viewpoint> sameNameAndPluginViewpoints = Iterables.filter(viewpointsFromPlugin.values(), new Predicate<Viewpoint>() {
 
                     @Override
                     public boolean apply(final Viewpoint input) {
@@ -419,7 +457,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             }
         }
 
-        for (final Viewpoint viewpointFromPlugin : viewpointsFromPlugin) {
+        for (final Viewpoint viewpointFromPlugin : viewpointsFromPlugin.values()) {
             if (viewpointFromPlugin.eResource().equals(vpResource)) {
                 return;
             }
@@ -443,7 +481,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     public Set<Viewpoint> getViewpoints() {
         final Set<Viewpoint> all = new HashSet<Viewpoint>(this.viewpointsFromPlugin.size() + this.viewpointsFromWorkspace.size());
         all.addAll(this.viewpointsFromWorkspace);
-        all.addAll(this.viewpointsFromPlugin);
+        all.addAll(this.viewpointsFromPlugin.values());
 
         if (filters != null) {
             final Set<Viewpoint> toRemove = new LinkedHashSet<Viewpoint>();
@@ -459,7 +497,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
                 /*
                  * Filter viewpoints from plug-in
                  */
-                for (final Viewpoint viewpoint : this.viewpointsFromPlugin) {
+                for (final Viewpoint viewpoint : this.viewpointsFromPlugin.values()) {
                     if (filter.filter(viewpoint)) {
                         toRemove.add(viewpoint);
                     }
@@ -499,7 +537,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     @Override
     public boolean isFromPlugin(final Viewpoint viewpoint) {
         if (viewpointsFromPlugin != null) {
-            return viewpointsFromPlugin.contains(viewpoint);
+            return viewpointsFromPlugin.containsValue(viewpoint);
         }
         return false;
     }
@@ -602,11 +640,9 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         unloadAndRemove(URI.createPlatformResourceURI(file.getFullPath().toOSString(), true));
     }
 
-    private void unloadAndRemove(final URI fileURI) {
-
-        Resource resource = resourceSet.getResource(fileURI, true);
+    private void unloadAndRemove(final URI resourceURI) {
+        Resource resource = resourceSet.getResource(resourceURI, false);
         unloadAndRemove(resource);
-
     }
 
     private void unloadAndRemove(final Resource resource) {
@@ -647,10 +683,10 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     }
 
     /* CHECKSTYLE:OFF -> this method may throw runtime exception */
-    private EObject load(final URI fileURI, final ResourceSet set) throws IOException, WrappedException, RuntimeException {
-        final Resource loaded = set.getResource(fileURI, true);
-        loaded.load(Collections.EMPTY_MAP);
-        return loaded.getContents().get(0);
+    private EObject load(final URI resourceURI, final ResourceSet set) throws IOException, WrappedException, RuntimeException {
+        final Resource resource = set.getResource(resourceURI, true);
+        resource.load(Collections.EMPTY_MAP);
+        return resource.getContents().get(0);
         /* CHECKSTYLE:ON */
     }
 
@@ -852,14 +888,18 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         }
     }
 
-    private void unloadInExistingSessions(final IFile odesignFile, boolean remove) {
+    private void unloadInExistingSessions(IFile file, boolean remove) {
+        unloadInExistingSessions(file.getFullPath().toString(), remove);
+    }
+
+    private void unloadInExistingSessions(String resourcePath, boolean remove) {
         /* Reload EditingDomain of all Sessions. */
         for (Session session : SessionManager.INSTANCE.getSessions()) {
             ResourceSet sessionResourceSet = session.getTransactionalEditingDomain().getResourceSet();
             for (final Resource resource : Lists.newArrayList(sessionResourceSet.getResources())) {
                 final URI resourceURI = resource.getURI();
                 if (resourceURI != null) {
-                    if (resourceURI.toPlatformString(true) != null && resourceURI.toPlatformString(true).equals(odesignFile.getFullPath().toString())) {
+                    if (resourceURI.toPlatformString(true) != null && resourceURI.toPlatformString(true).equals(resourcePath)) {
                         resource.unload();
                         if (remove) {
                             sessionResourceSet.getResources().remove(resource);
@@ -880,7 +920,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         this.viewpointsFromWorkspace.remove(viewpoint);
         URI viewpointUri = ViewpointProtocolParser.buildViewpointUri(EcoreUtil.getURI(viewpoint));
 
-        for (Viewpoint vp : this.viewpointsFromPlugin) {
+        for (Viewpoint vp : this.viewpointsFromPlugin.values()) {
             if (StringUtil.equals(vp.getName(), viewpoint.getName())) {
                 URI vpURI = ViewpointProtocolParser.buildViewpointUri(EcoreUtil.getURI(vp));
                 if (vpURI != null && viewpointUri != null && StringUtil.equals(vpURI.toString(), viewpointUri.toString())) {

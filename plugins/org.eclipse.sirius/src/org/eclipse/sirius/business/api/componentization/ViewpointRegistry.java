@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.business.internal.componentization.ViewpointRegistryImpl;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.viewpoint.description.Component;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -62,6 +63,7 @@ public class ViewpointRegistry implements IResourceChangeListener {
          * @return the result of the comparison, as defined in
          *         {@link Comparator#compare(Object, Object)}.
          */
+        @Override
         public int compare(final Viewpoint vp1, final Viewpoint vp2) {
             int result = -1;
 
@@ -262,6 +264,16 @@ public class ViewpointRegistry implements IResourceChangeListener {
     public void disposeFromPlugin(Viewpoint viewpoint) {
         throw new UnsupportedOperationException();
     }
+    
+    /**
+     * Reload all VSM that are contained in installed plug-ins.</br>
+     * That is useful if the specifier has made changes in the odesign file because he do not have to restart the
+     * eclipse to have the change effect.</br>
+     * Opened representation editors will be automatically refreshed.
+     */
+    public void reloadAllFromPlugins() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Add a filter on the registry.
@@ -320,6 +332,7 @@ public class ViewpointRegistry implements IResourceChangeListener {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void resourceChanged(IResourceChangeEvent event) {
         // Do nothing.
     }
