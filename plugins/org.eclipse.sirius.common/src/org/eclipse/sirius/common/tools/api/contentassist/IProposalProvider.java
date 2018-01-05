@@ -22,6 +22,29 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 public interface IProposalProvider {
 
     /**
+     * Indicates how an accepted proposal should affect the string being completed. These enum corresponds to
+     * ContentProposalAdapter.PROPOSAL_INSERT and ContentProposalAdapter.PROPOSAL_REPLACE. Default value is
+     * PROPOSAL_INSERT.
+     * 
+     * @author lfasani
+     *
+     */
+    enum ProposalAcceptanceStyle {
+
+        /**
+         * If the proposal is to be inserted in a string.</br>
+         * Corresponds to ContentProposalAdapter.PROPOSAL_INSERT
+         */
+        PROPOSAL_INSERT,
+
+        /**
+         * If the proposal is to be replacing another string in the global string.</br>
+         * Corresponds to ContentProposalAdapter.PROPOSAL_REPLACE
+         */
+        PROPOSAL_REPLACE
+    }
+
+    /**
      * Evaluates the content proposals for a given expression and returns the
      * result as a list.
      * 

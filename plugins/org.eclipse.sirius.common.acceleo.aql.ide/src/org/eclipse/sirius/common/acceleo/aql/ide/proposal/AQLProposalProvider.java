@@ -73,7 +73,8 @@ public class AQLProposalProvider implements IProposalProvider {
                 setupInterpreter(context, aqlInterpreter);
                 Map<String, Set<IType>> variableTypes = TypesUtil.createAQLVariableTypesFromInterpreterContext(context.getInterpreterContext(), aqlInterpreter.getQueryEnvironment());
 
-                return ImmutableList.copyOf(getProposals(trimer, context.getPosition(), aqlInterpreter.getQueryEnvironment(), variableTypes));
+                return ImmutableList.copyOf(getProposals(trimer, context.getPosition(), aqlInterpreter.getQueryEnvironment(), variableTypes,
+                        ProposalAcceptanceStyle.PROPOSAL_INSERT));
             }
         }
         return Collections.<ContentProposal> emptyList();
@@ -98,21 +99,48 @@ public class AQLProposalProvider implements IProposalProvider {
         }
     }
 
-    private Set<ContentProposal> getProposals(ExpressionTrimmer trimmer, int position, IQueryEnvironment queryEnvironment, Map<String, Set<IType>> variableTypes) {
+    /**
+     * Evaluates the content proposals for a given expression and returns the result as a list.
+     * 
+     * @param trimmer
+     *            the trimmer.
+     * @param position
+     *            position of the cursor.
+     * @param queryEnvironment
+     *            the IQueryEnvironment.
+     * @param variableTypes
+     *            the variable Types.
+     * @param proposalAcceptanceStyle
+     *            Integer that indicates how an accepted proposal should affect the global string.</br>
+     *            The possible values are ContentProposalAdapter.PROPOSAL_INSERT or
+     *            ContentProposalAdapter.PROPOSAL_REPLACE
+     * @return content proposal list.
+     */
+    private Set<ContentProposal> getProposals(ExpressionTrimmer trimmer, int position, IQueryEnvironment queryEnvironment, Map<String, Set<IType>> variableTypes,
+            ProposalAcceptanceStyle proposalAcceptanceStyle) {
         Set<ContentProposal> proposals = new LinkedHashSet<>();
         IQueryCompletionEngine engine = QueryCompletion.newEngine(queryEnvironment);
         final ICompletionResult completionResult = engine.getCompletion(trimmer.getExpression(), trimmer.getPositionWithinAQL(position), variableTypes);
         /*
          * completionResult.sort(new ProposalComparator());
          */
-        final Set<ICompletionProposal> proposal = Sets.newLinkedHashSet(completionResult.getProposals(QueryCompletion.createBasicFilter(completionResult)));
+        final Set<ICompletionProposal> aqlProposals = Sets.newLinkedHashSet(completionResult.getProposals(QueryCompletion.createBasicFilter(completionResult)));
 
-        for (ICompletionProposal propFromAQL : proposal) {
-            int offset = position - completionResult.getPrefix().length();
-            int length = completionResult.getPrefix().length() + completionResult.getRemaining().length();
-
-            ContentProposal contentProposal = ContentProposalBuilder.proposal(propFromAQL.getProposal(), propFromAQL.toString(), propFromAQL.getDescription(), propFromAQL.getCursorOffset())
-                    .withReplacement(offset, length).build();
+        for (ICompletionProposal propFromAQL : aqlProposals) {
+            int offset = trimmer.getPositionInExpression(completionResult.getReplacementOffset());
+            String proposal = ""; //$NON-NLS-1$
+            ContentProposal contentProposal = null;
+            if (proposalAcceptanceStyle.equals(ProposalAcceptanceStyle.PROPOSAL_INSERT)) {
+                // as the TextContentProposalProvider uses the ContentProposalAdapter.PROPOSAL_INSERT style, we remove a
+                // part of the proposal
+                proposal = propFromAQL.getProposal().substring(completionResult.getReplacementLength());
+                contentProposal = ContentProposalBuilder.proposal(proposal, propFromAQL.toString(), propFromAQL.getDescription(), propFromAQL.getCursorOffset()).build();
+            } else if (proposalAcceptanceStyle.equals(ProposalAcceptanceStyle.PROPOSAL_REPLACE)) {
+                int length = completionResult.getReplacementLength() + completionResult.getRemaining().length();
+                proposal = propFromAQL.getProposal();
+                contentProposal = ContentProposalBuilder.proposal(proposal, propFromAQL.toString(), propFromAQL.getDescription(), propFromAQL.getCursorOffset()).withReplacement(offset, length)
+                        .build();
+            }
             proposals.add(contentProposal);
         }
         return proposals;
@@ -133,7 +161,8 @@ public class AQLProposalProvider implements IProposalProvider {
 
             ExpressionTrimmer trimer = new ExpressionTrimmer(context.getTextSoFar());
             if (trimer.positionIsWithinAQL(context.getCursorPosition())) {
-                return ImmutableList.copyOf(getProposals(trimer, context.getCursorPosition(), queryEnvironment, variableTypes));
+                return ImmutableList.copyOf(getProposals(trimer, context.getCursorPosition(), queryEnvironment, variableTypes,
+                        ProposalAcceptanceStyle.PROPOSAL_REPLACE));
             }
 
         }

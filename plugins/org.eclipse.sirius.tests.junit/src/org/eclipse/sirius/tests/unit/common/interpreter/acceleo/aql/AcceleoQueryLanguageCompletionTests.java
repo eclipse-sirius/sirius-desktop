@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter;
 import org.eclipse.sirius.common.acceleo.aql.ide.proposal.AQLProposalProvider;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement;
@@ -83,8 +84,62 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
     }
 
     /**
-     * Test the completion with replacement of a part of the expression after
-     * the cursor.
+     * Test the completion with insertion at the end of the expression where the cursor is.</br>
+     * The inserted string is a part of a method name.
+     */
+    public void testAQLProposalForMethodName_ContentProposal() {
+        EClass c = EcoreFactory.eINSTANCE.createEClass();
+        c.setName("FirstEClass");
+        ContentContext contentContext = createContentContext("aql:self.na", "aql:self.na".length(), c, "EClass");
+
+        List<ContentProposal> proposals = getProposals(contentContext);
+
+        assertEquals(1, proposals.size());
+
+        ContentProposal proposal = proposals.get(0);
+        assertEquals("me", proposal.getProposal());
+    }
+
+    /**
+     * Test the completion with replacement of a part of the expression before the cursor.</br>
+     * The replaced string is a part of a domain type.
+     */
+    public void testAQLProposalWithPreviousReplacementOnDomainType() {
+        EClass c = EcoreFactory.eINSTANCE.createEClass();
+        c.setName("FirstEClass");
+
+        ContentInstanceContext cic = new ContentInstanceContext(c, "aql:self.eAllContents(ecore::E)", 30);
+        List<ContentProposal> proposals = this.getProposals(cic);
+
+        assertEquals(53, proposals.size());
+
+        if (proposals.get(0) instanceof ContentProposalWithReplacement) {
+            ContentProposalWithReplacement proposalWithReplacement = (ContentProposalWithReplacement) proposals.get(0);
+            assertEquals("ecore::EAttribute", proposalWithReplacement.getProposal());
+            assertEquals(8, proposalWithReplacement.getReplacementLength());
+            assertEquals(22, proposalWithReplacement.getReplacementOffset());
+        }
+    }
+
+    /**
+     * Test the completion with insertion at the end of the expression where the cursor is.</br>
+     * The inserted string is a part of a domain type.
+     */
+    public void testAQLProposalForDomainType_ContentProposal() {
+        EClass c = EcoreFactory.eINSTANCE.createEClass();
+        ContentContext contentContext = createContentContext("aql:self.eAllContents(ecore::E)", 30, c, "");
+
+        List<ContentProposal> proposals = getProposals(contentContext);
+
+        assertEquals(53, proposals.size());
+
+        ContentProposal proposal = proposals.get(0);
+        assertEquals("Attribute", proposal.getProposal());
+    }
+
+
+    /**
+     * Test the completion with replacement of a part of the expression after the cursor.
      */
     public void testAQLWithAfterReplacement() {
         EClass c = EcoreFactory.eINSTANCE.createEClass();
@@ -112,7 +167,7 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
         EClass c = EcoreFactory.eINSTANCE.createEClass();
         c.setName("FirstEClass");
 
-        ContentInstanceContext cic = new ContentInstanceContext(c, "aql:self.nam", 11);
+        ContentInstanceContext cic = new ContentInstanceContext(c, "aql:self.nam", "aql:self.na".length());
         List<ContentProposal> proposals = this.getProposals(cic);
 
         assertEquals(1, proposals.size());
