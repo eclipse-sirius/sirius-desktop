@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 20015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -457,4 +457,18 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *         the context of the view.
      */
     Command buildGenericToolCommandFromTool(EObject containerView, ToolDescription toolDesc);
+
+    /**
+     * Create a command that shifts nodes to insert vertical blank space in a diagram.
+     * 
+     * @param diagram
+     *            the diagram in which insert blank space
+     * @param startX
+     *            the initial location in pixel to insert blank space
+     * @param spaceToInsert
+     *            the number of pixels to insert
+     * 
+     * @return a command able to insert blank space (move all elements).
+     */
+    Command buildInsertVerticalBlankSpaceCommand(DDiagram diagram, int startX, int spaceToInsert);
 }
