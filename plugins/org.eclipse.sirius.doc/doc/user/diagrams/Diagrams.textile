@@ -42,7 +42,7 @@ h3. Managing Diagrams
 
 Opening existing diagrams and renaming or deleting them works exactly as for any other kind of representation. Refer to the general documentation about the _Modeling Project_ UI for details.
 
-h4. Rulers & Grid
+h4(#RulersGrid). Rulers & Grid
 
 Several behaviors concerning the diagram elements editing is conditioned by properties of the diagram accessible through the _Rulers & Grid_ tab of the _Properties_ view of the diagram.
 !images/properties_view_rulers_and_grid_tab.png!

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,7 +64,6 @@ import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.ui.actions.ActionRegistry;
 import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gef.ui.parts.ScrollingGraphicalViewer;
-import org.eclipse.gef.ui.rulers.RulerComposite;
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
@@ -1444,7 +1443,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      *            the parent composite
      */
     protected void createOriginalGraphicalViewer(final Composite parent) {
-        setRulerComposite(new RulerComposite(parent, SWT.NONE));
+        setRulerComposite(new SiriusRulerComposite(parent, SWT.NONE));
         sGViewer = createScrollingGraphicalViewer();
         sGViewer.createControl(getRulerComposite());
         setGraphicalViewer(sGViewer);

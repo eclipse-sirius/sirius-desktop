@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2003, 2017 IBM Corporation and others.
+ * Copyright (c) 2003, 2018 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,7 @@ import org.eclipse.swt.widgets.Listener;
  * property.
  *
  * Class copied from {@link RulerComposite} to associate a specific Sirius {@link RulerEditPartFactory} to the left
- * ruler.
+ * ruler (see "SIRIUS CHANGED" comment in method {@link #createRulerContainer(int)}.
  *
  * @author Pratik Shah
  * @author Laurent Redor (lredor)
@@ -170,7 +170,8 @@ public class SiriusRulerComposite extends RulerComposite {
 
         // Finish initializing the viewer
         viewer.setRootEditPart(new RulerRootEditPart(isHorizontal));
-        viewer.setEditPartFactory(new RulerEditPartFactory(diagramViewer));
+        // SIRIUS CHANGED : RulerEditPartFactory replaced by SiriusRulerEditPartFactory
+        viewer.setEditPartFactory(new SiriusRulerEditPartFactory(diagramViewer));
         viewer.createControl(this);
         ((GraphicalEditPart) viewer.getRootEditPart()).getFigure().setBorder(new RulerBorder(isHorizontal));
         viewer.setProperty(GraphicalViewer.class.toString(), diagramViewer);

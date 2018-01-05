@@ -8,6 +8,8 @@ h2(#sirius6.0.0). Changes in Sirius 6.0.0
 
 h3. User-Visible Changes
 
+* <span class="label label-success">Added</span> A new feature allows user to insert vertical blank space in sequence diagram. You can refer to the "user documentation ":user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space for more details. 
+
 h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes

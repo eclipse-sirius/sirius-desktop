@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -353,5 +353,10 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     @Override
     public UICallBack getUserInterfaceCallBack() {
         return baseFactory.getUserInterfaceCallBack();
+    }
+
+    @Override
+    public Command buildInsertVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsert) {
+        return baseFactory.buildInsertVerticalBlankSpaceCommand(diagram, startY, spaceToInsert);
     }
 }
