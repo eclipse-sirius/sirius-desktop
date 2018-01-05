@@ -777,9 +777,10 @@ A few general tools are available in standard on all Sirius diagrams. They appea
 	!images/palette_tools.png!
 
 __Selection__. The _selection_ tool is the default one initially selected when you open a diagram. To select an element on a diagram while this tool is active, simply click on it. To select several elements at the same time, you can either draw a rectangle on the diagram, or click on each element individually while keeping the _Ctrl_ key pressed. When selecting elements which are already selected using this method, by clicking on them or drawing a rectangle around them, they are removed from the selection. You can combine both methods (de/selection by single click or by zone) to build complex selection incrementally by always keeping the _Ctrl_ key pressed.
-The selection of several elements by drawing a rectangle on the diagram has 2 modes:
+The selection of several elements by drawing a rectangle has 2 modes:
 * Selection from left to right: all the elements completely contained in the rectangle will get selected
 * Selection from right to left: all the elements that intersect the rectangle will get selected
+To allow selection by drawing a rectangle on a container, you must simultaneously press the ALT key (otherwise the container is drag'n'dropped).
 
 Selected elements have an outline and anchors drawn on their border. Note that when a selection contains multiple elements, exactly one of them has black selection anchors; the rest have white anchors. The element with the black anchors is called the primary selection, and some tools treat it differently than the others (for example alignment tools).
 
