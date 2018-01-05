@@ -63,8 +63,7 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
     }
 
     /**
-     * Test the completion with replacement of a part of the expression before
-     * the cursor.
+     * Test the completion with replacement of a part of the expression before the cursor.
      */
     public void testAQLProposalWithPreviousReplacement() {
         EClass c = EcoreFactory.eINSTANCE.createEClass();
@@ -137,6 +136,39 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
         assertEquals("Attribute", proposal.getProposal());
     }
 
+    /**
+     * Test the completion with PROPOSAL_INSERT after a part of the meta-model name where the cursor is.</br>
+     * The replaced string is a remaining part of the domain type qualified with meta-model.
+     */
+    public void testAQLProposalForDomainMetaModel_ContentProposal() {
+        EClass c = EcoreFactory.eINSTANCE.createEClass();
+        c.setName("FirstEClass");
+
+        ContentContext contentContext = createContentContext("aql:self.eAllContents(eco)", "aql:self.eAllContents(eco".length(), c, "");
+        List<ContentProposal> proposals = this.getProposals(contentContext);
+
+        assertEquals(53, proposals.size());
+
+        ContentProposal proposal = proposals.get(0);
+        assertEquals("re::EAttribute", proposal.getProposal());
+    }
+
+    /**
+     * Test the completion with PROPOSAL_REPLACE after a part of the meta-model name where the cursor is.</br>
+     * The replaced string is a remaining part of the domain type qualified with meta-model.
+     */
+    public void testAQLProposalForDomainMetaModel_ContentInstanceContext() {
+        EClass c = EcoreFactory.eINSTANCE.createEClass();
+        c.setName("FirstEClass");
+
+        ContentInstanceContext cic = new ContentInstanceContext(c, "aql:self.eAllContents(eco)", "aql:self.eAllContents(eco".length());
+        List<ContentProposal> proposals = this.getProposals(cic);
+
+        assertEquals(53, proposals.size());
+
+        ContentProposal proposal = proposals.get(0);
+        assertEquals("ecore::EAttribute", proposal.getProposal());
+    }
 
     /**
      * Test the completion with replacement of a part of the expression after the cursor.
@@ -160,8 +192,7 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
     }
 
     /**
-     * Test the completion with replacement of a part of the expression before
-     * and after the cursor.
+     * Test the completion with replacement of a part of the expression before and after the cursor.
      */
     public void testAQLWithBeforeAndAfterReplacement() {
         EClass c = EcoreFactory.eINSTANCE.createEClass();
