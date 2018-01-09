@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,7 +92,8 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
     protected IDocument createDocument(final Object element) throws CoreException {
         if (!(element instanceof FileEditorInput) && !(element instanceof URIEditorInput)) {
             throw new CoreException(new Status(IStatus.ERROR, DiagramPlugin.ID, 0,
-                    MessageFormat.format(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element, "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$
+                    MessageFormat.format(Messages.SiriusDocumentProvider_IncorrectInputError,
+                            new Object[] { element, "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$
                     null));
         }
         final IDocument document = createEmptyDocument();
@@ -143,7 +144,8 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                     caseURIEditorInput(document, (URIEditorInput) element, domain);
                 } else {
                     throw new CoreException(new Status(IStatus.ERROR, DiagramPlugin.ID, 0,
-                            MessageFormat.format(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element, "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$
+                            MessageFormat.format(Messages.SiriusDocumentProvider_IncorrectInputError,
+                                    new Object[] { element, "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$
                             null));
                 }
             } finally {
@@ -174,10 +176,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
         final URI uri = element.getURI();
         Resource resource = null;
         try {
-            resource = domain.getResourceSet().getResource(uri.trimFragment(), false);
-            if (resource == null) {
-                resource = domain.getResourceSet().createResource(uri.trimFragment());
-            }
+            resource = domain.getResourceSet().getResource(uri.trimFragment(), true);
             if (!resource.isLoaded()) {
                 try {
                     final Map<?, ?> options = new HashMap<Object, Object>(GMFResourceFactory.getDefaultLoadOptions());
@@ -243,9 +242,8 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
     }
 
     /**
-     * Sets up the given document as it would be provided for the given element.
-     * The content of the document is not changed. This default implementation
-     * is empty. Subclasses may reimplement.
+     * Sets up the given document as it would be provided for the given element. The content of the document is not
+     * changed. This default implementation is empty. Subclasses may reimplement.
      *
      * @param element
      *            the blue-print element
@@ -272,9 +270,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
      * {@inheritDoc}
      *
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.AbstractDocumentProvider#doSaveDocument(org.eclipse.core.runtime.IProgressMonitor,
-     *      java.lang.Object,
-     *      org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument,
-     *      boolean)
+     *      java.lang.Object, org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument, boolean)
      */
     @Override
     protected void doSaveDocument(final IProgressMonitor monitor, final Object element, final IDocument document, final boolean overwrite) throws CoreException {
