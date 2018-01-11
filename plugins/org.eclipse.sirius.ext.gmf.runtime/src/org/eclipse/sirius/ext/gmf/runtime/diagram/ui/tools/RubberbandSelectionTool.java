@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2000, 2014 IBM Corporation and others.
+ * Copyright (c) 2000, 2018 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -165,7 +165,7 @@ public class RubberbandSelectionTool extends AbstractTool {
             getMarqueeFeedbackFigure().translateToRelative(r);
             if ((selectionMode == SELECTION_CONTAINED_MODE && marqueeBounds.contains(r.getTopLeft()) && marqueeBounds.contains(r.getBottomRight()))
                     || (selectionMode == SELECTION_TOUCHED_MODE && ((child instanceof ConnectionEditPart && pl.intersects(marqueeBounds)) || (!(child instanceof ConnectionEditPart) && marqueeBounds
-                            .intersects(r))))) {
+                            .intersects(r) && !r.contains(feedBackStartLocation))))) {
                 newSelections.add(child);
             }
         }
@@ -598,6 +598,7 @@ public class RubberbandSelectionTool extends AbstractTool {
 
             if (schedulePaint) {
                 Display.getCurrent().timerExec(DELAY, new Runnable() {
+                    @Override
                     public void run() {
                         offset++;
                         if (offset > 5) {
