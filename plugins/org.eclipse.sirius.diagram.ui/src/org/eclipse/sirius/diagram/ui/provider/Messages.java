@@ -1329,6 +1329,24 @@ public final class Messages {
     public static String SpecificationMenuContribution_openDefinitionMenuLabel;
 
     @TranslatableMessage
+    public static String StandardDiagramServices_sameETypeTitle;
+
+    @TranslatableMessage
+    public static String StandardDiagramServices_sameETypeMessage;
+
+    @TranslatableMessage
+    public static String StandardDiagramServices_sameETypeTooltip;
+
+    @TranslatableMessage
+    public static String StandardDiagramServices_expressionTitle;
+
+    @TranslatableMessage
+    public static String StandardDiagramServices_expressionMessage;
+
+    @TranslatableMessage
+    public static String StandardDiagramServices_expressionTooltip;
+
+    @TranslatableMessage
     public static String StatusDecorator_validationMarkersFailureMsg;
 
     @TranslatableMessage
