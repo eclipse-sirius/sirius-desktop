@@ -39,19 +39,19 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Class owning methods used for service: interpreter. The service methods should be prefixed by std to avoid conflict
- * with other services.
+ * Class owning methods used for "service:" interpreter, aql interpreter or others. The service methods should be
+ * prefixed by std to avoid conflict with other services.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class StandardDiagramServices {
     /**
-     * A green color for all field representing a domain class (like in SiriusEditor.colorRegistry).
+     * A green color for all fields representing a domain class (like in SiriusEditor.colorRegistry).
      */
     private static final RGB DOMAIN_CLASS_FIELD_COLOR = new RGB(204, 242, 166);
 
     /**
-     * A yellow color for all field representing an interpreted expression (like in SiriusEditor.colorRegistry).
+     * A yellow color for all fields representing an interpreted expression (like in SiriusEditor.colorRegistry).
      */
     private static final RGB INTERPRETED_EXPRESSION_FIELD_COLOR = new RGB(255, 245, 181);
 
@@ -119,10 +119,9 @@ public class StandardDiagramServices {
         return result;
     }
 
-
     /**
-     * Return the list of DSemanticDecorator representing semantic element having the selected EType in the
-     * <code>currentDiagram</code>.
+     * Return the list of DSemanticDecorator in the <code>currentDiagram</code> representing semantic element having the
+     * EType provided by the end-user through a dialog box.
      * 
      * @param currentDiagram
      *            The current {@link DSemanticDiagram}
@@ -159,7 +158,8 @@ public class StandardDiagramServices {
     }
 
     /**
-     * Return the list of DSemanticDecorator corresponding to the evaluation of an expression written by the end-user.
+     * Return the list of DSemanticDecorator corresponding to the evaluation of an expression written by the end-user in
+     * a dialog box.
      * 
      * @param currentDiagram
      *            The current {@link DSemanticDiagram}
