@@ -25,6 +25,12 @@ import org.eclipse.gmf.runtime.diagram.ui.util.INotationType;
  * 
  */
 public class SiriusDiagramPaletteFactory extends Adapter {
+
+    /**
+     * The Generic Connection Creation Tool ID.
+     */
+    public static final String GENERIC_CONNECTION_CREATION_TOOL = "GenericConnectionCreationTool"; //$NON-NLS-1$
+
     private static final String TOOL_NOTEATTACHMENT = "noteattachmentTool"; //$NON-NLS-1$
 
     /**
@@ -44,10 +50,14 @@ public class SiriusDiagramPaletteFactory extends Adapter {
      */
     @Override
     public Tool createTool(String toolId) {
+        Tool value = null;
         if (toolId.equals(TOOL_NOTEATTACHMENT)) {
-            return new NoteAttachmentCreationTool(getNoteAttachmentNotationType());
+            value = new NoteAttachmentCreationTool(getNoteAttachmentNotationType());
         }
-        return null;
+        else if (toolId.equals(GENERIC_CONNECTION_CREATION_TOOL)) {
+            value = new GenericConnectionCreationTool();
+        }
+        return value;
     }
 
     private INotationType getNoteAttachmentNotationType() {

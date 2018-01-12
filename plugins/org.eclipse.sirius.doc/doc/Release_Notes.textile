@@ -9,6 +9,9 @@ h2(#sirius6.0.0). Changes in Sirius 6.0.0
 h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> A new feature allows user to insert vertical blank space in sequence diagram. You can refer to the "user documentation ":user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space for more details. 
+* <span class="label label-success">Added</span> A new feature called "Generic Edge Creation Tool" allows to create an edge by starting to select the source and the target before choosing the concrete edge creation tool. That allows to restrict the list of possible edge creation tools (possibly only one edge or no one) according to the selected source and target.
+
+!images/genericEdgeCreationTool.png!
 
 h3. Specifier-Visible Changes
 
@@ -34,6 +37,10 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-danger">Removed</span> In @org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper@, the method @getViewpointSelection()@ has been removed. It used an internal type as argument which has also been removed.
 * <span class="label label-danger">Removed</span> In @org.eclipse.sirius.business.api.helper.SiriusResourceHelper@, the method @getCorrespondingViewpoint(Session session, URI, boolean)@ has been removed. It was not used anywhere, the real one is @getCorrespondingViewpoint(Session, Viewpoint)@ in the same class.
 * <span class="label label-danger">Removed</span> In @org.eclipse.sirius.business.api.dialect.DialectServices@ (and all its implementations), the method @refreshEffectiveRepresentationDescription(DRepresentation, IProgressMonitor)@ has been removed. It corresponded to an experimental feature which has been abandonned long ago. 
+
+h4. Changes in @org.eclipse.sirius.diagram@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys.PREF_DISPLAY_GENERIC_EDGE_CREATION_TOOL@ has been added to make to possible to hide the new generic edge creation tool. See the _User-Visible Changes_ or the user documentation for more details.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

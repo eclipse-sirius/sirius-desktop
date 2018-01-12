@@ -588,6 +588,9 @@ public final class Messages {
     public static String FormatDataHelperImpl_unkownFormatData;
 
     @TranslatableMessage
+    public static String GenericConnectionCreationTool_label;
+
+    @TranslatableMessage
     public static String GMFCommandWrapper_label;
 
     @TranslatableMessage

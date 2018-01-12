@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer 
 
         diagramCoreDefaultPreferences.putBoolean(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE_DEFAULT_VALUE);
         diagramCoreDefaultPreferences.putInt(SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE);
+        diagramCoreDefaultPreferences.putBoolean(SiriusDiagramPreferencesKeys.PREF_DISPLAY_GENERIC_EDGE_CREATION_TOOL.name(), true);
     }
 
     private boolean getValue(final String key) {

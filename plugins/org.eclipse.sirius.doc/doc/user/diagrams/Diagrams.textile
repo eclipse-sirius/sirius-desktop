@@ -792,6 +792,9 @@ _Notes_ and _Text_ elements are created in a similar way: either a single click 
 
 _Note attachments_ can be created to link either notes or text zone to diagram elements (including other notes and text attachments). To create an attachment, activate the tool and then click once on the source element and once on the target element. You can also click and drag from the source to the target elements.
 
+_Generic Edge Creation Tool_ allows to create an edge by selecting first the source and the target before choosing the concrete edge creation tool. That allows to restrict the list of possible edge creation tools between two elements. The tool is allowed when the mouse is hovering the first element if at least one edge creation tool is applicable from this element. the same is applies for the target.
+If only one edge creation tool is available, the tool will be applied once the source and target have been selected. If several edge creation tools are applicable, a menu displaying the list of possible tools makes possible to select which one to apply.
+
 p(#pinning). __Pin/Unpin__. The final standard tools which are available in the top row of all the palette allow to mark or unmark diagram elements as _pinned_. Pinning an element on the diagram means that when an automatic layout of the diagram is requested (see the __Arrange All__ action), the element will not be moved or resized: it will stay at the exact same position as you placed it. Pinned element can still be moved manually. To pin or unpin an element, simply select the appropriate tool (using the arrow right next to the icon to make the menu appear), and when the tool is active, click on the element to mark as pinned or un-pinned.
 
 h4. Palette Contents

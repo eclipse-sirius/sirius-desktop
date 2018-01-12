@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,6 +67,7 @@ import org.eclipse.sirius.diagram.description.tool.RequestDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolGroup;
 import org.eclipse.sirius.diagram.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
@@ -250,9 +251,11 @@ public class PaletteManagerImpl implements PaletteManager {
             if (dDiagram instanceof DSemanticDiagram) {
                 session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) dDiagram).getTarget());
             }
+
             // Step 1: we add the default tools contributed by the environment
             // in the same group as the default GEF tools
             addDefaultTools(diagram);
+
             // Step 2: Replace the ConnectionCreationTool for
             // DiagramPaletteFactory.TOOL_NOTEATTACHMENT (if needed)
             replaceNoteAttachmentCreationToolIfNeeded();
@@ -260,6 +263,19 @@ public class PaletteManagerImpl implements PaletteManager {
                 updatePalette(description, session, dDiagram);
             }
         }
+    }
+
+    @SuppressWarnings("restriction")
+    private void addGenericConnectionTool() {
+        PaletteToolEntry paletteEntry = new PaletteToolEntry(SiriusDiagramPaletteFactory.GENERIC_CONNECTION_CREATION_TOOL, Messages.GenericConnectionCreationTool_label,
+                new SiriusDiagramPaletteFactory());
+        paletteEntry.setToolClass(GenericConnectionCreationTool.class);
+        ImageDescriptor descIcon = org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.Implementation.findImageDescriptor("icons/full/obj16/EdgeCreationDescription.gif"); //$NON-NLS-1$
+        paletteEntry.setSmallIcon(descIcon);
+        paletteEntry.setLargeIcon(descIcon);
+        final PaletteContainer container = paletteRoot.getDefaultEntry().getParent();
+        container.getChildren().add(paletteEntry);
+
     }
 
     /**
@@ -390,6 +406,7 @@ public class PaletteManagerImpl implements PaletteManager {
      * Replace if needed the GMF note attachment tool by a specific one (2 clicks for link creation instead of one click
      * with drag).
      */
+    @SuppressWarnings("restriction")
     private void replaceNoteAttachmentCreationToolIfNeeded() {
         // Get the container of the Note Attachment Creation Tool
         String notesContainerLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteStack.Label"); //$NON-NLS-1$
@@ -605,6 +622,12 @@ public class PaletteManagerImpl implements PaletteManager {
         final PaletteSeparator marker = new PaletteSeparator("defaultTools"); //$NON-NLS-1$
         marker.setVisible(false);
         container.add(marker);
+
+        // We add the generic connection tool.
+        if (Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramPreferencesKeys.PREF_DISPLAY_GENERIC_EDGE_CREATION_TOOL.name(), false, null)) {
+            addGenericConnectionTool();
+        }
+
         for (final ToolEntry defaultEntry : PaletteManagerImpl.getDefaultTools(TransactionUtil.getEditingDomain(diagram).getResourceSet())) {
             addElementToContainer(container, defaultEntry);
         }

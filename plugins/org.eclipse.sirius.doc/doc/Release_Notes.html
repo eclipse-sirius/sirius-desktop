@@ -130,7 +130,11 @@
 			<li><span class="label label-success">Added</span> A new feature allows user to insert vertical blank space in sequence diagram. You can refer to the 
 				<a href="user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space">user documentation </a> for more details. 
 			</li>
+			<li><span class="label label-success">Added</span> A new feature called &#8220;Generic Edge Creation Tool&#8221; allows to create an edge by starting to select the source and the target before choosing the concrete edge creation tool. That allows to restrict the list of possible edge creation tools (possibly only one edge or no one) according to the selected source and target.</li>
 		</ul>
+		<p>
+			<img border="0" src="images/genericEdgeCreationTool.png"/>
+		</p>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> An action is added in main toolbar to reload the VSM of installed plug-ins that may have changed. Refer to the 
@@ -202,6 +206,15 @@
 			<li><span class="label label-danger">Removed</span> In 
 				<code>org.eclipse.sirius.business.api.dialect.DialectServices</code> (and all its implementations), the method 
 				<code>refreshEffectiveRepresentationDescription(DRepresentation, IProgressMonitor)</code> has been removed. It corresponded to an experimental feature which has been abandonned long ago. 
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
+			<code>org.eclipse.sirius.diagram</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys.PREF_DISPLAY_GENERIC_EDGE_CREATION_TOOL</code> has been added to make to possible to hide the new generic edge creation tool. See the 
+				<em>User-Visible Changes</em> or the user documentation for more details.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
@@ -499,7 +512,7 @@
 				<code>getFilesFromWorkspace(Collection&lt;IContainer&gt;, String)</code> to be more generic.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -963,7 +976,7 @@
 				<em>Model Request Interpreter</em> view is still present if needed during the transition, but not exposed or used anywhere. It will be removed in a future version. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1571,7 +1584,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>HierarchyLabelProvider</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1995,7 +2008,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus</code> to reflect all kind of language validation severity (of AQL for example).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram5">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>

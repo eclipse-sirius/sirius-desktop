@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,8 +93,8 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1", "ToolL4-A-1"),
             //
-            createNewEntry("Standard", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
-            //
+            createNewEntry("Standard", "Generic Connection Creation Tool", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
+    //
     ));
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_VIEWPOINT_EXTENSION_DEACTIVATE = Sets.newTreeSet(Arrays.asList(
@@ -109,7 +109,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1"),
             //
-            createNewEntry("Standard", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
+            createNewEntry("Standard", "Generic Connection Creation Tool", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
     //
     ));
 
@@ -379,9 +379,8 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     }
 
     /**
-     * Test that palette is correctly changed after deactivation/activation of a
-     * viewpoint extension containing a transient layer. Here we must check the
-     * palette root of the editor because it is reloaded by the
+     * Test that palette is correctly changed after deactivation/activation of a viewpoint extension containing a
+     * transient layer. Here we must check the palette root of the editor because it is reloaded by the
      * {@link org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorSessionListenerDelegate}.
      * 
      * @throws Exception
@@ -402,7 +401,8 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
 
             doContentPaletteTest(paletteRoot, EXPECTED_ENTRIES_STD_EDITOR_PALETTE);
 
-            // Add an adapter like it is done when menu is shown, otherwise, it is not called and so neither paletteManager.showLayer/hideLayer. 
+            // Add an adapter like it is done when menu is shown, otherwise, it is not called and so neither
+            // paletteManager.showLayer/hideLayer.
             LayersActivationAdapter adapter = new LayersActivationAdapter();
             adapter.setPaletteManager(((DDiagramEditor) dDiagramEditor).getPaletteManager());
             dDiagram.eAdapters().add(adapter);

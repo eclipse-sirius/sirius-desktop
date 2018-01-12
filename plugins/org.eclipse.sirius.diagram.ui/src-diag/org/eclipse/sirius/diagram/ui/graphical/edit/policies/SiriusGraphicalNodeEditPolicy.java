@@ -141,7 +141,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * Constant used to store a {@link EdgeCreationDescription} in a
      * Request.getExtendedData().
      */
-    protected static final String GMF_EDGE_CREATION_DESCRIPTION = "edge.creation.description"; //$NON-NLS-1$
+    public static final String GMF_EDGE_CREATION_DESCRIPTION = "edge.creation.description"; //$NON-NLS-1$
 
     /**
      * Constant used to store the {@link EdgeTarget} source.
