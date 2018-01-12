@@ -165,7 +165,7 @@ public class RubberbandSelectionTool extends AbstractTool {
             getMarqueeFeedbackFigure().translateToRelative(r);
             if ((selectionMode == SELECTION_CONTAINED_MODE && marqueeBounds.contains(r.getTopLeft()) && marqueeBounds.contains(r.getBottomRight()))
                     || (selectionMode == SELECTION_TOUCHED_MODE && ((child instanceof ConnectionEditPart && pl.intersects(marqueeBounds)) || (!(child instanceof ConnectionEditPart) && marqueeBounds
-                            .intersects(r) && !r.contains(marqueeBounds.getBottomRight()))))) {
+                            .intersects(r) && !r.contains(feedBackStartLocation))))) {
                 newSelections.add(child);
             }
         }
