@@ -22,7 +22,7 @@ Once this resource has been loaded, give a name, NsPrefix and NsURI to your EPac
 After that, you can create an EClass under the EPackage with the named @ExtTableDescription@ and with the EClass @WidgetDescription@ as a supertype. This EClass should contain for our example two EAttributes named @onClickExpression@ and @valueExpression@ and both should have the type @InterpretedExpresion@.
 
 
-You can then create a genmodel file for your Ecore model in the same repository and launch the generation of the model and its edit support. You will thus have two plugins:
+You can then create a genmodel file for your Ecore model in the same repository. Make sure to configure your @genmodel@ with a _Runtime Version_ property set to _2.3_ so that the generated Java is compatible with the "parent" metamodel from Sirius. Launching the generation of the model and its edit support will produce two plugins:
 * Sirius Properties model extension: @com.example.awesomeproject.sirius.properties.ext.widgets.table@
 * Sirius Properties model extension Edit support: @com.example.awesomeproject.sirius.properties.ext.widgets.table.edit@
 
@@ -339,9 +339,8 @@ Now we can reuse our work in the basic approach but this time with our own speci
 pre.. 
 package com.example.awesomeproject.eef.ide.ui.ext.widgets.table.internal;
 
-import com.example.awesomeproject.eef.ext.widgets.table.EEFExtTableDescription;
-
 import org.eclipse.eef.EEFControlDescription;
+import org.eclipse.eef.EEFCustomWidgetDescription;
 import org.eclipse.eef.core.api.EditingContextAdapter;
 import org.eclipse.eef.ide.ui.api.widgets.IEEFLifecycleManager;
 import org.eclipse.eef.ide.ui.api.widgets.IEEFLifecycleManagerProvider;
@@ -349,21 +348,26 @@ import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 
 public class TableLifecycleManagerProvider implements IEEFLifecycleManagerProvider {
+    /**
+     * The identifier of the control description supported.
+     */
+    private static final String SUPPORTED_ID = "com.example.awesomeproject.sirius.properties.ext.widgets.table"; //$NON-NLS-1$
 
-	@Override
-	public boolean canHandle(EEFControlDescription controlDescription) {
-		return controlDescription instanceof EEFExtTableDescription;
-	}
+    @Override
+    public boolean canHandle(EEFControlDescription controlDescription) {
+        // only support custom widgets with the proper identifier
+        return SUPPORTED_ID.equals(controlDescription.getIdentifier()) && controlDescription instanceof EEFCustomWidgetDescription;
+    }
 
-	@Override
-	public IEEFLifecycleManager getLifecycleManager(EEFControlDescription controlDescription, IVariableManager variableManager,
-			IInterpreter interpreter, EditingContextAdapter contextAdapter) {
-		if (controlDescription instanceof EEFExtTableDescription) {
-			return new TableLifecycleManager((EEFExtTableDescription) controlDescription, variableManager, interpreter, contextAdapter);
-		}
-		throw new IllegalArgumentException();
-	}
+    @Override
+    public IEEFLifecycleManager getLifecycleManager(EEFControlDescription controlDescription, IVariableManager variableManager, IInterpreter interpreter, EditingContextAdapter contextAdapter) {
+        if (controlDescription instanceof EEFCustomWidgetDescription) {
+            return new TableLifecycleManager((EEFCustomWidgetDescription) controlDescription, variableManager, interpreter, contextAdapter);
+        }
+        throw new IllegalArgumentException();
+    }
 }
+
 
 p. 
 Now we can just modify our lifecycle manager to support our EEFExtTableDescription.
@@ -371,13 +375,12 @@ Now we can just modify our lifecycle manager to support our EEFExtTableDescripti
 pre.. 
 package com.example.awesomeproject.eef.ide.ui.ext.widgets.table.internal;
 
-import com.example.awesomeproject.eef.ext.widgets.table.EEFExtTableDescription;
+import java.util.function.Consumer;
 
-import com.example.awesomeproject.eef.core.ext.widgets.table.TableController;
+import org.eclipse.eef.EEFCustomWidgetDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.common.ui.api.IEEFFormContainer;
 import org.eclipse.eef.core.api.EditingContextAdapter;
-import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.eef.core.api.controllers.IEEFWidgetController;
 import org.eclipse.eef.ide.ui.api.widgets.AbstractEEFWidgetLifecycleManager;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -395,103 +398,109 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Table;
 
+import com.example.awesomeproject.eef.core.ext.widgets.table.internal.TableController;
+
 public class TableLifecycleManager extends AbstractEEFWidgetLifecycleManager {
 
-	private EEFExtTableDescription description;
+    private EEFCustomWidgetDescription description;
 
-	private TableViewer tableViewer;
+    private TableViewer tableViewer;
 
-	private ComposedAdapterFactory composedAdapterFactory;
+    private ComposedAdapterFactory composedAdapterFactory;
 
-	private SelectionListener onClickListener;
+    private SelectionListener onClickListener;
 
-	private TableController controller;
+    private TableController controller;
 
-	private IConsumer<Object> newValueConsumer;
+    private Consumer<Object> newValueConsumer;
+    
+    public TableLifecycleManager(EEFCustomWidgetDescription description, IVariableManager variableManager, IInterpreter interpreter,
+            EditingContextAdapter contextAdapter) {
+        super(variableManager, interpreter, contextAdapter);
+        this.description = description;
+    }
 
-	public TableLifecycleManager(EEFExtTableDescription description, IVariableManager variableManager, IInterpreter interpreter,
-			EditingContextAdapter contextAdapter) {
-		super(variableManager, interpreter, contextAdapter);
-		this.description = description;
-	}
+    @Override
+    protected void createMainControl(Composite parent, IEEFFormContainer formContainer) {
+        Table table = formContainer.getWidgetFactory().createTable(parent,
+                SWT.READ_ONLY | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER | SWT.SINGLE);
+        this.tableViewer = new TableViewer(table);
+        this.composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
-	@Override
-	protected void createMainControl(Composite parent, IEEFFormContainer formContainer) {
-		Table table = formContainer.getWidgetFactory().createTable(parent,
-				SWT.READ_ONLY | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER | SWT.SINGLE);
-		this.tableViewer = new TableViewer(table);
-		this.composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+        this.tableViewer.setContentProvider(ArrayContentProvider.getInstance());
+        this.tableViewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new AdapterFactoryLabelProvider.StyledLabelProvider(
+                this.composedAdapterFactory, this.tableViewer)));
 
-		this.tableViewer.setContentProvider(ArrayContentProvider.getInstance());
-		this.tableViewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new AdapterFactoryLabelProvider.StyledLabelProvider(
-				this.composedAdapterFactory, this.tableViewer)));
+        this.controller = new TableController(description, variableManager, interpreter, editingContextAdapter);
+    }
 
-		this.controller = new TableController(description, variableManager, interpreter, contextAdapter);
-	}
+    @Override
+    public void aboutToBeShown() {
+        super.aboutToBeShown();
 
-	@Override
-	public void aboutToBeShown() {
-		super.aboutToBeShown();
+        this.newValueConsumer = (newValue) -> this.tableViewer.setInput(newValue);
+        this.controller.onNewValue(this.newValueConsumer);
 
-		this.newValueConsumer = (newValue) -> this.tableViewer.setInput(newValue);
-		this.controller.onNewValue(this.newValueConsumer);
+        this.onClickListener = new SelectionListener() {
+            @Override
+            public void widgetSelected(SelectionEvent event) {
+                Object selection = ((IStructuredSelection) TableLifecycleManager.this.tableViewer.getSelection()).getFirstElement();
+                TableLifecycleManager.this.controller.handleClick(selection);
+            }
 
-		this.onClickListener = new SelectionListener() {
-			@Override
-			public void widgetSelected(SelectionEvent event) {
-				Object selection = ((IStructuredSelection) TableLifecycleManager.this.tableViewer.getSelection()).getFirstElement();
-				TableLifecycleManager.this.controller.handleClick(selection);
-			}
+            @Override
+            public void widgetDefaultSelected(SelectionEvent event) {
+                Object selection = ((IStructuredSelection) TableLifecycleManager.this.tableViewer.getSelection()).getFirstElement();
+                TableLifecycleManager.this.controller.handleClick(selection);
+            }
+        };
+        this.tableViewer.getTable().addSelectionListener(this.onClickListener);
+    }
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent event) {
-				Object selection = ((IStructuredSelection) TableLifecycleManager.this.tableViewer.getSelection()).getFirstElement();
-				TableLifecycleManager.this.controller.handleClick(selection);
-			}
-		};
-		this.tableViewer.getTable().addSelectionListener(this.onClickListener);
-	}
+    @Override
+    public void refresh() {
+        super.refresh();
 
-	@Override
-	public void refresh() {
-		super.refresh();
+        this.controller.refresh();
+    }
 
-		this.controller.refresh();
-	}
+    @Override
+    public void aboutToBeHidden() {
+        super.aboutToBeHidden();
+        this.controller.removeValueConsumer();
+        this.newValueConsumer = null;
 
-	@Override
-	public void aboutToBeHidden() {
-		super.aboutToBeHidden();
-		this.controller.removeValueConsumer();
-		this.newValueConsumer = null;
+        this.tableViewer.getTable().removeSelectionListener(this.onClickListener);
+        this.onClickListener = null;
+    }
 
-		this.tableViewer.getTable().removeSelectionListener(this.onClickListener);
-		this.onClickListener = null;
-	}
+    @Override
+    protected IEEFWidgetController getController() {
+        return this.controller;
+    }
 
-	@Override
-	protected IEEFWidgetController getController() {
-		return this.controller;
-	}
+    @Override
+    protected EEFWidgetDescription getWidgetDescription() {
+        return this.description;
+    }
 
-	@Override
-	protected EEFWidgetDescription getWidgetDescription() {
-		return this.description;
-	}
+    @Override
+    protected Control getValidationControl() {
+        return this.tableViewer.getTable();
+    }
 
-	@Override
-	protected Control getValidationControl() {
-		return this.tableViewer.getTable();
-	}
+    @Override
+    public void dispose() {
+        super.dispose();
 
-	@Override
-	public void dispose() {
-		super.dispose();
-
-		this.composedAdapterFactory.dispose();
-	}
+        this.composedAdapterFactory.dispose();
+    }
+    
+    @Override
+    protected void setEnabled(boolean isEnabled) {
+        this.tableViewer.getTable().setEnabled(isEnabled);
+    }
 }
-
 
 p. 
 And finally we can easily adapter our controller.
@@ -500,70 +509,62 @@ And finally we can easily adapter our controller.
 pre.. 
 package com.example.awesomeproject.eef.core.ext.widgets.table.internal;
 
-import com.example.awesomeproject.eef.ext.widgets.table.EEFExtTableDescription;
-
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.eef.EEFCustomWidgetDescription;
 import org.eclipse.eef.core.api.EditingContextAdapter;
-import org.eclipse.eef.core.api.controllers.AbstractEEFWidgetController;
-import org.eclipse.eef.core.api.controllers.IConsumer;
+import org.eclipse.eef.core.api.controllers.AbstractEEFCustomWidgetController;
 import org.eclipse.eef.core.api.utils.EvalFactory;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 
-public class TableController extends AbstractEEFWidgetController {
+public class TableController extends AbstractEEFCustomWidgetController {
 
-	private static final String VALUE_EXPRESSION_ID = "valueExpression"; //$NON-NLS-1$
+    private static final String VALUE_EXPRESSION_ID = "valueExpression"; //$NON-NLS-1$
 
-	private static final String ON_CLICK_EXPRESSION_ID = "onClickExpression"; //$NON-NLS-1$
+    private static final String ON_CLICK_EXPRESSION_ID = "onClickExpression"; //$NON-NLS-1$
 
-	private static final String SELECTION_VARIABLE_NAME = "selection"; //$NON-NLS-1$
+    private static final String SELECTION_VARIABLE_NAME = "selection"; //$NON-NLS-1$
 
-	private IConsumer<Object> newValueConsumer;
+    private Consumer<Object> newValueConsumer;
+    
+    public TableController(EEFCustomWidgetDescription description, IVariableManager variableManager, IInterpreter interpreter,
+            EditingContextAdapter contextAdapter) {
+        super(description, variableManager, interpreter, contextAdapter);
+    }
 
-	private EEFExtTableDescription description;
+    @Override
+    protected EEFCustomWidgetDescription getDescription() {
+        return this.description;
+    }
 
-	private EditingContextAdapter contextAdapter;
+    @Override
+    public void refresh() {
+        super.refresh();
+        this.newEval().call(this.getCustomExpression(VALUE_EXPRESSION_ID).get(), this.newValueConsumer);
+    }
 
-	public TableController(EEFExtTableDescription description, IVariableManager variableManager, IInterpreter interpreter,
-			EditingContextAdapter contextAdapter) {
-		super(variableManager, interpreter);
-		this.description = description;
-		this.contextAdapter = contextAdapter;
-	}
+    public void handleClick(Object object) {
+        this.editingContextAdapter.performModelChange(() -> {
+            String onClickExpression = this.getCustomExpression(ON_CLICK_EXPRESSION_ID).get();
 
-	@Override
-	protected EEFExtTableDescription getDescription() {
-		return this.description;
-	}
+            Map<String, Object> variables = new HashMap<String, Object>();
+            variables.putAll(this.variableManager.getVariables());
+            variables.put(SELECTION_VARIABLE_NAME, object);
 
-	@Override
-	public void refresh() {
-		super.refresh();
-		this.newEval().call(this.description.getValueExpression(), this.newValueConsumer);
-	}
+            EvalFactory.of(this.interpreter, variables).call(onClickExpression);
+        });
+    }
 
-	public void handleClick(Object object) {
-		this.contextAdapter.performModelChange(() -> {
-			String onClickExpression = this.description.getOnClickExpression();
+    public void onNewValue(Consumer<Object> consumer) {
+        this.newValueConsumer = consumer;
+    }
 
-			Map<String, Object> variables = new HashMap<String, Object>();
-			variables.putAll(this.variableManager.getVariables());
-			variables.put(SELECTION_VARIABLE_NAME, object);
-
-			EvalFactory.of(this.interpreter, variables).call(onClickExpression);
-		});
-	}
-
-	public void onNewValue(IConsumer<Object> consumer) {
-		this.newValueConsumer = consumer;
-	}
-
-	public void removeValueConsumer() {
-		this.newValueConsumer = null;
-	}
+    public void removeValueConsumer() {
+        this.newValueConsumer = null;
+    }
 }
 
 p. 
