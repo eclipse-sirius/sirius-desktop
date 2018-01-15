@@ -44,9 +44,9 @@ public class Session1MillionTests extends SiriusDiagramTestCase {
     /**
      * limit is set empirically.
      */
-    private static final long MAX_TIME_TO_OPEN_SECONDS = 15;
+    private static final long MAX_TIME_TO_OPEN_SECONDS = 20;
 
-    private static final long MAX_TIME_TO_CLOSE_SECONDS = 5;
+    private static final long MAX_TIME_TO_CLOSE_SECONDS = 15;
 
     private static final int NUMBER_Of_ELEMENTS = 966220;
 
