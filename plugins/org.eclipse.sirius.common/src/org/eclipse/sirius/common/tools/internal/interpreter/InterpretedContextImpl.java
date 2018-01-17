@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ public class InterpretedContextImpl implements IInterpreterContext {
 
     private Map<String, VariableType> variables;
 
-    private Collection<EPackage> avalaiblePackages;
+    private Collection<EPackage> availablePackages;
 
     private VariableType targetTypes;
 
@@ -74,7 +74,7 @@ public class InterpretedContextImpl implements IInterpreterContext {
         this.element = element;
         this.requiresTargetType = requiresTargetType;
         this.targetTypes = targetTypes;
-        this.avalaiblePackages = avalaiblePackages;
+        this.availablePackages = avalaiblePackages;
         this.variables = variables;
         this.field = field;
         this.dependencies = dependencies;
@@ -107,7 +107,7 @@ public class InterpretedContextImpl implements IInterpreterContext {
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getAvailableEPackages()
      */
     public Collection<EPackage> getAvailableEPackages() {
-        return avalaiblePackages;
+        return availablePackages;
     }
 
     /**
