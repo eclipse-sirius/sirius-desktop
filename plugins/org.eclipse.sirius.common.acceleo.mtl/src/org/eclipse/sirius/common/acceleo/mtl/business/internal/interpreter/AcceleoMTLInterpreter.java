@@ -17,7 +17,6 @@ import java.net.URL;
 import java.security.CodeSource;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -28,6 +27,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 
 import org.eclipse.acceleo.common.IAcceleoConstants;
@@ -82,6 +83,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
+import org.eclipse.sirius.common.tools.internal.interpreter.IConverter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -97,20 +99,85 @@ import com.google.common.collect.Sets;
 
 /**
  * This interpreter will allow for the use of Acceleo 3 expressions.
- * 
+ *
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  */
 public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
+
+    /**
+     * Encapsulates coercion rules used by this interpreter.
+     *
+     * @author pcdavid
+     *
+     */
+    private static class MTLConverter implements IConverter {
+
+        @Override
+        public OptionalInt toInt(Object rawValue) {
+            Integer coerced = AcceleoMTLInterpreter.coerceValue(rawValue, Integer.class);
+            if (coerced != null) {
+                return OptionalInt.of(coerced.intValue());
+            } else {
+                return OptionalInt.empty();
+            }
+        }
+
+        @Override
+        public Optional<Boolean> toBoolean(Object rawValue) {
+            final Boolean coerced;
+            if (rawValue instanceof Boolean) {
+                coerced = (Boolean) rawValue;
+            } else {
+                coerced = AcceleoMTLInterpreter.coerceValue(rawValue, Boolean.class);
+            }
+
+            if (coerced != null) {
+                return Optional.of(coerced);
+            }
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<String> toString(Object rawValue) {
+            if (rawValue != null) {
+                return Optional.of(rawValue.toString());
+            } else {
+                return Optional.empty();
+            }
+        }
+
+        @Override
+        public Optional<EObject> toEObject(Object rawValue) {
+            return Optional.ofNullable(AcceleoMTLInterpreter.coerceValue(rawValue, EObject.class));
+        }
+
+        @Override
+        public Optional<Collection<EObject>> toEObjectCollection(Object rawValue) {
+            Collection<EObject> coercedResult = new ArrayList<>();
+            if (rawValue instanceof Collection<?>) {
+                Iterables.addAll(coercedResult, Iterables.filter((Collection<?>) rawValue, EObject.class));
+            } else if (rawValue != null && rawValue.getClass().isArray()) {
+                Iterables.addAll(coercedResult, Iterables.filter(Lists.newArrayList((Object[]) rawValue), EObject.class));
+            } else {
+                EObject coerced = AcceleoMTLInterpreter.coerceValue(rawValue, EObject.class);
+                if (coerced != null) {
+                    coercedResult.add(coerced);
+                }
+            }
+            return Optional.of(coercedResult);
+        }
+    }
+
     /**
      * This represents the prefix of an Acceleo 3 expression.
-     * 
+     *
      * @see IAcceleoConstants#DEFAULT_BEGIN
      */
     private static final String ACCELEO_EXPRESSION_PREFIX = IAcceleoConstants.DEFAULT_BEGIN;
 
     /**
      * This represents the suffix of an Acceleo 3 expression.
-     * 
+     *
      * @see IAcceleoConstants#INVOCATION_END
      */
     private static final String ACCELEO_EXPRESSION_SUFFIX = IAcceleoConstants.DEFAULT_END_BODY_CHAR + IAcceleoConstants.DEFAULT_END;
@@ -121,17 +188,14 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     private static final String FILE_SEPARATOR_REGEX = "/|\\\\"; //$NON-NLS-1$
 
     /**
-     * This will hold all dependencies added to this interpreter through import
-     * handlers. Keys are the Java class name in the form
-     * <code>my.package.MyClass</code>, values are the Modules returned by the
-     * handlers.
+     * This will hold all dependencies added to this interpreter through import handlers. Keys are the Java class name
+     * in the form <code>my.package.MyClass</code>, values are the Modules returned by the handlers.
      */
     protected final Set<ModuleDescriptor> extendedDependencies = new LinkedHashSet<>();
 
     /**
-     * This will hold all dependencies added to this interpreter. Keys are the
-     * dependencies path in the form <code>my::package::myModule</code>, values
-     * are the actual URIs of the modules.
+     * This will hold all dependencies added to this interpreter. Keys are the dependencies path in the form
+     * <code>my::package::myModule</code>, values are the actual URIs of the modules.
      */
     protected final Multimap<String, URI> mtlDependencies = LinkedHashMultimap.create();
 
@@ -139,18 +203,15 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     private final Map<String, URI> javaFiles = new HashMap<>();
 
     /**
-     * This will contain the "dummy" module we use for the compilation. All
-     * queries present in an VSM file will have a corresponding [query] block in
-     * this dummy.
+     * This will contain the "dummy" module we use for the compilation. All queries present in an VSM file will have a
+     * corresponding [query] block in this dummy.
      */
     private final DynamicAcceleoModule module = new DynamicAcceleoModule();
 
     /**
-     * This map will hold the values associated to given variable names. Note
-     * that even if this is a multimap, the variables are considered as a stack
-     * in order to be coherent with other interpreters : evaluation will
-     * consider the value to be a Collection, but setting/unsetting will only
-     * work one object by one object.
+     * This map will hold the values associated to given variable names. Note that even if this is a multimap, the
+     * variables are considered as a stack in order to be coherent with other interpreters : evaluation will consider
+     * the value to be a Collection, but setting/unsetting will only work one object by one object.
      */
     private final ListMultimap<String, Object> variables = AcceleoCollections.newCircularArrayDequeMultimap();
 
@@ -159,14 +220,12 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     private final Set<String> variableNsURIs = new LinkedHashSet<>();
 
     /**
-     * This will be updated with the list of accessible viewpoint plugins, if
-     * any.
+     * This will be updated with the list of accessible viewpoint plugins, if any.
      */
     private final Set<String> viewpointPlugins = new LinkedHashSet<>();
 
     /**
-     * This will be updated with the list of accessible viewpoint projects
-     * present in the workspace, if any.
+     * This will be updated with the list of accessible viewpoint projects present in the workspace, if any.
      */
     private final Set<String> viewpointProjects = new LinkedHashSet<>();
 
@@ -176,6 +235,11 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     private CrossReferencerProviderAdapterFactory adapterFactory;
 
     /**
+     * The converter used to coerce raw results.
+     */
+    private IConverter converter = new MTLConverter();
+
+    /**
      * Default constructor, will be called from the extension point's registry.
      */
     public AcceleoMTLInterpreter() {
@@ -183,17 +247,15 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     }
 
     /**
-     * Tries and coerce the given <em>object</em> to an instance of the given
-     * class.
-     * 
+     * Tries and coerce the given <em>object</em> to an instance of the given class.
+     *
      * @param <T>
      *            Type to which we need to coerce <em>object</em>.
      * @param object
      *            The object we need to coerce to a given {@link Class}.
      * @param clazz
      *            Class to which we are to cast <em>object</em>.
-     * @return <em>object</em> cast to type <em>T</em> if possible,
-     *         <code>null</code> if not.
+     * @return <em>object</em> cast to type <em>T</em> if possible, <code>null</code> if not.
      */
     @SuppressWarnings("unchecked")
     private static <T> T coerceValue(Object object, Class<T> clazz) {
@@ -217,11 +279,10 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
 
     /**
      * Checks whether the given path exists in the plugins.
-     * 
+     *
      * @param path
      *            The path we need to check.
-     * @return <code>true</code> if <em>path</em> denotes an existing plugin
-     *         resource, <code>false</code> otherwise.
+     * @return <code>true</code> if <em>path</em> denotes an existing plugin resource, <code>false</code> otherwise.
      */
     private static boolean existsInPlugins(String path) {
         try {
@@ -234,11 +295,10 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
 
     /**
      * Checks whether the given path exists in the workspace.
-     * 
+     *
      * @param path
      *            The path we need to check.
-     * @return <code>true</code> if <em>path</em> denotes an existing workspace
-     *         resource, <code>false</code> otherwise.
+     * @return <code>true</code> if <em>path</em> denotes an existing workspace resource, <code>false</code> otherwise.
      */
     private static boolean existsInWorkspace(String path) {
         if (path == null || path.length() == 0) {
@@ -250,11 +310,10 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
 
     /**
      * Extracts the NsURI of the given EObject's metamodel.
-     * 
+     *
      * @param object
      *            The EObject for which we need the metamodel URI.
-     * @return The NsURI of the given EObject's metamodel, <code>null</code> if
-     *         we could not retrieve it.
+     * @return The NsURI of the given EObject's metamodel, <code>null</code> if we could not retrieve it.
      */
     private static String extractNsURI(EObject object) {
         final EPackage pack = object.eClass().getEPackage();
@@ -268,9 +327,8 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     }
 
     /**
-     * Tries and extract the NsURIs of the given object if it is an EObject, or
-     * of its children if it is a Collection.
-     * 
+     * Tries and extract the NsURIs of the given object if it is an EObject, or of its children if it is a Collection.
+     *
      * @param object
      *            The object from which to try and detect metamodel URIs.
      * @return The extracted URIs.
@@ -279,13 +337,13 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         Set<String> uris = new LinkedHashSet<>();
 
         if (object instanceof EObject) {
-            final String uri = extractNsURI((EObject) object);
+            final String uri = AcceleoMTLInterpreter.extractNsURI((EObject) object);
             if (uri != null) {
                 uris = Collections.singleton(uri);
             }
         } else if (object instanceof Collection<?>) {
             for (Object child : (Collection<?>) object) {
-                final Set<String> childURIs = extractNsURIs(child);
+                final Set<String> childURIs = AcceleoMTLInterpreter.extractNsURIs(child);
                 if (!childURIs.isEmpty()) {
                     uris = Sets.union(uris, childURIs);
                 }
@@ -300,7 +358,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * <p>
      * Makes no effort to try and check whether the argument is valid.
      * </p>
-     * 
+     *
      * @param values
      *            List from which we need the last value.
      * @param <V>
@@ -315,21 +373,20 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     /**
      * Returns the qualified name of the given eObject's EClass, OCL style.
      * <p>
-     * For example, passing an instance of "eClass" to this would yield
-     * <code>ecore::EClass</code>.
+     * For example, passing an instance of "eClass" to this would yield <code>ecore::EClass</code>.
      * </p>
-     * 
+     *
      * @param eObject
      *            The EObject for which we need the qualified type name.
      * @return The qualified name of the given eObject's EClass.
      */
     private static String getQualifiedType(EObject eObject) {
-        return getQualifiedName(eObject.eClass());
+        return AcceleoMTLInterpreter.getQualifiedName(eObject.eClass());
     }
 
     /**
      * Returns the qualified name of the given EClassifier, OCL style.
-     * 
+     *
      * @param classifier
      *            The classifier for which we need the qualified type name.
      * @return The qualified name of the given EClassifier.
@@ -355,11 +412,10 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
 
     /**
      * Tries and infer the OCL type of the given Object.
-     * 
+     *
      * @param obj
      *            Object for which we need an OCL type.
-     * @return The inferred OCL type. OCLAny if we could not infer anything more
-     *         sensible.
+     * @return The inferred OCL type. OCLAny if we could not infer anything more sensible.
      */
     private static String inferOCLType(Object obj) {
         String oclType = "OCLAny"; //$NON-NLS-1$
@@ -374,27 +430,25 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
             } else if (obj instanceof Bag<?>) {
                 oclType = "Bag("; //$NON-NLS-1$
             }
-            oclType += getQualifiedName(elementType) + ')';
+            oclType += AcceleoMTLInterpreter.getQualifiedName(elementType) + ')';
         } else {
-            oclType = getQualifiedName(DynamicAcceleoModule.getOCLType(env, obj));
+            oclType = AcceleoMTLInterpreter.getQualifiedName(DynamicAcceleoModule.getOCLType(env, obj));
         }
         return oclType;
     }
 
     /**
-     * Checks whether the given <em>candidatePath</em> ends with the given
-     * <em>suffix</em>.
-     * 
+     * Checks whether the given <em>candidatePath</em> ends with the given <em>suffix</em>.
+     *
      * @param candidatePath
      *            Path for which we need to check the suffix.
      * @param suffix
      *            Suffix we need <em>candidatePath</em> to have.
-     * @return <code>true</code> if <em>candidatePath</em> ends with
-     *         <em>suffix</em>, <code>false</code> otherwise.
+     * @return <code>true</code> if <em>candidatePath</em> ends with <em>suffix</em>, <code>false</code> otherwise.
      */
     private static boolean pathEndsWith(String candidatePath, String suffix) {
-        final String[] candidateSegments = candidatePath.split(FILE_SEPARATOR_REGEX);
-        final String[] suffixSegments = suffix.split(FILE_SEPARATOR_REGEX);
+        final String[] candidateSegments = candidatePath.split(AcceleoMTLInterpreter.FILE_SEPARATOR_REGEX);
+        final String[] suffixSegments = suffix.split(AcceleoMTLInterpreter.FILE_SEPARATOR_REGEX);
 
         int candidateIndex = candidateSegments.length - 1;
         int suffixIndex = suffixSegments.length - 1;
@@ -410,11 +464,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         return match;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#activateMetamodels(java.util.Collection)
-     */
     @Override
     public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
         Set<EPackage> additionalEPackages = new LinkedHashSet<>();
@@ -431,11 +480,10 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @param dependency
-     *            Acceleo 3 dependencies should be of the form
-     *            <em>my::package::myModule</em>. Java dependencies should be in
-     *            the form <em>my.package.MyClass</em>.
+     *            Acceleo 3 dependencies should be of the form <em>my::package::myModule</em>. Java dependencies should
+     *            be in the form <em>my.package.MyClass</em>.
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#addImport(java.lang.String)
      */
     @Override
@@ -451,11 +499,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#clearImports()
-     */
     @Override
     public void clearImports() {
         mtlDependencies.clear();
@@ -464,11 +507,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         invalidateModule();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#clearVariables()
-     */
     @Override
     public void clearVariables() {
         variables.clear();
@@ -477,9 +515,8 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     }
 
     /**
-     * Creates an Acceleo compilation context for the current variables and the
-     * given contextual information.
-     * 
+     * Creates an Acceleo compilation context for the current variables and the given contextual information.
+     *
      * @param context
      *            The target EObject of this compilation.
      * @param expression
@@ -487,17 +524,17 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @return The newly created context.
      */
     public CompilationContext createCompilationContext(EObject context, String expression) {
-        final String targetType = getQualifiedType(context);
+        final String targetType = AcceleoMTLInterpreter.getQualifiedType(context);
 
         String targetNsURI = null;
         final EObject root = EcoreUtil.getRootContainer(context);
         if (root != null) {
-            targetNsURI = extractNsURI(root);
+            targetNsURI = AcceleoMTLInterpreter.extractNsURI(root);
         }
 
         /*
-         * We will only iterate once on all variables, registering their nsURI
-         * and determining their OCL type along the way.
+         * We will only iterate once on all variables, registering their nsURI and determining their OCL type along the
+         * way.
          */
         if (compilationVariables.isEmpty() && !variables.isEmpty()) {
             for (Map.Entry<String, Collection<Object>> entry : variables.asMap().entrySet()) {
@@ -511,9 +548,9 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
                 }
                 List<Object> values = (List<Object>) entry.getValue();
                 if (!values.isEmpty()) {
-                    final Object actualValue = getLast(values);
-                    compilationVariables.put(entry.getKey(), inferOCLType(actualValue));
-                    variableNsURIs.addAll(extractNsURIs(actualValue));
+                    final Object actualValue = AcceleoMTLInterpreter.getLast(values);
+                    compilationVariables.put(entry.getKey(), AcceleoMTLInterpreter.inferOCLType(actualValue));
+                    variableNsURIs.addAll(AcceleoMTLInterpreter.extractNsURIs(actualValue));
                 }
             }
         }
@@ -529,9 +566,8 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     }
 
     /**
-     * Creates an Acceleo compilation context for the current variables and the
-     * given contextual information.
-     * 
+     * Creates an Acceleo compilation context for the current variables and the given contextual information.
+     *
      * @param context
      *            Context of the current compilation.
      * @param expression
@@ -553,11 +589,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         return new CompilationContext(expression, targetType, variableTypes, nsURIs, mtlDependencies, Sets.newLinkedHashSet(extendedDependencies));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#dispose()
-     */
     @Override
     public void dispose() {
         mtlDependencies.clear();
@@ -575,12 +606,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluate(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
-     */
     @Override
     public Object evaluate(EObject target, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(target, expression);
@@ -588,114 +613,50 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         return evaluationResult.getEvaluationResult();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateBoolean(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
-     */
     @Override
     public boolean evaluateBoolean(EObject context, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(context, expression);
         // Ignore potential problems for now
         Object result = evaluationResult.getEvaluationResult();
-
-        final Boolean coerced;
-        if (result instanceof Boolean) {
-            coerced = (Boolean) result;
-        } else {
-            coerced = coerceValue(result, Boolean.class);
-        }
-
-        if (coerced != null) {
-            return coerced.booleanValue();
-        }
-        return false;
+        return converter.toBoolean(result).orElse(Boolean.FALSE);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateCollection(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
-     */
     @Override
     public Collection<EObject> evaluateCollection(EObject context, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(context, expression);
         Object result = evaluationResult.getEvaluationResult();
-
-        Collection<EObject> coercedResult = new ArrayList<>();
-        if (result instanceof Collection<?>) {
-            Iterables.addAll(coercedResult, Iterables.filter((Collection<?>) result, EObject.class));
-        } else if (result != null && result.getClass().isArray()) {
-            Iterables.addAll(coercedResult, Iterables.filter(new ArrayList<Object>(Arrays.asList((Object[]) result)), EObject.class));
-        } else {
-            EObject coerced = coerceValue(result, EObject.class);
-            if (coerced != null) {
-                coercedResult.add(coerced);
-            }
-        }
-
-        return coercedResult;
+        return converter.toEObjectCollection(result).orElse(Collections.emptyList());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateEObject(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
-     */
     @Override
     public EObject evaluateEObject(EObject context, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(context, expression);
         // Ignore potential problems for now
         Object result = evaluationResult.getEvaluationResult();
-
-        EObject coerced = coerceValue(result, EObject.class);
-
-        return coerced;
+        return converter.toEObject(result).orElse(null);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateInteger(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
-     */
     @Override
     public Integer evaluateInteger(EObject context, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(context, expression);
         // Ignore potential problems for now
         Object result = evaluationResult.getEvaluationResult();
-
-        Integer coerced = coerceValue(result, Integer.class);
-
-        return coerced;
+        OptionalInt coerced = converter.toInt(result);
+        if (coerced.isPresent()) {
+            return Integer.valueOf(coerced.getAsInt());
+        } else {
+            return null;
+        }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateString(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
-     */
     @Override
     public String evaluateString(EObject context, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(context, expression);
         // Ignore potential problems for now
         Object result = evaluationResult.getEvaluationResult();
-
-        if (result != null) {
-            return result.toString();
-        }
-        return null;
+        return converter.toString(result).orElse(null);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getImports()
-     */
     @Override
     public Collection<String> getImports() {
         Set<String> extendedImports = new LinkedHashSet<>();
@@ -707,79 +668,49 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     }
 
     /**
-     * Gives access to the current module maintained by this interpreter. Mainly
-     * used to provide completion without re-compiling.
-     * 
+     * Gives access to the current module maintained by this interpreter. Mainly used to provide completion without
+     * re-compiling.
+     *
      * @return The current in-memory module maintained by this interpreter.
      */
     public DynamicAcceleoModule getModule() {
         return module;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getPrefix()
-     */
     @Override
     public String getPrefix() {
-        return ACCELEO_EXPRESSION_PREFIX;
+        return AcceleoMTLInterpreter.ACCELEO_EXPRESSION_PREFIX;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariable(java.lang.String)
-     */
     @Override
     public Object getVariable(String name) {
         if (variables.containsKey(name)) {
             final List<Object> values = variables.get(name);
             if (!values.isEmpty()) {
-                return getLast(values);
+                return AcceleoMTLInterpreter.getLast(values);
             }
         }
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariablePrefix()
-     */
     @Override
     public String getVariablePrefix() {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariables()
-     */
     @Override
     public Map<String, ?> getVariables() {
         return variables.asMap();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#provides(java.lang.String)
-     */
     @Override
     public boolean provides(String expression) {
         if (expression != null) {
-            return expression.startsWith(ACCELEO_EXPRESSION_PREFIX) && expression.endsWith(ACCELEO_EXPRESSION_SUFFIX);
+            return expression.startsWith(AcceleoMTLInterpreter.ACCELEO_EXPRESSION_PREFIX) && expression.endsWith(AcceleoMTLInterpreter.ACCELEO_EXPRESSION_SUFFIX);
         }
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#removeImport(java.lang.String)
-     */
     @Override
     public void removeImport(String dependency) {
         boolean removed = false;
@@ -795,11 +726,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setCrossReferencer(org.eclipse.emf.ecore.util.ECrossReferenceAdapter)
-     */
     @Override
     public void setCrossReferencer(ECrossReferenceAdapter crossReferencer) {
         if (adapterFactory == null) {
@@ -808,29 +734,17 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setModelAccessor(org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor)
-     */
     @Override
     public void setModelAccessor(ModelAccessor modelAccessor) {
         // Nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setProperty(java.lang.Object,
-     *      java.lang.Object)
-     */
     @Override
     public void setProperty(Object key, Object value) {
         /*
-         * This is called by the framework with the FILES key in order to pass
-         * us all the VSM files as a Collection.
+         * This is called by the framework with the FILES key in order to pass us all the VSM files as a Collection.
          */
-        if (FILES.equals(key)) {
+        if (IInterpreter.FILES.equals(key)) {
             if (value == null) {
                 viewpointProjects.clear();
                 viewpointPlugins.clear();
@@ -838,9 +752,9 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
                 for (final String odesignPath : Iterables.filter((Collection<?>) value, String.class)) {
                     final URI workspaceCandidate = URI.createPlatformResourceURI(odesignPath, true);
                     final URI pluginCandidate = URI.createPlatformPluginURI(odesignPath, true);
-                    if (existsInWorkspace(workspaceCandidate.toPlatformString(true))) {
+                    if (AcceleoMTLInterpreter.existsInWorkspace(workspaceCandidate.toPlatformString(true))) {
                         viewpointProjects.add(workspaceCandidate.segment(1));
-                    } else if (existsInPlugins(URI.decode(pluginCandidate.toString()))) {
+                    } else if (AcceleoMTLInterpreter.existsInPlugins(URI.decode(pluginCandidate.toString()))) {
                         viewpointPlugins.add(pluginCandidate.segment(1));
                     }
                 }
@@ -848,12 +762,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setVariable(java.lang.String,
-     *      java.lang.Object)
-     */
     @Override
     public void setVariable(String name, Object value) {
         variables.put(name, value);
@@ -861,21 +769,11 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         compilationVariables.clear();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#supportsValidation()
-     */
     @Override
     public boolean supportsValidation() {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#unSetVariable(java.lang.String)
-     */
     @Override
     public void unSetVariable(String name) {
         if (variables.containsKey(name)) {
@@ -890,12 +788,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#validateExpression(org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext,
-     *      java.lang.String)
-     */
     @Override
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
         return analyzeExpression(context, expression).getStatuses();
@@ -910,7 +802,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
 
     /**
      * Retrieves the list of imports from the given interpreter context.
-     * 
+     *
      * @param context
      *            The context from which to retrieve a list of dependencies.
      */
@@ -920,9 +812,9 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
             Resource resource = element.eResource();
             if (resource != null) {
                 final URI uri = resource.getURI();
-                if (existsInWorkspace(uri.toPlatformString(true))) {
+                if (AcceleoMTLInterpreter.existsInWorkspace(uri.toPlatformString(true))) {
                     viewpointProjects.add(uri.segment(1));
-                } else if (existsInPlugins(uri.toPlatformString(true))) {
+                } else if (AcceleoMTLInterpreter.existsInPlugins(uri.toPlatformString(true))) {
                     viewpointPlugins.add(uri.segment(1));
                 }
             }
@@ -934,13 +826,12 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     }
 
     /**
-     * Asks the registered import handlers whether they know about the given
-     * dependency.
-     * 
+     * Asks the registered import handlers whether they know about the given dependency.
+     *
      * @param dependency
      *            The dependency to try and add to this context.
-     * @return <code>true</code> if we found a corresponding import handler and
-     *         managed to create the dependency, <code>false</code> otherwise.
+     * @return <code>true</code> if we found a corresponding import handler and managed to create the dependency,
+     *         <code>false</code> otherwise.
      */
     private boolean addExtendedImport(String dependency) {
         // Consider that this will always change the dependency if it previously
@@ -971,13 +862,12 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     }
 
     /**
-     * Tries and add the given dependency to the context, considering that it is
-     * an MTL file.
-     * 
+     * Tries and add the given dependency to the context, considering that it is an MTL file.
+     *
      * @param dependency
      *            The dependency to try and add.
-     * @return <code>true</code> if we found a corresponding Acceleo module and
-     *         added the dependency, <code>false</code> otherwise.
+     * @return <code>true</code> if we found a corresponding Acceleo module and added the dependency, <code>false</code>
+     *         otherwise.
      */
     private boolean addMTLImport(String dependency) {
         String actualDependency = dependency;
@@ -993,10 +883,8 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         Set<URI> candidates = Sets.union(findProjectCandidates(emtlPath), findPluginCandidates(emtlPath));
 
         /*
-         * We may have multiple candidates for a single emtl path. Candidates
-         * located in the workspace will be considered before candidates located
-         * in the plugins but, other than that, we let Acceleo do its
-         * resolution.
+         * We may have multiple candidates for a single emtl path. Candidates located in the workspace will be
+         * considered before candidates located in the plugins but, other than that, we let Acceleo do its resolution.
          */
         if (!candidates.isEmpty()) {
             return mtlDependencies.putAll(actualDependency, candidates);
@@ -1006,7 +894,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
 
     /**
      * Validates that the given expression compiles in the given context.
-     * 
+     *
      * @param context
      *            Context of the current compilation.
      * @param compilationContext
@@ -1028,8 +916,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
                         severity = IInterpreterStatus.ERROR;
                     } else {
                         /*
-                         * IInterpreterStatus only understand "ERROR" and
-                         * "WARNING". Log infos as warnings.
+                         * IInterpreterStatus only understand "ERROR" and "WARNING". Log infos as warnings.
                          */
                         severity = IInterpreterStatus.WARNING;
                     }
@@ -1043,9 +930,8 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     }
 
     /**
-     * Checks whether a viewpoint specification plugin contains an emtl
-     * corresponding to the given path.
-     * 
+     * Checks whether a viewpoint specification plugin contains an emtl corresponding to the given path.
+     *
      * @param emtlPath
      *            Path of the emtl for which we need potential URIs.
      * @return
@@ -1064,7 +950,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
                     while (emtlEntries.hasMoreElements()) {
                         final String candidatePath = emtlEntries.nextElement().getPath();
 
-                        if (pathEndsWith(candidatePath, emtlPath)) {
+                        if (AcceleoMTLInterpreter.pathEndsWith(candidatePath, emtlPath)) {
                             final StringBuilder fullPath = new StringBuilder(viewpointPluginSymbolicName);
                             fullPath.append('/').append(candidatePath);
 
@@ -1079,13 +965,11 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     }
 
     /**
-     * Checks if the workspace contains an IProject that could hold an emtl file
-     * located at the given path.
-     * 
+     * Checks if the workspace contains an IProject that could hold an emtl file located at the given path.
+     *
      * @param emtlPath
      *            Path of the emtl for which we need potential URIs.
-     * @return The list of all projects that could hold a file at the given
-     *         path.
+     * @return The list of all projects that could hold a file at the given path.
      */
     private Set<URI> findProjectCandidates(String emtlPath) {
         final IWorkspace workspace = ResourcesPlugin.getWorkspace();
@@ -1112,15 +996,13 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     }
 
     /**
-     * Evaluates the given expression and return the evaluation result and
-     * potential issues.
-     * 
+     * Evaluates the given expression and return the evaluation result and potential issues.
+     *
      * @param context
      *            Target EObject of this evaluation.
      * @param expression
      *            Expression we are to evaluate.
-     * @return The evaluation result along with all problems that may have
-     *         occurred during evaluation.
+     * @return The evaluation result along with all problems that may have occurred during evaluation.
      */
     private EvaluationResult internalEvaluate(EObject context, String expression) {
         final CompilationContext compilationContext = createCompilationContext(context, expression);
@@ -1136,16 +1018,15 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     }
 
     /**
-     * Create a new IIntepreter preparing the environment by registering the
-     * required EPackages and resource factories in EMF.
-     * 
-     * @return an {@link AcceleoMTLInterpreter} suitable for querying in a
-     *         standalone environment.
+     * Create a new IIntepreter preparing the environment by registering the required EPackages and resource factories
+     * in EMF.
+     *
+     * @return an {@link AcceleoMTLInterpreter} suitable for querying in a standalone environment.
      */
     public static AcceleoMTLInterpreter createStandaloneInterpreter() {
-        registerPackages(EPackage.Registry.INSTANCE);
-        registerResourceFactories(Resource.Factory.Registry.INSTANCE);
-        registerLibraries();
+        AcceleoMTLInterpreter.registerPackages(EPackage.Registry.INSTANCE);
+        AcceleoMTLInterpreter.registerResourceFactories(Resource.Factory.Registry.INSTANCE);
+        AcceleoMTLInterpreter.registerLibraries();
         return new AcceleoMTLInterpreter();
 
     }
@@ -1159,7 +1040,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         registry.put(MtlPackage.eINSTANCE.getNsURI(), MtlPackage.eINSTANCE);
 
         registry.put("http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore", //$NON-NLS-1$
-                getOCLStdLibPackage());
+                AcceleoMTLInterpreter.getOCLStdLibPackage());
     }
 
     private static void registerResourceFactories(Resource.Factory.Registry registry) {
@@ -1196,12 +1077,10 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     @Override
     public ValidationResult analyzeExpression(IInterpreterContext context, String expression) {
         /*
-         * The interpreter is created as a global singleton : one single
-         * interpreter for all operations, whatever the number of VSM or
-         * representation files. Validation is called on expression granularity,
-         * and we are never warned of the validation "start" or "end" events. We
-         * thus cannot keep any state for the in-memory module as it could be
-         * reflecting operations located on other VSM files.
+         * The interpreter is created as a global singleton : one single interpreter for all operations, whatever the
+         * number of VSM or representation files. Validation is called on expression granularity, and we are never
+         * warned of the validation "start" or "end" events. We thus cannot keep any state for the in-memory module as
+         * it could be reflecting operations located on other VSM files.
          */
         invalidateModule();
 

@@ -18,6 +18,8 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -48,6 +50,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
+import org.eclipse.sirius.common.tools.internal.interpreter.IConverter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
@@ -57,6 +60,86 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
  * @author ymortier
  */
 public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProposalProvider {
+
+    /**
+     * Coercion rules used to convert raw values obtained from OCL into the values returned to Sirius.
+     * 
+     * @author pcdavid
+     */
+    private static class OclConverter implements IConverter {
+
+        @Override
+        public OptionalInt toInt(Object rawValue) {
+            Integer result = null;
+            if (rawValue instanceof Integer) {
+                result = (Integer) rawValue;
+            } else if (rawValue instanceof String) {
+                try {
+                    result = new Integer((String) rawValue);
+                } catch (final NumberFormatException nfe) {
+                    DslOclPlugin.getPlugin().error(Messages.OclInterpreter_OclNotANumber, nfe);
+                }
+            }
+            if (result != null) {
+                return OptionalInt.of(result);
+            } else {
+                return OptionalInt.empty();
+            }
+        }
+
+        @Override
+        public Optional<Boolean> toBoolean(Object rawValue) {
+            boolean result = false;
+            if (rawValue instanceof Boolean) {
+                result = ((Boolean) rawValue).booleanValue();
+            } else if (rawValue instanceof String) {
+                result = Boolean.parseBoolean((String) rawValue);
+            }
+            return Optional.of(result);
+        }
+
+        @Override
+        public Optional<String> toString(Object rawValue) {
+            if (rawValue != null) {
+                return Optional.of(rawValue.toString());
+            }
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<EObject> toEObject(Object rawValue) {
+            if (rawValue instanceof EObject) {
+                return Optional.of((EObject) rawValue);
+            } else {
+                return Optional.empty();
+            }
+        }
+
+        @Override
+        public Optional<Collection<EObject>> toEObjectCollection(Object rawValue) {
+            Collection<EObject> result = Collections.emptyList();
+            if (rawValue instanceof EObject) {
+                result = new ArrayList<>(1);
+                result.add((EObject) rawValue);
+            } else if (rawValue instanceof Collection) {
+                result = new ArrayList<>(((Collection<?>) rawValue).size());
+                for (final Object object : (Collection<?>) rawValue) {
+                    if (object instanceof EObject) {
+                        result.add((EObject) object);
+                    }
+                }
+            } else if (rawValue != null && rawValue.getClass().isArray()) {
+                result = new ArrayList<>(((Object[]) rawValue).length);
+                for (final Object object : (Object[]) rawValue) {
+                    if (object instanceof EObject) {
+                        result.add((EObject) object);
+                    }
+                }
+            }
+            return Optional.of(result);
+        }
+
+    }
 
     /** The OCL expression discrimant. */
     public static final String OCL_DISCRIMINANT = "ocl:"; //$NON-NLS-1$
@@ -69,6 +152,8 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /** The variables. */
     private final VariableManager variables = new VariableManager();
+
+    private final IConverter converter = new OclConverter();
 
     @Override
     public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
@@ -127,73 +212,32 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     @Override
     public boolean evaluateBoolean(final EObject context, final String expression) throws EvaluationException {
-        final Object value = evaluate(context, expression);
-        boolean result = false;
-        if (value instanceof Boolean) {
-            result = ((Boolean) value).booleanValue();
-        } else if (value instanceof String) {
-            result = Boolean.parseBoolean((String) value);
-        }
-        return result;
+        Object value = evaluate(context, expression);
+        return converter.toBoolean(value).orElse(false);
     }
 
     @Override
     public Collection<EObject> evaluateCollection(final EObject context, final String expression) throws EvaluationException {
-        final Object value = evaluate(context, expression);
-        Collection<EObject> result = Collections.emptyList();
-        if (value instanceof EObject) {
-            result = new ArrayList<EObject>(1);
-            result.add((EObject) value);
-        } else if (value instanceof Collection) {
-            result = new ArrayList<EObject>(((Collection<?>) value).size());
-            for (final Object object : (Collection<?>) value) {
-                if (object instanceof EObject) {
-                    result.add((EObject) object);
-                }
-            }
-        } else if (value != null && value.getClass().isArray()) {
-            result = new ArrayList<EObject>(((Object[]) value).length);
-            for (final Object object : (Object[]) value) {
-                if (object instanceof EObject) {
-                    result.add((EObject) object);
-                }
-            }
-        }
-        return result;
+        Object value = evaluate(context, expression);
+        return converter.toEObjectCollection(value).orElse(Collections.emptySet());
     }
 
     @Override
     public EObject evaluateEObject(final EObject context, final String expression) throws EvaluationException {
-        final Object value = evaluate(context, expression);
-        if (value instanceof EObject) {
-            return (EObject) value;
-        }
-        return null;
+        Object value = evaluate(context, expression);
+        return converter.toEObject(value).orElse(null);
     }
 
     @Override
     public Integer evaluateInteger(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
-        Integer result = null;
-        if (value instanceof Integer) {
-            result = (Integer) value;
-        } else if (value instanceof String) {
-            try {
-                result = new Integer((String) value);
-            } catch (final NumberFormatException nfe) {
-                DslOclPlugin.getPlugin().error(Messages.OclInterpreter_OclNotANumber, nfe);
-            }
-        }
-        return result;
+        return converter.toInt(value).orElse(0);
     }
 
     @Override
     public String evaluateString(final EObject context, final String expression) throws EvaluationException {
-        final Object value = evaluate(context, expression);
-        if (value != null) {
-            return value.toString();
-        }
-        return null;
+        Object value = evaluate(context, expression);
+        return converter.toString(value).orElse(null);
     }
 
     /**
@@ -274,9 +318,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
         this.variables.clearVariables();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setModelAccessor(final ModelAccessor modelAccessor) {
         // ignore
@@ -284,8 +325,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentContext context) {
-        List<ContentProposal> computeCompletionEntry = OclCompletionEntry.computeCompletionEntry(context);
-        return computeCompletionEntry;
+        return OclCompletionEntry.computeCompletionEntry(context);
     }
 
     @Override
@@ -322,8 +362,8 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
                 // Ask OCLHelper for proposals and process them
                 final List<Choice> choices = getOCLHelper().getSyntaxHelp(ConstraintKind.INVARIANT, evaluationString);
-                if (choices != null && choices.size() > 0) {
-                    final List<ContentProposal> contentProposals = new ArrayList<ContentProposal>();
+                if (choices != null && !choices.isEmpty()) {
+                    final List<ContentProposal> contentProposals = new ArrayList<>();
                     for (Choice choice : choices) {
                         contentProposals.add(new ContentProposal(choice.getName(), choice.getName() + " (" + choice.getKind().name() + ")", choice.getDescription())); //$NON-NLS-1$//$NON-NLS-2$
                     }
@@ -337,7 +377,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     @Override
     public Collection<String> getImports() {
-        return Collections.<String> emptyList();
+        return Collections.emptyList();
     }
 
     @Override
@@ -347,7 +387,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     @Override
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
-        return new LinkedHashSet<IInterpreterStatus>();
+        return new LinkedHashSet<>();
     }
 
     @Override

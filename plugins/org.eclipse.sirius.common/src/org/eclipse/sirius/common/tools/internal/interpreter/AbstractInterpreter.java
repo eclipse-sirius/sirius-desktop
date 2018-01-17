@@ -28,9 +28,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 /**
  * Abstract base class for implementations of {@link IInterpreter}.
  *
@@ -41,6 +38,12 @@ public abstract class AbstractInterpreter implements IInterpreter, TypedValidati
     /** The separator between EPackage name and EClass name for domain class. */
     protected static final String SEPARATOR = "."; //$NON-NLS-1$
 
+    /**
+     * The converter to use to coerce raw values returned by the actual implementation into the type requested expected
+     * for a given method.
+     */
+    private final IConverter converter = new DefaultConverter();
+
     @Override
     public boolean provides(String expression) {
         return expression != null && expression.startsWith(getPrefix());
@@ -49,73 +52,31 @@ public abstract class AbstractInterpreter implements IInterpreter, TypedValidati
     @Override
     public Collection<EObject> evaluateCollection(EObject context, String expression) throws EvaluationException {
         Object raw = evaluate(context, expression);
-        final Collection<EObject> result;
-        if (raw instanceof Collection<?>) {
-            result = Lists.newArrayList(Iterables.filter((Collection<?>) raw, EObject.class));
-        } else if (raw instanceof EObject) {
-            result = Collections.singleton((EObject) raw);
-        } else if (raw != null && raw.getClass().isArray()) {
-            result = Lists.newArrayList(Iterables.filter(Lists.newArrayList((Object[]) raw), EObject.class));
-        } else {
-            result = Collections.emptySet();
-        }
-        return result;
+        return converter.toEObjectCollection(raw).orElse(Collections.emptySet());
     }
 
     @Override
     public boolean evaluateBoolean(EObject context, String expression) throws EvaluationException {
         Object raw = evaluate(context, expression);
-        final boolean result;
-        if (raw == null) {
-            result = false;
-        } else if (raw instanceof Boolean) {
-            result = ((Boolean) raw).booleanValue();
-        } else {
-            String toString = raw.toString();
-            if ("true".equalsIgnoreCase(toString)) { //$NON-NLS-1$
-                result = true;
-            } else if ("false".equalsIgnoreCase(toString)) { //$NON-NLS-1$
-                result = false;
-            } else {
-                /*
-                 * raw is != null and its toString is neither true or false, this happens when the user expect the
-                 * condition to check that a value is existing, then we consider any non null value returns true and
-                 * null returns false.
-                 */
-                result = true;
-            }
-        }
-        return result;
+        return converter.toBoolean(raw).orElse(false);
     }
 
     @Override
     public EObject evaluateEObject(EObject context, String expression) throws EvaluationException {
         Object raw = evaluate(context, expression);
-        if (raw instanceof EObject) {
-            return (EObject) raw;
-        } else {
-            return null;
-        }
+        return converter.toEObject(raw).orElse(null);
     }
 
     @Override
     public String evaluateString(EObject context, String expression) throws EvaluationException {
         Object raw = evaluate(context, expression);
-        if (raw != null) {
-            return String.valueOf(raw);
-        } else {
-            return ""; //$NON-NLS-1$
-        }
+        return converter.toString(raw).orElse(""); //$NON-NLS-1$
     }
 
     @Override
     public Integer evaluateInteger(EObject context, String expression) throws EvaluationException {
         Object raw = evaluate(context, expression);
-        try {
-            return Integer.parseInt(String.valueOf(raw));
-        } catch (NumberFormatException e) {
-            return Integer.valueOf(0);
-        }
+        return converter.toInt(raw).orElse(0);
     }
 
     @Override
