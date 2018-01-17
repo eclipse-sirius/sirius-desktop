@@ -14,6 +14,8 @@ package org.eclipse.sirius.ui.properties.internal;
 
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.eef.core.api.InputDescriptor;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 
 /**
@@ -26,7 +28,7 @@ public class SiriusInputAdapter implements IAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public Object getAdapter(final Object adaptableObject, @SuppressWarnings("rawtypes") final Class adapterType) {
-        if (adapterType != null) {
+        if (adapterType == InputDescriptor.class && adaptableObject instanceof EObject && Session.of((EObject) adaptableObject).isPresent()) {
             return new SiriusInputDescriptor(adaptableObject);
         } else {
             return null;
