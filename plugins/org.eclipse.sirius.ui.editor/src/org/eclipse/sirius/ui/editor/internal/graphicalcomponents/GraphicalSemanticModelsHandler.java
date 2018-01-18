@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo.
+ * Copyright (c) 2017, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -639,6 +639,10 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
          */
         private void initSelectionListener() {
             treeViewer.addSelectionChangedListener((event) -> {
+                if (session == null || session.getTransactionalEditingDomain() == null || session.getTransactionalEditingDomain().getCommandStack() == null) {
+                    // Can happen if we're called asynchronously at a time when the session and TED have already been closed/disposed.
+                    return;
+                }
                 TreeSelection selection = (TreeSelection) event.getSelection();
                 if (event.getSelection().isEmpty()) {
                     deleteActionHandler.setEnabled(false);
