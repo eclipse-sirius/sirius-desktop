@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,13 +27,8 @@ import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubMonitor;
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckboxCellEditor;
@@ -52,18 +47,13 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.IWizardContainer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
-import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
-import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -76,7 +66,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Item;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.PlatformUI;
@@ -285,24 +274,12 @@ public final class ViewpointSelection {
      *            at true for selected {@link Viewpoint}.
      */
     public static void openViewpointsSelectionDialog(final Session session, boolean createNewRepresentations) {
-        if (Movida.isEnabled()) {
-            session.getSemanticCrossReferencer();
-            org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance();
-            org.eclipse.sirius.business.internal.movida.ViewpointSelection selection = DAnalysisSessionHelper.getViewpointSelection(registry, (DAnalysisSession) session);
-            Set<URI> selectedBefore = selection.getSelected();
-            ViewpointSelectionDialog vsd = new ViewpointSelectionDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), registry, selection,
-                    ViewpointSelection.getSemanticFileExtensions(session));
-            if (vsd.open() == Window.OK) {
-                ViewpointSelection.applyViewpointSelectionChange(session, selection, selectedBefore);
-            }
-        } else {
-            session.getSemanticCrossReferencer();
-            final SortedMap<Viewpoint, Boolean> viewpointsMap = ViewpointSelection.getViewpointsWithMonitor(session);
-            org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionDialog vsd = new org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionDialog(
-                    PlatformUI.getWorkbench().getDisplay().getActiveShell(), viewpointsMap);
-            if (vsd.open() == Window.OK) {
-                ViewpointHelper.applyNewViewpointSelection(viewpointsMap, vsd.getSelection(), session, createNewRepresentations, new ViewpointSelectionCallbackWithConfimation());
-            }
+        session.getSemanticCrossReferencer();
+        final SortedMap<Viewpoint, Boolean> viewpointsMap = ViewpointSelection.getViewpointsWithMonitor(session);
+        org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionDialog vsd = new org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionDialog(
+                PlatformUI.getWorkbench().getDisplay().getActiveShell(), viewpointsMap);
+        if (vsd.open() == Window.OK) {
+            ViewpointHelper.applyNewViewpointSelection(viewpointsMap, vsd.getSelection(), session, createNewRepresentations, new ViewpointSelectionCallbackWithConfimation());
         }
     }
 
@@ -329,56 +306,6 @@ public final class ViewpointSelection {
         }
         sb.append(Joiner.on("\n").join(lines)); //$NON-NLS-1$
         return sb.toString();
-    }
-
-    private static void applyViewpointSelectionChange(final Session session, org.eclipse.sirius.business.internal.movida.ViewpointSelection selection, Set<URI> selectedBefore) {
-        Set<URI> selectedAfter = selection.getSelected();
-        Set<URI> newSelected = Sets.difference(selectedAfter, selectedBefore);
-        Set<URI> newDeselected = Sets.difference(selectedBefore, selectedAfter);
-        final ViewpointSelection.Callback callback = new ViewpointSelectionCallbackWithConfimation();
-        final Set<Viewpoint> newSelectedViewpoints = Sets.newHashSet(Iterables.transform(newSelected, new Function<URI, Viewpoint>() {
-            @Override
-            public Viewpoint apply(URI from) {
-                return SiriusResourceHelper.getCorrespondingViewpoint(session, from, true).get();
-            }
-        }));
-        final Set<Viewpoint> newDeselectedViewpoints = Sets.newHashSet(Iterables.transform(newDeselected, new Function<URI, Viewpoint>() {
-            @Override
-            public Viewpoint apply(URI from) {
-                return SiriusResourceHelper.getCorrespondingViewpoint(session, from, true).get();
-            }
-        }));
-        // Only if there is something to do
-        if (!newSelected.isEmpty() || !newDeselected.isEmpty()) {
-
-            try {
-                Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-                IRunnableContext context = new ProgressMonitorDialog(shell);
-                IRunnableWithProgress runnable = new IRunnableWithProgress() {
-                    @Override
-                    public void run(final IProgressMonitor monitor) {
-                        try {
-                            monitor.beginTask(Messages.ViewpointSelection_applySelectionTask, 1);
-                            SubMonitor subMonitor = SubMonitor.convert(monitor, 1);
-                            Command command = new ChangeViewpointSelectionCommand(session, callback, newSelectedViewpoints, newDeselectedViewpoints, subMonitor);
-                            TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-                            domain.getCommandStack().execute(command);
-                        } finally {
-                            monitor.done();
-                        }
-                    }
-
-                };
-                PlatformUI.getWorkbench().getProgressService().runInUI(context, runnable, null);
-            } catch (final InvocationTargetException e) {
-                if (e.getCause() instanceof RuntimeException) {
-                    throw (RuntimeException) e.getCause();
-                }
-                throw new RuntimeException(e);
-            } catch (final InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
     }
 
     /**

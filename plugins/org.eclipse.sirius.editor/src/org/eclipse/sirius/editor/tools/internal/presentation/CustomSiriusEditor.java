@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,15 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.presentation;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EventObject;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Stream;
 
 import org.eclipse.core.resources.IMarker;
@@ -36,13 +32,12 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
@@ -51,31 +46,22 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
-import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.migration.description.VSMExtendedMetaData;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMResourceHandler;
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
-import org.eclipse.sirius.business.internal.movida.DynamicVSMLoader;
-import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointURIConverter;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointURIHandler;
 import org.eclipse.sirius.common.ui.tools.api.editor.IEObjectNavigable;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.properties.validation.SiriusInterpreterErrorDecorator;
 import org.eclipse.sirius.editor.tools.internal.actions.ValidateAction;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.Group;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IEditorInput;
@@ -88,14 +74,35 @@ import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Version;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
+import com.google.common.base.Preconditions;
 
 /**
  * The advanced Viewpoint Specification Model (*.odesign) Editor, base on the standard EMF-generated editor, but with
  * Sirius-specific customizations.
  */
 public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigable {
+    private static class ViewpointURIHandler extends URIHandlerImpl.PlatformSchemeAware {
+        private final ResourceSet resourceSet;
+
+        /**
+         * Constructor.
+         * 
+         * @param resourceSet
+         *            the resource set to use for the conversion of physical URIs to
+         *            logical <code>viewpoint:/</code> URIs on save..
+         */
+        ViewpointURIHandler(ResourceSet resourceSet) {
+            this.resourceSet = Preconditions.checkNotNull(resourceSet);
+        }
+
+        @Override
+        public URI deresolve(URI uri) {
+            if (!baseURI.isPlatform() && "viewpoint".equals(baseURI.scheme())) { //$NON-NLS-1$
+                baseURI = resourceSet.getURIConverter().normalize(baseURI);
+            }
+            return super.deresolve(uri);
+        }
+    }
 
     /**
      * ID of the context.
@@ -131,10 +138,6 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
 
     private ValidationDecoration validationDecorator;
 
-    private DynamicVSMLoader loader;
-
-    private VSMRequirementChangeAdapter tracker;
-
     /**
      * Constructor.
      */
@@ -143,24 +146,6 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         editingDomain.getResourceSet().eAdapters().add(new ECrossReferenceAdapter());
         editingDomain.getResourceSet().eAdapters().add(new ModificationTrackingEnabler(editingDomain.getResourceSet()));
         vsmURIHandler = new ViewpointURIHandler(editingDomain.getResourceSet());
-        if (Movida.isEnabled()) {
-            ViewpointRegistry registry = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
-            editingDomain.getResourceSet().setURIConverter(new ViewpointURIConverter(registry));
-            loader = new DynamicVSMLoader(editingDomain.getResourceSet(), registry);
-            loader.setErrorHandler(new Runnable() {
-                @Override
-                public void run() {
-                    getSite().getShell().getDisplay().asyncExec(new Runnable() {
-                        @Override
-                        public void run() {
-                            MessageDialog.openError(getSite().getShell(), "Error", "The editor will be closed.");
-                            getSite().getPage().closeEditor(CustomSiriusEditor.this, false);
-                            CustomSiriusEditor.this.dispose();
-                        }
-                    });
-                }
-            });
-        }
     }
 
     public Control getControl() {
@@ -228,37 +213,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                 }
             });
             validationDecorator = new ValidationDecoration();
-            if (Movida.isEnabled()) {
-                /*
-                 * Customize the label provider to add the URI of the corresponding resource for Viewpoints loaded by
-                 * dependency.
-                 */
-                decoratingLabelProvider = new GeneratedElementsLabelProvider((IStyledLabelProvider) selectionViewer.getLabelProvider(), validationDecorator) {
-                    @Override
-                    protected StyledString getStyledText(Object element) {
-                        StyledString result = super.getStyledText(element);
-                        if (element instanceof Viewpoint) {
-                            Viewpoint viewpoint = (Viewpoint) element;
-                            Resource resource = viewpoint.eResource();
-                            if (resource != null) {
-                                // CHECKSTYLE:OFF
-                                if (resource.getResourceSet().getResources().indexOf(resource) != 0) {
-                                    result.append(result + " (" + resource.getURI() + ")");
-                                }
-                                // CHECKSTYLE:ON
-                            }
-                        }
-                        return result;
-                    }
-                };
-            } else {
-                decoratingLabelProvider = new GeneratedElementsLabelProvider((IStyledLabelProvider) selectionViewer.getLabelProvider(), validationDecorator);
-            }
+            decoratingLabelProvider = new GeneratedElementsLabelProvider((IStyledLabelProvider) selectionViewer.getLabelProvider(), validationDecorator);
             decoratingLabelProvider.setLabelDecorator(new SiriusInterpreterErrorDecorator(this.getURIFromInput(getEditorInput())));
-
-            if (Movida.isEnabled()) {
-                customizeContentProvider();
-            }
 
             selectionViewer.setLabelProvider(decoratingLabelProvider);
             selectionViewer.addDoubleClickListener(new IDoubleClickListener() {
@@ -382,52 +338,6 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         return Optional.empty();
     }
 
-    /**
-     * Customize the content provider not to show the whole resources loaded by dependency, but only the Viewpoints
-     * (inside these resources) which the main VSM depend on.
-     */
-    private void customizeContentProvider() {
-        final ViewpointRegistry registry = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
-        selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory) {
-            @Override
-            public Object[] getElements(Object object) {
-                if (object instanceof ResourceSet) {
-                    Set<EObject> viewpoints = getRequiredViewpoints(registry, (ResourceSet) object);
-                    List<Object> elements = new ArrayList<>();
-                    Resource mainResource = ((ResourceSet) object).getResources().get(0);
-                    elements.add(mainResource);
-                    for (Viewpoint additionalVP : Iterables.filter(viewpoints, Viewpoint.class)) {
-                        Resource resource = additionalVP.eResource();
-                        if (resource != null && resource != mainResource) {
-                            elements.add(additionalVP);
-                        }
-                    }
-                    return elements.toArray();
-                } else {
-                    return super.getElements(object);
-                }
-            }
-
-            private Set<EObject> getRequiredViewpoints(final ViewpointRegistry registry, ResourceSet resourceSet) {
-                Set<EObject> viewpoints = new HashSet<>();
-                for (final URI uri : loader.getRequiredViewpoints()) {
-                    Option<URI> provider = registry.getProvider(uri);
-                    if (provider.some()) {
-                        Resource res = resourceSet.getResource(provider.get(), true);
-                        viewpoints.add(Iterables.find(registry.getSiriusResourceHandler().collectViewpointDefinitions(res), new Predicate<Viewpoint>() {
-                            @Override
-                            public boolean apply(Viewpoint input) {
-                                Option<URI> inputURI = new ViewpointQuery(input).getViewpointURI();
-                                return inputURI.some() && inputURI.get().equals(uri);
-                            }
-                        }));
-                    }
-                }
-                return viewpoints;
-            }
-        });
-    }
-
     private ToolBarManager getToolBarManager() {
         return currentViewerPane.getToolBarManager();
     }
@@ -464,12 +374,6 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
         }
         editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
-
-        if (Movida.isEnabled()) {
-            loader.protect(resource.getURI());
-            tracker = new VSMRequirementChangeAdapter(resource, loader);
-            tracker.install();
-        }
     }
 
     private URI getURIFromInput(IEditorInput input) {
@@ -499,11 +403,6 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         editingDomain.getResourceSet().eAdapters().remove(templateUpdateTrigger);
         if (decoratingLabelProvider != null) {
             decoratingLabelProvider.dispose();
-        }
-
-        if (Movida.isEnabled()) {
-            loader.dispose();
-            tracker.uninstall();
         }
     }
 

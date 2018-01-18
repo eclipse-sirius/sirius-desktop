@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.componentization.ViewpointRegistryImpl;
-import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.viewpoint.description.Component;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -132,11 +131,7 @@ public class ViewpointRegistry implements IResourceChangeListener {
     private static class ViewpointRegistryHolder {
         private static ViewpointRegistry instance;
         static {
-            if (Movida.isEnabled()) {
-                instance = new org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry();
-            } else {
-                instance = new ViewpointRegistryImpl();
-            }
+            instance = new ViewpointRegistryImpl();
             instance.init(10);
         }
     }

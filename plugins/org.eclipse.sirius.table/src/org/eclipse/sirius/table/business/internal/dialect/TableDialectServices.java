@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,19 +11,13 @@
 package org.eclipse.sirius.table.business.internal.dialect;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -32,25 +26,14 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
-import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.contribution.ContributionPointHelper;
-import org.eclipse.sirius.business.internal.contribution.IncrementalModelContributor;
-import org.eclipse.sirius.business.internal.contribution.IntrinsicPathIdentifier;
-import org.eclipse.sirius.business.internal.contribution.ModelContributorAdapter;
-import org.eclipse.sirius.business.internal.contribution.RepresentationExtensionsFinder;
-import org.eclipse.sirius.business.internal.contribution.SiriusReferenceResolver;
-import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.description.contribution.ContributionPoint;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
 import org.eclipse.sirius.table.business.internal.dialect.description.TableInterpretedExpressionQuery;
 import org.eclipse.sirius.table.business.internal.refresh.DTableElementSynchronizer;
@@ -61,7 +44,6 @@ import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
-import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.table.tools.internal.command.TableCommandFactory;
@@ -70,14 +52,10 @@ import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.base.Function;
-import com.google.common.base.Supplier;
 
 /**
  * Services for the table dialect.
@@ -85,19 +63,6 @@ import com.google.common.base.Supplier;
  * @author cbrun
  */
 public class TableDialectServices extends AbstractRepresentationDialectServices {
-
-    /**
-     * Tests whether a representation should be handled by the Movida-specific code which handles contributions and
-     * effective representation descriptions.
-     *
-     * @param representation
-     *            the representation to test.
-     * @return <code>true</code> if it should be handled by Movida-specific logic.
-     *
-     */
-    public static boolean isHandledByMovida(DRepresentation representation) {
-        return Movida.isEnabled() && (representation instanceof DTable) && (((DTable) representation).getDescription() instanceof EditionTableDescription);
-    }
 
     @Override
     protected boolean isSupported(DRepresentation representation) {
@@ -143,9 +108,6 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
             table.setName(name);
             table.setTarget(semantic);
             table.setDescription((TableDescription) description);
-            if (isHandledByMovida(table)) {
-                refreshEffectiveRepresentationDescription(table, monitor);
-            }
             monitor.worked(1);
 
             refresh(table, new SubProgressMonitor(monitor, 10));
@@ -153,96 +115,6 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
             monitor.done();
         }
         return table;
-    }
-
-    @Override
-    public void updateRepresentationsExtendedBy(Session session, Viewpoint viewpoint, boolean activated) {
-        if (Movida.isEnabled()) {
-            IProgressMonitor monitor = new NullProgressMonitor();
-            for (DView view : session.getOwnedViews()) {
-                for (DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
-                    if (isHandledByMovida(representation)) {
-                        RepresentationExtensionsFinder ref = new RepresentationExtensionsFinder(((DTable) representation).getDescription());
-                        if (ref.isAffectedBy(viewpoint)) {
-                            refreshEffectiveRepresentationDescription(representation, monitor);
-                            refresh(representation, monitor);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public void refreshEffectiveRepresentationDescription(DRepresentation representation, IProgressMonitor monitor) {
-        if (!(isHandledByMovida(representation))) {
-            return;
-        }
-        DTable table = (DTable) representation;
-        Session session = SessionManager.INSTANCE.getSession(table.getTarget());
-        IncrementalModelContributor imc = getModelContributor(session, table);
-        imc.apply(table.getDescription(), new RepresentationExtensionsFinder(table.getDescription()).findAllRelevantViewpoints(session));
-
-        Supplier<EObject> efSupplier = new Supplier<EObject>() {
-            @Override
-            public EObject get() {
-                return null;
-            }
-        };
-        Supplier<EList<ContributionPoint>> cpSupplier = new Supplier<EList<ContributionPoint>>() {
-            @Override
-            public EList<ContributionPoint> get() {
-                return null;
-            }
-        };
-        updateContributionPoints(table, efSupplier, cpSupplier, imc);
-    }
-
-    private IncrementalModelContributor getModelContributor(Session session, DTable table) {
-        ModelContributorAdapter mca = ModelContributorAdapter.find(table);
-        if (mca == null) {
-            mca = ModelContributorAdapter.attach(table, createModelContributor(session, table));
-        }
-        return mca.getModelContributor();
-    }
-
-    private IncrementalModelContributor createModelContributor(Session session, final DTable table) {
-        Supplier<EObject> efSupplier = new Supplier<EObject>() {
-            @Override
-            public EObject get() {
-                return null;
-            }
-        };
-        Supplier<Iterable<ContributionPoint>> cpSupplier = new Supplier<Iterable<ContributionPoint>>() {
-            @Override
-            public Iterable<ContributionPoint> get() {
-                return null;
-            }
-        };
-        SiriusReferenceResolver resolver = new SiriusReferenceResolver(session.getInterpreter());
-        Function<EObject, Object> idFunction = new ContributionTrakingIdentifier(efSupplier, cpSupplier, new IntrinsicPathIdentifier());
-        IncrementalModelContributor imc = new TableModelContributor(new TableContributionsFinder(table.getDescription()), resolver, idFunction);
-        if (efSupplier.get() != null) {
-            Map<EObject, Object> restoredIdentifiers = new HashMap<>();
-            for (EObject obj : AllContents.of(efSupplier.get(), true)) {
-                restoredIdentifiers.put(obj, idFunction.apply(obj));
-            }
-            imc.resetState(efSupplier.get(), restoredIdentifiers);
-        }
-        return imc;
-    }
-
-    private void updateContributionPoints(DTable table, Supplier<EObject> efSupplier, Supplier<EList<ContributionPoint>> cpSupplier, IncrementalModelContributor imc) {
-        List<ContributionPoint> newPoints = new ArrayList<>();
-        newPoints.add(ContributionPointHelper.make(efSupplier.get(), new IntrinsicPathIdentifier().apply(table.getDescription())));
-        Map<EObject, Object> cps = imc.getContributionPoints();
-        for (Map.Entry<EObject, Object> entry : cps.entrySet()) {
-            newPoints.add(ContributionPointHelper.make(entry.getKey(), (String) entry.getValue()));
-        }
-        for (EObject imported : ((TableDescription) efSupplier.get()).getImportedElements()) {
-            newPoints.add(ContributionPointHelper.make(imported, (String) imc.getIdentifier(imported)));
-        }
-        ContributionPointHelper.updateIfNeeded(cpSupplier.get(), newPoints);
     }
 
     /**
@@ -257,20 +129,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
             DTable table = (DTable) representation;
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(table.getTarget());
             ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
-
-            Supplier<EObject> efSupplier = new Supplier<EObject>() {
-                @Override
-                public EObject get() {
-                    // return table.getEffectiveDescription();
-                    return null;
-                }
-            };
-
-            if (isHandledByMovida(table) && efSupplier.get() == null) {
-                refreshEffectiveRepresentationDescription(representation, monitor);
-                monitor.worked(1);
-            }
-            TableDescription description = isHandledByMovida(table) ? (TableDescription) efSupplier.get() : table.getDescription();
+            TableDescription description = table.getDescription();
             DTableSynchronizer sync = new DTableSynchronizerImpl(description, accessor, interpreter);
             sync.setTable(table);
             sync.refresh(new SubProgressMonitor(monitor, 1));
@@ -351,9 +210,6 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         return table == new DRepresentationElementQuery(tableElement).getParentRepresentation();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public RepresentationDescription getDescription(DRepresentation representation) {
         if (isSupported(representation)) {

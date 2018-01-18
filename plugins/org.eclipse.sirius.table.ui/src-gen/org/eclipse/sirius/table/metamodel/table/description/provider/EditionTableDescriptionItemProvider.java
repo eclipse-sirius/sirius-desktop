@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,9 +19,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.description.contribution.ContributionFactory;
-import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
@@ -137,11 +134,6 @@ public class EditionTableDescriptionItemProvider extends TableDescriptionItemPro
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-
-        if (Movida.isEnabled()) {
-            newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION_PROVIDER__CONTRIBUTIONS, ContributionFactory.eINSTANCE.createContribution()));
-        }
-
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS, DescriptionFactory.eINSTANCE.createFeatureColumnMapping()));
     }
 

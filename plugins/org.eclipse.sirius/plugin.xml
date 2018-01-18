@@ -23,8 +23,6 @@
    <extension-point id="runtimeLogger" name="%extension-point.runtimeLogger.name" schema="schema/runtimeLogger.exsd"/>
    <extension-point id="deleteHook" name="%extension-point.deleteHook.name" schema="schema/deleteHook.exsd"/>
    <extension-point id="sessionFactory" name="%extension-point.sessionFactory.name" schema="schema/sessionFactory.exsd"/>
-   <extension-point id="viewpointSpecificationModel" name="%extension-point.viewpointSpecificationModel.name" schema="schema/viewpointSpecificationModel.exsd"/>
-   <extension-point id="viewpointResourceType" name="%extension-point.viewpointResourceType.name" schema="schema/viewpointResourceType.exsd"/>
    <extension-point id="migrationParticipant" name="%extension-point.migration.name" schema="schema/migrationParticipant.exsd"/>
    <extension-point id="repairParticipant" name="%extension-point.repairParticipant.name" schema="schema/repairParticipant.exsd"/>
    <extension-point id="resourceStrategy" name="%extension-point.resourceStrategy.name" schema="schema/resourceStrategy.exsd"/>
@@ -424,13 +422,6 @@
             class="org.eclipse.sirius.business.internal.migration.EmptyMigrationForPropertyViewMigrationParticipant"
             kind="VSM">
       </participant>
-   </extension>
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated contribution -->
-      <package
-            uri="http://www.eclipse.org/sirius/description/contribution/1.0.0"
-            class="org.eclipse.sirius.description.contribution.ContributionPackage"
-            genModel="model/contribution.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">

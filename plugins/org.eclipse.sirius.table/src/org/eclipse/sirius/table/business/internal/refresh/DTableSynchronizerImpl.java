@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,7 +40,6 @@ import org.eclipse.sirius.ext.base.collect.SetIntersection;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.business.api.query.DTableQuery;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
-import org.eclipse.sirius.table.business.internal.dialect.TableDialectServices;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
@@ -475,7 +474,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
              * let's analyze the existing columns.
              */
             for (final DColumn column : table.getColumns()) {
-                boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (column.getOriginMapping().eResource() == null || column.getOriginMapping().eIsProxy());
+                boolean mappingIsObsolete = column.getOriginMapping().eResource() == null || column.getOriginMapping().eIsProxy();
                 if (mappingIsObsolete || (column.getOriginMapping() == mapping && column instanceof DFeatureColumn)) {
                     columnsWithoutTarget.add(column);
                 }
@@ -576,7 +575,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
          * let's analyse the existing columns.
          */
         for (final DColumn column : table.getColumns()) {
-            boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (column.getOriginMapping().eResource() == null || column.getOriginMapping().eIsProxy());
+            boolean mappingIsObsolete = column.getOriginMapping().eResource() == null || column.getOriginMapping().eIsProxy();
             if (mappingIsObsolete || (column.getOriginMapping() == mapping && column instanceof DFeatureColumn)) {
                 status.addInOld(new DFeatureColumnCandidate((DFeatureColumn) column, this.ids));
             }
@@ -703,7 +702,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         // to the old values.
         for (final DCell cell : new DTableQuery(table).getCells()) {
             IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
-            boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (intersectionMapping == null || intersectionMapping.eResource() == null);
+            boolean mappingIsObsolete = intersectionMapping == null || intersectionMapping.eResource() == null;
             if (iMapping.equals(intersectionMapping) || mappingIsObsolete) {
                 status.addInOld(new DCellCandidate(cell, this.ids));
             }
@@ -863,7 +862,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         // to the old values.
         for (final DCell cell : new DTableQuery(table).getCells()) {
             IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
-            boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (intersectionMapping == null || intersectionMapping.eResource() == null);
+            boolean mappingIsObsolete = intersectionMapping == null || intersectionMapping.eResource() == null;
             if (iMapping.equals(intersectionMapping) || mappingIsObsolete) {
                 status.addInOld(new DCellCandidate(cell, this.ids));
             }
@@ -1064,8 +1063,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         }
         for (final DLine line : container.getLines()) {
             LineMapping originMapping = line.getOriginMapping();
-            boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (originMapping.eResource() == null);
-            if (originMapping == mapping || mappingIsObsolete) {
+            if (originMapping == mapping || originMapping.eResource() == null) {
                 status.addInOld(new DLineCandidate(line, this.ids));
             }
         }
@@ -1101,20 +1099,12 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         return status;
     }
 
-    /**
-     *
-     * {@inheritDoc}
-     */
     @Override
     public void setTable(final DTable newTable) {
         this.table = newTable;
         this.ids = RefreshIdsHolder.getOrCreateHolder(table);
     }
 
-    /**
-     *
-     * {@inheritDoc}
-     */
     @Override
     public DTable getTable() {
         return table;

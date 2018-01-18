@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,16 +83,6 @@ public interface DialectServices {
      * @since 0.9.0
      */
     DRepresentation copyRepresentation(DRepresentation representation, String name, Session session, IProgressMonitor monitor);
-
-    /**
-     * Refresh the actual representation description used for the specified representation when the context changes.
-     * 
-     * @param representation
-     *            the representation whose description to update.
-     * @param monitor
-     *            to monitor the refresh operation.
-     */
-    void refreshEffectiveRepresentationDescription(DRepresentation representation, IProgressMonitor monitor);
 
     /**
      * Refresh a representation. By default a lazy refresh is done, i.e. only view model elements for which UI parts

@@ -107,31 +107,16 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      */
     protected abstract boolean isSupported(RepresentationDescription description);
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void notify(RepresentationNotification notification) {
         // Empty default implementation.
     }
-
-    /**
-     * {@inheritDoc}
-     */
+    
     @Override
     public void updateRepresentationsExtendedBy(Session session, Viewpoint viewpoint, boolean activated) {
         // No support for representation extension by default.
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void refreshEffectiveRepresentationDescription(DRepresentation representation, IProgressMonitor monitor) {
-        // Do nothing by default, not all dialects have effective representation
-        // descriptions.
-    }
-
+    
     @Override
     public void refresh(DRepresentation representation, IProgressMonitor monitor) {
         refresh(representation, false, monitor);
@@ -492,25 +477,16 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         return shouldInitializeRepresentation;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void invalidateMappingCache() {
         // No cache to invalidate by default
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<? extends AbstractCommandTask> createTask(CommandContext context, ModelAccessor extPackage, ModelOperation op, Session session, UICallBack uiCallback) {
         return Options.newNone();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean allowsEStructuralFeatureCustomization(EObject choice) {
         // Do not support structural feature customization by default

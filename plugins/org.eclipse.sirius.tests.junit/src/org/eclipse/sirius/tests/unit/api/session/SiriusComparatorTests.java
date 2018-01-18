@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.Set;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry.ViewpointComparator;
-import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -50,9 +49,6 @@ public class SiriusComparatorTests extends TestCase {
     private Set<Viewpoint> registeredInTest = null;
 
     public void testIdentity() {
-        if (Movida.isEnabled()) {
-            return;
-        }
         assertEquals(0, comp.compare(vp1_P1_resource, vp1_P1_resource));
         assertEquals(0, comp.compare(vp2_P1_resource, vp2_P1_resource));
         assertEquals(0, comp.compare(vp2_P2_resource, vp2_P2_resource));
@@ -62,9 +58,6 @@ public class SiriusComparatorTests extends TestCase {
     }
 
     public void testSameLabelDifferentProjects() {
-        if (Movida.isEnabled()) {
-            return;
-        }
         int comp1 = comp.compare(vp1_P1_resource, vp2_P2_resource);
         int comp2 = comp.compare(vp2_P2_resource, vp1_P1_resource);
 
@@ -74,9 +67,6 @@ public class SiriusComparatorTests extends TestCase {
     }
 
     public void testSameLabelDifferentResourceNameAndProjects() {
-        if (Movida.isEnabled()) {
-            return;
-        }
         int comp1 = comp.compare(vp2_P1_resource, vp2_P2_resource);
         int comp2 = comp.compare(vp2_P2_resource, vp2_P1_resource);
 
@@ -86,9 +76,6 @@ public class SiriusComparatorTests extends TestCase {
     }
 
     public void testSameLabelSameProject() {
-        if (Movida.isEnabled()) {
-            return;
-        }
         int comp1 = comp.compare(vp1_P1_resource, vp2_P1_resource);
         int comp2 = comp.compare(vp2_P1_resource, vp1_P1_resource);
 
@@ -98,9 +85,6 @@ public class SiriusComparatorTests extends TestCase {
     }
 
     public void testSameLabelSamePlugin() {
-        if (Movida.isEnabled()) {
-            return;
-        }
         int comp1 = comp.compare(vp1_plugin, vp2_plugin);
         int comp2 = comp.compare(vp2_plugin, vp1_plugin);
 
@@ -110,9 +94,6 @@ public class SiriusComparatorTests extends TestCase {
     }
 
     public void testSameLabelDifferentLocation() {
-        if (Movida.isEnabled()) {
-            return;
-        }
         int comp1 = comp.compare(vp1_P1_resource, vp1_plugin);
         int comp2 = comp.compare(vp1_plugin, vp1_P1_resource);
 
@@ -126,9 +107,6 @@ public class SiriusComparatorTests extends TestCase {
         super.setUp();
 
         comp = new ViewpointRegistry.ViewpointComparator();
-        if (Movida.isEnabled()) {
-            return;
-        }
         registeredInTest = new HashSet<>();
 
         initProject1();
@@ -195,9 +173,6 @@ public class SiriusComparatorTests extends TestCase {
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();
-        if (Movida.isEnabled()) {
-            return;
-        }
 
         vp1_P1_resource = null;
         vp2_P1_resource = null;

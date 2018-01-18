@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Obeo
+ * Copyright (c) 2015, 2018 Obeo
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,6 @@ public class ViewpointMetamodelsProvider implements MetamodelDescriptorProvider 
         result.add(new EcoreMetamodelDescriptor(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE));
         result.add(new EcoreMetamodelDescriptor(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE));
         result.add(new EcoreMetamodelDescriptor(org.eclipse.sirius.viewpoint.description.audit.AuditPackage.eINSTANCE));
-        result.add(new EcoreMetamodelDescriptor(org.eclipse.sirius.description.contribution.ContributionPackage.eINSTANCE));
         return result;
     }
     

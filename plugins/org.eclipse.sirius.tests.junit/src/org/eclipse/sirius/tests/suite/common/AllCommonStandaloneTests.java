@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,6 @@ import org.eclipse.sirius.tests.unit.common.LabelProviderProviderServiceTests;
 import org.eclipse.sirius.tests.unit.common.SessionLabelTest;
 import org.eclipse.sirius.tests.unit.common.VisualBindingManagerTestCase;
 import org.eclipse.sirius.tests.unit.common.logger.MarkerRuntimeLoggerTest;
-import org.eclipse.sirius.tests.unit.contribution.SiriusURIQueryTest;
 
 import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
@@ -68,7 +67,6 @@ public class AllCommonStandaloneTests extends TestCase {
         suite.addTestSuite(VisualBindingManagerTestCase.class);
         suite.addTest(new JUnit4TestAdapter(FileUtilTest.class));
         suite.addTestSuite(ContentHelperTests.class);
-        suite.addTest(new JUnit4TestAdapter(SiriusURIQueryTest.class));
         // suite.addTest(new JUnit4TestAdapter(AllContributionTests.class));
         suite.addTestSuite(DragAndDropNodeTest.class);
         suite.addTestSuite(TypeAssistantTests.class);

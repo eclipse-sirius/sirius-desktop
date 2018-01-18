@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,6 @@ import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
-import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -89,15 +88,6 @@ public class DialectManagerImpl implements DialectManager {
             descs.addAll(dialect.getServices().getAvailableRepresentationDescriptions(vp, semantic));
         }
         return descs;
-    }
-
-    @Override
-    public void refreshEffectiveRepresentationDescription(DRepresentation representation, IProgressMonitor monitor) {
-        if (Movida.isEnabled()) {
-            for (Dialect dialect : dialects.values()) {
-                dialect.getServices().refreshEffectiveRepresentationDescription(representation, monitor);
-            }
-        }
     }
 
     @Override

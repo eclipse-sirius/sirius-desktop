@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,9 +30,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
-import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointURIConverter;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
@@ -135,11 +132,6 @@ public class SessionFactoryImpl implements SessionFactory {
      */
     protected void configureDomain(TransactionalEditingDomain transactionalEditingDomain, URI sessionResourceUri) {
         ResourceSet set = transactionalEditingDomain.getResourceSet();
-
-        if (Movida.isEnabled()) {
-            set.setURIConverter(new ViewpointURIConverter((ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance()));
-        }
-
         if (set instanceof ResourceSetImpl) {
             ResourceSetImpl resourceSetImpl = (ResourceSetImpl) set;
             new ResourceSetImpl.MappedResourceLocator(resourceSetImpl);

@@ -7,8 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.eclipse.sirius.description.contribution.provider;version="2.0.4",
- org.eclipse.sirius.ui.business.api.action;version="2.0.4",
+Export-Package: org.eclipse.sirius.ui.business.api.action;version="2.0.4",
  org.eclipse.sirius.ui.business.api.delete;version="2.0.4",
  org.eclipse.sirius.ui.business.api.descriptor;version="2.0.4",
  org.eclipse.sirius.ui.business.api.dialect;version="3.1.0",

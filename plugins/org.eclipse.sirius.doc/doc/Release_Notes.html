@@ -177,6 +177,34 @@
 				<code>org.eclipse.sirius.business.api.componentization.ViewpointRegistryImpl()</code> has been moved to 
 				<code>org.eclipse.sirius.business.internal.componentization</code> package.
 			</li>
+			<li><span class="label label-danger">Removed</span> The whole 
+				<code>contribution</code> metamodel, which lived in package 
+				<code>org.eclipse.sirius.description.contribution</code>, has been removed. It corresponded to an experimental feature which has been abandonned long ago.
+			</li>
+			<li><span class="label label-danger">Removed</span> The 
+				<code>org.eclipse.sirius.viewpointSpecificationModel</code> extension point has been removed. It was part of the same experimental feauture and not actually used in practice.
+			</li>
+			<li><span class="label label-danger">Removed</span> In 
+				<code>org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper</code>, the method 
+				<code>getViewpointSelection()</code> has been removed. It used an internal type as argument which has also been removed.
+			</li>
+			<li><span class="label label-danger">Removed</span> In 
+				<code>org.eclipse.sirius.business.api.helper.SiriusResourceHelper</code>, the method 
+				<code>getCorrespondingViewpoint(Session session, URI, boolean)</code> has been removed. It was not used anywhere, the real one is 
+				<code>getCorrespondingViewpoint(Session, Viewpoint)</code> in the same class.
+			</li>
+			<li><span class="label label-danger">Removed</span> In 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices</code> (and all its implementations), the method 
+				<code>refreshEffectiveRepresentationDescription(DRepresentation, IProgressMonitor)</code> has been removed. It corresponded to an experimental feature which has been abandonned long ago. 
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+			<code>org.eclipse.sirius.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-danger">Removed</span> The class 
+				<code>org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionDialog</code> has been removed.
+			</li>
 		</ul>
 		<h4 id="Migrations">Migrations</h4>
 		<h4 id="TranslationKeysChanges">Translation Keys Changes</h4>
@@ -243,7 +271,7 @@
 		<pre>SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(),0); 
 
 </pre>
-		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -514,7 +542,7 @@
 				<a href="./specifier/general/Writing_Queries.html#service_methods">specifier documentation</a>, it is recommended to use List or Set instead of Collection in java services signature.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -826,7 +854,7 @@
 				<code>RepresentationElementIdentifier</code>) have been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1500,7 +1528,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>updateModelsReferences(DAnalysis, Iterator&lt;DSemanticDecorator&gt;)</code> because it is more suited to the client needs.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1994,7 +2022,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.resetVariables()</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui6">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -2142,7 +2170,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker</code> has been added to declare states used by all DragTrackers which manage move in diagram using mouse middle click.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui6">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui7">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>

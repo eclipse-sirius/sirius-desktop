@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,16 +21,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.base.Objects;
 
 /**
  * An helper uses to manage the Sirius resource (between the {@link ResourceSet}
@@ -196,39 +190,5 @@ public final class SiriusResourceHelper {
             }
         }
         return false;
-    }
-
-    /**
-     * Finds the viewpoint instance with the specified logical URI inside the
-     * editing domain of the session, optionally loading it if it is not
-     * already.
-     * 
-     * @param session
-     *            the session in which to look for.
-     * @param uri
-     *            the logical URI of the viewpoint to locate.
-     * @param loadOnDemand
-     *            whether or not to try to load the resource providing the
-     *            specified viewpoint if it is not already loaded in the
-     *            session's editing domain.
-     * @return a Sirius instance from the session's editing domain with the
-     *         specified logical URI, if it could be found or loaded.
-     */
-    public static Option<Viewpoint> getCorrespondingViewpoint(Session session, URI uri, boolean loadOnDemand) {
-        ViewpointRegistry registry = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
-        Option<URI> providerURI = registry.getProvider(uri);
-        if (providerURI.some()) {
-            TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-            Resource editingDomainResource = domain.getResourceSet().getResource(providerURI.get(), loadOnDemand);
-            if (editingDomainResource != null) {
-                for (Viewpoint vp : registry.getSiriusResourceHandler().collectViewpointDefinitions(editingDomainResource)) {
-                    Option<URI> vpURI = new ViewpointQuery(vp).getViewpointURI();
-                    if (vpURI.some() && Objects.equal(vpURI.get(), uri)) {
-                        return Options.newSome(vp);
-                    }
-                }
-            }
-        }
-        return Options.newNone();
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,14 +79,10 @@ import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.SiriusReferenceFinder;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -129,7 +125,6 @@ import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tests.sample.component.Component;
 import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter;
 import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter.FeatureAccess;
-import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionDialog;
 import org.eclipse.sirius.ui.debug.ResourceSetTopologyAnalyzer.Reference;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -165,8 +160,6 @@ public class SiriusDebugView extends AbstractDebugView {
      * Memento used by the Store Positions/Show position changes actions.
      */
     protected Map<EObject, Integer> storedPositions;
-
-    protected ViewpointRegistry registry;
 
     /**
      * Returns the text to show in the main text area for the specified object.
@@ -470,8 +463,6 @@ public class SiriusDebugView extends AbstractDebugView {
         // addExpandAction();
         // addRefreshCoverageAction();
         // addRefreshDiagramAction();
-        // addStartMovidaRegistryAction();
-        // addShowMovidaRegistryStatusAction();
         // addSelectReusedSiriussAction();
         // addShowCommandStackAction();
         // addSiriusSelectionAction();
@@ -933,24 +924,6 @@ public class SiriusDebugView extends AbstractDebugView {
         });
     }
 
-    private ViewpointSelection currentSelection = null;
-
-    private void addSiriusSelectionAction() {
-        addAction("Sirius Selection", new Runnable() {
-            @Override
-            public void run() {
-                ViewpointRegistry reg = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
-                if (currentSelection == null) {
-                    currentSelection = new ViewpointSelection(reg);
-                }
-                ViewpointSelectionDialog dlg = new ViewpointSelectionDialog(getSite().getShell(), reg, currentSelection, null);
-                if (dlg.open() == Window.OK) {
-                    // Do nothing here.
-                }
-            }
-        });
-    }
-
     private void addShowCommandStackAction() {
         addAction("Show CommandStack", new Runnable() {
             @Override
@@ -1013,50 +986,6 @@ public class SiriusDebugView extends AbstractDebugView {
                         Iterables.addAll(((Viewpoint) selection).getReuses(), sel.get());
                     }
                 }
-            }
-        });
-    }
-
-    private void addShowMovidaRegistryStatusAction() {
-        addAction("Show Registry Status", new Runnable() {
-            @Override
-            public void run() {
-                if (registry != null) {
-                    StringBuilder status = new StringBuilder();
-                    registry.dumpStatus(status);
-                    setText(status.toString());
-                }
-            }
-        });
-    }
-
-    private void addStartMovidaRegistryAction() {
-        addAction("Start Registry", new Runnable() {
-            @Override
-            public void run() {
-                if (registry != null) {
-                    registry.stop();
-                }
-                registry = new ViewpointRegistry();
-                registry.addListener(new ViewpointRegistryListener() {
-                    @Override
-                    public void registryChanged(ViewpointRegistry registry, Set<URI> removed, Set<URI> added, Set<URI> changed) {
-                        System.out.println();
-                        System.out.println("Added:");
-                        for (URI a : added) {
-                            System.out.println(" - " + a);
-                        }
-                        System.out.println("Removed:");
-                        for (URI r : removed) {
-                            System.out.println(" - " + r);
-                        }
-                        System.out.println("Changed:");
-                        for (URI c : changed) {
-                            System.out.println(" - " + c);
-                        }
-                    }
-                });
-                registry.start();
             }
         });
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,6 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 import org.eclipse.sirius.editor.tools.api.menu.CompositeMenuBuilder;
@@ -184,9 +183,7 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
      */
     public CustomSiriusActionBarContributor() {
         super(ADDITIONS_LAST_STYLE);
-        if (!Movida.isEnabled()) {
-            loadResourceAction = new LoadResourceAction();
-        }
+        loadResourceAction = new LoadResourceAction();
         validateAction = new ValidateAction();
         controlAction = new ControlAction();
 

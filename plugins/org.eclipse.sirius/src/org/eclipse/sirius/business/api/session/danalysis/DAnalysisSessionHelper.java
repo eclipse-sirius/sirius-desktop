@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,18 +16,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
-import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
-import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -39,10 +35,7 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Sets;
 
 /**
  * Helper for {@link DAnalysisSession}.
@@ -336,28 +329,6 @@ public final class DAnalysisSessionHelper {
             }
         }
         return semanticResources;
-    }
-
-    /**
-     * Creates a {@link ViewpointSelection} representing the set of currently
-     * selected/enabled viewpoints in the specified session.
-     * 
-     * @param registry
-     *            the registry to be used by the selection.
-     * @param session
-     *            the session.
-     * @return the set of currently selected viewpoints in the session.
-     */
-    public static ViewpointSelection getViewpointSelection(org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry, DAnalysisSession session) {
-        ViewpointSelection selection = new ViewpointSelection(registry);
-        Set<URI> selectedBefore = Sets.newHashSet(Iterables.transform(session.getSelectedViewpoints(false), new Function<Viewpoint, URI>() {
-            @Override
-            public URI apply(Viewpoint from) {
-                return new ViewpointQuery(from).getViewpointURI().get();
-            }
-        }));
-        selection.setSelected(selectedBefore);
-        return selection;
     }
 
     /**

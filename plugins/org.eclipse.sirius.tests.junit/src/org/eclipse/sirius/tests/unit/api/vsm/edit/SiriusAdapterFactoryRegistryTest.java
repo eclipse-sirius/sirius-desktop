@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
@@ -44,7 +43,6 @@ public class SiriusAdapterFactoryRegistryTest extends AbstractItemProviderAdapte
         exposedPackages.add(ToolPackage.eINSTANCE);
         exposedPackages.add(StylePackage.eINSTANCE);
         exposedPackages.add(AuditPackage.eINSTANCE);
-        exposedPackages.add(ContributionPackage.eINSTANCE);
         exposedPackages.add(DiagramPackage.eINSTANCE);
         exposedPackages.add(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE);
         exposedPackages.add(org.eclipse.sirius.diagram.description.style.StylePackage.eINSTANCE);

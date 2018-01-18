@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -36,11 +35,6 @@ public class ViewpointSelectionTests extends TestCase {
     }
 
     public void testFileExtensionWithoutPattern() {
-        if (Movida.isEnabled()) {
-            // The new Movida registry does not implement the
-            // registerFromWorkspace() API.
-            return;
-        }
         Set<Viewpoint> createdViewpoints = new HashSet<Viewpoint>();
         createdViewpoints.add(createViewpoint("lolita"));
 
@@ -51,11 +45,6 @@ public class ViewpointSelectionTests extends TestCase {
     }
 
     public void testMultipleFileExtension() {
-        if (Movida.isEnabled()) {
-            // The new Movida registry does not implement the
-            // registerFromWorkspace() API.
-            return;
-        }
         Set<Viewpoint> createdViewpoints = new HashSet<Viewpoint>();
         createdViewpoints.add(createViewpoint("lolita tatata       tutu"));
 
@@ -80,11 +69,6 @@ public class ViewpointSelectionTests extends TestCase {
     }
 
     public void testFileExtensionWithPattern() {
-        if (Movida.isEnabled()) {
-            // The new Movida registry does not implement the
-            // registerFromWorkspace() API.
-            return;
-        }
         Set<Viewpoint> createdViewpoints = new HashSet<Viewpoint>();
         createdViewpoints.add(createViewpoint("*.treztattaaaazzz"));
 
@@ -95,11 +79,6 @@ public class ViewpointSelectionTests extends TestCase {
     }
 
     public void testMultipleFileExtensionWithPattern() {
-        if (Movida.isEnabled()) {
-            // The new Movida registry does not implement the
-            // registerFromWorkspace() API.
-            return;
-        }
         Set<Viewpoint> createdViewpoints = new HashSet<Viewpoint>();
         createdViewpoints.add(createViewpoint("*.treztattaaaazzz toto *.tutu   tata  "));
 

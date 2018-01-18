@@ -28,6 +28,15 @@ h4. Changes in @org.eclipse.sirius@
 
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.business.api.componentization.ViewpointRegistry.reloadAllFromPlugins()@ has been added to reload, from the runtime, all the VSMs of installed plug-ins and have the effect dynamically in the runtime.
 * <span class="label label-info">Modified</span> The class @org.eclipse.sirius.business.api.componentization.ViewpointRegistryImpl()@ has been moved to @org.eclipse.sirius.business.internal.componentization@ package.
+* <span class="label label-danger">Removed</span> The whole @contribution@ metamodel, which lived in package @org.eclipse.sirius.description.contribution@, has been removed. It corresponded to an experimental feature which has been abandonned long ago.
+* <span class="label label-danger">Removed</span> The @org.eclipse.sirius.viewpointSpecificationModel@ extension point has been removed. It was part of the same experimental feauture and not actually used in practice.
+* <span class="label label-danger">Removed</span> In @org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper@, the method @getViewpointSelection()@ has been removed. It used an internal type as argument which has also been removed.
+* <span class="label label-danger">Removed</span> In @org.eclipse.sirius.business.api.helper.SiriusResourceHelper@, the method @getCorrespondingViewpoint(Session session, URI, boolean)@ has been removed. It was not used anywhere, the real one is @getCorrespondingViewpoint(Session, Viewpoint)@ in the same class.
+* <span class="label label-danger">Removed</span> In @org.eclipse.sirius.business.api.dialect.DialectServices@ (and all its implementations), the method @refreshEffectiveRepresentationDescription(DRepresentation, IProgressMonitor)@ has been removed. It corresponded to an experimental feature which has been abandonned long ago. 
+
+h4. Changes in @org.eclipse.sirius.ui@
+
+* <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionDialog@ has been removed.
 
 h4. Migrations
 

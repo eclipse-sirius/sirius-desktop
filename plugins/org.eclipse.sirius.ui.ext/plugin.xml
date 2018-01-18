@@ -109,31 +109,6 @@
      </modelExplorerTabExtension>
   </extension> 
      -->   
-   <!--
-      <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            id="org.eclipse.sirius.ui.business.internal.migration.logicalUriMigration"
-            nameFilter="*.odesign"
-            objectClass="org.eclipse.core.resources.IFile">
-         <menu
-               id="org.eclipse.sirius.ui.movida.menu"
-               label="Movida"
-               path="additions">
-            <separator
-                  name="group">
-            </separator>
-         </menu>
-         <action
-               class="org.eclipse.sirius.ui.business.internal.migration.MigrateToLogicalURIsAction"
-               enablesFor="+"
-               label="Migrate to Logical URIs"
-               menubarPath="org.eclipse.sirius.ui.movida.menu/group">
-         </action>
-      </objectContribution>
-   </extension>
-  -->
-
 	
   <extension point="org.eclipse.ui.menus">
 	<menuContribution

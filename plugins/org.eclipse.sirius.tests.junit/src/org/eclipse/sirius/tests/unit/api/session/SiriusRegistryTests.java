@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ package org.eclipse.sirius.tests.unit.api.session;
 
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistryFilter;
-import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -23,9 +22,6 @@ public class SiriusRegistryTests extends TestCase {
     private static final String BASIC_FILTER = "basicFilter";
 
     public void testFilters() {
-        if (Movida.isEnabled()) {
-            return;
-        }
 
         final int numberOfSiriuss = ViewpointRegistry.getInstance().getViewpoints().size();
 

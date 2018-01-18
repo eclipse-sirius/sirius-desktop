@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,14 +92,11 @@ import com.google.common.collect.Iterables;
 
 /**
  * Services for diagram.
- * 
+ *
  * @author cbrun
  */
 public class DiagramDialectServices extends AbstractRepresentationDialectServices {
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean isSupported(DRepresentation representation) {
         return representation instanceof DDiagram;
@@ -110,9 +107,6 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         return representationDescriptor.getDescription() instanceof DiagramDescription;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean isSupported(RepresentationDescription description) {
         return description instanceof DiagramDescription;
@@ -151,9 +145,6 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final IProgressMonitor monitor) {
         // TODO ensure that the given description is contained in the same
@@ -167,9 +158,6 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         return sync.getDiagram();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final Session session, final IProgressMonitor monitor) {
         DRepresentation diagram = null;
@@ -205,7 +193,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
 
     /**
      * Create and store a gmf diagram from a Sirius one.
-     * 
+     *
      * @param session
      *            the session
      * @param diagram
@@ -225,9 +213,6 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         return gmfDiag;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public DRepresentation copyRepresentation(final DRepresentation representation, final String name, final Session session, final IProgressMonitor monitor) {
 
@@ -241,7 +226,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
 
     /**
      * The <code>fullRefresh</code> is not taken into account for diagram dialect.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -298,17 +283,11 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         super.initRepresentations(semantic, vp, DiagramDescription.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void initRepresentations(final Viewpoint vp, final EObject semantic, IProgressMonitor monitor) {
         super.initRepresentations(semantic, vp, DiagramDescription.class, monitor);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected <T extends RepresentationDescription> void initRepresentationForElement(T representationDescription, EObject semanticElement, IProgressMonitor monitor) {
         if (representationDescription instanceof DiagramDescription) {
@@ -332,10 +311,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             }
         }
     }
-
-    /**
-     * {@inheritDoc}
-     */
+    
     @Override
     public void updateRepresentationsExtendedBy(final Session session, final Viewpoint viewpoint, final boolean activated) {
         final EList<RepresentationExtensionDescription> extensions = viewpoint.getOwnedRepresentationExtensions();
@@ -381,49 +357,26 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#createInterpretedExpressionQuery(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature)
-     */
     @Override
     public IInterpretedExpressionQuery createInterpretedExpressionQuery(EObject target, EStructuralFeature feature) {
         return new DiagramInterpretedExpressionQuery(target, feature);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
-     */
     @Override
     public boolean handles(RepresentationDescription representationDescription) {
         return (representationDescription instanceof DiagramDescription) || (representationDescription instanceof DiagramImportDescription);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
-     */
     @Override
     public boolean handles(RepresentationExtensionDescription representationExtensionDescription) {
         return representationExtensionDescription instanceof DiagramExtensionDescription;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void invalidateMappingCache() {
         DiagramDescriptionMappingsRegistry.INSTANCE.computeMappings();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<? extends AbstractCommandTask> createTask(CommandContext context, ModelAccessor extPackage, ModelOperation op, Session session, UICallBack uiCallback) {
         Option<? extends AbstractCommandTask> task = Options.newNone();
@@ -439,7 +392,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * The diagram dialect allows the feature customizations on style descriptions.
      */
     @Override
@@ -548,7 +501,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
 
     private Set<DDiagramElement> getDiagramElementsToRefresh(EObject notifier, DSemanticDiagram diagram, ECrossReferenceAdapter xref) {
         Set<DDiagramElement> diagramElementsToRefresh = new HashSet<>();
-        Collection<EObject> inverseReferencers = new EObjectQuery(notifier, xref).getInverseReferences(REPRESENTATION_ELEMENTS_INVERSE_REFERENCES);
+        Collection<EObject> inverseReferencers = new EObjectQuery(notifier, xref).getInverseReferences(AbstractRepresentationDialectServices.REPRESENTATION_ELEMENTS_INVERSE_REFERENCES);
         for (EObject inverseReferencer : inverseReferencers) {
             if (inverseReferencer instanceof DDiagramElement) {
                 DDiagramElement diagramElement = (DDiagramElement) inverseReferencer;
