@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,12 +38,11 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * A figure to display a lock notification for the semantic element represented
- * by a diagram.
+ * A figure to display a lock notification for the semantic element represented by a diagram.
  * 
  * @author <a href="mailto:steve.monnier@obeo.fr">Steve Monnier</a>
  */
-public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
+public class DiagramSemanticElementLockedNotificationFigure extends Ellipse implements IFixedFigure {
 
     /**
      * Border color of the notification figure when locked by me.
@@ -116,6 +115,7 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
         this.add(label);
 
         propListener = new PropertyChangeListener() {
+            @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 updateLocation();
             }
@@ -137,7 +137,8 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
         this(rootEditPart, message, lockStatus, DEFAULT_HEIGHT, DEFAULT_WIDTH);
     }
 
-    private void updateLocation() {
+    @Override
+    public void updateLocation() {
         Point viewLocation = viewport.getViewLocation().getCopy();
 
         viewLocation.performScale(1.0d / rootEditPart.getZoomManager().getZoom());
@@ -161,12 +162,12 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
     public void removeNotify() {
         super.removeNotify();
         viewport.removePropertyChangeListener(Viewport.PROPERTY_VIEW_LOCATION, propListener);
-        viewport = null;
     }
 
     /**
      * Override to use local coordinates. .{@inheritDoc}
      */
+    @Override
     protected boolean useLocalCoordinates() {
         return true;
     }
@@ -237,7 +238,8 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
         final LayeredPane pane = (LayeredPane) rootEditPart.getLayer(LayerConstants.PRINTABLE_LAYERS);
         List<IFigure> figuresToRemove = Lists.newArrayList();
         // Collects notification figures that needs to be removed
-        for (DiagramSemanticElementLockedNotificationFigure diagramSemanticElementLockedNotificationFigure : Iterables.filter(pane.getChildren(), DiagramSemanticElementLockedNotificationFigure.class)) {
+        for (DiagramSemanticElementLockedNotificationFigure diagramSemanticElementLockedNotificationFigure : Iterables.filter(pane.getChildren(),
+                DiagramSemanticElementLockedNotificationFigure.class)) {
             figuresToRemove.add(diagramSemanticElementLockedNotificationFigure);
         }
         // Removes these notation figures from Layer
@@ -251,6 +253,7 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
      * 
      * @see org.eclipse.draw2d.Shape#paintFigure(org.eclipse.draw2d.Graphics)
      */
+    @Override
     public void paintFigure(Graphics g) {
         applyTransparency(g);
         super.paintFigure(g);
@@ -297,9 +300,8 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
     }
 
     /**
-     * Converts transparency value from percent range [0, 100] to alpha range
-     * [0, 255] and applies converted value. 0% corresponds to alpha 255 and
-     * 100% corresponds to alpha 0.
+     * Converts transparency value from percent range [0, 100] to alpha range [0, 255] and applies converted value. 0%
+     * corresponds to alpha 255 and 100% corresponds to alpha 0.
      * 
      * @param g
      *            The Graphics used to paint
