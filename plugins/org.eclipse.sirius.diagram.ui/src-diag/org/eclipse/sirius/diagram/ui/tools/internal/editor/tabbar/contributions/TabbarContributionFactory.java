@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2016, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,6 +46,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiag
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.FiltersContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.LayersContribution;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.LayoutingModeSwitchingAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.SelectAllContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.ShowingModeSwitchingAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DiagramActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
@@ -102,6 +103,22 @@ public class TabbarContributionFactory {
         TabbarSelectMenuManager selectMenu = new TabbarSelectMenuManager();
         selectMenu.setVisible(true);
         return selectMenu;
+    }
+
+    /**
+     * Creates the SelectAll contribution item.
+     * 
+     * @param part
+     *            the diagram workbench part.
+     * @param manager
+     *            the toolbar manager.
+     * @return the {@link IContributionItem}.
+     */
+    public IContributionItem createSelectAllContribution(IDiagramWorkbenchPart part, ToolBarManager manager) {
+        SelectAllContributionItem selectAllContribution = new SelectAllContributionItem();
+        ContributionItem filterItem = selectAllContribution.createContributionItem(manager);
+        selectAllContribution.setPart(part);
+        return filterItem;
     }
 
     /**

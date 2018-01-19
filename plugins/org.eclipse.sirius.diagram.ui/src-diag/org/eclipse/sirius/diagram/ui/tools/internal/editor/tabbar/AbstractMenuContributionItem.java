@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -59,11 +60,7 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
 
     private List<String> tooltips = Lists.newArrayList();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.TabbarContribution#create(org.eclipse.swt.widgets.ToolBar)
-     */
+    @Override
     public void create(final ToolBarManager tb, String groupId) {
         tb.insertAfter(groupId, createContributionItem(tb));
     }
@@ -114,6 +111,7 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
                 listener = new MenuContributionItemArmListener(control);
 
                 menu.addListener(SWT.Show, new Listener() {
+                    @Override
                     public void handleEvent(Event event) {
                         final Iterator<String> it = tooltips.iterator();
                         for (final MenuItem item : menu.getItems()) {
@@ -138,16 +136,23 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
         if (menuManager != null) {
             return menuManager;
         }
-
-        menuManager = new MenuManager();
+        // Use the tooltip, if it exists, as id for this menu manager. It can be reused to find it later.
+        String id = null;
+        Optional<String> tooltip = tooltips.stream().findFirst();
+        if (tooltip.isPresent()) {
+            id = tooltip.get();
+        }
+        menuManager = new MenuManager(id, id);
 
         menuManager.setRemoveAllWhenShown(true);
 
         menuManager.addMenuListener(new IMenuListener2() {
+            @Override
             public void menuAboutToHide(IMenuManager manager) {
                 /* do nothing */
             }
 
+            @Override
             public void menuAboutToShow(IMenuManager manager) {
                 menuShow(manager);
             }
