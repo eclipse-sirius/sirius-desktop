@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,7 +47,7 @@ import org.eclipse.swt.graphics.RGB;
  * 
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  */
-public class SynchronizeStatusFigure extends Ellipse {
+public class SynchronizeStatusFigure extends Ellipse implements IFixedFigure {
 
     /**
      * Border color of the notification figure when diagram is sync.
@@ -141,9 +141,7 @@ public class SynchronizeStatusFigure extends Ellipse {
         }
     }
 
-    /**
-     * Update the location of the figure according to viewport size and location.
-     */
+    @Override
     public void updateLocation() {
         updateLocation(false);
     }
@@ -190,9 +188,7 @@ public class SynchronizeStatusFigure extends Ellipse {
     public void removeNotify() {
         super.removeNotify();
         viewport.removePropertyChangeListener(Viewport.PROPERTY_VIEW_LOCATION, propListener);
-        viewport = null;
         zoomManager.removeZoomListener(zoomListener);
-        zoomManager = null;
         executor.shutdown();
         executor = null;
     }
