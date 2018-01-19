@@ -102,7 +102,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
     /**
      * VM argument name to activate the POC of bugzilla 529992.
      */
-    private static final String POPUP_MENU_IMPROVEMENT_ID = "org.eclipse.sirius.experimental.popupMenuImprovement"; //$NON-NLS-1$
+    public static final String POPUP_MENU_IMPROVEMENT_ID = "org.eclipse.sirius.experimental.popupMenuImprovement"; //$NON-NLS-1$
 
     /**
      * Constant used for POC of bugzilla 529992 to separate group and menu id in path.>
@@ -121,6 +121,12 @@ public class PopupMenuContribution implements IContributionItemProvider {
     private static final String PATH_PREFIX = "path"; //$NON-NLS-1$
 
     /**
+     * Constant used for POC of bugzilla 529992 to insert a group declared as a "Popup Menu" in a specific existing
+     * dropdown menu of tabbar. Currently only "Select" dropdown menu car be used ("tabbarPath=Select").
+     */
+    private static final String TABBAR_PATH_PREFIX = "tabbarPath"; //$NON-NLS-1$
+
+    /**
      * Constant used for POC of bugzilla 529992 to define a group in a Popup Menu. It is used in documentation field of
      * a Popup Menu with this kind of format:<BR/>
      * <code>group=mySpecificGroupId</code>
@@ -133,10 +139,47 @@ public class PopupMenuContribution implements IContributionItemProvider {
      */
     private static final String ROOT_MENU_ID = "/"; //$NON-NLS-1$
 
+    /**
+     * Field used only in case of POC of bugzilla 529992.<BR/>
+     * True if this instance is called to contribute to tabbar, false otherwise. In case of tabbar contribution, only
+     * "Popup menu" with a tabbar path are considered.
+     */
+    private boolean contributionToTabbar;
+
+    /**
+     * Default constructor.
+     */
+    public PopupMenuContribution() {
+        // Do nothing.
+    }
+
+    /**
+     * Constructor to specify the contribution mode.
+     * 
+     * @param contributionToTabbar
+     *            True if this instance is called to contribute to tabbar, false otherwise
+     */
+    public PopupMenuContribution(boolean contributionToTabbar) {
+        this.contributionToTabbar = contributionToTabbar;
+    }
+
     @Override
     public void contributeToActionBars(final IActionBars arg0, final IWorkbenchPartDescriptor arg1) {
         // Nothing to contribute
 
+    }
+
+    /**
+     * Method to do the same as {@link #contributeToPopupMenu(IMenuManager, IWorkbenchPart)} but out of the extension
+     * point context where it is originally used. Useful to use this kind of contribution in tabbar for example.
+     * 
+     * @param menu
+     *            The target popup menu manager
+     * @param part
+     *            The context workbench part
+     */
+    public static void contributeToPopupMenuProgrammatically(final IMenuManager menu, final IWorkbenchPart part) {
+        new PopupMenuContribution(true).contributeToPopupMenu(menu, part);
     }
 
     @Override
@@ -613,7 +656,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
         }
     }
 
-    private Optional<String> getPath(String documentationOptions) {
+    private Optional<String> getPropertyValueFromString(String documentationOptions, String key) {
         try {
             Properties docProps = new Properties();
             StringReader docReader = new StringReader(documentationOptions);
@@ -622,9 +665,9 @@ public class PopupMenuContribution implements IContributionItemProvider {
             } finally {
                 docReader.close();
             }
-            String path = docProps.getProperty(PATH_PREFIX);
-            if (path != null) {
-                return Optional.of(path);
+            String value = docProps.getProperty(key);
+            if (value != null) {
+                return Optional.of(value);
             }
         } catch (IOException e) {
             // Do nothing
@@ -632,23 +675,16 @@ public class PopupMenuContribution implements IContributionItemProvider {
         return Optional.empty();
     }
 
+    private Optional<String> getTabbarPath(String documentationOptions) {
+        return getPropertyValueFromString(documentationOptions, TABBAR_PATH_PREFIX);
+    }
+
+    private Optional<String> getPath(String documentationOptions) {
+        return getPropertyValueFromString(documentationOptions, PATH_PREFIX);
+    }
+
     private Optional<String> getGroupIdToCreate(String documentationOptions) {
-        try {
-            Properties docProps = new Properties();
-            StringReader docReader = new StringReader(documentationOptions);
-            try {
-                docProps.load(docReader);
-            } finally {
-                docReader.close();
-            }
-            String groupId = docProps.getProperty(GROUP_PREFIX);
-            if (groupId != null) {
-                return Optional.of(groupId);
-            }
-        } catch (IOException e) {
-            // Do nothing
-        }
-        return Optional.empty();
+        return getPropertyValueFromString(documentationOptions, GROUP_PREFIX);
     }
 
     private IMenuManager getMenuManager(IMenuManager menu, Optional<String> optionalPath) {
@@ -717,58 +753,68 @@ public class PopupMenuContribution implements IContributionItemProvider {
         final EObject semantic = selectedViews.iterator().next().getTarget();
         // Search if a menu with the same id already exists. In this case, we reuse it.
         String menuId = popupMenu.getName();
-        IMenuManager subMenu;
-        if (ROOT_MENU_ID.equals(menuId)) {
-            subMenu = parentMenu;
+        Optional<String> tabbarPath = getTabbarPath(popupMenu.getDocumentation());
+        Option<? extends IContributionItem> result;
+        if (contributionToTabbar && !tabbarPath.isPresent()) {
+            // For tabbar contribution, ignore contribution without tabbar path.
+            result = Options.newNone();
         } else {
-            subMenu = parentMenu.findMenuUsingPath(menuId);
-            if (subMenu == null) {
-                subMenu = new MenuManager(MessageTranslator.INSTANCE.getMessage(popupMenu, new IdentifiedElementQuery(popupMenu).getLabel()), menuId);
-                // Add a default "additions" group
-                subMenu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+            IMenuManager subMenu;
+            if (ROOT_MENU_ID.equals(menuId)) {
+                subMenu = parentMenu;
+            } else if (tabbarPath.isPresent() && tabbarPath.get().equals(parentMenu.getId())) {
+                subMenu = parentMenu;
+            } else {
+                subMenu = parentMenu.findMenuUsingPath(menuId);
+                if (subMenu == null) {
+                    subMenu = new MenuManager(MessageTranslator.INSTANCE.getMessage(popupMenu, new IdentifiedElementQuery(popupMenu).getLabel()), menuId);
+                    // Add a default "additions" group
+                    subMenu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+                }
+            }
+
+            // Add a separator group if asked
+            Optional<String> optionalGroupId = getGroupIdToCreate(popupMenu.getDocumentation());
+            if (optionalGroupId.isPresent()) {
+                Separator separator = new Separator(optionalGroupId.get());
+                subMenu.add(separator);
+            }
+
+            final EList<MenuItemDescription> activatedActions = popupMenu.getMenuItemDescription();
+
+            IInterpreter interpreter = null;
+            if (semantic != null && semantic.eResource() != null) {
+                interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
+            } else if (semantic instanceof DMappingBased) {
+                interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(((DMappingBased) semantic).getMapping());
+            }
+
+            final Boolean isMenuPreconditionValidated;
+            if (StringUtil.isEmpty(popupMenu.getPrecondition())) {
+                isMenuPreconditionValidated = true;
+            } else {
+                isMenuPreconditionValidated = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(semantic, popupMenu, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
+            }
+
+            if (isMenuPreconditionValidated) {
+                final Iterator<MenuItemDescription> mIterator = activatedActions.iterator();
+                while (mIterator.hasNext()) {
+                    final MenuItemDescription menuItemDescription = mIterator.next();
+                    Optional<IAction> optionalAction = buildActionToAdd(domain, selectedViews, menuItemDescription, emfCommandFactory, primarySelection, currentMouseLocation, interpreter);
+                    addActionInMenu(subMenu, menuItemDescription.getDocumentation(), optionalAction);
+                }
+            } else {
+                subMenu.removeAll();
+            }
+            // finalize
+            if (!(parentMenu.equals(subMenu)) && subMenu instanceof ContributionManager && ((ContributionManager) subMenu).getSize() > 0) {
+                subMenu.setVisible(true);
+                result = Options.newSome(subMenu);
+            } else {
+                result = Options.newNone();
             }
         }
-
-        // Add a separator group if asked
-        Optional<String> optionalGroupId = getGroupIdToCreate(popupMenu.getDocumentation());
-        if (optionalGroupId.isPresent()) {
-            Separator separator = new Separator(optionalGroupId.get());
-            subMenu.add(separator);
-        }
-
-        final EList<MenuItemDescription> activatedActions = popupMenu.getMenuItemDescription();
-
-        IInterpreter interpreter = null;
-        if (semantic != null && semantic.eResource() != null) {
-            interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
-        } else if (semantic instanceof DMappingBased) {
-            interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(((DMappingBased) semantic).getMapping());
-        }
-
-        final Boolean isMenuPreconditionValidated;
-        if (StringUtil.isEmpty(popupMenu.getPrecondition())) {
-            isMenuPreconditionValidated = true;
-        } else {
-            isMenuPreconditionValidated = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(semantic, popupMenu, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
-        }
-
-        if (isMenuPreconditionValidated) {
-            final Iterator<MenuItemDescription> mIterator = activatedActions.iterator();
-            while (mIterator.hasNext()) {
-                final MenuItemDescription menuItemDescription = mIterator.next();
-                Optional<IAction> optionalAction = buildActionToAdd(domain, selectedViews, menuItemDescription, emfCommandFactory, primarySelection, currentMouseLocation, interpreter);
-                addActionInMenu(subMenu, menuItemDescription.getDocumentation(), optionalAction);
-            }
-        } else {
-            subMenu.removeAll();
-        }
-        // finalize
-        if (!(parentMenu.equals(subMenu)) && subMenu instanceof ContributionManager && ((ContributionManager) subMenu).getSize() > 0) {
-            subMenu.setVisible(true);
-            return Options.newSome(subMenu);
-        } else {
-            return Options.newNone();
-        }
+        return result;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.TabbarContributionFactory;
+import org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
@@ -164,7 +165,11 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
     }
 
     private void addDiagramContributionItems() {
-        addContributionItem(diagramContributionItems, ARRANGE_SELECTION, contributionFactory.createSelectMenuManager());
+        if (Boolean.getBoolean(PopupMenuContribution.POPUP_MENU_IMPROVEMENT_ID)) {
+            addContributionItem(diagramContributionItems, ARRANGE_SELECTION, contributionFactory.createSelectAllContribution(part, manager));
+        } else {
+            addContributionItem(diagramContributionItems, ARRANGE_SELECTION, contributionFactory.createSelectMenuManager());
+        }
         addContributionItem(diagramContributionItems, ARRANGE_SELECTION, contributionFactory.createArrangeMenuManager(part));
 
         addContributionItem(diagramContributionItems, REFRESH, contributionFactory.createRefreshContribution());
