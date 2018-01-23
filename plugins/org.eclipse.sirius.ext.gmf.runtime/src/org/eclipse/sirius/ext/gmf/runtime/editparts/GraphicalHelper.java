@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -509,22 +509,7 @@ public final class GraphicalHelper {
                 linePointToConsider = lineOrigin;
             }
 
-            List<Point> nearestPoints = new ArrayList<>();
-            List rectangleBorders = PointListUtilities.getLineSegments(partBoundsPointList);
-            for (Object rectangleBorder : rectangleBorders) {
-                if (rectangleBorder instanceof LineSeg) {
-                    LineSeg lineSeg = (LineSeg) rectangleBorder;
-                    Point potentialNearestPoint;
-                    if (lineSeg.getOrigin().x == lineSeg.getTerminus().x) {
-                        potentialNearestPoint = new Point(lineSeg.getOrigin().x, linePointToConsider.y);
-                    } else {
-                        potentialNearestPoint = new Point(linePointToConsider.x, lineSeg.getOrigin().y);
-                    }
-                    if (lineSeg.containsPoint(potentialNearestPoint, 0)) {
-                        nearestPoints.add(potentialNearestPoint);
-                    }
-                }
-            }
+            List<Point> nearestPoints = findNearestPoints(partBoundsPointList, linePointToConsider);
             if (nearestPoints.size() > 0) {
                 double minimalDistance = -1;
                 Point resultPoint = null;
@@ -541,6 +526,26 @@ public final class GraphicalHelper {
 
         }
         return result;
+    }
+
+    private static List<Point> findNearestPoints(PointList partBoundsPointList, Point linePointToConsider) {
+        List<Point> nearestPoints = new ArrayList<>();
+        List<?> rectangleBorders = PointListUtilities.getLineSegments(partBoundsPointList);
+        for (Object rectangleBorder : rectangleBorders) {
+            if (rectangleBorder instanceof LineSeg) {
+                LineSeg lineSeg = (LineSeg) rectangleBorder;
+                Point potentialNearestPoint;
+                if (lineSeg.getOrigin().x == lineSeg.getTerminus().x) {
+                    potentialNearestPoint = new Point(lineSeg.getOrigin().x, linePointToConsider.y);
+                } else {
+                    potentialNearestPoint = new Point(linePointToConsider.x, lineSeg.getOrigin().y);
+                }
+                if (lineSeg.containsPoint(potentialNearestPoint, 0)) {
+                    nearestPoints.add(potentialNearestPoint);
+                }
+            }
+        }
+        return nearestPoints;
     }
 
     /**
