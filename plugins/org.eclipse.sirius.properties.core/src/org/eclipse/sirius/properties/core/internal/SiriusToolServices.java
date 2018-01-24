@@ -15,6 +15,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -68,6 +69,11 @@ public class SiriusToolServices {
                         if (command.canExecute()) {
                             command.execute();
                         }
+                    } catch (OperationCanceledException cancel) {
+                        // A tool (possibly via a Java service) can request the cancellation of its execution. This is
+                        // handled as a rollback by EMF Transaction, but the exception should not propagate above this
+                        // point: it's a signal for requesting cancellation/rollback, which at this point is done, but
+                        // not an error that the caller should be aware of.
                     } finally {
                         command.dispose();
                     }
