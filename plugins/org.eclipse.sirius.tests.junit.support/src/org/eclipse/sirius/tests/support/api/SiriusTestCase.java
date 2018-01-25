@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -519,7 +519,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Load the VSM at the specified URI and registers all its Viewpoints in the testcase.
+     * Load the VSM at the specified URI and register all its Viewpoints in the testcase.
      * 
      * @param modelerResourceURI
      *            the URI of the VSM.
@@ -529,6 +529,26 @@ public abstract class SiriusTestCase extends TestCase {
      *             if an error occurs while trying to load the VSM.
      */
     protected void loadModeler(final URI modelerResourceURI, EditingDomain domain) throws Exception {
+        loadModeler(modelerResourceURI, domain, true);
+    }
+
+    /**
+     * Load the VSM at the specified URI and optionally register all its
+     * Viewpoints in the testcase.
+     * 
+     * @param modelerResourceURI
+     *            the URI of the VSM.
+     * @param domain
+     *            the editing domain into which the VSM should be loaded.
+     * @param registerViewpoints
+     *            true to register viewpoints of the loaded VSM, ie add it in
+     *            the <code>viewpoints</code> list.
+     * @return The list of Viewpoints of the loaded modeler
+     * @throws Exception
+     *             if an error occurs while trying to load the VSM.
+     */
+    protected List<Viewpoint> loadModeler(final URI modelerResourceURI, EditingDomain domain, boolean registerViewpoints) throws Exception {
+        List<Viewpoint> viewpointsOfLoadedModeler = new ArrayList<>();
         Group group = null;
         try {
             group = (Group) ModelUtils.load(modelerResourceURI, domain.getResourceSet());
@@ -546,8 +566,12 @@ public abstract class SiriusTestCase extends TestCase {
             }
         }
         if (group != null) {
-            viewpoints.addAll(group.getOwnedViewpoints());
+            viewpointsOfLoadedModeler.addAll(group.getOwnedViewpoints());
+            if (registerViewpoints) {
+                viewpoints.addAll(group.getOwnedViewpoints());
+            }
         }
+        return viewpointsOfLoadedModeler;
     }
 
     private boolean hasAlreadySemanticResourceLoaded(Session newSession, URI semanticResourceURI) {
