@@ -71,6 +71,11 @@ h4. Changes in @org.eclipse.sirius.ui@
 * <span class="label label-success">Added</span> A new preference has been added to @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys@: @PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT@. It is used to control the scaling level behavior when exporting diagrams. Refer to the JavaDoc for the details. 
 * <span class="label label-success">Added</span> The type @org.eclipse.sirius.ui.business.api.dialect.ExportFormat@ has a new attribute representing the scaling level to use for diagram export. It is defined by an integer type. Refer to the JavaDoc for details on its meaning.
 
+h4. Changes in @org.eclipse.sirius.tests.junit.support@
+
+* <span class="label label-success">Added</span> The method @SiriusTestCase.loadModeler(URI, EditingDomain)@ allows to load the VSM at the specified URI and register all its Viewpoints in the current testcase. There is a new method, @org.eclipse.sirius.tests.support.api.SiriusTestCase.loadModeler(URI, EditingDomain, boolean)@, to allow to load the VSM at the specified URI without registering its viewpoints. It can be useful to load a VSM for an editing domain of another session than the current session of the
+testcase.
+
 h2(#sirius5.1.0). Changes in Sirius 5.1.0
 
 h3. User-Visible Changes

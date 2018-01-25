@@ -289,6 +289,16 @@
 				<code>org.eclipse.sirius.ui.business.api.dialect.ExportFormat</code> has a new attribute representing the scaling level to use for diagram export. It is defined by an integer type. Refer to the JavaDoc for details on its meaning.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
+			<code>org.eclipse.sirius.tests.junit.support</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>SiriusTestCase.loadModeler(URI, EditingDomain)</code> allows to load the VSM at the specified URI and register all its Viewpoints in the current testcase. There is a new method, 
+				<code>org.eclipse.sirius.tests.support.api.SiriusTestCase.loadModeler(URI, EditingDomain, boolean)</code>, to allow to load the VSM at the specified URI without registering its viewpoints. It can be useful to load a VSM for an editing domain of another session than the current session of the
+			</li>
+		</ul>
+		<p>testcase.</p>
 		<h2 id="sirius5.1.0">Changes in Sirius 5.1.0</h2>
 		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
@@ -1143,7 +1153,7 @@
 				<code>AbstractMetamodelPropertySectionSpec</code>. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support2">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
@@ -1707,7 +1717,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.ext.gef</code> is deprecated and will be removed in the next version.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support3">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
@@ -2196,7 +2206,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support4">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
