@@ -66,7 +66,6 @@ import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonC
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHandler;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.RenameActionHandler;
-import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.TooltipAwareNavigatorDecoratingLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.wizards.CreateRepresentationWizard;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SiriusRepresentationWithInactiveStatusLabelProvider;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -790,7 +789,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         if (labelProvider != null) {
             treeViewer.setLabelProvider(labelProvider);
         } else {
-            treeViewer.setLabelProvider(new TooltipAwareNavigatorDecoratingLabelProvider(new SiriusRepresentationWithInactiveStatusLabelProvider()));
+            treeViewer.setLabelProvider(new SiriusRepresentationWithInactiveStatusLabelProvider());
         }
         treeViewer.setSorter(new CommonItemSorter());
 
