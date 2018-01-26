@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.sirius.business.api.session.Session;
@@ -27,6 +28,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ext.jface.viewers.IToolTipProvider;
 import org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection;
 import org.eclipse.sirius.viewpoint.description.Position;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -58,10 +60,26 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
             decoDesc.setDisplayPriority(DisplayPriority.HIGH_PRIORITY.getValue());
             decoDesc.setDecorationAsImage(decorationImage);
 
+            // add tooltip
+            decoDesc.setTooltipAsString(getToolTip(editPart));
+
             return Arrays.asList(decoDesc);
         }
 
         return new ArrayList<>();
+    }
+
+    private String getToolTip(IDiagramElementEditPart editPart) {
+        EObject representedObject = editPart.resolveTargetSemanticElement();
+
+        if (representedObject != null) {
+            IToolTipProvider tooltipProvider = Platform.getAdapterManager().getAdapter(representedObject, IToolTipProvider.class);
+            if (tooltipProvider != null) {
+                return tooltipProvider.getToolTipText(representedObject);
+            }
+        }
+
+        return null;
     }
 
     /**
