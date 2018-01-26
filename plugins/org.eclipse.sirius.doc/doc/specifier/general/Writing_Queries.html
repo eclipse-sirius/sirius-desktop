@@ -37,6 +37,9 @@
 						<a href="#service_methods">Writing Java Services</a>
 					</li>
 					<li>
+						<a href="#service_navigation">Accessing Java service implementations from interpreted expression</a>
+					</li>
+					<li>
 						<a href="#standard_services">Standard Services</a>
 						<ol style="list-style: disc;">
 							<li>
@@ -351,6 +354,18 @@
 				<code>void</code>. You can return any value instead, for example target argument (the service method&#8217;s first parameter). 
 			</li>
 		</ul>
+		<h2 id="service_navigation">Accessing Java service implementations from interpreted expression</h2>
+		<p>If you want to see the service implementation(s) used in an interpreted expression in the Java editor, you just have to put your cursor on the service and press the 
+			<strong>F3</strong> keyboard key. Three scenarios can occur after hitting F3:
+		</p>
+		<ul>
+			<li>Nothing happens if your service does not exist in any services class defined in the VSM or if the expression is not complete (missing parenthesis and parameters).</li>
+			<li>If only one implementation matches your service, it is open directly in Java editor.</li>
+			<li>If many implementations match your service call, a wizard is opened and allows you to choose the Java class containing the service implementation you wish to see:</li>
+		</ul>
+		<p>
+			<img border="0" src="images/serviceNavigation.png"/>
+		</p>
 		<h2 id="standard_services">Standard Services</h2>
 		<p>Sirius provides some standard services that can be used from any VSM simply by adding the appropriate reference (as a 
 			<em>Java Extension</em>) to the implementation class&#8217;s fully qualified name. When using such a service class, make sure your 

@@ -13,7 +13,7 @@ h3. User-Visible Changes
 h3. Specifier-Visible Changes
 
 * <span class="label label-success">Added</span> An action is added in main toolbar to reload the VSM of installed plug-ins that may have changed. Refer to the "specifier documentation":specifier/general/Specifying_Viewpoints.html#reloadVSM for details.
-
+* <span class="label label-success">Added</span> In the VSM editor, when the cursor is inside an interpreted expression at a location which corresponds to a Java service invocation, hitting *F3* will navigate to the service implementation in a Java editor. See "the documentation":specifier/general/Writing_Queries.html#service_navigation for more details.
 
 h3. Developer-Visible Changes
 

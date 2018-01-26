@@ -147,11 +147,23 @@ public class EObjectServices {
 
 Once a service has been defined and its class is registered in your VSM, you can invoke it in the expressions of languages which support it  like this: <code>[aFamily.getFamiliesContainingParents()/]</code>. (using Acceleo syntax) The invocation looks as if the service was a normal feature of the @Family@ type. When the service is invoked, the model element on which it is invoked is used as the first argument to the Java method. If arguments are passed in the expression, they are mapped to the second, third, etc. parameters of the Java method, assuming the types are compatible. The result of evaluating a service invocation is the result of the Java method.
 
+
+
 _Warning:_ Java service methods should be stateless. There is no guarantee that two successive invocations of the same service method on two model elements (or even on the same one) will use the same instance of the service class.
 
 _Warning:_ There are currently some limitations on the use of Java services from Acceleo:
 * primitive types can not be used as arguments or return types for service methods invoked from Acceleo 3 expressions. The workaround is to use the corresponding wrapper type (e.g. @Integer@ instead of @int@).
 * service methods invoked from Acceleo 3 expressions can not return @void@. You can return any value instead, for example target argument (the service method's first parameter). 
+
+h2(#service_navigation). Accessing Java service implementations from interpreted expression
+
+If you want to see the service implementation(s) used in an interpreted expression in the Java editor, you just have to put your cursor on the service and press the *F3* keyboard key. Three scenarios can occur after hitting F3:
+* Nothing happens if your service does not exist in any services class defined in the VSM or if the expression is not complete (missing parenthesis and parameters).
+* If only one implementation matches your service, it is open directly in Java editor.
+* If many implementations match your service call, a wizard is opened and allows you to choose the Java class containing the service implementation you wish to see:
+!images/serviceNavigation.png!
+
+
 
 h2(#standard_services). Standard Services
 
