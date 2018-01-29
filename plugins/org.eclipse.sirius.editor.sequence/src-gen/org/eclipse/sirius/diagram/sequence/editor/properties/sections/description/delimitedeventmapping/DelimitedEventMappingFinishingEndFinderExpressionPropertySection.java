@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -15,6 +16,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.StateMapping;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.internal.navigation.NavigationByKeyListener;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
@@ -113,6 +115,8 @@ public class DelimitedEventMappingFinishingEndFinderExpressionPropertySection ex
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 
         TypeContentProposalProvider.bindPluginsCompletionProcessors(this, text);
+
+        text.addKeyListener(new NavigationByKeyListener(this, text, eObject));
 
         // Start of user code create controls
 

@@ -11,6 +11,7 @@ package org.eclipse.sirius.properties.editor.properties.sections.properties.abst
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.internal.navigation.NavigationByKeyListener;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
@@ -32,7 +33,6 @@ public class AbstractDynamicMappingForDescriptionIterableExpressionPropertySecti
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
-    @Override
     protected String getDefaultLabelText() {
         return "IterableExpression"; //$NON-NLS-1$
     }
@@ -40,7 +40,6 @@ public class AbstractDynamicMappingForDescriptionIterableExpressionPropertySecti
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
-    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
@@ -53,7 +52,6 @@ public class AbstractDynamicMappingForDescriptionIterableExpressionPropertySecti
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
-    @Override
     public EAttribute getFeature() {
         return PropertiesPackage.eINSTANCE.getAbstractDynamicMappingForDescription_IterableExpression();
     }
@@ -61,7 +59,6 @@ public class AbstractDynamicMappingForDescriptionIterableExpressionPropertySecti
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
-    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -69,7 +66,6 @@ public class AbstractDynamicMappingForDescriptionIterableExpressionPropertySecti
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
-    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -77,7 +73,6 @@ public class AbstractDynamicMappingForDescriptionIterableExpressionPropertySecti
     /**
      * {@inheritDoc}
      */
-    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         /*
@@ -89,6 +84,8 @@ public class AbstractDynamicMappingForDescriptionIterableExpressionPropertySecti
 
         TypeContentProposalProvider.bindPluginsCompletionProcessors(this, text);
 
+        text.addKeyListener(new NavigationByKeyListener(this, text, eObject));
+
         // Start of user code create controls
 
         // End of user code create controls
@@ -98,7 +95,6 @@ public class AbstractDynamicMappingForDescriptionIterableExpressionPropertySecti
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
-            @Override
             public void widgetSelected(SelectionEvent e) {
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), AbstractDynamicMappingForDescriptionIterableExpressionPropertySection.this,
                         text.getText());
@@ -112,7 +108,6 @@ public class AbstractDynamicMappingForDescriptionIterableExpressionPropertySecti
     /**
      * {@inheritDoc}
      */
-    @Override
     protected String getPropertyDescription() {
         return "";
     }

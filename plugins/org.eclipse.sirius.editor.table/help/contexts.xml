@@ -99,17 +99,6 @@
    
       </description>
    </context>
-   <context id="DTableElementSynchronizer">
-     <description>
-       
-       
-         
-   <!-- Start of user code DTableElementSynchronizer description -->
-   
-   <!-- End of user code DTableElementSynchronizer description -->
-   
-      </description>
-   </context>
    <context id="DTableElementStyle">
      <description>
        
@@ -280,6 +269,8 @@
           - featureParentExpression: a Collection&lt;EObject> or an EObject.
                 . root: semantic target of the current DTable.
                 . container: semantic target of the current DLine.
+                . line: DLine of the current DCell.
+                . table: current DTable.
 
 
          
