@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -214,11 +214,12 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     @Override
     public boolean deleteRepresentation(DRepresentationDescriptor representationDescriptor, Session session) {
         if (isSupported(representationDescriptor)) {
-            Optional<Resource> resOpt = Optional.ofNullable(representationDescriptor.getRepresentation()).map(EObject::eResource);
-            if (representationDescriptor.getRepresentation() != null) {
-                SiriusUtil.delete(representationDescriptor.getRepresentation(), session);
-            }
+            DRepresentation representation = representationDescriptor.getRepresentation();
+            Optional<Resource> resOpt = Optional.ofNullable(representation).map(EObject::eResource);
             SiriusUtil.delete(representationDescriptor, session);
+            if (representation != null) {
+                SiriusUtil.delete(representation, session);
+            }
 
             // delete the resource if it is empty
             resOpt.filter(res -> res.getContents().isEmpty()).ifPresent(res -> {
