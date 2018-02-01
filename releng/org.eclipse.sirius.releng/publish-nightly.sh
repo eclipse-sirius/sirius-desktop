@@ -10,15 +10,16 @@
 #    Obeo - initial API and implementation
 # ====================================================================
 
-[ -z "$WORKSPACE"  -o -z "$PLATFORM" -o -z "$GIT_BRANCH" ] && {
+[ -z "$WORKSPACE"  -o -z "$PLATFORM" -o -z "$GIT_BRANCH" -o -z "$BUILD_TIMESTAMP" ] && {
      echo "Execution aborted.
 
 One or more of the required variables is not set. They are normally
 provided by the Hudson build.
 
-- WORKSPACE  : the build workspace root.
-- PLATFORM   : the name of the target Eclipse release (e.g. kepler).
-- GIT_BRANCH : the name fo the Git branch being build/published.
+- WORKSPACE       : the build workspace root.
+- PLATFORM        : the name of the target Eclipse release (e.g. kepler).
+- GIT_BRANCH      : the name fo the Git branch being build/published.
+- BUILD_TIMESTAMP : timestamp to use to identify this particular build (e.g. 20180201-113000)
 "
     exit 1
 }
@@ -45,10 +46,6 @@ export STREAM=$(echo "$VERSION" | sed -r -e 's/^([0-9]+\.[0-9]+\.).*$/\1x/')
 
 # The short version, common to all versions in that stream
 export SHORT_VERSION=$(echo "$VERSION" | sed -r -e 's/^([0-9]+\.[0-9]+)\..*$/\1/')
-
-# Converts the Hudson BUILD_ID (e.g. 2013-10-15_07-07-07) into the
-# syntax we want for our update-sites (e.g. 20131015-070707)
-export BUILD_TIMESTAMP=$(echo "$BUILD_ID" | sed -e 's/-//g' -e 's/_/-/')
 
 # The timestamp in the p2 composite repos used to implement redirects
 export P2_TIMESTAMP=$(date +"%s000")
