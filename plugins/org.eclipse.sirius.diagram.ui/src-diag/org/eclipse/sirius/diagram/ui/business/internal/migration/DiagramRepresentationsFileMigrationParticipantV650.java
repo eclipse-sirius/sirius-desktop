@@ -63,10 +63,8 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
      * Predicate that checks that :
      * <UL>
      * <LI>The input is a GMF Node,</LI>
-     * <LI>This Node has a DNode style description that forbidden to resize
-     * DNode,</LI>
-     * <LI>and the size of DNode is not the same of the size of the GMF Node.
-     * </LI>
+     * <LI>This Node has a DNode style description that forbidden to resize DNode,</LI>
+     * <LI>and the size of DNode is not the same of the size of the GMF Node.</LI>
      * </UL>
      */
     private Predicate<EObject> nonResizableNodeWithDifferentSizePredicate = new Predicate<EObject>() {
@@ -120,13 +118,11 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
     }
 
     /**
-     * Return a list of GMF Diagram that are on the root of the resource of the
-     * DAnalysis.
+     * Return a list of GMF Diagram that are on the root of the resource of the DAnalysis.
      * 
      * @param dAnalysis
      *            Current analysis
-     * @return list of GMF Diagram that are on the root of the resource of the
-     *         DAnalysis.
+     * @return list of GMF Diagram that are on the root of the resource of the DAnalysis.
      * 
      */
     public static List<Diagram> getDiagramsAtRoot(DAnalysis dAnalysis) {
@@ -140,15 +136,14 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
     }
 
     /**
-     * Move GMF diagrams from root of the resource to eAnnotation in
-     * corresponding DDiagram, and then launch old migrations that haven't been
-     * launched on this diagrams.
+     * Move GMF diagrams from root of the resource to eAnnotation in corresponding DDiagram, and then launch old
+     * migrations that haven't been launched on this diagrams.
      * 
      * @param dAnalysis
      *            The analysis to migrate.
      * @param diagrams
-     *            list of GMF Diagram to move from the root of the resource to
-     *            the concerned {@link org.eclipse.sirius.diagram.DDiagram}.
+     *            list of GMF Diagram to move from the root of the resource to the concerned
+     *            {@link org.eclipse.sirius.diagram.DDiagram}.
      */
     public void moveGMFDiagramsFromRoot(DAnalysis dAnalysis, List<Diagram> diagrams) {
         for (Diagram diagram : diagrams) {
@@ -176,10 +171,9 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
     }
 
     /**
-     * In case of resizeKind == NONE and that DNode.width/height is different
-     * this of the GMF Node, before the fix changing the resizeKind to something
-     * different of NONE has the effect to resize the bounds of concerned
-     * figures to the DNode.width/height and not the GMF Node bounds.
+     * In case of resizeKind == NONE and that DNode.width/height is different this of the GMF Node, before the fix
+     * changing the resizeKind to something different of NONE has the effect to resize the bounds of concerned figures
+     * to the DNode.width/height and not the GMF Node bounds.
      * 
      * @param view
      *            The view to migrate.
@@ -200,14 +194,11 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
     }
 
     /**
-     * The existing diagram may have incorrect coordinates on their anchors,
-     * resulting in an inconsistent display now. The objective of this automatic
-     * migration is to ensure that egdes of the same tree goes through the same
-     * branches (ie they have the same anchor on source side or target side
-     * depending on the direction of the tree). If this is not the case the
-     * command modifies the GMF anchors to {0.5, 0.5}, if all anchors are
-     * different or to the unique id if there is only one defined anchor in the
-     * tree (other anchors are null).
+     * The existing diagram may have incorrect coordinates on their anchors, resulting in an inconsistent display now.
+     * The objective of this automatic migration is to ensure that edges of the same tree goes through the same branches
+     * (ie they have the same anchor on source side or target side depending on the direction of the tree). If this is
+     * not the case the command modifies the GMF anchors to {0.5, 0.5}, if all anchors are different or to the unique id
+     * if there is only one defined anchor in the tree (other anchors are null).
      * 
      * @param view
      *            The view to migrate.
@@ -242,14 +233,13 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
     }
 
     /**
-     * Add the set anchor command to <code>ccmd</code> if needed (ie if the
-     * anchor is different for edges with same source or same target).
+     * Add the set anchor command to <code>ccmd</code> if needed (ie if the anchor is different for edges with same
+     * source or same target).
      * 
      * @param edgesSortPerCommonAnchor
      *            The map that group the edges per comon anchor
      * @param sourceAnchor
-     *            true if the groups corresponds to source side, false if the
-     *            groups corresponds to target side
+     *            true if the groups corresponds to source side, false if the groups corresponds to target side
      */
     protected void setSameAnchor(Map<View, List<Edge>> edgesSortPerCommonAnchor, boolean sourceAnchor) {
         for (Entry<View, List<Edge>> entry : edgesSortPerCommonAnchor.entrySet()) {
@@ -278,8 +268,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
      * @param edges
      *            a list of edges with common anchor.
      * @param sourceAnchor
-     *            true if the common anchor is the source one, false, if it is
-     *            the target one.
+     *            true if the common anchor is the source one, false, if it is the target one.
      * @return an optional String, null is there is no replacement id.
      */
     private Option<String> getReplacementId(List<Edge> edges, boolean sourceAnchor) {
@@ -330,14 +319,13 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
     }
 
     /**
-     * Get the source anchor or the target anchor of the <code>edge</code>
-     * according to boolean <code>sourceAnchor</code>.
+     * Get the source anchor or the target anchor of the <code>edge</code> according to boolean
+     * <code>sourceAnchor</code>.
      * 
      * @param edge
      *            The corresponding edge
      * @param sourceAnchor
-     *            true if we want to get the source anchor, false if we want the
-     *            target anchor
+     *            true if we want to get the source anchor, false if we want the target anchor
      * @return the corresponding anchor
      */
     protected Anchor getAnchor(Edge edge, boolean sourceAnchor) {

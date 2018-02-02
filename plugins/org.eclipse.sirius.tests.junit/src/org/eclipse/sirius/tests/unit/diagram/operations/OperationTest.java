@@ -588,7 +588,7 @@ public class OperationTest extends DocbookTestCase {
 
         final AbstractOperationTask task = new CreateViewTask(context, accessor, op, interpreter);
 
-        // check that there is only one egde view before executing the
+        // check that there is only one edge view before executing the
         // CreateViewTask.
         try {
             instanceCount = INTERPRETER.evaluateInteger(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->size()").intValue();

@@ -29,9 +29,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
- * Set connection bendpoints according to extremity move (source or target) to
- * keep, as much as possible, the edges aspects when a node (container or not)
- * is moved. A move of a node should move only the closest segment of the linked
+ * Set connection bendpoints according to extremity move (source or target) to keep, as much as possible, the edges
+ * aspects when a node (container or not) is moved. A move of a node should move only the closest segment of the linked
  * edges.
  *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
@@ -76,22 +75,19 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     }
 
     /**
-     * Adapt the point list and the source reference point (or target reference
-     * point) according to a move of the source (or of the target).
+     * Adapt the point list and the source reference point (or target reference point) according to a move of the source
+     * (or of the target).
      *
      * @param sourceMove
-     *            true if the source node of edge has been moved, false
-     *            otherwise
+     *            true if the source node of edge has been moved, false otherwise
      * @param moveDelta
      *            the delta of the move of the extremity (source or target)
      * @param connectionEditPart
      *            The connection editPart corresponding to the edge to adapt
      * @param sourceRefPoint
-     *            The source reference point to adapt (only adapted for
-     *            sourceMove true)
+     *            The source reference point to adapt (only adapted for sourceMove true)
      * @param targetRefPoint
-     *            The target reference point to adapt (only adapted for
-     *            sourceMove false)
+     *            The target reference point to adapt (only adapted for sourceMove false)
      * @param connectionPointList
      *            The point list to adapt
      */
@@ -100,7 +96,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
         ConnectionEditPartQuery connectionEditPartQuery = new ConnectionEditPartQuery(connectionEditPart);
         // Check overlap case
         if (connectionEditPart.getModel() instanceof Edge && ((Edge) connectionEditPart.getModel()).getBendpoints() instanceof RelativeBendpoints) {
-            // If visually the egde contains more points (connectionPointList) than the model (GMF Edge points) and the
+            // If visually the edge contains more points (connectionPointList) than the model (GMF Edge points) and the
             // model contains only 2 points, we are probably in the case where the source and the target intersect and
             // the router
             // (org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ObliqueRouter.checkShapesIntersect(Connection,
@@ -127,14 +123,12 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     }
 
     /**
-     * Adapt the point list and the source reference point according to a move
-     * of the source.
+     * Adapt the point list and the source reference point according to a move of the source.
      *
      * @param moveDelta
      *            the delta of the move of the extremity (source or target)
      * @param isEdgeWithRectilinearRoutingStyle
-     *            True if the edge is rectilinear (one more point is adapted in
-     *            this case), false otherwise
+     *            True if the edge is rectilinear (one more point is adapted in this case), false otherwise
      * @param sourceBounds
      *            The bounds of the source node
      * @param targetBounds
@@ -192,14 +186,12 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     }
 
     /**
-     * Adapt the point list and the target reference point according to a move
-     * of the target.
+     * Adapt the point list and the target reference point according to a move of the target.
      *
      * @param moveDelta
      *            the delta of the move of the extremity (source or target)
      * @param isEdgeWithRectilinearRoutingStyle
-     *            True if the edge is rectilinear (one more point is adapted in
-     *            this case), false otherwise
+     *            True if the edge is rectilinear (one more point is adapted in this case), false otherwise
      * @param sourceBounds
      *            The bounds of the source node
      * @param targetBounds
@@ -259,12 +251,11 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     }
 
     /**
-     * Check if the segment will be merged with next or previous segment with
-     * draw2d rectilinear router. In this case, we remove the useless points.
-     * <BR>
+     * Check if the segment will be merged with next or previous segment with draw2d rectilinear router. In this case,
+     * we remove the useless points. <BR>
      * Logic extracted from
-     * {@link org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter.routeLine(Connection,
-     * int, PointList)}.
+     * {@link org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter.routeLine(Connection, int,
+     * PointList)}.
      *
      * @param connectionPointList
      *            <code>PointList</code> to normalize
@@ -272,19 +263,16 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     private static void normalizeAndStraight(PointList connectionPointList) {
         if (PointListUtilities.normalizeSegments(connectionPointList, 3)) {
             /*
-             * Normalization can make our polyline not rectilinear. Hence, we
-             * need to normalize segments of polyline to straight line
-             * tolerance.
+             * Normalization can make our polyline not rectilinear. Hence, we need to normalize segments of polyline to
+             * straight line tolerance.
              */
             normalizeToStraightLineTolerance(connectionPointList, 3);
         }
     }
 
     /**
-     * Goes through line segments of a polyline and makes strict straight
-     * segments from nearly straight segments.<BR>
-     * Copied from
-     * {@link org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter}
+     * Goes through line segments of a polyline and makes strict straight segments from nearly straight segments.<BR>
+     * Copied from {@link org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter}
      *
      * @param line
      *            polyline
@@ -304,10 +292,9 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     }
 
     /**
-     * Removes consecutive points contained within the source shape and removes
-     * consecutive points contained within the target shape. If all points have
-     * been removed an extra point outside source and target shapes will be
-     * added. Inspired from
+     * Removes consecutive points contained within the source shape and removes consecutive points contained within the
+     * target shape. If all points have been removed an extra point outside source and target shapes will be added.
+     * Inspired from
      * {@link org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter#removePointsInViews(Connection, PointList, Point, Point)}
      *
      * @param newLine
@@ -326,10 +313,9 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
         Point lastRemovedFromTarget = null;
 
         /*
-         * Starting from the first point of polyline remove points that are
-         * contained within the source shape until the first point outside is
-         * found. Remember the point that was removed from the source shape last
-         * for a possible case of all points removed from polyline.
+         * Starting from the first point of polyline remove points that are contained within the source shape until the
+         * first point outside is found. Remember the point that was removed from the source shape last for a possible
+         * case of all points removed from polyline.
          */
         PointList sourcePointList = PointListUtilities.createPointsFromRect(source);
         if (newLine.size() != 0) {
@@ -347,10 +333,9 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
         }
 
         /*
-         * Starting from the end point of polyline remove points that are
-         * contained within the target shape until the first point outside is
-         * found. Remember the point that was removed from the target shape last
-         * for a possible case of all points removed from polyline.
+         * Starting from the end point of polyline remove points that are contained within the target shape until the
+         * first point outside is found. Remember the point that was removed from the target shape last for a possible
+         * case of all points removed from polyline.
          */
         PointList targetPointList = PointListUtilities.createPointsFromRect(target);
         if (newLine.size() != 0) {
@@ -380,13 +365,10 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
                 lastRemovedFromTarget = end;
             }
             /*
-             * If last point removed from source and the points removed from
-             * target form a vertical or horizontal line we'll find a point
-             * located on this line and is outside of source and target shape
-             * and insert it in the polyline. The check for vertical and
-             * horizontal segment is using tolerance value, because bend point
-             * location extracted from RelativeBendpoint can have precision
-             * errors due to non-integer weight factors.
+             * If last point removed from source and the points removed from target form a vertical or horizontal line
+             * we'll find a point located on this line and is outside of source and target shape and insert it in the
+             * polyline. The check for vertical and horizontal segment is using tolerance value, because bend point
+             * location extracted from RelativeBendpoint can have precision errors due to non-integer weight factors.
              */
             if (Math.abs(lastRemovedFromSource.x - lastRemovedFromTarget.x) < toleranceValue) {
                 // Vertical
@@ -422,8 +404,8 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     }
 
     /**
-     * Get a complementary point to go from the <code>otherPointExtremity</code>
-     * to the <code>nodeBouds</code> through <code>lastRemoved</code> point.
+     * Get a complementary point to go from the <code>otherPointExtremity</code> to the <code>nodeBouds</code> through
+     * <code>lastRemoved</code> point.
      *
      * @param pointsList
      *            Current points of the edge
@@ -432,13 +414,11 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
      * @param lastRemoved
      *            Last removed point from the points list of the edge
      * @param otherPointExtremity
-     *            First/Last point from the points list of the edge (on the same
-     *            side as <code>lastRemoved</code>)
+     *            First/Last point from the points list of the edge (on the same side as <code>lastRemoved</code>)
      * @param toleranceValue
      *            A tolerance.
-     * @return An optional point corresponding to the intersection between a
-     *         line from <code>otherPointExtremity</code> to
-     *         <code>lastRemoved</code> and <code>nodeBouds</code>.
+     * @return An optional point corresponding to the intersection between a line from <code>otherPointExtremity</code>
+     *         to <code>lastRemoved</code> and <code>nodeBouds</code>.
      */
     private static Option<Point> getComplementaryPoint(PointList pointsList, PrecisionRectangle nodeBouds, Point lastRemoved, Point otherPointExtremity, int toleranceValue) {
         Option<Point> optionalIntersection;

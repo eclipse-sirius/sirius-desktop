@@ -59,8 +59,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
- * Specific factory for {@link Edge} used by the
- * {@link DDiagramCanonicalSynchronizer}.
+ * Specific factory for {@link Edge} used by the {@link DDiagramCanonicalSynchronizer}.
  *
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -110,8 +109,8 @@ public class ConnectionsFactory {
     }
 
     /**
-     * Create a {@link Edge} according to information provided in
-     * <code>viewDescriptor</code> and <code>domain2NotationMap</code>.
+     * Create a {@link Edge} according to information provided in <code>viewDescriptor</code> and
+     * <code>domain2NotationMap</code>.
      *
      * @param viewDescriptor
      *            {@link SiriusLinkDescriptor} describing the Edge to create.
@@ -187,8 +186,8 @@ public class ConnectionsFactory {
     }
 
     /**
-     * As FontStyle.fontHeight default value is 9 and BasicLabelStyle.labelSize
-     * default value is 8 we must synchronize this property.
+     * As FontStyle.fontHeight default value is 9 and BasicLabelStyle.labelSize default value is 8 we must synchronize
+     * this property.
      *
      * @param edge
      */
@@ -215,16 +214,16 @@ public class ConnectionsFactory {
             EObject element = edge.getElement();
             if (element instanceof DEdge) {
                 DEdge dEdge = (DEdge) element;
-                EdgeLayoutData egdeLayoutData = SiriusLayoutDataManager.INSTANCE.getData(dEdge, false);
+                EdgeLayoutData edgeLayoutData = SiriusLayoutDataManager.INSTANCE.getData(dEdge, false);
 
-                if (egdeLayoutData != null) {
-                    EdgeLayoutData oppositeEgdeLayoutData = SiriusLayoutDataManager.INSTANCE.getOppositeEdgeLayoutData(egdeLayoutData, false);
-                    routing = egdeLayoutData.getRouting();
+                if (edgeLayoutData != null) {
+                    EdgeLayoutData oppositeEdgeLayoutData = SiriusLayoutDataManager.INSTANCE.getOppositeEdgeLayoutData(edgeLayoutData, false);
+                    routing = edgeLayoutData.getRouting();
 
-                    if (oppositeEgdeLayoutData != null) {
-                        getAttributesForSourceAndTargetMove(egdeLayoutData, oppositeEgdeLayoutData, edge, source, target);
+                    if (oppositeEdgeLayoutData != null) {
+                        getAttributesForSourceAndTargetMove(edgeLayoutData, oppositeEdgeLayoutData, edge, source, target);
                     } else {
-                        getAttributesForSourceOrTargetMove(egdeLayoutData, edge, source, target);
+                        getAttributesForSourceOrTargetMove(edgeLayoutData, edge, source, target);
                     }
                 } else {
                     Option<Rectangle> optionalSourceBounds = GMFHelper.getAbsoluteBounds(source);
@@ -288,11 +287,10 @@ public class ConnectionsFactory {
     }
 
     /**
-     * Only source or target of edge has been moved (or dragged and dropped).
-     * Use the data as is, except for border node that potentially needs
-     * adaptation.
+     * Only source or target of edge has been moved (or dragged and dropped). Use the data as is, except for border node
+     * that potentially needs adaptation.
      *
-     * @param egdeLayoutData
+     * @param edgeLayoutData
      *            Edge layout data from source (or from target)
      * @param edge
      *            The edge to adapt
@@ -301,26 +299,26 @@ public class ConnectionsFactory {
      * @param target
      *            The target view of the edge
      */
-    protected void getAttributesForSourceOrTargetMove(EdgeLayoutData egdeLayoutData, Edge edge, View source, View target) {
-        sourceTerminal = egdeLayoutData.getSourceTerminal();
+    protected void getAttributesForSourceOrTargetMove(EdgeLayoutData edgeLayoutData, Edge edge, View source, View target) {
+        sourceTerminal = edgeLayoutData.getSourceTerminal();
         if (EMPTY_TERMINAL.equals(sourceTerminal)) {
             sourceTerminal = GMFNotationUtilities.getTerminalString(0.5d, 0.5d);
         }
-        targetTerminal = egdeLayoutData.getTargetTerminal();
+        targetTerminal = edgeLayoutData.getTargetTerminal();
         if (EMPTY_TERMINAL.equals(targetTerminal)) {
             targetTerminal = GMFNotationUtilities.getTerminalString(0.5d, 0.5d);
         }
         // sourceRefPoint, targetRefPoint and pointList of
         // the edgeLayoutData can be null if the edge is
         // hide when the layout data is stored
-        if (egdeLayoutData.getSourceRefPoint() != null) {
-            sourceRefPoint = egdeLayoutData.getSourceRefPoint().getCopy();
+        if (edgeLayoutData.getSourceRefPoint() != null) {
+            sourceRefPoint = edgeLayoutData.getSourceRefPoint().getCopy();
         }
-        if (egdeLayoutData.getTargetRefPoint() != null) {
-            targetRefPoint = egdeLayoutData.getTargetRefPoint().getCopy();
+        if (edgeLayoutData.getTargetRefPoint() != null) {
+            targetRefPoint = edgeLayoutData.getTargetRefPoint().getCopy();
         }
 
-        if (egdeLayoutData.getPointList() != null) {
+        if (edgeLayoutData.getPointList() != null) {
             GraphicalEditPart srceEditPart = GMFHelper.getGraphicalEditPart(source).get();
             GraphicalEditPart tgtEditPart = GMFHelper.getGraphicalEditPart(target).get();
 
@@ -348,20 +346,19 @@ public class ConnectionsFactory {
             }
             if (pointList.size() == 0) {
                 // no intersection found, case when source and target are overlapped
-                pointList = egdeLayoutData.getPointList();
+                pointList = edgeLayoutData.getPointList();
             }
         }
     }
 
     /**
-     * Both source and target of edge have been moved (or dragged and dropped).
-     * We must use a "mix" of the edge layout data from source that contains the
-     * impacted points for the source move and the edge layout data from target
-     * that contains the impacted points for the target move.
+     * Both source and target of edge have been moved (or dragged and dropped). We must use a "mix" of the edge layout
+     * data from source that contains the impacted points for the source move and the edge layout data from target that
+     * contains the impacted points for the target move.
      *
-     * @param egdeLayoutData
+     * @param edgeLayoutData
      *            Edge layout data from source (or from target)
-     * @param oppositeEgdeLayoutData
+     * @param oppositeEdgeLayoutData
      *            Opposite layout data from target (or from source)
      * @param edge
      *            The edge to adapt
@@ -370,15 +367,15 @@ public class ConnectionsFactory {
      * @param target
      *            The target view of the edge
      */
-    private void getAttributesForSourceAndTargetMove(EdgeLayoutData egdeLayoutData, EdgeLayoutData oppositeEgdeLayoutData, Edge edge, View source, View target) {
+    private void getAttributesForSourceAndTargetMove(EdgeLayoutData edgeLayoutData, EdgeLayoutData oppositeEdgeLayoutData, Edge edge, View source, View target) {
         EdgeLayoutData layoutDataFromSource;
         EdgeLayoutData layoutDataFromTarget;
-        if (egdeLayoutData.getTarget().getSourceNode().equals(egdeLayoutData.getParent().getTarget())) {
-            layoutDataFromSource = egdeLayoutData;
-            layoutDataFromTarget = oppositeEgdeLayoutData;
+        if (edgeLayoutData.getTarget().getSourceNode().equals(edgeLayoutData.getParent().getTarget())) {
+            layoutDataFromSource = edgeLayoutData;
+            layoutDataFromTarget = oppositeEdgeLayoutData;
         } else {
-            layoutDataFromSource = oppositeEgdeLayoutData;
-            layoutDataFromTarget = egdeLayoutData;
+            layoutDataFromSource = oppositeEdgeLayoutData;
+            layoutDataFromTarget = edgeLayoutData;
         }
         sourceTerminal = layoutDataFromSource.getSourceTerminal();
         targetTerminal = layoutDataFromTarget.getTargetTerminal();

@@ -570,7 +570,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
         SWTBotSiriusDiagramEditor rectilinearDiagramEditor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESCRIPTION_NAME, "SimpleCaseForOverlap",
                 DSemanticDiagram.class);
         PointList previousBendPoints = ((PolylineConnectionEx) rectilinearDiagramEditor.getConnectionsEditPart().get(0).part().getFigure()).getPoints();
-        assertEquals("The egde must have 2 bendpoints before move of source", 2, previousBendPoints.size());
+        assertEquals("The edge must have 2 bendpoints before move of source", 2, previousBendPoints.size());
 
         try {
             // Step 2: when moving edge source over the target, a loop is
@@ -589,13 +589,13 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                 SWTBotUtils.waitAllUiEvents();
                 PointList actualBendPoints = ((PolylineConnectionEx) rectilinearDiagramEditor.getConnectionsEditPart().get(0).part().getFigure()).getPoints();
                 try {
-                    assertTrue("The egde must have 4 or 5 bendpoints after move of source over target: expected 4 or 5 but was " + actualBendPoints.size(), actualBendPoints.size() >= 4);
+                    assertTrue("The edge must have 4 or 5 bendpoints after move of source over target: expected 4 or 5 but was " + actualBendPoints.size(), actualBendPoints.size() >= 4);
                     // Step 3: when moving edge source away from edge target the
                     // loop must no be kept (only 2 points again)
                     rectilinearDiagramEditor.drag(toLocation, new Point(300, 200));
                     SWTBotUtils.waitAllUiEvents();
                     actualBendPoints = ((PolylineConnectionEx) rectilinearDiagramEditor.getConnectionsEditPart().get(0).part().getFigure()).getPoints();
-                    assertEquals("The egde must have 2 bendpoints after move of source away from target", 2, actualBendPoints.size());
+                    assertEquals("The edge must have 2 bendpoints after move of source away from target", 2, actualBendPoints.size());
                 } finally {
                     undo("Set Location or Size");
                     SWTBotUtils.waitAllUiEvents();
@@ -616,16 +616,16 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
     public void testMoveEdgeExtremity() {
         doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
-        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false,
-                false, "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
+                "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
         doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(false, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
         doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(false, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false,
                 false, "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
         doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(VERTICAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
-        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(VERTICAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false,
-                false, false, "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(VERTICAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false,
+                false, "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
     }
 
     /**

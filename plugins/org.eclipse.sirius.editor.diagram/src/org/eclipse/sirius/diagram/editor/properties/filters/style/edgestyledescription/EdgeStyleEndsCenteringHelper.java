@@ -25,16 +25,13 @@ import org.eclipse.sirius.ext.base.Option;
 public class EdgeStyleEndsCenteringHelper {
 
     /**
-     * Used to filter "egde ends centering" property sections. This feature is
-     * only available for EdgeStyleDescription under a strict EdgeMapping type
-     * or an EdgeMappingImport with a strict EdgeMapping as original mapping.
-     * (this feature is not available in sequence diagram for instance).
+     * Used to filter "edge ends centering" property sections. This feature is only available for EdgeStyleDescription
+     * under a strict EdgeMapping type or an EdgeMappingImport with a strict EdgeMapping as original mapping. (this
+     * feature is not available in sequence diagram for instance).
      * 
      * @param obj
-     *            the current object from the filter (an EdgeStyleDescription
-     *            instance).
-     * @return true if the property section should be displayed, otherwise
-     *         false.
+     *            the current object from the filter (an EdgeStyleDescription instance).
+     * @return true if the property section should be displayed, otherwise false.
      */
     public static boolean shouldDisplayPropertySection(Object obj) {
         boolean value = false;

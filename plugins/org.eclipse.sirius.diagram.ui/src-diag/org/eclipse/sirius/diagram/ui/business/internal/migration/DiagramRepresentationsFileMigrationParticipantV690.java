@@ -55,8 +55,7 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
      *            the package of the type.
      * @param name
      *            the name of the type.
-     * @return an AdditionalLayer or null if the given type is not an
-     *         OptionalLayer.
+     * @return an AdditionalLayer or null if the given type is not an OptionalLayer.
      */
     public EClassifier getType(EPackage ePackage, String name) {
         Set<String> descriptionsNsUri = Sets.newHashSet(DescriptionPackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getNsURI());
@@ -67,32 +66,26 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
     }
 
     /**
-     * Migrate the edge routing style according to new connection preference
-     * page behavior. Before VP 6.9.0, the connection preference page is the GMF
-     * default one. But it was unsuitable for Viewpoint use. Indeed, in
-     * Viewpoint the default routing style is defined in VSM. Some users have
-     * used this preference page to override the style defined in the VSM, but
-     * it is not really correctly done:
+     * Migrate the edge routing style according to new connection preference page behavior. Before VP 6.9.0, the
+     * connection preference page is the GMF default one. But it was unsuitable for Viewpoint use. Indeed, in Viewpoint
+     * the default routing style is defined in VSM. Some users have used this preference page to override the style
+     * defined in the VSM, but it is not really correctly done:
      * <UL>
-     * <LI>The end-user can not retrieve the style defined in the VSM (no undo
-     * mechanism similar to the Reset style properties to default values button)
-     * </LI>
-     * <LI>The current preference page does not allow to choose the "Tree"
-     * routing style.</LI>
-     * <LI>It works only if the Rectilinear is set. The Oblique is the default
-     * value and has no effect.</LI>
+     * <LI>The end-user can not retrieve the style defined in the VSM (no undo mechanism similar to the Reset style
+     * properties to default values button)</LI>
+     * <LI>The current preference page does not allow to choose the "Tree" routing style.</LI>
+     * <LI>It works only if the Rectilinear is set. The Oblique is the default value and has no effect.</LI>
      * <LI>Inconsistent state between GMF data and Viewpoint data</LI>
      * </UL>
-     * This migration converts edge styles that have been "customized" by the
-     * previous preference page. It concerns only edges with
+     * This migration converts edge styles that have been "customized" by the previous preference page. It concerns only
+     * edges with
      * <UL>
      * <LI>a GMF routing style set to Rectilinear,</LI>
      * <LI>without routingStyle in customFeatures list,</LI>
      * <LI>and with a DEdge style set to Oblique.</LI>
      * </UL>
-     * For this edges, the routingStyle will be added in the customFeatures list
-     * of the style of these edges and the DEdge style will be set to
-     * Rectilinear.<BR>
+     * For this edges, the routingStyle will be added in the customFeatures list of the style of these edges and the
+     * DEdge style will be set to Rectilinear.<BR>
      * 
      * @param diagrams
      *            list of GMF Diagram to migrate.
@@ -112,11 +105,9 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
     }
 
     /**
-     * We detected some cases where a DDiagramElement visibility can be true but
-     * not its corresponding GMF Node. That was causing wrong conflicts
-     * detection by the CanonicalDBorderItemLocator. This migration sets the
-     * same GMF Node visibility than the DDiagramElement (if there is a
-     * difference only).
+     * We detected some cases where a DDiagramElement visibility can be true but not its corresponding GMF Node. That
+     * was causing wrong conflicts detection by the CanonicalDBorderItemLocator. This migration sets the same GMF Node
+     * visibility than the DDiagramElement (if there is a difference only).
      * 
      * @param diagrams
      *            list of GMF Diagram to migrate.
@@ -140,12 +131,11 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
     }
 
     /**
-     * Check if this edge is concerned by the migration. Edge is concerned by
-     * this migration if:
+     * Check if this edge is concerned by the migration. Edge is concerned by this migration if:
      * <UL>
      * <LI>it has a GMF routing style set to Rectilinear,</LI>
-     * <LI>the corresponding DEgde has not routingStyle in customFeatures list,</LI>
-     * <LI>and the corresponding DEgde style is set to Oblique.</LI>
+     * <LI>the corresponding DEdge has not routingStyle in customFeatures list,</LI>
+     * <LI>and the corresponding DEdge style is set to Oblique.</LI>
      * </UL>
      * 
      * @param edge

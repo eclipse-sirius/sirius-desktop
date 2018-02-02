@@ -157,7 +157,7 @@ h2. Tests and Non-regression strategy
 ** Test that changing the routing style to rectilinear keep the edge centered toward the anchor.
 ** Test the edge creation with a rectilinear style.
 ** Test that after having reconnected an edge source and target to a node not among the "centered list mapping", the user is free to move the anchor anywhere.
-** Taking an edge (egde mapping A) with a source and a target (node mapping B), test that edge is correctly centered when the mapping B is added to the "centered anchor list".
+** Taking an edge (edge mapping A) with a source and a target (node mapping B), test that edge is correctly centered when the mapping B is added to the "centered anchor list".
 ** The test cases above should also be tested with mapping imports:
 *** Test that an edge between a node A and B, assuming that the edge should be centered on A, will also be centered on node mapping A' which import the node mapping A. 
 *** Test that an edge mapping E', importing an edge mapping E also inherit the centered style properties.

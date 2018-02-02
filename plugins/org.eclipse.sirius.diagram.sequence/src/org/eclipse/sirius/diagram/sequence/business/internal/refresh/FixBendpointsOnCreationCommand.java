@@ -110,32 +110,32 @@ public class FixBendpointsOnCreationCommand extends RecordingCommand {
         Point sourceRefPoint = new Point(0, 0);
         Point targetRefPoint = new Point(0, 0);
 
-        EdgeLayoutData egdeLayoutData = null;
+        EdgeLayoutData edgeLayoutData = null;
         SiriusLayoutDataManager.INSTANCE.setIgnoreConsumeState(true);
         try {
-            egdeLayoutData = SiriusLayoutDataManager.INSTANCE.getData(dEdge, false);
+            edgeLayoutData = SiriusLayoutDataManager.INSTANCE.getData(dEdge, false);
         } finally {
             SiriusLayoutDataManager.INSTANCE.setIgnoreConsumeState(false);
         }
-        if (egdeLayoutData != null) {
+        if (edgeLayoutData != null) {
 
-            sourceTerminal = egdeLayoutData.getSourceTerminal();
-            targetTerminal = egdeLayoutData.getTargetTerminal();
+            sourceTerminal = edgeLayoutData.getSourceTerminal();
+            targetTerminal = edgeLayoutData.getTargetTerminal();
 
             // pointList, sourceRefPoint, targetRefPoint of
             // the edgeLayoutData can be null if the edge is
             // hide when the layout data is stored
-            if (egdeLayoutData.getPointList() != null) {
-                pointList = egdeLayoutData.getPointList();
+            if (edgeLayoutData.getPointList() != null) {
+                pointList = edgeLayoutData.getPointList();
             }
-            if (egdeLayoutData.getSourceRefPoint() != null) {
-                sourceRefPoint = egdeLayoutData.getSourceRefPoint();
+            if (edgeLayoutData.getSourceRefPoint() != null) {
+                sourceRefPoint = edgeLayoutData.getSourceRefPoint();
             }
-            if (egdeLayoutData.getTargetRefPoint() != null) {
-                targetRefPoint = egdeLayoutData.getTargetRefPoint();
+            if (edgeLayoutData.getTargetRefPoint() != null) {
+                targetRefPoint = edgeLayoutData.getTargetRefPoint();
             }
 
-            routing = egdeLayoutData.getRouting();
+            routing = edgeLayoutData.getRouting();
 
         } else {
             computeEdgeDataWithoutEdgeLayoutData();

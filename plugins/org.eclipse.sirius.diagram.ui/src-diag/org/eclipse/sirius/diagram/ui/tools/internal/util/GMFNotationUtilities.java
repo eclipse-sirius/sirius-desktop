@@ -50,17 +50,15 @@ public final class GMFNotationUtilities {
     }
 
     /**
-     * Set the source anchor of the <code>edge</code> according to the new
-     * points list. The second point of this list is used to determine the new X
-     * location of this Anchor.
+     * Set the source anchor of the <code>edge</code> according to the new points list. The second point of this list is
+     * used to determine the new X location of this Anchor.
      * 
      * @param edge
      *            The edge to modify
      * @param newPoints
      *            The new points list
-     * @return an optional Point representing the source reference point
-     *         corresponding to the new source anchor. This Option can be null
-     *         if the anchor is not changed.
+     * @return an optional Point representing the source reference point corresponding to the new source anchor. This
+     *         Option can be null if the anchor is not changed.
      */
     public static Option<Point> setSourceAnchor(Edge edge, PointList newPoints) {
         Point referencePointOfChangedAnchor = null;
@@ -81,8 +79,8 @@ public final class GMFNotationUtilities {
                 if (Math.abs(relativeReferencePoint.preciseX() - newXAnchorPercentage) > FP_TOLERANCE) {
                     // Change x id anchor
                     setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY());
-                    referencePointOfChangedAnchor = new PrecisionPoint(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage, sourceFigure.getLocation().y + sourceFigure.height
-                            * relativeReferencePoint.preciseY());
+                    referencePointOfChangedAnchor = new PrecisionPoint(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage,
+                            sourceFigure.getLocation().y + sourceFigure.height * relativeReferencePoint.preciseY());
                 }
             } else if (edge.getSourceAnchor() == null) {
                 // Use the center of the source if there is no previous
@@ -103,17 +101,15 @@ public final class GMFNotationUtilities {
     }
 
     /**
-     * Set the target anchor of the <code>edge</code> according to the new
-     * points list. The third point of this list is used to determine the new X
-     * location of this Anchor.
+     * Set the target anchor of the <code>edge</code> according to the new points list. The third point of this list is
+     * used to determine the new X location of this Anchor.
      * 
      * @param edge
      *            The edge to modify
      * @param newPoints
      *            The new points list
-     * @return an optional Point representing the target reference point
-     *         corresponding to the new target anchor. This Option can be null
-     *         if the anchor is not changed.
+     * @return an optional Point representing the target reference point corresponding to the new target anchor. This
+     *         Option can be null if the anchor is not changed.
      */
     public static Option<Point> setTargetAnchor(Edge edge, PointList newPoints) {
         Point referencePointOfChangedAnchor = null;
@@ -133,8 +129,8 @@ public final class GMFNotationUtilities {
                 if (Math.abs(relativeReferencePoint.preciseX() - newXAnchorPercentage) > FP_TOLERANCE) {
                     // Change x id anchor
                     setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY());
-                    referencePointOfChangedAnchor = new PrecisionPoint(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage, targetFigure.getLocation().y + targetFigure.height
-                            * relativeReferencePoint.preciseY());
+                    referencePointOfChangedAnchor = new PrecisionPoint(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage,
+                            targetFigure.getLocation().y + targetFigure.height * relativeReferencePoint.preciseY());
                 }
             } else if (edge.getTargetAnchor() == null) {
                 // Use the center of the source if there is no previous
@@ -169,8 +165,7 @@ public final class GMFNotationUtilities {
     }
 
     /**
-     * Get the terminal string used in {@link IdentityAnchor} from its
-     * xPercentage and yPercentage.
+     * Get the terminal string used in {@link IdentityAnchor} from its xPercentage and yPercentage.
      * 
      * @param xPercentage
      *            the x percentage to use in id
@@ -183,19 +178,17 @@ public final class GMFNotationUtilities {
     }
 
     /**
-     * Change the bendpoints of the GMF edge according to draw2d elements
-     * (pointList, sourceRefPoint and targetRefPoint).
+     * Change the bendpoints of the GMF edge according to draw2d elements (pointList, sourceRefPoint and
+     * targetRefPoint).
      * 
      * @param edge
      *            The edge to modify
      * @param newPoints
      *            The new points list
      * @param sourceRefPoint
-     *            The source reference point (to compute the GMF
-     *            RelativeBendpoints)
+     *            The source reference point (to compute the GMF RelativeBendpoints)
      * @param targetRefPoint
-     *            The target reference point (to compute the GMF
-     *            RelativeBendpoints)
+     *            The target reference point (to compute the GMF RelativeBendpoints)
      */
     public static void setGMFBendpoints(Edge edge, PointList newPoints, Point sourceRefPoint, Point targetRefPoint) {
         List<Object> newBendpoints = new ArrayList<>();
@@ -210,17 +203,15 @@ public final class GMFNotationUtilities {
     }
 
     /**
-     * Compute the new source anchor according to an horizontal move
-     * representing by the deltaX.
+     * Compute the new source anchor according to an horizontal move representing by the deltaX.
      * 
      * @param edge
      *            The edge to modify
      * @param deltaX
      *            The horizontal delta move
      * 
-     * @return an optional Point representing the source reference point
-     *         corresponding to the new source. This Option can be null if the
-     *         anchor is not changed.
+     * @return an optional Point representing the source reference point corresponding to the new source. This Option
+     *         can be null if the anchor is not changed.
      */
     public static Option<PrecisionPoint> setSourceAnchor(Edge edge, int deltaX) {
         // Compute new x anchor of source point after horizontal source
@@ -239,8 +230,8 @@ public final class GMFNotationUtilities {
                 double newXAnchorPercentage = (xNewPosition - sourceFigure.x) / (sourceFigure.width);
                 // Change x id anchor
                 setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY());
-                return Options.newSome(new PrecisionPoint(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage, sourceFigure.getLocation().y + sourceFigure.height
-                        * relativeReferencePoint.preciseY()));
+                return Options.newSome(new PrecisionPoint(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage,
+                        sourceFigure.getLocation().y + sourceFigure.height * relativeReferencePoint.preciseY()));
             }
         } else {
             throw new UnsupportedOperationException(Messages.GMFNotationUtilities_edgeOnEdgeNotManaged);
@@ -249,17 +240,15 @@ public final class GMFNotationUtilities {
     }
 
     /**
-     * Compute the new target anchor according to an horizontal move
-     * representing by the deltaX.
+     * Compute the new target anchor according to an horizontal move representing by the deltaX.
      * 
      * @param edge
      *            The edge to modify
      * @param deltaX
      *            The horizontal delta move
      * 
-     * @return an optional Point representing the target reference point
-     *         corresponding to the new target anchor. This Option can be null
-     *         if the anchor is not changed.
+     * @return an optional Point representing the target reference point corresponding to the new target anchor. This
+     *         Option can be null if the anchor is not changed.
      */
     public static Option<PrecisionPoint> setTargetAnchor(Edge edge, int deltaX) {
         // Compute new x anchor of target point after horizontal target
@@ -278,8 +267,8 @@ public final class GMFNotationUtilities {
                 double newXAnchorPercentage = (xNewPosition - targetFigure.x) / (targetFigure.width);
                 // Change x id anchor
                 setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY());
-                return Options.newSome(new PrecisionPoint(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage, targetFigure.getLocation().y + targetFigure.height
-                        * relativeReferencePoint.preciseY()));
+                return Options.newSome(new PrecisionPoint(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage,
+                        targetFigure.getLocation().y + targetFigure.height * relativeReferencePoint.preciseY()));
             }
         } else {
             throw new UnsupportedOperationException(Messages.GMFNotationUtilities_edgeOnEdgeNotManaged);
@@ -288,9 +277,8 @@ public final class GMFNotationUtilities {
     }
 
     /**
-     * Recompute all the bendpoints of <code>edgeToModify</code> according to a
-     * reference edge. This two edges must be branch on the same tree
-     * (TreeRouter).
+     * Recompute all the bendpoints of <code>edgeToModify</code> according to a reference edge. This two edges must be
+     * branch on the same tree (TreeRouter).
      * 
      * @param referenceEdge
      *            The reference edge
@@ -317,14 +305,14 @@ public final class GMFNotationUtilities {
             sourceBounds = GMFHelper.getBounds((Node) edgeToModify.getSource(), true);
             sourceLocation = new PrecisionPoint(sourceBounds.x + sourceBounds.width * sourceAnchorReference.preciseX(), sourceBounds.y + sourceBounds.height * sourceAnchorReference.preciseY());
         } else if (edgeToModify.getSource() instanceof Edge) {
-            // TODO Manage edge on egde ...
+            // TODO Manage edge on edge ...
             throw new UnsupportedOperationException(Messages.GMFNotationUtilities_edgeOnEdgeNotManaged);
         }
         if (edgeToModify.getTarget() instanceof Node) {
             targetBounds = GMFHelper.getBounds((Node) edgeToModify.getTarget(), true);
             targetLocation = new PrecisionPoint(targetBounds.x + targetBounds.width * targetAnchorReference.preciseX(), targetBounds.y + targetBounds.height * targetAnchorReference.preciseY());
         } else if (edgeToModify.getTarget() instanceof Edge) {
-            // TODO Manage edge on egde ...
+            // TODO Manage edge on edge ...
             throw new UnsupportedOperationException(Messages.GMFNotationUtilities_edgeOnEdgeNotManaged);
         }
 
@@ -338,18 +326,17 @@ public final class GMFNotationUtilities {
                         secondRelativeBendpointOfMovedEdge.getTargetY()));
                 brotherNewBendpoints.add(new RelativeBendpoint(targetLocation.x - sourceLocation.x, targetLocation.y + secondRelativeBendpointOfMovedEdge.getTargetY() - sourceLocation.y, 0,
                         secondRelativeBendpointOfMovedEdge.getTargetY()));
-                brotherNewBendpoints.add(new RelativeBendpoint(targetLocation.x - sourceLocation.x, targetBounds.y + targetBounds.width - sourceLocation.y, 0, targetBounds.y + targetBounds.width
-                        - targetLocation.y));
+                brotherNewBendpoints.add(
+                        new RelativeBendpoint(targetLocation.x - sourceLocation.x, targetBounds.y + targetBounds.width - sourceLocation.y, 0, targetBounds.y + targetBounds.width - targetLocation.y));
                 ((RelativeBendpoints) edgeToModify.getBendpoints()).setPoints(brotherNewBendpoints);
             }
         }
     }
 
     /**
-     * Set the target anchor of the <code>edgeToModify</code> with the same
-     * target anchor of the <code>referencEdge</code> (only if reference anchor
-     * is an identity anchor and, the anchor of edge to modify is null or is an
-     * identify anchor).
+     * Set the target anchor of the <code>edgeToModify</code> with the same target anchor of the
+     * <code>referencEdge</code> (only if reference anchor is an identity anchor and, the anchor of edge to modify is
+     * null or is an identify anchor).
      * 
      * @param referenceEdge
      *            reference edge
@@ -368,10 +355,9 @@ public final class GMFNotationUtilities {
     }
 
     /**
-     * Set the source anchor of the <code>edgeToModify</code> with the same
-     * target anchor of the <code>referenceEdge</code> (only if reference anchor
-     * is an identity anchor and, the anchor of edge to modify is null or is an
-     * identify anchor).
+     * Set the source anchor of the <code>edgeToModify</code> with the same target anchor of the
+     * <code>referenceEdge</code> (only if reference anchor is an identity anchor and, the anchor of edge to modify is
+     * null or is an identify anchor).
      * 
      * @param referenceEdge
      *            reference edge
@@ -390,8 +376,8 @@ public final class GMFNotationUtilities {
     }
 
     /**
-     * Change the source or target anchor and the bendpoints of the brothers of
-     * <code>edge</code> according to this edge.
+     * Change the source or target anchor and the bendpoints of the brothers of <code>edge</code> according to this
+     * edge.
      * 
      * @param edge
      *            The edge reference

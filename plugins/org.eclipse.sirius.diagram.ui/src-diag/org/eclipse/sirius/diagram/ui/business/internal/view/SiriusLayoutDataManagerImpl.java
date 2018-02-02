@@ -340,15 +340,15 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     @Override
-    public EdgeLayoutData getOppositeEdgeLayoutData(EdgeLayoutData egdeLayoutData, boolean searchParent) {
-        DEdge edge = egdeLayoutData.getTarget();
+    public EdgeLayoutData getOppositeEdgeLayoutData(EdgeLayoutData edgeLayoutData, boolean searchParent) {
+        DEdge edge = edgeLayoutData.getTarget();
         if (edge == null) {
             return null;
         }
-        return getData(edge, searchParent, Options.newSome(egdeLayoutData));
+        return getData(edge, searchParent, Options.newSome(edgeLayoutData));
     }
 
-    private EdgeLayoutData getData(DEdge edge, boolean searchParent, Option<EdgeLayoutData> optionalOppositeEgdeLayoutData) {
+    private EdgeLayoutData getData(DEdge edge, boolean searchParent, Option<EdgeLayoutData> optionalOppositeEdgeLayoutData) {
         EdgeLayoutData result = null;
         if (result == null) {
             // Search the edge in all rootsLayoutData
@@ -356,10 +356,10 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
                 if (abstractLayoutData instanceof LayoutData) {
                     LayoutData layoutData = (LayoutData) abstractLayoutData;
                     result = layoutData.getData(edge, ignoreConsumeState);
-                    if (result != null && (!optionalOppositeEgdeLayoutData.some() || !(optionalOppositeEgdeLayoutData.get().equals(result)))) {
+                    if (result != null && (!optionalOppositeEdgeLayoutData.some() || !(optionalOppositeEdgeLayoutData.get().equals(result)))) {
                         break;
                     }
-                } else if (abstractLayoutData instanceof EdgeLayoutData && (!optionalOppositeEgdeLayoutData.some() || !(optionalOppositeEgdeLayoutData.get().equals(abstractLayoutData)))) {
+                } else if (abstractLayoutData instanceof EdgeLayoutData && (!optionalOppositeEdgeLayoutData.some() || !(optionalOppositeEdgeLayoutData.get().equals(abstractLayoutData)))) {
                     EdgeLayoutData edgeLayoutData = (EdgeLayoutData) abstractLayoutData;
                     EdgeTarget edgeSource = edge.getSourceNode();
                     EdgeTarget edgeTarget = edge.getTargetNode();

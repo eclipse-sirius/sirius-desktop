@@ -35,8 +35,8 @@ import org.eclipse.sirius.diagram.ui.business.internal.view.SiriusLayoutDataMana
 import org.eclipse.sirius.ext.base.Option;
 
 /**
- * Manage the AbstractLayoutData during node creation or drag'n'drop. LayoutData
- * are removed after a OperationHistoryEvent#DONE.
+ * Manage the AbstractLayoutData during node creation or drag'n'drop. LayoutData are removed after a
+ * OperationHistoryEvent#DONE.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * @since 0.9.0
@@ -61,8 +61,7 @@ public interface SiriusLayoutDataManager {
     void addData(AbstractLayoutData layoutData);
 
     /**
-     * Search recursively in all the LayoutData is there is one which have the
-     * element for target.
+     * Search recursively in all the LayoutData is there is one which have the element for target.
      * 
      * @param node
      *            The search element
@@ -71,54 +70,48 @@ public interface SiriusLayoutDataManager {
     LayoutData getData(AbstractDNode node);
 
     /**
-     * Search recursively in all the LayoutData is there is one which have the
-     * node for target.
+     * Search recursively in all the LayoutData is there is one which have the node for target.
      * 
      * @param node
      *            The search element
      * @param searchForParent
-     *            true if the data must be retrieve from the node parent (the
-     *            data must be retrieve from parent for a creation of an
-     *            object).
+     *            true if the data must be retrieve from the node parent (the data must be retrieve from parent for a
+     *            creation of an object).
      * @return the corresponding LayoutData or null if not found.
      */
     LayoutData getData(AbstractDNode node, boolean searchForParent);
 
     /**
-     * Search recursively in all the LayoutData is there is one which have the
-     * edge for target.
+     * Search recursively in all the LayoutData is there is one which have the edge for target.
      * 
      * @param edge
      *            The search element
      * @param searchParent
-     *            true if the data must be retrieve from the node parent (the
-     *            data must be retrieve from parent for a creation of an object)
+     *            true if the data must be retrieve from the node parent (the data must be retrieve from parent for a
+     *            creation of an object)
      * @return the corresponding EdgeLayoutData or null if not found.
      */
     EdgeLayoutData getData(DEdge edge, boolean searchParent);
 
     /**
-     * Search recursively in all the LayoutData if there is one which have the
-     * edge of <code>egdeLayoutData</code> for target and is different from
-     * <code>egdeLayoutData</code>. An edge layout data stored in the
-     * incomingEdgeLayoutDatas ref of its parent data can have an opposite edge
-     * layout data in the outgoingEdgeLayoutDatas of the other ends of the edge.
+     * Search recursively in all the LayoutData if there is one which have the edge of <code>edgeLayoutData</code> for
+     * target and is different from <code>edgeLayoutData</code>. An edge layout data stored in the
+     * incomingEdgeLayoutDatas ref of its parent data can have an opposite edge layout data in the
+     * outgoingEdgeLayoutDatas of the other ends of the edge.
      * 
-     * Detail: In case of a move of the source and the target of an edge, the
-     * edge has two layout data, one for the source move and another one for the
-     * target move. The one for the source move has the points impacted by the
-     * source move (the first point and in case of rectilinear routing the
-     * second) and the other for the target move (last point and in case of
-     * rectilinear routing the second to last).
+     * Detail: In case of a move of the source and the target of an edge, the edge has two layout data, one for the
+     * source move and another one for the target move. The one for the source move has the points impacted by the
+     * source move (the first point and in case of rectilinear routing the second) and the other for the target move
+     * (last point and in case of rectilinear routing the second to last).
      * 
-     * @param egdeLayoutData
+     * @param edgeLayoutData
      *            The searched element
      * @param searchParent
-     *            true if the data must be retrieve from the node parent (the
-     *            data must be retrieve from parent for a creation of an object)
+     *            true if the data must be retrieve from the node parent (the data must be retrieve from parent for a
+     *            creation of an object)
      * @return the corresponding EdgeLayoutData or null if not found.
      */
-    EdgeLayoutData getOppositeEdgeLayoutData(EdgeLayoutData egdeLayoutData, boolean searchParent);
+    EdgeLayoutData getOppositeEdgeLayoutData(EdgeLayoutData edgeLayoutData, boolean searchParent);
 
     /**
      * Get the Adapter marker to mark GMF View as not to arrange.
@@ -128,17 +121,14 @@ public interface SiriusLayoutDataManager {
     Adapter getAdapterMarker();
 
     /**
-     * Get the center Adapter marker to mark GMF View as to arrange in the
-     * center of container.
+     * Get the center Adapter marker to mark GMF View as to arrange in the center of container.
      * 
-     * @return the center Adapter marker to mark GMF View as to arrange in the
-     *         center of container
+     * @return the center Adapter marker to mark GMF View as to arrange in the center of container
      */
     Adapter getCenterAdapterMarker();
 
     /**
-     * Search recursively in all the LayoutData is there is one which have the
-     * edge for target.
+     * Search recursively in all the LayoutData is there is one which have the edge for target.
      * 
      * @param edge
      *            The search element
@@ -147,10 +137,8 @@ public interface SiriusLayoutDataManager {
     EdgeLabelLayoutData getLabelData(DEdge edge);
 
     /**
-     * Initializes a new transactional command with the editing domain in which
-     * the marker adapter is added to the GMF view. This marker is added to
-     * avoid the arrange of the new view that are already layout by the
-     * SiriusLayoutData.
+     * Initializes a new transactional command with the editing domain in which the marker adapter is added to the GMF
+     * view. This marker is added to avoid the arrange of the new view that are already layout by the SiriusLayoutData.
      * 
      * @param domain
      *            my editing domain
@@ -161,9 +149,8 @@ public interface SiriusLayoutDataManager {
     AbstractTransactionalCommand getAddAdapterMakerCommand(TransactionalEditingDomain domain, IAdaptable viewAdapter);
 
     /**
-     * Initializes a new transactional command with the editing domain in which
-     * the marker adapter is added to the GMF view. This marker is added to
-     * launch the arrange of the new view using center of the container.
+     * Initializes a new transactional command with the editing domain in which the marker adapter is added to the GMF
+     * view. This marker is added to launch the arrange of the new view using center of the container.
      * 
      * @param domain
      *            my editing domain
@@ -174,9 +161,8 @@ public interface SiriusLayoutDataManager {
     AbstractTransactionalCommand getAddCenterAdapterMakerCommand(TransactionalEditingDomain domain, IAdaptable viewAdapter);
 
     /**
-     * Initializes a new transactional command with the editing domain in which
-     * the marker adapter is added to the GMF view. This marker is added to
-     * launch the arrange of the new view when editor is opening.
+     * Initializes a new transactional command with the editing domain in which the marker adapter is added to the GMF
+     * view. This marker is added to launch the arrange of the new view when editor is opening.
      * 
      * @param domain
      *            my editing domain
@@ -209,13 +195,11 @@ public interface SiriusLayoutDataManager {
     Command getArrangeCreatedViewsOnOpeningCommand(IGraphicalEditPart host);
 
     /**
-     * Return if the view contains a layout adapter, if it contains, layout is
-     * launch on the view.
+     * Return if the view contains a layout adapter, if it contains, layout is launch on the view.
      * 
      * @param view
      *            the view
-     * @return if the view contains a layout adapter, if it contains, layout is
-     *         launch on the view
+     * @return if the view contains a layout adapter, if it contains, layout is launch on the view
      */
     boolean hasToArrange(View view);
 
@@ -241,20 +225,17 @@ public interface SiriusLayoutDataManager {
     void addCreatedViewsToLayout(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout);
 
     /**
-     * Get the set of created views to layout per Diagram to be layouted. After
-     * use of this map the client must clear it to avoid other subsequent
-     * arrange command to be executed on the same already created views.
+     * Get the set of created views to layout per Diagram to be layouted. After use of this map the client must clear it
+     * to avoid other subsequent arrange command to be executed on the same already created views.
      * 
      * @return the set of created views to layout per Diagram to be layouted
      */
     Map<Diagram, Set<View>> getCreatedViewsToLayout();
 
     /**
-     * Change the mode of the consumption. The data can be consume even if there
-     * is already consume. This can be useful, for example, in case of several
-     * preCommitListener that want to access the data.<BR>
-     * This change must be temporary and must be restored to default value
-     * (false).
+     * Change the mode of the consumption. The data can be consume even if there is already consume. This can be useful,
+     * for example, in case of several preCommitListener that want to access the data.<BR>
+     * This change must be temporary and must be restored to default value (false).
      * 
      * @param ignoreConsumeState
      *            true to access to data already consumed.
@@ -279,8 +260,7 @@ public interface SiriusLayoutDataManager {
      * Add a view in the list.
      * 
      * @param gmfDiagram
-     *            the {@link Diagram} for which childs views must be layouted in
-     *            the center of the container
+     *            the {@link Diagram} for which childs views must be layouted in the center of the container
      * @param view
      *            the view to set
      */

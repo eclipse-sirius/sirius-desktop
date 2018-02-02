@@ -32,8 +32,8 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import com.google.common.collect.Iterables;
 
 /**
- * Tests to check the behavior of the preference
- * "Show link between egde and its labels on selection"
+ * Tests to check the behavior of the preference "Show link between edge and its
+ * labels on selection"
  * 
  * @author lredor
  */

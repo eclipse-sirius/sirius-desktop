@@ -36,7 +36,7 @@ import org.osgi.framework.Version;
 import com.google.common.collect.Iterables;
 
 /**
- * Test that egde style and customFeatures are as expected after migration.
+ * Test that edge style and customFeatures are as expected after migration.
  * 
  * @author jdupont
  * 

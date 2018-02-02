@@ -69,9 +69,8 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
 
     /*
      * (non-Javadoc)
-     * @see
-     * org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase
-     * #onSetUpBeforeClosingWelcomePage()
+     * @see org.eclipse.sirius.tests.swtbot.support.api.
+     * AbstractSiriusSwtBotGefTestCase #onSetUpBeforeClosingWelcomePage()
      */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -81,9 +80,8 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
 
     /*
      * (non-Javadoc)
-     * @see
-     * org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase
-     * #onSetUpAfterOpeningDesignerPerspective()
+     * @see org.eclipse.sirius.tests.swtbot.support.api.
+     * AbstractSiriusSwtBotGefTestCase #onSetUpAfterOpeningDesignerPerspective()
      */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
@@ -585,9 +583,8 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
 
     /*
      * (non-Javadoc)
-     * @see
-     * org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase
-     * #tearDown()
+     * @see org.eclipse.sirius.tests.swtbot.support.api.
+     * AbstractSiriusSwtBotGefTestCase #tearDown()
      */
     @Override
     protected void tearDown() throws Exception {
@@ -598,8 +595,8 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
         super.tearDown();
     }
 
-    private PointList getEdgePointList(String egdeId) {
-        SWTBotGefConnectionEditPart editPart = (SWTBotGefConnectionEditPart) editor.getEditPart(egdeId, ConnectionEditPart.class);
+    private PointList getEdgePointList(String edgeId) {
+        SWTBotGefConnectionEditPart editPart = (SWTBotGefConnectionEditPart) editor.getEditPart(edgeId, ConnectionEditPart.class);
         return ((Connection) editPart.part().getFigure()).getPoints().getCopy();
     }
 

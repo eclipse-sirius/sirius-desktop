@@ -1188,7 +1188,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      * container. creates a tiny section node in the diagram, an edge between
      * the tiny section node and the chapter container and an edge between the
      * tiny section and the medium section node. creates finally two bordered
-     * nodes on the tiny section node and an egde between both bordered nodes.
+     * nodes on the tiny section node and an edge between both bordered nodes.
      */
     public void createTwoTinyNotes() {
         final DNode tinySection = createTinySection();
