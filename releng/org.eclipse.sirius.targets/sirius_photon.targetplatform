@@ -8,11 +8,11 @@ include "modules/acceleo-nightly.tpd"
 include "modules/eef-nightly.tpd"
 with source, requirements
 
-location Sirius-Interpreter-Nightly-Oxygen "http://download.eclipse.org/sirius/updates/nightly/latest/oxygen/" {
+location Sirius-Oxygen-Master "http://download.eclipse.org/sirius/updates/nightly/latest/oxygen/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
-location Eclipse-Oxygen "http://download.eclipse.org/releases/photon" {
+location Eclipse-Photon "http://download.eclipse.org/releases/photon" {
 	com.google.guava lazy
 	com.ibm.icu lazy
 	org.eclipse.draw2d.sdk.feature.group lazy
