@@ -18,6 +18,8 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+* <span class="label label-danger">Removed</span> Since Sirius 5.0.0, @org.eclipse.sirius.ext.jface.viewers.IToolTipProvider@ is not used anymore to provide a tooltip on diagram element decorations defined in the VSM. The tooltip is defined directly with an interpreted expression on @GenericDecorationDescription@, @MappingBasedDecoration@ and @SemanticBasedDecoration@.
+
 h4. Changes in @org.eclipse.sirius.common@
 
 * <span class="label label-danger">Removed</span> The interface @org.eclipse.sirius.common.tools.api.interpreter.IExpressionProposal@ and its only implementation @DefaultExpressionProposal@ (in the same package) have been removed. They were not used anywhere, expression completion API is actually defined in package @org.eclipse.sirius.common.tools.api.contentassist@ which has its own types.  
