@@ -159,7 +159,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeReconnectionTests.class);
         suite.addTestSuite(ShowTypeActionButtonTest.class);
         suite.addTestSuite(LineStyleTest.class);
-        suite.addTestSuite(CompartmentsCreationTest.class);
         suite.addTestSuite(CompartmentsDragAndDropTest.class);
         suite.addTestSuite(EdgeSelectionTest.class);
         suite.addTestSuite(DiagramMouseZoomTest.class);
@@ -257,6 +256,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesLayoutStabilityTest.class);
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesWithSnapToGridTest.class);
         suite.addTestSuite(DistributeActionTests.class);
+        suite.addTestSuite(CompartmentsCreationTest.class);
 
         suite.addTestSuite(ArrangeAllTest.class);
         suite.addTestSuite(ArrangeAllWithSnapToGridTest.class);
