@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -142,6 +142,7 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
             if (obj instanceof RepresentationDescriptionItemImpl) {
                 final RepresentationDescriptionItemImpl rdiObj = (RepresentationDescriptionItemImpl) obj;
                 result = EqualityHelper.areEquals(this.representationDescription, rdiObj.representationDescription);
+                result = result && this.parent.equals(rdiObj.parent);
             }
         }
         return result;
