@@ -33,7 +33,7 @@ location GEF-LastSuccessful "https://ci.eclipse.org/gef/job/gef-legacy-master/la
 // We can not depend on the actual latest SWTbot build, it has too many API breaks compared to our reference version
 include "modules/swtbot-2.1.tpd"
 
-location EMF-LastSuccessful "https://ci.eclipse.org/xtext/view/EMF/job/emf-core/lastSuccessfulBuild/artifact/build-result/p2.repository/" {
+location EMF-Nightly "http://download.eclipse.org/modeling/emf/emf/builds/nightly/latest" {
 	org.eclipse.emf.feature.group lazy
 	org.eclipse.emf.sdk.feature.group lazy
 	org.eclipse.emf.edit.feature.group lazy
