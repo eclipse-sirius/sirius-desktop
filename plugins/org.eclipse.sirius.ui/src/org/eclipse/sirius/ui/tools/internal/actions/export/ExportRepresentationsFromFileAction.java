@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
@@ -76,43 +75,9 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
                     return;
                 }
 
-                final IPath outputPath = dialog.getOutputPath();
-                final ImageFileFormat imageFormat = dialog.getImageFormat();
-                final boolean exportToHtml = dialog.isExportToHtml();
-                final boolean exportDecorations = dialog.isExportDecorations();
-                final boolean autoScale = dialog.isAutoScaleDiagram();
-                final Integer scaleLevel = dialog.getDiagramScaleLevelInPercent();
-
-                IRunnableWithProgress exportAllRepresentationsRunnable = new WorkspaceModifyOperation() {
-
-                    @Override
-                    protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
-                        Session session = null;
-                        boolean isOpen = false;
-                        try {
-                            monitor.beginTask(Messages.ExportRepresentationsFromFileAction_exportTask, 10);
-                            session = SessionManager.INSTANCE.openSession(sessionResourceURI, new SubProgressMonitor(monitor, 2), SiriusEditPlugin.getPlugin().getUiCallback());
-
-                            if (session != null) {
-                                // Get explicitly all representations (with loading them)
-                                final Collection<DRepresentation> dRepresentationsToExportAsImage = DialectManager.INSTANCE.getAllRepresentations(session);
-                                ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml, exportDecorations);
-                                exportAction.setAutoScaleDiagram(autoScale);
-                                exportAction.setDiagramScaleLevel(scaleLevel);
-                                exportAction.run(new SubProgressMonitor(monitor, 7));
-                            }
-                        } finally {
-                            if (!isOpen && session != null) {
-                                session.close(new SubProgressMonitor(monitor, 1));
-                            }
-                            monitor.done();
-                        }
-                    }
-                };
-
                 final ProgressMonitorDialog pmd = new ProgressMonitorDialog(shell);
                 try {
-                    pmd.run(false, false, exportAllRepresentationsRunnable);
+                    pmd.run(false, false, new ExportRepresentationsWorkspaceModifyOperation(dialog, sessionResourceURI));
                 } catch (final InvocationTargetException e) {
                     SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
                     MessageDialog.openError(shell, Messages.ExportRepresentationsFromFileAction_errorDialog_title, e.getTargetException().getMessage());
@@ -141,4 +106,55 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
             }
         }
     }
+
+    private class ExportRepresentationsWorkspaceModifyOperation extends WorkspaceModifyOperation {
+
+        private IPath outputPath;
+
+        private ImageFileFormat imageFormat;
+
+        private boolean exportToHtml;
+
+        private boolean exportDecorations;
+
+        private boolean autoScale;
+
+        private Integer scaleLevel;
+
+        private URI sessionResourceURI;
+
+        ExportRepresentationsWorkspaceModifyOperation(ExportSeveralRepresentationsAsImagesDialog dialog, URI sessionResourceURI) {
+            this.outputPath = dialog.getOutputPath();
+            this.imageFormat = dialog.getImageFormat();
+            this.exportToHtml = dialog.isExportToHtml();
+            this.exportDecorations = dialog.isExportDecorations();
+            this.autoScale = dialog.isAutoScaleDiagram();
+            this.scaleLevel = dialog.getDiagramScaleLevelInPercent();
+            this.sessionResourceURI = sessionResourceURI;
+        }
+
+        @Override
+        protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
+            Session session = null;
+            boolean isOpen = false;
+            try {
+                monitor.beginTask(Messages.ExportRepresentationsFromFileAction_exportTask, 10);
+                session = SessionManager.INSTANCE.openSession(sessionResourceURI, new SubProgressMonitor(monitor, 2), SiriusEditPlugin.getPlugin().getUiCallback());
+
+                if (session != null) {
+                    // Get explicitly all representations (with loading them)
+                    final Collection<DRepresentation> dRepresentationsToExportAsImage = DialectManager.INSTANCE.getAllRepresentations(session);
+                    ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml, exportDecorations);
+                    exportAction.setAutoScaleDiagram(autoScale);
+                    exportAction.setDiagramScaleLevel(scaleLevel);
+                    exportAction.run(new SubProgressMonitor(monitor, 7));
+                }
+            } finally {
+                if (!isOpen && session != null) {
+                    session.close(new SubProgressMonitor(monitor, 1));
+                }
+                monitor.done();
+            }
+        }
+    };
 }
