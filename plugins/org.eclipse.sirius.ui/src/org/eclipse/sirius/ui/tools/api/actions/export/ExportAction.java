@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
@@ -105,8 +104,9 @@ public class ExportAction extends WorkspaceModifyOperation {
      * @param autoScaleDiagram
      *            <code>true</code> if the exported diagram should be automatically scaled.
      * 
-     * @deprecated Kept only for compatibility reason.
+     * @deprecated Use setDiagramScaleLevel instead.
      */
+    @Deprecated
     public void setAutoScaleDiagram(boolean autoScaleDiagram) {
         this.autoScaleDiagram = autoScaleDiagram;
     }
@@ -122,6 +122,7 @@ public class ExportAction extends WorkspaceModifyOperation {
             throw new IllegalArgumentException(Messages.ExportAction_invalidLevel);
         } else {
             this.diagramScaleLevel = theDiagramScaleLevel;
+            this.autoScaleDiagram = diagramScaleLevel != 0;
         }
     }
 
@@ -216,7 +217,7 @@ public class ExportAction extends WorkspaceModifyOperation {
                     }
                     if (DialectUIManager.INSTANCE.canHandle(representation)) {
                         try {
-                            DialectUIManager.INSTANCE.export(representation, session, filePath, exportFormat, new SubProgressMonitor(monitor, 7), exportDecorations);
+                            DialectUIManager.INSTANCE.export(representation, session, filePath, exportFormat, monitor, exportDecorations);
                         } catch (CoreException exception) {
                             if (exception instanceof SizeTooLargeException) {
                                 errorDuringExport = true;

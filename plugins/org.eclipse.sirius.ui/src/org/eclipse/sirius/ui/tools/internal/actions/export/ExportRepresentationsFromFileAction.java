@@ -123,8 +123,6 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
 
         private boolean exportDecorations;
 
-        private boolean autoScale;
-
         private Integer scaleLevel;
 
         private URI sessionResourceURI;
@@ -136,7 +134,6 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
             this.imageFormat = dialog.getImageFormat();
             this.exportToHtml = dialog.isExportToHtml();
             this.exportDecorations = dialog.isExportDecorations();
-            this.autoScale = dialog.isAutoScaleDiagram();
             this.scaleLevel = dialog.getDiagramScaleLevelInPercent();
             this.sessionResourceURI = sessionResourceURI;
             this.session = session;
@@ -155,7 +152,6 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
                     // Get explicitly all representations (with loading them)
                     final Collection<DRepresentation> dRepresentationsToExportAsImage = DialectManager.INSTANCE.getAllRepresentations(session);
                     ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml, exportDecorations);
-                    exportAction.setAutoScaleDiagram(autoScale);
                     exportAction.setDiagramScaleLevel(scaleLevel);
                     exportAction.run(subMonitor.newChild(7));
                 }

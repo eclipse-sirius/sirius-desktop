@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -135,7 +135,6 @@ public abstract class AbstractExportRepresentationsAction extends Action {
             }
             List<DRepresentation> toExport = Lists.<DRepresentation> newArrayList(dRepresentations);
             final ExportAction exportAction = new ExportAction(session, toExport, dialog.getOutputPath(), dialog.getImageFormat(), dialog.isExportToHtml(), dialog.isExportDecorations());
-            exportAction.setAutoScaleDiagram(dialog.isAutoScaleDiagram());
             exportAction.setDiagramScaleLevel(dialog.getDiagramScaleLevelInPercent());
             final ProgressMonitorDialog pmd = new ProgressMonitorDialog(shell);
             try {
