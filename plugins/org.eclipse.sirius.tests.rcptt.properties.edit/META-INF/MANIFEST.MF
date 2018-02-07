@@ -13,3 +13,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius.tests.rcptt.properties;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name:  org.eclipse.sirius.tests.rcptt.properties.edit

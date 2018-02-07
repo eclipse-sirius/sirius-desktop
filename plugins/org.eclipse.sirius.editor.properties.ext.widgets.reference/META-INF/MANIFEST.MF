@@ -18,3 +18,4 @@ Bundle-Localization: plugin
 Export-Package: org.eclipse.sirius.editor.properties.ext.widgets.reference.internal;version="4.1.0";x-internal:=true
 Bundle-Activator: org.eclipse.sirius.editor.properties.ext.widgets.reference.internal.SiriusEditorPropertiesExtWidgetsReferencePlugin$Implementation
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name:  org.eclipse.sirius.editor.properties.ext.widgets.reference

@@ -14,3 +14,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
 Export-Package: org.eclipse.sirius.tests.sample.docbook.design.business.internal;x-internal:=true,
  org.eclipse.sirius.tests.sample.docbook.design.tool
+Automatic-Module-Name:  org.eclipse.sirius.tests.sample.docbook.design

@@ -13,3 +13,4 @@ Export-Package: org.eclipse.sirius.tests.rcptt.properties.propertiestests,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name:  org.eclipse.sirius.tests.rcptt.properties

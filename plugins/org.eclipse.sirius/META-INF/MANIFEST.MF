@@ -130,3 +130,4 @@ Eclipse-LazyStart: true
 Bundle-Activator: org.eclipse.sirius.viewpoint.SiriusPlugin$Implementation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name:  org.eclipse.sirius

@@ -35,3 +35,4 @@ Export-Package: org.eclipse.sirius.tests.ui.properties.internal,
  org.eclipse.sirius.tests.ui.properties.internal.migration,
  org.eclipse.sirius.tests.ui.properties.internal.preprocessor,
  org.eclipse.sirius.tests.ui.properties.internal.vsm
+Automatic-Module-Name:  org.eclipse.sirius.tests.ui.properties

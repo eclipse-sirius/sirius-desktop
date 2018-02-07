@@ -34,3 +34,4 @@ Export-Package: org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools;version="2.0
  org.eclipse.sirius.ext.gmf.runtime.editparts;version="3.0.0",
  org.eclipse.sirius.ext.gmf.runtime.editpolicies;version="4.0.0",
  org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures;version="5.1.0"
+Automatic-Module-Name:  org.eclipse.sirius.ext.gmf.runtime

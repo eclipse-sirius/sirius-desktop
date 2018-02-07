@@ -18,3 +18,4 @@ Export-Package: org.eclipse.sirius.sample.interactions,org.eclipse.sirius.sample
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-ManifestVersion: 2
+Automatic-Module-Name:  org.eclipse.sirius.sample.interactions.design
