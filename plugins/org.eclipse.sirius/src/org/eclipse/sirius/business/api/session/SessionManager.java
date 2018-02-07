@@ -142,8 +142,8 @@ public interface SessionManager {
     Session getExistingSession(URI sessionResourceURI);
 
     /**
-     * Try to open a session. If there is a version mismatch, the user may be asked if he wants to open the session
-     * anyway.
+     * Try to open a session. If the session is already opened, it returns the opened session. If there is a version
+     * mismatch, the user may be asked if he wants to open the session anyway.
      * 
      * @param sessionResourceURI
      *            a session Resource {@link URI}
