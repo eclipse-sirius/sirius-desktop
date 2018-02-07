@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -457,7 +457,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         if (cmdRouter != null) {
             // The router has changed, therefore bendpoints are "reset" to only
             // source and target
-            cmd = cmd == null ? cmdRouter : cmd.chain(cmdRouter);
+            cmd = cmd.chain(cmdRouter);
             // reset the bendpoints
             ConnectionAnchor sourceAnchor = node.getSourceConnectionAnchor(request);
             PointList pointList = new PointList();
@@ -472,7 +472,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             }
             Command cmdBP = new ICommandProxy(sbbCommand);
             if (cmdBP != null) {
-                cmd = cmd == null ? cmdBP : cmd.chain(cmdBP);
+                cmd = cmd.chain(cmdBP);
             }
         } else {
             // The router is the same, therefore the bendpoint of the new
@@ -574,9 +574,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         }
 
         // Addition of the missing bendpoint at the expected index
-        for (Integer index : pointToAddByIndexMap.keySet()) {
-            connectionPointList.insertPoint(pointToAddByIndexMap.get(index), index);
-        }
+        pointToAddByIndexMap.forEach((index, point) -> connectionPointList.insertPoint(point, index));
     }
 
     /**
@@ -1441,22 +1439,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      *         false otherwise
      */
     private boolean isOrderedTreeLayoutOrCompositeLayout(Layout layout) {
-        boolean isLayout = false;
-        if (layout instanceof OrderedTreeLayout || layout instanceof CompositeLayout) {
-            if (layout instanceof CompositeLayout) {
-                // This code is commented because left to right run not
-                // correctly see ticket.
-                // CompositeLayout compositeLayout = (CompositeLayout) layout;
-                // if
-                // (!LayoutDirection.LEFT_TO_RIGHT.getLiteral().equals(compositeLayout.getDirection().getName()))
-                // {
-                isLayout = true;
-                // }
-            } else {
-                isLayout = true;
-            }
-        }
-        return isLayout;
+        return layout instanceof OrderedTreeLayout || layout instanceof CompositeLayout;
     }
 
     /**

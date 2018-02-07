@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2016 IBM Corporation and others.
+ * Copyright (c) 2002, 2018 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -576,18 +576,16 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             ctc.add(setBoundsCommand);
 
             // Compute the shift delta according to the real future bounds.
-            PrecisionPoint delta = new PrecisionPoint();
             if (newBounds != null) {
+                PrecisionPoint delta = new PrecisionPoint();
                 if (getHost() instanceof IGraphicalEditPart) {
-                    final Point parentOrigin = borderItemEP.getFigure().getParent().getBounds().getTopLeft();
+                    Point parentOrigin = borderItemEP.getFigure().getParent().getBounds().getTopLeft();
                     Point oldRelativeBounds = borderItemEP.getFigure().getBounds().getTopLeft().translate(parentOrigin.getNegated());
                     delta = new PrecisionPoint(newBounds.getLocation().translate(oldRelativeBounds.getNegated()));
                 }
+                ShiftEdgeIdentityAnchorOperation operation = new ShiftEdgeIdentityAnchorOperation(request, newBounds.getSize(), delta);
+                ctc.add(CommandFactory.createICommand(editingDomain, operation));
             }
-
-            ShiftEdgeIdentityAnchorOperation operation = new ShiftEdgeIdentityAnchorOperation(request, newBounds.getSize(), delta);
-            ICommand command = CommandFactory.createICommand(editingDomain, operation);
-            ctc.add(command);
 
             // we add a command to keep the edges centered (if they should be)
             CenterEditPartEdgesCommand centerEditPartEdgesCommand = new CenterEditPartEdgesCommand(borderItemEP, request);
