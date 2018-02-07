@@ -20,7 +20,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -64,7 +64,7 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
         final Shell shell = Display.getCurrent().getActiveShell();
         final IPath targetPath = this.sessionResourceFile.getParent().getLocation();
         final URI sessionResourceURI = URI.createPlatformResourceURI(sessionResourceFile.getFullPath().toOSString(), true);
-        Session session = SessionManager.INSTANCE.getSession(sessionResourceURI, new SubProgressMonitor(new NullProgressMonitor(), 1));
+        Session session = SessionManager.INSTANCE.getSession(sessionResourceURI, new NullProgressMonitor());
         if (session != null) {
             final Collection<DRepresentation> dRepresentationsToExportAsImage = DialectManager.INSTANCE.getAllRepresentations(session);
             if (!dRepresentationsToExportAsImage.isEmpty()) {
@@ -76,7 +76,7 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
 
                 final ProgressMonitorDialog pmd = new ProgressMonitorDialog(shell);
                 try {
-                    pmd.run(false, false, new ExportRepresentationsWorkspaceModifyOperation(dialog, sessionResourceURI));
+                    pmd.run(false, false, new ExportRepresentationsWorkspaceModifyOperation(dialog, sessionResourceURI, session));
                 } catch (final InvocationTargetException e) {
                     SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
                     MessageDialog.openError(shell, Messages.ExportRepresentationsFromFileAction_errorDialog_title, e.getTargetException().getMessage());
@@ -106,6 +106,13 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
         }
     }
 
+    /**
+     * A {@link WorkspaceModifyOperation} that will execute the Export as images
+     * action.
+     * 
+     * @author fbarbin
+     *
+     */
     private class ExportRepresentationsWorkspaceModifyOperation extends WorkspaceModifyOperation {
 
         private IPath outputPath;
@@ -116,30 +123,34 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
 
         private URI sessionResourceURI;
 
-        ExportRepresentationsWorkspaceModifyOperation(ExportSeveralRepresentationsAsImagesDialog dialog, URI sessionResourceURI) {
+        private Session session;
+
+        ExportRepresentationsWorkspaceModifyOperation(ExportSeveralRepresentationsAsImagesDialog dialog, URI sessionResourceURI, Session session) {
             this.outputPath = dialog.getOutputPath();
             this.imageFormat = dialog.getImageFormat();
             this.exportToHtml = dialog.isExportToHtml();
             this.sessionResourceURI = sessionResourceURI;
+            this.session = session;
         }
 
         @Override
         protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
-            Session session = null;
             boolean isOpen = false;
+            SubMonitor subMonitor = SubMonitor.convert(monitor, Messages.ExportRepresentationsFromFileAction_exportTask, 10);
             try {
-                monitor.beginTask(Messages.ExportRepresentationsFromFileAction_exportTask, 10);
-                session = SessionManager.INSTANCE.openSession(sessionResourceURI, new SubProgressMonitor(monitor, 2), SiriusEditPlugin.getPlugin().getUiCallback());
-
+                isOpen = session.isOpen();
+                if (!isOpen) {
+                    session = SessionManager.INSTANCE.openSession(sessionResourceURI, subMonitor.newChild(2), SiriusEditPlugin.getPlugin().getUiCallback());
+                }
                 if (session != null) {
                     // Get explicitly all representations (with loading them)
                     final Collection<DRepresentation> dRepresentationsToExportAsImage = DialectManager.INSTANCE.getAllRepresentations(session);
                     ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml);
-                    exportAction.run(new SubProgressMonitor(monitor, 7));
+                    exportAction.run(subMonitor.newChild(7));
                 }
             } finally {
                 if (!isOpen && session != null) {
-                    session.close(new SubProgressMonitor(monitor, 1));
+                    session.close(subMonitor.newChild(1));
                 }
                 monitor.done();
             }
