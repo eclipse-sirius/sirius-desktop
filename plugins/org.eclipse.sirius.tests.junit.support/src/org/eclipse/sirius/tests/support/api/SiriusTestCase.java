@@ -26,6 +26,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -533,16 +534,14 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Load the VSM at the specified URI and optionally register all its
-     * Viewpoints in the testcase.
+     * Load the VSM at the specified URI and optionally register all its Viewpoints in the testcase.
      * 
      * @param modelerResourceURI
      *            the URI of the VSM.
      * @param domain
      *            the editing domain into which the VSM should be loaded.
      * @param registerViewpoints
-     *            true to register viewpoints of the loaded VSM, ie add it in
-     *            the <code>viewpoints</code> list.
+     *            true to register viewpoints of the loaded VSM, ie add it in the <code>viewpoints</code> list.
      * @return The list of Viewpoints of the loaded modeler
      * @throws Exception
      *             if an error occurs while trying to load the VSM.
@@ -1219,6 +1218,20 @@ public abstract class SiriusTestCase extends TestCase {
                 representations.add(representation);
             }
         }
+        return representations;
+    }
+
+    /**
+     * Get the representation with the given name.</br>
+     * The search scope is the representations already loaded in the session.
+     * 
+     * @param representationName
+     *            the name of the representation. <code>null</code> is not expected.
+     * @return a {@link List} with all representations retrieved.
+     */
+    protected final List<DRepresentation> getRepresentationsByName(final String representationName) {
+        final List<DRepresentation> representations = DialectManager.INSTANCE.getAllLoadedRepresentations(session).stream().filter(rep -> representationName.equals(rep.getName()))
+                .collect(Collectors.toList());
         return representations;
     }
 
