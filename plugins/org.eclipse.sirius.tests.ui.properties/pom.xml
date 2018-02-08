@@ -39,6 +39,13 @@
         <artifactId>tycho-surefire-plugin</artifactId>
         <version>${tycho-version}</version>
         <configuration>
+         <dependencies>
+           <dependency>
+             <type>eclipse-feature</type>
+             <artifactId>org.eclipse.e4.rcp</artifactId>
+             <version>0.0.0</version>
+           </dependency>
+         </dependencies>
           <systemProperties>
             <org.eclipse.sirius.tests.skipLongTests>${tests.skipLongTests}</org.eclipse.sirius.tests.skipLongTests>
             <org.eclipse.sirius.tests.skipUnreliableTests>${tests.skipUnreliableTests}</org.eclipse.sirius.tests.skipUnreliableTests>
