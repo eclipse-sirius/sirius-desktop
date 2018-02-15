@@ -1542,8 +1542,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     @Override
     public DRepresentation getRepresentation() {
-        if (getDiagram() != null && getDiagram().eResource() != null && getDiagram().getElement() instanceof DRepresentation) {
-            return (DRepresentation) getDiagram().getElement();
+        Diagram diag = getDiagram();
+        if (diag != null && diag.eResource() != null && diag.getElement() instanceof DRepresentation) {
+            return (DRepresentation) diag.getElement();
         }
         return null;
     }
