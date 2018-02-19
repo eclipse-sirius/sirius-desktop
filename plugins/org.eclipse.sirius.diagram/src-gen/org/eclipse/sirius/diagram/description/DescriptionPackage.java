@@ -68,7 +68,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getDragAndDropTargetDescription()
      * @generated
      */
-    int DRAG_AND_DROP_TARGET_DESCRIPTION = 21;
+    int DRAG_AND_DROP_TARGET_DESCRIPTION = 23;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -2677,6 +2677,93 @@ public interface DescriptionPackage extends EPackage {
     int COMPOSITE_LAYOUT_FEATURE_COUNT = DescriptionPackage.LAYOUT_FEATURE_COUNT + 2;
 
     /**
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.impl.CustomLayoutConfigurationImpl
+     * <em>Custom Layout Configuration</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.diagram.description.impl.CustomLayoutConfigurationImpl
+     * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getCustomLayoutConfiguration()
+     * @generated
+     */
+    int CUSTOM_LAYOUT_CONFIGURATION = 18;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_LAYOUT_CONFIGURATION__DOCUMENTATION = DescriptionPackage.LAYOUT__DOCUMENTATION;
+
+    /**
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_LAYOUT_CONFIGURATION__ID = DescriptionPackage.LAYOUT_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_LAYOUT_CONFIGURATION__LABEL = DescriptionPackage.LAYOUT_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Layout Options</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS = DescriptionPackage.LAYOUT_FEATURE_COUNT + 2;
+
+    /**
+     * The number of structural features of the '<em>Custom Layout Configuration</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_LAYOUT_CONFIGURATION_FEATURE_COUNT = DescriptionPackage.LAYOUT_FEATURE_COUNT + 3;
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl <em>Layout
+     * Option</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl
+     * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayoutOption()
+     * @generated
+     */
+    int LAYOUT_OPTION = 19;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LAYOUT_OPTION__NAME = 0;
+
+    /**
+     * The feature id for the '<em><b>Value</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LAYOUT_OPTION__VALUE = 1;
+
+    /**
+     * The number of structural features of the '<em>Layout Option</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LAYOUT_OPTION_FEATURE_COUNT = 2;
+
+    /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.description.impl.MappingBasedDecorationImpl
      * <em>Mapping Based Decoration</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -2684,7 +2771,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getMappingBasedDecoration()
      * @generated
      */
-    int MAPPING_BASED_DECORATION = 18;
+    int MAPPING_BASED_DECORATION = 20;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2763,7 +2850,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayer()
      * @generated
      */
-    int LAYER = 19;
+    int LAYER = 21;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2920,7 +3007,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getAdditionalLayer()
      * @generated
      */
-    int ADDITIONAL_LAYER = 20;
+    int ADDITIONAL_LAYER = 22;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3095,7 +3182,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getFoldingStyle()
      * @generated
      */
-    int FOLDING_STYLE = 22;
+    int FOLDING_STYLE = 24;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.description.LayoutDirection <em>Layout
@@ -3105,7 +3192,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayoutDirection()
      * @generated
      */
-    int LAYOUT_DIRECTION = 23;
+    int LAYOUT_DIRECTION = 25;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.description.CenteringStyle <em>Centering
@@ -3115,7 +3202,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getCenteringStyle()
      * @generated
      */
-    int CENTERING_STYLE = 24;
+    int CENTERING_STYLE = 26;
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.DiagramDescription <em>Diagram
@@ -4223,6 +4310,84 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getCompositeLayout_Direction();
 
     /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration
+     * <em>Custom Layout Configuration</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Custom Layout Configuration</em>'.
+     * @see org.eclipse.sirius.diagram.description.CustomLayoutConfiguration
+     * @generated
+     */
+    EClass getCustomLayoutConfiguration();
+
+    /**
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration#getId <em>Id</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Id</em>'.
+     * @see org.eclipse.sirius.diagram.description.CustomLayoutConfiguration#getId()
+     * @see #getCustomLayoutConfiguration()
+     * @generated
+     */
+    EAttribute getCustomLayoutConfiguration_Id();
+
+    /**
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration#getLabel <em>Label</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Label</em>'.
+     * @see org.eclipse.sirius.diagram.description.CustomLayoutConfiguration#getLabel()
+     * @see #getCustomLayoutConfiguration()
+     * @generated
+     */
+    EAttribute getCustomLayoutConfiguration_Label();
+
+    /**
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration#getLayoutOptions <em>Layout
+     * Options</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference list '<em>Layout Options</em>'.
+     * @see org.eclipse.sirius.diagram.description.CustomLayoutConfiguration#getLayoutOptions()
+     * @see #getCustomLayoutConfiguration()
+     * @generated
+     */
+    EReference getCustomLayoutConfiguration_LayoutOptions();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.LayoutOption <em>Layout
+     * Option</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Layout Option</em>'.
+     * @see org.eclipse.sirius.diagram.description.LayoutOption
+     * @generated
+     */
+    EClass getLayoutOption();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.diagram.description.LayoutOption#getName
+     * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Name</em>'.
+     * @see org.eclipse.sirius.diagram.description.LayoutOption#getName()
+     * @see #getLayoutOption()
+     * @generated
+     */
+    EAttribute getLayoutOption_Name();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.diagram.description.LayoutOption#getValue
+     * <em>Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Value</em>'.
+     * @see org.eclipse.sirius.diagram.description.LayoutOption#getValue()
+     * @see #getLayoutOption()
+     * @generated
+     */
+    EAttribute getLayoutOption_Value();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.MappingBasedDecoration
      * <em>Mapping Based Decoration</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -5304,6 +5469,67 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EAttribute COMPOSITE_LAYOUT__DIRECTION = DescriptionPackage.eINSTANCE.getCompositeLayout_Direction();
+
+        /**
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.diagram.description.impl.CustomLayoutConfigurationImpl <em>Custom Layout
+         * Configuration</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.diagram.description.impl.CustomLayoutConfigurationImpl
+         * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getCustomLayoutConfiguration()
+         * @generated
+         */
+        EClass CUSTOM_LAYOUT_CONFIGURATION = DescriptionPackage.eINSTANCE.getCustomLayoutConfiguration();
+
+        /**
+         * The meta object literal for the '<em><b>Id</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute CUSTOM_LAYOUT_CONFIGURATION__ID = DescriptionPackage.eINSTANCE.getCustomLayoutConfiguration_Id();
+
+        /**
+         * The meta object literal for the '<em><b>Label</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute CUSTOM_LAYOUT_CONFIGURATION__LABEL = DescriptionPackage.eINSTANCE.getCustomLayoutConfiguration_Label();
+
+        /**
+         * The meta object literal for the '<em><b>Layout Options</b></em>' reference list feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS = DescriptionPackage.eINSTANCE.getCustomLayoutConfiguration_LayoutOptions();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl
+         * <em>Layout Option</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl
+         * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayoutOption()
+         * @generated
+         */
+        EClass LAYOUT_OPTION = DescriptionPackage.eINSTANCE.getLayoutOption();
+
+        /**
+         * The meta object literal for the '<em><b>Name</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute LAYOUT_OPTION__NAME = DescriptionPackage.eINSTANCE.getLayoutOption_Name();
+
+        /**
+         * The meta object literal for the '<em><b>Value</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute LAYOUT_OPTION__VALUE = DescriptionPackage.eINSTANCE.getLayoutOption_Value();
 
         /**
          * The meta object literal for the

@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -34,6 +35,7 @@ import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.Layout;
+import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
@@ -474,6 +476,28 @@ public class DescriptionSwitch<T> {
             }
             return result;
         }
+        case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION: {
+            CustomLayoutConfiguration customLayoutConfiguration = (CustomLayoutConfiguration) theEObject;
+            T result = caseCustomLayoutConfiguration(customLayoutConfiguration);
+            if (result == null) {
+                result = caseLayout(customLayoutConfiguration);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(customLayoutConfiguration);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DescriptionPackage.LAYOUT_OPTION: {
+            LayoutOption layoutOption = (LayoutOption) theEObject;
+            T result = caseLayoutOption(layoutOption);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         case DescriptionPackage.MAPPING_BASED_DECORATION: {
             MappingBasedDecoration mappingBasedDecoration = (MappingBasedDecoration) theEObject;
             T result = caseMappingBasedDecoration(mappingBasedDecoration);
@@ -799,6 +823,35 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseCompositeLayout(CompositeLayout object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Custom Layout Configuration</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Custom Layout Configuration</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseCustomLayoutConfiguration(CustomLayoutConfiguration object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Layout Option</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Layout Option</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseLayoutOption(LayoutOption object) {
         return null;
     }
 

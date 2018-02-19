@@ -424,6 +424,53 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    protected CustomLayoutConfigurationItemProvider customLayoutConfigurationItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createCustomLayoutConfigurationAdapter() {
+        if (customLayoutConfigurationItemProvider == null) {
+            customLayoutConfigurationItemProvider = new CustomLayoutConfigurationItemProvider(this);
+        }
+
+        return customLayoutConfigurationItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.description.LayoutOption}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected LayoutOptionItemProvider layoutOptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.diagram.description.LayoutOption}. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createLayoutOptionAdapter() {
+        if (layoutOptionItemProvider == null) {
+            layoutOptionItemProvider = new LayoutOptionItemProvider(this);
+        }
+
+        return layoutOptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.MappingBasedDecoration} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -633,6 +680,12 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
         }
         if (compositeLayoutItemProvider != null) {
             compositeLayoutItemProvider.dispose();
+        }
+        if (customLayoutConfigurationItemProvider != null) {
+            customLayoutConfigurationItemProvider.dispose();
+        }
+        if (layoutOptionItemProvider != null) {
+            layoutOptionItemProvider.dispose();
         }
         if (mappingBasedDecorationItemProvider != null) {
             mappingBasedDecorationItemProvider.dispose();

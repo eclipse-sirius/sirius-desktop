@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -34,6 +35,7 @@ import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.Layout;
+import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
@@ -189,6 +191,16 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseCompositeLayout(CompositeLayout object) {
             return createCompositeLayoutAdapter();
+        }
+
+        @Override
+        public Adapter caseCustomLayoutConfiguration(CustomLayoutConfiguration object) {
+            return createCustomLayoutConfigurationAdapter();
+        }
+
+        @Override
+        public Adapter caseLayoutOption(LayoutOption object) {
+            return createLayoutOptionAdapter();
         }
 
         @Override
@@ -532,6 +544,34 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createCompositeLayoutAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration <em>Custom Layout Configuration</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.CustomLayoutConfiguration
+     * @generated
+     */
+    public Adapter createCustomLayoutConfigurationAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.diagram.description.LayoutOption
+     * <em>Layout Option</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.LayoutOption
+     * @generated
+     */
+    public Adapter createLayoutOptionAdapter() {
         return null;
     }
 

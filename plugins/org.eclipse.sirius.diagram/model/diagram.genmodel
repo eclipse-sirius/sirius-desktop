@@ -593,6 +593,16 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CompositeLayout/padding"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CompositeLayout/direction"/>
       </genClasses>
+      <genClasses ecoreClass="diagram.ecore#//description/CustomLayoutConfiguration">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CustomLayoutConfiguration/id"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CustomLayoutConfiguration/label"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference diagram.ecore#//description/CustomLayoutConfiguration/layoutOptions"/>
+      </genClasses>
+      <genClasses ecoreClass="diagram.ecore#//description/LayoutOption">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/LayoutOption/Name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/LayoutOption/value"/>
+      </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/MappingBasedDecoration">
         <genFeatures notify="false" createChild="false" propertyCategory="General"
             propertyDescription="Mappings to decorate." propertySortChoices="true"

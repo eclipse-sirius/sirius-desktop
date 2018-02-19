@@ -154,6 +154,23 @@ public interface DescriptionFactory extends EFactory {
     CompositeLayout createCompositeLayout();
 
     /**
+     * Returns a new object of class '<em>Custom Layout Configuration</em>'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return a new object of class '<em>Custom Layout Configuration</em>'.
+     * @generated
+     */
+    CustomLayoutConfiguration createCustomLayoutConfiguration();
+
+    /**
+     * Returns a new object of class '<em>Layout Option</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Layout Option</em>'.
+     * @generated
+     */
+    LayoutOption createLayoutOption();
+
+    /**
      * Returns a new object of class '<em>Mapping Based Decoration</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return a new object of class '<em>Mapping Based Decoration</em>'.

@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -43,6 +44,7 @@ import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.Layout;
 import org.eclipse.sirius.diagram.description.LayoutDirection;
+import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
@@ -190,6 +192,20 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EClass compositeLayoutEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass customLayoutConfigurationEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass layoutOptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1283,6 +1299,76 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EClass getCustomLayoutConfiguration() {
+        return customLayoutConfigurationEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getCustomLayoutConfiguration_Id() {
+        return (EAttribute) customLayoutConfigurationEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getCustomLayoutConfiguration_Label() {
+        return (EAttribute) customLayoutConfigurationEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getCustomLayoutConfiguration_LayoutOptions() {
+        return (EReference) customLayoutConfigurationEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getLayoutOption() {
+        return layoutOptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getLayoutOption_Name() {
+        return (EAttribute) layoutOptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getLayoutOption_Value() {
+        return (EAttribute) layoutOptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getMappingBasedDecoration() {
         return mappingBasedDecorationEClass;
     }
@@ -1650,6 +1736,15 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEAttribute(compositeLayoutEClass, DescriptionPackage.COMPOSITE_LAYOUT__PADDING);
         createEAttribute(compositeLayoutEClass, DescriptionPackage.COMPOSITE_LAYOUT__DIRECTION);
 
+        customLayoutConfigurationEClass = createEClass(DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION);
+        createEAttribute(customLayoutConfigurationEClass, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__ID);
+        createEAttribute(customLayoutConfigurationEClass, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LABEL);
+        createEReference(customLayoutConfigurationEClass, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS);
+
+        layoutOptionEClass = createEClass(DescriptionPackage.LAYOUT_OPTION);
+        createEAttribute(layoutOptionEClass, DescriptionPackage.LAYOUT_OPTION__NAME);
+        createEAttribute(layoutOptionEClass, DescriptionPackage.LAYOUT_OPTION__VALUE);
+
         mappingBasedDecorationEClass = createEClass(DescriptionPackage.MAPPING_BASED_DECORATION);
         createEReference(mappingBasedDecorationEClass, DescriptionPackage.MAPPING_BASED_DECORATION__MAPPINGS);
 
@@ -1759,6 +1854,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         layoutEClass.getESuperTypes().add(theDescriptionPackage_1.getDocumentedElement());
         orderedTreeLayoutEClass.getESuperTypes().add(this.getLayout());
         compositeLayoutEClass.getESuperTypes().add(this.getLayout());
+        customLayoutConfigurationEClass.getESuperTypes().add(this.getLayout());
         mappingBasedDecorationEClass.getESuperTypes().add(theDescriptionPackage_1.getDecorationDescription());
         layerEClass.getESuperTypes().add(theDescriptionPackage_1.getDocumentedElement());
         layerEClass.getESuperTypes().add(theDescriptionPackage_1.getEndUserDocumentedElement());
@@ -2116,6 +2212,22 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEAttribute(getCompositeLayout_Padding(), theEcorePackage.getEInt(), "padding", "30", 1, 1, CompositeLayout.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getCompositeLayout_Direction(), this.getLayoutDirection(), "direction", "topToBottom", 1, 1, CompositeLayout.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(customLayoutConfigurationEClass, CustomLayoutConfiguration.class, "CustomLayoutConfiguration", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getCustomLayoutConfiguration_Id(), theEcorePackage.getEString(), "id", null, 0, 1, CustomLayoutConfiguration.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getCustomLayoutConfiguration_Label(), theEcorePackage.getEString(), "label", null, 0, 1, CustomLayoutConfiguration.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getCustomLayoutConfiguration_LayoutOptions(), this.getLayoutOption(), null, "layoutOptions", null, 0, -1, CustomLayoutConfiguration.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(layoutOptionEClass, LayoutOption.class, "LayoutOption", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getLayoutOption_Name(), ecorePackage.getEString(), "name", null, 0, 1, LayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getLayoutOption_Value(), theEcorePackage.getEString(), "value", null, 0, 1, LayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(mappingBasedDecorationEClass, MappingBasedDecoration.class, "MappingBasedDecoration", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$

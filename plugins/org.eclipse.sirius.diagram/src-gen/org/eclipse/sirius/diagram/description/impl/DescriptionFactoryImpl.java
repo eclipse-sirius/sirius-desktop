@@ -37,6 +37,7 @@ import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -47,6 +48,7 @@ import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.LayoutDirection;
+import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
@@ -120,6 +122,10 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createOrderedTreeLayout();
         case DescriptionPackage.COMPOSITE_LAYOUT:
             return createCompositeLayout();
+        case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION:
+            return createCustomLayoutConfiguration();
+        case DescriptionPackage.LAYOUT_OPTION:
+            return createLayoutOption();
         case DescriptionPackage.MAPPING_BASED_DECORATION:
             return createMappingBasedDecoration();
         case DescriptionPackage.LAYER:
@@ -334,6 +340,28 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public CompositeLayout createCompositeLayout() {
         CompositeLayoutImpl compositeLayout = new CompositeLayoutImpl();
         return compositeLayout;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public CustomLayoutConfiguration createCustomLayoutConfiguration() {
+        CustomLayoutConfigurationImpl customLayoutConfiguration = new CustomLayoutConfigurationImpl();
+        return customLayoutConfiguration;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public LayoutOption createLayoutOption() {
+        LayoutOptionImpl layoutOption = new LayoutOptionImpl();
+        return layoutOption;
     }
 
     /**
