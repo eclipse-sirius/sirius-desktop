@@ -1988,5 +1988,11 @@
          </Priority>
       </statusLineContributionItemProvider>
    </extension>
-
+	<extension
+         point="org.eclipse.sirius.diagram.ui.layoutProvider">
+      <layoutProvider
+            priority="highest"
+            providerClass="org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProvider">
+      </layoutProvider>
+   </extension>
 </plugin>

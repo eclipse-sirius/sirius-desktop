@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+    <extension
+       point="org.eclipse.elk.core.service.layoutConnectors">
+    <setup
+          class="org.eclipse.sirius.diagram.elk.ElkSiriusLayoutSetup">
+    </setup>
+ </extension>
+  <extension
+       point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+    <editpolicyProvider
+          class="org.eclipse.sirius.diagram.elk.LayoutEditPolicyProvider">
+       <Priority
+             name="Lowest">
+       </Priority>
+    </editpolicyProvider>
+ </extension>
+</plugin>

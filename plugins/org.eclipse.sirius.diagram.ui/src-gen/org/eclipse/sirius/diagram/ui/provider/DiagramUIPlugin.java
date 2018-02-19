@@ -13,10 +13,12 @@ package org.eclipse.sirius.diagram.ui.provider;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
@@ -49,6 +51,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.image.ImageSelectorDescri
 import org.eclipse.sirius.diagram.ui.business.internal.image.refresh.WorkspaceImageFigureRefresher;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.WorkspaceFileResourceChangeListener;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationProviderRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.decoration.DescribedDecorationDescriptorProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.decoration.EditModeDecorationDescriptorProvider;
@@ -152,6 +155,11 @@ public final class DiagramUIPlugin extends EMFPlugin {
         private DynamicDiagramUIPreferences dynamicPreferences;
 
         /**
+         * A registry containing all layout providers that can be specified directly in the VSM.
+         */
+        private Map<String, Supplier<DefaultLayoutProvider>> layoutProviderRegistry;
+
+        /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
@@ -160,8 +168,39 @@ public final class DiagramUIPlugin extends EMFPlugin {
             super();
 
             // Remember the static instance.
-            //
             DiagramUIPlugin.plugin = this;
+        }
+
+        /**
+         * Add a new layout provider to the registry.
+         * 
+         * @param providerId
+         *            the id of the layout provider to add in the registry.
+         * @param layoutSupplier
+         *            the layout provider that should be used and that should extend {@link DefaultLayoutProvider}.
+         */
+        public void addLayoutProvider(String providerId, Supplier<DefaultLayoutProvider> layoutSupplier) {
+            layoutProviderRegistry.put(providerId, layoutSupplier);
+        }
+
+        /**
+         * Remove the layout provider identified by the given id from the registry.
+         * 
+         * @param layoutProviderId
+         *            the id of the layout provider to remove from the registry.
+         * @return the layout provider removed if such element exists.
+         */
+        public Supplier<DefaultLayoutProvider> removeLayoutProvider(String layoutProviderId) {
+            return layoutProviderRegistry.remove(layoutProviderId);
+        }
+
+        /**
+         * Returns the unmodifiable registry containing all layout providers that can be specified directly in the VSM.
+         * 
+         * @return an unmodifiable map of layout providers suppliers associated to their ids.
+         */
+        public Map<String, Supplier<DefaultLayoutProvider>> getLayoutProviderRegistry() {
+            return Collections.unmodifiableMap(layoutProviderRegistry);
         }
 
         /**
@@ -188,6 +227,8 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
             layoutDataManagerRegistryListener = new LayoutDataManagerRegistryListener();
             layoutDataManagerRegistryListener.init();
+
+            layoutProviderRegistry = new HashMap<>();
 
             registerCoreDecorationProviders();
         }
@@ -220,7 +261,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
                 // can occur when using CDO (if the view is
                 // closed when transactions have been closed)
             }
-
+            layoutProviderRegistry = null;
             formatDataManagerRegistryListener.dispose();
             formatDataManagerRegistryListener = null;
 

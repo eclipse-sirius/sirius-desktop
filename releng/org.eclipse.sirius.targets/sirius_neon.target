@@ -41,6 +41,15 @@
       <repository id="EEF-Latest" location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.elk.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.feature.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.algorithms.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.algorithms.feature.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.graphviz.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.graphviz.feature.source.feature.group" version="0.0.0"/>
+      <repository id="ELK-0.3" location="http://download.eclipse.org/elk/updates/releases/0.3.0/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
       <repository id="Sirius-Neon-Master" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon/"/>
     </location>

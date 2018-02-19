@@ -3,10 +3,8 @@
    <description url="http://www.eclipse.org/sirius">
       Sirius
    </description>
-   <feature id="org.eclipse.sirius.aql" version="0.0.0">
-   </feature>
-   <feature id="org.eclipse.sirius.aql.source" version="0.0.0">
-   </feature>
+   <feature id="org.eclipse.sirius.aql" version="0.0.0"/>
+   <feature id="org.eclipse.sirius.aql.source" version="0.0.0"/>
    <feature id="org.eclipse.sirius.runtime" version="0.0.0">
       <category name="Sirius"/>
    </feature>
@@ -37,10 +35,8 @@
    <feature id="org.eclipse.sirius.runtime.ide.ui.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
-   <feature id="org.eclipse.sirius.specifier" version="0.0.0">
-   </feature>
-   <feature id="org.eclipse.sirius.specifier.source" version="0.0.0">
-   </feature>
+   <feature id="org.eclipse.sirius.specifier" version="0.0.0"/>
+   <feature id="org.eclipse.sirius.specifier.source" version="0.0.0"/>
    <feature id="org.eclipse.sirius.specifier.ide.ui" version="0.0.0">
       <category name="Sirius"/>
    </feature>
@@ -113,16 +109,23 @@
    <feature id="org.eclipse.sirius.specifier.properties.feature.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
-    <!-- Non-categorized -->
-   <feature id="org.eclipse.acceleo.query" version="0.0.0" />
-   <feature id="org.eclipse.acceleo.query.source" version="0.0.0" />
-   <feature id="org.eclipse.acceleo.ui.interpreter" version="0.0.0" />
-   <feature id="org.eclipse.acceleo.ui.interpreter.source" version="0.0.0" />
+   <feature id="org.eclipse.acceleo.query" version="0.0.0"/>
+   <feature id="org.eclipse.acceleo.query.source" version="0.0.0"/>
+   <feature id="org.eclipse.acceleo.ui.interpreter" version="0.0.0"/>
+   <feature id="org.eclipse.acceleo.ui.interpreter.source" version="0.0.0"/>
    <feature id="org.eclipse.eef.sdk.feature" version="0.0.0"/>
    <feature id="org.eclipse.eef.sdk.feature.source" version="0.0.0"/>
    <feature id="org.eclipse.eef.ext.widgets.reference.feature" version="0.0.0"/>
    <feature id="org.eclipse.eef.ext.widgets.reference.feature.source" version="0.0.0"/>
-
+   <feature id="org.eclipse.elk.algorithms.feature" version="0.0.0"/>
+   <feature id="org.eclipse.elk.feature" version="0.0.0"/>
+   <feature id="org.eclipse.elk.graphviz.feature" version="0.0.0"/>
+   <feature url="features/org.eclipse.sirius.diagram.elk.feature_6.0.0.qualifier.jar" id="org.eclipse.sirius.diagram.elk.feature" version="6.0.0.qualifier">
+      <category name="Sirius"/>
+   </feature>
+   <feature url="features/org.eclipse.elk.algorithms.feature.source_0.3.0.jar" id="org.eclipse.elk.algorithms.feature.source" version="0.3.0"/>
+   <feature url="features/org.eclipse.elk.feature.source_0.3.0.jar" id="org.eclipse.elk.feature.source" version="0.3.0"/>
+   <feature url="features/org.eclipse.elk.graphviz.feature.source_0.3.0.jar" id="org.eclipse.elk.graphviz.feature.source" version="0.3.0"/>
    <category-def name="Sirius" label="Sirius">
       <description>
          The Sirius Modeling Platform
@@ -133,6 +136,5 @@
          The Sirius Modeling Platform SDK
       </description>
    </category-def>
-   
    <category-def name="Sirius.Dependencies" label="Sirius Dependencies"/>
 </site>
