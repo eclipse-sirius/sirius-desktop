@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.swtbot;
 
 import java.util.List;
 
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -549,6 +550,10 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         bot.comboBox(1).setSelection(imageExtension);
         bot.button("OK").click();
         SWTBotUtils.waitAllUiEvents();
+        // The session should still be opened after having performed an export as image.
+        Session opennedSession = localSession.getOpenedSession();
+        assertNotNull("The session should be opened", opennedSession);
+        assertTrue("The session should be opened", opennedSession.isOpen());
     }
 
     private void exportAsImageFromModelContentView(String imageExtension, String rootElementName) throws Exception {
