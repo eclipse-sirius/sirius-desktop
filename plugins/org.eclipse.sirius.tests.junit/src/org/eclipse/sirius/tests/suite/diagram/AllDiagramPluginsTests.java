@@ -200,6 +200,7 @@ import org.eclipse.sirius.tests.unit.diagram.refresh.StyleSizeChangeRefreshTest;
 import org.eclipse.sirius.tests.unit.diagram.refresh.customization.RefreshWithCustomizationTests;
 import org.eclipse.sirius.tests.unit.diagram.resource.FileModificationValidationTest;
 import org.eclipse.sirius.tests.unit.diagram.resource.GMFCrossReferenceAdapterTest;
+import org.eclipse.sirius.tests.unit.diagram.services.ServiceCallsWithOperationCanceledExceptionTest;
 import org.eclipse.sirius.tests.unit.diagram.session.MultiAirdResourcesSessionTest;
 import org.eclipse.sirius.tests.unit.diagram.session.SessionServiceGMFDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.session.SessionTest;
@@ -494,6 +495,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(ComputeAvailableVariableLabelTest.class);
         suite.addTestSuite(SiriusControlAndCrossReferenceTest.class);
         suite.addTestSuite(DoubleClicCommandBuilderForceRefreshTest.class);
+        suite.addTestSuite(ServiceCallsWithOperationCanceledExceptionTest.class);
 
         // Specific diagram editor tests (tabbar, palette...)
         suite.addTestSuite(TabbarActionSelectionListenerTest.class);

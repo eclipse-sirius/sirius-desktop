@@ -146,6 +146,12 @@
 				<em>User Color Palette</em> are supported. See 
 				<a href="specifier/diagrams/Diagrams.html#diagram_description">the documentation</a> for details.
 			</li>
+			<li><span class="label label-info">Modified</span> Warning: Java service throwing an 
+				<code>OperationCanceledException</code> with a message containing the specific key word "
+				<code>-RT-</code>" has now a specific behavior. In this case, the 
+				<code>OperationCanceledException</code> is rethrown to rollback the command if this Java service is called from an AQL expression or through the service interpreter. You can refer to 
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=531487">bugzilla 531487</a> for more details.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>

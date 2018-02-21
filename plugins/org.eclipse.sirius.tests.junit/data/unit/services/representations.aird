@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
+  <viewpoint:DAnalysis xmi:id="__kwa8BL4Eei_OYeu_MIpjQ" selectedViews="_gn9EMBL7EeiPRI0s5GEi3A" version="11.1.6.201706261600">
+    <semanticResources>My.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_gn9EMBL7EeiPRI0s5GEi3A">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/services/ProjectWithOperationCanceledException.odesign#//@ownedViewpoints[name='ViewpointWithOperationCanceledException']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_hdNRMBL7EeiPRI0s5GEi3A" name="new MyDiagram" representation="_hdN4QBL7EeiPRI0s5GEi3A">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/services/ProjectWithOperationCanceledException.odesign#//@ownedViewpoints[name='ViewpointWithOperationCanceledException']/@ownedRepresentations[name='MyDiagram']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram xmi:id="_hdN4QBL7EeiPRI0s5GEi3A" name="new MyDiagram">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_hdN4QRL7EeiPRI0s5GEi3A" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_hdN4QhL7EeiPRI0s5GEi3A"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_hdmSwBL7EeiPRI0s5GEi3A" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_hdmSwRL7EeiPRI0s5GEi3A" type="Sirius" element="_hdN4QBL7EeiPRI0s5GEi3A" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_hdmSwhL7EeiPRI0s5GEi3A"/>
+      </data>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/services/ProjectWithOperationCanceledException.odesign#//@ownedViewpoints[name='ViewpointWithOperationCanceledException']/@ownedRepresentations[name='MyDiagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_hdN4QxL7EeiPRI0s5GEi3A"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/services/ProjectWithOperationCanceledException.odesign#//@ownedViewpoints[name='ViewpointWithOperationCanceledException']/@ownedRepresentations[name='MyDiagram']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

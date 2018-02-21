@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="ProjectWithOperationCanceledException" version="11.1.1.201610211630">
+  <ownedViewpoints name="ViewpointWithOperationCanceledException" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="MyDiagram" domainClass="ecore.EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="nodeClass" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EClass">
+          <style xsi:type="style:SquareDescription" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="newTools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="NewClassWithA2" label="New Class with A2" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ViewpointWithOperationCanceledException']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='nodeClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.createNewClass(&quot;A2&quot;)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="NewClassWithA2WithSpecificMessage" label="New Class with A2 with specific message" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ViewpointWithOperationCanceledException']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='nodeClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.createNewClassSpecificMessage(&quot;A2&quot;)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="NewClassWithA3" label="New Class with A3" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ViewpointWithOperationCanceledException']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='nodeClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container.createNewClass('A3')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="NewClassWithA3WithSpecificMessage" label="New Class with A3 with specific message" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ViewpointWithOperationCanceledException']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='nodeClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container.createNewClassSpecificMessage('A3')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="NewClassWithAQL" label="New Class with AQL" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ViewpointWithOperationCanceledException']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='nodeClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.createNewClass('AQL')"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="NewClassWithAQLWithSpecificMessage" label="New Class with AQL with specific message" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ViewpointWithOperationCanceledException']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='nodeClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.createNewClassSpecificMessage('AQL')"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="NewClassWithService" label="New Class with service:" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ViewpointWithOperationCanceledException']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='nodeClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createNewClassService()"/>
+                <subModelOperations xsi:type="tool_1:SetValue"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="NewClassWithServiceWithSpecificMessage" label="New Class with service: with specific message" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ViewpointWithOperationCanceledException']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='nodeClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createNewClassServiceSpecificMessage()"/>
+                <subModelOperations xsi:type="tool_1:SetValue"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.tests.unit.diagram.services.Services"/>
+  </ownedViewpoints>
+</description:Group>

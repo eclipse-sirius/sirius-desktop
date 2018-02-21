@@ -447,5 +447,10 @@
             priority="core">
       </rule>
    </extension>
-
+   <extension
+          point="org.eclipse.sirius.runtimeLogger">
+       <logger
+             class="org.eclipse.sirius.business.internal.logger.OCERuntimeLoggerSpy">
+       </logger>
+   </extension>
 </plugin>
