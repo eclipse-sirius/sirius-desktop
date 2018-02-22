@@ -181,7 +181,9 @@ public class ContainerWithTitleBlockFigure extends SiriusDefaultSizeNodeFigure {
     private Color geBorderColor() {
         if (viewNode.getStyle() instanceof BorderedStyle) {
             RGBValues borderColor = ((BorderedStyle) viewNode.getStyle()).getBorderColor();
-            return new Color(null, borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue());
+            if (borderColor != null) {
+                return new Color(null, borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue());
+            }
         }
         return ColorConstants.black;
     }
