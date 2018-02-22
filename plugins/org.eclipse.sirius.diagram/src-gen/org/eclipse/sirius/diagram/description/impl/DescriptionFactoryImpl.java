@@ -49,6 +49,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
+import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -139,6 +140,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createDoubleLayoutOption();
         case DescriptionPackage.ENUM_LAYOUT_OPTION:
             return createEnumLayoutOption();
+        case DescriptionPackage.ENUM_SET_LAYOUT_OPTION:
+            return createEnumSetLayoutOption();
         case DescriptionPackage.ENUM_LAYOUT_VALUE:
             return createEnumLayoutValue();
         case DescriptionPackage.MAPPING_BASED_DECORATION:
@@ -421,6 +424,17 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public EnumLayoutOption createEnumLayoutOption() {
         EnumLayoutOptionImpl enumLayoutOption = new EnumLayoutOptionImpl();
         return enumLayoutOption;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EnumSetLayoutOption createEnumSetLayoutOption() {
+        EnumSetLayoutOptionImpl enumSetLayoutOption = new EnumSetLayoutOptionImpl();
+        return enumSetLayoutOption;
     }
 
     /**

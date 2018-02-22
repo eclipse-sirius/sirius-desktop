@@ -31,7 +31,6 @@ import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.description.GenericLayout;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.concern.ConcernFactory;
 import org.eclipse.sirius.diagram.description.concern.ConcernSet;
@@ -544,9 +543,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
         concernSet.getOwnedConcernDescriptions().add(ConcernFactory.eINSTANCE.createConcernDescription());
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONCERNS, concernSet));
 
-        newChildDescriptors.add(
-                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createCustomLayoutConfiguration()));
-        addAllCustomLayoutChildDescriptors(newChildDescriptors);
         newChildDescriptors
                 .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createOrderedTreeLayout()));
 
@@ -617,7 +613,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
 
         newChildDescriptors.add(
                 createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createCustomLayoutConfiguration()));
-
+        addAllCustomLayoutChildDescriptors(newChildDescriptors);
         newChildDescriptors.add(
                 createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
@@ -684,8 +680,8 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
             // child type currently available for is Layer (see
             // collectNewChildDescriptors).
             return getString("_UI_CreateChild_text2", new Object[] { getTypeText(child), "Default", getTypeText(owner) }); //$NON-NLS-1$ //$NON-NLS-2$
-        } else if (child instanceof GenericLayout) {
-            return ((GenericLayout) child).getLabel();
+        } else if (child instanceof CustomLayoutConfiguration) {
+            return ((CustomLayoutConfiguration) child).getLabel();
         }
         String createChildText = super.getCreateChildText(owner, feature, child, selection);
         if (child != null && isNormalEdgeMapping(child)) {

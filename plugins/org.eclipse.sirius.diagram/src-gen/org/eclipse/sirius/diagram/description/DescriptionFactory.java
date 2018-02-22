@@ -203,6 +203,14 @@ public interface DescriptionFactory extends EFactory {
     EnumLayoutOption createEnumLayoutOption();
 
     /**
+     * Returns a new object of class '<em>Enum Set Layout Option</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Enum Set Layout Option</em>'.
+     * @generated
+     */
+    EnumSetLayoutOption createEnumSetLayoutOption();
+
+    /**
      * Returns a new object of class '<em>Enum Layout Value</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return a new object of class '<em>Enum Layout Value</em>'.

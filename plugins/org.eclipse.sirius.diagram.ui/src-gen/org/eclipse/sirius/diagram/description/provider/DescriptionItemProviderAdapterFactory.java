@@ -44,6 +44,7 @@ import org.eclipse.sirius.diagram.internal.description.provider.DiagramDescripti
 import org.eclipse.sirius.diagram.internal.description.provider.DoubleLayoutOptionItemProviderSpec;
 import org.eclipse.sirius.diagram.internal.description.provider.EnumLayoutOptionItemProviderSpec;
 import org.eclipse.sirius.diagram.internal.description.provider.EnumLayoutValueItemProviderSpec;
+import org.eclipse.sirius.diagram.internal.description.provider.EnumSetLayoutOptionItemProviderSpec;
 import org.eclipse.sirius.diagram.internal.description.provider.IntegerLayoutOptionItemProviderSpec;
 import org.eclipse.sirius.diagram.internal.description.provider.StringLayoutOptionItemProviderSpec;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -573,6 +574,30 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.description.EnumSetLayoutOption} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    protected EnumSetLayoutOptionItemProvider enumSetLayoutOptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.diagram.description.EnumSetLayoutOption}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
+    @Override
+    public Adapter createEnumSetLayoutOptionAdapter() {
+        if (enumSetLayoutOptionItemProvider == null) {
+            enumSetLayoutOptionItemProvider = new EnumSetLayoutOptionItemProviderSpec(this);
+        }
+
+        return enumSetLayoutOptionItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.description.EnumLayoutValue}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -824,6 +849,9 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
         }
         if (enumLayoutOptionItemProvider != null) {
             enumLayoutOptionItemProvider.dispose();
+        }
+        if (enumSetLayoutOptionItemProvider != null) {
+            enumSetLayoutOptionItemProvider.dispose();
         }
         if (enumLayoutValueItemProvider != null) {
             enumLayoutValueItemProvider.dispose();

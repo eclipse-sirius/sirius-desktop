@@ -36,6 +36,8 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
+import org.eclipse.sirius.diagram.description.EnumOption;
+import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -552,7 +554,35 @@ public class DescriptionSwitch<T> {
             EnumLayoutOption enumLayoutOption = (EnumLayoutOption) theEObject;
             T result = caseEnumLayoutOption(enumLayoutOption);
             if (result == null) {
+                result = caseEnumOption(enumLayoutOption);
+            }
+            if (result == null) {
                 result = caseLayoutOption(enumLayoutOption);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DescriptionPackage.ENUM_SET_LAYOUT_OPTION: {
+            EnumSetLayoutOption enumSetLayoutOption = (EnumSetLayoutOption) theEObject;
+            T result = caseEnumSetLayoutOption(enumSetLayoutOption);
+            if (result == null) {
+                result = caseEnumOption(enumSetLayoutOption);
+            }
+            if (result == null) {
+                result = caseLayoutOption(enumSetLayoutOption);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DescriptionPackage.ENUM_OPTION: {
+            EnumOption enumOption = (EnumOption) theEObject;
+            T result = caseEnumOption(enumOption);
+            if (result == null) {
+                result = caseLayoutOption(enumOption);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -996,6 +1026,35 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseEnumLayoutOption(EnumLayoutOption object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Enum Set Layout Option</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Enum Set Layout Option</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseEnumSetLayoutOption(EnumSetLayoutOption object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Enum Option</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Enum Option</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseEnumOption(EnumOption object) {
         return null;
     }
 

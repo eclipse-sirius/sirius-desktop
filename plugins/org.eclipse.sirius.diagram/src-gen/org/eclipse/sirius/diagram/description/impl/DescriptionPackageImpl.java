@@ -43,6 +43,8 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
+import org.eclipse.sirius.diagram.description.EnumOption;
+import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
@@ -247,6 +249,20 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EClass enumLayoutOptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass enumSetLayoutOptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass enumOptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1537,8 +1553,38 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getEnumLayoutOption_Choices() {
-        return (EReference) enumLayoutOptionEClass.getEStructuralFeatures().get(1);
+    public EClass getEnumSetLayoutOption() {
+        return enumSetLayoutOptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getEnumSetLayoutOption_Values() {
+        return (EReference) enumSetLayoutOptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getEnumOption() {
+        return enumOptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getEnumOption_Choices() {
+        return (EReference) enumOptionEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -1969,7 +2015,12 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         enumLayoutOptionEClass = createEClass(DescriptionPackage.ENUM_LAYOUT_OPTION);
         createEReference(enumLayoutOptionEClass, DescriptionPackage.ENUM_LAYOUT_OPTION__VALUE);
-        createEReference(enumLayoutOptionEClass, DescriptionPackage.ENUM_LAYOUT_OPTION__CHOICES);
+
+        enumSetLayoutOptionEClass = createEClass(DescriptionPackage.ENUM_SET_LAYOUT_OPTION);
+        createEReference(enumSetLayoutOptionEClass, DescriptionPackage.ENUM_SET_LAYOUT_OPTION__VALUES);
+
+        enumOptionEClass = createEClass(DescriptionPackage.ENUM_OPTION);
+        createEReference(enumOptionEClass, DescriptionPackage.ENUM_OPTION__CHOICES);
 
         enumLayoutValueEClass = createEClass(DescriptionPackage.ENUM_LAYOUT_VALUE);
         createEAttribute(enumLayoutValueEClass, DescriptionPackage.ENUM_LAYOUT_VALUE__NAME);
@@ -2089,7 +2140,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         stringLayoutOptionEClass.getESuperTypes().add(this.getLayoutOption());
         integerLayoutOptionEClass.getESuperTypes().add(this.getLayoutOption());
         doubleLayoutOptionEClass.getESuperTypes().add(this.getLayoutOption());
-        enumLayoutOptionEClass.getESuperTypes().add(this.getLayoutOption());
+        enumLayoutOptionEClass.getESuperTypes().add(this.getEnumOption());
+        enumSetLayoutOptionEClass.getESuperTypes().add(this.getEnumOption());
+        enumOptionEClass.getESuperTypes().add(this.getLayoutOption());
         mappingBasedDecorationEClass.getESuperTypes().add(theDescriptionPackage_1.getDecorationDescription());
         layerEClass.getESuperTypes().add(theDescriptionPackage_1.getDocumentedElement());
         layerEClass.getESuperTypes().add(theDescriptionPackage_1.getEndUserDocumentedElement());
@@ -2489,7 +2542,14 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEReference(getEnumLayoutOption_Value(), this.getEnumLayoutValue(), null, "value", null, 0, 1, EnumLayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
-        initEReference(getEnumLayoutOption_Choices(), this.getEnumLayoutValue(), null, "choices", null, 0, -1, EnumLayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+
+        initEClass(enumSetLayoutOptionEClass, EnumSetLayoutOption.class, "EnumSetLayoutOption", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEReference(getEnumSetLayoutOption_Values(), this.getEnumLayoutValue(), null, "values", null, 0, -1, EnumSetLayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+
+        initEClass(enumOptionEClass, EnumOption.class, "EnumOption", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEReference(getEnumOption_Choices(), this.getEnumLayoutValue(), null, "choices", null, 0, -1, EnumOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
 

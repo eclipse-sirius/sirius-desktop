@@ -620,7 +620,12 @@
       </genClasses>
       <genClasses image="false" ecoreClass="diagram.ecore#//description/EnumLayoutOption">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/EnumLayoutOption/value"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/EnumLayoutOption/choices"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="diagram.ecore#//description/EnumSetLayoutOption">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/EnumSetLayoutOption/values"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="diagram.ecore#//description/EnumOption">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/EnumOption/choices"/>
       </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/EnumLayoutValue">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/EnumLayoutValue/name"/>

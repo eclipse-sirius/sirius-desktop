@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.internal.description.provider;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.provider.DiagramDescriptionItemProvider;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
@@ -35,11 +38,20 @@ public class DiagramDescriptionItemProviderSpec extends DiagramDescriptionItemPr
     /**
      * {@inheritDoc}
      * 
-     * This method has been overridden in order to return a localized text if
-     * available.
+     * This method has been overridden in order to return a localized text if available.
      */
+    @Override
     public String getText(Object object) {
         return MessageTranslator.INSTANCE.getMessage((IdentifiedElement) object, super.getText(object));
+    }
+
+    @Override
+    public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+        if (child instanceof CustomLayoutConfiguration) {
+            return ((CustomLayoutConfiguration) child).getLabel();
+        }
+
+        return super.getCreateChildText(owner, feature, child, selection);
     }
 
 }

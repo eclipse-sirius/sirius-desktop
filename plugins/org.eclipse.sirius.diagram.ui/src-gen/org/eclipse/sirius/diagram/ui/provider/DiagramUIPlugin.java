@@ -157,7 +157,8 @@ public final class DiagramUIPlugin extends EMFPlugin {
         private DynamicDiagramUIPreferences dynamicPreferences;
 
         /**
-         * A registry containing all layout providers that can be specified directly in the VSM.
+         * A registry containing all layout providers that can be specified directly in the VSM. A layout provider
+         * provides a layout algorithm that can be used when doing an arrange all on a Sirius diagram.
          */
         private Map<String, GenericLayoutProviderSupplier> layoutProviderRegistry;
 

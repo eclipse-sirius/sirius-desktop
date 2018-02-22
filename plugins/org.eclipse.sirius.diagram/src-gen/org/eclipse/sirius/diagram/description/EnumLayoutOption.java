@@ -11,8 +11,6 @@
  */
 package org.eclipse.sirius.diagram.description;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Enum Layout Option</b></em>'. <!-- end-user-doc
  * -->
@@ -28,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface EnumLayoutOption extends LayoutOption {
+public interface EnumLayoutOption extends EnumOption {
     /**
      * Returns the value of the '<em><b>Value</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
@@ -55,21 +53,5 @@ public interface EnumLayoutOption extends LayoutOption {
      * @generated
      */
     void setValue(EnumLayoutValue value);
-
-    /**
-     * Returns the value of the '<em><b>Choices</b></em>' containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.EnumLayoutValue}. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Choices</em>' containment reference list isn't clear, there really should be more of a
-     * description here...
-     * </p>
-     * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Choices</em>' containment reference list.
-     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEnumLayoutOption_Choices()
-     * @model containment="true" resolveProxies="true"
-     * @generated
-     */
-    EList<EnumLayoutValue> getChoices();
 
 } // EnumLayoutOption

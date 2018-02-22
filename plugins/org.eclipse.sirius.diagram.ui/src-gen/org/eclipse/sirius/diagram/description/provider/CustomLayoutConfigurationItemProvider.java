@@ -192,6 +192,8 @@ public class CustomLayoutConfigurationItemProvider extends DocumentedElementItem
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, DescriptionFactory.eINSTANCE.createDoubleLayoutOption()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, DescriptionFactory.eINSTANCE.createEnumLayoutOption()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, DescriptionFactory.eINSTANCE.createEnumSetLayoutOption()));
     }
 
     /**

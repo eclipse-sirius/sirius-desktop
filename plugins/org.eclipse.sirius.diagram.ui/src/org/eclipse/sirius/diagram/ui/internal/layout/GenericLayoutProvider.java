@@ -18,8 +18,8 @@ import org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPart
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.description.GenericLayout;
 import org.eclipse.sirius.diagram.description.Layout;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
@@ -70,8 +70,8 @@ public class GenericLayoutProvider implements LayoutProvider {
             final DiagramDescription desc = vp.getDescription();
             if (desc != null) {
                 final Layout layout = desc.getLayout();
-                if (layout instanceof GenericLayout) {
-                    return DiagramUIPlugin.getPlugin().getLayoutProviderRegistry().get(((GenericLayout) layout).getID()).getLayoutProviderSupplier();
+                if (layout instanceof CustomLayoutConfiguration) {
+                    return DiagramUIPlugin.getPlugin().getLayoutProviderRegistry().get(((CustomLayoutConfiguration) layout).getId()).getLayoutProviderSupplier();
                 }
             }
         }

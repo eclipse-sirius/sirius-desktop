@@ -21,21 +21,21 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.description.EnumLayoutOption;
+import org.eclipse.sirius.diagram.description.EnumOption;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.EnumLayoutOption} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.EnumOption} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class EnumLayoutOptionItemProvider extends EnumOptionItemProvider {
+public class EnumOptionItemProvider extends LayoutOptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public EnumLayoutOptionItemProvider(AdapterFactory adapterFactory) {
+    public EnumOptionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -65,7 +65,7 @@ public class EnumLayoutOptionItemProvider extends EnumOptionItemProvider {
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(DescriptionPackage.Literals.ENUM_LAYOUT_OPTION__VALUE);
+            childrenFeatures.add(DescriptionPackage.Literals.ENUM_OPTION__CHOICES);
         }
         return childrenFeatures;
     }
@@ -90,9 +90,9 @@ public class EnumLayoutOptionItemProvider extends EnumOptionItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = ((EnumLayoutOption) object).getId();
-        return label == null || label.length() == 0 ? getString("_UI_EnumLayoutOption_type") : //$NON-NLS-1$
-                getString("_UI_EnumLayoutOption_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((EnumOption) object).getId();
+        return label == null || label.length() == 0 ? getString("_UI_EnumOption_type") : //$NON-NLS-1$
+                getString("_UI_EnumOption_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -106,8 +106,8 @@ public class EnumLayoutOptionItemProvider extends EnumOptionItemProvider {
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(EnumLayoutOption.class)) {
-        case DescriptionPackage.ENUM_LAYOUT_OPTION__VALUE:
+        switch (notification.getFeatureID(EnumOption.class)) {
+        case DescriptionPackage.ENUM_OPTION__CHOICES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -124,27 +124,7 @@ public class EnumLayoutOptionItemProvider extends EnumOptionItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENUM_LAYOUT_OPTION__VALUE, DescriptionFactory.eINSTANCE.createEnumLayoutValue()));
-    }
-
-    /**
-     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-        Object childFeature = feature;
-        Object childObject = child;
-
-        boolean qualify = childFeature == DescriptionPackage.Literals.ENUM_OPTION__CHOICES || childFeature == DescriptionPackage.Literals.ENUM_LAYOUT_OPTION__VALUE;
-
-        if (qualify) {
-            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
-                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-        }
-        return super.getCreateChildText(owner, feature, child, selection);
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENUM_OPTION__CHOICES, DescriptionFactory.eINSTANCE.createEnumLayoutValue()));
     }
 
 }

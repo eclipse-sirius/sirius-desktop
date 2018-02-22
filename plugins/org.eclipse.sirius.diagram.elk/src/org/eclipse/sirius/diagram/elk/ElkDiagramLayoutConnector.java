@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.elk;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,6 +33,8 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.elk.core.IGraphLayoutEngine;
+import org.eclipse.elk.core.data.LayoutMetaDataService;
+import org.eclipse.elk.core.data.LayoutOptionData;
 import org.eclipse.elk.core.math.ElkPadding;
 import org.eclipse.elk.core.math.KVector;
 import org.eclipse.elk.core.options.CoreOptions;
@@ -53,6 +56,7 @@ import org.eclipse.elk.graph.properties.IProperty;
 import org.eclipse.elk.graph.properties.IPropertyHolder;
 import org.eclipse.elk.graph.properties.Property;
 import org.eclipse.elk.graph.util.ElkGraphUtil;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
@@ -70,11 +74,18 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.description.GenericLayout;
+import org.eclipse.sirius.diagram.description.DoubleLayoutOption;
+import org.eclipse.sirius.diagram.description.EnumLayoutOption;
+import org.eclipse.sirius.diagram.description.EnumLayoutValue;
+import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
+import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
+import org.eclipse.sirius.diagram.description.LayoutOption;
+import org.eclipse.sirius.diagram.description.StringLayoutOption;
+import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.graphics.Font;
@@ -296,6 +307,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         return false;
     }
 
+    public <E extends Enum<E>> EnumSet<E> of(E e, EnumSet<E> enumSet) {
+        enumSet.add(e);
+        return enumSet;
+    }
+
     /**
      * Creates the actual mapping given an edit part which functions as the root
      * for the layout.
@@ -339,22 +355,13 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             mapping.getGraphMap().put(topNode, layoutRootPart);
         }
 
-        // we set the ELK algorithm to use from viewpoint id defined.
-        final View view = layoutRootPart.getNotationView();
-        final EObject modelElement = view.getElement();
-        if (view instanceof Diagram && modelElement instanceof DDiagram) {
-            final DDiagram vp = (DDiagram) modelElement;
-            final DiagramDescription desc = vp.getDescription();
-            if (desc != null) {
-                final GenericLayout layout = (GenericLayout) desc.getLayout();
-                topNode.setProperty(CoreOptions.ALGORITHM, layout.getID().trim());
-                // topNode.setProperty(CoreOptions.PADDING, new ElkPadding(50));
-            }
-        }
+        configureGlobalOptions(layoutRootPart, topNode);
 
         mapping.setLayoutGraph(topNode);
 
-        if (selection != null && !selection.isEmpty()) {
+        if (selection != null && !selection.isEmpty())
+
+        {
             // layout only the selected elements
             double minx = Integer.MAX_VALUE;
             double miny = Integer.MAX_VALUE;
@@ -375,6 +382,91 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         processConnections(mapping);
 
         return mapping;
+    }
+
+    /**
+     * Configure global options for top node of the graph coming from VSM
+     * specification.
+     * 
+     * @param layoutRootPart
+     *            root edit part.
+     * @param topNode
+     *            top node to be configured with global options.
+     */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    private void configureGlobalOptions(final IGraphicalEditPart layoutRootPart, ElkNode topNode) {
+        // we set the ELK algorithm to use from viewpoint id defined and the
+        // global options.
+
+        EditPartQuery editPartQuery = new EditPartQuery(layoutRootPart);
+        DiagramDescription diagramDescription = editPartQuery.getDiagramDescription();
+
+        if (diagramDescription != null) {
+            final CustomLayoutConfiguration layout = (CustomLayoutConfiguration) diagramDescription.getLayout();
+            topNode.setProperty(CoreOptions.ALGORITHM, layout.getId().trim());
+            EList<LayoutOption> layoutOptions = layout.getLayoutOptions();
+            for (LayoutOption layoutOption : layoutOptions) {
+                LayoutOptionData layoutProperty = LayoutMetaDataService.getInstance().getOptionData(layoutOption.getId());
+
+                switch (layoutOption.eClass().getClassifierID()) {
+                case DescriptionPackage.ENUM_LAYOUT_OPTION:
+                    EnumLayoutOption enumOption = (EnumLayoutOption) layoutOption;
+                    int enumValueCount = layoutProperty.getEnumValueCount();
+                    Enum<?> elkEnum = null;
+                    int i = 0;
+                    while (i < enumValueCount && elkEnum == null) {
+                        layoutProperty.getEnumValue(i);
+                        Enum<?> enumValue = layoutProperty.getEnumValue(i);
+                        if (enumOption.getValue().getName().equals(enumValue.name())) {
+                            elkEnum = enumValue;
+                        }
+                        i++;
+                    }
+                    topNode.setProperty(layoutProperty, elkEnum);
+                    break;
+
+                case DescriptionPackage.ENUM_SET_LAYOUT_OPTION:
+                    EnumSetLayoutOption enumSetOption = (EnumSetLayoutOption) layoutOption;
+                    enumValueCount = layoutProperty.getEnumValueCount();
+
+                    if (enumValueCount > 0) {
+                        EnumSet enumSet = EnumSet.noneOf(layoutProperty.getEnumValue(0).getDeclaringClass());
+                        List<EnumLayoutValue> values = enumSetOption.getValues();
+                        for (EnumLayoutValue enumLayoutValue : values) {
+                            i = 0;
+                            while (i < enumValueCount) {
+                                Enum enumValue = layoutProperty.getEnumValue(i);
+                                if (enumLayoutValue.getName().equals(enumValue.name())) {
+                                    enumSet = of(enumValue, enumSet);
+                                    break;
+                                }
+                                i++;
+                            }
+                        }
+                        topNode.setProperty(layoutProperty, enumSet);
+                    }
+                    break;
+                case DescriptionPackage.BOOLEAN_LAYOUT_OPTION:
+                    BooleanLayoutOption booleanOption = (BooleanLayoutOption) layoutOption;
+                    topNode.setProperty(layoutProperty, booleanOption.isValue());
+                    break;
+                case DescriptionPackage.INTEGER_LAYOUT_OPTION:
+                    IntegerLayoutOption integerOption = (IntegerLayoutOption) layoutOption;
+                    topNode.setProperty(layoutProperty, integerOption.getValue());
+                    break;
+                case DescriptionPackage.DOUBLE_LAYOUT_OPTION:
+                    DoubleLayoutOption doubleOption = (DoubleLayoutOption) layoutOption;
+                    topNode.setProperty(layoutProperty, doubleOption.getValue());
+                    break;
+                case DescriptionPackage.STRING_LAYOUT_OPTION:
+                    StringLayoutOption stringOption = (StringLayoutOption) layoutOption;
+                    topNode.setProperty(layoutProperty, stringOption.getValue().trim());
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
     }
 
     /**

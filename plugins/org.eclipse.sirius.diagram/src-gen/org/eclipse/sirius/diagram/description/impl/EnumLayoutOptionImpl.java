@@ -11,16 +11,11 @@
  */
 package org.eclipse.sirius.diagram.description.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
@@ -37,7 +32,7 @@ import org.eclipse.sirius.diagram.description.EnumLayoutValue;
  *
  * @generated
  */
-public class EnumLayoutOptionImpl extends LayoutOptionImpl implements EnumLayoutOption {
+public class EnumLayoutOptionImpl extends EnumOptionImpl implements EnumLayoutOption {
     /**
      * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -47,16 +42,6 @@ public class EnumLayoutOptionImpl extends LayoutOptionImpl implements EnumLayout
      * @ordered
      */
     protected EnumLayoutValue value;
-
-    /**
-     * The cached value of the '{@link #getChoices() <em>Choices</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
-     * @see #getChoices()
-     * @generated
-     * @ordered
-     */
-    protected EList<EnumLayoutValue> choices;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -162,25 +147,10 @@ public class EnumLayoutOptionImpl extends LayoutOptionImpl implements EnumLayout
      * @generated
      */
     @Override
-    public EList<EnumLayoutValue> getChoices() {
-        if (choices == null) {
-            choices = new EObjectContainmentEList.Resolving<EnumLayoutValue>(EnumLayoutValue.class, this, DescriptionPackage.ENUM_LAYOUT_OPTION__CHOICES);
-        }
-        return choices;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case DescriptionPackage.ENUM_LAYOUT_OPTION__VALUE:
             return basicSetValue(null, msgs);
-        case DescriptionPackage.ENUM_LAYOUT_OPTION__CHOICES:
-            return ((InternalEList<?>) getChoices()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -198,8 +168,6 @@ public class EnumLayoutOptionImpl extends LayoutOptionImpl implements EnumLayout
                 return getValue();
             }
             return basicGetValue();
-        case DescriptionPackage.ENUM_LAYOUT_OPTION__CHOICES:
-            return getChoices();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -216,10 +184,6 @@ public class EnumLayoutOptionImpl extends LayoutOptionImpl implements EnumLayout
         case DescriptionPackage.ENUM_LAYOUT_OPTION__VALUE:
             setValue((EnumLayoutValue) newValue);
             return;
-        case DescriptionPackage.ENUM_LAYOUT_OPTION__CHOICES:
-            getChoices().clear();
-            getChoices().addAll((Collection<? extends EnumLayoutValue>) newValue);
-            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -235,9 +199,6 @@ public class EnumLayoutOptionImpl extends LayoutOptionImpl implements EnumLayout
         case DescriptionPackage.ENUM_LAYOUT_OPTION__VALUE:
             setValue((EnumLayoutValue) null);
             return;
-        case DescriptionPackage.ENUM_LAYOUT_OPTION__CHOICES:
-            getChoices().clear();
-            return;
         }
         super.eUnset(featureID);
     }
@@ -252,8 +213,6 @@ public class EnumLayoutOptionImpl extends LayoutOptionImpl implements EnumLayout
         switch (featureID) {
         case DescriptionPackage.ENUM_LAYOUT_OPTION__VALUE:
             return value != null;
-        case DescriptionPackage.ENUM_LAYOUT_OPTION__CHOICES:
-            return choices != null && !choices.isEmpty();
         }
         return super.eIsSet(featureID);
     }

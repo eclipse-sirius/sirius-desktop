@@ -1716,9 +1716,15 @@
     <eClassifiers xsi:type="ecore:EClass" name="DoubleLayoutOption" eSuperTypes="#//description/LayoutOption">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDouble"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="EnumLayoutOption" eSuperTypes="#//description/LayoutOption">
+    <eClassifiers xsi:type="ecore:EClass" name="EnumLayoutOption" eSuperTypes="#//description/EnumOption">
       <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//description/EnumLayoutValue"
           containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EnumSetLayoutOption" eSuperTypes="#//description/EnumOption">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
+          eType="#//description/EnumLayoutValue" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EnumOption" abstract="true" eSuperTypes="#//description/LayoutOption">
       <eStructuralFeatures xsi:type="ecore:EReference" name="choices" upperBound="-1"
           eType="#//description/EnumLayoutValue" containment="true"/>
     </eClassifiers>

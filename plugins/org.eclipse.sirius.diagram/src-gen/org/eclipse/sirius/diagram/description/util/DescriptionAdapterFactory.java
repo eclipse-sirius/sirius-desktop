@@ -36,6 +36,8 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
+import org.eclipse.sirius.diagram.description.EnumOption;
+import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -232,6 +234,16 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseEnumLayoutOption(EnumLayoutOption object) {
             return createEnumLayoutOptionAdapter();
+        }
+
+        @Override
+        public Adapter caseEnumSetLayoutOption(EnumSetLayoutOption object) {
+            return createEnumSetLayoutOptionAdapter();
+        }
+
+        @Override
+        public Adapter caseEnumOption(EnumOption object) {
+            return createEnumOptionAdapter();
         }
 
         @Override
@@ -678,6 +690,33 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createEnumLayoutOptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.diagram.description.EnumSetLayoutOption
+     * <em>Enum Set Layout Option</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.EnumSetLayoutOption
+     * @generated
+     */
+    public Adapter createEnumSetLayoutOptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.diagram.description.EnumOption <em>Enum
+     * Option</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.EnumOption
+     * @generated
+     */
+    public Adapter createEnumOptionAdapter() {
         return null;
     }
 

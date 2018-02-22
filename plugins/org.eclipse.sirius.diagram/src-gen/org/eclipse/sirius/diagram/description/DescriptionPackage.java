@@ -68,7 +68,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getDragAndDropTargetDescription()
      * @generated
      */
-    int DRAG_AND_DROP_TARGET_DESCRIPTION = 29;
+    int DRAG_AND_DROP_TARGET_DESCRIPTION = 31;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -2984,6 +2984,58 @@ public interface DescriptionPackage extends EPackage {
     int DOUBLE_LAYOUT_OPTION_FEATURE_COUNT = DescriptionPackage.LAYOUT_OPTION_FEATURE_COUNT + 1;
 
     /**
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.impl.EnumOptionImpl <em>Enum
+     * Option</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.diagram.description.impl.EnumOptionImpl
+     * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getEnumOption()
+     * @generated
+     */
+    int ENUM_OPTION = 26;
+
+    /**
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_OPTION__ID = DescriptionPackage.LAYOUT_OPTION__ID;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_OPTION__LABEL = DescriptionPackage.LAYOUT_OPTION__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_OPTION__DESCRIPTION = DescriptionPackage.LAYOUT_OPTION__DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Choices</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_OPTION__CHOICES = DescriptionPackage.LAYOUT_OPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '<em>Enum Option</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_OPTION_FEATURE_COUNT = DescriptionPackage.LAYOUT_OPTION_FEATURE_COUNT + 1;
+
+    /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.description.impl.EnumLayoutOptionImpl <em>Enum
      * Layout Option</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -2999,7 +3051,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ENUM_LAYOUT_OPTION__ID = DescriptionPackage.LAYOUT_OPTION__ID;
+    int ENUM_LAYOUT_OPTION__ID = DescriptionPackage.ENUM_OPTION__ID;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3007,7 +3059,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ENUM_LAYOUT_OPTION__LABEL = DescriptionPackage.LAYOUT_OPTION__LABEL;
+    int ENUM_LAYOUT_OPTION__LABEL = DescriptionPackage.ENUM_OPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3015,16 +3067,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ENUM_LAYOUT_OPTION__DESCRIPTION = DescriptionPackage.LAYOUT_OPTION__DESCRIPTION;
-
-    /**
-     * The feature id for the '<em><b>Value</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @generated
-     * @ordered
-     */
-    int ENUM_LAYOUT_OPTION__VALUE = DescriptionPackage.LAYOUT_OPTION_FEATURE_COUNT + 0;
+    int ENUM_LAYOUT_OPTION__DESCRIPTION = DescriptionPackage.ENUM_OPTION__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Choices</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -3033,7 +3076,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ENUM_LAYOUT_OPTION__CHOICES = DescriptionPackage.LAYOUT_OPTION_FEATURE_COUNT + 1;
+    int ENUM_LAYOUT_OPTION__CHOICES = DescriptionPackage.ENUM_OPTION__CHOICES;
+
+    /**
+     * The feature id for the '<em><b>Value</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_LAYOUT_OPTION__VALUE = DescriptionPackage.ENUM_OPTION_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Enum Layout Option</em>' class. <!-- begin-user-doc --> <!--
@@ -3042,7 +3094,68 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ENUM_LAYOUT_OPTION_FEATURE_COUNT = DescriptionPackage.LAYOUT_OPTION_FEATURE_COUNT + 2;
+    int ENUM_LAYOUT_OPTION_FEATURE_COUNT = DescriptionPackage.ENUM_OPTION_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.impl.EnumSetLayoutOptionImpl <em>Enum
+     * Set Layout Option</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.diagram.description.impl.EnumSetLayoutOptionImpl
+     * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getEnumSetLayoutOption()
+     * @generated
+     */
+    int ENUM_SET_LAYOUT_OPTION = 25;
+
+    /**
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_SET_LAYOUT_OPTION__ID = DescriptionPackage.ENUM_OPTION__ID;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_SET_LAYOUT_OPTION__LABEL = DescriptionPackage.ENUM_OPTION__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_SET_LAYOUT_OPTION__DESCRIPTION = DescriptionPackage.ENUM_OPTION__DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Choices</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_SET_LAYOUT_OPTION__CHOICES = DescriptionPackage.ENUM_OPTION__CHOICES;
+
+    /**
+     * The feature id for the '<em><b>Values</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_SET_LAYOUT_OPTION__VALUES = DescriptionPackage.ENUM_OPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '<em>Enum Set Layout Option</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_SET_LAYOUT_OPTION_FEATURE_COUNT = DescriptionPackage.ENUM_OPTION_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.description.impl.EnumLayoutValueImpl <em>Enum
@@ -3052,7 +3165,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getEnumLayoutValue()
      * @generated
      */
-    int ENUM_LAYOUT_VALUE = 25;
+    int ENUM_LAYOUT_VALUE = 27;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3087,7 +3200,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getMappingBasedDecoration()
      * @generated
      */
-    int MAPPING_BASED_DECORATION = 26;
+    int MAPPING_BASED_DECORATION = 28;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3166,7 +3279,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayer()
      * @generated
      */
-    int LAYER = 27;
+    int LAYER = 29;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3323,7 +3436,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getAdditionalLayer()
      * @generated
      */
-    int ADDITIONAL_LAYER = 28;
+    int ADDITIONAL_LAYER = 30;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3498,7 +3611,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getFoldingStyle()
      * @generated
      */
-    int FOLDING_STYLE = 30;
+    int FOLDING_STYLE = 32;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.description.LayoutDirection <em>Layout
@@ -3508,7 +3621,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayoutDirection()
      * @generated
      */
-    int LAYOUT_DIRECTION = 31;
+    int LAYOUT_DIRECTION = 33;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.description.CenteringStyle <em>Centering
@@ -3518,7 +3631,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getCenteringStyle()
      * @generated
      */
-    int CENTERING_STYLE = 32;
+    int CENTERING_STYLE = 34;
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.DiagramDescription <em>Diagram
@@ -4838,16 +4951,48 @@ public interface DescriptionPackage extends EPackage {
     EReference getEnumLayoutOption_Value();
 
     /**
-     * Returns the meta object for the containment reference list
-     * '{@link org.eclipse.sirius.diagram.description.EnumLayoutOption#getChoices <em>Choices</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.EnumSetLayoutOption <em>Enum Set
+     * Layout Option</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference list '<em>Choices</em>'.
-     * @see org.eclipse.sirius.diagram.description.EnumLayoutOption#getChoices()
-     * @see #getEnumLayoutOption()
+     * @return the meta object for class '<em>Enum Set Layout Option</em>'.
+     * @see org.eclipse.sirius.diagram.description.EnumSetLayoutOption
      * @generated
      */
-    EReference getEnumLayoutOption_Choices();
+    EClass getEnumSetLayoutOption();
+
+    /**
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.diagram.description.EnumSetLayoutOption#getValues <em>Values</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Values</em>'.
+     * @see org.eclipse.sirius.diagram.description.EnumSetLayoutOption#getValues()
+     * @see #getEnumSetLayoutOption()
+     * @generated
+     */
+    EReference getEnumSetLayoutOption_Values();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.EnumOption <em>Enum
+     * Option</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Enum Option</em>'.
+     * @see org.eclipse.sirius.diagram.description.EnumOption
+     * @generated
+     */
+    EClass getEnumOption();
+
+    /**
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.diagram.description.EnumOption#getChoices <em>Choices</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Choices</em>'.
+     * @see org.eclipse.sirius.diagram.description.EnumOption#getChoices()
+     * @see #getEnumOption()
+     * @generated
+     */
+    EReference getEnumOption_Choices();
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.EnumLayoutValue <em>Enum Layout
@@ -6133,12 +6278,40 @@ public interface DescriptionPackage extends EPackage {
         EReference ENUM_LAYOUT_OPTION__VALUE = DescriptionPackage.eINSTANCE.getEnumLayoutOption_Value();
 
         /**
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.impl.EnumSetLayoutOptionImpl
+         * <em>Enum Set Layout Option</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.diagram.description.impl.EnumSetLayoutOptionImpl
+         * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getEnumSetLayoutOption()
+         * @generated
+         */
+        EClass ENUM_SET_LAYOUT_OPTION = DescriptionPackage.eINSTANCE.getEnumSetLayoutOption();
+
+        /**
+         * The meta object literal for the '<em><b>Values</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference ENUM_SET_LAYOUT_OPTION__VALUES = DescriptionPackage.eINSTANCE.getEnumSetLayoutOption_Values();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.impl.EnumOptionImpl <em>Enum
+         * Option</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.diagram.description.impl.EnumOptionImpl
+         * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getEnumOption()
+         * @generated
+         */
+        EClass ENUM_OPTION = DescriptionPackage.eINSTANCE.getEnumOption();
+
+        /**
          * The meta object literal for the '<em><b>Choices</b></em>' containment reference list feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EReference ENUM_LAYOUT_OPTION__CHOICES = DescriptionPackage.eINSTANCE.getEnumLayoutOption_Choices();
+        EReference ENUM_OPTION__CHOICES = DescriptionPackage.eINSTANCE.getEnumOption_Choices();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.impl.EnumLayoutValueImpl

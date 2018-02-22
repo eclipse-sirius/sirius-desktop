@@ -16,9 +16,9 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
-import org.eclipse.sirius.diagram.description.GenericLayout;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.provider.EnumLayoutOptionItemProvider;
 import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProviderSupplier;
@@ -53,8 +53,8 @@ public class EnumLayoutOptionItemProviderSpec extends EnumLayoutOptionItemProvid
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         Map<String, GenericLayoutProviderSupplier> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutProviderRegistry();
         EnumLayoutOption layoutOption = (EnumLayoutOption) object;
-        GenericLayout layout = (GenericLayout) layoutOption.eContainer();
-        GenericLayoutProviderSupplier genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getID());
+        CustomLayoutConfiguration layout = (CustomLayoutConfiguration) layoutOption.eContainer();
+        GenericLayoutProviderSupplier genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getId());
         Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
         EnumLayoutOption layoutOptionTemplate = (EnumLayoutOption) layoutOptions.get(layoutOption.getId());
         EList<EnumLayoutValue> choices = layoutOptionTemplate.getChoices();
