@@ -21,4 +21,4 @@ Import-Package: org.eclipse.acceleo.query.runtime;version="[5.0.0,6.0.0)",
  org.eclipse.acceleo.query.runtime.impl,
  org.eclipse.acceleo.query.validation.type;version="[5.0.0,6.0.0)"
 Bundle-Localization: plugin
-Automatic-Module-Name:  org.eclipse.sirius.common.acceleo.aql
+Automatic-Module-Name: org.eclipse.sirius.common.acceleo.aql

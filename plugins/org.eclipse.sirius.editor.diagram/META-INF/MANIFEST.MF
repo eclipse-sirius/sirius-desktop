@@ -141,4 +141,4 @@ Export-Package: org.eclipse.sirius.diagram.editor.properties.filters.concern.con
  org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.border;x-internal:=true;version="2.0.4"
 Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
  org.eclipse.sirius.ext.swt;version="2.0.0"
-Automatic-Module-Name:  org.eclipse.sirius.editor.diagram
+Automatic-Module-Name: org.eclipse.sirius.editor.diagram

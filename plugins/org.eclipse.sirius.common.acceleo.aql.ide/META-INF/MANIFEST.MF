@@ -18,4 +18,4 @@ Import-Package: org.eclipse.acceleo.query.runtime;version="[5.0.0,6.0.0)",
 Bundle-Localization: plugin
 Bundle-Activator: org.eclipse.sirius.common.acceleo.aql.ide.AqlIdeSupportPlugin$Implementation
 Bundle-ActivationPolicy: lazy
-Automatic-Module-Name:  org.eclipse.sirius.common.acceleo.aql.ide
+Automatic-Module-Name: org.eclipse.sirius.common.acceleo.aql.ide

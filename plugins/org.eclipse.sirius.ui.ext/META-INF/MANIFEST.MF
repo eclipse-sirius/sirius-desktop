@@ -13,4 +13,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.sirius.ui.ext.SiriusUIExtPlugin$Implementation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.sirius.ui.ext;version="3.0.0"
-Automatic-Module-Name:  org.eclipse.sirius.ui.ext
+Automatic-Module-Name: org.eclipse.sirius.ui.ext

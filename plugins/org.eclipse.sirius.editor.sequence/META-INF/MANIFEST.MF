@@ -70,4 +70,4 @@ Export-Package: org.eclipse.sirius.diagram.sequence.editor.properties.filters.de
  org.eclipse.sirius.diagram.sequence.editor.properties.sections.tool.instancerolereordertool;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.editor.properties.sections.tool.reordertool;version="2.0.4"
 Import-Package: org.eclipse.sirius.ext.swt;version="2.0.0"
-Automatic-Module-Name:  org.eclipse.sirius.editor.sequence
+Automatic-Module-Name: org.eclipse.sirius.editor.sequence

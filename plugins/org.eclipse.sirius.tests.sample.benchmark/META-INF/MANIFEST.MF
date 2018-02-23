@@ -13,4 +13,4 @@ Export-Package: org.eclipse.sirius.tests.sample.benchmark,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Automatic-Module-Name:  org.eclipse.sirius.tests.sample.benchmark
+Automatic-Module-Name: org.eclipse.sirius.tests.sample.benchmark

@@ -10,4 +10,4 @@ Require-Bundle: org.eclipse.emf.common.ui,
  org.eclipse.ui.ide
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Automatic-Module-Name:  org.eclipse.sirius.tests.rcptt.properties.samples
+Automatic-Module-Name: org.eclipse.sirius.tests.rcptt.properties.samples

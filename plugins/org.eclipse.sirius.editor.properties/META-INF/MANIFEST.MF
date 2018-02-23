@@ -149,4 +149,4 @@ Export-Package: org.eclipse.sirius.editor.properties.api;version="5.0.0",
  org.eclipse.sirius.properties.editor.properties.sections.properties.wizardmodeloperation;version="5.0.0";x-internal:=true
 Bundle-Activator: org.eclipse.sirius.editor.properties.internal.SiriusEditorPropertiesPlugin$Implementation
 Bundle-ActivationPolicy: lazy
-Automatic-Module-Name:  org.eclipse.sirius.editor.properties
+Automatic-Module-Name: org.eclipse.sirius.editor.properties

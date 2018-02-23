@@ -24,4 +24,4 @@ Bundle-Vendor: %providerName
 Export-Package: org.eclipse.sirius.common.acceleo.mtl.ide;x-internal:=true;version="3.0.0"
 Bundle-Localization: plugin
 Import-Package: org.eclipse.sirius.ext.base;version="2.1.0"
-Automatic-Module-Name:  org.eclipse.sirius.common.acceleo.mtl.ide
+Automatic-Module-Name: org.eclipse.sirius.common.acceleo.mtl.ide

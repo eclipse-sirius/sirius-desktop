@@ -22,4 +22,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.sirius.tests.sample.component.presentation
 Bundle-Localization: plugin
-Automatic-Module-Name:  org.eclipse.sirius.tests.sample.component.design
+Automatic-Module-Name: org.eclipse.sirius.tests.sample.component.design

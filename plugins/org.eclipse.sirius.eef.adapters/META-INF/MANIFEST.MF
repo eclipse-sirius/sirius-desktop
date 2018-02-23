@@ -24,4 +24,4 @@ Export-Package: org.eclipse.sirius.eef.actions;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.eef.util;version="2.0.4"
 Bundle-Localization: plugin
 Import-Package: org.eclipse.sirius.ext.base;version="2.1.0"
-Automatic-Module-Name:  org.eclipse.sirius.eef.adapters
+Automatic-Module-Name: org.eclipse.sirius.eef.adapters

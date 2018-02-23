@@ -8,4 +8,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
 Require-Bundler: com.google.guava;bundle-version="[15.0,22.0)"
 Import-Package: org.eclipse.sirius.ext.base;version="2.0.0"
-Automatic-Module-Name:  org.eclipse.sirius.ext.e3
+Automatic-Module-Name: org.eclipse.sirius.ext.e3
