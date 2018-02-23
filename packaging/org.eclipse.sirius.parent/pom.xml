@@ -348,6 +348,8 @@
         <module>../../plugins/org.eclipse.sirius.synchronizer</module>
         <module>../../plugins/org.eclipse.sirius.table</module>
         <module>../../plugins/org.eclipse.sirius.tree</module>
+        <module>../../plugins/org.eclipse.sirius.workflow.model</module>
+        <module>../../plugins/org.eclipse.sirius.workflow.edit</module>
 
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.runtime</module>
@@ -393,6 +395,7 @@
         <module>../../plugins/org.eclipse.sirius.editor.sequence</module>
         <module>../../plugins/org.eclipse.sirius.editor.table</module>
         <module>../../plugins/org.eclipse.sirius.editor.tree</module>
+        <module>../../plugins/org.eclipse.sirius.editor.workflow</module>
         <module>../../plugins/org.eclipse.sirius.editor</module>
         <module>../../plugins/org.eclipse.sirius.eef.adapters</module>
         <module>../../plugins/org.eclipse.sirius.interpreter</module>
@@ -453,6 +456,7 @@
         <module>../../packaging/org.eclipse.sirius.properties.feature</module>
         <module>../../packaging/org.eclipse.sirius.specifier.properties.feature</module>
         <module>../../packaging/org.eclipse.sirius.samples.properties.feature</module>
+        <module>../../packaging/org.eclipse.sirius.workflow-feature</module>
         
         <module>../../packaging/org.eclipse.sirius.diagram.elk.feature</module>
         <module>../../packaging/org.eclipse.sirius.server.feature</module>

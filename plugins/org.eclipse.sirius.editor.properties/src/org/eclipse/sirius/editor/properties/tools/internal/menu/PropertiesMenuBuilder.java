@@ -64,7 +64,7 @@ public class PropertiesMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
         this.advancedChildActions = new ArrayList<>();
 
         Optional<CommandParameter> optionalNewPropertyViewCommandParameter = newChildDescriptors.stream().filter(CommandParameter.class::isInstance).map(CommandParameter.class::cast)
-                .filter(parameter -> DescriptionPackage.Literals.GROUP__EXTENSIONS.equals(parameter.getEStructuralFeature())).findFirst();
+                .filter(parameter -> DescriptionPackage.Literals.GROUP__EXTENSIONS.equals(parameter.getEStructuralFeature()) && parameter.getEValue() instanceof ViewExtensionDescription).findFirst();
 
         if (selection instanceof IStructuredSelection && optionalNewPropertyViewCommandParameter.isPresent()) {
             IStructuredSelection structuredSelection = (IStructuredSelection) selection;
