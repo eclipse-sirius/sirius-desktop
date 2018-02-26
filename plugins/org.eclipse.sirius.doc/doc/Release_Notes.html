@@ -159,6 +159,22 @@
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-info">Modified</span> The SWTBot test framework version has been upgraded toward SWTBot 2.6. The main impacts are described below:
+				<ul>
+					<li>The way we retrieved some views by using 
+						<code>bot.viewByTitle</code> (like &#8220;Problems&#8221; or &#8220;Error Log&#8221;) may not work anymore. Use 
+						<code>bot.viewByPartName</code> instead.
+					</li>
+					<li>
+						<code>org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot.contextMenu(String)</code> raise a 
+						<code>WidgetNotFoundException</code> instead of a 
+						<code>TimeoutException</code>.
+					</li>
+					<li>The 
+						<code>org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil</code> has been updated to be compatible with Oxygen and Photon platforms. Some methods may not work anymore on Neon platform.
+					</li>
+				</ul>
+			</li>
 			<li><span class="label label-danger">Removed</span> Since Sirius 5.0.0, 
 				<code>org.eclipse.sirius.ext.jface.viewers.IToolTipProvider</code> is not used anymore to provide a tooltip on diagram element decorations defined in the VSM. The tooltip is defined directly with an interpreted expression on 
 				<code>GenericDecorationDescription</code>, 
