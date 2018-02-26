@@ -1,0 +1,39 @@
+grammar org.eclipse.sirius.tests.sample.xtext.Statemachine with org.eclipse.xtext.common.Terminals
+
+generate statemachine "http://www.eclipse.org/sirius/tests/sample/xtext/Statemachine"
+
+Statemachine :
+     {Statemachine}
+	('events' 
+		events+=Event+ 
+	'end')?
+	('resetEvents' 
+		resetEvents+=[Event]+ 
+	'end')?
+	('commands' 
+		commands+=Command+ 
+	'end')?
+	states+=State*
+;
+
+NamedElement:
+	Event | Command | State;
+	
+Event:
+	name=ID displayname=STRING code=STRING
+;
+
+Command:
+	name=ID (displayname=STRING)? code=STRING
+;
+
+State:
+	'state' name=ID (displayname=STRING)?
+		('actions' '{' actions+=Command+ '}')?
+		transitions+=Transition*
+	'end'
+;
+
+Transition:
+	event=[Event] '=>' state=[State]
+;

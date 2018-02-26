@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-Version: 6.0.0.qualifier
+Bundle-SymbolicName: org.eclipse.sirius.tests.sample.xtext.statemachine.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.sirius.tests.sample.xtext.statemachine,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.eclipse.sirius.tests.sample.xtext.ide.contentassist.antlr.internal,
+ org.eclipse.sirius.tests.sample.xtext.ide.contentassist.antlr
+
