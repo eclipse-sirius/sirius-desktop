@@ -73,6 +73,9 @@
         value="sirius_oxygen"
         label="Eclipse Oxygen - 4.7"/>
     <choice
+        value="sirius_photon"
+        label="Eclipse Photon - 4.8"/>
+    <choice
         value="No"
         label="No target plaform"/>
     <description>Target Platform used for new install. You can then use another sirius_* predefined target platform existing in org.eclipse.sirius.targets project.</description>
@@ -270,6 +273,8 @@
       key="/instance/org.eclipse.jdt.ui/sp_cleanup.remove_unnecessary_casts"
       value="true"/>
   <stream name="master"/>
+  <stream name="v5.1.x"/>
+  <stream name="v5.0.x"/>
   <stream name="v4.1.x"/>
   <stream name="v4.0.x"/>
   <stream name="v3.1.x"/>
