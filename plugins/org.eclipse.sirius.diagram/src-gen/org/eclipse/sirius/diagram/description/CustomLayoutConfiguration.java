@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration#getId <em>Id</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration#getDescription <em>Description</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration#getLayoutOptions <em>Layout
  * Options</em>}</li>
  * </ul>
@@ -86,17 +87,44 @@ public interface CustomLayoutConfiguration extends Layout {
     void setLabel(String value);
 
     /**
-     * Returns the value of the '<em><b>Layout Options</b></em>' reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.LayoutOption}. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Layout Options</em>' reference list isn't clear, there really should be more of a
-     * description here...
+     * If the meaning of the '<em>Description</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Layout Options</em>' reference list.
-     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getCustomLayoutConfiguration_LayoutOptions()
+     * @return the value of the '<em>Description</em>' attribute.
+     * @see #setDescription(String)
+     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getCustomLayoutConfiguration_Description()
      * @model
+     * @generated
+     */
+    String getDescription();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration#getDescription
+     * <em>Description</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Description</em>' attribute.
+     * @see #getDescription()
+     * @generated
+     */
+    void setDescription(String value);
+
+    /**
+     * Returns the value of the '<em><b>Layout Options</b></em>' containment reference list. The list contents are of
+     * type {@link org.eclipse.sirius.diagram.description.LayoutOption}. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Layout Options</em>' containment reference list isn't clear, there really should be
+     * more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Layout Options</em>' containment reference list.
+     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getCustomLayoutConfiguration_LayoutOptions()
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<LayoutOption> getLayoutOptions();

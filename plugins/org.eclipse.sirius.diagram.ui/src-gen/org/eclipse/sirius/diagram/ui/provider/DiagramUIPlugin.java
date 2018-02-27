@@ -44,6 +44,7 @@ import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.common.ui.tools.internal.preference.DynamicConfigurationHelper;
+import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
@@ -169,27 +170,32 @@ public final class DiagramUIPlugin extends EMFPlugin {
             super();
 
             // Remember the static instance.
+            //
             DiagramUIPlugin.plugin = this;
         }
 
         /**
          * Add a new layout provider to the registry.
-         * 
+         *
          * @param providerId
-         *            the id of the layout provider to add in the registry.
-         * 
+         *            the id of the layout provider to register.
          * @param providerLabel
          *            the label of the layout provider to register.
          * @param layoutSupplier
          *            the {@link DefaultLayoutProvider} instances supplier.
+         * @param layoutOptions
          */
-        public void addLayoutProvider(String providerId, String providerLabel, Supplier<DefaultLayoutProvider> layoutSupplier) {
-            layoutProviderRegistry.put(providerId, new GenericLayoutProviderSupplier(providerLabel, layoutSupplier));
+        public void addLayoutProvider(String providerId, String providerLabel, Supplier<DefaultLayoutProvider> layoutSupplier, List<LayoutOption> layoutOptions) {
+            Map<String, LayoutOption> optionsMap = new HashMap<String, LayoutOption>();
+            for (LayoutOption layoutOption : layoutOptions) {
+                optionsMap.put(layoutOption.getId(), layoutOption);
+            }
+            layoutProviderRegistry.put(providerId, new GenericLayoutProviderSupplier(providerLabel, layoutSupplier, optionsMap));
         }
 
         /**
          * Remove the layout provider identified by the given id from the registry.
-         * 
+         *
          * @param layoutProviderId
          *            the id of the layout provider to remove from the registry.
          * @return the layout provider removed if such element exists.
@@ -200,7 +206,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
         /**
          * Returns the unmodifiable registry containing all layout providers that can be specified directly in the VSM.
-         * 
+         *
          * @return an unmodifiable map of layout providers suppliers associated to their ids.
          */
         public Map<String, GenericLayoutProviderSupplier> getLayoutProviderRegistry() {
@@ -232,7 +238,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
             layoutDataManagerRegistryListener = new LayoutDataManagerRegistryListener();
             layoutDataManagerRegistryListener.init();
 
-            layoutProviderRegistry = new HashMap<>();
+            layoutProviderRegistry = new HashMap<String, GenericLayoutProviderSupplier>();
 
             registerCoreDecorationProviders();
         }

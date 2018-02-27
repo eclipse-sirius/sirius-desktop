@@ -28,23 +28,23 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.description.LayoutOption;
+import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.LayoutOption} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.EnumLayoutValue} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class LayoutOptionItemProvider extends ItemProviderAdapter
+public class EnumLayoutValueItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public LayoutOptionItemProvider(AdapterFactory adapterFactory) {
+    public EnumLayoutValueItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -58,9 +58,22 @@ public class LayoutOptionItemProvider extends ItemProviderAdapter
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addNamePropertyDescriptor(object);
             addDescriptionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
+    }
+
+    /**
+     * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addNamePropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EnumLayoutValue_name_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_EnumLayoutValue_name_feature", "_UI_EnumLayoutValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.ENUM_LAYOUT_VALUE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -70,19 +83,19 @@ public class LayoutOptionItemProvider extends ItemProviderAdapter
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_LayoutOption_description_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_LayoutOption_description_feature", "_UI_LayoutOption_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        DescriptionPackage.Literals.LAYOUT_OPTION__DESCRIPTION, false, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EnumLayoutValue_description_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_EnumLayoutValue_description_feature", "_UI_EnumLayoutValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.ENUM_LAYOUT_VALUE__DESCRIPTION, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
-     * This returns LayoutOption.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This returns EnumLayoutValue.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LayoutOption")); //$NON-NLS-1$
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EnumLayoutValue")); //$NON-NLS-1$
     }
 
     /**
@@ -92,9 +105,9 @@ public class LayoutOptionItemProvider extends ItemProviderAdapter
      */
     @Override
     public String getText(Object object) {
-        String label = ((LayoutOption) object).getId();
-        return label == null || label.length() == 0 ? getString("_UI_LayoutOption_type") : //$NON-NLS-1$
-                getString("_UI_LayoutOption_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((EnumLayoutValue) object).getName();
+        return label == null || label.length() == 0 ? getString("_UI_EnumLayoutValue_type") : //$NON-NLS-1$
+                getString("_UI_EnumLayoutValue_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -108,10 +121,9 @@ public class LayoutOptionItemProvider extends ItemProviderAdapter
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(LayoutOption.class)) {
-        case DescriptionPackage.LAYOUT_OPTION__ID:
-        case DescriptionPackage.LAYOUT_OPTION__LABEL:
-        case DescriptionPackage.LAYOUT_OPTION__DESCRIPTION:
+        switch (notification.getFeatureID(EnumLayoutValue.class)) {
+        case DescriptionPackage.ENUM_LAYOUT_VALUE__NAME:
+        case DescriptionPackage.ENUM_LAYOUT_VALUE__DESCRIPTION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

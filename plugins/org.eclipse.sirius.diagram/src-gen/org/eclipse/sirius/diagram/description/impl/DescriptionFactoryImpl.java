@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.L
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingImportSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingSpec;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.CompositeLayout;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
@@ -43,16 +44,20 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
+import org.eclipse.sirius.diagram.description.DoubleLayoutOption;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.EnumLayoutOption;
+import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
+import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.LayoutDirection;
-import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
+import org.eclipse.sirius.diagram.description.StringLayoutOption;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
@@ -124,8 +129,18 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createCompositeLayout();
         case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION:
             return createCustomLayoutConfiguration();
-        case DescriptionPackage.LAYOUT_OPTION:
-            return createLayoutOption();
+        case DescriptionPackage.BOOLEAN_LAYOUT_OPTION:
+            return createBooleanLayoutOption();
+        case DescriptionPackage.STRING_LAYOUT_OPTION:
+            return createStringLayoutOption();
+        case DescriptionPackage.INTEGER_LAYOUT_OPTION:
+            return createIntegerLayoutOption();
+        case DescriptionPackage.DOUBLE_LAYOUT_OPTION:
+            return createDoubleLayoutOption();
+        case DescriptionPackage.ENUM_LAYOUT_OPTION:
+            return createEnumLayoutOption();
+        case DescriptionPackage.ENUM_LAYOUT_VALUE:
+            return createEnumLayoutValue();
         case DescriptionPackage.MAPPING_BASED_DECORATION:
             return createMappingBasedDecoration();
         case DescriptionPackage.LAYER:
@@ -359,9 +374,64 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * @generated
      */
     @Override
-    public LayoutOption createLayoutOption() {
-        LayoutOptionImpl layoutOption = new LayoutOptionImpl();
-        return layoutOption;
+    public BooleanLayoutOption createBooleanLayoutOption() {
+        BooleanLayoutOptionImpl booleanLayoutOption = new BooleanLayoutOptionImpl();
+        return booleanLayoutOption;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public StringLayoutOption createStringLayoutOption() {
+        StringLayoutOptionImpl stringLayoutOption = new StringLayoutOptionImpl();
+        return stringLayoutOption;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public IntegerLayoutOption createIntegerLayoutOption() {
+        IntegerLayoutOptionImpl integerLayoutOption = new IntegerLayoutOptionImpl();
+        return integerLayoutOption;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public DoubleLayoutOption createDoubleLayoutOption() {
+        DoubleLayoutOptionImpl doubleLayoutOption = new DoubleLayoutOptionImpl();
+        return doubleLayoutOption;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EnumLayoutOption createEnumLayoutOption() {
+        EnumLayoutOptionImpl enumLayoutOption = new EnumLayoutOptionImpl();
+        return enumLayoutOption;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EnumLayoutValue createEnumLayoutValue() {
+        EnumLayoutValueImpl enumLayoutValue = new EnumLayoutValueImpl();
+        return enumLayoutValue;
     }
 
     /**

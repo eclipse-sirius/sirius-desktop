@@ -163,12 +163,52 @@ public interface DescriptionFactory extends EFactory {
     CustomLayoutConfiguration createCustomLayoutConfiguration();
 
     /**
-     * Returns a new object of class '<em>Layout Option</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns a new object of class '<em>Boolean Layout Option</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return a new object of class '<em>Layout Option</em>'.
+     * @return a new object of class '<em>Boolean Layout Option</em>'.
      * @generated
      */
-    LayoutOption createLayoutOption();
+    BooleanLayoutOption createBooleanLayoutOption();
+
+    /**
+     * Returns a new object of class '<em>String Layout Option</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>String Layout Option</em>'.
+     * @generated
+     */
+    StringLayoutOption createStringLayoutOption();
+
+    /**
+     * Returns a new object of class '<em>Integer Layout Option</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Integer Layout Option</em>'.
+     * @generated
+     */
+    IntegerLayoutOption createIntegerLayoutOption();
+
+    /**
+     * Returns a new object of class '<em>Double Layout Option</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Double Layout Option</em>'.
+     * @generated
+     */
+    DoubleLayoutOption createDoubleLayoutOption();
+
+    /**
+     * Returns a new object of class '<em>Enum Layout Option</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Enum Layout Option</em>'.
+     * @generated
+     */
+    EnumLayoutOption createEnumLayoutOption();
+
+    /**
+     * Returns a new object of class '<em>Enum Layout Value</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Enum Layout Value</em>'.
+     * @generated
+     */
+    EnumLayoutValue createEnumLayoutValue();
 
     /**
      * Returns a new object of class '<em>Mapping Based Decoration</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->

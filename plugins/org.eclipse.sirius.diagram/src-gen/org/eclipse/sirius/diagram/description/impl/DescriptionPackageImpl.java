@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.CompositeLayout;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
@@ -36,11 +37,15 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
+import org.eclipse.sirius.diagram.description.DoubleLayoutOption;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.EnumLayoutOption;
+import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.Layout;
 import org.eclipse.sirius.diagram.description.LayoutDirection;
@@ -49,6 +54,7 @@ import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
+import org.eclipse.sirius.diagram.description.StringLayoutOption;
 import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.concern.impl.ConcernPackageImpl;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
@@ -206,6 +212,48 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EClass layoutOptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass booleanLayoutOptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass stringLayoutOptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass integerLayoutOptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass doubleLayoutOptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass enumLayoutOptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass enumLayoutValueEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1329,8 +1377,18 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EAttribute getCustomLayoutConfiguration_Description() {
+        return (EAttribute) customLayoutConfigurationEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EReference getCustomLayoutConfiguration_LayoutOptions() {
-        return (EReference) customLayoutConfigurationEClass.getEStructuralFeatures().get(2);
+        return (EReference) customLayoutConfigurationEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1349,7 +1407,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EAttribute getLayoutOption_Name() {
+    public EAttribute getLayoutOption_Id() {
         return (EAttribute) layoutOptionEClass.getEStructuralFeatures().get(0);
     }
 
@@ -1359,8 +1417,158 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EAttribute getLayoutOption_Value() {
+    public EAttribute getLayoutOption_Label() {
         return (EAttribute) layoutOptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getLayoutOption_Description() {
+        return (EAttribute) layoutOptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getBooleanLayoutOption() {
+        return booleanLayoutOptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getBooleanLayoutOption_Value() {
+        return (EAttribute) booleanLayoutOptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getStringLayoutOption() {
+        return stringLayoutOptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getStringLayoutOption_Value() {
+        return (EAttribute) stringLayoutOptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getIntegerLayoutOption() {
+        return integerLayoutOptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getIntegerLayoutOption_Value() {
+        return (EAttribute) integerLayoutOptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getDoubleLayoutOption() {
+        return doubleLayoutOptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDoubleLayoutOption_Value() {
+        return (EAttribute) doubleLayoutOptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getEnumLayoutOption() {
+        return enumLayoutOptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getEnumLayoutOption_Value() {
+        return (EReference) enumLayoutOptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getEnumLayoutOption_Choices() {
+        return (EReference) enumLayoutOptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getEnumLayoutValue() {
+        return enumLayoutValueEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getEnumLayoutValue_Name() {
+        return (EAttribute) enumLayoutValueEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getEnumLayoutValue_Description() {
+        return (EAttribute) enumLayoutValueEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1739,11 +1947,33 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         customLayoutConfigurationEClass = createEClass(DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION);
         createEAttribute(customLayoutConfigurationEClass, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__ID);
         createEAttribute(customLayoutConfigurationEClass, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LABEL);
+        createEAttribute(customLayoutConfigurationEClass, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__DESCRIPTION);
         createEReference(customLayoutConfigurationEClass, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS);
 
         layoutOptionEClass = createEClass(DescriptionPackage.LAYOUT_OPTION);
-        createEAttribute(layoutOptionEClass, DescriptionPackage.LAYOUT_OPTION__NAME);
-        createEAttribute(layoutOptionEClass, DescriptionPackage.LAYOUT_OPTION__VALUE);
+        createEAttribute(layoutOptionEClass, DescriptionPackage.LAYOUT_OPTION__ID);
+        createEAttribute(layoutOptionEClass, DescriptionPackage.LAYOUT_OPTION__LABEL);
+        createEAttribute(layoutOptionEClass, DescriptionPackage.LAYOUT_OPTION__DESCRIPTION);
+
+        booleanLayoutOptionEClass = createEClass(DescriptionPackage.BOOLEAN_LAYOUT_OPTION);
+        createEAttribute(booleanLayoutOptionEClass, DescriptionPackage.BOOLEAN_LAYOUT_OPTION__VALUE);
+
+        stringLayoutOptionEClass = createEClass(DescriptionPackage.STRING_LAYOUT_OPTION);
+        createEAttribute(stringLayoutOptionEClass, DescriptionPackage.STRING_LAYOUT_OPTION__VALUE);
+
+        integerLayoutOptionEClass = createEClass(DescriptionPackage.INTEGER_LAYOUT_OPTION);
+        createEAttribute(integerLayoutOptionEClass, DescriptionPackage.INTEGER_LAYOUT_OPTION__VALUE);
+
+        doubleLayoutOptionEClass = createEClass(DescriptionPackage.DOUBLE_LAYOUT_OPTION);
+        createEAttribute(doubleLayoutOptionEClass, DescriptionPackage.DOUBLE_LAYOUT_OPTION__VALUE);
+
+        enumLayoutOptionEClass = createEClass(DescriptionPackage.ENUM_LAYOUT_OPTION);
+        createEReference(enumLayoutOptionEClass, DescriptionPackage.ENUM_LAYOUT_OPTION__VALUE);
+        createEReference(enumLayoutOptionEClass, DescriptionPackage.ENUM_LAYOUT_OPTION__CHOICES);
+
+        enumLayoutValueEClass = createEClass(DescriptionPackage.ENUM_LAYOUT_VALUE);
+        createEAttribute(enumLayoutValueEClass, DescriptionPackage.ENUM_LAYOUT_VALUE__NAME);
+        createEAttribute(enumLayoutValueEClass, DescriptionPackage.ENUM_LAYOUT_VALUE__DESCRIPTION);
 
         mappingBasedDecorationEClass = createEClass(DescriptionPackage.MAPPING_BASED_DECORATION);
         createEReference(mappingBasedDecorationEClass, DescriptionPackage.MAPPING_BASED_DECORATION__MAPPINGS);
@@ -1855,6 +2085,11 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         orderedTreeLayoutEClass.getESuperTypes().add(this.getLayout());
         compositeLayoutEClass.getESuperTypes().add(this.getLayout());
         customLayoutConfigurationEClass.getESuperTypes().add(this.getLayout());
+        booleanLayoutOptionEClass.getESuperTypes().add(this.getLayoutOption());
+        stringLayoutOptionEClass.getESuperTypes().add(this.getLayoutOption());
+        integerLayoutOptionEClass.getESuperTypes().add(this.getLayoutOption());
+        doubleLayoutOptionEClass.getESuperTypes().add(this.getLayoutOption());
+        enumLayoutOptionEClass.getESuperTypes().add(this.getLayoutOption());
         mappingBasedDecorationEClass.getESuperTypes().add(theDescriptionPackage_1.getDecorationDescription());
         layerEClass.getESuperTypes().add(theDescriptionPackage_1.getDocumentedElement());
         layerEClass.getESuperTypes().add(theDescriptionPackage_1.getEndUserDocumentedElement());
@@ -2220,14 +2455,48 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getCustomLayoutConfiguration_Label(), theEcorePackage.getEString(), "label", null, 0, 1, CustomLayoutConfiguration.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getCustomLayoutConfiguration_Description(), theEcorePackage.getEString(), "description", null, 0, 1, CustomLayoutConfiguration.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getCustomLayoutConfiguration_LayoutOptions(), this.getLayoutOption(), null, "layoutOptions", null, 0, -1, CustomLayoutConfiguration.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(layoutOptionEClass, LayoutOption.class, "LayoutOption", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getLayoutOption_Name(), ecorePackage.getEString(), "name", null, 0, 1, LayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+        initEClass(layoutOptionEClass, LayoutOption.class, "LayoutOption", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getLayoutOption_Id(), ecorePackage.getEString(), "id", null, 0, 1, LayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
                 !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getLayoutOption_Value(), theEcorePackage.getEString(), "value", null, 0, 1, LayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+        initEAttribute(getLayoutOption_Label(), ecorePackage.getEString(), "label", null, 0, 1, LayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getLayoutOption_Description(), theEcorePackage.getEString(), "description", null, 0, 1, LayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(booleanLayoutOptionEClass, BooleanLayoutOption.class, "BooleanLayoutOption", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getBooleanLayoutOption_Value(), theEcorePackage.getEBoolean(), "value", null, 0, 1, BooleanLayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(stringLayoutOptionEClass, StringLayoutOption.class, "StringLayoutOption", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getStringLayoutOption_Value(), theEcorePackage.getEString(), "value", null, 0, 1, StringLayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(integerLayoutOptionEClass, IntegerLayoutOption.class, "IntegerLayoutOption", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getIntegerLayoutOption_Value(), ecorePackage.getEInt(), "value", null, 0, 1, IntegerLayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(doubleLayoutOptionEClass, DoubleLayoutOption.class, "DoubleLayoutOption", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getDoubleLayoutOption_Value(), theEcorePackage.getEDouble(), "value", null, 0, 1, DoubleLayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(enumLayoutOptionEClass, EnumLayoutOption.class, "EnumLayoutOption", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEReference(getEnumLayoutOption_Value(), this.getEnumLayoutValue(), null, "value", null, 0, 1, EnumLayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getEnumLayoutOption_Choices(), this.getEnumLayoutValue(), null, "choices", null, 0, -1, EnumLayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+
+        initEClass(enumLayoutValueEClass, EnumLayoutValue.class, "EnumLayoutValue", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getEnumLayoutValue_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumLayoutValue.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getEnumLayoutValue_Description(), theEcorePackage.getEString(), "description", null, 0, 1, EnumLayoutValue.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(mappingBasedDecorationEClass, MappingBasedDecoration.class, "MappingBasedDecoration", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$

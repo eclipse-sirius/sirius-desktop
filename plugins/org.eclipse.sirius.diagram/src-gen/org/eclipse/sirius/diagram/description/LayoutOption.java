@@ -20,66 +20,94 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.LayoutOption#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.LayoutOption#getValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.LayoutOption#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.LayoutOption#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.LayoutOption#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayoutOption()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface LayoutOption extends EObject {
     /**
-     * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Id</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Name</em>' attribute.
-     * @see #setName(String)
-     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayoutOption_Name()
+     * @return the value of the '<em>Id</em>' attribute.
+     * @see #setId(String)
+     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayoutOption_Id()
      * @model
      * @generated
      */
-    String getName();
+    String getId();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.LayoutOption#getName <em>Name</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.LayoutOption#getId <em>Id</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
-     *            the new value of the '<em>Name</em>' attribute.
-     * @see #getName()
+     *            the new value of the '<em>Id</em>' attribute.
+     * @see #getId()
      * @generated
      */
-    void setName(String value);
+    void setId(String value);
 
     /**
-     * Returns the value of the '<em><b>Value</b></em>' attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Value</em>' attribute isn't clear, there really should be more of a description
+     * If the meaning of the '<em>Label</em>' attribute isn't clear, there really should be more of a description
      * here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Value</em>' attribute.
-     * @see #setValue(String)
-     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayoutOption_Value()
+     * @return the value of the '<em>Label</em>' attribute.
+     * @see #setLabel(String)
+     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayoutOption_Label()
      * @model
      * @generated
      */
-    String getValue();
+    String getLabel();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.LayoutOption#getValue <em>Value</em>}'
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.LayoutOption#getLabel <em>Label</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
-     *            the new value of the '<em>Value</em>' attribute.
-     * @see #getValue()
+     *            the new value of the '<em>Label</em>' attribute.
+     * @see #getLabel()
      * @generated
      */
-    void setValue(String value);
+    void setLabel(String value);
+
+    /**
+     * Returns the value of the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Description</em>' attribute isn't clear, there really should be more of a description
+     * here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Description</em>' attribute.
+     * @see #setDescription(String)
+     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayoutOption_Description()
+     * @model
+     * @generated
+     */
+    String getDescription();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.LayoutOption#getDescription
+     * <em>Description</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Description</em>' attribute.
+     * @see #getDescription()
+     * @generated
+     */
+    void setDescription(String value);
 
 } // LayoutOption

@@ -14,10 +14,13 @@ package org.eclipse.sirius.diagram.description.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.LayoutOption;
@@ -32,6 +35,8 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.CustomLayoutConfigurationImpl#getId <em>Id</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.CustomLayoutConfigurationImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.CustomLayoutConfigurationImpl#getDescription
+ * <em>Description</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.CustomLayoutConfigurationImpl#getLayoutOptions <em>Layout
  * Options</em>}</li>
  * </ul>
@@ -78,8 +83,28 @@ public class CustomLayoutConfigurationImpl extends DocumentedElementImpl impleme
     protected String label = CustomLayoutConfigurationImpl.LABEL_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLayoutOptions() <em>Layout Options</em>}' reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The default value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getDescription()
+     * @generated
+     * @ordered
+     */
+    protected static final String DESCRIPTION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getDescription()
+     * @generated
+     * @ordered
+     */
+    protected String description = CustomLayoutConfigurationImpl.DESCRIPTION_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getLayoutOptions() <em>Layout Options</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getLayoutOptions()
      * @generated
@@ -160,11 +185,49 @@ public class CustomLayoutConfigurationImpl extends DocumentedElementImpl impleme
      * @generated
      */
     @Override
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setDescription(String newDescription) {
+        String oldDescription = description;
+        description = newDescription;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__DESCRIPTION, oldDescription, description));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EList<LayoutOption> getLayoutOptions() {
         if (layoutOptions == null) {
-            layoutOptions = new EObjectResolvingEList<LayoutOption>(LayoutOption.class, this, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS);
+            layoutOptions = new EObjectContainmentEList.Resolving<LayoutOption>(LayoutOption.class, this, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS);
         }
         return layoutOptions;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+        case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS:
+            return ((InternalEList<?>) getLayoutOptions()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
@@ -179,6 +242,8 @@ public class CustomLayoutConfigurationImpl extends DocumentedElementImpl impleme
             return getId();
         case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LABEL:
             return getLabel();
+        case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__DESCRIPTION:
+            return getDescription();
         case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS:
             return getLayoutOptions();
         }
@@ -199,6 +264,9 @@ public class CustomLayoutConfigurationImpl extends DocumentedElementImpl impleme
             return;
         case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LABEL:
             setLabel((String) newValue);
+            return;
+        case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__DESCRIPTION:
+            setDescription((String) newValue);
             return;
         case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS:
             getLayoutOptions().clear();
@@ -222,6 +290,9 @@ public class CustomLayoutConfigurationImpl extends DocumentedElementImpl impleme
         case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LABEL:
             setLabel(CustomLayoutConfigurationImpl.LABEL_EDEFAULT);
             return;
+        case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__DESCRIPTION:
+            setDescription(CustomLayoutConfigurationImpl.DESCRIPTION_EDEFAULT);
+            return;
         case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS:
             getLayoutOptions().clear();
             return;
@@ -241,6 +312,8 @@ public class CustomLayoutConfigurationImpl extends DocumentedElementImpl impleme
             return CustomLayoutConfigurationImpl.ID_EDEFAULT == null ? id != null : !CustomLayoutConfigurationImpl.ID_EDEFAULT.equals(id);
         case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LABEL:
             return CustomLayoutConfigurationImpl.LABEL_EDEFAULT == null ? label != null : !CustomLayoutConfigurationImpl.LABEL_EDEFAULT.equals(label);
+        case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__DESCRIPTION:
+            return CustomLayoutConfigurationImpl.DESCRIPTION_EDEFAULT == null ? description != null : !CustomLayoutConfigurationImpl.DESCRIPTION_EDEFAULT.equals(description);
         case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS:
             return layoutOptions != null && !layoutOptions.isEmpty();
         }
@@ -263,6 +336,8 @@ public class CustomLayoutConfigurationImpl extends DocumentedElementImpl impleme
         result.append(id);
         result.append(", label: "); //$NON-NLS-1$
         result.append(label);
+        result.append(", description: "); //$NON-NLS-1$
+        result.append(description);
         result.append(')');
         return result.toString();
     }

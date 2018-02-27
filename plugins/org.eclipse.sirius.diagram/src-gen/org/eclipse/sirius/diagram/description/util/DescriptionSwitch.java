@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.CompositeLayout;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
@@ -29,10 +30,14 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
+import org.eclipse.sirius.diagram.description.DoubleLayoutOption;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.EnumLayoutOption;
+import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.Layout;
 import org.eclipse.sirius.diagram.description.LayoutOption;
@@ -40,6 +45,7 @@ import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
+import org.eclipse.sirius.diagram.description.StringLayoutOption;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
@@ -498,6 +504,69 @@ public class DescriptionSwitch<T> {
             }
             return result;
         }
+        case DescriptionPackage.BOOLEAN_LAYOUT_OPTION: {
+            BooleanLayoutOption booleanLayoutOption = (BooleanLayoutOption) theEObject;
+            T result = caseBooleanLayoutOption(booleanLayoutOption);
+            if (result == null) {
+                result = caseLayoutOption(booleanLayoutOption);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DescriptionPackage.STRING_LAYOUT_OPTION: {
+            StringLayoutOption stringLayoutOption = (StringLayoutOption) theEObject;
+            T result = caseStringLayoutOption(stringLayoutOption);
+            if (result == null) {
+                result = caseLayoutOption(stringLayoutOption);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DescriptionPackage.INTEGER_LAYOUT_OPTION: {
+            IntegerLayoutOption integerLayoutOption = (IntegerLayoutOption) theEObject;
+            T result = caseIntegerLayoutOption(integerLayoutOption);
+            if (result == null) {
+                result = caseLayoutOption(integerLayoutOption);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DescriptionPackage.DOUBLE_LAYOUT_OPTION: {
+            DoubleLayoutOption doubleLayoutOption = (DoubleLayoutOption) theEObject;
+            T result = caseDoubleLayoutOption(doubleLayoutOption);
+            if (result == null) {
+                result = caseLayoutOption(doubleLayoutOption);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DescriptionPackage.ENUM_LAYOUT_OPTION: {
+            EnumLayoutOption enumLayoutOption = (EnumLayoutOption) theEObject;
+            T result = caseEnumLayoutOption(enumLayoutOption);
+            if (result == null) {
+                result = caseLayoutOption(enumLayoutOption);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DescriptionPackage.ENUM_LAYOUT_VALUE: {
+            EnumLayoutValue enumLayoutValue = (EnumLayoutValue) theEObject;
+            T result = caseEnumLayoutValue(enumLayoutValue);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         case DescriptionPackage.MAPPING_BASED_DECORATION: {
             MappingBasedDecoration mappingBasedDecoration = (MappingBasedDecoration) theEObject;
             T result = caseMappingBasedDecoration(mappingBasedDecoration);
@@ -852,6 +921,96 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseLayoutOption(LayoutOption object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Boolean Layout Option</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Boolean Layout Option</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseBooleanLayoutOption(BooleanLayoutOption object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>String Layout Option</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>String Layout Option</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseStringLayoutOption(StringLayoutOption object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Integer Layout Option</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Integer Layout Option</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseIntegerLayoutOption(IntegerLayoutOption object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Double Layout Option</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Double Layout Option</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDoubleLayoutOption(DoubleLayoutOption object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Enum Layout Option</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Enum Layout Option</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseEnumLayoutOption(EnumLayoutOption object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Enum Layout Value</em>'. <!-- begin-user-doc
+     * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
+     * -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Enum Layout Value</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseEnumLayoutValue(EnumLayoutValue object) {
         return null;
     }
 

@@ -16,35 +16,26 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.description.LayoutOption;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.description.StringLayoutOption;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.LayoutOption} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.StringLayoutOption} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class LayoutOptionItemProvider extends ItemProviderAdapter
-        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class StringLayoutOptionItemProvider extends LayoutOptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public LayoutOptionItemProvider(AdapterFactory adapterFactory) {
+    public StringLayoutOptionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -58,31 +49,21 @@ public class LayoutOptionItemProvider extends ItemProviderAdapter
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addDescriptionPropertyDescriptor(object);
+            addValuePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Description feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Value feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addDescriptionPropertyDescriptor(Object object) {
+    protected void addValuePropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_LayoutOption_description_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_LayoutOption_description_feature", "_UI_LayoutOption_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        DescriptionPackage.Literals.LAYOUT_OPTION__DESCRIPTION, false, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-    }
-
-    /**
-     * This returns LayoutOption.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LayoutOption")); //$NON-NLS-1$
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_StringLayoutOption_value_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_StringLayoutOption_value_feature", "_UI_StringLayoutOption_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.STRING_LAYOUT_OPTION__VALUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -92,9 +73,9 @@ public class LayoutOptionItemProvider extends ItemProviderAdapter
      */
     @Override
     public String getText(Object object) {
-        String label = ((LayoutOption) object).getId();
-        return label == null || label.length() == 0 ? getString("_UI_LayoutOption_type") : //$NON-NLS-1$
-                getString("_UI_LayoutOption_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((StringLayoutOption) object).getId();
+        return label == null || label.length() == 0 ? getString("_UI_StringLayoutOption_type") : //$NON-NLS-1$
+                getString("_UI_StringLayoutOption_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -108,10 +89,8 @@ public class LayoutOptionItemProvider extends ItemProviderAdapter
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(LayoutOption.class)) {
-        case DescriptionPackage.LAYOUT_OPTION__ID:
-        case DescriptionPackage.LAYOUT_OPTION__LABEL:
-        case DescriptionPackage.LAYOUT_OPTION__DESCRIPTION:
+        switch (notification.getFeatureID(StringLayoutOption.class)) {
+        case DescriptionPackage.STRING_LAYOUT_OPTION__VALUE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }
@@ -127,16 +106,6 @@ public class LayoutOptionItemProvider extends ItemProviderAdapter
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return DiagramUIPlugin.INSTANCE;
     }
 
 }

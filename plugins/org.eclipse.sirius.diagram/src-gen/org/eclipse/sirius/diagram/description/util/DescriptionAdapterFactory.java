@@ -17,6 +17,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.CompositeLayout;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
@@ -29,10 +30,14 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
+import org.eclipse.sirius.diagram.description.DoubleLayoutOption;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.EnumLayoutOption;
+import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.Layout;
 import org.eclipse.sirius.diagram.description.LayoutOption;
@@ -40,6 +45,7 @@ import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
+import org.eclipse.sirius.diagram.description.StringLayoutOption;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
@@ -201,6 +207,36 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseLayoutOption(LayoutOption object) {
             return createLayoutOptionAdapter();
+        }
+
+        @Override
+        public Adapter caseBooleanLayoutOption(BooleanLayoutOption object) {
+            return createBooleanLayoutOptionAdapter();
+        }
+
+        @Override
+        public Adapter caseStringLayoutOption(StringLayoutOption object) {
+            return createStringLayoutOptionAdapter();
+        }
+
+        @Override
+        public Adapter caseIntegerLayoutOption(IntegerLayoutOption object) {
+            return createIntegerLayoutOptionAdapter();
+        }
+
+        @Override
+        public Adapter caseDoubleLayoutOption(DoubleLayoutOption object) {
+            return createDoubleLayoutOptionAdapter();
+        }
+
+        @Override
+        public Adapter caseEnumLayoutOption(EnumLayoutOption object) {
+            return createEnumLayoutOptionAdapter();
+        }
+
+        @Override
+        public Adapter caseEnumLayoutValue(EnumLayoutValue object) {
+            return createEnumLayoutValueAdapter();
         }
 
         @Override
@@ -572,6 +608,90 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createLayoutOptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.diagram.description.BooleanLayoutOption
+     * <em>Boolean Layout Option</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.BooleanLayoutOption
+     * @generated
+     */
+    public Adapter createBooleanLayoutOptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.diagram.description.StringLayoutOption
+     * <em>String Layout Option</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.StringLayoutOption
+     * @generated
+     */
+    public Adapter createStringLayoutOptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.diagram.description.IntegerLayoutOption
+     * <em>Integer Layout Option</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.IntegerLayoutOption
+     * @generated
+     */
+    public Adapter createIntegerLayoutOptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.diagram.description.DoubleLayoutOption
+     * <em>Double Layout Option</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.DoubleLayoutOption
+     * @generated
+     */
+    public Adapter createDoubleLayoutOptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.diagram.description.EnumLayoutOption
+     * <em>Enum Layout Option</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.EnumLayoutOption
+     * @generated
+     */
+    public Adapter createEnumLayoutOptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.diagram.description.EnumLayoutValue
+     * <em>Enum Layout Value</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.EnumLayoutValue
+     * @generated
+     */
+    public Adapter createEnumLayoutValueAdapter() {
         return null;
     }
 

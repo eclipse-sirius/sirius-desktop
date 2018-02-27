@@ -17,11 +17,13 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
+import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
@@ -54,7 +56,7 @@ public class CustomLayoutConfigurationItemProvider extends DocumentedElementItem
 
             addIdPropertyDescriptor(object);
             addLabelPropertyDescriptor(object);
-            addLayoutOptionsPropertyDescriptor(object);
+            addDescriptionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -84,15 +86,45 @@ public class CustomLayoutConfigurationItemProvider extends DocumentedElementItem
     }
 
     /**
-     * This adds a property descriptor for the Layout Options feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Description feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addLayoutOptionsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CustomLayoutConfiguration_layoutOptions_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_CustomLayoutConfiguration_layoutOptions_feature", "_UI_CustomLayoutConfiguration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, true, false, true, null, null, null));
+    protected void addDescriptionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CustomLayoutConfiguration_description_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_CustomLayoutConfiguration_description_feature", "_UI_CustomLayoutConfiguration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__DESCRIPTION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+        if (childrenFeatures == null) {
+            super.getChildrenFeatures(object);
+            childrenFeatures.add(DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS);
+        }
+        return childrenFeatures;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    protected EStructuralFeature getChildFeature(Object object, Object child) {
+        // Check the type of the specified child object and return the proper feature to use for
+        // adding (see {@link AddCommand}) it as a child.
+
+        return super.getChildFeature(object, child);
     }
 
     /**
@@ -131,7 +163,11 @@ public class CustomLayoutConfigurationItemProvider extends DocumentedElementItem
         switch (notification.getFeatureID(CustomLayoutConfiguration.class)) {
         case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__ID:
         case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LABEL:
+        case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__DESCRIPTION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        case DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
         super.notifyChanged(notification);
@@ -146,6 +182,16 @@ public class CustomLayoutConfigurationItemProvider extends DocumentedElementItem
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, DescriptionFactory.eINSTANCE.createBooleanLayoutOption()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, DescriptionFactory.eINSTANCE.createStringLayoutOption()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, DescriptionFactory.eINSTANCE.createIntegerLayoutOption()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, DescriptionFactory.eINSTANCE.createDoubleLayoutOption()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, DescriptionFactory.eINSTANCE.createEnumLayoutOption()));
     }
 
     /**

@@ -593,15 +593,38 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CompositeLayout/padding"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CompositeLayout/direction"/>
       </genClasses>
-      <genClasses ecoreClass="diagram.ecore#//description/CustomLayoutConfiguration">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CustomLayoutConfiguration/id"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CustomLayoutConfiguration/label"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference diagram.ecore#//description/CustomLayoutConfiguration/layoutOptions"/>
+      <genClasses ecoreClass="diagram.ecore#//description/GenericLayout">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/GenericLayout/ID"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/GenericLayout/label"/>
+        <genFeatures property="Readonly" createChild="false" propertyMultiLine="true"
+            ecoreFeature="ecore:EAttribute diagram.ecore#//description/GenericLayout/description"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/GenericLayout/layoutOptions"/>
       </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/LayoutOption">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/LayoutOption/Name"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/LayoutOption/value"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/LayoutOption/id"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/LayoutOption/label"/>
+        <genFeatures property="Readonly" createChild="false" propertyMultiLine="true"
+            ecoreFeature="ecore:EAttribute diagram.ecore#//description/LayoutOption/description"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="diagram.ecore#//description/BooleanLayoutOption">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/BooleanLayoutOption/value"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="diagram.ecore#//description/StringLayoutOption">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/StringLayoutOption/value"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="diagram.ecore#//description/IntegerLayoutOption">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/IntegerLayoutOption/value"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="diagram.ecore#//description/DoubleLayoutOption">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/DoubleLayoutOption/value"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="diagram.ecore#//description/EnumLayoutOption">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/EnumLayoutOption/value"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/EnumLayoutOption/choices"/>
+      </genClasses>
+      <genClasses ecoreClass="diagram.ecore#//description/EnumLayoutValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/EnumLayoutValue/name"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/EnumLayoutValue/description"/>
       </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/MappingBasedDecoration">
         <genFeatures notify="false" createChild="false" propertyCategory="General"

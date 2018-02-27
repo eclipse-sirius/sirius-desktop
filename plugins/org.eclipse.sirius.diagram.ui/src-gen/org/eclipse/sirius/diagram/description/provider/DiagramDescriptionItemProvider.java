@@ -14,6 +14,8 @@ package org.eclipse.sirius.diagram.description.provider;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -615,7 +617,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
 
         newChildDescriptors.add(
                 createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createCustomLayoutConfiguration()));
-        addAllCustomLayoutChildDescriptors(newChildDescriptors);
 
         newChildDescriptors.add(
                 createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, ToolFactory.eINSTANCE.createInitialOperation()));
@@ -653,18 +654,19 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
 
     /**
      * Add all registered generic layout providers as child descriptor.
-     * 
+     *
      * @param newChildDescriptors
      *            the child descriptor collection where to add new child descriptors.
      */
     private void addAllCustomLayoutChildDescriptors(Collection<Object> newChildDescriptors) {
         Map<String, GenericLayoutProviderSupplier> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutProviderRegistry();
-        layoutProviderRegistry.forEach((key, value) -> {
+        Set<Entry<String, GenericLayoutProviderSupplier>> layoutProviders = layoutProviderRegistry.entrySet();
+        for (Entry<String, GenericLayoutProviderSupplier> layoutProviderEntry : layoutProviders) {
             CustomLayoutConfiguration customConfiguration = DescriptionFactory.eINSTANCE.createCustomLayoutConfiguration();
-            customConfiguration.setId(key);
-            customConfiguration.setLabel(value.getLabel());
+            customConfiguration.setId(layoutProviderEntry.getKey());
+            customConfiguration.setLabel(layoutProviderEntry.getValue().getLabel());
             newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, customConfiguration));
-        });
+        }
     }
 
     /**

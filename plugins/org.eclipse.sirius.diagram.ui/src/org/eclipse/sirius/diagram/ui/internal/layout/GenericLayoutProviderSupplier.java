@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.layout;
 
+import java.util.Map;
 import java.util.function.Supplier;
 
+import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
 
 /**
@@ -31,6 +33,8 @@ public class GenericLayoutProviderSupplier {
      */
     private Supplier<DefaultLayoutProvider> layoutProviderSupplier;
 
+    private Map<String, LayoutOption> layoutOptions;
+
     /**
      * Initialize the component.
      * 
@@ -38,11 +42,13 @@ public class GenericLayoutProviderSupplier {
      *            Label to use in Sirius UI to represent this layout algorithm provider.
      * @param layoutProviderSupplier
      *            Provide instances of {@link DefaultLayoutProvider}.
+     * @param layoutOptions
      */
-    public GenericLayoutProviderSupplier(String label, Supplier<DefaultLayoutProvider> layoutProviderSupplier) {
+    public GenericLayoutProviderSupplier(String label, Supplier<DefaultLayoutProvider> layoutProviderSupplier, Map<String, LayoutOption> layoutOptions) {
         super();
         this.label = label;
         this.layoutProviderSupplier = layoutProviderSupplier;
+        this.layoutOptions = layoutOptions;
     }
 
     /**
@@ -63,4 +69,7 @@ public class GenericLayoutProviderSupplier {
         return label;
     }
 
+    public Map<String, LayoutOption> getLayoutOptions() {
+        return layoutOptions;
+    }
 }

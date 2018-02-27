@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.GenericLayout#getID <em>ID</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.GenericLayout#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.GenericLayout#getDescription <em>Description</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.GenericLayout#getLayoutOptions <em>Layout Options</em>}</li>
  * </ul>
  *
@@ -84,17 +85,44 @@ public interface GenericLayout extends Layout {
     void setLabel(String value);
 
     /**
-     * Returns the value of the '<em><b>Layout Options</b></em>' reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.LayoutOption}. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Description</em>' attribute isn't clear, there really should be more of a description
+     * here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Description</em>' attribute.
+     * @see #setDescription(String)
+     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getGenericLayout_Description()
+     * @model
+     * @generated
+     */
+    String getDescription();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.GenericLayout#getDescription
+     * <em>Description</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Description</em>' attribute.
+     * @see #getDescription()
+     * @generated
+     */
+    void setDescription(String value);
+
+    /**
+     * Returns the value of the '<em><b>Layout Options</b></em>' containment reference list. The list contents are of
+     * type {@link org.eclipse.sirius.diagram.description.LayoutOption}. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Layout Options</em>' reference list isn't clear, there really should be more of a
      * description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Layout Options</em>' reference list.
+     * @return the value of the '<em>Layout Options</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getGenericLayout_LayoutOptions()
-     * @model
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<LayoutOption> getLayoutOptions();

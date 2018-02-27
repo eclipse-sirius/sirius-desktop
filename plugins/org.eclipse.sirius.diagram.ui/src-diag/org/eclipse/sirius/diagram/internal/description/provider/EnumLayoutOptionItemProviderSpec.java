@@ -14,22 +14,24 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
+import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.GenericLayout;
 import org.eclipse.sirius.diagram.description.LayoutOption;
-import org.eclipse.sirius.diagram.description.provider.CustomLayoutConfigurationItemProvider;
+import org.eclipse.sirius.diagram.description.provider.EnumLayoutOptionItemProvider;
 import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProviderSupplier;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
- * Customize the label of {@link GenericLayout} items in VSM editor. Also override child descriptor to propose available
- * {@link LayoutOption} with their attributes already filled.
+ * Customize the label of {@link EnumLayoutOption} items in VSM editor. Also override child descriptor to propose
+ * available {@link EnumLayoutValue} with their attributes already filled.
  * 
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
  */
-public class CustomLayoutConfigurationItemProviderSpec extends CustomLayoutConfigurationItemProvider {
+public class EnumLayoutOptionItemProviderSpec extends EnumLayoutOptionItemProvider {
 
     /**
      * Default constructor.
@@ -37,36 +39,34 @@ public class CustomLayoutConfigurationItemProviderSpec extends CustomLayoutConfi
      * @param adapterFactory
      *            factory to use.
      */
-    public CustomLayoutConfigurationItemProviderSpec(AdapterFactory adapterFactory) {
+    public EnumLayoutOptionItemProviderSpec(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
     @Override
     public String getText(Object object) {
-        GenericLayout layout = (GenericLayout) object;
+        LayoutOption layout = (LayoutOption) object;
         return layout.getLabel();
     }
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         Map<String, GenericLayoutProviderSupplier> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutProviderRegistry();
-        GenericLayout layout = (GenericLayout) object;
-
+        EnumLayoutOption layoutOption = (EnumLayoutOption) object;
+        GenericLayout layout = (GenericLayout) layoutOption.eContainer();
         GenericLayoutProviderSupplier genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getID());
         Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
-        for (LayoutOption layoutOption : layoutOptions.values()) {
-            LayoutOption copy = EcoreUtil.copy(layoutOption);
-            if (copy instanceof EnumLayoutOption) {
-                ((EnumLayoutOption) copy).getChoices().clear();
-            }
-            newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, copy));
+        EnumLayoutOption layoutOptionTemplate = (EnumLayoutOption) layoutOptions.get(layoutOption.getId());
+        EList<EnumLayoutValue> choices = layoutOptionTemplate.getChoices();
+        for (EnumLayoutValue enumLayoutValue : choices) {
+            newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ENUM_LAYOUT_OPTION__VALUE, EcoreUtil.copy(enumLayoutValue)));
         }
     }
 
     @Override
     public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-        if (child instanceof LayoutOption) {
-            return ((LayoutOption) child).getLabel();
+        if (child instanceof EnumLayoutValue) {
+            return ((EnumLayoutValue) child).getName();
         }
 
         return super.getCreateChildText(owner, feature, child, selection);

@@ -38,8 +38,14 @@ import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.util.DescriptionAdapterFactory;
+import org.eclipse.sirius.diagram.internal.description.provider.BooleanLayoutOptionItemProviderSpec;
 import org.eclipse.sirius.diagram.internal.description.provider.CustomLayoutConfigurationItemProviderSpec;
 import org.eclipse.sirius.diagram.internal.description.provider.DiagramDescriptionItemProviderSpec;
+import org.eclipse.sirius.diagram.internal.description.provider.DoubleLayoutOptionItemProviderSpec;
+import org.eclipse.sirius.diagram.internal.description.provider.EnumLayoutOptionItemProviderSpec;
+import org.eclipse.sirius.diagram.internal.description.provider.EnumLayoutValueItemProviderSpec;
+import org.eclipse.sirius.diagram.internal.description.provider.IntegerLayoutOptionItemProviderSpec;
+import org.eclipse.sirius.diagram.internal.description.provider.StringLayoutOptionItemProviderSpec;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
@@ -448,26 +454,145 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.description.LayoutOption}
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.description.BooleanLayoutOption} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    protected BooleanLayoutOptionItemProvider booleanLayoutOptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.diagram.description.BooleanLayoutOption}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
+    @Override
+    public Adapter createBooleanLayoutOptionAdapter() {
+        if (booleanLayoutOptionItemProvider == null) {
+            booleanLayoutOptionItemProvider = new BooleanLayoutOptionItemProviderSpec(this);
+        }
+
+        return booleanLayoutOptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.description.StringLayoutOption} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    protected StringLayoutOptionItemProvider stringLayoutOptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.diagram.description.StringLayoutOption}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
+    @Override
+    public Adapter createStringLayoutOptionAdapter() {
+        if (stringLayoutOptionItemProvider == null) {
+            stringLayoutOptionItemProvider = new StringLayoutOptionItemProviderSpec(this);
+        }
+
+        return stringLayoutOptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.description.IntegerLayoutOption} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    protected IntegerLayoutOptionItemProvider integerLayoutOptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.diagram.description.IntegerLayoutOption}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
+    @Override
+    public Adapter createIntegerLayoutOptionAdapter() {
+        if (integerLayoutOptionItemProvider == null) {
+            integerLayoutOptionItemProvider = new IntegerLayoutOptionItemProviderSpec(this);
+        }
+
+        return integerLayoutOptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.description.DoubleLayoutOption} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    protected DoubleLayoutOptionItemProvider doubleLayoutOptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.diagram.description.DoubleLayoutOption}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
+    @Override
+    public Adapter createDoubleLayoutOptionAdapter() {
+        if (doubleLayoutOptionItemProvider == null) {
+            doubleLayoutOptionItemProvider = new DoubleLayoutOptionItemProviderSpec(this);
+        }
+
+        return doubleLayoutOptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.description.EnumLayoutOption}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected LayoutOptionItemProvider layoutOptionItemProvider;
+    protected EnumLayoutOptionItemProvider enumLayoutOptionItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.eclipse.sirius.diagram.description.LayoutOption}. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.sirius.diagram.description.EnumLayoutOption}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
+    @Override
+    public Adapter createEnumLayoutOptionAdapter() {
+        if (enumLayoutOptionItemProvider == null) {
+            enumLayoutOptionItemProvider = new EnumLayoutOptionItemProviderSpec(this);
+        }
+
+        return enumLayoutOptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.description.EnumLayoutValue}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
+    protected EnumLayoutValueItemProvider enumLayoutValueItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.diagram.description.EnumLayoutValue}. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
     @Override
-    public Adapter createLayoutOptionAdapter() {
-        if (layoutOptionItemProvider == null) {
-            layoutOptionItemProvider = new LayoutOptionItemProvider(this);
+    public Adapter createEnumLayoutValueAdapter() {
+        if (enumLayoutValueItemProvider == null) {
+            enumLayoutValueItemProvider = new EnumLayoutValueItemProviderSpec(this);
         }
 
-        return layoutOptionItemProvider;
+        return enumLayoutValueItemProvider;
     }
 
     /**
@@ -685,8 +810,23 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
         if (customLayoutConfigurationItemProvider != null) {
             customLayoutConfigurationItemProvider.dispose();
         }
-        if (layoutOptionItemProvider != null) {
-            layoutOptionItemProvider.dispose();
+        if (booleanLayoutOptionItemProvider != null) {
+            booleanLayoutOptionItemProvider.dispose();
+        }
+        if (stringLayoutOptionItemProvider != null) {
+            stringLayoutOptionItemProvider.dispose();
+        }
+        if (integerLayoutOptionItemProvider != null) {
+            integerLayoutOptionItemProvider.dispose();
+        }
+        if (doubleLayoutOptionItemProvider != null) {
+            doubleLayoutOptionItemProvider.dispose();
+        }
+        if (enumLayoutOptionItemProvider != null) {
+            enumLayoutOptionItemProvider.dispose();
+        }
+        if (enumLayoutValueItemProvider != null) {
+            enumLayoutValueItemProvider.dispose();
         }
         if (mappingBasedDecorationItemProvider != null) {
             mappingBasedDecorationItemProvider.dispose();

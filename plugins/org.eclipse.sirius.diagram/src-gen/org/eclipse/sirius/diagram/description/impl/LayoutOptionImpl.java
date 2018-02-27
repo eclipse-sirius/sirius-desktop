@@ -24,52 +24,71 @@ import org.eclipse.sirius.diagram.description.LayoutOption;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl#getValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LayoutOptionImpl extends MinimalEObjectImpl.Container implements LayoutOption {
+public abstract class LayoutOptionImpl extends MinimalEObjectImpl.Container implements LayoutOption {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see #getName()
+     * @see #getId()
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = null;
+    protected static final String ID_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see #getName()
+     * @see #getId()
      * @generated
      * @ordered
      */
-    protected String name = LayoutOptionImpl.NAME_EDEFAULT;
+    protected String id = LayoutOptionImpl.ID_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
-     * @see #getValue()
+     * @see #getLabel()
      * @generated
      * @ordered
      */
-    protected static final String VALUE_EDEFAULT = null;
+    protected static final String LABEL_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
-     * @see #getValue()
+     * @see #getLabel()
      * @generated
      * @ordered
      */
-    protected String value = LayoutOptionImpl.VALUE_EDEFAULT;
+    protected String label = LayoutOptionImpl.LABEL_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getDescription()
+     * @generated
+     * @ordered
+     */
+    protected static final String DESCRIPTION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getDescription()
+     * @generated
+     * @ordered
+     */
+    protected String description = LayoutOptionImpl.DESCRIPTION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -96,8 +115,8 @@ public class LayoutOptionImpl extends MinimalEObjectImpl.Container implements La
      * @generated
      */
     @Override
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
     /**
@@ -106,11 +125,11 @@ public class LayoutOptionImpl extends MinimalEObjectImpl.Container implements La
      * @generated
      */
     @Override
-    public void setName(String newName) {
-        String oldName = name;
-        name = newName;
+    public void setId(String newId) {
+        String oldId = id;
+        id = newId;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYOUT_OPTION__NAME, oldName, name));
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYOUT_OPTION__ID, oldId, id));
         }
     }
 
@@ -120,8 +139,8 @@ public class LayoutOptionImpl extends MinimalEObjectImpl.Container implements La
      * @generated
      */
     @Override
-    public String getValue() {
-        return value;
+    public String getLabel() {
+        return label;
     }
 
     /**
@@ -130,11 +149,35 @@ public class LayoutOptionImpl extends MinimalEObjectImpl.Container implements La
      * @generated
      */
     @Override
-    public void setValue(String newValue) {
-        String oldValue = value;
-        value = newValue;
+    public void setLabel(String newLabel) {
+        String oldLabel = label;
+        label = newLabel;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYOUT_OPTION__VALUE, oldValue, value));
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYOUT_OPTION__LABEL, oldLabel, label));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setDescription(String newDescription) {
+        String oldDescription = description;
+        description = newDescription;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.LAYOUT_OPTION__DESCRIPTION, oldDescription, description));
         }
     }
 
@@ -146,10 +189,12 @@ public class LayoutOptionImpl extends MinimalEObjectImpl.Container implements La
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case DescriptionPackage.LAYOUT_OPTION__NAME:
-            return getName();
-        case DescriptionPackage.LAYOUT_OPTION__VALUE:
-            return getValue();
+        case DescriptionPackage.LAYOUT_OPTION__ID:
+            return getId();
+        case DescriptionPackage.LAYOUT_OPTION__LABEL:
+            return getLabel();
+        case DescriptionPackage.LAYOUT_OPTION__DESCRIPTION:
+            return getDescription();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -162,11 +207,14 @@ public class LayoutOptionImpl extends MinimalEObjectImpl.Container implements La
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case DescriptionPackage.LAYOUT_OPTION__NAME:
-            setName((String) newValue);
+        case DescriptionPackage.LAYOUT_OPTION__ID:
+            setId((String) newValue);
             return;
-        case DescriptionPackage.LAYOUT_OPTION__VALUE:
-            setValue((String) newValue);
+        case DescriptionPackage.LAYOUT_OPTION__LABEL:
+            setLabel((String) newValue);
+            return;
+        case DescriptionPackage.LAYOUT_OPTION__DESCRIPTION:
+            setDescription((String) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -180,11 +228,14 @@ public class LayoutOptionImpl extends MinimalEObjectImpl.Container implements La
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case DescriptionPackage.LAYOUT_OPTION__NAME:
-            setName(LayoutOptionImpl.NAME_EDEFAULT);
+        case DescriptionPackage.LAYOUT_OPTION__ID:
+            setId(LayoutOptionImpl.ID_EDEFAULT);
             return;
-        case DescriptionPackage.LAYOUT_OPTION__VALUE:
-            setValue(LayoutOptionImpl.VALUE_EDEFAULT);
+        case DescriptionPackage.LAYOUT_OPTION__LABEL:
+            setLabel(LayoutOptionImpl.LABEL_EDEFAULT);
+            return;
+        case DescriptionPackage.LAYOUT_OPTION__DESCRIPTION:
+            setDescription(LayoutOptionImpl.DESCRIPTION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -198,10 +249,12 @@ public class LayoutOptionImpl extends MinimalEObjectImpl.Container implements La
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case DescriptionPackage.LAYOUT_OPTION__NAME:
-            return LayoutOptionImpl.NAME_EDEFAULT == null ? name != null : !LayoutOptionImpl.NAME_EDEFAULT.equals(name);
-        case DescriptionPackage.LAYOUT_OPTION__VALUE:
-            return LayoutOptionImpl.VALUE_EDEFAULT == null ? value != null : !LayoutOptionImpl.VALUE_EDEFAULT.equals(value);
+        case DescriptionPackage.LAYOUT_OPTION__ID:
+            return LayoutOptionImpl.ID_EDEFAULT == null ? id != null : !LayoutOptionImpl.ID_EDEFAULT.equals(id);
+        case DescriptionPackage.LAYOUT_OPTION__LABEL:
+            return LayoutOptionImpl.LABEL_EDEFAULT == null ? label != null : !LayoutOptionImpl.LABEL_EDEFAULT.equals(label);
+        case DescriptionPackage.LAYOUT_OPTION__DESCRIPTION:
+            return LayoutOptionImpl.DESCRIPTION_EDEFAULT == null ? description != null : !LayoutOptionImpl.DESCRIPTION_EDEFAULT.equals(description);
         }
         return super.eIsSet(featureID);
     }
@@ -218,10 +271,12 @@ public class LayoutOptionImpl extends MinimalEObjectImpl.Container implements La
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: "); //$NON-NLS-1$
-        result.append(name);
-        result.append(", value: "); //$NON-NLS-1$
-        result.append(value);
+        result.append(" (id: "); //$NON-NLS-1$
+        result.append(id);
+        result.append(", label: "); //$NON-NLS-1$
+        result.append(label);
+        result.append(", description: "); //$NON-NLS-1$
+        result.append(description);
         result.append(')');
         return result.toString();
     }
