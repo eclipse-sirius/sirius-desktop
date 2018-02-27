@@ -71,7 +71,7 @@ public class GenericLayoutProvider implements LayoutProvider {
             if (desc != null) {
                 final Layout layout = desc.getLayout();
                 if (layout instanceof GenericLayout) {
-                    return DiagramUIPlugin.getPlugin().getLayoutProviderRegistry().get(((GenericLayout) layout).getID());
+                    return DiagramUIPlugin.getPlugin().getLayoutProviderRegistry().get(((GenericLayout) layout).getID()).getLayoutProviderSupplier();
                 }
             }
         }

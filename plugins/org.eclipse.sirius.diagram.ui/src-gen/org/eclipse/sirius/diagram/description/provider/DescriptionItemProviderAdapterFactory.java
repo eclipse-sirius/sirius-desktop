@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.util.DescriptionAdapterFactory;
+import org.eclipse.sirius.diagram.internal.description.provider.CustomLayoutConfigurationItemProviderSpec;
 import org.eclipse.sirius.diagram.internal.description.provider.DiagramDescriptionItemProviderSpec;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -435,12 +436,12 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.description.CustomLayoutConfiguration}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     public Adapter createCustomLayoutConfigurationAdapter() {
         if (customLayoutConfigurationItemProvider == null) {
-            customLayoutConfigurationItemProvider = new CustomLayoutConfigurationItemProvider(this);
+            customLayoutConfigurationItemProvider = new CustomLayoutConfigurationItemProviderSpec(this);
         }
 
         return customLayoutConfigurationItemProvider;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,6 +49,7 @@ import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProvider
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.ui.business.internal.image.ImageSelectorDescriptorRegistryListener;
 import org.eclipse.sirius.diagram.ui.business.internal.image.refresh.WorkspaceImageFigureRefresher;
+import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProviderSupplier;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.WorkspaceFileResourceChangeListener;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationProviderRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
@@ -157,7 +158,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
         /**
          * A registry containing all layout providers that can be specified directly in the VSM.
          */
-        private Map<String, Supplier<DefaultLayoutProvider>> layoutProviderRegistry;
+        private Map<String, GenericLayoutProviderSupplier> layoutProviderRegistry;
 
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -176,11 +177,14 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * 
          * @param providerId
          *            the id of the layout provider to add in the registry.
+         * 
+         * @param providerLabel
+         *            the label of the layout provider to register.
          * @param layoutSupplier
-         *            the layout provider that should be used and that should extend {@link DefaultLayoutProvider}.
+         *            the {@link DefaultLayoutProvider} instances supplier.
          */
-        public void addLayoutProvider(String providerId, Supplier<DefaultLayoutProvider> layoutSupplier) {
-            layoutProviderRegistry.put(providerId, layoutSupplier);
+        public void addLayoutProvider(String providerId, String providerLabel, Supplier<DefaultLayoutProvider> layoutSupplier) {
+            layoutProviderRegistry.put(providerId, new GenericLayoutProviderSupplier(providerLabel, layoutSupplier));
         }
 
         /**
@@ -190,7 +194,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          *            the id of the layout provider to remove from the registry.
          * @return the layout provider removed if such element exists.
          */
-        public Supplier<DefaultLayoutProvider> removeLayoutProvider(String layoutProviderId) {
+        public GenericLayoutProviderSupplier removeLayoutProvider(String layoutProviderId) {
             return layoutProviderRegistry.remove(layoutProviderId);
         }
 
@@ -199,7 +203,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * 
          * @return an unmodifiable map of layout providers suppliers associated to their ids.
          */
-        public Map<String, Supplier<DefaultLayoutProvider>> getLayoutProviderRegistry() {
+        public Map<String, GenericLayoutProviderSupplier> getLayoutProviderRegistry() {
             return Collections.unmodifiableMap(layoutProviderRegistry);
         }
 

@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.description.provider;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -24,13 +25,17 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.GenericLayout;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.concern.ConcernFactory;
 import org.eclipse.sirius.diagram.description.concern.ConcernSet;
 import org.eclipse.sirius.diagram.description.filter.FilterFactory;
+import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProviderSupplier;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
@@ -536,14 +541,16 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
         ConcernSet concernSet = ConcernFactory.eINSTANCE.createConcernSet();
         concernSet.getOwnedConcernDescriptions().add(ConcernFactory.eINSTANCE.createConcernDescription());
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONCERNS, concernSet));
+
         newChildDescriptors.add(
                 createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createCustomLayoutConfiguration()));
+        addAllCustomLayoutChildDescriptors(newChildDescriptors);
         newChildDescriptors
                 .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createOrderedTreeLayout()));
 
         newChildDescriptors
                 .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createCompositeLayout()));
-
+        addAllCustomLayoutChildDescriptors(newChildDescriptors);
         newChildDescriptors.add(
                 createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
@@ -608,6 +615,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
 
         newChildDescriptors.add(
                 createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createCustomLayoutConfiguration()));
+        addAllCustomLayoutChildDescriptors(newChildDescriptors);
 
         newChildDescriptors.add(
                 createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, ToolFactory.eINSTANCE.createInitialOperation()));
@@ -644,6 +652,22 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
     }
 
     /**
+     * Add all registered generic layout providers as child descriptor.
+     * 
+     * @param newChildDescriptors
+     *            the child descriptor collection where to add new child descriptors.
+     */
+    private void addAllCustomLayoutChildDescriptors(Collection<Object> newChildDescriptors) {
+        Map<String, GenericLayoutProviderSupplier> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutProviderRegistry();
+        layoutProviderRegistry.forEach((key, value) -> {
+            CustomLayoutConfiguration customConfiguration = DescriptionFactory.eINSTANCE.createCustomLayoutConfiguration();
+            customConfiguration.setId(key);
+            customConfiguration.setLabel(value.getLabel());
+            newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, customConfiguration));
+        });
+    }
+
+    /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      *
@@ -658,6 +682,8 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
             // child type currently available for is Layer (see
             // collectNewChildDescriptors).
             return getString("_UI_CreateChild_text2", new Object[] { getTypeText(child), "Default", getTypeText(owner) }); //$NON-NLS-1$ //$NON-NLS-2$
+        } else if (child instanceof GenericLayout) {
+            return ((GenericLayout) child).getLabel();
         }
         String createChildText = super.getCreateChildText(owner, feature, child, selection);
         if (child != null && isNormalEdgeMapping(child)) {

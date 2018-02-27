@@ -38,9 +38,8 @@ public class DiagramElkPlugin extends AbstractUIPlugin {
 
         Collection<LayoutAlgorithmData> algorithmData = LayoutMetaDataService.getInstance().getAlgorithmData();
         for (LayoutAlgorithmData layoutAlgorithmData : algorithmData) {
-            DiagramUIPlugin.getPlugin().addLayoutProvider(layoutAlgorithmData.getId(), () -> new ELKLayoutNodeProvider());
+            DiagramUIPlugin.getPlugin().addLayoutProvider(layoutAlgorithmData.getId(), layoutAlgorithmData.getName(), () -> new ELKLayoutNodeProvider());
         }
-
     }
 
     @Override
