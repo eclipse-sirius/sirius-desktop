@@ -272,6 +272,10 @@
       xsi:type="setup:PreferenceTask"
       key="/instance/org.eclipse.jdt.ui/sp_cleanup.remove_unnecessary_casts"
       value="true"/>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.core.resources/encoding"
+      value="UTF-8"/>
   <stream name="master"/>
   <stream name="v5.1.x"/>
   <stream name="v5.0.x"/>
