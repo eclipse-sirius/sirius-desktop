@@ -1,0 +1,28 @@
+
+events
+addNewPizza "Add new pizza" 'ev1'
+validatePizza 'Validate pizza' 'ev2'
+end
+
+commands
+addIngredient 'Add new ingredient' 'cmd1'
+choosePastry 'Choose pastry' 'cmd2'
+end 
+
+state Initial 'Initial'
+	addNewPizza=>SelectingPizza
+end
+
+state CreatingPizza  'Creating a new pizza'
+	actions {
+		addIngredient "Add ingredient" "act1"
+	}
+	validatePizza => OrderingPizza
+end
+
+state ConsultingCart 'Consulting Cart' end
+
+state OrderingPizza 'Ordering a new pizza' end
+
+
+

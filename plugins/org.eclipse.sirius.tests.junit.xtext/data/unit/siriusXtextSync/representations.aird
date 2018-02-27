@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:statemachine="http://www.eclipse.org/sirius/tests/sample/xtext/Statemachine" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_KMyAMBf0Eei2waxF5kJPFA" selectedViews="_MRlJgBf0Eei2waxF5kJPFA" version="12.1.0.201708031200">
+    <semanticResources>model.statemachine</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_MRlJgBf0Eei2waxF5kJPFA">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_MnMNIBf0Eei2waxF5kJPFA" name="new StateMachineDiagram" repPath="#_MmJrUBf0Eei2waxF5kJPFA">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']"/>
+        <target xmi:type="statemachine:Statemachine" href="model.statemachine#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram xmi:id="_MnCcIBf0Eei2waxF5kJPFA" name="new StateMachineDiagram" uid="_MmJrUBf0Eei2waxF5kJPFA">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_MnCcIRf0Eei2waxF5kJPFA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_MnCcIhf0Eei2waxF5kJPFA"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Mno5EBf0Eei2waxF5kJPFA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_Mno5ERf0Eei2waxF5kJPFA" type="Sirius" element="_MnCcIBf0Eei2waxF5kJPFA" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_wzX68BiCEeiJorlNKF0NkA" type="2002" element="_wxcBQBiCEeiJorlNKF0NkA">
+          <children xmi:type="notation:Node" xmi:id="_wzX68xiCEeiJorlNKF0NkA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_wzX69BiCEeiJorlNKF0NkA" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_wzX69RiCEeiJorlNKF0NkA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_wzX69hiCEeiJorlNKF0NkA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_wzX68RiCEeiJorlNKF0NkA" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wzX68hiCEeiJorlNKF0NkA" x="565" y="220"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_wzhr8BiCEeiJorlNKF0NkA" type="2002" element="_wxcBQhiCEeiJorlNKF0NkA">
+          <children xmi:type="notation:Node" xmi:id="_wzhr8xiCEeiJorlNKF0NkA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_wzhr9BiCEeiJorlNKF0NkA" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_zIlokBizEeiQQ-arQewc1g" type="3007" element="_zIN1IBizEeiQQ-arQewc1g">
+              <children xmi:type="notation:Node" xmi:id="_zIuygBizEeiQQ-arQewc1g" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_zIuygRizEeiQQ-arQewc1g" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_zI2HQBizEeiQQ-arQewc1g" type="3003" element="_zIPDQBizEeiQQ-arQewc1g">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_zI2HQRizEeiQQ-arQewc1g" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zI2HQhizEeiQQ-arQewc1g"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_zImPoBizEeiQQ-arQewc1g" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zImPoRizEeiQQ-arQewc1g" x="30" y="29" width="86" height="30"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_wzhr9RiCEeiJorlNKF0NkA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_wzhr9hiCEeiJorlNKF0NkA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_wzhr8RiCEeiJorlNKF0NkA" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wzhr8hiCEeiJorlNKF0NkA" x="125" y="165" width="178"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_wzhr9xiCEeiJorlNKF0NkA" type="2002" element="_wxlyQBiCEeiJorlNKF0NkA">
+          <children xmi:type="notation:Node" xmi:id="_wzhr-hiCEeiJorlNKF0NkA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_wzhr-xiCEeiJorlNKF0NkA" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_wzhr_BiCEeiJorlNKF0NkA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_wzhr_RiCEeiJorlNKF0NkA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_wzhr-BiCEeiJorlNKF0NkA" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wzhr-RiCEeiJorlNKF0NkA" x="125" y="60"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_wzhr_hiCEeiJorlNKF0NkA" type="2002" element="_wxlyQhiCEeiJorlNKF0NkA">
+          <children xmi:type="notation:Node" xmi:id="_wzhsARiCEeiJorlNKF0NkA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_wzhsAhiCEeiJorlNKF0NkA" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_wzhsAxiCEeiJorlNKF0NkA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_wzhsBBiCEeiJorlNKF0NkA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_wzhr_xiCEeiJorlNKF0NkA" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wzhsABiCEeiJorlNKF0NkA" x="515" y="25"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_Mno5Ehf0Eei2waxF5kJPFA"/>
+        <edges xmi:type="notation:Edge" xmi:id="_zJOhwBizEeiQQ-arQewc1g" type="4001" element="_zIXmIBizEeiQQ-arQewc1g" source="_wzX68BiCEeiJorlNKF0NkA" target="_wzhr8BiCEeiJorlNKF0NkA">
+          <children xmi:type="notation:Node" xmi:id="_zJQW8BizEeiQQ-arQewc1g" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zJQW8RizEeiQQ-arQewc1g" x="1" y="-8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zJRlEBizEeiQQ-arQewc1g" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zJRlERizEeiQQ-arQewc1g" y="11"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zJSMIBizEeiQQ-arQewc1g" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zJSMIRizEeiQQ-arQewc1g" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_zJOhwRizEeiQQ-arQewc1g"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_zJOhwhizEeiQQ-arQewc1g" fontName="Segoe UI" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_zJOhwxizEeiQQ-arQewc1g" points="[-74, -10, 366, 44]$[-366, -45, 74, 9]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zJlHEBizEeiQQ-arQewc1g" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zJluIBizEeiQQ-arQewc1g" id="(0.42045454545454547,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_zJluIRizEeiQQ-arQewc1g" type="4001" element="_zIaCYBizEeiQQ-arQewc1g" source="_wzhr8BiCEeiJorlNKF0NkA" target="_wzhr_hiCEeiJorlNKF0NkA">
+          <children xmi:type="notation:Node" xmi:id="_zJmVMBizEeiQQ-arQewc1g" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zJmVMRizEeiQQ-arQewc1g" x="3" y="-11"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zJmVMhizEeiQQ-arQewc1g" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zJmVMxizEeiQQ-arQewc1g" x="-3" y="8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zJmVNBizEeiQQ-arQewc1g" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zJmVNRizEeiQQ-arQewc1g" x="-4" y="8"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_zJluIhizEeiQQ-arQewc1g"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_zJluIxizEeiQQ-arQewc1g" fontName="Segoe UI" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_zJluJBizEeiQQ-arQewc1g" points="[74, -27, -316, 114]$[316, -115, -74, 26]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zJm8QBizEeiQQ-arQewc1g" id="(0.42045454545454547,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_zJm8QRizEeiQQ-arQewc1g" id="(0.5,0.5)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_wxcBQBiCEeiJorlNKF0NkA" name="Initial" outgoingEdges="_zIXmIBizEeiQQ-arQewc1g">
+      <target xmi:type="statemachine:State" href="model.statemachine#//@states.0"/>
+      <semanticElements xmi:type="statemachine:State" href="model.statemachine#//@states.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_wxcBQRiCEeiJorlNKF0NkA" borderSize="1" borderSizeComputationExpression="1" backgroundColor="194,239,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_wxcBQhiCEeiJorlNKF0NkA" name="SelectingPizza" outgoingEdges="_zIaCYBizEeiQQ-arQewc1g" incomingEdges="_zIXmIBizEeiQQ-arQewc1g">
+      <target xmi:type="statemachine:State" href="model.statemachine#//@states.1"/>
+      <semanticElements xmi:type="statemachine:State" href="model.statemachine#//@states.1"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_wxcBQxiCEeiJorlNKF0NkA" borderSize="1" borderSizeComputationExpression="1" backgroundColor="194,239,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_zIN1IBizEeiQQ-arQewc1g" name="addIngredient" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="statemachine:Command" href="model.statemachine#//@states.1/@actions.0"/>
+        <semanticElements xmi:type="statemachine:Command" href="model.statemachine#//@states.1/@actions.0"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_zIPDQBizEeiQQ-arQewc1g" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']/@subNodeMappings[name='SMD_ActionState']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']/@subNodeMappings[name='SMD_ActionState']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_wxlyQBiCEeiJorlNKF0NkA" name="ConsultingCart">
+      <target xmi:type="statemachine:State" href="model.statemachine#//@states.2"/>
+      <semanticElements xmi:type="statemachine:State" href="model.statemachine#//@states.2"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_wxlyQRiCEeiJorlNKF0NkA" borderSize="1" borderSizeComputationExpression="1" backgroundColor="194,239,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_wxlyQhiCEeiJorlNKF0NkA" name="OrderingPizza" incomingEdges="_zIaCYBizEeiQQ-arQewc1g">
+      <target xmi:type="statemachine:State" href="model.statemachine#//@states.3"/>
+      <semanticElements xmi:type="statemachine:State" href="model.statemachine#//@states.3"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_wxlyQxiCEeiJorlNKF0NkA" borderSize="1" borderSizeComputationExpression="1" backgroundColor="194,239,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_zIXmIBizEeiQQ-arQewc1g" name="addNewPizza" sourceNode="_wxcBQBiCEeiJorlNKF0NkA" targetNode="_wxcBQhiCEeiJorlNKF0NkA">
+      <target xmi:type="statemachine:Transition" href="model.statemachine#//@states.0/@transitions.0"/>
+      <semanticElements xmi:type="statemachine:Transition" href="model.statemachine#//@states.0/@transitions.0"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_zIYNMBizEeiQQ-arQewc1g" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@edgeMappings[name='SMD_Transition_Edge']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_zIYNMRizEeiQQ-arQewc1g"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@edgeMappings[name='SMD_Transition_Edge']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_zIaCYBizEeiQQ-arQewc1g" name="validatePizza" sourceNode="_wxcBQhiCEeiJorlNKF0NkA" targetNode="_wxlyQhiCEeiJorlNKF0NkA">
+      <target xmi:type="statemachine:Transition" href="model.statemachine#//@states.1/@transitions.0"/>
+      <semanticElements xmi:type="statemachine:Transition" href="model.statemachine#//@states.1/@transitions.0"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_zIaCYRizEeiQQ-arQewc1g" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@edgeMappings[name='SMD_Transition_Edge']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_zIaCYhizEeiQQ-arQewc1g"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@edgeMappings[name='SMD_Transition_Edge']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_MnCcKBf0Eei2waxF5kJPFA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.eclipse.sirius.tests.sample.xtext.statemachine.design/description/statemachine.odesign#//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer"/>
+    <target xmi:type="statemachine:Statemachine" href="model.statemachine#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>
