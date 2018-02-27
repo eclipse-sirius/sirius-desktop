@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="statemachine" version="12.0.0.2017041100">
+  <ownedViewpoints name="StateMachine" modelFileExtension="*.statemachine">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="StateMachineDiagram" domainClass="statemachine::Statemachine" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/sirius/tests/sample/xtext/Statemachine#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="SMD_StateNode" preconditionExpression="false" semanticCandidatesExpression="feature:states" domainClass="statemachine::State">
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="SMD_Transition_Edge" sourceMapping="//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']" targetMapping="//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']" targetFinderExpression="feature:state" sourceFinderExpression="feature:eContainer" domainClass="statemachine::Transition" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="aql:self.event.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="SMD_StateContainer" semanticCandidatesExpression="feature:states" domainClass="statemachine::State">
+          <subNodeMappings name="SMD_ActionState" semanticCandidatesExpression="aql:self.actions" domainClass="statemachine::Command">
+            <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.actions->size()>0">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" roundedCorner="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <toolSections name="SMD_CreationTools">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="SMD_CreateState" label="Create a State" containerMappings="//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@containerMappings[name='SMD_StateContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="statemachine::State" referenceName="states">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newState'+self.eContainer().eContents(statemachine::State)->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SMD_CreateTransition" label="CreateTransition" edgeMappings="//@ownedViewpoints[name='StateMachine']/@ownedRepresentations[name='StateMachineDiagram']/@defaultLayer/@edgeMappings[name='SMD_Transition_Edge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer()">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="statemachine::Event" referenceName="events" variableName="newEvent">
+                  <subModelOperations xsi:type="tool_1:Let" variableName="nbInstance" valueExpression="aql:self.eContainer().eContents(statemachine::Event)->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newEvent'+nbInstance"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="displayname" valueExpression="aql:'display name'+nbInstance"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="code" valueExpression="aql:'code'+nbInstance"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="statemachine::Transition" referenceName="transitions">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="state" valueExpression="aql:target"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="event" valueExpression="var:newEvent"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.tests.sample.xtext.statemachine.design.Services"/>
+  </ownedViewpoints>
+</description:Group>

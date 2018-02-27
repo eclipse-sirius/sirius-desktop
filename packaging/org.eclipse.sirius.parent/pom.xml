@@ -480,6 +480,7 @@
         <module>../../plugins/org.eclipse.sirius.tests.sample.xtext.statemachine</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.xtext.statemachine.ui</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.xtext.statemachine.ide</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.xtext.statemachine.design</module>
         
         <module>../../plugins/org.eclipse.sirius.tests.junit</module>
         <module>../../plugins/org.eclipse.sirius.tests.tree</module>
