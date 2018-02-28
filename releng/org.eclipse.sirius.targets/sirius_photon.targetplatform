@@ -7,6 +7,8 @@ include "modules/aql-nightly.tpd"
 include "modules/acceleo-nightly.tpd"
 include "modules/eef-nightly.tpd"
 include "modules/elk-0.3.tpd"
+include "modules/jetty-9.4.tpd"
+
 with source, requirements
 
 location Sirius-Oxygen-Master "http://download.eclipse.org/sirius/updates/nightly/latest/oxygen/" {

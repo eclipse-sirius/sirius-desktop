@@ -1,0 +1,15 @@
+target "Jetty 9.4.x"
+
+location "http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/" {
+	org.eclipse.jetty.io [9.0.0,9.5.0)
+	org.eclipse.jetty.http [9.0.0,9.5.0)
+	org.eclipse.jetty.server [9.0.0,9.5.0)
+	org.eclipse.jetty.servlet [9.0.0,9.5.0)
+	org.eclipse.jetty.servlets [9.0.0,9.5.0)
+	org.eclipse.jetty.util [9.0.0,9.5.0)
+	org.eclipse.jetty.osgi.boot [9.0.0,9.5.0)
+
+	// The bundle to use for the standard Java WebSocket API
+	// org.eclipse.jetty.websocket.javax.websocket [9.0.0,9.5.0)
+	// org.eclipse.jetty.websocket.javax.websocket.server [9.0.0,9.5.0)
+}
