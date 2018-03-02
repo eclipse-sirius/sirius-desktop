@@ -14,14 +14,14 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.eef.common.api.AbstractEEFEclipsePlugin;
 import org.eclipse.eef.core.api.EditingContextAdapter;
-import org.eclipse.eef.ide.api.extensions.AbstractRegistryEventListener;
-import org.eclipse.eef.ide.api.extensions.IItemDescriptor;
-import org.eclipse.eef.ide.api.extensions.IItemRegistry;
-import org.eclipse.eef.ide.api.extensions.impl.DescriptorRegistryEventListener;
-import org.eclipse.eef.ide.api.extensions.impl.ItemRegistry;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ext.ide.api.AbstractRegistryEventListener;
+import org.eclipse.sirius.ext.ide.api.DescriptorRegistryEventListener;
+import org.eclipse.sirius.ext.ide.api.IItemDescriptor;
+import org.eclipse.sirius.ext.ide.api.IItemRegistry;
+import org.eclipse.sirius.ext.ide.api.ItemRegistry;
 import org.eclipse.sirius.ui.properties.api.IEditingContextAdapterProvider;
 import org.osgi.framework.BundleContext;
 
@@ -75,20 +75,17 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
      */
     public static class Implementation extends AbstractEEFEclipsePlugin {
         /**
-         * The name of the extension point for the
-         * {@link IEditingContextAdapterProvider}.
+         * The name of the extension point for the {@link IEditingContextAdapterProvider}.
          */
         private static final String CONTEXT_ADAPTER_PROVIDER_EXTENSION_POINT = "contextAdapterProvider"; //$NON-NLS-1$
 
         /**
-         * The {@link IItemRegistry} used to retrieve the
-         * {@link IEditingContextAdapterProvider}.
+         * The {@link IItemRegistry} used to retrieve the {@link IEditingContextAdapterProvider}.
          */
         private IItemRegistry<IEditingContextAdapterProvider> contextAdapterProviderRegistry;
 
         /**
-         * The extension registry listener for the
-         * {@link IEditingContextAdapterProvider}.
+         * The extension registry listener for the {@link IEditingContextAdapterProvider}.
          */
         private AbstractRegistryEventListener contextAdapterProviderListener;
 
@@ -124,8 +121,8 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
         }
 
         /**
-         * Returns the appropriate {@link EditingContextAdapter} to use for the
-         * specified session, taking registered providers into account.
+         * Returns the appropriate {@link EditingContextAdapter} to use for the specified session, taking registered
+         * providers into account.
          * 
          * @param session
          *            the Sirius session.

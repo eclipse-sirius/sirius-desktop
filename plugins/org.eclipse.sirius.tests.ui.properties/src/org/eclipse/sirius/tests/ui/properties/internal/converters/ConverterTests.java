@@ -55,7 +55,6 @@ import org.junit.Test;
  * 
  * @author sbegaudeau
  */
-@SuppressWarnings("restriction")
 public class ConverterTests {
     /**
      * The path of the Sirius model in the bundle.

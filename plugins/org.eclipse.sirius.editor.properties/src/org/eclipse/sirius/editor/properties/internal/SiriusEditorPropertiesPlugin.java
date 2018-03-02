@@ -15,11 +15,6 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.eef.ide.api.extensions.AbstractRegistryEventListener;
-import org.eclipse.eef.ide.api.extensions.IItemDescriptor;
-import org.eclipse.eef.ide.api.extensions.IItemRegistry;
-import org.eclipse.eef.ide.api.extensions.impl.DescriptorRegistryEventListener;
-import org.eclipse.eef.ide.api.extensions.impl.ItemRegistry;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -31,6 +26,11 @@ import org.eclipse.sirius.editor.properties.tools.internal.menu.widgets.DefaultE
 import org.eclipse.sirius.editor.properties.tools.internal.menu.widgets.DefaultMonolineTextDescriptionFactory;
 import org.eclipse.sirius.editor.properties.tools.internal.menu.widgets.DefaultMultilineTextDescriptionFactory;
 import org.eclipse.sirius.editor.properties.tools.internal.menu.widgets.DefaultMultivaluedEAttributeDescriptionFactory;
+import org.eclipse.sirius.ext.ide.api.AbstractRegistryEventListener;
+import org.eclipse.sirius.ext.ide.api.DescriptorRegistryEventListener;
+import org.eclipse.sirius.ext.ide.api.IItemDescriptor;
+import org.eclipse.sirius.ext.ide.api.IItemRegistry;
+import org.eclipse.sirius.ext.ide.api.ItemRegistry;
 import org.osgi.framework.BundleContext;
 
 /**
