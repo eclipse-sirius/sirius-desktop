@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.server.siriusServerConfigurator">
+      <descriptor
+            class="org.eclipse.sirius.server.backend.internal.SiriusServerBackendConfigurator"
+            description="%SiriusServerBackendConfigurator_description"
+            id="org.eclipse.sirius.server.backend.SiriusServerBackendConfigurator"
+            label="%SiriusServerBackendConfigurator_label">
+      </descriptor>
+   </extension>
+</plugin>

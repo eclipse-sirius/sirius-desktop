@@ -373,6 +373,7 @@
         <module>../../plugins/org.eclipse.sirius.ext.emf.ui</module>
         <module>../../plugins/org.eclipse.sirius.ext.gef</module>
         <module>../../plugins/org.eclipse.sirius.ext.gmf.runtime</module>
+        <module>../../plugins/org.eclipse.sirius.ext.ide</module>
         <module>../../plugins/org.eclipse.sirius.ext.jface</module>
         <module>../../plugins/org.eclipse.sirius.ext.swt</module>
         <module>../../plugins/org.eclipse.sirius.common.acceleo.aql.ide</module>
@@ -428,6 +429,11 @@
         <module>../../plugins/org.eclipse.sirius.sample.properties.textarea</module>
         <module>../../plugins/org.eclipse.sirius.tests.ui.properties</module>
 
+        <module>../../plugins/org.eclipse.sirius.server</module>
+        <module>../../plugins/org.eclipse.sirius.server.backend</module>
+        <module>../../plugins/org.eclipse.sirius.server.frontend</module>
+        <module>../../plugins/org.eclipse.sirius.server.ui.autostart</module>
+        
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.aql</module>
         <module>../../packaging/org.eclipse.sirius.doc.feature</module>
@@ -448,6 +454,7 @@
         <module>../../packaging/org.eclipse.sirius.samples.properties.feature</module>
         
         <module>../../packaging/org.eclipse.sirius.diagram.elk.feature</module>
+        <module>../../packaging/org.eclipse.sirius.server.feature</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.update</module>
