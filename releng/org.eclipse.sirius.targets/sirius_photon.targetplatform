@@ -11,7 +11,7 @@ include "modules/jetty-9.4.tpd"
 
 with source, requirements
 
-location Sirius-Oxygen-Master "http://download.eclipse.org/sirius/updates/nightly/latest/oxygen/" {
+location Sirius-Photon-Master "http://download.eclipse.org/sirius/updates/nightly/latest/photon/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
