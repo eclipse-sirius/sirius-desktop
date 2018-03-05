@@ -136,4 +136,11 @@ Install this if you want to either use existing Sirius-based modelers or create 
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.eclipse.sirius.ext.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
