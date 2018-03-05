@@ -35,7 +35,7 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.concern.ConcernFactory;
 import org.eclipse.sirius.diagram.description.concern.ConcernSet;
 import org.eclipse.sirius.diagram.description.filter.FilterFactory;
-import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProviderSupplier;
+import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -655,9 +655,9 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
      *            the child descriptor collection where to add new child descriptors.
      */
     private void addAllCustomLayoutChildDescriptors(Collection<Object> newChildDescriptors) {
-        Map<String, GenericLayoutProviderSupplier> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutProviderRegistry();
-        Set<Entry<String, GenericLayoutProviderSupplier>> layoutProviders = layoutProviderRegistry.entrySet();
-        for (Entry<String, GenericLayoutProviderSupplier> layoutProviderEntry : layoutProviders) {
+        Map<String, CustomLayoutAlgorithm> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutAlgorithms();
+        Set<Entry<String, CustomLayoutAlgorithm>> layoutProviders = layoutProviderRegistry.entrySet();
+        for (Entry<String, CustomLayoutAlgorithm> layoutProviderEntry : layoutProviders) {
             CustomLayoutConfiguration customConfiguration = DescriptionFactory.eINSTANCE.createCustomLayoutConfiguration();
             customConfiguration.setId(layoutProviderEntry.getKey());
             customConfiguration.setLabel(layoutProviderEntry.getValue().getLabel());

@@ -20,6 +20,7 @@
    <extension-point id="formatDataManager" name="%extension-point.formatDataManager.name" schema="schema/formatDataManager.exsd"/>
    <extension-point id="imageSelector" name="%extension-point.imageSelector.name" schema="schema/imageSelector.exsd"/>
    <extension-point id="tabbarContributor" name="%extension-point.tabbarContributor.name" schema="schema/tabbarContributor.exsd"/>
+   <extension-point id="customLayoutAlgorithmProvider" name="%extension-point.customLayoutAlgorithmProvider.name" schema="schema/customLayoutAlgorithmProvider.exsd"/>
 
    <extension point="org.eclipse.ui.elementFactories">
      <factory

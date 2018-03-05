@@ -18,10 +18,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -44,16 +47,15 @@ import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.common.ui.tools.internal.preference.DynamicConfigurationHelper;
-import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
+import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.business.internal.image.ImageSelectorDescriptorRegistryListener;
 import org.eclipse.sirius.diagram.ui.business.internal.image.refresh.WorkspaceImageFigureRefresher;
-import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProviderSupplier;
+import org.eclipse.sirius.diagram.ui.internal.layout.CustomLayoutAlgorithmProviderRegistry;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.WorkspaceFileResourceChangeListener;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationProviderRegistry;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.decoration.DescribedDecorationDescriptorProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.decoration.EditModeDecorationDescriptorProvider;
@@ -160,7 +162,12 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * A registry containing all layout providers that can be specified directly in the VSM. A layout provider
          * provides a layout algorithm that can be used when doing an arrange all on a Sirius diagram.
          */
-        private Map<String, GenericLayoutProviderSupplier> layoutProviderRegistry;
+        private Map<String, CustomLayoutAlgorithm> layoutAlgorithmsRegistry;
+
+        /**
+         * A registry updating the {@link Implementation#layoutAlgorithmsRegistry} from extension point declarations.
+         */
+        private CustomLayoutAlgorithmProviderRegistry layoutAlgorithmProviderRegistry;
 
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -176,42 +183,54 @@ public final class DiagramUIPlugin extends EMFPlugin {
         }
 
         /**
-         * Add a new layout provider to the registry.
+         * Add a new custom layout algorithm to the registry.
          *
-         * @param providerId
-         *            the id of the layout provider to register.
-         * @param providerLabel
-         *            the label of the layout provider to register.
-         * @param layoutSupplier
-         *            the {@link DefaultLayoutProvider} instances supplier.
-         * @param layoutOptions
+         * @param customLayoutAlgorithm
+         *            the layout algorithm to add.
          */
-        public void addLayoutProvider(String providerId, String providerLabel, Supplier<DefaultLayoutProvider> layoutSupplier, List<LayoutOption> layoutOptions) {
-            Map<String, LayoutOption> optionsMap = new HashMap<String, LayoutOption>();
-            for (LayoutOption layoutOption : layoutOptions) {
-                optionsMap.put(layoutOption.getId(), layoutOption);
-            }
-            layoutProviderRegistry.put(providerId, new GenericLayoutProviderSupplier(providerLabel, layoutSupplier, optionsMap));
+        public void addLayoutAlgorithm(CustomLayoutAlgorithm customLayoutAlgorithm) {
+            layoutAlgorithmsRegistry.put(customLayoutAlgorithm.getId(), customLayoutAlgorithm);
         }
 
         /**
-         * Remove the layout provider identified by the given id from the registry.
+         * Remove the layout algorithm identified by the given id from the registry.
          *
          * @param layoutProviderId
-         *            the id of the layout provider to remove from the registry.
-         * @return the layout provider removed if such element exists.
+         *            the id of the layout algorithm to remove from the registry.
+         * @return the layout algorithm removed if such element exists.
          */
-        public GenericLayoutProviderSupplier removeLayoutProvider(String layoutProviderId) {
-            return layoutProviderRegistry.remove(layoutProviderId);
+        public CustomLayoutAlgorithm removeLayoutAlgorithm(String layoutProviderId) {
+            return layoutAlgorithmsRegistry.remove(layoutProviderId);
         }
 
         /**
          * Returns the unmodifiable registry containing all layout providers that can be specified directly in the VSM.
          *
-         * @return an unmodifiable map of layout providers suppliers associated to their ids.
+         * @return an unmodifiable map of CustomLayoutAlgorithm associated to their id.
          */
-        public Map<String, GenericLayoutProviderSupplier> getLayoutProviderRegistry() {
-            return Collections.unmodifiableMap(layoutProviderRegistry);
+        public Map<String, CustomLayoutAlgorithm> getLayoutAlgorithms() {
+            return Collections.unmodifiableMap(layoutAlgorithmsRegistry);
+        }
+
+        /**
+         * Logs an error in the error log.
+         * 
+         * @param message
+         *            the message to log (optional).
+         * @param e
+         *            the exception (optional).
+         */
+        public void error(final String message, final Exception e) {
+            String msgToDisplay = message;
+            if (message == null && e != null) {
+                msgToDisplay = e.getMessage();
+            }
+            if (e instanceof CoreException) {
+                this.getLog().log(((CoreException) e).getStatus());
+            } else {
+                final IStatus status = new Status(IStatus.ERROR, this.getBundle().getSymbolicName(), msgToDisplay, e);
+                this.getLog().log(status);
+            }
         }
 
         /**
@@ -239,7 +258,10 @@ public final class DiagramUIPlugin extends EMFPlugin {
             layoutDataManagerRegistryListener = new LayoutDataManagerRegistryListener();
             layoutDataManagerRegistryListener.init();
 
-            layoutProviderRegistry = new HashMap<String, GenericLayoutProviderSupplier>();
+            layoutAlgorithmsRegistry = new HashMap<String, CustomLayoutAlgorithm>();
+
+            layoutAlgorithmProviderRegistry = new CustomLayoutAlgorithmProviderRegistry(layoutAlgorithmsRegistry);
+            Platform.getExtensionRegistry().addListener(layoutAlgorithmProviderRegistry, CustomLayoutAlgorithmProviderRegistry.LAYOUT_ALGORITHM_PROVIDER_EXTENSION_POINT_ID);
 
             registerCoreDecorationProviders();
         }
@@ -272,7 +294,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
                 // can occur when using CDO (if the view is
                 // closed when transactions have been closed)
             }
-            layoutProviderRegistry = null;
+            layoutAlgorithmsRegistry = null;
             formatDataManagerRegistryListener.dispose();
             formatDataManagerRegistryListener = null;
 
@@ -284,6 +306,9 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
             imageSelectorDescriptorRegistryListener.dispose();
             imageSelectorDescriptorRegistryListener = null;
+
+            layoutAlgorithmProviderRegistry = null;
+            layoutAlgorithmsRegistry = null;
             /*
              * Disposing the images
              */

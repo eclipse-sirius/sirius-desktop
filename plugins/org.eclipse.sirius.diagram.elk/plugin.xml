@@ -16,4 +16,10 @@
        </Priority>
     </editpolicyProvider>
  </extension>
+  <extension
+        point="org.eclipse.sirius.diagram.ui.customLayoutAlgorithmProvider">
+     <customLayoutProvider
+           class="org.eclipse.sirius.diagram.elk.ELKAlgorithmProvider">
+     </customLayoutProvider>
+  </extension>
 </plugin>

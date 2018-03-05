@@ -19,7 +19,7 @@ import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.EnumOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.provider.CustomLayoutConfigurationItemProvider;
-import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProviderSupplier;
+import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
@@ -49,10 +49,10 @@ public class CustomLayoutConfigurationItemProviderSpec extends CustomLayoutConfi
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        Map<String, GenericLayoutProviderSupplier> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutProviderRegistry();
+        Map<String, CustomLayoutAlgorithm> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutAlgorithms();
         CustomLayoutConfiguration layout = (CustomLayoutConfiguration) object;
 
-        GenericLayoutProviderSupplier genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getId());
+        CustomLayoutAlgorithm genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getId());
         Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
         for (LayoutOption layoutOption : layoutOptions.values()) {
             LayoutOption copy = EcoreUtil.copy(layoutOption);

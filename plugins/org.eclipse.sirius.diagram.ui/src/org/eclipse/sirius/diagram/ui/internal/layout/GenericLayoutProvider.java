@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.layout;
 
-import java.util.function.Supplier;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider;
@@ -36,10 +34,9 @@ public class GenericLayoutProvider implements LayoutProvider {
 
     @Override
     public AbstractLayoutEditPartProvider getLayoutNodeProvider(final IGraphicalEditPart container) {
-        Supplier<DefaultLayoutProvider> layoutProvider = getGenericLayoutProvider(container);
+        DefaultLayoutProvider layoutProvider = getGenericLayoutProvider(container);
         if (layoutProvider != null) {
-
-            return new ArrangeSelectionLayoutProvider(layoutProvider.get());
+            return new ArrangeSelectionLayoutProvider(layoutProvider);
         }
         return null;
     }
@@ -55,14 +52,14 @@ public class GenericLayoutProvider implements LayoutProvider {
     }
 
     /**
-     * Returns the generic layout provider associated to the description of the {@link DDiagram} related to the given
-     * part.
+     * Returns the {@link CustomLayoutConfiguration} associated to the description of the {@link DDiagram} related to
+     * the given part.
      * 
      * @param container
-     * @return the generic layout provider associated to the description of the {@link DDiagram} related to the given
-     *         part. Null if no such element exists.
+     * @return the {@link CustomLayoutConfiguration} associated to the description of the {@link DDiagram} related to
+     *         the given part. Null if no such element exists.
      */
-    private Supplier<DefaultLayoutProvider> getGenericLayoutProvider(final IGraphicalEditPart container) {
+    private CustomLayoutConfiguration getCustomLayoutConfiguration(final IGraphicalEditPart container) {
         final View view = container.getNotationView();
         final EObject modelElement = view.getElement();
         if (view instanceof Diagram && modelElement instanceof DDiagram) {
@@ -71,9 +68,25 @@ public class GenericLayoutProvider implements LayoutProvider {
             if (desc != null) {
                 final Layout layout = desc.getLayout();
                 if (layout instanceof CustomLayoutConfiguration) {
-                    return DiagramUIPlugin.getPlugin().getLayoutProviderRegistry().get(((CustomLayoutConfiguration) layout).getId()).getLayoutProviderSupplier();
+                    return (CustomLayoutConfiguration) layout;
                 }
             }
+        }
+        return null;
+    }
+
+    /**
+     * Returns the generic layout provider associated to the description of the {@link DDiagram} related to the given
+     * part.
+     * 
+     * @param container
+     * @return the generic layout provider associated to the description of the {@link DDiagram} related to the given
+     *         part. Null if no such element exists.
+     */
+    private DefaultLayoutProvider getGenericLayoutProvider(final IGraphicalEditPart container) {
+        CustomLayoutConfiguration customLayoutConfiguration = getCustomLayoutConfiguration(container);
+        if (customLayoutConfiguration != null) {
+            return DiagramUIPlugin.getPlugin().getLayoutAlgorithms().get(customLayoutConfiguration.getId()).getLayoutAlgorithmInstance();
         }
         return null;
     }

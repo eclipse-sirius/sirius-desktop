@@ -1511,6 +1511,12 @@ public final class Messages {
     @TranslatableMessage
     public static String ResetToDefaultFiltersAction_tooltip;
 
+    @TranslatableMessage
+    public static String LayoutAlgorithmProviderRegistry_badClassType;
+
+    @TranslatableMessage
+    public static String LayoutAlgorithmProviderRegistry_classInitialization;
+
     // CHECKSTYLE:ON
 
     private Messages() {

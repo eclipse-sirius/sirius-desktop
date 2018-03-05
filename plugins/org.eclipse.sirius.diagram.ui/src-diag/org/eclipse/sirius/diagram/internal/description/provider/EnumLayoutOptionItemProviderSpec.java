@@ -21,7 +21,7 @@ import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.provider.EnumLayoutOptionItemProvider;
-import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProviderSupplier;
+import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
@@ -51,10 +51,10 @@ public class EnumLayoutOptionItemProviderSpec extends EnumLayoutOptionItemProvid
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        Map<String, GenericLayoutProviderSupplier> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutProviderRegistry();
+        Map<String, CustomLayoutAlgorithm> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutAlgorithms();
         EnumLayoutOption layoutOption = (EnumLayoutOption) object;
         CustomLayoutConfiguration layout = (CustomLayoutConfiguration) layoutOption.eContainer();
-        GenericLayoutProviderSupplier genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getId());
+        CustomLayoutAlgorithm genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getId());
         Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
         EnumLayoutOption layoutOptionTemplate = (EnumLayoutOption) layoutOptions.get(layoutOption.getId());
         EList<EnumLayoutValue> choices = layoutOptionTemplate.getChoices();
