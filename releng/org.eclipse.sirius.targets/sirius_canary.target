@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_canary" sequenceNumber="1520264144">
+<target name="sirius_canary" sequenceNumber="1520343025">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -126,6 +126,7 @@
       <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xpand.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.mwe.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="0.0.0"/>
       <repository id="XText-Latest" location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/"/>
     </location>
   </locations>

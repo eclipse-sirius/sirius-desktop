@@ -93,4 +93,5 @@ location XText-Latest "http://download.eclipse.org/modeling/tmf/xtext/updates/co
    org.eclipse.xtext.sdk.feature.group lazy
    org.eclipse.xpand.sdk.feature.group lazy
    org.eclipse.emf.mwe.sdk.feature.group lazy
+   org.eclipse.emf.mwe2.language.sdk.feature.group lazy
 }
