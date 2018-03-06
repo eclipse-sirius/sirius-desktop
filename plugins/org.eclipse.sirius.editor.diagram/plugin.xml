@@ -834,6 +834,81 @@
         <input type="org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration"/>        
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.enumlayoutvalue.EnumLayoutValueDescriptionPropertySection"
+               id="description.section.enumLayoutOption.Description"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.enumlayoutvalue.EnumLayoutValueDescriptionFilter"
+               afterSection="description.section.layoutOption.Value"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.EnumLayoutValue"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.enumlayoutvalue.EnumLayoutValueNamePropertySection"
+               id="description.section.enumLayoutValue.Value"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.enumlayoutvalue.EnumLayoutValueNameFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.EnumLayoutValue"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.doublelayoutoption.DoubleLayoutOptionValuePropertySection"
+               id="description.section.doubleLayoutOption.Value"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.doublelayoutoption.DoubleLayoutOptionValueFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.DoubleLayoutOption"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.integerlayoutoption.IntegerLayoutOptionValuePropertySection"
+               id="description.section.integerLayoutOption.Value"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.integerlayoutoption.IntegerLayoutOptionValueFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.IntegerLayoutOption"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.stringlayoutoption.StringLayoutOptionValuePropertySection"
+               id="description.section.stringLayoutOption.Value"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.stringlayoutoption.StringLayoutOptionValueFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.StringLayoutOption"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.booleanlayoutoption.BooleanLayoutOptionValuePropertySection"
+               id="description.section.booleanLayoutOption.Value"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.booleanlayoutoption.BooleanLayoutOptionValueFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.BooleanLayoutOption"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.layoutoption.LayoutOptionDescriptionPropertySection"
+               id="description.section.layoutOption.Description"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.layoutoption.LayoutOptionDescriptionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.LayoutOption"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.customlayoutconfiguration.CustomLayoutConfigurationDescriptionPropertySection"
+               id="description.section.customLayoutConfiguration.Description"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.customlayoutconfiguration.CustomLayoutConfigurationDescriptionFilter"
+               afterSection="description.section.customLayoutConfiguration.Label"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.CustomLayoutConfiguration"/>
+      </propertySection>
+      <!--
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.customlayoutconfiguration.CustomLayoutConfigurationLabelPropertySection"
+               id="description.section.customLayoutConfiguration.Label"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.customlayoutconfiguration.CustomLayoutConfigurationLabelFilter"
+               afterSection="description.section.customLayoutConfiguration.Id"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.CustomLayoutConfiguration"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.customlayoutconfiguration.CustomLayoutConfigurationIdPropertySection"
+               id="description.section.customLayoutConfiguration.Id"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.customlayoutconfiguration.CustomLayoutConfigurationIdFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.CustomLayoutConfiguration"/>
+      </propertySection>
+      -->
+  	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.description.compositelayout.CompositeLayoutDirectionPropertySection"
                id="description.section.compositeLayout.Direction"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.description.compositelayout.CompositeLayoutDirectionFilter"

@@ -1012,6 +1012,116 @@
    
       </description>
    </context>
+   <context id="CustomLayoutConfiguration">
+     <description>
+       
+       
+         
+   <!-- Start of user code CustomLayoutConfiguration description -->
+   
+   <!-- End of user code CustomLayoutConfiguration description -->
+   
+      </description>
+   </context>
+   <context id="LayoutOption">
+     <description>
+       
+       
+         
+   <!-- Start of user code LayoutOption description -->
+   
+   <!-- End of user code LayoutOption description -->
+   
+      </description>
+   </context>
+   <context id="BooleanLayoutOption">
+     <description>
+       
+       
+         
+   <!-- Start of user code BooleanLayoutOption description -->
+   
+   <!-- End of user code BooleanLayoutOption description -->
+   
+      </description>
+   </context>
+   <context id="StringLayoutOption">
+     <description>
+       
+       
+         
+   <!-- Start of user code StringLayoutOption description -->
+   
+   <!-- End of user code StringLayoutOption description -->
+   
+      </description>
+   </context>
+   <context id="IntegerLayoutOption">
+     <description>
+       
+       
+         
+   <!-- Start of user code IntegerLayoutOption description -->
+   
+   <!-- End of user code IntegerLayoutOption description -->
+   
+      </description>
+   </context>
+   <context id="DoubleLayoutOption">
+     <description>
+       
+       
+         
+   <!-- Start of user code DoubleLayoutOption description -->
+   
+   <!-- End of user code DoubleLayoutOption description -->
+   
+      </description>
+   </context>
+   <context id="EnumLayoutOption">
+     <description>
+       
+       
+         
+   <!-- Start of user code EnumLayoutOption description -->
+   
+   <!-- End of user code EnumLayoutOption description -->
+   
+      </description>
+   </context>
+   <context id="EnumSetLayoutOption">
+     <description>
+       
+       
+         
+   <!-- Start of user code EnumSetLayoutOption description -->
+   
+   <!-- End of user code EnumSetLayoutOption description -->
+   
+      </description>
+   </context>
+   <context id="EnumOption">
+     <description>
+       
+       
+         
+   <!-- Start of user code EnumOption description -->
+   
+   <!-- End of user code EnumOption description -->
+   
+      </description>
+   </context>
+   <context id="EnumLayoutValue">
+     <description>
+       
+       
+         
+   <!-- Start of user code EnumLayoutValue description -->
+   
+   <!-- End of user code EnumLayoutValue description -->
+   
+      </description>
+   </context>
    <context id="MappingBasedDecoration">
      <description>
        A MappingBasedDecoration applies decorations on views that are issued from one or more mappings.

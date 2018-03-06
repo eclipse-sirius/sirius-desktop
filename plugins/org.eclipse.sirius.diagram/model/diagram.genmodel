@@ -593,12 +593,11 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CompositeLayout/padding"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CompositeLayout/direction"/>
       </genClasses>
-      <genClasses ecoreClass="diagram.ecore#//description/GenericLayout">
-        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/GenericLayout/ID"/>
-        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/GenericLayout/label"/>
-        <genFeatures property="Readonly" createChild="false" propertyMultiLine="true"
-            ecoreFeature="ecore:EAttribute diagram.ecore#//description/GenericLayout/description"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/GenericLayout/layoutOptions"/>
+      <genClasses ecoreClass="diagram.ecore#//description/CustomLayoutConfiguration">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CustomLayoutConfiguration/id"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CustomLayoutConfiguration/label"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/CustomLayoutConfiguration/description"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/CustomLayoutConfiguration/layoutOptions"/>
       </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/LayoutOption">
         <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/LayoutOption/id"/>
