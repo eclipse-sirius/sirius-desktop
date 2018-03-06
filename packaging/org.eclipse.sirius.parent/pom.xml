@@ -684,7 +684,7 @@
          <properties>
              <tests.junit.skip>false</tests.junit.skip>
              <tests.timeout>${tests.timeout.junit}</tests.timeout>
-             <tests.junit.include>org/eclipse/sirius/tests/suite/AllSiriusTestSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java, org/eclipse/sirius/tests/ui/properties/internal/AllTests.java</tests.junit.include>
+             <tests.junit.include>org/eclipse/sirius/tests/suite/AllSiriusTestSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java, org/eclipse/sirius/tests/ui/properties/internal/AllTests.java, org/eclipse/sirius/tests/xtext/suite/AllSiriusXtextTestSuite.java</tests.junit.include>
              <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
          </properties>
      </profile>
@@ -696,7 +696,7 @@
          <properties>
              <tests.junit.skip>false</tests.junit.skip>
              <tests.timeout>${tests.timeout.junit}</tests.timeout>
-             <tests.junit.include>org/eclipse/sirius/tests/suite/GerritJUnitSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java, org/eclipse/sirius/tests/ui/properties/internal/AllTests.java</tests.junit.include>
+             <tests.junit.include>org/eclipse/sirius/tests/suite/GerritJUnitSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java, org/eclipse/sirius/tests/ui/properties/internal/AllTests.java, org/eclipse/sirius/tests/xtext/suite/AllSiriusXtextTestSuite.java</tests.junit.include>
              <tests.vmargs>${jacoco.agent.ut.arg} ${tests.vmargs.mac} -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
              <tests.ignoreFailures>false</tests.ignoreFailures>
          </properties>

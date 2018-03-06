@@ -11,7 +11,12 @@ Require-Bundle: org.eclipse.sirius.tests.junit,
  org.eclipse.sirius.diagram,
  org.eclipse.xtext,
  org.eclipse.sirius.common.xtext,
- org.eclipse.sirius.tests.sample.xtext.statemachine.design
+ org.eclipse.sirius.tests.sample.xtext.statemachine.design,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.common.types.shared;bundle-version="2.12.0",
+ org.eclipse.sirius.tests.sample.xtext.statemachine.ide;bundle-version="6.0.0",
+ org.eclipse.sirius.tests.sample.xtext.statemachine.ui;bundle-version="6.0.0",
+ org.eclipse.sirius.common
 Bundle-Activator: org.eclipse.sirius.tests.xtext.SiriusXtextTestsPlugin
 Eclipse-LazyStart: true
 Bundle-Localization: plugin
