@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.FigureCanvas;
@@ -41,6 +42,8 @@ import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -328,6 +331,25 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
             layoutHelper = new SiriusLayoutHelper();
         }
         return layoutHelper;
+    }
+
+    @Override
+    protected Object getConstraintFor(ChangeBoundsRequest request, GraphicalEditPart child) {
+        Rectangle constraint = (Rectangle) super.getConstraintFor(request, child);
+
+        // If the request is a move request, there is no reason to override the size of the GMF Node with the current
+        // figure size. In some cases, the GMF Bounds may have been updated but the figure has not been refreshed yet.
+        if (REQ_MOVE_CHILDREN.equals(request.getType())) {
+            // We retrieve the Size of the GMF Node attached to the edit part.
+            Optional<Size> optionalSize = Optional.ofNullable(child.getModel()).filter(Node.class::isInstance).map(model -> ((Node) model).getLayoutConstraint()).filter(Size.class::isInstance)
+                    .map(Size.class::cast);
+            if (optionalSize.isPresent()) {
+                Dimension dimension = new Dimension(optionalSize.get().getWidth(), optionalSize.get().getHeight());
+                constraint.setSize(dimension);
+            }
+
+        }
+        return constraint;
     }
 
     /**
