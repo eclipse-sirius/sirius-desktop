@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -155,12 +155,14 @@ public class CreateRepresentationCommand extends RecordingCommand {
     }
 
     private void clearData() {
-        representation = null;
+        this.representation = null;
         this.session = null;
         this.description = null;
         this.semantic = null;
         this.name = null;
         this.creationDescription = null;
+        this.label = null;
+        this.monitor = null;
     }
 
     private static EObject computeRepresentationRoot(final IInterpreter interpreter, final RepresentationCreationDescription desc, final EObject initialRoot) {
