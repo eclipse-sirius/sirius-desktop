@@ -40,5 +40,8 @@ location Eclipse-Neon "http://download.eclipse.org/releases/neon" {
 	org.eclipse.platform.feature.group lazy
 	org.eclipse.sdk.feature.group lazy
 	org.eclipse.xtext.sdk.feature.group lazy
+	org.eclipse.xpand.sdk.feature.group lazy
+    org.eclipse.emf.mwe.sdk.feature.group lazy
+    org.eclipse.emf.mwe2.language.sdk.feature.group lazy
 	org.eclipse.uml2.sdk.feature.group lazy
 }
