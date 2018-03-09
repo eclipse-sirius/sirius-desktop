@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -89,13 +89,7 @@ public class FiltersContributionItem extends AbstractMenuContributionItem {
     private void addFilterMenuItem(IMenuManager manager, final FilterDescription filter) {
         final boolean isActive = isActive(filter);
         final String nameEntry = MessageTranslator.INSTANCE.getMessage(filter, new IdentifiedElementQuery(filter).getLabel());
-        IAction action = new Action(nameEntry, IAction.AS_CHECK_BOX) {
-            @Override
-            public void run() {
-                final Runnable change = new ChangeFilterActivation(part, diagram, filter, !isActive);
-                change.run();
-            }
-        };
+        IAction action = new RunnableAction(nameEntry, IAction.AS_CHECK_BOX, new ChangeFilterActivation(part, diagram, filter, !isActive));
         action.setChecked(isActive);
         manager.add(action);
     }
@@ -103,6 +97,23 @@ public class FiltersContributionItem extends AbstractMenuContributionItem {
     private boolean isActive(FilterDescription filter) {
         final List<FilterDescription> activatedFilters = diagram.getActivatedFilters();
         return activatedFilters.contains(filter);
+    }
+
+    /**
+     * An action whose behavior is defined by a plain {@link Runnable}.
+     */
+    private static class RunnableAction extends Action {
+        private final Runnable runnable;
+
+        RunnableAction(String text, int style, Runnable runnable) {
+            super(text, style);
+            this.runnable = runnable;
+        }
+
+        @Override
+        public void run() {
+            runnable.run();
+        }
     }
 
 }
