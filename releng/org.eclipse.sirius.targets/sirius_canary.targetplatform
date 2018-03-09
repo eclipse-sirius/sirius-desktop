@@ -91,6 +91,7 @@ location GMF-Runtime-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf-
 
 location XText-Latest "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/" {
    org.eclipse.xtext.sdk.feature.group lazy
+   org.eclipse.xtend.sdk.feature.group lazy
    org.eclipse.xpand.sdk.feature.group lazy
    org.eclipse.emf.mwe.sdk.feature.group lazy
    org.eclipse.emf.mwe2.language.sdk.feature.group lazy
