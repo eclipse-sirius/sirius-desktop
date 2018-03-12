@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -127,20 +128,23 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
         Command command = null;
 
-        Map<Notification, Edge> notifToEdge = new HashMap<>();
-        Map<Notification, Node> notifToNode = new HashMap<>();
-
         // this collection contains gmf edges for which we already created a
         // CenterEdgeEndModelChangeOperation. This list aims to avoid creating
         // multi operation for a same gmfEdge in the case we are several
         // notification for it.
         Collection<Edge> edgesWithCreatedCommand = new HashSet<Edge>();
         Collection<AbstractModelChangeOperation<Void>> operations = new ArrayList<AbstractModelChangeOperation<Void>>();
+
+        Map<Notification, Edge> notifToEdge = new HashMap<>();
+        Map<Notification, Node> notifToNode = new HashMap<>();
+        List<View> movedOrResizedViews = new ArrayList<>();
+        prepareData(notifications, notifToEdge, notifToNode, movedOrResizedViews);
+
         for (Notification notification : notifications) {
             // Only consider notification of
             // RefreshEdgeLayoutNotificationFilter.REFRESH_FEATURES list and for
             // which the source or the target has not been moved
-            if (isRefreshEdgeLayoutNeededForNotification(notification, notifications, notifToEdge, notifToNode)) {
+            if (isRefreshEdgeLayoutNeededForNotification(notification, notifToEdge, movedOrResizedViews)) {
                 Optional<Edge> optionalGmfEdge = getCorrespondingEdge(notification, notifToEdge);
                 if (optionalGmfEdge.isPresent() && edgesWithCreatedCommand.add(optionalGmfEdge.get())) {
                     // if there are several notifications, we do not try to
@@ -157,6 +161,26 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
         }
 
         return Options.newSome(command);
+    }
+
+    /**
+     * Get all {@link View}s that have been moved or resized from notifications.
+     * 
+     * @param notifications
+     *            The notifications
+     * @param notifToEdge
+     *            map to store the edge corresponding to the notification
+     * @param notifToNode
+     *            map to store the node corresponding to the notification
+     * @param moveOrResizeViews
+     *            resulting list of moved or resized views
+     */
+    private void prepareData(Collection<Notification> notifications, Map<Notification, Edge> notifToEdge, Map<Notification, Node> notifToNode, List<View> moveOrResizeViews) {
+        for (Notification notification : notifications) {
+            if (MOVE_OR_RESIZE_FEATURES.contains(notification.getFeature())) {
+                getCorrespondingView(notification, notifToEdge, notifToNode).ifPresent(moveOrResizeViews::add);
+            }
+        }
     }
 
     private static final class EdgeLayoutUpdaterCommand extends RecordingCommand {
@@ -238,45 +262,22 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
      * 
      * @param notification
      *            The {@link Notification} to check.
-     * @param notifications
-     *            the whole notification list.
      * @param notifToEdge
      *            Map to retrieve the Edge if yet computed
-     * @param notifToNode
+     * @param movedOrResizedViews
      *            Map to retrieve the Node if yet computed
      * @return true if this notification concerns the edge ends centering, false otherwise.
      */
-    private boolean isRefreshEdgeLayoutNeededForNotification(final Notification notification, Collection<Notification> notifications, Map<Notification, Edge> notifToEdge,
-            Map<Notification, Node> notifToNode) {
+    private boolean isRefreshEdgeLayoutNeededForNotification(final Notification notification, Map<Notification, Edge> notifToEdge, List<View> movedOrResizedViews) {
         if (REFRESH_FEATURES.contains(notification.getFeature())) {
             Optional<Edge> optionalEdge = getCorrespondingEdge(notification, notifToEdge);
             if (optionalEdge.isPresent()) {
+                // If one of the source or target of the edge is moved, then the refresh will be done in the context of
+                // the full refresh so it is not the responsibility to this ModelChangeTrigger to do it
                 final Edge referenceEdge = optionalEdge.get();
-                // Analyze other notifications to detect if the source or the
-                // target of the concerned edges has been moved. In this case we
-                // consider that a "full" layout has been done and that it its
-                // responsibility to correctly set the edge layout.
-                return Iterables.all(notifications, new Predicate<Notification>() {
-                    @Override
-                    public boolean apply(Notification currentNotification) {
-                        boolean apply = false;
-                        if (currentNotification == notification) {
-                            apply = true;
-                        } else {
-                            Optional<? extends View> optionalView = getCorrespondingView(currentNotification, notifToEdge, notifToNode);
-                            if (optionalView.isPresent() && (optionalView.get() == referenceEdge.getSource() || optionalView.get() == referenceEdge.getTarget())) {
-                                // The notification concerns the source or the
-                                // target of the edge, return true only if the
-                                // notification does not concern a move or a
-                                // resize feature
-                                apply = !MOVE_OR_RESIZE_FEATURES.contains(currentNotification.getFeature());
-                            } else {
-                                apply = true;
-                            }
-                        }
-                        return apply;
-                    }
-                });
+                if (!movedOrResizedViews.contains(referenceEdge.getSource()) && !movedOrResizedViews.contains(referenceEdge.getTarget())) {
+                    return true;
+                }
             }
         }
         return false;
