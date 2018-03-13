@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
+import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.provider.EnumLayoutOptionItemProvider;
 import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
@@ -45,8 +46,8 @@ public class EnumLayoutOptionItemProviderSpec extends EnumLayoutOptionItemProvid
 
     @Override
     public String getText(Object object) {
-        LayoutOption layout = (LayoutOption) object;
-        return layout.getLabel();
+        EnumLayoutOption layout = (EnumLayoutOption) object;
+        return layout.getLabel() + ": " + (layout.getValue() != null ? layout.getValue().getName() : ""); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     @Override

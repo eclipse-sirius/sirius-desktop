@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.internal.description.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
-import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.provider.BooleanLayoutOptionItemProvider;
 
 /**
@@ -35,8 +34,8 @@ public class BooleanLayoutOptionItemProviderSpec extends BooleanLayoutOptionItem
 
     @Override
     public String getText(Object object) {
-        LayoutOption layout = (LayoutOption) object;
-        return layout.getLabel();
+        BooleanLayoutOption layout = (BooleanLayoutOption) object;
+        return layout.getLabel() + ": " + Boolean.valueOf(layout.isValue()); //$NON-NLS-1$
     }
 
 }

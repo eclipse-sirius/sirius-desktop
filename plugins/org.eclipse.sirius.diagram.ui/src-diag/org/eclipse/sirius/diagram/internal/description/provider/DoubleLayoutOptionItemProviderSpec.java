@@ -11,11 +11,11 @@
 package org.eclipse.sirius.diagram.internal.description.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.sirius.diagram.description.LayoutOption;
+import org.eclipse.sirius.diagram.description.DoubleLayoutOption;
 import org.eclipse.sirius.diagram.description.provider.DoubleLayoutOptionItemProvider;
 
 /**
- * Customize the label of {@link oubleLayoutOption} items in VSM editor.
+ * Customize the label of {@link DoubleLayoutOption} items in VSM editor.
  * 
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
@@ -34,8 +34,7 @@ public class DoubleLayoutOptionItemProviderSpec extends DoubleLayoutOptionItemPr
 
     @Override
     public String getText(Object object) {
-        LayoutOption layout = (LayoutOption) object;
-        return layout.getLabel();
+        DoubleLayoutOption layout = (DoubleLayoutOption) object;
+        return layout.getLabel() + ": " + layout.getValue(); //$NON-NLS-1$
     }
-
 }

@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.internal.description.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
-import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.provider.IntegerLayoutOptionItemProvider;
 
 /**
@@ -35,8 +34,8 @@ public class IntegerLayoutOptionItemProviderSpec extends IntegerLayoutOptionItem
 
     @Override
     public String getText(Object object) {
-        LayoutOption layout = (LayoutOption) object;
-        return layout.getLabel();
+        IntegerLayoutOption layout = (IntegerLayoutOption) object;
+        return layout.getLabel() + ": " + layout.getValue(); //$NON-NLS-1$
     }
 
 }

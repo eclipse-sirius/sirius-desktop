@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.internal.description.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
 import org.eclipse.sirius.diagram.description.provider.StringLayoutOptionItemProvider;
 
@@ -35,8 +34,8 @@ public class StringLayoutOptionItemProviderSpec extends StringLayoutOptionItemPr
 
     @Override
     public String getText(Object object) {
-        LayoutOption layout = (LayoutOption) object;
-        return layout.getLabel();
+        StringLayoutOption layout = (StringLayoutOption) object;
+        return layout.getLabel() + ": " + layout.getValue(); //$NON-NLS-1$
     }
 
 }
