@@ -69,8 +69,7 @@ public class LayersCellModifier implements ICellModifier {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.jface.viewers.ICellModifier#canModify(java.lang.Object,
-     *      java.lang.String)
+     * @see org.eclipse.jface.viewers.ICellModifier#canModify(java.lang.Object, java.lang.String)
      */
     @Override
     public boolean canModify(final Object element, final String property) {
@@ -85,8 +84,7 @@ public class LayersCellModifier implements ICellModifier {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.jface.viewers.ICellModifier#getValue(java.lang.Object,
-     *      java.lang.String)
+     * @see org.eclipse.jface.viewers.ICellModifier#getValue(java.lang.Object, java.lang.String)
      */
     @Override
     public Object getValue(final Object element, final String property) {
@@ -119,8 +117,7 @@ public class LayersCellModifier implements ICellModifier {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.jface.viewers.ICellModifier#modify(java.lang.Object,
-     *      java.lang.String, java.lang.Object)
+     * @see org.eclipse.jface.viewers.ICellModifier#modify(java.lang.Object, java.lang.String, java.lang.Object)
      */
     @Override
     public void modify(final Object element, final String property, final Object value) {
@@ -146,7 +143,6 @@ public class LayersCellModifier implements ICellModifier {
 
                 if (designerElement instanceof DDiagram && diagramEditor != null) {
                     final DDiagram dDiagram = (DDiagram) designerElement;
-                    layerActivationAdapter.setPaletteManager(diagramEditor.getPaletteManager());
 
                     final IWorkbench wb = PlatformUI.getWorkbench();
                     final IProgressService ps = wb.getProgressService();

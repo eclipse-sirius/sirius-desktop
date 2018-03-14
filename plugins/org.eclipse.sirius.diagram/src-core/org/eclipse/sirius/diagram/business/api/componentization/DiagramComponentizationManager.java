@@ -41,8 +41,8 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 
 /**
- * This class handles componentization for diagram elements. This class will
- * move in diagram plug-in when refresh refactoring will occurs.
+ * This class handles componentization for diagram elements. This class will move in diagram plug-in when refresh
+ * refactoring will occurs.
  * 
  * @author mchauvin
  */
@@ -167,8 +167,7 @@ public class DiagramComponentizationManager {
     }
 
     /**
-     * Get all the tools available for a diagram description. The function will
-     * check direct and indirect children.
+     * Get all the tools available for a diagram description. The function will check direct and indirect children.
      * 
      * @param enabledViewpoints
      *            the viewpoints to consider.
@@ -201,8 +200,7 @@ public class DiagramComponentizationManager {
     }
 
     /**
-     * Get all the tool entries available for a section. The function will check
-     * direct and indirect children.
+     * Get all the tool entries available for a section. The function will check direct and indirect children.
      * 
      * @param enabledViewpoints
      *            the viewpoints to consider.
@@ -277,8 +275,10 @@ public class DiagramComponentizationManager {
         final DiagramDescription diagramDescription = getDiagramDescription(toolGroup);
         final EList<AbstractToolDescription> tools = new BasicEList<AbstractToolDescription>();
         tools.addAll(toolGroup.getTools());
-        for (final Layer layer : getAllLayers(enabledViewpoints, diagramDescription)) {
-            tools.addAll(getToolsFromToolSection(layer.getToolSections(), toolGroup));
+        if (diagramDescription != null) {
+            for (final Layer layer : getAllLayers(enabledViewpoints, diagramDescription)) {
+                tools.addAll(getToolsFromToolSection(layer.getToolSections(), toolGroup));
+            }
         }
         return tools;
     }

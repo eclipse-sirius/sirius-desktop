@@ -133,6 +133,24 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//UIState/inverseSelectionOrder"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//UIState/elementsToSelect"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//UIState/decorationImage"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//UIState/toolSections"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//ToolInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//ToolInstance/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//ToolInstance/enabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//ToolInstance/visible"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ToolInstance/toolEntry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//ToolInstance/filtered"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//ToolGroupInstance">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ToolGroupInstance/tools"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ToolGroupInstance/group"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//ToolSectionInstance">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ToolSectionInstance/tools"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ToolSectionInstance/groups"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ToolSectionInstance/section"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ToolSectionInstance/subSections"/>
     </genClasses>
     <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.viewpoint"
         resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"

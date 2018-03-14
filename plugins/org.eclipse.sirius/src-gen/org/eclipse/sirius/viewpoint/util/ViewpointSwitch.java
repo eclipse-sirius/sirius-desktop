@@ -41,6 +41,9 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.SessionManagerEObject;
 import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ToolGroupInstance;
+import org.eclipse.sirius.viewpoint.ToolInstance;
+import org.eclipse.sirius.viewpoint.ToolSectionInstance;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
@@ -449,6 +452,36 @@ public class ViewpointSwitch<T> {
             }
             return result;
         }
+        case ViewpointPackage.TOOL_INSTANCE: {
+            ToolInstance toolInstance = (ToolInstance) theEObject;
+            T result = caseToolInstance(toolInstance);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case ViewpointPackage.TOOL_GROUP_INSTANCE: {
+            ToolGroupInstance toolGroupInstance = (ToolGroupInstance) theEObject;
+            T result = caseToolGroupInstance(toolGroupInstance);
+            if (result == null) {
+                result = caseToolInstance(toolGroupInstance);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case ViewpointPackage.TOOL_SECTION_INSTANCE: {
+            ToolSectionInstance toolSectionInstance = (ToolSectionInstance) theEObject;
+            T result = caseToolSectionInstance(toolSectionInstance);
+            if (result == null) {
+                result = caseToolInstance(toolSectionInstance);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         default:
             return defaultCase(theEObject);
         }
@@ -842,6 +875,50 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseUIState(UIState object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Tool Instance</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Tool Instance</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseToolInstance(ToolInstance object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Tool Group Instance</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Tool Group Instance</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseToolGroupInstance(ToolGroupInstance object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Tool Section Instance</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Tool Section Instance</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseToolSectionInstance(ToolSectionInstance object) {
         return null;
     }
 

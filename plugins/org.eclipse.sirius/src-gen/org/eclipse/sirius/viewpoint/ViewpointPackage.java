@@ -951,7 +951,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getRGBValues()
      * @generated
      */
-    int RGB_VALUES = 30;
+    int RGB_VALUES = 33;
 
     /**
      * The meta object id for the '<em>Resource Descriptor</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc
@@ -961,7 +961,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getResourceDescriptor()
      * @generated
      */
-    int RESOURCE_DESCRIPTOR = 31;
+    int RESOURCE_DESCRIPTOR = 34;
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.IdentifiedElement <em>Identified
@@ -1393,12 +1393,251 @@ public interface ViewpointPackage extends EPackage {
     int UI_STATE__DECORATION_IMAGE = 2;
 
     /**
+     * The feature id for the '<em><b>Tool Sections</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int UI_STATE__TOOL_SECTIONS = 3;
+
+    /**
      * The number of structural features of the '<em>UI State</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int UI_STATE_FEATURE_COUNT = 3;
+    int UI_STATE_FEATURE_COUNT = 4;
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.ToolInstanceImpl <em>Tool Instance</em>}'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.viewpoint.impl.ToolInstanceImpl
+     * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getToolInstance()
+     * @generated
+     */
+    int TOOL_INSTANCE = 27;
+
+    /**
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_INSTANCE__ID = 0;
+
+    /**
+     * The feature id for the '<em><b>Enabled</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_INSTANCE__ENABLED = 1;
+
+    /**
+     * The feature id for the '<em><b>Visible</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_INSTANCE__VISIBLE = 2;
+
+    /**
+     * The feature id for the '<em><b>Tool Entry</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_INSTANCE__TOOL_ENTRY = 3;
+
+    /**
+     * The feature id for the '<em><b>Filtered</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_INSTANCE__FILTERED = 4;
+
+    /**
+     * The number of structural features of the '<em>Tool Instance</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_INSTANCE_FEATURE_COUNT = 5;
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.ToolGroupInstanceImpl <em>Tool Group
+     * Instance</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.viewpoint.impl.ToolGroupInstanceImpl
+     * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getToolGroupInstance()
+     * @generated
+     */
+    int TOOL_GROUP_INSTANCE = 28;
+
+    /**
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_GROUP_INSTANCE__ID = ViewpointPackage.TOOL_INSTANCE__ID;
+
+    /**
+     * The feature id for the '<em><b>Enabled</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_GROUP_INSTANCE__ENABLED = ViewpointPackage.TOOL_INSTANCE__ENABLED;
+
+    /**
+     * The feature id for the '<em><b>Visible</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_GROUP_INSTANCE__VISIBLE = ViewpointPackage.TOOL_INSTANCE__VISIBLE;
+
+    /**
+     * The feature id for the '<em><b>Tool Entry</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_GROUP_INSTANCE__TOOL_ENTRY = ViewpointPackage.TOOL_INSTANCE__TOOL_ENTRY;
+
+    /**
+     * The feature id for the '<em><b>Filtered</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_GROUP_INSTANCE__FILTERED = ViewpointPackage.TOOL_INSTANCE__FILTERED;
+
+    /**
+     * The feature id for the '<em><b>Tools</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_GROUP_INSTANCE__TOOLS = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Group</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_GROUP_INSTANCE__GROUP = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 1;
+
+    /**
+     * The number of structural features of the '<em>Tool Group Instance</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_GROUP_INSTANCE_FEATURE_COUNT = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.ToolSectionInstanceImpl <em>Tool Section
+     * Instance</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.viewpoint.impl.ToolSectionInstanceImpl
+     * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getToolSectionInstance()
+     * @generated
+     */
+    int TOOL_SECTION_INSTANCE = 29;
+
+    /**
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_SECTION_INSTANCE__ID = ViewpointPackage.TOOL_INSTANCE__ID;
+
+    /**
+     * The feature id for the '<em><b>Enabled</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_SECTION_INSTANCE__ENABLED = ViewpointPackage.TOOL_INSTANCE__ENABLED;
+
+    /**
+     * The feature id for the '<em><b>Visible</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_SECTION_INSTANCE__VISIBLE = ViewpointPackage.TOOL_INSTANCE__VISIBLE;
+
+    /**
+     * The feature id for the '<em><b>Tool Entry</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_SECTION_INSTANCE__TOOL_ENTRY = ViewpointPackage.TOOL_INSTANCE__TOOL_ENTRY;
+
+    /**
+     * The feature id for the '<em><b>Filtered</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_SECTION_INSTANCE__FILTERED = ViewpointPackage.TOOL_INSTANCE__FILTERED;
+
+    /**
+     * The feature id for the '<em><b>Tools</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_SECTION_INSTANCE__TOOLS = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Groups</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_SECTION_INSTANCE__GROUPS = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Section</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_SECTION_INSTANCE__SECTION = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Sub Sections</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_SECTION_INSTANCE__SUB_SECTIONS = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 3;
+
+    /**
+     * The number of structural features of the '<em>Tool Section Instance</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_SECTION_INSTANCE_FEATURE_COUNT = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.FontFormat <em>Font Format</em>}' enum. <!--
@@ -1408,7 +1647,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getFontFormat()
      * @generated
      */
-    int FONT_FORMAT = 27;
+    int FONT_FORMAT = 30;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.LabelAlignment <em>Label Alignment</em>}' enum.
@@ -1418,7 +1657,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getLabelAlignment()
      * @generated
      */
-    int LABEL_ALIGNMENT = 28;
+    int LABEL_ALIGNMENT = 31;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.SyncStatus <em>Sync Status</em>}' enum. <!--
@@ -1428,7 +1667,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getSyncStatus()
      * @generated
      */
-    int SYNC_STATUS = 29;
+    int SYNC_STATUS = 32;
 
     /**
      * Returns the meta object for class ' {@link org.eclipse.sirius.viewpoint.DAnalysis <em>DAnalysis</em>}'. <!--
@@ -2300,6 +2539,173 @@ public interface ViewpointPackage extends EPackage {
     EAttribute getUIState_DecorationImage();
 
     /**
+     * Returns the meta object for the reference list '{@link org.eclipse.sirius.viewpoint.UIState#getToolSections
+     * <em>Tool Sections</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference list '<em>Tool Sections</em>'.
+     * @see org.eclipse.sirius.viewpoint.UIState#getToolSections()
+     * @see #getUIState()
+     * @generated
+     */
+    EReference getUIState_ToolSections();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.ToolInstance <em>Tool Instance</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Tool Instance</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolInstance
+     * @generated
+     */
+    EClass getToolInstance();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.viewpoint.ToolInstance#getId <em>Id</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Id</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolInstance#getId()
+     * @see #getToolInstance()
+     * @generated
+     */
+    EAttribute getToolInstance_Id();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.viewpoint.ToolInstance#isEnabled
+     * <em>Enabled</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Enabled</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolInstance#isEnabled()
+     * @see #getToolInstance()
+     * @generated
+     */
+    EAttribute getToolInstance_Enabled();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.viewpoint.ToolInstance#isVisible
+     * <em>Visible</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Visible</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolInstance#isVisible()
+     * @see #getToolInstance()
+     * @generated
+     */
+    EAttribute getToolInstance_Visible();
+
+    /**
+     * Returns the meta object for the reference '{@link org.eclipse.sirius.viewpoint.ToolInstance#getToolEntry <em>Tool
+     * Entry</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference '<em>Tool Entry</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolInstance#getToolEntry()
+     * @see #getToolInstance()
+     * @generated
+     */
+    EReference getToolInstance_ToolEntry();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.viewpoint.ToolInstance#isFiltered
+     * <em>Filtered</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Filtered</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolInstance#isFiltered()
+     * @see #getToolInstance()
+     * @generated
+     */
+    EAttribute getToolInstance_Filtered();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.ToolGroupInstance <em>Tool Group
+     * Instance</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Tool Group Instance</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolGroupInstance
+     * @generated
+     */
+    EClass getToolGroupInstance();
+
+    /**
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.viewpoint.ToolGroupInstance#getTools <em>Tools</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Tools</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolGroupInstance#getTools()
+     * @see #getToolGroupInstance()
+     * @generated
+     */
+    EReference getToolGroupInstance_Tools();
+
+    /**
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.viewpoint.ToolGroupInstance#getGroup <em>Group</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Group</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolGroupInstance#getGroup()
+     * @see #getToolGroupInstance()
+     * @generated
+     */
+    EReference getToolGroupInstance_Group();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.ToolSectionInstance <em>Tool Section
+     * Instance</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Tool Section Instance</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolSectionInstance
+     * @generated
+     */
+    EClass getToolSectionInstance();
+
+    /**
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.viewpoint.ToolSectionInstance#getTools <em>Tools</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Tools</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolSectionInstance#getTools()
+     * @see #getToolSectionInstance()
+     * @generated
+     */
+    EReference getToolSectionInstance_Tools();
+
+    /**
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.viewpoint.ToolSectionInstance#getGroups <em>Groups</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Groups</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolSectionInstance#getGroups()
+     * @see #getToolSectionInstance()
+     * @generated
+     */
+    EReference getToolSectionInstance_Groups();
+
+    /**
+     * Returns the meta object for the reference '{@link org.eclipse.sirius.viewpoint.ToolSectionInstance#getSection
+     * <em>Section</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference '<em>Section</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolSectionInstance#getSection()
+     * @see #getToolSectionInstance()
+     * @generated
+     */
+    EReference getToolSectionInstance_Section();
+
+    /**
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.viewpoint.ToolSectionInstance#getSubSections <em>Sub Sections</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Sub Sections</em>'.
+     * @see org.eclipse.sirius.viewpoint.ToolSectionInstance#getSubSections()
+     * @see #getToolSectionInstance()
+     * @generated
+     */
+    EReference getToolSectionInstance_SubSections();
+
+    /**
      * Returns the meta object for enum '{@link org.eclipse.sirius.viewpoint.FontFormat <em>Font Format</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -3055,6 +3461,132 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EAttribute UI_STATE__DECORATION_IMAGE = ViewpointPackage.eINSTANCE.getUIState_DecorationImage();
+
+        /**
+         * The meta object literal for the '<em><b>Tool Sections</b></em>' reference list feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference UI_STATE__TOOL_SECTIONS = ViewpointPackage.eINSTANCE.getUIState_ToolSections();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.impl.ToolInstanceImpl <em>Tool
+         * Instance</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.viewpoint.impl.ToolInstanceImpl
+         * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getToolInstance()
+         * @generated
+         */
+        EClass TOOL_INSTANCE = ViewpointPackage.eINSTANCE.getToolInstance();
+
+        /**
+         * The meta object literal for the '<em><b>Id</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute TOOL_INSTANCE__ID = ViewpointPackage.eINSTANCE.getToolInstance_Id();
+
+        /**
+         * The meta object literal for the '<em><b>Enabled</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute TOOL_INSTANCE__ENABLED = ViewpointPackage.eINSTANCE.getToolInstance_Enabled();
+
+        /**
+         * The meta object literal for the '<em><b>Visible</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute TOOL_INSTANCE__VISIBLE = ViewpointPackage.eINSTANCE.getToolInstance_Visible();
+
+        /**
+         * The meta object literal for the '<em><b>Tool Entry</b></em>' reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference TOOL_INSTANCE__TOOL_ENTRY = ViewpointPackage.eINSTANCE.getToolInstance_ToolEntry();
+
+        /**
+         * The meta object literal for the '<em><b>Filtered</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute TOOL_INSTANCE__FILTERED = ViewpointPackage.eINSTANCE.getToolInstance_Filtered();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.impl.ToolGroupInstanceImpl <em>Tool
+         * Group Instance</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.viewpoint.impl.ToolGroupInstanceImpl
+         * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getToolGroupInstance()
+         * @generated
+         */
+        EClass TOOL_GROUP_INSTANCE = ViewpointPackage.eINSTANCE.getToolGroupInstance();
+
+        /**
+         * The meta object literal for the '<em><b>Tools</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference TOOL_GROUP_INSTANCE__TOOLS = ViewpointPackage.eINSTANCE.getToolGroupInstance_Tools();
+
+        /**
+         * The meta object literal for the '<em><b>Group</b></em>' containment reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference TOOL_GROUP_INSTANCE__GROUP = ViewpointPackage.eINSTANCE.getToolGroupInstance_Group();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.impl.ToolSectionInstanceImpl <em>Tool
+         * Section Instance</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.viewpoint.impl.ToolSectionInstanceImpl
+         * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getToolSectionInstance()
+         * @generated
+         */
+        EClass TOOL_SECTION_INSTANCE = ViewpointPackage.eINSTANCE.getToolSectionInstance();
+
+        /**
+         * The meta object literal for the '<em><b>Tools</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference TOOL_SECTION_INSTANCE__TOOLS = ViewpointPackage.eINSTANCE.getToolSectionInstance_Tools();
+
+        /**
+         * The meta object literal for the '<em><b>Groups</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference TOOL_SECTION_INSTANCE__GROUPS = ViewpointPackage.eINSTANCE.getToolSectionInstance_Groups();
+
+        /**
+         * The meta object literal for the '<em><b>Section</b></em>' reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference TOOL_SECTION_INSTANCE__SECTION = ViewpointPackage.eINSTANCE.getToolSectionInstance_Section();
+
+        /**
+         * The meta object literal for the '<em><b>Sub Sections</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference TOOL_SECTION_INSTANCE__SUB_SECTIONS = ViewpointPackage.eINSTANCE.getToolSectionInstance_SubSections();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.FontFormat <em>Font Format</em>}' enum.

@@ -35,9 +35,7 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.LayersActivationAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers.LayersActivationAdapter;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Predicate;
@@ -52,8 +50,6 @@ public class LayersContribution extends AbstractMenuContributionItem {
 
     /** The layers icon descriptor. */
     private static final ImageDescriptor DESC_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/layers.gif"); //$NON-NLS-1$
-
-    private LayersActivationAdapter adapter;
 
     /**
      * {@inheritDoc}
@@ -91,12 +87,6 @@ public class LayersContribution extends AbstractMenuContributionItem {
     @Override
     protected void setDiagram(DDiagram diagram) {
         super.setDiagram(diagram);
-        final DDiagramEditor diagramEditor = (DDiagramEditor) part.getDiagramGraphicalViewer().getProperty(DDiagramEditor.EDITOR_ID);
-        adapter = new LayersActivationAdapter();
-        adapter.setPaletteManager(diagramEditor.getPaletteManager());
-        if (!diagram.eAdapters().contains(adapter)) {
-            diagram.eAdapters().add(adapter);
-        }
     }
 
     @Override
@@ -177,21 +167,4 @@ public class LayersContribution extends AbstractMenuContributionItem {
         final String nameEntry = MessageTranslator.INSTANCE.getMessage(layer, new IdentifiedElementQuery(layer).getLabel());
         return nameEntry;
     }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.AbstractTabbarContribution#dispose()
-     */
-    @Override
-    public void dispose() {
-        // Diagram can be null if the editor has been opened from the project
-        // explorer
-        if (diagram != null) {
-            diagram.eAdapters().remove(adapter);
-        }
-        adapter = null;
-        super.dispose();
-    }
-
 }

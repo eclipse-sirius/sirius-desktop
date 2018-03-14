@@ -41,6 +41,9 @@ import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SessionManagerEObject;
 import org.eclipse.sirius.viewpoint.SyncStatus;
+import org.eclipse.sirius.viewpoint.ToolGroupInstance;
+import org.eclipse.sirius.viewpoint.ToolInstance;
+import org.eclipse.sirius.viewpoint.ToolSectionInstance;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -119,6 +122,12 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return createBasicLabelStyle();
         case ViewpointPackage.UI_STATE:
             return createUIState();
+        case ViewpointPackage.TOOL_INSTANCE:
+            return createToolInstance();
+        case ViewpointPackage.TOOL_GROUP_INSTANCE:
+            return createToolGroupInstance();
+        case ViewpointPackage.TOOL_SECTION_INSTANCE:
+            return createToolSectionInstance();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -344,6 +353,39 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     public UIState createUIState() {
         UIStateImpl uiState = new UIStateImpl();
         return uiState;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ToolInstance createToolInstance() {
+        ToolInstanceImpl toolInstance = new ToolInstanceImpl();
+        return toolInstance;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ToolGroupInstance createToolGroupInstance() {
+        ToolGroupInstanceImpl toolGroupInstance = new ToolGroupInstanceImpl();
+        return toolGroupInstance;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ToolSectionInstance createToolSectionInstance() {
+        ToolSectionInstanceImpl toolSectionInstance = new ToolSectionInstanceImpl();
+        return toolSectionInstance;
     }
 
     /**

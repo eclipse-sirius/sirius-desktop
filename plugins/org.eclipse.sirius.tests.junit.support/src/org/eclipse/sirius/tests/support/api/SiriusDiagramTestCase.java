@@ -84,6 +84,7 @@ import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.view.HideDDiagramElementLabel;
 import org.eclipse.sirius.diagram.tools.api.command.view.RevealDDiagramElementsLabel;
+import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
@@ -177,8 +178,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param container
      *            the graphical container, for instance the diagram
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applyContainerCreationTool(final String toolName, final DDiagram diagram, final EObject container) {
         final AbstractToolDescription tool = getTool(diagram, toolName);
@@ -201,8 +201,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param container
      *            the graphical container, for instance the diagram
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applyGenericTool(final String toolName, final DDiagram diagram, final EObject container) {
         final AbstractToolDescription tool = getTool(diagram, toolName);
@@ -225,8 +224,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param container
      *            the graphical container, for instance the diagram
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applyNodeCreationTool(final String toolName, final DDiagram diagram, final EObject container) {
         final AbstractToolDescription tool = getTool(diagram, toolName);
@@ -251,8 +249,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param container
      *            the graphical container, for instance the diagram
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applyNodeCreationTool(final String layerName, final String toolName, final DDiagram diagram, final EObject container) {
         boolean result = false;
@@ -277,8 +274,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param container
      *            the graphical container, for instance the diagram
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applySelectionTool(final String toolName, final DDiagram diagram, final EObject container) {
         boolean result = false;
@@ -303,8 +299,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param container
      *            the graphical container, for instance the diagram
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applySelectionTool(final String layerName, final String toolName, final DDiagram diagram, final EObject container) {
         boolean result = false;
@@ -382,8 +377,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the drop target view.
      * @param diagramElt
      *            the diagram element to drop.
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean dropSemantic(final EObject semanticElement, final DragAndDropTarget containerView, final DDiagramElement diagramElt) {
         boolean result = false;
@@ -407,8 +401,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param noteText
      *            the note text
-     * @return <code>true</code> if the note could be created,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the note could be created, <code>false</code> otherwise
      */
     protected final boolean createNote(final DDiagram diagram, final String noteText) {
         boolean result = false;
@@ -426,8 +419,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the note text to identify the note to attach
      * @param diagramElement
      *            the target diagram element
-     * @return <code>true</code> if the note could be attached to the target
-     *         node, <code>false</code> otherwise
+     * @return <code>true</code> if the note could be attached to the target node, <code>false</code> otherwise
      */
     protected final boolean attachNote(final String noteText, final DDiagramElement diagramElement) {
         boolean result = false;
@@ -481,8 +473,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the tool
      * @param selectedElements
      *            the selected elements
-     * @return the command build to execute the tool's operation on the given
-     *         container
+     * @return the command build to execute the tool's operation on the given container
      */
     protected Command getCommand(final EObject container, final AbstractToolDescription tool, final Collection<EObject> selectedElements) {
         Command cmd = null;
@@ -506,8 +497,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the graphical source element
      * @param target
      *            the graphical target element
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applyEdgeCreationTool(final String toolName, final DDiagram diagram, final EdgeTarget source, final EdgeTarget target) {
         boolean result = false;
@@ -533,8 +523,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the graphical source element
      * @param target
      *            the graphical target element
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applyEdgeReconnectionTool(final String toolName, final DDiagram diagram, final DEdge edge, final EdgeTarget source, final EdgeTarget target) {
         boolean result = false;
@@ -548,9 +537,8 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Applies the {@link ContainerDropDescription} with the given name, on the
-     * given target container and the dropped dDiagram element. It simulates a
-     * DDiagramElement drop from the same diagram.
+     * Applies the {@link ContainerDropDescription} with the given name, on the given target container and the dropped
+     * dDiagram element. It simulates a DDiagramElement drop from the same diagram.
      * 
      * @param diagram
      *            the diagram in which the tool should be applied
@@ -560,8 +548,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the container in which element should be dropped
      * @param droppedDDiagramElement
      *            the dropped {@link DDiagramElement} from a diagram.
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applyContainerDropDescriptionTool(final DDiagram diagram, final String dndToolName, DragAndDropTarget dropContainer, DDiagramElement droppedDDiagramElement) {
         boolean result = false;
@@ -575,9 +562,8 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Applies the {@link ContainerDropDescription} with the given name, on the
-     * given target container and the dropped semantic element. It simulates a
-     * semantic element drop from example the Model Explorer view.
+     * Applies the {@link ContainerDropDescription} with the given name, on the given target container and the dropped
+     * semantic element. It simulates a semantic element drop from example the Model Explorer view.
      * 
      * @param diagram
      *            the diagram in which the tool should be applied
@@ -586,11 +572,9 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * @param dropContainer
      *            the container in which element should be dropped
      * @param droppedElement
-     *            the dropped EObject (if the Drop is made from the Model
-     *            content view) or the {@link DDiagramElement} if the drop is
-     *            made from an existing {@link DDiagramElement}.
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     *            the dropped EObject (if the Drop is made from the Model content view) or the {@link DDiagramElement}
+     *            if the drop is made from an existing {@link DDiagramElement}.
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applyContainerDropDescriptionTool(final DDiagram diagram, final String dndToolName, DragAndDropTarget dropContainer, EObject droppedElement) {
         boolean result = false;
@@ -614,8 +598,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram element
      * @param value
      *            the new value to set
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applyDirectEditTool(final String toolName, final DDiagram diagram, final DDiagramElement element, final String value) {
         boolean result = false;
@@ -633,8 +616,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * 
      * @param element
      *            the diagram element
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool could be applied, <code>false</code> otherwise
      */
     protected final boolean applyDeletionTool(final DDiagramElement element) {
         boolean result = false;
@@ -644,14 +626,12 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Searches the given {@link DDiagram} for a tool of the given name and
-     * returns it.
+     * Searches the given {@link DDiagram} for a tool of the given name and returns it.
      * 
      * @param diagram
      *            The diagram to search for a tool.
      * @param toolName
-     *            The name of the searched tool (&quot;chapter&quot; for the
-     *            &quot;Create new chapter&quot; tool).
+     *            The name of the searched tool (&quot;chapter&quot; for the &quot;Create new chapter&quot; tool).
      * @return The searched tool, <code>null</code> if it cannot be found.
      */
     protected final AbstractToolDescription getTool(final DDiagram diagram, final String toolName) {
@@ -660,14 +640,12 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Searches the given {@link Layer} for a tool of the given name and returns
-     * it.
+     * Searches the given {@link Layer} for a tool of the given name and returns it.
      * 
      * @param layer
      *            The layer to search for a tool.
      * @param toolName
-     *            The name of the searched tool (&quot;chapter&quot; for the
-     *            &quot;Create new chapter&quot; tool).
+     *            The name of the searched tool (&quot;chapter&quot; for the &quot;Create new chapter&quot; tool).
      * @return The searched tool, <code>null</code> if it cannot be found.
      */
     protected final AbstractToolDescription getTool(final Layer layer, final String toolName) {
@@ -689,8 +667,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Searches the given {@link DDiagram} for a layer of the given name and
-     * returns it.
+     * Searches the given {@link DDiagram} for a layer of the given name and returns it.
      * 
      * @param diagram
      *            The diagram to search for a tool.
@@ -710,15 +687,13 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Searches the given {@link Layer} for a node mapping of the given name and
-     * returns it.
+     * Searches the given {@link Layer} for a node mapping of the given name and returns it.
      * 
      * @param layer
      *            The layer to search for a tool.
      * @param mappingName
      *            The name of the searched mapping.
-     * @return The retrieved mapping, or throws an
-     *         {@link IllegalArgumentException} if it cannot be found.
+     * @return The retrieved mapping, or throws an {@link IllegalArgumentException} if it cannot be found.
      */
     protected final NodeMapping getNodeMapping(final Layer layer, final String mappingName) {
 
@@ -746,15 +721,13 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Searches the given {@link Layer} for an edge mapping of the given name
-     * and returns it.
+     * Searches the given {@link Layer} for an edge mapping of the given name and returns it.
      * 
      * @param layer
      *            The layer to search for a tool.
      * @param mappingName
      *            The name of the searched mapping.
-     * @return The retrieved mapping, or throws an
-     *         {@link IllegalArgumentException} if it cannot be found.
+     * @return The retrieved mapping, or throws an {@link IllegalArgumentException} if it cannot be found.
      */
     protected final EdgeMapping getEdgeMapping(final Layer layer, final String mappingName) {
         final DiagramDescriptionMappingsManager mappingsManager = DiagramDescriptionMappingsRegistry.INSTANCE.getDiagramDescriptionMappingsManager(session,
@@ -768,15 +741,13 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Searches the given {@link Layer} for a node mapping of the given name and
-     * returns it.
+     * Searches the given {@link Layer} for a node mapping of the given name and returns it.
      * 
      * @param layer
      *            The layer to search for a tool.
      * @param mappingName
      *            The name of the searched mapping.
-     * @return The retrieved mapping, or throws an
-     *         {@link IllegalArgumentException} if it cannot be found.
+     * @return The retrieved mapping, or throws an {@link IllegalArgumentException} if it cannot be found.
      */
     protected final ContainerMapping getContainerMapping(final Layer layer, final String mappingName) {
 
@@ -795,8 +766,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Browse the model upward (from the leaf to the root) and return the first
-     * viewpoint found.
+     * Browse the model upward (from the leaf to the root) and return the first viewpoint found.
      * 
      * @param anyElement
      *            any {@link EObject} instance.
@@ -832,8 +802,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Searches the given {@link DDiagram} for a filter of the given name and
-     * returns it.
+     * Searches the given {@link DDiagram} for a filter of the given name and returns it.
      * 
      * @param diagram
      *            The diagram to search for a tool.
@@ -859,8 +828,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the container
      * @param tool
      *            the tool
-     * @return the command build to execute the tool's operation on the given
-     *         container
+     * @return the command build to execute the tool's operation on the given container
      */
     protected final Command getCommand(final EObject container, final AbstractToolDescription tool) {
 
@@ -893,8 +861,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the {@link DDiagram}
      * @param layerName
      *            the layer name
-     * @return <code>true</code> if the activation could be made,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the activation could be made, <code>false</code> otherwise
      */
     protected final boolean activateLayer(final DDiagram dDiagram, final String layerName) {
         Layer layer = getLayer(dDiagram, layerName);
@@ -913,8 +880,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the {@link DDiagram}
      * @param layerName
      *            the layer name
-     * @return <code>true</code> if the deactivation could be made,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the deactivation could be made, <code>false</code> otherwise
      */
     protected final boolean deactivateLayer(final DDiagram dDiagram, final String layerName) {
         Layer layer = getLayer(dDiagram, layerName);
@@ -933,8 +899,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param filterName
      *            the filter name
-     * @return <code>true</code> if the activation could be made,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the activation could be made, <code>false</code> otherwise
      */
     protected final boolean activateFilter(final DDiagram diagram, final String filterName) {
         final FilterDescription filter = getFilter(diagram, filterName);
@@ -951,8 +916,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param filterName
      *            the filter name
-     * @return <code>true</code> if the deactivation could be made,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the deactivation could be made, <code>false</code> otherwise
      */
     protected final boolean deactivateFilter(final DDiagram diagram, final String filterName) {
         final FilterDescription filter = getFilter(diagram, filterName);
@@ -985,8 +949,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * Reveal the specified {@link DDiagramElement}'s label.
      * 
      * @param dDiagramElement
-     *            the specified {@link DDiagramElement} for which reveal the
-     *            label
+     *            the specified {@link DDiagramElement} for which reveal the label
      */
     protected void revealLabel(DDiagramElement dDiagramElement) {
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
@@ -1002,16 +965,15 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param semanticElement
      *            the semantic element
-     * @return the first diagram element which has as target the semantic
-     *         element given as parameter
+     * @return the first diagram element which has as target the semantic element given as parameter
      */
     protected final DDiagramElement getFirstDiagramElement(final DDiagram diagram, final EObject semanticElement) {
         return (DDiagramElement) getFirstRepresentationElement(diagram, semanticElement);
     }
 
     /**
-     * Get the diagram element from the specified {@link EObject} semantic
-     * element and the specified {@link DiagramElementMapping}.
+     * Get the diagram element from the specified {@link EObject} semantic element and the specified
+     * {@link DiagramElementMapping}.
      * 
      * @param diagram
      *            the diagram
@@ -1019,9 +981,8 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the semantic element
      * @param diagramElementMapping
      *            the specified {@link DiagramElementMapping}
-     * @return the first diagram element which has as target the semantic
-     *         element given as parameter and with the specified
-     *         {@link DiagramElementMapping}
+     * @return the first diagram element which has as target the semantic element given as parameter and with the
+     *         specified {@link DiagramElementMapping}
      */
     protected final DDiagramElement getFirstDiagramElement(final DDiagram diagram, final EObject semanticElement, final DiagramElementMapping diagramElementMapping) {
         DDiagramElement dDiagramElement = null;
@@ -1048,8 +1009,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Get the diagram element which owns the given label and are instances of
-     * the given class.
+     * Get the diagram element which owns the given label and are instances of the given class.
      * 
      * @param <T>
      *            the class
@@ -1090,8 +1050,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param semanticElement
      *            the semantic element
-     * @return the first diagram element which has as target the semantic
-     *         element given as parameter
+     * @return the first diagram element which has as target the semantic element given as parameter
      */
     protected final DNode getFirstNodeElement(final DDiagram diagram, final EObject semanticElement) {
         return getFirstRepresentationElement(diagram, semanticElement, DNode.class);
@@ -1104,8 +1063,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the diagram
      * @param semanticElement
      *            the semantic element
-     * @return the first diagram element which has as target the semantic
-     *         element given as parameter
+     * @return the first diagram element which has as target the semantic element given as parameter
      */
     protected final DEdge getFirstEdgeElement(final DDiagram diagram, final EObject semanticElement) {
         return getFirstRepresentationElement(diagram, semanticElement, DEdge.class);
@@ -1135,8 +1093,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * 
      * @param diagram
      *            the diagram
-     * @return the view which has as element the diagram element given as
-     *         parameter or null if any
+     * @return the view which has as element the diagram element given as parameter or null if any
      */
     protected Diagram getGmfDiagram(final DDiagram diagram) {
         return SiriusGMFHelper.getGmfDiagram(diagram, session);
@@ -1147,16 +1104,14 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * 
      * @param diagramElement
      *            the diagram element
-     * @return the view which has as element the diagram element given as
-     *         parameter or null if any
+     * @return the view which has as element the diagram element given as parameter or null if any
      */
     protected View getGmfView(final DDiagramElement diagramElement) {
         return SiriusGMFHelper.getGmfView(diagramElement, session);
     }
 
     /**
-     * Get the GMF view from the diagram element and assert there is only one
-     * GMF view for this diagram element.
+     * Get the GMF view from the diagram element and assert there is only one GMF view for this diagram element.
      * 
      * @param diagramElement
      *            the diagram element
@@ -1165,8 +1120,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * @param session
      *            the session to use
      * 
-     * @return the view which has as element the diagram element given as
-     *         parameter or null if any
+     * @return the view which has as element the diagram element given as parameter or null if any
      */
     protected static View getGmfViewAndAssertOnlyOne(final EObject diagramElement, final Class<? extends View> clazz, final Session session) {
         View result = null;
@@ -1199,8 +1153,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * 
      * @param diagramElement
      *            the diagram element
-     * @return the node which has as element the diagram element given as
-     *         parameter or null if any
+     * @return the node which has as element the diagram element given as parameter or null if any
      */
     protected Node getGmfNode(final DDiagramElement diagramElement) {
         return SiriusGMFHelper.getGmfNode(diagramElement, session);
@@ -1211,8 +1164,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * 
      * @param diagramElement
      *            the diagram element
-     * @return the edge which has as element the diagram element given as
-     *         parameter or null if any
+     * @return the edge which has as element the diagram element given as parameter or null if any
      */
     protected Edge getGmfEdge(final DDiagramElement diagramElement) {
         return SiriusGMFHelper.getGmfEdge(diagramElement, session);
@@ -1225,8 +1177,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * @param diagramElement
      *            the diagram element
      * 
-     * @return the editPart corresponding to the diagram element given as
-     *         parameter or null if any
+     * @return the editPart corresponding to the diagram element given as parameter or null if any
      */
     protected IGraphicalEditPart getEditPart(final DDiagramElement diagramElement) {
         final IEditorPart editor = EclipseUIUtil.getActiveEditor();
@@ -1241,8 +1192,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * @param diagram
      *            the diagram
      * 
-     * @return the editPart corresponding to the diagram element given as
-     *         parameter or null if any
+     * @return the editPart corresponding to the diagram element given as parameter or null if any
      */
     protected IGraphicalEditPart getEditPart(final DDiagram diagram) {
         final IEditorPart editor = EclipseUIUtil.getActiveEditor();
@@ -1258,8 +1208,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * @param editor
      *            the editor containing the editPart
      * 
-     * @return the editPart corresponding to the diagram element given as
-     *         parameter or null if any
+     * @return the editPart corresponding to the diagram element given as parameter or null if any
      */
     protected IGraphicalEditPart getEditPart(final DDiagramElement diagramElement, final IEditorPart editor) {
         final View gmfView = getGmfView(diagramElement);
@@ -1275,8 +1224,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * @param editor
      *            the editor containing the editPart
      * 
-     * @return the editPart corresponding to the diagram element given as
-     *         parameter or null if any
+     * @return the editPart corresponding to the diagram element given as parameter or null if any
      */
     protected IGraphicalEditPart getEditPart(final DDiagram diagram, final IEditorPart editor) {
         final Diagram gmfDiagram = getGmfDiagram(diagram);
@@ -1292,8 +1240,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      * @param editor
      *            the editor containing the editPart
      * 
-     * @return the editPart corresponding to the diagram element given as
-     *         parameter or null if any
+     * @return the editPart corresponding to the diagram element given as parameter or null if any
      */
     private IGraphicalEditPart getEditPart(final View gmfView, final IEditorPart editor) {
         IGraphicalEditPart result = null;
@@ -1318,8 +1265,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the name of the attribute to set
      * @param newValue
      *            the new value of the attribute to set
-     * @return <code>True</code> if the command was executable,
-     *         <code>False</code> otherwise.
+     * @return <code>True</code> if the command was executable, <code>False</code> otherwise.
      * 
      */
     protected boolean setDDiagramAttribute(final EditingDomain domain, final DDiagram diagram, final String eAttributeName, final Object newValue) {
@@ -1371,8 +1317,8 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Checks that all label that should be hidden are effectively hidden in the
-     * given diagram, and that there is no other hidden label.
+     * Checks that all label that should be hidden are effectively hidden in the given diagram, and that there is no
+     * other hidden label.
      * 
      * @param diagram
      *            the diagram to test
@@ -1408,6 +1354,18 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
+     * Update tools available for given diagram.
+     * 
+     * @param diagram
+     *            the diagram from which tools must be computed.
+     */
+    protected void updateTools(Diagram diagram) {
+        TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
+        UpdateToolRecordingCommand updateToolRecordingCommand = new UpdateToolRecordingCommand(editingDomain, (DDiagram) diagram.getElement(), true);
+        editingDomain.getCommandStack().execute(updateToolRecordingCommand);
+    }
+
+    /**
      * Reset the style properties to default values.
      * 
      * @param dDiagramElement
@@ -1427,17 +1385,15 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Passed file on read only status. Please note that some file systems might
-     * not support setting the file as read only. This method will make the test
-     * fail if we could mark the file as read only.
+     * Passed file on read only status. Please note that some file systems might not support setting the file as read
+     * only. This method will make the test fail if we could mark the file as read only.
      * 
      * @param file
      *            the file to pass in read only status
      * @throws Exception
      *             the exception
-     * @deprecated use
-     *             {@link EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(boolean,
-     *             IFile...)} instead and explicitly check its effect.
+     * @deprecated use {@link EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(boolean, IFile...)} instead and
+     *             explicitly check its effect.
      */
     @Deprecated
     protected void setReadOnly(IFile file) throws Exception {
@@ -1447,8 +1403,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     }
 
     /**
-     * Get file in the temporary project name with the fileName passed in
-     * parameter.
+     * Get file in the temporary project name with the fileName passed in parameter.
      * 
      * @param fileName
      *            the file name

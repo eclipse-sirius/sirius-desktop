@@ -45,6 +45,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -419,6 +420,9 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         final int numberOfViewsAfterReload = analysis.getOwnedViews().size();
         assertEquals("It should be one DView more in DAnalysis after the modification outside the current resource set.", numberOfViews + 1, numberOfViewsAfterReload);
 
+        while (session.getTransactionalEditingDomain().getCommandStack().getUndoCommand() instanceof UpdateToolRecordingCommand) {
+            session.getTransactionalEditingDomain().getCommandStack().undo();
+        }
         /*
          * reloading an aird should create a not undoable recording command to
          * set new analysis in session object

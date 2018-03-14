@@ -18,7 +18,6 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.TabbarRefresher;
 
 /**
@@ -30,9 +29,6 @@ public class LayersActivationAdapter extends AdapterImpl {
 
     /** The structured viewer to update. */
     private StructuredViewer viewer;
-
-    /** The palette manager to update. */
-    private PaletteManager paletteManager;
 
     /**
      * Set the viewer.
@@ -46,31 +42,12 @@ public class LayersActivationAdapter extends AdapterImpl {
         }
     }
 
-    /**
-     * Set the palette manager.
-     * 
-     * @param paletteManager
-     *            the palette manager to update when the model change
-     */
-    public void setPaletteManager(final PaletteManager paletteManager) {
-        this.paletteManager = paletteManager;
-    }
-
     private void update(final DDiagram diagram, final Layer layer, final boolean activate, final boolean isTransient) {
         EclipseUIUtil.displayAsyncExec(new Runnable() {
             @Override
             public void run() {
                 if (viewer != null) {
                     viewer.update(layer, null);
-                }
-
-                if (paletteManager != null) {
-                    /* refresh the palette */
-                    if (activate) {
-                        paletteManager.showLayer(layer);
-                    } else {
-                        paletteManager.hideLayer(layer);
-                    }
                 }
 
                 if (isTransient) {

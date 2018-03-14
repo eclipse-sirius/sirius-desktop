@@ -124,16 +124,26 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-danger">Removed</span> In @org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper@, the method @getViewpointSelection()@ has been removed. It used an internal type as argument which has also been removed.
 * <span class="label label-danger">Removed</span> In @org.eclipse.sirius.business.api.helper.SiriusResourceHelper@, the method @getCorrespondingViewpoint(Session session, URI, boolean)@ has been removed. It was not used anywhere, the real one is @getCorrespondingViewpoint(Session, Viewpoint)@ in the same class.
 * <span class="label label-danger">Removed</span> In @org.eclipse.sirius.business.api.dialect.DialectServices@ (and all its implementations), the method @refreshEffectiveRepresentationDescription(DRepresentation, IProgressMonitor)@ has been removed. It corresponded to an experimental feature which has been abandonned long ago. 
+* <span class="label label-success">Added</span> A new @ToolSection@, @ToolGroup@  and @ToolInstance@ model element have been added in @viewpoint@ metamodel. These elements are used to represent tools available for a @DDiagram@ with their visibility, enabling and filtering status. @ToolSectionInstance@ are available in the @UIState@ of a @DDiagram@ by using the @toolSections@ reference. 
+* <span class="label label-danger">Removed</span> the class @ToolFilterDescriptionListener@ has been removed because of the new @ToolMangament@ mechanism used to handle tools and layer changes.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys.PREF_DISPLAY_GENERIC_EDGE_CREATION_TOOL@ has been added to make to possible to hide the new generic edge creation tool. See the _User-Visible Changes_ or the user documentation for more details.
+* <span class="label label-success">Added</span> A component @ToolManagement@ has been created to manage tool availability and status for a given @DDiagram@. It comes with the listener interface @ToolChangeListener@ that can be used to be warned about tool changes.
+* <span class="label label-success">Added</span>  An interface @ToolConstants@ has been created to gather constants relative to tool management.
+* <span class="label label-info">Modified</span> The constants @SiriusDiagramPaletteFactory#GENERIC_CONNECTION_CREATION_TOOL@ and @SiriusDiagramPaletteFactory#TOOL_NOTEATTACHMENT@ have been moved in @ToolConstants@
+* <span class="label label-info">Modified</span> The classes @ToolFilter@ and @ToolFilterFromDescription@ have been moved from the plugin @oes.diagram.ui@ to @oes.diagram@ in package @org.eclipse.sirius.diagram.tools.api.managment@
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor.createStraightenContribution()@ has been added to make accessible the creation of the Straighten To tabbar contribution item.
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.customLayoutAlgorithmProvider@ extension point has been added. It allows to contribute layout algorithms that can be configured directly in the VSM. This extension point comes with the following classes as API: @org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithmProvider@, @org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm@, @org.eclipse.sirius.diagram.ui.api.layout.EnumChoice@ and @org.eclipse.sirius.diagram.ui.api.layout.LayoutOptionFactory@.
+
+* <span class="label label-info">Modified</span> The methods @hideLayer(Layer)@, @showLayer(Layer)@, @addToolFilter(ToolFilter)@ and @removeToolFilter(ToolFilter)@ of @org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager@ have been made deprecated. They are not used anymore. The API @ToolManagement@ is now the entry point to make palette update regarding tools and layer changes.
+
+* <span class="label label-info">Modified</span> The @Diagram@ parameter of the methods @oes.update(Diagram)@ and @oes.update(Diagram,boolean)@ has been changed to @DDiagram@.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

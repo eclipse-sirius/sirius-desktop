@@ -208,13 +208,12 @@ public final class Messages {
 
     @TranslatableMessage
     public static String NodeMappingHelper_nodeCreationErrorMsg;
-    
+
     @TranslatableMessage
     public static String NoteAttachmentWithoutSourceOrTargetMigrationParticipant_edgesRemoved;
 
     @TranslatableMessage
     public static String NoteAttachmentWithoutSourceOrTargetMigrationParticipant_title;
-
 
     @TranslatableMessage
     public static String PasteCommandBuilder_pasteLabel;
@@ -281,6 +280,12 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ValidStyleConstraint_validationErrorMsg;
+
+    @TranslatableMessage
+    public static String ToolManagment_ToolChange_Command_Label;
+
+    @TranslatableMessage
+    public static String UpdateToolRecordingCommand_cancelExceptionMessage;
 
     // CHECKSTYLE:ON
     private Messages() {

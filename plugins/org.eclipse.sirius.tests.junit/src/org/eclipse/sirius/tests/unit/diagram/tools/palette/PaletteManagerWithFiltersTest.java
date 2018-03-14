@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,8 +20,10 @@ import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.management.ToolFilter;
+import org.eclipse.sirius.diagram.tools.api.management.ToolManagement;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -41,14 +43,14 @@ public class PaletteManagerWithFiltersTest extends AbstractPaletteManagerTest {
 
     static final String SEMANTIC_MODEL_FILENAME = "toolSection.ecore";
 
-   static final String SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + PATH + SEMANTIC_MODEL_FILENAME;
-    
+    static final String SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + PATH + SEMANTIC_MODEL_FILENAME;
+
     static final String MODELER_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + PATH + "toolFilters.odesign";
 
     static final String SESSION_MODEL_FILENAME = "toolFilters.aird";
 
     static final String SESSION_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + PATH + SESSION_MODEL_FILENAME;
-    
+
     static final String REPRESENTATION_DESC_NAME = "toolFiltersLayers";
 
     static final String REPRESENTATION_NAME = "new toolFiltersLayers";
@@ -96,27 +98,33 @@ public class PaletteManagerWithFiltersTest extends AbstractPaletteManagerTest {
 
     public void testCreatePalette() throws Exception {
         PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
+        updateTools(diagram);
         addLikeGmfANeverDeletedEntry();
-        paletteManager.update(diagram);
+        paletteManager.update(dDiagram);
         doContentPaletteTest(EXPECTED_ENTRIES_STD_PALETTE);
     }
 
     public void testBasicDynamicFilter() throws Exception {
         PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
+        ToolManagement toolManagement = DiagramPlugin.getPlugin().getToolManagement(diagram);
         addLikeGmfANeverDeletedEntry();
-        paletteManager.update(diagram);
+        updateTools(diagram);
+        paletteManager.update(dDiagram);
         doContentPaletteTest(EXPECTED_ENTRIES_STD_PALETTE);
 
         ToolFilter hideAll = new ToolFilter() {
+            @Override
             public boolean filter(DDiagram diagram, AbstractToolDescription tool) {
                 return true;
             }
         };
-        paletteManager.addToolFilter(hideAll);
-        paletteManager.update(diagram);
+        toolManagement.addToolFilter(hideAll);
+        updateTools(diagram);
+        paletteManager.update(dDiagram);
         doContentPaletteTest(NO_ENTRIES);
-        paletteManager.removeToolFilter(hideAll);
-        paletteManager.update(diagram);
+        toolManagement.removeToolFilter(hideAll);
+        updateTools(diagram);
+        paletteManager.update(dDiagram);
         doContentPaletteTest(EXPECTED_ENTRIES_STD_PALETTE);
     }
 

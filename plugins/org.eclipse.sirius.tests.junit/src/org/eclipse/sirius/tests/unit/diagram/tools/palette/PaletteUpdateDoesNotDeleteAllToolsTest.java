@@ -37,11 +37,9 @@ import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
 /**
- * A test ensuring that when the palette gets updated (e.g. when a filter has
- * been installed and enables/disables tools), the Palette tools that were shown
- * before and are shown after are not re-created. If it is not the case,
- * maintaining 'Ctrl' while applying tools will not work as soon as palette gets
- * updated.
+ * A test ensuring that when the palette gets updated (e.g. when a filter has been installed and enables/disables
+ * tools), the Palette tools that were shown before and are shown after are not re-created. If it is not the case,
+ * maintaining 'Ctrl' while applying tools will not work as soon as palette gets updated.
  * 
  * <p>
  * Related issues :
@@ -71,7 +69,7 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
 
     private DDiagramEditorImpl editor;
 
-    private PaletteRoot paleteRoot;
+    private PaletteRoot paletteRoot;
 
     /**
      * {@inheritDoc}
@@ -84,12 +82,11 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
     }
 
     /**
-     * Opens a {@link DDiagramEditor} on the representation which description is
-     * equal to the given representationDescriptionName.
+     * Opens a {@link DDiagramEditor} on the representation which description is equal to the given
+     * representationDescriptionName.
      * 
      * @param representationDescriptionName
-     *            the name of the {@link RepresentationDescription} of the
-     *            representation to open
+     *            the name of the {@link RepresentationDescription} of the representation to open
      */
     protected void doOpenEditorOnRepresentation(String representationDescriptionName) {
         // Open an editor on the tested diagram
@@ -103,7 +100,7 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
         editor = (DDiagramEditorImpl) DialectUIManager.INSTANCE.openEditor(session, dDiagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
 
-        paleteRoot = ((DiagramEditDomain) editor.getDiagramEditDomain()).getPaletteViewer().getPaletteRoot();
+        paletteRoot = ((DiagramEditDomain) editor.getDiagramEditDomain()).getPaletteViewer().getPaletteRoot();
         diagram = (Diagram) Iterables.get(session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, dDiagram), 0);
     }
 
@@ -120,17 +117,15 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
             DialectUIManager.INSTANCE.closeEditor(editor, false);
             TestsUtil.synchronizationWithUIThread();
             editor = null;
-            paleteRoot = null;
+            paletteRoot = null;
         }
         super.tearDown();
     }
 
     /**
-     * Ensures that, when creating new elements through a creation tool, if the
-     * newly created elements triggers a filter enablement/disablement (and
-     * hence tools are displayed/hidden on the palette), the tools previously
-     * displayed are not re-created (the same tools instances should be used -
-     * this includes note attachement tools).
+     * Ensures that, when creating new elements through a creation tool, if the newly created elements triggers a filter
+     * enablement/disablement (and hence tools are displayed/hidden on the palette), the tools previously displayed are
+     * not re-created (the same tools instances should be used - this includes note attachement tools).
      * <p>
      * <b>Note:</b> this test is performed on a representation without layer
      * </p>
@@ -141,11 +136,9 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
     }
 
     /**
-     * Ensures that, when creating new elements through a creation tool, if the
-     * newly created elements triggers a filter enablement/disablement (and
-     * hence tools are displayed/hidden on the palette), the tools previously
-     * displayed are not re-created (the same tools instances should be used -
-     * this includes note attachement tools).
+     * Ensures that, when creating new elements through a creation tool, if the newly created elements triggers a filter
+     * enablement/disablement (and hence tools are displayed/hidden on the palette), the tools previously displayed are
+     * not re-created (the same tools instances should be used - this includes note attachement tools).
      * <p>
      * <b>Note:</b> this test is performed on a representation with tool groups
      * </p>
@@ -156,11 +149,9 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
     }
 
     /**
-     * Ensures that, when creating new elements through a creation tool, if the
-     * newly created elements triggers a filter enablement/disablement (and
-     * hence tools are displayed/hidden on the palette), the tools previously
-     * displayed are not re-created (the same tools instances should be used -
-     * this includes note attachement tools).
+     * Ensures that, when creating new elements through a creation tool, if the newly created elements triggers a filter
+     * enablement/disablement (and hence tools are displayed/hidden on the palette), the tools previously displayed are
+     * not re-created (the same tools instances should be used - this includes note attachement tools).
      * <p>
      * <b>Note:</b> this test is performed on a representation with layers
      * </p>
@@ -171,21 +162,19 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
     }
 
     /**
-     * Ensures that, when creating new elements through a creation tool, if the
-     * newly created elements triggers a filter enablement/disablement (and
-     * hence tools are displayed/hidden on the palette), the tools previously
-     * displayed are not re-created (the same tools instances should be used -
-     * this includes note attachement tools).
+     * Ensures that, when creating new elements through a creation tool, if the newly created elements triggers a filter
+     * enablement/disablement (and hence tools are displayed/hidden on the palette), the tools previously displayed are
+     * not re-created (the same tools instances should be used - this includes note attachement tools).
      */
     private void doTestPaletteUpdateOnFilterDisablementAndEnablement() {
-        Set<PaletteEntry> initialPaletteEntries = getAllVisiblePaletteEntries(paleteRoot);
+        Set<PaletteEntry> initialPaletteEntries = getAllVisiblePaletteEntries(paletteRoot);
 
         // Step 1: we apply a creation tool
         applyNodeCreationTool("createPackage", dDiagram, dDiagram);
 
         // this will disable the filter defined on the "Create EClass" tool,
         // that should appear on the tabbar
-        Set<PaletteEntry> paletteEntriesAfterFilterDisablement = getAllVisiblePaletteEntries(paleteRoot);
+        Set<PaletteEntry> paletteEntriesAfterFilterDisablement = getAllVisiblePaletteEntries(paletteRoot);
         assertEquals("As the applied creation tool disabled a filter, a new Tool should be displayed in the palette", initialPaletteEntries.size() + 1, paletteEntriesAfterFilterDisablement.size());
 
         Set<PaletteEntry> differencesWithPreviousPalette = Sets.difference(paletteEntriesAfterFilterDisablement, initialPaletteEntries);
@@ -198,7 +187,7 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
 
         // this will disable the filter defined on the "Create EClass" tool,
         // that should appear on the tabbar
-        Set<PaletteEntry> paletteEntriesAfterSecondCreation = getAllVisiblePaletteEntries(paleteRoot);
+        Set<PaletteEntry> paletteEntriesAfterSecondCreation = getAllVisiblePaletteEntries(paletteRoot);
         differencesWithPreviousPalette = Sets.difference(paletteEntriesAfterSecondCreation, paletteEntriesAfterFilterDisablement);
         assertEquals("As the applied creation tool did not changed filters state, the palette should be the same", new LinkedHashSet<>(), differencesWithPreviousPalette);
         assertEquals(ERROR_MESSAGE_WHEN_PALETTE_ELEMENTS_ARE_RE_CREATED, paletteEntriesAfterSecondCreation.size(), paletteEntriesAfterFilterDisablement.size());
@@ -210,7 +199,7 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
         }
         // this will enable the filter again, so the "Create EClass" tool should
         // disappear
-        Set<PaletteEntry> paletteEntriesAfterDeletion = getAllVisiblePaletteEntries(paleteRoot);
+        Set<PaletteEntry> paletteEntriesAfterDeletion = getAllVisiblePaletteEntries(paletteRoot);
 
         assertEquals("Deleting all elements should have re-enabled a filter, so the 'createClass' tool should not be displayed", initialPaletteEntries.size(), paletteEntriesAfterDeletion.size());
 
@@ -221,21 +210,20 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
     }
 
     /**
-     * Tests that when undoing/redoing changes, the palette is correctly
-     * updated.
+     * Tests that when undoing/redoing changes, the palette is correctly updated.
      * 
      * @throws Exception
      */
     public void testPaletteUpdateOnFilterDisablementAndEnablementWithUndoRedoTest() throws Exception {
         doOpenEditorOnRepresentation(getRepresentationDescriptionName());
-        Set<PaletteEntry> initialPaletteEntries = getAllVisiblePaletteEntries(paleteRoot);
+        Set<PaletteEntry> initialPaletteEntries = getAllVisiblePaletteEntries(paletteRoot);
 
         // Step 1: we apply a creation tool
         applyNodeCreationTool("createPackage", dDiagram, dDiagram);
 
         // this will disable the filter defined on the "Create EClass" tool,
         // that should appear on the tabbar
-        Set<PaletteEntry> paletteEntriesAfterFilterDisablement = getAllVisiblePaletteEntries(paleteRoot);
+        Set<PaletteEntry> paletteEntriesAfterFilterDisablement = getAllVisiblePaletteEntries(paletteRoot);
         assertEquals("As the applied creation tool disabled a filter, a new Tool should be displayed in the palette", initialPaletteEntries.size() + 1, paletteEntriesAfterFilterDisablement.size());
 
         Set<PaletteEntry> differencesWithPreviousPalette = Sets.difference(paletteEntriesAfterFilterDisablement, initialPaletteEntries);
@@ -248,22 +236,21 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
 
         // this will enable the filters defined on the "Create EClass" tool
         // and hence hide the "Create EClass" tool
-        Set<PaletteEntry> paletteEntriesAfterUndo = getAllVisiblePaletteEntries(paleteRoot);
+        Set<PaletteEntry> paletteEntriesAfterUndo = getAllVisiblePaletteEntries(paletteRoot);
         assertEquals("After undo, we should be back to initial state", initialPaletteEntries, paletteEntriesAfterUndo);
 
         // Step 3: we redo the creation
         // As the "CreateEClass" tool has been disabled by undo and then
         // re-enable, it will be recreated
         redo();
-        Set<PaletteEntry> paletteEntriesAfterRedo = getAllVisiblePaletteEntries(paleteRoot);
+        Set<PaletteEntry> paletteEntriesAfterRedo = getAllVisiblePaletteEntries(paletteRoot);
         SetView<PaletteEntry> differences = Sets.difference(paletteEntriesAfterFilterDisablement, paletteEntriesAfterRedo);
         assertEquals("After redo, we should be back to the post-creation state but the following differences were found : " + differences, 1, differences.size());
     }
 
     /**
-     * Ensures that when the palette is refreshed and a new tool is available
-     * with the same name as a tool that was previously available (but is now
-     * disabled), the palette contains the expected tools.
+     * Ensures that when the palette is refreshed and a new tool is available with the same name as a tool that was
+     * previously available (but is now disabled), the palette contains the expected tools.
      * 
      * @throws Exception
      */
@@ -274,9 +261,10 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
         // tool with the same name and located in a section with the same name
         // as a tool from the default layer
         activateLayer(dDiagram, "ExclusiveLayer");
-        editor.getPaletteManager().update(diagram);
+        updateTools(diagram);
+        editor.getPaletteManager().update(dDiagram);
 
-        Set<PaletteEntry> initialPaletteEntries = getAllVisiblePaletteEntries(paleteRoot);
+        Set<PaletteEntry> initialPaletteEntries = getAllVisiblePaletteEntries(paletteRoot);
 
         // Step 1: we apply a creation tool
         applyNodeCreationTool("createPackage", dDiagram, dDiagram);
@@ -284,7 +272,7 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
         // this will disable the filters defined on the "Create EClass" tool
         // from the default layer but enable the filters on the "Create EClass"
         // tool from the "ConflictingLayer" layer
-        Set<PaletteEntry> paletteEntriesAfterFilterDisablement = getAllVisiblePaletteEntries(paleteRoot);
+        Set<PaletteEntry> paletteEntriesAfterFilterDisablement = getAllVisiblePaletteEntries(paletteRoot);
         assertEquals("As the applied creation tool disabled a filter and enabled another one, the same number of tools should be displayed", initialPaletteEntries.size(),
                 paletteEntriesAfterFilterDisablement.size());
 
@@ -296,20 +284,18 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
         // displayed
         undo();
 
-        editor.getPaletteManager().hideLayer(getLayer(dDiagram, "ExclusiveLayer"));
-        Set<PaletteEntry> afterHideLayer = getAllVisiblePaletteEntries(paleteRoot);
-
+        Set<PaletteEntry> afterHideLayer = getAllVisiblePaletteEntries(paletteRoot);
         assertEquals("Layer is hidden: tools should not be displayed", 1, Sets.difference(initialPaletteEntries, afterHideLayer).size());
 
+        redo();
         // Step 3: reveal layer: the tool should be displayed
-        editor.getPaletteManager().showLayer(getLayer(dDiagram, "ExclusiveLayer"));
-        Set<PaletteEntry> afterReveal = getAllVisiblePaletteEntries(paleteRoot);
+        Set<PaletteEntry> afterReveal = getAllVisiblePaletteEntries(paletteRoot);
         assertEquals("Layer is hidden: tools should be displayed", 1, Sets.difference(afterReveal, afterHideLayer).size());
     }
 
     /**
-     * Tests the palette behavior when it's refreshed and several tools with the
-     * same name are available under the same categories.
+     * Tests the palette behavior when it's refreshed and several tools with the same name are available under the same
+     * categories.
      * 
      * @throws Exception
      */
@@ -320,13 +306,16 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
         // tool with the same name and located in a section with the same name
         // as a tool from the default layer
         activateLayer(dDiagram, "ConflictingLayer");
-        editor.getPaletteManager().update(diagram);
 
-        Set<PaletteEntry> initialPaletteEntries = getAllVisiblePaletteEntries(paleteRoot);
+        updateTools(diagram);
+        editor.getPaletteManager().update(dDiagram);
+
+        Set<PaletteEntry> initialPaletteEntries = getAllVisiblePaletteEntries(paletteRoot);
 
         // Step 1: we apply a creation tool
         applyNodeCreationTool("createPackage", dDiagram, dDiagram);
-        Set<PaletteEntry> paletteEntriesAfterFilterDisablement = getAllVisiblePaletteEntries(paleteRoot);
+
+        Set<PaletteEntry> paletteEntriesAfterFilterDisablement = getAllVisiblePaletteEntries(paletteRoot);
         Set<PaletteEntry> differencesWithPreviousPalette = Sets.difference(paletteEntriesAfterFilterDisablement, initialPaletteEntries);
         assertEquals("Both new tools should be displayed in the palette" + differencesWithPreviousPalette, 2, differencesWithPreviousPalette.size());
     }

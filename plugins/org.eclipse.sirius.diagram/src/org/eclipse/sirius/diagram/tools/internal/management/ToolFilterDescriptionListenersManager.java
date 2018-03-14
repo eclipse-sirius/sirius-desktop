@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,51 +8,50 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.internal.palette;
+package org.eclipse.sirius.diagram.tools.internal.management;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.sirius.business.api.tool.ToolFilterDescriptionListener;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
 /**
- * Manager the listeners for tool filter.
+ * Manages the tool filter listeners for a DDiagram. If a notification of the diagram resource set changes the filter
+ * condition, the tool associated will be updated.
  * 
  * @author mchauvin
+ * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+ *
  */
-public class PaletteToolFilterDescriptionListenersManager implements Runnable {
+public class ToolFilterDescriptionListenersManager {
 
-    private PaletteManager paletteManager;
-
-    private Diagram diagram;
+    /**
+     * The diagram from which we handle tool filters.
+     */
 
     private TransactionalEditingDomain domain;
 
-    private Collection<ToolFilterDescriptionListener> listeners;
+    private Collection<ToolFilterDescriptionListenerForUpdate> listeners;
 
-    PaletteToolFilterDescriptionListenersManager(final PaletteManager paletteManager) {
-        this.paletteManager = paletteManager;
-    }
+    private DDiagram dDiagram;
 
     /**
      * Init the manager.
      * 
-     * @param gmfDiagram
-     *            the GMF diagram
+     * @param theDDiagram
+     *            the diagram
      */
-    public void init(Diagram gmfDiagram) {
+    public void init(DDiagram theDDiagram) {
+        this.dDiagram = theDDiagram;
         /* remove previously registered listeners */
         removeListeners();
 
-        this.diagram = gmfDiagram;
-        this.domain = TransactionUtil.getEditingDomain(diagram);
+        this.domain = TransactionUtil.getEditingDomain(dDiagram);
+
         listeners = new LinkedHashSet<>();
     }
 
@@ -66,17 +65,16 @@ public class PaletteToolFilterDescriptionListenersManager implements Runnable {
      *            the filters
      */
     public void addListenersForFilters(IInterpreter interpreter, Collection<ToolFilterDescription> filters) {
-        // If a DDiagram editor has a palette tool with a feature change
+        // If a DDiagram editor has a tool with a feature change
         // listener on a containment feature of DDiagram/DDiagramElement/Style
         // (or one of their super/sub types), and if the user deletes the
-        // current diagram, the palette will be updated in post commit
+        // current diagram, the tool will be updated in post commit
         // (detachment/delete notification), and the null domain case has to be
         // handled as the gmf diagram is detached and the editor and its
-        // PaletteToolFilterListenersManager are asynchronously closed/disposed.
+        // ToolFilterDescriptionListenersManager are asynchronously closed/disposed.
         if (listeners != null && domain != null) {
             for (final ToolFilterDescription filter : filters) {
-                ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(interpreter, filter, (DDiagram) diagram.getElement());
-                listener.setUpdateRunnable(this);
+                ToolFilterDescriptionListenerForUpdate listener = getToolFilterDescriptionListener(interpreter, filter);
                 domain.addResourceSetListener(listener);
                 listeners.add(listener);
             }
@@ -84,29 +82,33 @@ public class PaletteToolFilterDescriptionListenersManager implements Runnable {
     }
 
     /**
+     * Returns the instance of {@link ToolFilterDescriptionListenerForUpdate} to use to listen to tool filters
+     * activation/deactivation.
+     * 
+     * @param interpreter
+     *            the interpreter to use to evaluate the preconditions.
+     * @param filter
+     *            the filters
+     * @return the instance of {@link ToolFilterDescriptionListenerForUpdate} to use.
+     */
+    protected ToolFilterDescriptionListenerForUpdate getToolFilterDescriptionListener(IInterpreter interpreter, ToolFilterDescription filter) {
+        return new ToolFilterDescriptionListenerForUpdate(interpreter, filter, dDiagram);
+    }
+
+    /**
      * Dispose cleanly this listeners manager.
      */
     public void dispose() {
         removeListeners();
-        diagram = null;
         domain = null;
     }
 
     private void removeListeners() {
         if (listeners != null & domain != null) {
-            for (final ToolFilterDescriptionListener listener : listeners) {
+            for (final ToolFilterDescriptionListenerForUpdate listener : listeners) {
                 domain.removeResourceSetListener(listener);
             }
             listeners = null;
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Runnable#run()
-     */
-    public void run() {
-        paletteManager.update(diagram);
     }
 }

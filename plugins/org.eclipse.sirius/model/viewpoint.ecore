@@ -307,6 +307,31 @@
         <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
       </eGenericType>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toolSections" upperBound="-1"
+        eType="#//ToolSectionInstance" transient="true" unsettable="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToolInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toolEntry" eType="#//description/tool/ToolEntry"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filtered" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToolGroupInstance" eSuperTypes="#//ToolInstance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"
+        eType="#//ToolInstance" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToolSectionInstance" eSuperTypes="#//ToolInstance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"
+        eType="#//ToolInstance" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
+        eType="#//ToolGroupInstance" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="section" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subSections" upperBound="-1"
+        eType="#//ToolSectionInstance" containment="true"/>
   </eClassifiers>
   <eSubpackages name="description" nsURI="http://www.eclipse.org/sirius/description/1.1.0"
       nsPrefix="description">

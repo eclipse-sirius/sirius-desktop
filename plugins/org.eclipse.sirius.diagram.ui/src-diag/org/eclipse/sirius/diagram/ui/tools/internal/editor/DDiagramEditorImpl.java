@@ -123,6 +123,9 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.tools.api.command.view.HideDDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.command.view.HideDDiagramElementLabel;
+import org.eclipse.sirius.diagram.tools.api.management.ToolFilter;
+import org.eclipse.sirius.diagram.tools.api.management.ToolManagement;
+import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
@@ -143,7 +146,6 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
@@ -166,6 +168,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.outline.QuickOutlineControl;
 import org.eclipse.sirius.diagram.ui.tools.internal.outline.SiriusInformationPresenter;
 import org.eclipse.sirius.diagram.ui.tools.internal.outline.SiriusQuickOutlineInformationProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
+import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteToolChangeListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.SiriusPaletteViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.CustomSiriusDocumentProvider;
@@ -411,6 +414,11 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     private int choice = ISaveablePart2.DEFAULT;
 
     /**
+     * Listen to tool changes and update palette accordingly.
+     */
+    private PaletteToolChangeListener paletteToolChangeListener;
+
+    /**
      * Create a new instance.
      */
     public DDiagramEditorImpl() {
@@ -431,6 +439,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     @Override
     public void close(boolean save) {
+        DiagramPlugin.getPlugin().removeToolManagement(getDiagram());
         if (refreshJob != null) {
             try {
                 refreshJob.join();
@@ -602,7 +611,11 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
         // Handle the palette view case.
         if (paletteManager != null) {
-            paletteManager.update(getDiagram());
+            TransactionalEditingDomain editingDomain = getSession().getTransactionalEditingDomain();
+            UpdateToolRecordingCommand updateToolRecordingCommand = new UpdateToolRecordingCommand(editingDomain, (DDiagram) getDiagram().getElement(), true);
+            editingDomain.getCommandStack().execute(updateToolRecordingCommand);
+
+            DiagramPlugin.getDefault().getToolManagement(getDiagram()).notifyToolChange();
         }
 
         return pv;
@@ -736,8 +749,17 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         super.hookGraphicalViewer();
         // Manage palette.
         paletteManager = new PaletteManagerImpl(getEditDomain());
-        paletteManager.update(getDiagram());
+        ToolManagement toolManagement = DiagramPlugin.getDefault().getToolManagement(getDiagram());
+        if (toolManagement != null) {
+            paletteToolChangeListener = new PaletteToolChangeListener(getPaletteManager(), getDiagram());
+            toolManagement.addToolChangeListener(paletteToolChangeListener);
 
+            if (getSession() != null) {
+                UpdateToolRecordingCommand updateToolRecordingCommand = new UpdateToolRecordingCommand(getSession().getTransactionalEditingDomain(), (DDiagram) getDiagram().getElement(), true);
+                session.getTransactionalEditingDomain().getCommandStack().execute(updateToolRecordingCommand);
+            }
+            toolManagement.notifyToolChange();
+        }
         // Initialize drag'n drop listener from palette
         paletteTransferDropTargetListener = new SiriusPaletteToolDropTargetListener(getGraphicalViewer());
         getDiagramGraphicalViewer().addDropTargetListener(paletteTransferDropTargetListener);
@@ -757,6 +779,10 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     public void dispose() {
         isClosing = true;
+        ToolManagement toolManagement = DiagramPlugin.getDefault().getToolManagement(getDiagram());
+        if (toolManagement != null) {
+            toolManagement.removeToolChangeListener(paletteToolChangeListener);
+        }
         // Dispose the tabbar (to avoid memory leak)
         if (getTabbar() != null) {
             getTabbar().dispose();
@@ -1787,6 +1813,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (getGraphicalViewer() != null) {
             getGraphicalViewer().setSelection(new StructuredSelection());
         }
+
         // Update the tab's icon according to LockStatus
         DRepresentation representation = getRepresentation();
         if (representation instanceof DSemanticDecorator) {

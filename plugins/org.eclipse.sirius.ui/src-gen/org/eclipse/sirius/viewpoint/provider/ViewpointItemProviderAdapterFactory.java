@@ -445,6 +445,75 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.ToolInstance} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected ToolInstanceItemProvider toolInstanceItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.ToolInstance}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createToolInstanceAdapter() {
+        if (toolInstanceItemProvider == null) {
+            toolInstanceItemProvider = new ToolInstanceItemProvider(this);
+        }
+
+        return toolInstanceItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.ToolGroupInstance}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected ToolGroupInstanceItemProvider toolGroupInstanceItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.ToolGroupInstance}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createToolGroupInstanceAdapter() {
+        if (toolGroupInstanceItemProvider == null) {
+            toolGroupInstanceItemProvider = new ToolGroupInstanceItemProvider(this);
+        }
+
+        return toolGroupInstanceItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.ToolSectionInstance}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected ToolSectionInstanceItemProvider toolSectionInstanceItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.ToolSectionInstance}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createToolSectionInstanceAdapter() {
+        if (toolSectionInstanceItemProvider == null) {
+            toolSectionInstanceItemProvider = new ToolSectionInstanceItemProvider(this);
+        }
+
+        return toolSectionInstanceItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -591,6 +660,15 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
         }
         if (uiStateItemProvider != null) {
             uiStateItemProvider.dispose();
+        }
+        if (toolInstanceItemProvider != null) {
+            toolInstanceItemProvider.dispose();
+        }
+        if (toolGroupInstanceItemProvider != null) {
+            toolGroupInstanceItemProvider.dispose();
+        }
+        if (toolSectionInstanceItemProvider != null) {
+            toolSectionInstanceItemProvider.dispose();
         }
     }
 

@@ -171,6 +171,18 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
         assertTrue(DialectManager.INSTANCE.getAllRepresentations(session).contains(createdRepresentation));
         TestsUtil.synchronizationWithUIThread();
 
+        /* undo tools availability update. */
+        assertTrue(canUndo());
+        assertEquals("Update available tools", getCommandLabel());
+        undo();
+        TestsUtil.synchronizationWithUIThread();
+
+        /* undo tools availability update. */
+        assertTrue(canUndo());
+        assertEquals("Update available tools", getCommandLabel());
+        undo();
+        TestsUtil.synchronizationWithUIThread();
+
         /* undo diagram creation command */
         assertTrue(canUndo());
         assertEquals("Create representation", getCommandLabel());

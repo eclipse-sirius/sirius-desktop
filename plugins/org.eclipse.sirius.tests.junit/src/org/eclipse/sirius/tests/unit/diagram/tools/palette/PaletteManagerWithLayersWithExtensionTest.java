@@ -28,10 +28,11 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
+import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteToolChangeListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers.LayersActivationAdapter;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -300,16 +301,6 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private Layer layerL3;
-
-    private Layer layerL2;
-
-    private Layer layerL4;
-
-    private Layer layerL5;
-
-    private Layer layerL6;
-
     /**
      * {@inheritDoc}
      */
@@ -335,20 +326,6 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
 
         diagram = (Diagram) Iterables.get(session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, dDiagram), 0);
 
-        // Layer L3 to show
-        layerL3 = getLayer(dDiagram, "L3 disabled");
-
-        // Layer L2 to hide
-        layerL2 = getLayer(dDiagram, "L2 enabled");
-
-        // Layer L4 to show
-        layerL4 = getLayer(dDiagram, "L4 enabled");
-
-        // Layer L5 to show
-        layerL5 = getLayer(dDiagram, "L5 disabled");
-
-        // Layer L6 to show
-        layerL6 = getLayer(dDiagram, "L6");
     }
 
     /**
@@ -374,8 +351,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testCreatePalette() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
+        initPaletteManager();
         doContentPaletteTest(EXPECTED_ENTRIES_STD_PALETTE);
     }
 
@@ -402,10 +378,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
 
             doContentPaletteTest(paletteRoot, EXPECTED_ENTRIES_STD_EDITOR_PALETTE);
 
-            // Add an adapter like it is done when menu is shown, otherwise, it is not called and so neither
+            // Add an adapter like it is done when menu is shown, otherwise, it
+            // is not called and so neither
             // paletteManager.showLayer/hideLayer.
             LayersActivationAdapter adapter = new LayersActivationAdapter();
-            adapter.setPaletteManager(((DDiagramEditor) dDiagramEditor).getPaletteManager());
             dDiagram.eAdapters().add(adapter);
 
             deactivateViewpoint(TOOL_SECTION_EXTENSION_VIEWPOINT_NAME);
@@ -429,11 +405,19 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testShowLayer() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.showLayer(layerL3);
+        initPaletteManager();
+        activateLayer(dDiagram, "L3 disabled");
 
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L3_SHOWN);
+    }
+
+    private PaletteManager initPaletteManager() {
+        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
+        DiagramPlugin.getDefault().getToolManagement(diagram).addToolChangeListener(new PaletteToolChangeListener(paletteManager, diagram));
+        UpdateToolRecordingCommand updateToolRecordingCommand = new UpdateToolRecordingCommand(session.getTransactionalEditingDomain(), dDiagram, true);
+        session.getTransactionalEditingDomain().getCommandStack().execute(updateToolRecordingCommand);
+        paletteManager.update(dDiagram);
+        return paletteManager;
     }
 
     /**
@@ -443,9 +427,8 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testHideLayer() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.hideLayer(layerL2);
+        initPaletteManager();
+        deactivateLayer(dDiagram, "L2 enabled");
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L2_HIDDEN);
     }
 
@@ -456,10 +439,9 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testHideShowLayers() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.showLayer(layerL3);
-        paletteManager.hideLayer(layerL2);
+        initPaletteManager();
+        activateLayer(dDiagram, "L3 disabled");
+        deactivateLayer(dDiagram, "L2 enabled");
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L2_HIDDEN_L3_SHOWN);
     }
 
@@ -469,27 +451,9 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      * @throws Exception
      *             Test error.
      */
-    public void testHideShowL2L4Layers() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.showLayer(layerL4);
-        paletteManager.showLayer(layerL2);
-
-        doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L2_L4_SHOWN);
-    }
-
-    /**
-     * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
-     */
     public void testHideShowL2L4L5Layers() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.showLayer(layerL4);
-        paletteManager.showLayer(layerL2);
-        paletteManager.showLayer(layerL5);
+        initPaletteManager();
+        activateLayer(dDiagram, "L5 disabled");
 
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L2_L4_L5_SHOWN);
     }
@@ -501,12 +465,9 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testHideShowL2L4L5L6Layers() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.showLayer(layerL4);
-        paletteManager.showLayer(layerL2);
-        paletteManager.showLayer(layerL5);
-        paletteManager.showLayer(layerL6);
+        initPaletteManager();
+        activateLayer(dDiagram, "L5 disabled");
+        activateLayer(dDiagram, "L6");
 
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L2_L4_L5_L6_SHOWN);
     }
@@ -518,11 +479,9 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testHideShowL2L5Layers() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.showLayer(layerL2);
-        paletteManager.showLayer(layerL5);
-        paletteManager.hideLayer(layerL4);
+        initPaletteManager();
+        activateLayer(dDiagram, "L5 disabled");
+        deactivateLayer(dDiagram, "L4 enabled");
 
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L2_L5_SHOWN);
     }
@@ -534,10 +493,8 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testHideShowL4Layers() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.hideLayer(layerL2);
-        paletteManager.showLayer(layerL4);
+        initPaletteManager();
+        deactivateLayer(dDiagram, "L2 enabled");
 
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L4_SHOWN);
     }
@@ -549,11 +506,9 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testHideShowL5Layers() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.hideLayer(layerL2);
-        paletteManager.showLayer(layerL4);
-        paletteManager.showLayer(layerL5);
+        initPaletteManager();
+        deactivateLayer(dDiagram, "L2 enabled");
+        activateLayer(dDiagram, "L5 disabled");
 
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L5_SHOWN);
     }
@@ -565,13 +520,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testHideShowL2L3L4L5L6Layers() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.showLayer(layerL2);
-        paletteManager.showLayer(layerL4);
-        paletteManager.showLayer(layerL5);
-        paletteManager.showLayer(layerL3);
-        paletteManager.showLayer(layerL6);
+        initPaletteManager();
+        activateLayer(dDiagram, "L5 disabled");
+        activateLayer(dDiagram, "L3 disabled");
+        activateLayer(dDiagram, "L6");
 
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L2_L3_L4_L5_L6_SHOWN);
     }
@@ -583,12 +535,11 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testHideShowL3L5Layers() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.hideLayer(layerL2);
-        paletteManager.hideLayer(layerL4);
-        paletteManager.showLayer(layerL5);
-        paletteManager.showLayer(layerL3);
+        initPaletteManager();
+        deactivateLayer(dDiagram, "L2 enabled");
+        deactivateLayer(dDiagram, "L4 enabled");
+        activateLayer(dDiagram, "L5 disabled");
+        activateLayer(dDiagram, "L3 disabled");
 
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L3_L5_SHOWN);
     }
@@ -600,11 +551,9 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testHideShowL3L4Layers() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.hideLayer(layerL2);
-        paletteManager.showLayer(layerL4);
-        paletteManager.showLayer(layerL3);
+        initPaletteManager();
+        deactivateLayer(dDiagram, "L2 enabled");
+        activateLayer(dDiagram, "L3 disabled");
 
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L3_L4_SHOWN);
     }
@@ -616,11 +565,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
      *             Test error.
      */
     public void testHideShowL6Layers() throws Exception {
-        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
-        paletteManager.hideLayer(layerL2);
-        paletteManager.hideLayer(layerL4);
-        paletteManager.showLayer(layerL6);
+        initPaletteManager();
+        deactivateLayer(dDiagram, "L2 enabled");
+        deactivateLayer(dDiagram, "L4 enabled");
+        activateLayer(dDiagram, "L6");
 
         doContentPaletteTest(EXPECTED_ENTRIES_LAYER_L6_SHOWN);
     }

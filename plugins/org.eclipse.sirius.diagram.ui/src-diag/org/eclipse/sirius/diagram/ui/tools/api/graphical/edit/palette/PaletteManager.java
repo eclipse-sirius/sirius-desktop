@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette;
 
-import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.tools.api.management.ToolFilter;
 
 /**
  * Manage the palette and the associated filters.
@@ -28,6 +29,7 @@ public interface PaletteManager {
      * @param layer
      *            the layer
      */
+    @Deprecated
     void hideLayer(Layer layer);
 
     /**
@@ -36,6 +38,7 @@ public interface PaletteManager {
      * @param layer
      *            the layer
      */
+    @Deprecated
     void showLayer(Layer layer);
 
     /**
@@ -44,6 +47,7 @@ public interface PaletteManager {
      * @param toolFilter
      *            the filter to add
      */
+    @Deprecated
     void addToolFilter(ToolFilter toolFilter);
 
     /**
@@ -52,11 +56,11 @@ public interface PaletteManager {
      * @param toolFilter
      *            the filter to remove
      */
+    @Deprecated
     void removeToolFilter(ToolFilter toolFilter);
 
     /**
-     * Update the palette, to take in consideration the currently associated
-     * filters.
+     * Update the palette, to take in consideration the currently associated filters.
      * <p>
      * Calling update(diagram) is equivalent to update(diagram, false);
      * </p>
@@ -64,18 +68,17 @@ public interface PaletteManager {
      * @param diagram
      *            the diagram
      */
-    void update(Diagram diagram);
+    void update(DDiagram diagram);
 
     /**
-     * Update the palette, to take in consideration the currently associated
-     * filters.
+     * Update the palette, to take in consideration the currently associated filters.
      * 
      * @param diagram
      *            the diagram
      * @param clean
      *            <code>true</code> to clean the palette before the update.
      */
-    void update(Diagram diagram, boolean clean);
+    void update(DDiagram diagram, boolean clean);
 
     /**
      * Dispose cleanly this palette manager.
@@ -83,16 +86,13 @@ public interface PaletteManager {
     void dispose();
 
     /**
-     * Returns <code>true</code> if this palette manager has been disposed, and
-     * <code>false</code> otherwise.
+     * Returns <code>true</code> if this palette manager has been disposed, and <code>false</code> otherwise.
      * <p>
-     * This method gets the dispose state for the palette manager. When a
-     * palette manager has been disposed, it is an error to invoke any other
-     * method (except {@link #dispose()}) using the palette manager.
+     * This method gets the dispose state for the palette manager. When a palette manager has been disposed, it is an
+     * error to invoke any other method (except {@link #dispose()}) using the palette manager.
      * </p>
      * 
-     * @return <code>true</code> when the palette manager is disposed and
-     *         <code>false</code> otherwise
+     * @return <code>true</code> when the palette manager is disposed and <code>false</code> otherwise
      */
     boolean isDisposed();
 

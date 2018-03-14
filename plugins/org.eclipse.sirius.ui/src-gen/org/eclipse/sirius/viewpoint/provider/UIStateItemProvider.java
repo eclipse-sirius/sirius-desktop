@@ -59,6 +59,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
             addInverseSelectionOrderPropertyDescriptor(object);
             addElementsToSelectPropertyDescriptor(object);
             addDecorationImagePropertyDescriptor(object);
+            addToolSectionsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -98,6 +99,18 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_UIState_decorationImage_feature"), //$NON-NLS-1$
                         getString("_UI_PropertyDescriptor_description", "_UI_UIState_decorationImage_feature", "_UI_UIState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         ViewpointPackage.Literals.UI_STATE__DECORATION_IMAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Tool Sections feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addToolSectionsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_UIState_toolSections_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_UIState_toolSections_feature", "_UI_UIState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.UI_STATE__TOOL_SECTIONS, true, false, true, null, null, null));
     }
 
     /**

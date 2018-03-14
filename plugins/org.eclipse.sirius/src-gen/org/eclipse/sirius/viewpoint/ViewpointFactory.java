@@ -158,6 +158,30 @@ public interface ViewpointFactory extends EFactory {
     UIState createUIState();
 
     /**
+     * Returns a new object of class '<em>Tool Instance</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Tool Instance</em>'.
+     * @generated
+     */
+    ToolInstance createToolInstance();
+
+    /**
+     * Returns a new object of class '<em>Tool Group Instance</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Tool Group Instance</em>'.
+     * @generated
+     */
+    ToolGroupInstance createToolGroupInstance();
+
+    /**
+     * Returns a new object of class '<em>Tool Section Instance</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Tool Section Instance</em>'.
+     * @generated
+     */
+    ToolSectionInstance createToolSectionInstance();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the package supported by this factory.

@@ -16,6 +16,7 @@ import java.lang.reflect.Field;
 import org.eclipse.gef.Tool;
 import org.eclipse.gmf.runtime.diagram.ui.services.palette.PaletteFactory.Adapter;
 import org.eclipse.gmf.runtime.diagram.ui.util.INotationType;
+import org.eclipse.sirius.diagram.tools.api.management.ToolConstants;
 
 /**
  * A palette factory for common viewpoint diagram entries:
@@ -31,21 +32,9 @@ import org.eclipse.gmf.runtime.diagram.ui.util.INotationType;
 public class SiriusDiagramPaletteFactory extends Adapter {
 
     /**
-     * The Generic Connection Creation Tool ID.
-     */
-    public static final String GENERIC_CONNECTION_CREATION_TOOL = "GenericConnectionCreationTool"; //$NON-NLS-1$
-
-    private static final String TOOL_NOTEATTACHMENT = "noteattachmentTool"; //$NON-NLS-1$
-
-    private static final String TOOL_DIAGRAMLINK = "linkNoteTool"; //$NON-NLS-1$
-
-    /**
-     * Store the DiagramNotationType.NOTE_ATTACHMENT. Because the constant is
-     * not accessible as the same way in Eclipse 3.3
-     * (org.eclipse.gmf.runtime.diagram
-     * .ui.internal.util.DiagramNotationType.NOTE_ATTACHMENT) and in Eclipse 3.5
-     * (org.eclipse.gmf.runtime.diagram.ui.type.DiagramNotationType.
-     * NOTE_ATTACHMENT).
+     * Store the DiagramNotationType.NOTE_ATTACHMENT. Because the constant is not accessible as the same way in Eclipse
+     * 3.3 (org.eclipse.gmf.runtime.diagram .ui.internal.util.DiagramNotationType.NOTE_ATTACHMENT) and in Eclipse 3.5
+     * (org.eclipse.gmf.runtime.diagram.ui.type.DiagramNotationType. NOTE_ATTACHMENT).
      */
     private INotationType noteAttachmentNotationType;
 
@@ -56,15 +45,15 @@ public class SiriusDiagramPaletteFactory extends Adapter {
      */
     @Override
     public Tool createTool(String toolId) {
-        Tool result = null;
-        if (toolId.equals(TOOL_NOTEATTACHMENT)) {
-            result = new NoteAttachmentCreationTool(getNoteAttachmentNotationType());
-        } else if (toolId.equals(GENERIC_CONNECTION_CREATION_TOOL)) {
-            result = new GenericConnectionCreationTool();
-        } else if (toolId.equals(TOOL_DIAGRAMLINK)) {
-            result = new LinkNoteTool();
+        Tool value = null;
+        if (toolId.equals(ToolConstants.TOOL_NOTEATTACHMENT)) {
+            value = new NoteAttachmentCreationTool(getNoteAttachmentNotationType());
+        } else if (toolId.equals(ToolConstants.TOOL_GENERIC_CONNECTION_CREATION)) {
+            value = new GenericConnectionCreationTool();
+        } else if (toolId.equals(ToolConstants.TOOL_DIAGRAMLINK)) {
+            value = new LinkNoteTool();
         }
-        return result;
+        return value;
     }
 
     private INotationType getNoteAttachmentNotationType() {

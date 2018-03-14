@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.Decoration;
+import org.eclipse.sirius.viewpoint.ToolSectionInstance;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -37,6 +38,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * Order</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#getElementsToSelect <em>Elements To Select</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#getDecorationImage <em>Decoration Image</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#getToolSections <em>Tool Sections</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,6 +83,16 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
      * @ordered
      */
     protected Map<Decoration, Object> decorationImage;
+
+    /**
+     * The cached value of the '{@link #getToolSections() <em>Tool Sections</em>}' reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getToolSections()
+     * @generated
+     * @ordered
+     */
+    protected EList<ToolSectionInstance> toolSections;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -191,6 +203,41 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
      * @generated
      */
     @Override
+    public EList<ToolSectionInstance> getToolSections() {
+        if (toolSections == null) {
+            toolSections = new EObjectEList.Unsettable<ToolSectionInstance>(ToolSectionInstance.class, this, ViewpointPackage.UI_STATE__TOOL_SECTIONS);
+        }
+        return toolSections;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void unsetToolSections() {
+        if (toolSections != null) {
+            ((InternalEList.Unsettable<?>) toolSections).unset();
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public boolean isSetToolSections() {
+        return toolSections != null && ((InternalEList.Unsettable<?>) toolSections).isSet();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ViewpointPackage.UI_STATE__INVERSE_SELECTION_ORDER:
@@ -199,6 +246,8 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
             return getElementsToSelect();
         case ViewpointPackage.UI_STATE__DECORATION_IMAGE:
             return getDecorationImage();
+        case ViewpointPackage.UI_STATE__TOOL_SECTIONS:
+            return getToolSections();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -222,6 +271,10 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
         case ViewpointPackage.UI_STATE__DECORATION_IMAGE:
             setDecorationImage((Map<Decoration, Object>) newValue);
             return;
+        case ViewpointPackage.UI_STATE__TOOL_SECTIONS:
+            getToolSections().clear();
+            getToolSections().addAll((Collection<? extends ToolSectionInstance>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -243,6 +296,9 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
         case ViewpointPackage.UI_STATE__DECORATION_IMAGE:
             setDecorationImage((Map<Decoration, Object>) null);
             return;
+        case ViewpointPackage.UI_STATE__TOOL_SECTIONS:
+            unsetToolSections();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -261,6 +317,8 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
             return isSetElementsToSelect();
         case ViewpointPackage.UI_STATE__DECORATION_IMAGE:
             return decorationImage != null;
+        case ViewpointPackage.UI_STATE__TOOL_SECTIONS:
+            return isSetToolSections();
         }
         return super.eIsSet(featureID);
     }

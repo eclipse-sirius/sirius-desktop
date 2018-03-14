@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,14 +10,19 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EValidator;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
+import org.eclipse.sirius.diagram.tools.api.management.ToolManagement;
 import org.eclipse.sirius.tools.internal.validation.EValidatorAdapter;
 import org.osgi.framework.BundleContext;
 
@@ -77,6 +82,11 @@ public class DiagramPlugin extends EMFPlugin {
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
     public static class Implementation extends EclipsePlugin {
+        /**
+         * A map associating a {@link DDiagram} to its {@link ToolManagement}.
+         */
+        Map<DDiagram, ToolManagement> toolManagementMap;
+
         /**
          * Creates an instance.
          */
@@ -185,15 +195,88 @@ public class DiagramPlugin extends EMFPlugin {
             EValidator.Registry.INSTANCE.put(DiagramPackage.eINSTANCE, new EValidatorAdapter());
             EValidator.Registry.INSTANCE.put(DescriptionPackage.eINSTANCE, new EValidatorAdapter());
             EValidator.Registry.INSTANCE.put(ToolPackage.eINSTANCE, new EValidatorAdapter());
+            toolManagementMap = new HashMap<>();
         }
 
         @Override
         public void stop(BundleContext context) throws Exception {
+            toolManagementMap = null;
             try {
                 InstanceScope.INSTANCE.getNode(ID).flush();
             } finally {
                 super.stop(context);
             }
+        }
+
+        /**
+         * Returns the {@link ToolManagement} handling the tool of {@link DDiagram} associated to the given
+         * {@link Diagram}.
+         * 
+         * @param diagram
+         *            the diagram from which the {@link ToolManagement} must be retrieved.
+         * @return the {@link ToolManagement} handling given {@link Diagram}.
+         */
+        public ToolManagement getToolManagement(Diagram diagram) {
+            if (diagram != null && diagram.getElement() instanceof DDiagram) {
+                DDiagram dDiagram = (DDiagram) diagram.getElement();
+                ToolManagement toolManagement = toolManagementMap.get(dDiagram);
+                if (toolManagement == null) {
+                    toolManagement = new ToolManagement(dDiagram);
+                    toolManagementMap.put(dDiagram, toolManagement);
+                }
+                return toolManagement;
+            }
+            return null;
+        }
+
+        /**
+         * Returns the {@link ToolManagement} handling the tool of {@link DDiagram} associated to the given
+         * {@link Diagram}.
+         * 
+         * @param dDiagram
+         *            the diagram from which the {@link ToolManagement} must be retrieved.
+         * @return the {@link ToolManagement} handling given {@link Diagram}.
+         */
+        public ToolManagement getToolManagement(DDiagram dDiagram) {
+            if (dDiagram != null) {
+                ToolManagement toolManagement = toolManagementMap.get(dDiagram);
+                if (toolManagement == null) {
+                    toolManagement = new ToolManagement(dDiagram);
+                    toolManagementMap.put(dDiagram, toolManagement);
+                }
+                return toolManagement;
+            }
+            return null;
+        }
+
+        /**
+         * Removes the {@link ToolManagement} handling given {@link DDiagram}.
+         * 
+         * @param diagram
+         *            the diagram from which the {@link ToolManagement} must be removed.
+         * @return the removed {@link ToolManagement} or null if no such element exists for the given diagram.
+         */
+        public ToolManagement removeToolManagement(DDiagram diagram) {
+            ToolManagement toolManagement = toolManagementMap.get(diagram);
+            if (toolManagement != null) {
+                toolManagementMap.remove(diagram);
+            }
+            return toolManagement;
+        }
+
+        /**
+         * Removes the {@link ToolManagement} handling given {@link DDiagram}.
+         * 
+         * @param diagram
+         *            the diagram from which the {@link ToolManagement} must be removed.
+         * @return the removed {@link ToolManagement} or null if no such element exists for the given diagram.
+         */
+        public ToolManagement removeToolManagement(Diagram diagram) {
+            if (diagram != null && diagram.getElement() instanceof DDiagram) {
+                DDiagram dDiagram = (DDiagram) diagram.getElement();
+                return removeToolManagement(dDiagram);
+            }
+            return null;
         }
     }
 }

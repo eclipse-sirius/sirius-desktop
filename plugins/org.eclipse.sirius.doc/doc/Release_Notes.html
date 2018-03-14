@@ -450,6 +450,21 @@
 				<code>org.eclipse.sirius.business.api.dialect.DialectServices</code> (and all its implementations), the method 
 				<code>refreshEffectiveRepresentationDescription(DRepresentation, IProgressMonitor)</code> has been removed. It corresponded to an experimental feature which has been abandonned long ago. 
 			</li>
+			<li><span class="label label-success">Added</span> A new 
+				<code>ToolSection</code>, 
+				<code>ToolGroup</code>  and 
+				<code>ToolInstance</code> model element have been added in 
+				<code>viewpoint</code> metamodel. These elements are used to represent tools available for a 
+				<code>DDiagram</code> with their visibility, enabling and filtering status. 
+				<code>ToolSectionInstance</code> are available in the 
+				<code>UIState</code> of a 
+				<code>DDiagram</code> by using the 
+				<code>toolSections</code> reference. 
+			</li>
+			<li><span class="label label-danger">Removed</span> the class 
+				<code>ToolFilterDescriptionListener</code> has been removed because of the new 
+				<code>ToolMangament</code> mechanism used to handle tools and layer changes.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
@@ -458,6 +473,26 @@
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys.PREF_DISPLAY_GENERIC_EDGE_CREATION_TOOL</code> has been added to make to possible to hide the new generic edge creation tool. See the 
 				<em>User-Visible Changes</em> or the user documentation for more details.
+			</li>
+			<li><span class="label label-success">Added</span> A component 
+				<code>ToolManagement</code> has been created to manage tool availability and status for a given 
+				<code>DDiagram</code>. It comes with the listener interface 
+				<code>ToolChangeListener</code> that can be used to be warned about tool changes.
+			</li>
+			<li><span class="label label-success">Added</span>  An interface 
+				<code>ToolConstants</code> has been created to gather constants relative to tool management.
+			</li>
+			<li><span class="label label-info">Modified</span> The constants 
+				<code>SiriusDiagramPaletteFactory#GENERIC_CONNECTION_CREATION_TOOL</code> and 
+				<code>SiriusDiagramPaletteFactory#TOOL_NOTEATTACHMENT</code> have been moved in 
+				<code>ToolConstants</code>
+			</li>
+			<li><span class="label label-info">Modified</span> The classes 
+				<code>ToolFilter</code> and 
+				<code>ToolFilterFromDescription</code> have been moved from the plugin 
+				<code>oes.diagram.ui</code> to 
+				<code>oes.diagram</code> in package 
+				<code>org.eclipse.sirius.diagram.tools.api.managment</code>
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
@@ -475,6 +510,24 @@
 				<code>org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm</code>, 
 				<code>org.eclipse.sirius.diagram.ui.api.layout.EnumChoice</code> and 
 				<code>org.eclipse.sirius.diagram.ui.api.layout.LayoutOptionFactory</code>.
+			</li>
+		</ul>
+		<ul>
+			<li><span class="label label-info">Modified</span> The methods 
+				<code>hideLayer(Layer)</code>, 
+				<code>showLayer(Layer)</code>, 
+				<code>addToolFilter(ToolFilter)</code> and 
+				<code>removeToolFilter(ToolFilter)</code> of 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager</code> have been made deprecated. They are not used anymore. The API 
+				<code>ToolManagement</code> is now the entry point to make palette update regarding tools and layer changes.
+			</li>
+		</ul>
+		<ul>
+			<li><span class="label label-info">Modified</span> The 
+				<code>Diagram</code> parameter of the methods 
+				<code>oes.update(Diagram)</code> and 
+				<code>oes.update(Diagram,boolean)</code> has been changed to 
+				<code>DDiagram</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 

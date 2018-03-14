@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
+import org.eclipse.sirius.diagram.tools.api.management.ToolFilter;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
@@ -26,6 +26,7 @@ public class ToolFilterForLockedDRepresentation implements ToolFilter {
      * 
      * {@inheritDoc}
      */
+    @Override
     public boolean filter(DDiagram diagram, AbstractToolDescription tool) {
         return true;
     }

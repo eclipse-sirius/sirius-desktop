@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette;
+package org.eclipse.sirius.diagram.tools.api.management;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -28,8 +28,7 @@ public interface ToolFilter {
      *            the diagram
      * @param tool
      *            the tool
-     * @return <code>true</code> if the tool should be hidden,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the tool should be hidden, <code>false</code> otherwise
      */
     boolean filter(DDiagram diagram, AbstractToolDescription tool);
 

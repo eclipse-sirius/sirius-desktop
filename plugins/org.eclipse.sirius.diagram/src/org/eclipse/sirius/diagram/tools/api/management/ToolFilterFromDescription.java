@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,11 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.internal.palette;
+package org.eclipse.sirius.diagram.tools.api.management;
 
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
@@ -50,6 +49,7 @@ public class ToolFilterFromDescription implements ToolFilter {
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter#filter(DDiagram,
      *      AbstractToolDescription)
      */
+    @Override
     public boolean filter(DDiagram diagram, AbstractToolDescription tool) {
         if (tool == toolDescription) {
             try {

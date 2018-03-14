@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.sirius.viewpoint.UIState#isInverseSelectionOrder <em>Inverse Selection Order</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect <em>Elements To Select</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.UIState#getDecorationImage <em>Decoration Image</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.UIState#getToolSections <em>Tool Sections</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getUIState()
@@ -129,5 +130,44 @@ public interface UIState extends EObject {
      * @generated
      */
     void setDecorationImage(Map<Decoration, Object> value);
+
+    /**
+     * Returns the value of the '<em><b>Tool Sections</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.ToolSectionInstance}. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Tool Sections</em>' reference list isn't clear, there really should be more of a
+     * description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Tool Sections</em>' reference list.
+     * @see #isSetToolSections()
+     * @see #unsetToolSections()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getUIState_ToolSections()
+     * @model resolveProxies="false" unsettable="true" transient="true"
+     * @generated
+     */
+    EList<ToolSectionInstance> getToolSections();
+
+    /**
+     * Unsets the value of the '{@link org.eclipse.sirius.viewpoint.UIState#getToolSections <em>Tool Sections</em>}'
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #isSetToolSections()
+     * @see #getToolSections()
+     * @generated
+     */
+    void unsetToolSections();
+
+    /**
+     * Returns whether the value of the '{@link org.eclipse.sirius.viewpoint.UIState#getToolSections <em>Tool
+     * Sections</em>}' reference list is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return whether the value of the '<em>Tool Sections</em>' reference list is set.
+     * @see #unsetToolSections()
+     * @see #getToolSections()
+     * @generated
+     */
+    boolean isSetToolSections();
 
 } // UIState

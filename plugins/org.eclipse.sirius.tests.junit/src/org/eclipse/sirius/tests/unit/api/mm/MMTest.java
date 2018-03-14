@@ -61,7 +61,8 @@ public class MMTest extends SiriusDiagramTestCase {
     private static final String REPRESENTATION_DESC__NAME = "Diagram";
 
     private static final List<EClass> TRANSIENT_OBJECTS_WHITE_LIST = Arrays.asList(ViewpointPackage.eINSTANCE.getDAnalysisSessionEObject(), ViewpointPackage.eINSTANCE.getUIState(),
-            ViewpointPackage.eINSTANCE.getSessionManagerEObject());
+            ViewpointPackage.eINSTANCE.getSessionManagerEObject(), ViewpointPackage.eINSTANCE.getToolInstance(), ViewpointPackage.eINSTANCE.getToolGroupInstance(),
+            ViewpointPackage.eINSTANCE.getToolSectionInstance());
 
     @Override
     protected void setUp() throws Exception {
@@ -124,10 +125,10 @@ public class MMTest extends SiriusDiagramTestCase {
                 invalidEClasses.add(eClass.getName());
             } else if (!eClass.isAbstract() && !eClass.isInterface()) {
                 IdentifiedElement identifiedElement = (IdentifiedElement) EcoreUtil.create(eClass);
-              String uid=  identifiedElement.getUid();
-               if(StringUtil.isEmpty(uid) || uid.length() != uuidLength) {
-                   invalidInstances.add(eClass.getName());
-               }
+                String uid = identifiedElement.getUid();
+                if (StringUtil.isEmpty(uid) || uid.length() != uuidLength) {
+                    invalidInstances.add(eClass.getName());
+                }
             }
         }
 

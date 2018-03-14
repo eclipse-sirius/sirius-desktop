@@ -29,10 +29,10 @@ public class PaletteManagerWithoutLayerTest extends AbstractPaletteManagerSectio
     private static final String REPRESENTATION_DESC_NAME = "toolSectionWithoutLayers";
 
     private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_PALETTE = new TreeSet<Entry>(Arrays.asList(
-    //
-            createNewEntry("toolSectionWithoutLayers", "CCD50-1", "Tool50-2-1")
             //
-            ));
+            createNewEntry("toolSectionWithoutLayers", "CCD50-1", "Tool50-2-1")
+    //
+    ));
 
     /**
      * {@inheritDoc}
@@ -58,7 +58,8 @@ public class PaletteManagerWithoutLayerTest extends AbstractPaletteManagerSectio
      */
     public void testCreatePalette() throws Exception {
         PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
-        paletteManager.update(diagram);
+        updateTools(diagram);
+        paletteManager.update(dDiagram);
         doContentPaletteTest(EXPECTED_ENTRIES_STD_PALETTE);
     }
 }

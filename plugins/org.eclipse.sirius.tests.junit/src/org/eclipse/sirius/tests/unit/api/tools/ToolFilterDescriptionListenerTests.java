@@ -10,15 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.tools;
 
-import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.replay;
-import static org.easymock.EasyMock.verify;
-
 import java.util.HashMap;
 
 import org.eclipse.core.commands.operations.DefaultOperationHistory;
 import org.eclipse.core.commands.operations.IOperationHistory;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
@@ -32,9 +30,11 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
-import org.eclipse.sirius.business.api.tool.ToolFilterDescriptionListener;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.tools.internal.management.ToolFilterDescriptionListenerForUpdate;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
@@ -43,6 +43,24 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 import junit.framework.TestCase;
 
 public class ToolFilterDescriptionListenerTests extends TestCase {
+
+    private final class ToolFilterDescriptionListenerForUpdateExtension extends ToolFilterDescriptionListenerForUpdate {
+        int callCount = 0;
+
+        private ToolFilterDescriptionListenerForUpdateExtension(IInterpreter interpreter, ToolFilterDescription filter, DDiagram diagram) {
+            super(interpreter, filter, diagram);
+        }
+
+        @Override
+        protected Command executeUpdate(TransactionalEditingDomain transactionalEditingDomain) {
+            callCount++;
+            return UnexecutableCommand.INSTANCE;
+        }
+
+        public int getCallCount() {
+            return callCount;
+        }
+    }
 
     private static final String TEMPORARY_PROJECT_NAME = "DesignerTestProject";
 
@@ -53,8 +71,6 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
     private TransactionalEditingDomain editingDomain;
 
     private Session session;
-
-    private EPackage ePackage;
 
     private DSemanticDiagram diagram;
 
@@ -69,7 +85,7 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
 
         URI semanticResourceURI = URI.createURI(URIQuery.INMEMORY_URI_SCHEME + ":/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME);
         final Resource resource = editingDomain.getResourceSet().createResource(semanticResourceURI);
-        ePackage = createEPackage(resource);
+        createEPackage(resource);
         resource.save(new HashMap<>());
 
         URI sessionResourceURI = URI.createURI(URIQuery.INMEMORY_URI_SCHEME + ":/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME);
@@ -101,7 +117,7 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
 
     private DSemanticDiagram createDiagram(final Resource airdResource) {
         final DSemanticDiagram diagram = DiagramFactory.eINSTANCE.createDSemanticDiagram();
-        diagram.setTarget(ePackage);
+        diagram.setTarget(session.getSemanticResources().iterator().next().getContents().get(0));
 
         editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
             @Override
@@ -113,16 +129,8 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
     }
 
     public void testSingleNotification() throws Exception {
-        final ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name"), diagram);
-
-        final Runnable mock = createMock(Runnable.class);
-        listener.setUpdateRunnable(mock);
-
-        /* start recording */
-        mock.run();
-        mock.run();
-        replay(mock);
-        /* stop recording */
+        final ToolFilterDescriptionListenerForUpdateExtension listener = new ToolFilterDescriptionListenerForUpdateExtension(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name"),
+                diagram);
         editingDomain.addResourceSetListener(listener);
         editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
             @Override
@@ -136,23 +144,13 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
                 diagram.setName("quick name");
             }
         });
-        verify(mock);
+        assertEquals("The right number of notification has not been sent.", 2, listener.getCallCount());
     }
 
     public void testMultipleNotifications() throws Exception {
-        final ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name", "info"), diagram);
+        final ToolFilterDescriptionListenerForUpdateExtension listener = new ToolFilterDescriptionListenerForUpdateExtension(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name"),
+                diagram);
 
-        final Runnable mock = createMock(Runnable.class);
-        listener.setUpdateRunnable(mock);
-
-        /* start recording */
-        mock.run();
-        /*
-         * runnable should be called only one time even with several
-         * modifications
-         */
-        replay(mock);
-        /* stop recording */
         editingDomain.addResourceSetListener(listener);
         editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
             @Override
@@ -161,23 +159,13 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
                 diagram.setName("this is an annoucement");
             }
         });
-        verify(mock);
+        assertEquals("The right number of notification has not been sent.", 1, listener.getCallCount());
     }
 
     public void testAddRemoveListener() throws Exception {
-        final ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name"), diagram);
+        final ToolFilterDescriptionListenerForUpdateExtension listener = new ToolFilterDescriptionListenerForUpdateExtension(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name"),
+                diagram);
 
-        final Runnable mock = createMock(Runnable.class);
-        listener.setUpdateRunnable(mock);
-
-        /* start recording */
-        mock.run();
-        /*
-         * runnable should be called only one time as we should not listen the
-         * second notification
-         */
-        replay(mock);
-        /* stop recording */
         editingDomain.addResourceSetListener(listener);
         editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
             @Override
@@ -192,7 +180,7 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
                 diagram.setName("another name");
             }
         });
-        verify(mock);
+        assertEquals("The right number of notification has not been sent.", 1, listener.getCallCount());
     }
 
     private ToolFilterDescription createToolFilterDescriptionOnDiagram(String... featureNames) {
@@ -217,7 +205,6 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
 
         editingDomain = null;
         session = null;
-        ePackage = null;
         diagram = null;
 
         super.tearDown();

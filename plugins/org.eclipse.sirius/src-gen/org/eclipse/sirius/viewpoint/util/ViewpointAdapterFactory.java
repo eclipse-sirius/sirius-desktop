@@ -41,6 +41,9 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.SessionManagerEObject;
 import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ToolGroupInstance;
+import org.eclipse.sirius.viewpoint.ToolInstance;
+import org.eclipse.sirius.viewpoint.ToolSectionInstance;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
@@ -230,6 +233,21 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseUIState(UIState object) {
             return createUIStateAdapter();
+        }
+
+        @Override
+        public Adapter caseToolInstance(ToolInstance object) {
+            return createToolInstanceAdapter();
+        }
+
+        @Override
+        public Adapter caseToolGroupInstance(ToolGroupInstance object) {
+            return createToolGroupInstanceAdapter();
+        }
+
+        @Override
+        public Adapter caseToolSectionInstance(ToolSectionInstance object) {
+            return createToolSectionInstanceAdapter();
         }
 
         @Override
@@ -623,6 +641,47 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createUIStateAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.ToolInstance <em>Tool
+     * Instance</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.ToolInstance
+     * @generated
+     */
+    public Adapter createToolInstanceAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.ToolGroupInstance <em>Tool
+     * Group Instance</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.ToolGroupInstance
+     * @generated
+     */
+    public Adapter createToolGroupInstanceAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.ToolSectionInstance <em>Tool
+     * Section Instance</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.ToolSectionInstance
+     * @generated
+     */
+    public Adapter createToolSectionInstanceAdapter() {
         return null;
     }
 

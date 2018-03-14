@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,12 +14,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.edit.provider.ComposedImage;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.management.ToolFilter;
+import org.eclipse.sirius.diagram.tools.api.management.ToolManagement;
+import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
@@ -100,6 +105,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
     public void run() {
         PaletteManager paletteManager = dDiagramEditorImpl.getPaletteManager();
         Diagram gmfDiagram = dDiagramEditorImpl.getDiagram();
+        ToolManagement toolManagement = DiagramPlugin.getPlugin().getToolManagement(gmfDiagram);
         switch (changeKind) {
         case SessionListener.DIRTY:
         case SessionListener.SYNC:
@@ -177,8 +183,9 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             /*
              * create a toolfilter that will hide any creation tool
              */
+
             if (paletteManager != null) {
-                paletteManager.addToolFilter(toolFilterWhenRepresentationIsLocked);
+                toolManagement.addToolFilter(toolFilterWhenRepresentationIsLocked);
                 if (dDiagramEditorImpl.getTabbar() != null) {
                     dDiagramEditorImpl.getTabbar().reinitToolBar(dDiagramEditorImpl.getDiagramGraphicalViewer().getSelection());
                 }
@@ -195,7 +202,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             break;
         case SessionListener.REPRESENTATION_FROZEN:
             if (paletteManager != null) {
-                paletteManager.addToolFilter(toolFilterWhenRepresentationIsLocked);
+                toolManagement.addToolFilter(toolFilterWhenRepresentationIsLocked);
                 reloadPalette(paletteManager, gmfDiagram, false);
                 if (dDiagramEditorImpl.getTabbar() != null) {
                     dDiagramEditorImpl.getTabbar().reinitToolBar(dDiagramEditorImpl.getDiagramGraphicalViewer().getSelection());
@@ -216,8 +223,18 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
     }
 
     private void reloadPalette(PaletteManager paletteManager, Diagram gmfDiagram, boolean clean) {
-        if (paletteManager != null && !paletteManager.isDisposed()) {
-            paletteManager.update(gmfDiagram, clean);
+        TransactionalEditingDomain editingDomain = dDiagramEditorImpl.getEditingDomain();
+        if (editingDomain != null) {
+            UpdateToolRecordingCommand updateToolRecordingCommand = new UpdateToolRecordingCommand(editingDomain, (DDiagram) gmfDiagram.getElement(), true);
+            editingDomain.getCommandStack().execute(updateToolRecordingCommand);
+            ToolManagement toolManagement = DiagramPlugin.getDefault().getToolManagement(gmfDiagram);
+            if (toolManagement != null) {
+                if (clean) {
+                    toolManagement.notifyToolChangeAfterVSMReload();
+                } else {
+                    toolManagement.notifyToolChange();
+                }
+            }
         }
     }
 

@@ -51,6 +51,9 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SessionManagerEObject;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.SyncStatus;
+import org.eclipse.sirius.viewpoint.ToolGroupInstance;
+import org.eclipse.sirius.viewpoint.ToolInstance;
+import org.eclipse.sirius.viewpoint.ToolSectionInstance;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -260,6 +263,27 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EClass uiStateEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass toolInstanceEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass toolGroupInstanceEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass toolSectionInstanceEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1185,6 +1209,156 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
+    public EReference getUIState_ToolSections() {
+        return (EReference) uiStateEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getToolInstance() {
+        return toolInstanceEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getToolInstance_Id() {
+        return (EAttribute) toolInstanceEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getToolInstance_Enabled() {
+        return (EAttribute) toolInstanceEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getToolInstance_Visible() {
+        return (EAttribute) toolInstanceEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getToolInstance_ToolEntry() {
+        return (EReference) toolInstanceEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getToolInstance_Filtered() {
+        return (EAttribute) toolInstanceEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getToolGroupInstance() {
+        return toolGroupInstanceEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getToolGroupInstance_Tools() {
+        return (EReference) toolGroupInstanceEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getToolGroupInstance_Group() {
+        return (EReference) toolGroupInstanceEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getToolSectionInstance() {
+        return toolSectionInstanceEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getToolSectionInstance_Tools() {
+        return (EReference) toolSectionInstanceEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getToolSectionInstance_Groups() {
+        return (EReference) toolSectionInstanceEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getToolSectionInstance_Section() {
+        return (EReference) toolSectionInstanceEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getToolSectionInstance_SubSections() {
+        return (EReference) toolSectionInstanceEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EEnum getFontFormat() {
         return fontFormatEEnum;
     }
@@ -1364,6 +1538,24 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         createEAttribute(uiStateEClass, ViewpointPackage.UI_STATE__INVERSE_SELECTION_ORDER);
         createEReference(uiStateEClass, ViewpointPackage.UI_STATE__ELEMENTS_TO_SELECT);
         createEAttribute(uiStateEClass, ViewpointPackage.UI_STATE__DECORATION_IMAGE);
+        createEReference(uiStateEClass, ViewpointPackage.UI_STATE__TOOL_SECTIONS);
+
+        toolInstanceEClass = createEClass(ViewpointPackage.TOOL_INSTANCE);
+        createEAttribute(toolInstanceEClass, ViewpointPackage.TOOL_INSTANCE__ID);
+        createEAttribute(toolInstanceEClass, ViewpointPackage.TOOL_INSTANCE__ENABLED);
+        createEAttribute(toolInstanceEClass, ViewpointPackage.TOOL_INSTANCE__VISIBLE);
+        createEReference(toolInstanceEClass, ViewpointPackage.TOOL_INSTANCE__TOOL_ENTRY);
+        createEAttribute(toolInstanceEClass, ViewpointPackage.TOOL_INSTANCE__FILTERED);
+
+        toolGroupInstanceEClass = createEClass(ViewpointPackage.TOOL_GROUP_INSTANCE);
+        createEReference(toolGroupInstanceEClass, ViewpointPackage.TOOL_GROUP_INSTANCE__TOOLS);
+        createEReference(toolGroupInstanceEClass, ViewpointPackage.TOOL_GROUP_INSTANCE__GROUP);
+
+        toolSectionInstanceEClass = createEClass(ViewpointPackage.TOOL_SECTION_INSTANCE);
+        createEReference(toolSectionInstanceEClass, ViewpointPackage.TOOL_SECTION_INSTANCE__TOOLS);
+        createEReference(toolSectionInstanceEClass, ViewpointPackage.TOOL_SECTION_INSTANCE__GROUPS);
+        createEReference(toolSectionInstanceEClass, ViewpointPackage.TOOL_SECTION_INSTANCE__SECTION);
+        createEReference(toolSectionInstanceEClass, ViewpointPackage.TOOL_SECTION_INSTANCE__SUB_SECTIONS);
 
         // Create enums
         fontFormatEEnum = createEEnum(ViewpointPackage.FONT_FORMAT);
@@ -1403,6 +1595,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
         StylePackage theStylePackage = (StylePackage) EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI);
+        ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
 
         // Add subpackages
         getESubpackages().add(theDescriptionPackage);
@@ -1444,6 +1637,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dModelEClass.getESuperTypes().add(this.getDFile());
         basicLabelStyleEClass.getESuperTypes().add(this.getCustomizable());
         customizableEClass.getESuperTypes().add(this.getIdentifiedElement());
+        toolGroupInstanceEClass.getESuperTypes().add(this.getToolInstance());
+        toolSectionInstanceEClass.getESuperTypes().add(this.getToolInstance());
 
         // Initialize classes and features; add operations and parameters
         initEClass(identifiedElementEClass, IdentifiedElement.class, "IdentifiedElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1642,6 +1837,44 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         g1.getETypeArguments().add(g2);
         initEAttribute(getUIState_DecorationImage(), g1, "decorationImage", null, 0, 1, UIState.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
                 !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getUIState_ToolSections(), this.getToolSectionInstance(), null, "toolSections", null, 0, -1, UIState.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+
+        initEClass(toolInstanceEClass, ToolInstance.class, "ToolInstance", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getToolInstance_Id(), ecorePackage.getEString(), "id", null, 0, 1, ToolInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getToolInstance_Enabled(), ecorePackage.getEBoolean(), "enabled", "true", 0, 1, ToolInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getToolInstance_Visible(), ecorePackage.getEBoolean(), "visible", null, 0, 1, ToolInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getToolInstance_ToolEntry(), theToolPackage.getToolEntry(), null, "toolEntry", null, 0, 1, ToolInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getToolInstance_Filtered(), ecorePackage.getEBoolean(), "filtered", null, 0, 1, ToolInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(toolGroupInstanceEClass, ToolGroupInstance.class, "ToolGroupInstance", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEReference(getToolGroupInstance_Tools(), this.getToolInstance(), null, "tools", null, 0, -1, ToolGroupInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getToolGroupInstance_Group(), theEcorePackage.getEObject(), null, "group", null, 0, 1, ToolGroupInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+
+        initEClass(toolSectionInstanceEClass, ToolSectionInstance.class, "ToolSectionInstance", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEReference(getToolSectionInstance_Tools(), this.getToolInstance(), null, "tools", null, 0, -1, ToolSectionInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getToolSectionInstance_Groups(), this.getToolGroupInstance(), null, "groups", null, 0, -1, ToolSectionInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getToolSectionInstance_Section(), theEcorePackage.getEObject(), null, "section", null, 0, 1, ToolSectionInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getToolSectionInstance_SubSections(), this.getToolSectionInstance(), null, "subSections", null, 0, -1, ToolSectionInstance.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(fontFormatEEnum, FontFormat.class, "FontFormat"); //$NON-NLS-1$

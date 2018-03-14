@@ -22,12 +22,14 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.listener.Notification;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.helper.decoration.DecorationHelper;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 
 import com.google.common.collect.Lists;
 
@@ -54,8 +56,7 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
      * @param layer
      *            the {@link Layer} concerned by this change
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of layer
-     *            activation changes
+     *            a {@link IProgressMonitor} to show progression of layer activation changes
      */
     public ChangeLayerActivationCommand(TransactionalEditingDomain domain, DDiagram dDiagram, Layer layer, IProgressMonitor monitor) {
         super(domain, new DDiagramQuery(dDiagram).getAllActivatedLayers().contains(layer) ? Messages.ChangeLayerActivationCommand_hideLabel
@@ -90,6 +91,9 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
                 }
             }
             monitor.worked(1);
+
+            new UpdateToolRecordingCommand(TransactionUtil.getEditingDomain(dDiagram), dDiagram, true).execute();
+            DiagramPlugin.getDefault().getToolManagement(dDiagram).notifyToolChange();
 
             if (!transientLayer) {
                 new RefreshRepresentationsCommand(TransactionUtil.getEditingDomain(dDiagram), new SubProgressMonitor(monitor, 1), dDiagram).execute();
