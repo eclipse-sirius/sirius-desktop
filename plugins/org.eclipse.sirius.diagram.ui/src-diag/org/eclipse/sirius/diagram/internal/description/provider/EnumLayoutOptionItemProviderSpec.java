@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
-import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.provider.EnumLayoutOptionItemProvider;
 import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
