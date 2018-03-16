@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.Connection;
@@ -96,12 +95,12 @@ import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.internal.command.builders.EdgeCreationCommandBuilder;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.command.SetReconnectingConnectionBendpointsCommand;
 import org.eclipse.sirius.diagram.ui.business.internal.command.SiriusSetConnectionAnchorsCommand;
 import org.eclipse.sirius.diagram.ui.business.internal.command.TreeLayoutSetConnectionAnchorsCommand;
+import org.eclipse.sirius.diagram.ui.business.internal.helper.CreateConnectionRequestHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DEdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
@@ -120,7 +119,6 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -138,32 +136,30 @@ import com.google.common.collect.Maps;
 public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
     /**
-     * Constant used to store a {@link EdgeCreationDescription} in a
-     * Request.getExtendedData().
+     * Constant used to store a {@link EdgeCreationDescription} in a Request.getExtendedData().
      */
     public static final String GMF_EDGE_CREATION_DESCRIPTION = "edge.creation.description"; //$NON-NLS-1$
 
     /**
      * Constant used to store the {@link EdgeTarget} source.
      */
-    protected static final String GMF_EDGE_TARGET_SOURCE = "edgeTarget.source"; //$NON-NLS-1$
+    public static final String GMF_EDGE_TARGET_SOURCE = "edgeTarget.source"; //$NON-NLS-1$
 
     /**
-     * Constant used to store the location in GMF relative coordinates of the
-     * click on the {@link EdgeTarget} source.
+     * Constant used to store the location in GMF relative coordinates of the click on the {@link EdgeTarget} source.
      */
-    protected static final String GMF_EDGE_LOCATION_SOURCE = "edge.location.source"; //$NON-NLS-1$
+    public static final String GMF_EDGE_LOCATION_SOURCE = "edge.location.source"; //$NON-NLS-1$
 
     /**
      * Constant use to store source terminal.
      */
-    protected static final String GMF_EDGE_SOURCE_TERMINAL = "edge.newSourceTerminal"; //$NON-NLS-1$
+    public static final String GMF_EDGE_SOURCE_TERMINAL = "edge.newSourceTerminal"; //$NON-NLS-1$
 
     /**
-     * Constant use to store the feedback figure. This feedback figure is used
-     * only when necessary (detection of potential straightened edge feedback).
+     * Constant use to store the feedback figure. This feedback figure is used only when necessary (detection of
+     * potential straightened edge feedback).
      */
-    protected static final String GMF_EDGE_FEEDBACK = "edge.feedback.figure"; //$NON-NLS-1$
+    public static final String GMF_EDGE_FEEDBACK = "edge.feedback.figure"; //$NON-NLS-1$
 
     /**
      * Extra width edge for this feedback.
@@ -696,38 +692,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         if (request instanceof CreateConnectionViewRequest) {
             connectionCreateCommand = super.getConnectionCreateCommand(request);
         } else {
-
-            Map<Object, Object> extendedData = request.getExtendedData();
-
-            ConnectionAnchor sourceAnchor = getConnectableEditPart().getSourceConnectionAnchor(request);
-            String newSourceTerminal = getConnectableEditPart().mapConnectionAnchorToTerminal(sourceAnchor);
-
-            Point sourceLocation = getConvertedLocation(request);
-
-            extendedData.put(GMF_EDGE_LOCATION_SOURCE, sourceLocation.getCopy());
-            extendedData.put(GMF_EDGE_SOURCE_TERMINAL, newSourceTerminal);
-
-            org.eclipse.gef.GraphicalEditPart graphicalEditPart = (org.eclipse.gef.GraphicalEditPart) this.getHost();
-            DSemanticDecorator decorateSemanticElement = null;
-            if (graphicalEditPart.getModel() instanceof View) {
-                View view = (View) graphicalEditPart.getModel();
-                if (view.getElement() instanceof DSemanticDecorator) {
-                    decorateSemanticElement = (DSemanticDecorator) view.getElement();
-                }
-            }
-            if (decorateSemanticElement instanceof EdgeTarget && request.getNewObject() instanceof AbstractToolDescription) {
-                AbstractToolDescription abstractToolDescription = (AbstractToolDescription) request.getNewObject();
-                if (abstractToolDescription instanceof EdgeCreationDescription) {
-                    EdgeCreationDescription edgeCreationDescription = (EdgeCreationDescription) abstractToolDescription;
-
-                    boolean canCreate = new EdgeCreationDescriptionQuery(edgeCreationDescription).isValidAsSourceElement((DMappingBased) decorateSemanticElement);
-                    canCreate = canCreate && new EdgeCreationCommandBuilder(edgeCreationDescription, (EdgeTarget) decorateSemanticElement, null).checkStartPrecondition();
-                    if (canCreate) {
-                        extendedData.put(GMF_EDGE_CREATION_DESCRIPTION, edgeCreationDescription);
-                        extendedData.put(GMF_EDGE_TARGET_SOURCE, decorateSemanticElement);
-                        connectionCreateCommand = new ICommandProxy(IdentityCommand.INSTANCE);
-                    }
-                }
+            if (CreateConnectionRequestHelper.computeConnectionStartExtendedData(request, getConnectableEditPart())) {
+                connectionCreateCommand = new ICommandProxy(IdentityCommand.INSTANCE);
             }
         }
         if (connectionCreateCommand == null) {

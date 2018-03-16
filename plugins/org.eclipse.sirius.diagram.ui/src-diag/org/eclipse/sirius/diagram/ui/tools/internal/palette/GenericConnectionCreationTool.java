@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -31,13 +32,14 @@ import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.CreationFactory;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.INodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.diagram.ui.business.internal.helper.CreateConnectionRequestHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.DoNothingCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
@@ -123,9 +125,9 @@ public class GenericConnectionCreationTool extends ConnectionCreationTool {
      * @return an {@link UnexecutableCommand} if no tool is available, a {@link DoNothingCommand} otherwise.
      */
     private Command handleConnectionStart(CreateConnectionRequest request) {
+        EditPart editPart = getTargetEditPart();
         if (targetHasChanged) {
             this.startToolToRequest = new HashMap<>();
-            EditPart editPart = getTargetEditPart();
             // We compute the list of applicable tools at the start.
             for (Iterator<ConnectionCreationToolEntry> iterator = connectionToolEntries.iterator(); iterator.hasNext(); /**/) {
                 ConnectionCreationToolEntry toolEntry = iterator.next();
@@ -144,8 +146,26 @@ public class GenericConnectionCreationTool extends ConnectionCreationTool {
                     }
                 }
             }
+        } else {
+            updateRequestLocation(startToolToRequest.values(), request, editPart, true);
         }
         return startToolToRequest.isEmpty() ? UnexecutableCommand.INSTANCE : DoNothingCommand.INSTANCE;
+    }
+
+    /**
+     * Updates all requests in cache to keep their location up-to-date. We need to recompute the extended data (that
+     * keep the start connection context) since the location may have changed.
+     */
+    private void updateRequestLocation(Collection<CreateConnectionRequest> requests, CreateConnectionRequest originalRequest, EditPart editPart, boolean start) {
+        requests.stream().forEach(current -> {
+            current.setLocation(originalRequest.getLocation().getCopy());
+            // If the connection start has no yet been determined (the user did not select the start location yet, we
+            // need to recompute the extended data.
+            if (start) {
+                CreateConnectionRequestHelper.computeConnectionStartExtendedData(current, (INodeEditPart) editPart);
+            }
+        });
+
     }
 
     /**
@@ -157,10 +177,10 @@ public class GenericConnectionCreationTool extends ConnectionCreationTool {
      *         otherwise.
      */
     private Command handleConnectionEnd() {
+        EditPart editPart = getTargetEditPart();
         // We compute the applicable tools map if we ask for the command for the first time or if the target has
         // changed.
         if (endToolToRequest == null || targetHasChanged) {
-            EditPart editPart = getTargetEditPart();
             endToolToRequest = new HashMap<>();
             for (Iterator<ConnectionCreationToolEntry> iterator = startToolToRequest.keySet().iterator(); iterator.hasNext(); /**/) {
                 ConnectionCreationToolEntry toolEntry = iterator.next();
@@ -179,6 +199,8 @@ public class GenericConnectionCreationTool extends ConnectionCreationTool {
                     }
                 }
             }
+        } else {
+            updateRequestLocation(endToolToRequest.values(), (CreateConnectionRequest) getTargetRequest(), editPart, false);
         }
         return endToolToRequest.isEmpty() ? UnexecutableCommand.INSTANCE : createCompleteCommand();
     }
@@ -228,7 +250,6 @@ public class GenericConnectionCreationTool extends ConnectionCreationTool {
         connectionRequest.setSnapToEnabled(request.isSnapToEnabled());
         connectionRequest.setFactory(new GenericConnectionRequestCreationFactory(description));
         Map extendedData = new HashMap(request.getExtendedData());
-        extendedData.put(SiriusGraphicalNodeEditPolicy.GMF_EDGE_CREATION_DESCRIPTION, description);
         connectionRequest.setExtendedData(extendedData);
 
         return connectionRequest;
