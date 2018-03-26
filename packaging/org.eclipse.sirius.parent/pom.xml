@@ -460,6 +460,7 @@
         
         <module>../../packaging/org.eclipse.sirius.diagram.elk.feature</module>
         <module>../../packaging/org.eclipse.sirius.server.feature</module>
+        <module>../../packaging/org.eclipse.sirius.server.ui.autostart.feature</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.update</module>

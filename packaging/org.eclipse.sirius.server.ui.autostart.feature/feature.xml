@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.sirius.server.feature"
+      id="org.eclipse.sirius.server.ui.autostart.feature"
       label="%featureName"
       version="6.0.0.qualifier"
       provider-name="%providerName"
@@ -20,27 +20,7 @@
    </license>
 
    <plugin
-         id="org.eclipse.sirius.server"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.sirius.server.backend"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.sirius.server.frontend"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.eclipse.sirius.ext.ide"
+         id="org.eclipse.sirius.server.ui.autostart"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -129,6 +129,9 @@
    <feature url="features/org.eclipse.sirius.server.feature_6.0.0.qualifier.jar" id="org.eclipse.sirius.server.feature" version="6.0.0.qualifier">
       <category name="Sirius"/>
    </feature>
+   <feature url="features/org.eclipse.sirius.server.ui.autostart.feature_6.0.0.qualifier.jar" id="org.eclipse.sirius.server.ui.autostart.feature" version="6.0.0.qualifier">
+      <category name="Sirius"/>
+   </feature>
    <category-def name="Sirius" label="Sirius">
       <description>
          The Sirius Modeling Platform
