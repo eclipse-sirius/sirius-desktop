@@ -37,7 +37,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
     /**
      * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
     /**
      * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractControlDescriptionImpl() {
@@ -65,7 +65,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,7 +75,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

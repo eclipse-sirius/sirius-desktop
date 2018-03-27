@@ -29,13 +29,13 @@ import org.eclipse.sirius.viewpoint.provider.StyleItemProvider;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.tree.TreeItemStyle} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TreeItemStyleItemProvider extends StyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemStyleItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +44,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
 
     /**
      * This adds a property descriptor for the Label Size feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelSizePropertyDescriptor(Object object) {
@@ -77,7 +77,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
 
     /**
      * This adds a property descriptor for the Label Format feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelFormatPropertyDescriptor(Object object) {
@@ -89,7 +89,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
 
     /**
      * This adds a property descriptor for the Show Icon feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addShowIconPropertyDescriptor(Object object) {
@@ -101,7 +101,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
 
     /**
      * This adds a property descriptor for the Icon Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
@@ -113,7 +113,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
 
     /**
      * This adds a property descriptor for the Label Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelColorPropertyDescriptor(Object object) {
@@ -125,7 +125,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
 
     /**
      * This adds a property descriptor for the Label Alignment feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelAlignmentPropertyDescriptor(Object object) {
@@ -137,7 +137,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
 
     /**
      * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -149,7 +149,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
 
     /**
      * This returns TreeItemStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

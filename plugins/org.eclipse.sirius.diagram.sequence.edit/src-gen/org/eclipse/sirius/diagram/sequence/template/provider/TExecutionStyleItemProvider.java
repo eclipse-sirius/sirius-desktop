@@ -25,13 +25,13 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TExecutionStyleItemProvider(AdapterFactory adapterFactory) {
@@ -40,7 +40,7 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     /**
      * This adds a property descriptor for the Border Size Computation Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderSizeComputationExpressionPropertyDescriptor(Object object) {
@@ -71,7 +71,7 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
 
     /**
      * This adds a property descriptor for the Border Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
 
     /**
      * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -97,7 +97,7 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
 
     /**
      * This returns TExecutionStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

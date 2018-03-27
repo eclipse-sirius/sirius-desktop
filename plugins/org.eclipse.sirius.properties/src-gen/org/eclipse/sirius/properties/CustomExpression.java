@@ -37,7 +37,7 @@ public interface CustomExpression extends IdentifiedElement, DocumentedElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Custom Expression</em>' attribute.
      * @see #setCustomExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCustomExpression_CustomExpression()
@@ -49,7 +49,7 @@ public interface CustomExpression extends IdentifiedElement, DocumentedElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.CustomExpression#getCustomExpression <em>Custom
      * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Custom Expression</em>' attribute.
      * @see #getCustomExpression()

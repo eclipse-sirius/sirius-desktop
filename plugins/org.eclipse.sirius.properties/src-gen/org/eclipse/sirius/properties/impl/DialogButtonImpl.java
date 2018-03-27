@@ -44,7 +44,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
     /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -94,7 +94,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
     /**
      * The default value of the '{@link #isDefault() <em>Default</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isDefault()
      * @generated
      * @ordered
@@ -104,7 +104,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
     /**
      * The cached value of the '{@link #isDefault() <em>Default</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isDefault()
      * @generated
      * @ordered
@@ -153,7 +153,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DialogButtonImpl() {
@@ -162,7 +162,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -220,7 +220,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +230,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -249,7 +249,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,7 +273,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -283,7 +283,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -297,7 +297,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -307,7 +307,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -321,7 +321,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -331,7 +331,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -345,7 +345,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -383,7 +383,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -413,7 +413,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -443,7 +443,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -467,7 +467,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

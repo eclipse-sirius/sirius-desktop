@@ -31,13 +31,13 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class InteractionUseCreationToolItemProvider extends ContainerCreationDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InteractionUseCreationToolItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -63,7 +63,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
 
     /**
      * This returns InteractionUseCreationTool.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

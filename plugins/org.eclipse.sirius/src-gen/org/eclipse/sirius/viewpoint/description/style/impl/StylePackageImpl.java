@@ -138,15 +138,20 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
         // Obtain or create and register interdependencies
         ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) : ViewpointPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI)
+                : ViewpointPackage.eINSTANCE);
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
+                : DescriptionPackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI)
+                : ToolPackage.eINSTANCE);
         ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI)
+                : ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI)
+                : AuditPackage.eINSTANCE);
 
         // Create package meta-data objects
         theStylePackage.createPackageContents();

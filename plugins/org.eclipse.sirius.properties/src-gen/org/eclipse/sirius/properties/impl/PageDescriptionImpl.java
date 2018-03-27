@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public class PageDescriptionImpl extends AbstractPageDescriptionImpl implements PageDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PageDescriptionImpl() {
@@ -33,7 +33,7 @@ public class PageDescriptionImpl extends AbstractPageDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

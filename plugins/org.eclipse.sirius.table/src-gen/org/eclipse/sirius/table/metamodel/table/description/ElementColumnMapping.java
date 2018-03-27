@@ -74,7 +74,7 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getElementColumnMapping_SemanticCandidatesExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
-     *        Collection<EObject> or an EObject.'"
+     *        Collection&lt;EObject&gt; or an EObject.'"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables viewpoint='table.DTable |
      *        (deprecated) current DTable.' table='table.DTable | current DTable.' containerView='table.DTable | current
      *        DTable.' container='ecore.EObject | semantic element targeted by the current DTable.'"

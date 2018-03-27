@@ -47,7 +47,7 @@ public interface WizardModelOperation extends ModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Window Title Expression</em>' attribute.
      * @see #setWindowTitleExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWizardModelOperation_WindowTitleExpression()
@@ -59,7 +59,7 @@ public interface WizardModelOperation extends ModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.WizardModelOperation#getWindowTitleExpression
      * <em>Window Title Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Window Title Expression</em>' attribute.
      * @see #getWindowTitleExpression()
@@ -74,7 +74,7 @@ public interface WizardModelOperation extends ModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Title Expression</em>' attribute.
      * @see #setTitleExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWizardModelOperation_TitleExpression()
@@ -86,7 +86,7 @@ public interface WizardModelOperation extends ModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.WizardModelOperation#getTitleExpression <em>Title
      * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Title Expression</em>' attribute.
      * @see #getTitleExpression()
@@ -101,7 +101,7 @@ public interface WizardModelOperation extends ModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Description Expression</em>' attribute.
      * @see #setDescriptionExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWizardModelOperation_DescriptionExpression()
@@ -113,7 +113,7 @@ public interface WizardModelOperation extends ModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.WizardModelOperation#getDescriptionExpression
      * <em>Description Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description Expression</em>' attribute.
      * @see #getDescriptionExpression()
@@ -128,7 +128,7 @@ public interface WizardModelOperation extends ModelOperation {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Is Page Complete Expression</em>' attribute.
      * @see #setIsPageCompleteExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWizardModelOperation_IsPageCompleteExpression()
@@ -140,7 +140,7 @@ public interface WizardModelOperation extends ModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.WizardModelOperation#getIsPageCompleteExpression
      * <em>Is Page Complete Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Is Page Complete Expression</em>' attribute.
      * @see #getIsPageCompleteExpression()
@@ -156,7 +156,7 @@ public interface WizardModelOperation extends ModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Pages</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWizardModelOperation_Pages()
      * @model containment="true" required="true"
@@ -172,7 +172,7 @@ public interface WizardModelOperation extends ModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Groups</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWizardModelOperation_Groups()
      * @model containment="true"
@@ -196,7 +196,7 @@ public interface WizardModelOperation extends ModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.WizardModelOperation#getInitialOperation <em>Initial
      * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()

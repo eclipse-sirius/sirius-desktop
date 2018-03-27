@@ -41,7 +41,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -49,7 +49,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -64,7 +64,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DescriptionItemProviderAdapterFactory() {
@@ -78,7 +78,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.description.TreeDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeDescriptionItemProvider treeDescriptionItemProvider;
@@ -86,7 +86,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.description.TreeDescription}. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.description.TreeItemMapping}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemMappingItemProvider treeItemMappingItemProvider;
@@ -109,7 +109,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.description.TreeItemMapping}. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.description.TreeItemStyleDescription} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemStyleDescriptionItemProvider treeItemStyleDescriptionItemProvider;
@@ -149,7 +149,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.description.ConditionalTreeItemStyleDescription} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConditionalTreeItemStyleDescriptionItemProvider conditionalTreeItemStyleDescriptionItemProvider;
@@ -157,7 +157,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.description.ConditionalTreeItemStyleDescription}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.description.TreeItemDragTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemDragToolItemProvider treeItemDragToolItemProvider;
@@ -180,7 +180,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.description.TreeItemDragTool}. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemContainerDropToolItemProvider treeItemContainerDropToolItemProvider;
@@ -219,7 +219,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.description.TreeItemCreationTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemCreationToolItemProvider treeItemCreationToolItemProvider;
@@ -242,7 +242,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.description.TreeItemEditionTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemEditionToolItemProvider treeItemEditionToolItemProvider;
@@ -265,7 +265,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.description.TreeItemDeletionTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemDeletionToolItemProvider treeItemDeletionToolItemProvider;
@@ -289,7 +289,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.description.TreeCreationDescription} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeCreationDescriptionItemProvider treeCreationDescriptionItemProvider;
@@ -313,7 +313,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.description.TreeNavigationDescription} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeNavigationDescriptionItemProvider treeNavigationDescriptionItemProvider;
@@ -336,7 +336,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.description.TreeMapping}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeMappingItemProvider treeMappingItemProvider;
@@ -344,7 +344,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.description.TreeMapping}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.description.StyleUpdater}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StyleUpdaterItemProvider styleUpdaterItemProvider;
@@ -367,7 +367,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.description.StyleUpdater}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -382,7 +382,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.description.TreeVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeVariableItemProvider treeVariableItemProvider;
@@ -390,7 +390,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.description.TreeVariable}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -405,7 +405,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.description.TreeItemUpdater}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemUpdaterItemProvider treeItemUpdaterItemProvider;
@@ -413,7 +413,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.description.TreeItemUpdater}. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -429,7 +429,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.tree.description.PrecedingSiblingsVariables} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PrecedingSiblingsVariablesItemProvider precedingSiblingsVariablesItemProvider;
@@ -452,7 +452,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.description.TreePopupMenu}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreePopupMenuItemProvider treePopupMenuItemProvider;
@@ -460,7 +460,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.description.TreePopupMenu}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -474,7 +474,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -484,7 +484,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -494,7 +494,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -505,7 +505,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -515,7 +515,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -532,7 +532,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -542,7 +542,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -553,7 +553,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -567,7 +567,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

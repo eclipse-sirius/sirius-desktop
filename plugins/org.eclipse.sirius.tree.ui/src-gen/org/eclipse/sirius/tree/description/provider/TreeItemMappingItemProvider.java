@@ -42,7 +42,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemMappingItemProvider(AdapterFactory adapterFactory) {
@@ -51,7 +51,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This adds a property descriptor for the Precondition Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
@@ -98,7 +98,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This adds a property descriptor for the Semantic Candidates Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
@@ -112,7 +112,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This adds a property descriptor for the Reused Tree Item Mappings feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedTreeItemMappingsPropertyDescriptor(Object object) {
@@ -125,7 +125,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
 
     /**
      * This adds a property descriptor for the Specialize feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSpecializePropertyDescriptor(Object object) {
@@ -141,7 +141,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
 
     /**
      * This returns TreeItemMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {

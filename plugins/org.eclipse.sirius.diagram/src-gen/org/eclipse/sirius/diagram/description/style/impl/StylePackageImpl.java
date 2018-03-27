@@ -279,19 +279,25 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         StylePackageImpl.isInited = true;
 
         // Initialize simple dependencies
+        EcorePackage.eINSTANCE.eClass();
         ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) : DiagramPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI)
+                : DiagramPackage.eINSTANCE);
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
+                : DescriptionPackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI)
+                : ToolPackage.eINSTANCE);
         FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI)
+                : FilterPackage.eINSTANCE);
         ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI)
+                : ConcernPackage.eINSTANCE);
 
         // Create package meta-data objects
         theStylePackage.createPackageContents();
@@ -1621,12 +1627,11 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         addAnnotation(getGaugeSectionDescription_ValueExpression(), source, new String[] {});
         addAnnotation(getSizeComputationContainerStyleDescription_WidthComputationExpression(), source, new String[] {});
         addAnnotation(getSizeComputationContainerStyleDescription_HeightComputationExpression(), source, new String[] {});
-        addAnnotation(getEdgeStyleDescription_SizeComputationExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "view", "diagram.DEdge | the current edge view for which the size is calculated.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "sourceView", "diagram.EdgeTarget | the source view of the current edge.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "targetView", "diagram.EdgeTarget | the target view of the current edge." //$NON-NLS-1$ //$NON-NLS-2$
-                });
+        addAnnotation(getEdgeStyleDescription_SizeComputationExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "view", "diagram.DEdge | the current edge view for which the size is calculated.", //$NON-NLS-1$ //$NON-NLS-2$
+                "sourceView", "diagram.EdgeTarget | the source view of the current edge.", //$NON-NLS-1$ //$NON-NLS-2$
+                "targetView", "diagram.EdgeTarget | the target view of the current edge." //$NON-NLS-1$ //$NON-NLS-2$
+        });
     }
 
     /**

@@ -31,13 +31,13 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SequenceDiagramDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
 
     /**
      * This adds a property descriptor for the Ends Ordering feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEndsOrderingPropertyDescriptor(Object object) {
@@ -76,7 +76,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     /**
      * This adds a property descriptor for the Instance Roles Ordering feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInstanceRolesOrderingPropertyDescriptor(Object object) {
@@ -88,7 +88,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
 
     /**
      * This returns SequenceDiagramDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

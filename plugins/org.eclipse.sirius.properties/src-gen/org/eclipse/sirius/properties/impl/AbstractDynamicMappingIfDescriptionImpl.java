@@ -62,7 +62,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
     /**
      * The cached value of the '{@link #getWidget() <em>Widget</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidget()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getExtends()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractDynamicMappingIfDescriptionImpl() {
@@ -90,7 +90,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetWidget(WidgetDescription newWidget, NotificationChain msgs) {
@@ -153,7 +153,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DynamicMappingIfDescription basicGetExtends() {
@@ -205,7 +205,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -254,7 +254,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -275,7 +275,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -296,7 +296,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -315,7 +315,7 @@ public abstract class AbstractDynamicMappingIfDescriptionImpl extends Identified
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

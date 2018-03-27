@@ -38,7 +38,7 @@ public interface PageOverrideDescription extends AbstractPageDescription, Abstra
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(PageDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getPageOverrideDescription_Overrides()
@@ -50,7 +50,7 @@ public interface PageOverrideDescription extends AbstractPageDescription, Abstra
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.PageOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -79,7 +79,7 @@ public interface PageOverrideDescription extends AbstractPageDescription, Abstra
      * Sets the value of the
      * '{@link org.eclipse.sirius.properties.PageOverrideDescription#getFilterGroupsFromOverriddenPageExpression
      * <em>Filter Groups From Overridden Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Groups From Overridden Page Expression</em>' attribute.
      * @see #getFilterGroupsFromOverriddenPageExpression()
@@ -95,7 +95,7 @@ public interface PageOverrideDescription extends AbstractPageDescription, Abstra
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Validation Rules From Overridden Page Expression</em>' attribute.
      * @see #setFilterValidationRulesFromOverriddenPageExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getPageOverrideDescription_FilterValidationRulesFromOverriddenPageExpression()
@@ -109,7 +109,7 @@ public interface PageOverrideDescription extends AbstractPageDescription, Abstra
      * '{@link org.eclipse.sirius.properties.PageOverrideDescription#getFilterValidationRulesFromOverriddenPageExpression
      * <em>Filter Validation Rules From Overridden Page Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Validation Rules From Overridden Page Expression</em>' attribute.
      * @see #getFilterValidationRulesFromOverriddenPageExpression()

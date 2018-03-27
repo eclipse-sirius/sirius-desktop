@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 public class AbstractListDescriptionItemProvider extends AbstractWidgetDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AbstractListDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
 
     /**
      * This adds a property descriptor for the Value Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
@@ -76,7 +76,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
 
     /**
      * This adds a property descriptor for the Display Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDisplayExpressionPropertyDescriptor(Object object) {
@@ -88,7 +88,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
 
     /**
      * This adds a property descriptor for the Extends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addExtendsPropertyDescriptor(Object object) {
@@ -115,7 +115,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
     /**
      * This adds a property descriptor for the Filter Actions From Extended List Expression feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterActionsFromExtendedListExpressionPropertyDescriptor(Object object) {
@@ -130,7 +130,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -23,13 +23,13 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.CreationMessageMapping} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CreationMessageMappingItemProvider extends MessageMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CreationMessageMappingItemProvider(AdapterFactory adapterFactory) {
@@ -38,7 +38,7 @@ public class CreationMessageMappingItemProvider extends MessageMappingItemProvid
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -52,7 +52,7 @@ public class CreationMessageMappingItemProvider extends MessageMappingItemProvid
 
     /**
      * This returns CreationMessageMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public class CreationMessageMappingItemProvider extends MessageMappingItemProvid
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

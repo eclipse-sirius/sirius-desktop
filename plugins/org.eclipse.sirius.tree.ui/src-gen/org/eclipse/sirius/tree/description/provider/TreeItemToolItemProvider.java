@@ -44,7 +44,7 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
 
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemToolItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +53,7 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -179,7 +179,7 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

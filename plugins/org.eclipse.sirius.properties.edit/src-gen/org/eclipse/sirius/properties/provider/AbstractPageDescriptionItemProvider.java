@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.provider.IdentifiedElementItemPr
 public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemProvider implements IItemStyledLabelProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AbstractPageDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,7 +71,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
 
     /**
      * This adds a property descriptor for the Documentation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
 
     /**
      * This adds a property descriptor for the Label Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -96,7 +96,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
 
     /**
      * This adds a property descriptor for the Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -109,7 +109,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
     /**
      * This adds a property descriptor for the Semantic Candidate Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticCandidateExpressionPropertyDescriptor(Object object) {
@@ -122,7 +122,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
     /**
      * This adds a property descriptor for the Precondition Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
@@ -134,7 +134,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
 
     /**
      * This adds a property descriptor for the Groups feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addGroupsPropertyDescriptor(Object object) {
@@ -146,7 +146,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
 
     /**
      * This adds a property descriptor for the Extends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addExtendsPropertyDescriptor(Object object) {
@@ -159,7 +159,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
     /**
      * This adds a property descriptor for the Filter Groups From Extended Page Expression feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterGroupsFromExtendedPageExpressionPropertyDescriptor(Object object) {
@@ -185,7 +185,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
 
     /**
      * This adds a property descriptor for the Indented feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIndentedPropertyDescriptor(Object object) {
@@ -200,7 +200,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -215,7 +215,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -228,7 +228,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -238,7 +238,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -287,7 +287,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

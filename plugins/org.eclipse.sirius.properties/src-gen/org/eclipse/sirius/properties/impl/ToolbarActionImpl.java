@@ -59,7 +59,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
     /**
      * The default value of the '{@link #getImageExpression() <em>Image Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getImageExpression()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
     /**
      * The cached value of the '{@link #getImageExpression() <em>Image Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getImageExpression()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolbarActionImpl() {
@@ -97,7 +97,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -184,7 +184,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -208,7 +208,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -240,7 +240,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -261,7 +261,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -282,7 +282,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,7 +300,7 @@ public class ToolbarActionImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

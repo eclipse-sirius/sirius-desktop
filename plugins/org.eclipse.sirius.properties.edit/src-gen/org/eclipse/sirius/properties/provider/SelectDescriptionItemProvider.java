@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SelectDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This adds a property descriptor for the Label Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -79,7 +79,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This adds a property descriptor for the Help Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHelpExpressionPropertyDescriptor(Object object) {
@@ -104,7 +104,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This adds a property descriptor for the Value Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
@@ -130,7 +130,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This adds a property descriptor for the Candidate Display Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCandidateDisplayExpressionPropertyDescriptor(Object object) {
@@ -142,7 +142,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This adds a property descriptor for the Extends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addExtendsPropertyDescriptor(Object object) {
@@ -171,7 +171,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -187,7 +187,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This returns SelectDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -210,7 +210,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -220,7 +220,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -269,7 +269,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

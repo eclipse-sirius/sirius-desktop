@@ -304,19 +304,25 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         ToolPackageImpl.isInited = true;
 
         // Initialize simple dependencies
+        EcorePackage.eINSTANCE.eClass();
         ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) : DiagramPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI)
+                : DiagramPackage.eINSTANCE);
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
+                : DescriptionPackage.eINSTANCE);
         StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI)
+                : StylePackage.eINSTANCE);
         FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI)
+                : FilterPackage.eINSTANCE);
         ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI)
+                : ConcernPackage.eINSTANCE);
 
         // Create package meta-data objects
         theToolPackage.createPackageContents();
@@ -1912,12 +1918,11 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         });
         addAnnotation(getNodeCreationDescription_ViewVariable(), source, new String[] { "type", "diagram.DDiagramElementContainer" //$NON-NLS-1$ //$NON-NLS-2$
         });
-        addAnnotation(getEdgeCreationDescription_ConnectionStartPrecondition(), source,
-                new String[] { "container", "ecore.EObject | the semantic element of diagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "preSourceView", "diagram.EdgeTarget | (edge only) the source view of the current potential edge.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "preSource", "ecore.EObject | (edge only) the semantic element of $preSourceView.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "diagram", "diagram.DSemanticDiagram | the diagram of the current potential edge" //$NON-NLS-1$ //$NON-NLS-2$
-                });
+        addAnnotation(getEdgeCreationDescription_ConnectionStartPrecondition(), source, new String[] { "container", "ecore.EObject | the semantic element of diagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "preSourceView", "diagram.EdgeTarget | (edge only) the source view of the current potential edge.", //$NON-NLS-1$ //$NON-NLS-2$
+                "preSource", "ecore.EObject | (edge only) the semantic element of $preSourceView.", //$NON-NLS-1$ //$NON-NLS-2$
+                "diagram", "diagram.DSemanticDiagram | the diagram of the current potential edge" //$NON-NLS-1$ //$NON-NLS-2$
+        });
         addAnnotation(getDeleteHookParameter_Value(), source, new String[] {});
         addAnnotation(getDirectEditLabel_InputLabelExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
                 "view", "diagram.DDiagramElement | the current view for which the label is calculated." //$NON-NLS-1$ //$NON-NLS-2$

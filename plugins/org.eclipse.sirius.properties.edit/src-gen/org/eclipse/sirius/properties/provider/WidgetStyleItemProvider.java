@@ -36,14 +36,14 @@ import org.eclipse.sirius.properties.WidgetStyle;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.WidgetStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class WidgetStyleItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, IItemStyledLabelProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public WidgetStyleItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +52,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Label Font Name Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelFontNameExpressionPropertyDescriptor(Object object) {
@@ -85,7 +85,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Label Font Size Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelFontSizeExpressionPropertyDescriptor(Object object) {
@@ -123,7 +123,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Label Font Format feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelFontFormatPropertyDescriptor(Object object) {
@@ -135,7 +135,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This returns WidgetStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +204,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

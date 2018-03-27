@@ -24,13 +24,13 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TDestructionMessageMappingItemProvider extends TSourceTargetMessageMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TDestructionMessageMappingItemProvider(AdapterFactory adapterFactory) {
@@ -39,7 +39,7 @@ public class TDestructionMessageMappingItemProvider extends TSourceTargetMessage
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -54,7 +54,7 @@ public class TDestructionMessageMappingItemProvider extends TSourceTargetMessage
 
     /**
      * This adds a property descriptor for the Target feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetPropertyDescriptor(Object object) {
@@ -66,7 +66,7 @@ public class TDestructionMessageMappingItemProvider extends TSourceTargetMessage
 
     /**
      * This returns TDestructionMessageMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class TDestructionMessageMappingItemProvider extends TSourceTargetMessage
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

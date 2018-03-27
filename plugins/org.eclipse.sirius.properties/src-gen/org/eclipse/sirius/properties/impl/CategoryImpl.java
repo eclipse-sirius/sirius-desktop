@@ -48,7 +48,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
     /**
      * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
     /**
      * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
     /**
      * The cached value of the '{@link #getPages() <em>Pages</em>}' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPages()
      * @generated
      * @ordered
@@ -78,7 +78,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
     /**
      * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGroups()
      * @generated
      * @ordered
@@ -97,7 +97,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CategoryImpl() {
@@ -106,7 +106,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -245,7 +245,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -269,7 +269,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -289,7 +289,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -307,7 +307,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -325,7 +325,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

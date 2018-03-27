@@ -381,6 +381,15 @@ public interface DescriptionPackage extends EPackage {
     int SEQUENCE_DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS;
 
     /**
+     * The feature id for the '<em><b>Background Color</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SEQUENCE_DIAGRAM_DESCRIPTION__BACKGROUND_COLOR = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__BACKGROUND_COLOR;
+
+    /**
      * The feature id for the '<em><b>Ends Ordering</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated

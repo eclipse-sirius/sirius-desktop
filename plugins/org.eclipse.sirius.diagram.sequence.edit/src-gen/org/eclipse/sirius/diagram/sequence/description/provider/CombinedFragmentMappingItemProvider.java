@@ -24,13 +24,13 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.CombinedFragmentMapping} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CombinedFragmentMappingItemProvider extends FrameMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CombinedFragmentMappingItemProvider(AdapterFactory adapterFactory) {
@@ -39,7 +39,7 @@ public class CombinedFragmentMappingItemProvider extends FrameMappingItemProvide
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -53,7 +53,7 @@ public class CombinedFragmentMappingItemProvider extends FrameMappingItemProvide
 
     /**
      * This returns CombinedFragmentMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -88,7 +88,7 @@ public class CombinedFragmentMappingItemProvider extends FrameMappingItemProvide
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class CombinedFragmentMappingItemProvider extends FrameMappingItemProvide
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -41,7 +41,7 @@ public interface AbstractContainerDescription extends AbstractControlDescription
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Controls</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractContainerDescription_Controls()
      * @model containment="true"
@@ -56,7 +56,7 @@ public interface AbstractContainerDescription extends AbstractControlDescription
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Layout</em>' containment reference.
      * @see #setLayout(LayoutDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractContainerDescription_Layout()
@@ -68,7 +68,7 @@ public interface AbstractContainerDescription extends AbstractControlDescription
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractContainerDescription#getLayout
      * <em>Layout</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Layout</em>' containment reference.
      * @see #getLayout()
@@ -83,7 +83,7 @@ public interface AbstractContainerDescription extends AbstractControlDescription
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Extends</em>' reference.
      * @see #setExtends(ContainerDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractContainerDescription_Extends()
@@ -95,7 +95,7 @@ public interface AbstractContainerDescription extends AbstractControlDescription
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractContainerDescription#getExtends
      * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
      * @see #getExtends()
@@ -125,7 +125,7 @@ public interface AbstractContainerDescription extends AbstractControlDescription
      * '{@link org.eclipse.sirius.properties.AbstractContainerDescription#getFilterControlsFromExtendedContainerExpression
      * <em>Filter Controls From Extended Container Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Controls From Extended Container Expression</em>' attribute.
      * @see #getFilterControlsFromExtendedContainerExpression()

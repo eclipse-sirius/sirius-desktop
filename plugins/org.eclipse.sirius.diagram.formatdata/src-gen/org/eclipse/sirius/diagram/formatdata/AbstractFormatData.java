@@ -15,26 +15,19 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Abstract Format Data</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Abstract Format Data</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> An astract class for all format data. <!--
- * end-model-doc -->
+ * <!-- begin-model-doc --> An astract class for all format data. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getId
- * <em>Id</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getLabel
- * <em>Label</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getSiriusStyle
- * <em>Sirius Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getGmfView
- * <em>Gmf View</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getSiriusStyle <em>Sirius Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getGmfView <em>Gmf View</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.formatdata.FormatdataPackage#getAbstractFormatData()
@@ -43,10 +36,8 @@ import org.eclipse.sirius.viewpoint.Style;
  */
 public interface AbstractFormatData extends EObject {
     /**
-     * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Serialization of the ID of the associated graphical element <!--
-     * end-model-doc -->
+     * Returns the value of the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Serialization of the ID of the associated graphical element <!-- end-model-doc -->
      *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
@@ -57,9 +48,8 @@ public interface AbstractFormatData extends EObject {
     String getId();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getId
-     * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getId <em>Id</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
@@ -69,10 +59,9 @@ public interface AbstractFormatData extends EObject {
     void setId(String value);
 
     /**
-     * Returns the value of the '<em><b>Label</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Represents the format of the label of this edge (only the location is
-     * used). <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Label</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> Represents the format of the label of this edge (only the location is used). <!--
+     * end-model-doc -->
      *
      * @return the value of the '<em>Label</em>' containment reference.
      * @see #setLabel(NodeFormatData)
@@ -83,10 +72,8 @@ public interface AbstractFormatData extends EObject {
     NodeFormatData getLabel();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getLabel
-     * <em>Label</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getLabel <em>Label</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Label</em>' containment reference.
@@ -96,10 +83,9 @@ public interface AbstractFormatData extends EObject {
     void setLabel(NodeFormatData value);
 
     /**
-     * Returns the value of the '<em><b>Sirius Style</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> A copy of the original Sirius style of this
-     * DDiagramElement. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Sirius Style</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> A copy of the original Sirius style of this DDiagramElement. <!--
+     * end-model-doc -->
      *
      * @return the value of the '<em>Sirius Style</em>' containment reference.
      * @see #setSiriusStyle(Style)
@@ -110,25 +96,20 @@ public interface AbstractFormatData extends EObject {
     Style getSiriusStyle();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getSiriusStyle
-     * <em>Sirius Style</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getSiriusStyle <em>Sirius
+     * Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
-     *            the new value of the '<em>Sirius Style</em>' containment
-     *            reference.
+     *            the new value of the '<em>Sirius Style</em>' containment reference.
      * @see #getSiriusStyle()
      * @generated
      */
     void setSiriusStyle(Style value);
 
     /**
-     * Returns the value of the '<em><b>Gmf View</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> A copy of the original GMF View corresponding to this
-     * DDiagramElement (without copying the element reference). <!--
-     * end-model-doc -->
+     * Returns the value of the '<em><b>Gmf View</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> A copy of the original GMF View corresponding to this DDiagramElement
+     * (without copying the element reference). <!-- end-model-doc -->
      *
      * @return the value of the '<em>Gmf View</em>' containment reference.
      * @see #setGmfView(View)
@@ -139,14 +120,11 @@ public interface AbstractFormatData extends EObject {
     View getGmfView();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getGmfView
-     * <em>Gmf View</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.formatdata.AbstractFormatData#getGmfView <em>Gmf
+     * View</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
-     *            the new value of the '<em>Gmf View</em>' containment
-     *            reference.
+     *            the new value of the '<em>Gmf View</em>' containment reference.
      * @see #getGmfView()
      * @generated
      */

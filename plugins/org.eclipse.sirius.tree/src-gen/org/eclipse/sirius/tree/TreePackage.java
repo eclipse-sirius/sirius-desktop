@@ -141,6 +141,14 @@ public interface TreePackage extends EPackage {
     int DTREE__UI_STATE = ViewpointPackage.DREPRESENTATION__UI_STATE;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DTREE__UID = ViewpointPackage.DREPRESENTATION__UID;
+
+    /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated

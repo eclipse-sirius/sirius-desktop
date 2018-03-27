@@ -291,7 +291,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_PathExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
-     *        Collection<EObject> or an EObject.'"
+     *        Collection&lt;EObject&gt; or an EObject.'"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables
      *        diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram |
      *        (deprecated) the current DDiagram.' element='ecore.EObject | the semantic element of the current edge.'

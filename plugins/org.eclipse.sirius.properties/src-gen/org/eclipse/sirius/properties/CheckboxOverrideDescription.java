@@ -36,7 +36,7 @@ public interface CheckboxOverrideDescription extends AbstractCheckboxDescription
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(CheckboxDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCheckboxOverrideDescription_Overrides()
@@ -48,7 +48,7 @@ public interface CheckboxOverrideDescription extends AbstractCheckboxDescription
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.CheckboxOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -64,7 +64,7 @@ public interface CheckboxOverrideDescription extends AbstractCheckboxDescription
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Overridden Checkbox Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromOverriddenCheckboxExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCheckboxOverrideDescription_FilterConditionalStylesFromOverriddenCheckboxExpression()
@@ -78,7 +78,7 @@ public interface CheckboxOverrideDescription extends AbstractCheckboxDescription
      * '{@link org.eclipse.sirius.properties.CheckboxOverrideDescription#getFilterConditionalStylesFromOverriddenCheckboxExpression
      * <em>Filter Conditional Styles From Overridden Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Overridden Checkbox Expression</em>'
      *            attribute.

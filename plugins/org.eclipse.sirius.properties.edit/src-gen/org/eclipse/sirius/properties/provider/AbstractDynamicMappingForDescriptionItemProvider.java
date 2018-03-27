@@ -29,13 +29,13 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractControlDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AbstractDynamicMappingForDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +44,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -63,7 +63,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * This adds a property descriptor for the Iterator feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIteratorPropertyDescriptor(Object object) {
@@ -88,7 +88,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * This adds a property descriptor for the Force Refresh feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addForceRefreshPropertyDescriptor(Object object) {
@@ -100,7 +100,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * This adds a property descriptor for the Extends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addExtendsPropertyDescriptor(Object object) {
@@ -130,7 +130,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -211,7 +211,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

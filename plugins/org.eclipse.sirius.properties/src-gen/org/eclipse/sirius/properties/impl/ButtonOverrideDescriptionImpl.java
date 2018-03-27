@@ -37,7 +37,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
      * The default value of the '{@link #getFilterConditionalStylesFromOverriddenButtonExpression() <em>Filter
      * Conditional Styles From Overridden Button Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenButtonExpression()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
      * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenButtonExpression() <em>Filter
      * Conditional Styles From Overridden Button Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenButtonExpression()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ButtonOverrideDescriptionImpl() {
@@ -77,7 +77,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ButtonDescription basicGetOverrides() {
@@ -115,7 +115,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,7 +173,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +191,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class ButtonOverrideDescriptionImpl extends AbstractButtonDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

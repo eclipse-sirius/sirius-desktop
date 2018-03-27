@@ -22,13 +22,13 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CompoundEventEndItemProvider extends EventEndItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CompoundEventEndItemProvider(AdapterFactory adapterFactory) {
@@ -37,7 +37,7 @@ public class CompoundEventEndItemProvider extends EventEndItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -52,7 +52,7 @@ public class CompoundEventEndItemProvider extends EventEndItemProvider {
 
     /**
      * This adds a property descriptor for the Event Ends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEventEndsPropertyDescriptor(Object object) {
@@ -64,7 +64,7 @@ public class CompoundEventEndItemProvider extends EventEndItemProvider {
 
     /**
      * This returns CompoundEventEnd.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class CompoundEventEndItemProvider extends EventEndItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class CompoundEventEndItemProvider extends EventEndItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

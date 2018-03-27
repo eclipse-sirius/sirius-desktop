@@ -29,7 +29,7 @@ import org.eclipse.sirius.properties.PageDescription;
 public class PageDescriptionItemProvider extends AbstractPageDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public PageDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -38,7 +38,7 @@ public class PageDescriptionItemProvider extends AbstractPageDescriptionItemProv
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -52,7 +52,7 @@ public class PageDescriptionItemProvider extends AbstractPageDescriptionItemProv
 
     /**
      * This returns PageDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class PageDescriptionItemProvider extends AbstractPageDescriptionItemProv
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class PageDescriptionItemProvider extends AbstractPageDescriptionItemProv
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class PageDescriptionItemProvider extends AbstractPageDescriptionItemProv
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -43,7 +43,7 @@ public interface AcceleoVariable extends VariableContainer, SubVariable {
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAcceleoVariable_ComputationExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
-     *        Collection<Object> or an Object.'"
+     *        Collection&lt;Object&gt; or an Object.'"
      * @generated
      */
     String getComputationExpression();

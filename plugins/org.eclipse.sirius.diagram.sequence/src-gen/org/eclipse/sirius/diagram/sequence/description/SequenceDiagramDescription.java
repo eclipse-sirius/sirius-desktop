@@ -44,9 +44,9 @@ public interface SequenceDiagramDescription extends DiagramDescription {
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getSequenceDiagramDescription_EndsOrdering()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
-     *        Collection<EObject> or an EObject.'"
-     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables eventEnds='a List<EObject>
-     *        containing the semantic event ends.'"
+     *        Collection&lt;EObject&gt; or an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables eventEnds='a
+     *        List&lt;EObject&gt; containing the semantic event ends.'"
      * @generated
      */
     String getEndsOrdering();
@@ -76,7 +76,7 @@ public interface SequenceDiagramDescription extends DiagramDescription {
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getSequenceDiagramDescription_InstanceRolesOrdering()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
-     *        Collection<EObject> or an EObject.'"
+     *        Collection&lt;EObject&gt; or an EObject.'"
      * @generated
      */
     String getInstanceRolesOrdering();

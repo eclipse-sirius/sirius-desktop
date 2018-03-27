@@ -37,7 +37,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
      * The default value of the '{@link #getFilterConditionalStylesFromOverriddenRadioExpression() <em>Filter
      * Conditional Styles From Overridden Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenRadioExpression()
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
     /**
      * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenRadioExpression() <em>Filter Conditional
      * Styles From Overridden Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenRadioExpression()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RadioOverrideDescriptionImpl() {
@@ -76,7 +76,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RadioDescription basicGetOverrides() {
@@ -114,7 +114,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -190,7 +190,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -208,7 +208,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -225,7 +225,7 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

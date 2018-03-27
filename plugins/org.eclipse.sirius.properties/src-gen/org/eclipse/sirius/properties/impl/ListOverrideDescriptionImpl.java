@@ -39,7 +39,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
     /**
      * The default value of the '{@link #getFilterConditionalStylesFromOverriddenListExpression() <em>Filter Conditional
      * Styles From Overridden List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenListExpression()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
     /**
      * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenListExpression() <em>Filter Conditional
      * Styles From Overridden List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenListExpression()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ListOverrideDescriptionImpl() {
@@ -97,7 +97,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ListDescription basicGetOverrides() {
@@ -135,7 +135,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -199,7 +199,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -220,7 +220,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,7 +241,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -262,7 +262,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -282,7 +282,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -364,24 +364,31 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         // Obtain or create and register package
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) : new DescriptionPackageImpl());
+                ? EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI)
+                : new DescriptionPackageImpl());
 
         DescriptionPackageImpl.isInited = true;
 
         // Initialize simple dependencies
+        EcorePackage.eINSTANCE.eClass();
         ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) : DiagramPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI)
+                : DiagramPackage.eINSTANCE);
         StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI)
+                : StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI)
+                : ToolPackage.eINSTANCE);
         FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI)
+                : FilterPackage.eINSTANCE);
         ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI)
+                : ConcernPackage.eINSTANCE);
 
         // Create package meta-data objects
         theDescriptionPackage.createPackageContents();
@@ -2696,39 +2703,33 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                         "targetView", "viewpoint.DSemanticDecorator | (edge only) the target view of the current potential edge.", //$NON-NLS-1$ //$NON-NLS-2$
                         "target", "ecore.EObject | (edge only) the semantic element of targetView." //$NON-NLS-1$ //$NON-NLS-2$
                 });
-        addAnnotation(getDiagramElementMapping_SemanticCandidatesExpression(), source,
-                new String[] { "containerView", "diagram.DSemanticDiagram | the parent view of potential candidates.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getDiagramElementMapping_SemanticElements(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "view", "diagram.DDiagramElement | the current view created from the current mapping.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DSemanticDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getEdgeMapping_TargetFinderExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getEdgeMapping_SourceFinderExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getEdgeMapping_TargetExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getEdgeMapping_PathExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "element", "ecore.EObject | the semantic element  of the current edge.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "source", "ecore.EObject | the semantic target of the current source node.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "target", "ecore.EObject | the semantic element of the current target node." //$NON-NLS-1$ //$NON-NLS-2$
-                });
+        addAnnotation(getDiagramElementMapping_SemanticCandidatesExpression(), source, new String[] { "containerView", "diagram.DSemanticDiagram | the parent view of potential candidates.", //$NON-NLS-1$ //$NON-NLS-2$
+                "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getDiagramElementMapping_SemanticElements(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "view", "diagram.DDiagramElement | the current view created from the current mapping.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DSemanticDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getEdgeMapping_TargetFinderExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getEdgeMapping_SourceFinderExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getEdgeMapping_TargetExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getEdgeMapping_PathExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "element", "ecore.EObject | the semantic element  of the current edge.", //$NON-NLS-1$ //$NON-NLS-2$
+                "source", "ecore.EObject | the semantic target of the current source node.", //$NON-NLS-1$ //$NON-NLS-2$
+                "target", "ecore.EObject | the semantic element of the current target node." //$NON-NLS-1$ //$NON-NLS-2$
+        });
         addAnnotation(getOrderedTreeLayout_ChildrenExpression(), source, new String[] {});
     }
 

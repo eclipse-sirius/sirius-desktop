@@ -32,13 +32,13 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractToolDescri
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ReorderToolItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
 
     /**
      * This adds a property descriptor for the Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMappingsPropertyDescriptor(Object object) {
@@ -78,7 +78,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
 
     /**
      * This returns ReorderTool.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

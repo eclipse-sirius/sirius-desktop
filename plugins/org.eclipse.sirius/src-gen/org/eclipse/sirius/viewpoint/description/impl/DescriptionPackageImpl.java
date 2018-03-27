@@ -541,7 +541,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         // Obtain or create and register package
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) : new DescriptionPackageImpl());
+                ? EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI)
+                : new DescriptionPackageImpl());
 
         DescriptionPackageImpl.isInited = true;
 
@@ -550,15 +551,20 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         // Obtain or create and register interdependencies
         ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) : ViewpointPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI)
+                : ViewpointPackage.eINSTANCE);
         StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI)
+                : StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI)
+                : ToolPackage.eINSTANCE);
         ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI)
+                : ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI)
+                : AuditPackage.eINSTANCE);
 
         // Create package meta-data objects
         theDescriptionPackage.createPackageContents();
@@ -2941,14 +2947,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addAnnotation(getConditionalStyleDescription_PredicateExpression(), source, new String[] { "view", "ecore.EObject | the current view.", //$NON-NLS-1$ //$NON-NLS-2$
                 "container", "ecore.EObject | the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
-        addAnnotation(getDecorationDescription_PreconditionExpression(), source,
-                new String[] { "view", "viewpoint.DSemanticDecorator | the views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "element", "ecore.EObject | the semantic element of the view.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "containerView", "viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "ecore.EObject | the semantic element of the container view.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current diagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "diagram", "diagram.DSemanticDiagram | the current diagram." //$NON-NLS-1$ //$NON-NLS-2$
-                });
+        addAnnotation(getDecorationDescription_PreconditionExpression(), source, new String[] { "view", "viewpoint.DSemanticDecorator | the views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
+                "element", "ecore.EObject | the semantic element of the view.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of the container view.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current diagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "diagram", "diagram.DSemanticDiagram | the current diagram." //$NON-NLS-1$ //$NON-NLS-2$
+        });
         addAnnotation(getDecorationDescription_ImageExpression(), source,
                 new String[] { "containerView", "viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
                         "container", "ecore.EObject | the semantic element of the container view.", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2965,21 +2970,18 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addAnnotation(getEAttributeCustomization_Value(), source, new String[] { "view", "ecore.EObject | the current view.", //$NON-NLS-1$ //$NON-NLS-2$
                 "container", "ecore.EObject | the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
-        addAnnotation(getSelectionDescription_CandidatesExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getSelectionDescription_RootExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getSelectionDescription_ChildrenExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
-                });
+        addAnnotation(getSelectionDescription_CandidatesExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getSelectionDescription_RootExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getSelectionDescription_ChildrenExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
+        });
         addAnnotation(getInterpolatedColor_ColorValueComputationExpression(), source, new String[] {});
         addAnnotation(getInterpolatedColor_MinValueComputationExpression(), source, new String[] {});
         addAnnotation(getInterpolatedColor_MaxValueComputationExpression(), source, new String[] {});

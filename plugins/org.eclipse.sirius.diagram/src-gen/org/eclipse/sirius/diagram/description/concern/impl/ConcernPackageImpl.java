@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.description.concern.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -96,24 +97,31 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
 
         // Obtain or create and register package
         ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.get(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl
-                ? EPackage.Registry.INSTANCE.get(ConcernPackage.eNS_URI) : new ConcernPackageImpl());
+                ? EPackage.Registry.INSTANCE.get(ConcernPackage.eNS_URI)
+                : new ConcernPackageImpl());
 
         ConcernPackageImpl.isInited = true;
 
         // Initialize simple dependencies
+        EcorePackage.eINSTANCE.eClass();
         ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) : DiagramPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI)
+                : DiagramPackage.eINSTANCE);
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
+                : DescriptionPackage.eINSTANCE);
         StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI)
+                : StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI)
+                : ToolPackage.eINSTANCE);
         FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI)
+                : FilterPackage.eINSTANCE);
 
         // Create package meta-data objects
         theConcernPackage.createPackageContents();

@@ -36,7 +36,7 @@ public interface ButtonOverrideDescription extends AbstractButtonDescription, Ab
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(ButtonDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getButtonOverrideDescription_Overrides()
@@ -48,7 +48,7 @@ public interface ButtonOverrideDescription extends AbstractButtonDescription, Ab
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.ButtonOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -64,7 +64,7 @@ public interface ButtonOverrideDescription extends AbstractButtonDescription, Ab
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Overridden Button Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromOverriddenButtonExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getButtonOverrideDescription_FilterConditionalStylesFromOverriddenButtonExpression()
@@ -78,7 +78,7 @@ public interface ButtonOverrideDescription extends AbstractButtonDescription, Ab
      * '{@link org.eclipse.sirius.properties.ButtonOverrideDescription#getFilterConditionalStylesFromOverriddenButtonExpression
      * <em>Filter Conditional Styles From Overridden Button Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Overridden Button Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromOverriddenButtonExpression()

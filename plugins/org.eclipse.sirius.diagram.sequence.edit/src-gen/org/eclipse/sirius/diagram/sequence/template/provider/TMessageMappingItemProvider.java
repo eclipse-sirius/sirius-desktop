@@ -27,13 +27,13 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TMessageMappingItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -59,7 +59,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
     /**
      * This adds a property descriptor for the Sending End Finder Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSendingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -73,7 +73,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
     /**
      * This adds a property descriptor for the Receiving End Finder Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReceivingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -89,7 +89,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

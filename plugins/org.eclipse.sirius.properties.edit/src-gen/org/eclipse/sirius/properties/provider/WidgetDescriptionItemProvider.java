@@ -29,7 +29,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
 public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public WidgetDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -38,7 +38,7 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -52,7 +52,7 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -66,7 +66,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -86,7 +86,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -106,7 +106,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -116,7 +116,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -126,7 +126,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The default value of the '{@link #getSemanticCandidateExpression() <em>Semantic Candidate Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -136,7 +136,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The cached value of the '{@link #getSemanticCandidateExpression() <em>Semantic Candidate Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -166,7 +166,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The cached value of the '{@link #getGroups() <em>Groups</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getGroups()
      * @generated
      * @ordered
@@ -186,7 +186,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getActions()
      * @generated
      * @ordered
@@ -196,7 +196,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getExtends()
      * @generated
      * @ordered
@@ -206,7 +206,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The default value of the '{@link #getFilterGroupsFromExtendedPageExpression() <em>Filter Groups From Extended
      * Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterGroupsFromExtendedPageExpression()
      * @generated
      * @ordered
@@ -216,7 +216,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The cached value of the '{@link #getFilterGroupsFromExtendedPageExpression() <em>Filter Groups From Extended Page
      * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterGroupsFromExtendedPageExpression()
      * @generated
      * @ordered
@@ -226,7 +226,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The default value of the '{@link #getFilterValidationRulesFromExtendedPageExpression() <em>Filter Validation
      * Rules From Extended Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterValidationRulesFromExtendedPageExpression()
      * @generated
      * @ordered
@@ -236,7 +236,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The cached value of the '{@link #getFilterValidationRulesFromExtendedPageExpression() <em>Filter Validation Rules
      * From Extended Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterValidationRulesFromExtendedPageExpression()
      * @generated
      * @ordered
@@ -246,7 +246,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The default value of the '{@link #isIndented() <em>Indented</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isIndented()
      * @generated
      * @ordered
@@ -256,7 +256,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     /**
      * The cached value of the '{@link #isIndented() <em>Indented</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isIndented()
      * @generated
      * @ordered
@@ -265,7 +265,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractPageDescriptionImpl() {
@@ -274,7 +274,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -294,7 +294,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -308,7 +308,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -318,7 +318,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -332,7 +332,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -342,7 +342,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -356,7 +356,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -366,7 +366,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -381,7 +381,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -391,7 +391,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -405,7 +405,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -418,7 +418,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -428,7 +428,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetValidationSet(PageValidationSetDescription newValidationSet, NotificationChain msgs) {
@@ -447,7 +447,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -471,7 +471,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -484,7 +484,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -503,7 +503,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public PageDescription basicGetExtends() {
@@ -512,7 +512,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -526,7 +526,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -536,7 +536,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -551,7 +551,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -561,7 +561,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -576,7 +576,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -586,7 +586,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -600,7 +600,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -616,7 +616,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -655,7 +655,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -706,7 +706,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -754,7 +754,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -794,7 +794,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -812,7 +812,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -830,7 +830,7 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

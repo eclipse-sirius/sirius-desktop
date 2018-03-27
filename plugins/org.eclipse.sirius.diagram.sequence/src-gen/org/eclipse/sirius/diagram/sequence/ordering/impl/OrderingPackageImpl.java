@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 import org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
@@ -118,22 +119,29 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
 
         // Obtain or create and register package
         OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (EPackage.Registry.INSTANCE.get(OrderingPackage.eNS_URI) instanceof OrderingPackageImpl
-                ? EPackage.Registry.INSTANCE.get(OrderingPackage.eNS_URI) : new OrderingPackageImpl());
+                ? EPackage.Registry.INSTANCE.get(OrderingPackage.eNS_URI)
+                : new OrderingPackageImpl());
 
         OrderingPackageImpl.isInited = true;
 
         // Initialize simple dependencies
+        EcorePackage.eINSTANCE.eClass();
+        ViewpointPackage.eINSTANCE.eClass();
         DiagramPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         SequencePackageImpl theSequencePackage = (SequencePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI) instanceof SequencePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI) : SequencePackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI)
+                : SequencePackage.eINSTANCE);
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
+                : DescriptionPackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI)
+                : ToolPackage.eINSTANCE);
         TemplatePackageImpl theTemplatePackage = (TemplatePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI) instanceof TemplatePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI) : TemplatePackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI)
+                : TemplatePackage.eINSTANCE);
 
         // Create package meta-data objects
         theOrderingPackage.createPackageContents();

@@ -130,6 +130,14 @@ public interface SequencePackage extends EPackage {
     int SEQUENCE_DDIAGRAM__UI_STATE = DiagramPackage.DSEMANTIC_DIAGRAM__UI_STATE;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SEQUENCE_DDIAGRAM__UID = DiagramPackage.DSEMANTIC_DIAGRAM__UID;
+
+    /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
@@ -284,6 +292,15 @@ public interface SequencePackage extends EPackage {
      * @ordered
      */
     int SEQUENCE_DDIAGRAM__IS_IN_LAYOUTING_MODE = DiagramPackage.DSEMANTIC_DIAGRAM__IS_IN_LAYOUTING_MODE;
+
+    /**
+     * The feature id for the '<em><b>Is In Showing Mode</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SEQUENCE_DDIAGRAM__IS_IN_SHOWING_MODE = DiagramPackage.DSEMANTIC_DIAGRAM__IS_IN_SHOWING_MODE;
 
     /**
      * The feature id for the '<em><b>Header Height</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

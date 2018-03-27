@@ -13,11 +13,9 @@ package org.eclipse.sirius.diagram.formatdata;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Point</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Point</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> Represents a point (x, y) in 2-dimensional space.
- * <!-- end-model-doc -->
+ * <!-- begin-model-doc --> Represents a point (x, y) in 2-dimensional space. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -33,9 +31,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Point extends EObject {
     /**
-     * Returns the value of the '<em><b>X</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Represents the x coordinate. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>X</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Represents the x coordinate. <!-- end-model-doc -->
      *
      * @return the value of the '<em>X</em>' attribute.
      * @see #setX(int)
@@ -46,9 +43,8 @@ public interface Point extends EObject {
     int getX();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.formatdata.Point#getX <em>X</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.formatdata.Point#getX <em>X</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>X</em>' attribute.
@@ -58,9 +54,8 @@ public interface Point extends EObject {
     void setX(int value);
 
     /**
-     * Returns the value of the '<em><b>Y</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Represents the y coordinate. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Y</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Represents the y coordinate. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Y</em>' attribute.
      * @see #setY(int)
@@ -71,9 +66,8 @@ public interface Point extends EObject {
     int getY();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.formatdata.Point#getY <em>Y</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.formatdata.Point#getY <em>Y</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Y</em>' attribute.

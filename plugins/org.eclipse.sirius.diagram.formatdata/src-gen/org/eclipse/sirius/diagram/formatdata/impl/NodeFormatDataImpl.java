@@ -26,35 +26,26 @@ import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
 import org.eclipse.sirius.diagram.formatdata.Point;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Node Format Data</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Node Format Data</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.NodeFormatDataImpl#getWidth
- * <em>Width</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.NodeFormatDataImpl#getHeight
- * <em>Height</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.NodeFormatDataImpl#getChildren
- * <em>Children</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.NodeFormatDataImpl#getOutgoingEdges
- * <em>Outgoing Edges</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.NodeFormatDataImpl#getLocation
- * <em>Location</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.NodeFormatDataImpl#getWidth <em>Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.NodeFormatDataImpl#getHeight <em>Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.NodeFormatDataImpl#getChildren <em>Children</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.NodeFormatDataImpl#getOutgoingEdges <em>Outgoing
+ * Edges</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.NodeFormatDataImpl#getLocation <em>Location</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class NodeFormatDataImpl extends AbstractFormatDataImpl implements NodeFormatData {
     /**
-     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getWidth()
      * @generated
@@ -63,8 +54,8 @@ public class NodeFormatDataImpl extends AbstractFormatDataImpl implements NodeFo
     protected static final int WIDTH_EDEFAULT = -2;
 
     /**
-     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getWidth()
      * @generated
@@ -73,8 +64,8 @@ public class NodeFormatDataImpl extends AbstractFormatDataImpl implements NodeFo
     protected int width = NodeFormatDataImpl.WIDTH_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getHeight() <em>Height</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getHeight()
      * @generated
@@ -83,8 +74,8 @@ public class NodeFormatDataImpl extends AbstractFormatDataImpl implements NodeFo
     protected static final int HEIGHT_EDEFAULT = -2;
 
     /**
-     * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getHeight()
      * @generated
@@ -93,8 +84,8 @@ public class NodeFormatDataImpl extends AbstractFormatDataImpl implements NodeFo
     protected int height = NodeFormatDataImpl.HEIGHT_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getChildren() <em>Children</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getChildren()
      * @generated
@@ -103,9 +94,8 @@ public class NodeFormatDataImpl extends AbstractFormatDataImpl implements NodeFo
     protected EList<NodeFormatData> children;
 
     /**
-     * The cached value of the '{@link #getOutgoingEdges()
-     * <em>Outgoing Edges</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOutgoingEdges() <em>Outgoing Edges</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getOutgoingEdges()
      * @generated
@@ -114,8 +104,8 @@ public class NodeFormatDataImpl extends AbstractFormatDataImpl implements NodeFo
     protected EList<EdgeFormatData> outgoingEdges;
 
     /**
-     * The cached value of the '{@link #getLocation() <em>Location</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getLocation() <em>Location</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @see #getLocation()
      * @generated

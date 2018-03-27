@@ -27,13 +27,13 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.CheckboxOverrideDescription} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CheckboxOverrideDescriptionItemProvider extends AbstractCheckboxDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CheckboxOverrideDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class CheckboxOverrideDescriptionItemProvider extends AbstractCheckboxDes
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class CheckboxOverrideDescriptionItemProvider extends AbstractCheckboxDes
 
     /**
      * This adds a property descriptor for the Overrides feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOverridesPropertyDescriptor(Object object) {
@@ -71,7 +71,7 @@ public class CheckboxOverrideDescriptionItemProvider extends AbstractCheckboxDes
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Overridden Checkbox Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromOverriddenCheckboxExpressionPropertyDescriptor(Object object) {
@@ -85,7 +85,7 @@ public class CheckboxOverrideDescriptionItemProvider extends AbstractCheckboxDes
 
     /**
      * This returns CheckboxOverrideDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class CheckboxOverrideDescriptionItemProvider extends AbstractCheckboxDes
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class CheckboxOverrideDescriptionItemProvider extends AbstractCheckboxDes
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class CheckboxOverrideDescriptionItemProvider extends AbstractCheckboxDes
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

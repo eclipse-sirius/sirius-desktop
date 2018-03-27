@@ -27,13 +27,13 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ButtonWidgetConditionalStyleItemProvider extends WidgetConditionalStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ButtonWidgetConditionalStyleItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class ButtonWidgetConditionalStyleItemProvider extends WidgetConditionalS
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -59,7 +59,7 @@ public class ButtonWidgetConditionalStyleItemProvider extends WidgetConditionalS
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class ButtonWidgetConditionalStyleItemProvider extends WidgetConditionalS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class ButtonWidgetConditionalStyleItemProvider extends WidgetConditionalS
 
     /**
      * This returns ButtonWidgetConditionalStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class ButtonWidgetConditionalStyleItemProvider extends WidgetConditionalS
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class ButtonWidgetConditionalStyleItemProvider extends WidgetConditionalS
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class ButtonWidgetConditionalStyleItemProvider extends WidgetConditionalS
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

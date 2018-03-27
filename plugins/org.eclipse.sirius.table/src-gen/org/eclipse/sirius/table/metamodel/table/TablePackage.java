@@ -131,6 +131,14 @@ public interface TablePackage extends EPackage {
     int DTABLE__UI_STATE = ViewpointPackage.DREPRESENTATION__UI_STATE;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DTABLE__UID = ViewpointPackage.DREPRESENTATION__UID;
+
+    /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated

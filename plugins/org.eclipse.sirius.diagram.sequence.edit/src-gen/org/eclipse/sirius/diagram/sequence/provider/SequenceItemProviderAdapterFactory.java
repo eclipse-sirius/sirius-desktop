@@ -41,7 +41,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -49,7 +49,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
     /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -64,7 +64,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SequenceItemProviderAdapterFactory() {
@@ -78,7 +78,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SequenceDDiagramItemProvider sequenceDDiagramItemProvider;
@@ -86,7 +86,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram}. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
     /**
      * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
     /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 public class TreeItemDeletionToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemDeletionToolItemProvider(AdapterFactory adapterFactory) {
@@ -38,7 +38,7 @@ public class TreeItemDeletionToolItemProvider extends TreeItemToolItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -52,7 +52,7 @@ public class TreeItemDeletionToolItemProvider extends TreeItemToolItemProvider {
 
     /**
      * This returns TreeItemDeletionTool.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public class TreeItemDeletionToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

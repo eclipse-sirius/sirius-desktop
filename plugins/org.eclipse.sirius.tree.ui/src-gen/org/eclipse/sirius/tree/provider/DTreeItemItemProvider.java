@@ -28,13 +28,13 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.tree.DTreeItem} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DTreeItemItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -76,7 +76,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Semantic Elements feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
@@ -101,7 +101,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Expanded feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addExpandedPropertyDescriptor(Object object) {
@@ -113,7 +113,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Actual Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
@@ -125,7 +125,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Style Updater feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addStyleUpdaterPropertyDescriptor(Object object) {
@@ -137,7 +137,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * This adds a property descriptor for the Updater feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addUpdaterPropertyDescriptor(Object object) {
@@ -151,7 +151,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * This returns DTreeItem.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +224,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

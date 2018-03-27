@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public HyperlinkDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * This adds a property descriptor for the Label Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -79,7 +79,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * This adds a property descriptor for the Help Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHelpExpressionPropertyDescriptor(Object object) {
@@ -104,7 +104,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * This adds a property descriptor for the Value Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
@@ -116,7 +116,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * This adds a property descriptor for the Display Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDisplayExpressionPropertyDescriptor(Object object) {
@@ -128,7 +128,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * This adds a property descriptor for the Extends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addExtendsPropertyDescriptor(Object object) {
@@ -141,7 +141,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended Hyperlink Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedHyperlinkExpressionPropertyDescriptor(Object object) {
@@ -172,7 +172,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * This returns HyperlinkDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -272,7 +272,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

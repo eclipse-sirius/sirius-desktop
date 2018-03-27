@@ -40,7 +40,7 @@ public interface TreeMapping extends RepresentationElementMapping {
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeMapping_SemanticElements()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
-     *        Collection<EObject> or an EObject.'"
+     *        Collection&lt;EObject&gt; or an EObject.'"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables view='tree.DTreeElement |
      *        current DTreeElement.' containerView='ecore.EObject | container of the current DTreeElement (variable is
      *        available if container is not null).' container='ecore.EObject | semantic target of $containerView (if it

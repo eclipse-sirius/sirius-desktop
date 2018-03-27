@@ -42,7 +42,7 @@ public interface ViewExtensionDescription extends Extension, IdentifiedElement, 
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Metamodels</em>' reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_Metamodels()
      * @model
@@ -58,7 +58,7 @@ public interface ViewExtensionDescription extends Extension, IdentifiedElement, 
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Categories</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_Categories()
      * @model containment="true"

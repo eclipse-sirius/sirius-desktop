@@ -38,7 +38,7 @@ public interface HyperlinkOverrideDescription extends AbstractHyperlinkDescripti
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(HyperlinkDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getHyperlinkOverrideDescription_Overrides()
@@ -50,7 +50,7 @@ public interface HyperlinkOverrideDescription extends AbstractHyperlinkDescripti
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.HyperlinkOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -66,7 +66,7 @@ public interface HyperlinkOverrideDescription extends AbstractHyperlinkDescripti
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Overridden Hyperlink Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromOverriddenHyperlinkExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getHyperlinkOverrideDescription_FilterConditionalStylesFromOverriddenHyperlinkExpression()
@@ -80,7 +80,7 @@ public interface HyperlinkOverrideDescription extends AbstractHyperlinkDescripti
      * '{@link org.eclipse.sirius.properties.HyperlinkOverrideDescription#getFilterConditionalStylesFromOverriddenHyperlinkExpression
      * <em>Filter Conditional Styles From Overridden Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Overridden Hyperlink Expression</em>'
      *            attribute.
@@ -111,7 +111,7 @@ public interface HyperlinkOverrideDescription extends AbstractHyperlinkDescripti
      * '{@link org.eclipse.sirius.properties.HyperlinkOverrideDescription#getFilterActionsFromOverriddenHyperlinkExpression
      * <em>Filter Actions From Overridden Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Actions From Overridden Hyperlink Expression</em>' attribute.
      * @see #getFilterActionsFromOverriddenHyperlinkExpression()

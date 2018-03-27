@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.TextDescription;
 public class TextDescriptionImpl extends AbstractTextDescriptionImpl implements TextDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TextDescriptionImpl() {
@@ -33,7 +33,7 @@ public class TextDescriptionImpl extends AbstractTextDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

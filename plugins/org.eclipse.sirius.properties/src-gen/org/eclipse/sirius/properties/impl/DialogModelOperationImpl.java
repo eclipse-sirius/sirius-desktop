@@ -48,7 +48,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
     /**
      * The default value of the '{@link #getTitleExpression() <em>Title Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
     /**
      * The cached value of the '{@link #getTitleExpression() <em>Title Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
     /**
      * The cached value of the '{@link #getButtons() <em>Buttons</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getButtons()
      * @generated
      * @ordered
@@ -78,7 +78,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
     /**
      * The cached value of the '{@link #getPage() <em>Page</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPage()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
     /**
      * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGroups()
      * @generated
      * @ordered
@@ -97,7 +97,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DialogModelOperationImpl() {
@@ -106,7 +106,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetPage(PageDescription newPage, NotificationChain msgs) {
@@ -182,7 +182,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -237,7 +237,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -284,7 +284,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -308,7 +308,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -328,7 +328,7 @@ public class DialogModelOperationImpl extends ModelOperationImpl implements Dial
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

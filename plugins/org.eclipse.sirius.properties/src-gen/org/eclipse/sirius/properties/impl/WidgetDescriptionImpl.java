@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
 public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl implements WidgetDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WidgetDescriptionImpl() {
@@ -33,7 +33,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -46,7 +46,7 @@ public interface AbstractCustomDescription extends AbstractWidgetDescription {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Custom Expressions</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCustomDescription_CustomExpressions()
      * @model containment="true"
@@ -62,7 +62,7 @@ public interface AbstractCustomDescription extends AbstractWidgetDescription {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Custom Operations</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCustomDescription_CustomOperations()
      * @model containment="true"
@@ -77,7 +77,7 @@ public interface AbstractCustomDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(CustomWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCustomDescription_Style()
@@ -89,7 +89,7 @@ public interface AbstractCustomDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractCustomDescription#getStyle <em>Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -105,7 +105,7 @@ public interface AbstractCustomDescription extends AbstractWidgetDescription {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditional Styles</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCustomDescription_ConditionalStyles()
      * @model containment="true"
@@ -120,7 +120,7 @@ public interface AbstractCustomDescription extends AbstractWidgetDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Extends</em>' reference.
      * @see #setExtends(CustomDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCustomDescription_Extends()
@@ -132,7 +132,7 @@ public interface AbstractCustomDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractCustomDescription#getExtends
      * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
      * @see #getExtends()
@@ -148,7 +148,7 @@ public interface AbstractCustomDescription extends AbstractWidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Extended Custom Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromExtendedCustomExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractCustomDescription_FilterConditionalStylesFromExtendedCustomExpression()
@@ -162,7 +162,7 @@ public interface AbstractCustomDescription extends AbstractWidgetDescription {
      * '{@link org.eclipse.sirius.properties.AbstractCustomDescription#getFilterConditionalStylesFromExtendedCustomExpression
      * <em>Filter Conditional Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Extended Custom Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromExtendedCustomExpression()

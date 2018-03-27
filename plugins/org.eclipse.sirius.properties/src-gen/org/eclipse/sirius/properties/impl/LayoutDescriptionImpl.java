@@ -25,7 +25,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public abstract class LayoutDescriptionImpl extends MinimalEObjectImpl.Container implements LayoutDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LayoutDescriptionImpl() {
@@ -34,7 +34,7 @@ public abstract class LayoutDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

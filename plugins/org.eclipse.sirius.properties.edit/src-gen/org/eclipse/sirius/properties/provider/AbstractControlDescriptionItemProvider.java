@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.provider.IdentifiedElementItemPr
 public class AbstractControlDescriptionItemProvider extends IdentifiedElementItemProvider implements IItemStyledLabelProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AbstractControlDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class AbstractControlDescriptionItemProvider extends IdentifiedElementIte
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -60,7 +60,7 @@ public class AbstractControlDescriptionItemProvider extends IdentifiedElementIte
 
     /**
      * This adds a property descriptor for the Documentation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
@@ -73,7 +73,7 @@ public class AbstractControlDescriptionItemProvider extends IdentifiedElementIte
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class AbstractControlDescriptionItemProvider extends IdentifiedElementIte
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class AbstractControlDescriptionItemProvider extends IdentifiedElementIte
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

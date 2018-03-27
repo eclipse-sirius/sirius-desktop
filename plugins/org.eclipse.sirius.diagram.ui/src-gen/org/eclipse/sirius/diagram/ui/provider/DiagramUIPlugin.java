@@ -214,7 +214,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
         /**
          * Logs an error in the error log.
-         * 
+         *
          * @param message
          *            the message to log (optional).
          * @param e

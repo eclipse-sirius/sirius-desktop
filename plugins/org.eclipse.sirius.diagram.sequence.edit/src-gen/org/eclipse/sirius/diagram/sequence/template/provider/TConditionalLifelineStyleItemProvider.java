@@ -28,13 +28,13 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TConditionalLifelineStyleItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -88,7 +88,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
 
     /**
      * This returns TConditionalLifelineStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

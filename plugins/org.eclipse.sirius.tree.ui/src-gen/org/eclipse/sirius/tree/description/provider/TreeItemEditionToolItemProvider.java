@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemEditionToolItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
 
     /**
      * This returns TreeItemEditionTool.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

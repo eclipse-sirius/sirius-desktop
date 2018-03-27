@@ -27,13 +27,13 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ReturnMessageMappingItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider
     /**
      * This adds a property descriptor for the Invocation Message Finder Expression feature. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInvocationMessageFinderExpressionPropertyDescriptor(Object object) {
@@ -72,7 +72,7 @@ public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider
 
     /**
      * This returns ReturnMessageMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

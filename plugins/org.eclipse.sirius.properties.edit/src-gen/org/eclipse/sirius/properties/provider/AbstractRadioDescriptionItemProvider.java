@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AbstractRadioDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
 
     /**
      * This adds a property descriptor for the Value Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
@@ -91,7 +91,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
     /**
      * This adds a property descriptor for the Candidate Display Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCandidateDisplayExpressionPropertyDescriptor(Object object) {
@@ -103,7 +103,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
 
     /**
      * This adds a property descriptor for the Number Of Columns feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNumberOfColumnsPropertyDescriptor(Object object) {
@@ -115,7 +115,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
 
     /**
      * This adds a property descriptor for the Extends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addExtendsPropertyDescriptor(Object object) {
@@ -144,7 +144,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,7 +173,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +230,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

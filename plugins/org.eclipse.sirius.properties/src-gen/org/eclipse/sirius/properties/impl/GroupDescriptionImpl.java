@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public class GroupDescriptionImpl extends AbstractGroupDescriptionImpl implements GroupDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GroupDescriptionImpl() {
@@ -33,7 +33,7 @@ public class GroupDescriptionImpl extends AbstractGroupDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

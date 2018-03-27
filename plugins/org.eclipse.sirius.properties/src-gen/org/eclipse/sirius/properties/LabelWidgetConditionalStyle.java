@@ -34,7 +34,7 @@ public interface LabelWidgetConditionalStyle extends WidgetConditionalStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(LabelWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelWidgetConditionalStyle_Style()
@@ -46,7 +46,7 @@ public interface LabelWidgetConditionalStyle extends WidgetConditionalStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.LabelWidgetConditionalStyle#getStyle <em>Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

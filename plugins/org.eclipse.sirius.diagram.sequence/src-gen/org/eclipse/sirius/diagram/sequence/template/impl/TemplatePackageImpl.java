@@ -46,6 +46,7 @@ import org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TTransformer;
 import org.eclipse.sirius.diagram.sequence.template.TemplateFactory;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
@@ -223,22 +224,29 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
         // Obtain or create and register package
         TemplatePackageImpl theTemplatePackage = (TemplatePackageImpl) (EPackage.Registry.INSTANCE.get(TemplatePackage.eNS_URI) instanceof TemplatePackageImpl
-                ? EPackage.Registry.INSTANCE.get(TemplatePackage.eNS_URI) : new TemplatePackageImpl());
+                ? EPackage.Registry.INSTANCE.get(TemplatePackage.eNS_URI)
+                : new TemplatePackageImpl());
 
         TemplatePackageImpl.isInited = true;
 
         // Initialize simple dependencies
+        EcorePackage.eINSTANCE.eClass();
+        ViewpointPackage.eINSTANCE.eClass();
         DiagramPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         SequencePackageImpl theSequencePackage = (SequencePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI) instanceof SequencePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI) : SequencePackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI)
+                : SequencePackage.eINSTANCE);
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
+                : DescriptionPackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI)
+                : ToolPackage.eINSTANCE);
         OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI) instanceof OrderingPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI) : OrderingPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI)
+                : OrderingPackage.eINSTANCE);
 
         // Create package meta-data objects
         theTemplatePackage.createPackageContents();
@@ -1342,20 +1350,18 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
      */
     protected void createVariablesAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables"; //$NON-NLS-1$
-        addAnnotation(getTAbstractMapping_SemanticCandidatesExpression(), source,
-                new String[] { "containerView", "the parent view of potential candidates.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-                });
+        addAnnotation(getTAbstractMapping_SemanticCandidatesExpression(), source, new String[] { "containerView", "the parent view of potential candidates.", //$NON-NLS-1$ //$NON-NLS-2$
+                "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        });
         addAnnotation(getTSequenceDiagram_EndsOrdering(), source, new String[] { "eventEnds", "a List<EObject> containing the semantic event ends." //$NON-NLS-1$ //$NON-NLS-2$
         });
-        addAnnotation(getTLifelineMapping_EolVisibleExpression(), source,
-                new String[] { "containerView", "the view that sould contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "the semantic element of $containerView.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "(deprecated) the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "diagram", "the current DSemanticDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-                });
+        addAnnotation(getTLifelineMapping_EolVisibleExpression(), source, new String[] { "containerView", "the view that sould contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "the semantic element of $containerView.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "(deprecated) the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "diagram", "the current DSemanticDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        });
         addAnnotation(getTLifelineStyle_LifelineWidthComputationExpression(), source, new String[] {});
         addAnnotation(getTConditionalLifelineStyle_PredicateExpression(), source, new String[] { "view", "the current view.", //$NON-NLS-1$ //$NON-NLS-2$
                 "container", "the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
@@ -1374,16 +1380,14 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
         addAnnotation(getTConditionalMessageStyle_PredicateExpression(), source, new String[] { "view", "the current view.", //$NON-NLS-1$ //$NON-NLS-2$
                 "container", "the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
-        addAnnotation(getTSourceTargetMessageMapping_SourceFinderExpression(), source,
-                new String[] { "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getTSourceTargetMessageMapping_TargetFinderExpression(), source,
-                new String[] { "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-                });
+        addAnnotation(getTSourceTargetMessageMapping_SourceFinderExpression(), source, new String[] { "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getTSourceTargetMessageMapping_TargetFinderExpression(), source, new String[] { "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        });
         addAnnotation(getTReturnMessageMapping_InvocationMessageFinderExpression(), source, new String[] {});
     }
 

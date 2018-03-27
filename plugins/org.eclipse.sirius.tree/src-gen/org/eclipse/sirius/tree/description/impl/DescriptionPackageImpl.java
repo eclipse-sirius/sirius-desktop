@@ -235,16 +235,19 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         // Obtain or create and register package
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) : new DescriptionPackageImpl());
+                ? EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI)
+                : new DescriptionPackageImpl());
 
         DescriptionPackageImpl.isInited = true;
 
         // Initialize simple dependencies
+        EcorePackage.eINSTANCE.eClass();
         ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         TreePackageImpl theTreePackage = (TreePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(TreePackage.eNS_URI) instanceof TreePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(TreePackage.eNS_URI) : TreePackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(TreePackage.eNS_URI)
+                : TreePackage.eINSTANCE);
 
         // Create package meta-data objects
         theDescriptionPackage.createPackageContents();
@@ -1359,21 +1362,18 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     protected void createVariablesAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables"; //$NON-NLS-1$
         addAnnotation(getTreeDescription_PreconditionExpression(), source, new String[] {});
-        addAnnotation(getTreeItemMapping_PreconditionExpression(), source,
-                new String[] { "tree", "tree.DTree | current DTree.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getTreeItemMapping_SemanticCandidatesExpression(), source,
-                new String[] { "tree", "tree.DTree | current DTree.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getTreeMapping_SemanticElements(), source,
-                new String[] { "view", "tree.DTreeElement | current DTreeElement.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
-                });
+        addAnnotation(getTreeItemMapping_PreconditionExpression(), source, new String[] { "tree", "tree.DTree | current DTree.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getTreeItemMapping_SemanticCandidatesExpression(), source, new String[] { "tree", "tree.DTree | current DTree.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getTreeMapping_SemanticElements(), source, new String[] { "view", "tree.DTreeElement | current DTreeElement.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
+        });
     }
 
     /**

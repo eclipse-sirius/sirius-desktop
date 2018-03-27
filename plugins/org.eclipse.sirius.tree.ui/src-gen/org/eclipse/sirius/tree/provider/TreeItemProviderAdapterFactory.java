@@ -41,7 +41,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -49,7 +49,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -64,7 +64,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemProviderAdapterFactory() {
@@ -109,7 +109,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.DTreeElement}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.DTreeItem}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.TreeItemStyle}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.tree.DTreeElementSynchronizer}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTreeElementSynchronizerItemProvider dTreeElementSynchronizerItemProvider;
@@ -178,7 +178,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.tree.DTreeElementSynchronizer}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -192,7 +192,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +223,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -260,7 +260,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -271,7 +271,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
     /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -285,7 +285,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

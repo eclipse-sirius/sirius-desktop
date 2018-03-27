@@ -25,13 +25,13 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.DynamicMappingIfOverrideDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DynamicMappingIfOverrideDescriptionItemProvider extends AbstractDynamicMappingIfDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DynamicMappingIfOverrideDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -40,7 +40,7 @@ public class DynamicMappingIfOverrideDescriptionItemProvider extends AbstractDyn
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -55,7 +55,7 @@ public class DynamicMappingIfOverrideDescriptionItemProvider extends AbstractDyn
 
     /**
      * This adds a property descriptor for the Overrides feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOverridesPropertyDescriptor(Object object) {
@@ -67,7 +67,7 @@ public class DynamicMappingIfOverrideDescriptionItemProvider extends AbstractDyn
 
     /**
      * This returns DynamicMappingIfOverrideDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public class DynamicMappingIfOverrideDescriptionItemProvider extends AbstractDyn
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public class DynamicMappingIfOverrideDescriptionItemProvider extends AbstractDyn
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +118,7 @@ public class DynamicMappingIfOverrideDescriptionItemProvider extends AbstractDyn
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

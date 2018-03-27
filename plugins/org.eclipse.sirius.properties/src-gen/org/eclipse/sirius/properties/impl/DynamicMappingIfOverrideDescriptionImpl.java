@@ -36,7 +36,7 @@ public class DynamicMappingIfOverrideDescriptionImpl extends AbstractDynamicMapp
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class DynamicMappingIfOverrideDescriptionImpl extends AbstractDynamicMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DynamicMappingIfOverrideDescriptionImpl() {
@@ -54,7 +54,7 @@ public class DynamicMappingIfOverrideDescriptionImpl extends AbstractDynamicMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class DynamicMappingIfOverrideDescriptionImpl extends AbstractDynamicMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class DynamicMappingIfOverrideDescriptionImpl extends AbstractDynamicMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DynamicMappingIfDescription basicGetOverrides() {
@@ -92,7 +92,7 @@ public class DynamicMappingIfOverrideDescriptionImpl extends AbstractDynamicMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class DynamicMappingIfOverrideDescriptionImpl extends AbstractDynamicMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class DynamicMappingIfOverrideDescriptionImpl extends AbstractDynamicMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class DynamicMappingIfOverrideDescriptionImpl extends AbstractDynamicMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class DynamicMappingIfOverrideDescriptionImpl extends AbstractDynamicMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

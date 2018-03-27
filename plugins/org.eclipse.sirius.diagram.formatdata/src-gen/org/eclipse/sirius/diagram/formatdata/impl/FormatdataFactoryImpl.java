@@ -22,15 +22,13 @@ import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
 import org.eclipse.sirius.diagram.formatdata.Point;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
  *
  * @generated
  */
 public class FormatdataFactoryImpl extends EFactoryImpl implements FormatdataFactory {
     /**
-     * Creates the default factory implementation. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -47,8 +45,7 @@ public class FormatdataFactoryImpl extends EFactoryImpl implements FormatdataFac
     }
 
     /**
-     * Creates an instance of the factory. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */

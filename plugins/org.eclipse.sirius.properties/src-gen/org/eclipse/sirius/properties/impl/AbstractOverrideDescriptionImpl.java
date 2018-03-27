@@ -25,7 +25,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public abstract class AbstractOverrideDescriptionImpl extends MinimalEObjectImpl.Container implements AbstractOverrideDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractOverrideDescriptionImpl() {
@@ -34,7 +34,7 @@ public abstract class AbstractOverrideDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.formatdata.AbstractFormatData;
@@ -25,8 +26,7 @@ import org.eclipse.sirius.diagram.formatdata.Point;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
  *
  * @generated
  */
@@ -60,13 +60,11 @@ public class FormatdataPackageImpl extends EPackageImpl implements FormatdataPac
     private EClass pointEClass = null;
 
     /**
-     * Creates an instance of the model <b>Package</b>, registered with
-     * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
-     * package package URI value.
+     * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
+     * EPackage.Registry} by the package package URI value.
      * <p>
-     * Note: the correct way to create the package is via the static factory
-     * method {@link #init init()}, which also performs initialization of the
-     * package, or returns the registered package, if one already exists. <!--
+     * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
+     * performs initialization of the package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see org.eclipse.emf.ecore.EPackage.Registry
@@ -86,14 +84,12 @@ public class FormatdataPackageImpl extends EPackageImpl implements FormatdataPac
     private static boolean isInited = false;
 
     /**
-     * Creates, registers, and initializes the <b>Package</b> for this model,
-     * and for any others upon which it depends.
+     * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
      *
      * <p>
-     * This method is used to initialize {@link FormatdataPackage#eINSTANCE}
-     * when that field is accessed. Clients should not invoke it directly.
-     * Instead, they should simply access that field to obtain the package. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This method is used to initialize {@link FormatdataPackage#eINSTANCE} when that field is accessed. Clients should
+     * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #eNS_URI
      * @see #createPackageContents()
@@ -107,11 +103,13 @@ public class FormatdataPackageImpl extends EPackageImpl implements FormatdataPac
 
         // Obtain or create and register package
         FormatdataPackageImpl theFormatdataPackage = (FormatdataPackageImpl) (EPackage.Registry.INSTANCE.get(FormatdataPackage.eNS_URI) instanceof FormatdataPackageImpl
-                ? EPackage.Registry.INSTANCE.get(FormatdataPackage.eNS_URI) : new FormatdataPackageImpl());
+                ? EPackage.Registry.INSTANCE.get(FormatdataPackage.eNS_URI)
+                : new FormatdataPackageImpl());
 
         FormatdataPackageImpl.isInited = true;
 
         // Initialize simple dependencies
+        EcorePackage.eINSTANCE.eClass();
         NotationPackage.eINSTANCE.eClass();
         ViewpointPackage.eINSTANCE.eClass();
 
@@ -397,9 +395,8 @@ public class FormatdataPackageImpl extends EPackageImpl implements FormatdataPac
     private boolean isCreated = false;
 
     /**
-     * Creates the meta-model objects for the package. This method is guarded to
-     * have no affect on any invocation but its first. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
+     * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -448,9 +445,8 @@ public class FormatdataPackageImpl extends EPackageImpl implements FormatdataPac
     private boolean isInitialized = false;
 
     /**
-     * Complete the initialization of the package and its meta-model. This
-     * method is guarded to have no affect on any invocation but its first. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
+     * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -480,66 +476,56 @@ public class FormatdataPackageImpl extends EPackageImpl implements FormatdataPac
         // Initialize classes and features; add operations and parameters
         initEClass(abstractFormatDataEClass, AbstractFormatData.class, "AbstractFormatData", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getAbstractFormatData_Id(), ecorePackage.getEString(), "id", null, 1, 1, AbstractFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE,
-                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getAbstractFormatData_Label(), this.getNodeFormatData(), null, "label", null, 0, 1, AbstractFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
-                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEReference(getAbstractFormatData_SiriusStyle(), theViewpointPackage.getStyle(), null, "siriusStyle", null, 1, 1, AbstractFormatData.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
-                EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getAbstractFormatData_GmfView(), theNotationPackage.getView(), null, "gmfView", null, 1, 1, AbstractFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
-                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(nodeFormatDataEClass, NodeFormatData.class, "NodeFormatData", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getNodeFormatData_Width(), ecorePackage.getEInt(), "width", "-2", 0, 1, NodeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$ //$NON-NLS-2$
-                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE,
-                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getNodeFormatData_Height(), ecorePackage.getEInt(), "height", "-2", 0, 1, NodeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$ //$NON-NLS-2$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE,
-                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getNodeFormatData_Children(), this.getNodeFormatData(), null, "children", null, 0, -1, NodeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
-                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEReference(getNodeFormatData_OutgoingEdges(), this.getEdgeFormatData(), null, "outgoingEdges", null, 0, -1, NodeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
-                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEReference(getNodeFormatData_Location(), this.getPoint(), null, "location", null, 0, 1, NodeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES,
-                !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(edgeFormatDataEClass, EdgeFormatData.class, "EdgeFormatData", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getEdgeFormatData_SourceTerminal(), ecorePackage.getEString(), "sourceTerminal", null, 0, 1, EdgeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE,
-                !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getEdgeFormatData_TargetTerminal(), ecorePackage.getEString(), "targetTerminal", null, 0, 1, EdgeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE,
-                !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getEdgeFormatData_Routing(), ecorePackage.getEInt(), "routing", null, 0, 1, EdgeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE,
-                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getEdgeFormatData_PointList(), this.getPoint(), null, "pointList", null, 0, -1, EdgeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
-                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEReference(getEdgeFormatData_SourceRefPoint(), this.getPoint(), null, "sourceRefPoint", null, 0, 1, EdgeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
-                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEReference(getEdgeFormatData_TargetRefPoint(), this.getPoint(), null, "targetRefPoint", null, 0, 1, EdgeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
-                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEAttribute(getEdgeFormatData_JumpLinkStatus(), ecorePackage.getEInt(), "jumpLinkStatus", null, 0, 1, EdgeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE,
-                !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getEdgeFormatData_JumpLinkType(), ecorePackage.getEInt(), "jumpLinkType", null, 0, 1, EdgeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getEdgeFormatData_ReverseJumpLink(), ecorePackage.getEBoolean(), "reverseJumpLink", null, 0, 1, EdgeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE,
-                !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getEdgeFormatData_Smoothness(), ecorePackage.getEInt(), "smoothness", null, 0, 1, EdgeFormatData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(pointEClass, Point.class, "Point", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getPoint_X(), ecorePackage.getEInt(), "x", null, 0, 1, Point.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$

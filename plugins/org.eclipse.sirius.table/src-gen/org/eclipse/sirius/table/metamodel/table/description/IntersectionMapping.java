@@ -166,7 +166,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_ColumnFinderExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
-     *        Collection<EObject> or an EObject.'"
+     *        Collection&lt;EObject&gt; or an EObject.'"
      * @generated
      */
     String getColumnFinderExpression();
@@ -196,7 +196,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_LineFinderExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
-     *        Collection<EObject> or an EObject.'"
+     *        Collection&lt;EObject&gt; or an EObject.'"
      * @generated
      */
     String getLineFinderExpression();
@@ -226,7 +226,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_SemanticCandidatesExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
-     *        Collection<EObject> or an EObject.'"
+     *        Collection&lt;EObject&gt; or an EObject.'"
      * @generated
      */
     String getSemanticCandidatesExpression();

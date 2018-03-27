@@ -530,15 +530,20 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
         // Obtain or create and register interdependencies
         ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) : ViewpointPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI)
+                : ViewpointPackage.eINSTANCE);
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
+                : DescriptionPackage.eINSTANCE);
         StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI)
+                : StylePackage.eINSTANCE);
         ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI)
+                : ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI)
+                : AuditPackage.eINSTANCE);
 
         // Create package meta-data objects
         theToolPackage.createPackageContents();
@@ -2830,26 +2835,22 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         });
         addAnnotation(getToolDescription_ElementView(), source, new String[] { "type", "ecore.EObject" //$NON-NLS-1$ //$NON-NLS-2$
         });
-        addAnnotation(getPaneBasedSelectionWizardDescription_CandidatesExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getPaneBasedSelectionWizardDescription_RootExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getPaneBasedSelectionWizardDescription_ChildrenExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
-                });
-        addAnnotation(getPaneBasedSelectionWizardDescription_PreSelectedCandidatesExpression(), source,
-                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
-                });
+        addAnnotation(getPaneBasedSelectionWizardDescription_CandidatesExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getPaneBasedSelectionWizardDescription_RootExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getPaneBasedSelectionWizardDescription_ChildrenExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getPaneBasedSelectionWizardDescription_PreSelectedCandidatesExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
+        });
         addAnnotation(getRepresentationCreationDescription_TitleExpression(), source, new String[] {});
         addAnnotation(getRepresentationCreationDescription_BrowseExpression(), source, new String[] {});
         addAnnotation(getRepresentationNavigationDescription_BrowseExpression(), source, new String[] {});

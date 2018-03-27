@@ -33,7 +33,7 @@ import org.eclipse.sirius.properties.TextOverrideDescription;
 public class TextOverrideDescriptionItemProvider extends AbstractTextDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TextOverrideDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
 
     /**
      * This adds a property descriptor for the Overrides feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOverridesPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
 
     /**
      * This returns TextOverrideDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -36,14 +36,14 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.GroupStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class GroupStyleItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, IItemStyledLabelProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public GroupStyleItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +52,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -85,7 +85,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Foreground Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addForegroundColorPropertyDescriptor(Object object) {
@@ -123,7 +123,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Bar Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBarStylePropertyDescriptor(Object object) {
@@ -135,7 +135,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Toggle Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addToggleStylePropertyDescriptor(Object object) {
@@ -160,7 +160,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This returns GroupStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,7 +221,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -231,7 +231,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

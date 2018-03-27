@@ -71,7 +71,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -101,7 +101,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -111,7 +111,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -121,7 +121,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The default value of the '{@link #getSemanticCandidateExpression() <em>Semantic Candidate Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -141,7 +141,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The cached value of the '{@link #getSemanticCandidateExpression() <em>Semantic Candidate Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -191,7 +191,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -201,7 +201,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -211,7 +211,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getExtends()
      * @generated
      * @ordered
@@ -241,7 +241,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The default value of the '{@link #getFilterValidationRulesFromExtendedGroupExpression() <em>Filter Validation
      * Rules From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterValidationRulesFromExtendedGroupExpression()
      * @generated
      * @ordered
@@ -251,7 +251,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The cached value of the '{@link #getFilterValidationRulesFromExtendedGroupExpression() <em>Filter Validation
      * Rules From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterValidationRulesFromExtendedGroupExpression()
      * @generated
      * @ordered
@@ -261,7 +261,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The default value of the '{@link #getFilterConditionalStylesFromExtendedGroupExpression() <em>Filter Conditional
      * Styles From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromExtendedGroupExpression()
      * @generated
      * @ordered
@@ -271,7 +271,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The cached value of the '{@link #getFilterConditionalStylesFromExtendedGroupExpression() <em>Filter Conditional
      * Styles From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromExtendedGroupExpression()
      * @generated
      * @ordered
@@ -281,7 +281,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     /**
      * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getActions()
      * @generated
      * @ordered
@@ -290,7 +290,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractGroupDescriptionImpl() {
@@ -299,7 +299,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -309,7 +309,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -319,7 +319,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -333,7 +333,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -343,7 +343,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -357,7 +357,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -367,7 +367,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -381,7 +381,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -391,7 +391,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -406,7 +406,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -416,7 +416,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -430,7 +430,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -443,7 +443,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -453,7 +453,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetValidationSet(GroupValidationSetDescription newValidationSet, NotificationChain msgs) {
@@ -472,7 +472,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -496,7 +496,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -506,7 +506,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(GroupStyle newStyle, NotificationChain msgs) {
@@ -525,7 +525,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -549,7 +549,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -562,7 +562,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -581,7 +581,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public GroupDescription basicGetExtends() {
@@ -590,7 +590,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -604,7 +604,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -614,7 +614,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -629,7 +629,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -639,7 +639,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -654,7 +654,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -664,7 +664,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -679,7 +679,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -692,7 +692,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -714,7 +714,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -757,7 +757,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -815,7 +815,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -869,7 +869,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -914,7 +914,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -932,7 +932,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -950,7 +950,7 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

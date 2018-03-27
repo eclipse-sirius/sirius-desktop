@@ -27,13 +27,13 @@ import org.eclipse.sirius.properties.TextAreaOverrideDescription;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.TextAreaOverrideDescription} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TextAreaOverrideDescriptionItemProvider extends AbstractTextAreaDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TextAreaOverrideDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class TextAreaOverrideDescriptionItemProvider extends AbstractTextAreaDes
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class TextAreaOverrideDescriptionItemProvider extends AbstractTextAreaDes
 
     /**
      * This adds a property descriptor for the Overrides feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOverridesPropertyDescriptor(Object object) {
@@ -71,7 +71,7 @@ public class TextAreaOverrideDescriptionItemProvider extends AbstractTextAreaDes
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Overridden Text Area Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromOverriddenTextAreaExpressionPropertyDescriptor(Object object) {
@@ -85,7 +85,7 @@ public class TextAreaOverrideDescriptionItemProvider extends AbstractTextAreaDes
 
     /**
      * This returns TextAreaOverrideDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class TextAreaOverrideDescriptionItemProvider extends AbstractTextAreaDes
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class TextAreaOverrideDescriptionItemProvider extends AbstractTextAreaDes
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class TextAreaOverrideDescriptionItemProvider extends AbstractTextAreaDes
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

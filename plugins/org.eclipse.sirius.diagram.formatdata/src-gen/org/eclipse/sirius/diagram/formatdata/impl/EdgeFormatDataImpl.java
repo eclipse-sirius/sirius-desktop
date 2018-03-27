@@ -25,51 +25,37 @@ import org.eclipse.sirius.diagram.formatdata.FormatdataPackage;
 import org.eclipse.sirius.diagram.formatdata.Point;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Edge Format Data</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Edge Format Data</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getSourceTerminal
- * <em>Source Terminal</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getTargetTerminal
- * <em>Target Terminal</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getRouting
- * <em>Routing</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getPointList
- * <em>Point List</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getSourceRefPoint
- * <em>Source Ref Point</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getTargetRefPoint
- * <em>Target Ref Point</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getJumpLinkStatus
- * <em>Jump Link Status</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getJumpLinkType
- * <em>Jump Link Type</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#isReverseJumpLink
- * <em>Reverse Jump Link</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getSmoothness
- * <em>Smoothness</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getSourceTerminal <em>Source
+ * Terminal</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getTargetTerminal <em>Target
+ * Terminal</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getRouting <em>Routing</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getPointList <em>Point List</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getSourceRefPoint <em>Source Ref
+ * Point</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getTargetRefPoint <em>Target Ref
+ * Point</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getJumpLinkStatus <em>Jump Link
+ * Status</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getJumpLinkType <em>Jump Link
+ * Type</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#isReverseJumpLink <em>Reverse Jump
+ * Link</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.EdgeFormatDataImpl#getSmoothness <em>Smoothness</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFormatData {
     /**
-     * The default value of the '{@link #getSourceTerminal()
-     * <em>Source Terminal</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getSourceTerminal() <em>Source Terminal</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #getSourceTerminal()
      * @generated
@@ -78,9 +64,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected static final String SOURCE_TERMINAL_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getSourceTerminal()
-     * <em>Source Terminal</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getSourceTerminal() <em>Source Terminal</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #getSourceTerminal()
      * @generated
@@ -89,9 +74,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected String sourceTerminal = EdgeFormatDataImpl.SOURCE_TERMINAL_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTargetTerminal()
-     * <em>Target Terminal</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getTargetTerminal() <em>Target Terminal</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #getTargetTerminal()
      * @generated
@@ -100,9 +84,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected static final String TARGET_TERMINAL_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTargetTerminal()
-     * <em>Target Terminal</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getTargetTerminal() <em>Target Terminal</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #getTargetTerminal()
      * @generated
@@ -111,8 +94,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected String targetTerminal = EdgeFormatDataImpl.TARGET_TERMINAL_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getRouting() <em>Routing</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getRouting() <em>Routing</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getRouting()
      * @generated
@@ -121,8 +104,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected static final int ROUTING_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getRouting() <em>Routing</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getRouting() <em>Routing</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getRouting()
      * @generated
@@ -131,8 +114,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected int routing = EdgeFormatDataImpl.ROUTING_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getPointList() <em>Point List</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getPointList() <em>Point List</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPointList()
      * @generated
@@ -141,9 +124,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected EList<Point> pointList;
 
     /**
-     * The cached value of the '{@link #getSourceRefPoint()
-     * <em>Source Ref Point</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getSourceRefPoint() <em>Source Ref Point</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSourceRefPoint()
      * @generated
@@ -152,9 +134,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected Point sourceRefPoint;
 
     /**
-     * The cached value of the '{@link #getTargetRefPoint()
-     * <em>Target Ref Point</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getTargetRefPoint() <em>Target Ref Point</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getTargetRefPoint()
      * @generated
@@ -163,9 +144,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected Point targetRefPoint;
 
     /**
-     * The default value of the '{@link #getJumpLinkStatus()
-     * <em>Jump Link Status</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getJumpLinkStatus() <em>Jump Link Status</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #getJumpLinkStatus()
      * @generated
@@ -174,9 +154,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected static final int JUMP_LINK_STATUS_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getJumpLinkStatus()
-     * <em>Jump Link Status</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getJumpLinkStatus() <em>Jump Link Status</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #getJumpLinkStatus()
      * @generated
@@ -185,9 +164,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected int jumpLinkStatus = EdgeFormatDataImpl.JUMP_LINK_STATUS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getJumpLinkType()
-     * <em>Jump Link Type</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getJumpLinkType() <em>Jump Link Type</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @see #getJumpLinkType()
      * @generated
@@ -196,9 +174,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected static final int JUMP_LINK_TYPE_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getJumpLinkType()
-     * <em>Jump Link Type</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getJumpLinkType() <em>Jump Link Type</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @see #getJumpLinkType()
      * @generated
@@ -207,9 +184,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected int jumpLinkType = EdgeFormatDataImpl.JUMP_LINK_TYPE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isReverseJumpLink()
-     * <em>Reverse Jump Link</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #isReverseJumpLink() <em>Reverse Jump Link</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #isReverseJumpLink()
      * @generated
@@ -218,9 +194,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected static final boolean REVERSE_JUMP_LINK_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isReverseJumpLink()
-     * <em>Reverse Jump Link</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #isReverseJumpLink() <em>Reverse Jump Link</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #isReverseJumpLink()
      * @generated
@@ -229,8 +204,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected boolean reverseJumpLink = EdgeFormatDataImpl.REVERSE_JUMP_LINK_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getSmoothness() <em>Smoothness</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getSmoothness() <em>Smoothness</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getSmoothness()
      * @generated
@@ -239,8 +214,8 @@ public class EdgeFormatDataImpl extends AbstractFormatDataImpl implements EdgeFo
     protected static final int SMOOTHNESS_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getSmoothness() <em>Smoothness</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getSmoothness() <em>Smoothness</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getSmoothness()
      * @generated

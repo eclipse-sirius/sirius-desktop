@@ -33,7 +33,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public class AbstractWidgetDescriptionItemProvider extends AbstractControlDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AbstractWidgetDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class AbstractWidgetDescriptionItemProvider extends AbstractControlDescri
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -59,7 +59,7 @@ public class AbstractWidgetDescriptionItemProvider extends AbstractControlDescri
 
     /**
      * This adds a property descriptor for the Label Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -71,7 +71,7 @@ public class AbstractWidgetDescriptionItemProvider extends AbstractControlDescri
 
     /**
      * This adds a property descriptor for the Help Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHelpExpressionPropertyDescriptor(Object object) {
@@ -96,7 +96,7 @@ public class AbstractWidgetDescriptionItemProvider extends AbstractControlDescri
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class AbstractWidgetDescriptionItemProvider extends AbstractControlDescri
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class AbstractWidgetDescriptionItemProvider extends AbstractControlDescri
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

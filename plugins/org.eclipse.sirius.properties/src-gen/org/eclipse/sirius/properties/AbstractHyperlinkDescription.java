@@ -51,7 +51,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractHyperlinkDescription_ValueExpression()
@@ -63,7 +63,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractHyperlinkDescription#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -78,7 +78,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Display Expression</em>' attribute.
      * @see #setDisplayExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractHyperlinkDescription_DisplayExpression()
@@ -90,7 +90,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractHyperlinkDescription#getDisplayExpression
      * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Display Expression</em>' attribute.
      * @see #getDisplayExpression()
@@ -105,7 +105,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractHyperlinkDescription_InitialOperation()
@@ -117,7 +117,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractHyperlinkDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
@@ -132,7 +132,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(HyperlinkWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractHyperlinkDescription_Style()
@@ -144,7 +144,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractHyperlinkDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -160,7 +160,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditional Styles</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractHyperlinkDescription_ConditionalStyles()
      * @model containment="true"
@@ -176,7 +176,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Actions</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractHyperlinkDescription_Actions()
      * @model containment="true"
@@ -191,7 +191,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Extends</em>' reference.
      * @see #setExtends(HyperlinkDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractHyperlinkDescription_Extends()
@@ -203,7 +203,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractHyperlinkDescription#getExtends
      * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
      * @see #getExtends()
@@ -219,7 +219,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Extended Hyperlink Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromExtendedHyperlinkExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractHyperlinkDescription_FilterConditionalStylesFromExtendedHyperlinkExpression()
@@ -233,7 +233,7 @@ public interface AbstractHyperlinkDescription extends AbstractWidgetDescription 
      * '{@link org.eclipse.sirius.properties.AbstractHyperlinkDescription#getFilterConditionalStylesFromExtendedHyperlinkExpression
      * <em>Filter Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Extended Hyperlink Expression</em>'
      *            attribute.

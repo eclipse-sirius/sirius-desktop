@@ -58,7 +58,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractListDescription#getValueExpression <em>Value
      * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -81,7 +81,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractListDescription#getDisplayExpression
      * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Display Expression</em>' attribute.
      * @see #getDisplayExpression()
@@ -105,7 +105,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractListDescription#getOnClickOperation <em>On
      * Click Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>On Click Operation</em>' containment reference.
      * @see #getOnClickOperation()
@@ -121,7 +121,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Actions</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractListDescription_Actions()
      * @model containment="true"
@@ -136,7 +136,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(ListWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractListDescription_Style()
@@ -148,7 +148,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractListDescription#getStyle <em>Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -164,7 +164,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditional Styles</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractListDescription_ConditionalStyles()
      * @model containment="true"
@@ -179,7 +179,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Extends</em>' reference.
      * @see #setExtends(ListDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractListDescription_Extends()
@@ -191,7 +191,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractListDescription#getExtends <em>Extends</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
      * @see #getExtends()
@@ -207,7 +207,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Extended List Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromExtendedListExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractListDescription_FilterConditionalStylesFromExtendedListExpression()
@@ -221,7 +221,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
      * '{@link org.eclipse.sirius.properties.AbstractListDescription#getFilterConditionalStylesFromExtendedListExpression
      * <em>Filter Conditional Styles From Extended List Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Extended List Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromExtendedListExpression()
@@ -250,7 +250,7 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
      * Sets the value of the
      * '{@link org.eclipse.sirius.properties.AbstractListDescription#getFilterActionsFromExtendedListExpression
      * <em>Filter Actions From Extended List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Actions From Extended List Expression</em>' attribute.
      * @see #getFilterActionsFromExtendedListExpression()

@@ -86,7 +86,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
     /**
      * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
     /**
      * The cached value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -106,7 +106,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
     /**
      * The cached value of the '{@link #getFontFormat() <em>Font Format</em>}' attribute list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getFontFormat()
      * @generated
      * @ordered
@@ -115,7 +115,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TextWidgetStyleImpl() {
@@ -124,7 +124,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +201,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -210,7 +210,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +224,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetForegroundColor() {
@@ -252,7 +252,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -307,7 +307,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -336,7 +336,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -363,7 +363,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -385,7 +385,7 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -32,13 +32,13 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractToolDescri
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class InstanceRoleReorderToolItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InstanceRoleReorderToolItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
 
     /**
      * This adds a property descriptor for the Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMappingsPropertyDescriptor(Object object) {
@@ -77,7 +77,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
 
     /**
      * This returns InstanceRoleReorderTool.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +185,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -39,7 +39,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
      * The default value of the '{@link #getFilterConditionalStylesFromOverriddenLabelExpression() <em>Filter
      * Conditional Styles From Overridden Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenLabelExpression()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
     /**
      * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenLabelExpression() <em>Filter Conditional
      * Styles From Overridden Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenLabelExpression()
      * @generated
      * @ordered
@@ -89,7 +89,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelOverrideDescriptionImpl() {
@@ -98,7 +98,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LabelDescription basicGetOverrides() {
@@ -136,7 +136,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +185,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,7 +221,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -242,7 +242,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -263,7 +263,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -283,7 +283,7 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

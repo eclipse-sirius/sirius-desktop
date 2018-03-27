@@ -44,7 +44,7 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractTextDescription_ValueExpression()
@@ -56,7 +56,7 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractTextDescription#getValueExpression <em>Value
      * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -71,7 +71,7 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractTextDescription_InitialOperation()
@@ -83,7 +83,7 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractTextDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
@@ -98,7 +98,7 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(TextWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractTextDescription_Style()
@@ -110,7 +110,7 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractTextDescription#getStyle <em>Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -126,7 +126,7 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditional Styles</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractTextDescription_ConditionalStyles()
      * @model containment="true"
@@ -141,7 +141,7 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Extends</em>' reference.
      * @see #setExtends(TextDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractTextDescription_Extends()
@@ -153,7 +153,7 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractTextDescription#getExtends <em>Extends</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
      * @see #getExtends()
@@ -169,7 +169,7 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Extended Text Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromExtendedTextExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractTextDescription_FilterConditionalStylesFromExtendedTextExpression()
@@ -183,7 +183,7 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
      * '{@link org.eclipse.sirius.properties.AbstractTextDescription#getFilterConditionalStylesFromExtendedTextExpression
      * <em>Filter Conditional Styles From Extended Text Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Extended Text Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromExtendedTextExpression()

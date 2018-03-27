@@ -75,7 +75,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
     /**
      * The default value of the '{@link #getTitleExpression() <em>Title Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -85,7 +85,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
     /**
      * The cached value of the '{@link #getTitleExpression() <em>Title Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -115,7 +115,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
     /**
      * The default value of the '{@link #getIsPageCompleteExpression() <em>Is Page Complete Expression</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIsPageCompleteExpression()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
     /**
      * The cached value of the '{@link #getIsPageCompleteExpression() <em>Is Page Complete Expression</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIsPageCompleteExpression()
      * @generated
      * @ordered
@@ -135,7 +135,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
     /**
      * The cached value of the '{@link #getPages() <em>Pages</em>}' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPages()
      * @generated
      * @ordered
@@ -145,7 +145,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
     /**
      * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGroups()
      * @generated
      * @ordered
@@ -164,7 +164,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WizardModelOperationImpl() {
@@ -173,7 +173,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -231,7 +231,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,7 +241,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -265,7 +265,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -292,7 +292,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -305,7 +305,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -315,7 +315,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -334,7 +334,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -358,7 +358,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -376,7 +376,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -402,7 +402,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -438,7 +438,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -471,7 +471,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -500,7 +500,7 @@ public class WizardModelOperationImpl extends ModelOperationImpl implements Wiza
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

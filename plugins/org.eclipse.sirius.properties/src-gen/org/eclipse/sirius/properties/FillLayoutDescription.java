@@ -35,7 +35,7 @@ public interface FillLayoutDescription extends LayoutDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Orientation</em>' attribute.
      * @see org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
      * @see #setOrientation(FILL_LAYOUT_ORIENTATION)
@@ -48,7 +48,7 @@ public interface FillLayoutDescription extends LayoutDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.FillLayoutDescription#getOrientation
      * <em>Orientation</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Orientation</em>' attribute.
      * @see org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION

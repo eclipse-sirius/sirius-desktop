@@ -365,6 +365,18 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @generated
      */
     @Override
+    public void refresh() {
+        // TODO: implement this method
+        // Ensure that you remove @generated or mark it @generated NOT
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public boolean isHideLabelByDefault() {
         return hideLabelByDefault;
     }
@@ -381,18 +393,6 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
         if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT, oldHideLabelByDefault, hideLabelByDefault));
         }
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public void refresh() {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
     }
 
     /**

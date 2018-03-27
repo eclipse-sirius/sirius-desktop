@@ -23,32 +23,24 @@ import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Abstract Format Data</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Abstract Format Data</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.AbstractFormatDataImpl#getId
- * <em>Id</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.AbstractFormatDataImpl#getLabel
- * <em>Label</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.AbstractFormatDataImpl#getSiriusStyle
- * <em>Sirius Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.formatdata.impl.AbstractFormatDataImpl#getGmfView
- * <em>Gmf View</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.AbstractFormatDataImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.AbstractFormatDataImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.AbstractFormatDataImpl#getSiriusStyle <em>Sirius
+ * Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.AbstractFormatDataImpl#getGmfView <em>Gmf View</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class AbstractFormatDataImpl extends EObjectImpl implements AbstractFormatData {
     /**
-     * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getId()
      * @generated
@@ -57,8 +49,7 @@ public abstract class AbstractFormatDataImpl extends EObjectImpl implements Abst
     protected static final String ID_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getId()
      * @generated
@@ -67,8 +58,8 @@ public abstract class AbstractFormatDataImpl extends EObjectImpl implements Abst
     protected String id = AbstractFormatDataImpl.ID_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLabel() <em>Label</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getLabel() <em>Label</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getLabel()
      * @generated
@@ -77,8 +68,8 @@ public abstract class AbstractFormatDataImpl extends EObjectImpl implements Abst
     protected NodeFormatData label;
 
     /**
-     * The cached value of the '{@link #getSiriusStyle() <em>Sirius Style</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getSiriusStyle() <em>Sirius Style</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSiriusStyle()
      * @generated
@@ -87,8 +78,8 @@ public abstract class AbstractFormatDataImpl extends EObjectImpl implements Abst
     protected Style siriusStyle;
 
     /**
-     * The cached value of the '{@link #getGmfView() <em>Gmf View</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getGmfView() <em>Gmf View</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @see #getGmfView()
      * @generated

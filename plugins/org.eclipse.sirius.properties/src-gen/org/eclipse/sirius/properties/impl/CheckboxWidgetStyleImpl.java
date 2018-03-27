@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public class CheckboxWidgetStyleImpl extends WidgetStyleImpl implements CheckboxWidgetStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CheckboxWidgetStyleImpl() {
@@ -33,7 +33,7 @@ public class CheckboxWidgetStyleImpl extends WidgetStyleImpl implements Checkbox
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

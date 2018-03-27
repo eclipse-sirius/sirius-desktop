@@ -28,13 +28,13 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.RepresentationCrea
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.tree.description.TreeCreationDescription} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TreeCreationDescriptionItemProvider extends RepresentationCreationDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeCreationDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
 
     /**
      * This adds a property descriptor for the Tree Description feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTreeDescriptionPropertyDescriptor(Object object) {
@@ -71,7 +71,7 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
 
     /**
      * This returns TreeCreationDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

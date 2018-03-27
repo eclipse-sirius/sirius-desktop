@@ -23,13 +23,13 @@ import org.eclipse.sirius.viewpoint.description.provider.AbstractVariableItemPro
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.description.MessageEndVariable}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MessageEndVariableItemProvider extends AbstractVariableItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MessageEndVariableItemProvider(AdapterFactory adapterFactory) {
@@ -38,7 +38,7 @@ public class MessageEndVariableItemProvider extends AbstractVariableItemProvider
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -52,7 +52,7 @@ public class MessageEndVariableItemProvider extends AbstractVariableItemProvider
 
     /**
      * This returns MessageEndVariable.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class MessageEndVariableItemProvider extends AbstractVariableItemProvider
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -88,7 +88,7 @@ public class MessageEndVariableItemProvider extends AbstractVariableItemProvider
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class MessageEndVariableItemProvider extends AbstractVariableItemProvider
 
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

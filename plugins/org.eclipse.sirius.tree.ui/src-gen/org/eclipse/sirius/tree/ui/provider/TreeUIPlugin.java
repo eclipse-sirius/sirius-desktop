@@ -50,20 +50,20 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * This is the central singleton for the Tree edit plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public final class TreeUIPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final TreeUIPlugin INSTANCE = new TreeUIPlugin();
 
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static Implementation plugin;
@@ -80,7 +80,7 @@ public final class TreeUIPlugin extends EMFPlugin {
 
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeUIPlugin() {
@@ -89,7 +89,7 @@ public final class TreeUIPlugin extends EMFPlugin {
 
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @generated
      */
@@ -100,7 +100,7 @@ public final class TreeUIPlugin extends EMFPlugin {
 
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @generated
      */

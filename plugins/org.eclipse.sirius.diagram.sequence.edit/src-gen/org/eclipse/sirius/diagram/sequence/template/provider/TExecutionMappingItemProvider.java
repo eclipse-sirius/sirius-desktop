@@ -27,13 +27,13 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TExecutionMappingItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -60,7 +60,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     /**
      * This adds a property descriptor for the Starting End Finder Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addStartingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -74,7 +74,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     /**
      * This adds a property descriptor for the Finishing End Finder Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFinishingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -87,7 +87,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
 
     /**
      * This adds a property descriptor for the Recursive feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRecursivePropertyDescriptor(Object object) {
@@ -103,7 +103,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
 
     /**
      * This returns TExecutionMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

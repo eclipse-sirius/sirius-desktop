@@ -45,7 +45,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
     /**
      * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
     /**
      * The cached value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
     /**
      * The default value of the '{@link #getBarStyle() <em>Bar Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBarStyle()
      * @generated
      * @ordered
@@ -115,7 +115,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
     /**
      * The cached value of the '{@link #getBarStyle() <em>Bar Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBarStyle()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
     /**
      * The default value of the '{@link #getToggleStyle() <em>Toggle Style</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getToggleStyle()
      * @generated
      * @ordered
@@ -135,7 +135,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
     /**
      * The cached value of the '{@link #getToggleStyle() <em>Toggle Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getToggleStyle()
      * @generated
      * @ordered
@@ -164,7 +164,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GroupStyleImpl() {
@@ -173,7 +173,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -211,7 +211,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -225,7 +225,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -244,7 +244,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetForegroundColor() {
@@ -253,7 +253,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -267,7 +267,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -277,7 +277,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -291,7 +291,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -301,7 +301,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -315,7 +315,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -325,7 +325,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -339,7 +339,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -349,7 +349,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -363,7 +363,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -373,7 +373,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -387,7 +387,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -419,7 +419,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -452,7 +452,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -485,7 +485,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -511,7 +511,7 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

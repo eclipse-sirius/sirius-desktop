@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 public class TreeItemCreationToolItemProvider extends TreeItemToolItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemCreationToolItemProvider(AdapterFactory adapterFactory) {
@@ -40,7 +40,7 @@ public class TreeItemCreationToolItemProvider extends TreeItemToolItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -55,7 +55,7 @@ public class TreeItemCreationToolItemProvider extends TreeItemToolItemProvider {
 
     /**
      * This adds a property descriptor for the Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMappingPropertyDescriptor(Object object) {
@@ -68,7 +68,7 @@ public class TreeItemCreationToolItemProvider extends TreeItemToolItemProvider {
 
     /**
      * This returns TreeItemCreationTool.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

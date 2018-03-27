@@ -18,24 +18,20 @@ import org.eclipse.sirius.diagram.formatdata.FormatdataPackage;
 import org.eclipse.sirius.diagram.formatdata.Point;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Point</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Point</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.PointImpl#getX
- * <em>X</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.PointImpl#getY
- * <em>Y</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.PointImpl#getX <em>X</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.formatdata.impl.PointImpl#getY <em>Y</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class PointImpl extends EObjectImpl implements Point {
     /**
-     * The default value of the '{@link #getX() <em>X</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getX() <em>X</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getX()
      * @generated
@@ -44,8 +40,7 @@ public class PointImpl extends EObjectImpl implements Point {
     protected static final int X_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getX() <em>X</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getX() <em>X</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getX()
      * @generated
@@ -54,8 +49,7 @@ public class PointImpl extends EObjectImpl implements Point {
     protected int x = PointImpl.X_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getY() <em>Y</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getY() <em>Y</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getY()
      * @generated
@@ -64,8 +58,7 @@ public class PointImpl extends EObjectImpl implements Point {
     protected static final int Y_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getY() <em>Y</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getY() <em>Y</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getY()
      * @generated
