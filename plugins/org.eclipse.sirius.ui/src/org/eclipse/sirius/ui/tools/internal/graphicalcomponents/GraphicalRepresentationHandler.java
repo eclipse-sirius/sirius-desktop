@@ -7,7 +7,10 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ *    Felix Dorner <felix.dorner@gmail.com>
+ *       - add option to hide browser
+ *       - add option to filter empty representation descriptors
+ ********************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.graphicalcomponents;
 
 import java.text.MessageFormat;
@@ -108,7 +111,9 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
  * 
  * - Filter {@link ViewpointItemImpl} that have no children computed by tree viewer content provider used that is either
  * the default one or a given optional provider.
- * 
+ *
+ * - Filter {@link RepresentationDescriptionItemImpl} that have no children according to the used content provider
+ *
  * - Use a {@link FormToolkit} to create graphic components.
  * 
  * - Add a checkbox allowing to group by viewpoint or not the representation description and representation instance.
@@ -285,6 +290,12 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
     private boolean filterEmptyViewpoint;
 
     /**
+     * True if {@link RepresentationDescriptionItemImpl} that have no children computed by tree viewer content provider
+     * used that is either the default one or a given optional provider.
+     */
+    private boolean filterEmptyRepresentationDescriptors;
+
+    /**
      * The button enabling selected viewpoints.
      */
     private Button enableViewpointButton;
@@ -324,6 +335,11 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      * True if disabled viewpoints should be shown. False otherwise.
      */
     private boolean showDisabledViewpoint;
+
+    /**
+     * True if the browser component should be hidden. False otherwise.
+     */
+    private boolean hideBrowser;
 
     /**
      * This listener refreshes the viewer of this component when a representation is created or removed.
@@ -404,9 +420,20 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         private boolean filterEmptyViewpoint; // optional
 
         /**
+         * True to filter {@link RepresentationDescriptionItem} that have no children according to the used tree content
+         * provider
+         */
+        private boolean filterEmptyRepresentationDescriptors;
+
+        /**
          * True if the checkbox allowing to group by viewpoint or not should be shown to user.
          */
         private boolean showGroupinByCheckbox;
+
+        /**
+         * True if the browser should be hidden.
+         */
+        private boolean hideBrowser;
 
         /**
          * Construct a GraphicalRepresentationHandler allowing to visualize and select in a tree viewer all registered
@@ -427,7 +454,9 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
             linkNavigatorAndBrowser = false;
             addUpdateControls = false;
             filterEmptyViewpoint = false;
+            filterEmptyRepresentationDescriptors = false;
             showGroupinByCheckbox = false;
+            hideBrowser = false;
             labelProvider = null;
             contentProvider = null;
         }
@@ -497,6 +526,16 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         }
 
         /**
+         * Returns the builder with the functionality "Hide browser".
+         * 
+         * @return the builder with the functionality "Hide browser"
+         */
+        public GraphicalRepresentationHandlerBuilder activateHideBrowser() {
+            hideBrowser = true;
+            return this;
+        }
+
+        /**
          * Returns the builder with the functionality "Add custom label and content provider to customize what is shown
          * in the viewer. The content provider must provide only a composition of {@link ViewpointItemImpl},
          * {@link RepresentationDescriptionItemImpl} and {@link RepresentationDescriptionItem}. Some items type can be
@@ -535,6 +574,18 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         }
 
         /**
+         * Returns the builder with the functionality "Filter {@link RepresentationDescriptionItemImpl} that have no
+         * children".
+         *
+         * @return the builder with the functionality "Filter {@link RepresentationDescriptionItemImpl} that have no
+         *         children".
+         */
+        public GraphicalRepresentationHandlerBuilder filterEmptyRepresentationDescriptors() {
+            filterEmptyRepresentationDescriptors = true;
+            return this;
+        }
+
+        /**
          * Builds a new instance of {@link GraphicalRepresentationHandler}.
          * 
          * @return a new instance of {@link GraphicalRepresentationHandler}.
@@ -559,10 +610,12 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         this.linkNavigatorAndBrowser = builder.linkNavigatorAndBrowser;
         this.addUpdateControls = builder.addUpdateControls;
         this.filterEmptyViewpoint = builder.filterEmptyViewpoint;
+        this.filterEmptyRepresentationDescriptors = builder.filterEmptyRepresentationDescriptors;
         this.contentProvider = builder.contentProvider;
         this.labelProvider = builder.labelProvider;
         this.showGroupinByCheckbox = builder.showGroupinByCheckbox;
         this.showDisabledViewpointCheckbox = builder.showDisabledViewpointCheckbox;
+        this.hideBrowser = builder.hideBrowser;
     }
 
     /**
@@ -613,9 +666,9 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         Composite subComposite1 = new Composite(rootComposite, SWT.NONE);
         GridLayout subComposite1Layout = null;
         if (showButtons) {
-            subComposite1Layout = GridLayoutFactory.fillDefaults().numColumns(3).equalWidth(false).create();
+            subComposite1Layout = GridLayoutFactory.fillDefaults().numColumns(hideBrowser ? 2 : 3).equalWidth(false).create();
         } else {
-            subComposite1Layout = GridLayoutFactory.fillDefaults().numColumns(2).equalWidth(true).create();
+            subComposite1Layout = GridLayoutFactory.fillDefaults().numColumns(hideBrowser ? 1 : 2).equalWidth(true).create();
         }
 
         subComposite1.setLayout(subComposite1Layout);
@@ -628,8 +681,11 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         // port when too much item are present.
         layoutData.heightHint = 50;
 
-        viewpointsSelectionGraphicalHandler.createBrowser(subComposite1);
-        viewpointsSelectionGraphicalHandler.setBrowserMinWidth(200);
+        if (!hideBrowser) {
+            viewpointsSelectionGraphicalHandler.createBrowser(subComposite1);
+            viewpointsSelectionGraphicalHandler.setBrowserMinWidth(200);
+        }
+
         SessionManager.INSTANCE.addSessionsListener(this);
 
         Composite checkboxComposite = new Composite(rootComposite, SWT.NONE);
@@ -804,10 +860,9 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         if (showButtons) {
             createRepresentationExplorerButton(subComposite, treeViewer);
             treeViewer.addSelectionChangedListener(new UpdateRepresentationButtonsAtSelectionChangeListener());
-
         }
 
-        if (linkNavigatorAndBrowser) {
+        if (linkNavigatorAndBrowser && !hideBrowser) {
             treeViewer.addSelectionChangedListener(new UpdateBrowserAtSelectionChangeListener());
         }
 
@@ -821,6 +876,33 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                         return false;
                     }
                     return true;
+                }
+            });
+        }
+
+        if (filterEmptyRepresentationDescriptors) {
+            treeViewer.addFilter(new ViewerFilter() {
+                @Override
+                public boolean select(Viewer viewer, Object parentElement, Object element) {
+                    boolean select = true;
+
+                    // must also filter out viewpoint parent items
+                    // if they have all their children filtered
+                    if (element instanceof ViewpointItem) {
+                        boolean hasRepresentations = false;
+                        for (Object child : contentProviderToUse.getChildren(element)) {
+                            if (select(viewer, element, child)) {
+                                hasRepresentations = true;
+                                break;
+                            }
+                        }
+                        select = hasRepresentations;
+                    } else if (element instanceof RepresentationDescriptionItem) {
+                        if (contentProviderToUse.getChildren(element).length == 0) {
+                            select = false;
+                        }
+                    }
+                    return select;
                 }
             });
         }

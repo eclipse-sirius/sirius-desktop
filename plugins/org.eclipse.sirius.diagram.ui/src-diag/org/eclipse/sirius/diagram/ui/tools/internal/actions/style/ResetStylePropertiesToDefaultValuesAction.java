@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Felix Dorner <felix.dorner@gmail.com> - Bug 533002
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.style;
 
@@ -36,6 +37,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ResetStylePropertiesToDefaultValuesCommand;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -165,7 +167,7 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
                         if (new DDiagramElementQuery(dDiagramElement).isCustomized() || new ViewQuery(view).isCustomized()) {
                             customizedViews.put(view, dDiagramElement);
                         }
-                    } else if (element == null && new ViewQuery(view).isCustomized()) {
+                    } else if ((element == null || element instanceof DRepresentationDescriptor) && new ViewQuery(view).isCustomized()) {
                         customizedViews.put(view, null);
                     }
                 }

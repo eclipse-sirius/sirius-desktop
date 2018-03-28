@@ -1155,16 +1155,22 @@
 			<em>Zoom out</em>) button is active, clicking anywhere on the diagram will increment (resp. decrement) the zoom level by 25%. The current zoom level is visible in the tabbar when no diagram element is selected (see the section on the tabbar buttons for more ways to control the zoom level).
 		</p>
 		<p id="notes">
-			<i>Notes and note attachments</i>. All Sirius diagrams support the creation of notes and text elements, which can be attached to diagram elements. These elements are purely graphical annotations, and have no effect on the semantic model. The three tools used to create them are available in a combo-box in the palette&#8217;s top row. By default, the 
-			<em>Note</em> tool (represented by a yellow sticky note) is selected. If you click on the small arrow next to the sticky note, a menu appears where you can select which of the three tools to enable: 
+			<i>Notes, Link Notes and Note attachments</i>. All Sirius diagrams support the creation of notes and text elements, which can be attached to diagram elements. These elements are purely graphical annotations, and have no effect on the semantic model. The tools used to create them are available in a combo-box in the palette&#8217;s top row. By default, the 
+			<em>Note</em> tool (represented by a yellow sticky note) is selected. If you click on the small arrow next to the sticky note, a menu appears where you can select one of the available tools: 
 			<em>Note</em>, 
+			<em>Link Note</em>, 
 			<em>Text</em> or 
 			<em>Note attachment</em>.
 		</p>
 		<p>
-			<em>Notes</em> and 
+			<em>Notes</em>, 
+			<em>Link Notes</em> and 
 			<em>Text</em> elements are created in a similar way: either a single click somewhere on the diagram (which creates an element with a default size), or a click-drag to create the element with a custom initial size. Once created, one can edit the text inside the note or text zone usual the standard &#8220;direct edit&#8221; behavior (
 			<em>F2</em>, a slow double click, or by directly starting to enter alpha-numeric text). The only difference between notes and text zones is the visual presentation; notes have a yellow background (by default) and a border which represents a sticky not with a folded top-right corner. 
+		</p>
+		<p>A 
+			<em>Link Note</em> is a special kind of note which references any existing representation in the project. When creating a link note, a the target representation must be selected from a dialog. The link note displays the name of the target representation and its icon as the note header. It is possible to navigate to the target representation by double clicking on a link note. When the targeted representation is deleted, all link notes that reference it are deleted automatically. Just like normal notes, link notes have a text field for free text and can be attached to other elements with the note attachment tool. It is also possible to set a new target representation for an existing link note by selecting 
+			<em>Set target representation ...</em> from the link note&#8217;s context menu.
 		</p>
 		<p>
 			<em>Note attachments</em> can be created to link either notes or text zone to diagram elements (including other notes and text attachments). To create an attachment, activate the tool and then click once on the source element and once on the target element. You can also click and drag from the source to the target elements.

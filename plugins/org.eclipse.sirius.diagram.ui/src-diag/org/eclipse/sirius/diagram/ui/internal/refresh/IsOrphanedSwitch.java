@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,12 +7,14 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Felix Dorner <felix.dorner@gmail.com> - Bug 53302
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.BundledImageEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.CustomStyleEditPart;
@@ -138,6 +140,11 @@ public class IsOrphanedSwitch {
         default:
             break;
         }
+
+        if (gmfView.getEAnnotation(Properties.DIAGRAMLINK_ANNOTATION) != null && !gmfView.isSetElement()) {
+            return Boolean.TRUE;
+        }
+
         return Boolean.FALSE;
     }
 

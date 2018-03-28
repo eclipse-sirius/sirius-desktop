@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <!--
-  Copyright (c) 2014, 2017 THALES GLOBAL SERVICES
+  Copyright (c) 2014, 2018 THALES GLOBAL SERVICES
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
 
   Contributors:
        Obeo - Initial API and implementation
+       Felix Dorner <felix.dorner@gmail.com> - Bug 533002
 -->
 
 <plugin>
@@ -1077,6 +1078,10 @@
            id="org.eclipse.sirius.diagram.ui.resetOrigin"
            name="%command.resetOrigin.label">
      </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.setLinkNoteTarget"
+           name="%command.setLinkNoteTarget.label">
+     </command>
    </extension>
 
    <extension point="org.eclipse.ui.bindings">
@@ -1240,6 +1245,13 @@
               namespace="org.eclipse.sirius.diagram.ui"
               properties="canResetOrigin"
               type="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart">
+        </propertyTester>
+        <propertyTester
+              class="org.eclipse.sirius.diagram.ui.tools.internal.testers.LinkNoteTester"
+              id="org.eclipse.sirius.diagram.ui.LinkNoteTester"
+              namespace="org.eclipse.sirius.diagram.ui"
+              properties="isLinkNote"
+              type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
         </propertyTester>
    </extension>
    <extension
@@ -1451,6 +1463,18 @@
          </visibleWhen>
       </command>
    </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=org.eclipse.sirius.diagram.ui.popup.otherActions">
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.setLinkNoteTarget"
+            label="%command.setLinkNoteTarget.label"
+            style="push">
+         <visibleWhen
+               checkEnabled="true">
+         </visibleWhen>
+      </command>
+      </menuContribution>
 </extension>
 
 
@@ -1775,6 +1799,22 @@
            </with>
         </activeWhen>
      </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.handler.SetLinkNoteTargetHandler"
+           commandId="org.eclipse.sirius.diagram.ui.setLinkNoteTarget">
+        <activeWhen>
+           <and>
+              <count
+                    value="1">
+              </count>
+              <iterate>
+                 <test
+                       property="org.eclipse.sirius.diagram.ui.isLinkNote">
+                 </test>
+              </iterate>
+           </and>
+        </activeWhen>
+     </handler>
   </extension>
   <extension
         point="org.eclipse.core.expressions.definitions">
@@ -1988,5 +2028,43 @@
          </Priority>
       </statusLineContributionItemProvider>
    </extension>
-
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+    <paletteProvider
+          class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+       <Priority
+             name="Low">
+       </Priority>
+       <contribution
+             factoryClass="org.eclipse.sirius.diagram.ui.tools.internal.palette.SiriusDiagramPaletteFactory">
+          <entry
+                description="%palettetool.linkNote.description"
+                id="linkNoteTool"
+                kind="tool"
+                label="%palettetool.linkNote.label"
+                large_icon="icons/DDiagram.gif"
+                path="/standardGroup/noteStack/noteTool"
+                small_icon="icons/DDiagram.gif">
+          </entry>
+       </contribution>
+       <editor
+             id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+       </editor>
+    </paletteProvider>
+   </extension>
+    <extension
+       point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+    <specializationType
+          id="org.eclipse.sirius.diagram.LinkNote"
+          kind="org.eclipse.gmf.runtime.diagram.ui.util.INotationType"
+          name="%palettetool.linkNote.elementTypeName">
+       <specializes
+             id="org.eclipse.gmf.runtime.diagram.ui.presentation.note">
+       </specializes>
+       <param
+             name="semanticHint"
+             value="Note">
+       </param>
+    </specializationType>
+ </extension>
 </plugin>
