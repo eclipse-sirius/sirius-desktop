@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,11 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Felix Dorner <felix.dorner@gmail.com> - Bug 533002
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.draw2d.Border;
@@ -18,14 +20,20 @@ import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.text.FlowPage;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.NoteFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.dialect.command.DeleteRepresentationCommand;
+import org.eclipse.sirius.business.api.dialect.command.RenameRepresentationCommand;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusDescriptionCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusDiagramNameCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -35,7 +43,11 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.ui.PartInitException;
 
 /**
  * Test class for double click tool and navigation operation.
@@ -48,6 +60,8 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_NAME = "Entities";
 
+    private static final String CLASSES_REPRESENTATION_NAME = "Classes";
+
     private static final String MODEL = "2083.ecore";
 
     private static final String SESSION_FILE = "2083.aird";
@@ -58,9 +72,19 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String P2_PACKAGE_NAME = "p2";
 
+    private static final String MY_NOTE = "My Note";
+
     private UIResource sessionAirdResource;
 
     private UILocalSession localSession;
+
+    private static final String NOTE_TOOL = "Note";
+
+    private static final String LINK_NOTE_TOOL = "Link Note";
+
+    private static final String LINK_TARGET_NEW_NAME = "Renamed Representation";
+
+    private static final String SET_TARGET_REPRESENTATION = "Set target representation ...";
 
     /**
      * Current editor.
@@ -125,8 +149,48 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * @throws Exception
      *             Test error.
      */
+    public void testDLinkNoteCreationInDiagramWithoutScroll() throws Exception {
+        testNoteCreationInDiagramWithoutScroll(ZoomLevel.ZOOM_100, getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTLinkNoteCreationInDiagramWithoutScroll() throws Exception {
+        testNoteCreationInDiagramWithoutScroll(ZoomLevel.ZOOM_100, getTableLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
     public void testNoteCreationInDiagramWithoutScrollAndChangeZoom() throws Exception {
         testNoteCreationInDiagramWithoutScroll(ZoomLevel.ZOOM_50);
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testDNoteCreationInDiagramWithoutScrollAndChangeZoom() throws Exception {
+        testNoteCreationInDiagramWithoutScroll(ZoomLevel.ZOOM_50, getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTNoteCreationInDiagramWithoutScrollAndChangeZoom() throws Exception {
+        testNoteCreationInDiagramWithoutScroll(ZoomLevel.ZOOM_50, getTableLinkTarget());
     }
 
     /**
@@ -145,6 +209,26 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * @throws Exception
      *             Test error.
      */
+    public void testDNoteCreationInDiagramWithScroll() throws Exception {
+        testNoteCreationInDiagramWithScroll(ZoomLevel.ZOOM_100, getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTNoteCreationInDiagramWithScroll() throws Exception {
+        testNoteCreationInDiagramWithScroll(ZoomLevel.ZOOM_100, getTableLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
     public void testNoteCreationInDiagramWithScrollAndChangeZoom() throws Exception {
         testNoteCreationInDiagramWithScroll(ZoomLevel.ZOOM_50);
     }
@@ -155,8 +239,48 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * @throws Exception
      *             Test error.
      */
+    public void testDNoteCreationInDiagramWithScrollAndChangeZoom() throws Exception {
+        testNoteCreationInDiagramWithScroll(ZoomLevel.ZOOM_50, getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTNoteCreationInDiagramWithScrollAndChangeZoom() throws Exception {
+        testNoteCreationInDiagramWithScroll(ZoomLevel.ZOOM_50, getTableLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
     public void testNoteCreationInContainerWithoutScroll() throws Exception {
-        testNoteCreationInContainer(ZoomLevel.ZOOM_100, "p1");
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_100, "p1");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testDNoteCreationInContainerWithoutScroll() throws Exception {
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_100, "p1", getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTNoteCreationInContainerWithoutScroll() throws Exception {
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_100, "p1", getTableLinkTarget());
     }
 
     /**
@@ -166,7 +290,27 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testNoteCreationInContainerWithoutScrollAndChangeZoom() throws Exception {
-        testNoteCreationInContainer(ZoomLevel.ZOOM_50, "p1");
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_50, "p1");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testDNoteCreationInContainerWithoutScrollAndChangeZoom() throws Exception {
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_50, "p1", getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTNoteCreationInContainerWithoutScrollAndChangeZoom() throws Exception {
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_50, "p1", getTableLinkTarget());
     }
 
     /**
@@ -176,7 +320,27 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testNoteCreationInContainerWithScrollInDiagram() throws Exception {
-        testNoteCreationInContainer(ZoomLevel.ZOOM_100, "p2");
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_100, "p2");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testDNoteCreationInContainerWithScrollInDiagram() throws Exception {
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_100, "p2", getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTNoteCreationInContainerWithScrollInDiagram() throws Exception {
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_100, "p2", getTableLinkTarget());
     }
 
     /**
@@ -186,7 +350,27 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testNoteCreationInContainerWithScrollInDiagramAndChangeZoom() throws Exception {
-        testNoteCreationInContainer(ZoomLevel.ZOOM_50, "p2");
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_50, "p2");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testDNoteCreationInContainerWithScrollInDiagramAndChangeZoom() throws Exception {
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_50, "p2", getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTNoteCreationInContainerWithScrollInDiagramAndChangeZoom() throws Exception {
+        testNoteCreationInPackageContainer(ZoomLevel.ZOOM_50, "p2", getTableLinkTarget());
     }
 
     /**
@@ -196,7 +380,27 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testNoteCreationInContainerWithScrollInContainer() throws Exception {
-        testNoteCreationInContainer(ZoomLevel.ZOOM_100, "p3", "C31");
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_100, "C31");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testDNoteCreationInContainerWithScrollInContainer() throws Exception {
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_100, "C31", getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTNoteCreationInContainerWithScrollInContainer() throws Exception {
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_100, "C31", getTableLinkTarget());
     }
 
     /**
@@ -206,7 +410,27 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testNoteCreationInContainerWithScrollInContainerAndChangeZoom() throws Exception {
-        testNoteCreationInContainer(ZoomLevel.ZOOM_50, "p3", "C31");
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_50, "C31");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testDNoteCreationInContainerWithScrollInContainerAndChangeZoom() throws Exception {
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_50, "C31", getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTNoteCreationInContainerWithScrollInContainerAndChangeZoom() throws Exception {
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_50, "C31", getDiagramLinkTarget());
     }
 
     /**
@@ -216,7 +440,27 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testNoteCreationInContainerWithScrollInContainerAndDiagram() throws Exception {
-        testNoteCreationInContainer(ZoomLevel.ZOOM_100, "p4", "C41");
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_100, "C41");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testDNoteCreationInContainerWithScrollInContainerAndDiagram() throws Exception {
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_100, "C41", getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTNoteCreationInContainerWithScrollInContainerAndDiagram() throws Exception {
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_100, "C41", getTableLinkTarget());
     }
 
     /**
@@ -226,7 +470,27 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testNoteCreationInContainerWithScrollInContainerAndDiagramAndChangeZoom() throws Exception {
-        testNoteCreationInContainer(ZoomLevel.ZOOM_50, "p4", "C41");
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_50, "C41");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testDNoteCreationInContainerWithScrollInContainerAndDiagramAndChangeZoom() throws Exception {
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_50, "C41", getDiagramLinkTarget());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testTNoteCreationInContainerWithScrollInContainerAndDiagramAndChangeZoom() throws Exception {
+        testNoteCreationInClassContainer(ZoomLevel.ZOOM_50, "C41", getTableLinkTarget());
     }
 
     /**
@@ -236,18 +500,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     private void testNoteCreationInDiagramWithoutScroll(ZoomLevel zoomLevel) throws Exception {
-        editor.zoom(zoomLevel);
-        // Get the insertion location for the not
-        Point location = new Point(2, 2);
-        // Select the Note tool and click in the editor (the coordinates use to
-        // click is with the zoom level)
-        editor.activateTool("Note");
-        editor.click(location.getScaled(zoomLevel.getAmount()).x, location.getScaled(zoomLevel.getAmount()).y);
-        // Write a label in the note
-        String newLabel = "My note";
-        editor.directEditType(newLabel);
-        // Check the location of the note
-        assertNoteAtLocation(newLabel, location);
+        testNoteCreationInDiagramWithoutScroll(zoomLevel, null);
     }
 
     /**
@@ -256,7 +509,25 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * @throws Exception
      *             Test error.
      */
+    private void testNoteCreationInDiagramWithoutScroll(ZoomLevel zoomLevel, DRepresentationDescriptor link) throws Exception {
+        editor.zoom(zoomLevel);
+        // Get the insertion location for the not
+        Point location = new Point(2, 2);
+        executeTool(location.getScaled(zoomLevel.getAmount()).x, location.getScaled(zoomLevel.getAmount()).y, link);
+        validateNote(location, link);
+    }
+
     private void testNoteCreationInDiagramWithScroll(ZoomLevel zoomLevel) throws Exception {
+        testNoteCreationInDiagramWithScroll(zoomLevel, null);
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    private void testNoteCreationInDiagramWithScroll(ZoomLevel zoomLevel, DRepresentationDescriptor link) throws Exception {
         editor.zoom(zoomLevel);
         // Reveal p2 (to scroll in the diagram)
         editor.select(editor.getSelectableEditPart(P2_PACKAGE_NAME));
@@ -270,22 +541,125 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
         // that's what is send to the request in reality)
         Point delta = new Point(-2, -2);
         Point location = p2Location.getTranslated(delta.getScaled(zoomLevel.getAmount()));
-        // Select the Note tool and click in the editor
-        editor.activateTool("Note");
-        editor.click(location.x, location.y);
-        // Write a label in the note
-        String newLabel = "My note";
-        editor.directEditType(newLabel);
-        // Check the location of the note (with the absolute coordinate)
-        assertNoteAtLocation(newLabel, p2AbsoluteLocation.getTranslated(delta));
+        executeTool(location.x, location.y, link);
+
         // Check note's label alignment
-        checkNoteLabelAlignment(editor.getEditPart(newLabel));
+        checkNoteLabelAlignment(editor.getEditPart(MY_NOTE), link);
+        validateNote(p2AbsoluteLocation.getTranslated(delta), link);
+    }
+
+    private void executeTool(int x, int y, DRepresentationDescriptor link) {
+        if (link != null) {
+            editor.activateTool(LINK_NOTE_TOOL);
+        } else {
+            editor.activateTool(NOTE_TOOL);
+        }
+
+        editor.click(x, y);
+
+        if (link != null) {
+            selectTargetRepresentation(link);
+        }
+
+        editor.directEditType(MY_NOTE);
+    }
+
+    // find the representation to link in the selection dialog
+    private void selectTargetRepresentation(DRepresentationDescriptor link) {
+        Viewpoint vp = (Viewpoint) link.getDescription().eContainer();
+        int size = DialectManager.INSTANCE.getRepresentations(link.getDescription(), localSession.getOpenedSession()).size();
+        bot.tree().expandNode(vp.getName(), link.getDescription().getName() + " (" + size + ")").getNode(link.getName()).select();
+        bot.button("OK").click();
+    }
+
+    // doubleclick should open the editor for the targeted representation
+    private void validateLinkDoubleclick(DRepresentationDescriptor link) throws PartInitException {
+        editor.doubleClick(editor.selectedEditParts().get(0));
+        SessionEditorInput seip = (SessionEditorInput) bot.activeEditor().getReference().getEditorInput();
+        assertEquals(EcoreUtil.getURI(link), seip.getRepDescUri());
+        bot.activeEditor().close();
+    }
+
+    private void validateNote(Point expectedLocation, DRepresentationDescriptor link) throws PartInitException {
+
+        assertNoteAtLocation(MY_NOTE, expectedLocation);
+
+        assertTrue(editor.selectedEditParts().size() == 1);
+
+        if (link != null) {
+
+            SWTBotGefEditPart note = editor.selectedEditParts().get(0);
+            validateDiagramNameCompartment(note, link.getName());
+
+            /* Doubleclick must open the target representation */
+            validateLinkDoubleclick(link);
+
+            /*
+             * Now change the target representation to something else. This
+             * loses the selection, so select the note again afterwards
+             */
+            DRepresentationDescriptor otherLink = getOtherLinkTarget(link);
+            editor.clickContextMenu(SET_TARGET_REPRESENTATION);
+            selectTargetRepresentation(otherLink);
+            note = editor.getEditPart(MY_NOTE).parent().select();
+
+            /* The header must have been updated to the other target name */
+            validateDiagramNameCompartment(note, otherLink.getName());
+
+            /* Doubleclick must now open the other target */
+            validateLinkDoubleclick(otherLink);
+
+            /* Switch back to the original link target and reselect */
+            editor.clickContextMenu(SET_TARGET_REPRESENTATION);
+            selectTargetRepresentation(link);
+            note = editor.getEditPart(MY_NOTE).parent().select();
+
+            /*
+             * Rename the target representation, this should update the note
+             * header label
+             */
+            TransactionalEditingDomain ted = localSession.getOpenedSession().getTransactionalEditingDomain();
+            ted.getCommandStack().execute(new RenameRepresentationCommand(ted, link, LINK_TARGET_NEW_NAME));
+            assertTrue(note.part().isActive());
+            validateDiagramNameCompartment(note, LINK_TARGET_NEW_NAME);
+
+            /*
+             * Delete the target representation, this should delete the note
+             */
+            ted.getCommandStack().execute(new DeleteRepresentationCommand(localSession.getOpenedSession(), Collections.singleton(link)));
+            assertNull(note.part().getParent());
+
+        }
+
+    }
+
+    private void validateDiagramNameCompartment(SWTBotGefEditPart note, String expectedLabel) {
+        SiriusDiagramNameCompartmentEditPart namePart = null;
+        for (SWTBotGefEditPart child : note.children()) {
+            if (child.part() instanceof SiriusDiagramNameCompartmentEditPart) {
+                namePart = (SiriusDiagramNameCompartmentEditPart) child.part();
+            }
+        }
+        assertNotNull("No name compartment edit part found", namePart);
+        assertEquals(expectedLabel, namePart.getLabelDelegate().getText());
+    }
+
+    private DRepresentationDescriptor getDiagramLinkTarget() {
+        return getRepresentationDescriptorWithName(localSession.getOpenedSession(), REPRESENTATION_NAME, "link target 1");
+    }
+
+    private DRepresentationDescriptor getTableLinkTarget() {
+        return getRepresentationDescriptorWithName(localSession.getOpenedSession(), CLASSES_REPRESENTATION_NAME, "link target 2");
+    }
+
+    private DRepresentationDescriptor getOtherLinkTarget(DRepresentationDescriptor current) {
+        return current == getDiagramLinkTarget() ? getTableLinkTarget() : getDiagramLinkTarget();
     }
 
     /**
      * 
      */
-    private void checkNoteLabelAlignment(SWTBotGefEditPart editPart) {
+    private void checkNoteLabelAlignment(SWTBotGefEditPart editPart, DRepresentationDescriptor link) {
         assertNotNull("The edit part shouldn't be null for the note label", editPart);
         EditPart part = editPart.part();
         assertTrue("The edit part of the note label should an instance of SiriusDescriptionCompartmentEditPart", part instanceof SiriusDescriptionCompartmentEditPart);
@@ -309,11 +683,17 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
         int middleOfTheNoteX = noteFigureBounds.x + ((noteFigureBounds.width + noteFigureInsets.left - noteFigureInsets.right) / 2);
         int middleOfTheLabelX = flowPageBounds.getCenter().x;
         assertEquals("The label should be centered in the note", middleOfTheNoteX, middleOfTheLabelX, 2);
-        int middleOfTheNoteY = noteFigureBounds.getCenter().y;
-        int beginingOfTheLabelY = flowPageBounds.y;
-        int endOfTheLabelY = flowPageBounds.y + flowPageBounds.height;
-        assertTrue("The label should be at the top of the note", beginingOfTheLabelY < middleOfTheNoteY);
-        assertTrue("The label should be at the top of the note", endOfTheLabelY < middleOfTheNoteY);
+
+        // if there's a link, the text is pushed below the horizontal centerline
+        // and the test fails, so test this only for 'normal' notes.
+        if (link == null) {
+            int middleOfTheNoteY = noteFigureBounds.getCenter().y;
+            int beginingOfTheLabelY = flowPageBounds.y;
+            int endOfTheLabelY = flowPageBounds.y + flowPageBounds.height;
+            assertTrue("The label should be at the top of the note", beginingOfTheLabelY < middleOfTheNoteY);
+            assertTrue("The label should be at the top of the note", endOfTheLabelY < middleOfTheNoteY);
+        }
+
         // We do all of this because the following commented lines don't works
         // assertSame("The note label should be centered",
         // PositionConstants.CENTER, ((SiriusDescriptionCompartmentEditPart)
@@ -333,7 +713,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * @throws Exception
      *             Test error.
      */
-    private void testNoteCreationInContainer(ZoomLevel zoomLevel, String packageNameToReveal) throws Exception {
+    private void testNoteCreationInPackageContainer(ZoomLevel zoomLevel, String packageNameToReveal, DRepresentationDescriptor link) throws Exception {
         editor.zoom(zoomLevel);
         // Reveal the package (and eventually scroll in the diagram)
         editor.reveal(packageNameToReveal);
@@ -346,14 +726,14 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
         // that's what is send to the request in reality)
         Point delta = new Point(30, 30);
         Point location = packageLocation.getTranslated(delta.getScaled(zoomLevel.getAmount()));
-        // Select the Note tool and click in the editor
-        editor.activateTool("Note");
-        editor.click(location.x, location.y);
-        // Write a label in the note
-        String newLabel = "My note";
-        editor.directEditType(newLabel);
-        // Check the location of the note (with the absolute coordinate)
-        assertNoteAtLocation(newLabel, packageAbsoluteLocation.getTranslated(delta));
+
+        executeTool(location.x, location.y, link);
+
+        validateNote(packageAbsoluteLocation.getTranslated(delta), link);
+    }
+
+    private void testNoteCreationInPackageContainer(ZoomLevel zoomLevel, String packageNameToReveal) throws Exception {
+        testNoteCreationInPackageContainer(zoomLevel, packageNameToReveal, (DRepresentationDescriptor) null);
     }
 
     /**
@@ -366,7 +746,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * @throws Exception
      *             Test error.
      */
-    private void testNoteCreationInContainer(ZoomLevel zoomLevel, String packageNameToReveal, String classNameToReveal) throws Exception {
+    private void testNoteCreationInClassContainer(ZoomLevel zoomLevel, String classNameToReveal, DRepresentationDescriptor link) throws Exception {
         editor.zoom(zoomLevel);
         // Reveal the class (and eventually scroll in the diagram and in the
         // container)
@@ -380,14 +760,24 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
         // that's what is send to the request in reality)
         Point delta = new Point(-30, -30);
         Point location = classLocation.getTranslated(delta.getScaled(zoomLevel.getAmount()));
-        // Select the Note tool and click in the editor
-        editor.activateTool("Note");
-        editor.click(location.x, location.y);
-        // Write a label in the note
-        String newLabel = "My note";
-        editor.directEditType(newLabel);
-        // Check the location of the note (with the absolute coordinate)
-        assertNoteAtLocation(newLabel, classAbsoluteLocation.getTranslated(delta));
+
+        executeTool(location.x, location.y, link);
+
+        validateNote(classAbsoluteLocation.getTranslated(delta), link);
+    }
+
+    /**
+     * Test method.
+     * 
+     * @param zoomLevel
+     *            The zoom factor
+     * @param packageNameToReveal
+     *            the name of the package to reveal before inserting the note.
+     * @throws Exception
+     *             Test error.
+     */
+    private void testNoteCreationInClassContainer(ZoomLevel zoomLevel, String classNameToReveal) throws Exception {
+        testNoteCreationInClassContainer(zoomLevel, classNameToReveal, null);
     }
 
     /**

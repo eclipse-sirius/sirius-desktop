@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Felix Dorner <felix.dorner@gmail.com> - Bug 533002
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
@@ -17,9 +18,12 @@ import org.eclipse.gmf.runtime.diagram.ui.services.palette.PaletteFactory.Adapte
 import org.eclipse.gmf.runtime.diagram.ui.util.INotationType;
 
 /**
- * A palette factory for common viewpoint diagram entries. Currently, use only
- * for override the noteAttachment tool to make two clicks for create the note
- * attachment (as the other edge in Sirius).
+ * A palette factory for common viewpoint diagram entries:
+ * <ul>
+ * <li>Override the noteAttachment tool to make two clicks for create the note attachment (as the other edge in Sirius).
+ * </li>
+ * <li>A tool to create diagram link notes.</li>
+ * </ul>
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
@@ -32,6 +36,8 @@ public class SiriusDiagramPaletteFactory extends Adapter {
     public static final String GENERIC_CONNECTION_CREATION_TOOL = "GenericConnectionCreationTool"; //$NON-NLS-1$
 
     private static final String TOOL_NOTEATTACHMENT = "noteattachmentTool"; //$NON-NLS-1$
+
+    private static final String TOOL_DIAGRAMLINK = "linkNoteTool"; //$NON-NLS-1$
 
     /**
      * Store the DiagramNotationType.NOTE_ATTACHMENT. Because the constant is
@@ -50,14 +56,15 @@ public class SiriusDiagramPaletteFactory extends Adapter {
      */
     @Override
     public Tool createTool(String toolId) {
-        Tool value = null;
+        Tool result = null;
         if (toolId.equals(TOOL_NOTEATTACHMENT)) {
-            value = new NoteAttachmentCreationTool(getNoteAttachmentNotationType());
+            result = new NoteAttachmentCreationTool(getNoteAttachmentNotationType());
+        } else if (toolId.equals(GENERIC_CONNECTION_CREATION_TOOL)) {
+            result = new GenericConnectionCreationTool();
+        } else if (toolId.equals(TOOL_DIAGRAMLINK)) {
+            result = new LinkNoteTool();
         }
-        else if (toolId.equals(GENERIC_CONNECTION_CREATION_TOOL)) {
-            value = new GenericConnectionCreationTool();
-        }
-        return value;
+        return result;
     }
 
     private INotationType getNoteAttachmentNotationType() {

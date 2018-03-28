@@ -7,6 +7,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Felix Dorner <felix.dorner@gmail.com> - Bug 533002
  *******************************************************************************/
 package org.eclipse.sirius.viewpoint.provider;
 
@@ -1175,6 +1176,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String RemoveSemanticResourceAction_Error_Removal_Title;
+
+    @TranslatableMessage
+    public static String SingleRepresentationTreeSelectionDialog_Title;
 
     @TranslatableMessage
     public static String GraphicalRepresentationHandler_newRepresentationButton_tooltip;

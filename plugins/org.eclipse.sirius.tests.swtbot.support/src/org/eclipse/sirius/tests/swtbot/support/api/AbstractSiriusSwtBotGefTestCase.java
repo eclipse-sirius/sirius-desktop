@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *      Obeo - Initial API and implementation
+ *      Felix Dorner <felix.dorner@gmail.com> - Bug 533002
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.support.api;
 
@@ -84,6 +85,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -1063,6 +1065,30 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             }
         }
         return representations;
+    }
+
+    /**
+     * Returns the first representation descriptor with a given name, optionally
+     * filtering by a representation description name.
+     * 
+     * @param session
+     *            The session to search
+     * @param representationDescriptionName
+     *            The name of the representation description. May be null.
+     * @param representationName
+     *            The name of the representation descriptor to search.
+     * @return a {@link DRepresentationDescriptor} or null if no matching
+     *         descriptor exists in the session
+     */
+    protected DRepresentationDescriptor getRepresentationDescriptorWithName(Session session, String representationDescriptionName, String representationName) {
+        for (DRepresentationDescriptor descriptor : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
+            if (representationName.equals(descriptor.getName())) {
+                if (representationDescriptionName == null || representationDescriptionName.equals(descriptor.getDescription().getName())) {
+                    return descriptor;
+                }
+            }
+        }
+        return null;
     }
 
     /**

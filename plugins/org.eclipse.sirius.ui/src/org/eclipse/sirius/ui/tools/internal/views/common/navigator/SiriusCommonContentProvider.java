@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *    Obeo - initial API and implementation
  *    IBM Corporation - for some methods taken from
  *                      org.eclipse.jdt.internal.ui.packageview.PackageExplorerContentProvider
+ *    Felix Dorner <felix.dorner@gmail.com> - Bug 533002
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 
@@ -119,18 +120,30 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     /**
+     * Constructor. This uses an {@link OpenEditorDoubleClickListener} as the doublecklick listener.
+     * 
+     * @see #SiriusCommonContentProvider(Session, IDoubleClickListener)
+     * @param session
+     *            The session for which content should be provided.
+     */
+    public SiriusCommonContentProvider(Session session) {
+        this(session, new OpenEditorDoubleClickListener(session));
+    }
+
+    /**
      * Constructor.
      * 
      * @param session
-     *            Listener that should be used instead of the default one that is an
-     *            {@link OpenEditorDoubleClickListener}. This component takes care of disposing the given listener when
-     *            disposed from associated viewer.
+     *            The session for which content should be provided.
+     * @param listener
+     *            an IDoubleClickListener that should be installed on the viewer. May be null. This component takes care
+     *            of disposing the given listener when disposed from associated viewer.
      */
-    public SiriusCommonContentProvider(Session session) {
+    public SiriusCommonContentProvider(Session session, IDoubleClickListener listener) {
         defaultContentProvider = ViewHelper.INSTANCE.createContentProvider();
 
         initSessionManager();
-        doubleClickListener = new OpenEditorDoubleClickListener(session);
+        doubleClickListener = listener;
         initExpandListener();
     }
 
@@ -448,7 +461,9 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         }
 
         if (viewer != myViewer) {
-            removeDoubleClickListener(doubleClickListener);
+            if (doubleClickListener != null) {
+                removeDoubleClickListener(doubleClickListener);
+            }
             removeExpandListener();
             if (linkWithEditorSelectionListener != null) {
                 linkWithEditorSelectionListener.dispose();
@@ -456,7 +471,9 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
             myViewer = viewer;
 
-            addDoubleClickListener(doubleClickListener);
+            if (doubleClickListener != null) {
+                addDoubleClickListener(doubleClickListener);
+            }
             addExpandListener();
             createLWESelectionListener();
         }
@@ -509,7 +526,9 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
      */
     @Override
     public void dispose() {
-        removeDoubleClickListener(doubleClickListener);
+        if (doubleClickListener != null) {
+            removeDoubleClickListener(doubleClickListener);
+        }
         removeExpandListener();
         myViewer = null;
 

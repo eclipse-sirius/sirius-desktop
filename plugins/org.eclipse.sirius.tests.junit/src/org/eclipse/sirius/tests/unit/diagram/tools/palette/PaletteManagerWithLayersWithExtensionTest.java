@@ -7,6 +7,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Felix Dorner <felix.dorner@gmail.com> - Bug 533002
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.tools.palette;
 
@@ -93,7 +94,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1", "ToolL4-A-1"),
             //
-            createNewEntry("Standard", "Generic Connection Creation Tool", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
+            createNewEntry("Standard", "Generic Connection Creation Tool", "Link Note", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
     //
     ));
 
@@ -109,7 +110,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1"),
             //
-            createNewEntry("Standard", "Generic Connection Creation Tool", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
+            createNewEntry("Standard", "Generic Connection Creation Tool", "Link Note", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
     //
     ));
 

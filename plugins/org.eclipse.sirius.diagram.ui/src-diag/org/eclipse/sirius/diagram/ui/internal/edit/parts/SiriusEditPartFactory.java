@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Felix Dorner <felix.dorner@gmail.com> - Bug 533002
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
@@ -155,6 +156,8 @@ public class SiriusEditPartFactory implements EditPartFactory {
                     return new SiriusTextEditPart(view);
                 } else if (CommonParserHint.DESCRIPTION.equals(view.getType())) {
                     return new SiriusDescriptionCompartmentEditPart(view);
+                } else if (ViewType.DIAGRAM_NAME.equals(view.getType())) {
+                    return new SiriusDiagramNameCompartmentEditPart(view);
                 }
             }
         }
