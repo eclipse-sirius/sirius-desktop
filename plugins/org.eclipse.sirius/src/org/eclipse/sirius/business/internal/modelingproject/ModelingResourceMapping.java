@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.model;
+package org.eclipse.sirius.business.internal.modelingproject;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -20,7 +20,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 
 /**
  * Resource mapping for the modeling model provider.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public final class ModelingResourceMapping extends ResourceMapping {
@@ -30,7 +30,7 @@ public final class ModelingResourceMapping extends ResourceMapping {
 
     /**
      * Creates a new java resource mapping.
-     * 
+     *
      * @param resource
      *            the resource to map
      */
@@ -39,30 +39,22 @@ public final class ModelingResourceMapping extends ResourceMapping {
         fResource = resource;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object getModelObject() {
         return fResource;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getModelProviderId() {
         return ModelingModelProvider.MODELING_MODEL_PROVIDER_ID;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public IProject[] getProjects() {
         return new IProject[] { fResource.getProject() };
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ResourceTraversal[] getTraversals(final ResourceMappingContext context, final IProgressMonitor monitor) {
         return new ResourceTraversal[] { new ResourceTraversal(new IResource[] { fResource }, IResource.DEPTH_INFINITE, IResource.NONE) };
     }

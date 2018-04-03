@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -547,9 +547,6 @@ public final class Messages {
     public static String HierarchyLabelProvider_elementWihtoutNameLabel;
 
     @TranslatableMessage
-    public static String InvalidModelingProjectMarkerUpdaterJob_updateMarkers;
-
-    @TranslatableMessage
     public static String LoadEMFResourceRunnableWithProgress_loadResourceTask;
 
     @TranslatableMessage
@@ -575,24 +572,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String Messages_createRepresentationInputDialog_DefaultRepresentationDescName;
-
-    @TranslatableMessage
-    public static String ModelingModelProvider_addAnotherRepresentationFile;
-
-    @TranslatableMessage
-    public static String ModelingModelProvider_addAnotherRepresentationFileSeveralProjects;
-
-    @TranslatableMessage
-    public static String ModelingModelProvider_mainRepresentationFileDeleted;
-
-    @TranslatableMessage
-    public static String ModelingModelProvider_mainRepresentationFilesOfSomeProjectsDeleted;
-
-    @TranslatableMessage
-    public static String ModelingModelProvider_satusUnsaveDataWillBeLostWithProjectNames;
-
-    @TranslatableMessage
-    public static String ModelingModelProvider_satusUnsavedDataWillBeLost;
 
     @TranslatableMessage
     public static String ModelingProjectManagerImpl_addingModelingNatureTask;

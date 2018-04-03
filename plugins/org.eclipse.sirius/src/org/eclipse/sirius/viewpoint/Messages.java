@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -352,6 +352,9 @@ public final class Messages {
     public static String InvalidPermissionCommand_label;
 
     @TranslatableMessage
+    public static String InvalidModelingProjectMarkerUpdaterJob_updateMarkers;
+
+    @TranslatableMessage
     public static String SavingPolicyImpl_savingErrorMsg;
 
     @TranslatableMessage
@@ -386,6 +389,24 @@ public final class Messages {
 
     @TranslatableMessage
     public static String MigrationUtil_invalidMappingErrorMsg;
+
+    @TranslatableMessage
+    public static String ModelingModelProvider_addAnotherRepresentationFile;
+
+    @TranslatableMessage
+    public static String ModelingModelProvider_addAnotherRepresentationFileSeveralProjects;
+
+    @TranslatableMessage
+    public static String ModelingModelProvider_mainRepresentationFileDeleted;
+
+    @TranslatableMessage
+    public static String ModelingModelProvider_mainRepresentationFilesOfSomeProjectsDeleted;
+
+    @TranslatableMessage
+    public static String ModelingModelProvider_satusUnsavedDataWillBeLost;
+
+    @TranslatableMessage
+    public static String ModelingModelProvider_satusUnsaveDataWillBeLostWithProjectNames;
 
     @TranslatableMessage
     public static String ModelingProject_getMainRepFileURIMsg;
