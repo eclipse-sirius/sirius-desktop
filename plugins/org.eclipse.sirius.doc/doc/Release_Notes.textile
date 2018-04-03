@@ -52,6 +52,8 @@ h4. Changes in @org.eclipse.sirius.ui@
 
 h4. Migrations
 
+* <span class="label label-success">Added</span> A migration participant has been added to fix diagram with note attachment corrupted (see "bugzilla #533175":https://bugs.eclipse.org/bugs/show_bug.cgi?id=533175 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _13.0.0.201804031646_.
+
 h4. Translation Keys Changes
 
 h2(#sirius5.1.1). Changes in Sirius 5.1.1
