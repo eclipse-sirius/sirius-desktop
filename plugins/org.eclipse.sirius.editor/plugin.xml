@@ -1360,6 +1360,12 @@
      <handler
            class="org.eclipse.sirius.editor.tools.internal.commands.ReloadVSMHandler"
            commandId="org.eclipse.sirius.editor.reloadVSMCommand">
+        <enabledWhen>
+           <test
+                 forcePluginActivation="true"
+                 property="org.eclipse.sirius.editor.tools.internal.commands.enableReloadVSM">
+           </test>
+        </enabledWhen>
      </handler>
    </extension>
   
@@ -1388,6 +1394,16 @@
            </command>
         </toolbar>
      </menuContribution>
+  </extension>
+  <extension
+        point="org.eclipse.core.expressions.propertyTesters">
+     <propertyTester
+           class="org.eclipse.sirius.editor.tools.internal.commands.ReloadVSMPropertyTester"
+           id="ReloadVSMPropertyTesterId"
+           namespace="org.eclipse.sirius.editor.tools.internal.commands"
+           properties="enableReloadVSM"
+           type="java.lang.Object">
+     </propertyTester>
   </extension>
     
  <!-- End of user code plugin.xml end specifics  -->

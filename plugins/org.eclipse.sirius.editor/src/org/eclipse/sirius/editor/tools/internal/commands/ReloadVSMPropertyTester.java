@@ -11,20 +11,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.commands;
 
-import org.eclipse.core.commands.AbstractHandler;
-import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.core.expressions.PropertyTester;
 
 /**
- * Handler to reload VSMs of installed plug-ins.
+ * PropertyTester class for the reloadVSM command.
  * 
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  */
-public class ReloadVSMHandler extends AbstractHandler {
+public class ReloadVSMPropertyTester extends PropertyTester {
+
     @Override
-    public Object execute(ExecutionEvent event) throws ExecutionException {
-        ViewpointRegistry.getInstance().reloadAllFromPlugins();
-        return null;
+    public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
+        // This handler is enabled only if the eclipse is a runtime application launched with pde (from a launch config
+        // for example)
+        return Boolean.getBoolean("eclipse.pde.launch"); //$NON-NLS-1$
     }
+
 }
