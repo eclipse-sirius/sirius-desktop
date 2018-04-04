@@ -45,7 +45,7 @@
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_oMTV0CFCEeSMNYPU5C3YNA" id="(0.8732394366197183,0.3484848484848485)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_oMTV0SFCEeSMNYPU5C3YNA" id="(0.4225352112676056,0.09090909090909091)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_NRmyEGRwEeakY9Y4JDrN5g" type="4001" element="_NQUYoGRwEeakY9Y4JDrN5g" source="_d-NGoGBcEealqL4FNACD0w" target="_MTPFUGRwEeakY9Y4JDrN5g">
+          <edges xmi:type="notation:Edge" xmi:id="_NRmyEGRwEeakY9Y4JDrN5g" type="4001" element="_NQUYoGRwEeakY9Y4JDrN5g" target="_MTPFUGRwEeakY9Y4JDrN5g">
             <children xmi:type="notation:Node" xmi:id="_NRonQGRwEeakY9Y4JDrN5g" type="6001">
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NRonQWRwEeakY9Y4JDrN5g" y="-10"/>
             </children>
@@ -57,7 +57,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_NRmyEWRwEeakY9Y4JDrN5g"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_NRmyEmRwEeakY9Y4JDrN5g" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NRmyE2RwEeakY9Y4JDrN5g" points="[0, 0, -143, 71]$[143, -71, 0, 0]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NRmyE2RwEeakY9Y4JDrN5g" points="[100, 100, -143, 71]$[143, -71, 0, 0]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NRs4sGRwEeakY9Y4JDrN5g" id="(1.0,0.5128205128205128)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NRs4sWRwEeakY9Y4JDrN5g" id="(0.24390243902439024,1.0)"/>
           </edges>
