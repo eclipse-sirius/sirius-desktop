@@ -161,7 +161,8 @@ public class SessionEditorTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (IndexOutOfBoundsException | WidgetNotFoundException e) {
             fail("Test setup is wrong. The activated viewpoint 'LayoutingMode' should be present");
         }
-        viewpoint.doubleClick();
+        viewpoint.click();
+        bot.button("Disable").click();
         TestsUtil.waitUntil(new ICondition() {
 
             @Override
