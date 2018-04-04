@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,32 +103,34 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
         IdentityAnchor srcAnchor = (IdentityAnchor) edge.getSourceAnchor();
         View target = edge.getTarget();
         IdentityAnchor tgtAnchor = (IdentityAnchor) edge.getTargetAnchor();
-        
-        List<RelativeBendpoint> pointList = ((RelativeBendpoints) edge.getBendpoints()).getPoints();
-        if (srcAnchor != null && tgtAnchor != null && pointList.size() == 2) {
-            Point srcRef = getAnchorPosition(srcAnchor, source);
-            Point tgtRef = getAnchorPosition(tgtAnchor, target);
 
-            // Retrieve anchor bend-points
-            RelativeBendpoint firstPoint = pointList.get(0);
-            PrecisionPoint srcPoint = new PrecisionPoint(firstPoint.getSourceX() + srcRef.x, firstPoint.getSourceY() + srcRef.y);
-            RelativeBendpoint lastPoint = pointList.get(pointList.size() - 1);
-            PrecisionPoint tgtPoint = new PrecisionPoint(lastPoint.getTargetX() + tgtRef.x, lastPoint.getTargetY() + tgtRef.y);
+        if (source != null && target != null) {
+            List<RelativeBendpoint> pointList = ((RelativeBendpoints) edge.getBendpoints()).getPoints();
+            if (srcAnchor != null && tgtAnchor != null && pointList.size() == 2) {
+                Point srcRef = getAnchorPosition(srcAnchor, source);
+                Point tgtRef = getAnchorPosition(tgtAnchor, target);
 
-            Rectangle srcBounds = GMFHelper.getAbsoluteBounds(source).get();
-            Rectangle tgtBounds = GMFHelper.getAbsoluteBounds(target).get();
+                // Retrieve anchor bend-points
+                RelativeBendpoint firstPoint = pointList.get(0);
+                PrecisionPoint srcPoint = new PrecisionPoint(firstPoint.getSourceX() + srcRef.x, firstPoint.getSourceY() + srcRef.y);
+                RelativeBendpoint lastPoint = pointList.get(pointList.size() - 1);
+                PrecisionPoint tgtPoint = new PrecisionPoint(lastPoint.getTargetX() + tgtRef.x, lastPoint.getTargetY() + tgtRef.y);
 
-            EdgeQuery edgeQuery = new EdgeQuery(edge);
-            Routing routingStyle = edgeQuery.getRoutingStyle();
+                Rectangle srcBounds = GMFHelper.getAbsoluteBounds(source).get();
+                Rectangle tgtBounds = GMFHelper.getAbsoluteBounds(target).get();
 
-            if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
-                if (srcPoint.x != tgtPoint.x && srcPoint.y != tgtPoint.y) {
-                    // edge is not horizontal neither vertical
+                EdgeQuery edgeQuery = new EdgeQuery(edge);
+                Routing routingStyle = edgeQuery.getRoutingStyle();
+
+                if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
+                    if (srcPoint.x != tgtPoint.x && srcPoint.y != tgtPoint.y) {
+                        // edge is not horizontal neither vertical
+                        isEdgeModified = repairBendpointsOfEdge(edge, srcBounds, srcRef, tgtBounds, tgtRef);
+                    }
+                } else if (!isPointOnBounds(srcPoint, srcBounds) || !isPointOnBounds(tgtPoint, tgtBounds)) {
+                    // source and target connection must belong to bounds
                     isEdgeModified = repairBendpointsOfEdge(edge, srcBounds, srcRef, tgtBounds, tgtRef);
                 }
-            } else if (!isPointOnBounds(srcPoint, srcBounds) || !isPointOnBounds(tgtPoint, tgtBounds)) {
-                // source and target connection must belong to bounds
-                isEdgeModified = repairBendpointsOfEdge(edge, srcBounds, srcRef, tgtBounds, tgtRef);
             }
         }
         return isEdgeModified;

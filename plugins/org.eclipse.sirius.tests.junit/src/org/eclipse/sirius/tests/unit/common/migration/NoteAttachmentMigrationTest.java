@@ -42,6 +42,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.business.internal.migration.NoteAttachmentWithoutSourceOrTargetMigrationParticipant;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.diagram.ui.business.internal.migration.RepairGMFbendpointsMigrationParticipant;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
@@ -92,8 +93,11 @@ public class NoteAttachmentMigrationTest extends SiriusTestCase {
      * Check that the NoteAttachment without source or target have been removed when
      * DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant is triggered before
      * NoteAttachmentWithoutSourceOrTargetMigrationParticipant.
+     * 
+     * Also test that running {@link RepairGMFbendpointsMigrationParticipant} on an edge without source does not provoke
+     * any exception.
      */
-    public void testNoteAttachmentCorrectlyRemoved() {
+    public void testNoteAttachmentCorrectlyRemovedAndBendpointRepairing() {
         Comparator<? super IMigrationParticipant> c = (o1, o2) -> o1.getClass().getSimpleName().compareTo(o2.getClass().getSimpleName());
         checkMigration(c);
     }
