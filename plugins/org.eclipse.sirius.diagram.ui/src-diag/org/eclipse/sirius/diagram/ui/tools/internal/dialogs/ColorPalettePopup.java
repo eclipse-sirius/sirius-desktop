@@ -87,20 +87,16 @@ public class ColorPalettePopup {
         }
 
         /**
-         * Creates and returns a new SWT image for this image descriptor. The
-         * returned image must be explicitly disposed using the image's dispose
-         * call. The image will not be automatically garbage collected. In the
-         * even of an error, a default image is returned if
-         * <code>returnMissingImageOnError</code> is true, otherwise
+         * Creates and returns a new SWT image for this image descriptor. The returned image must be explicitly disposed
+         * using the image's dispose call. The image will not be automatically garbage collected. In the even of an
+         * error, a default image is returned if <code>returnMissingImageOnError</code> is true, otherwise
          * <code>null</code> is returned.
          * <p>
-         * Note: Even if <code>returnMissingImageOnError</code> is true, it is
-         * still possible for this method to return <code>null</code> in extreme
-         * cases, for example if SWT runs out of image handles.
+         * Note: Even if <code>returnMissingImageOnError</code> is true, it is still possible for this method to return
+         * <code>null</code> in extreme cases, for example if SWT runs out of image handles.
          * </p>
          * 
-         * @return a new image or <code>null</code> if the image could not be
-         *         created
+         * @return a new image or <code>null</code> if the image could not be created
          * 
          */
         // CHECKSTYLE:OFF
@@ -114,9 +110,8 @@ public class ColorPalettePopup {
             }
 
             /*
-             * Try to create the supplied image. If there is an SWT Exception
-             * try and create the default image if that was requested. Return
-             * null if this fails.
+             * Try to create the supplied image. If there is an SWT Exception try and create the default image if that
+             * was requested. Return null if this fails.
              */
 
             try {
@@ -202,8 +197,7 @@ public class ColorPalettePopup {
      * Creates a PopupList above the specified shell.
      * 
      * @param parent
-     *            a widget which will be the parent of the new instance (cannot
-     *            be null)
+     *            a widget which will be the parent of the new instance (cannot be null)
      * @param rowHeight
      *            the row height
      */
@@ -268,8 +262,10 @@ public class ColorPalettePopup {
                 ColorDialog dialog = new ColorDialog(Display.getCurrent().getActiveShell());
                 dialog.setRGB(FigureUtilities.integerToRGB(getPreviousColor()));
                 WindowUtil.centerDialog(dialog.getParent(), Display.getCurrent().getActiveShell());
-                dialog.open();
-                selectedColor = dialog.getRGB();
+                RGB returnedSelectedColor = dialog.open();
+                if (returnedSelectedColor != null) { // case of cancel
+                    selectedColor = dialog.getRGB();
+                }
                 shell.dispose();
 
             }
@@ -277,6 +273,7 @@ public class ColorPalettePopup {
         // close dialog if user selects outside of the shell
         shell.addListener(SWT.Deactivate, new Listener() {
 
+            @Override
             public void handleEvent(Event e) {
                 shell.setVisible(false);
             }
@@ -295,13 +292,11 @@ public class ColorPalettePopup {
     }
 
     /**
-     * Launches the Popup List, waits for an item to be selected and then closes
-     * PopupList.
+     * Launches the Popup List, waits for an item to be selected and then closes PopupList.
      * 
      * @param location
-     *            the initial size and location of the PopupList; the dialog
-     *            will be positioned so that it does not run off the screen and
-     *            the largest number of items are visible
+     *            the initial size and location of the PopupList; the dialog will be positioned so that it does not run
+     *            off the screen and the largest number of items are visible
      * 
      * @return the text of the selected item or null if no item is selected
      */
@@ -328,9 +323,8 @@ public class ColorPalettePopup {
     }
 
     /**
-     * Gets the color the user selected. Could be null as the user may have
-     * cancelled the gesture or they may have selected the default color button.
-     * See {@link #useDefaultColor()}.
+     * Gets the color the user selected. Could be null as the user may have cancelled the gesture or they may have
+     * selected the default color button. See {@link #useDefaultColor()}.
      * 
      * @return the selected color or null
      */
