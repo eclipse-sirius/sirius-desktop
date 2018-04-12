@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,8 +75,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
     protected Button resetStylePropertiesToDefaultValuesButton;
 
     /**
-     * button to allow user to select an image in the workspace and set the
-     * selected image as view background image.
+     * button to allow user to select an image in the workspace and set the selected image as view background image.
      */
     protected Button setStyleToWorkspaceImageButton;
 
@@ -110,6 +109,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
             // popup.setPreviousColor(previousColor);
             final Rectangle r = button.getBounds();
             final Point location = button.getParent().toDisplay(r.x, r.y);
+            popup.setPreviousColor(previousColor);
             popup.open(new Point(location.x, location.y + r.height));
             if (popup.getSelectedColor() == null && !popup.useDefaultColor()) {
                 return null;
@@ -300,8 +300,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
     }
 
     /**
-     * Overridden to display property of selection only if semantic element of
-     * selection exists.
+     * Overridden to display property of selection only if semantic element of selection exists.
      *
      * {@inheritDoc}
      */
@@ -325,8 +324,8 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
     }
 
     /**
-     * Transform selection to have {@link DSemanticDecorator} instead of
-     * {@link EditPart} or null if the semantic element (target) not exists.
+     * Transform selection to have {@link DSemanticDecorator} instead of {@link EditPart} or null if the semantic
+     * element (target) not exists.
      *
      * @param selection
      *            the currently selected object

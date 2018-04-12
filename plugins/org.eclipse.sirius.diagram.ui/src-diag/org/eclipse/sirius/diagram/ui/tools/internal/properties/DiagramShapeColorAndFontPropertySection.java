@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -95,8 +95,7 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
     protected Button resetStylePropertiesToDefaultValuesButton;
 
     /**
-     * button to allow user to select an image in the workspace and set the
-     * selected image as view background image.
+     * button to allow user to select an image in the workspace and set the selected image as view background image.
      */
     protected Button setStyleToWorkspaceImageButton;
 
@@ -132,6 +131,7 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
             final ColorPalettePopup popup = new ColorPalettePopup(button.getParent().getShell(), IDialogConstants.BUTTON_BAR_HEIGHT);
             final Rectangle r = button.getBounds();
             final Point location = button.getParent().toDisplay(r.x, r.y);
+            popup.setPreviousColor(previousColor);
             popup.open(new Point(location.x, location.y + r.height));
             if (popup.getSelectedColor() == null && !popup.useDefaultColor()) {
                 return null;
@@ -323,8 +323,7 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
     }
 
     /**
-     * Overridden to display property of selection only if semantic element of
-     * selection exists.
+     * Overridden to display property of selection only if semantic element of selection exists.
      *
      * {@inheritDoc}
      */
@@ -348,8 +347,8 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
     }
 
     /**
-     * Transform selection to have {@link DSemanticDecorator} instead of
-     * {@link EditPart} or null if the semantic element (target) not exists.
+     * Transform selection to have {@link DSemanticDecorator} instead of {@link EditPart} or null if the semantic
+     * element (target) not exists.
      *
      * @param selection
      *            the currently selected object
