@@ -10,9 +10,8 @@
  ****************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.dialogs;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.eclipse.gmf.runtime.common.ui.util.WindowUtil;
 import org.eclipse.gmf.runtime.diagram.ui.properties.internal.l10n.DiagramUIPropertiesMessages;
@@ -42,12 +41,16 @@ import org.eclipse.swt.widgets.Shell;
  */
 public class ColorPalettePopup {
 
+    private static final Integer MAXIMUM_BUTTON_NUMBER = 50;
+
+    private static final Integer BUTTON_COLUMN_NUMBER = 10;
+
     /** variable to store previous color */
     private int previousColor;
 
     private Button customColorButton;
 
-    private HashMap buttonMap = new HashMap();
+    private Map<Object, Object> buttonMap = new LinkedHashMap<>();
 
     /**
      * A descirptor for an inventory color
@@ -61,7 +64,6 @@ public class ColorPalettePopup {
 
         InventoryColorDescriptor(RGB colorValue) {
             this.rgb = colorValue;
-
         }
 
         /**
@@ -132,57 +134,10 @@ public class ColorPalettePopup {
         }
     }
 
-    /** inventory colors. */
-    private static final InventoryColorDescriptor WHITE = new InventoryColorDescriptor(new RGB(255, 255, 255));
-
-    private static final InventoryColorDescriptor BLACK = new InventoryColorDescriptor(new RGB(0, 0, 0));
-
-    private static final InventoryColorDescriptor LIGHT_GRAY = new InventoryColorDescriptor(new RGB(192, 192, 192));
-
-    private static final InventoryColorDescriptor GRAY = new InventoryColorDescriptor(new RGB(128, 128, 128));
-
-    private static final InventoryColorDescriptor RED = new InventoryColorDescriptor(new RGB(227, 164, 156));
-
-    private static final InventoryColorDescriptor GREEN = new InventoryColorDescriptor(new RGB(166, 193, 152));
-
-    private static final InventoryColorDescriptor BLUE = new InventoryColorDescriptor(new RGB(152, 168, 191));
-
-    private static final InventoryColorDescriptor YELLOW = new InventoryColorDescriptor(new RGB(225, 225, 135));
-
-    private static final InventoryColorDescriptor PURPLE = new InventoryColorDescriptor(new RGB(184, 151, 192));
-
-    private static final InventoryColorDescriptor TEAL = new InventoryColorDescriptor(new RGB(155, 199, 204));
-
-    private static final InventoryColorDescriptor PINK = new InventoryColorDescriptor(new RGB(228, 179, 229));
-
-    private static final InventoryColorDescriptor ORANGE = new InventoryColorDescriptor(new RGB(237, 201, 122));
-
-    /** the inventory color list key: anRGB, value: anImage */
-    private static final HashMap imageColorMap = new LinkedHashMap();
-
     private static final String CUSTOM_COLOR_STRING = DiagramUIPropertiesMessages.ColorPalettePopup_custom;
 
     /** default color icon width. */
     public static final Point ICON_SIZE = new Point(20, 20);
-
-    // CHECKSTYLE:ON
-
-    static {
-
-        // inventory colors
-        imageColorMap.put(WHITE.rgb, WHITE.createImage());
-        imageColorMap.put(BLACK.rgb, BLACK.createImage());
-        imageColorMap.put(LIGHT_GRAY.rgb, LIGHT_GRAY.createImage());
-        imageColorMap.put(GRAY.rgb, GRAY.createImage());
-        imageColorMap.put(RED.rgb, RED.createImage());
-        imageColorMap.put(GREEN.rgb, GREEN.createImage());
-        imageColorMap.put(BLUE.rgb, BLUE.createImage());
-        imageColorMap.put(YELLOW.rgb, YELLOW.createImage());
-        imageColorMap.put(PURPLE.rgb, PURPLE.createImage());
-        imageColorMap.put(TEAL.rgb, TEAL.createImage());
-        imageColorMap.put(PINK.rgb, PINK.createImage());
-        imageColorMap.put(ORANGE.rgb, ORANGE.createImage());
-    }
 
     private Shell shell;
 
@@ -200,18 +155,21 @@ public class ColorPalettePopup {
      *            a widget which will be the parent of the new instance (cannot be null)
      * @param rowHeight
      *            the row height
+     * @param defaultColors
+     *            color used to fill the default colors
      */
-    public ColorPalettePopup(Shell parent, int rowHeight) {
+    public ColorPalettePopup(Shell parent, int rowHeight, Map<String, RGB> defaultColors) {
         shell = new Shell(parent, ColorPalettePopup.checkStyle(SWT.NONE));
-        GridLayout layout = new GridLayout(4, true);
+        GridLayout layout = new GridLayout(BUTTON_COLUMN_NUMBER, true);
         layout.horizontalSpacing = 0;
         layout.marginWidth = 0;
         layout.marginHeight = 0;
         layout.verticalSpacing = 0;
         shell.setLayout(layout);
 
-        // CHECKSTYLE:OFF
-        for (Iterator e = imageColorMap.keySet().iterator(); e.hasNext();) {
+        int count = 0;
+        for (String colorName : defaultColors.keySet()) {
+            count++;
             // CHECKSTYLE:ON
             Button button = new Button(shell, SWT.PUSH);
             GridData data = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
@@ -219,9 +177,11 @@ public class ColorPalettePopup {
             data.widthHint = rowHeight;
             button.setLayoutData(data);
 
-            final RGB rgb = (RGB) e.next();
-            final Image image = (Image) imageColorMap.get(rgb);
+            final RGB rgb = defaultColors.get(colorName);
+            InventoryColorDescriptor colorDesc = new InventoryColorDescriptor(rgb);
+            final Image image = colorDesc.createImage();
             button.setImage(image);
+            button.setToolTipText(colorName);
             button.addSelectionListener(new SelectionAdapter() {
 
                 @Override
@@ -231,7 +191,12 @@ public class ColorPalettePopup {
                 }
             });
             buttonMap.put(rgb, button);
+
+            if (count == MAXIMUM_BUTTON_NUMBER) {
+                break;
+            }
         }
+
         // Button defaultButton = new Button(shell, SWT.PUSH);
         // defaultButton.setText(DEAFULT_COLOR_STRING);
         // GridData data = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
@@ -311,6 +276,7 @@ public class ColorPalettePopup {
         Button prevButton = (Button) buttonMap.get(FigureUtilities.integerToRGB(getPreviousColor()));
         if (prevButton != null) {
             shell.setDefaultButton(prevButton);
+            prevButton.setFocus();
         } else {
             shell.setDefaultButton(customColorButton);
         }

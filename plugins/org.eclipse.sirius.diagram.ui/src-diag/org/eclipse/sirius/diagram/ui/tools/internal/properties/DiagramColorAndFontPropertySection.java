@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
@@ -43,15 +44,19 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.ColorStyleQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
 import org.eclipse.sirius.tools.api.command.EditingDomainUndoContext;
+import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.UserFixedColor;
 import org.eclipse.swt.SWT;
@@ -113,7 +118,8 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
         if (!Properties.ID_FILLCOLOR.equals(propertyId) && !Properties.ID_LINECOLOR.equals(propertyId) && !Properties.ID_FONTCOLOR.equals(propertyId)) {
             colorToReturn = super.changeColor(event, button, propertyId, commandName, imageDescriptor);
         } else {
-            final ColorPalettePopup popup = new ColorPalettePopup(button.getParent().getShell(), IDialogConstants.BUTTON_BAR_HEIGHT);
+            final ColorPalettePopup popup = new ColorPalettePopup(button.getParent().getShell(), IDialogConstants.BUTTON_BAR_HEIGHT,
+                    ColorManager.getDefault().collectVsmAndDefaultColors(new EObjectQuery(eObject).getSession()));
             final Rectangle r = button.getBounds();
             final Point location = button.getParent().toDisplay(r.x, r.y);
             popup.setPreviousColor(previousColor);
@@ -184,6 +190,34 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
         }
         return colorToReturn;
 
+    }
+
+    @Override
+    protected void updateColorCache() {
+        executeAsReadAction(new Runnable() {
+
+            @Override
+            public void run() {
+
+                IGraphicalEditPart ep = getSingleInput();
+                if (ep != null) {
+                    EObject resolveSemanticElement = ep.resolveSemanticElement();
+                    if (resolveSemanticElement instanceof DDiagramElement) {
+                        Style style = ((DDiagramElement) resolveSemanticElement).getStyle();
+                        if (style != null) {
+                            ColorStyleQuery colorStyleQuery = new ColorStyleQuery(style);
+                            colorStyleQuery.getLabelColor().ifPresent(rgbValues -> fontColor = new RGB(rgbValues.getRed(), rgbValues.getGreen(), rgbValues.getBlue()));
+                            colorStyleQuery.getLineColor().ifPresent(rgbValues -> lineColor = new RGB(rgbValues.getRed(), rgbValues.getGreen(), rgbValues.getBlue()));
+                            colorStyleQuery.getFillColor().ifPresent(rgbValues -> fillColor = new RGB(rgbValues.getRed(), rgbValues.getGreen(), rgbValues.getBlue()));
+                        }
+                    }
+                } else {
+                    fontColor = DEFAULT_PREF_COLOR;
+                    lineColor = DEFAULT_PREF_COLOR;
+                    fillColor = DEFAULT_PREF_COLOR;
+                }
+            }
+        });
     }
 
     /**

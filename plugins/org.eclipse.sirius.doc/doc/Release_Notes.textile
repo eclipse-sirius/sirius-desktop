@@ -8,13 +8,22 @@ h2(#sirius5.1.2). Changes in Sirius 5.1.2
 
 h3. User-Visible Changes
 
-* <span class="label label-success">Added</span> A new feature allows user to insert vertical blank space in sequence diagram. You can refer to the "user documentation ":user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space for more details. 
+* <span class="label label-success">Added</span> A new feature allows user to insert vertical blank space in sequence diagram. You can refer to the "user documentation ":user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space for more details.
+* <span class="label label-success">Added</span> The color palette for text, line and fill buttons, in appearance tab in properties view, has been enhanced. Before, when clicking on text, line or fill buttons, the available colors were only 12 arbitrary colors. Now, there are 50 maximum colors distributed in 10 columns. The displayed colors are
+** a shading of black to white then,
+** all fixed colors defined in VSM of selected viewpoints and
+** the Sirius fixed colors following the colors of the rainbow.
+!images/color_palette.png!
 
 h3. Developer-Visible Changes
 
 h4. Migrations
 
 * <span class="label label-success">Added</span> A migration participant has been added to fix diagram with note attachment corrupted (see "bugzilla #533175":https://bugs.eclipse.org/bugs/show_bug.cgi?id=533175 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _12.1.2.201804131029_.
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-success">Added</span> The new method @org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager.collectVsmAndDefaultColors(Session)@ collects the @FixedUserColor@ defined in all the selected VSM of the given session and concatenate them to the @SystemColor@.
 
 h2(#sirius5.1.1). Changes in Sirius 5.1.1
 

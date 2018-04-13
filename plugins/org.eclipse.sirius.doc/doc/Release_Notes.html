@@ -125,15 +125,35 @@
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new feature allows user to insert vertical blank space in sequence diagram. You can refer to the 
-				<a href="user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space">user documentation </a> for more details. 
+				<a href="user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space">user documentation </a> for more details.
+			</li>
+			<li><span class="label label-success">Added</span> The color palette for text, line and fill buttons, in appearance tab in properties view, has been enhanced. Before, when clicking on text, line or fill buttons, the available colors were only 12 arbitrary colors. Now, there are 50 maximum colors distributed in 10 columns. The displayed colors are
+				<ul>
+					<li>a shading of black to white then,</li>
+					<li>all fixed colors defined in VSM of selected viewpoints and</li>
+					<li>the Sirius fixed colors following the colors of the rainbow.</li>
+				</ul>
 			</li>
 		</ul>
+		<p>
+			<img border="0" src="images/color_palette.png"/>
+		</p>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to fix diagram with note attachment corrupted (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=533175">bugzilla #533175</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
 				<em>12.1.2.201804131029</em>.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The new method 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager.collectVsmAndDefaultColors(Session)</code> collects the 
+				<code>FixedUserColor</code> defined in all the selected VSM of the given session and concatenate them to the 
+				<code>SystemColor</code>.
 			</li>
 		</ul>
 		<h2 id="sirius5.1.1">Changes in Sirius 5.1.1</h2>
@@ -183,7 +203,7 @@
 				<code>org.eclipse.sirius.business.api.query.SiriusReferenceFinder.getReferencingSiriusElements(Collection&lt;EObject&gt;, SearchScope)</code>. The SearchScope.LOADED_REPRESENTATIONS_SCOPE scope covers the search and result scope. Then, no additional resource will be loaded using this scope.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -439,7 +459,7 @@
 				<code>DDiagram.getActivatedLayers</code> in several cases if you directly use it.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -922,7 +942,7 @@
 				<code>NodeStyleIdentifier</code>) have been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1511,7 +1531,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>allowsCopyPasteLayout(DSemanticDecorator)</code> will be removed in the new major version.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1995,7 +2015,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.ui.business.api.editor.SpecificSessionManager</code> has been removed. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui6">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
