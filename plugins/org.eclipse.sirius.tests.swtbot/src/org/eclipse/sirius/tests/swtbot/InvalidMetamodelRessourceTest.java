@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2017 Obeo.
+ * Copyright (c) 2014, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemExpanded;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
@@ -106,7 +107,11 @@ public class InvalidMetamodelRessourceTest extends AbstractSiriusSwtBotGefTestCa
         SWTBotTreeItem expandNode = viewsTreeBot.expandNode("General");
         bot.waitUntil(new TreeItemExpanded(expandNode, expandNode.getText()));
         expandNode.getNode("Error Log").click();
-        bot.button("Open").click();
+        if (TestsUtil.isBeforeOxygenPlatform()) {
+            bot.button("OK").click();
+        } else {
+            bot.button("Open").click();
+        }
     }
 
     /**

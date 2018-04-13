@@ -211,7 +211,7 @@ public final class TestsUtil {
          */
         Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench");
         if (uiWorkbenchBundle != null) {
-            return uiWorkbenchBundle.getVersion().compareTo(versiontStart) >= 0 && (versionEnd == null || uiWorkbenchBundle.getVersion().compareTo(versionEnd) < 0);
+            return (versiontStart == null || uiWorkbenchBundle.getVersion().compareTo(versiontStart) >= 0) && (versionEnd == null || uiWorkbenchBundle.getVersion().compareTo(versionEnd) < 0);
         }
         return false;
     }
@@ -234,6 +234,15 @@ public final class TestsUtil {
      */
     public static boolean isLunaPlatform() {
         return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_LUNA_START), null);
+    }
+
+    /**
+     * Tells if the current platform corresponds to a version before Oxygen.
+     * 
+     * @return true if the current platform corresponds to a version before Oxygen, false otherwise.
+     */
+    public static boolean isBeforeOxygenPlatform() {
+        return checkUiWorkbenchVersion(null, Version.parseVersion(UI_WORKBENCH_OXYGEN_START));
     }
 
     /**
