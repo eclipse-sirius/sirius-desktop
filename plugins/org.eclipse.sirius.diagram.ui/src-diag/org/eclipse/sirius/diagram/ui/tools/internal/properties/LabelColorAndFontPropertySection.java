@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,16 +32,20 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.ColorStyleQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.UserFixedColor;
 import org.eclipse.swt.SWT;
@@ -89,9 +93,11 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
         if (!Properties.ID_FILLCOLOR.equals(propertyId) && !Properties.ID_LINECOLOR.equals(propertyId) && !Properties.ID_FONTCOLOR.equals(propertyId)) {
             colorToReturn = super.changeColor(event, button, propertyId, commandName, imageDescriptor);
         } else {
-            final ColorPalettePopup popup = new ColorPalettePopup(button.getParent().getShell(), IDialogConstants.BUTTON_BAR_HEIGHT);
+            final ColorPalettePopup popup = new ColorPalettePopup(button.getParent().getShell(), IDialogConstants.BUTTON_BAR_HEIGHT,
+                    ColorManager.getDefault().collectVsmAndDefaultColors(new EObjectQuery(eObject).getSession()));
             final Rectangle r = button.getBounds();
             final Point location = button.getParent().toDisplay(r.x, r.y);
+            popup.setPreviousColor(previousColor);
             popup.open(new Point(location.x, location.y + r.height));
             if (popup.getSelectedColor() == null && !popup.useDefaultColor()) {
                 return null;
@@ -224,8 +230,7 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
     }
 
     /**
-     * Overridden to display property of selection only if semantic element of
-     * selection exists.
+     * Overridden to display property of selection only if semantic element of selection exists.
      *
      * {@inheritDoc}
      */
@@ -255,9 +260,33 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
         super.setInput(workbenchPart, new StructuredSelection(newSelection));
     }
 
+    @Override
+    protected void updateColorCache() {
+        executeAsReadAction(new Runnable() {
+
+            @Override
+            public void run() {
+
+                IGraphicalEditPart ep = getSingleInput();
+                if (ep != null) {
+                    EObject resolveSemanticElement = ep.resolveSemanticElement();
+                    if (resolveSemanticElement instanceof DDiagramElement) {
+                        Style style = ((DDiagramElement) resolveSemanticElement).getStyle();
+                        if (style != null) {
+                            ColorStyleQuery colorStyleQuery = new ColorStyleQuery(style);
+                            colorStyleQuery.getLabelColor().ifPresent(rgbValues -> fontColor = new RGB(rgbValues.getRed(), rgbValues.getGreen(), rgbValues.getBlue()));
+                        }
+                    }
+                } else {
+                    fontColor = DEFAULT_PREF_COLOR;
+                }
+            }
+        });
+    }
+
     /**
-     * Transform selection to have {@link DSemanticDecorator} instead of
-     * {@link EditPart} or null if the semantic element (target) not exists.
+     * Transform selection to have {@link DSemanticDecorator} instead of {@link EditPart} or null if the semantic
+     * element (target) not exists.
      *
      * @param selection
      *            the currently selected object

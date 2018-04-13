@@ -10,8 +10,12 @@ h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> A new feature allows user to insert vertical blank space in sequence diagram. You can refer to the "user documentation ":user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space for more details. 
 * <span class="label label-success">Added</span> A new feature called "Generic Edge Creation Tool" allows to create an edge by starting to select the source and the target before choosing the concrete edge creation tool. That allows to restrict the list of possible edge creation tools (possibly only one edge or no one) according to the selected source and target.
-
 !images/genericEdgeCreationTool.png!
+* <span class="label label-success">Added</span> The color palette for text, line and fill buttons, in appearance tab in properties view, has been enhanced. Before, when clicking on text, line or fill buttons, the available colors were only 12 arbitrary colors. Now, there are 50 maximum colors distributed in 10 columns. The displayed colors are
+** a shading of black to white then,
+** all fixed colors defined in VSM of all selected viewpoints and 
+** the Sirius fixed colors following the colors of the rainbow.
+!images/color_palette.png!
 
 h3. Specifier-Visible Changes
 

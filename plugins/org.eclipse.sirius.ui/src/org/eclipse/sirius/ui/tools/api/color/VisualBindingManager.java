@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -48,8 +49,8 @@ import org.eclipse.swt.widgets.Display;
 import com.google.common.base.Objects;
 
 /**
- * Take care of computing colors, font or size from integer values. Avoid memory
- * leaks by properly caching and disposing the corresponding SWT resources.
+ * Take care of computing colors, font or size from integer values. Avoid memory leaks by properly caching and disposing
+ * the corresponding SWT resources.
  * 
  * @author cbrun, pcdavid
  */
@@ -74,7 +75,7 @@ public class VisualBindingManager {
      * Create a new {@link VisualBindingManager}.
      */
     public VisualBindingManager() {
-        final HashMap<String, RGB> palette = new HashMap<String, RGB>(SystemColors.values().length);
+        final HashMap<String, RGB> palette = new LinkedHashMap<String, RGB>(SystemColors.values().length);
         addStandardPaletteColors(palette);
         systemPalette = palette;
     }
@@ -193,8 +194,8 @@ public class VisualBindingManager {
     }
 
     /**
-     * This method return a Color object from a value and from a max value. The
-     * color starts green for value 0 and finish Red for value max.
+     * This method return a Color object from a value and from a max value. The color starts green for value 0 and
+     * finish Red for value max.
      * 
      * @param max
      *            maximum value.
@@ -207,8 +208,7 @@ public class VisualBindingManager {
     }
 
     /**
-     * Use the name, if the color is known then it is returned, otherwise black
-     * color is returned.
+     * Use the name, if the color is known then it is returned, otherwise black color is returned.
      * 
      * @param name
      *            : name of a color, in English
@@ -219,8 +219,7 @@ public class VisualBindingManager {
     }
 
     /**
-     * Retrieve a proper SWT {@link Color} from an {@link RGB} value, using the
-     * cache as appropriate.
+     * Retrieve a proper SWT {@link Color} from an {@link RGB} value, using the cache as appropriate.
      * 
      * @param rgb
      *            the RGB values of the color to retrieve
@@ -232,8 +231,7 @@ public class VisualBindingManager {
     }
 
     /**
-     * Retrieve a proper SWT {@link Color} from an {@link RGBValues} element,
-     * using the cache as appropriate.
+     * Retrieve a proper SWT {@link Color} from an {@link RGBValues} element, using the cache as appropriate.
      * 
      * @param values
      *            the RGBValues of the color to retrieve
@@ -252,8 +250,7 @@ public class VisualBindingManager {
     }
 
     /**
-     * Retrieve a proper SWT {@link Color} from an {@link RGBValues} element,
-     * using the cache as appropriate.
+     * Retrieve a proper SWT {@link Color} from an {@link RGBValues} element, using the cache as appropriate.
      * 
      * @param values
      *            the RGBValues of the color to retrieve
@@ -330,8 +327,7 @@ public class VisualBindingManager {
      *            the minimum possible value (inclusive).
      * @param max
      *            the maximum possible value (inclusive). Must be >= min.
-     * @return the integer closes to <code>value</code> which is inside the
-     *         inclusive interval <code>[min, max]</code>.
+     * @return the integer closes to <code>value</code> which is inside the inclusive interval <code>[min, max]</code>.
      * @since 0.9.0
      */
     public static int clamp(final int value, final int min, final int max) {
@@ -339,8 +335,7 @@ public class VisualBindingManager {
     }
 
     /**
-     * This method return a Color object from a value. The color starts green
-     * for value 0 and finish Red for 100
+     * This method return a Color object from a value. The color starts green for value 0 and finish Red for 100
      * 
      * @param value
      *            number corresponding to the color
@@ -383,8 +378,7 @@ public class VisualBindingManager {
      *            maximum value on the scale.
      * @param pmin
      *            minimum value on the scale.
-     * @return a cached {@link Color} instance from green to red using the
-     *         value.
+     * @return a cached {@link Color} instance from green to red using the value.
      */
     public RGB getColorCodeValue(final int pvalue, final int pmax, final int pmin) {
         final int min = pmin;
@@ -419,21 +413,18 @@ public class VisualBindingManager {
      *            maximum value on the scale.
      * @param min
      *            minimum value on the scale.
-     * @return a cached {@link Color} instance from green to red using the
-     *         value.
+     * @return a cached {@link Color} instance from green to red using the value.
      */
     public Color getColorFromValue(final int value, final int max, final int min) {
         return getColorFromCache(getColorCodeValue(value, max, min));
     }
 
     /**
-     * Finds the closest color default color (from the standard palette) from an
-     * arbitrary RGB color.
+     * Finds the closest color default color (from the standard palette) from an arbitrary RGB color.
      * 
      * @param color
      *            the color to match
-     * @return the entry in the default palette which is closest (in RGB
-     *         color-space) to the specified color.
+     * @return the entry in the default palette which is closest (in RGB color-space) to the specified color.
      * @since 0.9.0
      */
     public SystemColors findClosestSystemColor(final FixedColor color) {
@@ -453,13 +444,11 @@ public class VisualBindingManager {
     }
 
     /**
-     * Finds the closest color default color (from the standard palette) from an
-     * arbitrary RGB color.
+     * Finds the closest color default color (from the standard palette) from an arbitrary RGB color.
      * 
      * @param values
      *            the color to match
-     * @return the entry in the default palette which is closest (in RGB
-     *         color-space) to the specified color.
+     * @return the entry in the default palette which is closest (in RGB color-space) to the specified color.
      * @since 0.9.0
      */
     public SystemColors findClosestStandardColor(final RGBValues values) {
@@ -472,8 +461,7 @@ public class VisualBindingManager {
     }
 
     /**
-     * Computes the square of the distance between two colors in the RGB
-     * color-space.
+     * Computes the square of the distance between two colors in the RGB color-space.
      */
     private int squareDistance(final RGB rgb, final FixedColor color) {
         return squareDistance(rgb.red, rgb.green, rgb.blue, color.getRed(), color.getGreen(), color.getBlue());
@@ -591,8 +579,7 @@ public class VisualBindingManager {
      *            the background color
      * @param foregrounColor
      *            the foreground color
-     * @return the created or cached pattern, which does not need to be
-     *         disposed.
+     * @return the created or cached pattern, which does not need to be disposed.
      */
     public Pattern getPatternFromValue(final int x, final int y, final int w, final int h, final Color backgroundColor, final Color foregrounColor) {
         final PatternDescriptor desc = new PatternDescriptor(x, y, w, h, backgroundColor, foregrounColor);
@@ -614,8 +601,7 @@ public class VisualBindingManager {
      *            the background color
      * @param foregrounColor
      *            the foreground color
-     * @return the created or cached pattern, which does not need to be
-     *         disposed.
+     * @return the created or cached pattern, which does not need to be disposed.
      */
     public GradientPaint getGradientPaintFromValue(int x, int y, int w, int h, Color backgroundColor, Color foregrounColor) {
         final PatternDescriptor desc = new PatternDescriptor(x, y, w, h, backgroundColor, foregrounColor);
@@ -623,8 +609,7 @@ public class VisualBindingManager {
     }
 
     /**
-     * This method helps avoiding memory leaks by keeping track of the already
-     * built fonts.
+     * This method helps avoiding memory leaks by keeping track of the already built fonts.
      * 
      * @param size
      *            : size of the font
@@ -713,13 +698,11 @@ public class VisualBindingManager {
     }
 
     /**
-     * Return a font from a label format and using default runtime height and
-     * default font (Arial).
+     * Return a font from a label format and using default runtime height and default font (Arial).
      * 
      * @param labelFormats
      *            current {@link FontFormat}.
-     * @return a font from a label format and using default runtime height and
-     *         default font (Arial).
+     * @return a font from a label format and using default runtime height and default font (Arial).
      */
     public Font getDefaultFontWithWorkbenchDefaultSizeAndFromLabelFormat(final List<FontFormat> labelFormats) {
         return getFontFromNameAndLabelFormatAndWithDefaultSize(labelFormats, DEFAULT_FONT_NAME);
@@ -744,8 +727,7 @@ public class VisualBindingManager {
     }
 
     /**
-     * Return a font with the given name, format and height. If new the font is
-     * cached.
+     * Return a font with the given name, format and height. If new the font is cached.
      * 
      * @param labelFormats
      *            all the format the font should have.
@@ -796,8 +778,7 @@ public class VisualBindingManager {
     }
 
     /**
-     * A descriptor for font: all the informations identifying a font without
-     * allocating an SWT resource.
+     * A descriptor for font: all the informations identifying a font without allocating an SWT resource.
      * 
      * @author cbrun, pcdavid
      */
