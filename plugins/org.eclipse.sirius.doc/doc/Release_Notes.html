@@ -207,6 +207,13 @@
 				<code>contribution</code> metamodel, which lived in package 
 				<code>org.eclipse.sirius.description.contribution</code>, has been removed. It corresponded to an experimental feature which has been abandonned long ago.
 			</li>
+			<li><span class="label label-danger">Removed</span> The whole 
+				<code>DRefreshable.refresh()</code> EOperation has been removed from the metamodel, along with all its implementations. Client code that needs the functionality can use either 
+				<code>DialectManager.refresh()</code> for 
+				<code>DRepesentations</code> or the new 
+				<code>org.eclipse.sirius.diagram.tools.api.command.view.RefreshSiriusElement.refresh(DRefreshable)</code> static method for diagram elements (
+				<code>DRefreshable.refresh()</code> was a no-op for elements of other dialects). 
+			</li>
 			<li><span class="label label-danger">Removed</span> The 
 				<code>org.eclipse.sirius.viewpointSpecificationModel</code> extension point has been removed. It was part of the same experimental feauture and not actually used in practice.
 			</li>

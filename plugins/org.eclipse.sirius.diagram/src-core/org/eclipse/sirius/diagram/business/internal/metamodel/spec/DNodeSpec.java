@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,9 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.spec;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.AbstractDNodeSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.impl.DNodeImpl;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
@@ -28,45 +26,16 @@ import org.eclipse.sirius.viewpoint.Style;
  */
 public class DNodeSpec extends DNodeImpl {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DNodeImpl#getMapping()
-     */
     @Override
     public DiagramElementMapping getMapping() {
         return getActualMapping();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DNodeImpl#refresh()
-     */
-    @Override
-    public void refresh() {
-        NodeMapping nodeMapping = this.getActualMapping();
-        if (nodeMapping != null) {
-            nodeMapping.updateNode(this);
-            AbstractDNodeSpecOperations.refreshBorderNodes(this);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DNodeImpl#getStyle()
-     */
     @Override
     public Style getStyle() {
         return getOwnedStyle();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramElementImpl#getParentDiagram()
-     */
     @Override
     public DDiagram getParentDiagram() {
         return DDiagramElementSpecOperations.getParentDiagram(this);
@@ -89,20 +58,11 @@ public class DNodeSpec extends DNodeImpl {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DNodeImpl#getDragAndDropDescription()
-     */
     @Override
     public DragAndDropTargetDescription getDragAndDropDescription() {
         return this.getActualMapping();
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public String toString() {
         final StringBuffer result = new StringBuffer("Node"); //$NON-NLS-1$

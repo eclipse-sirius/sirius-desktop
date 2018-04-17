@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,14 +12,13 @@ package org.eclipse.sirius.tests.unit.api.diagramintegrity;
 
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.query.DViewQuery;
+import org.eclipse.sirius.business.internal.session.danalysis.DViewHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 
@@ -213,15 +212,13 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
             }
         });
 
-        for (final EObject object : this.sessionModel.eContents()) {
-            if (object instanceof DRefreshable) {
-                this.session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(this.session.getTransactionalEditingDomain()) {
-                    @Override
-                    protected void doExecute() {
-                        ((DRefreshable) object).refresh();
-                    }
-                });
-            }
+        for (DView view : ((DAnalysis) sessionModel).getOwnedViews()) {
+            this.session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(this.session.getTransactionalEditingDomain()) {
+                @Override
+                protected void doExecute() {
+                    DViewHelper.refreshViewContents(view);
+                }
+            });
         }
 
         // refresh the current representation.

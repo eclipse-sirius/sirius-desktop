@@ -24,13 +24,5 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface DRefreshable extends EObject {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Refresh the element. <!-- end-model-doc
-     * -->
-     *
-     * @model
-     * @generated
-     */
-    void refresh();
 
 } // DRefreshable

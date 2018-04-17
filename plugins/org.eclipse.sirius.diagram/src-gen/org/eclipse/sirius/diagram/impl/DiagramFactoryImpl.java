@@ -68,8 +68,6 @@ import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.TypedVariableValue;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.BundledImageSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.CustomStyleSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DDiagramSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DEdgeSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
@@ -77,16 +75,6 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListElem
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DotSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.EdgeStyleSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.EllipseSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.FlatContainerStyleSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.GaugeCompositeStyleSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.LozengeSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.NoteSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.ShapeContainerStyleSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.SquareSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.WorkspaceImageSpec;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
@@ -425,11 +413,11 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public Dot createDot() {
-        DotImpl dot = new DotSpec();
+        DotImpl dot = new DotImpl();
         return dot;
     }
 
@@ -447,110 +435,110 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public FlatContainerStyle createFlatContainerStyle() {
-        FlatContainerStyleImpl flatContainerStyle = new FlatContainerStyleSpec();
+        FlatContainerStyleImpl flatContainerStyle = new FlatContainerStyleImpl();
         return flatContainerStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public ShapeContainerStyle createShapeContainerStyle() {
-        ShapeContainerStyleImpl shapeContainerStyle = new ShapeContainerStyleSpec();
+        ShapeContainerStyleImpl shapeContainerStyle = new ShapeContainerStyleImpl();
         return shapeContainerStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public Square createSquare() {
-        SquareImpl square = new SquareSpec();
+        SquareImpl square = new SquareImpl();
         return square;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public Ellipse createEllipse() {
-        EllipseImpl ellipse = new EllipseSpec();
+        EllipseImpl ellipse = new EllipseImpl();
         return ellipse;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public Lozenge createLozenge() {
-        LozengeImpl lozenge = new LozengeSpec();
+        LozengeImpl lozenge = new LozengeImpl();
         return lozenge;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public BundledImage createBundledImage() {
-        BundledImageImpl bundledImage = new BundledImageSpec();
+        BundledImageImpl bundledImage = new BundledImageImpl();
         return bundledImage;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public WorkspaceImage createWorkspaceImage() {
-        WorkspaceImageImpl workspaceImage = new WorkspaceImageSpec();
+        WorkspaceImageImpl workspaceImage = new WorkspaceImageImpl();
         return workspaceImage;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public CustomStyle createCustomStyle() {
-        CustomStyleImpl customStyle = new CustomStyleSpec();
+        CustomStyleImpl customStyle = new CustomStyleImpl();
         return customStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public EdgeStyle createEdgeStyle() {
-        EdgeStyleImpl edgeStyle = new EdgeStyleSpec();
+        EdgeStyleImpl edgeStyle = new EdgeStyleImpl();
         return edgeStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public GaugeCompositeStyle createGaugeCompositeStyle() {
-        GaugeCompositeStyleImpl gaugeCompositeStyle = new GaugeCompositeStyleSpec();
+        GaugeCompositeStyleImpl gaugeCompositeStyle = new GaugeCompositeStyleImpl();
         return gaugeCompositeStyle;
     }
 
@@ -568,11 +556,11 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public Note createNote() {
-        NoteImpl note = new NoteSpec();
+        NoteImpl note = new NoteImpl();
         return note;
     }
 

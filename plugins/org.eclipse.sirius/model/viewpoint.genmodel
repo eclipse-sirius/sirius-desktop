@@ -45,9 +45,7 @@
     <genClasses image="false" ecoreClass="viewpoint.ecore#//DStylizable">
       <genOperations ecoreOperation="viewpoint.ecore#//DStylizable/getStyle"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="viewpoint.ecore#//DRefreshable">
-      <genOperations ecoreOperation="viewpoint.ecore#//DRefreshable/refresh"/>
-    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DRefreshable"/>
     <genClasses image="false" ecoreClass="viewpoint.ecore#//DMappingBased">
       <genOperations ecoreOperation="viewpoint.ecore#//DMappingBased/getMapping"/>
     </genClasses>
