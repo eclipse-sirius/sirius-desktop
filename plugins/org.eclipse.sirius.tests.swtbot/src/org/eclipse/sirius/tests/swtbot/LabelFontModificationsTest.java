@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -146,7 +146,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
             try {
                 // Use same Color as
                 // org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup.GRAY
-                Integer color = FigureUtilities.RGBToInteger(new RGB(128, 128, 128));
+                Integer color = FigureUtilities.RGBToInteger(new RGB(209, 209, 209));
                 checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, null, -1, color.intValue());
                 return true;
             } catch (AssertionError e) {
@@ -188,7 +188,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      */
     private void doTestChangeLabelColorFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
-        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 0, STATE_WHEN_LABEL_COLOR_IS_UNCHANGED_PREDICATE,
+        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, new int[] { 0 }, new int[] { 0 }, STATE_WHEN_LABEL_COLOR_IS_UNCHANGED_PREDICATE,
                 STATE_WHEN_LABEL_COLOR_IS_CHANGED_TO_GRAY_PREDICATE);
     }
 
