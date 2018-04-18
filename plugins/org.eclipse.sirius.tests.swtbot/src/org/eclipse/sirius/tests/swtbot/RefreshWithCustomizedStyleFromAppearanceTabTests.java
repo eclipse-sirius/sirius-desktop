@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -229,7 +229,8 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
      */
     public void testChangeBackgroundColorFromAppearanceSection() throws Exception {
         eClass1WithSquareStyleBot.select();
-        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(eClass1WithSquareStyleBot, "Fonts and Colors:", 2, NOT_CUSTOMIZED_PREDICATE, CUSTOMIZED_PREDICATE);
+        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(eClass1WithSquareStyleBot, "Fonts and Colors:", new int[] { 0, 1, 2 }, new int[] { 0, 0, 2 }, NOT_CUSTOMIZED_PREDICATE,
+                CUSTOMIZED_PREDICATE);
     }
 
 }

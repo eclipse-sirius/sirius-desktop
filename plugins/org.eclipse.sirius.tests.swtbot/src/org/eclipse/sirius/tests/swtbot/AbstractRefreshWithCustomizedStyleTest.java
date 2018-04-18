@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,6 +63,11 @@ import com.google.common.collect.Lists;
  * @author alagarde
  */
 public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSiriusSwtBotGefTestCase {
+    /**
+     * 
+     */
+    private static final String BAD_CURRENT_COLOR_BUTTON = "The default button in the color palette does not corresponds to the current color";
+
     /**
      * Style Customized predicate
      */
@@ -401,48 +406,60 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param buttonToToggleGroupName
      *            the name of the group containing the button to toggle
      * @param buttonToToggleIndexInGroup
-     *            the index of the button to toggle inside the group
+     *            the index of the button to toggle inside the group(It must
+     *            corresponds to text, line or fill color for example)
+     * @param defaultButtonInColorPalette
+     *            the index of the button that should be toggled by default
+     *            inside the color palette(each color in the palette corresponds
+     *            to a button)
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenButtonIsCheckedPredicate
      *            the predicate that should be checked when the button is
      *            toggled
      */
-    protected void doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(SWTBotGefEditPart selectedEditPart, String buttonToToggleGroupName, int buttonToToggleIndexInGroup,
-            Predicate<SWTBotGefEditPart> initialStatePredicate, Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate) {
+    protected void doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(SWTBotGefEditPart selectedEditPart, String buttonToToggleGroupName, int[] buttonToToggleIndexInGroup,
+            int[] defaultButtonInColorPalette, Predicate<SWTBotGefEditPart> initialStatePredicate, Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate) {
         SWTBot propertiesBot = selectAppearanceTab();
         SWTBotButton resetStyleCustomizationButton = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
         DDiagram parentDiagram = ((DDiagramElement) ((View) selectedEditPart.part().getModel()).getElement()).getParentDiagram();
         final String representationName = parentDiagram.getName();
         final String representationDescriptionName = parentDiagram.getDescription().getName();
 
-        SWTBotButton buttonFromAppearanceSectionToTest = propertiesBot.buttonInGroup(buttonToToggleGroupName, buttonToToggleIndexInGroup);
-
         // Check initial state
         assertTrue("Wrong initial state", initialStatePredicate.apply(selectedEditPart));
         checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.<Boolean> newArrayList(), false);
 
-        // Step 2: Enable button and check result
-        buttonFromAppearanceSectionToTest.click();
-        // Click on the GRAY button
-        bot.button(3).click();
-        assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
-                stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        for (int i : buttonToToggleIndexInGroup) {
+            SWTBotButton buttonFromAppearanceSectionToTest = propertiesBot.buttonInGroup(buttonToToggleGroupName, buttonToToggleIndexInGroup[i]);
 
-        // Step 3: "Reset style properties to default values" and check result
-        resetStyleCustomizationButton.click();
-        assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been disabled, so the initial state should be checked again",
-                initialStatePredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+            // Step 2: Enable button and check result
+            buttonFromAppearanceSectionToTest.click();
+            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(defaultButtonInColorPalette[i]).isActive());
+            // Click on the GRAY button
+            bot.button(3).click();
+            assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
+                    stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
+            checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+            buttonFromAppearanceSectionToTest.click();
+            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(3).isActive());
 
-        // Step 4: re-enable button and check result
-        buttonFromAppearanceSectionToTest.click();
-        // Click on the GRAY button
-        bot.button(3).click();
-        assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
-                stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+            // Step 3: "Reset style properties to default values" and check
+            // result
+            resetStyleCustomizationButton.click();
+            assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been disabled, so the initial state should be checked again",
+                    initialStatePredicate.apply(selectedEditPart));
+            checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+
+            // Step 4: re-enable button and check result
+            buttonFromAppearanceSectionToTest.click();
+            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(defaultButtonInColorPalette[i]).isActive());
+            // Click on the GRAY button
+            bot.button(3).click();
+            assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
+                    stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
+            checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        }
 
         // Step 5: Reopen diagram
         editor.close();
@@ -462,15 +479,14 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         }
         selectedEditPart.select();
         propertiesBot = selectAppearanceTab();
-        buttonFromAppearanceSectionToTest = propertiesBot.buttonInGroup(buttonToToggleGroupName, buttonToToggleIndexInGroup);
-
         resetStyleCustomizationButton = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
 
         // Check result: should be identical to the before-refresh state
         assertTrue("After having reopened the editor, the edit part should not have changed", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
         checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
 
-        // Step 6: "Reset style properties to default values" and check result
+        // Step 6: "Reset style properties to default values" and check
+        // result
         // (should be back to initial state)
         resetStyleCustomizationButton.click();
         SWTBotUtils.waitAllUiEvents();
