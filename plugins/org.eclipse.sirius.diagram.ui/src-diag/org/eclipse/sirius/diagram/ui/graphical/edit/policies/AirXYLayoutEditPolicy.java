@@ -339,7 +339,9 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
 
         // If the request is a move request, there is no reason to override the size of the GMF Node with the current
         // figure size. In some cases, the GMF Bounds may have been updated but the figure has not been refreshed yet.
-        if (REQ_MOVE_CHILDREN.equals(request.getType())) {
+        // Note that the auto-size is a particular case (-1): during an arrange all, the figure constraint is set before
+        // the GMF bounds.
+        if (REQ_MOVE_CHILDREN.equals(request.getType()) && (constraint.width() != -1 && constraint.height() != -1)) {
             // We retrieve the Size of the GMF Node attached to the edit part.
             Optional<Size> optionalSize = Optional.ofNullable(child.getModel()).filter(Node.class::isInstance).map(model -> ((Node) model).getLayoutConstraint()).filter(Size.class::isInstance)
                     .map(Size.class::cast);
