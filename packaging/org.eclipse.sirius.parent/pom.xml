@@ -496,6 +496,9 @@
         <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.edit</module>
         <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.editor</module>
         <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.samples</module>
+        
+        <module>../../plugins/org.eclipse.sirius.tests.server.backend</module>
+        
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.tests</module>
         <module>../../packaging/org.eclipse.sirius.tests.rcptt.feature</module>

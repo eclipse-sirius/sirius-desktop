@@ -31,125 +31,124 @@ import org.osgi.framework.BundleContext;
  * @author sbegaudeau
  */
 public class SiriusServerPlugin extends EMFPlugin {
-	/**
-	 * The identifier of the plugin.
-	 */
-	public static final String PLUGIN_ID = "org.eclipse.sirius.server"; //$NON-NLS-1$
+    /**
+     * The identifier of the plugin.
+     */
+    public static final String PLUGIN_ID = "org.eclipse.sirius.server"; //$NON-NLS-1$
 
-	/**
-	 * The sole instance of the plugin.
-	 */
-	public static final SiriusServerPlugin INSTANCE = new SiriusServerPlugin();
+    /**
+     * The sole instance of the plugin.
+     */
+    public static final SiriusServerPlugin INSTANCE = new SiriusServerPlugin();
 
-	/**
-	 * The sole instance of the bundle activator.
-	 */
-	private static Implementation plugin;
+    /**
+     * The sole instance of the bundle activator.
+     */
+    private static Implementation plugin;
 
-	/**
-	 * The constructor.
-	 */
-	public SiriusServerPlugin() {
-		super(new ResourceLocator[0]);
-	}
+    /**
+     * The constructor.
+     */
+    public SiriusServerPlugin() {
+        super(new ResourceLocator[0]);
+    }
 
-	@Override
-	public ResourceLocator getPluginResourceLocator() {
-		return plugin;
-	}
+    @Override
+    public ResourceLocator getPluginResourceLocator() {
+        return plugin;
+    }
 
-	/**
-	 * Returns the singleton instance of the Eclipse plugin.
-	 *
-	 * @return the singleton instance.
-	 */
-	public static Implementation getPlugin() {
-		return plugin;
-	}
+    /**
+     * Returns the singleton instance of the Eclipse plugin.
+     *
+     * @return the singleton instance.
+     */
+    public static Implementation getPlugin() {
+        return plugin;
+    }
 
-	/**
-	 * The bundle activator.
-	 *
-	 * @author sbegaudeau
-	 */
-	public static class Implementation extends EclipsePlugin {
+    /**
+     * The bundle activator.
+     *
+     * @author sbegaudeau
+     */
+    public static class Implementation extends EclipsePlugin {
 
-		/**
-		 * The name of the extention point.
-		 */
-		private static final String SIRIUS_SERVER_CONFIGURATOR = "siriusServerConfigurator"; //$NON-NLS-1$
+        /**
+         * The name of the extention point.
+         */
+        private static final String SIRIUS_SERVER_CONFIGURATOR = "siriusServerConfigurator"; //$NON-NLS-1$
 
-		/**
-		 * The {@link IItemRegistry} used to retrieve the configurators.
-		 */
-		private IItemRegistry<ISiriusServerConfigurator> siriusServerConfiguratorRegistry;
+        /**
+         * The {@link IItemRegistry} used to retrieve the configurators.
+         */
+        private IItemRegistry<ISiriusServerConfigurator> siriusServerConfiguratorRegistry;
 
-		/**
-		 * The extension registry listener for the configurator.
-		 */
-		private AbstractRegistryEventListener siriusServerConfiguratorListener;
+        /**
+         * The extension registry listener for the configurator.
+         */
+        private AbstractRegistryEventListener siriusServerConfiguratorListener;
 
-		/**
-		 * The server manager.
-		 */
-		private SiriusServerManager serverManager = new SiriusServerManager();
+        /**
+         * The server manager.
+         */
+        private SiriusServerManager serverManager = new SiriusServerManager();
 
-		/**
-		 * The constructor.
-		 */
-		public Implementation() {
-			super();
-			SiriusServerPlugin.plugin = this;
-		}
+        /**
+         * The constructor.
+         */
+        public Implementation() {
+            super();
+            SiriusServerPlugin.plugin = this;
+        }
 
-		/**
-		 * {@inheritDoc}
-		 *
-		 * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
-		 */
-		@Override
-		public void start(BundleContext context) throws Exception {
-			super.start(context);
+        /**
+         * {@inheritDoc}
+         *
+         * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
+         */
+        @Override
+        public void start(BundleContext context) throws Exception {
+            super.start(context);
 
-			IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-			this.siriusServerConfiguratorRegistry = new ItemRegistry<>();
-			this.siriusServerConfiguratorListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, SIRIUS_SERVER_CONFIGURATOR,
-					this.siriusServerConfiguratorRegistry);
-			extensionRegistry.addListener(this.siriusServerConfiguratorListener, PLUGIN_ID + '.' + SIRIUS_SERVER_CONFIGURATOR);
-			this.siriusServerConfiguratorListener.readRegistry(extensionRegistry);
+            IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
+            this.siriusServerConfiguratorRegistry = new ItemRegistry<>();
+            this.siriusServerConfiguratorListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, SIRIUS_SERVER_CONFIGURATOR, this.siriusServerConfiguratorRegistry);
+            extensionRegistry.addListener(this.siriusServerConfiguratorListener, PLUGIN_ID + '.' + SIRIUS_SERVER_CONFIGURATOR);
+            this.siriusServerConfiguratorListener.readRegistry(extensionRegistry);
 
-			this.serverManager.start();
-		}
+            this.serverManager.start();
+        }
 
-		/**
-		 * {@inheritDoc}
-		 *
-		 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
-		 */
-		@Override
-		public void stop(BundleContext context) throws Exception {
-			this.serverManager.stop();
+        /**
+         * {@inheritDoc}
+         *
+         * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
+         */
+        @Override
+        public void stop(BundleContext context) throws Exception {
+            this.serverManager.stop();
 
-			IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-			extensionRegistry.removeListener(this.siriusServerConfiguratorListener);
+            IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
+            extensionRegistry.removeListener(this.siriusServerConfiguratorListener);
 
-			this.siriusServerConfiguratorListener = null;
-			this.siriusServerConfiguratorRegistry = null;
+            this.siriusServerConfiguratorListener = null;
+            this.siriusServerConfiguratorRegistry = null;
 
-			super.stop(context);
-		}
+            super.stop(context);
+        }
 
-		/**
-		 * Returns the list of the {@link ISiriusServerConfigurator}.
-		 * 
-		 * @return The list of the {@link ISiriusServerConfigurator}
-		 */
-		public List<ISiriusServerConfigurator> getSiriusServerConfigurators() {
-			// @formatter:off
+        /**
+         * Returns the list of the {@link ISiriusServerConfigurator}.
+         * 
+         * @return The list of the {@link ISiriusServerConfigurator}
+         */
+        public List<ISiriusServerConfigurator> getSiriusServerConfigurators() {
+            // @formatter:off
 			return this.siriusServerConfiguratorRegistry.getItemDescriptors().stream()
 					.map(IItemDescriptor::getItem)
 					.collect(Collectors.toList());
 			// @formatter:on
-		}
-	}
+        }
+    }
 }

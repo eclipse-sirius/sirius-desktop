@@ -20,20 +20,20 @@ import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
  */
 public final class Messages {
 
-	static {
-		I18N.initializeMessages(Messages.class, SiriusServerPlugin.INSTANCE);
-	}
+    static {
+        I18N.initializeMessages(Messages.class, SiriusServerPlugin.INSTANCE);
+    }
 
-	// CHECKSTYLE:OFF
+    // CHECKSTYLE:OFF
 
-	@TranslatableMessage
-	public static String SiriusServerManager_cannotStartServer;
+    @TranslatableMessage
+    public static String SiriusServerManager_cannotStartServer;
 
-	@TranslatableMessage
-	public static String SiriusServerManager_cannotStopServer;
-	// CHECKSTYLE:ON
+    @TranslatableMessage
+    public static String SiriusServerManager_cannotStopServer;
+    // CHECKSTYLE:ON
 
-	private Messages() {
-		// Prevents instantiation.
-	}
+    private Messages() {
+        // Prevents instantiation.
+    }
 }

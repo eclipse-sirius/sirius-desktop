@@ -24,60 +24,60 @@ import org.eclipse.jetty.server.handler.HandlerCollection;
  * @author sbegaudeau
  */
 public class SiriusServerManager {
-	/**
-	 * The VM argument used to customize the jetty {@link Server} port.
-	 */
-	private static final String PORT_VMARG = "SIRIUS_SERVER_PORT"; //$NON-NLS-1$
+    /**
+     * The VM argument used to customize the jetty {@link Server} port.
+     */
+    private static final String PORT_VMARG = "SIRIUS_SERVER_PORT"; //$NON-NLS-1$
 
-	/**
-	 * The default hostname.
-	 */
-	private static final String HOSTNAME = "localhost"; //$NON-NLS-1$
+    /**
+     * The default hostname.
+     */
+    private static final String HOSTNAME = "localhost"; //$NON-NLS-1$
 
-	/**
-	 * The default port.
-	 */
-	private static final String PORT = "8080"; //$NON-NLS-1$
+    /**
+     * The default port.
+     */
+    private static final String PORT = "8080"; //$NON-NLS-1$
 
-	/**
-	 * The Jetty server.
-	 */
-	private Server server;
+    /**
+     * The Jetty server.
+     */
+    private Server server;
 
-	/**
-	 * Starts the HTTP server.
-	 */
-	@SuppressWarnings({ "checkstyle:illegalcatch" })
-	public void start() {
-		if (this.server == null || !this.server.isRunning()) {
-			int port = Integer.valueOf(System.getProperty(PORT_VMARG, PORT)).intValue();
-			InetSocketAddress address = new InetSocketAddress(HOSTNAME, port);
-			this.server = new Server(address);
-			this.server.setHandler(new HandlerCollection());
+    /**
+     * Starts the HTTP server.
+     */
+    @SuppressWarnings({ "checkstyle:illegalcatch" })
+    public void start() {
+        if (this.server == null || !this.server.isRunning()) {
+            int port = Integer.valueOf(System.getProperty(PORT_VMARG, PORT)).intValue();
+            InetSocketAddress address = new InetSocketAddress(HOSTNAME, port);
+            this.server = new Server(address);
+            this.server.setHandler(new HandlerCollection());
 
-			SiriusServerPlugin.getPlugin().getSiriusServerConfigurators().forEach(configurator -> configurator.configure(server));
+            SiriusServerPlugin.getPlugin().getSiriusServerConfigurators().forEach(configurator -> configurator.configure(server));
 
-			try {
-				this.server.start();
-			} catch (Exception exception) {
-				IStatus status = new Status(IStatus.ERROR, SiriusServerPlugin.PLUGIN_ID, Messages.SiriusServerManager_cannotStartServer, exception);
-				SiriusServerPlugin.getPlugin().log(status);
-			}
-		}
-	}
+            try {
+                this.server.start();
+            } catch (Exception exception) {
+                IStatus status = new Status(IStatus.ERROR, SiriusServerPlugin.PLUGIN_ID, Messages.SiriusServerManager_cannotStartServer, exception);
+                SiriusServerPlugin.getPlugin().log(status);
+            }
+        }
+    }
 
-	/**
-	 * Stops the HTTP server.
-	 */
-	@SuppressWarnings({ "checkstyle:illegalcatch" })
-	public void stop() {
-		Optional.ofNullable(this.server).ifPresent(s -> {
-			try {
-				s.stop();
-			} catch (Exception exception) {
-				IStatus status = new Status(IStatus.ERROR, SiriusServerPlugin.PLUGIN_ID, Messages.SiriusServerManager_cannotStopServer, exception);
-				SiriusServerPlugin.getPlugin().log(status);
-			}
-		});
-	}
+    /**
+     * Stops the HTTP server.
+     */
+    @SuppressWarnings({ "checkstyle:illegalcatch" })
+    public void stop() {
+        Optional.ofNullable(this.server).ifPresent(s -> {
+            try {
+                s.stop();
+            } catch (Exception exception) {
+                IStatus status = new Status(IStatus.ERROR, SiriusServerPlugin.PLUGIN_ID, Messages.SiriusServerManager_cannotStopServer, exception);
+                SiriusServerPlugin.getPlugin().log(status);
+            }
+        });
+    }
 }

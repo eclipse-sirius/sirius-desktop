@@ -18,11 +18,11 @@ import org.eclipse.jetty.server.Server;
  * @author sbegaudeau
  */
 public interface ISiriusServerConfigurator {
-	/**
-	 * Configures the given server.
-	 * 
-	 * @param server
-	 *            The server
-	 */
-	void configure(Server server);
+    /**
+     * Configures the given server.
+     * 
+     * @param server
+     *            The server
+     */
+    void configure(Server server);
 }

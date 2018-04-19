@@ -35,55 +35,55 @@ import org.osgi.framework.Bundle;
  */
 public class SiriusServerFrontendConfigurator implements ISiriusServerConfigurator {
 
-	/**
-	 * The context path of the Sirius front-end.
-	 */
-	private static final String CONTEXT_PATH = "/"; //$NON-NLS-1$
+    /**
+     * The context path of the Sirius front-end.
+     */
+    private static final String CONTEXT_PATH = "/"; //$NON-NLS-1$
 
-	/**
-	 * The default servlet holder name.
-	 */
-	private static final String SERVLET_HOLDER_NAME = "SiriusFrontendServletHolder"; //$NON-NLS-1$
+    /**
+     * The default servlet holder name.
+     */
+    private static final String SERVLET_HOLDER_NAME = "SiriusFrontendServletHolder"; //$NON-NLS-1$
 
-	/**
-	 * The path of the front end resources.
-	 */
-	private static final String FRONTEND_RESOURCES_PATH = "./sirius-frontend"; //$NON-NLS-1$
+    /**
+     * The path of the front end resources.
+     */
+    private static final String FRONTEND_RESOURCES_PATH = "./sirius-frontend"; //$NON-NLS-1$
 
-	/**
-	 * The path of the default servlet used to expose the static resources.
-	 */
-	private static final String SERVLET_PATH = "/"; //$NON-NLS-1$
+    /**
+     * The path of the default servlet used to expose the static resources.
+     */
+    private static final String SERVLET_PATH = "/"; //$NON-NLS-1$
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.sirius.server.api.ISiriusServerConfigurator#configure(org.eclipse.jetty.server.Server)
-	 */
-	@Override
-	public void configure(Server server) {
-		ServletContextHandler servletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS | ServletContextHandler.GZIP);
-		servletContextHandler.setContextPath(CONTEXT_PATH);
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.sirius.server.api.ISiriusServerConfigurator#configure(org.eclipse.jetty.server.Server)
+     */
+    @Override
+    public void configure(Server server) {
+        ServletContextHandler servletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS | ServletContextHandler.GZIP);
+        servletContextHandler.setContextPath(CONTEXT_PATH);
 
-		try {
-			Bundle bundle = SiriusServerFrontendPlugin.getPlugin().getBundle();
-			URL frontendResourcesURL = bundle.getResource(FRONTEND_RESOURCES_PATH);
-			URI frontendResourcesURI = FileLocator.resolve(frontendResourcesURL).toURI();
-			String frontendResourcesPath = new File(frontendResourcesURI).getAbsolutePath();
+        try {
+            Bundle bundle = SiriusServerFrontendPlugin.getPlugin().getBundle();
+            URL frontendResourcesURL = bundle.getResource(FRONTEND_RESOURCES_PATH);
+            URI frontendResourcesURI = FileLocator.resolve(frontendResourcesURL).toURI();
+            String frontendResourcesPath = new File(frontendResourcesURI).getAbsolutePath();
 
-			ServletHolder servletHolder = new ServletHolder(SERVLET_HOLDER_NAME, new DefaultServlet());
-			servletHolder.setInitParameter("resourceBase", frontendResourcesPath); //$NON-NLS-1$
-			servletHolder.setInitParameter("dirAllowed", "false"); //$NON-NLS-1$ //$NON-NLS-2$
-			servletContextHandler.addServlet(servletHolder, SERVLET_PATH);
+            ServletHolder servletHolder = new ServletHolder(SERVLET_HOLDER_NAME, new DefaultServlet());
+            servletHolder.setInitParameter("resourceBase", frontendResourcesPath); //$NON-NLS-1$
+            servletHolder.setInitParameter("dirAllowed", "false"); //$NON-NLS-1$ //$NON-NLS-2$
+            servletContextHandler.addServlet(servletHolder, SERVLET_PATH);
 
-			Handler handler = server.getHandler();
-			if (handler instanceof HandlerCollection) {
-				HandlerCollection handlerCollection = (HandlerCollection) handler;
-				handlerCollection.addHandler(servletContextHandler);
-			}
-		} catch (URISyntaxException | IOException exception) {
-			IStatus status = new Status(IStatus.ERROR, SiriusServerFrontendPlugin.PLUGIN_ID, exception.getMessage(), exception);
-			SiriusServerFrontendPlugin.getPlugin().log(status);
-		}
-	}
+            Handler handler = server.getHandler();
+            if (handler instanceof HandlerCollection) {
+                HandlerCollection handlerCollection = (HandlerCollection) handler;
+                handlerCollection.addHandler(servletContextHandler);
+            }
+        } catch (URISyntaxException | IOException exception) {
+            IStatus status = new Status(IStatus.ERROR, SiriusServerFrontendPlugin.PLUGIN_ID, exception.getMessage(), exception);
+            SiriusServerFrontendPlugin.getPlugin().log(status);
+        }
+    }
 }
