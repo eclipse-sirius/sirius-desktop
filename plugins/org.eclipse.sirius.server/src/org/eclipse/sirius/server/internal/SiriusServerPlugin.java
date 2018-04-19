@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.server.internal;
 
+import java.net.InetSocketAddress;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -140,7 +141,7 @@ public class SiriusServerPlugin extends EMFPlugin {
 
         /**
          * Returns the list of the {@link ISiriusServerConfigurator}.
-         * 
+         *
          * @return The list of the {@link ISiriusServerConfigurator}
          */
         public List<ISiriusServerConfigurator> getSiriusServerConfigurators() {
@@ -149,6 +150,15 @@ public class SiriusServerPlugin extends EMFPlugin {
 					.map(IItemDescriptor::getItem)
 					.collect(Collectors.toList());
 			// @formatter:on
+        }
+
+        /**
+         * Returns the address on which the server is listening.
+         * 
+         * @return the address on which the server is listening.
+         */
+        public InetSocketAddress getServerAddress() {
+            return serverManager.getAddress();
         }
     }
 }

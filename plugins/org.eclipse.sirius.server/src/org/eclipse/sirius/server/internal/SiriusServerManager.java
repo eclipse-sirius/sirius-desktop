@@ -44,6 +44,8 @@ public class SiriusServerManager {
      */
     private Server server;
 
+    private InetSocketAddress address;
+
     /**
      * Starts the HTTP server.
      */
@@ -51,7 +53,7 @@ public class SiriusServerManager {
     public void start() {
         if (this.server == null || !this.server.isRunning()) {
             int port = Integer.valueOf(System.getProperty(PORT_VMARG, PORT)).intValue();
-            InetSocketAddress address = new InetSocketAddress(HOSTNAME, port);
+            address = new InetSocketAddress(HOSTNAME, port);
             this.server = new Server(address);
             this.server.setHandler(new HandlerCollection());
 
@@ -79,5 +81,14 @@ public class SiriusServerManager {
                 SiriusServerPlugin.getPlugin().log(status);
             }
         });
+    }
+
+    /**
+     * Returns the address on which the server is listening.
+     * 
+     * @return the address on which the server is listening.
+     */
+    public InetSocketAddress getAddress() {
+        return this.address;
     }
 }

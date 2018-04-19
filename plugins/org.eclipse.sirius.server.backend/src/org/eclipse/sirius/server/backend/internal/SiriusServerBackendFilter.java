@@ -29,7 +29,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.sirius.server.backend.internal.services.activities.SiriusServerActivityExecutorService;
 import org.eclipse.sirius.server.backend.internal.services.dashboard.SiriusServerDashboardService;
+import org.eclipse.sirius.server.backend.internal.services.pages.SiriusServerPageService;
 import org.eclipse.sirius.server.backend.internal.services.project.SiriusServerProjectService;
 import org.eclipse.sirius.server.backend.internal.services.projects.SiriusServerProjectsService;
 
@@ -120,6 +122,8 @@ public class SiriusServerBackendFilter implements Filter {
         serviceClasses.add(SiriusServerDashboardService.class);
         serviceClasses.add(SiriusServerProjectsService.class);
         serviceClasses.add(SiriusServerProjectService.class);
+        serviceClasses.add(SiriusServerPageService.class);
+        serviceClasses.add(SiriusServerActivityExecutorService.class);
 
         List<SiriusServerServiceDescriptor> descriptors = new ArrayList<>();
         for (Class<? extends ISiriusServerService> serviceClass : serviceClasses) {

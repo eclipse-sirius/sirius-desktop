@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -41,12 +42,14 @@ import org.eclipse.sirius.server.backend.internal.ISiriusServerService;
 import org.eclipse.sirius.server.backend.internal.SiriusServerBackendPlugin;
 import org.eclipse.sirius.server.backend.internal.SiriusServerPath;
 import org.eclipse.sirius.server.backend.internal.SiriusServerResponse;
+import org.eclipse.sirius.server.backend.internal.services.workflow.WorkflowHelper;
 import org.eclipse.sirius.server.backend.internal.utils.SiriusServerUtils;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.workflow.SectionDescription;
 
 /**
  * Service used to manipulate a specific project.
@@ -101,7 +104,42 @@ public class SiriusServerProjectService implements ISiriusServerService {
         String projectName = modelingProject.getProject().getName();
         List<AbstractSiriusServerRepresentationDto> representations = this.getRepresentations(session);
         List<SiriusServerSemanticResourceDto> semanticResources = this.getSemanticResources(modelingProject.getProject(), session);
-        return new SiriusServerProjectDto(projectName, representations, semanticResources);
+        List<SiriusServerPageDto> pages = this.getPages(session);
+        List<SiriusServerSectionDto> currentPageSections = this.getFirstPageSections(session);
+        return new SiriusServerProjectDto(projectName, representations, semanticResources, pages, currentPageSections);
+    }
+
+    /**
+     * Returns the list of workflow page from the given session.
+     *
+     * @param session
+     *            The session
+     * @return The list of workflow page from the given session
+     */
+    private List<SiriusServerPageDto> getPages(Session session) {
+        return WorkflowHelper.on(session).getPageDescriptions().map(page -> {
+            return new SiriusServerPageDto(page.getName(), page.getLabel(), page.getDescriptionExpression());
+        }).collect(Collectors.toList());
+    }
+
+    /**
+     * Returns the list of the sections of the current page.
+     *
+     * @param session
+     *            The session
+     * @return The list of the sections of the current page
+     */
+    private List<SiriusServerSectionDto> getFirstPageSections(Session session) {
+        List<SiriusServerSectionDto> sections = new ArrayList<>();
+        WorkflowHelper.on(session).getPageDescriptions().findFirst().ifPresent(page -> {
+            for (SectionDescription sectionDesc : page.getSections()) {
+                List<SiriusServerActivityDto> activities = sectionDesc.getActivities().stream().map(desc -> {
+                    return new SiriusServerActivityDto(desc.getName(), desc.getLabelExpression());
+                }).collect(Collectors.toList());
+                sections.add(new SiriusServerSectionDto(sectionDesc.getName(), sectionDesc.getTitleExpression(), activities));
+            }
+        });
+        return sections;
     }
 
     /**

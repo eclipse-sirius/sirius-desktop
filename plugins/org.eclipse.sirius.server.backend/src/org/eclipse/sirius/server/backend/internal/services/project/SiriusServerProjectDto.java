@@ -25,6 +25,10 @@ public class SiriusServerProjectDto {
 
     private List<SiriusServerSemanticResourceDto> semanticResources;
 
+    private List<SiriusServerPageDto> pages;
+
+    private List<SiriusServerSectionDto> currentPageSections;
+
     /**
      * The constructor.
      *
@@ -34,11 +38,18 @@ public class SiriusServerProjectDto {
      *            The representations
      * @param semanticResources
      *            The semantic resources
+     * @param pages
+     *            The pages of the workflow
+     * @param currentPageSections
+     *            The sections of the current page of the workflow
      */
-    public SiriusServerProjectDto(String name, List<AbstractSiriusServerRepresentationDto> representations, List<SiriusServerSemanticResourceDto> semanticResources) {
+    public SiriusServerProjectDto(String name, List<AbstractSiriusServerRepresentationDto> representations, List<SiriusServerSemanticResourceDto> semanticResources, List<SiriusServerPageDto> pages,
+            List<SiriusServerSectionDto> currentPageSections) {
         this.name = name;
         this.representations = representations;
         this.semanticResources = semanticResources;
+        this.pages = pages;
+        this.currentPageSections = currentPageSections;
     }
 
     public String getName() {
@@ -51,6 +62,14 @@ public class SiriusServerProjectDto {
 
     public List<SiriusServerSemanticResourceDto> getSemanticResources() {
         return this.semanticResources;
+    }
+
+    public List<SiriusServerPageDto> getPages() {
+        return this.pages;
+    }
+
+    public List<SiriusServerSectionDto> getCurrentPageSections() {
+        return this.currentPageSections;
     }
 
 }
