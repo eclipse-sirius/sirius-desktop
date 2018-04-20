@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -28,6 +29,7 @@ import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableLineLabelProvider;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.CheckedTreeSelectionDialog;
 import org.eclipse.ui.dialogs.SelectionDialog;
@@ -147,8 +149,28 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
 
     @Override
     protected SelectionDialog createSelectionDialog() {
-        final CheckedTreeSelectionDialog dlg = new CheckedTreeSelectionDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), getLabelProvider(), getContentProvider());
-        dlg.setInput(getTable().getLines());
+        List<DLine> lines = getTable().getLines();
+        final CheckedTreeSelectionDialog dlg = new CheckedTreeSelectionDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), getLabelProvider(), getContentProvider()) {
+
+            /**
+             * We activate the hash lookup to speed up greatly the wizard opening.
+             * 
+             * We have to do some tricky things like setting input to null and to set it back again because hash lookup
+             * can be set only before the input is set and the method createTreeViewer set the input.
+             * 
+             * The input has been already set previously to avoid dialog widget to be disabled if no input is set.
+             */
+            @Override
+            protected CheckboxTreeViewer createTreeViewer(Composite parent) {
+                setInput(null);
+                CheckboxTreeViewer theTreeViewer = super.createTreeViewer(parent);
+                theTreeViewer.setUseHashlookup(true);
+                theTreeViewer.setInput(lines);
+                setInput(lines);
+                return theTreeViewer;
+            }
+        };
+        dlg.setInput(lines);
 
         // The new tree viewer respects the same expanded state as table tree
         // viewer
