@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,9 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.ui.util.WorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
@@ -29,6 +31,8 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeSelection;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.part.ValidateAction;
@@ -36,12 +40,15 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionClosedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionSavedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
@@ -52,6 +59,9 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IPartListener2;
+import org.eclipse.ui.IWorkbenchPartReference;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.junit.Assert;
@@ -97,6 +107,59 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
     private UILocalSession localSession;
 
     /**
+     * A part listener to detect "Default Editor" activation and store the
+     * session of this editor to be compared after with the "real" editor.
+     */
+    private IPartListener2 defaultEditorPartListener = new IPartListener2() {
+        @Override
+        public void partActivated(IWorkbenchPartReference partRef) {
+            if (partRef instanceof IEditorReference && Messages.SessionEditorInput_defaultEditorName.equals(partRef.getTitle())) {
+                try {
+                    if (((IEditorReference) partRef).getEditorInput() instanceof SessionEditorInput) {
+                        sessionOfDummyEditor = ((SessionEditorInput) ((IEditorReference) partRef).getEditorInput()).getSession();
+                    }
+                } catch (PartInitException e) {
+                    // Do nothing
+                }
+            }
+        }
+
+        @Override
+        public void partVisible(IWorkbenchPartReference partRef) {
+        }
+
+        @Override
+        public void partOpened(IWorkbenchPartReference partRef) {
+        }
+
+        @Override
+        public void partInputChanged(IWorkbenchPartReference partRef) {
+        }
+
+        @Override
+        public void partHidden(IWorkbenchPartReference partRef) {
+        }
+
+        @Override
+        public void partDeactivated(IWorkbenchPartReference partRef) {
+        }
+
+        @Override
+        public void partClosed(IWorkbenchPartReference partRef) {
+        }
+
+        @Override
+        public void partBroughtToTop(IWorkbenchPartReference partRef) {
+        }
+    };
+
+    /**
+     * This variable is initialized when the above part listener is called and
+     * so when the dummy editor is activated.
+     */
+    private Session sessionOfDummyEditor;
+
+    /**
      * The icon in the outline displayed when labels are shown (not hidden).
      */
     protected Image shownImage;
@@ -124,6 +187,8 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         if (traceMarker != null) {
             traceMarker.delete();
         }
+        sessionOfDummyEditor = null;
+        defaultEditorPartListener = null;
     }
 
     /**
@@ -176,10 +241,22 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
     }
 
     /**
-     * Ensure that after closing a representation editor having validation
-     * errors, it can be reopened using an error marker from the Problem view.
+     * Ensure that after closing a representation editor (with refresh at
+     * opening) having validation errors, it can be reopened using an error
+     * marker from the Problem view.
      */
-    public void testTraceabilityWithNoOpenedRepresentations() {
+    public void testTraceabilityWithNoOpenedRepresentationsWithRefreshAtOpening() {
+        changeSiriusUIPreference(org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), true);
+        processEditorOpeningFromMarker(false);
+    }
+
+    /**
+     * Ensure that after closing a representation editor (without refresh at
+     * opening) having validation errors, it can be reopened using an error
+     * marker from the Problem view.
+     */
+    public void testTraceabilityWithNoOpenedRepresentationsWithoutRefreshAtOpening() {
+        changeSiriusUIPreference(org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
         processEditorOpeningFromMarker(false);
     }
 
@@ -205,6 +282,15 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         editor.close();
         SWTBotUtils.waitAllUiEvents();
 
+        // Make a semantic change that implies a change at the next
+        // diagram refresh (at opening in this case)
+        TransactionalEditingDomain ted = localSession.getOpenedSession().getTransactionalEditingDomain();
+        URI uri = URI.createURI("platform:/resource/DesignerTestProject/vp1038.ecore#//p3");
+        semanticElementForTraceability = ted.getResourceSet().getEObject(uri, true);
+        ted.getCommandStack().execute(RemoveCommand.create(ted, semanticElementForTraceability));
+        localSession.getOpenedSession().save(new NullProgressMonitor());
+        bot.waitUntil(new SessionSavedCondition(localSession.getOpenedSession()));
+
         if (fromClosedSession) {
             // Close session
             SessionClosedCondition sessionClosedCondition = new SessionClosedCondition(localSession.getOpenedSession());
@@ -217,15 +303,26 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         problemsView.setFocus();
         SWTBotTree problemsTree = problemsView.bot().tree();
         problemsTree.getTreeItem("Errors (3 items)").expand();
-
-        // Reopen the editor using a marker created during the validation
         final SWTBotTreeItem node = problemsTree.getTreeItem("Errors (3 items)").getNode("The namespace URI '' is not well formed");
         node.select();
 
-        // Double click the error marker to reopen the diagram
         Assert.assertFalse("An error happened before opening an editor using an error marker: " + getErrorLoggersMessage(), doesAnErrorOccurs());
-        node.doubleClick();
-        Assert.assertFalse("An error happened on opening of an editor using an error marker: " + getErrorLoggersMessage(), doesAnErrorOccurs());
+        // Add a listener to detect the dummy editor opened after the goto
+        // marker
+        EclipseUIUtil.getActivePage().addPartListener(defaultEditorPartListener);
+        try {
+            // Double click the error marker to reopen the diagram
+            node.doubleClick();
+            Assert.assertFalse("An error happened on opening of an editor using an error marker: " + getErrorLoggersMessage(), doesAnErrorOccurs());
+            IEditorPart currentEditor = EclipseUIUtil.getActiveEditor();
+            assertTrue("The current editor, opened through a GoTo marker must have a SessionEditorInput as editor input", currentEditor.getEditorInput() instanceof SessionEditorInput);
+            if (sessionOfDummyEditor != null) {
+                assertEquals("The session of the editor, opened through a GoTo marker, must be the same as the dummy editor, temporarly opened to correctly resolve the GoTo marker.",
+                        sessionOfDummyEditor, ((SessionEditorInput) currentEditor.getEditorInput()).getSession());
+            }
+        } finally {
+            EclipseUIUtil.getActivePage().removePartListener(defaultEditorPartListener);
+        }
     }
 
     /**
@@ -258,10 +355,10 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
     public void testTraceabilityWhenGoToMarkerIsCalledOnAllOpenedEditors() {
         setUpMarker(REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram", "platform:/resource/DesignerTestProject/vp1038.ecore#//p1/A");
 
-        final SWTBotSiriusDiagramEditor emptyDiagramEditor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram2",
+        openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram2",
                 DDiagram.class);
 
-        final SWTBotSiriusDiagramEditor emptyDiagramEditor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram3",
+        openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram3",
                 DDiagram.class);
 
         callGoToMarkerOnAllOpenedEditors(traceMarker);
@@ -332,6 +429,7 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
      * 
      * @return a shadow marker simulating Traceability behavior
      * @throws CoreException
+     *             In case of marker problem
      */
     protected IMarker createShadowTraceabilityMarker() throws CoreException {
 
