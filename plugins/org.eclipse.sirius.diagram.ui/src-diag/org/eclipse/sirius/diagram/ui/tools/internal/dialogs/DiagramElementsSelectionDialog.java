@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
+import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.ICheckStateProvider;
 import org.eclipse.jface.viewers.IColorProvider;
@@ -194,6 +195,23 @@ public class DiagramElementsSelectionDialog {
             return checkedElements;
         }
 
+        /**
+         * We activate the hash lookup to speed up greatly the wizard opening.
+         * 
+         * We have to do some tricky things like setting input to null and to set it back again because hash lookup can
+         * be set only before the input is set and the method createTreeViewer set the input.
+         * 
+         * The input has been already set previously to avoid dialog widget to be disabled if no input is set.
+         */
+        @Override
+        protected CheckboxTreeViewer createTreeViewer(Composite parent) {
+            setInput(null);
+            CheckboxTreeViewer treeViewer = super.createTreeViewer(parent);
+            treeViewer.setUseHashlookup(true);
+            treeViewer.setInput(diagram);
+            return treeViewer;
+        }
+        
         /**
          * {@inheritDoc}
          * 
