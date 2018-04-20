@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.eclipse.sirius.ui.business.api.session;
 import java.lang.ref.WeakReference;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -26,7 +25,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -59,7 +57,7 @@ public class SessionEditorInput extends URIEditorInput {
 
     private WeakReference<EObject> inputRef;
 
-    private IStatus status = Status.OK_STATUS;
+    private IStatus status;
 
     private URI repDescURI;
 
@@ -261,23 +259,8 @@ public class SessionEditorInput extends URIEditorInput {
             // previously closed session.
             if (sessionFromURI == null && restore) {
                 status = Status.OK_STATUS;
-                sessionFromURI = SessionManager.INSTANCE.openSession(sessionModelURI, new NullProgressMonitor(), SiriusEditPlugin.getPlugin().getUiCallback());
             }
-
-            if (sessionFromURI != null && sessionFromURI.isOpen()) {
-                // The SessionUIManager creates and open an IEditingSession when
-                // a session is added to the SessionManager. This
-                // IEditingSession is closed and removed from the ui manager
-                // when the corresponding session is removed from the session
-                // manager (closed).
-                IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(sessionFromURI);
-                if (uiSession == null && restore) {
-                    uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(sessionFromURI);
-                }
-                if (uiSession != null && !uiSession.isOpen()) {
-                    uiSession.open();
-                }
-            }
+            sessionFromURI = openSession(sessionModelURI, restore, sessionFromURI);
         } catch (OperationCanceledException e) {
             sessionFromURI = null;
             status = new Status(IStatus.CANCEL, SiriusEditPlugin.ID, e.getLocalizedMessage(), e); // $NON-NLS-1$
@@ -292,6 +275,29 @@ public class SessionEditorInput extends URIEditorInput {
             // its URI
         }
         return sessionFromURI;
+    }
+
+    private static Session openSession(URI sessionModelURI, boolean restore, Session sessionFromURI) {
+        Session session = sessionFromURI;
+        if (session == null && restore) {
+            session = SessionManager.INSTANCE.openSession(sessionModelURI, new NullProgressMonitor(), SiriusEditPlugin.getPlugin().getUiCallback());
+        }
+
+        if (session != null && session.isOpen()) {
+            // The SessionUIManager creates and open an IEditingSession when
+            // a session is added to the SessionManager. This
+            // IEditingSession is closed and removed from the ui manager
+            // when the corresponding session is removed from the session
+            // manager (closed).
+            IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+            if (uiSession == null && restore) {
+                uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
+            }
+            if (uiSession != null && !uiSession.isOpen()) {
+                uiSession.open();
+            }
+        }
+        return session;
     }
 
     @Override
@@ -314,11 +320,10 @@ public class SessionEditorInput extends URIEditorInput {
      * @since 0.9.0
      */
     public static SessionEditorInput create(final URI sessionResourceURI) {
-        Session session;
-        try {
-            session = SessionFactory.INSTANCE.createSession(sessionResourceURI, new NullProgressMonitor());
-        } catch (CoreException e) {
-            return null;
+        // Use the existing session if there is one
+        Session session = SessionManager.INSTANCE.getExistingSession(sessionResourceURI);
+        if (session == null) {
+            session = SessionEditorInput.openSession(sessionResourceURI, true, null);
         }
         return new SessionEditorInput(sessionResourceURI, Messages.SessionEditorInput_defaultEditorName, session);
     }
@@ -389,6 +394,9 @@ public class SessionEditorInput extends URIEditorInput {
      * @return the status of the session opening, null is never returned
      */
     public IStatus getStatus() {
+        if (status == null) {
+            status = Status.OK_STATUS;
+        }
         return status;
     }
 
@@ -421,7 +429,7 @@ public class SessionEditorInput extends URIEditorInput {
         if (equals && o instanceof SessionEditorInput) {
             SessionEditorInput otherSessionEditorInput = (SessionEditorInput) o;
             IStatus otherStatus = otherSessionEditorInput.getStatus();
-            if (status != otherStatus) {
+            if (getStatus() != otherStatus) {
                 equals = false;
             } else {
                 EObject input = getInput(false);
