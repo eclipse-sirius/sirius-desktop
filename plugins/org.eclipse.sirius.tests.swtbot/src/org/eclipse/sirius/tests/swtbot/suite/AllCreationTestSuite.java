@@ -27,6 +27,7 @@ import org.eclipse.sirius.tests.swtbot.EdgeCreationPositionTest;
 import org.eclipse.sirius.tests.swtbot.EdgeCreationPositionWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.EdgeWithBorderNodeCreationPositionTest;
 import org.eclipse.sirius.tests.swtbot.EdgeWithBorderNodeCreationPositionWithSnapToGridTest;
+import org.eclipse.sirius.tests.swtbot.LinkNoteFragmentModelCreationTest;
 import org.eclipse.sirius.tests.swtbot.NodeCreationPositionTest;
 import org.eclipse.sirius.tests.swtbot.NodeCreationTest;
 import org.eclipse.sirius.tests.swtbot.NodeCreationWithSnapToGridTest;
@@ -64,6 +65,7 @@ public class AllCreationTestSuite extends TestCase {
         final TestSuite suite = new TestSuite("Sirius SwtBot tests");
 
         suite.addTestSuite(NoteCreationTest.class);
+        suite.addTestSuite(LinkNoteFragmentModelCreationTest.class);
         suite.addTestSuite(NodeCreationPositionTest.class);
         suite.addTestSuite(NodeCreationTest.class);
         suite.addTestSuite(ContainerCreationTest.class);
