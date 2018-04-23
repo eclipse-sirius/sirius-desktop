@@ -179,6 +179,7 @@ public class AllTestSuite extends TestCase {
     public static void addGerritPart2(TestSuite suite) {
         suite.addTest(new JUnit4TestAdapter(SWTBotBundlesReport.class));
         suite.addTestSuite(NoteCreationTest.class);
+        suite.addTestSuite(LinkNoteFragmentModelCreationTest.class);
         suite.addTestSuite(MigrationOnVsmEditorReloadTest.class);
         suite.addTestSuite(VSMFieldTest.class);
         suite.addTestSuite(VSMAndDiagramEditorSynchronisationTest.class);
