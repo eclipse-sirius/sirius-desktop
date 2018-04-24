@@ -247,7 +247,7 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
      */
     public void testTraceabilityWithNoOpenedRepresentationsWithRefreshAtOpening() {
         changeSiriusUIPreference(org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), true);
-        processEditorOpeningFromMarker(false);
+        processEditorOpeningFromMarker(false, true);
     }
 
     /**
@@ -257,7 +257,17 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
      */
     public void testTraceabilityWithNoOpenedRepresentationsWithoutRefreshAtOpening() {
         changeSiriusUIPreference(org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
-        processEditorOpeningFromMarker(false);
+        processEditorOpeningFromMarker(false, true);
+    }
+
+    /**
+     * Ensure that with an opened representation editor (with refresh at
+     * opening) having validation errors, it can be reused using an error marker
+     * from the Problem view.
+     */
+    public void testTraceabilityWithOpenedRepresentationsWithRefreshAtOpening() {
+        changeSiriusUIPreference(org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), true);
+        processEditorOpeningFromMarker(false, false);
     }
 
     /**
@@ -266,10 +276,10 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
      * Problem view.
      */
     public void testTraceabilityWithClosedSession() {
-        processEditorOpeningFromMarker(true);
+        processEditorOpeningFromMarker(true, true);
     }
 
-    private void processEditorOpeningFromMarker(boolean fromClosedSession) {
+    private void processEditorOpeningFromMarker(boolean fromClosedSession, boolean closeEditor) {
         // Open editor
         editor = openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram", DDiagram.class);
 
@@ -279,8 +289,10 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         va.run();
 
         // Close editor
-        editor.close();
-        SWTBotUtils.waitAllUiEvents();
+        if (closeEditor) {
+            editor.close();
+            SWTBotUtils.waitAllUiEvents();
+        }
 
         // Make a semantic change that implies a change at the next
         // diagram refresh (at opening in this case)
@@ -319,6 +331,9 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
             if (sessionOfDummyEditor != null) {
                 assertEquals("The session of the editor, opened through a GoTo marker, must be the same as the dummy editor, temporarly opened to correctly resolve the GoTo marker.",
                         sessionOfDummyEditor, ((SessionEditorInput) currentEditor.getEditorInput()).getSession());
+            }
+            if (!closeEditor) {
+                assertEquals("The already opened editor must be reused for the GoTo marker.", editor.getReference().getEditor(false), currentEditor);
             }
         } finally {
             EclipseUIUtil.getActivePage().removePartListener(defaultEditorPartListener);
