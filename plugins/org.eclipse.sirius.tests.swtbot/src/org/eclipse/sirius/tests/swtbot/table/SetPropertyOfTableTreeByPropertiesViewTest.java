@@ -157,6 +157,8 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
         // necessary to do a manual refresh
         table.getTable().select(0, 0);
         table.save();
+        // Ensure that session is saved
+        bot.waitUntil(new SessionSavedCondition(localSession.getOpenedSession()));
         manualRefreshTable();
 
         // Verify that the tree element is rename too
@@ -193,6 +195,8 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
         // necessary to do a manual refresh
         tree.getTree().select(0, 0);
         tree.save();
+        // Ensure that session is saved
+        bot.waitUntil(new SessionSavedCondition(localSession.getOpenedSession()));
         manualRefreshTree();
 
         // Verify that the tree element is rename too
@@ -229,6 +233,7 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
         // necessary to do a manual refresh
         table.getTable().select(0, 0);
         table.save();
+        // Ensure that session is saved
         bot.waitUntil(new SessionSavedCondition(localSession.getOpenedSession()));
 
         manualRefreshTable();
@@ -267,6 +272,8 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
         // necessary to do a manual refresh
         tree.getTree().select(0, 0);
         tree.save();
+        // Ensure that session is saved
+        bot.waitUntil(new SessionSavedCondition(localSession.getOpenedSession()));
         manualRefreshTree();
 
         // Verify that the tree element is abstract too
