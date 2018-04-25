@@ -25,6 +25,7 @@ public class ActivityDescriptionImagePathFilter extends ViewpointPropertyFilter 
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return WorkflowPackage.eINSTANCE.getActivityDescription_ImagePath();
     }
@@ -32,6 +33,7 @@ public class ActivityDescriptionImagePathFilter extends ViewpointPropertyFilter 
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.workflow.ActivityDescription;
     }

@@ -25,6 +25,7 @@ public class SectionDescriptionTitleExpressionFilter extends ViewpointPropertyFi
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return WorkflowPackage.eINSTANCE.getSectionDescription_TitleExpression();
     }
@@ -32,6 +33,7 @@ public class SectionDescriptionTitleExpressionFilter extends ViewpointPropertyFi
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.workflow.SectionDescription;
     }

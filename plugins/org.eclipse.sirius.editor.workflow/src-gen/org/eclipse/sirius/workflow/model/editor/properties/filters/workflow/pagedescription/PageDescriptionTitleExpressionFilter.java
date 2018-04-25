@@ -25,6 +25,7 @@ public class PageDescriptionTitleExpressionFilter extends ViewpointPropertyFilte
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return WorkflowPackage.eINSTANCE.getPageDescription_TitleExpression();
     }
@@ -32,6 +33,7 @@ public class PageDescriptionTitleExpressionFilter extends ViewpointPropertyFilte
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.workflow.PageDescription;
     }

@@ -29,6 +29,7 @@ public class ActivityDescriptionImagePathPropertySection extends AbstractTextWit
     /**
      * @see org.eclipse.sirius.workflow.model.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "ImagePath"; //$NON-NLS-1$
     }
@@ -36,6 +37,7 @@ public class ActivityDescriptionImagePathPropertySection extends AbstractTextWit
     /**
      * @see org.eclipse.sirius.workflow.model.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -48,6 +50,7 @@ public class ActivityDescriptionImagePathPropertySection extends AbstractTextWit
     /**
      * @see org.eclipse.sirius.workflow.model.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return WorkflowPackage.eINSTANCE.getActivityDescription_ImagePath();
     }
@@ -55,6 +58,7 @@ public class ActivityDescriptionImagePathPropertySection extends AbstractTextWit
     /**
      * @see org.eclipse.sirius.workflow.model.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -62,6 +66,7 @@ public class ActivityDescriptionImagePathPropertySection extends AbstractTextWit
     /**
      * @see org.eclipse.sirius.workflow.model.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -69,6 +74,7 @@ public class ActivityDescriptionImagePathPropertySection extends AbstractTextWit
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 
@@ -81,6 +87,7 @@ public class ActivityDescriptionImagePathPropertySection extends AbstractTextWit
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 String imagePath = WorkspaceAndPluginsResourceDialog.openDialogForImages(composite.getShell());
                 if (imagePath != null) {
@@ -94,6 +101,7 @@ public class ActivityDescriptionImagePathPropertySection extends AbstractTextWit
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "";
     }
