@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -53,8 +54,12 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.eclipse.gef.finder.SWTGefBot;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
+import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.IEditorPart;
@@ -75,7 +80,36 @@ import junit.framework.AssertionFailedError;
  * @author alagarde
  */
 public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScenarioTestCase {
-    private static final String REPRESENTATION_EMPTY_DIAGRAM = "EmptyDiagram";
+    /**
+     * A condition waiting for an editor with a SessionEditorInput to open.
+     * 
+     * @author lredor
+     */
+    public class EditorOpenedCondition extends DefaultCondition {
+
+        private SWTGefBot bot;
+
+        /**
+         * Default constructor;
+         * 
+         * @param bot
+         *            The current bot
+         */
+        public EditorOpenedCondition(SWTGefBot bot) {
+            this.bot = bot;
+        }
+
+        @Override
+        public String getFailureMessage() {
+            return "No editor opens with a SessionEditorInput.";
+        }
+
+        @Override
+        public boolean test() throws Exception {
+            return bot.activeEditor().getReference().getEditorInput() instanceof SessionEditorInput;
+        }
+
+    }
 
     /**
      * The {@link SWTBotSiriusDiagramEditor} to use.
@@ -89,6 +123,10 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
     private static final String SESSION_PATH = "vp1038.aird";
 
     private static final String MODELER_PATH = "vp1038.odesign";
+
+    private static final String REPRESENTATION_EMPTY_DIAGRAM = "EmptyDiagram";
+
+    private static final String REPRESENTATION_INSTANCE_EMPTY_DIAGRAM = "emptyDiagram";
 
     private static final String REPRESENTATION_DIAGRAM = "Trace Diagram";
 
@@ -281,7 +319,7 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
 
     private void processEditorOpeningFromMarker(boolean fromClosedSession, boolean closeEditor) {
         // Open editor
-        editor = openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram", DDiagram.class);
+        editor = openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DIAGRAM, REPRESENTATION_INSTANCE_DIAGRAM1, DDiagram.class);
 
         // Run validation
         WorkbenchPartDescriptor workbenchPartDescriptor = new WorkbenchPartDescriptor(editor.getReference().getId(), editor.getReference().getClass(), editor.getReference().getPage());
@@ -292,6 +330,7 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         if (closeEditor) {
             editor.close();
             SWTBotUtils.waitAllUiEvents();
+            editor = null;
         }
 
         // Make a semantic change that implies a change at the next
@@ -338,6 +377,10 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         } finally {
             EclipseUIUtil.getActivePage().removePartListener(defaultEditorPartListener);
         }
+        // Set the editor with the current opened editor.
+        editor = bot.activeEditor();
+        // Check quick fix
+        checkQuickFix(REPRESENTATION_INSTANCE_DIAGRAM1, closeEditor, fromClosedSession);
     }
 
     /**
@@ -538,5 +581,103 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
             }
         });
 
+    }
+
+    private void checkQuickFix(String diagramName, boolean closeDiagram, boolean closeSession) {
+        IEditorReference initialEditoReference = editor.getReference();
+        if (closeDiagram) {
+            editor.close();
+            SWTBotUtils.waitAllUiEvents();
+            editor = null;
+        }
+
+        if (closeSession) {
+            SessionClosedCondition closedCondition = new SessionClosedCondition(localSession.getOpenedSession());
+            localSession.close(false);
+            bot.waitUntil(closedCondition);
+        }
+
+        final SWTBotView problemViewBot = bot.viewByTitle("Problems");
+        problemViewBot.setFocus();
+        SWTBotUtils.waitAllUiEvents();
+        final SWTBotTree problemTree = problemViewBot.bot().tree();
+        problemTree.setFocus();
+        problemTree.getTreeItem("Warnings (1 item)").expand();
+        final SWTBotTreeItem node = problemTree.getTreeItem("Warnings (1 item)").getNode("The element has a wrong name.");
+        node.select();
+        node.contextMenu("Quick Fix").click();
+        bot.waitUntil(new DefaultCondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return bot.activeShell().getText().equals("Quick Fix");
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The Quick Fix wizard did not display";
+            }
+        });
+        bot.activeShell().setFocus();
+        bot.activeShell().bot().button("Finish").click();
+
+        TransactionalEditingDomain ted = null;
+        if (!closeSession) {
+            ted = localSession.getOpenedSession().getTransactionalEditingDomain();
+        } else {
+            bot.waitUntil(new EditorOpenedCondition(bot));
+            try {
+                ted = ((SessionEditorInput) bot.activeEditor().getReference().getEditorInput()).getSession().getTransactionalEditingDomain();
+            } catch (PartInitException e) {
+                fail("Unable to retreive the current transactional editing domain.");
+            }
+        }
+        URI uri = URI.createURI("platform:/resource/DesignerTestProject/vp1038.ecore#//p1");
+        EPackage p1 = (EPackage) ted.getResourceSet().getEObject(uri, true);;
+
+        bot.waitUntil(new DefaultCondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return p1.getEClassifier("AFixed") != null;
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The fix has not been applied (Class \"A\" should be renamed in \"AFixed\").";
+            }
+        });
+        long oldTimeOut = SWTBotPreferences.TIMEOUT;
+        SWTBotPreferences.TIMEOUT = 500;
+        try {
+            bot.waitUntil(new DefaultCondition() {
+
+                @Override
+                public boolean test() throws Exception {
+                    try {
+                        problemTree.getTreeItem("Warnings (1 item)");
+                    } catch (WidgetNotFoundException e) {
+                        // The warning is expected to be removed
+                        return true;
+                    }
+                    return false;
+                }
+
+                @Override
+                public String getFailureMessage() {
+                    return "The validation warning message has not been removed from the Problems view.";
+                }
+            });
+        } finally {
+            SWTBotPreferences.TIMEOUT = oldTimeOut;
+        }
+        if (!closeDiagram && !closeSession) {
+            // Check that the current editor is the same as before quick fix
+            assertEquals("The quick fix should not reload another editor but use the same.", initialEditoReference, bot.activeEditor().getReference());
+        }
+        bot.activeEditor().save();
+        SWTBotUtils.waitProgressMonitorClose("Progress Information");
+        bot.waitUntil(new SessionSavedCondition(localSession.getOpenedSession()));
+        bot.activeEditor().close();
     }
 }
