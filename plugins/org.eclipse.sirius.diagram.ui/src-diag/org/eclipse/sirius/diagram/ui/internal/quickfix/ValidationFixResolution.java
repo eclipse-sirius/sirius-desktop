@@ -26,12 +26,10 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.part.ValidateAction;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFactoryUI;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.NavigationMarkerConstants;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
@@ -94,7 +92,6 @@ public class ValidationFixResolution implements IMarkerResolution {
         if (editor != null) {
             Session currentSession = null;
             IEditorInput editorInput = editor.getEditorInput();
-            boolean offscreenValidation = false;
             if (editorInput instanceof SessionEditorInput) {
                 Session editorInputSession = ((SessionEditorInput) editorInput).getSession();
                 if (editorInputSession != null && editorInputSession.isOpen()) {
@@ -111,17 +108,7 @@ public class ValidationFixResolution implements IMarkerResolution {
                     } else {
                         currentSession = existingSession;
 
-                        // The current editor is on the current session.
-                        offscreenValidation = true;
                     }
-                }
-            }
-
-            if (!offscreenValidation) {
-                TransactionalEditingDomain editorDomain = editor.getAdapter(TransactionalEditingDomain.class);
-                if (editorDomain != currentSession.getTransactionalEditingDomain()) {
-                    // The current editor is on the current session.
-                    offscreenValidation = true;
                 }
             }
 
@@ -130,8 +117,8 @@ public class ValidationFixResolution implements IMarkerResolution {
                 EObject fixTarget = getFixTarget(markedView);
                 if (fixTarget != null) {
                     Diagram diagram = markedView.getDiagram();
-                    executeFix(editor, (DDiagram) diagram.getElement(), fixTarget, currentSession.getTransactionalEditingDomain(), offscreenValidation);
-                    revalidate(editor, diagram, offscreenValidation);
+                    executeFix(editor, (DDiagram) diagram.getElement(), fixTarget, currentSession.getTransactionalEditingDomain());
+                    revalidate(editor, diagram);
                 }
             }
         }
@@ -159,11 +146,12 @@ public class ValidationFixResolution implements IMarkerResolution {
 
     }
 
-    private void revalidate(IEditorPart editor, View view, boolean offscreenValidation) {
-        if (editor instanceof DialectEditor && !offscreenValidation) {
-            ((DialectEditor) editor).validateRepresentation();
-        } else {
+    private void revalidate(IEditorPart editor, View view) {
+        if (org.eclipse.sirius.viewpoint.provider.Messages.SessionEditorInput_defaultEditorName.equals(editor.getTitle()) || !(editor instanceof DialectEditor)) {
+            // Do not execute validation on the dummy editor opened temporarily.
             ValidateAction.runNonUIValidation(view);
+        } else {
+            ((DialectEditor) editor).validateRepresentation();
         }
     }
 
@@ -179,8 +167,8 @@ public class ValidationFixResolution implements IMarkerResolution {
         return (fix.eContainer() instanceof ViewValidationRule);
     }
 
-    private void executeFix(IEditorPart editor, DDiagram diagram, EObject fixTarget, TransactionalEditingDomain domain, boolean offscreenValidation) {
-        IDiagramCommandFactory commandFactory = getDiagramCommandFactory(editor, domain, offscreenValidation);
+    private void executeFix(IEditorPart editor, DDiagram diagram, EObject fixTarget, TransactionalEditingDomain domain) {
+        IDiagramCommandFactory commandFactory = getDiagramCommandFactory(editor, domain);
 
         if (commandFactory != null && fixTarget != null) {
             Command fixCommand = commandFactory.buildQuickFixOperation(fix, fixTarget, diagram);
@@ -207,16 +195,10 @@ public class ValidationFixResolution implements IMarkerResolution {
         return semanticTarget;
     }
 
-    private IDiagramCommandFactory getDiagramCommandFactory(IEditorPart editor, TransactionalEditingDomain domain, boolean offscreenValidation) {
-        if (offscreenValidation) {
-            IDiagramCommandFactory diagramCommandFactory = DiagramCommandFactoryService.getInstance().getNewProvider().getCommandFactory(domain);
-            diagramCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
-            return diagramCommandFactory;
-        } else {
-            final Object adapter = editor.getAdapter(IDiagramCommandFactoryProvider.class);
-            final IDiagramCommandFactoryProvider diagramCmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
-            return diagramCmdFactoryProvider.getCommandFactory(domain);
-        }
+    private IDiagramCommandFactory getDiagramCommandFactory(IEditorPart editor, TransactionalEditingDomain domain) {
+        final Object adapter = editor.getAdapter(IDiagramCommandFactoryProvider.class);
+        final IDiagramCommandFactoryProvider diagramCmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
+        return diagramCmdFactoryProvider.getCommandFactory(domain);
     }
 
 }
