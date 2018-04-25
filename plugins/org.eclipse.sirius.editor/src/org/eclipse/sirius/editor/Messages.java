@@ -36,6 +36,13 @@ public final class Messages {
     @TranslatableMessage
     public static String ServiceNavigator_serviceNavigationDialog_description;
 
+
+    @TranslatableMessage
+    public static String AddOptionOverridePropertySection_overrideButtonLabel;
+
+    @TranslatableMessage
+    public static String LayoutOptionValue_defaultLabel;
+
     @TranslatableMessage
     public static String CustomSiriusEditor_failedNavigationTitle;
 

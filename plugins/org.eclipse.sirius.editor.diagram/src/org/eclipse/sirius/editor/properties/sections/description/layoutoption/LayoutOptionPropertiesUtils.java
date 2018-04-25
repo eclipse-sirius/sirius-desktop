@@ -1,0 +1,107 @@
+/*******************************************************************************
+ * Copyright (c) 2018 Obeo
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.editor.properties.sections.description.layoutoption;
+
+import java.util.Collections;
+
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.LayoutOption;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+
+/**
+ * Utility class providing methods to build UI components for properties view displaying layout options.
+ * 
+ * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+ *
+ */
+public final class LayoutOptionPropertiesUtils {
+    /**
+     * The name of image used to remove layout option override.
+     */
+    public static final String DELETE_OPTION_IMAGE_NAME = "Delete_16x16.gif";
+
+    /**
+     * The name of image used to add layout option override.
+     */
+    public static final String ADD_OPTION_IMAGE_NAME = "Add_16x16.gif";
+
+    private LayoutOptionPropertiesUtils() {
+        // private
+    }
+
+    /**
+     * Returns a button allowing to remove the given layout option when triggered.
+     * 
+     * @param valueComposite
+     *            the composite containing the widget to edit the value of the layout option.
+     * @param containerComposite
+     *            the composite parent of the value composite and the composite we will create for the button.
+     * @param viewpointPropertySheetPage
+     *            the property sheet page that will show this created button.
+     * @param widgetFactory
+     *            used to create SWT widgets.
+     * @param layoutOption
+     *            the layout option from which a removal button will be created.
+     * @return a button allowing to remove the given layout option when triggered.
+     */
+    public static Button createRemoveOptionButton(Control valueComposite, Composite containerComposite, ViewpointPropertySheetPage viewpointPropertySheetPage,
+            TabbedPropertySheetWidgetFactory widgetFactory, LayoutOption layoutOption) {
+        Image removeImage = ExtendedImageRegistry.INSTANCE.getImage(DiagramUIPlugin.getPlugin().getImage(DELETE_OPTION_IMAGE_NAME));
+        Button removeOverrideButton = widgetFactory.createButton(containerComposite, "", SWT.PUSH);
+        FormData data = new FormData();
+        data.left = new FormAttachment(96, 0);
+        data.right = new FormAttachment(100, 0);
+        data.top = new FormAttachment(valueComposite, 0, SWT.CENTER);
+        removeOverrideButton.setLayoutData(data);
+        removeOverrideButton.setImage(removeImage);
+        removeOverrideButton.addSelectionListener(createRemoveOptionButtonListener(layoutOption, viewpointPropertySheetPage.getEditor().getEditingDomain(), viewpointPropertySheetPage));
+        return removeOverrideButton;
+    }
+
+    /**
+     * Create and returns a button listener that will removed a layout option override when triggered.
+     * 
+     * @param layoutOption
+     *            the layout option override that will be removed.
+     * @param editingDomain
+     *            used to execute removal command.
+     * @param tabbedPropertySheetPage
+     *            the property sheet page from which a refresh will be done after removing the layout option.
+     * @return a button listener that will removed a layout option override when triggered.
+     */
+    private static SelectionListener createRemoveOptionButtonListener(LayoutOption layoutOption, EditingDomain editingDomain, TabbedPropertySheetPage tabbedPropertySheetPage) {
+        return new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                editingDomain.getCommandStack().execute(RemoveCommand.create(editingDomain, layoutOption.eContainer(), DescriptionPackage.eINSTANCE.getCustomLayoutConfiguration_LayoutOptions(),
+                        Collections.singletonList(layoutOption)));
+                Display.getCurrent().asyncExec(() -> tabbedPropertySheetPage.refresh());
+            }
+        };
+    }
+}

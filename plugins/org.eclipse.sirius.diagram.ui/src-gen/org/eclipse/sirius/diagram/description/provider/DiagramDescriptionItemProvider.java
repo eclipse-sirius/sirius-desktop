@@ -661,6 +661,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
             CustomLayoutConfiguration customConfiguration = DescriptionFactory.eINSTANCE.createCustomLayoutConfiguration();
             customConfiguration.setId(layoutProviderEntry.getKey());
             customConfiguration.setLabel(layoutProviderEntry.getValue().getLabel());
+            customConfiguration.setDescription(layoutProviderEntry.getValue().getDescription());
             newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, customConfiguration));
         }
     }

@@ -73,5 +73,4 @@ public class CustomLayoutConfigurationItemProviderSpec extends CustomLayoutConfi
 
         return super.getCreateChildText(owner, feature, child, selection);
     }
-
 }

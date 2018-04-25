@@ -31,9 +31,14 @@ public class CustomLayoutAlgorithm {
     private String id;
 
     /**
-     * The algorithm's label that should be used in UI to present it.
+     * The algorithm's label.
      */
     private String label;
+
+    /**
+     * The algorithm's description.
+     */
+    private String description;
 
     /**
      * A supplier of {@link DefaultLayoutProvider} that contains the layout algorithm.
@@ -52,19 +57,22 @@ public class CustomLayoutAlgorithm {
      * @param id
      *            the algorithm's id.
      * @param label
-     *            the algorithm's label that should be used in UI to present it.
+     *            the algorithm's label.
+     * @param description
+     *            the algorithm's description.
      * @param layoutSupplier
      *            a supplier of {@link DefaultLayoutProvider} that contains the layout algorithm.
      * @param layoutOptions
      *            the options allowing to configure the layout algorithm behavior. Use the factory
      *            {@link LayoutOptionFactory} to create it.
      */
-    public CustomLayoutAlgorithm(String id, String label, Supplier<DefaultLayoutProvider> layoutSupplier, Map<String, LayoutOption> layoutOptions) {
+    public CustomLayoutAlgorithm(String id, String label, String description, Supplier<DefaultLayoutProvider> layoutSupplier, Map<String, LayoutOption> layoutOptions) {
         super();
         this.id = id;
         this.label = label;
         this.layoutSupplier = layoutSupplier;
         this.layoutOptions = layoutOptions;
+        this.description = description;
     }
 
     /**
@@ -77,12 +85,21 @@ public class CustomLayoutAlgorithm {
     }
 
     /**
-     * Returns the algorithm's label that should be used in UI to present it.
+     * Returns the algorithm's label.
      * 
-     * @return the algorithm's label that should be used in UI to present it.
+     * @return the algorithm's label.
      */
     public String getLabel() {
         return label;
+    }
+
+    /**
+     * Returns the algorithm's description.
+     * 
+     * @return the algorithm's description.
+     */
+    public String getDescription() {
+        return description;
     }
 
     /**
@@ -102,4 +119,10 @@ public class CustomLayoutAlgorithm {
     public DefaultLayoutProvider getLayoutAlgorithmInstance() {
         return layoutSupplier.get();
     }
+
+    @Override
+    public String toString() {
+        return this.id;
+    }
+
 }

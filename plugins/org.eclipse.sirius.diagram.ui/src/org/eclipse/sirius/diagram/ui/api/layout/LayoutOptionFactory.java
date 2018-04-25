@@ -19,7 +19,7 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DoubleLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
-import org.eclipse.sirius.diagram.description.EnumOption;
+import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
@@ -46,10 +46,12 @@ public class LayoutOptionFactory {
      *            a description of the option.
      * @param label
      *            a label used in Sirius UI to represent the option.
+     * @param defaultValues
+     *            the default option values.
      * @return a new layout option with the type Enum.
      */
-    public LayoutOption createEnumSetOption(List<EnumChoice> choices, String id, String description, String label) {
-        EnumOption layoutOption = DescriptionFactory.eINSTANCE.createEnumSetLayoutOption();
+    public LayoutOption createEnumSetOption(List<EnumChoice> choices, String id, String description, String label, List<String> defaultValues) {
+        EnumSetLayoutOption layoutOption = DescriptionFactory.eINSTANCE.createEnumSetLayoutOption();
         layoutOption.setDescription(description);
         layoutOption.setLabel(label);
         layoutOption.setId(id);
@@ -58,8 +60,11 @@ public class LayoutOptionFactory {
             EnumLayoutValue layoutValue = DescriptionFactory.eINSTANCE.createEnumLayoutValue();
             layoutValue.setDescription(enumChoice.getDescription());
             layoutValue.setName(enumChoice.getName());
-            layoutOption.setDescription(description);
             layoutOption.getChoices().add(layoutValue);
+
+            if (defaultValues.contains(enumChoice.getName())) {
+                layoutOption.getValues().add(EcoreUtil.copy(layoutValue));
+            }
         }
         return layoutOption;
     }
@@ -77,7 +82,7 @@ public class LayoutOptionFactory {
      * @param label
      *            a label used in Sirius UI to represent the option.
      * @param defaultValue
-     *            the default option's value of the layout algorithm.
+     *            the default option value.
      * @return a new layout option with the type Enum.
      */
     public LayoutOption createEnumOption(List<EnumChoice> choices, String id, String description, String label, String defaultValue) {
@@ -90,11 +95,10 @@ public class LayoutOptionFactory {
             EnumLayoutValue layoutValue = DescriptionFactory.eINSTANCE.createEnumLayoutValue();
             layoutValue.setDescription(enumChoice.getDescription());
             layoutValue.setName(enumChoice.getName());
-            layoutOption.setDescription(description);
-            layoutOption.getChoices().add(layoutValue);
-            if (enumChoice.getName().equals(defaultValue)) {
+            if (defaultValue.equals(enumChoice.getName())) {
                 layoutOption.setValue(layoutValue);
             }
+            layoutOption.getChoices().add(EcoreUtil.copy(layoutValue));
         }
 
         return layoutOption;

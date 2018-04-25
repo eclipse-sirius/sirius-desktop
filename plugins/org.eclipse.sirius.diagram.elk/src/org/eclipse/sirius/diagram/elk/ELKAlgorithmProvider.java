@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.elk;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,19 +53,19 @@ public class ELKAlgorithmProvider implements CustomLayoutAlgorithmProvider {
                 if (!CoreOptions.ALGORITHM.getId().equals(layoutOptionData.getId()) && !layoutOptionData.getVisibility().equals(Visibility.HIDDEN)) {
                     switch (layoutOptionData.getType()) {
                     case STRING:
-                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createStringOption((String) layoutOptionData.getDefault(), layoutOptionData.getId(),
+                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createStringOption((String) layoutOptionData.getDefaultDefault(), layoutOptionData.getId(),
                                 layoutOptionData.getDescription(), layoutOptionData.getName()));
                         break;
                     case BOOLEAN:
-                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createBooleanOption((Boolean) layoutOptionData.getDefault(), layoutOptionData.getId(),
+                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createBooleanOption((Boolean) layoutOptionData.getDefaultDefault(), layoutOptionData.getId(),
                                 layoutOptionData.getDescription(), layoutOptionData.getName()));
                         break;
                     case INT:
-                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createIntegerOption((Integer) layoutOptionData.getDefault(), layoutOptionData.getId(),
+                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createIntegerOption((Integer) layoutOptionData.getDefaultDefault(), layoutOptionData.getId(),
                                 layoutOptionData.getDescription(), layoutOptionData.getName()));
                         break;
                     case DOUBLE:
-                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createDoubleOption((Double) layoutOptionData.getDefault(), layoutOptionData.getId(),
+                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createDoubleOption((Double) layoutOptionData.getDefaultDefault(), layoutOptionData.getId(),
                                 layoutOptionData.getDescription(), layoutOptionData.getName()));
                         break;
                     case ENUMSET:
@@ -77,26 +78,33 @@ public class ELKAlgorithmProvider implements CustomLayoutAlgorithmProvider {
                             choicesList.add(new EnumChoice(choiceId, ""));
 
                         }
-                        String defaultValue = null;
                         Object defaultObject = layoutOptionData.getDefaultDefault();
-                        if (defaultObject instanceof Enum) {
-                            defaultValue = ((Enum<?>) defaultObject).name();
-                        }
                         if (layoutOptionData.getType() == Type.ENUM) {
+                            String defaultValue = null;
+                            if (defaultObject instanceof Enum) {
+                                defaultValue = ((Enum<?>) defaultObject).name();
+                            }
                             layoutOptions.put(layoutOptionData.getId(),
                                     layoutOptionFactory.createEnumOption(choicesList, layoutOptionData.getId(), layoutOptionData.getDescription(), layoutOptionData.getName(), defaultValue));
                         } else {
+                            List<String> enumValues = new ArrayList<>();
+                            if (defaultObject instanceof EnumSet) {
+                                EnumSet<?> enumSet = (EnumSet<?>) defaultObject;
+                                if (enumSet.size() > 0) {
+                                    enumSet.forEach((enumValue) -> enumValues.add(enumValue.name()));
+                                }
+                            }
                             layoutOptions.put(layoutOptionData.getId(),
-                                    layoutOptionFactory.createEnumSetOption(choicesList, layoutOptionData.getId(), layoutOptionData.getDescription(), layoutOptionData.getName()));
+                                    layoutOptionFactory.createEnumSetOption(choicesList, layoutOptionData.getId(), layoutOptionData.getDescription(), layoutOptionData.getName(), enumValues));
                         }
-
                         break;
                     default:
                         break;
                     }
                 }
             }
-            layoutAlgorithms.add(new CustomLayoutAlgorithm(layoutAlgorithmData.getId(), layoutAlgorithmData.getName(), () -> new ELKLayoutNodeProvider(), layoutOptions));
+            layoutAlgorithms
+                    .add(new CustomLayoutAlgorithm(layoutAlgorithmData.getId(), layoutAlgorithmData.getName(), layoutAlgorithmData.getDescription(), () -> new ELKLayoutNodeProvider(), layoutOptions));
         }
         return layoutAlgorithms;
     }

@@ -883,7 +883,7 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.LayoutOption"/>
       </propertySection>
-  	  <propertySection
+  	  <!-- <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.description.customlayoutconfiguration.CustomLayoutConfigurationDescriptionPropertySection"
                id="description.section.customLayoutConfiguration.Description"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.description.customlayoutconfiguration.CustomLayoutConfigurationDescriptionFilter"
@@ -891,7 +891,7 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.CustomLayoutConfiguration"/>
       </propertySection>
-      <!--
+     
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.description.customlayoutconfiguration.CustomLayoutConfigurationLabelPropertySection"
                id="description.section.customLayoutConfiguration.Label"
@@ -1267,6 +1267,13 @@
                afterSection="description.section.diagramElementMapping.PreconditionExpression"
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.diagram.description.DiagramElementMapping"/>
+      </propertySection>
+      <propertySection
+            class="org.eclipse.sirius.editor.properties.sections.description.layoutoption.LayoutOptionPropertySection"
+            filter="org.eclipse.sirius.editor.properties.filters.description.representationdescription.LayoutOptionFilterFilter"
+            id="description.section.LayoutOptions"
+            tab="viewpoint.tab.general">
+             <input type="org.eclipse.sirius.diagram.description.CustomLayoutConfiguration"/>
       </propertySection>
 
   	<!-- End of user code propertySections of org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor  -->
