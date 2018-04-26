@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,9 @@ package org.eclipse.sirius.diagram.tools.api.validation.constraint;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
@@ -23,7 +24,7 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -31,6 +32,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.tools.api.validation.constraint.RuleWrappingStatus;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -42,9 +44,8 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 
 /**
- * Common class for all the DDiagram constraints. This class wrapp the base
- * behavior of getting the first failling rule, clients should define the
- * "isValid" method to say wether the rule match the current constraint or not.
+ * Common class for all the DDiagram constraints. This class wrapp the base behavior of getting the first failing rule,
+ * clients should define the "isValid" method to say whether the rule matches the current constraint or not.
  * 
  * @author cbrun
  * 
@@ -103,8 +104,7 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
      * 
      * @param objectToValidate
      *            object we are testing.
-     * @return the first {@link ValidationRule} conform to isValid() which
-     *         fails.
+     * @return the first {@link ValidationRule} conform to isValid() which fails.
      */
     private Collection<ValidationRule> getFailingRules(final EObject objectToValidate) {
         final Collection<ValidationRule> failingRules = new ArrayList<ValidationRule>();
@@ -119,47 +119,56 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
 
         if (diagram != null) {
             /*
-             * If some rules are manually activated, then we'll pick in these
-             * ones, otherwhise we'll use all the rules.
+             * If some rules are manually activated, then we'll pick in these ones, otherwise we'll use all the rules.
              */
+            Collection<Viewpoint> selectedVps = Session.of(objectToValidate).map(s -> s.getSelectedViewpoints(false)).orElseGet(() -> new ArrayList<Viewpoint>());
             if (diagram.getActivatedRules().size() > 0) {
-                failingRules.addAll(getFaillingRulesFromCollection(objectToValidate, diagram.getActivatedRules().iterator()));
+                failingRules.addAll(getFailingRulesFromCollection(objectToValidate, diagram.getActivatedRules().iterator()));
             } else if (diagram.getDescription() != null) {
                 final DiagramDescription desc = diagram.getDescription();
                 final ValidationSet validationSet = desc.getValidationSet();
                 if (validationSet != null) {
-                    failingRules.addAll(getFaillingRulesFromCollection(objectToValidate, validationSet.getAllRules().iterator()));
+                    failingRules.addAll(getFailingRulesFromCollection(objectToValidate, validationSet.getAllRules().iterator()));
                 }
+
+                failingRules.addAll(getFailingRulesFromDiagramExtension(objectToValidate, desc, selectedVps));
             }
-            failingRules.addAll(checkRulesFromActivatedViewpoints(objectToValidate, diagram));
+            failingRules.addAll(checkRulesFromActivatedViewpoints(objectToValidate, selectedVps));
         }
 
         return failingRules;
     }
 
-    private Collection<ValidationRule> checkRulesFromActivatedViewpoints(final EObject objectToValidate, final DDiagram diagram) {
-        if (objectToValidate instanceof DSemanticDecorator) {
-            final EObject semantic = ((DSemanticDecorator) objectToValidate).getTarget();
-            final Session session = SessionManager.INSTANCE.getSession(semantic);
-            if (session != null) {
-                final Iterator<Viewpoint> it = session.getSelectedViewpoints(false).iterator();
-                while (it.hasNext()) {
-                    final Viewpoint vp = it.next();
-                    if (vp.getValidationSet() != null) {
-                        return getFaillingRulesFromCollection(objectToValidate, vp.getValidationSet().getAllRules().iterator());
-                    }
-                }
-            }
-        }
+    /**
+     * Get validation rules of RepresentationExtensionDescription (of provided viewpoints) that matches
+     * diagDescExtension.
+     * 
+     * @param objectToValidate
+     *            object we are testing.
+     * @param diagDescExtension
+     *            DiagramDescription of the objectToValidate
+     * @param viewpoints
+     *            viewpoints in which to find the RepresentationExtensionDescription
+     * @return
+     */
+    private Collection<ValidationRule> getFailingRulesFromDiagramExtension(EObject objectToValidate, DiagramDescription diagDescExtension, Collection<Viewpoint> viewpoints) {
+        // get validation rules of RepresentationExtensionDescription that matches diagDescExtension
+        Collection<ValidationRule> failingRules = viewpoints.stream().flatMap(vp -> vp.getOwnedRepresentationExtensions().stream()).filter(DiagramExtensionDescription.class::isInstance)
+                .filter(ext -> ComponentizationHelper.match(diagDescExtension, ext)).map(ext -> ((DiagramExtensionDescription) ext).getValidationSet()).filter(Objects::nonNull)
+                .flatMap(vs -> getFailingRulesFromCollection(objectToValidate, vs.getAllRules().iterator()).stream()).collect(Collectors.toList());
 
-        return Collections.emptyList();
+        return failingRules;
     }
 
-    private Collection<ValidationRule> getFaillingRulesFromCollection(final EObject objectToValidate, final Iterator<ValidationRule> it) {
+    private Collection<ValidationRule> checkRulesFromActivatedViewpoints(final EObject objectToValidate, final Collection<Viewpoint> selectedVps) {
+        return selectedVps.stream().map(vp -> vp.getValidationSet()).filter(Objects::nonNull).flatMap(vs -> getFailingRulesFromCollection(objectToValidate, vs.getAllRules().iterator()).stream())
+                .collect(Collectors.toList());
+    }
+
+    private Collection<ValidationRule> getFailingRulesFromCollection(final EObject objectToValidate, final Iterator<ValidationRule> it) {
         final Collection<ValidationRule> failingRules = new ArrayList<ValidationRule>();
         /*
-         * Iterate and return the first failling rule. null if no rule is
-         * failling.
+         * Iterate and return the first failing rule. null if no rule is failing.
          */
         while (it.hasNext()) {
             final ValidationRule rule = it.next();
@@ -191,8 +200,7 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
      * @param objectToValidate
      *            The object to validate
      * @param semanticElement
-     *            The semantic element associated with the
-     *            <code>objectToValidate</code>.
+     *            The semantic element associated with the <code>objectToValidate</code>.
      * @param expectedClass
      *            The expected class for the semantic element.
      * @return true if the semantic element must be validate, false otherwise.
@@ -218,13 +226,11 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
     }
 
     /**
-     * return true if this validation rule apply to the current context, false
-     * otherwise.
+     * return true if this validation rule apply to the current context, false otherwise.
      * 
      * @param rule
      *            a validation rule.
-     * @return true if this validation rule apply to the current context, false
-     *         otherwise.
+     * @return true if this validation rule apply to the current context, false otherwise.
      */
     protected abstract boolean isValid(ValidationRule rule);
 }
