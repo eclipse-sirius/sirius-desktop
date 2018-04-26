@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
@@ -552,32 +553,57 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     private void valideExportResultWithFolder(final String imageExtension, String newFolderName, final String... expectedFileNames) throws Exception {
-        File destinationFolder = new File(ResourcesPlugin.getWorkspace().getRoot().getProject(designerProject.getName()).getLocation().toOSString());
+        File destinationFolder;
         if (newFolderName != null) {
-            destinationFolder = new File(destinationFolder.getAbsolutePath() + File.separator + newFolderName);
+            destinationFolder = new File(ResourcesPlugin.getWorkspace().getRoot().getProject(designerProject.getName()).getLocation().toOSString() + File.separator + newFolderName);
+        } else {
+            destinationFolder = new File(ResourcesPlugin.getWorkspace().getRoot().getProject(designerProject.getName()).getLocation().toOSString());
         }
-        File filesWithExpectedExtension[] = destinationFolder.listFiles(new FilenameFilter() {
+        bot.waitUntil(new DefaultCondition() {
+
             @Override
-            public boolean accept(File dir, String name) {
-                boolean result = false;
-                for (String filename : expectedFileNames) {
-                    result = result || name.equals(filename + "_0_0." + imageExtension);
-                }
-                return result;
+            public boolean test() throws Exception {
+                File filesWithExpectedExtension[] = destinationFolder.listFiles(new FilenameFilter() {
+                    @Override
+                    public boolean accept(File dir, String name) {
+                        boolean result = false;
+                        for (String filename : expectedFileNames) {
+                            result = result || name.equals(filename + "_0_0." + imageExtension);
+                        }
+                        return result;
+                    }
+                });
+                return expectedFileNames.length == filesWithExpectedExtension.length;
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "Wrong number of file created with the \"" + imageExtension + "\" extension.";
             }
         });
-        assertEquals("Wrong number of file created with the \"" + imageExtension + "\" extension.", expectedFileNames.length, filesWithExpectedExtension.length);
-        File filesWithHTMLExtension[] = destinationFolder.listFiles(new FilenameFilter() {
+
+        bot.waitUntil(new DefaultCondition() {
+
             @Override
-            public boolean accept(File dir, String name) {
-                boolean result = false;
-                for (String filename : expectedFileNames) {
-                    result = result || name.equals(filename + ".html");
-                }
-                return result;
+            public boolean test() throws Exception {
+                File filesWithHTMLExtension[] = destinationFolder.listFiles(new FilenameFilter() {
+                    @Override
+                    public boolean accept(File dir, String name) {
+                        boolean result = false;
+                        for (String filename : expectedFileNames) {
+                            result = result || name.equals(filename + ".html");
+                        }
+                        return result;
+                    }
+                });
+                return expectedFileNames.length == filesWithHTMLExtension.length;
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "Wrong number of file created with the \"html\" extension.";
             }
         });
-        assertEquals("Wrong number of file created with the \"html\" extension.", expectedFileNames.length, filesWithHTMLExtension.length);
     }
 
     private void valideExportResult() throws Exception {
