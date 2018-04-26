@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,8 +22,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescripti
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * This class helps to use the Imported Diagram and Diagram Extension on Sirius
- * .
+ * This class helps to use the Imported Diagram and Diagram Extension on Sirius .
  * 
  * @author amartin
  */
@@ -33,21 +32,28 @@ public final class ComponentizationHelper {
     }
 
     /**
-     * Tests whether a representation extension applies to an existing
-     * representation.
+     * Tests whether a representation extension applies to an existing representation.
      * 
      * @param extension
      *            the extension
      * @param representation
      *            the existing representation
-     * @return <code>true</code> if the extension applies to the specified
-     *         representation.
+     * @return <code>true</code> if the extension applies to the specified representation.
      */
     public static boolean extensionAppliesTo(final RepresentationExtensionDescription extension, final DRepresentation representation) {
         return ComponentizationHelper.match(DialectManager.INSTANCE.getDescription(representation), extension);
     }
 
-    private static boolean match(final RepresentationDescription representationDescription, final RepresentationExtensionDescription representationExtensionDescription) {
+    /**
+     * Tests whether a representation description extension applies to an existing representation description.
+     * 
+     * @param representationDescription
+     *            the representationDescription
+     * @param representationExtensionDescription
+     *            the existing representationExtensionDescription
+     * @return <code>true</code> if the extension applies to the specified representationDescription.
+     */
+    public static boolean match(final RepresentationDescription representationDescription, final RepresentationExtensionDescription representationExtensionDescription) {
         if (representationDescription == null) {
             return false;
         }
@@ -56,8 +62,7 @@ public final class ComponentizationHelper {
 
     private static boolean match(final EObject desc, final String descName, final RepresentationExtensionDescription representationExtensionDescription) {
         /*
-         * desc.eContainer might be null if desc is a proxy and we can't resolve
-         * it.
+         * desc.eContainer might be null if desc is a proxy and we can't resolve it.
          */
         final EObject container = desc.eContainer();
         if (container != null) {
@@ -73,15 +78,13 @@ public final class ComponentizationHelper {
     }
 
     /**
-     * Check if one of the representation descriptions of the given baseSirius
-     * is extended by at least one representation extension descriptions of the
-     * given extensionSirius.
+     * Check if one of the representation descriptions of the given baseSirius is extended by at least one
+     * representation extension descriptions of the given extensionSirius.
      * 
      * @param extensionSirius
      *            the extension Sirius that may extends the given base viewpoint
      * @param baseSirius
-     *            the base Sirius which may be extended by the given extension
-     *            Sirius
+     *            the base Sirius which may be extended by the given extension Sirius
      * @return true if the extensionSirius extends the baseSirius
      */
     public static boolean isExtendedBy(final Viewpoint extensionSirius, final Viewpoint baseSirius) {

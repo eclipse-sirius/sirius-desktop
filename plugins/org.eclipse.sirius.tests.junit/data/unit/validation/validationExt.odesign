@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="validationExt" version="12.0.0.2017041100">
+  <ownedViewpoints name="ValidationExt" modelFileExtension="*.ecore">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DiagramExtension" viewpointURI="viewpoint:/org.eclipse.sirius.tests.junit/Ticket 1666" representationName="Validation">
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="NameSizeRule" message="Name must start with p" targetClass="ecore::EClass">
+          <audits auditExpression="aql:self.name.startsWith('p')"/>
+        </ownedRules>
+      </validationSet>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

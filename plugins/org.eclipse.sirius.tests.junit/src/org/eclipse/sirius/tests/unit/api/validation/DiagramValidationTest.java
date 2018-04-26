@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,9 @@ package org.eclipse.sirius.tests.unit.api.validation;
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -55,13 +58,19 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
 
     private static final String MODELER_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/validation/ticket1666.odesign";
 
+    private static final String MODELER_PATH_EXT = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/validation/validationExt.odesign";
+
     private static final String VIEWPOINT_NAME = "Ticket 1666";
+
+    private static final String VIEWPOINT_EXT_NAME = "ValidationExt";
 
     private static final String REPRESENTATION_DESC_NAME = "Validation";
 
     private static final String REPRESENTATION_DESC_NAME_BREAKDOWN = "Breakdown";
 
     private static final String ECLASS_NAME = "demo2";
+
+    private static final String VALIDATION_RULE_EXT_MESSAGE = "Name must start with p";
 
     private DDiagram diagram;
 
@@ -83,15 +92,17 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
         DiagramPlugin.getDefault().getLog().addLogListener(logListener);
         DiagramUIPlugin.getPlugin().getLog().addLogListener(logListener);
 
-        genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
+        genericSetUp(Collections.singleton(SEMANTIC_MODEL_PATH), Arrays.asList(MODELER_PATH, MODELER_PATH_EXT), null);
 
         initViewpoint(VIEWPOINT_NAME);
+        initViewpoint(VIEWPOINT_EXT_NAME);
         subTicket1666_1EPackage = ((EPackage) semanticModel).getESubpackages().get(1);
         rootEPackage = ((EPackage) semanticModel).getESubpackages().get(2);
     }
 
     /**
-     * Test case. It checks that source point location of a specific edge does not change after zoom in operation.
+     * Check that validation is correctly done. </br>
+     * Check also that rules that are in diagram extension are correctly found.
      * 
      * @throws Exception
      *             Test error.
@@ -111,14 +122,26 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
         WorkbenchPartDescriptor workbenchPartDescriptor = new WorkbenchPartDescriptor(editorPart.getSite().getId(), editorPart.getClass(), editorPart.getSite().getPage());
         ValidateAction va = new ValidateAction(workbenchPartDescriptor);
         va.run();
+        TestsUtil.synchronizationWithUIThread();
 
         assertTrue("Validation constraint has not been called", ConstraintStub.hasBeenCalled());
 
         // Get session .aird file to find validation warnings
         IFile file = WorkspaceSynchronizer.getFile(session.getSessionResource());
         file.refreshLocal(1, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
         IMarker[] findUIMarkers = file.findMarkers(SiriusMarkerNavigationProvider.MARKER_TYPE, true, IResource.DEPTH_INFINITE);
         assertTrue("At least one marker must be found", findUIMarkers.length >= 1);
+
+        boolean foundRuleInDiagExtension = Arrays.asList(findUIMarkers).stream().filter(m -> {
+            try {
+                return VALIDATION_RULE_EXT_MESSAGE.equals(m.getAttribute(IMarker.MESSAGE));
+            } catch (CoreException e) {
+            }
+            return false;
+        }).count() > 0.;
+        assertTrue("Marker created by validation in the diagramExtension of other viewpoint was not found", foundRuleInDiagExtension);
 
         boolean found = false;
         for (int i = 0; i < findUIMarkers.length && !found; i++) {
@@ -139,11 +162,11 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test there is only one error by elements not validated and not many errors message duplicate for same element.
-     * See VP-2940
+     * Test there is only one error by elements not validated and not many
+     * errors message duplicate for same element. See VP-2940
      * 
-     * Also check that there is only one semantic error for the root element. See
-     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=441642
+     * Also check that there is only one semantic error for the root element.
+     * See https://bugs.eclipse.org/bugs/show_bug.cgi?id=441642
      * 
      * @throws CoreException
      *             Test errors.
@@ -206,8 +229,8 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
      * @param foundMarkers
      *            markers found
      * @param expectedNbViewMarker
-     *            expected number of view marker for the first {@link DNode} with target equals to
-     *            {@code semanticElement}
+     *            expected number of view marker for the first {@link DNode}
+     *            with target equals to {@code semanticElement}
      * @param expectedNbSemanticMarker
      *            expected number of semantic marker for {@code semanticElement}
      */
