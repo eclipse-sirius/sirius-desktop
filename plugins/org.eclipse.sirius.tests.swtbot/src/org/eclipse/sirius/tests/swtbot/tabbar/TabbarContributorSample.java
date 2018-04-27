@@ -118,6 +118,7 @@ public class TabbarContributorSample extends AbstractTabbarContributor {
             diagramElementContributionItems.add(createCopyFormatContribution(part));
             diagramElementContributionItems.add(createSizeBothContribution(part));
             diagramElementContributionItems.add(createAutoSizeContribution(part));
+            diagramElementContributionItems.add(createStraightenContribution());
         }
         return diagramElementContributionItems;
     }

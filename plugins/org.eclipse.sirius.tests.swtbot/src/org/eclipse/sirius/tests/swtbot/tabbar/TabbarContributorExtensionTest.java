@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -107,7 +107,7 @@ public class TabbarContributorExtensionTest extends AbstractSiriusSwtBotGefTestC
         selectDiagramElement();
         SWTBotUtils.waitAllUiEvents();
         int count = getTabbarItemsCount();
-        assertEquals("The custom tabbar should be registered", 24, count);
+        assertEquals("The custom tabbar should be registered", 25, count);
         selectDiagram();
         SWTBotUtils.waitAllUiEvents();
         count = getTabbarItemsCount();

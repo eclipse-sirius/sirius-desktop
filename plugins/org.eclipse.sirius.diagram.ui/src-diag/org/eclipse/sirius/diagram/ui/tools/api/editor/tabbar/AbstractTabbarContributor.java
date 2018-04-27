@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -498,4 +498,13 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
         return contributorFactory.createAutoSizeContribution(part);
     }
 
+    /**
+     * Creates the straighten to contribution item. This menu contains several operations which can be used to
+     * straighten to different positions edges.
+     * 
+     * @return the {@link IContributionItem}.
+     */
+    protected IContributionItem createStraightenContribution() {
+        return contributorFactory.createStraightenContribution();
+    }
 }
