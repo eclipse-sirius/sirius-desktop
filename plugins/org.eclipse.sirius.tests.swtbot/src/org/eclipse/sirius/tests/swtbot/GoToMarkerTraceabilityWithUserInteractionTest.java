@@ -647,8 +647,9 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
                 return "The fix has not been applied (Class \"A\" should be renamed in \"AFixed\").";
             }
         });
+        SWTBotUtils.waitAllUiEvents();
         long oldTimeOut = SWTBotPreferences.TIMEOUT;
-        SWTBotPreferences.TIMEOUT = 500;
+        SWTBotPreferences.TIMEOUT = 2000;
         try {
             bot.waitUntil(new DefaultCondition() {
 
