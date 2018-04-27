@@ -44,7 +44,8 @@ import org.eclipse.ui.IEditorReference;
 import com.google.common.collect.Lists;
 
 /**
- * Test the service implementation navigation from VSM service call in interpreted expressions.
+ * Test the service implementation navigation from VSM service call in
+ * interpreted expressions.
  * 
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
@@ -55,6 +56,11 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     private final class JavaEditorOpenedCondition implements ICondition {
         private boolean javaEditorOpened;
 
+        /**
+         * @param javaEditorOpened
+         *            true if the Java editor should be opened at some point.
+         *            False it should never be opened.
+         */
         public JavaEditorOpenedCondition(boolean javaEditorOpened) {
             this.javaEditorOpened = javaEditorOpened;
         }
@@ -90,6 +96,8 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
 
     private SWTBotView propertiesBot;
 
+    private SWTBotTreeItem diagramRepresentationDescription;
+
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         super.onSetUpBeforeClosingWelcomePage();
@@ -110,17 +118,19 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Initialize the context by copying new resources and waiting all build process.
+     * Initialize the context by copying new resources and waiting all build
+     * process.
      * 
      * @exception InterruptedException
      *                if this thread is interrupted while waiting
      * @exception OperationCanceledException
      *                if the progress monitor is canceled while waiting
      * @exception CoreException
-     *                In case of problem during setting workspace description to disable auto build.
+     *                In case of problem during setting workspace description to
+     *                disable auto build.
      * @throws CommandException
      */
-    private void initContext(List<String> nodes) throws InterruptedException, OperationCanceledException, CoreException, CommandException {
+    private void initContext(List<String> nodes, boolean selectPropertyField) throws InterruptedException, OperationCanceledException, CoreException, CommandException {
         designerPerspectives.openSiriusPerspective();
 
         // Copy the sample ecore model for type completion
@@ -168,15 +178,19 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
         for (String node : nodes) {
             lastExpandNode = lastExpandNode.expandNode(node);
         }
+        diagramRepresentationDescription = lastExpandNode;
         lastExpandNode.select();
 
-        propertiesBot = bot.viewByTitle("Properties");
-        propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("General");
+        if (selectPropertyField) {
+            propertiesBot = bot.viewByTitle("Properties");
+            propertiesBot.setFocus();
+            SWTBotSiriusHelper.selectPropertyTabItem("General");
+        }
     }
 
     /**
-     * There is problem on linux with this test so we are waiting build or refresh jobs by joining them.
+     * There is problem on linux with this test so we are waiting build or
+     * refresh jobs by joining them.
      */
     private void waitJobsBuildOrRefresh() throws InterruptedException, OperationCanceledException {
         Job.getJobManager().join(ResourcesPlugin.FAMILY_MANUAL_BUILD, new NullProgressMonitor());
@@ -187,12 +201,14 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the service interpreter.</li>
      * <li>The cursor is at the starting position</li>
      * <li>The service called is present in two different classes</li>
-     * <li>The service from which the navigation is done is the first one in the wizard.</li>
+     * <li>The service from which the navigation is done is the first one in the
+     * wizard.</li>
      * </ul>
      * 
      * @exception Exception
@@ -206,12 +222,57 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Tests that double clicking a Java service declaration will open
+     * corresponding Java editor.
+     * 
+     * @exception Exception
+     *                if a problem occurs.
+     */
+    public void testServiceNavigationFromJavaExtensionDefinition() throws Exception {
+        initContext(Lists.newArrayList("test", "VP"), false);
+        SWTBotTreeItem javaExtensionItem = diagramRepresentationDescription.expandNode("org.eclipse.sirius.test.design.BasicService").select();
+        javaExtensionItem.doubleClick();
+        TestsUtil.waitUntil(new JavaEditorOpenedCondition(true));
+    }
+
+    /**
+     * Tests that double clicking a Java service declaration pointing at an
+     * unknown class opens a dialog with an error message.
+     * 
+     * @exception Exception
+     *                if a problem occurs.
+     */
+    public void testServiceNavigationFromJavaExtensionDefinitionError() throws Exception {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+        initContext(Lists.newArrayList("test", "VP"), false);
+
+        SWTBotTreeItem javaExtensionItem = diagramRepresentationDescription.expandNode("org.eclipse.sirius.test.design.BasicService").select();
+
+        propertiesBot = bot.viewByTitle("Properties");
+        propertiesBot.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("General");
+        SWTBotText text = propertiesBot.bot().text(0);
+
+        text.setFocus();
+        text.setText("wrong service");
+        javaExtensionItem.doubleClick();
+
+        String message = bot.activeShell().getText();
+        assertEquals("An error dialog should have opened.", "Service class opening failure", message);
+
+    }
+
+    /**
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the service interpreter.</li>
      * <li>The cursor is at the starting position</li>
      * <li>The service called is present in two different classes</li>
-     * <li>The service from which the navigation is done is the second one in the wizard.</li>
+     * <li>The service from which the navigation is done is the second one in
+     * the wizard.</li>
      * </ul>
      * 
      * @exception Exception
@@ -225,7 +286,8 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the service interpreter.</li>
      * <li>The cursor is at the 12 index position</li>
@@ -241,11 +303,13 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the starting position</li>
-     * <li>No service should be detected at the cursor position. So nothing should be done.</li>
+     * <li>No service should be detected at the cursor position. So nothing
+     * should be done.</li>
      * </ul>
      * 
      * @exception Exception
@@ -256,11 +320,13 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the last position</li>
-     * <li>No service should be detected at the cursor position. So nothing should be done.</li>
+     * <li>No service should be detected at the cursor position. So nothing
+     * should be done.</li>
      * </ul>
      * 
      * @exception Exception
@@ -271,11 +337,13 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the 27 index position</li>
-     * <li>No service should be detected at the cursor position. So nothing should be done.</li>
+     * <li>No service should be detected at the cursor position. So nothing
+     * should be done.</li>
      * </ul>
      * 
      * @exception Exception
@@ -286,12 +354,15 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the 13 index position</li>
-     * <li>The service call at cursor position is present in two different classes</li>
-     * <li>The service from which the navigation is done is the second one in the wizard.</li>
+     * <li>The service call at cursor position is present in two different
+     * classes</li>
+     * <li>The service from which the navigation is done is the second one in
+     * the wizard.</li>
      * </ul>
      * 
      * @exception Exception
@@ -305,12 +376,15 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the 9 index position</li>
-     * <li>The service call at cursor position is present in two different classes</li>
-     * <li>The service from which the navigation is done is the second one in the wizard.</li>
+     * <li>The service call at cursor position is present in two different
+     * classes</li>
+     * <li>The service from which the navigation is done is the second one in
+     * the wizard.</li>
      * </ul>
      * 
      * @exception Exception
@@ -324,12 +398,15 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the 23 index position</li>
-     * <li>The service call at cursor position is present in two different classes</li>
-     * <li>The service from which the navigation is done is the second one in the wizard.</li>
+     * <li>The service call at cursor position is present in two different
+     * classes</li>
+     * <li>The service from which the navigation is done is the second one in
+     * the wizard.</li>
      * </ul>
      * 
      * @exception Exception
@@ -343,7 +420,8 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the 38 index position</li>
@@ -359,18 +437,22 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Tests that Java service navigation from VSM expression is the expected one.
+     * Tests that Java service navigation from VSM expression is the expected
+     * one.
      * 
      * @param vsmExpression
      *            the VSM expression used to test Java service navigation.
      * @param matchingJavaServiceNumber
-     *            the number of Java service that should be proposed for navigation.
+     *            the number of Java service that should be proposed for
+     *            navigation.
      * @param expectedItemLabels
      *            The Java service item's labels in their wizard's order.
      * @param javaServiceIndex
-     *            the index of the Java service item to open with Java editor when in Java service navigation wizard.
+     *            the index of the Java service item to open with Java editor
+     *            when in Java service navigation wizard.
      * @param cursorPosition
-     *            the cursor position in the VSM expression before triggering navigation with F3 key.
+     *            the cursor position in the VSM expression before triggering
+     *            navigation with F3 key.
      * 
      * @throws InterruptedException
      *             if a problem occurs.
@@ -385,7 +467,7 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
             return;
         }
 
-        initContext(Lists.newArrayList("test", "VP", "Diag"));
+        initContext(Lists.newArrayList("test", "VP", "Diag"), true);
 
         // Init the Precondition Expression
         SWTBotText precondition = propertiesBot.bot().text(3);

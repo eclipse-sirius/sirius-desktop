@@ -36,6 +36,15 @@ public final class Messages {
     @TranslatableMessage
     public static String ServiceNavigator_serviceNavigationDialog_description;
 
+    @TranslatableMessage
+    public static String CustomSiriusEditor_failedNavigationTitle;
+
+    @TranslatableMessage
+    public static String CustomSiriusEditor_failedNavigationMessage;
+
+    @TranslatableMessage
+    public static String CustomSiriusEditor_failedNavigationExceptionMessage;
+
     // CHECKSTYLE:ON
     private Messages() {
         // Prevents instanciation.

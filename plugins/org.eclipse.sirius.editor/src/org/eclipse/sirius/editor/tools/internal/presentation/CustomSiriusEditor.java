@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.presentation;
 
+import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.EventObject;
 import java.util.HashMap;
@@ -18,9 +19,13 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.ui.URIEditorInput;
@@ -33,11 +38,17 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.ui.JavaUI;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
@@ -55,6 +66,7 @@ import org.eclipse.sirius.business.internal.migration.description.VSMMigrationSe
 import org.eclipse.sirius.business.internal.migration.description.VSMResourceHandler;
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.eclipse.sirius.common.ui.tools.api.editor.IEObjectNavigable;
+import org.eclipse.sirius.editor.Messages;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.properties.validation.SiriusInterpreterErrorDecorator;
@@ -62,13 +74,16 @@ import org.eclipse.sirius.editor.tools.internal.actions.ValidateAction;
 import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPathEditorInput;
 import org.eclipse.ui.IURIEditorInput;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -88,8 +103,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
          * Constructor.
          * 
          * @param resourceSet
-         *            the resource set to use for the conversion of physical URIs to
-         *            logical <code>viewpoint:/</code> URIs on save..
+         *            the resource set to use for the conversion of physical URIs to logical <code>viewpoint:/</code>
+         *            URIs on save..
          */
         ViewpointURIHandler(ResourceSet resourceSet) {
             this.resourceSet = Preconditions.checkNotNull(resourceSet);
@@ -229,9 +244,13 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                             if (original != null) {
                                 setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(original)));
                             }
+                        } else if (selectedEObject instanceof JavaExtension) {
+                            navigateToJavaExtension((JavaExtension) selectedEObject);
                         }
+
                     }
                 }
+
             });
 
             revealRepresentationDescriptions();
@@ -241,6 +260,39 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             tbm.update(true);
         }
         editingDomain.getResourceSet().eAdapters().add(templateUpdateTrigger);
+    }
+
+    private void navigateToJavaExtension(JavaExtension ext) {
+        String className = ext.getQualifiedClassName();
+        Optional<IJavaProject> enclosingJavaProject = getEnclosingJavaProject(ext);
+        enclosingJavaProject.ifPresent(prj -> {
+            try {
+                IType serviceClass = prj.findType(className);
+                if (serviceClass != null && serviceClass.exists()) {
+                    JavaUI.openInEditor(serviceClass);
+                } else {
+                    MessageDialog.openError(Display.getCurrent().getActiveShell(), Messages.CustomSiriusEditor_failedNavigationTitle,
+                            MessageFormat.format(Messages.CustomSiriusEditor_failedNavigationMessage, className));
+                }
+            } catch (PartInitException | JavaModelException e) {
+                SiriusEditorPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditorPlugin.PLUGIN_ID, e.getMessage(), e));
+                MessageDialog.openError(Display.getCurrent().getActiveShell(), Messages.CustomSiriusEditor_failedNavigationTitle,
+                        MessageFormat.format(Messages.CustomSiriusEditor_failedNavigationExceptionMessage, className));
+            }
+        });
+
+    }
+
+    private Optional<IJavaProject> getEnclosingJavaProject(EObject element) {
+        Resource vsm = element.eResource();
+        if (vsm.getURI().isPlatformResource()) {
+            String projectName = vsm.getURI().segment(1);
+            IProject rawProject = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+            if (rawProject != null && rawProject.exists()) {
+                return Optional.ofNullable(JavaCore.create(rawProject));
+            }
+        }
+        return Optional.empty();
     }
 
     private void addTooBarActions(final ToolBarManager tbm) {
