@@ -115,6 +115,12 @@ public class EnumSetLayoutOptionValuePropertySection extends AbstractEditorDialo
         super.createControls(parent, tabbedPropertySheetPage);
         eObject = layoutOption;
 
+        ((FormData) text.getLayoutData()).right = new FormAttachment(91, 0);
+        ((FormData) button.getLayoutData()).left = new FormAttachment(91, 0);
+        ((FormData) button.getLayoutData()).right = new FormAttachment(94, 0);
+
+        removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(button, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
+
         help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
         data.top = new FormAttachment(text, 0, SWT.TOP);
@@ -123,11 +129,6 @@ public class EnumSetLayoutOptionValuePropertySection extends AbstractEditorDialo
         help.setImage(getHelpIcon());
         help.setToolTipText(layoutOption.getDescription());
 
-        ((FormData) text.getLayoutData()).right = new FormAttachment(91, 0);
-        ((FormData) button.getLayoutData()).left = new FormAttachment(91, 0);
-        ((FormData) button.getLayoutData()).right = new FormAttachment(95, 10);
-
-        removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(button, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
     }
 
     @Override

@@ -13,6 +13,7 @@ package org.eclipse.sirius.editor.properties.sections.description.layoutoption;
 import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.editor.properties.sections.description.booleanlayoutoption.BooleanLayoutOptionValuePropertySection;
+import org.eclipse.sirius.editor.Messages;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -56,13 +57,18 @@ public class BooleanLayoutOptionValuePropertySectionSpec extends BooleanLayoutOp
 
     @Override
     protected String getLabelText() {
-        return layoutOption.getLabel() == null ? "Value" : layoutOption.getLabel();
+        return layoutOption.getLabel() == null ? Messages.LayoutOptionValue_defaultLabel : layoutOption.getLabel();
     }
 
     @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         eObject = layoutOption;
+
+        // we set the checkbox right position to 94 to let some space for option removal button.
+        ((FormData) checkbox.getLayoutData()).right = new FormAttachment(94, 0);
+
+        removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(checkbox, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
 
         help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
@@ -72,10 +78,6 @@ public class BooleanLayoutOptionValuePropertySectionSpec extends BooleanLayoutOp
         help.setImage(getHelpIcon());
         help.setToolTipText(layoutOption.getDescription());
 
-        // we set the checkbox right position to 96 to let some space for option removal button.
-        ((FormData) checkbox.getLayoutData()).right = new FormAttachment(95, 10);
-
-        removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(checkbox, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
     }
 
     @Override

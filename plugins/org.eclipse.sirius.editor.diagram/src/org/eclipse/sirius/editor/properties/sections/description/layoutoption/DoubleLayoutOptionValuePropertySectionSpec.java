@@ -66,7 +66,9 @@ public class DoubleLayoutOptionValuePropertySectionSpec extends DoubleLayoutOpti
         eObject = layoutOption;
 
         FormData layoutData = (FormData) text.getLayoutData();
-        layoutData.right = new FormAttachment(95, 10);
+        layoutData.right = new FormAttachment(94, 0);
+
+        removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(text, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
 
         help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
@@ -76,7 +78,6 @@ public class DoubleLayoutOptionValuePropertySectionSpec extends DoubleLayoutOpti
         help.setImage(getHelpIcon());
         help.setToolTipText(getToolTipText());
 
-        removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(text, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
     }
 
     @Override

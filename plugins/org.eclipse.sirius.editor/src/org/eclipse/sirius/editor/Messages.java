@@ -52,6 +52,21 @@ public final class Messages {
     @TranslatableMessage
     public static String CustomSiriusEditor_failedNavigationExceptionMessage;
 
+    @TranslatableMessage
+    public static String AddOptionOverridePropertySection_dialogTitle;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_optionNameColumnLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_optionTypeColumnLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_optionDefaultValueColumnLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_tableLabel;
+
     // CHECKSTYLE:ON
     private Messages() {
         // Prevents instanciation.

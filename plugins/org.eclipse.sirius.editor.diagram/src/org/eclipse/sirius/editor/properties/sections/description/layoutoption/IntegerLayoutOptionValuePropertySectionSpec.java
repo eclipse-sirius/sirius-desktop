@@ -66,7 +66,9 @@ public class IntegerLayoutOptionValuePropertySectionSpec extends IntegerLayoutOp
         eObject = layoutOption;
 
         FormData layoutData = (FormData) spinner.getLayoutData();
-        layoutData.right = new FormAttachment(95, 10);
+        layoutData.right = new FormAttachment(94, 0);
+
+        removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(spinner, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
 
         help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
@@ -76,7 +78,6 @@ public class IntegerLayoutOptionValuePropertySectionSpec extends IntegerLayoutOp
         help.setImage(getHelpIcon());
         help.setToolTipText(layoutOption.getDescription());
 
-        removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(spinner, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
     }
 
     @Override

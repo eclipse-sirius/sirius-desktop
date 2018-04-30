@@ -11,16 +11,13 @@
 package org.eclipse.sirius.diagram.internal.description.provider;
 
 import java.util.Collection;
-import java.util.Map;
+import java.util.Collections;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
-import org.eclipse.sirius.diagram.description.EnumOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.provider.CustomLayoutConfigurationItemProvider;
-import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * Customize the label of {@link GenericLayout} items in VSM editor. Also override child descriptor to propose available
@@ -49,28 +46,10 @@ public class CustomLayoutConfigurationItemProviderSpec extends CustomLayoutConfi
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        Map<String, CustomLayoutAlgorithm> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutAlgorithms();
-        CustomLayoutConfiguration layout = (CustomLayoutConfiguration) object;
-
-        CustomLayoutAlgorithm genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getId());
-        if (genericLayoutProviderSupplier != null) {
-            Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
-            for (LayoutOption layoutOption : layoutOptions.values()) {
-                LayoutOption copy = EcoreUtil.copy(layoutOption);
-                if (copy instanceof EnumOption) {
-                    ((EnumOption) copy).getChoices().clear();
-                }
-                newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, copy));
-            }
-        }
     }
 
     @Override
-    public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-        if (child instanceof LayoutOption) {
-            return ((LayoutOption) child).getLabel();
-        }
-
-        return super.getCreateChildText(owner, feature, child, selection);
+    public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+        return Collections.emptyList();
     }
 }

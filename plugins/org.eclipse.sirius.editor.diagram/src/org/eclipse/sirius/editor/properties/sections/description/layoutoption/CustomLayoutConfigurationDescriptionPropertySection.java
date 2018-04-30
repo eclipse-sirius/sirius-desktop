@@ -23,6 +23,8 @@ import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
@@ -34,7 +36,7 @@ public class CustomLayoutConfigurationDescriptionPropertySection extends Abstrac
     /**
      * The description widget.
      */
-    protected CLabel description;
+    protected Label description;
 
     /**
      * The high level composite containing the widgets.
@@ -67,13 +69,15 @@ public class CustomLayoutConfigurationDescriptionPropertySection extends Abstrac
             descriptionString = customLayoutAlgorithm.getDescription() == null ? "" : customLayoutAlgorithm.getDescription();
         }
 
-        description = getWidgetFactory().createCLabel(composite, descriptionString, SWT.MULTI | SWT.WRAP);
+        description = new Label(composite, SWT.WRAP);
+        description.setText(descriptionString);
         data = new FormData();
         data.left = new FormAttachment(0, LABEL_WIDTH);
         data.right = new FormAttachment(100, 0);
         data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);
         data.width = 100;
         description.setLayoutData(data);
+        description.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 
         nameLabel = getWidgetFactory().createCLabel(composite, customLayoutAlgorithm.getLabel());
         data = new FormData();

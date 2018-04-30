@@ -142,6 +142,10 @@ public class EnumLayoutOptionValuePropertySection extends AbstractComboPropertyS
         super.createControls(parent, tabbedPropertySheetPage);
         eObject = layoutOption;
 
+        ((FormData) combo.getLayoutData()).right = new FormAttachment(94, 0);
+
+        removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(combo, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
+
         help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
         data.top = new FormAttachment(combo, 0, SWT.TOP);
@@ -150,9 +154,6 @@ public class EnumLayoutOptionValuePropertySection extends AbstractComboPropertyS
         help.setImage(getHelpIcon());
         help.setToolTipText(layoutOption.getDescription());
 
-        ((FormData) combo.getLayoutData()).right = new FormAttachment(95, 10);
-
-        removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(combo, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
     }
 
     @Override

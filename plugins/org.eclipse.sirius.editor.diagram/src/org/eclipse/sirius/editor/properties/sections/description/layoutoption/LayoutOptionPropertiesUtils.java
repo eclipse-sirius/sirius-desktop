@@ -74,8 +74,7 @@ public final class LayoutOptionPropertiesUtils {
         Image removeImage = ExtendedImageRegistry.INSTANCE.getImage(DiagramUIPlugin.getPlugin().getImage(DELETE_OPTION_IMAGE_NAME));
         Button removeOverrideButton = widgetFactory.createButton(containerComposite, "", SWT.PUSH);
         FormData data = new FormData();
-        data.left = new FormAttachment(96, 0);
-        data.right = new FormAttachment(100, 0);
+        data.left = new FormAttachment(valueComposite, 5);
         data.top = new FormAttachment(valueComposite, 0, SWT.CENTER);
         removeOverrideButton.setLayoutData(data);
         removeOverrideButton.setImage(removeImage);
