@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,15 +21,17 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ExportAsImageHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.hamcrest.Matchers;
 
 /**
@@ -126,6 +128,7 @@ public class ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest extends
         // Export a first representation with small size.
         exportAsImageFromEditorTabBar("JPG");
         valideExportResult("jpg", "sub", SMALL_SIZE, REPRESENTATION_INSTANCE_NAME_FOR_TRANSIENT_SESSION);
+        editor.close();
 
         sessionAirdResource = new UIResource(designerProject, FILE_DIR + "sub" + FILE_DIR, TRANSIENT_SESSION);
         openDiagram(sessionAirdResource);
@@ -133,6 +136,7 @@ public class ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest extends
         // Export a second representation with big size.
         exportAsImageFromEditorTabBar("JPG");
         valideExportResult("jpg", "sub", BIG_SIZE, REPRESENTATION_INSTANCE_NAME_FOR_TRANSIENT_SESSION);
+        editor.close();
 
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         openDiagram(sessionAirdResource);
@@ -140,6 +144,7 @@ public class ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest extends
         // Export a third representation with middle size.
         exportAsImageFromEditorTabBar("JPG");
         valideExportResult("jpg", "sub", MIDDLE_SIZE, REPRESENTATION_INSTANCE_NAME_FOR_TRANSIENT_SESSION);
+        editor.close();
 
         // Remove error log because errors in error log are normal.
         errors.clear();
@@ -158,22 +163,35 @@ public class ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest extends
     }
 
     private void valideExportResult(final String imageExtension, String newFolderName, int imageSize, final String... expectedFileNames) throws Exception {
-        File destinationFolder = new File(ResourcesPlugin.getWorkspace().getRoot().getProject(designerProject.getName()).getLocation().toOSString());
+        File destinationFolder;
         if (newFolderName != null) {
-            destinationFolder = new File(destinationFolder.getAbsolutePath() + File.separator + newFolderName);
+            destinationFolder = new File(ResourcesPlugin.getWorkspace().getRoot().getProject(designerProject.getName()).getLocation().toOSString() + File.separator + newFolderName);
+        } else {
+            destinationFolder = new File(ResourcesPlugin.getWorkspace().getRoot().getProject(designerProject.getName()).getLocation().toOSString());
         }
-        // Check that files exists
-        File filesWithExpectedExtension[] = destinationFolder.listFiles(new FilenameFilter() {
+        // Wait that files exists
+        bot.waitUntil(new DefaultCondition() {
+
             @Override
-            public boolean accept(File dir, String name) {
-                boolean result = false;
-                for (String filename : expectedFileNames) {
-                    result = result || name.equals(filename + "." + imageExtension);
-                }
-                return result;
+            public boolean test() throws Exception {
+                File filesWithExpectedExtension[] = destinationFolder.listFiles(new FilenameFilter() {
+                    @Override
+                    public boolean accept(File dir, String name) {
+                        boolean result = false;
+                        for (String filename : expectedFileNames) {
+                            result = result || name.equals(filename + "." + imageExtension);
+                        }
+                        return result;
+                    }
+                });
+                return expectedFileNames.length == filesWithExpectedExtension.length;
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "Wrong number of file created with the \"" + imageExtension + "\" extension.";
             }
         });
-        assertEquals("Wrong number of file created with the \"" + imageExtension + "\" extension.", expectedFileNames.length, filesWithExpectedExtension.length);
         // Compare size of exported image.
         for (String filename : expectedFileNames) {
             IFile iFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(getProjectName() + FILE_DIR + filename + "." + imageExtension));
@@ -184,9 +202,6 @@ public class ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest extends
 
     private void openDiagram(UIResource sessionAirdResource) {
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        SWTBotTreeItem tree = localSession.getRootSessionTreeItem().expand().expandNode("Representations per category");
-        tree.select("Design");
-        SWTBotUtils.waitAllUiEvents();
-        tree.expandNode("Design").expandNode("Entities").expandNode("package entities").doubleClick();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "package entities", DSemanticDiagram.class, true, true);
     }
 }
