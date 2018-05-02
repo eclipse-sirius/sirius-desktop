@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,9 +19,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
-import org.eclipse.sirius.tests.swtbot.support.api.widget.ContextualMenuItemGetter;
+import org.eclipse.sirius.tests.swtbot.support.api.widget.ContextualMenuItemAvailable;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -173,13 +172,10 @@ public class NavigationDescriptionFromTableAndTreeTest extends AbstractSiriusSwt
      *            indicates if the open menu should be available
      */
     protected void checkOpenMenuIsAvailable(final SWTBotTree swtBotTree, final SWTBotTreeItem treeItem, final boolean shouldBeAvailable) {
-        boolean customNavigationIsAvailable = true;
         SWTBotUtils.waitAllUiEvents();
         // We only check if the custom open is available
-        Result<MenuItem> menuItemGetter = new ContextualMenuItemGetter(swtBotTree.widget, new String[] { "Open", "custom navigation" });
-        final MenuItem openMenuItem = UIThreadRunnable.syncExec(menuItemGetter);
-
-        customNavigationIsAvailable = openMenuItem != null;
+        Result<Boolean> menuItemGetter = new ContextualMenuItemAvailable(swtBotTree.widget, new String[] { "Open", "custom navigation" });
+        final Boolean customNavigationIsAvailable = UIThreadRunnable.syncExec(menuItemGetter);
 
         if (shouldBeAvailable) {
             assertTrue("The provided open description should be available under the 'Open' menu", customNavigationIsAvailable);
