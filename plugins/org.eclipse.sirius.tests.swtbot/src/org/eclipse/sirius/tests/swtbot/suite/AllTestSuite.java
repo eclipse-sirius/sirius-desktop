@@ -227,12 +227,12 @@ public class AllTestSuite extends TestCase {
         suite.addTest(new JUnit4TestAdapter(DndWorkspaceToAirdEditorTest.class));
         suite.addTestSuite(SessionEditorTest.class);
         suite.addTestSuite(SessionEditorPageProvidingTest.class);
+        suite.addTestSuite(SessionEditorProjectRemovalTest.class);
     }
 
     /**
-     * Add the first part of the SWTbot tests to the specified suite. This
-     * corresponds roughly to the first half of the execution time of the
-     * complete suite.
+     * Add the first part of the SWTbot tests to the specified suite. This corresponds roughly to the first half of the
+     * execution time of the complete suite.
      * 
      * @param suite
      *            the suite into which to add the tests.
@@ -309,9 +309,8 @@ public class AllTestSuite extends TestCase {
     }
 
     /**
-     * Add the second part of the SWTbot tests to the specified suite. This
-     * corresponds roughly to the second half of the execution time of the
-     * complete suite.
+     * Add the second part of the SWTbot tests to the specified suite. This corresponds roughly to the second half of
+     * the execution time of the complete suite.
      * 
      * @param suite
      *            the suite into which to add the tests.
@@ -441,8 +440,7 @@ public class AllTestSuite extends TestCase {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the
-     * disabled test.
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the disabled test.
      * 
      * @return The test suite containing all the disabled tests.
      */

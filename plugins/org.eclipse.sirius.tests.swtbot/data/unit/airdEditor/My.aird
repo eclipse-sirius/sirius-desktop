@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:viewpoint="http://www.obeo.fr/dsl/viewpoint/1.1.0" xsi:schemaLocation="http://www.obeo.fr/dsl/viewpoint/description/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description/style" xmi:id="_b9nr4TqMEeCWa94UuWEtSA" selectedViews="_c5pPQDqMEeCWa94UuWEtSA">
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_c5pPQDqMEeCWa94UuWEtSA" initialized="true">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_gvCzgDqMEeCWa94UuWEtSA" name="deleteFromModelDiagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_gvdDMDqMEeCWa94UuWEtSA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_gvdDMTqMEeCWa94UuWEtSA" type="Viewpoint" element="_gvCzgDqMEeCWa94UuWEtSA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_g2gtcDqMEeCWa94UuWEtSA" type="2001" element="_gzywoDqMEeCWa94UuWEtSA">
+            <children xmi:type="notation:Node" xmi:id="_g2jJsDqMEeCWa94UuWEtSA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_g2jJsTqMEeCWa94UuWEtSA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_g2qecDqMEeCWa94UuWEtSA" type="3003" element="_gzz-wDqMEeCWa94UuWEtSA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_g2qecTqMEeCWa94UuWEtSA" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g2qecjqMEeCWa94UuWEtSA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_g2gtcTqMEeCWa94UuWEtSA" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g2gtcjqMEeCWa94UuWEtSA" x="120" y="126" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_g2kX0DqMEeCWa94UuWEtSA" type="2001" element="_gz1M4DqMEeCWa94UuWEtSA">
+            <children xmi:type="notation:Node" xmi:id="_g2k-4DqMEeCWa94UuWEtSA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_g2k-4TqMEeCWa94UuWEtSA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_g2rskDqMEeCWa94UuWEtSA" type="3003" element="_gz1M4TqMEeCWa94UuWEtSA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_g2rskTqMEeCWa94UuWEtSA" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g2rskjqMEeCWa94UuWEtSA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_g2kX0TqMEeCWa94UuWEtSA" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g2kX0jqMEeCWa94UuWEtSA" x="120" y="36" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_g2ll8DqMEeCWa94UuWEtSA" type="2001" element="_gz1z8zqMEeCWa94UuWEtSA">
+            <children xmi:type="notation:Node" xmi:id="_g2ll8zqMEeCWa94UuWEtSA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_g2ll9DqMEeCWa94UuWEtSA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_g2s6sDqMEeCWa94UuWEtSA" type="3003" element="_gz2bADqMEeCWa94UuWEtSA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_g2thwDqMEeCWa94UuWEtSA" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g2thwTqMEeCWa94UuWEtSA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_g2ll8TqMEeCWa94UuWEtSA" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g2ll8jqMEeCWa94UuWEtSA" x="60" y="36" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_gvdDMjqMEeCWa94UuWEtSA"/>
+          <edges xmi:type="notation:Edge" xmi:id="_g2zBUDqMEeCWa94UuWEtSA" type="4001" element="_gz6FYDqMEeCWa94UuWEtSA" source="_g2gtcDqMEeCWa94UuWEtSA" target="_g2kX0DqMEeCWa94UuWEtSA">
+            <children xmi:type="notation:Node" xmi:id="_g202gDqMEeCWa94UuWEtSA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g202gTqMEeCWa94UuWEtSA" y="-10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_g2zBUTqMEeCWa94UuWEtSA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_g2zBUjqMEeCWa94UuWEtSA" fontName="Ubuntu" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_g2zBUzqMEeCWa94UuWEtSA" points="[0, -15, 0, 75]$[0, -75, 0, 15]"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_gzywoDqMEeCWa94UuWEtSA" name="C1" outgoingEdges="_gz6FYDqMEeCWa94UuWEtSA" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="My.ecore#//C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//C1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="viewpoint:Square" xmi:id="_gzz-wDqMEeCWa94UuWEtSA">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_gz0l0DqMEeCWa94UuWEtSA"/>
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_gz0l0TqMEeCWa94UuWEtSA"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_gz0l0jqMEeCWa94UuWEtSA" red="138" green="226" blue="52"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="My.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_gz1M4DqMEeCWa94UuWEtSA" name="C2" incomingEdges="_gz6FYDqMEeCWa94UuWEtSA" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="My.ecore#//C2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//C2"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="viewpoint:Square" xmi:id="_gz1M4TqMEeCWa94UuWEtSA">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_gz1z8DqMEeCWa94UuWEtSA"/>
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_gz1z8TqMEeCWa94UuWEtSA"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_gz1z8jqMEeCWa94UuWEtSA" red="138" green="226" blue="52"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="My.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_gz1z8zqMEeCWa94UuWEtSA" name="C3" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="My.ecore#//C3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//C3"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="viewpoint:Square" xmi:id="_gz2bADqMEeCWa94UuWEtSA">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_gz2bATqMEeCWa94UuWEtSA"/>
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_gz2bAjqMEeCWa94UuWEtSA"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_gz2bAzqMEeCWa94UuWEtSA" red="138" green="226" blue="52"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="My.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_gz6FYDqMEeCWa94UuWEtSA" sourceNode="_gzywoDqMEeCWa94UuWEtSA" targetNode="_gz1M4DqMEeCWa94UuWEtSA">
+        <target xmi:type="ecore:EReference" href="My.ecore#//C1/@eStructuralFeatures.0"/>
+        <semanticElements xmi:type="ecore:EReference" href="My.ecore#//C1/@eStructuralFeatures.0"/>
+        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_gz6FYTqMEeCWa94UuWEtSA" size="2">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_gz6FYjqMEeCWa94UuWEtSA"/>
+          <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@edgeMappings[name='edge']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_gz6FYzqMEeCWa94UuWEtSA" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@edgeMappings[name='edge']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_gvDakDqMEeCWa94UuWEtSA"/>
+      <activatedLayers xmi:type="description:Layer" href="My.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']"/>
+  </ownedViews>
+  <models xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  <eAnnotations xmi:type="description:DAnnotationEntry" xmi:id="_b9oS8DqMEeCWa94UuWEtSA" source="Migration">
+    <details>style</details>
+    <details>someViewsAreHiddenDeactivation</details>
+    <details>sequenceAbsoluteBoundsFlag</details>
+  </eAnnotations>
+</viewpoint:DAnalysis>
