@@ -109,6 +109,12 @@
    <feature id="org.eclipse.sirius.specifier.properties.feature.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
+   <feature id="org.eclipse.sirius.workflow.feature" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.workflow.feature.source" version="0.0.0">
+      <category name="Sirius.SQK"/>
+   </feature>
    <feature id="org.eclipse.acceleo.query" version="0.0.0"/>
    <feature id="org.eclipse.acceleo.query.source" version="0.0.0"/>
    <feature id="org.eclipse.acceleo.ui.interpreter" version="0.0.0"/>
