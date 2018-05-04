@@ -597,7 +597,7 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
             bot.waitUntil(closedCondition);
         }
 
-        final SWTBotView problemViewBot = bot.viewByTitle("Problems");
+        final SWTBotView problemViewBot = bot.viewByPartName("Problems");
         problemViewBot.setFocus();
         SWTBotUtils.waitAllUiEvents();
         final SWTBotTree problemTree = problemViewBot.bot().tree();
