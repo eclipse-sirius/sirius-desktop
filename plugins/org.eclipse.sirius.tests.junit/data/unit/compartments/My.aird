@@ -205,7 +205,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_x1r9E0gKEeWO8ekbzmZQXg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_x1rWCEgKEeWO8ekbzmZQXg" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1rWCUgKEeWO8ekbzmZQXg" x="338" y="66" width="166"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1rWCUgKEeWO8ekbzmZQXg" x="338" y="66"/>
           </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_xGlbYkgKEeWO8ekbzmZQXg"/>
         </data>

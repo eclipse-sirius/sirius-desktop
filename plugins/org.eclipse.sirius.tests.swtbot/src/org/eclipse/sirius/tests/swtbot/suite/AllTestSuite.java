@@ -24,6 +24,7 @@ import org.eclipse.sirius.tests.swtbot.clipboard.GenericClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.MultiSessionCopyPasteTest;
 import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsCreationTest;
 import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsDragAndDropTest;
+import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsSizeTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionExpressionTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.BorderNodeSidePropertySectionTest;
@@ -173,6 +174,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(MigrationTest.class);
         suite.addTest(new JUnit4TestAdapter(DragNDropTest.class));
         suite.addTestSuite(OpenDiagramWithClassCastExceptionTest.class);
+        suite.addTestSuite(CompartmentsSizeTest.class);
     }
 
     /**

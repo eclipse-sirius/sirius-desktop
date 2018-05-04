@@ -64,6 +64,8 @@ public interface ICompartmentTests {
 
     String SECOND_REGION_CONTAINER_NAME = "az";
 
+    String SECOND_REGION_CONTAINER_FIRST_PKG_NAME = "aaa";
+
     String FIRST_REGION_NAME = "cccc";
 
     String NEW_REGION_CONTAINER_NAME = "p3";
