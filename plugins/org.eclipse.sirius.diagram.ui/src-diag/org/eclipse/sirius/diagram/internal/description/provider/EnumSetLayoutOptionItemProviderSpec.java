@@ -56,11 +56,13 @@ public class EnumSetLayoutOptionItemProviderSpec extends EnumSetLayoutOptionItem
         EnumSetLayoutOption layoutOption = (EnumSetLayoutOption) object;
         CustomLayoutConfiguration layout = (CustomLayoutConfiguration) layoutOption.eContainer();
         CustomLayoutAlgorithm genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getId());
-        Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
-        EnumSetLayoutOption layoutOptionTemplate = (EnumSetLayoutOption) layoutOptions.get(layoutOption.getId());
-        EList<EnumLayoutValue> choices = layoutOptionTemplate.getChoices();
-        for (EnumLayoutValue enumLayoutValue : choices) {
-            newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ENUM_SET_LAYOUT_OPTION__VALUES, EcoreUtil.copy(enumLayoutValue)));
+        if (genericLayoutProviderSupplier != null) {
+            Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
+            EnumSetLayoutOption layoutOptionTemplate = (EnumSetLayoutOption) layoutOptions.get(layoutOption.getId());
+            EList<EnumLayoutValue> choices = layoutOptionTemplate.getChoices();
+            for (EnumLayoutValue enumLayoutValue : choices) {
+                newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ENUM_SET_LAYOUT_OPTION__VALUES, EcoreUtil.copy(enumLayoutValue)));
+            }
         }
     }
 

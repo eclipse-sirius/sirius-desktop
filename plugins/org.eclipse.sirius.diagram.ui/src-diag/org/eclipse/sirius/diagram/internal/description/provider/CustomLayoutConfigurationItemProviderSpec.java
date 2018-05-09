@@ -53,13 +53,15 @@ public class CustomLayoutConfigurationItemProviderSpec extends CustomLayoutConfi
         CustomLayoutConfiguration layout = (CustomLayoutConfiguration) object;
 
         CustomLayoutAlgorithm genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getId());
-        Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
-        for (LayoutOption layoutOption : layoutOptions.values()) {
-            LayoutOption copy = EcoreUtil.copy(layoutOption);
-            if (copy instanceof EnumOption) {
-                ((EnumOption) copy).getChoices().clear();
+        if (genericLayoutProviderSupplier != null) {
+            Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
+            for (LayoutOption layoutOption : layoutOptions.values()) {
+                LayoutOption copy = EcoreUtil.copy(layoutOption);
+                if (copy instanceof EnumOption) {
+                    ((EnumOption) copy).getChoices().clear();
+                }
+                newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, copy));
             }
-            newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, copy));
         }
     }
 

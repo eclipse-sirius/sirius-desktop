@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layout;
+import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
@@ -86,7 +87,10 @@ public class GenericLayoutProvider implements LayoutProvider {
     private DefaultLayoutProvider getGenericLayoutProvider(final IGraphicalEditPart container) {
         CustomLayoutConfiguration customLayoutConfiguration = getCustomLayoutConfiguration(container);
         if (customLayoutConfiguration != null) {
-            return DiagramUIPlugin.getPlugin().getLayoutAlgorithms().get(customLayoutConfiguration.getId()).getLayoutAlgorithmInstance();
+            CustomLayoutAlgorithm customLayoutAlgorithm = DiagramUIPlugin.getPlugin().getLayoutAlgorithms().get(customLayoutConfiguration.getId());
+            if (customLayoutAlgorithm != null) {
+                return customLayoutAlgorithm.getLayoutAlgorithmInstance();
+            }
         }
         return null;
     }
