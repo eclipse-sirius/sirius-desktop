@@ -8,12 +8,47 @@
 	</head>
 	<body>
 		<h1 id="ProvidingacustomdiagramlayoutalgorithmArrangeAll">Providing a custom diagram layout algorithm (&#8220;Arrange All&#8221;)</h1>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="#ProvidingacustomdiagramlayoutalgorithmArrangeAll">Providing a custom diagram layout algorithm ("Arrange All")</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="#TheArrangeAllfunctionalityinshort">The Arrange All functionality in short</a>
+					</li>
+					<li>
+						<a href="#TheArrangeAllconceptasimplementedbyGMF">The Arrange All concept as implemented by GMF</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#Theviewsandeditparts">The views and edit parts</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#SiriusLayoutingAPI">Sirius Layouting API</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#siriusLayoutProviders">Sirius Layout providers</a>
+							</li>
+							<li>
+								<a href="#Theviewordering">The view ordering</a>
+							</li>
+							<li>
+								<a href="#Writeyourcustomlayoutalgorithm">Write your custom layout algorithm</a>
+							</li>
+							<li>
+								<a href="#IntegrateyourcustomlayoutalgorithmtoSirius">Integrate your custom layout algorithm to Sirius </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
 		<h2 id="TheArrangeAllfunctionalityinshort">The Arrange All functionality in short</h2>
 		<p>The arrange-all functionality is available in Sirius diagram editors in the form of a button and a context menu:</p>
 		<p>
 			<img border="0" src="images/arrange-all/arrange-all-ui.png"/>
 		</p>
-		<p>Its effect is to layout the selected diagram elements (or the whole diagram if no elements are selected) based on the layout algorithm defined for the diagram, or using a default, generic algorithm if nothin is specified. </p>
+		<p>Its effect is to layout the selected diagram elements (or the whole diagram if no elements are selected) based on the layout algorithm defined for the diagram, or using a default, generic algorithm if nothing is specified. </p>
 		<p>By default, there are two different layout algorithm that can be configured in the VSM for a diagram:</p>
 		<ul>
 			<li>The 
@@ -218,6 +253,31 @@
 </code></pre>
 		<h3 id="Writeyourcustomlayoutalgorithm">Write your custom layout algorithm</h3>
 		<p>To create your own layout algorithm with Sirius API you have to subclass one Sirius abstract class depending on what you need to use:</p>
+		<h5 id="DefaultLayoutProvider2">DefaultLayoutProvider</h5>
+		<p>This provider is the recommended one to use if you don&#8217;t need the liberty of composition of others below. If you want to have the capability for specifiers to be able to configure your layout algorithm directly in the VSM you must use this provider.</p>
+		<p>For example the ELK layout algorithms if installed are using it:</p>
+		<pre><code>/**
+ * Layout node provider allowing to apply an ELK layout algorithm while
+ * arranging diagram elements.
+ * 
+ * @author &lt;a href=mailto:pierre.guilet@obeo.fr&gt;Pierre Guilet&lt;/a&gt;
+ *
+ */
+public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
+
+    @Override
+    public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
+        Injector injector = LayoutConnectorsService.getInstance().getInjector(null, selectedObjects);
+        ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
+        LayoutMapping layoutMapping = connector.buildLayoutGraph(null, selectedObjects);
+        connector.layout(layoutMapping);
+        connector.transferLayout(layoutMapping);
+        return connector.getApplyCommand(layoutMapping);
+    }
+
+}
+
+</code></pre>
 		<h5 id="AbstractLayoutEditPartProvider">AbstractLayoutEditPartProvider</h5>
 		<p>This class should be extended if you do not need what AbstractLayoutProvider provides.
 			<br/>Its API is:
@@ -500,6 +560,185 @@
 </code></pre>
 		<p>Then you will apply your layout algorithm on those ordered views.</p>
 		<h3 id="IntegrateyourcustomlayoutalgorithmtoSirius">Integrate your custom layout algorithm to Sirius </h3>
+		<p>Three extension points are available to provide your custom algorithms.</p>
+		<ul>
+			<li>the GMF one 
+				<code>org.eclipse.gmf.runtime.diagram.ui.layoutProviders</code> is the high level one. It does not contains specificities linked to Sirius API. You will have to handle those on your own. 
+			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.ui.layoutProvider</code> is the oldest Sirius extension point. It avoids you to handle specificities linked to Sirius API. 
+			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.ui.customLayoutAlgorithmProvider</code> is the new one used by ELK it avoids you to handle specificities linked to Sirius API. It also allows you to let specifiers configure your layout algorithm directly in the VSM. The layout algorithm from PinnedElementLayoutProvider and BorderedItemAwareLayoutProvider will be applied after your layouting pass.  You should use this one if it fits your needs.
+			</li>
+		</ul>
+		<h4 id="org.eclipse.sirius.diagram.ui.customLayoutAlgorithmProvider">org.eclipse.sirius.diagram.ui.customLayoutAlgorithmProvider</h4>
+		<p>This extension point requires a sub class of 
+			<code>CustomLayoutAlgorithmProvider</code> that will provide your layout algorithm(s) as 
+			<code>CustomLayoutAlgorithm</code> based on 
+			<code>DefaultLayoutProvider</code> class. 
+		</p>
+		<p>When provided, Sirius will expose your algorithm in the VSM like for ELK integration:</p>
+		<img border="0" src="images/arrange-all/arrange-all-siriusVSMIntegration.png"/>
+		<p>The API is the following: </p>
+		<img border="0" src="images/arrange-all/arrange-all-customLayoutAlgorithmProvider.png"/>
+		<h5 id="CustomLayoutAlgorithmProvider">CustomLayoutAlgorithmProvider</h5>
+		<p>This interface contains one method to implement: </p>
+		<ul>
+			<li>
+				<code>List&lt;CustomLayoutAlgorithm&gt; getCustomLayoutAlgorithms()</code> It must returns a 
+				<code>CustomLayoutAlgorithm</code> per layout algorithm you want to provide to the Sirius environment.
+			</li>
+		</ul>
+		<h5 id="CustomLayoutAlgorithm">CustomLayoutAlgorithm</h5>
+		<p>Allows you to provide an instance of the layout algorithm to be used by Sirius as well as all the options to configure it and that will be available from the VSM. 
+			<br/>The API is the following:
+		</p>
+		<img border="0" src="images/arrange-all/arrange-all-customLayoutAlgorithm.png"/>
+		<p>You will have to provide it by using the constructor: </p>
+		<ul>
+			<li>an id for your algorithm. This id should be unique.</li>
+			<li>a label that will be used when displaying information about your algorithm in Sirius.</li>
+			<li>a 
+				<code>Supplier&lt;DefaultLayoutProvider&gt;</code> that will allow Sirius to instantiate your layout algorithm when needed.
+			</li>
+			<li>a map of 
+				<code>Map&lt;String, LayoutOption&gt;</code> that will contain the options allowing to configure your algorithm and that will be readable by Sirius. To create option you must use the 
+				<code>LayoutOptionFactory</code> described below. Option type supported are the following:
+				<ul>
+					<li>
+						<code>Boolean</code>
+					</li>
+					<li>
+						<code>Integer</code>
+					</li>
+					<li>
+						<code>String</code>
+					</li>
+					<li>
+						<code>Double</code>
+					</li>
+					<li>
+						<code>Enum</code>
+					</li>
+					<li>
+						<code>EnumSet</code>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<h5 id="LayoutOptionFactory">LayoutOptionFactory</h5>
+		<p>The 
+			<code>LayoutOptionFactory</code> must be used to create an option to give to a 
+			<code>CustomLayoutAlgorithm</code>. This option will be readable by Sirius and offered to VSM specifiers.
+		</p>
+		<pre><code>LayoutOptionFactory layoutOptionFactory = new LayoutOptionFactory();
+
+</code></pre>
+		<p>This factory contains a method per option type handled. The created option will have:</p>
+		<ul>
+			<li>An 
+				<strong>id</strong> to identify it. Should be unique.
+			</li>
+			<li>A 
+				<strong>label</strong> to be display in the Sirius environment.
+			</li>
+			<li>A 
+				<strong>description</strong> that will be available to Sirius specifier when modifying it.
+			</li>
+			<li>The available 
+				<strong>value(s)</strong> to select for enum and enum set.
+			</li>
+		</ul>
+		<p>For example, the ELK integration is the following:</p>
+		<pre><code>public class ELKAlgorithmProvider implements CustomLayoutAlgorithmProvider {
+
+    @Override
+    public List&lt;CustomLayoutAlgorithm&gt; getCustomLayoutAlgorithms() {
+        List&lt;CustomLayoutAlgorithm&gt; layoutAlgorithms = new ArrayList&lt;&gt;();
+        // we fill the Sirius layout algorithm registry with all ELK algorithms.
+        Collection&lt;LayoutAlgorithmData&gt; algorithmData = LayoutMetaDataService.getInstance().getAlgorithmData();
+        for (LayoutAlgorithmData layoutAlgorithmData : algorithmData) {
+
+            List&lt;LayoutOptionData&gt; optionDatas = LayoutMetaDataService.getInstance().getOptionData(layoutAlgorithmData, Target.PARENTS);
+            Map&lt;String, LayoutOption&gt; layoutOptions = new HashMap&lt;&gt;();
+            LayoutOptionFactory layoutOptionFactory = new LayoutOptionFactory();
+            for (LayoutOptionData layoutOptionData : optionDatas) {
+                if (!CoreOptions.ALGORITHM.getId().equals(layoutOptionData.getId()) &amp;&amp; !layoutOptionData.getVisibility().equals(Visibility.HIDDEN)) {
+                    switch (layoutOptionData.getType()) {
+                    case STRING:
+                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createStringOption((String) layoutOptionData.getDefault(), layoutOptionData.getId(),
+                                layoutOptionData.getDescription(), layoutOptionData.getName()));
+                        break;
+                    case BOOLEAN:
+                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createBooleanOption((Boolean) layoutOptionData.getDefault(), layoutOptionData.getId(),
+                                layoutOptionData.getDescription(), layoutOptionData.getName()));
+                        break;
+                    case INT:
+                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createIntegerOption((Integer) layoutOptionData.getDefault(), layoutOptionData.getId(),
+                                layoutOptionData.getDescription(), layoutOptionData.getName()));
+                        break;
+                    case DOUBLE:
+                        layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createDoubleOption((Double) layoutOptionData.getDefault(), layoutOptionData.getId(),
+                                layoutOptionData.getDescription(), layoutOptionData.getName()));
+                        break;
+                    case ENUMSET:
+                    case ENUM:
+
+                        String[] choices = layoutOptionData.getChoices();
+                        List&lt;EnumChoice&gt; choicesList = new ArrayList&lt;&gt;();
+                        for (int i = 0; i &lt; choices.length; i++) {
+                            String choiceId = choices[i];
+                            choicesList.add(new EnumChoice(choiceId, ""));
+
+                        }
+                        String defaultValue = null;
+                        Object defaultObject = layoutOptionData.getDefaultDefault();
+                        if (defaultObject instanceof Enum) {
+                            defaultValue = ((Enum&lt;?&gt;) defaultObject).name();
+                        }
+                        if (layoutOptionData.getType() == Type.ENUM) {
+                            layoutOptions.put(layoutOptionData.getId(),
+                                    layoutOptionFactory.createEnumOption(choicesList, layoutOptionData.getId(), layoutOptionData.getDescription(), layoutOptionData.getName(), defaultValue));
+                        } else {
+                            layoutOptions.put(layoutOptionData.getId(),
+                                    layoutOptionFactory.createEnumSetOption(choicesList, layoutOptionData.getId(), layoutOptionData.getDescription(), layoutOptionData.getName()));
+                        }
+
+                        break;
+                    default:
+                        break;
+                    }
+                }
+            }
+            layoutAlgorithms.add(new CustomLayoutAlgorithm(layoutAlgorithmData.getId(), layoutAlgorithmData.getName(), () -&gt; new ELKLayoutNodeProvider(), layoutOptions));
+        }
+        return layoutAlgorithms;
+    }
+
+}
+
+</code></pre>
+		<h5 id="DefaultLayoutProvider3">DefaultLayoutProvider</h5>
+		<p>This class contains the core layout algorithm. When a user calls an arrange-all on a diagram that will be configured to use your layout algorithm, an instance of this class is created. You will be given the parts to layout. Then it is your job to layout it as you want. </p>
+		<p>For example, the ELK integration have the following:</p>
+		<pre><code>public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
+
+    @Override
+    public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
+        Injector injector = LayoutConnectorsService.getInstance().getInjector(null, selectedObjects);
+        ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
+        LayoutMapping layoutMapping = connector.buildLayoutGraph(null, selectedObjects);
+        connector.layout(layoutMapping);
+        connector.transferLayout(layoutMapping);
+        return connector.getApplyCommand(layoutMapping);
+    }
+
+}
+
+
+</code></pre>
+		<h4 id="org.eclipse.sirius.diagram.ui.layoutProvider">org.eclipse.sirius.diagram.ui.layoutProvider</h4>
 		<p>To be used, your custom algorithm should be declared to Sirius with the provided extension point 
 			<code>org.eclipse.sirius.diagram.ui.layoutProvider</code>. This extension point requires a sub class of 
 			<code>LayoutProvider</code> that will provide your layout algorithm. Its API is the following:
@@ -573,7 +812,7 @@
 			<img border="0" src="images/arrange-all/arrange-all-layoutprovider-extension.png"/>
 		</p>
 		<p>A priority can be set. If two layout providers provide layouting for a same object, the one with the higher priority will be used.</p>
-		<h4 id="Composingyourlayoutproviders">Composing your layout providers</h4>
+		<h5 id="Composingyourlayoutproviders">Composing your layout providers</h5>
 		<p>You may want to reuse some of the Sirius layout providers in addition of your own layout provider to avoid code rewrite or duplication if the layouting you are doing does not conflict with the layouting other providers are doing.</p>
 		<p>To do that, Sirius offers a 
 			<code>CompoundLayoutProvider</code> allowing to trigger layouting of many compatible providers in their insertion order. The compatible providers are:
@@ -608,7 +847,7 @@
 			<br/>You only have to add all the providers that should be used to layout with method 
 			<code>addProvider</code>.
 		</p>
-		<h5 id="Example">Example</h5>
+		<h6 id="Example">Example</h6>
 		<p>Compound and wrapping providers are used for example by the composite providers that can be used from a VSM declaration:</p>
 		<pre><code>public AbstractLayoutEditPartProvider getLayoutNodeProvider(final IGraphicalEditPart container) {
         if (this.layoutNodeProvider == null) {
@@ -635,7 +874,7 @@
 			<code>PinnedElementsLayoutProvider</code> second. Lastly 
 			<code>BorderItemAwareLayoutProvider</code> is called.
 		</p>
-		<h2 id="ProvideacustomlayoutalgorithmwithGMFextensionpoint">Provide a custom layout algorithm with GMF extension point</h2>
+		<h4 id="ProvideacustomlayoutalgorithmwithGMFextensionpoint">Provide a custom layout algorithm with GMF extension point</h4>
 		<p>This extension point provided by GMF can be used to provide your custom layout algorithm in Sirius diagram editors if you don&#8217;t need any of the features and implementation ease brought by Sirius API.</p>
 		<p>To do that, your layout algorithm in the form of an 
 			<code>AbstractLayoutEditPartProvider</code> can be declared in GMF extension point 

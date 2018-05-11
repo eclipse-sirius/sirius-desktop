@@ -44,6 +44,8 @@ The _Ordered Tree Layout_ enables one to lay out nodes as an ordered tree. The m
 
 NOTE: these layout algorithms manage only nodes connected by edges, other nodes are layouted from left to right as usual.
 
+Additional layout algorithms can be available if you have installed the ELK integration with Sirius. Please refers to the "ELK documentation":https://www.eclipse.org/elk/reference/algorithms.html if you want details about these algorithms. All these algorithms exclude pinned element from the layouting and shorten edges between border nodes in addition to their core algorithm. 
+
 If you need to go beyond that, you can provide your own layout algorithm programmatically (see the "developer documentation":../../developer/Sirius%20Developer%20Manual.html for details).
 
 h2(#layers_graphical_elements). Layers and Graphical Elements

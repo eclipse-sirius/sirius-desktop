@@ -34,6 +34,9 @@ import org.eclipse.sirius.diagram.ui.api.layout.EnumChoice;
 import org.eclipse.sirius.diagram.ui.api.layout.LayoutOptionFactory;
 
 /**
+ * Provides definition of available ELK algorithm as well as their options
+ * configurable by Sirius environment.
+ * 
  * @author <a href=mailto:pierre.guilet@obeo.fr>Pierre Guilet</a>
  *
  */
