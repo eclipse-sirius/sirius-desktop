@@ -15,6 +15,8 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -33,6 +35,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
@@ -339,8 +342,20 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         URI uri = URI.createURI("platform:/resource/DesignerTestProject/vp1038.ecore#//p3");
         semanticElementForTraceability = ted.getResourceSet().getEObject(uri, true);
         ted.getCommandStack().execute(RemoveCommand.create(ted, semanticElementForTraceability));
-        localSession.getOpenedSession().save(new NullProgressMonitor());
-        bot.waitUntil(new SessionSavedCondition(localSession.getOpenedSession()));
+        SWTBotUtils.waitAllUiEvents();
+        if (closeEditor) {
+            // The save will be done automatically as there is no opened editor.
+            try {
+                Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
+            } catch (OperationCanceledException e) {
+                fail("Failure during the join on \"SaveSessionJob.FAMILY\": " + e.getMessage());
+            } catch (InterruptedException e) {
+                fail("Failure during the join on \"SaveSessionJob.FAMILY\": " + e.getMessage());
+            }
+        } else {
+            localSession.getOpenedSession().save(new NullProgressMonitor());
+            bot.waitUntil(new SessionSavedCondition(localSession.getOpenedSession()));
+        }
 
         if (fromClosedSession) {
             // Close session
@@ -413,11 +428,9 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
     public void testTraceabilityWhenGoToMarkerIsCalledOnAllOpenedEditors() {
         setUpMarker(REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram", "platform:/resource/DesignerTestProject/vp1038.ecore#//p1/A");
 
-        openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram2",
-                DDiagram.class);
+        openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram2", DDiagram.class);
 
-        openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram3",
-                DDiagram.class);
+        openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram3", DDiagram.class);
 
         callGoToMarkerOnAllOpenedEditors(traceMarker);
 
