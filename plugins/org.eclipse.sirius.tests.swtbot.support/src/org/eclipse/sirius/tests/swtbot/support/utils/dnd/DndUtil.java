@@ -380,9 +380,9 @@ public class DndUtil {
             final Listener dragSourceListener = syncExec(new Result<Listener>() {
                 @Override
                 public Listener run() {
-                    // The DragSource listener is an anonymous class of DragSource
+                    // The DragSource listener is an anonymous or lambda class of DragSource
                     for (Listener listener : control.getListeners(SWT.DragDetect)) {
-                        if (DragSource.class.equals(listener.getClass().getEnclosingClass())) {
+                        if (listener.getClass().getName().startsWith(DragSource.class.getName())) {
                             return listener;
                         }
                     }
