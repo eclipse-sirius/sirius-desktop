@@ -55,6 +55,8 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor.createStraightenContribution()@ has been added to make accessible the creation of the Straighten To tabbar contribution item.
 
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.customLayoutAlgorithmProvider@ extension point has been added. It allows to contribute layout algorithms that can be configured directly in the VSM. This extension point comes with the following classes as API: @org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithmProvider@, @org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm@, @org.eclipse.sirius.diagram.ui.api.layout.EnumChoice@ and @org.eclipse.sirius.diagram.ui.api.layout.LayoutOptionFactory@.
+
 h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionDialog@ has been removed.
