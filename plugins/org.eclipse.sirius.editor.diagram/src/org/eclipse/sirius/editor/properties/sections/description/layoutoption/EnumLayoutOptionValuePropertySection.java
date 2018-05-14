@@ -26,7 +26,6 @@ import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
@@ -146,14 +145,7 @@ public class EnumLayoutOptionValuePropertySection extends AbstractComboPropertyS
 
         removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(combo, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
 
-        help = getWidgetFactory().createCLabel(composite, "");
-        FormData data = new FormData();
-        data.top = new FormAttachment(combo, 0, SWT.TOP);
-        data.left = new FormAttachment(nameLabel);
-        help.setLayoutData(data);
-        help.setImage(getHelpIcon());
-        help.setToolTipText(layoutOption.getDescription());
-
+        help = LayoutOptionPropertiesUtils.createHelpLabel(getWidgetFactory(), composite, combo, nameLabel, getHelpIcon(), layoutOption);
     }
 
     @Override

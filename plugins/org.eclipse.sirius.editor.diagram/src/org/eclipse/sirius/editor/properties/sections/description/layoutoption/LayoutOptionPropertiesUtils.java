@@ -15,11 +15,13 @@ import java.util.Collections;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -52,6 +54,41 @@ public final class LayoutOptionPropertiesUtils {
 
     private LayoutOptionPropertiesUtils() {
         // private
+    }
+
+    /**
+     * Create the help label showing the layout option description as its tooltip.
+     * 
+     * @param widgetFactory
+     *            used to create the label.
+     * @param parentComposite
+     *            the composite that will contain the label.
+     * @param topControl
+     *            the control to be aligned with the help label.
+     * @param leftControl
+     *            the control that will be at the let of the label.
+     * @param helpIcon
+     *            the icon for the label.
+     * @param layoutOption
+     *            the layout option from which the help description is constructed.
+     * @return the help label showing the layout option description as its tooltip.
+     */
+    public static CLabel createHelpLabel(TabbedPropertySheetWidgetFactory widgetFactory, Composite parentComposite, Control topControl, Control leftControl, Image helpIcon,
+            LayoutOption layoutOption) {
+
+        CLabel help = widgetFactory.createCLabel(parentComposite, "");
+        FormData data = new FormData();
+        data.top = new FormAttachment(topControl, 0, SWT.TOP);
+        data.left = new FormAttachment(leftControl);
+        help.setLayoutData(data);
+        help.setImage(helpIcon);
+        String description = DiagramUIPlugin.getPlugin().getDescription((CustomLayoutConfiguration) layoutOption.eContainer(), layoutOption);
+        if (description == null) {
+            description = "";
+        }
+        help.setToolTipText(description);
+
+        return help;
     }
 
     /**

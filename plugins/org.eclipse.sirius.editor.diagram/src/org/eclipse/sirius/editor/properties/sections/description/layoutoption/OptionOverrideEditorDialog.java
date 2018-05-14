@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 Obeo
+/** Copyright (c) 2018 Obeo
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-import org.eclipse.emf.common.ui.celleditor.ExtendedComboBoxCellEditor;
 import org.eclipse.emf.edit.provider.ItemProvider;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -42,6 +41,7 @@ import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.editor.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -174,11 +174,6 @@ public class OptionOverrideEditorDialog extends Dialog {
     private static final String LAYOUT_OPTION_DEFAULT_VALUE_COLUMN = Messages.OptionOverrideEditorDialog_optionDefaultValueColumnLabel;
 
     /**
-     * A label provider to retrieve {@link CustomLayoutConfiguration} image.
-     */
-    private ILabelProvider labelProvider;
-
-    /**
      * The {@link CustomLayoutConfiguration} from which options will be overriden.
      */
     private CustomLayoutConfiguration customLayoutConfiguration;
@@ -221,8 +216,6 @@ public class OptionOverrideEditorDialog extends Dialog {
      * 
      * @param parent
      *            the parent shell.
-     * @param labelProvider
-     *            the label provider associated to the given object.
      * @param customLayoutConfiguration
      *            the {@link CustomLayoutConfiguration} for which layout options will be overridden.
      * @param displayName
@@ -230,18 +223,14 @@ public class OptionOverrideEditorDialog extends Dialog {
      * @param layoutOptions
      *            The layout options that can be overridden.
      */
-    public OptionOverrideEditorDialog(Shell parent, ILabelProvider labelProvider, CustomLayoutConfiguration customLayoutConfiguration, String displayName, List<LayoutOption> layoutOptions) {
+    public OptionOverrideEditorDialog(Shell parent, CustomLayoutConfiguration customLayoutConfiguration, String displayName, List<LayoutOption> layoutOptions) {
         super(parent);
         setShellStyle(getShellStyle() | SWT.RESIZE | SWT.MAX);
-        this.labelProvider = labelProvider;
         this.customLayoutConfiguration = customLayoutConfiguration;
         this.displayName = displayName;
         this.layoutOptions = layoutOptions;
         this.checkedOptions = new HashSet<>();
 
-        if (layoutOptions != null) {
-            ExtendedComboBoxCellEditor.createItems(this.layoutOptions, labelProvider, true);
-        }
     }
 
     /**
@@ -281,8 +270,7 @@ public class OptionOverrideEditorDialog extends Dialog {
     @Override
     protected void configureShell(Shell shell) {
         super.configureShell(shell);
-        shell.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_FeatureEditorDialog_title", new Object[] { displayName, labelProvider.getText(customLayoutConfiguration) }));
-        shell.setImage(labelProvider.getImage(customLayoutConfiguration));
+        shell.setText(displayName);
     }
 
     @Override
@@ -364,7 +352,10 @@ public class OptionOverrideEditorDialog extends Dialog {
                 IStructuredSelection selection = (IStructuredSelection) event.getSelection();
                 LayoutOption firstElement = (LayoutOption) selection.getFirstElement();
                 if (firstElement != null) {
-                    String description = firstElement.getDescription() == null ? "" : firstElement.getDescription();
+                    String description = DiagramUIPlugin.getPlugin().getDescription(customLayoutConfiguration, firstElement);
+                    if (description == null) {
+                        description = "";
+                    }
                     layoutOptionDescriptionLabel.setText(description);
                     descriptionGroupComposite.layout();
                 }
@@ -375,7 +366,7 @@ public class OptionOverrideEditorDialog extends Dialog {
 
     private Composite initDescriptionComposite(Composite contents) {
         descriptionGroupComposite = new Group(contents, SWT.NONE);
-        descriptionGroupComposite.setText("Option Description");
+        descriptionGroupComposite.setText(Messages.OptionOverrideEditorDialog_optionDescriptionLabel);
         GridLayout layout = new GridLayout(1, true);
         descriptionGroupComposite.setLayout(layout);
         GridData layoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
@@ -467,7 +458,7 @@ public class OptionOverrideEditorDialog extends Dialog {
         Text patternText = null;
 
         Group filterGroupComposite = new Group(contents, SWT.NONE);
-        filterGroupComposite.setText("Filter available options");
+        filterGroupComposite.setText(Messages.OptionOverrideEditorDialog_filteringLabel);
         filterGroupComposite.setLayout(new GridLayout(2, false));
         filterGroupComposite.setLayoutData(new GridData(SWT.FILL, SWT.DEFAULT, true, false, 3, 1));
 

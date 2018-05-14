@@ -67,7 +67,7 @@ public interface LayoutOption extends EObject {
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayoutOption_Label()
-     * @model
+     * @model transient="true"
      * @generated
      */
     String getLabel();
@@ -94,7 +94,7 @@ public interface LayoutOption extends EObject {
      * @return the value of the '<em>Description</em>' attribute.
      * @see #setDescription(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayoutOption_Description()
-     * @model
+     * @model transient="true"
      * @generated
      */
     String getDescription();

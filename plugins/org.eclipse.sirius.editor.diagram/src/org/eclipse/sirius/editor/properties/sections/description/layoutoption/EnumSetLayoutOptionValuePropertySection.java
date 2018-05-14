@@ -30,7 +30,6 @@ import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogPropertySection;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -121,14 +120,7 @@ public class EnumSetLayoutOptionValuePropertySection extends AbstractEditorDialo
 
         removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(button, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
 
-        help = getWidgetFactory().createCLabel(composite, "");
-        FormData data = new FormData();
-        data.top = new FormAttachment(text, 0, SWT.TOP);
-        data.left = new FormAttachment(nameLabel);
-        help.setLayoutData(data);
-        help.setImage(getHelpIcon());
-        help.setToolTipText(layoutOption.getDescription());
-
+        help = LayoutOptionPropertiesUtils.createHelpLabel(getWidgetFactory(), composite, text, nameLabel, getHelpIcon(), layoutOption);
     }
 
     @Override

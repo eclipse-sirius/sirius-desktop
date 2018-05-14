@@ -99,11 +99,12 @@ public class AddOptionOverridePropertySection extends AbstractViewpointPropertyS
                         if (copy instanceof EnumOption) {
                             ((EnumOption) copy).getChoices().clear();
                         }
+                        copy.setDescription("");
                         layoutOptionOverrides.add(copy);
                     }
                 }
-                OptionOverrideEditorDialog dialog = new OptionOverrideEditorDialog(composite.getShell(), getLabelProvider(new PropertyDescriptor(eObject, getIItemPropertyDescriptor())),
-                        (CustomLayoutConfiguration) eObject, Messages.AddOptionOverridePropertySection_dialogTitle, layoutOptionOverrides);
+                OptionOverrideEditorDialog dialog = new OptionOverrideEditorDialog(composite.getShell(), (CustomLayoutConfiguration) eObject, Messages.AddOptionOverridePropertySection_dialogTitle,
+                        layoutOptionOverrides);
                 dialog.open();
 
                 Set<LayoutOption> overrriddenOptions = dialog.getResult();

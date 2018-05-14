@@ -57,7 +57,6 @@ public class CustomLayoutConfigurationItemProvider extends DocumentedElementItem
             addIdPropertyDescriptor(object);
             addLabelPropertyDescriptor(object);
             addDescriptionPropertyDescriptor(object);
-            addLayoutOptionsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -96,18 +95,6 @@ public class CustomLayoutConfigurationItemProvider extends DocumentedElementItem
                 createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CustomLayoutConfiguration_description_feature"), //$NON-NLS-1$
                         getString("_UI_PropertyDescriptor_description", "_UI_CustomLayoutConfiguration_description_feature", "_UI_CustomLayoutConfiguration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__DESCRIPTION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the Layout Options feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addLayoutOptionsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CustomLayoutConfiguration_layoutOptions_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_CustomLayoutConfiguration_layoutOptions_feature", "_UI_CustomLayoutConfiguration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS, true, false, false, null, null, null));
     }
 
     /**

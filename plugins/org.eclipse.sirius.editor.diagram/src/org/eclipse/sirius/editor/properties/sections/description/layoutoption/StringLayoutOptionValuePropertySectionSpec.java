@@ -15,7 +15,6 @@ import org.eclipse.sirius.diagram.description.StringLayoutOption;
 import org.eclipse.sirius.diagram.editor.properties.sections.description.stringlayoutoption.StringLayoutOptionValuePropertySection;
 import org.eclipse.sirius.editor.Messages;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
@@ -70,14 +69,7 @@ public class StringLayoutOptionValuePropertySectionSpec extends StringLayoutOpti
 
         removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(text, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
 
-        help = getWidgetFactory().createCLabel(composite, "");
-        FormData data = new FormData();
-        data.top = new FormAttachment(text, 0, SWT.TOP);
-        data.left = new FormAttachment(nameLabel);
-        help.setLayoutData(data);
-        help.setImage(getHelpIcon());
-        help.setToolTipText(getToolTipText());
-
+        help = LayoutOptionPropertiesUtils.createHelpLabel(getWidgetFactory(), composite, text, nameLabel, getHelpIcon(), layoutOption);
     }
 
     @Override

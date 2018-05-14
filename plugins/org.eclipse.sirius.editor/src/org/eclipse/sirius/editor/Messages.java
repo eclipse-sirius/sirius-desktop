@@ -67,6 +67,12 @@ public final class Messages {
     @TranslatableMessage
     public static String OptionOverrideEditorDialog_tableLabel;
 
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_filteringLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_optionDescriptionLabel;
+
     // CHECKSTYLE:ON
     private Messages() {
         // Prevents instanciation.

@@ -15,7 +15,6 @@ import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.editor.properties.sections.description.booleanlayoutoption.BooleanLayoutOptionValuePropertySection;
 import org.eclipse.sirius.editor.Messages;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
@@ -70,14 +69,7 @@ public class BooleanLayoutOptionValuePropertySectionSpec extends BooleanLayoutOp
 
         removeOverrideButton = LayoutOptionPropertiesUtils.createRemoveOptionButton(checkbox, composite, (ViewpointPropertySheetPage) tabbedPropertySheetPage, getWidgetFactory(), layoutOption);
 
-        help = getWidgetFactory().createCLabel(composite, "");
-        FormData data = new FormData();
-        data.top = new FormAttachment(checkbox, 0, SWT.CENTER);
-        data.left = new FormAttachment(nameLabel);
-        help.setLayoutData(data);
-        help.setImage(getHelpIcon());
-        help.setToolTipText(layoutOption.getDescription());
-
+        help = LayoutOptionPropertiesUtils.createHelpLabel(getWidgetFactory(), composite, checkbox, nameLabel, getHelpIcon(), layoutOption);
     }
 
     @Override

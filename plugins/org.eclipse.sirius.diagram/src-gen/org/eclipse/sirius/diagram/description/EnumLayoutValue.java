@@ -66,7 +66,7 @@ public interface EnumLayoutValue extends EObject {
      * @return the value of the '<em>Description</em>' attribute.
      * @see #setDescription(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEnumLayoutValue_Description()
-     * @model
+     * @model transient="true"
      * @generated
      */
     String getDescription();
