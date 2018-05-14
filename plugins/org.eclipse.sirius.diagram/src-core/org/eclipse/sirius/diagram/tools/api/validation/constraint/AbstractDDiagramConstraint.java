@@ -118,22 +118,25 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
         }
 
         if (diagram != null) {
-            /*
-             * If some rules are manually activated, then we'll pick in these ones, otherwise we'll use all the rules.
-             */
-            Collection<Viewpoint> selectedVps = Session.of(objectToValidate).map(s -> s.getSelectedViewpoints(false)).orElseGet(() -> new ArrayList<Viewpoint>());
-            if (diagram.getActivatedRules().size() > 0) {
-                failingRules.addAll(getFailingRulesFromCollection(objectToValidate, diagram.getActivatedRules().iterator()));
-            } else if (diagram.getDescription() != null) {
-                final DiagramDescription desc = diagram.getDescription();
-                final ValidationSet validationSet = desc.getValidationSet();
-                if (validationSet != null) {
-                    failingRules.addAll(getFailingRulesFromCollection(objectToValidate, validationSet.getAllRules().iterator()));
+            // Do not run validation on DSemanticDecorator without semantic element or with deleted semantic element
+            if (((DSemanticDecorator) objectToValidate).getTarget() != null && ((DSemanticDecorator) objectToValidate).getTarget().eResource() != null) {
+                /*
+                 * If some rules are manually activated, then we'll pick in these ones, otherwise we'll use all the
+                 * rules.
+                 */
+                Collection<Viewpoint> selectedVps = Session.of(objectToValidate).map(s -> s.getSelectedViewpoints(false)).orElseGet(() -> new ArrayList<Viewpoint>());
+                if (diagram.getActivatedRules().size() > 0) {
+                    failingRules.addAll(getFailingRulesFromCollection(objectToValidate, diagram.getActivatedRules().iterator()));
+                } else if (diagram.getDescription() != null) {
+                    final DiagramDescription desc = diagram.getDescription();
+                    final ValidationSet validationSet = desc.getValidationSet();
+                    if (validationSet != null) {
+                        failingRules.addAll(getFailingRulesFromCollection(objectToValidate, validationSet.getAllRules().iterator()));
+                    }
+                    failingRules.addAll(getFailingRulesFromDiagramExtension(objectToValidate, desc, selectedVps));
                 }
-
-                failingRules.addAll(getFailingRulesFromDiagramExtension(objectToValidate, desc, selectedVps));
+                failingRules.addAll(checkRulesFromActivatedViewpoints(objectToValidate, selectedVps));
             }
-            failingRules.addAll(checkRulesFromActivatedViewpoints(objectToValidate, selectedVps));
         }
 
         return failingRules;
