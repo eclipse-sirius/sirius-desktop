@@ -92,8 +92,8 @@ public class WorkflowPage extends AbstractSessionEditorPage {
             @SuppressWarnings("restriction")
             InetSocketAddress addr = SiriusServerPlugin.getPlugin().getServerAddress();
             // Use this URL when using the frontend in dev mode.
-            //return "http://localhost:3000/projects/" + uri.segment(1); //$NON-NLS-1$
-            return String.format("http://%s:%d/projects/%s", addr.getHostString(),addr.getPort(), uri.segment(1)); //$NON-NLS-1$
+            // return "http://localhost:3000/projects/" + uri.segment(1); //$NON-NLS-1$
+            return String.format("http://%s:%d/projects/%s?fullscreen=true", addr.getHostString(), addr.getPort(), uri.segment(1)); //$NON-NLS-1$
         } else {
             return "http://localhost:8080/"; //$NON-NLS-1$
         }

@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.EnumSet;
+
+import javax.servlet.DispatcherType;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IStatus;
@@ -64,6 +67,8 @@ public class SiriusServerFrontendConfigurator implements ISiriusServerConfigurat
     public void configure(Server server) {
         ServletContextHandler servletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS | ServletContextHandler.GZIP);
         servletContextHandler.setContextPath(CONTEXT_PATH);
+
+        servletContextHandler.addFilter(SiriusServerFrontendFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.INCLUDE)); //$NON-NLS-1$
 
         try {
             Bundle bundle = SiriusServerFrontendPlugin.getPlugin().getBundle();
