@@ -78,7 +78,7 @@ public final class LayoutOptionPropertiesUtils {
 
         CLabel help = widgetFactory.createCLabel(parentComposite, "");
         FormData data = new FormData();
-        data.top = new FormAttachment(topControl, 0, SWT.TOP);
+        data.top = new FormAttachment(topControl, 0, SWT.CENTER);
         data.left = new FormAttachment(leftControl);
         help.setLayoutData(data);
         help.setImage(helpIcon);

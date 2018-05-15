@@ -32,6 +32,7 @@ import org.eclipse.sirius.tests.swtbot.editor.vsm.ContentAssistTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CreateMandatoryElementsTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CustomizationPropertySectionsTests;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.FeatureAssistTest;
+import org.eclipse.sirius.tests.swtbot.editor.vsm.LayoutOptionsTests;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.MetamodelPropertyTabTests;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.MigrationOnVsmEditorReloadTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.OpeningContextTest;
@@ -182,6 +183,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(LinkNoteFragmentModelCreationTest.class);
         suite.addTestSuite(MigrationOnVsmEditorReloadTest.class);
         suite.addTestSuite(VSMFieldTest.class);
+        suite.addTestSuite(LayoutOptionsTests.class);
         suite.addTestSuite(VSMAndDiagramEditorSynchronisationTest.class);
         suite.addTestSuite(SVGImageBundleTest.class);
         suite.addTestSuite(SVGZImageTest.class);

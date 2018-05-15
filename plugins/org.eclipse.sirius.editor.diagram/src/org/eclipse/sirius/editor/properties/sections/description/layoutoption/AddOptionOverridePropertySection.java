@@ -110,7 +110,12 @@ public class AddOptionOverridePropertySection extends AbstractViewpointPropertyS
                 Set<LayoutOption> overrriddenOptions = dialog.getResult();
                 EditingDomain editingDomain = propertySheetPage.getEditor().getEditingDomain();
                 editingDomain.getCommandStack().execute(new AddCommand(editingDomain, layout, DescriptionPackage.eINSTANCE.getCustomLayoutConfiguration_LayoutOptions(), overrriddenOptions));
-                Display.getCurrent().asyncExec(() -> propertySheetPage.refresh());
+
+                Display.getCurrent().asyncExec(() -> {
+                    if (propertySheetPage != null && propertySheetPage.getCurrentTab() != null) {
+                        propertySheetPage.refresh();
+                    }
+                });
             }
         };
     }
