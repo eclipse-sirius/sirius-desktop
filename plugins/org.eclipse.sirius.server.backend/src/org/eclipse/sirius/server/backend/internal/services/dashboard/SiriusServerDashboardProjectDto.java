@@ -12,43 +12,34 @@ package org.eclipse.sirius.server.backend.internal.services.dashboard;
 
 /**
  * The DTO used to represent one project in the dashboard.
- * 
+ *
  * @author sbegaudeau
  */
 @SuppressWarnings({ "checkstyle::javadocmethod", "checkstyle::javadocfield" })
 public class SiriusServerDashboardProjectDto {
     private String name;
 
-    private int semanticResourcesCount;
-
-    private int representationsCount;
+    private String description;
 
     /**
      * The constructor.
      *
      * @param name
      *            The name of the project
-     * @param semanticResourcesCount
-     *            The number of semantic resources
-     * @param representationsCount
-     *            The number of representations
+     * @param description
+     *            The description of the project
      */
-    public SiriusServerDashboardProjectDto(String name, int semanticResourcesCount, int representationsCount) {
+    public SiriusServerDashboardProjectDto(String name, String description) {
         this.name = name;
-        this.semanticResourcesCount = semanticResourcesCount;
-        this.representationsCount = representationsCount;
+        this.description = description;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public int getSemanticResourcesCount() {
-        return this.semanticResourcesCount;
-    }
-
-    public int getRepresentationsCount() {
-        return this.representationsCount;
+    public String getDescription() {
+        return this.description;
     }
 
 }

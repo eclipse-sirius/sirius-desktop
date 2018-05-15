@@ -10,11 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.server.backend.internal.services.project;
 
+import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_INTERNAL_SERVER_ERROR;
 import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_NOT_FOUND;
 import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_OK;
 
+import com.google.gson.Gson;
+
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.nio.file.Files;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -28,8 +33,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
@@ -102,11 +110,12 @@ public class SiriusServerProjectService implements ISiriusServerService {
         Session session = SiriusServerUtils.getSession(modelingProject);
 
         String projectName = modelingProject.getProject().getName();
+        String description = SiriusServerUtils.getProjectDescription(modelingProject.getProject());
         List<AbstractSiriusServerRepresentationDto> representations = this.getRepresentations(session);
         List<SiriusServerSemanticResourceDto> semanticResources = this.getSemanticResources(modelingProject.getProject(), session);
         List<SiriusServerPageDto> pages = this.getPages(session);
         List<SiriusServerSectionDto> currentPageSections = this.getFirstPageSections(session);
-        return new SiriusServerProjectDto(projectName, representations, semanticResources, pages, currentPageSections);
+        return new SiriusServerProjectDto(projectName, description, representations, semanticResources, pages, currentPageSections);
     }
 
     /**
@@ -259,5 +268,30 @@ public class SiriusServerProjectService implements ISiriusServerService {
             return decimalFormat.format(size / mb) + "MB"; //$NON-NLS-1$
         }
         return decimalFormat.format(size / kb) + "KB"; //$NON-NLS-1$
+    }
+
+    @Override
+    public SiriusServerResponse doPut(HttpServletRequest request, Map<String, String> variables, String remainingPart) {
+        SiriusServerResponse response = null;
+        try {
+            Reader reader = new InputStreamReader(request.getInputStream(), SiriusServerUtils.UTF_8);
+            SiriusServerUpdateProjectDescriptionDto updateProjectDescription = new Gson().fromJson(reader, SiriusServerUpdateProjectDescriptionDto.class);
+
+            String projectName = variables.get(PROJECT_NAME);
+            IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+            if (project.exists()) {
+                IProjectDescription description = project.getDescription();
+                description.setComment(updateProjectDescription.getDescription());
+                project.setDescription(description, new NullProgressMonitor());
+                response = new SiriusServerResponse(STATUS_OK, new SiriusServerProjectDescriptionUpdatedDto(description.getComment()));
+            } else {
+                response = new SiriusServerResponse(STATUS_NOT_FOUND);
+            }
+        } catch (@SuppressWarnings("unused") IOException | CoreException exception) {
+            // We don't want to send back the message of the exception
+            response = new SiriusServerResponse(STATUS_INTERNAL_SERVER_ERROR);
+        }
+
+        return response;
     }
 }

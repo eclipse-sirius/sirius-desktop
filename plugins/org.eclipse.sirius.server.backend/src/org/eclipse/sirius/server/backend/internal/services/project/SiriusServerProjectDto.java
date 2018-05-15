@@ -21,6 +21,8 @@ import java.util.List;
 public class SiriusServerProjectDto {
     private String name;
 
+    private String description;
+
     private List<AbstractSiriusServerRepresentationDto> representations;
 
     private List<SiriusServerSemanticResourceDto> semanticResources;
@@ -34,6 +36,8 @@ public class SiriusServerProjectDto {
      *
      * @param name
      *            The name of the project
+     * @param description
+     *            The description of the project
      * @param representations
      *            The representations
      * @param semanticResources
@@ -43,9 +47,10 @@ public class SiriusServerProjectDto {
      * @param currentPageSections
      *            The sections of the current page of the workflow
      */
-    public SiriusServerProjectDto(String name, List<AbstractSiriusServerRepresentationDto> representations, List<SiriusServerSemanticResourceDto> semanticResources, List<SiriusServerPageDto> pages,
-            List<SiriusServerSectionDto> currentPageSections) {
+    public SiriusServerProjectDto(String name, String description, List<AbstractSiriusServerRepresentationDto> representations, List<SiriusServerSemanticResourceDto> semanticResources,
+            List<SiriusServerPageDto> pages, List<SiriusServerSectionDto> currentPageSections) {
         this.name = name;
+        this.description = description;
         this.representations = representations;
         this.semanticResources = semanticResources;
         this.pages = pages;
@@ -54,6 +59,10 @@ public class SiriusServerProjectDto {
 
     public String getName() {
         return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 
     public List<AbstractSiriusServerRepresentationDto> getRepresentations() {

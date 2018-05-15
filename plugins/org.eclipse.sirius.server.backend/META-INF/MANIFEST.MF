@@ -25,9 +25,12 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.sirius.common;bundle-version="6.0.0"
 Bundle-Localization: plugin
 Export-Package: org.eclipse.sirius.server.backend.internal;x-friends:="org.eclipse.sirius.tests.server.backend",
+ org.eclipse.sirius.server.backend.internal.services.activities;x-internal:=true,
  org.eclipse.sirius.server.backend.internal.services.dashboard;x-internal:=true,
+ org.eclipse.sirius.server.backend.internal.services.pages;x-internal:=true,
  org.eclipse.sirius.server.backend.internal.services.project;x-internal:=true,
  org.eclipse.sirius.server.backend.internal.services.projects;x-internal:=true,
+ org.eclipse.sirius.server.backend.internal.services.workflow;x-internal:=true,
  org.eclipse.sirius.server.backend.internal.utils;x-internal:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.sirius.server.backend.internal.SiriusServerBackendPlugin$Implementation

@@ -12,11 +12,17 @@ package org.eclipse.sirius.server.backend.internal.utils;
 
 import java.util.Optional;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.server.backend.internal.SiriusServerBackendPlugin;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -57,4 +63,26 @@ public final class SiriusServerUtils {
         return session;
     }
 
+    /**
+     * Returns the description from the given project.
+     *
+     * @param iProject
+     *            The project
+     * @return The description from the given project
+     */
+    public static String getProjectDescription(IProject iProject) {
+        String description = null;
+
+        try {
+            IProjectDescription iProjectDescription = iProject.getDescription();
+            String comment = iProjectDescription.getComment();
+            if (comment != null && comment.trim().length() > 0) {
+                description = comment;
+            }
+        } catch (CoreException e) {
+            IStatus status = new Status(IStatus.ERROR, SiriusServerBackendPlugin.PLUGIN_ID, e.getMessage(), e);
+            SiriusServerBackendPlugin.getPlugin().log(status);
+        }
+        return description;
+    }
 }

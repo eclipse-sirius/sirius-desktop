@@ -68,7 +68,6 @@ public class SiriusServerProjectsService implements ISiriusServerService {
 		List<SiriusServerProjectDto> modelingProjects = Arrays.stream(allProjects)
 				.filter(ModelingProject::hasModelingProjectNature)
 				.filter(IProject::isOpen)
-				.map(project -> ModelingProject.asModelingProject(project).get())
 				.map(this::convertToProject)
 				.collect(Collectors.toList());
 		// @formatter:on
@@ -76,16 +75,17 @@ public class SiriusServerProjectsService implements ISiriusServerService {
     }
 
     /**
-     * Converts the given modeling project into a
+     * Converts the given project with a modeling nature into a
      * {@link SiriusServerProjectDto}.
      *
-     * @param modelingProject
-     *            The modeling project
+     * @param iProject
+     *            The project
      * @return The {@link SiriusServerProjectDto} created
      */
-    private SiriusServerProjectDto convertToProject(ModelingProject modelingProject) {
-        String name = modelingProject.getProject().getName();
-        return new SiriusServerProjectDto(name);
+    private SiriusServerProjectDto convertToProject(IProject iProject) {
+        String name = iProject.getName();
+        String description = SiriusServerUtils.getProjectDescription(iProject);
+        return new SiriusServerProjectDto(name, description);
     }
 
     @Override
@@ -101,7 +101,8 @@ public class SiriusServerProjectsService implements ISiriusServerService {
                 String message = MessageFormat.format(SiriusServerMessages.SiriusServerProjectsService_projectAlreadyExists, name);
                 response = new SiriusServerResponse(STATUS_BAD_REQUEST, new SiriusServerErrorDto(message));
             } else {
-                // TODO Improve this code once this issue is fixed: https://bugs.eclipse.org/bugs/show_bug.cgi?id=533931
+                // TODO Improve this code once this issue is fixed:
+                // https://bugs.eclipse.org/bugs/show_bug.cgi?id=533931
                 IProjectDescription projectDescription = ResourcesPlugin.getWorkspace().newProjectDescription(name);
                 projectDescription.setNatureIds(new String[] { ModelingProject.NATURE_ID });
                 project.create(projectDescription, new NullProgressMonitor());
@@ -111,7 +112,8 @@ public class SiriusServerProjectsService implements ISiriusServerService {
                 SessionCreationOperation sessionCreationOperation = new DefaultLocalSessionCreationOperation(representationsURI, new NullProgressMonitor());
                 sessionCreationOperation.execute();
 
-                response = new SiriusServerResponse(STATUS_CREATED, new SiriusServerProjectDto(name));
+                String description = SiriusServerUtils.getProjectDescription(project);
+                response = new SiriusServerResponse(STATUS_CREATED, new SiriusServerProjectDto(name, description));
             }
         } catch (@SuppressWarnings("unused") IOException | CoreException exception) {
             // We don't want to send back the message of the exception

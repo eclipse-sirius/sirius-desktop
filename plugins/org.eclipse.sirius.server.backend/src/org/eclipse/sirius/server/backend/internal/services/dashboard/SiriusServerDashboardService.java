@@ -24,9 +24,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.server.backend.internal.ISiriusServerService;
 import org.eclipse.sirius.server.backend.internal.SiriusServerPath;
 import org.eclipse.sirius.server.backend.internal.SiriusServerResponse;
@@ -71,40 +69,33 @@ public class SiriusServerDashboardService implements ISiriusServerService {
     }
 
     /**
-     * Returns a stream of the modeling projects of the workspace.
+     * Returns a stream of the projects with the modeling project nature in the
+     * workspace.
      *
-     * @return A stream of the modeling projects of the workspace
+     * @return A stream of the projects with the modeling project nature in the
+     *         workspace
      */
-    private Stream<ModelingProject> getModelingProjects() {
+    private Stream<IProject> getModelingProjects() {
         IProject[] allProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
         // @formatter:off
 		return Arrays.stream(allProjects)
 				.filter(ModelingProject::hasModelingProjectNature)
-				.filter(IProject::isOpen)
-				.map(project -> ModelingProject.asModelingProject(project).get());
+				.filter(IProject::isOpen);
 		// @formatter:on
     }
 
     /**
-     * Converts the given {@link ModelingProject} into a
+     * Converts the given project into a
      * {@link SiriusServerDashboardProjectDto}.
      *
-     * @param modelingProject
-     *            The {@link ModelingProject}
+     * @param iProject
+     *            A project with the modeling project nature
      * @return The {@link SiriusServerDashboardProjectDto}
      */
-    private SiriusServerDashboardProjectDto convertToProject(ModelingProject modelingProject) {
-        Session session = SiriusServerUtils.getSession(modelingProject);
+    private SiriusServerDashboardProjectDto convertToProject(IProject iProject) {
+        String name = iProject.getName();
+        String description = SiriusServerUtils.getProjectDescription(iProject);
 
-        String name = modelingProject.getProject().getName();
-        int semanticResourcesCount = session.getSemanticResources().size();
-        // @formatter:off
-		int representationsCount = DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream()
-				.filter(descriptor -> !descriptor.getDescription().eIsProxy())
-				.mapToInt(e -> 1)
-				.sum();
-		// @formatter:on
-
-        return new SiriusServerDashboardProjectDto(name, semanticResourcesCount, representationsCount);
+        return new SiriusServerDashboardProjectDto(name, description);
     }
 }

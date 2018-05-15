@@ -8,37 +8,22 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.server.backend.internal.services.projects;
+package org.eclipse.sirius.server.backend.internal.services.project;
 
 /**
- * The DTO used to return a project.
+ * The DTO sent by clients to update the description of a project.
  *
  * @author sbegaudeau
  */
 @SuppressWarnings({ "checkstyle::javadocmethod", "checkstyle::javadocfield" })
-public class SiriusServerProjectDto {
-    private String name;
-
+public class SiriusServerUpdateProjectDescriptionDto {
     private String description;
-
-    /**
-     * The constructor.
-     *
-     * @param name
-     *            The name of the project
-     * @param description
-     *            The description of the project
-     */
-    public SiriusServerProjectDto(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
-
-    public String getName() {
-        return this.name;
-    }
 
     public String getDescription() {
         return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
