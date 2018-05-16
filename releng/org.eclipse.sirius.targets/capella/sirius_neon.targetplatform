@@ -5,6 +5,7 @@ include "../modules/swtbot-2.6.tpd"
 include "../modules/shared-license.tpd"
 include "../modules/aql-nightly.tpd"
 include "../modules/acceleo-nightly.tpd"
+include "../modules/gmf-runtime-1.12.tpd"
 
 with source, requirements
 
@@ -35,15 +36,13 @@ location Eclipse-Neon "http://download.eclipse.org/releases/neon" {
     org.eclipse.equinox.sdk.feature.group lazy
     org.eclipse.gef.feature.group lazy
     org.eclipse.gef.sdk.feature.group lazy
-    org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
-    org.eclipse.gmf.runtime.sdk.feature.group lazy
     org.eclipse.ocl.all.feature.group lazy
     org.eclipse.ocl.core.sdk.feature.group lazy
     org.eclipse.platform.feature.group lazy
     org.eclipse.sdk.feature.group lazy
-	org.eclipse.xtext.sdk.feature.group lazy
-	org.eclipse.xtend.sdk.feature.group lazy
-	org.eclipse.xpand.sdk.feature.group lazy
+    org.eclipse.xtext.sdk.feature.group lazy
+    org.eclipse.xtend.sdk.feature.group lazy
+    org.eclipse.xpand.sdk.feature.group lazy
     org.eclipse.emf.mwe.sdk.feature.group lazy
     org.eclipse.emf.mwe2.language.sdk.feature.group lazy
     org.eclipse.uml2.sdk.feature.group lazy

@@ -13,8 +13,8 @@ package org.eclipse.sirius.diagram.ui.tools.internal.render;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import org.apache.batik.dom.svg.SVGDOMImplementation;
-import org.apache.batik.dom.svg.SVGOMDocument;
+import org.apache.batik.anim.dom.SVGDOMImplementation;
+import org.apache.batik.anim.dom.SVGOMDocument;
 import org.apache.batik.dom.util.DOMUtilities;
 import org.apache.batik.svggen.DOMTreeManager;
 import org.apache.batik.svggen.SVGGraphics2D;
@@ -27,18 +27,17 @@ import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGColorConvert
 import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImage;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.DrawableRenderedImage;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.RenderingListener;
+import org.eclipse.swt.graphics.RGB;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 /**
  * Objects of this class can be used with draw2d to create an SVG DOM.<BR>
- * Class copied from
- * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG}
- * to inherit of {@link SiriusGraphicsToGraphics2DAdaptor} instead of
- * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.graphics.GraphicsToGraphics2DAdaptor}
- * and so handles gradient with method
- * {@link #setBackgroundPattern(java.awt.GradientPaint)}.
+ * Class copied from {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG} to inherit of
+ * {@link SiriusGraphicsToGraphics2DAdaptor} instead of
+ * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.graphics.GraphicsToGraphics2DAdaptor} and so handles
+ * gradient with method {@link #setBackgroundPattern(java.awt.GradientPaint)}.
  * 
  * @author jschofie / sshaw
  */
@@ -48,8 +47,7 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
     private Document doc;
 
     /**
-     * Static initializer that will return an instance of
-     * <code>SiriusGraphicsSVG</code>
+     * Static initializer that will return an instance of <code>SiriusGraphicsSVG</code>
      *
      * @param viewPort
      *            the <code>Rectangle</code> area that is to be rendered.
@@ -127,9 +125,8 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
     /*
      * (non-Javadoc)
      * @see org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.graphics.
-     * GraphicsToGraphics2DAdaptor#drawRenderedImage(org.eclipse.gmf.runtime.
-     * draw2d.ui.render.RenderedImage, org.eclipse.draw2d.geometry.Rectangle,
-     * org.eclipse.gmf.runtime.draw2d.ui.render.RenderingListener)
+     * GraphicsToGraphics2DAdaptor#drawRenderedImage(org.eclipse.gmf.runtime. draw2d.ui.render.RenderedImage,
+     * org.eclipse.draw2d.geometry.Rectangle, org.eclipse.gmf.runtime.draw2d.ui.render.RenderingListener)
      */
     @Override
     public RenderedImage drawRenderedImage(RenderedImage srcImage, Rectangle rect, RenderingListener listener) {
@@ -150,11 +147,10 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
 
             if (document instanceof SVGOMDocument) {
                 RenderInfo info = srcImage.getRenderInfo();
-                if (info != null && info.getBackgroundColor() != null && info.getForegroundColor() != null) {
-                    SVGColorConverter.getInstance().replaceDocumentColors((SVGOMDocument) document,
-                            new Color(info.getBackgroundColor().red, info.getBackgroundColor().green, info.getBackgroundColor().blue),
-                            new Color(info.getForegroundColor().red, info.getForegroundColor().green, info.getForegroundColor().blue));
-
+                RGB bg = info.getBackgroundColor();
+                RGB fg = info.getForegroundColor();
+                if (info != null && bg != null && fg != null) {
+                    SVGColorConverter.getInstance().replaceDocumentColors((SVGOMDocument) document, new Color(bg.red, bg.green, bg.blue), new Color(fg.red, fg.green, fg.blue));
                 }
             }
             Element root = document.getDocumentElement();

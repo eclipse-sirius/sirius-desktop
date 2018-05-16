@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_capella_neon" sequenceNumber="1520611776">
+<target name="sirius_capella_neon" sequenceNumber="1526456134">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -16,7 +16,16 @@
       <unit id="ch.qos.logback.slf4j" version="1.0.7.v201505121915"/>
       <unit id="ch.qos.logback.classic" version="1.0.7.v20121108-1250"/>
       <unit id="ch.qos.logback.core" version="1.0.7.v20121108-1250"/>
-      <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
+      <unit id="org.apache.xerces" version="2.9.0.v201101211617"/>
+      <unit id="org.apache.batik.bridge" version="1.9.1.v20180313-1559"/>
+      <unit id="org.apache.batik.dom" version="1.9.1.v20180313-1559"/>
+      <unit id="org.apache.batik.dom.svg" version="1.9.1.v20180313-1559"/>
+      <unit id="org.apache.batik.svggen" version="1.9.1.v20180313-1559"/>
+      <unit id="org.apache.batik.transcoder" version="1.9.1.v20180313-1559"/>
+      <unit id="org.apache.batik.util" version="1.9.1.v20180227-1645"/>
+      <unit id="org.apache.batik.anim" version="1.9.1.v20180417-1407"/>
+      <unit id="org.apache.batik.gvt" version="1.9.1.v20180227-1645"/>
+      <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/S20180504181223/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.6.0.201706141832"/>
@@ -39,6 +48,14 @@
       <unit id="org.eclipse.acceleo.query.source.feature.group" version="0.0.0"/>
       <unit id="org.antlr.runtime" version="4.3.0.v201502022030"/>
       <repository id="Acceleo-Nightly" location="http://download.eclipse.org/acceleo/updates/nightly/latest"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="0.0.0"/>
+      <repository id="GMF-Notation-1.12" location="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S201805141341"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
+      <repository id="GMF-Runtime-1.12" location="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201805151421"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
@@ -67,8 +84,6 @@
       <unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gef.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gef.sdk.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.ocl.all.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.ocl.core.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>

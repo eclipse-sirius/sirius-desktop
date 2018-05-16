@@ -1,18 +1,25 @@
 target "orbit" with source, requirements
 
-location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository" {
+location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/S20180504181223/repository" {
     org.apache.log4j lazy
     org.easymock lazy
     org.hamcrest.core lazy
     org.hamcrest.library lazy
-    org.junit [4.11.0,5.0.0)
-    
+    org.junit lazy
     javax.servlet lazy
     javax.websocket lazy
     com.google.gson lazy
-    
     org.slf4j.api [1.7.2,1.7.3)
     ch.qos.logback.slf4j [1.0.7,1.0.8)
     ch.qos.logback.classic [1.0.7,1.0.8)
     ch.qos.logback.core [1.0.7,1.0.8)
+    org.apache.xerces 2.9.0
+    org.apache.batik.bridge 1.9.1
+    org.apache.batik.dom 1.9.1
+    org.apache.batik.dom.svg 1.9.1
+    org.apache.batik.svggen 1.9.1
+    org.apache.batik.transcoder 1.9.1
+    org.apache.batik.util 1.9.1
+    org.apache.batik.anim 1.9.1
+    org.apache.batik.gvt 1.9.1
 }

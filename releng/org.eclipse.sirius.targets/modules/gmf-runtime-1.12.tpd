@@ -1,0 +1,11 @@
+target "gmf-runtime-1.12"
+
+with source, requirements
+
+location GMF-Notation-1.12 "http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S201805141341" {
+    org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
+}
+
+location GMF-Runtime-1.12 "http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201805151421" {
+    org.eclipse.gmf.runtime.sdk.feature.group lazy
+}
