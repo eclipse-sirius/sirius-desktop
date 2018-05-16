@@ -432,7 +432,7 @@
         <module>../../plugins/org.eclipse.sirius.sample.properties.radio</module>
         <module>../../plugins/org.eclipse.sirius.sample.properties.textarea</module>
         <module>../../plugins/org.eclipse.sirius.tests.ui.properties</module>
-
+        <module>../../plugins/org.eclipse.sirius.workflow.ui.page</module>
         <module>../../plugins/org.eclipse.sirius.server</module>
         <module>../../plugins/org.eclipse.sirius.server.backend</module>
         <module>../../plugins/org.eclipse.sirius.server.frontend</module>
