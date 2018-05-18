@@ -21,7 +21,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.CreateEditPoliciesOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
@@ -58,6 +60,7 @@ public class DoubleClickEditPolicyProvider implements IEditPolicyProvider {
 
     @Override
     public boolean provides(IOperation operation) {
+        boolean result = false;
         if (operation instanceof CreateEditPoliciesOperation) {
             CreateEditPoliciesOperation castedOperation = (CreateEditPoliciesOperation) operation;
             EditPart editPart = castedOperation.getEditPart();
@@ -65,11 +68,18 @@ public class DoubleClickEditPolicyProvider implements IEditPolicyProvider {
             if (model instanceof View) {
                 EObject element = ((View) model).getElement();
                 if (element instanceof DDiagramElement) {
-                    return true;
+                    DDiagramElement dDiagramElement = (DDiagramElement) element;
+                    DDiagram parentDiagram = dDiagramElement.getParentDiagram();
+                    if (parentDiagram.isIsInShowingMode()) {
+                        result = true;
+                    } else {
+                        DiagramElementMapping diagramElementMapping = dDiagramElement.getDiagramElementMapping();
+                        result = diagramElementMapping.getDoubleClickDescription() != null;
+                    }
                 }
             }
         }
-        return false;
+        return result;
     }
 
     @Override
