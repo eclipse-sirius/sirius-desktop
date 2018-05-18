@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_staging" sequenceNumber="1526539990">
+<target name="sirius_staging" sequenceNumber="1526656718">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -16,6 +16,7 @@
       <unit id="ch.qos.logback.slf4j" version="1.0.7.v201505121915"/>
       <unit id="ch.qos.logback.classic" version="1.0.7.v20121108-1250"/>
       <unit id="ch.qos.logback.core" version="1.0.7.v20121108-1250"/>
+      <unit id="org.apache.xalan" version="2.7.1.v201005080400"/>
       <unit id="org.apache.xerces" version="2.9.0.v201101211617"/>
       <unit id="org.apache.batik.bridge" version="1.9.1.v20180313-1559"/>
       <unit id="org.apache.batik.dom" version="1.9.1.v20180313-1559"/>
