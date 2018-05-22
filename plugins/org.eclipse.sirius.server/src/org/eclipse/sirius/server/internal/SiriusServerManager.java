@@ -11,6 +11,7 @@
 package org.eclipse.sirius.server.internal;
 
 import java.net.InetSocketAddress;
+import java.net.URI;
 import java.util.Optional;
 
 import org.eclipse.core.runtime.IStatus;
@@ -37,14 +38,12 @@ public class SiriusServerManager {
     /**
      * The default port.
      */
-    private static final String PORT = "8080"; //$NON-NLS-1$
+    private static final String PORT = "0"; //$NON-NLS-1$
 
     /**
      * The Jetty server.
      */
     private Server server;
-
-    private InetSocketAddress address;
 
     /**
      * Starts the HTTP server.
@@ -53,7 +52,7 @@ public class SiriusServerManager {
     public void start() {
         if (this.server == null || !this.server.isRunning()) {
             int port = Integer.valueOf(System.getProperty(PORT_VMARG, PORT)).intValue();
-            address = new InetSocketAddress(HOSTNAME, port);
+            InetSocketAddress address = new InetSocketAddress(HOSTNAME, port);
             this.server = new Server(address);
             this.server.setHandler(new HandlerCollection());
 
@@ -85,10 +84,10 @@ public class SiriusServerManager {
 
     /**
      * Returns the address on which the server is listening.
-     * 
+     *
      * @return the address on which the server is listening.
      */
-    public InetSocketAddress getAddress() {
-        return this.address;
+    public URI getURI() {
+        return this.server.getURI();
     }
 }
