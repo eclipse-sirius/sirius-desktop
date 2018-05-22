@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_staging" sequenceNumber="1526560530">
+<target name="sirius_staging" sequenceNumber="1526995230">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -77,16 +77,16 @@
       <repository location="http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
+      <repository id="Sirius-Photon-6.0.0M7" location="http://download.eclipse.org/sirius/updates/milestones/6.0.0M7/photon/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="0.0.0"/>
-      <repository id="GMF-Notation-1.12" location="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S201805141341"/>
+      <repository id="GMF-Notation-1.12rc1" location="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S201805221301"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
-      <repository id="GMF-Runtime-1.12" location="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201805151421"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
-      <repository id="Sirius-Photon-6.0.0M7" location="http://download.eclipse.org/sirius/updates/milestones/6.0.0M7/photon/"/>
+      <repository id="GMF-Runtime-1.12rc1" location="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201805221147"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="0.0.0"/>
