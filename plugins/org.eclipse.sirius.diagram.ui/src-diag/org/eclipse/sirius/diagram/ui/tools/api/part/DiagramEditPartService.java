@@ -357,12 +357,8 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
             monitor.worked(1);
             saveToFile(destination, (SiriusDiagramSVGGenerator) gen, format, monitor);
             found = true;
-        } else if (format.equals(ImageFileFormat.JPEG) || format.equals(ImageFileFormat.PNG)) {
-
-            String exportFormat = ImageExporter.JPEG_FILE;
-            if (format.equals(ImageFileFormat.PNG))
-                exportFormat = ImageExporter.PNG_FILE;
-
+        } else if (format.equals(ImageFileFormat.PNG)) {
+            String exportFormat = ImageExporter.PNG_FILE;
             java.awt.Image image = gen.createAWTImageForParts(editParts, imageRect);
             monitor.worked(1);
             if (image instanceof BufferedImage) {
@@ -492,7 +488,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         try {
             FileOutputStream os = new FileOutputStream(destination.toOSString());
             monitor.worked(1);
-            saveToOutputStream(os, generator, format, monitor);
+            saveToOutputStream(os, generator, format == ImageFileFormat.JPEG ? ImageFileFormat.JPG : format, monitor);
             os.close();
             monitor.worked(1);
             refreshLocal(destination);
