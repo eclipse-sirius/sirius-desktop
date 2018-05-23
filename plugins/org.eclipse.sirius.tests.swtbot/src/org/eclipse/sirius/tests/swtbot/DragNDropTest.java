@@ -176,6 +176,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             int rowCount = errorLogBot.tree().rowCount();
 
             // DnD P1(EPackage) from the Model Content view to the diagram
+            semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P1);
             ecoreTreeItem.dragAndDrop(editor.getCanvas());
 
@@ -211,6 +212,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point p1Location = editor.getBounds(p1Bot).getLocation();
 
             // DnD P2(EPackage) from the Model Content view to P1
+            semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
             final SWTBotTreeItem ecoreTreeItem1 = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P2);
             util.dragAndDrop(ecoreTreeItem1, editor.getCanvas(), new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
@@ -437,6 +439,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point targetLocation = editor.getBounds(p1Bot).getLeft().getTranslated(-200, 0);
 
             // DnD P2.1(EPackage) from the Model Content view to the diagram
+            semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).expandNode(CONTAINER_TO_DRAG_P2).getNode(CONTAINER_TO_DRAG_P3);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas(), targetLocation);
             bot.waitUntil(new CheckNumberOfDescendants(p1Bot, AbstractDiagramNodeEditPart.class, 1));
@@ -504,6 +507,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             // DnD C1(EClass) from the Model Content view to P2. This
             // move shall not be allowed. Asserts that no error message is
             // generated
+            semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
             ecoreTreeItem.dragAndDrop(editor.getCanvas());
 
@@ -544,6 +548,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             // DnD C1(EClass) from the Model Content view to P2. This
             // move shall not be allowed. Asserts that no error message is
             // generated
+            semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas(), new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
 
@@ -576,6 +581,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             int rowCount = errorLogBot.tree().rowCount();
 
             // DnD P1(EPackage) from the Model Content view to the diagram
+            semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P1);
             ecoreTreeItem.dragAndDrop(editor.getCanvas());
 
@@ -611,6 +617,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point p1Location = editor.getBounds(p1Bot).getLocation();
 
             // DnD P2(EPackage) from the Model Content view to P1
+            semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas(), new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
@@ -646,6 +653,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point targetLocation = editor.getBounds(p1Bot).getLeft().getTranslated(-200, 0);
 
             // DnD P2(EPackage) from the Model Content view to the diagram
+            semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P2);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas(), new org.eclipse.swt.graphics.Point(targetLocation.x, targetLocation.y));
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 2));
@@ -683,7 +691,6 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      */
     @Test
     public void test_DnDClassFromMC2DiagramBlank5() throws Exception {
-
         openRepresentation5();
 
         try {
@@ -691,8 +698,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
-            DndUtil util = new DndUtil(bot.getDisplay());
-
+            semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
             // DnD P1(EPackage) from the Model Content view to the diagram
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
             ecoreTreeItem.dragAndDrop(editor.getCanvas());
@@ -727,6 +733,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             int rowCount = errorLogBot.tree().rowCount();
 
             // DnD P1(EPackage) from the Model Content view to the diagram
+            semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
             ecoreTreeItem.dragAndDrop(editor.getCanvas());
 
@@ -763,6 +770,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point p1Location = editor.getBounds(p1Bot).getLocation();
 
             // DnD P2(EPackage) from the Model Content view to P1
+            semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P2);
             util.dragAndDrop(ecoreTreeItem, editor.getCanvas(), new org.eclipse.swt.graphics.Point(p1Location.x + 25, p1Location.y + 25));
 
