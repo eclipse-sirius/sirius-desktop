@@ -830,7 +830,7 @@ public class RepairTest extends AbstractScenarioTestCase {
         SWTBotUtils.waitAllUiEvents();
 
         /* retrieve the properties view */
-        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        SWTBotView propertiesView = bot.viewById("org.eclipse.ui.views.PropertySheet");
         propertiesView.setFocus();
         final SWTBot propertiesViewBot = propertiesView.bot();
         final SWTBotTree tree = propertiesViewBot.tree();
