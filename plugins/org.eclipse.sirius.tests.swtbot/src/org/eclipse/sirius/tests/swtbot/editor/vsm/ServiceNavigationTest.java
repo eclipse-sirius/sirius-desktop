@@ -541,7 +541,7 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
                 }
                 if (javaServiceIndex >= 0) {
                     table.select(javaServiceIndex);
-                    wizardBot.button("OK").click();
+                    wizardBot.button(TestsUtil.isPhotonPlatformOrLater() ? "Open" : "OK").click();
                 }
             }
             TestsUtil.waitUntil(new JavaEditorOpenedCondition(true));

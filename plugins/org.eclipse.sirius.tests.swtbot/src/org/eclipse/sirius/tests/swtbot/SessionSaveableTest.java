@@ -360,7 +360,7 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
 
     private void checkSaveResourcesDialog() {
         bot.waitUntil(Conditions.shellIsActive("Save Resources"));
-        final SWTBotButton buttonOk = bot.button("OK");
+        final SWTBotButton buttonOk = bot.button(TestsUtil.isPhotonPlatformOrLater() ? "Save Selected" : "OK");
         assertTrue("The popup should be contains 2 elements", bot.table().rowCount() == 2);
         buttonOk.click();
         SessionSavedCondition sessionCondition = new SessionSavedCondition(localSession.getOpenedSession());
