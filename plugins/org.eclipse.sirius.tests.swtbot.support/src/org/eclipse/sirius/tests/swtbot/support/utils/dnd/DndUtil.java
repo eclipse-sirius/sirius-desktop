@@ -14,10 +14,7 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
-import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.jface.util.Geometry;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.swt.SWT;
@@ -28,16 +25,13 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
-import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefFigureCanvas;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
  * A dnd utility class to help performing drag and drop. This code will be in
@@ -69,20 +63,6 @@ public class DndUtil {
      */
     public DndUtil(Display display) {
         this.display = display;
-    }
-
-    /**
-     * Performs a drag and drop operation from this widget to the given target.
-     * The drag start location will be chosen depending on this widget's default
-     * implementation.
-     * 
-     * @param source
-     *            the source widget to drag
-     * @param target
-     *            To perform the drop on
-     */
-    public void dragAndDrop(final AbstractSWTBot<? extends Widget> source, final AbstractSWTBot<? extends Widget> target) {
-        dragAndDrop(source, target, DndUtil.on(target));
     }
 
     /**
@@ -252,77 +232,8 @@ public class DndUtil {
     }
 
     private static <T extends Widget> Rectangle absoluteLocation(final AbstractSWTBot<T> item) {
-        AbstractSWTBot<?> bot = null;
-        if (item instanceof SWTBotTreeItem) {
-            bot = new SWTBotTreeItemForDnd(((SWTBotTreeItem) item).widget);
-        } else if (item instanceof SWTBotGefFigureCanvas) {
-            bot = new SWTBotGefFigureCanvasForDnd((FigureCanvas) ((SWTBotGefFigureCanvas) item).widget);
-        } else {
-            bot = item;
-        }
-        Object result = null;
-        try {
-            Method m = AbstractSWTBot.class.getDeclaredMethod("absoluteLocation");
-            m.setAccessible(true);
-            result = m.invoke(bot);
-        } catch (SecurityException e) {
-            // do nothing
-        } catch (NoSuchMethodException e) {
-            // do nothing
-        } catch (IllegalArgumentException e) {
-            // do nothing
-        } catch (IllegalAccessException e) {
-            // do nothing
-        } catch (InvocationTargetException e) {
-            // do nothing
-        }
+        Object result = ReflectionHelper.invokeMethodWithoutExceptionWithReturn(item, AbstractSWTBot.class, "absoluteLocation", new Class<?>[0], new Object[0], true);
         return (Rectangle) result;
-    }
-
-    /**
-     * Subclass to return the correct absolute location.
-     * 
-     * @author mchauvin
-     */
-    private static class SWTBotTreeItemForDnd extends SWTBotTreeItem {
-
-        SWTBotTreeItemForDnd(TreeItem treeItem) throws WidgetNotFoundException {
-            super(treeItem);
-        }
-
-        @Override
-        protected Rectangle absoluteLocation() {
-            return UIThreadRunnable.syncExec(new Result<Rectangle>() {
-                @Override
-                public Rectangle run() {
-                    return display.map(widget.getParent(), null, widget.getBounds());
-                }
-            });
-        }
-
-    }
-
-    /**
-     * Subclass to return the correct absolute location.
-     * 
-     * @author mchauvin
-     */
-    private static class SWTBotGefFigureCanvasForDnd extends SWTBotGefFigureCanvas {
-
-        SWTBotGefFigureCanvasForDnd(FigureCanvas canvas) throws WidgetNotFoundException {
-            super(canvas);
-        }
-
-        @Override
-        protected Rectangle absoluteLocation() {
-            return UIThreadRunnable.syncExec(new Result<Rectangle>() {
-                @Override
-                public Rectangle run() {
-                    return display.map(widget.getParent(), null, widget.getBounds());
-                }
-            });
-        }
-
     }
 
     /**

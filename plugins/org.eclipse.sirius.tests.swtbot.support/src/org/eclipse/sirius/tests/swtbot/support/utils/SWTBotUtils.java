@@ -19,15 +19,12 @@ import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
-import org.eclipse.jface.util.Geometry;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
-import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.sirius.tests.swtbot.support.utils.menu.SWTBotContextMenu;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -57,7 +54,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
-import org.eclipse.ui.internal.dnd.DragUtil;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -795,12 +791,8 @@ public final class SWTBotUtils {
         int modelNumber = semanticAirdTree.getAllItems().length;
 
         currentBot.getDisplay().asyncExec(() -> {
-            // compute drop point
-            Point dropPoint = Geometry.centerPoint(DragUtil.getDisplayBounds(semanticAirdTree.widget));
-            // drag and drop
             sampleFile.select();
-            DndUtil util = new DndUtil(currentBot.getDisplay());
-            util.dragAndDrop(sampleFile, dropPoint);
+            sampleFile.dragAndDrop(semanticAirdTree);
         });
         currentBot.waitUntil(new DefaultCondition() {
 

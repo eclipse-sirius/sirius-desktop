@@ -99,13 +99,11 @@ public class PortLocationAfterDragAndDropTest extends AbstractUmlDragAndDropTest
      */
     @Test
     public void testPortLocationFromParentDnDFromModelExplorerView() throws Exception {
-        Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
         // DnD ComponentWith3Ports from the Model Explorer view to the diagram
         final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOT_MODEL_NAME).expandNode(COMPONENENT_TO_DRAG_PARENT_NAME_WITH_PREFIX)
                 .getNode(COMPONENENT_TO_DRAG_ON_DIAGRAM_NAME_WITH_PREFIX);
         ecoreTreeItem.select();
-        DndUtil util = new DndUtil(bot.getDisplay());
-        util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
+        ecoreTreeItem.dragAndDrop(editor.getCanvas());
         bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
         // Check the standard ports position
         // First port position

@@ -175,11 +175,9 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
-            DndUtil util = new DndUtil(bot.getDisplay());
-
             // DnD P1(EPackage) from the Model Content view to the diagram
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P1);
-            util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
+            ecoreTreeItem.dragAndDrop(editor.getCanvas());
 
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
@@ -503,13 +501,11 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
-            DndUtil util = new DndUtil(bot.getDisplay());
-
             // DnD C1(EClass) from the Model Content view to P2. This
             // move shall not be allowed. Asserts that no error message is
             // generated
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
-            util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
+            ecoreTreeItem.dragAndDrop(editor.getCanvas());
 
             // Asserts that C1 graphical element was not created on the diagram
             // and no error
@@ -579,11 +575,9 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
-            DndUtil util = new DndUtil(bot.getDisplay());
-
             // DnD P1(EPackage) from the Model Content view to the diagram
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).getNode(CONTAINER_TO_DRAG_P1);
-            util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
+            ecoreTreeItem.dragAndDrop(editor.getCanvas());
 
             bot.waitUntil(new DiagramWithChildrensCondition(editor, 1));
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
@@ -701,7 +695,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
             // DnD P1(EPackage) from the Model Content view to the diagram
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
-            util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
+            ecoreTreeItem.dragAndDrop(editor.getCanvas());
 
             // Asserts that C1 graphical element was not created on the diagram
             // and no error
@@ -732,11 +726,9 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
 
-            DndUtil util = new DndUtil(bot.getDisplay());
-
             // DnD P1(EPackage) from the Model Content view to the diagram
             final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOTPACKAGE_NAME).expandNode(CONTAINER_TO_DRAG_P1).getNode(CLASS_TO_DRAG_C1);
-            util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
+            ecoreTreeItem.dragAndDrop(editor.getCanvas());
 
             // Asserts that C1 graphical element was created on the diagram and
             // no error message was generated

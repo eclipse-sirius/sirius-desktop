@@ -19,7 +19,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -28,7 +27,6 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,9 +57,6 @@ public class DndWorkspaceToAirdEditorTest extends AbstractSiriusSwtBotGefTestCas
         super.setUp();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, VSM_FILE, SESSION_FILE, SAMPLE_MODEL_FILE);
@@ -75,7 +70,6 @@ public class DndWorkspaceToAirdEditorTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testDragAndDropModelFile() throws Exception {
-        Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
         if (TestsUtil.shouldSkipUnreliableTests()) {
             // On some IC server this test is KO so we don't launch if the
             // unreliable test must be skipped.

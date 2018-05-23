@@ -285,6 +285,15 @@
 				<code>org.eclipse.sirius.tests.support.api.TestsUtil.isBeforeOxygenPlatform()</code> has been added to detect if the current platform corresponds to a version before Oxygen.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
+			<code>org.eclipse.sirius.tests.swtbot.support</code>
+		</h4>
+		<ul>
+			<li><span class="label label-danger">Removed</span> The method 
+				<code>org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil#dragAndDrop(AbstractSWTBot&lt;? extends Widget&gt;, AbstractSWTBot&lt;? extends Widget&gt;)</code> has been removed. When explicit drop coordinates are not needed, use the standard SWTbot 
+				<code>org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot.dragAndDrop(AbstractSWTBot&lt;? extends Widget&gt;)</code> method instead. 
+			</li>
+		</ul>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to fix diagram with note attachment corrupted (see 
@@ -1243,7 +1252,7 @@
 				<code>org.eclipse.sirius.tests.support.api.OpenedSessionsCondition</code> has been extracted from a junit test to be used by multiple junit tests. It allows to wait until a session is in opened state.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -1808,7 +1817,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>DView.ownedRepresentationDescriptors</code> addition.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -2306,7 +2315,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>SiriusTestCase.initViewpoint(String, Session, EObject)</code> has been deprecated because the last parameter is useless to activate a viewpoint.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support4">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>

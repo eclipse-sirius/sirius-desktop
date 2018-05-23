@@ -20,7 +20,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
-import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -69,8 +68,7 @@ public class DndWorkspaceSupportTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotTree tree = bot.viewByTitle("Model Explorer").bot().tree();
         SWTBotTreeItem sampleFile = tree.expandNode(designerProject.getName()).expandNode(SAMPLE_FILE);
 
-        DndUtil util = new DndUtil(bot.getDisplay());
-        util.dragAndDrop(sampleFile, editor.getCanvas());
+        sampleFile.dragAndDrop(editor.getCanvas());
 
         bot.waitUntil(new DefaultCondition() {
 
@@ -106,8 +104,7 @@ public class DndWorkspaceSupportTest extends AbstractSiriusSwtBotGefTestCase {
 
         final int numberOfSemanticResourcesBeforeDrag = getNumberOfSemanticResources(localSession);
 
-        DndUtil util = new DndUtil(bot.getDisplay());
-        util.dragAndDrop(sampleFile, editor.getCanvas());
+        sampleFile.dragAndDrop(editor.getCanvas());
 
         bot.waitUntil(new DefaultCondition() {
 

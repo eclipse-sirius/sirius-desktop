@@ -28,7 +28,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotSplitEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -62,9 +61,6 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
 
     private UITreeRepresentation tree;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFilesToTestProject(MODEL, SESSION_FILE, VSM_FILE);
@@ -98,7 +94,6 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
         // open table
         table = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("dnd").selectRepresentation("dndTable").selectRepresentationInstance("new dndTable", UITableRepresentation.class)
                 .open();
-        // tableEditor = table.getEditor();
 
         // open diagram
 
@@ -108,14 +103,11 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
         Set<SWTBotGefEditPart> allEditPartsBefore = Sets.newHashSet(editor.mainEditPart().children());
         SWTBotUtils.waitAllUiEvents();
         SWTBotSplitEditor.splitEditorArea();
-        Thread.sleep(500);
 
         // Perform the DnD
-        DndUtil util = new DndUtil(bot.getDisplay());
         SWTBotTreeItem ecoreTreeItem = table.getTable().getTreeItem("new EClass 2");
-        util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
+        ecoreTreeItem.dragAndDrop(editor.getCanvas());
         SWTBotUtils.waitAllUiEvents();
-        Thread.sleep(500);
 
         // Force a refresh of the diagram. This happens automatically when
         // running the test manually, but for some reason in the context of the
@@ -130,7 +122,6 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
             }
         });
         SWTBotUtils.waitAllUiEvents();
-        Thread.sleep(500);
 
         // Check the final state: we should have exactly one new edit part on
         // the diagram.
@@ -150,7 +141,6 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
         // open table
         tree = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("dnd").selectRepresentation("dndTree").selectRepresentationInstance("new dndTree", UITreeRepresentation.class)
                 .open();
-        // treeEditor = tree.getEditor();
 
         // open diagram
 
@@ -160,15 +150,11 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
         Set<SWTBotGefEditPart> allEditPartsBefore = Sets.newHashSet(editor.mainEditPart().children());
         SWTBotUtils.waitAllUiEvents();
         SWTBotSplitEditor.splitEditorArea();
-        Thread.sleep(500);
 
         // Perform the DnD
-        // tree.getTable().setFocus();
-        DndUtil util = new DndUtil(bot.getDisplay());
         SWTBotTreeItem ecoreTreeItem = tree.getTree().getTreeItem("new EClass 2");
-        util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
+        ecoreTreeItem.dragAndDrop(editor.getCanvas());
         SWTBotUtils.waitAllUiEvents();
-        Thread.sleep(500);
 
         // Force a refresh of the diagram. This happens automatically when
         // running the test manually, but for some reason in the context of the
@@ -183,7 +169,6 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
             }
         });
         SWTBotUtils.waitAllUiEvents();
-        Thread.sleep(500);
 
         // Check the final state: we should have exactly one new edit part on
         // the diagram.
@@ -192,14 +177,10 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
         assertEquals("Expected exactly one new element on the diagram.", 1, newParts.size());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         // Reopen outline
         designerViews.openOutlineView();
-
         super.tearDown();
     }
 }

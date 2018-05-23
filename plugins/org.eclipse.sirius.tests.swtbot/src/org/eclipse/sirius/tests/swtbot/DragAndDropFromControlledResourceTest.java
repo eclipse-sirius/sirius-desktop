@@ -24,7 +24,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondit
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -32,7 +31,6 @@ import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.After;
-import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -75,9 +73,6 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
         super.setUp();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, CONTROLLED_MODEL, SESSION_FILE, VSM_FILE);
@@ -110,7 +105,6 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
      */
     @Test
     public void testDragAndDropClassFromControlledResourceOntoDiagram() throws Exception {
-        Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "dnd_from_model_content", "new dnd_from_model_content", DDiagram.class);
 
         // Read the initial state.
@@ -118,11 +112,10 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
         SWTBotUtils.waitAllUiEvents();
         Thread.sleep(500);
         // Perform the DnD
-        DndUtil util = new DndUtil(bot.getDisplay());
         SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode("root").expandNode("Package1").getNode("EClass3");
 
         ICondition done = new OperationDoneCondition();
-        util.dragAndDrop(ecoreTreeItem, editor.getCanvas());
+        ecoreTreeItem.dragAndDrop(editor.getCanvas());
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(done);
 
@@ -136,9 +129,6 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
         assertEquals("EClass3", ((EClass) semanticTarget).getName());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     @After
     public void tearDown() throws Exception {

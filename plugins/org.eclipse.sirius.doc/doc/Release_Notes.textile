@@ -65,6 +65,10 @@ h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tests.support.api.TestsUtil.isBeforeOxygenPlatform()@ has been added to detect if the current platform corresponds to a version before Oxygen.
 
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
+* <span class="label label-danger">Removed</span> The method @org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil#dragAndDrop(AbstractSWTBot<? extends Widget>, AbstractSWTBot<? extends Widget>)@ has been removed. When explicit drop coordinates are not needed, use the standard SWTbot @org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot.dragAndDrop(AbstractSWTBot<? extends Widget>)@ method instead. 
+
 h4. Migrations
 
 * <span class="label label-success">Added</span> A migration participant has been added to fix diagram with note attachment corrupted (see "bugzilla #533177":https://bugs.eclipse.org/bugs/show_bug.cgi?id=533177 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _13.0.0.201804031646_.
