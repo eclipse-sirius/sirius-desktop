@@ -266,7 +266,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 // empty list in getWorkbenchWindows() (see bug 441507).
                 PlatformUI.getWorkbench().getActiveWorkbenchWindow();
                 Shell shell = PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell();
-                if (System.getProperty("os.name").contains("Mac")) {
+                String osName = System.getProperty("os.name");
+                if (osName.contains("Mac") || osName.contains("Linux")) {
                     shell.setMaximized(AbstractSiriusSwtBotGefTestCase.fFullScreen);
                 } else {
                     shell.setFullScreen(AbstractSiriusSwtBotGefTestCase.fFullScreen);
@@ -281,7 +282,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
         closeAllSessions(true);
 
+        // CHECKSTYLE:OFF
         System.out.println("Setup of " + this.getClass().getName() + AbstractSiriusSwtBotGefTestCase.POINT + getName() + "()");
+        // CHECKSTYLE:ON
         try {
             super.setUp();
 
@@ -295,9 +298,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                     defaultEnableAnimatedLayout = preferenceStore.getBoolean(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT);
                     preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, false);
 
-                    // Set the auto-refresh to false because it's historically
-                    // the
-                    // default value
+                    // Set the auto-refresh to false because it's historically the default value
                     DefaultScope.INSTANCE.getNode(SiriusPlugin.ID).putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
                     InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), getAutoRefreshMode());
                 }
