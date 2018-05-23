@@ -229,6 +229,7 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
         String routingStyleLitteral = routingStyle.getLiteral().substring(0, 1).toUpperCase().concat(routingStyle.getLiteral().substring(1, routingStyle.getLiteral().length()));
         comboBox.setSelection(routingStyleLitteral);
         // applied change with change focus
+        tree.expandNode("Misc").click();
         SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE);
 
         checkRoutingStyleInAppearance();
