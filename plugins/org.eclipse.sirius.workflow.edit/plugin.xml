@@ -16,10 +16,10 @@
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated workflow -->
+      <!-- @generated NOT workflow -->
       <factory
             uri="http://www.eclipse.org/sirius/workflow/1.0.0"
-            class="org.eclipse.sirius.workflow.provider.WorkflowItemProviderAdapterFactory"
+            class="org.eclipse.sirius.workflow.provider.WorkflowItemProviderAdapterFactorySpec"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -30,9 +30,9 @@
    </extension>
 
    <extension point="org.eclipse.emf.edit.childCreationExtenders">
-      <!-- @generated workflow -->
+      <!-- @generated NOT workflow -->
       <extender
             uri="http://www.eclipse.org/sirius/description/1.1.0"
-            class="org.eclipse.sirius.workflow.provider.WorkflowItemProviderAdapterFactory$DescriptionChildCreationExtender"/>
+            class="org.eclipse.sirius.workflow.provider.DescriptionChildCreationExtenderSpec"/>
    </extension>
 </plugin>
