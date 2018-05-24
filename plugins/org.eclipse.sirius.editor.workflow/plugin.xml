@@ -100,6 +100,9 @@
      <contexts file="help/contexts.xml" plugin="org.eclipse.sirius.workflow">
      </contexts>
   </extension>
+  <extension point="org.eclipse.sirius.editor.menuBuilder">
+     <builder class="org.eclipse.sirius.editor.workflow.internal.menu.WorkflowMenuBuilder" />
+  </extension>
   
 </plugin>    
 <!-- End of user code plugin.xml end specifics  -->
