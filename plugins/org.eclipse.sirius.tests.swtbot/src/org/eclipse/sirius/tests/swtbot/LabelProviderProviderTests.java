@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.internal.sheet.SiriusSheetLabelProvider;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.tests.support.api.ImageEquality;
 import org.eclipse.sirius.tests.swtbot.LabelProviderProviderTests.DiagramLabelProviderProviderStub.DiagramLabelProvider;
@@ -37,9 +38,8 @@ import org.eclipse.sirius.tests.swtbot.LabelProviderProviderTests.TableLabelProv
 import org.eclipse.sirius.tests.swtbot.LabelProviderProviderTests.TreeLabelProviderProviderStub.TreeLabelProvider;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
 import org.eclipse.sirius.ui.tools.api.provider.DTableLabelProvider;
@@ -149,9 +149,7 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
      * customization.
      */
     public void testPropertiesViewTitleOnTableDialectEditorWithoutContributions() {
-        UITableRepresentation table = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TABLE_DESC_NAME)
-                .selectRepresentationInstance("new " + TABLE_DESC_NAME, UITableRepresentation.class).open();
-        SWTBotEditor tableEditorBot = table.getEditor();
+        SWTBotEditor tableEditorBot = openRepresentation(localSession.getOpenedSession(), TABLE_DESC_NAME, "new " + TABLE_DESC_NAME, DTable.class);
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         Object oldLabelProvider = null;
         try {
@@ -174,9 +172,7 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
      * customization.
      */
     public void testPropertiesViewTitleOnTreeDialectEditorWithoutContributions() {
-        UITreeRepresentation tree = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TREE_DESC_NAME)
-                .selectRepresentationInstance("new " + TREE_DESC_NAME, UITreeRepresentation.class).open();
-        SWTBotEditor treeEditorBot = tree.getEditor();
+        SWTBotEditor treeEditorBot = openRepresentation(localSession.getOpenedSession(), TREE_DESC_NAME, "new " + TREE_DESC_NAME, DTree.class);
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         SWTBot propertiesViewBot = propertiesView.bot();
         Object oldLabelProvider = null;
@@ -225,9 +221,7 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
      */
     public void testPropertiesViewTitleOnTableDialectEditorWithContributions() {
         addContributions();
-        UITableRepresentation table = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TABLE_DESC_NAME)
-                .selectRepresentationInstance("new " + TABLE_DESC_NAME, UITableRepresentation.class).open();
-        SWTBotEditor tableEditorBot = table.getEditor();
+        SWTBotEditor tableEditorBot = openRepresentation(localSession.getOpenedSession(), TABLE_DESC_NAME, "new " + TABLE_DESC_NAME, DTable.class);
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         Object oldLabelProvider = null;
         try {
@@ -251,9 +245,7 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
      */
     public void testPropertiesViewTitleOnTreeDialectEditorWithContributions() {
         addContributions();
-        UITreeRepresentation tree = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TREE_DESC_NAME)
-                .selectRepresentationInstance("new " + TREE_DESC_NAME, UITreeRepresentation.class).open();
-        SWTBotEditor treeEditorBot = tree.getEditor();
+        SWTBotEditor treeEditorBot = openRepresentation(localSession.getOpenedSession(), TREE_DESC_NAME, "new " + TREE_DESC_NAME, DTree.class);
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         SWTBot propertiesViewBot = propertiesView.bot();
         Object oldLabelProvider = null;
