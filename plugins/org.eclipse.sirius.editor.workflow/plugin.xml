@@ -18,6 +18,7 @@
   
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
+      <!--
   	  <propertySection
                class="org.eclipse.sirius.workflow.model.editor.properties.sections.workflow.activitydescription.ActivityDescriptionImagePathPropertySection"
                id="workflow.section.activityDescription.ImagePath"
@@ -26,13 +27,16 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.workflow.ActivityDescription"/>
       </propertySection>
+      -->
   	  <propertySection
                class="org.eclipse.sirius.workflow.model.editor.properties.sections.workflow.activitydescription.ActivityDescriptionLabelExpressionPropertySection"
                id="workflow.section.activityDescription.LabelExpression"
                filter="org.eclipse.sirius.workflow.model.editor.properties.filters.workflow.activitydescription.ActivityDescriptionLabelExpressionFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.workflow.ActivityDescription"/>
       </propertySection>
+      <!--
   	  <propertySection
                class="org.eclipse.sirius.workflow.model.editor.properties.sections.workflow.sectiondescription.SectionDescriptionImagePathPropertySection"
                id="workflow.section.sectionDescription.ImagePath"
@@ -49,13 +53,16 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.workflow.SectionDescription"/>
       </propertySection>
+      -->
   	  <propertySection
                class="org.eclipse.sirius.workflow.model.editor.properties.sections.workflow.sectiondescription.SectionDescriptionTitleExpressionPropertySection"
                id="workflow.section.sectionDescription.TitleExpression"
                filter="org.eclipse.sirius.workflow.model.editor.properties.filters.workflow.sectiondescription.SectionDescriptionTitleExpressionFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.workflow.SectionDescription"/>
       </propertySection>
+      <!--
   	  <propertySection
                class="org.eclipse.sirius.workflow.model.editor.properties.sections.workflow.pagedescription.PageDescriptionImagePathPropertySection"
                id="workflow.section.pageDescription.ImagePath"
@@ -72,10 +79,12 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.workflow.PageDescription"/>
       </propertySection>
+      -->
   	  <propertySection
                class="org.eclipse.sirius.workflow.model.editor.properties.sections.workflow.pagedescription.PageDescriptionTitleExpressionPropertySection"
                id="workflow.section.pageDescription.TitleExpression"
                filter="org.eclipse.sirius.workflow.model.editor.properties.filters.workflow.pagedescription.PageDescriptionTitleExpressionFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.workflow.PageDescription"/>
       </propertySection>
