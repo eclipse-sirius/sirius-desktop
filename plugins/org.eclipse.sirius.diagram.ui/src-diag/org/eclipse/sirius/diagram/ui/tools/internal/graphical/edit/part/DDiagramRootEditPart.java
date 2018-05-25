@@ -42,8 +42,7 @@ public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
     private SiriusAnimatableZoomManager siriusZoomManager;
 
     /**
-     * Copy of org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart.
-     * zoomLevels
+     * Copy of org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart. zoomLevels
      */
     private double[] siriusZoomLevels = { .05, .1, .25, .5, .75, 1, 1.25, 1.5, 1.75, 2, 4 };
 
@@ -58,9 +57,7 @@ public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
     }
 
     /**
-     * Installs the
-     * {@link org.eclipse.sirius.diagram.ui.tools.internal.routers.DForestRouter}
-     * .
+     * Installs the {@link org.eclipse.sirius.diagram.ui.tools.internal.routers.DForestRouter} .
      * <p>
      * {@inheritDoc}
      */
@@ -114,7 +111,7 @@ public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
     @Override
     public void zoomIn(Point center) {
         if (getZoomManager() instanceof SiriusAnimatableZoomManager) {
-            ((SiriusAnimatableZoomManager) getZoomManager()).zoomTo(getZoomManager().getNextZoomLevel(), center);
+            ((SiriusAnimatableZoomManager) getZoomManager()).zoomTo(getZoomManager().getNextZoomLevel(), center, true);
         }
     }
 
@@ -126,14 +123,14 @@ public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
     @Override
     public void zoomOut(Point center) {
         if (getZoomManager() instanceof SiriusAnimatableZoomManager) {
-            ((SiriusAnimatableZoomManager) getZoomManager()).zoomTo(getZoomManager().getPreviousZoomLevel(), center);
+            ((SiriusAnimatableZoomManager) getZoomManager()).zoomTo(getZoomManager().getPreviousZoomLevel(), center, true);
         }
     }
 
     @Override
     public void zoomTo(double zoom, Point center) {
         if (getZoomManager() instanceof SiriusAnimatableZoomManager) {
-            ((SiriusAnimatableZoomManager) getZoomManager()).zoomTo(zoom, center);
+            ((SiriusAnimatableZoomManager) getZoomManager()).zoomTo(zoom, center, true);
         }
     }
 

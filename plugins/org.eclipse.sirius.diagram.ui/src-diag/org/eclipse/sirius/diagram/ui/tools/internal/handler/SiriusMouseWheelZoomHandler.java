@@ -17,9 +17,8 @@ import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.swt.widgets.Event;
 
 /**
- * A Sirius mouse wheel handler to zoom around the mouse location. This class is
- * a copy of {@link org.eclipse.gef.MouseWheelZoomHandler} to correctly handle
- * SiriusAnimatableZoomManager.
+ * A Sirius mouse wheel handler to zoom around the mouse location. This class is a copy of
+ * {@link org.eclipse.gef.MouseWheelZoomHandler} to correctly handle SiriusAnimatableZoomManager.
  * 
  * @author fbarbin
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
@@ -52,7 +51,7 @@ public class SiriusMouseWheelZoomHandler implements MouseWheelHandler {
 
     private void zoomOut(ZoomManager zoomMgr, Event event) {
         if (zoomMgr instanceof SiriusAnimatableZoomManager) {
-            ((SiriusAnimatableZoomManager) zoomMgr).zoomTo(zoomMgr.getPreviousZoomLevel(), new Point(event.x, event.y));
+            ((SiriusAnimatableZoomManager) zoomMgr).zoomTo(zoomMgr.getPreviousZoomLevel(), new Point(event.x, event.y), true);
         } else {
             zoomMgr.zoomOut();
         }
@@ -61,7 +60,7 @@ public class SiriusMouseWheelZoomHandler implements MouseWheelHandler {
 
     private void zoomIn(ZoomManager zoomMgr, Event event) {
         if (zoomMgr instanceof SiriusAnimatableZoomManager) {
-            ((SiriusAnimatableZoomManager) zoomMgr).zoomTo(zoomMgr.getNextZoomLevel(), new Point(event.x, event.y));
+            ((SiriusAnimatableZoomManager) zoomMgr).zoomTo(zoomMgr.getNextZoomLevel(), new Point(event.x, event.y), true);
         } else {
             zoomMgr.zoomIn();
         }
