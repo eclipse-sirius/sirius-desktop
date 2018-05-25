@@ -22,6 +22,7 @@ import org.eclipse.sirius.tests.support.api.ICondition;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
@@ -33,6 +34,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTableItem;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
  * Tests layout option modifications for a layout algorithm in a VSM.
@@ -72,15 +74,17 @@ public class LayoutOptionsTests extends AbstractSiriusSwtBotGefTestCase {
 
         odesignEditorBot = bot.activeEditor();
         odesignEditorBot.setFocus();
-        odesignEditorBot.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + MODELER_RESOURCE_NAME).expandNode(GROUP_NAME).expandNode(VIEWPOINT_NAME)
-                .expandNode(DIAGRAM_DESCRIPTION_NAME).expandNode(LAYOUT_ALGORITHM_LABEL).select();
+        SWTBotTreeItem selectedItem = odesignEditorBot.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + MODELER_RESOURCE_NAME).expandNode(GROUP_NAME).expandNode(VIEWPOINT_NAME)
+                .expandNode(DIAGRAM_DESCRIPTION_NAME).getNode(LAYOUT_ALGORITHM_LABEL);
+        selectedItem.click();
+        SWTBotUtils.waitAllUiEvents();
 
     }
 
     /**
      * Tests that layout option addition and removal for a layout algorithm is working as expected.
      */
-    public void testUndoRedoDeleteFromDefaultTool() {
+    public void testLayoutOptionModifications() {
 
         propertiesView = bot.viewByTitle("Properties");
         propertiesView.setFocus();
