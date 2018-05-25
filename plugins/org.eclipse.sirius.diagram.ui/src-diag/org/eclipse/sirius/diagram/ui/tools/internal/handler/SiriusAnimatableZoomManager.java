@@ -143,13 +143,21 @@ public class SiriusAnimatableZoomManager extends ZoomManager {
      *            <code>double</code> value where 1.0 represents 100%.
      * @param zoomedPoint
      *            <code>Point</code> around which the zoom will be centered in absolute coordinates
+     * @param considerVolatileFigure
+     *            true if volatile figures should be taken in consideration when computing the the new zoom area. False
+     *            otherwise.
      */
-    public void zoomTo(double zoom, Point zoomedPoint) {
-        List<IFixedFigure> removedFigures = removeSynchronizationFigureFromDiagram();
+    public void zoomTo(double zoom, Point zoomedPoint, boolean considerVolatileFigure) {
+        List<IFixedFigure> removedFigures = null;
+        if (considerVolatileFigure) {
+            removedFigures = removeSynchronizationFigureFromDiagram();
+        }
         Point zoomedPointCopy = zoomedPoint.getCopy();
         getScalableFigure().translateToRelative(zoomedPointCopy);
         primSetZoom(zoom, zoomedPointCopy);
-        reAttachedFiguresOnDiagram(removedFigures);
+        if (considerVolatileFigure) {
+            reAttachedFiguresOnDiagram(removedFigures);
+        }
     }
 
     /**
@@ -168,7 +176,7 @@ public class SiriusAnimatableZoomManager extends ZoomManager {
         double scaleY = available.height * getZoom() / desired.height;
 
         double zoom = Math.min(getMaxZoom(), Math.max(getMinZoom(), Math.min(scaleX, scaleY)));
-        zoomTo(zoom, rect.getCenter());
+        zoomTo(zoom, rect.getCenter(), false);
         reAttachedFiguresOnDiagram(removedFigures);
     }
 
@@ -180,8 +188,10 @@ public class SiriusAnimatableZoomManager extends ZoomManager {
      */
     @Override
     protected void primSetZoom(double zoom) {
+        List<IFixedFigure> removedFigures = removeSynchronizationFigureFromDiagram();
         Point center = getViewport().getClientArea().getCenter();
         primSetZoom(zoom, center);
+        reAttachedFiguresOnDiagram(removedFigures);
     }
 
     /**

@@ -34,6 +34,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 
 /**
  * Tests that diagram editor zooming is unaffected by synchronized decorator.
@@ -43,14 +44,12 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
  */
 public class DiagramZoomTest extends AbstractSiriusSwtBotGefTestCase {
     /**
-     * Maximum distance on Y axis between the part at the lower position and the
-     * decorator.
+     * Maximum distance on Y axis between the part at the lower position and the decorator.
      */
     private static final int MAX_DISTANCE_Y = 210;
 
     /**
-     * Maximum distance on X axis between the part at the lower position and the
-     * decorator.
+     * Maximum distance on X axis between the part at the lower position and the decorator.
      */
     private static final int MAX_DISTANCE_X = 1100;
 
@@ -93,9 +92,21 @@ public class DiagramZoomTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Tests that the viewport is shifted to the right position after zoom done
-     * with constant when the synchronized decorator is present. The decorator
-     * should not impact the zoom.
+     * Tests that the viewport is shifted to the right position after zoom done with constant with tabbar buttons when
+     * the synchronized decorator is present. The decorator should not impact the zoom.
+     */
+    public void testZoomWithSynchronizedDecoratorConstantWithTabbarZoomButtons() {
+        DiagramEditPart diagramPart = openDiagramEditorAndCheckDecorator();
+        SWTBotToolbarButton toolbarButton = editor.bot().toolbarButtonWithTooltip("Zoom In (Ctrl+=)");
+        toolbarButton.click();
+        toolbarButton.click();
+        toolbarButton.click();
+        checkExpected(diagramPart);
+    }
+
+    /**
+     * Tests that the viewport is shifted to the right position after zoom done with constant when the synchronized
+     * decorator is present. The decorator should not impact the zoom.
      */
     public void testZoomWithSynchronizedDecoratorConstant() {
         DiagramEditPart diagramPart = openDiagramEditorAndCheckDecorator();
@@ -146,9 +157,8 @@ public class DiagramZoomTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Tests that the viewport is shifted to the right position after zoom done
-     * with the mouse when the synchronized decorator is present. The decorator
-     * should not impact the zoom.
+     * Tests that the viewport is shifted to the right position after zoom done with the mouse when the synchronized
+     * decorator is present. The decorator should not impact the zoom.
      */
     public void testMouseZoomWithSynchronizedDecorator() {
         DiagramEditPart diagramPart = openDiagramEditorAndCheckDecorator();
@@ -160,9 +170,8 @@ public class DiagramZoomTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Tests that the viewport is shifted to the right position after zoom done
-     * with mouse rectangular selection when the synchronized decorator is
-     * present. The decorator should not impact the zoom.
+     * Tests that the viewport is shifted to the right position after zoom done with mouse rectangular selection when
+     * the synchronized decorator is present. The decorator should not impact the zoom.
      */
     public void testRectangularMouseZoomWithSynchronizedDecorator() {
         DiagramEditPart diagramPart = openDiagramEditorAndCheckDecorator();
