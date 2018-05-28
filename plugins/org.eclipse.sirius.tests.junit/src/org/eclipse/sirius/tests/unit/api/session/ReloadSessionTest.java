@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,8 +16,12 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
@@ -30,6 +34,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.tests.support.api.ICondition;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
@@ -119,7 +124,7 @@ public class ReloadSessionTest extends SiriusDiagramTestCase implements EcoreMod
     }
 
     /**
-     * Ensure that when a fragment is modified outside of Eclipse, the session is the same after the reload.
+     * Ensure that when a fragment is modified from Eclipse text editor, the session is the same after the reload.
      * <ol>
      * <li>Retrieve the Session</li>
      * <li>Modify from externally the fragment session. For this, copy/paste file with same name but with blank space
@@ -132,7 +137,7 @@ public class ReloadSessionTest extends SiriusDiagramTestCase implements EcoreMod
      * 
      * @throws Exception
      */
-    public void testModifyExternallyFragmentSession() throws Exception {
+    public void testModifyFragmentSessionFromInternalTextEditor() throws Exception {
         // Retrieve the session and stock it
         session = loadSession();
 
@@ -151,9 +156,65 @@ public class ReloadSessionTest extends SiriusDiagramTestCase implements EcoreMod
         checkSessionIsCorrect(session, listeners);
     }
 
+    /**
+     * Ensure that when a fragment is modified with OS API outside of Eclipse context, the session is the same after the
+     * reload.
+     * <ol>
+     * <li>Retrieve the Session</li>
+     * <li>Modify from externally the fragment session. For this, copy/paste file with same name but with blank space
+     * additional</li>
+     * <li>The copy/paste launches a refresh on fragment session, so there is no necessary need to launch a refresh on
+     * project</li>
+     * <li>Check that the session is always the same</li>
+     * <li>Check that old diagram event broker listeners are cleared.</li>
+     * </ol>
+     * 
+     * @throws Exception
+     */
+    public void testModifyFragmentSessionFromExternalTextEditor() throws Exception {
+        // Retrieve the session and stock it
+        session = loadSession();
+
+        NotifierToKeyToListenersSetMap postCommitListenersMap = diagramEventBroker.getPostCommitListenersMap();
+        Map<Object, Object> listeners = getListenerMap(postCommitListenersMap);
+        assertEquals("The test context is wrong.", 12, listeners.size());
+
+        final String pluginFilePath = PATH_COPY + SESSION_RESOURCE_FRAGMENT;
+        final String wksPath = TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_FRAGMENT;
+        // Modify externally session file (Copy the same file as existing in
+        // project
+        Job job = new Job("Refresh aird file") {
+
+            @Override
+            protected IStatus run(IProgressMonitor monitor) {
+                EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, pluginFilePath, wksPath);
+                return new Status(IStatus.OK, "pluginId", "Ok");
+            }
+        };
+        job.schedule();
+        TestsUtil.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                IStatus result = job.getResult();
+                return result != null;
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "Job never finished.";
+            }
+        });
+        TestsUtil.synchronizationWithUIThread();
+
+        // Check the session is the same
+        checkSessionIsCorrect(session, listeners);
+    }
+
     private Map<Object, Object> getListenerMap(NotifierToKeyToListenersSetMap postCommitListenersMap) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
         Field f = postCommitListenersMap.getClass().getDeclaredField("listenersMap"); // NoSuchFieldException
         f.setAccessible(true);
+        @SuppressWarnings("unchecked")
         Map<Object, Object> map = (Map<Object, Object>) f.get(postCommitListenersMap); // IllegalAccessException
         return map;
     }

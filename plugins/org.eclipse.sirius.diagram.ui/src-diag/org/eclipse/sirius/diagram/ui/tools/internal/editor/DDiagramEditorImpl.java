@@ -1210,7 +1210,10 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     public void notify(final int changeKind) {
         DDiagramEditorSessionListenerDelegate dDiagramEditorSessionListenerDelegate = new DDiagramEditorSessionListenerDelegate(this, toolFilterWhenRepresentationIsLocked, changeKind);
-        if (Display.getCurrent() == null) {
+        // The deactivation in "about to be replaced" change does not need to be run in UI thread. Also if run in UI
+        // thread, SessionResourcesSynchronizer resource reload will be done before cleaning DViewSpec listener making
+        // its cleaning impossible after.
+        if (Display.getCurrent() == null && changeKind != SessionListener.ABOUT_TO_BE_REPLACED) {
             EclipseUIUtil.displayAsyncExec(dDiagramEditorSessionListenerDelegate);
         } else {
             dDiagramEditorSessionListenerDelegate.run();
