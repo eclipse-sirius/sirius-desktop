@@ -20,7 +20,7 @@
 			</li>
 		</ol>
 		<p>The general architecture of Sirius is illustrated in the figure below and reflects this split:</p>
-		<img style="box-shadow: 0 0 0 0" border="0" src="images/Sirius - High-Level Architecture Overview.png"/> 
+		<img style="box-shadow: 0 0 0 0" border="0" src="images/Sirius_High-Level_Architecture_Overview.png"/> 
 		<p>On top of Eclipse and EMF, Sirius is made of two main parts.</p>
 		<p>The Sirius 
 			<strong>tooling</strong>   (on the right hand of the figure), is the part used by architects. It provides an environment in which they can specify the modeler(s) they want to give to their end-users. This specification is done in a declarative way, by configuring a 
@@ -50,7 +50,7 @@
 			<em>interact</em>  with his models as represented, but only in the ways configured by the architect. When the user interacts with the representation in the editor, some interactions (e.g. dragging and dropping and element on a diagram) can trigger behaviors defined by the architect, which will modify the underlying business model in ways that are consistent with the business rules. Whenever the business model is modified, Sirius re-launches the refresh algorithm, which is incremental: instead of creating a new representation model for the updated business model’s state, it updates the existing model and only changes the parts that need it. The ends-user can then see the effect of his changes immediately in the editor.
 		</p>
 		<p>
-			<img style="box-shadow: 0 0 0 0" border="0" src="images/Sirius - Representation Refresh-Sync.png"/>
+			<img style="box-shadow: 0 0 0 0" border="0" src="images/Sirius_Representation_Refresh-Sync.png"/>
 		</p>
 		<p>An important property of the refresh algorithm(s) is that they are not only incremental in terms of changes in the business model, but also in terms of changes in the modeler description model itself. This gives rise to one of the most important and distinctive features of Sirius: support for dynamic and incremental development of modelers by architects, with real-time feedback. In practice, this means that when an architect is developing a new modeler definition (or changing an existing one), he can have both the modeler’s definition open (using the Sirius Tooling) and an example representation also open alongside, and whenever he changes the modeler’s definition and saves it, the updated definition is automatically picked-up by the runtime and taken into account instantaneously by issuing a refresh.</p>
 		<p>In addition to the 
