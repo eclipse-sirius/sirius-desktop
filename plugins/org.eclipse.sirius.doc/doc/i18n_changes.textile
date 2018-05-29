@@ -2,6 +2,83 @@ h1. Translation Keys Changes
 
 This document lists the changes in @TranslatableMessage@ used for Sirius internationalization in each Sirius version.
 
+h2(#sirius60). Translation Keys Changes in Sirius 6.0 (from Sirius 5.1)
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramGeneralPreferencePage_sizeGroupLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.GenericConnectionCreationTool_label@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.InsertBlankSpace_cmdName@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LayoutAlgorithmProviderRegistry_badClassType@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LayoutAlgorithmProviderRegistry_classInitialization@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.SetShowingModeCommandAndUpdateActionImage_activateLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.SetShowingModeCommandAndUpdateActionImage_deactivateLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ShowingModeSwitchingAction_activate@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ShowingModeSwitchingAction_deactivate@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ShowingModeSwitchingAction_statusOn@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.StandardDiagramServices_expressionMessage@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.StandardDiagramServices_expressionTitle@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.StandardDiagramServices_expressionTooltip@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.StandardDiagramServices_sameETypeMessage@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.StandardDiagramServices_sameETypeTitle@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.StandardDiagramServices_sameETypeTooltip@
+* @org.eclipse.sirius.diagram.Messages.NoteAttachmentWithoutSourceOrTargetMigrationParticipant_edgesRemoved@
+* @org.eclipse.sirius.diagram.Messages.NoteAttachmentWithoutSourceOrTargetMigrationParticipant_title@
+* @org.eclipse.sirius.diagram.Messages.UndoRedoCapableEMFCommandFactory_insertHorizontalBlankSpaceNotImplemented@
+* @org.eclipse.sirius.diagram.Messages.UndoRedoCapableEMFCommandFactory_insertVerticalBlankSpaceNotImplemented@
+* @org.eclipse.sirius.editor.workflow.internal.Messages.WorkflowMenuBuilder_NewWorkflow_label@
+* @org.eclipse.sirius.editor.workflow.internal.Messages.WorkflowMenuBuilder_label@
+* @org.eclipse.sirius.editor.Messages.AddOptionOverridePropertySection_dialogTitle@
+* @org.eclipse.sirius.editor.Messages.AddOptionOverridePropertySection_overrideButtonLabel@
+* @org.eclipse.sirius.editor.Messages.CustomSiriusEditor_failedNavigationExceptionMessage@
+* @org.eclipse.sirius.editor.Messages.CustomSiriusEditor_failedNavigationMessage@
+* @org.eclipse.sirius.editor.Messages.CustomSiriusEditor_failedNavigationTitle@
+* @org.eclipse.sirius.editor.Messages.LayoutOptionValue_defaultLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_filteringLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_optionDefaultValueColumnLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_optionDescriptionLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_optionNameColumnLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_optionTypeColumnLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_tableLabel@
+* @org.eclipse.sirius.editor.Messages.ServiceNavigator_serviceNavigationDialog_description@
+* @org.eclipse.sirius.editor.Messages.ServiceNavigator_serviceNavigationDialog_title@
+* @org.eclipse.sirius.editor.Messages.ServiceNavigator_targetInitialization_error@
+* @org.eclipse.sirius.ext.ide.internal.Messages.DescriptorRegistryEventListener_cannotInstantiateExtension@
+* @org.eclipse.sirius.ext.ide.internal.Messages.DescriptorRegistryEventListener_extensionAlreadyContributed@
+* @org.eclipse.sirius.ext.ide.internal.Messages.DescriptorRegistryEventListener_missingAttribute@
+* @org.eclipse.sirius.server.internal.Messages.SiriusServerManager_cannotStartServer@
+* @org.eclipse.sirius.server.internal.Messages.SiriusServerManager_cannotStopServer@
+* @org.eclipse.sirius.viewpoint.provider.Messages.AbstractExportRepresentationsAsImagesDialog_scalingLevelDiagramLabel@
+* @org.eclipse.sirius.viewpoint.provider.Messages.ExportAction_invalidLevel@
+* @org.eclipse.sirius.viewpoint.provider.Messages.ExportAsImage_dialogSizeGroupName@
+* @org.eclipse.sirius.viewpoint.provider.Messages.ExportAsImage_maxLevelLabel@
+* @org.eclipse.sirius.viewpoint.provider.Messages.ExportAsImage_nominalLevelLabel@
+* @org.eclipse.sirius.viewpoint.provider.Messages.ExportAsImage_sizeTooltip@
+* @org.eclipse.sirius.viewpoint.provider.Messages.No_Browser_Error_Message@
+* @org.eclipse.sirius.viewpoint.provider.Messages.OpenViewpointSelectionBrowser_Error_Message@
+* @org.eclipse.sirius.viewpoint.provider.Messages.SingleRepresentationTreeSelectionDialog_Title@
+* @org.eclipse.sirius.workflow.ui.page.Messages.WorkflowPage_header_title@
+* @org.eclipse.sirius.workflow.ui.page.Messages.WorkflowPage_tab_name@
+* @org.eclipse.sirius.viewpoint.Messages.InvalidModelingProjectMarkerUpdaterJob_updateMarkers@
+* @org.eclipse.sirius.viewpoint.Messages.ModelingModelProvider_addAnotherRepresentationFile@
+* @org.eclipse.sirius.viewpoint.Messages.ModelingModelProvider_addAnotherRepresentationFileSeveralProjects@
+* @org.eclipse.sirius.viewpoint.Messages.ModelingModelProvider_mainRepresentationFileDeleted@
+* @org.eclipse.sirius.viewpoint.Messages.ModelingModelProvider_mainRepresentationFilesOfSomeProjectsDeleted@
+* @org.eclipse.sirius.viewpoint.Messages.ModelingModelProvider_satusUnsaveDataWillBeLostWithProjectNames@
+* @org.eclipse.sirius.viewpoint.Messages.ModelingModelProvider_satusUnsavedDataWillBeLost@
+
+h3. Message Keys Removed
+
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramGeneralPreferencePage_scaleDiagramOnExport@
+* @org.eclipse.sirius.viewpoint.provider.Messages.AbstractExportRepresentationsAsImagesDialog_autoScaleDiagram@
+* @org.eclipse.sirius.viewpoint.provider.Messages.InvalidModelingProjectMarkerUpdaterJob_updateMarkers@
+* @org.eclipse.sirius.viewpoint.provider.Messages.ModelingModelProvider_addAnotherRepresentationFile@
+* @org.eclipse.sirius.viewpoint.provider.Messages.ModelingModelProvider_addAnotherRepresentationFileSeveralProjects@
+* @org.eclipse.sirius.viewpoint.provider.Messages.ModelingModelProvider_mainRepresentationFileDeleted@
+* @org.eclipse.sirius.viewpoint.provider.Messages.ModelingModelProvider_mainRepresentationFilesOfSomeProjectsDeleted@
+* @org.eclipse.sirius.viewpoint.provider.Messages.ModelingModelProvider_satusUnsaveDataWillBeLostWithProjectNames@
+* @org.eclipse.sirius.viewpoint.provider.Messages.ModelingModelProvider_satusUnsavedDataWillBeLost@
+
 h2(#sirius51). Translation Keys Changes in Sirius 5.1 (from Sirius 5.0)
 
 h3. Message Keys Added
