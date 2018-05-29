@@ -1,0 +1,74 @@
+# Notices for Sirius
+
+This content is produced and maintained by the Eclipse Sirius project.
+
+* Project home: https://projects.eclipse.org/projects/modeling.sirius
+
+## Trademarks
+
+Eclipse Sirius, and Sirius are trademarks of the Eclipse Foundation.
+
+## Copyright
+
+All content is the property of the respective authors or their employers. For
+more information regarding authorship of content, please consult the listed
+source code repository logs.
+
+## Declared Project Licenses
+
+This program and the accompanying materials are made available under the terms
+of the Eclipse Public License v. 1.0 which is available at
+http://www.eclipse.org/legal/epl-v10.html.
+
+SPDX-License-Identifier: EPL-1.0
+
+## Source Code
+
+The project maintains the following source code repositories:
+
+* https://github.com/eclipse/sirius-components
+* http://git.eclipse.org/c/sirius/org.eclipse.sirius.git
+* http://git.eclipse.org/c/sirius/org.eclipse.sirius.legacy.git
+
+## Third-party Content
+
+Apache Batik DOM Level 3 implementation library (1.9)
+
+* License: Apache-2.0 
+
+Batik AWT utility library (1.9)
+
+* License: Apache-2.0 
+
+Batik Bridge Library (1.9)
+
+* License: Apache-2.0 
+* Project: https://xmlgraphics.apache.org/batik/
+* Source:
+   https://svn.apache.org/repos/asf/xmlgraphics/batik/trunk/batik-bridge/
+
+Batik SVG DOM implementation (1.9)
+
+* License: Apache License, 2.0, W3C License, Historical Permission Notice
+   (without Disclaimer)
+
+Google Guava (21.0)
+
+* License: Apache License, 2.0
+
+Guava (11.0.2)
+
+* License: Apache License, 2.0
+
+twitter bootstrap (2.0.1)
+
+* License: Apache License, 2.0
+
+## Cryptography
+
+Content may contain encryption software. The country in which you are currently
+may have restrictions on the import, possession, and use, and/or re-export to
+another country, of encryption software. BEFORE using any encryption software,
+please check the country's laws, regulations and policies concerning the import,
+possession, or use, and re-export of encryption software, to see if this is
+permitted.
