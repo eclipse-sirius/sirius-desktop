@@ -511,7 +511,7 @@
 		<h4 id="reloadVSM">Reload installed VSM</h4>
 		<p>Even though having your VSP in the runtime environment workspace is the best way to do dynamic development of your VSM, if your VSP is in the installed runtime plug-ins (that is the VSP plug-in is in the development environment workspace), you have the ability the reload it from your runtime to take external changes into account.
 			<br/>This is done with the 
-			<em>Reload installed VSM</em> action from the main eclipse tool bar. 
+			<em>Reload installed VSM</em> action from the main Eclipse tool bar. 
 			<br/>Click on 
 			<em>Reload installed VSM</em> will have automatically effects in opened representations(depending on refresh options).
 		</p>
@@ -521,7 +521,8 @@
 		<ul>
 			<li>The action is available only if specifier plug-ins are installed.</li>
 			<li>The action is available only if the Eclipse Runtime is a started from PDE (that is, is not a stand alone application).</li>
-			<li>Only the VSM is reloaded. The java classes that may have been changed in the VSP are updated as normal java classes managed in debug mode.</li>
+			<li>Only the VSM is reloaded. The Java classes that may have been changed in the VSP are updated as normal Java classes managed in debug mode.</li>
+			<li>If you delete the VSP in the host Eclipse, you may encounter unexpected exceptions.</li>
 		</ul>
 		<h3 id="migration">Migration from Previous Versions</h3>
 		<p>The 

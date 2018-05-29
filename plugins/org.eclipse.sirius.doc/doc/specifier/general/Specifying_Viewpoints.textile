@@ -204,13 +204,14 @@ Note that Sirius does its best to take into account any change in the VSM, even 
 h4(#reloadVSM). Reload installed VSM
 
 Even though having your VSP in the runtime environment workspace is the best way to do dynamic development of your VSM, if your VSP is in the installed runtime plug-ins (that is the VSP plug-in is in the development environment workspace), you have the ability the reload it from your runtime to take external changes into account.
-This is done with the _Reload installed VSM_ action from the main eclipse tool bar. 
+This is done with the _Reload installed VSM_ action from the main Eclipse tool bar. 
 Click on _Reload installed VSM_ will have automatically effects in opened representations(depending on refresh options).
 
 _Limitations_:
 * The action is available only if specifier plug-ins are installed.
 * The action is available only if the Eclipse Runtime is a started from PDE (that is, is not a stand alone application).
-* Only the VSM is reloaded. The java classes that may have been changed in the VSP are updated as normal java classes managed in debug mode.
+* Only the VSM is reloaded. The Java classes that may have been changed in the VSP are updated as normal Java classes managed in debug mode.
+* If you delete the VSP in the host Eclipse, you may encounter unexpected exceptions.
 
 h3(#migration). Migration from Previous Versions
 
