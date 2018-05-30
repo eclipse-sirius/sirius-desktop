@@ -22,8 +22,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -40,23 +40,30 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
+import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.server.backend.internal.ISiriusServerService;
 import org.eclipse.sirius.server.backend.internal.SiriusServerBackendPlugin;
 import org.eclipse.sirius.server.backend.internal.SiriusServerPath;
 import org.eclipse.sirius.server.backend.internal.SiriusServerResponse;
+import org.eclipse.sirius.server.backend.internal.expressions.SiriusBackendInterpreter;
 import org.eclipse.sirius.server.backend.internal.services.workflow.WorkflowHelper;
 import org.eclipse.sirius.server.backend.internal.utils.SiriusServerUtils;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.tree.description.TreeDescription;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.workflow.ActivityDescription;
+import org.eclipse.sirius.workflow.PageDescription;
 import org.eclipse.sirius.workflow.SectionDescription;
 
 /**
@@ -66,6 +73,11 @@ import org.eclipse.sirius.workflow.SectionDescription;
  */
 @SiriusServerPath("/projects/{projectName}")
 public class SiriusServerProjectService implements ISiriusServerService {
+
+    /**
+     * The name of the self variable.
+     */
+    private static final String SELF = "self"; //$NON-NLS-1$
 
     /**
      * The name of the variable used to capture the name of the project.
@@ -113,7 +125,7 @@ public class SiriusServerProjectService implements ISiriusServerService {
         String description = SiriusServerUtils.getProjectDescription(modelingProject.getProject());
         List<AbstractSiriusServerRepresentationDto> representations = this.getRepresentations(session);
         List<SiriusServerSemanticResourceDto> semanticResources = this.getSemanticResources(modelingProject.getProject(), session);
-        List<SiriusServerPageDto> pages = this.getPages(session);
+        List<SiriusServerPageDto> pages = this.getPages(modelingProject, session);
         List<SiriusServerSectionDto> currentPageSections = this.getFirstPageSections(session);
         return new SiriusServerProjectDto(projectName, description, representations, semanticResources, pages, currentPageSections);
     }
@@ -121,13 +133,22 @@ public class SiriusServerProjectService implements ISiriusServerService {
     /**
      * Returns the list of workflow page from the given session.
      *
+     * @param modelingProject
+     *            The modeling project
      * @param session
      *            The session
      * @return The list of workflow page from the given session
      */
-    private List<SiriusServerPageDto> getPages(Session session) {
+    private List<SiriusServerPageDto> getPages(ModelingProject modelingProject, Session session) {
         return WorkflowHelper.on(session).getPageDescriptions().map(page -> {
-            return new SiriusServerPageDto(page.getName(), page.getLabel(), page.getDescriptionExpression());
+            DAnalysis self = ((DAnalysisSession) session).allAnalyses().stream().findFirst().orElse(null);
+            Map<String, Object> variables = new HashMap<>();
+            variables.put(SELF, self);
+            IEvaluationResult result = new SiriusBackendInterpreter(session).evaluateExpression(variables, page.getTitleExpression());
+
+            String identifier = page.getName();
+            String name = result.asString();
+            return new SiriusServerPageDto(identifier, name);
         }).collect(Collectors.toList());
     }
 
@@ -139,16 +160,62 @@ public class SiriusServerProjectService implements ISiriusServerService {
      * @return The list of the sections of the current page
      */
     private List<SiriusServerSectionDto> getFirstPageSections(Session session) {
-        List<SiriusServerSectionDto> sections = new ArrayList<>();
-        WorkflowHelper.on(session).getPageDescriptions().findFirst().ifPresent(page -> {
-            for (SectionDescription sectionDesc : page.getSections()) {
-                List<SiriusServerActivityDto> activities = sectionDesc.getActivities().stream().map(desc -> {
-                    return new SiriusServerActivityDto(desc.getName(), desc.getLabelExpression());
-                }).collect(Collectors.toList());
-                sections.add(new SiriusServerSectionDto(sectionDesc.getName(), sectionDesc.getTitleExpression(), activities));
-            }
-        });
-        return sections;
+        Optional<PageDescription> optionalPageDescription = WorkflowHelper.on(session).getPageDescriptions().findFirst();
+        List<SectionDescription> sectionDescriptions = optionalPageDescription.map(PageDescription::getSections).orElseGet(BasicEList::new);
+
+        // @formatter:off
+        return sectionDescriptions.stream()
+                .map(sectionDescription -> this.convertSection(session, sectionDescription))
+                .collect(Collectors.toList());
+        // @formatter:on
+    }
+
+    /**
+     * Converts the given {@link SectionDescription}.
+     *
+     * @param session
+     *            The Sirius session
+     * @param sectionDescription
+     *            The section description
+     * @return The section DTO
+     */
+    private SiriusServerSectionDto convertSection(Session session, SectionDescription sectionDescription) {
+        String sectionIdentifier = sectionDescription.getName();
+
+        DAnalysis self = ((DAnalysisSession) session).allAnalyses().stream().findFirst().orElse(null);
+        Map<String, Object> variables = new HashMap<>();
+        variables.put(SELF, self);
+        IEvaluationResult result = new SiriusBackendInterpreter(session).evaluateExpression(variables, sectionDescription.getTitleExpression());
+        String sectionName = result.asString();
+
+        // @formatter:off
+        List<SiriusServerActivityDto> activities = sectionDescription.getActivities().stream()
+                .map(activityDescription -> this.convertActivity(session, activityDescription))
+                .collect(Collectors.toList());
+        // @formatter:on
+
+        return new SiriusServerSectionDto(sectionIdentifier, sectionName, activities);
+    }
+
+    /**
+     * Converts the given {@link ActivityDescription}.
+     *
+     * @param session
+     *            The Sirius session
+     * @param activityDescription
+     *            The activity description
+     * @return The activity DTO
+     */
+    private SiriusServerActivityDto convertActivity(Session session, ActivityDescription activityDescription) {
+        String activityIdentifier = activityDescription.getName();
+
+        DAnalysis self = ((DAnalysisSession) session).allAnalyses().stream().findFirst().orElse(null);
+        Map<String, Object> variables = new HashMap<>();
+        variables.put(SELF, self);
+        IEvaluationResult result = new SiriusBackendInterpreter(session).evaluateExpression(variables, activityDescription.getLabelExpression());
+        String activityName = result.asString();
+
+        return new SiriusServerActivityDto(activityIdentifier, activityName);
     }
 
     /**

@@ -21,22 +21,17 @@ public class SiriusServerPageDto {
 
     private String name;
 
-    private String description;
-
     /**
      * The constructor.
-     * 
+     *
      * @param identifier
      *            The identifier
      * @param name
      *            The name
-     * @param description
-     *            The description
      */
-    public SiriusServerPageDto(String identifier, String name, String description) {
+    public SiriusServerPageDto(String identifier, String name) {
         this.identifier = identifier;
         this.name = name;
-        this.description = description;
     }
 
     public String getIdentifier() {
@@ -47,7 +42,4 @@ public class SiriusServerPageDto {
         return this.name;
     }
 
-    public String getDescription() {
-        return this.description;
-    }
 }
