@@ -19,8 +19,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.batik.ext.awt.image.spi.ImageTagRegistry;
-import org.apache.batik.ext.awt.image.spi.ImageWriterRegistry;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
@@ -285,14 +283,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
             layoutAlgorithmProviderRegistry = new CustomLayoutAlgorithmProviderRegistry(layoutAlgorithmsRegistry);
             Platform.getExtensionRegistry().addListener(layoutAlgorithmProviderRegistry, CustomLayoutAlgorithmProviderRegistry.LAYOUT_ALGORITHM_PROVIDER_EXTENSION_POINT_ID);
-            
-            ImageWriterRegistry.getInstance().register(new org.apache.batik.ext.awt.image.codec.imageio.ImageIOPNGImageWriter());
-            ImageWriterRegistry.getInstance().register(new org.apache.batik.ext.awt.image.codec.imageio.ImageIOTIFFImageWriter());
-            ImageWriterRegistry.getInstance().register(new org.apache.batik.ext.awt.image.codec.imageio.ImageIOJPEGImageWriter());
-                      
-            ImageTagRegistry.getRegistry().register(new org.apache.batik.ext.awt.image.codec.imageio.ImageIOJPEGRegistryEntry());
-            ImageTagRegistry.getRegistry().register(new org.apache.batik.ext.awt.image.codec.imageio.ImageIOPNGRegistryEntry());
-            ImageTagRegistry.getRegistry().register(new org.apache.batik.ext.awt.image.codec.imageio.ImageIOTIFFRegistryEntry());
 
             registerCoreDecorationProviders();
         }

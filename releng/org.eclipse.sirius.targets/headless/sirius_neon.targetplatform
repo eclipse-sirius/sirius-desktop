@@ -4,7 +4,7 @@ include "../modules/shared-license.tpd"
 
 with source, requirements
 
-location Acceleo-3.7 "http://download.eclipse.org/acceleo/updates/milestones/3.7/S201802240723" {
+location Acceleo-3.7 "http://download.eclipse.org/acceleo/updates/releases/3.7/R201708211328" {
     org.eclipse.acceleo.engine lazy
     org.eclipse.acceleo.parser lazy
     org.eclipse.acceleo.query.feature.group lazy

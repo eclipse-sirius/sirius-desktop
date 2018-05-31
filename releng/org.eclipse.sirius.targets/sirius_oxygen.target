@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_oxygen" sequenceNumber="1527600107">
+<target name="sirius_oxygen" sequenceNumber="1527843151">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
       <unit id="org.easymock" version="0.0.0"/>
       <unit id="org.hamcrest.core" version="0.0.0"/>
       <unit id="org.hamcrest.library" version="0.0.0"/>
-      <unit id="org.junit" version="0.0.0"/>
+      <unit id="org.junit" version="4.12.0.v201504281640"/>
       <unit id="javax.servlet" version="0.0.0"/>
       <unit id="javax.websocket" version="0.0.0"/>
       <unit id="com.google.gson" version="0.0.0"/>
@@ -17,16 +17,7 @@
       <unit id="ch.qos.logback.classic" version="1.0.7.v20121108-1250"/>
       <unit id="ch.qos.logback.core" version="1.0.7.v20121108-1250"/>
       <unit id="org.apache.xalan" version="2.7.1.v201005080400"/>
-      <unit id="org.apache.xerces" version="2.9.0.v201101211617"/>
-      <unit id="org.apache.batik.bridge" version="1.9.1.v20180313-1559"/>
-      <unit id="org.apache.batik.dom" version="1.9.1.v20180313-1559"/>
-      <unit id="org.apache.batik.dom.svg" version="1.9.1.v20180313-1559"/>
-      <unit id="org.apache.batik.svggen" version="1.9.1.v20180313-1559"/>
-      <unit id="org.apache.batik.transcoder" version="1.9.1.v20180313-1559"/>
-      <unit id="org.apache.batik.util" version="1.9.1.v20180227-1645"/>
-      <unit id="org.apache.batik.anim" version="1.9.1.v20180417-1407"/>
-      <unit id="org.apache.batik.gvt" version="1.9.1.v20180227-1645"/>
-      <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/S20180504181223/repository"/>
+      <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.7.0.201805151425"/>
@@ -82,7 +73,8 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
-      <repository id="GMF-Runtime-1.12rc2" location="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201805290950"/>
+      <unit id="org.eclipse.gmf.runtime.thirdparty.feature.group" version="0.0.0"/>
+      <repository id="GMF-Runtime-1.12rc3" location="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201806010809"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
