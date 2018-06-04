@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_photon" sequenceNumber="1527843162">
+<target name="sirius_photon" sequenceNumber="1528100630">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -17,7 +17,7 @@
       <unit id="ch.qos.logback.classic" version="1.0.7.v20121108-1250"/>
       <unit id="ch.qos.logback.core" version="1.0.7.v20121108-1250"/>
       <unit id="org.apache.xalan" version="2.7.1.v201005080400"/>
-      <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
+      <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180531190352/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.7.0.201805151425"/>
