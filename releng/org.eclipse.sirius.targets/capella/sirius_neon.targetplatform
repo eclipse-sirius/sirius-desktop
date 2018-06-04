@@ -1,15 +1,16 @@
 target "sirius_capella_neon"
 
 include "../modules/orbit.tpd"
-include "../modules/swtbot-2.6.tpd"
+include "../modules/swtbot-2.7.tpd"
 include "../modules/shared-license.tpd"
 include "../modules/aql-3.7.tpd"
 include "../modules/acceleo-3.7.tpd"
 include "../modules/elk-0.3.tpd"
+include "../modules/gmf-runtime-1.12.tpd"
 
 with source, requirements
 
-location Sirius-Neon-Master "http://download.eclipse.org/sirius/updates/nightly/latest/neon/" {
+location Sirius-Neon-6.0.0M7 "http://download.eclipse.org/sirius/updates/milestones/6.0.0M7/neon/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
@@ -38,8 +39,6 @@ location Eclipse-Neon "http://download.eclipse.org/releases/neon" {
     org.eclipse.equinox.sdk.feature.group lazy
     org.eclipse.gef.feature.group lazy
     org.eclipse.gef.sdk.feature.group lazy
-    org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
-    org.eclipse.gmf.runtime.sdk.feature.group lazy
     org.eclipse.ocl.all.feature.group lazy
     org.eclipse.ocl.core.sdk.feature.group lazy
     org.eclipse.platform.feature.group lazy
