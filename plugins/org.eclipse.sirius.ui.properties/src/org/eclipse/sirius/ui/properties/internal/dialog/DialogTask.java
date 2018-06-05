@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo.
+ * Copyright (c) 2017, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -117,15 +117,24 @@ public class DialogTask extends AbstractOperationTask {
             if (eefView.getPages().size() == 1) {
                 EEFPage eefPage = eefView.getPages().get(0);
 
-                Shell shell = Display.getCurrent().getActiveShell();
-                FormDialog formDialog = new PropertiesFormDialog(shell, this.extPackage, this.context, this.session, siriusInterpreter, variableManager, convertedDialogModelOperation, eefPage);
-                formDialog.create();
-                formDialog.getShell().setMinimumSize(600, 200);
+                Runnable runnable = () -> {
+                    Shell shell = Display.getCurrent().getActiveShell();
+                    FormDialog formDialog = new PropertiesFormDialog(shell, this.extPackage, this.context, this.session, siriusInterpreter, variableManager, convertedDialogModelOperation, eefPage);
+                    formDialog.create();
+                    formDialog.getShell().setMinimumSize(600, 200);
 
-                int returnCode = formDialog.open();
+                    int returnCode = formDialog.open();
 
-                if (Window.CANCEL == returnCode) {
-                    throw new OperationCanceledException();
+                    if (Window.CANCEL == returnCode) {
+                        throw new OperationCanceledException();
+                    }
+                };
+
+                boolean isInUiThread = Display.getCurrent() != null && Display.getCurrent().getActiveShell() != null;
+                if (isInUiThread) {
+                    runnable.run();
+                } else {
+                    Display.getDefault().syncExec(runnable);
                 }
             }
         });

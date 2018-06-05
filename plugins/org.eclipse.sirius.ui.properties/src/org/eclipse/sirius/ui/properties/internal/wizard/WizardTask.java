@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo.
+ * Copyright (c) 2017, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -107,13 +107,24 @@ public class WizardTask extends AbstractOperationTask {
             EEFView eefView = eefViewFactory.createEEFView(eefViewDescription, variableManager, siriusInterpreter, editingContextAdapterWrapper, new SiriusDomainClassTester(session), input);
 
             if (!eefView.getPages().isEmpty()) {
-                Shell shell = Display.getCurrent().getActiveShell();
-                WizardDialog wizardDialog = new PropertiesWizardDialog(shell, this.extPackage, this.context, this.session, siriusInterpreter, variableManager, convertedWizardModelOperation, eefView);
 
-                int returnCode = wizardDialog.open();
+                Runnable runnable = () -> {
+                    Shell shell = Display.getCurrent().getActiveShell();
+                    WizardDialog wizardDialog = new PropertiesWizardDialog(shell, this.extPackage, this.context, this.session, siriusInterpreter, variableManager, convertedWizardModelOperation,
+                            eefView);
 
-                if (Window.CANCEL == returnCode) {
-                    throw new OperationCanceledException();
+                    int returnCode = wizardDialog.open();
+
+                    if (Window.CANCEL == returnCode) {
+                        throw new OperationCanceledException();
+                    }
+                };
+
+                boolean isInUiThread = Display.getCurrent() != null && Display.getCurrent().getActiveShell() != null;
+                if (isInUiThread) {
+                    runnable.run();
+                } else {
+                    Display.getDefault().syncExec(runnable);
                 }
             }
         });

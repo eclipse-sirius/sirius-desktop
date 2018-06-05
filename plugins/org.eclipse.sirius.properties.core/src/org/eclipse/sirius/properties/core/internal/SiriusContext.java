@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2016, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,9 +18,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -86,6 +86,8 @@ public final class SiriusContext {
             result = fromDRepresentation((DRepresentation) input);
         } else if (input instanceof DRepresentationElement) {
             result = fromDRepresentationElement((DRepresentationElement) input);
+        } else if (input instanceof DAnalysis) {
+            result = fromDAnalysis((DAnalysis) input);
         } else if (input instanceof EObject) {
             result = fromUnknownEObject((EObject) input);
         } else if (input instanceof IAdaptable) {
@@ -114,7 +116,7 @@ public final class SiriusContext {
      * element.
      */
     private static SiriusContext fromDRepresentation(DRepresentation repr) {
-        Session session = new EObjectQuery(repr).getSession();
+        Session session = Session.of(repr).orElse(null);
         DSemanticDecorator decorator = null;
         if (repr instanceof DSemanticDecorator) {
             decorator = (DSemanticDecorator) repr;
@@ -137,6 +139,17 @@ public final class SiriusContext {
     }
 
     /**
+     * From a DAnalysis, we can find the session and use the DAnalysis as the semantic element.
+     * 
+     * @param dAnalysis
+     *            The DAnalysis object
+     */
+    private static SiriusContext fromDAnalysis(DAnalysis dAnalysis) {
+        Session session = Session.of(dAnalysis).orElse(null);
+        return new SiriusContext(dAnalysis, session, null, null, dAnalysis);
+    }
+
+    /**
      * From an unkown EObject, we van only deduce the session (if it is part of
      * one), and maybe the semantic element of the object itself is inside one
      * of the session's semantic resources. This should only be called as a last
@@ -144,7 +157,7 @@ public final class SiriusContext {
      * have been exhausted.
      */
     private static SiriusContext fromUnknownEObject(EObject obj) {
-        Session session = SessionManager.INSTANCE.getSession(obj);
+        Session session = Session.of(obj).orElse(null);
         // Session.getSemanticResources() only returns non-controlled resources,
         // so we need to identify the top-level Resource containing the element.
         Resource res = EcoreUtil.getRootContainer(obj).eResource();
