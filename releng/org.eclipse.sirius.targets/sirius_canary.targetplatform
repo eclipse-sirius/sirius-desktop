@@ -47,7 +47,7 @@ location UML2-LastSuccessful "https://ci.eclipse.org/uml2/job/mdt-uml2-master/ws
 	org.eclipse.uml2.sdk.feature.group lazy
 }
 
-location OCL-LastSuccessful "https://ci.eclipse.org/ocl/job/buckminster-ocl-core-luna-master/lastSuccessfulBuild/artifact/MDT-OCL.p2.repository/" {
+location OCL-LastSuccessful "http://download.eclipse.org/modeling/mdt/ocl/updates/nightly/" {
 	org.eclipse.ocl.all.feature.group lazy
 	org.eclipse.ocl.core.sdk.feature.group lazy
 }
