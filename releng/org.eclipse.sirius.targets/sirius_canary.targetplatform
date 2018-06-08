@@ -2,7 +2,7 @@ target "sirius_canary"
 
 include "modules/shared-license.tpd"
 include "modules/eef-nightly.tpd"
-include "modules/elk-0.3.tpd"
+include "modules/elk-0.4.tpd"
 include "modules/jetty-9.4.tpd"
 
 with source, requirements

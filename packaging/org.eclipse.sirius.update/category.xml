@@ -129,9 +129,9 @@
    <feature id="org.eclipse.sirius.diagram.elk.feature" version="0.0.0">
       <category name="Sirius"/>
    </feature>
-   <feature id="org.eclipse.elk.algorithms.feature.source" version="0.3.0"/>
-   <feature id="org.eclipse.elk.feature.source" version="0.3.0"/>
-   <feature id="org.eclipse.elk.graphviz.feature.source" version="0.3.0"/>
+   <feature id="org.eclipse.elk.algorithms.feature.source" version="0.0.0"/>
+   <feature id="org.eclipse.elk.feature.source" version="0.0.0"/>
+   <feature id="org.eclipse.elk.graphviz.feature.source" version="0.0.0"/>
    <feature id="org.eclipse.sirius.server.feature" version="0.0.0">
       <category name="Sirius"/>
    </feature>

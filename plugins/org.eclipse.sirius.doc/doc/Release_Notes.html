@@ -13,6 +13,14 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#sirius6.1.0">Changes in Sirius 6.1.0</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
 						<a href="#sirius6.0.0">Changes in Sirius 6.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
@@ -22,7 +30,7 @@
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -33,7 +41,7 @@
 								<a href="#UserVisibleChanges2">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -47,7 +55,7 @@
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -61,7 +69,7 @@
 								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
@@ -74,6 +82,13 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
+		<h2 id="sirius6.1.0">Changes in Sirius 6.1.0</h2>
+		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.3.0 to 0.4.0, see the 
+				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.4.0">ELK documentation</a> for the list of changes in that version.
+			</li>
+		</ul>
 		<h2 id="sirius6.0.0">Changes in Sirius 6.0.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
@@ -122,7 +137,7 @@
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=531487">bugzilla 531487</a> for more details.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The SWTBot test framework version has been upgraded toward SWTBot 2.6. The main impacts are described below:
 				<ul>
@@ -298,7 +313,7 @@
 				<a href="user/diagrams/Diagrams.html#standardToolId">Standard Tools</a> chapter for more details on this tool.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -438,7 +453,7 @@
 				<em>Reference Name</em> field (if a valid feature has been specified).
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
 		<h4 id="Migrations2">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see 
@@ -708,7 +723,7 @@
 			</li>
 			<li><span class="label label-info">Modified</span> Decorators on diagram elements are drawn on top of other figures. If there is an overlap between a decorator of a figure A and another figure B that is over figure A, when user clicks on the decorator, the figure B is now selected (before it was the parent figure A).</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
 		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to automatically create one or several pre-configured widget(s) in a group if its domain class and if the meta-models of the properties view containing it have been specified. The widget(s) created will be infered from the features in the domain class (e.g. a properly configured 
