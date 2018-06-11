@@ -1,10 +1,13 @@
 target "sirius_headless_oxygen"
 
+include "../modules/orbit.tpd"
+include "../modules/elk-0.4.tpd"
+include "../modules/jetty-9.4.tpd"
 include "../modules/shared-license.tpd"
 
 with source, requirements
 
-location Acceleo-3.7 "http://download.eclipse.org/acceleo/updates/releases/3.7/R201708211328" {
+location Acceleo-3.7 "http://download.eclipse.org/acceleo/updates/nightly/3.7.4.201807180613" {
     org.eclipse.acceleo.engine lazy
     org.eclipse.acceleo.parser lazy
     org.eclipse.acceleo.query.feature.group lazy
@@ -12,6 +15,8 @@ location Acceleo-3.7 "http://download.eclipse.org/acceleo/updates/releases/3.7/R
 }
 
 location Eclipse-Oxygen "http://download.eclipse.org/releases/oxygen" {
+	org.eclipse.equinox.core.feature.feature.group lazy
+    org.eclipse.equinox.executable.feature.group lazy
     com.google.guava lazy
     org.eclipse.emf lazy
     org.eclipse.emf.common lazy

@@ -354,7 +354,6 @@
         <module>../../plugins/org.eclipse.sirius.table</module>
         <module>../../plugins/org.eclipse.sirius.tree</module>
         <module>../../plugins/org.eclipse.sirius.workflow.model</module>
-        <module>../../plugins/org.eclipse.sirius.workflow.edit</module>
 
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.runtime</module>
@@ -416,6 +415,7 @@
         <module>../../plugins/org.eclipse.sirius.ui.editor</module>
         <module>../../plugins/org.eclipse.sirius.tests.junit.support</module>
         <module>../../plugins/org.eclipse.sirius.tests.swtbot.support</module>
+        <module>../../plugins/org.eclipse.sirius.workflow.edit</module>
 
         <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily</module>
         <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily.edit</module>
