@@ -345,24 +345,35 @@
         <module>../../plugins/org.eclipse.sirius.common</module>
         <module>../../plugins/org.eclipse.sirius.common.acceleo.aql</module>
         <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl</module>
+        <module>../../plugins/org.eclipse.sirius.common.interpreter</module>
         <module>../../plugins/org.eclipse.sirius.common.ocl</module>
         <module>../../plugins/org.eclipse.sirius.diagram</module>
         <module>../../plugins/org.eclipse.sirius.diagram.formatdata</module>
         <module>../../plugins/org.eclipse.sirius.diagram.layoutdata</module>
         <module>../../plugins/org.eclipse.sirius.ecore.extender</module>
+        <module>../../plugins/org.eclipse.sirius.server</module>
+        <module>../../plugins/org.eclipse.sirius.server.application</module>
+        <module>../../plugins/org.eclipse.sirius.server.backend</module>
+        <module>../../plugins/org.eclipse.sirius.server.frontend</module>
         <module>../../plugins/org.eclipse.sirius.synchronizer</module>
         <module>../../plugins/org.eclipse.sirius.table</module>
         <module>../../plugins/org.eclipse.sirius.tree</module>
         <module>../../plugins/org.eclipse.sirius.workflow.model</module>
+
+        <!-- test -->
+        <module>../../plugins/org.eclipse.sirius.tests.server.backend</module>
 
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.runtime</module>
         <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
         <module>../../packaging/org.eclipse.sirius.runtime.aql</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ocl</module>
+        <module>../../packaging/org.eclipse.sirius.server.feature</module>
+        <module>../../packaging/org.eclipse.sirius.server.product.feature</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.headless.update</module>
+        <module>../../packaging/org.eclipse.sirius.server.product</module>
       </modules>
     </profile>
     <profile>
@@ -441,11 +452,8 @@
         <module>../../plugins/org.eclipse.sirius.sample.properties.textarea</module>
         <module>../../plugins/org.eclipse.sirius.tests.ui.properties</module>
         <module>../../plugins/org.eclipse.sirius.workflow.ui.page</module>
-        <module>../../plugins/org.eclipse.sirius.server</module>
-        <module>../../plugins/org.eclipse.sirius.server.backend</module>
-        <module>../../plugins/org.eclipse.sirius.server.frontend</module>
         <module>../../plugins/org.eclipse.sirius.server.ui.autostart</module>
-        
+
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.aql</module>
         <module>../../packaging/org.eclipse.sirius.doc.feature</module>
@@ -459,15 +467,14 @@
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.aql</module>
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
         <module>../../packaging/org.eclipse.sirius.tests.support</module>
-        
+
         <module>../../packaging/org.eclipse.sirius.interpreter.feature</module>
         <module>../../packaging/org.eclipse.sirius.properties.feature</module>
         <module>../../packaging/org.eclipse.sirius.specifier.properties.feature</module>
         <module>../../packaging/org.eclipse.sirius.samples.properties.feature</module>
         <module>../../packaging/org.eclipse.sirius.workflow-feature</module>
-        
+
         <module>../../packaging/org.eclipse.sirius.diagram.elk.feature</module>
-        <module>../../packaging/org.eclipse.sirius.server.feature</module>
         <module>../../packaging/org.eclipse.sirius.server.ui.autostart.feature</module>
 
         <!-- update sites -->
@@ -490,12 +497,12 @@
         <module>../../plugins/org.eclipse.sirius.tests.sample.component.design</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.scxml</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.scxml.design</module>
-        
+
         <module>../../plugins/org.eclipse.sirius.tests.sample.xtext.statemachine</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.xtext.statemachine.ui</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.xtext.statemachine.ide</module>
         <module>../../plugins/org.eclipse.sirius.tests.sample.xtext.statemachine.design</module>
-        
+
         <module>../../plugins/org.eclipse.sirius.tests.junit</module>
         <module>../../plugins/org.eclipse.sirius.tests.junit.xtext</module>
         <module>../../plugins/org.eclipse.sirius.tests.tree</module>
@@ -504,9 +511,7 @@
         <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.edit</module>
         <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.editor</module>
         <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.samples</module>
-        
-        <module>../../plugins/org.eclipse.sirius.tests.server.backend</module>
-        
+
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.tests</module>
         <module>../../packaging/org.eclipse.sirius.tests.rcptt.feature</module>

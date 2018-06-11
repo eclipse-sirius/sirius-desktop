@@ -16,6 +16,7 @@ location Acceleo-3.7 "http://download.eclipse.org/acceleo/updates/releases/3.7/R
 
 location Eclipse-Neon "http://download.eclipse.org/releases/neon" {
 	org.eclipse.equinox.core.feature.feature.group lazy
+	org.eclipse.equinox.compendium.sdk.feature.group lazy
     org.eclipse.equinox.executable.feature.group lazy
     com.google.guava lazy
     org.eclipse.emf lazy

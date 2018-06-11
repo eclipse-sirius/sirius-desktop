@@ -33,7 +33,7 @@ public class SiriusServerManager {
     /**
      * The default hostname.
      */
-    private static final String HOSTNAME = "localhost"; //$NON-NLS-1$
+    private static final String HOSTNAME = "0.0.0.0"; //$NON-NLS-1$
 
     /**
      * The default port.
