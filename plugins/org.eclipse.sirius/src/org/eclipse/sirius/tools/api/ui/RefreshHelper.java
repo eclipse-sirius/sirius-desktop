@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.internal.ui;
+package org.eclipse.sirius.tools.api.ui;
 
 import java.util.Collection;
 import java.util.HashSet;

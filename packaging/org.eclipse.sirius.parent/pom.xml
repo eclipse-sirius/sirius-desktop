@@ -379,10 +379,12 @@
       </properties>
       <modules>
         <!-- plugins -->
+        <module>../../plugins/org.eclipse.sirius.services.diagram</module>
         <module>../../plugins/org.eclipse.sirius.services.graphql</module>
         <module>../../plugins/org.eclipse.sirius.server</module>
         <module>../../plugins/org.eclipse.sirius.server.application</module>
         <module>../../plugins/org.eclipse.sirius.server.backend</module>
+        <module>../../plugins/org.eclipse.sirius.server.diagram</module>
         <module>../../plugins/org.eclipse.sirius.server.frontend</module>
         <module>../../plugins/org.eclipse.sirius.server.graphql</module>
         
@@ -473,7 +475,6 @@
         <module>../../plugins/org.eclipse.sirius.sample.properties.textarea</module>
         <module>../../plugins/org.eclipse.sirius.tests.ui.properties</module>
         <module>../../plugins/org.eclipse.sirius.workflow.ui.page</module>
-
         <module>../../plugins/org.eclipse.sirius.server.ui.autostart</module>
 
         <!-- features -->

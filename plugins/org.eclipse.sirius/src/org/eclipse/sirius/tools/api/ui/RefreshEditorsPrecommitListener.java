@@ -32,7 +32,6 @@ import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemoval
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
-import org.eclipse.sirius.tools.internal.ui.RefreshHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;

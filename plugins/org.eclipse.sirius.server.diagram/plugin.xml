@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="org.eclipse.sirius.server.diagram.SiriusServerDiagramEndpointConfigurationProvider"
+         name="%SiriusServerEndpointConfigurationProvider_label"
+         point="org.eclipse.sirius.server.siriusServerEndpointConfigurationProvider">
+      <descriptor
+            class="org.eclipse.sirius.server.diagram.internal.SiriusServerDiagramEndpointConfigurationProvider"
+            description="%SiriusServerEndpointConfigurationProvider_description"
+            id="org.eclipse.sirius.server.diagram.SiriusServerDiagramEndpointConfigurationProvider"
+            label="%SiriusServerEndpointConfigurationProvider_label">
+      </descriptor>
+   </extension>
+
+</plugin>

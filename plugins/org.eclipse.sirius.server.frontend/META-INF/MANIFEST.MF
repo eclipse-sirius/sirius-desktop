@@ -17,3 +17,4 @@ Bundle-Activator: org.eclipse.sirius.server.frontend.internal.SiriusServerFronte
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.sirius.server.frontend.internal;x-internal:=true
 Eclipse-BundleShape: dir
+Automatic-Module-Name: org.eclipse.sirius.server.frontend
