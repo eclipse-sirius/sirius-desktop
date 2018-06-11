@@ -339,13 +339,16 @@ public final class TestsUtil {
      * Copied and adpated from http://git.eclipse.org/c/gmf-tooling/org.eclipse.gmf-tooling.git/tree/
      * tests/org.eclipse.gmf.tests/src/org/eclipse/gmf/tests/Utils.java
      * 
+     * @param currentPluginSymbolicName
+     *            The plug-in name from where the tests are currently launched.
+     * 
      * @throws CoreException
      *             In case of problem to retrieve current target platform or to save the new one.
      * @throws InterruptedException
      *             if the loading platform job is interrupted while waiting
      */
     @SuppressWarnings("restriction")
-    public static void setTargetPlatform() throws CoreException, InterruptedException {
+    public static void setTargetPlatform(String currentPluginSymbolicName) throws CoreException, InterruptedException {
         String targetName = "PDE Platgorm from OSGi bundles";
         ITargetPlatformService tpService = TargetPlatformService.getDefault();
         ITargetHandle targetHandle = tpService.getWorkspaceTargetHandle();
@@ -362,7 +365,9 @@ public final class TestsUtil {
                 File folder = file.getParentFile();
                 if (!dirs.contains(folder)) {
                     dirs.add(folder);
-                    bundleContainers.add(tpService.newDirectoryLocation(folder.getAbsolutePath()));
+                    if (!currentPluginSymbolicName.equals(bundleImpl.getSymbolicName())) {
+                        bundleContainers.add(tpService.newDirectoryLocation(folder.getAbsolutePath()));
+                    }
                 }
             }
             targetDef.setTargetLocations(bundleContainers.toArray(new ITargetLocation[bundleContainers.size()]));

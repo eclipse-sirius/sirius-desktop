@@ -114,7 +114,7 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
 
         // Load the target platform, if not already done, to allow compilation
         // of the java services
-        TestsUtil.setTargetPlatform();
+        TestsUtil.setTargetPlatform(Activator.PLUGIN_ID);
     }
 
     /**

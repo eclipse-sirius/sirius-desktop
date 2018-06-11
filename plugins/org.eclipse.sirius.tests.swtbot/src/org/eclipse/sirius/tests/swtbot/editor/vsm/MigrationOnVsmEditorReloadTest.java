@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,7 @@ public class MigrationOnVsmEditorReloadTest extends AbstractContentAssistTest {
 
         // Load the target platform, if not already done, to allow compilation
         // of the VSP
-        TestsUtil.setTargetPlatform();
+        TestsUtil.setTargetPlatform(Activator.PLUGIN_ID);
 
         // Create VSM Project.
         ViewpointSpecificationProjectCreationTest.createViewpointSpecificationProject(bot, VSM_PROJECT_NAME, VSM);

@@ -237,6 +237,11 @@
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.tests.support.api.TestsUtil.isBeforeOxygenPlatform()</code> has been added to detect if the current platform corresponds to a version before Oxygen.
 			</li>
+			<li><span class="label label-info">Modified</span> A 
+				<code>String</code> parameter has been added to the method 
+				<code>org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()</code>. This new parameter corresponds to the plug-in name from where the tests are currently launched (for example 
+				<code>org.eclipse.sirius.tests.swtbot.Activator.PLUGIN_ID</code>). It avoids to build a wrong target platform containing each Sirius plug-ins twice. 
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>

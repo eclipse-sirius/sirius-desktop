@@ -65,6 +65,7 @@ h4. Changes in @org.eclipse.sirius.ui@
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tests.support.api.TestsUtil.isBeforeOxygenPlatform()@ has been added to detect if the current platform corresponds to a version before Oxygen.
+* <span class="label label-info">Modified</span> A @String@ parameter has been added to the method @org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()@. This new parameter corresponds to the plug-in name from where the tests are currently launched (for example @org.eclipse.sirius.tests.swtbot.Activator.PLUGIN_ID@). It avoids to build a wrong target platform containing each Sirius plug-ins twice. 
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
