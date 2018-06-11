@@ -128,7 +128,15 @@ public class LayoutOptionPropertySection extends AbstractViewpointPropertySectio
         ECollections.sort(layoutOptions, new Comparator<LayoutOption>() {
             @Override
             public int compare(LayoutOption o1, LayoutOption o2) {
-                return o1.getLabel().compareTo(o2.getLabel());
+                String l1 = o1.getLabel();
+                String l2 = o2.getLabel();
+                if (l1 == null) {
+                    l1 = "";
+                }
+                if (l2 == null) {
+                    l2 = "";
+                }
+                return l1.compareTo(l2);
             }
         });
         for (LayoutOption layoutOption : layoutOptions) {
