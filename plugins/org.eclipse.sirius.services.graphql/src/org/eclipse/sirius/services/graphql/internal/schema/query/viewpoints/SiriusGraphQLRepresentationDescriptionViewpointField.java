@@ -1,0 +1,71 @@
+/*******************************************************************************
+ * Copyright (c) 2018 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.services.graphql.internal.schema.query.viewpoints;
+
+import java.util.Optional;
+
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import graphql.schema.DataFetcher;
+import graphql.schema.GraphQLFieldDefinition;
+import graphql.schema.GraphQLTypeReference;
+
+/**
+ * Used to create the viewpoint field of the representation description.
+ *
+ * @author sbegaudeau
+ */
+public final class SiriusGraphQLRepresentationDescriptionViewpointField {
+    /**
+     * The name of the viewpoint field.
+     */
+    private static final String VIEWPOINT_FIELD = "viewpoint"; //$NON-NLS-1$
+
+    /**
+     * The constructor.
+     */
+    private SiriusGraphQLRepresentationDescriptionViewpointField() {
+        // Prevent instantiation
+    }
+
+    /**
+     * Returns the viewpoint field.
+     *
+     * @return The viewpoint field
+     */
+    public static GraphQLFieldDefinition build() {
+        // @formatter:off
+        return GraphQLFieldDefinition.newFieldDefinition()
+                .name(VIEWPOINT_FIELD)
+                .type(new GraphQLTypeReference(SiriusGraphQLViewpointTypesBuilder.VIEWPOINT_TYPE))
+                .dataFetcher(SiriusGraphQLRepresentationDescriptionViewpointField.getViewpointDataFetcher())
+                .build();
+        // @formatter:on
+    }
+
+    /**
+     * Returns the viewpoint data fetcher.
+     *
+     * @return The viewpoint data fetcher
+     */
+    private static DataFetcher<Viewpoint> getViewpointDataFetcher() {
+        // @formatter:off
+        return environment -> Optional.of(environment.getSource())
+                .filter(RepresentationDescription.class::isInstance)
+                .map(RepresentationDescription.class::cast)
+                .map(RepresentationDescription::eContainer)
+                .filter(Viewpoint.class::isInstance)
+                .map(Viewpoint.class::cast)
+                .orElse(null);
+        // @formatter:on
+    }
+}
