@@ -13,10 +13,10 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.jface.action.IMenuListener2;
 import org.eclipse.jface.action.IMenuManager;
@@ -57,7 +57,27 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
 
     private MenuContributionItemArmListener listener;
 
+    /**
+     * List of tooltips corresponding to the tooltips of all {@link ActionContributionItem} contained in this menu.
+     */
     private List<String> tooltips = new ArrayList<>();
+
+    /**
+     * Default constructor with an empty ID.
+     */
+    protected AbstractMenuContributionItem() {
+        super();
+    }
+
+    /**
+     * Default constructor with an ID.
+     * 
+     * @param id
+     *            The id of the TabbarContribution
+     */
+    protected AbstractMenuContributionItem(String id) {
+        super(id);
+    }
 
     @Override
     public void create(final ToolBarManager tb, String groupId) {
@@ -135,14 +155,7 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
         if (menuManager != null) {
             return menuManager;
         }
-        // Use the tooltip, if it exists, as id for this menu manager. It can be reused to find it later.
-        String id = null;
-        Optional<String> tooltip = tooltips.stream().findFirst();
-        if (tooltip.isPresent()) {
-            id = tooltip.get();
-        }
-        menuManager = new MenuManager(id, id);
-
+        menuManager = new MenuManager(null, getId());
         menuManager.setRemoveAllWhenShown(true);
 
         menuManager.addMenuListener(new IMenuListener2() {

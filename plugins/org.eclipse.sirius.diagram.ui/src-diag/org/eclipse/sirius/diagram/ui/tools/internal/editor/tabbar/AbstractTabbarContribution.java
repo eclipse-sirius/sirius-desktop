@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,11 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 public abstract class AbstractTabbarContribution implements TabbarContribution {
 
     /**
+     * The ID of this TabbarContribution.
+     */
+    protected String id;
+
+    /**
      * The current edited diagram.
      */
     protected DDiagram diagram;
@@ -39,6 +44,23 @@ public abstract class AbstractTabbarContribution implements TabbarContribution {
     protected Session session;
 
     /**
+     * Default constructor with an empty ID.
+     */
+    protected AbstractTabbarContribution() {
+        id = ""; //$NON-NLS-1$
+    }
+
+    /**
+     * Default constructor with an ID.
+     * 
+     * @param id
+     *            The id of the TabbarContribution
+     */
+    protected AbstractTabbarContribution(String id) {
+        setId(id);
+    }
+
+    /**
      * Set the currently edited viewpoint diagram.
      * 
      * @param diagram
@@ -51,24 +73,30 @@ public abstract class AbstractTabbarContribution implements TabbarContribution {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.TabbarContribution#setPart(org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart)
-     */
+    @Override
     public void setPart(IDiagramWorkbenchPart workbenchPart) {
         this.part = workbenchPart;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.TabbarContribution#dispose()
-     */
+    @Override
     public void dispose() {
         this.part = null;
         this.diagram = null;
         this.session = null;
     }
 
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Set the id of this TabbarContribution.
+     * 
+     * @param id
+     *            the id to set
+     */
+    protected void setId(String id) {
+        this.id = id;
+    }
 }

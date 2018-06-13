@@ -34,7 +34,7 @@ public class SelectAllContributionItem extends AbstractMenuContributionItem {
      * Default constructor.
      */
     public SelectAllContributionItem() {
-        addTooltip(DiagramUIActionsMessages.SelectActionMenu_SelectDropDownTooltip);
+        super(DiagramUIActionsMessages.SelectActionMenu_SelectDropDownTooltip);
     }
 
     @Override
