@@ -197,6 +197,8 @@ public class ToolGroupExtensionItemProvider extends ItemProviderAdapter
                 .add(createChildParameter(ToolPackage.Literals.TOOL_GROUP_EXTENSION__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createExternalJavaActionCall()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP_EXTENSION__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPopupMenu()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP_EXTENSION__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createGroupMenu()));
     }
 
     /**

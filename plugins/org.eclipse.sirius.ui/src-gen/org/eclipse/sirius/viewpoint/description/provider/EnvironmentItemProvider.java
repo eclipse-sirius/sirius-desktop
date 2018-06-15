@@ -165,6 +165,8 @@ public class EnvironmentItemProvider extends ItemProviderAdapter
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createPopupMenu()));
 
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createGroupMenu()));
+
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__LABEL_BORDER_STYLES, StyleFactory.eINSTANCE.createLabelBorderStyles()));
     }
 

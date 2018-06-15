@@ -43,6 +43,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.For;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
@@ -396,6 +397,11 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseLet(Let object) {
             return createLetAdapter();
+        }
+
+        @Override
+        public Adapter caseGroupMenu(GroupMenu object) {
+            return createGroupMenuAdapter();
         }
 
         @Override
@@ -1236,6 +1242,20 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createLetAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.description.tool.GroupMenu
+     * <em>Group Menu</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.tool.GroupMenu
+     * @generated
+     */
+    public Adapter createGroupMenuAdapter() {
         return null;
     }
 

@@ -2338,6 +2338,13 @@
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="groupExtensions" upperBound="-1"
             eType="#//description/tool/ToolGroupExtension" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
+            eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/GroupMenu"
+            changeable="false" volatile="true" transient="true" derived="true">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Groups available on this layer."/>
+          </eAnnotations>
+        </eStructuralFeatures>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ToolGroup" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ToolEntry">
         <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"

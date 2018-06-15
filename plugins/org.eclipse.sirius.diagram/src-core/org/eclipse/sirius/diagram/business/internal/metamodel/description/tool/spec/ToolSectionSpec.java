@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 
@@ -27,13 +28,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  */
 public class ToolSectionSpec extends ToolSectionImpl {
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @Override
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolSectionImpl#getPopupMenus()
-     */
     @Override
     public EList<PopupMenu> getPopupMenus() {
         final Set<PopupMenu> popupMenus = new LinkedHashSet<PopupMenu>();
@@ -43,5 +37,16 @@ public class ToolSectionSpec extends ToolSectionImpl {
             }
         }
         return new EcoreEList.UnmodifiableEList<PopupMenu>(eInternalContainer(), ToolPackage.eINSTANCE.getToolSection_PopupMenus(), popupMenus.size(), popupMenus.toArray());
+    }
+
+    @Override
+    public EList<GroupMenu> getGroups() {
+        final Set<GroupMenu> groups = new LinkedHashSet<GroupMenu>();
+        for (ToolEntry tool : getOwnedTools()) {
+            if (tool instanceof GroupMenu) {
+                groups.add((GroupMenu) tool);
+            }
+        }
+        return new EcoreEList.UnmodifiableEList<GroupMenu>(eInternalContainer(), ToolPackage.eINSTANCE.getToolSection_Groups(), groups.size(), groups.toArray());
     }
 }

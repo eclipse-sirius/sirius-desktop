@@ -149,12 +149,20 @@ public interface ToolPackage extends EPackage {
     int TOOL_SECTION__GROUP_EXTENSIONS = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 7;
 
     /**
+     * The feature id for the '<em><b>Groups</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TOOL_SECTION__GROUPS = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 8;
+
+    /**
      * The number of structural features of the '<em>Section</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int TOOL_SECTION_FEATURE_COUNT = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 8;
+    int TOOL_SECTION_FEATURE_COUNT = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 9;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupImpl
@@ -2426,6 +2434,18 @@ public interface ToolPackage extends EPackage {
     EReference getToolSection_GroupExtensions();
 
     /**
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.diagram.description.tool.ToolSection#getGroups <em>Groups</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference list '<em>Groups</em>'.
+     * @see org.eclipse.sirius.diagram.description.tool.ToolSection#getGroups()
+     * @see #getToolSection()
+     * @generated
+     */
+    EReference getToolSection_Groups();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.ToolGroup <em>Group</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -3594,6 +3614,14 @@ public interface ToolPackage extends EPackage {
          * @generated
          */
         EReference TOOL_SECTION__GROUP_EXTENSIONS = ToolPackage.eINSTANCE.getToolSection_GroupExtensions();
+
+        /**
+         * The meta object literal for the '<em><b>Groups</b></em>' reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference TOOL_SECTION__GROUPS = ToolPackage.eINSTANCE.getToolSection_Groups();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupImpl

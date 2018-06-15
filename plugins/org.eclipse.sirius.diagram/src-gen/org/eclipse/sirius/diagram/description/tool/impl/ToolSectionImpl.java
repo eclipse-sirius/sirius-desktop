@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 
@@ -48,6 +49,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  * Tools</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getGroupExtensions <em>Group
  * Extensions</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getGroups <em>Groups</em>}</li>
  * </ul>
  *
  * @generated
@@ -317,6 +319,21 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
      * @generated
      */
     @Override
+    public EList<GroupMenu> getGroups() {
+        // TODO: implement this method to return the 'Groups' reference list
+        // Ensure that you remove @generated or mark it @generated NOT
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
+        // org.eclipse.emf.ecore.EStructuralFeature.Setting
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case ToolPackage.TOOL_SECTION__OWNED_TOOLS:
@@ -353,6 +370,8 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
             return getReusedTools();
         case ToolPackage.TOOL_SECTION__GROUP_EXTENSIONS:
             return getGroupExtensions();
+        case ToolPackage.TOOL_SECTION__GROUPS:
+            return getGroups();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -452,6 +471,8 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
             return reusedTools != null && !reusedTools.isEmpty();
         case ToolPackage.TOOL_SECTION__GROUP_EXTENSIONS:
             return groupExtensions != null && !groupExtensions.isEmpty();
+        case ToolPackage.TOOL_SECTION__GROUPS:
+            return !getGroups().isEmpty();
         }
         return super.eIsSet(featureID);
     }

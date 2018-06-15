@@ -140,6 +140,13 @@
         <input type="org.eclipse.sirius.viewpoint.description.validation.ValidationSet"/>        
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.tool.groupmenu.GroupMenuLocationURIPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.tool.groupmenu.GroupMenuLocationURIFilter"
+               id="tool.section.groupMenu.LocationURI"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.tool.GroupMenu"/>        
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.let.LetValueExpressionPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.tool.let.LetValueExpressionFilter"
                id="tool.section.let.ValueExpression"

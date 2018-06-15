@@ -1090,6 +1090,29 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.description.tool.GroupMenu}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected GroupMenuItemProvider groupMenuItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.GroupMenu}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createGroupMenuAdapter() {
+        if (groupMenuItemProvider == null) {
+            groupMenuItemProvider = new GroupMenuItemProvider(this);
+        }
+
+        return groupMenuItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -1343,6 +1366,9 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
         }
         if (letItemProvider != null) {
             letItemProvider.dispose();
+        }
+        if (groupMenuItemProvider != null) {
+            groupMenuItemProvider.dispose();
         }
     }
 

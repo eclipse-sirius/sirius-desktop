@@ -48,6 +48,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.For;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
@@ -469,6 +470,13 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * @generated
      */
     private EClass letEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass groupMenuEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2045,6 +2053,46 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * @generated
      */
     @Override
+    public EClass getGroupMenu() {
+        return groupMenuEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getGroupMenu_LocationURI() {
+        return (EAttribute) groupMenuEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getGroupMenu_PopupMenus() {
+        return (EReference) groupMenuEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getGroupMenu_ItemDescriptions() {
+        return (EReference) groupMenuEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EEnum getDragSource() {
         return dragSourceEEnum;
     }
@@ -2280,6 +2328,11 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         createEAttribute(letEClass, ToolPackage.LET__VARIABLE_NAME);
         createEAttribute(letEClass, ToolPackage.LET__VALUE_EXPRESSION);
 
+        groupMenuEClass = createEClass(ToolPackage.GROUP_MENU);
+        createEAttribute(groupMenuEClass, ToolPackage.GROUP_MENU__LOCATION_URI);
+        createEReference(groupMenuEClass, ToolPackage.GROUP_MENU__POPUP_MENUS);
+        createEReference(groupMenuEClass, ToolPackage.GROUP_MENU__ITEM_DESCRIPTIONS);
+
         // Create enums
         dragSourceEEnum = createEEnum(ToolPackage.DRAG_SOURCE);
     }
@@ -2374,6 +2427,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         defaultEClass.getESuperTypes().add(this.getSwitchChild());
         switchEClass.getESuperTypes().add(this.getModelOperation());
         letEClass.getESuperTypes().add(this.getContainerModelOperation());
+        groupMenuEClass.getESuperTypes().add(this.getAbstractToolDescription());
 
         // Initialize classes and features; add operations and parameters
         initEClass(toolEntryEClass, ToolEntry.class, "ToolEntry", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2751,6 +2805,16 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getLet_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 1, 1, Let.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(groupMenuEClass, GroupMenu.class, "GroupMenu", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getGroupMenu_LocationURI(), theEcorePackage.getEString(), "locationURI", "", 0, 1, GroupMenu.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, !EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getGroupMenu_PopupMenus(), this.getPopupMenu(), null, "popupMenus", null, 0, -1, GroupMenu.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getGroupMenu_ItemDescriptions(), this.getMenuItemDescription(), null, "itemDescriptions", null, 0, -1, GroupMenu.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(dragSourceEEnum, DragSource.class, "DragSource"); //$NON-NLS-1$

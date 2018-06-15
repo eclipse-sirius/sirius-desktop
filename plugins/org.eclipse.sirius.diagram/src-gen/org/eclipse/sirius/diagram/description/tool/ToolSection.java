@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.description.tool;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 
@@ -32,6 +33,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  * <li>{@link org.eclipse.sirius.diagram.description.tool.ToolSection#getPopupMenus <em>Popup Menus</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.ToolSection#getReusedTools <em>Reused Tools</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.ToolSection#getGroupExtensions <em>Group Extensions</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.ToolSection#getGroups <em>Groups</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection()
@@ -126,5 +128,17 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * @generated
      */
     EList<ToolGroupExtension> getGroupExtensions();
+
+    /**
+     * Returns the value of the '<em><b>Groups</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.tool.Group}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Groups available on this layer. <!-- end-model-doc -->
+     *
+     * @return the value of the '<em>Groups</em>' reference list.
+     * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_Groups()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
+     * @generated
+     */
+    EList<GroupMenu> getGroups();
 
 } // ToolSection

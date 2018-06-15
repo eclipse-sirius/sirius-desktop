@@ -697,6 +697,11 @@
           <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Let/variableName"/>
           <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Let/valueExpression"/>
         </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/GroupMenu">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="A &lt;code>URI&lt;/code> specification that defines the insertion point at which the group will be added.&#xD;&#xA;&#xD;&#xA;The format for the URI is comprised of two basic parts:&#xD;&#xA;* Scheme: One of &quot;menu&quot;, &quot;tabbar&quot;. Indicates the type of the manager used to handle the contributions.&#xD;&#xA;* Id: This is either the id of an existing menu or tabbar menu" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/GroupMenu/locationURI"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/GroupMenu/popupMenus"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/GroupMenu/itemDescriptions"/>
+        </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Validation" basePackage="org.eclipse.sirius.viewpoint.description"
           disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="viewpoint.ecore#//description/validation">

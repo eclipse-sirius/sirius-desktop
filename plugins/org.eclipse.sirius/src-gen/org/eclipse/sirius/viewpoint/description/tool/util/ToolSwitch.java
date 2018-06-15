@@ -43,6 +43,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.For;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
@@ -927,6 +928,26 @@ public class ToolSwitch<T> {
             }
             return result;
         }
+        case ToolPackage.GROUP_MENU: {
+            GroupMenu groupMenu = (GroupMenu) theEObject;
+            T result = caseGroupMenu(groupMenu);
+            if (result == null) {
+                result = caseAbstractToolDescription(groupMenu);
+            }
+            if (result == null) {
+                result = caseToolEntry(groupMenu);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(groupMenu);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(groupMenu);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         default:
             return defaultCase(theEObject);
         }
@@ -1724,6 +1745,20 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T caseLet(Let object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Group Menu</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Group Menu</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGroupMenu(GroupMenu object) {
         return null;
     }
 

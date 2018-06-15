@@ -424,6 +424,16 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * @generated
      */
     @Override
+    public EReference getToolSection_Groups() {
+        return (EReference) toolSectionEClass.getEStructuralFeatures().get(6);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getToolGroup() {
         return toolGroupEClass;
     }
@@ -1405,6 +1415,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         createEReference(toolSectionEClass, ToolPackage.TOOL_SECTION__POPUP_MENUS);
         createEReference(toolSectionEClass, ToolPackage.TOOL_SECTION__REUSED_TOOLS);
         createEReference(toolSectionEClass, ToolPackage.TOOL_SECTION__GROUP_EXTENSIONS);
+        createEReference(toolSectionEClass, ToolPackage.TOOL_SECTION__GROUPS);
 
         toolGroupEClass = createEClass(ToolPackage.TOOL_GROUP);
         createEReference(toolGroupEClass, ToolPackage.TOOL_GROUP__TOOLS);
@@ -1618,6 +1629,9 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 EPackageImpl.IS_ORDERED);
         initEReference(getToolSection_GroupExtensions(), this.getToolGroupExtension(), null, "groupExtensions", null, 0, -1, ToolSection.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getToolSection_Groups(), theToolPackage_1.getGroupMenu(), null, "groups", null, 0, -1, ToolSection.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
 
         initEClass(toolGroupEClass, ToolGroup.class, "ToolGroup", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

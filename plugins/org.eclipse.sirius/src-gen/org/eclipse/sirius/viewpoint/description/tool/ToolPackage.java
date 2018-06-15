@@ -3184,6 +3184,118 @@ public interface ToolPackage extends EPackage {
     int LET_FEATURE_COUNT = ToolPackage.CONTAINER_MODEL_OPERATION_FEATURE_COUNT + 2;
 
     /**
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.tool.impl.GroupMenuImpl <em>Group
+     * Menu</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.GroupMenuImpl
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getGroupMenu()
+     * @generated
+     */
+    int GROUP_MENU = 54;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU__DOCUMENTATION = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__DOCUMENTATION;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU__NAME = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__NAME;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU__LABEL = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU__PRECONDITION = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION;
+
+    /**
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU__FORCE_REFRESH = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH;
+
+    /**
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
+     * The feature id for the '<em><b>Location URI</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU__LOCATION_URI = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Popup Menus</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU__POPUP_MENUS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Item Descriptions</b></em>' containment reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU__ITEM_DESCRIPTIONS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The number of structural features of the '<em>Group Menu</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU_FEATURE_COUNT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.tool.DragSource <em>Drag
      * Source</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -3191,7 +3303,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDragSource()
      * @generated
      */
-    int DRAG_SOURCE = 54;
+    int DRAG_SOURCE = 55;
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.description.tool.ToolEntry
@@ -4859,6 +4971,52 @@ public interface ToolPackage extends EPackage {
     EAttribute getLet_ValueExpression();
 
     /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.description.tool.GroupMenu <em>Group
+     * Menu</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Group Menu</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.tool.GroupMenu
+     * @generated
+     */
+    EClass getGroupMenu();
+
+    /**
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.GroupMenu#getLocationURI <em>Location URI</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Location URI</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.tool.GroupMenu#getLocationURI()
+     * @see #getGroupMenu()
+     * @generated
+     */
+    EAttribute getGroupMenu_LocationURI();
+
+    /**
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.GroupMenu#getPopupMenus <em>Popup Menus</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Popup Menus</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.tool.GroupMenu#getPopupMenus()
+     * @see #getGroupMenu()
+     * @generated
+     */
+    EReference getGroupMenu_PopupMenus();
+
+    /**
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.GroupMenu#getItemDescriptions <em>Item Descriptions</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Item Descriptions</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.tool.GroupMenu#getItemDescriptions()
+     * @see #getGroupMenu()
+     * @generated
+     */
+    EReference getGroupMenu_ItemDescriptions();
+
+    /**
      * Returns the meta object for enum '{@link org.eclipse.sirius.viewpoint.description.tool.DragSource <em>Drag
      * Source</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -6205,6 +6363,40 @@ public interface ToolPackage extends EPackage {
          * @generated
          */
         EAttribute LET__VALUE_EXPRESSION = ToolPackage.eINSTANCE.getLet_ValueExpression();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.description.tool.impl.GroupMenuImpl
+         * <em>Group Menu</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.viewpoint.description.tool.impl.GroupMenuImpl
+         * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getGroupMenu()
+         * @generated
+         */
+        EClass GROUP_MENU = ToolPackage.eINSTANCE.getGroupMenu();
+
+        /**
+         * The meta object literal for the '<em><b>Location URI</b></em>' attribute feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute GROUP_MENU__LOCATION_URI = ToolPackage.eINSTANCE.getGroupMenu_LocationURI();
+
+        /**
+         * The meta object literal for the '<em><b>Popup Menus</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference GROUP_MENU__POPUP_MENUS = ToolPackage.eINSTANCE.getGroupMenu_PopupMenus();
+
+        /**
+         * The meta object literal for the '<em><b>Item Descriptions</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference GROUP_MENU__ITEM_DESCRIPTIONS = ToolPackage.eINSTANCE.getGroupMenu_ItemDescriptions();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.description.tool.DragSource <em>Drag

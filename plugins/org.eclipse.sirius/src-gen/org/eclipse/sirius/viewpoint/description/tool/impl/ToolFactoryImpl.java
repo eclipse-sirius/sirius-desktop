@@ -39,6 +39,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.For;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
@@ -189,6 +190,8 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
             return createSwitch();
         case ToolPackage.LET:
             return createLet();
+        case ToolPackage.GROUP_MENU:
+            return createGroupMenu();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -740,6 +743,17 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public Let createLet() {
         LetImpl let = new LetImpl();
         return let;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public GroupMenu createGroupMenu() {
+        GroupMenuImpl groupMenu = new GroupMenuImpl();
+        return groupMenu;
     }
 
     /**

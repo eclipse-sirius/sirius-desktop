@@ -68,6 +68,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
             addIconPropertyDescriptor(object);
             addPopupMenusPropertyDescriptor(object);
             addReusedToolsPropertyDescriptor(object);
+            addGroupsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -133,6 +134,18 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
                         getString("_UI_PropertyDescriptor_description", "_UI_ToolSection_reusedTools_feature", "_UI_ToolSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         ToolPackage.Literals.TOOL_SECTION__REUSED_TOOLS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                         null));
+    }
+
+    /**
+     * This adds a property descriptor for the Groups feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addGroupsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ToolSection_groups_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ToolSection_groups_feature", "_UI_ToolSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.TOOL_SECTION__GROUPS, false, false, false, null, null, null));
     }
 
     /**
@@ -308,6 +321,8 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
                 .add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createExternalJavaActionCall()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPopupMenu()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createGroupMenu()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__SUB_SECTIONS, ToolFactory.eINSTANCE.createToolSection()));
 

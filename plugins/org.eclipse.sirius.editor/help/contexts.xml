@@ -1864,6 +1864,23 @@
    
       </description>
    </context>
+   <context id="GroupMenu">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+          - elementsToSelect: a Collection&lt;EObject>
+
+
+         
+   <!-- Start of user code GroupMenu description -->
+   
+   <!-- End of user code GroupMenu description -->
+   
+      </description>
+   </context>
    <context id="ValidationSet">
      <description>
        A set of validation rules.

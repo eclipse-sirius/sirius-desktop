@@ -1743,6 +1743,19 @@
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
         </eStructuralFeatures>
       </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="GroupMenu" eSuperTypes="#//description/tool/AbstractToolDescription">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="locationURI" unique="false"
+            eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+            defaultValueLiteral="">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="A &lt;code>URI&lt;/code> specification that defines the insertion point at which the group will be added.&#xD;&#xA;&#xD;&#xA;The format for the URI is comprised of two basic parts:&#xD;&#xA;* Scheme: One of &quot;menu&quot;, &quot;tabbar&quot;. Indicates the type of the manager used to handle the contributions.&#xD;&#xA;* Id: This is either the id of an existing menu or tabbar menu"/>
+          </eAnnotations>
+        </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="popupMenus" upperBound="-1"
+            eType="#//description/tool/PopupMenu" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="itemDescriptions" upperBound="-1"
+            eType="#//description/tool/MenuItemDescription" containment="true"/>
+      </eClassifiers>
     </eSubpackages>
     <eSubpackages name="validation" nsURI="http://www.eclipse.org/sirius/description/validation/1.1.0"
         nsPrefix="validation">

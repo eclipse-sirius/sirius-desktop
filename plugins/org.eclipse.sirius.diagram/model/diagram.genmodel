@@ -807,6 +807,7 @@
           <genFeatures notify="false" createChild="false" propertyCategory="General"
               propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ToolSection/reusedTools"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ToolSection/groupExtensions"/>
+          <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ToolSection/groups"/>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/tool/ToolGroup">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ToolGroup/tools"/>
