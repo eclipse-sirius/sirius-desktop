@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -148,10 +149,25 @@ public class GroupMenuItemProvider extends AbstractToolDescriptionItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @not-generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+        collectNewChildDescriptorsGen(newChildDescriptors, object);
+        /* remove tool filters as for PopupMenu */
+        CommandParameter firstDescriptor = (CommandParameter) newChildDescriptors.toArray()[0];
+        if (firstDescriptor.feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__FILTERS) {
+            newChildDescriptors.remove(firstDescriptor);
+        }
+    }
+
+    /**
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.GROUP_MENU__POPUP_MENUS, ToolFactory.eINSTANCE.createPopupMenu()));

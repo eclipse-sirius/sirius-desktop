@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,8 @@ import org.eclipse.sirius.diagram.description.tool.ToolGroup;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
+import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 
 import com.google.common.base.Predicate;
@@ -67,13 +69,41 @@ public class PopupMenuTest extends TestCase {
         assertEquals("The capability to create Popup in tool section must be activated.", 1, getNbChildren(adapter, toolSection, PopupMenu.class));
     }
 
-    public void testPopupMenuInGroupSection() {
+    public void testPopupMenuInToolGroupSection() {
         ToolGroup toolGroup = ToolFactory.eINSTANCE.createToolGroup();
 
         ToolItemProviderAdapterFactory toolItemProviderAdapterFactory = new ToolItemProviderAdapterFactory();
         Adapter adapter = toolItemProviderAdapterFactory.createToolGroupAdapter();
 
         assertEquals("The capability to create Popup in tool section must be deactivated.", 0, getNbChildren(adapter, toolGroup, PopupMenu.class));
+    }
+
+    public void testPopupMenuInGroup() {
+        GroupMenu group = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createGroupMenu();
+
+        org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory toolItemProviderAdapterFactory = new org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory();
+        Adapter adapter = toolItemProviderAdapterFactory.createGroupMenuAdapter();
+
+        assertEquals("The capability to create Popup in a group must be activated.", 1, getNbChildren(adapter, group, PopupMenu.class));
+    }
+
+    public void testOperationActionInGroup() {
+        GroupMenu group = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createGroupMenu();
+
+        org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory toolItemProviderAdapterFactory = new org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory();
+        Adapter adapter = toolItemProviderAdapterFactory.createGroupMenuAdapter();
+
+        assertEquals("The capability to create Operation Action in a group must be activated.", 1, getNbChildren(adapter, group, OperationAction.class));
+    }
+
+    public void testGroupOnToolSection() {
+        // Create a fake ToolSection
+        ToolSection toolSection = ToolFactory.eINSTANCE.createToolSection();
+
+        ToolItemProviderAdapterFactory itemProviderAdapterFactory = new ToolItemProviderAdapterFactory();
+        Adapter adapter = itemProviderAdapterFactory.createToolSectionAdapter();
+
+        assertEquals("The capability to create Group in tool section must be activated.", 1, getNbChildren(adapter, toolSection, GroupMenu.class));
     }
 
     protected int getNbChildren(final Adapter adapter, final DocumentedElement toolEntry, final Class<? extends Object> classOfValue) {
@@ -85,8 +115,7 @@ public class PopupMenuTest extends TestCase {
     }
 
     /**
-     * Get the number of child descriptor which have a value instance of
-     * <code>classOfValue</code>.
+     * Get the number of child descriptor which have a value instance of <code>classOfValue</code>.
      * 
      * @param newChildDescriptors
      *            List of child descriptors
@@ -95,6 +124,7 @@ public class PopupMenuTest extends TestCase {
      */
     protected int getNbChildren(final Collection<?> newChildDescriptors, final Class<? extends Object> classOfValue) {
         Predicate<Object> and = Predicates.and(Predicates.instanceOf(CommandParameter.class), new Predicate<Object>() {
+            @Override
             public boolean apply(Object input) {
                 return classOfValue.isInstance(((CommandParameter) input).getValue());
             }

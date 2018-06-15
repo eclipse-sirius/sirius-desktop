@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 
 /**
@@ -181,6 +182,7 @@ public class ToolGroupItemProvider extends DocumentedElementItemProvider {
             newChildDescriptors.addAll(DialectUIManager.INSTANCE.provideTools((EObject) object));
         }
         removeChildDescriptors(newChildDescriptors, PopupMenu.class);
+        removeChildDescriptors(newChildDescriptors, GroupMenu.class);
     }
 
     /**
