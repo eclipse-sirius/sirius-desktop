@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2005, 2017 IBM Corporation and others.
+ * Copyright (c) 2005, 2018 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -263,6 +263,9 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     private boolean isTooBig(DiagramGenerator gen, DiagramEditPart diagramEP, ImageFileFormat format, double factor) {
+        if (Double.isNaN(factor)) {
+            return true;
+        }
         List<?> editParts = diagramEP.getPrimaryEditParts();
         org.eclipse.swt.graphics.Rectangle imageRect = gen.calculateImageRectangle(editParts);
         int maxSize = getMaximumTotalSize();
@@ -297,7 +300,8 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      *            the diagram edit part.
      * @param gen
      *            the image generator.
-     * @return a factor to apply on the width and height of the image when exporting.
+     * @return a factor to apply on the width and height of the image when exporting. If the size of the diagram is too
+     *         big (width * height = a number bigger than int), NaN will be returned and caller must handle this case
      */
     protected double getExportResolutionFactor(DiagramEditPart diagramEP, SiriusDiagramImageGenerator gen) {
         double factor = 1.0;

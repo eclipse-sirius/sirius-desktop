@@ -31,6 +31,9 @@ h3. Developer-Visible Changes
 ** The way we retrieved some views by using @bot.viewByTitle@ (like "Problems" or "Error Log") may not work anymore. Use @bot.viewByPartName@ instead.
 ** @org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot.contextMenu(String)@ raise a @WidgetNotFoundException@ instead of a @TimeoutException@.
 ** The @org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil@ has been updated to be compatible with Oxygen and Photon platforms. Some methods may not work anymore on Neon platform.
+* <span class="label label-info">Modified</span> Some changes have been done in the image export tooling. Main impacts are described below:
+** The export of images, methods @org.eclipse.sirius.ui.tools.api.actions.export.ExportAction.execute@ and @org.eclipse.sirius.ui.tools.api.actions.export.ExportAction.createImageFiles@, do not open UI Dialogs anymore. It throws an @java.lang.reflect.InvocationTargetException@ that wraps the real cause of the error (@org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException@ or @java.lang.OutOfMemoryError@). Callers have to handle properly the exception.
+** The mechanism allowing to authorize or forbid the export of an image, method @org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.isTooBig@, can now handle very large images that previously leads to incorrect exports.
 * <span class="label label-danger">Removed</span> Since Sirius 5.0.0, @org.eclipse.sirius.ext.jface.viewers.IToolTipProvider@ is not used anymore to provide a tooltip on diagram element decorations defined in the VSM. The tooltip is defined directly with an interpreted expression on @GenericDecorationDescription@, @MappingBasedDecoration@ and @SemanticBasedDecoration@.
 
 h4. Changes in @org.eclipse.sirius.common@

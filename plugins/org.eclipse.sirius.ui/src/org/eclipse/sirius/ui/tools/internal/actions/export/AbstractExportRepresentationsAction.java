@@ -34,11 +34,13 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.api.actions.export.ExportAction;
+import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog;
 import org.eclipse.sirius.ui.tools.api.dialogs.ExportOneRepresentationAsImageDialog;
 import org.eclipse.sirius.ui.tools.api.dialogs.ExportSeveralRepresentationsAsImagesDialog;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -140,7 +142,17 @@ public abstract class AbstractExportRepresentationsAction extends Action {
             try {
                 pmd.run(false, false, exportAction);
             } catch (final InvocationTargetException e) {
-                MessageDialog.openError(shell, Messages.AbstractExportRepresentationsAction_error, e.getTargetException().getMessage());
+                Throwable cause = e.getCause();
+                if (cause instanceof OutOfMemoryError) {
+                    MessageDialog.openError(shell, Messages.ExportAction_memAllocError, cause.getMessage());
+                } else if (cause instanceof SizeTooLargeException) {
+                    MessageDialog.openError(shell, Messages.ExportAction_exportImpossibleTitle, cause.getMessage());
+
+                    // Add in the 'error log' the representations export failed
+                    SiriusPlugin.getDefault().error(Messages.ExportAction_exportError, cause);
+                } else {
+                    MessageDialog.openError(shell, Messages.AbstractExportRepresentationsAction_error, cause.getMessage());
+                }
             } catch (final InterruptedException e) {
                 MessageDialog.openInformation(shell, Messages.AbstractExportRepresentationsAction_error, e.getMessage());
             } finally {

@@ -140,6 +140,20 @@
 					</li>
 				</ul>
 			</li>
+			<li><span class="label label-info">Modified</span> Some changes have been done in the image export tooling. Main impacts are described below:
+				<ul>
+					<li>The export of images, methods 
+						<code>org.eclipse.sirius.ui.tools.api.actions.export.ExportAction.execute</code> and 
+						<code>org.eclipse.sirius.ui.tools.api.actions.export.ExportAction.createImageFiles</code>, do not open UI Dialogs anymore. It throws an 
+						<code>java.lang.reflect.InvocationTargetException</code> that wraps the real cause of the error (
+						<code>org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException</code> or 
+						<code>java.lang.OutOfMemoryError</code>). Callers have to handle properly the exception.
+					</li>
+					<li>The mechanism allowing to authorize or forbid the export of an image, method 
+						<code>org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.isTooBig</code>, can now handle very large images that previously leads to incorrect exports.
+					</li>
+				</ul>
+			</li>
 			<li><span class="label label-danger">Removed</span> Since Sirius 5.0.0, 
 				<code>org.eclipse.sirius.ext.jface.viewers.IToolTipProvider</code> is not used anymore to provide a tooltip on diagram element decorations defined in the VSM. The tooltip is defined directly with an interpreted expression on 
 				<code>GenericDecorationDescription</code>, 

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.actions.export;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -19,7 +20,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
@@ -30,8 +30,6 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFor
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
@@ -132,13 +130,13 @@ public class ExportAction extends WorkspaceModifyOperation {
      * {@inheritDoc}
      */
     @Override
-    protected void execute(IProgressMonitor monitor) throws CoreException, java.lang.reflect.InvocationTargetException, InterruptedException {
+    protected void execute(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
         try {
             monitor.beginTask(ExportAction.EXPORT_DIAGRAMS_AS_IMAGES_ACTION_TITLE, 7);
             try {
                 createImageFiles(monitor);
-            } catch (final OutOfMemoryError e) {
-                handleException(e, Messages.ExportAction_memAllocError);
+            } catch (final OutOfMemoryError | SizeTooLargeException e) {
+                throw new InvocationTargetException(e, e.getLocalizedMessage());
             }
         } finally {
             monitor.done();
@@ -148,19 +146,15 @@ public class ExportAction extends WorkspaceModifyOperation {
         }
     }
 
-    private void handleException(final Throwable t, final String title) {
-        final Shell shell = new Shell();
-        MessageDialog.openError(shell, title, t.getMessage());
-        shell.dispose();
-    }
-
     /**
      * Create the image files.
      *
      * @param monitor
      *            the progress monitor
+     * @throws SizeTooLargeException
+     *             if the created image is too large to be handled properly
      */
-    protected void createImageFiles(final IProgressMonitor monitor) {
+    protected void createImageFiles(final IProgressMonitor monitor) throws SizeTooLargeException {
 
         final List<IBeforeExport> beforeContributors = EclipseUtil.getExtensionPlugins(IBeforeExport.class, IExportRepresentationsAsImagesExtension.ID,
                 IExportRepresentationsAsImagesExtension.CLASS_ATTRIBUTE);
@@ -191,7 +185,6 @@ public class ExportAction extends WorkspaceModifyOperation {
             // To know if error from image size to large
             boolean errorDuringExport = false;
             List<Throwable> messageException = new ArrayList<Throwable>();
-            final Shell shell = Display.getCurrent().getActiveShell();
             try {
                 for (final DRepresentation representation : dRepresentationsToExportAsImage) {
                     final IPath filePath;
@@ -243,13 +236,9 @@ public class ExportAction extends WorkspaceModifyOperation {
                         messageExceptionForDialog.append(" - "); //$NON-NLS-1$
                         messageExceptionForDialog.append(thr.getMessage());
                     }
-                    // Create a popup menu to inform user that representations
-                    // export failed
-                    MessageDialog.openError(shell, Messages.ExportAction_exportImpossibleTitle, messageExceptionForDialog.toString());
 
-                    // Add in the 'error log' the representations export
-                    // failed
-                    SiriusPlugin.getDefault().error(Messages.ExportAction_exportError, new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, messageExceptionForDialog.toString())));
+                    Status status = new Status(IStatus.ERROR, SiriusPlugin.ID, messageExceptionForDialog.toString());
+                    throw new SizeTooLargeException(status);
                 }
             }
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,10 +16,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import javax.imageio.ImageIO;
@@ -62,6 +65,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ScalingPolicy;
+import org.eclipse.sirius.ui.tools.api.actions.export.ExportAction;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -69,6 +73,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.junit.Ignore;
 
 /**
@@ -229,6 +234,44 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         exportImage(representation, ImageFileFormat.PNG, ExportFormat.ScalingPolicy.NO_SCALING);
         // Asserts that the image had been created
         SiriusAssert.assertFileExists("/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILE_NAME + ImageFileFormat.PNG.getName().toLowerCase());
+    }
+
+    /**
+     * Tests the export of a diagram too large to fit in the image creation buffer.
+     * 
+     * @throws Exception
+     */
+    public void testExportTooLargeDiagram() {
+        doTestToLargeFileExport("ExportLargeDiagramError");
+    }
+
+    /**
+     * Tests the export of a diagram very large that cause export related computation to produce a NaN: the result of
+     * some computation is way bigger than int and can produce incoherent result (sometime negative) which may be use in
+     * a square root operation, producing the NaN value.
+     * 
+     * @throws Exception
+     */
+    public void testExportTooLargeDiagramThatLeadsToNaNComputation() {
+        doTestToLargeFileExport("ExportVeryLargeDiagramErrorThatLeadsToNaNComputation");
+    }
+
+    private void doTestToLargeFileExport(String representationName) {
+        String outputPath = "/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILE_NAME + ImageFileFormat.PNG.getName().toLowerCase();
+        List<DRepresentation> representationsToExport = new ArrayList<>();
+        representationsToExport.add(getRepresentation(representationName));
+        ExportAction exportAction = new ExportAction(session, representationsToExport, new Path(outputPath), ImageFileFormat.PNG, false, true);
+
+        String errorMessage = Messages.ExportAction_imagesTooLargeMessage + "\n - " + representationName;
+
+        try {
+            exportAction.run(new NullProgressMonitor());
+            fail("The export should fail because the diagram is too big.");
+        } catch (InvocationTargetException | InterruptedException e) {
+            assertEquals(e.getClass(), InvocationTargetException.class);
+            assertEquals(e.getCause().getClass(), SizeTooLargeException.class);
+            assertEquals(e.getMessage(), errorMessage);
+        }
     }
 
     /**
