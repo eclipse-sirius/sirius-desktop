@@ -19,7 +19,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
-import org.eclipse.sirius.business.api.color.RGBValuesProvider;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
@@ -58,7 +57,7 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
      * @was-generated
      */
     public static final int VISUAL_ID = 1000;
-    
+
     private static final RGBValues WHITE = RGBValues.create(255, 255, 255);
 
     /**
@@ -207,16 +206,18 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
 
             Color previousColor = fig.getBackgroundColor();
             if (!sameColor(previousColor, rgb)) {
-                SiriusDiagramGraphicalViewer viewer = (SiriusDiagramGraphicalViewer) this.getViewer();
-                Color backgroundColor;
-                if (WHITE.equals(rgb)) {
-                    backgroundColor = null;
-                } else {
-                    backgroundColor = new Color(viewer.getControl().getDisplay(), rgb.getRed(), rgb.getGreen(), rgb.getBlue());
+                EditPartViewer viewer = this.getViewer();
+                if (viewer instanceof SiriusDiagramGraphicalViewer) {
+                    Color backgroundColor;
+                    if (WHITE.equals(rgb)) {
+                        backgroundColor = null;
+                    } else {
+                        backgroundColor = new Color(viewer.getControl().getDisplay(), rgb.getRed(), rgb.getGreen(), rgb.getBlue());
+                    }
+                    fig.setBackgroundColor(backgroundColor);
+                    fig.setOpaque(backgroundColor != null);
+                    ((SiriusDiagramGraphicalViewer) viewer).setBackgroundColor(backgroundColor);
                 }
-                fig.setBackgroundColor(backgroundColor);
-                fig.setOpaque(backgroundColor != null);
-                viewer.setBackgroundColor(backgroundColor);
             }
         }
     }
