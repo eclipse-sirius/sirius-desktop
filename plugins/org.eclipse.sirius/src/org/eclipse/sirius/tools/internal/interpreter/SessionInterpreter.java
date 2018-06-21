@@ -118,7 +118,13 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider, IInt
         if (this.dependencies.add(dependency)) {
             for (final IInterpreter interpreter : this.loadedInterpreters.values()) {
                 if (interpreter != null) {
-                    interpreter.addImport(dependency);
+                    // Is the class imported from one of the white-listed plug-ins (which are not in the normal search path of interpreters)?
+                    boolean isSpecialImport = dependency != null && (dependency.startsWith("org.eclipse.sirius.properties.") || dependency.startsWith("org.eclipse.sirius.common.")); //$NON-NLS-1$ //$NON-NLS-2$
+                    // Is the target interpreter the legacy one, which does not support the plug-ins white list?
+                    boolean isTargetLegacyInterpreter = interpreter.getClass().getName().startsWith("org.eclipse.sirius.query.legacy."); //$NON-NLS-1$
+                    if (!isSpecialImport || !isTargetLegacyInterpreter) {
+                        interpreter.addImport(dependency);
+                    }
                 }
             }
         }
