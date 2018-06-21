@@ -640,7 +640,8 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         private void initSelectionListener() {
             treeViewer.addSelectionChangedListener((event) -> {
                 if (session == null || session.getTransactionalEditingDomain() == null || session.getTransactionalEditingDomain().getCommandStack() == null) {
-                    // Can happen if we're called asynchronously at a time when the session and TED have already been closed/disposed.
+                    // Can happen if we're called asynchronously at a time when
+                    // the session and TED have already been closed/disposed.
                     return;
                 }
                 TreeSelection selection = (TreeSelection) event.getSelection();
@@ -1107,6 +1108,9 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                     if (notification.getNotifier() instanceof DAnalysis) {
                         PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
                             updateViewerInput();
+                            if (treeViewer != null && treeViewer.getTree() != null && !treeViewer.getTree().isDisposed()) {
+                                treeViewer.refresh();
+                            }
                         });
                     }
                     break;
@@ -1114,15 +1118,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                     break;
                 }
             }
-            // we refresh treeViewer because some models items may have a
-            // different label because of a value modification.
-
-            PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
-                if (treeViewer != null && treeViewer.getTree() != null && !treeViewer.getTree().isDisposed()) {
-                    treeViewer.refresh();
-                }
-            });
-
         }
 
         @Override
