@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tests.server.backend.internal;
+package org.eclipse.sirius.tests.server.internal;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

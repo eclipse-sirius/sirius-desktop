@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.server.backend.internal.services.projects;
 
-import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_BAD_REQUEST;
-import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_CREATED;
-import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_INTERNAL_SERVER_ERROR;
-import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_OK;
+import static org.eclipse.sirius.server.api.SiriusServerResponse.STATUS_BAD_REQUEST;
+import static org.eclipse.sirius.server.api.SiriusServerResponse.STATUS_CREATED;
+import static org.eclipse.sirius.server.api.SiriusServerResponse.STATUS_INTERNAL_SERVER_ERROR;
+import static org.eclipse.sirius.server.api.SiriusServerResponse.STATUS_OK;
 
 import com.google.gson.Gson;
 
@@ -37,10 +37,10 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
-import org.eclipse.sirius.server.backend.internal.ISiriusServerService;
+import org.eclipse.sirius.server.api.ISiriusServerService;
+import org.eclipse.sirius.server.api.SiriusServerPath;
+import org.eclipse.sirius.server.api.SiriusServerResponse;
 import org.eclipse.sirius.server.backend.internal.SiriusServerMessages;
-import org.eclipse.sirius.server.backend.internal.SiriusServerPath;
-import org.eclipse.sirius.server.backend.internal.SiriusServerResponse;
 import org.eclipse.sirius.server.backend.internal.utils.SiriusServerErrorDto;
 import org.eclipse.sirius.server.backend.internal.utils.SiriusServerUtils;
 

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.server.backend.internal;
+package org.eclipse.sirius.server.api;
 
 /**
  * Class used to describe the response of the HTTP service.

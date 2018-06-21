@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.server.backend.internal;
+package org.eclipse.sirius.server.internal;
 
 import com.google.gson.Gson;
 
@@ -29,18 +29,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.sirius.server.backend.internal.services.activities.SiriusServerActivityExecutorService;
-import org.eclipse.sirius.server.backend.internal.services.dashboard.SiriusServerDashboardService;
-import org.eclipse.sirius.server.backend.internal.services.pages.SiriusServerPageService;
-import org.eclipse.sirius.server.backend.internal.services.project.SiriusServerProjectService;
-import org.eclipse.sirius.server.backend.internal.services.projects.SiriusServerProjectsService;
+import org.eclipse.sirius.server.api.ISiriusServerService;
+import org.eclipse.sirius.server.api.SiriusServerPath;
+import org.eclipse.sirius.server.api.SiriusServerResponse;
 
 /**
  * Filter used to dynamically dispatch request to the appropriate service.
  *
  * @author sbegaudeau
  */
-public class SiriusServerBackendFilter implements Filter {
+public class SiriusServerFilter implements Filter {
 
     /**
      * The default character encoding.
@@ -119,11 +117,12 @@ public class SiriusServerBackendFilter implements Filter {
      */
     private List<SiriusServerServiceDescriptor> getDescriptors(HttpServletRequest request) {
         List<Class<? extends ISiriusServerService>> serviceClasses = new ArrayList<>();
-        serviceClasses.add(SiriusServerDashboardService.class);
-        serviceClasses.add(SiriusServerProjectsService.class);
-        serviceClasses.add(SiriusServerProjectService.class);
-        serviceClasses.add(SiriusServerPageService.class);
-        serviceClasses.add(SiriusServerActivityExecutorService.class);
+
+        // @formatter:off
+        SiriusServerPlugin.getPlugin().getSiriusServerServices().stream()
+            .map(ISiriusServerService::getClass)
+            .forEach(serviceClasses::add);
+        // @formatter:on
 
         List<SiriusServerServiceDescriptor> descriptors = new ArrayList<>();
         for (Class<? extends ISiriusServerService> serviceClass : serviceClasses) {
@@ -151,8 +150,8 @@ public class SiriusServerBackendFilter implements Filter {
             ISiriusServerService httpService = serviceClass.newInstance();
             return Optional.of(httpService);
         } catch (InstantiationException | IllegalAccessException exception) {
-            IStatus status = new Status(IStatus.ERROR, SiriusServerBackendPlugin.PLUGIN_ID, exception.getMessage(), exception);
-            SiriusServerBackendPlugin.getPlugin().log(status);
+            IStatus status = new Status(IStatus.ERROR, SiriusServerPlugin.PLUGIN_ID, exception.getMessage(), exception);
+            SiriusServerPlugin.getPlugin().log(status);
         }
         return Optional.empty();
     }

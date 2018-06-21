@@ -37,3 +37,4 @@ Export-Package: org.eclipse.sirius.server.backend.internal;x-friends:="org.eclip
  org.eclipse.sirius.server.backend.internal.utils;x-internal:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.sirius.server.backend.internal.SiriusServerBackendPlugin$Implementation
+Automatic-Module-Name: org.eclipse.sirius.server.backend

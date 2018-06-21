@@ -71,6 +71,26 @@ public class SiriusServerFrontendFilter implements Filter {
     /** The svg mime type. */
     private static final String SVG_MIME_TYPE = "image/svg+xml"; //$NON-NLS-1$
 
+    /**
+     * The path of the HTTP API.
+     */
+    private static final String HTTP_API_PATH = "/api"; //$NON-NLS-1$
+
+    /**
+     * The path of the WebSocket API.
+     */
+    private static final String WS_API_PATH = "/ws"; //$NON-NLS-1$
+
+    /**
+     * The path of the images API.
+     */
+    private static final String IMAGES_PATH = "/images"; //$NON-NLS-1$
+
+    /**
+     * The path of the static resources.
+     */
+    private static final String STATIC_PATH = "/static"; //$NON-NLS-1$
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         // Do nothing
@@ -84,10 +104,10 @@ public class SiriusServerFrontendFilter implements Filter {
             String requestURI = httpServletRequest.getRequestURI();
             if (this.isImage(requestURI)) {
                 this.handleImage(httpServletRequest, httpServletResponse, chain);
+            } else if (this.isStaticResource(requestURI)) {
+                this.handleStaticResource(httpServletRequest, httpServletResponse, chain);
             } else if (this.isFrontEnd(requestURI)) {
                 this.redirectToFrontEnd(httpServletRequest, httpServletResponse);
-            } else {
-                chain.doFilter(request, response);
             }
         }
     }
@@ -100,7 +120,7 @@ public class SiriusServerFrontendFilter implements Filter {
      * @return <code>true</code> if the given request URI matches an image path.
      */
     private boolean isImage(String requestURI) {
-        boolean isImagePath = requestURI.startsWith("/images"); //$NON-NLS-1$
+        boolean isImagePath = requestURI.startsWith(IMAGES_PATH);
 
         boolean isImageExtension = requestURI.endsWith(JPG);
         isImageExtension = isImageExtension || requestURI.endsWith(JPEG);
@@ -113,6 +133,18 @@ public class SiriusServerFrontendFilter implements Filter {
     }
 
     /**
+     * Indicates if the given request URI matches a static resource.
+     *
+     * @param requestURI
+     *            The URI of the request
+     * @return <code>true</code> if the given request matches a static
+     *         resources, <code>false</code> otherwise
+     */
+    private boolean isStaticResource(String requestURI) {
+        return requestURI.startsWith(STATIC_PATH);
+    }
+
+    /**
      * Indicates if the given request URI should be redirected to the front end
      * for a proper single page application.
      *
@@ -122,7 +154,11 @@ public class SiriusServerFrontendFilter implements Filter {
      *         the front end
      */
     private boolean isFrontEnd(String requestURI) {
-        boolean isFrontEnd = requestURI.startsWith("/projects"); //$NON-NLS-1$
+        boolean isFrontEnd = true;
+        isFrontEnd = isFrontEnd && !requestURI.startsWith(HTTP_API_PATH);
+        isFrontEnd = isFrontEnd && !requestURI.startsWith(WS_API_PATH);
+        isFrontEnd = isFrontEnd && !requestURI.startsWith(IMAGES_PATH);
+        isFrontEnd = isFrontEnd && !requestURI.startsWith(STATIC_PATH);
         return isFrontEnd;
     }
 
@@ -215,6 +251,22 @@ public class SiriusServerFrontendFilter implements Filter {
             byteRead += index;
         }
         return byteRead;
+    }
+
+    /**
+     * Delegates the request to the default servlet to handle static resources.
+     *
+     * @param httpServletRequest
+     *            The request
+     * @param httpServletResponse
+     *            The response
+     * @throws ServletException
+     *             In case of error
+     * @throws IOException
+     *             In case of error
+     */
+    private void handleStaticResource(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain chain) throws IOException, ServletException {
+        chain.doFilter(httpServletRequest, httpServletResponse);
     }
 
     /**

@@ -359,9 +359,9 @@
         <module>../../plugins/org.eclipse.sirius.table</module>
         <module>../../plugins/org.eclipse.sirius.tree</module>
         <module>../../plugins/org.eclipse.sirius.workflow.model</module>
-
-        <!-- test -->
-        <module>../../plugins/org.eclipse.sirius.tests.server.backend</module>
+        
+        <!-- tests -->
+        <module>../../plugins/org.eclipse.sirius.tests.server</module>
 
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.runtime</module>

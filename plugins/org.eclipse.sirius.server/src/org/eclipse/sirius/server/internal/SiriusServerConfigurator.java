@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.server.backend.internal;
+package org.eclipse.sirius.server.internal;
 
 import java.util.EnumSet;
 
@@ -28,7 +28,7 @@ import org.eclipse.sirius.server.api.ISiriusServerConfigurator;
  *
  * @author sbegaudeau
  */
-public class SiriusServerBackendConfigurator implements ISiriusServerConfigurator {
+public class SiriusServerConfigurator implements ISiriusServerConfigurator {
 
     /**
      * The constant used specified allowed methods. Expects a list of string
@@ -91,7 +91,7 @@ public class SiriusServerBackendConfigurator implements ISiriusServerConfigurato
             servletContextHandler.addFilter(cors, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.INCLUDE)); //$NON-NLS-1$
         }
 
-        servletContextHandler.addFilter(SiriusServerBackendFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.INCLUDE)); //$NON-NLS-1$
+        servletContextHandler.addFilter(SiriusServerFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.INCLUDE)); //$NON-NLS-1$
 
         Handler handler = server.getHandler();
         if (handler instanceof HandlerCollection) {

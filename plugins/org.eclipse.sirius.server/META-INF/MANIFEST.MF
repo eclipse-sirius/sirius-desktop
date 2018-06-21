@@ -12,8 +12,12 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.jetty.server;bundle-version="[9.0.0,10.0.0)",
  org.eclipse.jetty.util;bundle-version="[9.0.0,10.0.0)",
  org.eclipse.sirius.ext.base;bundle-version="6.0.0",
- org.eclipse.sirius.ext.ide;bundle-version="6.0.0"
+ org.eclipse.sirius.ext.ide;bundle-version="6.0.0",
+ org.eclipse.jetty.servlet;bundle-version="9.4.10",
+ org.eclipse.jetty.servlets;bundle-version="9.4.10",
+ com.google.gson;bundle-version="2.7.0"
 Export-Package: org.eclipse.sirius.server.api,
  org.eclipse.sirius.server.internal;x-internal:=true
 Bundle-Activator: org.eclipse.sirius.server.internal.SiriusServerPlugin$Implementation
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.eclipse.sirius.server

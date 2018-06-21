@@ -25,7 +25,7 @@
     <sonar.coverage.exclusions>src/**/*</sonar.coverage.exclusions>
   </properties>
 
-  <artifactId>org.eclipse.sirius.tests.server.backend</artifactId>
+  <artifactId>org.eclipse.sirius.tests.server</artifactId>
   <packaging>eclipse-test-plugin</packaging>
 
   <build>
@@ -41,7 +41,7 @@
           </includes>
           <argLine>${tests.vmargs}</argLine>
           <testFailureIgnore>${tests.ignoreFailures}</testFailureIgnore>
-          <testClass>org.eclipse.sirius.tests.server.backend.internal.SiriusServerBackendTests</testClass>
+          <testClass>org.eclipse.sirius.tests.server.internal.SiriusServerBackendTests</testClass>
         </configuration>
       </plugin>
     </plugins>

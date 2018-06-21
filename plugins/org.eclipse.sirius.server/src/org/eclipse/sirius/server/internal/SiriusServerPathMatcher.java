@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.server.backend.internal;
+package org.eclipse.sirius.server.internal;
 
 import java.util.ArrayList;
 import java.util.HashMap;

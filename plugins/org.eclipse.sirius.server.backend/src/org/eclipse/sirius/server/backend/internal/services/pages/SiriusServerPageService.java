@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.server.backend.internal.services.pages;
 
-import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_NOT_FOUND;
-import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_OK;
+import static org.eclipse.sirius.server.api.SiriusServerResponse.STATUS_NOT_FOUND;
+import static org.eclipse.sirius.server.api.SiriusServerResponse.STATUS_OK;
 
 import java.util.List;
 import java.util.Map;
@@ -24,9 +24,9 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.server.backend.internal.ISiriusServerService;
-import org.eclipse.sirius.server.backend.internal.SiriusServerPath;
-import org.eclipse.sirius.server.backend.internal.SiriusServerResponse;
+import org.eclipse.sirius.server.api.ISiriusServerService;
+import org.eclipse.sirius.server.api.SiriusServerPath;
+import org.eclipse.sirius.server.api.SiriusServerResponse;
 import org.eclipse.sirius.server.backend.internal.services.workflow.WorkflowHelper;
 import org.eclipse.sirius.server.backend.internal.utils.SiriusServerUtils;
 

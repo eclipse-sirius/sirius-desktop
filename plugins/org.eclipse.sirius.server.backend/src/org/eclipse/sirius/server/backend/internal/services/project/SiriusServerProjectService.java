@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.server.backend.internal.services.project;
 
-import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_INTERNAL_SERVER_ERROR;
-import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_NOT_FOUND;
-import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_OK;
+import static org.eclipse.sirius.server.api.SiriusServerResponse.STATUS_INTERNAL_SERVER_ERROR;
+import static org.eclipse.sirius.server.api.SiriusServerResponse.STATUS_NOT_FOUND;
+import static org.eclipse.sirius.server.api.SiriusServerResponse.STATUS_OK;
 
 import com.google.gson.Gson;
 
@@ -49,10 +49,10 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.server.backend.internal.ISiriusServerService;
+import org.eclipse.sirius.server.api.ISiriusServerService;
+import org.eclipse.sirius.server.api.SiriusServerPath;
+import org.eclipse.sirius.server.api.SiriusServerResponse;
 import org.eclipse.sirius.server.backend.internal.SiriusServerBackendPlugin;
-import org.eclipse.sirius.server.backend.internal.SiriusServerPath;
-import org.eclipse.sirius.server.backend.internal.SiriusServerResponse;
 import org.eclipse.sirius.server.backend.internal.expressions.SiriusBackendInterpreter;
 import org.eclipse.sirius.server.backend.internal.services.workflow.WorkflowHelper;
 import org.eclipse.sirius.server.backend.internal.utils.SiriusServerUtils;

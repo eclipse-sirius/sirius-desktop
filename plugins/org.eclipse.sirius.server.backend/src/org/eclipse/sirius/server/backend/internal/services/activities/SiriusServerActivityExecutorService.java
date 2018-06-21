@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.server.backend.internal.services.activities;
 
-import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_NOT_FOUND;
-import static org.eclipse.sirius.server.backend.internal.SiriusServerResponse.STATUS_OK;
+import static org.eclipse.sirius.server.api.SiriusServerResponse.STATUS_NOT_FOUND;
+import static org.eclipse.sirius.server.api.SiriusServerResponse.STATUS_OK;
 
 import java.util.Map;
 import java.util.Optional;
@@ -27,9 +27,9 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
-import org.eclipse.sirius.server.backend.internal.ISiriusServerService;
-import org.eclipse.sirius.server.backend.internal.SiriusServerPath;
-import org.eclipse.sirius.server.backend.internal.SiriusServerResponse;
+import org.eclipse.sirius.server.api.ISiriusServerService;
+import org.eclipse.sirius.server.api.SiriusServerPath;
+import org.eclipse.sirius.server.api.SiriusServerResponse;
 import org.eclipse.sirius.server.backend.internal.services.workflow.SiriusToolServices;
 import org.eclipse.sirius.server.backend.internal.services.workflow.WorkflowHelper;
 import org.eclipse.sirius.server.backend.internal.utils.SiriusServerUtils;

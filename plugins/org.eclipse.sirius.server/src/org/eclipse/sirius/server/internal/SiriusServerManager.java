@@ -51,7 +51,7 @@ public class SiriusServerManager {
     /**
      * The VM argument used to customize the jetty {@link Server} port.
      */
-    private static final String PORT_VMARG = "SIRIUS_SERVER_PORT"; //$NON-NLS-1$
+    private static final String PORT_VMARG = "org.eclipse.sirius.server.port"; //$NON-NLS-1$
 
     /**
      * The default hostname.
@@ -78,6 +78,9 @@ public class SiriusServerManager {
             InetSocketAddress address = new InetSocketAddress(HOSTNAME, port);
             this.server = new Server(address);
             this.server.setHandler(new HandlerCollection());
+
+            SiriusServerConfigurator siriusServerConfigurator = new SiriusServerConfigurator();
+            siriusServerConfigurator.configure(server);
 
             SiriusServerPlugin.getPlugin().getSiriusServerConfigurators().forEach(configurator -> configurator.configure(server));
 

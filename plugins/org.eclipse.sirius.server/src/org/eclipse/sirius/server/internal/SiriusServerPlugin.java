@@ -24,6 +24,7 @@ import org.eclipse.sirius.ext.ide.api.IItemDescriptor;
 import org.eclipse.sirius.ext.ide.api.IItemRegistry;
 import org.eclipse.sirius.ext.ide.api.ItemRegistry;
 import org.eclipse.sirius.server.api.ISiriusServerConfigurator;
+import org.eclipse.sirius.server.api.ISiriusServerService;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -76,9 +77,14 @@ public class SiriusServerPlugin extends EMFPlugin {
     public static class Implementation extends EclipsePlugin {
 
         /**
-         * The name of the extention point.
+         * The name of the sirius server configurator extension point.
          */
         private static final String SIRIUS_SERVER_CONFIGURATOR = "siriusServerConfigurator"; //$NON-NLS-1$
+
+        /**
+         * The name of the sirius server service extension point.
+         */
+        private static final String SIRIUS_SERVER_SERVICE = "siriusServerService"; //$NON-NLS-1$
 
         /**
          * The {@link IItemRegistry} used to retrieve the configurators.
@@ -89,6 +95,16 @@ public class SiriusServerPlugin extends EMFPlugin {
          * The extension registry listener for the configurator.
          */
         private AbstractRegistryEventListener siriusServerConfiguratorListener;
+
+        /**
+         * The {@link IItemRegistry} used to retrieve the services.
+         */
+        private IItemRegistry<ISiriusServerService> siriusServerServiceRegistry;
+
+        /**
+         * The extension registry listener for the service.
+         */
+        private AbstractRegistryEventListener siriusServerServiceListener;
 
         /**
          * The server manager.
@@ -113,10 +129,18 @@ public class SiriusServerPlugin extends EMFPlugin {
             super.start(context);
 
             IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
+
+            // Handle sirius server configurator extension point
             this.siriusServerConfiguratorRegistry = new ItemRegistry<>();
             this.siriusServerConfiguratorListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, SIRIUS_SERVER_CONFIGURATOR, this.siriusServerConfiguratorRegistry);
             extensionRegistry.addListener(this.siriusServerConfiguratorListener, PLUGIN_ID + '.' + SIRIUS_SERVER_CONFIGURATOR);
             this.siriusServerConfiguratorListener.readRegistry(extensionRegistry);
+
+            // Handle sirius server service extension point
+            this.siriusServerServiceRegistry = new ItemRegistry<>();
+            this.siriusServerServiceListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, SIRIUS_SERVER_SERVICE, this.siriusServerServiceRegistry);
+            extensionRegistry.addListener(this.siriusServerServiceListener, PLUGIN_ID + '.' + SIRIUS_SERVER_SERVICE);
+            this.siriusServerServiceListener.readRegistry(extensionRegistry);
 
             this.serverManager.start();
         }
@@ -132,7 +156,10 @@ public class SiriusServerPlugin extends EMFPlugin {
 
             IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
             extensionRegistry.removeListener(this.siriusServerConfiguratorListener);
+            extensionRegistry.removeListener(this.siriusServerServiceListener);
 
+            this.siriusServerServiceListener = null;
+            this.siriusServerServiceRegistry = null;
             this.siriusServerConfiguratorListener = null;
             this.siriusServerConfiguratorRegistry = null;
 
@@ -150,6 +177,19 @@ public class SiriusServerPlugin extends EMFPlugin {
 					.map(IItemDescriptor::getItem)
 					.collect(Collectors.toList());
 			// @formatter:on
+        }
+
+        /**
+         * Returns the list of the {@link ISiriusServerService}.
+         *
+         * @return The list of the {@link ISiriusServerService}
+         */
+        public List<ISiriusServerService> getSiriusServerServices() {
+            // @formatter:off
+            return this.siriusServerServiceRegistry.getItemDescriptors().stream()
+                    .map(IItemDescriptor::getItem)
+                    .collect(Collectors.toList());
+         // @formatter:off
         }
 
         /**

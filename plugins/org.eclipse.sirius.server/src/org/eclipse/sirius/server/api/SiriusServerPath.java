@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.server.backend.internal;
+package org.eclipse.sirius.server.api;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
