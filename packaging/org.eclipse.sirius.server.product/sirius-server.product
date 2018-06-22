@@ -9,7 +9,17 @@
    <launcherArgs>
       <programArgs>-console -consoleLog
       </programArgs>
-      <vmArgs>-DSIRIUS_SERVER_PORT=8080
+      <vmArgs>-Dorg.eclipse.sirius.server.http.port=8080
+#-Dorg.eclipse.sirius.server.https.host=0.0.0.0
+#-Dorg.eclipse.sirius.server.http.host=0.0.0.0
+#-Dorg.eclipse.sirius.server.https.enabled=false
+#-Dorg.eclipse.sirius.server.https.port=8443
+#-Dorg.eclipse.sirius.server.ssl.keystore.path=configuration/keystore
+#-Dorg.eclipse.sirius.server.ssl.keystore.passphrase=password
+#-Dorg.eclipse.sirius.server.cors.enabled=false
+#-Dorg.eclipse.sirius.server.cors.allowed.origins=*
+#-Dorg.eclipse.sirius.server.cors.allowed.headers=*
+#-Dorg.eclipse.sirius.server.cors.allowed.methods=*
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>

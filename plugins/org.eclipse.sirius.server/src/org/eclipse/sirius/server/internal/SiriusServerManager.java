@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.server.internal;
 
-import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
@@ -49,21 +48,6 @@ public class SiriusServerManager {
     private static final String LOCALHOST = "localhost"; //$NON-NLS-1$
 
     /**
-     * The VM argument used to customize the jetty {@link Server} port.
-     */
-    private static final String PORT_VMARG = "org.eclipse.sirius.server.port"; //$NON-NLS-1$
-
-    /**
-     * The default hostname.
-     */
-    private static final String HOSTNAME = "0.0.0.0"; //$NON-NLS-1$
-
-    /**
-     * The default port.
-     */
-    private static final String PORT = "0"; //$NON-NLS-1$
-
-    /**
      * The Jetty server.
      */
     private Server server;
@@ -74,9 +58,7 @@ public class SiriusServerManager {
     @SuppressWarnings({ "checkstyle:illegalcatch" })
     public void start() {
         if (this.server == null || !this.server.isRunning()) {
-            int port = Integer.valueOf(System.getProperty(PORT_VMARG, PORT)).intValue();
-            InetSocketAddress address = new InetSocketAddress(HOSTNAME, port);
-            this.server = new Server(address);
+            this.server = new Server();
             this.server.setHandler(new HandlerCollection());
 
             SiriusServerConfigurator siriusServerConfigurator = new SiriusServerConfigurator();

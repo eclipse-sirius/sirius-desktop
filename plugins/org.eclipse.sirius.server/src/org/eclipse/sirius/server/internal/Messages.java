@@ -31,6 +31,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SiriusServerManager_cannotStopServer;
+
+    @TranslatableMessage
+    public static String SiriusServerConfigurator_wrongPropertyTypeWarning;
     // CHECKSTYLE:ON
 
     private Messages() {
