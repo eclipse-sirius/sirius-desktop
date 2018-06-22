@@ -626,6 +626,16 @@
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.diagram.description.style.NoteDescription"/>
       </propertySection>
+<!--
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.style.bundledimagedescription.BundledImageDescriptionProvidedShapeIDPropertySection"
+               id="style.section.bundledImageDescription.ProvidedShapeID"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.bundledimagedescription.BundledImageDescriptionProvidedShapeIDFilter"
+               afterSection="style.section.bundledImageDescription.Color"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.style.BundledImageDescription"/>
+      </propertySection>
+-->
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.bundledimagedescription.BundledImageDescriptionColorPropertySection"
                id="style.section.bundledImageDescription.Color"
@@ -834,17 +844,24 @@
         <input type="org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.editor.properties.sections.description.enumlayoutvalue.EnumLayoutValueDescriptionPropertySection"
-               id="description.section.enumLayoutOption.Description"
-               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.enumlayoutvalue.EnumLayoutValueDescriptionFilter"
-               afterSection="description.section.layoutOption.Value"
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.enumlayoutvalue.EnumLayoutValueNamePropertySection"
+               id="description.section.enumLayoutValue.Value"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.enumlayoutvalue.EnumLayoutValueNameFilter"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.EnumLayoutValue"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.editor.properties.sections.description.enumlayoutvalue.EnumLayoutValueNamePropertySection"
-               id="description.section.enumLayoutValue.Value"
-               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.enumlayoutvalue.EnumLayoutValueNameFilter"
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.enumsetlayoutoption.EnumSetLayoutOptionValuesPropertySection"
+               id="description.section.enumSetLayoutOption.Values"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.enumsetlayoutoption.EnumSetLayoutOptionValuesFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.EnumSetLayoutOption"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.enumlayoutvalue.EnumLayoutValueDescriptionPropertySection"
+               id="description.section.enumLayoutOption.Description"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.enumlayoutvalue.EnumLayoutValueDescriptionFilter"
+               afterSection="description.section.layoutOption.Value"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.EnumLayoutValue"/>
       </propertySection>

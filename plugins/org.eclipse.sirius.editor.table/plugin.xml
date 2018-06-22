@@ -100,6 +100,16 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool"/>
       </propertySection>
+<!--
+  	  <propertySection
+               class="org.eclipse.sirius.table.editor.properties.sections.description.intersectionmapping.IntersectionMappingCreatePropertySection"
+               id="description.section.intersectionMapping.Create"
+               filter="org.eclipse.sirius.table.editor.properties.filters.description.intersectionmapping.IntersectionMappingCreateFilter"
+               afterSection="description.section.intersectionMapping.PreconditionExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping"/>
+      </propertySection>
+-->
   	  <propertySection
                class="org.eclipse.sirius.table.editor.properties.sections.description.intersectionmapping.IntersectionMappingPreconditionExpressionPropertySection"
                id="description.section.intersectionMapping.PreconditionExpression"

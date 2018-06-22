@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -29,6 +30,7 @@ public class HideLabelCapabilityStyleDescriptionHideLabelByDefaultFilter extends
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return StylePackage.eINSTANCE.getHideLabelCapabilityStyleDescription_HideLabelByDefault();
     }
@@ -36,12 +38,14 @@ public class HideLabelCapabilityStyleDescriptionHideLabelByDefaultFilter extends
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription;
     }
 
     // Start of user code user methods
 
+    @Override
     public boolean select(Object arg0) {
         if (isRightInputType(arg0) && isStyleInNodeMapping((org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription) arg0)) {
             EStructuralFeature feature = getFeature();
@@ -54,7 +58,7 @@ public class HideLabelCapabilityStyleDescriptionHideLabelByDefaultFilter extends
 
     /**
      * Check if a style is contained in a node mapping.
-     * 
+     *
      * @param styleDescription
      *            Style description
      * @return <code>true</code> if the style is contained in a node mapping, <code>false</code> otherwise

@@ -1,14 +1,16 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.sections.description.decorationdescription;
+
+// Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -41,6 +43,7 @@ public class DecorationDescriptionTooltipExpressionPropertySection extends Abstr
     /**
      * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
      */
+    @Override
     public void refresh() {
         super.refresh();
 
@@ -53,6 +56,7 @@ public class DecorationDescriptionTooltipExpressionPropertySection extends Abstr
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "TooltipExpression"; //$NON-NLS-1$
     }
@@ -60,6 +64,7 @@ public class DecorationDescriptionTooltipExpressionPropertySection extends Abstr
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -72,6 +77,7 @@ public class DecorationDescriptionTooltipExpressionPropertySection extends Abstr
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getDecorationDescription_TooltipExpression();
     }
@@ -79,6 +85,7 @@ public class DecorationDescriptionTooltipExpressionPropertySection extends Abstr
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -86,6 +93,7 @@ public class DecorationDescriptionTooltipExpressionPropertySection extends Abstr
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -93,6 +101,7 @@ public class DecorationDescriptionTooltipExpressionPropertySection extends Abstr
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         /*
@@ -123,6 +132,7 @@ public class DecorationDescriptionTooltipExpressionPropertySection extends Abstr
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), DecorationDescriptionTooltipExpressionPropertySection.this, text.getText());
                 dialog.open();
@@ -135,6 +145,7 @@ public class DecorationDescriptionTooltipExpressionPropertySection extends Abstr
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "Expression that provides the tool-tip as the following choices :\n* a fixed tool-tip string\n* an expression that provides a tool-tip string\n* an expression that provides an instance of org.eclipse.draw2d.IFigure";
     }

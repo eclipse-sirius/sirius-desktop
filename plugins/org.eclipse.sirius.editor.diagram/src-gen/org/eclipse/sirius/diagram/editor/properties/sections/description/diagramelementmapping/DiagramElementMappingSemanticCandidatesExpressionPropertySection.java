@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -43,6 +43,7 @@ public class DiagramElementMappingSemanticCandidatesExpressionPropertySection ex
     /**
      * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
      */
+    @Override
     public void refresh() {
         super.refresh();
 
@@ -55,6 +56,7 @@ public class DiagramElementMappingSemanticCandidatesExpressionPropertySection ex
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "SemanticCandidatesExpression"; //$NON-NLS-1$
     }
@@ -62,6 +64,7 @@ public class DiagramElementMappingSemanticCandidatesExpressionPropertySection ex
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -74,6 +77,7 @@ public class DiagramElementMappingSemanticCandidatesExpressionPropertySection ex
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getDiagramElementMapping_SemanticCandidatesExpression();
     }
@@ -81,6 +85,7 @@ public class DiagramElementMappingSemanticCandidatesExpressionPropertySection ex
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -88,6 +93,7 @@ public class DiagramElementMappingSemanticCandidatesExpressionPropertySection ex
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -95,6 +101,7 @@ public class DiagramElementMappingSemanticCandidatesExpressionPropertySection ex
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         /*
@@ -125,6 +132,7 @@ public class DiagramElementMappingSemanticCandidatesExpressionPropertySection ex
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), DiagramElementMappingSemanticCandidatesExpressionPropertySection.this, text.getText());
                 dialog.open();
@@ -137,6 +145,7 @@ public class DiagramElementMappingSemanticCandidatesExpressionPropertySection ex
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "Restrict the list of elements to consider before creating the graphical elements. If it is not set,\nthen all semantic models in session will be browsed and any element of the given type validating\nthe precondition expression will cause the creation of a graphical element. If you set this\nattribute then only the elements returned by the expression evaluation will be considered.";
     }

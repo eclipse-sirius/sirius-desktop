@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -28,6 +29,7 @@ public class NodeStyleDescriptionLabelPositionFilter extends ViewpointPropertyFi
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return StylePackage.eINSTANCE.getNodeStyleDescription_LabelPosition();
     }
@@ -35,6 +37,7 @@ public class NodeStyleDescriptionLabelPositionFilter extends ViewpointPropertyFi
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
     }
@@ -44,6 +47,7 @@ public class NodeStyleDescriptionLabelPositionFilter extends ViewpointPropertyFi
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean select(Object arg0) {
         if (isRightInputType(arg0) && isStyleInNodeMapping((org.eclipse.sirius.diagram.description.style.NodeStyleDescription) arg0)) {
             EStructuralFeature feature = getFeature();
@@ -56,7 +60,7 @@ public class NodeStyleDescriptionLabelPositionFilter extends ViewpointPropertyFi
 
     /**
      * Check if a style is contained in a node mapping.
-     * 
+     *
      * @param styleDescription
      *            Node Style description
      * @return <code>true</code> if the style is contained in a node mapping, <code>false</code> otherwise

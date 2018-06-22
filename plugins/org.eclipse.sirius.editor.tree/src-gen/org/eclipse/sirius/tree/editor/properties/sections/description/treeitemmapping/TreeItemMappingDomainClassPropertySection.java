@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -36,6 +37,7 @@ public class TreeItemMappingDomainClassPropertySection extends AbstractTextPrope
     /**
      * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
      */
+    @Override
     public void refresh() {
         super.refresh();
 
@@ -48,6 +50,7 @@ public class TreeItemMappingDomainClassPropertySection extends AbstractTextPrope
     /**
      * @see org.eclipse.sirius.tree.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "DomainClass"; //$NON-NLS-1$
     }
@@ -55,6 +58,7 @@ public class TreeItemMappingDomainClassPropertySection extends AbstractTextPrope
     /**
      * @see org.eclipse.sirius.tree.editor.properties.sections.AbstractTextPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
@@ -67,6 +71,7 @@ public class TreeItemMappingDomainClassPropertySection extends AbstractTextPrope
     /**
      * @see org.eclipse.sirius.tree.editor.properties.sections.AbstractTextPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getTreeItemMapping_DomainClass();
     }
@@ -74,6 +79,7 @@ public class TreeItemMappingDomainClassPropertySection extends AbstractTextPrope
     /**
      * @see org.eclipse.sirius.tree.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -81,6 +87,7 @@ public class TreeItemMappingDomainClassPropertySection extends AbstractTextPrope
     /**
      * @see org.eclipse.sirius.tree.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -88,6 +95,7 @@ public class TreeItemMappingDomainClassPropertySection extends AbstractTextPrope
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         /*
@@ -117,6 +125,7 @@ public class TreeItemMappingDomainClassPropertySection extends AbstractTextPrope
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "Type of the element represented by the tree";
     }

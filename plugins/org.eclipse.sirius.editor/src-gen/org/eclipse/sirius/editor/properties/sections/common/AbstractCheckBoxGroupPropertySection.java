@@ -66,11 +66,13 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
      * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage)
+        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage) {
             super.createControls(parent, (ViewpointPropertySheetPage) aTabbedPropertySheetPage);
-        else
+        } else {
             super.createControls(parent, aTabbedPropertySheetPage);
+        }
         composite = getWidgetFactory().createFlatFormComposite(parent);
         FormData data;
 
@@ -87,7 +89,7 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
                 index++;
             }
             data = new FormData();
-            data.left = new FormAttachment(0, LABEL_WIDTH);
+            data.left = new FormAttachment(0, AbstractViewpointPropertySection.LABEL_WIDTH);
             group.setLayoutData(data);
         } else {
             int buttonWidthPercentage = 100 / (values.size() + 1);
@@ -123,6 +125,7 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
         for (int i = 0; i < button.length; i++) {
             final int buttonIndex = i;
             button[buttonIndex].addSelectionListener(new SelectionAdapter() {
+                @Override
                 public void widgetSelected(SelectionEvent e) {
                     handleSelectionChanged();
                 }
@@ -134,6 +137,7 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
      * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeShown()
      * @Override
      */
+    @Override
     public void aboutToBeShown() {
         super.aboutToBeShown();
         PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, "org.eclipse.sirius." + eObject.eClass().getName());
@@ -141,7 +145,7 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
      *      org.eclipse.jface.viewers.ISelection)
      */
@@ -167,8 +171,7 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
             } else {
                 CompoundCommand compoundCommand = new CompoundCommand();
                 /* apply the property change to all selected elements */
-                for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext();) {
-                    EObject nextObject = i.next();
+                for (EObject nextObject : eObjectList) {
                     compoundCommand.append(SetCommand.create(editingDomain, nextObject, getFeature(), value));
                 }
                 editingDomain.getCommandStack().execute(compoundCommand);
@@ -178,16 +181,18 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
 
     /**
      * Get the list of values corresponding to the currently checked buttons.
-     * 
+     *
      * @return The list of values corresponding to the currently checked buttons.
      */
     protected List<?> getSelectedValues() {
         List<?> possibleValues = getChoiceOfValues();
         List<Object> selectedValues = new ArrayList<Object>();
 
-        for (int i = 0; i < button.length; i++)
-            if (button[i].getSelection())
+        for (int i = 0; i < button.length; i++) {
+            if (button[i].getSelection()) {
                 selectedValues.add(possibleValues.get(i));
+            }
+        }
 
         return selectedValues;
     }
@@ -195,21 +200,23 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
     /**
      * @see org.eclipse.ui.views.properties.tabbed.ISection#refresh()
      */
+    @Override
     public void refresh() {
         String[] values = getFeatureAsText().split(", ");
         Arrays.sort(values);
 
-        for (int i = 0; i < button.length; i++) {
-            if (Arrays.binarySearch(values, button[i].getText()) >= 0)
-                button[i].setSelection(true);
-            else
-                button[i].setSelection(false);
+        for (Button element : button) {
+            if (Arrays.binarySearch(values, element.getText()) >= 0) {
+                element.setSelection(true);
+            } else {
+                element.setSelection(false);
+            }
         }
     }
 
     /**
      * Determine if the new list of values is equal to the current property setting.
-     * 
+     *
      * @param newList
      *            The new list of values for the property.
      * @return <code>True</code> if the new list of values is equal to the current property setting, <code>False</code>
@@ -219,16 +226,17 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
 
     /**
      * Fetches the list of available values for the feature.
-     * 
+     *
      * @return The list of available values for the feature.
      */
     protected abstract List<?> getChoiceOfValues();
 
     /**
      * Get the feature representing the data of this section.
-     * 
+     *
      * @return The feature for the section.
      */
+    @Override
     protected abstract EStructuralFeature getFeature();
 
     protected String getDefaultFeatureAsText() {
@@ -241,14 +249,15 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
 
     /**
      * Get the value of the feature as text for the text field of the section.
-     * 
+     *
      * @return The value of the feature as text.
      */
     protected String getFeatureAsText() {
         final EStructuralFeature eFeature = getFeature();
         final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-        if (propertyDescriptor != null)
+        if (propertyDescriptor != null) {
             return propertyDescriptor.getLabelProvider(eObject).getText(eObject.eGet(eFeature));
+        }
         return getDefaultFeatureAsText();
     }
 
@@ -256,15 +265,16 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
 
     /**
      * Get the label for the text field of the section.
-     * 
+     *
      * @return The label for the text field.
      */
     protected String getLabelText() {
         if (eObject != null) {
             final EStructuralFeature eFeature = getFeature();
             final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-            if (propertyDescriptor != null)
+            if (propertyDescriptor != null) {
                 return propertyDescriptor.getDisplayName(eObject);
+            }
         }
         return getDefaultLabelText();
     }
@@ -272,16 +282,20 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeReadonly() {
-        for (int i = 0; i < button.length; i++)
-            button[i].setEnabled(false);
+        for (Button element : button) {
+            element.setEnabled(false);
+        }
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeWrittable() {
-        for (int i = 0; i < button.length; i++)
-            button[i].setEnabled(true);
+        for (Button element : button) {
+            element.setEnabled(true);
+        }
     }
 }

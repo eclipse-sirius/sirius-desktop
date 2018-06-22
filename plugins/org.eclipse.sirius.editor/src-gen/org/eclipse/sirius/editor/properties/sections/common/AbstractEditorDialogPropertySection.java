@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -70,19 +71,21 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
      * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 
-        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage)
+        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage) {
             super.createControls(parent, (ViewpointPropertySheetPage) aTabbedPropertySheetPage);
-        else
+        } else {
             super.createControls(parent, aTabbedPropertySheetPage);
+        }
         composite = getWidgetFactory().createFlatFormComposite(parent);
         FormData data;
 
         text = getWidgetFactory().createText(composite, "");
         text.setEditable(false);
         data = new FormData();
-        data.left = new FormAttachment(0, LABEL_WIDTH);
+        data.left = new FormAttachment(0, AbstractViewpointPropertySection.LABEL_WIDTH);
         data.right = new FormAttachment(95, 0);
         data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);
         text.setLayoutData(data);
@@ -108,6 +111,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
      * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeShown()
      * @Override
      */
+    @Override
     public void aboutToBeShown() {
         super.aboutToBeShown();
         PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, "org.eclipse.sirius." + eObject.eClass().getName());
@@ -115,7 +119,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
      *      org.eclipse.jface.viewers.ISelection)
      */
@@ -132,6 +136,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
      */
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 PropertyDescriptor propertyDescriptor = new PropertyDescriptor(eObject, getIItemPropertyDescriptor());
                 List<?> currentValues = (List<?>) eObject.eGet(getFeature());
@@ -143,8 +148,9 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
                 List result = dialog.getResult();
 
                 // Dialog returns null reference if closed/cancelled.
-                if (result != null)
+                if (result != null) {
                     handleFeatureModified(result);
+                }
             }
         };
     }
@@ -176,8 +182,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
             } else {
                 CompoundCommand compoundCommand = new CompoundCommand();
                 /* apply the property change to all selected elements */
-                for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext();) {
-                    EObject nextObject = i.next();
+                for (EObject nextObject : eObjectList) {
                     compoundCommand.append(SetCommand.create(editingDomain, nextObject, getFeature(), value));
                 }
                 editingDomain.getCommandStack().execute(compoundCommand);
@@ -188,14 +193,16 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
     /**
      * @see org.eclipse.ui.views.properties.tabbed.ISection#refresh()
      */
+    @Override
     public void refresh() {
-        if (text != null)
+        if (text != null) {
             text.setText(getFeatureAsText());
+        }
     }
 
     /**
      * Get the {@link org.eclipse.emf.edit.provider.IItemPropertyDescriptor IItemPropertyDescriptor} for this feature.
-     * 
+     *
      * @return The {@link org.eclipse.emf.edit.provider.IItemPropertyDescriptor IItemPropertyDescriptor} for this
      *         feature.
      */
@@ -203,10 +210,10 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
         IItemPropertyDescriptor itemPropertyDescriptor = null;
 
         ItemProviderAdapter providerAdapter = null;
-        for (Iterator iterator = eObject.eAdapters().iterator(); iterator.hasNext();) {
-            Object adapter = iterator.next();
-            if (adapter instanceof ItemProviderAdapter)
+        for (Object adapter : eObject.eAdapters()) {
+            if (adapter instanceof ItemProviderAdapter) {
                 providerAdapter = (ItemProviderAdapter) adapter;
+            }
         }
 
         if (providerAdapter != null) {
@@ -214,8 +221,9 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
 
             for (Iterator iterator = propertyDescriptors.iterator(); iterator.hasNext();) {
                 IItemPropertyDescriptor propertyDescriptor = (IItemPropertyDescriptor) iterator.next();
-                if (((EStructuralFeature) propertyDescriptor.getFeature(eObject)) == getFeature())
+                if (((EStructuralFeature) propertyDescriptor.getFeature(eObject)) == getFeature()) {
                     itemPropertyDescriptor = propertyDescriptor;
+                }
             }
         }
 
@@ -224,7 +232,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
 
     /**
      * Fetches the list of available values for the feature.
-     * 
+     *
      * @return The list of available values for the feature.
      */
     protected List<?> getChoiceOfValues() {
@@ -233,15 +241,16 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
 
     /**
      * Fetches the list of available values for the feature.
-     * 
+     *
      * @param currentValues
      *            the list of current values to remove from available choice of values.
-     * 
+     *
      * @return The list of available values for the feature.
      */
     protected List<?> getChoiceOfValues(List<?> currentValues) {
         List<?> list = Collections.emptyList();
         Collection<?> choiceOfValues = getIItemPropertyDescriptor().getChoiceOfValues(eObject);
+        choiceOfValues.removeAll(currentValues);
         if (choiceOfValues != null) {
             list = new ArrayList<Object>(choiceOfValues);
         }
@@ -250,7 +259,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
 
     /**
      * Determine if the new list of values is equal to the current property setting.
-     * 
+     *
      * @param newList
      *            The new list of values for the property.
      * @return <code>True</code> if the new list of values is equal to the current property setting, <code>False</code>
@@ -260,9 +269,10 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
 
     /**
      * Get the feature representing the data of this section.
-     * 
+     *
      * @return The feature for the section.
      */
+    @Override
     protected abstract EStructuralFeature getFeature();
 
     protected String getDefaultFeatureAsText() {
@@ -275,14 +285,15 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
 
     /**
      * Get the value of the feature as text for the text field of the section.
-     * 
+     *
      * @return The value of the feature as text.
      */
     protected String getFeatureAsText() {
         final EStructuralFeature eFeature = getFeature();
         final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-        if (propertyDescriptor != null)
+        if (propertyDescriptor != null) {
             return propertyDescriptor.getLabelProvider(eObject).getText(eObject.eGet(eFeature));
+        }
         return getDefaultFeatureAsText();
     }
 
@@ -290,15 +301,16 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
 
     /**
      * Get the label for the text field of the section.
-     * 
+     *
      * @return The label for the text field.
      */
     protected String getLabelText() {
         if (eObject != null) {
             final EStructuralFeature eFeature = getFeature();
             final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-            if (propertyDescriptor != null)
+            if (propertyDescriptor != null) {
                 return propertyDescriptor.getDisplayName(eObject);
+            }
         }
         return getDefaultLabelText();
     }
@@ -306,6 +318,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeReadonly() {
         button.setEnabled(false);
         text.setEnabled(false);
@@ -314,6 +327,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeWrittable() {
         button.setEnabled(true);
         text.setEnabled(true);

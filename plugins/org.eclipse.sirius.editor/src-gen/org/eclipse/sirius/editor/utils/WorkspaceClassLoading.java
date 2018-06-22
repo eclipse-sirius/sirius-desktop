@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -78,7 +78,7 @@ import com.google.common.collect.Sets;
  * the query implementation, things *will* go wrong as this utility will search first in the workspace.</li>
  * <li>you can't use the generated model interfaces</li>
  * </ul>
- * 
+ *
  * @author cedric
  */
 public class WorkspaceClassLoading extends BundleClassLoading {
@@ -90,8 +90,9 @@ public class WorkspaceClassLoading extends BundleClassLoading {
             /*
              * we are only interested in change which have been completed on the workspace.
              */
-            if (event.getType() != IResourceChangeEvent.POST_CHANGE)
+            if (event.getType() != IResourceChangeEvent.POST_CHANGE) {
                 return;
+            }
 
             final Set<String> changed = new LinkedHashSet<>();
 
@@ -99,11 +100,13 @@ public class WorkspaceClassLoading extends BundleClassLoading {
 
                 @Override
                 public boolean visit(IResourceDelta delta) throws CoreException {
-                    if (delta.getKind() != IResourceDelta.CHANGED)
+                    if (delta.getKind() != IResourceDelta.CHANGED) {
                         return true;
+                    }
                     // only interested in content changes
-                    if ((delta.getFlags() & IResourceDelta.CONTENT) == 0)
+                    if ((delta.getFlags() & IResourceDelta.CONTENT) == 0) {
                         return true;
+                    }
                     IResource resource = delta.getResource();
                     // only interested in files with the "txt" extension
                     if (resource.getType() == IResource.FILE
@@ -153,8 +156,9 @@ public class WorkspaceClassLoading extends BundleClassLoading {
 
     protected Collection<Object> findCallees(IPluginModelBase model) {
         BundleDescription desc = model.getBundleDescription();
-        if (desc == null)
+        if (desc == null) {
             return Collections.<Object> emptyList();
+        }
         BundleDescription fFragmentDescription = null;
         HostSpecification spec = desc.getHost();
         if (spec != null) {
@@ -169,15 +173,17 @@ public class WorkspaceClassLoading extends BundleClassLoading {
                  */
                 for (Object object : fragmentDependencies) {
                     BundleDescription dependency = null;
-                    if (object instanceof BundleSpecification)
+                    if (object instanceof BundleSpecification) {
                         dependency = ((BundleSpecification) object).getBundle();
-                    else if (object instanceof ImportPackageSpecification) {
+                    } else if (object instanceof ImportPackageSpecification) {
                         ExportPackageDescription epd = (ExportPackageDescription) ((ImportPackageSpecification) object).getSupplier();
-                        if (epd != null)
+                        if (epd != null) {
                             dependency = epd.getSupplier();
+                        }
                     }
-                    if (dependency != null && dependency.equals(hostDesc))
+                    if (dependency != null && dependency.equals(hostDesc)) {
                         return fragmentDependencies;
+                    }
                 }
 
                 // host not included as dependency, include it manually.
@@ -198,12 +204,13 @@ public class WorkspaceClassLoading extends BundleClassLoading {
          */
         HashMap<Object, Object> dependencies = new HashMap<Object, Object>();
         BundleSpecification[] requiredBundles = desc.getRequiredBundles();
-        for (int i = 0; i < requiredBundles.length; i++) {
-            BaseDescription bd = requiredBundles[i].getSupplier();
-            if (bd != null)
-                dependencies.put(bd, requiredBundles[i]);
-            else
-                dependencies.put(requiredBundles[i], requiredBundles[i]);
+        for (BundleSpecification requiredBundle : requiredBundles) {
+            BaseDescription bd = requiredBundle.getSupplier();
+            if (bd != null) {
+                dependencies.put(bd, requiredBundle);
+            } else {
+                dependencies.put(requiredBundle, requiredBundle);
+            }
         }
         ImportPackageSpecification[] importedPkgs = desc.getImportPackages();
         for (int i = 0; i < importedPkgs.length; i++) {
@@ -234,8 +241,9 @@ public class WorkspaceClassLoading extends BundleClassLoading {
          */
         BundleDescription frags[] = desc.getFragments();
         for (int i = 0; i < frags.length; i++) {
-            if (!frags[i].equals(fFragmentDescription))
+            if (!frags[i].equals(fFragmentDescription)) {
                 dependencies.put(frags[i], frags[i]);
+            }
         }
         return dependencies.values();
     }
@@ -356,7 +364,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
                 IPluginModelBase workspaceVersion = symbolicNamestoModels.get(bundleID);
                 if (workspaceVersion != null) {
                     for (IPluginExtension extensions : workspaceVersion.getExtensions().getExtensions()) {
-                        if (EMF_GENERATED_PACKAGE_EXTENSIONPOINT.equals(extensions.getPoint())) {
+                        if (BundleClassLoading.EMF_GENERATED_PACKAGE_EXTENSIONPOINT.equals(extensions.getPoint())) {
                             String symbolicNameForProject = workspaceVersion.getBundleDescription().getSymbolicName();
                             List<EPackageLoadingCallback.EPackageDeclaration> declarations = new ArrayList<>();
 
@@ -515,8 +523,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
     private Map<String, IPluginModelBase> getBundlesInWorkspace() {
         Map<String, IPluginModelBase> symbolicNamestoModels = new HashMap<>();
         IPluginModelBase[] wrkspcesModels = PluginRegistry.getWorkspaceModels();
-        for (int i = 0; i < wrkspcesModels.length; i++) {
-            IPluginModelBase iPluginModelBase = wrkspcesModels[i];
+        for (IPluginModelBase iPluginModelBase : wrkspcesModels) {
             if (iPluginModelBase.getBundleDescription() != null && iPluginModelBase.getBundleDescription().getSymbolicName() != null) {
                 symbolicNamestoModels.put(iPluginModelBase.getBundleDescription().getSymbolicName(), iPluginModelBase);
             }

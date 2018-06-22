@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.presentation.EcoreActionBarContributor;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogPropertySection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -42,6 +44,7 @@ public class RepresentationExtensionDescriptionMetamodelPropertySection extends 
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "Metamodel"; //$NON-NLS-1$
     }
@@ -49,6 +52,7 @@ public class RepresentationExtensionDescriptionMetamodelPropertySection extends 
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -61,6 +65,7 @@ public class RepresentationExtensionDescriptionMetamodelPropertySection extends 
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getFeature()
      */
+    @Override
     protected EReference getFeature() {
         return DescriptionPackage.eINSTANCE.getRepresentationExtensionDescription_Metamodel();
     }
@@ -68,6 +73,7 @@ public class RepresentationExtensionDescriptionMetamodelPropertySection extends 
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getFeatureAsText()
      */
+    @Override
     protected String getFeatureAsText() {
         String string = new String();
 
@@ -76,8 +82,9 @@ public class RepresentationExtensionDescriptionMetamodelPropertySection extends 
             for (Iterator<?> iterator = values.iterator(); iterator.hasNext();) {
                 EObject eObj = (EObject) iterator.next();
                 string += getAdapterFactoryLabelProvider(eObj).getText(eObj);
-                if (iterator.hasNext())
+                if (iterator.hasNext()) {
                     string += ", ";
+                }
             }
         }
 
@@ -87,6 +94,7 @@ public class RepresentationExtensionDescriptionMetamodelPropertySection extends 
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#isEqual(java.util.List)
      */
+    @Override
     protected boolean isEqual(List<?> newList) {
         return newList.equals(eObject.eGet(getFeature()));
     }
@@ -94,6 +102,7 @@ public class RepresentationExtensionDescriptionMetamodelPropertySection extends 
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         text.setToolTipText("You might want to associate your description with an ecore model, this is not mandatory, but if you do so the editor will provides you a richer validation.");
@@ -108,7 +117,7 @@ public class RepresentationExtensionDescriptionMetamodelPropertySection extends 
 
         // Start of user code create controls
         data = new FormData();
-        data.left = new FormAttachment(0, LABEL_WIDTH);
+        data.left = new FormAttachment(0, AbstractViewpointPropertySection.LABEL_WIDTH);
         data.right = new FormAttachment(90, 0);
         data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);
         text.setLayoutData(data);
@@ -133,6 +142,7 @@ public class RepresentationExtensionDescriptionMetamodelPropertySection extends 
         data.top = new FormAttachment(text, 0, SWT.CENTER);
         button2.setLayoutData(data);
         button2.addSelectionListener(new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 Shell shell = composite.getShell();
                 EditingDomain editingDomain = ((IEditingDomainProvider) getPart()).getEditingDomain();
@@ -142,8 +152,9 @@ public class RepresentationExtensionDescriptionMetamodelPropertySection extends 
                 String result = dialog.getURIText();
 
                 // Dialog returns null reference if closed/cancelled.
-                if (result != null)
+                if (result != null) {
                     editingDomain.loadResource(result);
+                }
             }
         });
         // End of user code create controls

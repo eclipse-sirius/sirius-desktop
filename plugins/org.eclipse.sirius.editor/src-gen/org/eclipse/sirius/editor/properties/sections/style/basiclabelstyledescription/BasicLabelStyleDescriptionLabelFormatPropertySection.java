@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -26,6 +27,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "LabelFormat"; //$NON-NLS-1$
     }
@@ -33,6 +35,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -45,6 +48,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getFeature()
      */
+    @Override
     protected EAttribute getFeature() {
         return StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelFormat();
     }
@@ -52,6 +56,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getFeatureAsText()
      */
+    @Override
     protected String getFeatureAsText() {
         String string = new String();
 
@@ -59,8 +64,9 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
             List<?> values = (List<?>) eObject.eGet(getFeature());
             for (Iterator<?> iterator = values.iterator(); iterator.hasNext();) {
                 string += getAdapterFactoryLabelProvider().getText(iterator.next());
-                if (iterator.hasNext())
+                if (iterator.hasNext()) {
                     string += ", ";
+                }
             }
         }
 
@@ -70,6 +76,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#isEqual(List)
      */
+    @Override
     protected boolean isEqual(List<?> newList) {
         return newList.equals(eObject.eGet(getFeature()));
     }
@@ -77,6 +84,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getEnumerationFeatureValues()
      */
+    @Override
     protected List<?> getChoiceOfValues() {
         return FontFormat.VALUES;
     }
@@ -84,6 +92,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
     }

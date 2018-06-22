@@ -13,7 +13,6 @@
 
 package org.eclipse.sirius.editor.properties.sections.common;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -62,19 +61,21 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
      * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 
-        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage)
+        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage) {
             super.createControls(parent, (ViewpointPropertySheetPage) aTabbedPropertySheetPage);
-        else
+        } else {
             super.createControls(parent, aTabbedPropertySheetPage);
+        }
         super.createControls(parent, aTabbedPropertySheetPage);
         composite = getWidgetFactory().createFlatFormComposite(parent);
         FormData data;
 
         combo = getWidgetFactory().createCCombo(composite);
         data = new FormData();
-        data.left = new FormAttachment(0, LABEL_WIDTH);
+        data.left = new FormAttachment(0, AbstractViewpointPropertySection.LABEL_WIDTH);
         data.right = new FormAttachment(100, 0);
         data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);
         combo.setLayoutData(data);
@@ -87,6 +88,7 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
         nameLabel.setLayoutData(data);
 
         combo.addKeyListener(new KeyListener() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 keySelection = true;
                 if (e.keyCode == SWT.Selection) {
@@ -95,21 +97,26 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
                 }
             }
 
+            @Override
             public void keyReleased(KeyEvent e) {
             };
         });
 
         combo.addSelectionListener(new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent event) {
-                if (!keySelection)
+                if (!keySelection) {
                     handleComboModified();
+                }
             }
         });
 
         combo.addFocusListener(new FocusListener() {
+            @Override
             public void focusGained(FocusEvent e) {
             }
 
+            @Override
             public void focusLost(FocusEvent e) {
                 keySelection = false;
                 handleComboModified();
@@ -121,6 +128,7 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
      * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeShown()
      * @Override
      */
+    @Override
     public void aboutToBeShown() {
         super.aboutToBeShown();
         PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, "org.eclipse.sirius." + eObject.eClass().getName());
@@ -128,7 +136,7 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
      *      org.eclipse.jface.viewers.ISelection)
      */
@@ -154,8 +162,7 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
             } else {
                 CompoundCommand compoundCommand = new CompoundCommand();
                 /* apply the property change to all selected elements */
-                for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext();) {
-                    EObject nextObject = i.next();
+                for (EObject nextObject : eObjectList) {
                     compoundCommand.append(SetCommand.create(editingDomain, nextObject, getFeature(), value));
                 }
                 editingDomain.getCommandStack().execute(compoundCommand);
@@ -166,6 +173,7 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
     /**
      * @see org.eclipse.ui.views.properties.tabbed.ISection#refresh()
      */
+    @Override
     public void refresh() {
         combo.setItems(getComboValues());
         combo.setText(getFeatureAsText());
@@ -200,7 +208,7 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
 
     /**
      * Determine if the provided index in the choice of values is equal to the current setting of the property.
-     * 
+     *
      * @param index
      *            The new index in the choice of values.
      * @return <code>True</code> if the new index value is equal to the current property setting, <code>False</code>
@@ -210,14 +218,15 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
 
     /**
      * Get the feature for the combo field of the section.
-     * 
+     *
      * @return The feature for the text.
      */
+    @Override
     protected abstract EStructuralFeature getFeature();
 
     /**
      * Get the choice of values for the feature for the combo field of the section.
-     * 
+     *
      * @return The list of values of the feature as text.
      */
     protected abstract List getChoiceOfValues();
@@ -232,7 +241,7 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
 
     /**
      * Get the value of the feature as text for the text field of the section.
-     * 
+     *
      * @return The value of the feature as text.
      */
     protected String getFeatureAsText() {
@@ -244,14 +253,15 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
     protected String getPropertyLabel(final Object object) {
         final EStructuralFeature eFeature = getFeature();
         final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-        if (propertyDescriptor != null)
+        if (propertyDescriptor != null) {
             return propertyDescriptor.getLabelProvider(eObject).getText(object);
+        }
         return null;
     }
 
     /**
      * Get the new value of the feature for the text field of the section.
-     * 
+     *
      * @param index
      *            The new index in the choice of values.
      * @return The new value of the feature.
@@ -262,15 +272,16 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
 
     /**
      * Get the label for the text field of the section.
-     * 
+     *
      * @return The label for the text field.
      */
     protected String getLabelText() {
         if (eObject != null) {
             final EStructuralFeature eFeature = getFeature();
             final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-            if (propertyDescriptor != null)
+            if (propertyDescriptor != null) {
                 return propertyDescriptor.getDisplayName(eObject);
+            }
         }
         return getDefaultLabelText();
     }
@@ -278,6 +289,7 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeReadonly() {
         combo.setEnabled(false);
     }
@@ -285,6 +297,7 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeWrittable() {
         combo.setEnabled(true);
     }

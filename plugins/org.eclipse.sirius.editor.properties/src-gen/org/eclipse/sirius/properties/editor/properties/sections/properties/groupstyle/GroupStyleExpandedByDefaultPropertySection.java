@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,10 +13,11 @@ package org.eclipse.sirius.properties.editor.properties.sections.properties.grou
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxPropertySection;
-// End of user code imports
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+
+// End of user code imports
 
 /**
  * A section for the expandedByDefault property of a GroupStyle object.

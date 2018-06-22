@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkoverridedescription;
+
+// Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -34,6 +36,7 @@ public class HyperlinkOverrideDescriptionFilterConditionalStylesFromOverriddenHy
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "FilterConditionalStylesFromOverriddenHyperlinkExpression"; //$NON-NLS-1$
     }
@@ -41,6 +44,7 @@ public class HyperlinkOverrideDescriptionFilterConditionalStylesFromOverriddenHy
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -53,6 +57,7 @@ public class HyperlinkOverrideDescriptionFilterConditionalStylesFromOverriddenHy
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return PropertiesPackage.eINSTANCE.getHyperlinkOverrideDescription_FilterConditionalStylesFromOverriddenHyperlinkExpression();
     }
@@ -60,6 +65,7 @@ public class HyperlinkOverrideDescriptionFilterConditionalStylesFromOverriddenHy
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -67,6 +73,7 @@ public class HyperlinkOverrideDescriptionFilterConditionalStylesFromOverriddenHy
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -74,6 +81,7 @@ public class HyperlinkOverrideDescriptionFilterConditionalStylesFromOverriddenHy
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         /*
@@ -94,6 +102,7 @@ public class HyperlinkOverrideDescriptionFilterConditionalStylesFromOverriddenHy
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(),
                         HyperlinkOverrideDescriptionFilterConditionalStylesFromOverriddenHyperlinkExpressionPropertySection.this, text.getText());
@@ -107,6 +116,7 @@ public class HyperlinkOverrideDescriptionFilterConditionalStylesFromOverriddenHy
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "";
     }

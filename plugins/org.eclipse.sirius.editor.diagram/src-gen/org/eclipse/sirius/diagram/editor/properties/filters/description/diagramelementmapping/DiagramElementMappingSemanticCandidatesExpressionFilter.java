@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -27,6 +28,7 @@ public class DiagramElementMappingSemanticCandidatesExpressionFilter extends Vie
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return DescriptionPackage.eINSTANCE.getDiagramElementMapping_SemanticCandidatesExpression();
     }
@@ -34,11 +36,13 @@ public class DiagramElementMappingSemanticCandidatesExpressionFilter extends Vie
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.diagram.description.DiagramElementMapping;
     }
 
     // Start of user code user methods
+    @Override
     public boolean select(Object arg0) {
         if (isEdgeMapping(arg0) && isNormalEdgeMapping(arg0) && !((EdgeMapping) arg0).isUseDomainElement()) {
             return false;

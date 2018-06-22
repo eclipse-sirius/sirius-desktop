@@ -9,6 +9,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.workflow.model.editor.properties.sections.workflow.activitydescription;
 
+// Start of user code imports
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
 import org.eclipse.sirius.editor.tools.internal.presentation.WorkspaceAndPluginsResourceDialog;

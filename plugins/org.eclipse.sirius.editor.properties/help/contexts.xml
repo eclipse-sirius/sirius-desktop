@@ -102,6 +102,17 @@
    
       </description>
    </context>
+   <context id="ToolbarAction">
+     <description>
+       
+       
+         
+   <!-- Start of user code ToolbarAction description -->
+   
+   <!-- End of user code ToolbarAction description -->
+   
+      </description>
+   </context>
    <context id="GroupDescription">
      <description>
        
@@ -950,6 +961,17 @@
    <!-- Start of user code DialogButton description -->
    
    <!-- End of user code DialogButton description -->
+   
+      </description>
+   </context>
+   <context id="WizardModelOperation">
+     <description>
+       
+       
+         
+   <!-- Start of user code WizardModelOperation description -->
+   
+   <!-- End of user code WizardModelOperation description -->
    
       </description>
    </context>

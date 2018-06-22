@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -43,6 +43,7 @@ public class FeatureColumnMappingFeatureParentExpressionPropertySection extends 
     /**
      * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
      */
+    @Override
     public void refresh() {
         super.refresh();
 
@@ -55,6 +56,7 @@ public class FeatureColumnMappingFeatureParentExpressionPropertySection extends 
     /**
      * @see org.eclipse.sirius.table.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "FeatureParentExpression"; //$NON-NLS-1$
     }
@@ -62,6 +64,7 @@ public class FeatureColumnMappingFeatureParentExpressionPropertySection extends 
     /**
      * @see org.eclipse.sirius.table.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -74,6 +77,7 @@ public class FeatureColumnMappingFeatureParentExpressionPropertySection extends 
     /**
      * @see org.eclipse.sirius.table.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getFeatureColumnMapping_FeatureParentExpression();
     }
@@ -81,6 +85,7 @@ public class FeatureColumnMappingFeatureParentExpressionPropertySection extends 
     /**
      * @see org.eclipse.sirius.table.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -88,6 +93,7 @@ public class FeatureColumnMappingFeatureParentExpressionPropertySection extends 
     /**
      * @see org.eclipse.sirius.table.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -95,6 +101,7 @@ public class FeatureColumnMappingFeatureParentExpressionPropertySection extends 
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         /*
@@ -125,6 +132,7 @@ public class FeatureColumnMappingFeatureParentExpressionPropertySection extends 
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), FeatureColumnMappingFeatureParentExpressionPropertySection.this, text.getText());
                 dialog.open();
@@ -137,6 +145,7 @@ public class FeatureColumnMappingFeatureParentExpressionPropertySection extends 
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "An expression to get the parent of the feature. By default, the parent of the feature is the semantic element of the line. Remember, if this expression is used, you should probably add a LabelEdit tool to create intermediate objects if they don't exist.";
     }

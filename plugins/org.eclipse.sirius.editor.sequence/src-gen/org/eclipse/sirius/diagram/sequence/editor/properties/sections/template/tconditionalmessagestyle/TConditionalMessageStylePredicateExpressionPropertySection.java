@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -43,6 +43,7 @@ public class TConditionalMessageStylePredicateExpressionPropertySection extends 
     /**
      * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
      */
+    @Override
     public void refresh() {
         super.refresh();
 
@@ -55,6 +56,7 @@ public class TConditionalMessageStylePredicateExpressionPropertySection extends 
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "PredicateExpression"; //$NON-NLS-1$
     }
@@ -62,6 +64,7 @@ public class TConditionalMessageStylePredicateExpressionPropertySection extends 
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
@@ -74,6 +77,7 @@ public class TConditionalMessageStylePredicateExpressionPropertySection extends 
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return TemplatePackage.eINSTANCE.getTConditionalMessageStyle_PredicateExpression();
     }
@@ -81,6 +85,7 @@ public class TConditionalMessageStylePredicateExpressionPropertySection extends 
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -88,6 +93,7 @@ public class TConditionalMessageStylePredicateExpressionPropertySection extends 
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -95,6 +101,7 @@ public class TConditionalMessageStylePredicateExpressionPropertySection extends 
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         /*
@@ -126,6 +133,7 @@ public class TConditionalMessageStylePredicateExpressionPropertySection extends 
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), TConditionalMessageStylePredicateExpressionPropertySection.this, text.getText());
                 dialog.open();
@@ -138,6 +146,7 @@ public class TConditionalMessageStylePredicateExpressionPropertySection extends 
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "";
     }

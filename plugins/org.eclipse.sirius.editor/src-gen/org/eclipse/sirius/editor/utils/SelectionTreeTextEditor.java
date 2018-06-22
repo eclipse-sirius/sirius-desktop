@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -49,6 +50,7 @@ public class SelectionTreeTextEditor extends AdapterFactoryTreeEditor {
     /**
      * @see org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor#editItem(org.eclipse.swt.widgets.TreeItem)
      */
+    @Override
     protected void editItem(final TreeItem treeItem) {
         final Object treeItemData = treeItem.getData();
         final IUpdateableItemText updateableItemText = (IUpdateableItemText) adapterFactory.adapt(treeItemData, IUpdateableItemText.class);
@@ -69,6 +71,7 @@ public class SelectionTreeTextEditor extends AdapterFactoryTreeEditor {
                 textComposite.setSelection(new Point(0, featureValue.length()));
 
                 textComposite.addFocusListener(new FocusAdapter() {
+                    @Override
                     public void focusLost(FocusEvent event) {
                         updateText(treeItemData, textComposite);
                         textComposite.setVisible(false);
@@ -76,6 +79,7 @@ public class SelectionTreeTextEditor extends AdapterFactoryTreeEditor {
                 });
 
                 textComposite.addKeyListener(new KeyAdapter() {
+                    @Override
                     public void keyPressed(KeyEvent event) {
                         // Carriage return or line feed
                         if (event.character == SWT.CR || event.character == SWT.LF) {
@@ -96,7 +100,7 @@ public class SelectionTreeTextEditor extends AdapterFactoryTreeEditor {
 
     /**
      * Reflects the text's modification upon the attribute's value in the model.
-     * 
+     *
      * @param textOwner
      *            Data object of the {@link org.eclipse.swt.widgets.TreeItem TreeItem}.
      * @param text
@@ -118,12 +122,13 @@ public class SelectionTreeTextEditor extends AdapterFactoryTreeEditor {
         Object value = null;
         Class instanceClass = updateableField.getEAttributeType().getInstanceClass();
 
-        if (instanceClass.equals(int.class))
+        if (instanceClass.equals(int.class)) {
             value = Integer.valueOf(text.getText());
-        else if (instanceClass.equals(double.class))
+        } else if (instanceClass.equals(double.class)) {
             value = Double.valueOf(text.getText());
-        else
+        } else {
             value = text.getText();
+        }
 
         editingDomain.getCommandStack().execute(SetCommand.create(editingDomain, textOwner, updateableField, value));
     }

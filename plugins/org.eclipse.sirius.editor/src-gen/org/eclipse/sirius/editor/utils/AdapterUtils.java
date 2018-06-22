@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -21,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * Usefull methods for EMF adapter factories
- * 
+ *
  * @author Cedric Brun <cedric.brun@obeo.fr>
  */
 public final class AdapterUtils {
@@ -30,7 +31,7 @@ public final class AdapterUtils {
     private static Map<String, AdapterFactoryDescriptor> factories = new HashMap<String, AdapterFactoryDescriptor>();
 
     static {
-        parseExtensionMetadata();
+        AdapterUtils.parseExtensionMetadata();
     }
 
     private AdapterUtils() {
@@ -38,35 +39,36 @@ public final class AdapterUtils {
 
     /**
      * Return the nsURI adapter factory if existing
-     * 
+     *
      * @param nsURI
      * @return the nsURI adapter factory if existing, null otherwise
      */
     public static AdapterFactory findAdapterFactory(String nsURI) {
         AdapterFactory adapterFactory = null;
-        if (factories.containsKey(nsURI))
-            adapterFactory = factories.get(nsURI).getAdapterInstance();
+        if (AdapterUtils.factories.containsKey(nsURI)) {
+            adapterFactory = AdapterUtils.factories.get(nsURI).getAdapterInstance();
+        }
         return adapterFactory;
     }
 
     /**
      * Return the adapter factory for this eobject
-     * 
+     *
      * @param eObj
      * @return specific adapter factory or null
      */
     public static AdapterFactory findAdapterFactory(EObject eObj) {
         String uri = eObj.eClass().getEPackage().getNsURI();
-        return findAdapterFactory(uri);
+        return AdapterUtils.findAdapterFactory(uri);
     }
 
     private static void parseExtensionMetadata() {
-        final IExtension[] extensions = Platform.getExtensionRegistry().getExtensionPoint(ADAPTER_FACTORY_EXTENSION_POINT).getExtensions();
-        for (int i = 0; i < extensions.length; i++) {
-            IConfigurationElement[] configElements = extensions[i].getConfigurationElements();
-            for (int j = 0; j < configElements.length; j++) {
-                AdapterFactoryDescriptor desc = parseAdapterFactory(configElements[j]);
-                factories.put(desc.getNsURI(), desc);
+        final IExtension[] extensions = Platform.getExtensionRegistry().getExtensionPoint(AdapterUtils.ADAPTER_FACTORY_EXTENSION_POINT).getExtensions();
+        for (IExtension extension : extensions) {
+            IConfigurationElement[] configElements = extension.getConfigurationElements();
+            for (IConfigurationElement configElement : configElements) {
+                AdapterFactoryDescriptor desc = AdapterUtils.parseAdapterFactory(configElement);
+                AdapterUtils.factories.put(desc.getNsURI(), desc);
             }
         }
 
@@ -87,7 +89,7 @@ final class AdapterFactoryDescriptor {
 
     /**
      * Constructs a new adapter factory descriptor from an IConfigurationElement
-     * 
+     *
      * @param configElements
      */
     public AdapterFactoryDescriptor(IConfigurationElement configElements) {
@@ -97,7 +99,7 @@ final class AdapterFactoryDescriptor {
     }
 
     /**
-     * 
+     *
      * @return the adapter class name
      */
     public String getClassName() {
@@ -105,8 +107,8 @@ final class AdapterFactoryDescriptor {
     }
 
     /**
-     * 
-     * 
+     *
+     *
      * @return The adapter nsURI
      */
     public String getNsURI() {
@@ -116,7 +118,7 @@ final class AdapterFactoryDescriptor {
     AdapterFactory factory;
 
     /**
-     * 
+     *
      * @return the corresponding adapter factory instance
      */
     public AdapterFactory getAdapterInstance() {

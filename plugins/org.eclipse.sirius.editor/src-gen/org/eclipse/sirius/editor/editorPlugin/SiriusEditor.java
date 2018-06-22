@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -116,11 +117,9 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -519,8 +518,7 @@ public class SiriusEditor extends MultiPageEditorPart
             editingDomain.getCommandStack().flush();
 
             updateProblemIndication = false;
-            for (Iterator<Resource> i = changedResources.iterator(); i.hasNext();) {
-                Resource resource = i.next();
+            for (Resource resource : changedResources) {
                 if (resource.isLoaded()) {
                     resource.unload();
                     beforeReload(resource);
@@ -541,7 +539,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * The changed resource has just been unloaded and will be loaded after this call. This method allows to analyze and
      * update the resource (default load/save options for example) before the reload.
-     * 
+     *
      * @param changedResource
      *            the changed resource.
      */
@@ -555,8 +553,7 @@ public class SiriusEditor extends MultiPageEditorPart
     protected void updateProblemIndication() {
         if (updateProblemIndication) {
             BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "org.eclipse.sirius.editor", 0, null, new Object[] { editingDomain.getResourceSet() });
-            for (Iterator<Diagnostic> i = resourceToDiagnosticMap.values().iterator(); i.hasNext();) {
-                Diagnostic childDiagnostic = i.next();
+            for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
                 if (childDiagnostic.getSeverity() != Diagnostic.OK) {
                     diagnostic.add(childDiagnostic);
                 }
@@ -599,7 +596,7 @@ public class SiriusEditor extends MultiPageEditorPart
      * Shows a dialog that asks if conflicting changes should be discarded.
      */
     protected boolean handleDirtyConflict() {
-        return MessageDialog.openQuestion(getSite().getShell(), getString("_UI_FileConflict_label"), getString("_WARN_FileConflict"));
+        return MessageDialog.openQuestion(getSite().getShell(), SiriusEditor.getString("_UI_FileConflict_label"), SiriusEditor.getString("_WARN_FileConflict"));
     }
 
     /**
@@ -817,12 +814,12 @@ public class SiriusEditor extends MultiPageEditorPart
      */
     public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
         if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
-            BasicDiagnostic basicDiagnostic = new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.editor", 0, getString("_UI_CreateModelError_message", resource.getURI()),
+            BasicDiagnostic basicDiagnostic = new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.editor", 0, SiriusEditor.getString("_UI_CreateModelError_message", resource.getURI()),
                     new Object[] { exception == null ? (Object) resource : exception });
             basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
             return basicDiagnostic;
         } else if (exception != null) {
-            return new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.editor", 0, getString("_UI_CreateModelError_message", resource.getURI()), new Object[] { exception });
+            return new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.editor", 0, SiriusEditor.getString("_UI_CreateModelError_message", resource.getURI()), new Object[] { exception });
         } else {
             return Diagnostic.OK_INSTANCE;
         }
@@ -847,7 +844,6 @@ public class SiriusEditor extends MultiPageEditorPart
                     @Override
                     public Viewer createViewer(Composite composite) {
                         Tree tree = new Tree(composite, SWT.MULTI);
-                        initRefreshListeners(tree);
                         TreeViewer newTreeViewer = new TreeViewer(tree);
                         return newTreeViewer;
                     }
@@ -871,7 +867,7 @@ public class SiriusEditor extends MultiPageEditorPart
 
                 createContextMenuFor(selectionViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, getString("_UI_SelectionPage_label"));
+                setPageText(pageIndex, SiriusEditor.getString("_UI_SelectionPage_label"));
 
                 setCurrentViewerPane(viewerPane);
 
@@ -899,30 +895,6 @@ public class SiriusEditor extends MultiPageEditorPart
         updateProblemIndication();
     }
 
-    private static final String NEEDS_REDRAW = "SiriusVSMEditor.needsRedraw";
-
-    private static final String HAS_REFRESH_LISTENERS = "SiriusVSMEditor.hasRefreshListeners";
-
-    /*
-     * Workaround for #442136/#435536: force a full widget redraw when a tree gains focus, even if the selected element
-     * is the same as it was before.
-     */
-    private void initRefreshListeners(Widget widget) {
-        // The bug is Windows-specific
-        if ("win32".equals(SWT.getPlatform()) && widget.getData(HAS_REFRESH_LISTENERS) == null) {
-            widget.setData(HAS_REFRESH_LISTENERS, true);
-            widget.addListener(SWT.FocusIn, event -> event.widget.setData(NEEDS_REDRAW, true));
-            widget.addListener(SWT.Selection, event -> {
-                if (event.widget.getData(NEEDS_REDRAW) != null) {
-                    event.widget.setData(NEEDS_REDRAW, null);
-                    if (event.widget instanceof Control) {
-                        ((Control) event.widget).redraw();
-                    }
-                }
-            });
-        }
-    }
-
     /**
      * If there is just one page in the multi-page editor part, this hides the single tab at the bottom.
      */
@@ -942,7 +914,7 @@ public class SiriusEditor extends MultiPageEditorPart
      */
     protected void showTabs() {
         if (getPageCount() > 1) {
-            setPageText(0, getString("_UI_SelectionPage_label"));
+            setPageText(0, SiriusEditor.getString("_UI_SelectionPage_label"));
             if (getContainer() instanceof CTabFolder) {
                 ((CTabFolder) getContainer()).setTabHeight(SWT.DEFAULT);
                 Point point = getContainer().getSize();
@@ -1111,8 +1083,7 @@ public class SiriusEditor extends MultiPageEditorPart
                 // Save the resources to the file system.
                 //
                 boolean first = true;
-                for (Iterator<Resource> i = editingDomain.getResourceSet().getResources().iterator(); i.hasNext();) {
-                    Resource resource = i.next();
+                for (Resource resource : editingDomain.getResourceSet().getResources()) {
                     if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
                         try {
                             savedResources.add(resource);
@@ -1274,8 +1245,7 @@ public class SiriusEditor extends MultiPageEditorPart
             }
         }
 
-        for (Iterator<ISelectionChangedListener> listeners = selectionChangedListeners.iterator(); listeners.hasNext();) {
-            ISelectionChangedListener listener = listeners.next();
+        for (ISelectionChangedListener listener : selectionChangedListeners) {
             listener.selectionChanged(new SelectionChangedEvent(this, selection));
         }
         setStatusLineManager(selection);
@@ -1289,16 +1259,16 @@ public class SiriusEditor extends MultiPageEditorPart
                 Collection<?> collection = ((IStructuredSelection) selection).toList();
                 switch (collection.size()) {
                 case 0: {
-                    statusLineManager.setMessage(getString("_UI_NoObjectSelected"));
+                    statusLineManager.setMessage(SiriusEditor.getString("_UI_NoObjectSelected"));
                     break;
                 }
                 case 1: {
                     String text = new AdapterFactoryItemDelegator(adapterFactory).getText(collection.iterator().next());
-                    statusLineManager.setMessage(getString("_UI_SingleObjectSelected", text));
+                    statusLineManager.setMessage(SiriusEditor.getString("_UI_SingleObjectSelected", text));
                     break;
                 }
                 default: {
-                    statusLineManager.setMessage(getString("_UI_MultiObjectSelected", Integer.toString(collection.size())));
+                    statusLineManager.setMessage(SiriusEditor.getString("_UI_MultiObjectSelected", Integer.toString(collection.size())));
                     break;
                 }
                 }
@@ -1385,73 +1355,73 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * 
+     *
      * @return a color registry initialized with basic colors.
      */
     public static ColorRegistry getColorRegistry() {
-        if (colorRegistry == null) {
-            colorRegistry = new ColorRegistry();
-            colorRegistry.put("blue", new RGB(204, 249, 255));
-            colorRegistry.put("red", new RGB(246, 139, 139));
-            colorRegistry.put("green", new RGB(204, 242, 166));
-            colorRegistry.put("yellow", new RGB(255, 245, 181));
-            colorRegistry.put("purple", new RGB(217, 196, 215));
-            colorRegistry.put("orange", new RGB(253, 206, 137));
-            colorRegistry.put("chocolate", new RGB(238, 201, 142));
-            colorRegistry.put("gray", new RGB(209, 210, 208));
-            colorRegistry.put("blue", new RGB(194, 239, 255));
-            colorRegistry.put("red", new RGB(246, 139, 139));
-            colorRegistry.put("green", new RGB(204, 242, 166));
-            colorRegistry.put("yellow", new RGB(255, 245, 181));
-            colorRegistry.put("purple", new RGB(217, 196, 215));
-            colorRegistry.put("orange", new RGB(253, 206, 137));
-            colorRegistry.put("chocolate", new RGB(238, 201, 142));
-            colorRegistry.put("gray", new RGB(209, 210, 208));
-            colorRegistry.put("light_blue", new RGB(212, 229, 247));
+        if (SiriusEditor.colorRegistry == null) {
+            SiriusEditor.colorRegistry = new ColorRegistry();
+            SiriusEditor.colorRegistry.put("blue", new RGB(204, 249, 255));
+            SiriusEditor.colorRegistry.put("red", new RGB(246, 139, 139));
+            SiriusEditor.colorRegistry.put("green", new RGB(204, 242, 166));
+            SiriusEditor.colorRegistry.put("yellow", new RGB(255, 245, 181));
+            SiriusEditor.colorRegistry.put("purple", new RGB(217, 196, 215));
+            SiriusEditor.colorRegistry.put("orange", new RGB(253, 206, 137));
+            SiriusEditor.colorRegistry.put("chocolate", new RGB(238, 201, 142));
+            SiriusEditor.colorRegistry.put("gray", new RGB(209, 210, 208));
+            SiriusEditor.colorRegistry.put("blue", new RGB(194, 239, 255));
+            SiriusEditor.colorRegistry.put("red", new RGB(246, 139, 139));
+            SiriusEditor.colorRegistry.put("green", new RGB(204, 242, 166));
+            SiriusEditor.colorRegistry.put("yellow", new RGB(255, 245, 181));
+            SiriusEditor.colorRegistry.put("purple", new RGB(217, 196, 215));
+            SiriusEditor.colorRegistry.put("orange", new RGB(253, 206, 137));
+            SiriusEditor.colorRegistry.put("chocolate", new RGB(238, 201, 142));
+            SiriusEditor.colorRegistry.put("gray", new RGB(209, 210, 208));
+            SiriusEditor.colorRegistry.put("light_blue", new RGB(212, 229, 247));
             // Start of user code put your own colors here
-            colorRegistry.put("lightgreen", new RGB(227, 249, 204));
-            colorRegistry.put("lightgrey", new RGB(242, 242, 242));
+            SiriusEditor.colorRegistry.put("lightgreen", new RGB(227, 249, 204));
+            SiriusEditor.colorRegistry.put("lightgrey", new RGB(242, 242, 242));
             // End of user code put your own colors here
 
         }
-        return colorRegistry;
+        return SiriusEditor.colorRegistry;
     }
 
     public static FontRegistry getFontRegistry() {
-        if (fontRegistry == null) {
-            fontRegistry = new FontRegistry();
+        if (SiriusEditor.fontRegistry == null) {
+            SiriusEditor.fontRegistry = new FontRegistry();
 
-            FontDescriptor defaultFontDescriptor = fontRegistry.defaultFontDescriptor();
+            FontDescriptor defaultFontDescriptor = SiriusEditor.fontRegistry.defaultFontDescriptor();
             if (defaultFontDescriptor != null && defaultFontDescriptor.getFontData().length > 0) {
                 FontData defaultFontData = defaultFontDescriptor.getFontData()[0];
 
                 FontData required = new FontData(defaultFontData.toString());
                 required.setStyle(SWT.BOLD);
-                fontRegistry.put("required", new FontData[] { required });
+                SiriusEditor.fontRegistry.put("required", new FontData[] { required });
             } else {
-                fontRegistry.put("required", new FontData[] { new FontData("Arial", 8, SWT.BOLD) });
+                SiriusEditor.fontRegistry.put("required", new FontData[] { new FontData("Arial", 8, SWT.BOLD) });
             }
 
             // Start of user code put your own fonts here
 
             // End of user code put your own fonts here
         }
-        return fontRegistry;
+        return SiriusEditor.fontRegistry;
     }
 
     public static ImageRegistry getImageRegistry() {
-        if (imageRegistry == null) {
-            imageRegistry = createImageRegistry();
-            addImageToRegistry(SiriusEditorPlugin.ICONS_PREFERENCES_HELP);
+        if (SiriusEditor.imageRegistry == null) {
+            SiriusEditor.imageRegistry = SiriusEditor.createImageRegistry();
+            SiriusEditor.addImageToRegistry(SiriusEditorPlugin.ICONS_PREFERENCES_HELP);
             // Start of user code put your own images here
 
             // End of user code put your own images here
         }
-        return imageRegistry;
+        return SiriusEditor.imageRegistry;
     }
 
     private static void addImageToRegistry(final String path) {
-        imageRegistry.put(path, getImageDescriptor(path));
+        SiriusEditor.imageRegistry.put(path, SiriusEditor.getImageDescriptor(path));
     }
 
     private static ImageDescriptor getImageDescriptor(final String path) {
@@ -1465,7 +1435,7 @@ public class SiriusEditor extends MultiPageEditorPart
      * The default implementation of this method creates an empty registry. Subclasses may override this method if
      * needed.
      * </p>
-     * 
+     *
      * @return ImageRegistry the resulting registry.
      * @see #getImageRegistry
      */

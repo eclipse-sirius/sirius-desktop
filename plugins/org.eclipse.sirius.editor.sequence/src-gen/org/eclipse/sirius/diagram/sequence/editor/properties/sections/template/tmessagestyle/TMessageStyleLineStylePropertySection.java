@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -33,6 +34,7 @@ public class TMessageStyleLineStylePropertySection extends AbstractComboProperty
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "LineStyle"; //$NON-NLS-1$
     }
@@ -40,6 +42,7 @@ public class TMessageStyleLineStylePropertySection extends AbstractComboProperty
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractComboPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -52,6 +55,7 @@ public class TMessageStyleLineStylePropertySection extends AbstractComboProperty
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractComboPropertySection#getFeature()
      */
+    @Override
     protected EAttribute getFeature() {
         return TemplatePackage.eINSTANCE.getTMessageStyle_LineStyle();
     }
@@ -59,6 +63,7 @@ public class TMessageStyleLineStylePropertySection extends AbstractComboProperty
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
      */
+    @Override
     protected Object getFeatureValue(int index) {
         return getChoiceOfValues().get(index);
     }
@@ -66,6 +71,7 @@ public class TMessageStyleLineStylePropertySection extends AbstractComboProperty
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
      */
+    @Override
     protected boolean isEqual(int index) {
         return getChoiceOfValues().get(index).equals(eObject.eGet(getFeature()));
     }
@@ -73,6 +79,7 @@ public class TMessageStyleLineStylePropertySection extends AbstractComboProperty
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractComboPropertySection#getEnumerationFeatureValues()
      */
+    @Override
     protected List<?> getChoiceOfValues() {
         return LineStyle.VALUES;
     }
@@ -80,6 +87,7 @@ public class TMessageStyleLineStylePropertySection extends AbstractComboProperty
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 

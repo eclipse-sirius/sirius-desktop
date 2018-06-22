@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -38,6 +39,7 @@ public class BasicLabelStyleDescriptionIconPathPropertySection extends AbstractT
     /**
      * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
      */
+    @Override
     public void refresh() {
         super.refresh();
 
@@ -50,6 +52,7 @@ public class BasicLabelStyleDescriptionIconPathPropertySection extends AbstractT
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "IconPath"; //$NON-NLS-1$
     }
@@ -57,6 +60,7 @@ public class BasicLabelStyleDescriptionIconPathPropertySection extends AbstractT
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -69,6 +73,7 @@ public class BasicLabelStyleDescriptionIconPathPropertySection extends AbstractT
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return StylePackage.eINSTANCE.getBasicLabelStyleDescription_IconPath();
     }
@@ -76,6 +81,7 @@ public class BasicLabelStyleDescriptionIconPathPropertySection extends AbstractT
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -83,6 +89,7 @@ public class BasicLabelStyleDescriptionIconPathPropertySection extends AbstractT
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -90,6 +97,7 @@ public class BasicLabelStyleDescriptionIconPathPropertySection extends AbstractT
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 
@@ -112,6 +120,7 @@ public class BasicLabelStyleDescriptionIconPathPropertySection extends AbstractT
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 String imagePath = WorkspaceAndPluginsResourceDialog.openDialogForImages(composite.getShell());
                 if (imagePath != null) {
@@ -125,6 +134,7 @@ public class BasicLabelStyleDescriptionIconPathPropertySection extends AbstractT
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "Path to a specific icon, if unset the icon associated to the semantic element will be used. Otherwise use path\nlike /myProject/myDirectory/myImage.gif, the style will look for it first in the workspace, then in the plugins.";
     }

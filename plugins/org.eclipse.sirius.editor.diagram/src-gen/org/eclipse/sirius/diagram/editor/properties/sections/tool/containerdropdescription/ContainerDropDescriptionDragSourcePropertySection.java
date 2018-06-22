@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -34,6 +35,7 @@ public class ContainerDropDescriptionDragSourcePropertySection extends AbstractR
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "DragSource"; //$NON-NLS-1$
     }
@@ -41,6 +43,7 @@ public class ContainerDropDescriptionDragSourcePropertySection extends AbstractR
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
@@ -53,6 +56,7 @@ public class ContainerDropDescriptionDragSourcePropertySection extends AbstractR
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getFeature()
      */
+    @Override
     protected EAttribute getFeature() {
         return ToolPackage.eINSTANCE.getContainerDropDescription_DragSource();
     }
@@ -60,6 +64,7 @@ public class ContainerDropDescriptionDragSourcePropertySection extends AbstractR
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getFeatureValue(int)
      */
+    @Override
     protected Object getFeatureValue(int index) {
         return getChoiceOfValues().get(index);
     }
@@ -67,6 +72,7 @@ public class ContainerDropDescriptionDragSourcePropertySection extends AbstractR
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#isEqual(int)
      */
+    @Override
     protected boolean isEqual(int index) {
         return getChoiceOfValues().get(index).equals(eObject.eGet(getFeature()));
     }
@@ -74,6 +80,7 @@ public class ContainerDropDescriptionDragSourcePropertySection extends AbstractR
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getEnumerationFeatureValues()
      */
+    @Override
     protected List<?> getChoiceOfValues() {
         return DragSource.VALUES;
     }
@@ -81,6 +88,7 @@ public class ContainerDropDescriptionDragSourcePropertySection extends AbstractR
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 

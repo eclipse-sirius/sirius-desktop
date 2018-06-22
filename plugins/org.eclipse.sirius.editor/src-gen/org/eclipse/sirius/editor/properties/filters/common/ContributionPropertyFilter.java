@@ -19,6 +19,7 @@ import org.eclipse.jface.viewers.IFilter;
 
 public abstract class ContributionPropertyFilter implements IFilter {
 
+    @Override
     public boolean select(Object arg0) {
         if (isRightInputType(arg0)) {
             EStructuralFeature feature = getFeature();

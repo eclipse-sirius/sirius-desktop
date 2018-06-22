@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -32,14 +33,16 @@ public class ViewpointLabelProvider extends LabelProvider {
     /**
      * @see org.eclipse.jface.viewers.ILabelProvider#getImage(java.lang.Object)
      */
+    @Override
     public Image getImage(Object object) {
         Image labelImage = null;
 
         if (object != null && !object.equals(StructuredSelection.EMPTY)) {
             if (object instanceof IStructuredSelection) {
                 IStructuredSelection structuredSelection = (IStructuredSelection) object;
-                if (!containsDifferentTypes(structuredSelection))
+                if (!containsDifferentTypes(structuredSelection)) {
                     object = structuredSelection.getFirstElement();
+                }
             }
 
             if (object instanceof EObject || object instanceof Resource) {
@@ -53,6 +56,7 @@ public class ViewpointLabelProvider extends LabelProvider {
     /**
      * @see org.eclipse.jface.viewers.ILabelProvider#getText(java.lang.Object)
      */
+    @Override
     public String getText(Object object) {
         String text = null;
         int selectionSize = 0;
@@ -64,19 +68,22 @@ public class ViewpointLabelProvider extends LabelProvider {
                 if (selectionSize == 1 && structuredSelection.getFirstElement() instanceof EObject) {
                     object = structuredSelection.getFirstElement();
                 }
-                if (containsDifferentTypes(structuredSelection))
+                if (containsDifferentTypes(structuredSelection)) {
                     text = selectionSize + " items selected";//$NON-NLS-1$
+                }
             }
         }
 
-        if (object != null)
+        if (object != null) {
             text = getAdapterFactoryLabelProvider().getText(object);
+        }
         if (selectionSize > 1) {
             text = selectionSize + " [";
             for (Iterator iterator = ((IStructuredSelection) object).iterator(); iterator.hasNext();) {
                 text += getAdapterFactoryLabelProvider().getText(iterator.next());
-                if (iterator.hasNext())
+                if (iterator.hasNext()) {
                     text += ", ";
+                }
             }
             text += "] selected";
         }
@@ -87,7 +94,7 @@ public class ViewpointLabelProvider extends LabelProvider {
     /**
      * Fetches the plugin's {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
      * AdapterFactoryLabelProvider}}.
-     * 
+     *
      * @return The plugin's {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
      *         AdapterFactoryLabelProvider}}.
      */
@@ -101,7 +108,7 @@ public class ViewpointLabelProvider extends LabelProvider {
     /**
      * Determines if the objects contained by a given {@link org.eclipse.jface.viewers.IStructuredSelection structured
      * selection} are of different types.
-     * 
+     *
      * @param structuredSelection
      *            The structured selection.
      * @return <code>True</code> if there are objects of different types in the structured selection, <code>false</code>
@@ -115,8 +122,9 @@ public class ViewpointLabelProvider extends LabelProvider {
             for (Iterator iterator = selectionList.iterator(); iterator.hasNext();) {
                 Object element = iterator.next();
                 if (iterator.hasNext()) {
-                    if (iterator.next().getClass() != element.getClass())
+                    if (iterator.next().getClass() != element.getClass()) {
                         areDistinct = true;
+                    }
                 }
             }
         }

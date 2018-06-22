@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -31,6 +32,7 @@ public class TMessageStyleSourceArrowPropertySection extends AbstractTableProper
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTablePropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "SourceArrow"; //$NON-NLS-1$
     }
@@ -38,6 +40,7 @@ public class TMessageStyleSourceArrowPropertySection extends AbstractTableProper
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTablePropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
@@ -50,6 +53,7 @@ public class TMessageStyleSourceArrowPropertySection extends AbstractTableProper
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTablePropertySection#getFeature()
      */
+    @Override
     protected EAttribute getFeature() {
         return TemplatePackage.eINSTANCE.getTMessageStyle_SourceArrow();
     }
@@ -57,6 +61,7 @@ public class TMessageStyleSourceArrowPropertySection extends AbstractTableProper
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTablePropertySection#getFeatureValue(int)
      */
+    @Override
     protected Object getFeatureValue(int index) {
         return ((ImageItem) getChoiceOfValues().get(index)).getEnum();
     }
@@ -64,6 +69,7 @@ public class TMessageStyleSourceArrowPropertySection extends AbstractTableProper
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTablePropertySection#isEqual(int)
      */
+    @Override
     protected boolean isEqual(int index) {
         return ((ImageItem) getChoiceOfValues().get(index)).getEnum().equals(eObject.eGet(getFeature()));
     }
@@ -71,8 +77,9 @@ public class TMessageStyleSourceArrowPropertySection extends AbstractTableProper
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractTablePropertySection#getEnumerationFeatureValues()
      */
+    @Override
     protected List<?> getChoiceOfValues() {
-        List<ImageItem> result = new ArrayList<ImageItem>();
+        List<ImageItem> result = new ArrayList<>();
         for (EdgeArrows edgeArrows : EdgeArrows.VALUES) {
             if (edgeArrows.equals(EdgeArrows.NO_DECORATION_LITERAL)) {
                 result.add(new ImageItem(edgeArrows, "icons/full/decorator/noDecoration.gif"));
@@ -114,6 +121,7 @@ public class TMessageStyleSourceArrowPropertySection extends AbstractTableProper
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 

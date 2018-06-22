@@ -1,15 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.sections.common;
-
-import java.util.Iterator;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EAttribute;
@@ -51,17 +50,19 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
      * @see org.eclipse.ui.views.properties.tabbed.ITabbedPropertySection#createControls(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
-        if (tabbedPropertySheetPage instanceof ViewpointPropertySheetPage)
+        if (tabbedPropertySheetPage instanceof ViewpointPropertySheetPage) {
             super.createControls(parent, (ViewpointPropertySheetPage) tabbedPropertySheetPage);
-        else
+        } else {
             super.createControls(parent, tabbedPropertySheetPage);
+        }
         composite = getWidgetFactory().createFlatFormComposite(parent);
         FormData data;
 
         text = getWidgetFactory().createText(composite, "", SWT.MULTI); //$NON-NLS-1$
         data = new FormData();
-        data.left = new FormAttachment(0, LABEL_WIDTH);
+        data.left = new FormAttachment(0, AbstractViewpointPropertySection.LABEL_WIDTH);
         data.right = new FormAttachment(100, 0);
         data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);
         data.bottom = new FormAttachment(0, 150);
@@ -75,6 +76,7 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
         nameLabel.setLayoutData(data);
 
         TextChangeListener listener = new TextChangeHelper(false) {
+            @Override
             public void textChanged(Text control) {
                 handleTextModified();
             }
@@ -87,6 +89,7 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
      * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeShown()
      * @Override
      */
+    @Override
     public void aboutToBeShown() {
         super.aboutToBeShown();
         PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, "org.eclipse.sirius." + eObject.eClass().getName());
@@ -94,7 +97,7 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
      *      org.eclipse.jface.viewers.ISelection)
      */
@@ -120,8 +123,7 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
             } else {
                 CompoundCommand compoundCommand = new CompoundCommand();
                 /* apply the property change to all selected elements */
-                for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext();) {
-                    EObject nextObject = i.next();
+                for (EObject nextObject : eObjectList) {
                     compoundCommand.append(SetCommand.create(editingDomain, nextObject, getFeature(), value));
                 }
                 editingDomain.getCommandStack().execute(compoundCommand);
@@ -132,14 +134,16 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
     /**
      * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
      */
+    @Override
     public void refresh() {
-        if (getFeatureAsText() != null)
+        if (getFeatureAsText() != null) {
             text.setText(getFeatureAsText());
+        }
     }
 
     /**
      * Determine if the provided string value is an equal representation of the current setting of the text property.
-     * 
+     *
      * @param newText
      *            the new string value.
      * @return <code>True</code> if the new string value is equal to the current property setting, <code>False</code>
@@ -149,14 +153,15 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
 
     /**
      * Get the feature for the text field of this section.
-     * 
+     *
      * @return The feature for the text.
      */
+    @Override
     protected abstract EAttribute getFeature();
 
     /**
      * Get the base description.
-     * 
+     *
      * @return The description for the feature.
      */
     protected abstract String getPropertyDescription();
@@ -167,7 +172,7 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
 
     /**
      * Get the value of the feature as text for the text field of the section.
-     * 
+     *
      * @return The value of the feature as text.
      */
     protected String getFeatureAsText() {
@@ -180,7 +185,7 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
 
     /**
      * Get the new value of the feature for the text field of the section.
-     * 
+     *
      * @param newText
      *            The new value of the feature as a string.
      * @return The new value of the feature.
@@ -191,15 +196,16 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
 
     /**
      * Get the label for the text field of the section.
-     * 
+     *
      * @return The label for the text field.
      */
     protected String getLabelText() {
         if (eObject != null) {
             final EStructuralFeature eFeature = getFeature();
             final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-            if (propertyDescriptor != null)
+            if (propertyDescriptor != null) {
                 return propertyDescriptor.getDisplayName(eObject);
+            }
         }
         return getDefaultLabelText();
     }
@@ -207,6 +213,7 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeReadonly() {
         text.setEnabled(false);
     }
@@ -214,6 +221,7 @@ public abstract class AbstractMultilinePropertySection extends AbstractViewpoint
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeWrittable() {
         text.setEnabled(true);
     }

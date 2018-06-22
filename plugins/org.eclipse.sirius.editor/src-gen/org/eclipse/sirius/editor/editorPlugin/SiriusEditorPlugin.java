@@ -1,16 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.editor.editorPlugin;
-
-import java.util.LinkedHashSet;
 
 // Start of user code imports
 
@@ -36,6 +34,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+
+import com.google.common.collect.Sets;
 
 // End of user code imports
 
@@ -64,7 +64,7 @@ public final class SiriusEditorPlugin extends EMFPlugin {
      */
     private static Implementation plugin;
 
-    private static Set<String> siriusRuntimeBundles = new LinkedHashSet<>();
+    private static Set<String> siriusRuntimeBundles = Sets.newLinkedHashSet();
 
     // Start of user code fields
 
@@ -81,21 +81,21 @@ public final class SiriusEditorPlugin extends EMFPlugin {
 
     /**
      * Returns the singleton instance of the Eclipse plugin.
-     * 
+     *
      * @return the singleton instance.
      */
     @Override
     public ResourceLocator getPluginResourceLocator() {
-        return plugin;
+        return SiriusEditorPlugin.plugin;
     }
 
     /**
      * Returns the singleton instance of the Eclipse plugin.
-     * 
+     *
      * @return the singleton instance.
      */
     public static Implementation getPlugin() {
-        return plugin;
+        return SiriusEditorPlugin.plugin;
     }
 
     /**
@@ -110,7 +110,7 @@ public final class SiriusEditorPlugin extends EMFPlugin {
      * <p>
      * Subclasses may override this method but are not expected to.
      * </p>
-     * 
+     *
      * @return the image registry
      */
     public ImageRegistry getImageRegistry() {
@@ -127,7 +127,7 @@ public final class SiriusEditorPlugin extends EMFPlugin {
      * The default implementation of this method creates an empty registry. Subclasses may override this method if
      * needed.
      * </p>
-     * 
+     *
      * @return ImageRegistry the resulting registry.
      * @see #getImageRegistry
      */
@@ -150,7 +150,7 @@ public final class SiriusEditorPlugin extends EMFPlugin {
     /**
      * Returns an image for the image file at the given plug-in relative path. Client do not need to dispose this image.
      * Images will be disposed automatically.
-     * 
+     *
      * @param path
      *            the path
      * @return image instance
@@ -158,7 +158,7 @@ public final class SiriusEditorPlugin extends EMFPlugin {
     public Image getBundledImage(String path) {
         Image image = getImageRegistry().get(path);
         if (image == null) {
-            getImageRegistry().put(path, getBundledImageDescriptor(path));
+            getImageRegistry().put(path, SiriusEditorPlugin.getBundledImageDescriptor(path));
             image = getImageRegistry().get(path);
         }
         return image;
@@ -166,31 +166,30 @@ public final class SiriusEditorPlugin extends EMFPlugin {
 
     /**
      * Returns an image descriptor for the image file at the given plug-in relative path.
-     * 
+     *
      * @param path
      *            the path
      * @return the image descriptor
      */
     public static ImageDescriptor getBundledImageDescriptor(String path) {
-        return AbstractUIPlugin.imageDescriptorFromPlugin(PLUGIN_ID, path);
+        return AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditorPlugin.PLUGIN_ID, path);
     }
 
     /**
      * return a set containing all the symbolic names of bundles which are part of the Sirius runtime and are currently
      * installed in the platform.
-     * 
+     *
      * @return a set containing all the symbolic names of bundles which are part of the Sirius runtime and are currently
      *         installed in the platform.
      */
     public static Set<String> getSiriusRuntimeBundles() {
-        return siriusRuntimeBundles;
+        return SiriusEditorPlugin.siriusRuntimeBundles;
     }
 
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
     public static class Implementation extends EclipseUIPlugin {
-
         /**
          * Creates an instance.
          */
@@ -199,24 +198,25 @@ public final class SiriusEditorPlugin extends EMFPlugin {
 
             // Remember the static instance.
             //
-            plugin = this;
+            SiriusEditorPlugin.plugin = this;
         }
 
         // Start of user code Implementation specifics
         /**
-         * The {@link NavigationFromVSMExpressionRegistry} allowing to navigate to JAVA implementation from VSM expressions.
+         * The {@link NavigationFromVSMExpressionRegistry} allowing to navigate to JAVA implementation from VSM
+         * expressions.
          */
         private NavigationFromVSMExpressionRegistry navigationRegistry;
 
         @Override
         public void start(BundleContext context) throws Exception {
             super.start(context);
-            workspaceEPackageRegistry = new WorkspaceEPackageRegistry(true);
+            SiriusEditorPlugin.workspaceEPackageRegistry = new WorkspaceEPackageRegistry(true);
             for (Bundle bnd : context.getBundles()) {
                 String name = bnd.getSymbolicName();
                 if (name != null && name.startsWith("org.eclipse.sirius")) {
                     if (name.indexOf("sample") == -1 && name.indexOf("tests") == -1) {
-                        siriusRuntimeBundles.add(name);
+                        SiriusEditorPlugin.siriusRuntimeBundles.add(name);
                     }
                 }
             }
@@ -234,16 +234,18 @@ public final class SiriusEditorPlugin extends EMFPlugin {
         public void stop(BundleContext context) throws Exception {
             super.stop(context);
             if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-                workspaceEPackageRegistry.dispose(ResourcesPlugin.getWorkspace());
+                SiriusEditorPlugin.workspaceEPackageRegistry.dispose(ResourcesPlugin.getWorkspace());
             }
-            workspaceEPackageRegistry = null;
+            SiriusEditorPlugin.workspaceEPackageRegistry = null;
             navigationRegistry = null;
         }
 
         /**
-         * Returns the {@link NavigationFromVSMExpressionRegistry} allowing to navigate to JAVA implementation from VSM expressions.
-         * 
-         * @return the {@link NavigationFromVSMExpressionRegistry} allowing to navigate to JAVA implementation from VSM expressions.
+         * Returns the {@link NavigationFromVSMExpressionRegistry} allowing to navigate to JAVA implementation from VSM
+         * expressions.
+         *
+         * @return the {@link NavigationFromVSMExpressionRegistry} allowing to navigate to JAVA implementation from VSM
+         *         expressions.
          */
         public NavigationFromVSMExpressionRegistry getNavigationRegistry() {
             return navigationRegistry;
@@ -251,14 +253,14 @@ public final class SiriusEditorPlugin extends EMFPlugin {
 
         /**
          * Get a {@link Registry} which aggregate EPackage from EMF registry and EPackage from workspace.
-         * 
+         *
          * @return a {@link Registry} which aggregate EPackage from EMF registry and EPackage from workspace
          */
         public Registry getWorkspaceEPackageRegistry() {
-            if (!workspaceEPackageRegistry.isListeningWorkspace() && EMFPlugin.IS_ECLIPSE_RUNNING) {
-                workspaceEPackageRegistry.init(ResourcesPlugin.getWorkspace());
+            if (!SiriusEditorPlugin.workspaceEPackageRegistry.isListeningWorkspace() && EMFPlugin.IS_ECLIPSE_RUNNING) {
+                SiriusEditorPlugin.workspaceEPackageRegistry.init(ResourcesPlugin.getWorkspace());
             }
-            return workspaceEPackageRegistry;
+            return SiriusEditorPlugin.workspaceEPackageRegistry;
         }
 
         // End of user code Implementation specifics

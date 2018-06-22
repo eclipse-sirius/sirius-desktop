@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -13,7 +14,6 @@ package org.eclipse.sirius.diagram.editor.properties.sections.description.diagra
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EReference;
@@ -37,6 +37,7 @@ public class DiagramDescriptionDefaultConcernPropertySection extends AbstractCom
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "DefaultConcern"; //$NON-NLS-1$
     }
@@ -44,6 +45,7 @@ public class DiagramDescriptionDefaultConcernPropertySection extends AbstractCom
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -56,6 +58,7 @@ public class DiagramDescriptionDefaultConcernPropertySection extends AbstractCom
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getFeature()
      */
+    @Override
     protected EReference getFeature() {
         return DescriptionPackage.eINSTANCE.getDiagramDescription_DefaultConcern();
     }
@@ -63,6 +66,7 @@ public class DiagramDescriptionDefaultConcernPropertySection extends AbstractCom
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
      */
+    @Override
     protected Object getFeatureValue(int index) {
         return getFeatureValueAt(index);
     }
@@ -70,18 +74,20 @@ public class DiagramDescriptionDefaultConcernPropertySection extends AbstractCom
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
      */
+    @Override
     protected boolean isEqual(int index) {
         boolean isEqual = false;
-        if (getFeatureValueAt(index) == null)
+        if (getFeatureValueAt(index) == null) {
             isEqual = eObject.eGet(getFeature()) == null;
-        else
+        } else {
             isEqual = getFeatureValueAt(index).equals(eObject.eGet(getFeature()));
+        }
         return isEqual;
     }
 
     /**
      * Returns the value at the specified index in the choice of values for the feature.
-     * 
+     *
      * @param index
      *            Index of the value.
      * @return the value at the specified index in the choice of values.
@@ -96,16 +102,17 @@ public class DiagramDescriptionDefaultConcernPropertySection extends AbstractCom
 
     /**
      * Fetches the list of available values for the feature.
-     * 
+     *
      * @return The list of available values for the feature.
      */
+    @Override
     protected List<?> getChoiceOfValues() {
         List<?> values = Collections.emptyList();
         List<IItemPropertyDescriptor> propertyDescriptors = getDescriptors();
-        for (Iterator<IItemPropertyDescriptor> iterator = propertyDescriptors.iterator(); iterator.hasNext();) {
-            IItemPropertyDescriptor propertyDescriptor = iterator.next();
-            if (((EStructuralFeature) propertyDescriptor.getFeature(eObject)) == getFeature())
+        for (IItemPropertyDescriptor propertyDescriptor : propertyDescriptors) {
+            if (((EStructuralFeature) propertyDescriptor.getFeature(eObject)) == getFeature()) {
                 values = new ArrayList<Object>(propertyDescriptor.getChoiceOfValues(eObject));
+            }
         }
 
         // Start of user code choice of values
@@ -116,6 +123,7 @@ public class DiagramDescriptionDefaultConcernPropertySection extends AbstractCom
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         combo.setToolTipText("If you display many concerns for a given diagram, then you may want to pick one as the default. This feature does just that.");

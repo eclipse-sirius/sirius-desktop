@@ -1,18 +1,19 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.editor.properties.sections.description.enumlayoutvalue;
 
+// Start of user code imports
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -27,6 +28,7 @@ public class EnumLayoutValueNamePropertySection extends AbstractTextPropertySect
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "Name"; //$NON-NLS-1$
     }
@@ -34,6 +36,7 @@ public class EnumLayoutValueNamePropertySection extends AbstractTextPropertySect
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -46,6 +49,7 @@ public class EnumLayoutValueNamePropertySection extends AbstractTextPropertySect
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getEnumLayoutValue_Name();
     }
@@ -53,6 +57,7 @@ public class EnumLayoutValueNamePropertySection extends AbstractTextPropertySect
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -60,6 +65,7 @@ public class EnumLayoutValueNamePropertySection extends AbstractTextPropertySect
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -67,6 +73,7 @@ public class EnumLayoutValueNamePropertySection extends AbstractTextPropertySect
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 
@@ -80,6 +87,7 @@ public class EnumLayoutValueNamePropertySection extends AbstractTextPropertySect
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "";
     }

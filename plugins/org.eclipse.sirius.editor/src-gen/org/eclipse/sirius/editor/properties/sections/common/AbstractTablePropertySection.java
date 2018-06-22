@@ -12,7 +12,6 @@
 
 package org.eclipse.sirius.editor.properties.sections.common;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -109,17 +108,19 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
      * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage)
+        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage) {
             super.createControls(parent, (ViewpointPropertySheetPage) aTabbedPropertySheetPage);
-        else
+        } else {
             super.createControls(parent, aTabbedPropertySheetPage);
+        }
         composite = getWidgetFactory().createFlatFormComposite(parent);
         FormData data;
 
         table = getWidgetFactory().createTable(composite, SWT.SINGLE | SWT.BORDER | SWT.FULL_SELECTION);
         data = new FormData();
-        data.left = new FormAttachment(0, LABEL_WIDTH);
+        data.left = new FormAttachment(0, AbstractViewpointPropertySection.LABEL_WIDTH);
         data.right = new FormAttachment(100, 0);
         data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);
         data.height = 90;
@@ -133,6 +134,7 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
         nameLabel.setLayoutData(data);
 
         table.addSelectionListener(new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent event) {
                 handleTableModified();
             }
@@ -143,6 +145,7 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
      * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeShown()
      * @Override
      */
+    @Override
     public void aboutToBeShown() {
         super.aboutToBeShown();
         PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, "org.eclipse.sirius." + eObject.eClass().getName());
@@ -150,7 +153,7 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
      *      org.eclipse.jface.viewers.ISelection)
      */
@@ -176,8 +179,7 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
             } else {
                 CompoundCommand compoundCommand = new CompoundCommand();
                 /* apply the property change to all selected elements */
-                for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext();) {
-                    EObject nextObject = i.next();
+                for (EObject nextObject : eObjectList) {
                     compoundCommand.append(SetCommand.create(editingDomain, nextObject, getFeature(), value));
                 }
                 editingDomain.getCommandStack().execute(compoundCommand);
@@ -188,6 +190,7 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
     /**
      * @see org.eclipse.ui.views.properties.tabbed.ISection#refresh()
      */
+    @Override
     public void refresh() {
         // Populate the table with the items
         if (table.getItems().length == 0) {
@@ -195,8 +198,9 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
         }
         final String currentlySelected = getFeatureAsText();
         for (TableItem tItem : table.getItems()) {
-            if (tItem.getText().equals(currentlySelected))
+            if (tItem.getText().equals(currentlySelected)) {
                 table.setSelection(tItem);
+            }
         }
     }
 
@@ -230,7 +234,7 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
 
     /**
      * Get the possible values for the feature as Strings.
-     * 
+     *
      * return The possible values for the feature as Strings.
      */
     protected String[] getTableValues() {
@@ -258,7 +262,7 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
 
     /**
      * Determine if the provided index in the choice of values is equal to the current setting of the property.
-     * 
+     *
      * @param index
      *            The new index in the choice of values.
      * @return <code>True</code> if the new index value is equal to the current property setting, <code>False</code>
@@ -268,14 +272,15 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
 
     /**
      * Get the feature for the table field of the section.
-     * 
+     *
      * @return The feature for the text.
      */
+    @Override
     protected abstract EStructuralFeature getFeature();
 
     /**
      * Get the choice of values for the feature for the table field of the section.
-     * 
+     *
      * @return The list of values of the feature as text.
      */
     protected abstract List getChoiceOfValues();
@@ -290,20 +295,21 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
 
     /**
      * Get the value of the feature as text for the text field of the section.
-     * 
+     *
      * @return The value of the feature as text.
      */
     protected String getFeatureAsText() {
         final EStructuralFeature eFeature = getFeature();
         final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-        if (propertyDescriptor != null)
+        if (propertyDescriptor != null) {
             return propertyDescriptor.getLabelProvider(eObject).getText(eObject.eGet(eFeature));
+        }
         return getDefaultFeatureAsText();
     }
 
     /**
      * Get the new value of the feature for the text field of the section.
-     * 
+     *
      * @param index
      *            The new index in the choice of values.
      * @return The new value of the feature.
@@ -314,15 +320,16 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
 
     /**
      * Get the label for the text field of the section.
-     * 
+     *
      * @return The label for the text field.
      */
     protected String getLabelText() {
         if (eObject != null) {
             final EStructuralFeature eFeature = getFeature();
             final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-            if (propertyDescriptor != null)
+            if (propertyDescriptor != null) {
                 return propertyDescriptor.getDisplayName(eObject);
+            }
         }
         return getDefaultLabelText();
     }
@@ -330,6 +337,7 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeReadonly() {
         table.setEnabled(false);
     }
@@ -337,6 +345,7 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeWrittable() {
         table.setEnabled(true);
     }

@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -44,6 +44,7 @@ public class EdgeCreationDescriptionConnectionStartPreconditionPropertySection e
     /**
      * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
      */
+    @Override
     public void refresh() {
         super.refresh();
 
@@ -56,6 +57,7 @@ public class EdgeCreationDescriptionConnectionStartPreconditionPropertySection e
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "ConnectionStartPrecondition"; //$NON-NLS-1$
     }
@@ -63,6 +65,7 @@ public class EdgeCreationDescriptionConnectionStartPreconditionPropertySection e
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -75,6 +78,7 @@ public class EdgeCreationDescriptionConnectionStartPreconditionPropertySection e
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return ToolPackage.eINSTANCE.getEdgeCreationDescription_ConnectionStartPrecondition();
     }
@@ -82,6 +86,7 @@ public class EdgeCreationDescriptionConnectionStartPreconditionPropertySection e
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -89,6 +94,7 @@ public class EdgeCreationDescriptionConnectionStartPreconditionPropertySection e
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -96,6 +102,7 @@ public class EdgeCreationDescriptionConnectionStartPreconditionPropertySection e
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         /*
@@ -126,6 +133,7 @@ public class EdgeCreationDescriptionConnectionStartPreconditionPropertySection e
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), EdgeCreationDescriptionConnectionStartPreconditionPropertySection.this, text.getText());
                 dialog.open();
@@ -138,6 +146,7 @@ public class EdgeCreationDescriptionConnectionStartPreconditionPropertySection e
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "";
     }

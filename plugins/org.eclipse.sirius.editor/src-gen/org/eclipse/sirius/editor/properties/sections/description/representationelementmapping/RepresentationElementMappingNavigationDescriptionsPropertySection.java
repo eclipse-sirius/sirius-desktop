@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -34,6 +35,7 @@ public class RepresentationElementMappingNavigationDescriptionsPropertySection e
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "NavigationDescriptions"; //$NON-NLS-1$
     }
@@ -41,6 +43,7 @@ public class RepresentationElementMappingNavigationDescriptionsPropertySection e
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -53,6 +56,7 @@ public class RepresentationElementMappingNavigationDescriptionsPropertySection e
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getFeature()
      */
+    @Override
     protected EReference getFeature() {
         return DescriptionPackage.eINSTANCE.getRepresentationElementMapping_NavigationDescriptions();
     }
@@ -60,6 +64,7 @@ public class RepresentationElementMappingNavigationDescriptionsPropertySection e
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getFeatureAsText()
      */
+    @Override
     protected String getFeatureAsText() {
         String string = new String();
 
@@ -68,8 +73,9 @@ public class RepresentationElementMappingNavigationDescriptionsPropertySection e
             for (Iterator<?> iterator = values.iterator(); iterator.hasNext();) {
                 EObject eObj = (EObject) iterator.next();
                 string += getAdapterFactoryLabelProvider(eObj).getText(eObj);
-                if (iterator.hasNext())
+                if (iterator.hasNext()) {
                     string += ", ";
+                }
             }
         }
 
@@ -79,6 +85,7 @@ public class RepresentationElementMappingNavigationDescriptionsPropertySection e
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#isEqual(java.util.List)
      */
+    @Override
     protected boolean isEqual(List<?> newList) {
         return newList.equals(eObject.eGet(getFeature()));
     }
@@ -86,6 +93,7 @@ public class RepresentationElementMappingNavigationDescriptionsPropertySection e
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         text.setToolTipText("Tool used to navigate to other representations from a graphical element.");

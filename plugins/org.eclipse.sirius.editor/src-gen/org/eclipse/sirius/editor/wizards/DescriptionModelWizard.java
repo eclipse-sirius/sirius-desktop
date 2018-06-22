@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -112,6 +112,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
     /**
      * This just records the information.
      */
+    @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.workbench = workbench;
         this.selection = selection;
@@ -125,8 +126,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
     protected Collection<String> getInitialObjectNames() {
         if (initialObjectNames == null) {
             initialObjectNames = new ArrayList<String>();
-            for (Iterator<EClassifier> classifiers = descriptionPackage.getEClassifiers().iterator(); classifiers.hasNext();) {
-                EClassifier eClassifier = classifiers.next();
+            for (EClassifier eClassifier : descriptionPackage.getEClassifiers()) {
                 if (eClassifier instanceof EClass) {
                     EClass eClass = (EClass) eClassifier;
                     if (!eClass.isAbstract()) {
@@ -164,6 +164,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
     /**
      * Do the work after everything is specified.
      */
+    @Override
     public boolean performFinish() {
         try {
             // Remember the file.
@@ -173,6 +174,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
             // Do the work within an operation.
             //
             WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+                @Override
                 protected void execute(IProgressMonitor progressMonitor) {
                     try {
                         // Create a resource set
@@ -217,6 +219,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
             if (activePart instanceof ISetSelectionTarget) {
                 final ISelection targetSelection = new StructuredSelection(modelFile);
                 getShell().getDisplay().asyncExec(new Runnable() {
+                    @Override
                     public void run() {
                         ((ISetSelectionTarget) activePart).selectReveal(targetSelection);
                     }
@@ -253,6 +256,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
         /**
          * The framework calls this to see if the file is correct.
          */
+        @Override
         protected boolean validatePage() {
             if (super.validatePage()) {
                 // Make sure the file ends in ".description".
@@ -292,6 +296,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
             super(pageId);
         }
 
+        @Override
         public void createControl(Composite parent) {
             Composite composite = new Composite(parent, SWT.NONE);
             {
@@ -324,8 +329,8 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
                 initialObjectField.setLayoutData(data);
             }
 
-            for (Iterator<String> i = getInitialObjectNames().iterator(); i.hasNext();) {
-                initialObjectField.add(getLabel(i.next()));
+            for (String initialObjectName : getInitialObjectNames()) {
+                initialObjectField.add(getLabel(initialObjectName));
             }
 
             if (initialObjectField.getItemCount() == 1) {
@@ -349,8 +354,8 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
                 encodingField.setLayoutData(data);
             }
 
-            for (Iterator<String> i = getEncodings().iterator(); i.hasNext();) {
-                encodingField.add(i.next());
+            for (String encoding : getEncodings()) {
+                encodingField.add(encoding);
             }
 
             encodingField.select(0);
@@ -361,6 +366,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
         }
 
         protected ModifyListener validator = new ModifyListener() {
+            @Override
             public void modifyText(ModifyEvent e) {
                 setPageComplete(validatePage());
             }
@@ -370,6 +376,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
             return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
         }
 
+        @Override
         public void setVisible(boolean visible) {
             super.setVisible(visible);
             if (visible) {
@@ -386,8 +393,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
         public String getInitialObjectName() {
             String label = initialObjectField.getText();
 
-            for (Iterator<String> i = getInitialObjectNames().iterator(); i.hasNext();) {
-                String name = i.next();
+            for (String name : getInitialObjectNames()) {
                 if (getLabel(name).equals(label)) {
                     return name;
                 }
@@ -425,6 +431,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
     /**
      * The framework calls this to create the contents of the wizard.
      */
+    @Override
     public void addPages() {
         // Create a page, set the title, and the initial model file name.
         //

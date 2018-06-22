@@ -1,14 +1,16 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.editor.properties.sections.description.customlayoutconfiguration;
+
+// Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -26,6 +28,7 @@ public class CustomLayoutConfigurationIdPropertySection extends AbstractTextProp
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "Id"; //$NON-NLS-1$
     }
@@ -33,6 +36,7 @@ public class CustomLayoutConfigurationIdPropertySection extends AbstractTextProp
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -45,6 +49,7 @@ public class CustomLayoutConfigurationIdPropertySection extends AbstractTextProp
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getCustomLayoutConfiguration_Id();
     }
@@ -52,6 +57,7 @@ public class CustomLayoutConfigurationIdPropertySection extends AbstractTextProp
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -59,6 +65,7 @@ public class CustomLayoutConfigurationIdPropertySection extends AbstractTextProp
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -66,6 +73,7 @@ public class CustomLayoutConfigurationIdPropertySection extends AbstractTextProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 
@@ -78,6 +86,7 @@ public class CustomLayoutConfigurationIdPropertySection extends AbstractTextProp
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "";
     }

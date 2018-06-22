@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -31,6 +32,7 @@ public class TBasicMessageMappingTargetPropertySection extends AbstractEditorDia
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractEditorDialogPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "Target"; //$NON-NLS-1$
     }
@@ -38,6 +40,7 @@ public class TBasicMessageMappingTargetPropertySection extends AbstractEditorDia
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractEditorDialogPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
@@ -50,6 +53,7 @@ public class TBasicMessageMappingTargetPropertySection extends AbstractEditorDia
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractEditorDialogPropertySection#getFeature()
      */
+    @Override
     protected EReference getFeature() {
         return TemplatePackage.eINSTANCE.getTBasicMessageMapping_Target();
     }
@@ -57,6 +61,7 @@ public class TBasicMessageMappingTargetPropertySection extends AbstractEditorDia
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractEditorDialogPropertySection#getFeatureAsText()
      */
+    @Override
     protected String getFeatureAsText() {
         String string = new String();
 
@@ -65,8 +70,9 @@ public class TBasicMessageMappingTargetPropertySection extends AbstractEditorDia
             for (Iterator<?> iterator = values.iterator(); iterator.hasNext();) {
                 EObject eObj = (EObject) iterator.next();
                 string += getAdapterFactoryLabelProvider(eObj).getText(eObj);
-                if (iterator.hasNext())
+                if (iterator.hasNext()) {
                     string += ", ";
+                }
             }
         }
 
@@ -76,6 +82,7 @@ public class TBasicMessageMappingTargetPropertySection extends AbstractEditorDia
     /**
      * @see org.eclipse.sirius.diagram.sequence.editor.properties.sections.AbstractEditorDialogPropertySection#isEqual(java.util.List)
      */
+    @Override
     protected boolean isEqual(List<?> newList) {
         return newList.equals(eObject.eGet(getFeature()));
     }
@@ -83,6 +90,7 @@ public class TBasicMessageMappingTargetPropertySection extends AbstractEditorDia
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

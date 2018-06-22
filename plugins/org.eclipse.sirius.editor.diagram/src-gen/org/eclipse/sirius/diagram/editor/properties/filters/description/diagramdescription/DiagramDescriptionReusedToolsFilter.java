@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -26,6 +27,7 @@ public class DiagramDescriptionReusedToolsFilter extends ViewpointPropertyFilter
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return DescriptionPackage.eINSTANCE.getDiagramDescription_ReusedTools();
     }
@@ -33,6 +35,7 @@ public class DiagramDescriptionReusedToolsFilter extends ViewpointPropertyFilter
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.diagram.description.DiagramDescription;
     }

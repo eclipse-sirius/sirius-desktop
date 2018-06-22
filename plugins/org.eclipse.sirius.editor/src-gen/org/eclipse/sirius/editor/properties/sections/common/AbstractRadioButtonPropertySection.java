@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -67,11 +68,13 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
      * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage)
+        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage) {
             super.createControls(parent, (ViewpointPropertySheetPage) aTabbedPropertySheetPage);
-        else
+        } else {
             super.createControls(parent, aTabbedPropertySheetPage);
+        }
         composite = getWidgetFactory().createFlatFormComposite(parent);
         FormData data;
 
@@ -87,7 +90,7 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
                 index++;
             }
             data = new FormData();
-            data.left = new FormAttachment(0, LABEL_WIDTH);
+            data.left = new FormAttachment(0, AbstractViewpointPropertySection.LABEL_WIDTH);
             data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);
             group.setLayoutData(data);
 
@@ -132,6 +135,7 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
         for (int i = 0; i < button.length; i++) {
             final int buttonIndex = i;
             button[buttonIndex].addSelectionListener(new SelectionAdapter() {
+                @Override
                 public void widgetSelected(SelectionEvent e) {
                     handleSelectionChanged(buttonIndex);
                 }
@@ -143,6 +147,7 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
      * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeShown()
      * @Override
      */
+    @Override
     public void aboutToBeShown() {
         super.aboutToBeShown();
         PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, "org.eclipse.sirius." + eObject.eClass().getName());
@@ -150,7 +155,7 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
      *      org.eclipse.jface.viewers.ISelection)
      */
@@ -176,8 +181,7 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
             } else {
                 CompoundCommand compoundCommand = new CompoundCommand();
                 /* apply the property change to all selected elements */
-                for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext();) {
-                    EObject nextObject = i.next();
+                for (EObject nextObject : eObjectList) {
                     compoundCommand.append(SetCommand.create(editingDomain, nextObject, getFeature(), value));
                 }
                 editingDomain.getCommandStack().execute(compoundCommand);
@@ -188,26 +192,29 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
     /**
      * @see org.eclipse.ui.views.properties.tabbed.ISection#refresh()
      */
+    @Override
     public void refresh() {
-        if (getFeatureAsText() != null)
-            for (int i = 0; i < button.length; i++) {
-                if (button[i].getText().equalsIgnoreCase(getFeatureAsText()))
-                    button[i].setSelection(true);
-                else
-                    button[i].setSelection(false);
+        if (getFeatureAsText() != null) {
+            for (Button element : button) {
+                if (element.getText().equalsIgnoreCase(getFeatureAsText())) {
+                    element.setSelection(true);
+                } else {
+                    element.setSelection(false);
+                }
             }
+        }
     }
 
     /**
      * Fetches the list of available values for the feature.
-     * 
+     *
      * @return The list of available values for the feature.
      */
     protected abstract List getChoiceOfValues();
 
     /**
      * Determine if the provided index in the choice of values is equal to the current setting of the property.
-     * 
+     *
      * @param index
      *            The new index in the choice of values.
      * @return <code>True</code> if the new index value is equal to the current property setting, <code>False</code>
@@ -217,9 +224,10 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
 
     /**
      * Get the feature representing the data of this section.
-     * 
+     *
      * @return The feature for the section.
      */
+    @Override
     protected abstract EStructuralFeature getFeature();
 
     protected String getDefaultFeatureAsText() {
@@ -232,33 +240,35 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
 
     /**
      * Get the text for the object.
-     * 
+     *
      * @return The value of the feature as text.
      */
     protected String getText(Object object) {
         final EStructuralFeature eFeature = getFeature();
         final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-        if (propertyDescriptor != null)
+        if (propertyDescriptor != null) {
             return propertyDescriptor.getLabelProvider(eObject).getText(object);
+        }
         return object.toString();
     }
 
     /**
      * Get the value of the feature as text for the text field of the section.
-     * 
+     *
      * @return The value of the feature as text.
      */
     protected String getFeatureAsText() {
         final EStructuralFeature eFeature = getFeature();
         final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-        if (propertyDescriptor != null)
+        if (propertyDescriptor != null) {
             return propertyDescriptor.getLabelProvider(eObject).getText(eObject.eGet(eFeature));
+        }
         return getDefaultFeatureAsText();
     }
 
     /**
      * Get the new value of the feature for the radio button of the section.
-     * 
+     *
      * @param index
      *            The new index in the choice of values.
      * @return The new value of the feature.
@@ -269,15 +279,16 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
 
     /**
      * Get the label for the text field of the section.
-     * 
+     *
      * @return The label for the text field.
      */
     protected String getLabelText() {
         if (eObject != null) {
             final EStructuralFeature eFeature = getFeature();
             final IItemPropertyDescriptor propertyDescriptor = getPropertyDescriptor(eFeature);
-            if (propertyDescriptor != null)
+            if (propertyDescriptor != null) {
                 return propertyDescriptor.getDisplayName(eObject);
+            }
         }
         return getDefaultLabelText();
     }
@@ -285,6 +296,7 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeReadonly() {
         group.setEnabled(false);
     }
@@ -292,6 +304,7 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractViewpoi
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void makeWrittable() {
         group.setEnabled(true);
     }

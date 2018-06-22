@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -25,6 +26,7 @@ public class EdgeStyleDescriptionEndsCenteringFilter extends ViewpointPropertyFi
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return StylePackage.eINSTANCE.getEdgeStyleDescription_EndsCentering();
     }
@@ -32,11 +34,13 @@ public class EdgeStyleDescriptionEndsCenteringFilter extends ViewpointPropertyFi
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
     }
 
     // Start of user code user methods
+    @Override
     public boolean select(Object arg0) {
         return super.select(arg0) && EdgeStyleEndsCenteringHelper.shouldDisplayPropertySection(arg0);
     }

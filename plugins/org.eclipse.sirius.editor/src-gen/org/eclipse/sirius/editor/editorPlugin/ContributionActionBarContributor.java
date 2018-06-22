@@ -17,7 +17,6 @@ package org.eclipse.sirius.editor.editorPlugin;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -66,6 +65,7 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
      * This action opens the Properties view.
      */
     protected IAction showPropertiesViewAction = new Action(SiriusEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+        @Override
         public void run() {
             try {
                 getPage().showView("org.eclipse.ui.views.PropertySheet");
@@ -80,10 +80,12 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
      * {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}.
      */
     protected IAction refreshViewerAction = new Action(SiriusEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+        @Override
         public boolean isEnabled() {
             return activeEditorPart instanceof IViewerProvider;
         }
 
+        @Override
         public void run() {
             if (activeEditorPart instanceof IViewerProvider) {
                 Viewer viewer = ((IViewerProvider) activeEditorPart).getViewer();
@@ -120,7 +122,7 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
      * This creates an instance of the contributor.
      */
     public ContributionActionBarContributor() {
-        super(ADDITIONS_LAST_STYLE);
+        super(EditingDomainActionBarContributor.ADDITIONS_LAST_STYLE);
         loadResourceAction = new LoadResourceAction();
         validateAction = new ValidateAction();
         controlAction = new ControlAction();
@@ -129,6 +131,7 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
     /**
      * This adds Separators for editor additions to the tool bar.
      */
+    @Override
     public void contributeToToolBar(IToolBarManager toolBarManager) {
         toolBarManager.add(new Separator("contribution-settings"));
         toolBarManager.add(new Separator("contribution-additions"));
@@ -138,6 +141,7 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
      * This adds to the menu bar a menu and some separators for editor additions, as well as the sub-menus for object
      * creation items.
      */
+    @Override
     public void contributeToMenu(IMenuManager menuManager) {
         super.contributeToMenu(menuManager);
 
@@ -161,6 +165,7 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
         // Force an update because Eclipse hides empty menus now.
         //
         submenuManager.addMenuListener(new IMenuListener() {
+            @Override
             public void menuAboutToShow(IMenuManager menuManager) {
                 menuManager.updateAll(true);
             }
@@ -172,6 +177,7 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
     /**
      * When the active editor changes, this remembers the change and registers with it as a selection provider.
      */
+    @Override
     public void setActiveEditor(IEditorPart part) {
         super.setActiveEditor(part);
         activeEditorPart = part;
@@ -200,6 +206,7 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
      * {@link org.eclipse.jface.viewers.SelectionChangedEvent}s by querying for the children and siblings that can be
      * added to the selected object and updating the menus accordingly.
      */
+    @Override
     public void selectionChanged(SelectionChangedEvent event) {
         // Remove any menu items for old selection.
         //
@@ -247,8 +254,8 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
     protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
         Collection<IAction> actions = new ArrayList<IAction>();
         if (descriptors != null) {
-            for (Iterator<?> i = descriptors.iterator(); i.hasNext();) {
-                actions.add(new CreateChildAction(activeEditorPart, selection, i.next()));
+            for (Object name : descriptors) {
+                actions.add(new CreateChildAction(activeEditorPart, selection, name));
             }
         }
         return actions;
@@ -261,8 +268,8 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
     protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
         Collection<IAction> actions = new ArrayList<IAction>();
         if (descriptors != null) {
-            for (Iterator<?> i = descriptors.iterator(); i.hasNext();) {
-                actions.add(new CreateSiblingAction(activeEditorPart, selection, i.next()));
+            for (Object name : descriptors) {
+                actions.add(new CreateSiblingAction(activeEditorPart, selection, name));
             }
         }
         return actions;
@@ -276,8 +283,7 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
      */
     protected void populateManager(IContributionManager manager, Collection<IAction> actions, String contributionID) {
         if (actions != null) {
-            for (Iterator<IAction> i = actions.iterator(); i.hasNext();) {
-                IAction action = i.next();
+            for (IAction action : actions) {
                 if (contributionID != null) {
                     manager.insertBefore(contributionID, action);
                 } else {
@@ -294,10 +300,10 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
     protected void depopulateManager(IContributionManager manager, Collection<IAction> actions) {
         if (actions != null) {
             IContributionItem[] items = manager.getItems();
-            for (int i = 0; i < items.length; i++) {
+            for (IContributionItem item : items) {
                 // Look into SubContributionItems
                 //
-                IContributionItem contributionItem = items[i];
+                IContributionItem contributionItem = item;
                 while (contributionItem instanceof SubContributionItem) {
                     contributionItem = ((SubContributionItem) contributionItem).getInnerItem();
                 }
@@ -317,6 +323,7 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
     /**
      * This populates the pop-up menu before it appears.
      */
+    @Override
     public void menuAboutToShow(IMenuManager menuManager) {
         super.menuAboutToShow(menuManager);
         MenuManager submenuManager = null;
@@ -333,6 +340,7 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
     /**
      * This inserts global actions before the "additions-end" separator.
      */
+    @Override
     protected void addGlobalActions(IMenuManager menuManager) {
         menuManager.insertAfter("additions-end", new Separator("ui-actions"));
         menuManager.insertAfter("ui-actions", showPropertiesViewAction);
@@ -346,6 +354,7 @@ public class ContributionActionBarContributor extends EditingDomainActionBarCont
     /**
      * This ensures that a delete action will clean up all references to deleted objects.
      */
+    @Override
     protected boolean removeAllReferencesOnDelete() {
         return true;
     }

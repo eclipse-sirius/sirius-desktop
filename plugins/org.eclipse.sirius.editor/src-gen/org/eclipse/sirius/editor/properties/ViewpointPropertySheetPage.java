@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -38,7 +39,7 @@ public class ViewpointPropertySheetPage extends TabbedPropertySheetPage {
 
     /**
      * Contructor for this property sheet page.
-     * 
+     *
      * @param editor
      *            The EMF editor contributor of the property sheet page.
      */
@@ -49,7 +50,7 @@ public class ViewpointPropertySheetPage extends TabbedPropertySheetPage {
 
     /**
      * Returns the EMF editor of this property sheet page.
-     * 
+     *
      * @return The EMF editor of this property sheet page.
      */
     public SiriusEditor getEditor() {
@@ -58,7 +59,7 @@ public class ViewpointPropertySheetPage extends TabbedPropertySheetPage {
 
     /**
      * Get the EMF AdapterFactory for this editor.
-     * 
+     *
      * @return The EMF AdapterFactory for this editor.
      */
     public AdapterFactory getAdapterFactory() {

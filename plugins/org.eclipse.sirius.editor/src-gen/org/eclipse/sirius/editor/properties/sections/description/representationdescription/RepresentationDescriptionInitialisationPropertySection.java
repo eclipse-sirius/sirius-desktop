@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -30,6 +31,7 @@ public class RepresentationDescriptionInitialisationPropertySection extends Abst
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "Initialisation"; //$NON-NLS-1$
     }
@@ -37,6 +39,7 @@ public class RepresentationDescriptionInitialisationPropertySection extends Abst
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
@@ -49,6 +52,7 @@ public class RepresentationDescriptionInitialisationPropertySection extends Abst
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#getFeature()
      */
+    @Override
     protected EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getRepresentationDescription_Initialisation();
     }
@@ -56,16 +60,19 @@ public class RepresentationDescriptionInitialisationPropertySection extends Abst
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#getFeatureAsInteger()
      */
+    @Override
     protected String getDefaultFeatureAsText() {
         String value = new String();
-        if (eObject.eGet(getFeature()) != null)
+        if (eObject.eGet(getFeature()) != null) {
             value = toBoolean(eObject.eGet(getFeature()).toString()).toString();
+        }
         return value;
     }
 
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#getFeatureValue(int)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return toBoolean(newText);
     }
@@ -73,30 +80,34 @@ public class RepresentationDescriptionInitialisationPropertySection extends Abst
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#isEqual(int)
      */
+    @Override
     protected boolean isEqual(String newText) {
         boolean equal = true;
-        if (toBoolean(newText) != null)
+        if (toBoolean(newText) != null) {
             equal = getFeatureAsText().equals(toBoolean(newText).toString());
-        else
+        } else {
             refresh();
+        }
         return equal;
     }
 
     /**
      * Converts the given text to the boolean it represents if applicable.
-     * 
+     *
      * @return The boolean the given text represents if applicable, <code>null</code> otherwise.
      */
     private Boolean toBoolean(String text) {
         Boolean booleanValue = null;
-        if (text.toLowerCase().matches("true|false"))
+        if (text.toLowerCase().matches("true|false")) {
             booleanValue = Boolean.parseBoolean(text);
+        }
         return booleanValue;
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         checkbox.setToolTipText("If set to true, the representation will be automatically created when creating a new session.");

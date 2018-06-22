@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -16,7 +17,6 @@ import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.assist.CreateInstanceSiriusFeatureContentProposalProvider;
-import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -30,7 +30,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * A section for the referenceName property of a CreateInstance object.
  */
-public class CreateInstanceReferenceNamePropertySection extends AbstractTextPropertySection implements ContentProposalClient {
+public class CreateInstanceReferenceNamePropertySection extends AbstractTextPropertySection {
 
     /** Help control of the section. */
     protected CLabel help;

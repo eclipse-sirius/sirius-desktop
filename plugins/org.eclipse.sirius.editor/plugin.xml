@@ -2,15 +2,14 @@
 <?eclipse version="3.0"?>
 
 <!--
-   Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+   Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
    All rights reserved. This program and the accompanying materials
    are made available under the terms of the Eclipse Public License v1.0
    which accompanies this distribution, and is available at
    http://www.eclipse.org/legal/epl-v10.html
-
+   
    Contributors:
       Obeo - initial API and implementation
-
 -->
 
 <plugin>
@@ -925,6 +924,15 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.VSMElementCustomization"/>        
       </propertySection>
+<!--
+  	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.description.semanticbaseddecoration.SemanticBasedDecorationDomainClassPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.description.semanticbaseddecoration.SemanticBasedDecorationDomainClassFilter"
+               id="description.section.semanticBasedDecoration.DomainClass"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration"/>        
+      </propertySection>
+-->
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.decorationdescription.DecorationDescriptionPreconditionExpressionPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.decorationdescription.DecorationDescriptionPreconditionExpressionFilter"
@@ -985,6 +993,14 @@
                id="description.section.conditionalStyleDescription.PredicateExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription"/>        
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.description.dannotation.DAnnotationReferencesPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.description.dannotation.DAnnotationReferencesFilter"
+               id="description.section.dAnnotation.References"
+               afterSection="description.section.dAnnotation.Source"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.DAnnotation"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.dannotation.DAnnotationSourcePropertySection"
@@ -1180,7 +1196,6 @@
       </propertySection>
     </propertySections>
   </extension>
-
   <!-- Start of user code plugin.xml end specifics  -->
 
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">

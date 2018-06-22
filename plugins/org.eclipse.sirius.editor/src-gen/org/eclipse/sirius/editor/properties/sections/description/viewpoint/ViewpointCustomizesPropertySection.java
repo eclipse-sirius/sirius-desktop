@@ -1,9 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -21,6 +22,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection;
 import org.eclipse.sirius.editor.tools.internal.presentation.ViewpoitnDependenciesSelectionDialog;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -47,6 +49,7 @@ public class ViewpointCustomizesPropertySection extends AbstractTextPropertySect
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "Customizes"; //$NON-NLS-1$
     }
@@ -54,6 +57,7 @@ public class ViewpointCustomizesPropertySection extends AbstractTextPropertySect
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -66,6 +70,7 @@ public class ViewpointCustomizesPropertySection extends AbstractTextPropertySect
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getViewpoint_Customizes();
     }
@@ -73,6 +78,7 @@ public class ViewpointCustomizesPropertySection extends AbstractTextPropertySect
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         String[] values = newText.substring(1, newText.length() - 1).split(", ");
         return Arrays.asList(values);
@@ -81,6 +87,7 @@ public class ViewpointCustomizesPropertySection extends AbstractTextPropertySect
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -88,6 +95,7 @@ public class ViewpointCustomizesPropertySection extends AbstractTextPropertySect
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 
@@ -96,7 +104,7 @@ public class ViewpointCustomizesPropertySection extends AbstractTextPropertySect
          * We want to add a "Select" button on the right of the text field, but the layout data
          */
         FormData data = new FormData();
-        data.left = new FormAttachment(0, LABEL_WIDTH);
+        data.left = new FormAttachment(0, AbstractViewpointPropertySection.LABEL_WIDTH);
         data.right = new FormAttachment(90, 0);
         data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);
         text.setLayoutData(data);
@@ -136,6 +144,7 @@ public class ViewpointCustomizesPropertySection extends AbstractTextPropertySect
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "";
     }
