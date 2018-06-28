@@ -76,6 +76,7 @@ import org.eclipse.sirius.tests.unit.api.tools.ToolFilterDescriptionListenerTest
 import org.eclipse.sirius.tests.unit.api.tools.UndoRedoTest;
 import org.eclipse.sirius.tests.unit.api.tools.tasks.RemoveDanglingReferencesTestCase;
 import org.eclipse.sirius.tests.unit.api.validation.DiagramValidationTest;
+import org.eclipse.sirius.tests.unit.api.vsm.editor.LocationURITest;
 import org.eclipse.sirius.tests.unit.api.vsm.editor.PopupMenuTest;
 import org.eclipse.sirius.tests.unit.api.vsm.editor.TypeContentProposalTests;
 import org.eclipse.sirius.tests.unit.common.DDiagramCanonicalSynchronizerTests;
@@ -509,6 +510,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(HierarchicalControlWithRootElementReadOnlyTest.class);
         suite.addTestSuite(IconRefreshTests.class);
 
+        suite.addTestSuite(LocationURITest.class);
         suite.addTestSuite(PopupMenuTest.class);
 
         suite.addTestSuite(SiriusUriTests.class);
@@ -553,8 +555,7 @@ public class AllDiagramPluginsTests {
     }
 
     /**
-     * Add the tests which for one reason or another are not part of the suite
-     * launched on each Gerrit verification.
+     * Add the tests which for one reason or another are not part of the suite launched on each Gerrit verification.
      * 
      * @param suite
      *            the suite to add the tests into.

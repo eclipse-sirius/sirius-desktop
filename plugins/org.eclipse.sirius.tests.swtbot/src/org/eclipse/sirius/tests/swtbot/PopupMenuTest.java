@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.text.MessageFormat;
+
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.internal.menu.LocationURI;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -78,7 +82,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (WidgetNotFoundException e) {
             return;
         }
-        assertFalse("The menu should not exist", true);
+        fail("The menu should not exist");
     }
 
     /**
@@ -95,7 +99,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (WidgetNotFoundException e) {
             return;
         }
-        assertFalse("The menu should not exist", true);
+        fail("The menu should not exist");
     }
 
     /**
@@ -111,7 +115,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (WidgetNotFoundException e) {
             return;
         }
-        assertFalse("The menu should not exist", true);
+        fail("The menu should not exist");
     }
 
     /**
@@ -125,14 +129,14 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         try {
             editor.clickContextMenu("myAction1.1");
         } catch (WidgetNotFoundException e) {
-            assertFalse("The action myAction1.1 of the menu myMenu1 should exist", true);
+            fail("The action myAction1.1 of the menu myMenu1 should exist");
         }
         try {
             editor.clickContextMenu("myAction1.2");
         } catch (WidgetNotFoundException e) {
             return;
         }
-        assertFalse("The action myAction1.2 of the menu myMenu1 should not exist", true);
+        fail("The action myAction1.2 of the menu myMenu1 should not exist");
     }
 
     /**
@@ -148,7 +152,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (WidgetNotFoundException e) {
             return;
         }
-        assertFalse("The menu should not exist", true);
+        fail("The menu should not exist");
     }
 
     /**
@@ -161,7 +165,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         editor.select(editor.getEditPart("Class"));
         try {
             editor.clickContextMenu("myAction3.2");
-            assertFalse("The action myAction3.2 of the menu myMenu3 should not exist", true);
+            fail("The action myAction3.2 of the menu myMenu3 should not exist");
         } catch (WidgetNotFoundException e) {
         }
         try {
@@ -169,7 +173,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (WidgetNotFoundException e) {
             return;
         }
-        assertFalse("The action myAction3.1 of the menu myMenu3 should not exist", true);
+        fail("The action myAction3.1 of the menu myMenu3 should not exist");
     }
 
     /**
@@ -182,14 +186,14 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         try {
             editor.clickContextMenu("myAction1.2");
         } catch (WidgetNotFoundException e) {
-            assertFalse("The action myAction1.2 of the menu myMenu1 should exist", true);
+            fail("The action myAction1.2 of the menu myMenu1 should exist");
         }
         try {
             editor.clickContextMenu("myAction1.1");
         } catch (WidgetNotFoundException e) {
             return;
         }
-        assertFalse("The action myAction1.1 of the menu myMenu1 should not exist", true);
+        fail("The action myAction1.1 of the menu myMenu1 should not exist");
     }
 
     /**
@@ -205,7 +209,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (WidgetNotFoundException e) {
             return;
         }
-        assertFalse("The menu should not exist", true);
+        fail("The menu should not exist");
     }
 
     /**
@@ -218,7 +222,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         editor.select(editor.getEditPart("att"));
         try {
             editor.clickContextMenu("myAction3.1");
-            assertFalse("The action myAction3.1 of the menu myMenu3 should not exist", true);
+            fail("The action myAction3.1 of the menu myMenu3 should not exist");
         } catch (WidgetNotFoundException e) {
         }
         try {
@@ -226,13 +230,12 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (WidgetNotFoundException e) {
             return;
         }
-        assertFalse("The action myAction3.2 of the menu myMenu3 should not exist", true);
+        fail("The action myAction3.2 of the menu myMenu3 should not exist");
     }
 
     /**
-     * Test if the menu or actions are accessible with a precondition Also test
-     * if the variable $views is accessible only from Operation action and not
-     * in external action or action call.
+     * Test if the menu or actions are accessible with a precondition Also test if the variable $views is accessible
+     * only from Operation action and not in external action or action call.
      * 
      * @throws Exception
      *             e
@@ -245,30 +248,29 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         // the popup menu has a precondition with $views
         try {
             editor.clickContextMenu("myMenuWithWrongVariable");
-            assertFalse("The action myActionWithViews of the menu myMenu3 should not exist", true);
+            fail("The action myActionWithViews of the menu myMenu3 should not exist");
         } catch (WidgetNotFoundException e) {
         }
 
         // the ExternalJavaAction has a precondition with $views
         try {
             editor.clickContextMenu("myExternalJavaActionWithWrongVariableAction");
-            assertFalse("The action myExternalJavaActionWithWrongVariableAction should not exist", true);
+            fail("The action myExternalJavaActionWithWrongVariableAction should not exist");
         } catch (WidgetNotFoundException e) {
         }
 
         // the ExternalJavaActionCall has a precondition with $views
         try {
             editor.clickContextMenu("myExternalJavaActionCallWithWrongVariableAction");
-            assertFalse("The action myExternalJavaActionCallWithWrongVariableAction should not exist", true);
+            fail("The action myExternalJavaActionCallWithWrongVariableAction should not exist");
         } catch (WidgetNotFoundException e) {
         }
 
     }
 
     /**
-     * Test if the menu or actions are accessible with a precondition in the
-     * operation action Also test if the variable $views is accessible only from
-     * Operation action.
+     * Test if the menu or actions are accessible with a precondition in the operation action Also test if the variable
+     * $views is accessible only from Operation action.
      * 
      * @throws Exception
      *             e
@@ -285,6 +287,97 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that a warning is logged for a group with a blank location.
+     * 
+     * @throws Exception
+     *             In case of unexpected problem
+     */
+    public void testWarningForGroupWithBlankLocationOnClass() throws Exception {
+
+        editor.click(editor.getEditPart("Class"));
+        editor.select(editor.getEditPart("Class"));
+        boolean previousWarningCatchActiveStatus = isWarningCatchActive();
+        warnings.clear();
+        setWarningCatchActive(true);
+        try {
+            try {
+                editor.clickContextMenu("myActionInGroupWithBlankLocationURI");
+            } catch (WidgetNotFoundException e) {
+                // Expected, check that a warning has been displayed
+                String expectedMessage = MessageFormat.format(Messages.Group_Not_Displayed, "groupWithBlankLocationURI",
+                        MessageFormat.format(Messages.LocationURI_ParsePb_Blank, LocationURI.MENU_SCHEME, LocationURI.TABBAR_SCHEME)) + ": ";
+                if (doesAWarningOccurs()) {
+                    if (warnings.values().size() == 1) {
+                        String message = warnings.values().iterator().next().getMessage();
+                        assertEquals("The warning concerning the group with blank locationUri should use a specific message.", expectedMessage, message);
+                    } else {
+                        fail("One warning is expected concerning the group with blank locationUri.");
+                    }
+                } else {
+                    fail("One warning is expected concerning the group with blank locationUri.");
+                }
+            }
+        } finally {
+            setWarningCatchActive(previousWarningCatchActiveStatus);
+            warnings.clear();
+        }
+    }
+
+    /**
+     * Test that action in a new group in an existing menu is accessible.
+     * 
+     * @throws Exception
+     *             In case of unexpected problem
+     */
+    public void testActionInANewGroupInExistingMenuOnClass() throws Exception {
+        // TODO: There is no check that the action is really in the right menu. So clickContextMenu must be
+        // replaced/completed by a new method
+        // org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils.isMenuEnabled(Display, Control, String) with a
+        // "qualifiedName" instead of a simple label.
+        editor.click(editor.getEditPart("Class"));
+        editor.select(editor.getEditPart("Class"));
+        try {
+            editor.clickContextMenu("myActionInNavigateMenu");
+        } catch (WidgetNotFoundException e) {
+            fail("The action \"myActionInNavigateMenu\" of the new group \"siriusGroupInNavigateMenu\" of the existing menu \"Navigate\" should exist");
+        }
+    }
+
+    /**
+     * Test that action in a new group in the default menu (locationURI without menu id) is accessible.
+     * 
+     * @throws Exception
+     *             In case of unexpected problem
+     */
+    public void testActionInANewGroupInDefaultMenuOnClass() throws Exception {
+
+        editor.click(editor.getEditPart("Class"));
+        editor.select(editor.getEditPart("Class"));
+        try {
+            editor.clickContextMenu("myActionInGroupWithoutMenuId");
+        } catch (WidgetNotFoundException e) {
+            fail("The action \"myActionInGroupWithoutMenuId\" of the new group \"menuGroupWithoutMenuId\" of the root menu should exist");
+        }
+    }
+
+    /**
+     * Test that action in a new group in the default menu (locationURI without menu id) is accessible.
+     * 
+     * @throws Exception
+     *             In case of unexpected problem
+     */
+    public void testActionInANewGroupInAMenuContributedByVSMOnClass() throws Exception {
+
+        editor.click(editor.getEditPart("Class"));
+        editor.select(editor.getEditPart("Class"));
+        try {
+            editor.clickContextMenu("myActionG1.1");
+        } catch (WidgetNotFoundException e) {
+            fail("The action \"myActionG1.1\" of the new group \"myGroup1\" of the menu \\\"myMenu1\\\" should exist");
+        }
+    }
+
+    /**
      * With one edit part selected the action is not visible.
      * 
      * @param editPart
@@ -293,7 +386,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         editor.select(editPart);
         try {
             editor.clickContextMenu("actionMenu4");
-            assertFalse("The action actionMenu4 of the menu4 should not exist", true);
+            fail("The action actionMenu4 of the menu4 should not exist");
         } catch (WidgetNotFoundException e) {
         }
     }
@@ -310,7 +403,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         try {
             editor.clickContextMenu("actionMenu4");
         } catch (WidgetNotFoundException e) {
-            assertTrue("The action actionMenu4 of the menu myMenu4 should exist", true);
+            fail("The action actionMenu4 of the menu myMenu4 should exist");
         }
     }
 
@@ -325,17 +418,17 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         try {
             editor.clickContextMenu("actionMenu4");
         } catch (WidgetNotFoundException e) {
-            assertTrue("The action actionMenu4 of the menu myMenu4 should exist", true);
+            fail("The action actionMenu4 of the menu myMenu4 should exist");
         }
         try {
             undo("actionMenu4");
         } catch (WidgetNotFoundException e) {
-            assertTrue("The action actionMenu4 of the menu myMenu4 should be canceled", true);
+            fail("The action actionMenu4 of the menu myMenu4 should be canceled");
         }
         try {
             redo("actionMenu4");
         } catch (WidgetNotFoundException e) {
-            assertTrue("The action actionMenu4 of the menu myMenu4 should be restored", true);
+            fail("The action actionMenu4 of the menu myMenu4 should be restored");
         }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="group" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="group" version="12.0.0.2017041100">
   <ownedViewpoints name="vp939" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vp939" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -141,6 +141,54 @@
               <parameters name="eClass" value="var:element"/>
               <parameters name="view" value="var:elementView"/>
             </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool:GroupMenu" name="groupWithBlankLocationURI">
+            <itemDescriptions xsi:type="tool:OperationAction" name="myActionInGroupWithBlankLocationURI">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.name + 'A'"/>
+              </initialOperation>
+            </itemDescriptions>
+          </ownedTools>
+          <ownedTools xsi:type="tool:GroupMenu" name="siriusGroupInNavigateMenu" locationURI="menu:navigateMenu">
+            <itemDescriptions xsi:type="tool:OperationAction" name="myActionInNavigateMenu">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.name + 'C'"/>
+              </initialOperation>
+            </itemDescriptions>
+          </ownedTools>
+          <ownedTools xsi:type="tool:GroupMenu" name="menuGroupWithoutMenuId" locationURI="menu">
+            <itemDescriptions xsi:type="tool:OperationAction" name="myActionInGroupWithoutMenuId">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.name + 'B'"/>
+              </initialOperation>
+            </itemDescriptions>
+          </ownedTools>
+          <ownedTools xsi:type="tool:GroupMenu" name="myGroup1" locationURI="menu:myMenu1">
+            <itemDescriptions xsi:type="tool:OperationAction" name="myActionG1.1">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.name + 'A'"/>
+              </initialOperation>
+            </itemDescriptions>
+          </ownedTools>
+          <ownedTools xsi:type="tool:GroupMenu" name="myGroup2" locationURI="menu:myMenu1">
+            <itemDescriptions xsi:type="tool:OperationAction" name="myActionG2.1">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.name + 'A'"/>
+              </initialOperation>
+            </itemDescriptions>
+          </ownedTools>
+          <ownedTools xsi:type="tool:GroupMenu" name="groupInTabbar" locationURI="tabbar:Select">
+            <itemDescriptions xsi:type="tool:OperationAction" name="myActionInSelectTabbarMenu">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+              </initialOperation>
+            </itemDescriptions>
           </ownedTools>
         </toolSections>
       </defaultLayer>

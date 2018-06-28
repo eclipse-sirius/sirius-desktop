@@ -609,6 +609,12 @@ public final class Messages {
     public static String GridLayoutProvider_unknownMode;
 
     @TranslatableMessage
+    public static String Group_Not_Displayed;
+
+    @TranslatableMessage
+    public static String Group_No_Menu_ID;
+
+    @TranslatableMessage
     public static String HiddenElementsSelectionCommand_dialogMessage;
 
     @TranslatableMessage
@@ -679,6 +685,24 @@ public final class Messages {
 
     @TranslatableMessage
     public static String LayoutingModeSwitchingAction_deactivate;
+
+    @TranslatableMessage
+    public static String LocationURI_ParsePb_Blank;
+
+    @TranslatableMessage
+    public static String LocationURI_ParsePb_MoreThanTwoLocations;
+
+    @TranslatableMessage
+    public static String LocationURI_ParsePb_NoId;
+
+    @TranslatableMessage
+    public static String LocationURI_ParsePb_OnlyOneLocationURIPerScheme;
+
+    @TranslatableMessage
+    public static String LocationURI_ParsePb_WrongFormat;
+
+    @TranslatableMessage
+    public static String LocationURI_ParsePb_WrongScheme;
 
     @TranslatableMessage
     public static String ShowingModeSwitchingAction_activate;
