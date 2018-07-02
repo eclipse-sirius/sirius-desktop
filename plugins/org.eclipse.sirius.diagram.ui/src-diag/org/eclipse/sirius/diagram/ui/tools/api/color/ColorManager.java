@@ -122,7 +122,7 @@ public class ColorManager {
                 .collect(Collectors.toMap(c -> c.getName(), c -> new RGB(c.getRed(), c.getGreen(), c.getBlue()), (rgb1, rgb2) -> {
                     // in a case of collision of key we keep the first value
                     return rgb1;
-                }));
+                }, () -> new LinkedHashMap<String, RGB>()));
         // @formatter:on
 
         // get system colors
