@@ -155,7 +155,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CustomClipboardSupportTest.class);
         suite.addTestSuite(KeyboardDeletionFromLabelTests.class);
         suite.addTestSuite(DragAndDropDifferentElementsTest.class);
-        suite.addTestSuite(CellEditorExtensionTest.class);
         suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
         suite.addTestSuite(EdgeReconnectionTests.class);
         suite.addTestSuite(ShowTypeActionButtonTest.class);
@@ -183,7 +182,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(LinkNoteFragmentModelCreationTest.class);
         suite.addTestSuite(MigrationOnVsmEditorReloadTest.class);
         suite.addTestSuite(VSMFieldTest.class);
-        suite.addTestSuite(LayoutOptionsTests.class);
         suite.addTestSuite(VSMAndDiagramEditorSynchronisationTest.class);
         suite.addTestSuite(SVGImageBundleTest.class);
         suite.addTestSuite(SVGZImageTest.class);
@@ -308,6 +306,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ContainerDropPropertySectionsTests.class);
         suite.addTestSuite(BorderNodeSidePropertySectionTest.class);
         suite.addTestSuite(EditPartSelectionTest.class);
+        suite.addTestSuite(CellEditorExtensionTest.class);
     }
 
     /**
@@ -438,6 +437,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ControlUncontrolWithOpenedRepresentationTest.class);
         suite.addTestSuite(SiriusInternationalizationTest.class);
         suite.addTestSuite(DecoratorTest.class);
+        suite.addTestSuite(LayoutOptionsTests.class);
 
     }
 

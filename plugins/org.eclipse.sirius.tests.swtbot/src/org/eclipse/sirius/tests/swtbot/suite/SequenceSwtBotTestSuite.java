@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -128,11 +128,9 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(SequenceLifelineTest.class);
         suite.addTestSuite(SequenceBasicMessageTest.class);
         suite.addTestSuite(MessageExtensionTest.class);
-        suite.addTestSuite(SequenceExecutionBasicAndReturnMessageTest.class);
         suite.addTestSuite(SequenceMessageToSelfTest.class);
         suite.addTestSuite(CreateMessageTests.class);
         suite.addTestSuite(ExecutionTests.class);
-        suite.addTestSuite(ExecutionMoveTests.class);
         suite.addTestSuite(ExecutionMove2Tests.class);
         suite.addTestSuite(ExecutionMove3Tests.class);
         suite.addTestSuite(ExecutionMove4Tests.class);
@@ -189,8 +187,9 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(ActionDisabledOnExtendedMessagesTest.class);
         suite.addTestSuite(FrameReparentTest.class);
         suite.addTestSuite(InstanceRoleOrderingTests.class);
-
         suite.addTestSuite(HeaderSequenceDiagramTests.class);
+        suite.addTestSuite(SequenceExecutionBasicAndReturnMessageTest.class);
+        suite.addTestSuite(ExecutionMoveTests.class);
 
         return suite;
     }
