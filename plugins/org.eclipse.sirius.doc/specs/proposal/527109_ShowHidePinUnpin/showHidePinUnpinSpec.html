@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationEnhancemanagementofshowhideelementsondiagram">Sirius Evolution Specification Enhance management of show/hide elements on diagram</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<h5 id="SummaryEnhancemanagementofshowhideelementsondiagram">Summary: Enhance management of show/hide elements on diagram</h5>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2017-11-06</td>
+				<td>pguilet</td>
+				<td>Initial version.</td>
+			</tr>
+			<tr>
+				<td>v0.2</td>
+				<td>DRAFT</td>
+				<td>2018-07-04</td>
+				<td>pguilet</td>
+				<td>Update for industrialization</td>
+			</tr>
+		</table>
+		<p>
+			<strong>Relevant tickets:</strong>
+		</p>   
+		<a href="https://support.jira.obeo.fr/browse/DOREMI-3596">DOREMI-3596, Enhanced management of visible/hidden elements in diagrams</a>
+		<h1 id="Introduction">Introduction</h1>
+		<p>The goal of this POC evolution is to find solutions to make easier for user to show/hide diagram elements. The current mechanism is not very efficient to achieve such tasks. The mechanism show/hide uses the same kind of action and wizards to edit their binary properties on diagram elements.</p>
+		<h1 id="Stateoftheexisting">State of the existing</h1>
+		<p>Different mechanisms exist to hide/show diagram elements. One using contextual menu actions on selected element, one global to all diagram elements using a wizard and one using the outline.
+			<br/>N.B the show/hide functionality is independent from the VSM filter functionality. Diagram elements can be hidden by both. It means making it visible from one mechanism will not make it visible on the diagram. It must be visible from both mechanism point of view.
+		</p>
+		<h2 id="ShowhidemodificationdonebytheeditingWizard">Show/hide modification done by the editing Wizard</h2>
+		<p>To change the hidden status of diagram elements a wizard is available.</p>
+		<p>This wizard can be opened by using the toolbar button or contextual action on the diagram selection only:
+			<br/>
+			<img border="0" src="images/contextualAction.png"/>
+		</p>
+		<p>
+			<img border="0" src="images/toolbarButton.png"/>
+		</p>
+		<p>It shows all diagram&#8217;s elements hidden and not hidden:
+			<br/>
+			<img border="0" src="images/editionWizard.png"/>
+		</p>
+		<p>A diagram element is said hidden if it is unchecked in the wizard. Also the element should not be visible in the diagram. If checked, the element should be visible.</p>
+		<h2 id="ShowhidemodificationdonebytheOutline">Show/hide modification done by the Outline</h2>
+		<p>The hidden status of diagram elements can be also changed by using contextual menu actions on the tree representation of the diagram editor&#8217;s outline:
+			<br/>
+			<img border="0" src="images/outlineHide.png"/>
+		</p>
+		<p>
+			<img border="0" src="images/outlineShow.png"/>
+		</p>
+		<h2 id="Showhidemodificationdonebycontextualmenusactionondiagramelements">Show/hide modification done by contextual menus action on diagram elements</h2>
+		<p>The last way to hide diagram elements is to select one or many from a diagram editor and to select the &#171;hide&#187; contextual menu action:</p>
+		<p>
+			<img border="0" src="images/hideSelection.png"/>
+		</p>
+		<p>This mechanism cannot be used to show diagram elements because invisible elements cannot be selected.</p>
+		<h1 id="Knownissueslimitations">Known issues/limitations</h1>
+		<h2 id="Showhide">Show/hide</h2>
+		<p>The current mechanism is not efficient from a user perspective in the following situations:</p>
+		<ul>
+			<li>When a user want to know which diagram elements are hidden and to show some of them that he can only use with the edit wizard and the outline. He cannot do that from the diagram directly by selecting the invisible element because by definition they cannot be seen. So he has to know which invisible element he wants to show from a string representation without relation to its position in the diagram and the area the user is currently looking at. Then the user must find it in the wizard or outline and show it.</li>
+		</ul>
+		<h1 id="ResultsafterthePOC">Results after the POC</h1>
+		<ul>
+			<li>A button allows to activate/deactivate the layouting mode. This layouting mode shows invisible diagram elements with a slight transparency:</li>
+		</ul>
+		<p>
+			<img border="0" src="images/layoutingButton.png"/>
+		</p>
+		<ul>
+			<li>A double click on a diagram element node or edge change its visibility. It should change the user visibility instead. It also does not hide labels.</li>
+		</ul>
+		<h1 id="FunctionalitiesfortheShowhidemodeindustrialization">Functionalities for the Show/hide mode industrialization</h1>
+		<p>The functionalities that will be implemented are the following:</p>
+		<h3 id="Doubleclickonhiddenelementinshowingmodeshowselementsrecursively">Double click on hidden element in showing mode shows elements recursively</h3>
+		<ul>
+			<li>For an invisible edge it does not make sense to show it and keep its source and target node hidden. So a double click on an edge should reveals those nodes. </li>
+			<li>Also when we have an invisible container containing an invisible child, double clicking on the child will automatically show the parent(s) recursively.</li>
+		</ul>
+		<h3 id="Restrainingsemanticmodificationsinshowhideandpinunpinmode">Restraining semantic modifications in show/hide and pin/unpin mode</h3>
+		<p>When showing mode is activated, the user should not be able to do semantic modifications like for the layouting mode.
+			<br/>So when these modes are enabled, the following operation behaviors are changed:
+		</p>
+		<ul>
+			<li>direct edit is disabled on all elements; </li>
+			<li>moving elements by dragging them can be used to change their position, but will never trigger a drag and drop operation; </li>
+			<li>moving the extremity of an edge to adjust its connection point (to the source or target element) is possible, but will never trigger a reconnection operation.</li>
+		</ul>
+		<h3 id="Filterremovalinshowingmode">Filter removal in showing mode</h3>
+		<p>Some diagram elements can be made invisible because of a graphical filter specified in the VSM. These elements are visible in showing mode as transparency element and can be made completely visible by a double click.
+			<br/>To do that, the filter must be deactivated:
+		</p>
+		<ul>
+			<li>The user will be warned of the deactivation with a pop-up saying &#171;Making visible this diagram element will deactivate the filter(s) F1, F2. Do you still want to make it visible?&#187;. A checkbox &#171;Always deactivate filter(s)&#187; will be available and user can click on OK or Cancel button. A new preference &#171;Always deactivate filter(s) when making element visible in showing mode&#187;. This preference will be available in Sirius&gt;Sirius Diagram&gt;Showing Mode</li>
+		</ul>
+		<h3 id="ExclusiveDropdownmenu">Exclusive Dropdown menu</h3>
+		<p>The button to activate/deactivate show/hide mode will be put in a dropdown menu containing also the button to activate/deactivate layout mode and planned pin/unpin mode. Each mode is exclusive to the other.</p>
+		<h3 id="Showhidemenuavailability">Show/hide menu availability</h3>
+		<p>The show menu action and its button in the tabbar will be available on selected invisible elements as well as the hide menu action and its button on visible elements to change visibility status.</p>
+		<h1 id="Beyondtheindustrialization">Beyond the industrialization</h1>
+		<h3 id="PinUnpinmode">Pin/Unpin mode</h3>
+		<p>This mode is similar to the showing mode.</p>
+		<ul>
+			<li>It will have a button to be activated/deactivated.</li>
+			<li>It will disable semantics changes like for the showing and layouting mode.</li>
+			<li>A not pinned element will be shown with a transparency. </li>
+			<li>It will provide a similar double click mechanism as the showing mode but to pin/unpin a diagram element. Edges cannot be pinned/unpinned.</li>
+		</ul>
+		<h2 id="Limitations">Limitations</h2>
+		<ul>
+			<li>A nice feature would be to make configurable the diagram elements to make visible with transparency when in show/hide mode is activated. This would allow to hide noise that we never want to show in dense diagram.
+				<ul>
+					<li>User must be able to hide/show mappings completely instead of having transparency.</li>
+					<li>Specifier should also have the capacity to hide noise from the mode.</li>
+					<li>We must have a wizard like show/hide wizard that shows elements categorized by mappings and allow to show/hide those completely.</li>
+					<li>We must have a new action on element, for example a right click allowing to hide completely the element and all elements which share its mapping in showing mode.</li>
+					<li>A reflexion must be done about how the configuration can be achieved.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul>
+			<li>On T4C we can categorize functional exchanges between ports. This functionality hide the ports and replace edges by one edge. However, these ports can already be revealed by the show/hide wizard without the showing mode activated. They are also visible in the showing mode. This is not really wanted.
+				<ul>
+					<li>A lead can be to have a new kind of filter that would never show filtered elements in showing mode or to make configurable the mapping filter with a boolean telling to not make it visible in showing mode and show/hide wizard </li>
+				</ul>
+			</li>
+		</ul>
+		<h2 id="tech_spec">Detailed Technical Specification
+			API Changes</h2>
+		<p>From current analyze, a new boolean 
+			<code>isShowingModeEnabled</code> seems to be necessary to be added to 
+			<code>org.eclipse.sirius.diagram.DDiagram</code>.
+		</p>
+		<p>Later we could replace this attribute by an enum field &#171;DiagramMode&#187; with values &#171;Standard&#187;, &#171;Layouting&#187;, &#171;ShowHide&#187; and later &#171;PinUnpin&#187; to be able to easily now the mode without having too much different attributes.</p>
+		<h2 id="DocumentationChanges">Documentation Changes</h2>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<p>JUnit/SWTbot Tests will be added to verify these new functionalities.</p>
+	</body>
+</html>
