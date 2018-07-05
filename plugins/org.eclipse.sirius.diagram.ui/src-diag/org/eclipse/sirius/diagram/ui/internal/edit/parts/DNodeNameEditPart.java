@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -25,6 +26,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
@@ -56,6 +58,7 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
      * 
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
     }
@@ -63,6 +66,7 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
     /**
      * @was-generated
      */
+    @Override
     public IBorderItemLocator getBorderItemLocator() {
         final IFigure parentFigure = getFigure().getParent();
         if (parentFigure != null && parentFigure.getLayoutManager() != null) {
@@ -75,6 +79,7 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
     /**
      * @not-generated
      */
+    @Override
     public void refreshBounds() {
         final EObject eObj = this.resolveSemanticElement();
         if (eObj instanceof DNode) {
@@ -94,6 +99,7 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
     /**
      * @was-generated
      */
+    @Override
     public void setLabel(final IFigure figure) {
         unregisterVisuals();
         setFigure(figure);
@@ -108,9 +114,9 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
     }
 
     /**
-     * @not-generated : the label is invisible when we must show the center
-     *                label.
+     * @not-generated : the label is invisible when we must show the center label.
      */
+    @Override
     protected void refreshVisuals() {
         super.refreshVisuals();
         final EObject eObj = this.resolveSemanticElement();
@@ -126,6 +132,7 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
     /**
      * @was-generated
      */
+    @Override
     protected void handleNotificationEvent(final Notification event) {
         final Object feature = event.getFeature();
         if (DiagramPackage.eINSTANCE.getDNode_OwnedStyle() == feature) {
@@ -137,6 +144,7 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
     /**
      * @was-generated
      */
+    @Override
     protected IFigure createFigure() {
         final IFigure label = createFigurePrim();
         defaultText = getLabelTextHelper(label);
@@ -152,10 +160,18 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
         return figure;
     }
 
-    /**
-     * @not-generated
-     */
-    public static class ViewNodeNameFigureDesc extends SiriusWrapLabel {
+    public class ViewNodeNameFigureDesc extends SiriusWrapLabel {
+
+        @Override
+        public void paint(Graphics graphics) {
+            ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
+            try {
+                super.paint(graphics);
+                graphics.restoreState();
+            } finally {
+                graphics.popState();
+            }
+        }
 
         /**
          * @was-generated

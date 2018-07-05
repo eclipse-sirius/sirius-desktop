@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 
 /**
- * This utility class contains methods to handle {@link View} and taking in consideration the activation status of the
+ * This utility class contains methods to handle {@link View} and to take in consideration the activation status of the
  * showing mode.
  * 
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
@@ -126,8 +126,8 @@ public final class ShowingViewUtil {
         } else {
             figure.setVisible(visibility);
         }
-
         figure.revalidate();
+        figure.repaint();
     }
 
     /**

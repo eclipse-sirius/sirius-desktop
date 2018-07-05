@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,9 +70,11 @@ public class ShowingModeSwitchingAction extends DiagramAction {
         super(workbenchPage);
         setId(ActionIds.SWITCH_SHOWING_MODE);
         this.ddiagram = editorDiagram;
-        setImageDescriptor(ACTIVATE_SHOW_HIDE_MODE_IMAGE_DESCRIPTOR);
-        setTextAndStatusAccordingToShowingMode();
-        setChecked(ddiagram.isIsInShowingMode());
+        if (ddiagram != null) {
+            setImageDescriptor(ACTIVATE_SHOW_HIDE_MODE_IMAGE_DESCRIPTOR);
+            setTextAndStatusAccordingToShowingMode();
+            setChecked(ddiagram.isIsInShowingMode());
+        }
     }
 
     /**

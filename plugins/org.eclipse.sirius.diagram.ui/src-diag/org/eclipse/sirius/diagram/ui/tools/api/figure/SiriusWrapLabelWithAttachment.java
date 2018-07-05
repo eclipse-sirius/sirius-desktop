@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,8 +21,8 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 
 /**
- * A specific SiriusWrapLabel for labels of edges that allow to show/hide a
- * label attachment connected between label and edge during selection.
+ * A specific SiriusWrapLabel for labels of edges that allow to show/hide a label attachment connected between label and
+ * edge during selection.
  * 
  * @author Laurent Redor
  */
@@ -30,12 +30,9 @@ public class SiriusWrapLabelWithAttachment extends SiriusWrapLabel {
 
     /**
      * The location of the label (one of
-     * {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.SOURCE_LOCATION}
-     * ,
-     * {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.MIDDLE_LOCATION}
-     * or
-     * {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.TARGET_LOCATION}
-     * ).
+     * {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.SOURCE_LOCATION} ,
+     * {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.MIDDLE_LOCATION} or
+     * {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.TARGET_LOCATION} ).
      */
     private int location;
 
@@ -46,12 +43,9 @@ public class SiriusWrapLabelWithAttachment extends SiriusWrapLabel {
      * 
      * @param location
      *            The location of the label (one of
-     *            {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.SOURCE_LOCATION}
-     *            ,
-     *            {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.MIDDLE_LOCATION}
-     *            or
-     *            {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.TARGET_LOCATION}
-     *            ).
+     *            {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.SOURCE_LOCATION} ,
+     *            {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.MIDDLE_LOCATION} or
+     *            {@link org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants.TARGET_LOCATION} ).
      * @param attachment
      *            The corresponding polyline attachment
      */
@@ -81,8 +75,8 @@ public class SiriusWrapLabelWithAttachment extends SiriusWrapLabel {
     }
 
     /**
-     * Set the attachment location (starting and ending points) according to the
-     * <code>location</code> of label on the edge and to the <label bounds.
+     * Set the attachment location (starting and ending points) according to the <code>location</code> of label on the
+     * edge and to the <label bounds.
      */
     protected void setAttachmentLocation() {
         PointList ptList = ((Connection) getParent()).getPoints();
@@ -127,8 +121,7 @@ public class SiriusWrapLabelWithAttachment extends SiriusWrapLabel {
     }
 
     /**
-     * Method to make attachment unvisible (called on Edge or Label
-     * deselection).
+     * Method to make attachment unvisible (called on Edge or Label deselection).
      */
     public void hideAttachment() {
         if (attachment != null) {

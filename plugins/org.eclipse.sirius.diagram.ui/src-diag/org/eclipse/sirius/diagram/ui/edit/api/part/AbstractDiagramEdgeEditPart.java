@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -461,6 +461,36 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
      */
     public class ViewEdgeFigure extends PolylineConnectionEx implements ITreeConnection {
         /**
+         * Label figure that allows to set the model {@link View}. These labels are created before label edit parts are
+         * created so we need to be able to attached the right view after.
+         * 
+         * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+         *
+         */
+        public final class SiriusWrapLabelWithAttachmentWithModel extends SiriusWrapLabelWithAttachment {
+            private View model;
+
+            private SiriusWrapLabelWithAttachmentWithModel(int location, Polyline attachment) {
+                super(location, attachment);
+            }
+
+            public void setModel(View model) {
+                this.model = model;
+            }
+
+            @Override
+            public void paint(Graphics graphics) {
+                ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, model);
+                try {
+                    super.paint(graphics);
+                    graphics.restoreState();
+                } finally {
+                    graphics.popState();
+                }
+            }
+        }
+
+        /**
          * @was-generated
          */
         private SiriusWrapLabelWithAttachment fFigureViewEdgeNameFigure;
@@ -545,8 +575,8 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
          */
         private void createCenterLabelFigure(final EObject element) {
             attachmentToEdgeNameFigure = addNewAttachmentFigure();
+            fFigureViewEdgeNameFigure = getLabelFigure(LabelViewConstants.MIDDLE_LOCATION, attachmentToEdgeNameFigure);
 
-            fFigureViewEdgeNameFigure = new SiriusWrapLabelWithAttachment(LabelViewConstants.MIDDLE_LOCATION, attachmentToEdgeNameFigure);
             if (element instanceof DEdge) {
                 DEdge edge = (DEdge) element;
                 fFigureViewEdgeNameFigure.setText(edge.getName());
@@ -567,7 +597,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         private void createBeginLabelFigure(final EObject element) {
             attachmentToEdgeBeginNameFigure = addNewAttachmentFigure();
 
-            fFigureViewEdgeBeginNameFigure = new SiriusWrapLabelWithAttachment(LabelViewConstants.SOURCE_LOCATION, attachmentToEdgeBeginNameFigure);
+            fFigureViewEdgeBeginNameFigure = getLabelFigure(LabelViewConstants.SOURCE_LOCATION, attachmentToEdgeBeginNameFigure);
             if (element instanceof DEdge) {
                 DEdge edge = (DEdge) element;
                 fFigureViewEdgeBeginNameFigure.setText(edge.getBeginLabel());
@@ -602,7 +632,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         private void createEndLabelFigure(final EObject element) {
             attachmentToEdgeEndNameFigure = addNewAttachmentFigure();
 
-            fFigureViewEdgeEndNameFigure = new SiriusWrapLabelWithAttachment(LabelViewConstants.TARGET_LOCATION, attachmentToEdgeEndNameFigure);
+            fFigureViewEdgeEndNameFigure = getLabelFigure(LabelViewConstants.TARGET_LOCATION, attachmentToEdgeEndNameFigure);
             if (element instanceof DEdge) {
                 DEdge edge = (DEdge) element;
                 fFigureViewEdgeEndNameFigure.setText(edge.getEndLabel());
@@ -615,6 +645,10 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             fFigureViewEdgeEndNameFigure.setTextWrapAlignment(PositionConstants.CENTER);
             this.add(fFigureViewEdgeEndNameFigure);
 
+        }
+
+        private SiriusWrapLabelWithAttachment getLabelFigure(int location, Polyline theAttachmentToEdgeNameFigure) {
+            return new SiriusWrapLabelWithAttachmentWithModel(location, attachmentToEdgeNameFigure);
         }
 
         @SuppressWarnings("deprecation")

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure.SiriusWrapLabelWithAttachmentWithModel;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DEdgeNameSelectionFeedbackEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResizableShapeLabelEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
@@ -71,6 +72,9 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
     }
 
     public void setLabel(SiriusWrapLabel figure) {
+        if (figure instanceof SiriusWrapLabelWithAttachmentWithModel) {
+            ((SiriusWrapLabelWithAttachmentWithModel) figure).setModel((View) getModel());
+        }
         unregisterVisuals();
         setFigure(figure);
         defaultText = getLabelTextHelper(figure);
@@ -126,8 +130,7 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
     }
 
     /**
-     * Handles resizable label refresh bounds. "Override" to use a specific
-     * {@link EdgeLabelLocator}.
+     * Handles resizable label refresh bounds. "Override" to use a specific {@link EdgeLabelLocator}.
      */
     private void handleResizableRefreshBounds() {
         int dx = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_X())).intValue();

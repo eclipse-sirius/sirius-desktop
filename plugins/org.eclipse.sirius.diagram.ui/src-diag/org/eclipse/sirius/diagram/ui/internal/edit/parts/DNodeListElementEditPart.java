@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -24,6 +25,7 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
@@ -188,7 +190,18 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
      * @not-generated
      */
     protected IFigure createFigurePrim() {
-        SiriusWrapLabel safeWrapLabel = new SiriusWrapLabel();
+        SiriusWrapLabel safeWrapLabel = new SiriusWrapLabel() {
+            @Override
+            public void paint(Graphics graphics) {
+                ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
+                try {
+                    super.paint(graphics);
+                    graphics.restoreState();
+                } finally {
+                    graphics.popState();
+                }
+            }
+        };
         safeWrapLabel.setTextWrap(true);
         return safeWrapLabel;
     }
@@ -212,8 +225,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
     @Override
     public void enableEditMode() {
         /*
-         * We want to be sure nobody is enabling the edit mode if the element is
-         * locked.
+         * We want to be sure nobody is enabling the edit mode if the element is locked.
          */
         if (!this.getEditPartAuthorityListener().isLocked()) {
             super.enableEditMode();
