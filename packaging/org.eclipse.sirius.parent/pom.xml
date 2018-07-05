@@ -39,6 +39,8 @@
     <tycho-version>1.2.0</tycho-version>
     <tycho-extras-version>1.2.0</tycho-extras-version>
     <platform-version-name>photon</platform-version-name>
+    <!-- This property is used to customize the maven build folder. Used for parallel builds -->
+    <build-folder-name>target</build-folder-name>
     <target-platform-path>.</target-platform-path>
     <tycho.scmUrl>scm:git:http://git.eclipse.org/gitroot/sirius/org.eclipse.sirius.git</tycho.scmUrl>
     <tests.skipLongTests>false</tests.skipLongTests>
@@ -324,6 +326,9 @@
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
+      <build>
+          <directory>${build-folder-name}</directory>
+      </build>
       <properties>
         <target-platform-path>headless</target-platform-path>
       </properties>
@@ -366,6 +371,9 @@
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
+      <build>
+          <directory>${build-folder-name}</directory>
+      </build>
       <properties>
         <target-platform-path>.</target-platform-path>
       </properties>
@@ -514,6 +522,9 @@
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
+      <build>
+          <directory>${build-folder-name}</directory>
+      </build>
       <properties>
         <target-platform-path>capella</target-platform-path>
       </properties>
@@ -612,6 +623,9 @@
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
+      <build>
+          <directory>${build-folder-name}</directory>
+      </build>
       <modules>
         <module>../../packaging/org.eclipse.sirius.tests.product</module>
       </modules>
@@ -626,6 +640,7 @@
         </property>
       </activation>
       <build>
+        <directory>${build-folder-name}</directory>
         <plugins>
           <plugin>
             <groupId>org.eclipse.tycho.extras</groupId>
@@ -702,6 +717,9 @@
          <activation>
              <activeByDefault>false</activeByDefault>
          </activation>
+         <build>
+             <directory>${build-folder-name}</directory>
+         </build>
          <properties>
              <tests.junit.skip>false</tests.junit.skip>
              <tests.timeout>${tests.timeout.junit}</tests.timeout>
@@ -715,6 +733,9 @@
          <activation>
              <activeByDefault>false</activeByDefault>
          </activation>
+         <build>
+             <directory>${build-folder-name}</directory>
+         </build>
          <properties>
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
@@ -727,6 +748,9 @@
          <activation>
              <activeByDefault>false</activeByDefault>
          </activation>
+         <build>
+             <directory>${build-folder-name}</directory>
+         </build>
          <properties>
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
@@ -739,6 +763,9 @@
          <activation>
              <activeByDefault>false</activeByDefault>
          </activation>
+         <build>
+             <directory>${build-folder-name}</directory>
+         </build>
          <properties>
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
@@ -751,6 +778,9 @@
          <activation>
              <activeByDefault>false</activeByDefault>
          </activation>
+         <build>
+             <directory>${build-folder-name}</directory>
+         </build>
          <properties>
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
@@ -764,6 +794,9 @@
          <activation>
              <activeByDefault>false</activeByDefault>
          </activation>
+         <build>
+             <directory>${build-folder-name}</directory>
+         </build>
          <properties>
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot-sequence}</tests.timeout>
@@ -776,6 +809,9 @@
          <activation>
              <activeByDefault>false</activeByDefault>
          </activation>
+         <build>
+             <directory>${build-folder-name}</directory>
+         </build>
          <properties>
              <tests.swtbot.skip>false</tests.swtbot.skip>
              <tests.timeout>${tests.timeout.swtbot-sequence}</tests.timeout>
