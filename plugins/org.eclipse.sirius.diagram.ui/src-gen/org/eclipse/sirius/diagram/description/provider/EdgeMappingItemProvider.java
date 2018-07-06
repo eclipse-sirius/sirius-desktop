@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.style.BracketEdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.CenterLabelStyleDescription;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
@@ -371,7 +372,9 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      */
     private void edgeStyleInit(EdgeStyleDescription edgeStyle) {
         edgeStyle.setSizeComputationExpression("2"); //$NON-NLS-1$
-        edgeStyle.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
+        CenterLabelStyleDescription centerLabelStyleDescription = StyleFactory.eINSTANCE.createCenterLabelStyleDescription();
+        centerLabelStyleDescription.setLabelSize(12);
+        edgeStyle.setCenterLabelStyleDescription(centerLabelStyleDescription);
     }
 
 }

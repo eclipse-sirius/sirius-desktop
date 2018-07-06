@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -30,6 +31,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.EdgeMappingImport} object. <!--
@@ -208,7 +210,7 @@ public class EdgeMappingImportItemProvider extends DocumentedElementItemProvider
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @not-generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -216,6 +218,16 @@ public class EdgeMappingImportItemProvider extends DocumentedElementItemProvider
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING_IMPORT__CONDITIONNAL_STYLES,
                 DescriptionFactory.eINSTANCE.createConditionalEdgeStyleDescription()));
+
+        // Set by default the font size of all elements to 12
+        for (Object obj : newChildDescriptors) {
+            if (obj instanceof CommandParameter) {
+                if (((CommandParameter) obj).getValue() instanceof BasicLabelStyleDescription) {
+                    BasicLabelStyleDescription containerStyle = (BasicLabelStyleDescription) ((CommandParameter) obj).getValue();
+                    containerStyle.setLabelSize(12);
+                }
+            }
+        }
     }
 
     /**

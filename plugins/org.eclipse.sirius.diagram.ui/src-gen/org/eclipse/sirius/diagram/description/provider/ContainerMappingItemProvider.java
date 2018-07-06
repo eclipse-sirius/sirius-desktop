@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -26,6 +27,7 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
@@ -276,6 +278,16 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__CONDITIONNAL_STYLES,
                 DescriptionFactory.eINSTANCE.createConditionalContainerStyleDescription()));
+
+        // Set by default the font size of all elements to 12
+        for (Object obj : newChildDescriptors) {
+            if (obj instanceof CommandParameter) {
+                if (((CommandParameter) obj).getValue() instanceof ContainerStyleDescription) {
+                    ContainerStyleDescription containerStyle = (ContainerStyleDescription) ((CommandParameter) obj).getValue();
+                    containerStyle.setLabelSize(12);
+                }
+            }
+        }
     }
 
     /**

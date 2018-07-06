@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,8 +25,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * Label provider for the
- * {@link org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2}.
+ * Label provider for the {@link org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2}.
  * 
  * @author ymortier
  */
@@ -124,10 +123,9 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
         }
         return null;
     }
-    
+
     /**
-     * This method helps avoiding memory leaks by keeping track of the already
-     * built fonts.
+     * This method helps avoiding memory leaks by keeping track of the already built fonts.
      * 
      * @param bold
      *            : bold of the font
@@ -135,7 +133,7 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
      */
     private Font getFontFromValue(final boolean bold) {
         if (!fontCache.containsKey(Boolean.valueOf(bold))) {
-            fontCache.put(Boolean.valueOf(bold), new Font(Display.getDefault(), "ARIAL", 8, !bold ? SWT.NORMAL : SWT.BOLD)); //$NON-NLS-1$
+            fontCache.put(Boolean.valueOf(bold), new Font(Display.getDefault(), "ARIAL", 12, !bold ? SWT.NORMAL : SWT.BOLD)); //$NON-NLS-1$
         }
         return fontCache.get(Boolean.valueOf(bold));
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.style.BracketEdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.CenterLabelStyleDescription;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -142,12 +143,16 @@ public class ConditionalEdgeStyleDescriptionItemProvider extends ConditionalStyl
 
         EdgeStyleDescription esd = StyleFactory.eINSTANCE.createEdgeStyleDescription();
         esd.setSizeComputationExpression("2"); //$NON-NLS-1$
-        esd.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
+        CenterLabelStyleDescription centerLabelESD = StyleFactory.eINSTANCE.createCenterLabelStyleDescription();
+        centerLabelESD.setLabelSize(12);
+        esd.setCenterLabelStyleDescription(centerLabelESD);
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, esd));
 
         BracketEdgeStyleDescription bsd = StyleFactory.eINSTANCE.createBracketEdgeStyleDescription();
         bsd.setSizeComputationExpression("2"); //$NON-NLS-1$
-        bsd.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
+        CenterLabelStyleDescription centerLabelBSD = StyleFactory.eINSTANCE.createCenterLabelStyleDescription();
+        centerLabelBSD.setLabelSize(12);
+        bsd.setCenterLabelStyleDescription(centerLabelBSD);
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, bsd));
     }
 

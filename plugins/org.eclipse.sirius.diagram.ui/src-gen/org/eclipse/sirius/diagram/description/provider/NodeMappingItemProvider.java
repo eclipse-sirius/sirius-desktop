@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -202,12 +202,13 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__CONDITIONNAL_STYLES, DescriptionFactory.eINSTANCE.createConditionalNodeStyleDescription()));
 
-        // Set by default all elements resizable and their label position on
-        // "node".
+        // Set by default all elements resizable, their label position on
+        // "node" and the font size to 12
         for (Object obj : newChildDescriptors) {
             if (obj instanceof CommandParameter) {
                 if (((CommandParameter) obj).getValue() instanceof NodeStyleDescription) {
                     NodeStyleDescription nodeStyle = (NodeStyleDescription) ((CommandParameter) obj).getValue();
+                    nodeStyle.setLabelSize(12);
                     nodeStyle.setResizeKind(ResizeKind.NSEW_LITERAL);
                     nodeStyle.setLabelPosition(LabelPosition.NODE_LITERAL);
                 }
