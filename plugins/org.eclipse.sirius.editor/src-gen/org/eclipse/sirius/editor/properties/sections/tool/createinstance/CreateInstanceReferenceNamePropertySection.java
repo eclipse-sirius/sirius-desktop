@@ -17,6 +17,7 @@ import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.editor.tools.internal.assist.CreateInstanceSiriusFeatureContentProposalProvider;
+import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -30,7 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * A section for the referenceName property of a CreateInstance object.
  */
-public class CreateInstanceReferenceNamePropertySection extends AbstractTextPropertySection {
+public class CreateInstanceReferenceNamePropertySection extends AbstractTextPropertySection implements ContentProposalClient {
 
     /** Help control of the section. */
     protected CLabel help;
