@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,7 +93,8 @@ public class NoCopyDragEditPartsTrackerEx extends SnapToAllDragEditPartsTracker 
     private boolean isAuthorized() {
         boolean isAuthorized = true;
         EditPart movedEditPart = getSourceEditPart();
-        if (movedEditPart instanceof AbstractBorderedDiagramElementEditPart && new EditPartQuery((AbstractBorderedDiagramElementEditPart) movedEditPart).isInLayoutingMode()) {
+        EditPartQuery editPartQuery = new EditPartQuery((AbstractBorderedDiagramElementEditPart) movedEditPart);
+        if (movedEditPart instanceof AbstractBorderedDiagramElementEditPart && (editPartQuery.isInShowingMode() || editPartQuery.isInLayoutingMode())) {
             // We are in layouting mode
             EditPart targetEditPart = getTargetEditPart();
             // Check if the target container is not the same as before move

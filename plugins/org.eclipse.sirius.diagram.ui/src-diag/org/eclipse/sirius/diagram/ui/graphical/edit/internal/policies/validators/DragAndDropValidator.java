@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,9 +60,8 @@ public class DragAndDropValidator {
     private DragAndDropTargetDescription dragAndDropDescription;
 
     /**
-     * True if all elements drop from a view will be "transformed" in border
-     * nodes after the drop, false otherwise. This variable is set after a call
-     * to method {@link #isValid(ChangeBoundsRequest, GraphicalEditPart)}.
+     * True if all elements drop from a view will be "transformed" in border nodes after the drop, false otherwise. This
+     * variable is set after a call to method {@link #isValid(ChangeBoundsRequest, GraphicalEditPart)}.
      */
     private boolean isConcerningOnlyBorderNodeFromView;
 
@@ -103,25 +102,24 @@ public class DragAndDropValidator {
     }
 
     /**
-     * Initializes the set containing {@link DDiagramElement} associated to
-     * dragged elements.
+     * Initializes the set containing {@link DDiagramElement} associated to dragged elements.
      * 
-     * Returns false if an element to drop is a BorderedNode and if the layout
-     * mode is activated in the diagram of the host part drag and drop is
-     * forbidden in this case (returning false will invalidate the drop and
-     * re-enable the move).
+     * Returns false if an element to drop is a BorderedNode and if the layout mode is activated in the diagram of the
+     * host part drag and drop is forbidden in this case (returning false will invalidate the drop and re-enable the
+     * move).
      * 
      * @param request
      *            the request from which the initialization is done.
      * @param hostGraphicalEditPart
      *            the part target of the drop.
-     * @return false if an element to drop is a bordered node and if the layout
-     *         mode is activated in the diagram of the host part. True
-     *         otherwise.
+     * @return false if an element to drop is a bordered node and if the layout mode is activated in the diagram of the
+     *         host part. True otherwise.
      */
     private boolean init(ChangeBoundsRequest request, GraphicalEditPart hostGraphicalEditPart) {
         List<?> editParts = request.getEditParts();
-        boolean isInLayoutingMode = new EditPartQuery(hostGraphicalEditPart).isInLayoutingMode();
+        EditPartQuery editPartQuery = new EditPartQuery(hostGraphicalEditPart);
+        boolean isInLayoutingMode = editPartQuery.isInLayoutingMode();
+        boolean isInShowingMode = editPartQuery.isInShowingMode();
         for (Object editPart : editParts) {
             if (editPart instanceof DragAndDropWrapper) {
                 DragAndDropWrapper dragAndDropWrapperToDrop = (DragAndDropWrapper) editPart;
@@ -130,10 +128,8 @@ public class DragAndDropValidator {
                 IGraphicalEditPart graphicalEditPartToDrop = (IGraphicalEditPart) editPart;
 
                 /*
-                 * Impossible to move a border node in a subfunction if there is
-                 * a drag and drop tool associated to the node drag'n'drop
-                 * should not be enabled on the same container to avoid to block
-                 * the move of an element
+                 * Impossible to move a border node in a subfunction if there is a drag and drop tool associated to the
+                 * node drag'n'drop should not be enabled on the same container to avoid to block the move of an element
                  */
                 if (!(graphicalEditPartToDrop.getParent() == hostGraphicalEditPart
                         || hostGraphicalEditPart instanceof CompartmentEditPart && graphicalEditPartToDrop.getParent() == hostGraphicalEditPart.getParent())
@@ -143,7 +139,7 @@ public class DragAndDropValidator {
                     elementsFromDiagramToDrop.add(dDiagramElementTopDrop);
                     editPartsFromDiagramToDrop.add(graphicalEditPartToDrop);
 
-                    if (isInLayoutingMode && graphicalEditPartToDrop instanceof IAbstractDiagramNodeEditPart) {
+                    if ((isInLayoutingMode || isInShowingMode) && graphicalEditPartToDrop instanceof IAbstractDiagramNodeEditPart) {
                         return false;
                     }
 
@@ -187,16 +183,13 @@ public class DragAndDropValidator {
     }
 
     /**
-     * The drop location is different for nodes and for border nodes. So it is
-     * useful to know if the current drop concerned only border nodes to adapt
-     * the drop location.<BR>
-     * WARNING: This method must be called after
-     * {@link #isValid(ChangeBoundsRequest, GraphicalEditPart)}, because the
-     * calculating of <code>isConcerningOnlyBorderNode</code> is made during
-     * this last one.
+     * The drop location is different for nodes and for border nodes. So it is useful to know if the current drop
+     * concerned only border nodes to adapt the drop location.<BR>
+     * WARNING: This method must be called after {@link #isValid(ChangeBoundsRequest, GraphicalEditPart)}, because the
+     * calculating of <code>isConcerningOnlyBorderNode</code> is made during this last one.
      * 
-     * @return true if all elements drop from a view will be "transformed" in
-     *         border nodes after the drop, false otherwise.
+     * @return true if all elements drop from a view will be "transformed" in border nodes after the drop, false
+     *         otherwise.
      */
     public boolean isConcerningOnlyBorderNodeFromView() {
         return isConcerningOnlyBorderNodeFromView;
@@ -231,8 +224,7 @@ public class DragAndDropValidator {
     }
 
     /**
-     * Set the target {@link targetDragAndDropTarget} of this drag'n drop
-     * request.
+     * Set the target {@link targetDragAndDropTarget} of this drag'n drop request.
      * 
      * @param targetDragAndDropTarget
      *            the target
@@ -242,22 +234,18 @@ public class DragAndDropValidator {
     }
 
     /**
-     * Get the description of the target {@link DDiagramElement} of the drag'n
-     * drop request.
+     * Get the description of the target {@link DDiagramElement} of the drag'n drop request.
      * 
-     * @return the description of the target {@link DDiagramElement} of the
-     *         drag'n drop request
+     * @return the description of the target {@link DDiagramElement} of the drag'n drop request
      */
     public DragAndDropTargetDescription getDragDragAndDropDescription() {
         return dragAndDropDescription;
     }
 
     /**
-     * Get the semantic of the target {@link DDiagramElement} of the drag'n drop
-     * request.
+     * Get the semantic of the target {@link DDiagramElement} of the drag'n drop request.
      * 
-     * @return the semantic of the target {@link DDiagramElement} of the drag'n
-     *         drop request
+     * @return the semantic of the target {@link DDiagramElement} of the drag'n drop request
      */
     public EObject getTargetAbstractDNodeSemanticTarget() {
         return targetAbstractDNodeSemanticTarget;

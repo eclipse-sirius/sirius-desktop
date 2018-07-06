@@ -79,9 +79,7 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
 /**
- * The specific
- * {@link org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy}
- * .
+ * The specific {@link org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy} .
  * 
  * @author ymortier
  * @author jdupont
@@ -89,34 +87,29 @@ import com.google.common.collect.Iterables;
 public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx {
 
     /**
-     * Key for extended data of request. This key corresponds to a map that for
-     * each DDiagramElement (border nodes) stores the absolute screen location
-     * computed for the feedback figures.<BR>
-     * This map is set during drawing of border node feedback. This map is used
-     * later in the {@link SiriusContainerDropPolicy} to have the realLocation,
-     * and so the real delta for each border nodes, instead of the location
-     * corresponding to the move makes with the mouse. This allows to compute
-     * correctly the new linked edges bendpoints to only move the last segment.
+     * Key for extended data of request. This key corresponds to a map that for each DDiagramElement (border nodes)
+     * stores the absolute screen location computed for the feedback figures.<BR>
+     * This map is set during drawing of border node feedback. This map is used later in the
+     * {@link SiriusContainerDropPolicy} to have the realLocation, and so the real delta for each border nodes, instead
+     * of the location corresponding to the move makes with the mouse. This allows to compute correctly the new linked
+     * edges bendpoints to only move the last segment.
      */
     public static final String BORDER_NODE_REAL_LOCATION_KEY = "borderNodesRealLocation"; //$NON-NLS-1$
 
     /**
-     * Key for extended data of request. This key corresponds to feedback
-     * figures. This figures are added during drawing of feedback when several
-     * border nodes are move simultaneously. The last moved figure is not added
-     * to this list (because there will be no further feedback after this one).
+     * Key for extended data of request. This key corresponds to feedback figures. This figures are added during drawing
+     * of feedback when several border nodes are move simultaneously. The last moved figure is not added to this list
+     * (because there will be no further feedback after this one).
      */
     private static final String BORDER_NODE_FEEDBACKS_KEY = "borderNodeFeedbacks"; //$NON-NLS-1$
 
     /**
-     * We keep all created feedbacks to delete them at the end of the drag
-     * action.
+     * We keep all created feedbacks to delete them at the end of the drag action.
      */
     private List<IFigure> feedbacks = new ArrayList<IFigure>();
 
     /**
-     * For each collapsed figure, we keep all computed expanded coordinates
-     * until the drag action is over.
+     * For each collapsed figure, we keep all computed expanded coordinates until the drag action is over.
      */
     private Map<IFigure, Rectangle> correspondingExpandedCoordinate = new HashMap<IFigure, Rectangle>();
 
@@ -126,14 +119,11 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     private EditPart feedbacksActivated;
 
     /**
-     * Status of the feedback figure. True if the feedback figure is displayed
-     * (created by the showChangeBoundsFeedback(ChangeBoundsRequest) method),
-     * false if not already created or deleted (with method
+     * Status of the feedback figure. True if the feedback figure is displayed (created by the
+     * showChangeBoundsFeedback(ChangeBoundsRequest) method), false if not already created or deleted (with method
      * eraseChangeBoundsFeedback(ChangeBoundsRequest)).<BR>
-     * This avoids to create this feedback figure in method
-     * getFiguresToIgnore(ChangeBoundsRequest). <BR>
-     * This was done because, there is no way to know if the feedback figure is
-     * null or not (private field).
+     * This avoids to create this feedback figure in method getFiguresToIgnore(ChangeBoundsRequest). <BR>
+     * This was done because, there is no way to know if the feedback figure is null or not (private field).
      */
     private boolean feedbackFigureDisplayed;
 
@@ -169,9 +159,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     }
 
     /**
-     * Return the list of existing feedback figures containing in the request.
-     * If the request does not contains feedback figures, an empty list is
-     * returned.
+     * Return the list of existing feedback figures containing in the request. If the request does not contains feedback
+     * figures, an empty list is returned.
      * 
      * @param request
      *            The request containing the extended data.
@@ -188,9 +177,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     }
 
     /**
-     * Return a map with for each DDiagramElement the location of its feedback
-     * computed during the showSourceFeedback. If the request does not contains
-     * this map, an empty one is returned.
+     * Return a map with for each DDiagramElement the location of its feedback computed during the showSourceFeedback.
+     * If the request does not contains this map, an empty one is returned.
      * 
      * @param request
      *            The request containing the extended data.
@@ -272,8 +260,9 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             Rectangle realLocation = null;
 
             // Only necessary in the case of bordered node dropping
+            EditPartQuery editPartQuery = new EditPartQuery((IGraphicalEditPart) hostEditPart);
             if (isFeedbackForBorderedNodeDropping(request, targetAbstractGraphicalEditPart) && hostEditPart instanceof IGraphicalEditPart
-                    && !new EditPartQuery((IGraphicalEditPart) hostEditPart).isInLayoutingMode()) {
+                    && (!editPartQuery.isInShowingMode() || !editPartQuery.isInLayoutingMode())) {
                 activateProhibitedFeedbacks(targetAbstractGraphicalEditPart, request);
 
                 DBorderItemLocator borderItemLocator = new FeedbackDBorderItemLocator(targetFigure);
@@ -352,8 +341,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     }
 
     /**
-     * The feedback is stored only if the request corresponds to several
-     * elements and that the current element is not the last.
+     * The feedback is stored only if the request corresponds to several elements and that the current element is not
+     * the last.
      * 
      * @param feedback
      *            The figure to store.
@@ -376,15 +365,13 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     }
 
     /**
-     * Activates feedbacks for all collapsed node to avoid to place an other
-     * node in their forbidden area.
+     * Activates feedbacks for all collapsed node to avoid to place an other node in their forbidden area.
      * 
      * @param hostEditPart
      *            the edit part hosting the figure we are moving.
      * @param targetEditPart
-     *            the container target edit part where the node is moving (can
-     *            be the drop target edit part or the current node container
-     *            edit part)
+     *            the container target edit part where the node is moving (can be the drop target edit part or the
+     *            current node container edit part)
      * @param request
      *            the change bounds request.
      */
@@ -407,12 +394,10 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     }
 
     /**
-     * Returns whether the prohibited feedbacks are activated for the given
-     * target edit part.
+     * Returns whether the prohibited feedbacks are activated for the given target edit part.
      * 
      * @param targetEditPart
-     *            the edit part we want to know if the prohibited feedbacks are
-     *            activated.
+     *            the edit part we want to know if the prohibited feedbacks are activated.
      * @return true if activated otherwise false
      */
     private boolean isFeedbacksActivatedForEditPart(EditPart targetEditPart) {
@@ -429,15 +414,13 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     }
 
     /**
-     * configure the prohibited feedback and area for the given border node edit
-     * part.
+     * configure the prohibited feedback and area for the given border node edit part.
      * 
      * @param borderNodeEditPart
      *            the edit part hosting the collapsed node figure.
      * @param otherFeedbackFigures
-     *            In case of simultaneous moves, this list corresponds to the
-     *            already known border nodes after move (generally the feedback
-     *            figure)
+     *            In case of simultaneous moves, this list corresponds to the already known border nodes after move
+     *            (generally the feedback figure)
      */
     private void configureFeedback(AbstractBorderItemEditPart borderNodeEditPart, List<IFigure> otherFeedbackFigures) {
 
@@ -499,9 +482,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      * @param borderItemLocator
      *            the figure edit part border item locator.
      * @param otherFeedbackFigures
-     *            In case of simultaneous moves, this list corresponds to the
-     *            already known border nodes after move (generally the feedback
-     *            figure)
+     *            In case of simultaneous moves, this list corresponds to the already known border nodes after move
+     *            (generally the feedback figure)
      * @return the real location from the border item locator.
      */
     private Rectangle getRealExpandedBounds(IFigure figure, Rectangle candidateNewBounds, final IBorderItemLocator borderItemLocator, List<IFigure> otherFeedbackFigures) {
@@ -527,13 +509,11 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     }
 
     /**
-     * Tell if according to the <code>request</code>'s location we must provide
-     * a feedback for a drop of borderedNode to another parent or a feedback for
-     * a simple move of borderedNode without changing visually the parent.
+     * Tell if according to the <code>request</code>'s location we must provide a feedback for a drop of borderedNode to
+     * another parent or a feedback for a simple move of borderedNode without changing visually the parent.
      * 
      * @param request
-     *            the {@link ChangeBoundsRequest} providing the location of the
-     *            mouse
+     *            the {@link ChangeBoundsRequest} providing the location of the mouse
      * 
      * @param targetAbstractGraphicalEditPart
      *            the target EditPart on which to provide the feedback
@@ -634,8 +614,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      * 
      * @param request
      *            the change bounds request.
-     * @return the new bounds according to the request and the border item
-     *         locator.
+     * @return the new bounds according to the request and the border item locator.
      */
     private Rectangle getNewBounds(final ChangeBoundsRequest request) {
         IBorderItemEditPart borderItemEP = (IBorderItemEditPart) getHost();
@@ -687,8 +666,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     }
 
     /**
-     * Return a list of all figure that will be moved by this
-     * ChangeBoundsRequest (the figure of the editParts).
+     * Return a list of all figure that will be moved by this ChangeBoundsRequest (the figure of the editParts).
      * 
      * @param request
      *            The request created by the edit part that have been moved.
@@ -736,8 +714,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     }
 
     /**
-     * Check if the host corresponds to a borederdNode that is collapsed. In
-     * this case, the move cursor must be disabled.
+     * Check if the host corresponds to a borederdNode that is collapsed. In this case, the move cursor must be
+     * disabled.
      * 
      * @return true if the move cursor must be disabled, false otherwise.
      */
