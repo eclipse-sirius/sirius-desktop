@@ -77,7 +77,7 @@ public class WorkflowPage extends AbstractSessionEditorPage {
         Composite subBody = toolkit.createComposite(body);
         subBody.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).margins(0, 0).create());
         subBody.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-        browser = new Browser(subBody, SWT.WEBKIT | SWT.FILL);
+        browser = new Browser(subBody, SWT.FILL);
         GridData browserGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
         browserGridData.widthHint = 0;
         browserGridData.heightHint = 0;
