@@ -12,6 +12,7 @@ package org.eclipse.sirius.server.internal;
 
 import java.net.InetSocketAddress;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Optional;
 
 import org.eclipse.core.runtime.IStatus;
@@ -25,6 +26,28 @@ import org.eclipse.jetty.server.handler.HandlerCollection;
  * @author sbegaudeau
  */
 public class SiriusServerManager {
+
+    /**
+     * The system property key used to retrieve the name of the operating
+     * system.
+     */
+    private static final String OS_NAME = "os.name"; //$NON-NLS-1$
+
+    /**
+     * The name of the windows operating system.
+     */
+    private static final String WINDOWS_NAME = "win"; //$NON-NLS-1$
+
+    /**
+     * The host used to listen to all interfaces.
+     */
+    private static final String ALL_INTERFACES_HOST = "0.0.0.0"; //$NON-NLS-1$
+
+    /**
+     * The localhost host.
+     */
+    private static final String LOCALHOST = "localhost"; //$NON-NLS-1$
+
     /**
      * The VM argument used to customize the jetty {@link Server} port.
      */
@@ -88,6 +111,18 @@ public class SiriusServerManager {
      * @return the address on which the server is listening.
      */
     public URI getURI() {
-        return this.server.getURI();
+        URI uri = this.server.getURI();
+
+        String osName = System.getProperty(OS_NAME).toLowerCase();
+        if (osName.indexOf(WINDOWS_NAME) >= 0 && ALL_INTERFACES_HOST.equals(uri.getHost())) {
+            try {
+                uri = new URI(uri.getScheme(), uri.getUserInfo(), LOCALHOST, uri.getPort(), uri.getPath(), uri.getRawQuery(), uri.getRawFragment());
+            } catch (URISyntaxException exception) {
+                IStatus status = new Status(IStatus.ERROR, SiriusServerPlugin.PLUGIN_ID, exception.getMessage(), exception);
+                SiriusServerPlugin.getPlugin().getLog().log(status);
+            }
+        }
+
+        return uri;
     }
 }
