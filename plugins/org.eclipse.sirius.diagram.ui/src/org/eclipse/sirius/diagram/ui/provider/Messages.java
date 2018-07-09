@@ -1541,6 +1541,18 @@ public final class Messages {
     @TranslatableMessage
     public static String LayoutAlgorithmProviderRegistry_classInitialization;
 
+    @TranslatableMessage
+    public static String DoubleClickEditPolicy_filterConfirmDialogTitle;
+
+    @TranslatableMessage
+    public static String DoubleClickEditPolicy_filterConfirmDialogBody;
+
+    @TranslatableMessage
+    public static String DoubleClickEditPolicy_layerConfirmDialogBody;
+
+    @TranslatableMessage
+    public static String DoubleClickEditPolicy_layerConfirmDialogTitle;
+
     // CHECKSTYLE:ON
 
     private Messages() {
