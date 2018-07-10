@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.part;
 
 import org.eclipse.emf.common.ui.URIEditorInput;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorMatchingStrategy;
@@ -53,7 +54,11 @@ public class SiriusMatchingStrategy implements IEditorMatchingStrategy {
                 // For Team mode, at least, the URIEditorInput of the marker is not the same as the editor (local path
                 // for marker VS remote path for editor). In this case, we can directly use the session of EditorInput
                 // to compare path.
-                String uriEditorInputPath = ((SessionEditorInput) editorInput).getSession().getSessionResource().getURI().toPlatformString(false);
+                String uriEditorInputPath = null;
+                Session editorSession = ((SessionEditorInput) editorInput).getSession();
+                if (editorSession != null) {
+                    uriEditorInputPath = editorSession.getSessionResource().getURI().toPlatformString(false);
+                }
                 String fileEditorInputPath = ((FileEditorInput) input).getFile().getFullPath().toString();
                 matches = ((uriEditorInputPath != null) && (fileEditorInputPath != null) && (uriEditorInputPath.equals(fileEditorInputPath)));
             }
