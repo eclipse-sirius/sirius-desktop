@@ -652,7 +652,96 @@ Inside the body of the tool, the _elementView_ variable refers to the graphical 
 
 h4(#popup_menu). Popup Menu
 
-This tool can be used to define an entry in the context menu which can contain "_Operation Actions_":#operation_action and "_External Java Action_":#external_java_action tools. Which ones are visible when the menu is opened depend on the preconditions of these actions, which can thus be activated or not depending on the currently selected element.
+This tool can be used to define an entry in the context menu which can contain "_Operation Actions_":#operation_action and "_External Java Action_":#external_java_action tools. Which ones are visible when the menu is opened depend on the preconditions of these actions, which can thus be activated or not depending on the currently selected element. Actions can be grouped using the "_Group Menu_":#group.
+
+h4(#group). Group Menu
+
+Graphically, each _Group Menu_ is separated by an horizontal line between several menus and/or actions:
+!images/groupSeparator.png!
+
+The group has an _id_. This id can be an id of an existing group. In this case, all menus and actions defined in this group will be added in the existing group.
+The group also has a _location URI_. This is an URI specification that defines the insertion point at which the group will be added. The format for the URI is comprised of two basic parts:
+* Scheme: One of "menu", "tabbar". Indicates the type of the manager used to handle the contributions.
+* Id: This is either the id of an existing menu or tabbar menu.
+
+Currently, it is not possible to add a group after or before a specific existing group. It is added at the end of the menu having the corresponding _id_.
+For menu scheme, the following chapter details the ids of existing group and menu (to add new actions or groups in existing menus or groups).
+For tabbar sheme, only Select menu can be completed with new groups. The complete location URI to use is "tabbar:selectMenu". To add actions in the same group of the existings actions, you must use the id "selectGroup" for the declared group.
+
+Here is some examples:
+* Define new group at the end of the main contextual menu: The location URI is "menu" or "menu:root".
+!images/groupAtEndOfContextualMenu.png!
+* Define new group at the end of an existing menu: The location URI is "menu:idOfExistingMenu", for example "menu:editMenu".
+!images/groupAtEndOfExistingMenu.png!
+* Add actions or menus in an existing group: The location URI is "menu:idOfExistingMenu" and the id of the group is an id of an existing group, for example "locationURI=menu:editMenu" and "id=copyGroup".
+!images/groupUsingAnExistingGroup.png!
+* Specific case with a DDiagramElement selected, to add an action in the arrangeGroup of Layout menu, you must use this description (locationURI of groups is blank):
+!images/groupUsingAnExistingGroupOfLayoutMenu.png!
+* Specific case with a DDiagram selected, to add an action in the myArrangeGroup of Layout menu, you must use this description (locationURI of groups is blank):
+!images/groupUsingAnExistingGroupOfDDiagramLayoutMenu.png!
+* Define new group in a new menu: The location URI must be blank. _GroupMenu_ is defined explicitly under a _PopupMenu_.
+!images/newGroupInNewMenu.png!
+* Add a group in the Select All drop down menu of tabbar: The location URI is "tabbar:selectMenu". Only Select menu is available for tabbar.
+!images/groupInTabbar.png!
+
+_Note:_ If your VSM is in the runtime environment workspace to do dynamic development of your VSM, the changes are not systematically reflected in the menu. A selection change may be necessary (to rebuild the menu).
+
+h5. Id of existing menus and groups
+
+This chapter lists the ids of existing menus and groups in a Sirius diagram representation. It must be used for the location URI or the id of _Group Menu_.
+
+**Contextual menu for a diagram element** 
+
+!images/siriusDefaultDiagramElementContextualMenu.png!
+
+Corresponding Ids:
+* Group editGroup
+** Menu Edit (id=editMenu)
+*** Group copyGroup
+*** Group copyFormatGroup
+*** Group deleteFromGroup
+* Group filterFormatGroup
+** Menu -Show/Hide- (id=org.eclipse.sirius.diagram.ui.popup.hideReveal): Not available as it is contributed after by Sirius
+** Menu Format (id=formatMenu)
+*** Group fontFillLineGroup
+**** Menu Line Width (id=lineWidthMenu)
+**** Menu Line Type (id=lineTypeMenu)
+**** Menu Arrow Type (id=arrowTypeMenu)
+*** Group miscellaneousGroup
+**** Menu Layout (id=arrangeMenu): This is a specific case, this menu is moved later just before the format menu.
+***** Group arrangeGroup
+***** Group pinGroup
+**** Menu Align (id=alignMenu)
+***** Group alignHorizontalGroup
+***** Group alignVerticalGroup
+**** Menu Distribute (id=distributeMenu)
+***** Group distributeHorizontalGroup
+***** Group distributeVerticalGroup
+**** Menu Text Alignment (id=textAlignmentMenu)
+***** Group textAlignmentGroup
+**** Menu Order (id=zorderMenu)
+***** Group zorderGroup
+*** Group sizeGroup
+*** Group applyAppearanceGroup
+* Group additions (default group at the end)
+
+**Contextual menu for the diagram** 
+
+!images/siriusDefaultDiagramContextualMenu.png!
+
+Corresponding Ids:
+* Group editGroup
+** Menu Edit (id=editMenu)
+*** Group copyGroup
+*** Group copyFormatGroup
+*** Group deleteFromGroup
+* Group filterFormatGroup
+** Menu Select (id=selectMenu)
+*** Group selectGroup
+** Menu Layout (id=arrangeMenu): This is a specific case, this menu is moved later just before the format menu.
+*** Group myArrangeGroup
+* Group org.eclipse.sirius.diagram.ui.popup.otherActions: Not available as it is contributed after by Sirius
+* Group additions (default group at the end)
 
 h4(#operation_action). Operation Action
 

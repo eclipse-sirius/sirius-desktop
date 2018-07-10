@@ -96,11 +96,30 @@
 			</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-success">Added</span> The contribution of 
+				<code>PopupMenu</code> in diagram has been improved. It is now possible to define 
+				<code>Group</code> in 
+				<code>PopupMenu</code>. A group allows to group several actions. It appears like a separator between groups of actions. It is also possible to reuse existing menu or group.
+			</li>
+		</ul>
+		<p>Previously, it was possible to add new menus and actions at the end of the contextual menu:
+			<br/>
+			<img border="0" src="images/popupMenuBefore.png"/>
+			<br/>Now, it is possible to:
+		</p>
+		<ul>
+			<li>group actions (actions in MySpecificPopupMenu2 for example),</li>
+			<li>add new menus and actions in a new group of an existing menu (action MyActionF1 and menu MySpecificPopupMenu2 for example) </li>
+			<li>add new menus and actions in an existing group of an existing menu (action MyActionH1 and menu MySpecificPopupMenu3 for example):</li>
+		</ul>
+		<p>
+			<img border="0" src="images/popupMenuAfter.png"/>
+			<br/>Refer to the 
+			<a href="specifier/diagrams/Diagrams.html#group">specifier documentation</a> for details.
+		</p>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.3.0 to 0.4.0, see the 
-				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.4.0">ELK documentation</a> for the list of changes in that version.
-			</li>
 			<li><span class="label label-success">Added</span> Mechanism to ask user input on opening of a session with migrated resources if the session opening comes from a direct user action
 				<ul>
 					<li>New available UI callback (
@@ -114,6 +133,9 @@
 						<code>org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants.PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION</code>
 					</li>
 				</ul>
+			</li>
+			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.3.0 to 0.4.0, see the 
+				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.4.0">ELK documentation</a> for the list of changes in that version.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 

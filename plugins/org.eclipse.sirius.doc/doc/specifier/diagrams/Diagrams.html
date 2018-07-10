@@ -1637,8 +1637,193 @@
 			</a> and 
 			<a href="#external_java_action">
 				<em>External Java Action</em>
-			</a> tools. Which ones are visible when the menu is opened depend on the preconditions of these actions, which can thus be activated or not depending on the currently selected element.
+			</a> tools. Which ones are visible when the menu is opened depend on the preconditions of these actions, which can thus be activated or not depending on the currently selected element. Actions can be grouped using the 
+			<a href="#group">
+				<em>Group Menu</em>
+			</a>.
 		</p>
+		<h4 id="group">Group Menu</h4>
+		<p>Graphically, each 
+			<em>Group Menu</em> is separated by an horizontal line between several menus and/or actions:
+			<br/>
+			<img border="0" src="images/groupSeparator.png"/>
+		</p>
+		<p>The group has an 
+			<em>id</em>. This id can be an id of an existing group. In this case, all menus and actions defined in this group will be added in the existing group.
+			<br/>The group also has a 
+			<em>location URI</em>. This is an URI specification that defines the insertion point at which the group will be added. The format for the URI is comprised of two basic parts:
+		</p>
+		<ul>
+			<li>Scheme: One of &#8220;menu&#8221;, &#8220;tabbar&#8221;. Indicates the type of the manager used to handle the contributions.</li>
+			<li>Id: This is either the id of an existing menu or tabbar menu.</li>
+		</ul>
+		<p>Currently, it is not possible to add a group after or before a specific existing group. It is added at the end of the menu having the corresponding 
+			<em>id</em>.
+			<br/>For menu scheme, the following chapter details the ids of existing group and menu (to add new actions or groups in existing menus or groups).
+			<br/>For tabbar sheme, only Select menu can be completed with new groups. The complete location URI to use is &#8220;tabbar:selectMenu&#8221;. To add actions in the same group of the existings actions, you must use the id &#8220;selectGroup&#8221; for the declared group.
+		</p>
+		<p>Here is some examples:</p>
+		<ul>
+			<li>Define new group at the end of the main contextual menu: The location URI is &#8220;menu&#8221; or &#8220;menu:root&#8221;.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/groupAtEndOfContextualMenu.png"/>
+		</p>
+		<ul>
+			<li>Define new group at the end of an existing menu: The location URI is &#8220;menu:idOfExistingMenu&#8221;, for example &#8220;menu:editMenu&#8221;.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/groupAtEndOfExistingMenu.png"/>
+		</p>
+		<ul>
+			<li>Add actions or menus in an existing group: The location URI is &#8220;menu:idOfExistingMenu&#8221; and the id of the group is an id of an existing group, for example &#8220;locationURI=menu:editMenu&#8221; and &#8220;id=copyGroup&#8221;.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/groupUsingAnExistingGroup.png"/>
+		</p>
+		<ul>
+			<li>Specific case with a DDiagramElement selected, to add an action in the arrangeGroup of Layout menu, you must use this description (locationURI of groups is blank):</li>
+		</ul>
+		<p>
+			<img border="0" src="images/groupUsingAnExistingGroupOfLayoutMenu.png"/>
+		</p>
+		<ul>
+			<li>Specific case with a DDiagram selected, to add an action in the myArrangeGroup of Layout menu, you must use this description (locationURI of groups is blank):</li>
+		</ul>
+		<p>
+			<img border="0" src="images/groupUsingAnExistingGroupOfDDiagramLayoutMenu.png"/>
+		</p>
+		<ul>
+			<li>Define new group in a new menu: The location URI must be blank. 
+				<em>GroupMenu</em> is defined explicitly under a 
+				<em>PopupMenu</em>.
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/newGroupInNewMenu.png"/>
+		</p>
+		<ul>
+			<li>Add a group in the Select All drop down menu of tabbar: The location URI is &#8220;tabbar:selectMenu&#8221;. Only Select menu is available for tabbar.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/groupInTabbar.png"/>
+		</p>
+		<p>
+			<em>Note:</em> If your VSM is in the runtime environment workspace to do dynamic development of your VSM, the changes are not systematically reflected in the menu. A selection change may be necessary (to rebuild the menu).
+		</p>
+		<h5 id="Idofexistingmenusandgroups">Id of existing menus and groups</h5>
+		<p>This chapter lists the ids of existing menus and groups in a Sirius diagram representation. It must be used for the location URI or the id of 
+			<em>Group Menu</em>.
+		</p>
+		<p>
+			<b>Contextual menu for a diagram element</b> 
+		</p>
+		<p>
+			<img border="0" src="images/siriusDefaultDiagramElementContextualMenu.png"/>
+		</p>
+		<p>Corresponding Ids:</p>
+		<ul>
+			<li>Group editGroup
+				<ul>
+					<li>Menu Edit (id=editMenu)
+						<ul>
+							<li>Group copyGroup</li>
+							<li>Group copyFormatGroup</li>
+							<li>Group deleteFromGroup</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Group filterFormatGroup
+				<ul>
+					<li>Menu 
+						<del>Show/Hide</del> (id=org.eclipse.sirius.diagram.ui.popup.hideReveal): Not available as it is contributed after by Sirius
+					</li>
+					<li>Menu Format (id=formatMenu)
+						<ul>
+							<li>Group fontFillLineGroup
+								<ul>
+									<li>Menu Line Width (id=lineWidthMenu)</li>
+									<li>Menu Line Type (id=lineTypeMenu)</li>
+									<li>Menu Arrow Type (id=arrowTypeMenu)</li>
+								</ul>
+							</li>
+							<li>Group miscellaneousGroup
+								<ul>
+									<li>Menu Layout (id=arrangeMenu): This is a specific case, this menu is moved later just before the format menu.
+										<ul>
+											<li>Group arrangeGroup</li>
+											<li>Group pinGroup</li>
+										</ul>
+									</li>
+									<li>Menu Align (id=alignMenu)
+										<ul>
+											<li>Group alignHorizontalGroup</li>
+											<li>Group alignVerticalGroup</li>
+										</ul>
+									</li>
+									<li>Menu Distribute (id=distributeMenu)
+										<ul>
+											<li>Group distributeHorizontalGroup</li>
+											<li>Group distributeVerticalGroup</li>
+										</ul>
+									</li>
+									<li>Menu Text Alignment (id=textAlignmentMenu)
+										<ul>
+											<li>Group textAlignmentGroup</li>
+										</ul>
+									</li>
+									<li>Menu Order (id=zorderMenu)
+										<ul>
+											<li>Group zorderGroup</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>Group sizeGroup</li>
+							<li>Group applyAppearanceGroup</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Group additions (default group at the end)</li>
+		</ul>
+		<p>
+			<b>Contextual menu for the diagram</b> 
+		</p>
+		<p>
+			<img border="0" src="images/siriusDefaultDiagramContextualMenu.png"/>
+		</p>
+		<p>Corresponding Ids:</p>
+		<ul>
+			<li>Group editGroup
+				<ul>
+					<li>Menu Edit (id=editMenu)
+						<ul>
+							<li>Group copyGroup</li>
+							<li>Group copyFormatGroup</li>
+							<li>Group deleteFromGroup</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Group filterFormatGroup
+				<ul>
+					<li>Menu Select (id=selectMenu)
+						<ul>
+							<li>Group selectGroup</li>
+						</ul>
+					</li>
+					<li>Menu Layout (id=arrangeMenu): This is a specific case, this menu is moved later just before the format menu.
+						<ul>
+							<li>Group myArrangeGroup</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Group org.eclipse.sirius.diagram.ui.popup.otherActions: Not available as it is contributed after by Sirius</li>
+			<li>Group additions (default group at the end)</li>
+		</ul>
 		<h4 id="operation_action">Operation Action</h4>
 		<p>This tool can be used to define an operation which will appear as an entry in the context menu (or in a sub-menu if defined inside a 
 			<em>Popup Menu</em> element). When invoked, the body of the action is executed with the 
