@@ -14,6 +14,8 @@ package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 import java.util.List;
 import java.util.Optional;
 
+import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
@@ -22,7 +24,11 @@ import org.eclipse.gef.Request;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DescriptionCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.figures.NoteFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.DiagramNameCompartmentEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
+import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
+import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -46,6 +52,8 @@ public class SiriusNoteEditPart extends NoteEditPart {
 
     /* this handles removal of diagram link notes when the referenced diagram is deleted */
     static final Adapter LINK_ADAPTER = new DiagramLinkAdapter();
+
+    private boolean diagramLinkMode = false;
 
     /**
      * Default constructor.
@@ -120,6 +128,40 @@ public class SiriusNoteEditPart extends NoteEditPart {
     @Override
     protected void setConnectionsVisibility(boolean visibility) {
         ShowingViewUtil.setConnectionsVisibility(this, (View) getModel(), SELECTED_NONE, visibility);
+    }
+
+    @Override
+    protected NodeFigure createNodeFigure() {
+        // we call super to set diagramLinkMode to true but use our own figure to be able to set it with transparency.
+        super.createNodeFigure();
+        IMapMode mm = getMapMode();
+        int insetSize = mm.DPtoLP(5);
+        Insets insets = new Insets(insetSize, insetSize, insetSize, mm.DPtoLP(NoteFigure.CLIP_MARGIN_DP));
+        NoteFigure noteFigure = new NoteFigure(mm.DPtoLP(100), mm.DPtoLP(56), insets) {
+            @Override
+            public void paint(Graphics graphics) {
+                ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
+                try {
+                    super.paint(graphics);
+                    graphics.restoreState();
+                } finally {
+                    graphics.popState();
+                }
+            }
+        };
+        Object model = getModel();
+        if (model != null && model instanceof View) {
+            View notationView = (View) model;
+            if (notationView != null && (notationView.getEAnnotation(Properties.DIAGRAMLINK_ANNOTATION) != null || notationView.getType() == null || notationView.getType().length() == 0)) {
+                noteFigure.setDiagramLinkMode(true);
+                insets.right = insetSize; // there is no dangling corner in diagram link, set right margin to be the
+                                          // same as left
+
+                // The default size is the minimum.
+                noteFigure.setDefaultSize(insetSize, insetSize);
+            }
+        }
+        return noteFigure;
     }
 
     /*

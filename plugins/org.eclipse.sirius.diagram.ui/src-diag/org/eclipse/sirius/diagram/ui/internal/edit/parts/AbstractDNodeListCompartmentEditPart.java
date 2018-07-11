@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -183,7 +183,9 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
     }
 
     private void configureBorder(ResizableCompartmentFigure rcf) {
-        if (hasLabelBorderStyle() || isLabelHidden() || isCollapsed()) {
+        ViewQuery viewQuery = new ViewQuery((View) this.getModel());
+        boolean isInShowingMode = viewQuery.isInShowingMode();
+        if (hasLabelBorderStyle() || (isLabelHidden() && !isInShowingMode) || isCollapsed()) {
             if (rcf.getBorder() instanceof LineBorder || rcf.getBorder() == null) {
                 // Do not draw the top line border for free form containers.
                 rcf.setBorder(new MarginBorder(getMapMode().DPtoLP(1), 0, 0, 0));
@@ -260,6 +262,7 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         super.removeNotationalListeners();
         removeListenerFilter("ShowingMode"); //$NON-NLS-1$
     }
+
     /*
      * (non-Javadoc)
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#setVisibility(boolean)

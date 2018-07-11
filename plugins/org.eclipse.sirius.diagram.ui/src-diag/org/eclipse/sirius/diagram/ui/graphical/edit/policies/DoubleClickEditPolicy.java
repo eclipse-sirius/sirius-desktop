@@ -11,9 +11,12 @@
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.text.MessageFormat;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -176,64 +179,124 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
             compoundCommand.append(emfCommandFactory.buildRevealLabelCommand(ddiagramElement));
             compoundCommand.append(emfCommandFactory.buildRevealElementsCommand(elementSet));
         } else {
-            getCommandToDeactivateFiltersHidingElement(parentDiagram, compoundCommand, elementSet);
-            getCommandToActivateLayerIfNeeded(parentDiagram, ddiagramElement, compoundCommand);
-            compoundCommand.append(emfCommandFactory.buildRevealElementsCommand(elementSet));
+            Entry<String, org.eclipse.emf.common.command.Command> filterEntry = getCommandToDeactivateFiltersHidingElementAndParents(parentDiagram, elementSet);
+            Entry<String, org.eclipse.emf.common.command.Command> layerEntry = getCommandToActivateLayerShowingElementAndPArents(parentDiagram, elementSet);
+
+            if (filterEntry != null || layerEntry != null) {
+                boolean confirm = prepareLayerActivationAndFilterDeactivationCommands(compoundCommand, filterEntry, layerEntry);
+                if (confirm) {
+                    compoundCommand.append(emfCommandFactory.buildRevealElementsCommand(elementSet));
+                }
+            } else {
+                compoundCommand.append(emfCommandFactory.buildRevealElementsCommand(elementSet));
+            }
+
         }
         return compoundCommand;
 
     }
 
     /**
-     * If no activated layer contains the mapping to make visible, then we search for the layer containing it and we
-     * create a command to activate it.
+     * Asks user if element must be made visible by activating needed layers and deactivating needed filters and if yes,
+     * add required command in the given compound command.
      * 
-     * @param parentDiagram
-     * @param ddiagramElement
      * @param compoundCommand
+     *            the command where to put layer and filter commands if user confirms.
+     * @param filterEntry
+     *            filters needed to be deactivated and their names.
+     * @param layerEntry
+     *            layers needed to be activated and their names.
      */
-    private void getCommandToActivateLayerIfNeeded(DDiagram parentDiagram, final DDiagramElement ddiagramElement, CompoundCommand compoundCommand) {
-        Optional<Session> optionalSession = Session.of(parentDiagram);
-        optionalSession.ifPresent(session -> {
-            DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, parentDiagram);
-            if (mappingManager.getActiveParentLayers(ddiagramElement.getDiagramElementMapping()).size() <= 0) {
-                Layer layerToActivate = getLayerToActivate(parentDiagram, ddiagramElement, mappingManager);
-                if (layerToActivate != null) {
-                    boolean confirm = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), Messages.DoubleClickEditPolicy_layerConfirmDialogTitle,
-                            MessageFormat.format(Messages.DoubleClickEditPolicy_layerConfirmDialogBody, layerToActivate.getName()));
-                    if (confirm) {
-                        final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(parentDiagram);
-                        ChangeLayerActivationCommand changeLayerActivationCommand = new ChangeLayerActivationCommand(domain, parentDiagram, layerToActivate, new NullProgressMonitor());
-                        compoundCommand.append(changeLayerActivationCommand);
-                    }
-                }
+    private boolean prepareLayerActivationAndFilterDeactivationCommands(CompoundCommand compoundCommand, Entry<String, org.eclipse.emf.common.command.Command> filterEntry,
+            Entry<String, org.eclipse.emf.common.command.Command> layerEntry) {
+        String message = ""; //$NON-NLS-1$
+        if (filterEntry != null) {
+            message += MessageFormat.format(Messages.DoubleClickEditPolicy_filterConfirmDialogBody, filterEntry.getKey());
+        }
+        if (layerEntry != null) {
+            if (filterEntry != null) {
+                message += "\n"; //$NON-NLS-1$
             }
-        });
+            message += MessageFormat.format(Messages.DoubleClickEditPolicy_layerConfirmDialogBody, layerEntry.getKey());
+
+        }
+        message += "\n" + Messages.DoubleClickEditPolicy_confirmDialogAsking; //$NON-NLS-1$
+        boolean confirm = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), Messages.DoubleClickEditPolicy_confirmDialogTitle, message);
+        if (confirm) {
+            if (layerEntry != null) {
+                compoundCommand.append(layerEntry.getValue());
+            }
+            if (filterEntry != null) {
+                compoundCommand.append(filterEntry.getValue());
+            }
+
+        }
+        return confirm;
     }
 
-    private void getCommandToDeactivateFiltersHidingElement(DDiagram parentDiagram, CompoundCommand compoundCommand, Set<DDiagramElement> elementSet) {
-        Set<GraphicalFilter> graphicalFilters = elementSet.stream().flatMap(element -> element.getGraphicalFilters().stream()).filter(elmt -> elmt instanceof AppliedCompositeFilters)
-                .collect(Collectors.toSet());
-
-        if (graphicalFilters.size() > 0) {
-            String filterStrings = graphicalFilters.stream().flatMap(elmt -> ((AppliedCompositeFilters) elmt).getCompositeFilterDescriptions().stream()).map(elt -> elt.getName())
-                    .collect(Collectors.joining(", ")); //$NON-NLS-1$
-            boolean confirm = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), Messages.DoubleClickEditPolicy_filterConfirmDialogTitle,
-                    MessageFormat.format(Messages.DoubleClickEditPolicy_filterConfirmDialogBody, filterStrings));
-            if (confirm) {
-                final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(parentDiagram);
-                final DCommand command = new SiriusCommand(domain, null);
-                for (GraphicalFilter graphicalFilter : graphicalFilters) {
-                    EList<CompositeFilterDescription> compositeFilterDescriptions = ((AppliedCompositeFilters) graphicalFilter).getCompositeFilterDescriptions();
-                    for (CompositeFilterDescription compositeFilterDescription : compositeFilterDescriptions) {
-                        command.getTasks().add(new FilterUpdateTask(parentDiagram, compositeFilterDescription, false));
+    /**
+     * Return the command activating layers that are needed to show all elements in the given set and the name of the
+     * layer to activate.
+     * 
+     * @param parentDiagram
+     *            the parent diagram.
+     * @param elementSet
+     *            the element to show as well as all its parents.
+     * @return the command activating layers that are needed to show all element in the given set and the name of the
+     *         layers to activate.
+     */
+    private Entry<String, org.eclipse.emf.common.command.Command> getCommandToActivateLayerShowingElementAndPArents(DDiagram parentDiagram, final Set<DDiagramElement> elementSet) {
+        CompoundCommand layerCompoundCommand = new CompoundCommand();
+        Optional<Session> optionalSession = Session.of(parentDiagram);
+        List<String> layersToActivateList = new ArrayList<>();
+        if (optionalSession.isPresent()) {
+            DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(optionalSession.get(), parentDiagram);
+            for (DDiagramElement dDiagramElement : elementSet) {
+                if (mappingManager.getActiveParentLayers(dDiagramElement.getDiagramElementMapping()).size() <= 0) {
+                    Layer layerToActivate = getLayerToActivate(parentDiagram, dDiagramElement, mappingManager);
+                    if (layerToActivate != null) {
+                        final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(parentDiagram);
+                        layerCompoundCommand.append(new ChangeLayerActivationCommand(domain, parentDiagram, layerToActivate, new NullProgressMonitor()));
+                        layersToActivateList.add(layerToActivate.getName());
                     }
                 }
-                command.setLabel(MessageFormat.format(Messages.ChangeFilterActivation_deactivateFilter, filterStrings));
-                compoundCommand.append(command);
-
             }
         }
+        return layerCompoundCommand.getCommandList().size() > 0
+                ? new SimpleEntry<String, org.eclipse.emf.common.command.Command>(layersToActivateList.stream().collect(Collectors.joining(", ")), layerCompoundCommand) //$NON-NLS-1$
+                : null;
+    }
+
+    /**
+     * Return the command deactivating filters to show all elements in the given set and the name of the filters to
+     * deactivate.
+     * 
+     * @param parentDiagram
+     *            the parent diagram.
+     * @param elementSet
+     *            the element to show as well as all its parents.
+     * @return the command deactivating filters to show all elements in the given set and the name of the filters to
+     *         deactivate.
+     */
+    private Entry<String, org.eclipse.emf.common.command.Command> getCommandToDeactivateFiltersHidingElementAndParents(DDiagram parentDiagram, Set<DDiagramElement> elementSet) {
+        Set<GraphicalFilter> graphicalFilters = elementSet.stream().flatMap(element -> element.getGraphicalFilters().stream()).filter(elmt -> elmt instanceof AppliedCompositeFilters)
+                .collect(Collectors.toSet());
+        DCommand command = null;
+        String filterStrings = null;
+        if (graphicalFilters.size() > 0) {
+            filterStrings = graphicalFilters.stream().flatMap(elmt -> ((AppliedCompositeFilters) elmt).getCompositeFilterDescriptions().stream()).map(elt -> elt.getName())
+                    .collect(Collectors.joining(", ")); //$NON-NLS-1$
+            final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(parentDiagram);
+            command = new SiriusCommand(domain, null);
+            for (GraphicalFilter graphicalFilter : graphicalFilters) {
+                EList<CompositeFilterDescription> compositeFilterDescriptions = ((AppliedCompositeFilters) graphicalFilter).getCompositeFilterDescriptions();
+                for (CompositeFilterDescription compositeFilterDescription : compositeFilterDescriptions) {
+                    command.getTasks().add(new FilterUpdateTask(parentDiagram, compositeFilterDescription, false));
+                }
+            }
+            command.setLabel(MessageFormat.format(Messages.ChangeFilterActivation_deactivateFilter, filterStrings));
+        }
+        return command != null ? new SimpleEntry<String, org.eclipse.emf.common.command.Command>(filterStrings, command) : null;
     }
 
     private Layer getLayerToActivate(DDiagram parentDiagram, final DDiagramElement ddiagramElement, DiagramMappingsManager mappingManager) {

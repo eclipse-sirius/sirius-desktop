@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.emf.ecore.EObject;
@@ -30,6 +31,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.BorderedNodeLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNode2ItemSemanticEditPolicy;
@@ -129,7 +131,7 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
      * @was-generated
      */
     protected IFigure createNodeShape() {
-        return primaryShape = new ViewNodeFigure();
+        return primaryShape = new ViewNodeFigure((View) getModel());
     }
 
     /**
@@ -169,8 +171,7 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#reorderChild(org.eclipse.gef.EditPart,
-     *      int)
+     * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#reorderChild(org.eclipse.gef.EditPart, int)
      */
     @Override
     protected void reorderChild(final EditPart child, final int index) {
@@ -190,7 +191,18 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
             final DStylizable viewNode = (DStylizable) eObj;
             final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(((DDiagramElement) eObj).getDiagramElementMapping(), viewNode.getStyle());
             final AnchorProvider anchorProvider = styleConfiguration.getAnchorProvider();
-            result = new AirDefaultSizeNodeFigure(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), anchorProvider);
+            result = new AirDefaultSizeNodeFigure(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), anchorProvider) {
+                @Override
+                public void paint(Graphics graphics) {
+                    ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
+                    try {
+                        super.paint(graphics);
+                        graphics.restoreState();
+                    } finally {
+                        graphics.popState();
+                    }
+                }
+            };
             nodePlate = result;
         }
         return result;
@@ -221,9 +233,8 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     }
 
     /**
-     * Creates figure for this edit part. Body of this method does not depend on
-     * settings in generation model so you may safely remove <i>generated</i>
-     * tag and modify it.
+     * Creates figure for this edit part. Body of this method does not depend on settings in generation model so you may
+     * safely remove <i>generated</i> tag and modify it.
      * 
      * @not-generated : remove the layout manager to fix the size
      */
@@ -238,8 +249,8 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     }
 
     /**
-     * Default implementation treats passed figure as content pane. Respects
-     * layout one may have set for generated figure.
+     * Default implementation treats passed figure as content pane. Respects layout one may have set for generated
+     * figure.
      * 
      * @param nodeShape
      *            instance of generated figure class

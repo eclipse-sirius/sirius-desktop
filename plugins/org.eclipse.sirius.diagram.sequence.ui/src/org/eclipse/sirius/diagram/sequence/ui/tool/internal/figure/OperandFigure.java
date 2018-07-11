@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,17 +39,16 @@ public class OperandFigure extends GradientRoundedRectangle {
      *            the current operand
      */
     public OperandFigure(final Dimension dimension, final BackgroundStyle backgroundStyle, Operand operand) {
-        super(dimension, backgroundStyle);
+        super(dimension, backgroundStyle, null);
 
         this.operand = operand;
 
         this.setFill(false);
         this.setOutline(false);
     }
-    
+
     /**
-     * The outline of the shape is disabled for Operands which have a specific
-     * border figure.
+     * The outline of the shape is disabled for Operands which have a specific border figure.
      */
     @Override
     public void setOutline(boolean b) {
@@ -78,8 +77,7 @@ public class OperandFigure extends GradientRoundedRectangle {
     }
 
     /**
-     * Check if it is the last operand. In that case we do not need to paint the
-     * operand separator.
+     * Check if it is the last operand. In that case we do not need to paint the operand separator.
      */
     private boolean isLastOperand() {
         boolean isLast = false;

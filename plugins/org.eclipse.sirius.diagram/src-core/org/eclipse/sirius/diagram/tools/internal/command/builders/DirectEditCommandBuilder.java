@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,9 +81,8 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
      * @return true if the label can be direct edited, false otherwise
      */
     public boolean canDirectEdit() {
-        // Layouting mode on diagrams, if the diagram is in
-        // LayoutingMode, we do not allow direct edit.
-        boolean valid = !isInLayoutingModeDiagram(repElement);
+        // if the diagram is in LayoutingMode or show/hide mode, we do not allow direct edit.
+        boolean valid = !isInLayoutingModeDiagram(repElement) && !isInShowingModeDiagram(repElement);
         valid = valid && checkPrecondition((DDiagramElement) repElement, directEditTool);
         return valid;
     }

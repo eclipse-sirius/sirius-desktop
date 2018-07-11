@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,10 +103,11 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
 
         Command result = UnexecutableCommand.INSTANCE;
 
-        if (permissionAuthority.canEditInstance(reconnectionSource) && permissionAuthority.canEditInstance(reconnectionTarget) && permissionAuthority.canEditInstance(edge)
-        // Layouting mode on diagrams
-        // if the ddiagram is in LayoutingMode, we do not allow reconnection
-                && !isInLayoutingModeDiagram(edge)) {
+        // if the ddiagram is in LayoutingMode or show/hide mode, we do not allow reconnection
+
+        boolean canEdit = permissionAuthority.canEditInstance(reconnectionSource) && permissionAuthority.canEditInstance(reconnectionTarget) && permissionAuthority.canEditInstance(edge);
+        canEdit = canEdit && !isInLayoutingModeDiagram(edge) && !isInShowingModeDiagram(edge);
+        if (canEdit) {
 
             final EObject semanticSource = SiriusUtil.getNearestDecorateSemanticElement(reconnectionSource).getTarget();
             final EObject semanticTarget = SiriusUtil.getNearestDecorateSemanticElement(reconnectionTarget).getTarget();
@@ -217,14 +218,11 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
     }
 
     /**
-     * Creates a task that will initialize the otherEnd variable to its correct
-     * value.
+     * Creates a task that will initialize the otherEnd variable to its correct value.
      * 
      * @param variables
-     *            the map of variables that will be used during this
-     *            reconnection command
-     * @return a task that will initialize the otherEnd variable to its correct
-     *         value
+     *            the map of variables that will be used during this reconnection command
+     * @return a task that will initialize the otherEnd variable to its correct value
      */
     protected ICommandTask getOtherEndVariableCreationTask(final Map<AbstractVariable, Object> variables) {
         final OtherEndVariable otherEndVariable = getOtherEndVariable();
@@ -258,8 +256,7 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
     /**
      * Returns the value to assign to the otherEnd variable.
      * 
-     * @return the end of the Edge before reconnection that is not represented
-     *         by the SourceView variable
+     * @return the end of the Edge before reconnection that is not represented by the SourceView variable
      */
     protected Object getOtherEndValue() {
         // If the reconnectionSource is equals to the sourceNode of the edge
@@ -272,8 +269,7 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
     }
 
     /**
-     * Variable representing the end of the Edge before reconnection that is not
-     * represented by the SourceView variable.
+     * Variable representing the end of the Edge before reconnection that is not represented by the SourceView variable.
      * 
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
      */

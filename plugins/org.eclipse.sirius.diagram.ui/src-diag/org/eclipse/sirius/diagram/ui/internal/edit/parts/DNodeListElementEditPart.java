@@ -193,12 +193,16 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
         SiriusWrapLabel safeWrapLabel = new SiriusWrapLabel() {
             @Override
             public void paint(Graphics graphics) {
-                ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
-                try {
+                if (getModel() instanceof View) {
+                    ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
+                    try {
+                        super.paint(graphics);
+                        graphics.restoreState();
+                    } finally {
+                        graphics.popState();
+                    }
+                } else {
                     super.paint(graphics);
-                    graphics.restoreState();
-                } finally {
-                    graphics.popState();
                 }
             }
         };

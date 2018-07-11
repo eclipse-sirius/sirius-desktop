@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -124,9 +124,8 @@ public class DragAndDropCommandBuilder extends AbstractDiagramCommandBuilder {
     @Override
     public Command buildCommand() {
         if (permissionAuthority.canEditInstance(container) && permissionAuthority.canEditInstance(dragSemantic ? droppedElement : diagramElement)
-        // Layouting mode on diagrams
-        // if the ddiagram is in LayoutingMode, we do not allow DnD
-                && !isInLayoutingModeDiagram(diagramElement)) {
+        // if the ddiagram is in LayoutingMode or show/hide mode, we do not allow DnD
+                && !isInLayoutingModeDiagram(diagramElement) && !isInShowingModeDiagram(diagramElement)) {
             if (container instanceof DSemanticDecorator) {
                 final EObject semanticContainer = ((DSemanticDecorator) container).getTarget();
 

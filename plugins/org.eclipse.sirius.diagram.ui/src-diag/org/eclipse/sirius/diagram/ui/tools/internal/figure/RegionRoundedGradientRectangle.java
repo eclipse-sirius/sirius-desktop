@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,25 +16,22 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 
 /**
- * Specific {@link GradientRoundedRectangle} able to use a different dimension
- * for chosen corners.
+ * Specific {@link GradientRoundedRectangle} able to use a different dimension for chosen corners.
  * 
- * This is currently used to render region, and will always be configured to
- * have outline == false.
+ * This is currently used to render region, and will always be configured to have outline == false.
  * 
- * fillShape(Graphics) draws the chosen corners with the additional dimension
- * and the other ones with the main corner dimension.
- * 
- * outlineShape(Graphics) currently calls super.outlineShape() and will draw the
- * outline corresponding to a standard RoundedCorner with the same corner
+ * fillShape(Graphics) draws the chosen corners with the additional dimension and the other ones with the main corner
  * dimension.
  * 
- * outlineShape(Graphics) will never be called as setOutline will do nothing and
- * the outline is set to false
+ * outlineShape(Graphics) currently calls super.outlineShape() and will draw the outline corresponding to a standard
+ * RoundedCorner with the same corner dimension.
+ * 
+ * outlineShape(Graphics) will never be called as setOutline will do nothing and the outline is set to false
  * 
  * @author mporhel
  */
@@ -51,16 +48,16 @@ public class RegionRoundedGradientRectangle extends GradientRoundedRectangle {
      *            dimension of the corner (with radius, height radius)
      * @param backgroundStyle
      *            style of the wanted gradient
-     * 
+     * @param view
+     *            the model view of the part showing the figure.
      */
-    public RegionRoundedGradientRectangle(final Dimension dimension, final BackgroundStyle backgroundStyle) {
-        super(dimension, backgroundStyle);
+    public RegionRoundedGradientRectangle(final Dimension dimension, final BackgroundStyle backgroundStyle, View view) {
+        super(dimension, backgroundStyle, view);
         setOutline(false);
     }
 
     /**
-     * The outline of the shape is disabled for regions which have a specific
-     * border figure.
+     * The outline of the shape is disabled for regions which have a specific border figure.
      */
     @Override
     public void setOutline(boolean b) {
@@ -68,19 +65,15 @@ public class RegionRoundedGradientRectangle extends GradientRoundedRectangle {
     }
 
     /**
-     * Sets the dimensions of each corner. This will form the radii of the arcs
-     * which form the additional corners.
+     * Sets the dimensions of each corner. This will form the radii of the arcs which form the additional corners.
      * 
      * @param d
-     *            the dimensions of the corner, it should be smaller than the
-     *            main corner dimension to be visible.
+     *            the dimensions of the corner, it should be smaller than the main corner dimension to be visible.
      * 
      * @param chosenCorners
-     *            the chosen corners, see values of the BitSet for the following
-     *            indexes: {@link PositionConstants.NORTH_WEST},
-     *            {@link PositionConstants.NORTH_EAST},
-     *            {@link PositionConstants.SOUTH_EAST},
-     *            {@link PositionConstants.SOUTH_WEST}.
+     *            the chosen corners, see values of the BitSet for the following indexes:
+     *            {@link PositionConstants.NORTH_WEST}, {@link PositionConstants.NORTH_EAST},
+     *            {@link PositionConstants.SOUTH_EAST}, {@link PositionConstants.SOUTH_WEST}.
      */
     public void setAdditionalCornerDimensions(Dimension d, BitSet chosenCorners) {
         positions.clear();
@@ -106,14 +99,11 @@ public class RegionRoundedGradientRectangle extends GradientRoundedRectangle {
     }
 
     /**
-     * Return a {@link BitSet} knowing the chosen corner, see values of the
-     * BitSet for the following indexes: {@link PositionConstants.NORTH_WEST},
-     * {@link PositionConstants.NORTH_EAST},
-     * {@link PositionConstants.SOUTH_EAST},
+     * Return a {@link BitSet} knowing the chosen corner, see values of the BitSet for the following indexes:
+     * {@link PositionConstants.NORTH_WEST}, {@link PositionConstants.NORTH_EAST}, {@link PositionConstants.SOUTH_EAST},
      * {@link PositionConstants.SOUTH_WEST}.
      * 
-     * @return the positions of the corner to draw with the additional corner
-     *         dimension.
+     * @return the positions of the corner to draw with the additional corner dimension.
      */
     public BitSet getAdditionalDimensionCorners() {
         return positions;

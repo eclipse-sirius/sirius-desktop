@@ -150,6 +150,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ResetStylePropertiesToDefaultValuesActionTests.class);
         suite.addTestSuite(MoveBorderNodeTest.class);
         suite.addTestSuite(LayoutingModeTest.class);
+        suite.addTestSuite(EditModeTest.class);
         suite.addTestSuite(LabelSelectionTest.class);
         suite.addTestSuite(KeyboardDeleteFromDiagramTests.class);
         suite.addTestSuite(CustomClipboardSupportTest.class);

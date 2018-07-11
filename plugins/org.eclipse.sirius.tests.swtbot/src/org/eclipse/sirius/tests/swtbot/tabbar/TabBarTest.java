@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -89,12 +89,11 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String FILE_DIR = "/";
 
-    private static final String[] DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange All", "Select &All", "Layers", "Filters", Messages.PasteFormatAction_toolTipText };
+    private static final String[] DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange All", "Select &All", "Layers", "Filters", Messages.PasteFormatAction_toolTipText,
+            Messages.DefaultModeAction_statusOn };
 
     private static final String[] DIAGRAM_TOOLBARBUTTONS_TOOLTIPS = { Messages.SiriusDiagramActionBarContributor_refreshDiagram, Messages.SelectHiddenElementsAction_tooltip,
             Messages.SelectPinnedElementsAction_tooltip, "Zoom In (Ctrl+=)", "Zoom Out (Ctrl+-)", Messages.SaveAsImageFileAction_label };
-
-    private static final String[] DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { Messages.LayoutingModeSwitchingAction_activate };
 
     private static final String[] CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Straighten to top",
             "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
@@ -429,7 +428,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             assertFieldsAreDisposed(item, Predicates.or(privateEnclosingClassAccessor, acceptedNonDisposedField));
         }
     }
-    
+
     // Check that non primitive or String fields are disposed, ie have a null
     // value.
     private void assertFieldsAreDisposed(Object obj, Predicate<Field> skippedFieldPredicate) {
@@ -519,13 +518,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                 assertEquals("The toolbarButton index " + i + " does not have the expected tooltip", expectedTooltip, editor.bot().toolbarButton(i).getToolTipText());
             }
             assertTrue("The toolbarButton with tooltip " + expectedTooltip + " should be enabled", button.isEnabled());
-        }
-        for (int i = 0; i < DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS.length; i++) {
-            String expectedTooltip = DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS[i];
-            SWTBotToolbarToggleButton toggleButton = editor.bot().toolbarToggleButton(i);
-            assertEquals("The toolbarToggleButton index " + i + " does not have the expected tooltip", DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS[i], toggleButton.getToolTipText());
-            assertTrue("The toolbarToggleButton with tooltip " + expectedTooltip + " should be enabled", toggleButton.isEnabled());
-
         }
 
         if (!activeExtensions) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,13 +15,14 @@ import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BackgroundStyle;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.swt.graphics.Color;
 
 /**
- * Basic implementation of RoundedRectangle shape with gradient and label
- * capabilities.
+ * Basic implementation of RoundedRectangle shape with gradient and label capabilities.
  * 
  * @author mporhel
  */
@@ -33,6 +34,8 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
 
     private BackgroundStyle backgroundStyle;
 
+    private View view;
+
     /**
      * Create a new {@link GradientRoundedRectangle}.
      * 
@@ -40,9 +43,11 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
      *            dimension of the corner (with radius, height radius)
      * @param backgroundStyle
      *            style of the wanted gradient
-     * 
+     * @param view
+     *            the model view of the part showing the figure.
      */
-    public GradientRoundedRectangle(final Dimension dimension, final BackgroundStyle backgroundStyle) {
+    public GradientRoundedRectangle(final Dimension dimension, final BackgroundStyle backgroundStyle, View view) {
+        this.view = view;
         this.backgroundStyle = backgroundStyle;
         this.setCornerDimensions(new Dimension(MapModeUtil.getMapMode().DPtoLP(dimension.width), MapModeUtil.getMapMode().DPtoLP(dimension.height)));
         createBorder();
@@ -51,9 +56,29 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
 
     /**
      * Create a new {@link GradientRoundedRectangle}.
+     * 
+     * @param view
+     *            the model view of the part showing the figure.
      */
-    public GradientRoundedRectangle() {
-        this(new Dimension(8, 8), BackgroundStyle.GRADIENT_LEFT_TO_RIGHT_LITERAL);
+    public GradientRoundedRectangle(View view) {
+        this(new Dimension(8, 8), BackgroundStyle.GRADIENT_LEFT_TO_RIGHT_LITERAL, view);
+    }
+
+    @Override
+    public void paint(Graphics graphics) {
+
+        if (view != null) {
+            ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, view);
+            try {
+                super.paint(graphics);
+                graphics.restoreState();
+            } finally {
+                graphics.popState();
+            }
+        } else {
+            super.paint(graphics);
+        }
+
     }
 
     /**
@@ -71,6 +96,7 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
      * 
      * @see ViewGradientFigureDesc#getGradientColor()
      */
+    @Override
     public Color getGradientColor() {
         return this.gradientColor;
     }
@@ -79,7 +105,22 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
      * Create the content of the figure.
      */
     protected void createContents() {
-        fLabelFigure = new SiriusWrapLabel();
+        fLabelFigure = new SiriusWrapLabel() {
+            @Override
+            public void paint(Graphics graphics) {
+                if (view != null) {
+                    ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, view);
+                    try {
+                        super.paint(graphics);
+                        graphics.restoreState();
+                    } finally {
+                        graphics.popState();
+                    }
+                } else {
+                    super.paint(graphics);
+                }
+            }
+        };
         fLabelFigure.setText("  "); //$NON-NLS-1$
         fLabelFigure.setTextWrap(true);
         this.add(fLabelFigure);
@@ -98,6 +139,7 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
      * @see org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc#getLabelFigure()
      * @return the label figure.
      */
+    @Override
     public SiriusWrapLabel getLabelFigure() {
         return fLabelFigure;
     }
@@ -120,6 +162,7 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
      * 
      * @see ViewGradientFigureDesc#getBackgroundStyle()
      */
+    @Override
     public BackgroundStyle getBackgroundStyle() {
         return backgroundStyle;
     }
@@ -127,6 +170,7 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
     /**
      * {@inheritDoc}
      */
+    @Override
     public int getCornerHeight() {
         return this.getCornerDimensions().height;
     }
@@ -134,6 +178,7 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
     /**
      * {@inheritDoc}
      */
+    @Override
     public int getCornerWidth() {
         return this.getCornerDimensions().width;
     }

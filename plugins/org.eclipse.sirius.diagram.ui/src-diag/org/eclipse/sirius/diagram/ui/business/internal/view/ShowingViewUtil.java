@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
@@ -25,8 +26,14 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.GraphicalFilter;
+import org.eclipse.sirius.diagram.HideFilter;
+import org.eclipse.sirius.diagram.HideLabelFilter;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DEdgeSpec;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 
 /**
  * This utility class contains methods to handle {@link View} and to take in consideration the activation status of the
@@ -257,7 +264,16 @@ public final class ShowingViewUtil {
     public static void initGraphicsForVisibleAndInvisibleElements(IFigure figure, Graphics graphics, View correspondingView) {
         graphics.pushState();
         ViewQuery viewQuery = new ViewQuery(correspondingView);
-        if (figure.isVisible() != correspondingView.isVisible() && viewQuery.isInShowingMode()) {
+        if (figure instanceof SiriusWrapLabel) {
+            // labels do not have any view associated so we have to check the filters on the node view containing the
+            // label.
+            EList<GraphicalFilter> graphicalFilters = ((DDiagramElement) correspondingView.getElement()).getGraphicalFilters();
+            boolean isLabelFiltered = graphicalFilters.stream().anyMatch(HideLabelFilter.class::isInstance) || graphicalFilters.stream().anyMatch(HideFilter.class::isInstance)
+                    || (correspondingView instanceof Edge && !((DEdgeSpec) correspondingView.getElement()).isVisible());
+            if (isLabelFiltered && viewQuery.isInShowingMode()) {
+                graphics.setAlpha(50);
+            }
+        } else if (figure.isVisible() != correspondingView.isVisible() && viewQuery.isInShowingMode()) {
             graphics.setAlpha(50);
         }
     }

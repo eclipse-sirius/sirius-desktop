@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,20 +26,19 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaCla
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
- * Default implementation for
- * {@link org.eclipse.sirius.tools.internal.command.builders.CommandBuilder}.
+ * Default implementation for {@link org.eclipse.sirius.tools.internal.command.builders.CommandBuilder}.
  * 
  * @author mchauvin
  */
 public abstract class AbstractDiagramCommandBuilder extends org.eclipse.sirius.tools.internal.command.builders.AbstractCommandBuilder {
 
     /**
-     * Check the precondition of the specified tool with the specified container
-     * and diagram.
+     * Check the precondition of the specified tool with the specified container and diagram.
      * 
      * @param diagram
      *            the diagram container
@@ -52,8 +51,7 @@ public abstract class AbstractDiagramCommandBuilder extends org.eclipse.sirius.t
     }
 
     /**
-     * Check the precondition of the specified tool with the specified
-     * container.
+     * Check the precondition of the specified tool with the specified container.
      * 
      * @param diagramElement
      *            the diagram element container
@@ -106,8 +104,7 @@ public abstract class AbstractDiagramCommandBuilder extends org.eclipse.sirius.t
     }
 
     /**
-     * Add a refresh task to the diagram which contains the diagram element
-     * given as parameter.
+     * Add a refresh task to the diagram which contains the diagram element given as parameter.
      * 
      * @param diagramElement
      *            the diagram element.
@@ -150,13 +147,11 @@ public abstract class AbstractDiagramCommandBuilder extends org.eclipse.sirius.t
     }
 
     /**
-     * Indicates if the given element is contained in a {@link DDiagram} that is
-     * in Layouting mode.
+     * Indicates if the given element is contained in a {@link DDiagram} that is in Layouting mode.
      * 
      * @param element
      *            the {@link DDiagram} or any {@link DDiagramElement}
-     * @return true if the given element is contained in a {@link DDiagram} that
-     *         is in Layouting mode
+     * @return true if the given element is contained in a {@link DDiagram} that is in Layouting mode
      */
     public boolean isInLayoutingModeDiagram(EObject element) {
         // Step 1 : getting the DDiagram
@@ -178,8 +173,30 @@ public abstract class AbstractDiagramCommandBuilder extends org.eclipse.sirius.t
     }
 
     /**
-     * Check the precondition of the specified tool with the specified
-     * container.
+     * Indicates if the given element is contained in a {@link DDiagram} that is in showing mode.
+     * 
+     * @param element
+     *            the {@link DDiagram} or any {@link DDiagramElement}
+     * @return true if the given element is contained in a {@link DDiagram} that is in showing mode
+     */
+    public boolean isInShowingModeDiagram(DRepresentationElement element) {
+        DDiagram ddiagram = null;
+
+        if (element instanceof DDiagram) {
+            ddiagram = (DDiagram) element;
+        } else {
+            if (element instanceof DDiagramElement) {
+                ddiagram = ((DDiagramElement) element).getParentDiagram();
+            }
+        }
+        if (ddiagram != null) {
+            return ddiagram.isIsInShowingMode();
+        }
+        return false;
+    }
+
+    /**
+     * Check the precondition of the specified tool with the specified container.
      * 
      * @param container
      *            the container variable.

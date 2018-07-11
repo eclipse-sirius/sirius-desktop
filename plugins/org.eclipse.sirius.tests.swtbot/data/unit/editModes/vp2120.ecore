@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="rootPackage">
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 2" eSuperTypes="#//new%20Package%201/new%20EClass%203">
+    <eOperations name="new Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="new Attribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass"/>
+  <eSubpackages name="new Package 1">
+    <eClassifiers xsi:type="ecore:EClass" name="new EClass 3">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eRef" eType="#//new%20EPackage%202/new%20EClass%204"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="eAtt1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EClass7"/>
+    <eSubpackages name="EPackage4" nsURI="EPackage4" nsPrefix="EPackage4"/>
+  </eSubpackages>
+  <eSubpackages name="new EPackage 2">
+    <eClassifiers xsi:type="ecore:EClass" name="new EClass 4">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="eAtt2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="new EPackage 3">
+    <eClassifiers xsi:type="ecore:EClass" name="new EClass 5">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eRef2" eType="#//new%20EPackage%202/new%20EClass%204"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="eAtt3" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

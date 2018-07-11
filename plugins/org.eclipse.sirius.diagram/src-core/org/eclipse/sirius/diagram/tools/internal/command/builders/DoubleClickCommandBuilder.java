@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,11 +83,9 @@ public class DoubleClickCommandBuilder extends AbstractDiagramCommandBuilder {
     }
 
     private boolean canDoubleClick() {
-        // Layouting mode on diagrams
-        // if the dDiagram is in layoutMode
-        // We disable this double click, unless the tool is only containing
-        // Navigation descriptions
-        boolean valid = !(isInLayoutingModeDiagram(dDiagramElement) && !(tool.getInitialOperation().getFirstModelOperations() instanceof Navigation));
+        // if the dDiagram is in layoutMode or show/hide mode, we disable this double click, unless the tool is only
+        // containing Navigation descriptions
+        boolean valid = !((isInLayoutingModeDiagram(dDiagramElement) || !isInShowingModeDiagram(dDiagramElement)) && !(tool.getInitialOperation().getFirstModelOperations() instanceof Navigation));
         valid = valid && checkPrecondition(dDiagramElement, tool);
         return valid;
     }

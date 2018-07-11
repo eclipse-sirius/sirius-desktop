@@ -73,7 +73,7 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
 
     public void setLabel(SiriusWrapLabel figure) {
         if (figure instanceof SiriusWrapLabelWithAttachmentWithModel) {
-            ((SiriusWrapLabelWithAttachmentWithModel) figure).setModel((View) getModel());
+            ((SiriusWrapLabelWithAttachmentWithModel) figure).setModel((View) getParent().getModel());
         }
         unregisterVisuals();
         setFigure(figure);

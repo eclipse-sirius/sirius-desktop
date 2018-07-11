@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -135,7 +135,7 @@ public interface DiagramImagesPath {
     String LAYOUTING_MODE_ACTIVE_ICON = "icons/layoutingMode_activate.png"; //$NON-NLS-1$
 
     /** Showing mode icon. */
-    String SHOWING_MODE_ACTIVE_ICON = "icons/showingMode_activate.gif"; //$NON-NLS-1$
+    String SHOWING_MODE_ACTIVE_ICON = "icons/showingMode_activate.png"; //$NON-NLS-1$
 
     /** path of the image displayed thanks to this decorator. */
     String HAS_DIAG_IMG = "icons/HasLink.gif"; //$NON-NLS-1$
@@ -226,4 +226,9 @@ public interface DiagramImagesPath {
      * Path of the action's image to straighten to top.
      */
     String STRAIGHTEN_WITH_TOP_PINNED = "icons/straightenWithTopPinned.png"; //$NON-NLS-1$
+
+    /**
+     * Path of the action's image to straighten to top.
+     */
+    String DEFAULT_MODE = "icons/defaultMode.png"; //$NON-NLS-1$
 }

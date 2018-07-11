@@ -681,10 +681,7 @@ public final class Messages {
     public static String LayoutDataHelperImpl_unkownLayoutData;
 
     @TranslatableMessage
-    public static String LayoutingModeSwitchingAction_activate;
-
-    @TranslatableMessage
-    public static String LayoutingModeSwitchingAction_deactivate;
+    public static String LayoutingModeSwitchingAction_label;
 
     @TranslatableMessage
     public static String LocationURI_ParsePb_Blank;
@@ -705,10 +702,7 @@ public final class Messages {
     public static String LocationURI_ParsePb_WrongScheme;
 
     @TranslatableMessage
-    public static String ShowingModeSwitchingAction_activate;
-
-    @TranslatableMessage
-    public static String ShowingModeSwitchingAction_deactivate;
+    public static String ShowingModeSwitchingAction_label;
 
     @TranslatableMessage
     public static String ShowingModeSwitchingAction_statusOn;
@@ -1542,16 +1536,22 @@ public final class Messages {
     public static String LayoutAlgorithmProviderRegistry_classInitialization;
 
     @TranslatableMessage
-    public static String DoubleClickEditPolicy_filterConfirmDialogTitle;
-
-    @TranslatableMessage
     public static String DoubleClickEditPolicy_filterConfirmDialogBody;
 
     @TranslatableMessage
     public static String DoubleClickEditPolicy_layerConfirmDialogBody;
 
     @TranslatableMessage
-    public static String DoubleClickEditPolicy_layerConfirmDialogTitle;
+    public static String DoubleClickEditPolicy_confirmDialogTitle;
+
+    @TranslatableMessage
+    public static String DefaultModeAction_statusOn;
+
+    @TranslatableMessage
+    public static String DefaultModeAction_Label;
+
+    @TranslatableMessage
+    public static String DoubleClickEditPolicy_confirmDialogAsking;
 
     // CHECKSTYLE:ON
 

@@ -99,7 +99,7 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
 
     @Override
     public void deactivate() {
-        deactivateLayoutingMode();
+        deactivateModes();
         super.deactivate();
     }
 
@@ -117,9 +117,9 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
     }
 
     /**
-     * Deactivates the Layouting Mode of the {@link DDiagram} (if needed).
+     * Deactivates the Layouting and show/hide Modes of the {@link DDiagram} (if needed).
      */
-    private void deactivateLayoutingMode() {
+    private void deactivateModes() {
         if (getModel() instanceof Diagram) {
             Diagram diagramGMF = (Diagram) getModel();
             try {
@@ -129,12 +129,59 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
                     if (dDiagram.isIsInLayoutingMode()) {
                         getEditingDomain().getCommandStack().execute(new SetLayoutingModeCommand(getEditingDomain(), dDiagram, false));
                     }
+                    if (dDiagram.isIsInShowingMode()) {
+                        String commandLabel = dDiagram.isIsInShowingMode() ? Messages.SetShowingModeCommandAndUpdateActionImage_deactivateLabel
+                                : Messages.SetShowingModeCommandAndUpdateActionImage_activateLabel;
+
+                        getEditingDomain().getCommandStack().execute(new SetShowingModeCommand(getEditingDomain(), dDiagram, commandLabel, false));
+                    }
                 }
             } catch (IllegalStateException e) {
                 // If the DDiagram associated to this GMF Diagram is not
                 // accessible any more, we do not modify layouting mode
             }
         }
+    }
+
+    /**
+     * A command that changes the show/hide activation status of the given {@link DDiagram}.
+     *
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    public static class SetShowingModeCommand extends SiriusCommand {
+
+        /**
+         * The {@link DDiagram} on witch the layouting mode should be switched.
+         */
+        private DDiagram diagram;
+
+        /**
+         * Indicates whether the Layouting Mode should be enabled.
+         */
+        private boolean showingModeShouldBeEnabled;
+
+        /**
+         * Constructor.
+         *
+         * @param editingDomain
+         *            the editing domain
+         * @param diagram
+         *            the {@link DDiagram} on witch the layouting mode should be switched
+         * @param showingModeShouldBeEnabled
+         *            indicates whether the show/hide mode should be enabled or disabled
+         */
+        public SetShowingModeCommand(TransactionalEditingDomain editingDomain, DDiagram diagram, String label, boolean showingModeShouldBeEnabled) {
+            super(editingDomain, label);
+            this.diagram = diagram;
+            this.showingModeShouldBeEnabled = showingModeShouldBeEnabled;
+        }
+
+        @Override
+        protected void doExecute() {
+            this.diagram.setIsInShowingMode(showingModeShouldBeEnabled);
+        }
+
     }
 
     /**

@@ -23,6 +23,7 @@ import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor;
@@ -555,11 +556,25 @@ public class TabbarContributionFactory {
             final DDiagramEditor editor = (DDiagramEditor) part;
             DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
             if (LayoutingModeSwitchingAction.diagramAllowsLayoutingMode(editorDiagram)) {
-                LayoutingModeSwitchingAction layoutingModeSwitchingAction = new LayoutingModeSwitchingAction(site.getPage(), editorDiagram);
+                LayoutingModeSwitchingAction layoutingModeSwitchingAction = new LayoutingModeSwitchingAction(part, editorDiagram);
                 return new TabbarActionContributionItem(layoutingModeSwitchingAction);
             }
         }
         return null;
+    }
+
+    /**
+     * Creates the {@link ModesMenuManager} allowing to choose a diagram editor edit mode.
+     * 
+     * @param editorDiagram
+     *            the diagram from which the menu is made available.
+     * @return the {@link ModesMenuManager}.
+     */
+    public IContributionItem createModesMenuManager(DDiagram editorDiagram) {
+        ModesMenuManager modesMenu = null;
+        modesMenu = new ModesMenuManager(EclipseUIUtil.getActivePage(), editorDiagram);
+        modesMenu.setVisible(true);
+        return modesMenu;
     }
 
     /**
@@ -577,7 +592,7 @@ public class TabbarContributionFactory {
         if (site != null && part instanceof DDiagramEditor) {
             final DDiagramEditor editor = (DDiagramEditor) part;
             DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
-            ShowingModeSwitchingAction showingModeSwitchingAction = new ShowingModeSwitchingAction(site.getPage(), editorDiagram);
+            ShowingModeSwitchingAction showingModeSwitchingAction = new ShowingModeSwitchingAction(part, editorDiagram);
             TabbarActionContributionItem tabbarActionContributionItem = new TabbarActionContributionItem(showingModeSwitchingAction);
 
             return tabbarActionContributionItem;

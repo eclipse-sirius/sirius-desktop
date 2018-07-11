@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,11 @@ package org.eclipse.sirius.diagram.ui.tools.internal.figure;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.FlowLayout;
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 
 /**
@@ -22,12 +25,33 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
  * @author pcdavid
  */
 public class ViewNodeFigure extends RectangleFigure {
-    private final SiriusWrapLabel nodeLabel = new SiriusWrapLabel();
+    private final SiriusWrapLabel nodeLabel = new SiriusWrapLabel() {
+        @Override
+        public void paint(Graphics graphics) {
+            if (view != null) {
+                ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, view);
+                try {
+                    super.paint(graphics);
+                    graphics.restoreState();
+                } finally {
+                    graphics.popState();
+                }
+            } else {
+                super.paint(graphics);
+            }
+        }
+    };
+
+    private View view;
 
     /**
      * Create a new figure.
+     * 
+     * @param view
+     *            the model view of the part showing the figure.
      */
-    public ViewNodeFigure() {
+    public ViewNodeFigure(View view) {
+        this.view = view;
         final FlowLayout layoutThis = new FlowLayout();
         layoutThis.setStretchMinorAxis(false);
         layoutThis.setMinorAlignment(FlowLayout.ALIGN_TOPLEFT);
@@ -48,6 +72,21 @@ public class ViewNodeFigure extends RectangleFigure {
         nodeLabel.setTextWrapAlignment(PositionConstants.CENTER);
         nodeLabel.setLabelAlignment(PositionConstants.CENTER);
         nodeLabel.setForegroundColor(ColorConstants.black);
+    }
+
+    @Override
+    public void paint(Graphics graphics) {
+        if (view != null) {
+            ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, view);
+            try {
+                super.paint(graphics);
+                graphics.restoreState();
+            } finally {
+                graphics.popState();
+            }
+        } else {
+            super.paint(graphics);
+        }
     }
 
     /**

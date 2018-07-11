@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -447,18 +447,19 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             final DDiagramElementContainer container = (DDiagramElementContainer) diagramElement;
             ContainerStyle ownedStyle = container.getOwnedStyle();
             if (ownedStyle instanceof ShapeContainerStyle) {
-                shapeFigure = new ViewNodeContainerParallelogram();
+                shapeFigure = new ViewNodeContainerParallelogram((View) getModel());
             } else if (ownedStyle instanceof WorkspaceImage) {
-                shapeFigure = new ViewNodeContainerRectangleFigureDesc();
+                shapeFigure = new ViewNodeContainerRectangleFigureDesc((View) getModel());
             }
         } else {
             deactivate();
         }
         if (shapeFigure == null) {
             if (isRegion()) {
-                shapeFigure = new RegionRoundedGradientRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
+                shapeFigure = new RegionRoundedGradientRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this),
+                        (View) getModel());
             } else {
-                shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
+                shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this), (View) getModel());
             }
         }
 

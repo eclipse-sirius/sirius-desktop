@@ -20,6 +20,7 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.TabbarContributionFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution;
@@ -31,8 +32,6 @@ import org.eclipse.ui.IWorkbenchPage;
  * @author mchauvin
  */
 public class TabbarFillerWithContributions extends AbstractTabbarFiller {
-
-    private static final String SHOWING_MODE_SYSTEM_PROPERTY = "org.eclipse.sirius.ui.activateShowingMode"; //$NON-NLS-1$
 
     private static final String ARRANGE_SELECTION = "org.eclipse.sirius.diagram.ui.tabbar.arrangeselection"; //$NON-NLS-1$
 
@@ -55,6 +54,8 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
     private static final String STYLE = "org.eclipse.sirius.diagram.ui.tabbar.style"; //$NON-NLS-1$
 
     private static final String SIZE = "org.eclipse.sirius.diagram.ui.tabbar.size"; //$NON-NLS-1$
+
+    private static final String MODES = "org.eclipse.sirius.diagram.ui.tabbar.modes"; //$NON-NLS-1$
 
     private List<IContributionItem> dynamicContributions = new ArrayList<IContributionItem>();
 
@@ -150,6 +151,7 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
         initSeparator(REFRESH);
         initSeparator(LAYER_FILTER);
         initSeparator(HIDE_PIN);
+        initSeparator(MODES);
         initSeparator(PAST);
         initSeparator(HIDE_DELETE);
         initSeparator(ZOOM);
@@ -180,6 +182,7 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
 
         addContributionItem(diagramContributionItems, HIDE_PIN, contributionFactory.createSelectPinnedElementsContribution(part));
         addContributionItem(diagramContributionItems, HIDE_PIN, contributionFactory.createSelectHiddenElementsContribution(part));
+        addContributionItem(diagramContributionItems, MODES, contributionFactory.createModesMenuManager((DDiagram) part.getDiagram().getElement()));
 
         addContributionItem(diagramContributionItems, PAST, contributionFactory.createPasteFormatContribution(part));
 
@@ -187,10 +190,6 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
         addContributionItem(diagramContributionItems, ZOOM, contributionFactory.createZoomOutContribution(part));
         addContributionItem(diagramContributionItems, ZOOM, contributionFactory.createZoomInContribution(part));
 
-        if (Boolean.getBoolean(SHOWING_MODE_SYSTEM_PROPERTY)) {
-            addContributionItem(diagramContributionItems, EXPORT, contributionFactory.createShowingModeContributionItem(part, manager));
-        }
-        addContributionItem(diagramContributionItems, EXPORT, contributionFactory.createLayoutingModeContributionItem(part));
         addContributionItem(diagramContributionItems, EXPORT, contributionFactory.createSaveAsImageContributionItem());
     }
 
@@ -210,7 +209,7 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
         IContributionItem pinElementContributionItem = contributionFactory.createPinElementContribution(part);
         addContributionItem(diagramElementContributionItems, HIDE_PIN, contributionFactory.createUnPinElementContribution(part, pinElementContributionItem));
         addContributionItem(diagramElementContributionItems, HIDE_PIN, pinElementContributionItem);
-
+        addContributionItem(diagramElementContributionItems, MODES, contributionFactory.createModesMenuManager((DDiagram) part.getDiagram().getElement()));
         addContributionItem(diagramElementContributionItems, PAST, contributionFactory.createCopyFormatContribution(part));
 
         addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createDeleteFromModelContribution(part));
