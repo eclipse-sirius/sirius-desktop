@@ -77,9 +77,6 @@ public class SiriusServerFilter implements Filter {
                 response.setContentType(httpServiceResponse.getContentType());
                 response.setCharacterEncoding(UTF_8);
                 response.getWriter().write(jsonPayload);
-            } else {
-                response.setStatus(500);
-                response.getWriter().write("Something went wrong..."); //$NON-NLS-1$
             }
         }
     }

@@ -12,9 +12,15 @@ package org.eclipse.sirius.server.internal;
 
 import java.io.File;
 import java.util.EnumSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.DispatcherType;
+import javax.servlet.ServletException;
 import javax.servlet.SessionCookieConfig;
+import javax.websocket.DeploymentException;
+import javax.websocket.server.ServerContainer;
+import javax.websocket.server.ServerEndpointConfig;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -31,7 +37,9 @@ import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
+import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import org.eclipse.sirius.server.api.ISiriusServerConfigurator;
+import org.eclipse.sirius.server.api.ISiriusServerEndpointConfigurationProvider;
 
 /**
  * The entry point of the back-end used to configure the Sirius server.
@@ -116,9 +124,14 @@ public class SiriusServerConfigurator implements ISiriusServerConfigurator {
     private static final int DEFAULT_HTTPS_PORT = 0;
 
     /**
-     * The context path of the Sirius back-end.
+     * The context path of the Sirius HTTP API.
      */
-    private static final String CONTEXT_PATH = "/api"; //$NON-NLS-1$
+    private static final String HTTP_API_CONTEXT_PATH = "/api"; //$NON-NLS-1$
+
+    /**
+     * The context path of the Sirius WS API.
+     */
+    private static final String WS_API_CONTEXT_PATH = "/ws"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -138,10 +151,10 @@ public class SiriusServerConfigurator implements ISiriusServerConfigurator {
         }
         server.addConnector(connector);
 
-        ServletContextHandler servletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS | ServletContextHandler.GZIP);
-        servletContextHandler.setContextPath(CONTEXT_PATH);
-        servletContextHandler.setErrorHandler(new SiriusServerErrorHandler());
-        SessionCookieConfig sessionCookieConfig = servletContextHandler.getServletContext().getSessionCookieConfig();
+        ServletContextHandler httpAPIServletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS | ServletContextHandler.GZIP);
+        httpAPIServletContextHandler.setContextPath(HTTP_API_CONTEXT_PATH);
+        httpAPIServletContextHandler.setErrorHandler(new SiriusServerErrorHandler());
+        SessionCookieConfig sessionCookieConfig = httpAPIServletContextHandler.getServletContext().getSessionCookieConfig();
         sessionCookieConfig.setHttpOnly(true);
 
         boolean allowCors = Boolean.parseBoolean(System.getProperty(ALLOW_CORS));
@@ -160,15 +173,33 @@ public class SiriusServerConfigurator implements ISiriusServerConfigurator {
                 cors.setInitParameter(CrossOriginFilter.ALLOWED_METHODS_PARAM, allowedMethods);
             }
             cors.setFilter(new CrossOriginFilter());
-            servletContextHandler.addFilter(cors, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.INCLUDE)); //$NON-NLS-1$
+            httpAPIServletContextHandler.addFilter(cors, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.INCLUDE)); //$NON-NLS-1$
         }
 
-        servletContextHandler.addFilter(SiriusServerFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.INCLUDE)); //$NON-NLS-1$
+        httpAPIServletContextHandler.addFilter(SiriusServerFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.INCLUDE)); //$NON-NLS-1$
+
+        ServletContextHandler wsAPIServletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS | ServletContextHandler.GZIP);
+        wsAPIServletContextHandler.setContextPath(WS_API_CONTEXT_PATH);
 
         Handler handler = server.getHandler();
         if (handler instanceof HandlerCollection) {
             HandlerCollection handlerCollection = (HandlerCollection) handler;
-            handlerCollection.addHandler(servletContextHandler);
+            handlerCollection.addHandler(httpAPIServletContextHandler);
+            handlerCollection.addHandler(wsAPIServletContextHandler);
+        }
+
+        try {
+            ServerContainer container = WebSocketServerContainerInitializer.configureContext(wsAPIServletContextHandler);
+            container.setDefaultMaxSessionIdleTimeout(0);
+
+            List<ISiriusServerEndpointConfigurationProvider> providers = SiriusServerPlugin.getPlugin().getEndpointConfigurationProviders();
+            List<ServerEndpointConfig> endpointConfigurations = providers.stream().map(ISiriusServerEndpointConfigurationProvider::getEndpointConfiguration).collect(Collectors.toList());
+            for (ServerEndpointConfig endpointConfiguration : endpointConfigurations) {
+                container.addEndpoint(endpointConfiguration);
+            }
+        } catch (DeploymentException | ServletException e) {
+            IStatus status = new Status(IStatus.ERROR, SiriusServerPlugin.PLUGIN_ID, e.getMessage(), e);
+            SiriusServerPlugin.INSTANCE.log(status);
         }
     }
 

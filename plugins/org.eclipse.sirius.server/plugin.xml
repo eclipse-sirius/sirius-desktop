@@ -3,4 +3,5 @@
 <plugin>
    <extension-point id="siriusServerConfigurator" name="%SiriusServerConfigurator_name" schema="schema/siriusServerConfigurator.exsd"/>
    <extension-point id="siriusServerService" name="%SiriusServerService_name" schema="schema/siriusServerService.exsd"/>
+   <extension-point id="siriusServerEndpointConfigurationProvider" name="%SiriusServerEndpointConfigurationProvider_name" schema="schema/siriusServerEndpointConfigurationProvider.exsd"/>
 </plugin>

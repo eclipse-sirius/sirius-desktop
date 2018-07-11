@@ -24,6 +24,7 @@ import org.eclipse.sirius.ext.ide.api.IItemDescriptor;
 import org.eclipse.sirius.ext.ide.api.IItemRegistry;
 import org.eclipse.sirius.ext.ide.api.ItemRegistry;
 import org.eclipse.sirius.server.api.ISiriusServerConfigurator;
+import org.eclipse.sirius.server.api.ISiriusServerEndpointConfigurationProvider;
 import org.eclipse.sirius.server.api.ISiriusServerService;
 import org.osgi.framework.BundleContext;
 
@@ -87,24 +88,42 @@ public class SiriusServerPlugin extends EMFPlugin {
         private static final String SIRIUS_SERVER_SERVICE = "siriusServerService"; //$NON-NLS-1$
 
         /**
+         * The name of the sirius server endpoint configuration provider
+         * extension point.
+         */
+        private static final String SIRIUS_SERVER_ENDPOINT_CONFIGURATION_PROVIDER = "siriusServerEndpointConfigurationProvider"; //$NON-NLS-1$
+
+        /**
          * The {@link IItemRegistry} used to retrieve the configurators.
          */
-        private IItemRegistry<ISiriusServerConfigurator> siriusServerConfiguratorRegistry;
+        private IItemRegistry<ISiriusServerConfigurator> configuratorRegistry;
 
         /**
          * The extension registry listener for the configurator.
          */
-        private AbstractRegistryEventListener siriusServerConfiguratorListener;
+        private AbstractRegistryEventListener configuratorListener;
 
         /**
          * The {@link IItemRegistry} used to retrieve the services.
          */
-        private IItemRegistry<ISiriusServerService> siriusServerServiceRegistry;
+        private IItemRegistry<ISiriusServerService> serviceRegistry;
 
         /**
          * The extension registry listener for the service.
          */
-        private AbstractRegistryEventListener siriusServerServiceListener;
+        private AbstractRegistryEventListener serviceListener;
+
+        /**
+         * The {@link IItemRegistry} used to retrieve the endpoint configuration
+         * providers.
+         */
+        private IItemRegistry<ISiriusServerEndpointConfigurationProvider> endpointConfigurationProviderRegistry;
+
+        /**
+         * The extension registry listener for the endpoint configuration
+         * providers.
+         */
+        private AbstractRegistryEventListener endpointConfigurationProviderListener;
 
         /**
          * The server manager.
@@ -130,17 +149,23 @@ public class SiriusServerPlugin extends EMFPlugin {
 
             IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
 
-            // Handle sirius server configurator extension point
-            this.siriusServerConfiguratorRegistry = new ItemRegistry<>();
-            this.siriusServerConfiguratorListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, SIRIUS_SERVER_CONFIGURATOR, this.siriusServerConfiguratorRegistry);
-            extensionRegistry.addListener(this.siriusServerConfiguratorListener, PLUGIN_ID + '.' + SIRIUS_SERVER_CONFIGURATOR);
-            this.siriusServerConfiguratorListener.readRegistry(extensionRegistry);
+            // Sirius server configurator extension point
+            this.configuratorRegistry = new ItemRegistry<>();
+            this.configuratorListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, SIRIUS_SERVER_CONFIGURATOR, this.configuratorRegistry);
+            extensionRegistry.addListener(this.configuratorListener, PLUGIN_ID + '.' + SIRIUS_SERVER_CONFIGURATOR);
+            this.configuratorListener.readRegistry(extensionRegistry);
 
-            // Handle sirius server service extension point
-            this.siriusServerServiceRegistry = new ItemRegistry<>();
-            this.siriusServerServiceListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, SIRIUS_SERVER_SERVICE, this.siriusServerServiceRegistry);
-            extensionRegistry.addListener(this.siriusServerServiceListener, PLUGIN_ID + '.' + SIRIUS_SERVER_SERVICE);
-            this.siriusServerServiceListener.readRegistry(extensionRegistry);
+            // Sirius server service extension point
+            this.serviceRegistry = new ItemRegistry<>();
+            this.serviceListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, SIRIUS_SERVER_SERVICE, this.serviceRegistry);
+            extensionRegistry.addListener(this.serviceListener, PLUGIN_ID + '.' + SIRIUS_SERVER_SERVICE);
+            this.serviceListener.readRegistry(extensionRegistry);
+
+            // Sirius server endpoint configuration provider extension point
+            this.endpointConfigurationProviderRegistry = new ItemRegistry<>();
+            this.endpointConfigurationProviderListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, SIRIUS_SERVER_ENDPOINT_CONFIGURATION_PROVIDER, this.endpointConfigurationProviderRegistry);
+            extensionRegistry.addListener(this.endpointConfigurationProviderListener, PLUGIN_ID + '.' + SIRIUS_SERVER_ENDPOINT_CONFIGURATION_PROVIDER);
+            this.endpointConfigurationProviderListener.readRegistry(extensionRegistry);
 
             this.serverManager.start();
         }
@@ -155,13 +180,16 @@ public class SiriusServerPlugin extends EMFPlugin {
             this.serverManager.stop();
 
             IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-            extensionRegistry.removeListener(this.siriusServerConfiguratorListener);
-            extensionRegistry.removeListener(this.siriusServerServiceListener);
+            extensionRegistry.removeListener(this.configuratorListener);
+            extensionRegistry.removeListener(this.serviceListener);
+            extensionRegistry.removeListener(this.endpointConfigurationProviderListener);
 
-            this.siriusServerServiceListener = null;
-            this.siriusServerServiceRegistry = null;
-            this.siriusServerConfiguratorListener = null;
-            this.siriusServerConfiguratorRegistry = null;
+            this.serviceListener = null;
+            this.serviceRegistry = null;
+            this.configuratorListener = null;
+            this.configuratorRegistry = null;
+            this.endpointConfigurationProviderListener = null;
+            this.endpointConfigurationProviderRegistry = null;
 
             super.stop(context);
         }
@@ -173,7 +201,7 @@ public class SiriusServerPlugin extends EMFPlugin {
          */
         public List<ISiriusServerConfigurator> getSiriusServerConfigurators() {
             // @formatter:off
-			return this.siriusServerConfiguratorRegistry.getItemDescriptors().stream()
+			return this.configuratorRegistry.getItemDescriptors().stream()
 					.map(IItemDescriptor::getItem)
 					.collect(Collectors.toList());
 			// @formatter:on
@@ -186,10 +214,23 @@ public class SiriusServerPlugin extends EMFPlugin {
          */
         public List<ISiriusServerService> getSiriusServerServices() {
             // @formatter:off
-            return this.siriusServerServiceRegistry.getItemDescriptors().stream()
+            return this.serviceRegistry.getItemDescriptors().stream()
                     .map(IItemDescriptor::getItem)
                     .collect(Collectors.toList());
+            // @formatter:off
+        }
+
+        /**
+         * Returns the list of the {@link ISiriusServerEndpointConfigurationProvider}.
+         *
+         * @return The list of the {@link ISiriusServerEndpointConfigurationProvider}
+         */
+        public List<ISiriusServerEndpointConfigurationProvider> getEndpointConfigurationProviders() {
          // @formatter:off
+            return this.endpointConfigurationProviderRegistry.getItemDescriptors().stream()
+                    .map(IItemDescriptor::getItem)
+                    .collect(Collectors.toList());
+            // @formatter:off
         }
 
         /**
