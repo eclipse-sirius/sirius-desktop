@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,8 +20,7 @@ package org.eclipse.sirius.common.tools.api.constant;
 public interface CommonPreferencesConstants {
 
     /**
-     * Says if the file edit validation should be done as soon as a command is
-     * executed or not.
+     * Says if the file edit validation should be done as soon as a command is executed or not.
      */
     String PREF_DEFENSIVE_EDIT_VALIDATION = "DEFENSIVE_VALIDATE_EDIT"; //$NON-NLS-1$
 
@@ -36,8 +35,7 @@ public interface CommonPreferencesConstants {
     String PREF_GROUP_ENABLE = "GROUP_ENABLE"; //$NON-NLS-1$
 
     /**
-     * Says if the grouping strategy uses the containing feature instead of the
-     * basic hierarchy.
+     * Says if the grouping strategy uses the containing feature instead of the basic hierarchy.
      */
     String PREF_GROUP_BY_CONTAINING_FEATURE = "GROUP_BY_CONTAINING_FEATURE"; //$NON-NLS-1$
 
@@ -50,5 +48,10 @@ public interface CommonPreferencesConstants {
      * Defines the size of elements contained in a group.
      */
     String PREF_GROUP_SIZE = "GROUP_SIZE"; //$NON-NLS-1$
+
+    /**
+     * Ask user if he want to save migrated resources.
+     */
+    String PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION = "ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION"; //$NON-NLS-1$
 
 }

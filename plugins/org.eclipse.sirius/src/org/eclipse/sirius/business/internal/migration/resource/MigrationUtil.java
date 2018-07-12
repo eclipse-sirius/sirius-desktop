@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,8 +48,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 public final class MigrationUtil {
 
     /**
-     * Temporary variable to indicate that we want ignore version mismatch at
-     * session opening, waiting for Bug 456326.
+     * Temporary variable to indicate that we want ignore version mismatch at session opening, waiting for Bug 456326.
      * 
      * @provisional
      */
@@ -291,8 +290,7 @@ public final class MigrationUtil {
          *            the feature owner
          * @param entry
          *            the current FeatureMap.Entry of unknown feature to handle
-         * @return true if the unknown feature represented by entry must be
-         *         deleted in the resource
+         * @return true if the unknown feature represented by entry must be deleted in the resource
          */
         protected abstract boolean handleFeature(EObject owner, FeatureMap.Entry entry);
     }

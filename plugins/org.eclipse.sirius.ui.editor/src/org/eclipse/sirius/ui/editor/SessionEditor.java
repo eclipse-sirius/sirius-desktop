@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo.
+ * Copyright (c) 2017, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -368,7 +368,7 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                     public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                         SubMonitor subMonitor = SubMonitor.convert(monitor, 1);
                         subMonitor.beginTask(MessageFormat.format(Messages.UI_SessionEditor_session_loading_task_title, new Object[0]), 1);
-                        session = SessionManager.INSTANCE.openSession(sessionResourceURIFinal, subMonitor, SiriusEditPlugin.getPlugin().getUiCallback());
+                        session = SessionManager.INSTANCE.openSession(sessionResourceURIFinal, subMonitor, SiriusEditPlugin.getPlugin().getUiCallback(), true);
                         session.addListener(SessionEditor.this);
 
                         final IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);

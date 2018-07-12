@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -143,7 +143,9 @@ public interface SessionManager {
 
     /**
      * Try to open a session. If the session is already opened, it returns the opened session. If there is a version
-     * mismatch, the user may be asked if he wants to open the session anyway.
+     * mismatch, the user may be asked if he wants to open the session anyway. Call the method
+     * openSession(sessionResourceURI, monitor, uiCallback, isDirectUserActionLoading) with the value false for
+     * isDirectUserActionLoading.
      * 
      * @param sessionResourceURI
      *            a session Resource {@link URI}
@@ -155,5 +157,24 @@ public interface SessionManager {
      * @return the opened session
      */
     Session openSession(URI sessionResourceURI, IProgressMonitor monitor, UICallBack uiCallback);
+
+    /**
+     * Try to open a session. If the session is already opened, it returns the opened session. If there is a version
+     * mismatch, the user may be asked if he wants to open the session anyway.
+     * 
+     * @param sessionResourceURI
+     *            a session Resource {@link URI}
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of Session getting, especially if there is a resource
+     *            loading
+     * @param uiCallback
+     *            used to let the user choose if he wants to open the session anyway in case of version mismatch
+     * @param isDirectUserActionLoading
+     *            <code>true</code> if the session opening comes from a direct user action (open diagram, unfold model
+     *            explorer, etc.), <code>false</code> otherwise
+     * @return the opened session
+     * @since 6.1.0
+     */
+    Session openSession(URI sessionResourceURI, IProgressMonitor monitor, UICallBack uiCallback, boolean isDirectUserActionLoading);
 
 }

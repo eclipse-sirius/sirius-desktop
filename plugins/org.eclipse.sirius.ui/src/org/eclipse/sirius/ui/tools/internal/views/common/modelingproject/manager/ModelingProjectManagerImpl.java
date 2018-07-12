@@ -189,12 +189,12 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         // Launch the silently job to open the representations files
         for (URI representationsFilesURI : tempRepresentationsFilesURIs) {
             if (alreadyInUserWorkspaceModifyOperation) {
-                WorkspaceJob job = new OpenRepresentationsFileJob(representationsFilesURI);
+                WorkspaceJob job = new OpenRepresentationsFileJob(representationsFilesURI, true);
                 job.setUser(user);
                 job.setPriority(Job.SHORT);
                 job.runInWorkspace(new NullProgressMonitor());
             } else {
-                OpenRepresentationsFileJob.scheduleNewWhenPossible(representationsFilesURI, user);
+                OpenRepresentationsFileJob.scheduleNewWhenPossible(representationsFilesURI, user, true);
             }
         }
     }

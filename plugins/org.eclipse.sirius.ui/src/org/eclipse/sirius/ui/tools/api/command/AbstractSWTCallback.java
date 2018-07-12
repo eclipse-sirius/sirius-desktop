@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -50,6 +51,7 @@ import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.selection.EMFMessageDialog;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.common.ui.tools.internal.util.MigrationUIUtil;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.resource.LoadEMFResourceRunnableWithProgress;
@@ -67,6 +69,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import com.google.common.collect.Iterables;
 
@@ -377,6 +380,27 @@ public abstract class AbstractSWTCallback implements UICallBack {
     @Override
     public boolean askSessionReopeningWithResourceVersionMismatch(AirdResourceVersionMismatchException e) {
         return false;
+    }
+
+    @Override
+    public void askUserAndSaveMigratedSession(Session session) {
+        if (MigrationUIUtil.shouldMigratedElementBeSaved(session)) {
+            PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                try {
+                    new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(false, false, new WorkspaceModifyOperation() {
+                        @Override
+                        protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
+                            session.save(monitor);
+                        }
+                    });
+                } catch (InvocationTargetException e) {
+                    SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
+                } catch (InterruptedException e) {
+                    SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
+                }
+            });
+
+        }
     }
 
 }

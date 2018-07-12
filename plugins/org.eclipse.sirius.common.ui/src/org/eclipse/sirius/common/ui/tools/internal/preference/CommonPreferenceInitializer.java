@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2008, 2009, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ public class CommonPreferenceInitializer extends AbstractPreferenceInitializer {
         preferenceStore.setDefault(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, false);
         preferenceStore.setDefault(CommonPreferencesConstants.PREF_GROUP_TRIGGER, 10000);
         preferenceStore.setDefault(CommonPreferencesConstants.PREF_GROUP_SIZE, 100);
+        preferenceStore.setDefault(CommonPreferencesConstants.PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION, false);
     }
 
     /**

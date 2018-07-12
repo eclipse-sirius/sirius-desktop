@@ -1007,6 +1007,12 @@ public final class Messages {
     public static String SiriusRepresentationWithInactiveStatusLabelProvider_viewpointItem_tooltip;
 
     @TranslatableMessage
+    public static String SiriusPreferencePage_migrationGroup;
+
+    @TranslatableMessage
+    public static String SiriusPreferencePage_askUserToSaveAfterMigration;
+
+    @TranslatableMessage
     public static String SiriusRepresentationWithInactiveStatusLabelProvider_representationDescriptionItem_tooltip;
 
     @TranslatableMessage

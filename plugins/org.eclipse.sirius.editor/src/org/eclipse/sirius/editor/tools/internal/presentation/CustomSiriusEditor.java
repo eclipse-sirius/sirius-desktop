@@ -61,11 +61,13 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
+import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMExtendedMetaData;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMResourceHandler;
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.eclipse.sirius.common.ui.tools.api.editor.IEObjectNavigable;
+import org.eclipse.sirius.common.ui.tools.internal.util.MigrationUIUtil;
 import org.eclipse.sirius.editor.Messages;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
@@ -421,6 +423,14 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             resource = editingDomain.getResourceSet().getResource(resourceURI, false);
         }
 
+        if (resource instanceof XMLResource) {
+            ((XMLResource) resource).getDefaultLoadOptions().put(AbstractSiriusMigrationService.OPTION_RESOURCE_NON_BATCH_MIGRATION, true);
+        }
+
+        if (MigrationUIUtil.shouldMigratedElementBeSaved(resource)) {
+            doSave(new NullProgressMonitor());
+        }
+
         Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
         if (diagnostic.getSeverity() != Diagnostic.OK) {
             resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
@@ -472,7 +482,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                 boolean first = true;
                 for (Resource resource : editingDomain.getResourceSet().getResources()) {
                     if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
-                        if (resource.isTrackingModification() && !resource.isModified()) {
+                        if (!MigrationUIUtil.hasBeenMigratedAndUserShouldBeWarned(resource) && resource.isTrackingModification() && !resource.isModified()) {
                             continue;
                         }
                         try {

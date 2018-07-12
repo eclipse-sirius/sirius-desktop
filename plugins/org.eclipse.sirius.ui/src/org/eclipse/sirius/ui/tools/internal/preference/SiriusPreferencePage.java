@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,6 +53,8 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
 
     private BooleanFieldEditor autoSessionEditorOpening;
 
+    private BooleanFieldEditor askUserToSaveAfterMigration;
+
     private IntegerFieldEditor groupTrigger;
 
     private IntegerFieldEditor groupSize;
@@ -72,6 +74,7 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
         addProfilingField(parent);
         addGroupTreeItemsField(parent);
         addSessionEditorFields(parent);
+        addMigrationFields(parent);
     }
 
     private void addFilesFields(Composite parent) {
@@ -90,9 +93,18 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
     private void addSessionEditorFields(Composite parent) {
         Composite refreshComposite = createGroup(parent, Messages.SiriusPreferencePage_sessionEditorGroup);
 
-        autoSessionEditorOpening = new BooleanFieldEditor(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_ON_SESSION_OPEN.name(),
-                Messages.SiriusPreferencePage_autoSessionEditorOpening, new Composite(refreshComposite, SWT.NONE));
+        autoSessionEditorOpening = new BooleanFieldEditor(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_ON_SESSION_OPEN.name(), Messages.SiriusPreferencePage_autoSessionEditorOpening,
+                new Composite(refreshComposite, SWT.NONE));
         addField(autoSessionEditorOpening);
+
+    }
+
+    private void addMigrationFields(Composite parent) {
+        Composite migrationComposite = createGroup(parent, Messages.SiriusPreferencePage_migrationGroup);
+
+        askUserToSaveAfterMigration = new BooleanFieldEditor(CommonPreferencesConstants.PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION, Messages.SiriusPreferencePage_askUserToSaveAfterMigration,
+                new Composite(migrationComposite, SWT.NONE));
+        addField(askUserToSaveAfterMigration);
 
     }
 
@@ -177,6 +189,9 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
 
         groupSize.setPreferenceStore(SiriusTransPlugin.getPlugin().getPreferenceStore());
         groupSize.load();
+
+        askUserToSaveAfterMigration.setPreferenceStore(SiriusTransPlugin.getPlugin().getPreferenceStore());
+        askUserToSaveAfterMigration.load();
     }
 
 }

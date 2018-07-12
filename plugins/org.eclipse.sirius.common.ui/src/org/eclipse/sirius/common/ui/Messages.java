@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,7 +54,7 @@ public final class Messages {
 
     @TranslatableMessage
     public static String EObjectSelectionWizard_title;
-    
+
     @TranslatableMessage
     public static String FolderSelectionDialog_title;
 
@@ -69,7 +69,7 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ModelElementChooserDialog_title;
-    
+
     @TranslatableMessage
     public static String NewFileDialog_message;
 
@@ -104,14 +104,17 @@ public final class Messages {
     public static String SWTUtil_askToSaveChanges;
 
     @TranslatableMessage
+    public static String MigrationUIUtil_askToSaveChanges;
+
+    @TranslatableMessage
     public static String SWTUtil_askToSaveChanges_openElseWhere;
 
     @TranslatableMessage
     public static String SWTUtil_saveDialog_title;
-    
+
     @TranslatableMessage
     public static String SelectFilesWizardPage_title;
-    
+
     @TranslatableMessage
     public static String SelectFilesWizardPage_notEnoughFiles;
 

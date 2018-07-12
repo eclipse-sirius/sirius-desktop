@@ -31,7 +31,16 @@ New users can skip this section safely. For users of previous version who have e
 
 h3(#Migration). Migration of Existing Representation Files
 
-Representation files are now automatically migrated when opened. This migration is transparent for the end-user. While a representation file is not saved, the automatic migration will be replayed at the next opening.
+By default, representation and design files are now automatically migrated when opened. This migration is transparent for the end-user. While a representation file is not saved, the automatic migration will be replayed at the next opening.
+
+You can activate a preference to be asked to save resources when a migration has been done. It is available in Sirius preferences page:
+
+  !images/migrationPreference.png!
+  
+When checked, a dialog asking you to save migrated resources is shown in the following situations if a migration was necessary:
+* When you open or expand a modeling project not yet loaded.
+* When you open the session by double clicking on the aird or VSM or by using the contextual menu _open_.
+* When you open your bundle whereas a Sirius editor was opened previously.
 
 h3(#UICHanges). User Interface Changes
 

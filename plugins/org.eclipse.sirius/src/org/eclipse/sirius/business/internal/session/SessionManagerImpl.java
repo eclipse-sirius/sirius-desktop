@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
 import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.query.URIQuery;
@@ -44,6 +45,7 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
+import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
 import org.eclipse.sirius.business.internal.migration.resource.MigrationUtil;
 import org.eclipse.sirius.business.internal.session.danalysis.SessionLazyCrossReferencer;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
@@ -379,6 +381,11 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     @Override
     public Session openSession(URI sessionResourceURI, IProgressMonitor monitor, UICallBack uiCallback) {
+        return openSession(sessionResourceURI, monitor, uiCallback, false);
+    }
+
+    @Override
+    public Session openSession(URI sessionResourceURI, IProgressMonitor monitor, UICallBack uiCallback, boolean isDirectUserActionLoading) {
         SubMonitor subMonitor = SubMonitor.convert(monitor, 100);
 
         Session session = this.getSession(sessionResourceURI, subMonitor.newChild(30));
@@ -400,6 +407,12 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
                 }
             }
         }
+        for (Resource resource : session.getAllSessionResources()) {
+            if (resource instanceof XMLResource) {
+                ((XMLResource) resource).getDefaultLoadOptions().put(AbstractSiriusMigrationService.OPTION_RESOURCE_NON_BATCH_MIGRATION, isDirectUserActionLoading);
+            }
+        }
+        uiCallback.askUserAndSaveMigratedSession(session);
         subMonitor.done();
 
         return session;

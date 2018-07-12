@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.session.Session;
+// CHECKSTYLE:OFF
+import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
+//CHECKSTYLE:ON
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -240,4 +243,16 @@ public interface UICallBack {
      * @since 4.0
      */
     boolean askSessionReopeningWithResourceVersionMismatch(AirdResourceVersionMismatchException e);
+
+    /**
+     * If the session is migrated automatically at opening, ask user if he wants to save it, and save it if necessary.
+     * The pop-up will only open if the resource has the load option
+     * {@link AbstractSiriusMigrationService.OPTION_RESOURCE_NON_BATCH_MIGRATION)} and the Eclipse preference
+     * {@link CommonPreferencesConstants.PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION} set to true.
+     * 
+     * @param session
+     *            The used session
+     * @since 6.1.0
+     */
+    void askUserAndSaveMigratedSession(Session session);
 }

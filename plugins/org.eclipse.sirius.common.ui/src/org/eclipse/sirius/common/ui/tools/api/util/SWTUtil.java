@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -117,8 +117,7 @@ public final class SWTUtil {
     }
 
     /**
-     * Utility method to create a {@link PageBook} widget dispose it when the
-     * parent will be disposed.
+     * Utility method to create a {@link PageBook} widget dispose it when the parent will be disposed.
      * 
      * @param parent
      *            the parent widget
@@ -136,8 +135,8 @@ public final class SWTUtil {
     }
 
     /**
-     * Utility method to create a {@link PageBook} widget with the SWT.NONE
-     * style and dispose it when the parent will be disposed.
+     * Utility method to create a {@link PageBook} widget with the SWT.NONE style and dispose it when the parent will be
+     * disposed.
      * 
      * @param parent
      *            the parent widget
@@ -148,8 +147,7 @@ public final class SWTUtil {
     }
 
     /**
-     * Utility method to create a {@link FilteredTree} widget and dispose it
-     * when the parent will be disposed.
+     * Utility method to create a {@link FilteredTree} widget and dispose it when the parent will be disposed.
      * 
      * @param parent
      *            the parent widget
@@ -170,14 +168,13 @@ public final class SWTUtil {
     }
 
     /**
-     * Utility method to create a composite widget which fill horizontally and
-     * dispose it when the parent will be disposed.
+     * Utility method to create a composite widget which fill horizontally and dispose it when the parent will be
+     * disposed.
      * 
      * @param parent
      *            the parent widget
      * @param columns
-     *            the number of columns in the grid layout for the new
-     *            composite.
+     *            the number of columns in the grid layout for the new composite.
      * @param equalColumns
      *            make columns equals width
      * @return the new composite widget
@@ -187,14 +184,13 @@ public final class SWTUtil {
     }
 
     /**
-     * Utility method to create a composite widget which fill vertically and
-     * dispose it when the parent will be disposed.
+     * Utility method to create a composite widget which fill vertically and dispose it when the parent will be
+     * disposed.
      * 
      * @param parent
      *            the parent widget
      * @param columns
-     *            the number of columns in the grid layout for the new
-     *            composite.
+     *            the number of columns in the grid layout for the new composite.
      * @param equalColumns
      *            make columns equals width
      * @return the new composite widget
@@ -204,14 +200,13 @@ public final class SWTUtil {
     }
 
     /**
-     * Utility method to create a composite widget which fill both horizontally
-     * and vertically, and dispose it when the parent will be disposed.
+     * Utility method to create a composite widget which fill both horizontally and vertically, and dispose it when the
+     * parent will be disposed.
      * 
      * @param parent
      *            the parent widget
      * @param columns
-     *            the number of columns in the grid layout for the new
-     *            composite.
+     *            the number of columns in the grid layout for the new composite.
      * @param equalColumns
      *            make columns equals width
      * @return the new composite widget
@@ -221,14 +216,12 @@ public final class SWTUtil {
     }
 
     /**
-     * Utility method to create a composite widget and dispose it when the
-     * parent will be disposed.
+     * Utility method to create a composite widget and dispose it when the parent will be disposed.
      * 
      * @param parent
      *            the parent widget
      * @param columns
-     *            the number of columns in the grid layout for the new
-     *            composite.
+     *            the number of columns in the grid layout for the new composite.
      * @param equalColumns
      *            make columns equals width
      * @return the new composite widget
@@ -261,14 +254,12 @@ public final class SWTUtil {
     }
 
     /**
-     * Utility method to create a composite widget and dispose it when the
-     * parent will be disposed.
+     * Utility method to create a composite widget and dispose it when the parent will be disposed.
      * 
      * @param parent
      *            the parent widget
      * @param columns
-     *            the number of columns in the grid layout for the new
-     *            composite.
+     *            the number of columns in the grid layout for the new composite.
      * @param equalColumns
      *            make columns equals width
      * @param layoutData
@@ -306,17 +297,15 @@ public final class SWTUtil {
     }
 
     /**
-     * Show a dialog to ask the user to save or not the content of the Session.
-     * The window's return codes can be ISaveablePart2.CANCEL,
-     * ISaveablePart2.YES or ISaveablePart2.NO.
+     * Show a dialog to ask the user to save or not the content of the Session. The window's return codes can be
+     * ISaveablePart2.CANCEL, ISaveablePart2.YES or ISaveablePart2.NO.
      * 
      * @param objectToSave
      *            the object to save
      * @param label
      *            the name of the element to save or any other label
      * @param canCancel
-     *            <code>true</code> if the save can be cancel,
-     *            <code>false</code> otherwise
+     *            <code>true</code> if the save can be cancel, <code>false</code> otherwise
      * @return the return code
      */
     public static int showSaveDialog(final Object objectToSave, final String label, final boolean canCancel) {
@@ -324,32 +313,75 @@ public final class SWTUtil {
     }
 
     /**
-     * Show a dialog to ask the user to save or not the content of the Session.
-     * The window's return codes can be ISaveablePart2.CANCEL,
-     * ISaveablePart2.YES or ISaveablePart2.NO.
+     * Show a dialog to ask the user to save or not the content of the Session. The window's return codes can be
+     * ISaveablePart2.CANCEL, ISaveablePart2.YES or ISaveablePart2.NO.
+     * 
+     * @param objectToSave
+     *            the object to save
+     * @param message
+     *            the message to display in the dialog
+     * @param canCancel
+     *            <code>true</code> if the save can be cancel, <code>false</code> otherwise
+     * @return the return code
+     */
+    public static int showSaveDialogWithMessage(final Object objectToSave, final String message, final boolean canCancel) {
+        return showSaveDialogWithMessage(objectToSave, message, canCancel, false, false);
+    }
+
+    /**
+     * Show a dialog to ask the user to save or not the content of the Session. The window's return codes can be
+     * ISaveablePart2.CANCEL, ISaveablePart2.YES or ISaveablePart2.NO.
      * 
      * @param objectToSave
      *            the object to save
      * @param label
-     *            the name of the element to save or any other label
+     *            the name of the element to save or any other label. This label will be used to customize defined
+     *            message value.
      * @param canCancel
-     *            <code>true</code> if the save can be cancel,
-     *            <code>false</code> otherwise
+     *            <code>true</code> if the save can be cancel, <code>false</code> otherwise
      * @param stillOpenElsewhere
-     *            <code>true</code> the object to save is open elsewhere, prompt
-     *            if IWorkbenchPreferenceConstants.
+     *            <code>true</code> the object to save is open elsewhere, prompt if IWorkbenchPreferenceConstants.
      *            PROMPT_WHEN_SAVEABLE_STILL_OPEN, <code>false</code> otherwise
      * @param onlyIfCustomFound
-     *            force to return ISaveablePart2.DEFAULT if no
-     *            saveDialogExtension was found.
+     *            force to return ISaveablePart2.DEFAULT if no saveDialogExtension was found.
      * 
      * @return the return code
      */
     public static int showSaveDialog(final Object objectToSave, final String label, final boolean canCancel, final boolean stillOpenElsewhere, final boolean onlyIfCustomFound) {
+        // Provide a dialog allowing the user to change the
+        // preference if several editors are opened
+        final String message;
+        if (stillOpenElsewhere) {
+            message = MessageFormat.format(Messages.SWTUtil_askToSaveChanges_openElseWhere, label);
+        } else {
+            message = MessageFormat.format(Messages.SWTUtil_askToSaveChanges, label);
+        }
+        return showSaveDialogWithMessage(objectToSave, message, canCancel, stillOpenElsewhere, onlyIfCustomFound);
+    }
 
+    /**
+     * Show a dialog to ask the user to save or not the content of the Session. The window's return codes can be
+     * ISaveablePart2.CANCEL, ISaveablePart2.YES or ISaveablePart2.NO.
+     * 
+     * @param objectToSave
+     *            the object to save
+     * @param message
+     *            the message to display in the dialog
+     * @param canCancel
+     *            <code>true</code> if the save can be cancel, <code>false</code> otherwise
+     * @param stillOpenElsewhere
+     *            <code>true</code> the object to save is open elsewhere, prompt if IWorkbenchPreferenceConstants.
+     *            PROMPT_WHEN_SAVEABLE_STILL_OPEN, <code>false</code> otherwise
+     * @param onlyIfCustomFound
+     *            force to return ISaveablePart2.DEFAULT if no saveDialogExtension was found.
+     * 
+     * @return the return code
+     */
+    public static int showSaveDialogWithMessage(final Object objectToSave, final String message, final boolean canCancel, final boolean stillOpenElsewhere, final boolean onlyIfCustomFound) {
         final RunnableWithResult runnable = new RunnableWithResult() {
             private int result = ISaveablePart2.DEFAULT;
 
+            @Override
             public void run() {
                 // Case 1 : an ISaveDialogExtension has been contributed
                 boolean customSaveDialogProvided = false;
@@ -357,7 +389,7 @@ public final class SWTUtil {
                     ISaveDialogExtension saveDialogExtension = saveDialogExtensionDescriptor.getSaveDialogExtension();
                     if (saveDialogExtension.isSaveDialogFor(objectToSave)) {
                         // we use it to build the save dialog
-                        result = showProvidedSaveDialog(saveDialogExtension, objectToSave, label, canCancel, stillOpenElsewhere);
+                        result = showProvidedSaveDialog(saveDialogExtension, objectToSave, message, canCancel, stillOpenElsewhere);
                         customSaveDialogProvided = true;
                     }
                 }
@@ -365,10 +397,11 @@ public final class SWTUtil {
                 // Case 2 : no custom save dialog is provided
                 // we build a default save dialog
                 if (!customSaveDialogProvided && !onlyIfCustomFound) {
-                    result = showStandardSaveDialog(label, canCancel, stillOpenElsewhere);
+                    result = showStandardSaveDialog(message, canCancel, stillOpenElsewhere);
                 }
             }
 
+            @Override
             public int getResult() {
                 return result;
             }
@@ -379,32 +412,29 @@ public final class SWTUtil {
     }
 
     /**
-     * Shows a dialog to ask the user to save or not the content of the Session,
-     * using the given saveDialogExtension, that may define new buttons and
-     * additional behavior. The window's return codes can be
-     * ISaveablePart2.CANCEL, ISaveablePart2.YES or ISaveablePart2.NO.
+     * Shows a dialog to ask the user to save or not the content of the Session, using the given saveDialogExtension,
+     * that may define new buttons and additional behavior. The window's return codes can be ISaveablePart2.CANCEL,
+     * ISaveablePart2.YES or ISaveablePart2.NO.
      * 
      * 
      * @param saveDialogExtension
-     *            the {@link ISaveDialogExtension} to use for showing this save
-     *            window
+     *            the {@link ISaveDialogExtension} to use for showing this save window
      * @param objectToSave
      *            the object to save
-     * @param label
-     *            the label of the window
+     * @param message
+     *            the message to display in the dialog
      * @param canCancel
      *            indicates whether user can cancel this save action or not
      * @param stillOpenElsewhere
-     *            <code>true</code> the object to save is open elsewhere,
-     *            <code>false</code> otherwise
+     *            <code>true</code> the object to save is open elsewhere, <code>false</code> otherwise
      * @return the return code
      */
-    private static int showProvidedSaveDialog(ISaveDialogExtension saveDialogExtension, Object objectToSave, String label, final boolean canCancel, boolean stillOpenElsewhere) {
+    private static int showProvidedSaveDialog(ISaveDialogExtension saveDialogExtension, Object objectToSave, String message, final boolean canCancel, boolean stillOpenElsewhere) {
         // Step 1: getting the save buttons
         Map<String, Integer> buttons = saveDialogExtension.getButtons(stillOpenElsewhere);
 
         // Step 2 :opening window
-        int temporaryResult = openSaveDialog(label, canCancel, buttons, stillOpenElsewhere);
+        int temporaryResult = openSaveDialog(message, canCancel, buttons, stillOpenElsewhere);
 
         // Step 3 : using save contribution to compute additional actions
         // according to the selected choice
@@ -413,18 +443,15 @@ public final class SWTUtil {
     }
 
     /**
-     * Show a dialog to ask the user to save or not the content of the Session.
-     * The window's return codes can be ISaveablePart2.CANCEL,
-     * ISaveablePart2.YES or ISaveablePart2.NO.
+     * Show a dialog to ask the user to save or not the content of the Session. The window's return codes can be
+     * ISaveablePart2.CANCEL, ISaveablePart2.YES or ISaveablePart2.NO.
      * 
      * @param label
      *            the name of the element to save or any other label
      * @param canCancel
-     *            <code>true</code> if the save can be cancel,
-     *            <code>false</code> otherwise
+     *            <code>true</code> if the save can be cancel, <code>false</code> otherwise
      * @param stillOpenElsewhere
-     *            <code>true</code> the object to save is open elsewhere,
-     *            <code>false</code> otherwise
+     *            <code>true</code> the object to save is open elsewhere, <code>false</code> otherwise
      * @return the return code
      */
     private static int showStandardSaveDialog(final String label, final boolean canCancel, boolean stillOpenElsewhere) {
@@ -439,7 +466,7 @@ public final class SWTUtil {
         return temporaryResult;
     }
 
-    private static int openSaveDialog(String label, final boolean canCancel, Map<String, Integer> buttons, boolean stillOpenElsewhere) {
+    private static int openSaveDialog(String message, final boolean canCancel, Map<String, Integer> buttons, boolean stillOpenElsewhere) {
         int choice = ISaveablePart2.YES;
 
         // Get user preference for still open beahvior
@@ -450,7 +477,7 @@ public final class SWTUtil {
         } else {
             final IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
             if (window != null && buttons != null) {
-                final MessageDialog dialog = createSaveDialog(label, canCancel, buttons, stillOpenElsewhere, window);
+                final MessageDialog dialog = createSaveDialog(message, canCancel, buttons, stillOpenElsewhere, window);
 
                 choice = dialog.open();
 
@@ -488,22 +515,15 @@ public final class SWTUtil {
         return choice;
     }
 
-    private static MessageDialog createSaveDialog(String label, final boolean canCancel, Map<String, Integer> buttons, boolean stillOpenElsewhere, final IWorkbenchWindow window) {
+    private static MessageDialog createSaveDialog(String message, final boolean canCancel, Map<String, Integer> buttons, boolean stillOpenElsewhere, final IWorkbenchWindow window) {
         final MessageDialog dialog;
         if (canCancel) {
             buttons.put(IDialogConstants.CANCEL_LABEL, IDialogConstants.CANCEL_ID);
         }
 
-        // Provide a dialog allowing the user to change the
-        // preference if several editors are opened
-        final String message;
-        if (stillOpenElsewhere) {
-            message = MessageFormat.format(Messages.SWTUtil_askToSaveChanges, label);
-        } else {
-            message = MessageFormat.format(Messages.SWTUtil_askToSaveChanges_openElseWhere, label);
-        }
         dialog = new SiriusMessageDialogWithToggle(window.getShell(), Messages.SWTUtil_saveDialog_title, null, message, MessageDialog.QUESTION, buttons, 0,
                 WorkbenchMessages.EditorManager_closeWithoutPromptingOption, false, stillOpenElsewhere) {
+            @Override
             protected int getShellStyle() {
                 return getSaveDialogStyle(canCancel);
             }
@@ -552,6 +572,7 @@ public final class SWTUtil {
             this.composite = composite;
         }
 
+        @Override
         public void widgetDisposed(final DisposeEvent e) {
             if (composite != null && !composite.isDisposed()) {
                 composite.dispose();
@@ -561,8 +582,8 @@ public final class SWTUtil {
     }
 
     /**
-     * Get the number of lines needed to display the <code>text</code> according
-     * to the default font and the specified width.
+     * Get the number of lines needed to display the <code>text</code> according to the default font and the specified
+     * width.
      * 
      * @param text
      *            The text to display
@@ -575,6 +596,7 @@ public final class SWTUtil {
             RunnableWithResult runnable = new RunnableWithResult() {
                 int nbLines = 1;
 
+                @Override
                 public void run() {
                     Shell shell = new Shell(Display.getCurrent());
                     Label label = new Label(shell, SWT.NONE);
@@ -583,6 +605,7 @@ public final class SWTUtil {
                     shell.dispose();
                 }
 
+                @Override
                 public int getResult() {
                     return nbLines;
                 }
@@ -602,6 +625,7 @@ public final class SWTUtil {
         RunnableWithResult runnable = new RunnableWithResult() {
             int height;
 
+            @Override
             public void run() {
                 Shell shell = new Shell(Display.getCurrent());
                 Label label = new Label(shell, SWT.NONE);
@@ -612,6 +636,7 @@ public final class SWTUtil {
                 shell.dispose();
             }
 
+            @Override
             public int getResult() {
                 return height;
             }
@@ -621,8 +646,8 @@ public final class SWTUtil {
     }
 
     /**
-     * Get the number of lines needed to display the <code>text</code> according
-     * to the default font and the specified width.
+     * Get the number of lines needed to display the <code>text</code> according to the default font and the specified
+     * width.
      * 
      * @param control
      *            The control used to compute the text size
@@ -648,15 +673,13 @@ public final class SWTUtil {
     }
 
     /**
-     * Compute a new text to display, correctly truncated and with "..." at end
-     * if needed.
+     * Compute a new text to display, correctly truncated and with "..." at end if needed.
      * 
      * @param textValue
      *            The text to display
      * @param control
-     *            The control used to display text. The parent of this control
-     *            is used to get the maximum width and height available to
-     *            display text.
+     *            The control used to display text. The parent of this control is used to get the maximum width and
+     *            height available to display text.
      * @param heightOfOneLine
      *            The height in pixel of one line
      * @return the new text to display.

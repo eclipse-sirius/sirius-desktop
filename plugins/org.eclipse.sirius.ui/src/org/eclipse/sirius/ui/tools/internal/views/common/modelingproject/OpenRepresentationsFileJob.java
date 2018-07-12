@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,14 +63,33 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
     private URI representationsFileURI;
 
     /**
+     * <code>True</code> if this session opening comes from a direct user action, </code>false<code> otherwise.
+     */
+    private final boolean isDirectUserActionLoading;
+
+    /**
      * Constructor to open only one representations file.
      *
      * @param representationsFileURI
      *            The URI of the representations file to open.
      */
     public OpenRepresentationsFileJob(final URI representationsFileURI) {
+        this(representationsFileURI, false);
+    }
+
+    /**
+     * Constructor to open only one representations file.
+     *
+     * @param representationsFileURI
+     *            The URI of the representations file to open.
+     * @param isDirectUserActionLoading
+     *            <code>true</code> if this session opening comes from a direct user action, </code>false<code>
+     *            otherwise
+     */
+    public OpenRepresentationsFileJob(final URI representationsFileURI, final boolean isDirectUserActionLoading) {
         super(OpenRepresentationsFileJob.JOB_LABEL);
         this.representationsFileURI = representationsFileURI;
+        this.isDirectUserActionLoading = isDirectUserActionLoading;
         // During the execution of this job, some refresh can occurs on files of
         // this project but also on file of other projects according to
         // dependencies of this session, so the scheduling rule must include the
@@ -92,8 +111,23 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      *            <code>true</code> if this job is a user-initiated job, and <code>false</code> otherwise.
      */
     public static void scheduleNewWhenPossible(URI representationsFileURI, boolean user) {
+        scheduleNewWhenPossible(representationsFileURI, user, false);
+    }
+
+    /**
+     * Launch this job when all other openRepresentationFile's job are finished.
+     *
+     * @param representationsFileURI
+     *            The URI of the representations file to open.
+     * @param user
+     *            <code>true</code> if this job is a user-initiated job, and <code>false</code> otherwise.
+     * @param isDirectUserActionLoading
+     *            <code>true</code> if this session opening comes from a direct user action, </code>false<code>
+     *            otherwise
+     */
+    public static void scheduleNewWhenPossible(URI representationsFileURI, boolean user, boolean isDirectUserActionLoading) {
         // Schedule a new job for this representations file.
-        Job job = new OpenRepresentationsFileJob(representationsFileURI);
+        Job job = new OpenRepresentationsFileJob(representationsFileURI, isDirectUserActionLoading);
         job.setUser(user);
         job.setPriority(Job.SHORT);
         job.schedule();
@@ -153,7 +187,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
             if (SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(representationsFileURI.fileExtension())) {
                 subMonitor.worked(1);
                 subMonitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadReferencedModelsTask, representationsFileURI.lastSegment()));
-                session = SessionManager.INSTANCE.openSession(representationsFileURI, subMonitor.newChild(14), SiriusEditPlugin.getPlugin().getUiCallback());
+                session = SessionManager.INSTANCE.openSession(representationsFileURI, subMonitor.newChild(14), SiriusEditPlugin.getPlugin().getUiCallback(), isDirectUserActionLoading);
                 if (session != null) {
                     Set<ISessionFileLoadingListener> sessionFileLoadingListeners = SiriusEditPlugin.getPlugin().getSessionFileLoadingListeners();
                     for (ISessionFileLoadingListener sessionFileLoadingListener : sessionFileLoadingListeners) {

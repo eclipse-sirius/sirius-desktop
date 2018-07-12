@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,8 +37,7 @@ import org.osgi.framework.Version;
 import org.xml.sax.Attributes;
 
 /**
- * Abstract migration service. Provides services to load and delegate to
- * migration participants.
+ * Abstract migration service. Provides services to load and delegate to migration participants.
  * 
  * @author fbarbin
  * 
@@ -46,12 +45,17 @@ import org.xml.sax.Attributes;
 public abstract class AbstractSiriusMigrationService implements IMigrationParticipant {
 
     /**
-     * This option is passed during a resource load if a migration should be
-     * done. The value contains a string representation of the loaded version.
-     * The value can be null if the resource was created before the current
+     * This option is passed during a resource load if a migration should be done. The value contains a string
+     * representation of the loaded version. The value can be null if the resource was created before the current
      * migration mechanism.
      */
     public static final String OPTION_RESOURCE_MIGRATION_LOADEDVERSION = "RESOURCE_MIGRATION_LOADEDVERSION"; //$NON-NLS-1$
+
+    /**
+     * This option is passed during a resource load to inform if the migration has been triggered from a user action or
+     * not.
+     */
+    public static final String OPTION_RESOURCE_NON_BATCH_MIGRATION = "RESOURCE_NON_BATCH_MIGRATION"; //$NON-NLS-1$
 
     // This migration way was introduced with 6.5.0.201208161001 version
     // for both VSM and representations files.
@@ -63,14 +67,12 @@ public abstract class AbstractSiriusMigrationService implements IMigrationPartic
     private List<IMigrationParticipant> delegatesParticipants = new ArrayList<IMigrationParticipant>();
 
     /**
-     * The last Sirius version where a migration participant is added (computed
-     * from the delegatesParticipants list).
+     * The last Sirius version where a migration participant is added (computed from the delegatesParticipants list).
      */
     private Version lastMigrationVersion;
 
     /**
-     * Loads contributions {@link IMigrationParticipant} from extension point
-     * <code>org.eclipse.sirius.migration</code>.
+     * Loads contributions {@link IMigrationParticipant} from extension point <code>org.eclipse.sirius.migration</code>.
      */
     protected void loadContributions() {
         delegatesParticipants.clear();
@@ -265,16 +267,15 @@ public abstract class AbstractSiriusMigrationService implements IMigrationPartic
      * 
      * @param loadedVersion
      *            the version of current loading model.
-     * @return true if loaded version is less than the last Sirius version with
-     *         migration, false otherwise.
+     * @return true if loaded version is less than the last Sirius version with migration, false otherwise.
      */
     public boolean isMigrationNeeded(Version loadedVersion) {
         return getLastMigrationVersion().compareTo(loadedVersion) > 0;
     }
 
     /**
-     * Return the EPackage to use for the given namespace found in the given
-     * version, by asking to the migration participants.
+     * Return the EPackage to use for the given namespace found in the given version, by asking to the migration
+     * participants.
      * 
      * @param namespace
      *            the nsURI of the package we are looking for.
@@ -307,15 +308,14 @@ public abstract class AbstractSiriusMigrationService implements IMigrationPartic
     }
 
     /**
-     * Allows to update the created object just after its creation (the
-     * attribute values are not yet loaded from XML file).
+     * Allows to update the created object just after its creation (the attribute values are not yet loaded from XML
+     * file).
      * 
      * @param newObject
      *            the new created object
      * @param loadedVersion
      *            the version of current loading model
-     * @return An EObject with updated values or the EObject itself if this
-     *         migration has nothing to do.
+     * @return An EObject with updated values or the EObject itself if this migration has nothing to do.
      */
     @Override
     public EObject updateCreatedObject(EObject newObject, String loadedVersion) {
@@ -327,24 +327,20 @@ public abstract class AbstractSiriusMigrationService implements IMigrationPartic
     }
 
     /**
-     * Called after the processing of an XML end tag. This method is useful for
-     * migration logic which needs to access XML Attributes which are not mapped
-     * with the Ecore model in any way.
+     * Called after the processing of an XML end tag. This method is useful for migration logic which needs to access
+     * XML Attributes which are not mapped with the Ecore model in any way.
      * 
      * @param doneObject
      *            the current Object in the parsing stack.
      * @param xmlAttributes
      *            the xml attributes of the tag which just got closed.
      * @param uri
-     *            The Namespace URI, or the empty string if the element has no
-     *            Namespace URI or if Namespace processing is not being
-     *            performed.
+     *            The Namespace URI, or the empty string if the element has no Namespace URI or if Namespace processing
+     *            is not being performed.
      * @param localName
-     *            the local name (without prefix), or the empty string if
-     *            Namespace processing is not being performed.
+     *            the local name (without prefix), or the empty string if Namespace processing is not being performed.
      * @param qName
-     *            the qualified XML name (with prefix), or the empty string if
-     *            qualified names are not available.
+     *            the qualified XML name (with prefix), or the empty string if qualified names are not available.
      * @param loadedVersion
      *            the version of current loading model
      * 

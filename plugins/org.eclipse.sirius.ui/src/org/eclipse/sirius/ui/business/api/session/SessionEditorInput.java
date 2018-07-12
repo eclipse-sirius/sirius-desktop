@@ -280,7 +280,7 @@ public class SessionEditorInput extends URIEditorInput {
     private static Session openSession(URI sessionModelURI, boolean restore, Session sessionFromURI) {
         Session session = sessionFromURI;
         if (session == null && restore) {
-            session = SessionManager.INSTANCE.openSession(sessionModelURI, new NullProgressMonitor(), SiriusEditPlugin.getPlugin().getUiCallback());
+            session = SessionManager.INSTANCE.openSession(sessionModelURI, new NullProgressMonitor(), SiriusEditPlugin.getPlugin().getUiCallback(), true);
         }
 
         if (session != null && session.isOpen()) {

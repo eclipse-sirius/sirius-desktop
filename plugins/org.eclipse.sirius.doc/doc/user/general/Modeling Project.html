@@ -158,7 +158,17 @@
 			<a href="../../Release_Notes.html">release notes</a> for more details.
 		</p>
 		<h3 id="Migration">Migration of Existing Representation Files</h3>
-		<p>Representation files are now automatically migrated when opened. This migration is transparent for the end-user. While a representation file is not saved, the automatic migration will be replayed at the next opening.</p>
+		<p>By default, representation and design files are now automatically migrated when opened. This migration is transparent for the end-user. While a representation file is not saved, the automatic migration will be replayed at the next opening.</p>
+		<p>You can activate a preference to be asked to save resources when a migration has been done. It is available in Sirius preferences page:</p> 
+		<img border="0" src="images/migrationPreference.png"/>
+		<p>When checked, a dialog asking you to save migrated resources is shown in the following situations if a migration was necessary:</p>
+		<ul>
+			<li>When you open or expand a modeling project not yet loaded.</li>
+			<li>When you open the session by double clicking on the aird or VSM or by using the contextual menu 
+				<em>open</em>.
+			</li>
+			<li>When you open your bundle whereas a Sirius editor was opened previously.</li>
+		</ul>
 		<h3 id="UICHanges">User Interface Changes</h3>
 		<p>You will notice some radical changes in the user interface. The most important change is the disappearance of the 
 			<em>Model Content</em> view. It has been replaced with a streamlined UI which integrates directly into the Eclipse explorer view. The notion of &#8220;Local Session&#8221; has disappeared from the user interface; its management has been made as transparent as possible so you do not have to deal with it except in some very specific circumstances.

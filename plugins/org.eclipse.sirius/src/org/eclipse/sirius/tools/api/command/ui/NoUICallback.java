@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,8 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 /**
  * This will return default values for the UI-dependent tools.
  * 
- * @author Laurent Goubet
- *         <a href="mailto:laurent.goubet@obeo.fr">laurent.goubet@obeo.fr</a>
+ * @author Laurent Goubet <a href="mailto:laurent.goubet@obeo.fr">laurent.goubet@obeo.fr</a>
  */
 public class NoUICallback implements UICallBack {
     /**
@@ -53,8 +52,7 @@ public class NoUICallback implements UICallBack {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#askForDetailName(java.lang.String,
-     *      java.lang.String)
+     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#askForDetailName(java.lang.String, java.lang.String)
      */
     @Override
     public String askForDetailName(String defaultName, String representationDescription) throws InterruptedException {
@@ -126,8 +124,7 @@ public class NoUICallback implements UICallBack {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#shouldClose(Session,
-     *      Resource)
+     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#shouldClose(Session, Resource)
      */
     @Override
     public boolean shouldClose(Session session, Resource resource) {
@@ -167,8 +164,7 @@ public class NoUICallback implements UICallBack {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#openError(java.lang
-     *      .String, java.lang.String)
+     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#openError(java.lang .String, java.lang.String)
      */
     @Override
     public void openError(String title, String message) {
@@ -183,5 +179,10 @@ public class NoUICallback implements UICallBack {
     @Override
     public boolean askSessionReopeningWithResourceVersionMismatch(AirdResourceVersionMismatchException e) {
         return false;
+    }
+
+    @Override
+    public void askUserAndSaveMigratedSession(Session session) {
+        // Do nothing
     }
 }
