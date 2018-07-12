@@ -19,8 +19,8 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-Support for using EEF views and wizards with Sirius representations.
-Install this if you have EEF-based property views for your domain model and want to see them when editing your domain through Sirius-based modelers.
+Support for using EEF 1.5 (or earlier) views and wizards with Sirius representations.
+Install this if you have property views for your domain model generated using EEF 1.5 or earlier (not EEF 1.6+) and want to see them when editing your domain through Sirius-based modelers.
    </description>
 
    <copyright>
