@@ -95,7 +95,7 @@ public class SiriusServerStartup implements IStartup {
 		Job job = Job.create(DESCRIPTION, (ICoreRunnable) monitor -> {
 			Display.getDefault().asyncExec(() -> {
 				Bundle siriusServerBundle = Platform.getBundle(SIRIUS_SERVER_PLUGIN_ID);
-				if (siriusServerBundle.getState() != Bundle.ACTIVE) {
+				if (siriusServerBundle != null && siriusServerBundle.getState() != Bundle.ACTIVE) {
 					try {
 						siriusServerBundle.start(Bundle.START_TRANSIENT);
 					} catch (BundleException exception) {
