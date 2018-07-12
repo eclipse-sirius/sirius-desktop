@@ -22,6 +22,7 @@ import javax.servlet.DispatcherType;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.URIUtil;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerCollection;
@@ -73,7 +74,8 @@ public class SiriusServerFrontendConfigurator implements ISiriusServerConfigurat
         try {
             Bundle bundle = SiriusServerFrontendPlugin.getPlugin().getBundle();
             URL frontendResourcesURL = bundle.getResource(FRONTEND_RESOURCES_PATH);
-            URI frontendResourcesURI = FileLocator.resolve(frontendResourcesURL).toURI();
+            URL resolvedURL = FileLocator.resolve(frontendResourcesURL);
+            URI frontendResourcesURI = URIUtil.toURI(resolvedURL);
             String frontendResourcesPath = new File(frontendResourcesURI).getAbsolutePath();
 
             ServletHolder servletHolder = new ServletHolder(SERVLET_HOLDER_NAME, new DefaultServlet());
