@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -453,12 +453,10 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     @Override
     public Collection<DRepresentation> getOpenedRepresantationsToRefresh() {
         Collection<DRepresentation> openedRepresantationsToRefresh = new ArrayList<DRepresentation>();
-        for (ISiriusEditor dialectEditor : getEditors()) {
-            if (dialectEditor instanceof DialectEditor) {
-                DRepresentation dRepresentation = ((DialectEditor) dialectEditor).getRepresentation();
-                if (dRepresentation != null) {
-                    openedRepresantationsToRefresh.add(dRepresentation);
-                }
+        for (DialectEditor dialectEditor : getEditors()) {
+            DRepresentation dRepresentation = dialectEditor.getRepresentation();
+            if (dRepresentation != null) {
+                openedRepresantationsToRefresh.add(dRepresentation);
             }
         }
         return openedRepresantationsToRefresh;
