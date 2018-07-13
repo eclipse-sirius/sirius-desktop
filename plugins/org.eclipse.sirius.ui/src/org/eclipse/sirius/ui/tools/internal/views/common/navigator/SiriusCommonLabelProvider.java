@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -287,8 +287,8 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
                 boolean shouldBeSavedWithoutEditor = preferenceStore != null && preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
 
                 // When option PREF_SAVE_WHEN_NO_EDITOR is enabled, show dirty
-                // status only when there si no editors to detect bugs.
-                if (SessionStatus.DIRTY == session.getStatus() && (!shouldBeSavedWithoutEditor || uiSession.getEditors().isEmpty())) {
+                // status only when there is no editors to detect bugs.
+                if (SessionStatus.DIRTY == session.getStatus() && (!shouldBeSavedWithoutEditor || uiSession.getSiriusEditors().isEmpty())) {
                     return true;
                 }
 
