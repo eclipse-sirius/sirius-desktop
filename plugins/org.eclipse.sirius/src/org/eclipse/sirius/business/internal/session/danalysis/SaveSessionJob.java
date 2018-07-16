@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,30 +47,11 @@ public class SaveSessionJob extends Job {
 
     @Override
     public IStatus run(IProgressMonitor monitor) {
+        IStatus result = Status.OK_STATUS;
         try {
             monitor.beginTask(Messages.SaveSessionJob_sessionSavingMsg, IProgressMonitor.UNKNOWN);
             if (session != null && session.isOpen() && SessionStatus.DIRTY == session.getStatus()) {
-                if (session instanceof DAnalysisSessionImpl) {
-                    /*
-                     * We can never know when the job will be scheduled, and it
-                     * might happen after the editing domain is disposed. Even
-                     * testing the state of the editing domain at the beginning
-                     * of the save is not enough, as it can be disposed by
-                     * another thread during the save, in which case the
-                     * commit() will throw an NPE and part of the DASI.doSave()
-                     * will not be executed, even if the files are actually
-                     * saved.
-                     */
-                    boolean exclusiveSetting = ((DAnalysisSessionImpl) session).isSaveInExclusiveTransaction();
-                    ((DAnalysisSessionImpl) session).setSaveInExclusiveTransaction(false);
-                    try {
-                        session.save(monitor);
-                    } finally {
-                        ((DAnalysisSessionImpl) session).setSaveInExclusiveTransaction(exclusiveSetting);
-                    }
-                } else {
-                    session.save(monitor);
-                }
+                result = performSave(monitor);
                 monitor.worked(1);
             }
         } finally {
@@ -78,6 +59,39 @@ public class SaveSessionJob extends Job {
             // Set the session to null to avoid a leak. The job is potentially
             // kept by the ProgressManager.
             session = null;
+        }
+        return result;
+    }
+
+    /**
+     * Perform the save operation.
+     * 
+     * Callers must ensure that session is not null, open and has a SessionStatus.DIRTY status before calling this
+     * method.
+     * 
+     * WARNING : Be careful not to break default Sirius saving behavior when overriding this method.
+     * 
+     * @param monitor
+     *            the progress monitor to associate to this operation.
+     * @return resulting status of the run. The result must not be null
+     */
+    protected IStatus performSave(IProgressMonitor monitor) {
+        if (session instanceof DAnalysisSessionImpl) {
+            /*
+             * We can never know when the job will be scheduled, and it might happen after the editing domain is
+             * disposed. Even testing the state of the editing domain at the beginning of the save is not enough, as it
+             * can be disposed by another thread during the save, in which case the commit() will throw an NPE and part
+             * of the DASI.doSave() will not be executed, even if the files are actually saved.
+             */
+            boolean exclusiveSetting = ((DAnalysisSessionImpl) session).isSaveInExclusiveTransaction();
+            ((DAnalysisSessionImpl) session).setSaveInExclusiveTransaction(false);
+            try {
+                session.save(monitor);
+            } finally {
+                ((DAnalysisSessionImpl) session).setSaveInExclusiveTransaction(exclusiveSetting);
+            }
+        } else {
+            session.save(monitor);
         }
         return Status.OK_STATUS;
     }
