@@ -48,6 +48,11 @@ class LinkNoteTool extends CreationTool {
 
     @Override
     protected void performCreation(int button) {
+
+        if (getCurrentCommand() == null || !getCurrentCommand().canExecute()) {
+            return;
+        }
+
         ViewDescriptor vd = ((CreateViewRequest) getTargetRequest()).getViewDescriptors().get(0);
         if (vd.getElementAdapter().getAdapter(DRepresentationDescriptor.class) != null) {
             super.performCreation(button);
