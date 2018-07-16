@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -144,11 +144,22 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
             if (SessionStatus.DIRTY.equals(session.getStatus())) {
                 if (saveSessionJob == null || saveSessionJob.getState() == Job.NONE) {
                     preSave();
-                    saveSessionJob = new SaveSessionJob(session);
+                    saveSessionJob = createSaveSessionJob(session);
                     saveSessionJob.schedule();
                 }
             }
         }
+    }
+
+    /**
+     * Create the job that will save the session.
+     * 
+     * @param aSession
+     *            the session to save
+     * @return a save session job to schedule
+     */
+    protected SaveSessionJob createSaveSessionJob(Session aSession) {
+        return new SaveSessionJob(aSession);
     }
 
     /**
