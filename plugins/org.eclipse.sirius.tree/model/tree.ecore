@@ -34,7 +34,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
         defaultValueLiteral="255,255,255"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DTreeElementSynchronizer">
+  <eClassifiers xsi:type="ecore:EClass" name="DTreeElementSynchronizer" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//IdentifiedElement">
     <eOperations name="refresh">
       <eParameters name="DTreeItem" lowerBound="1" eType="#//DTreeItem"/>
     </eOperations>

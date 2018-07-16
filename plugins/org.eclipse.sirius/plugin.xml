@@ -422,6 +422,10 @@
             class="org.eclipse.sirius.business.internal.migration.EmptyMigrationForPropertyViewMigrationParticipant"
             kind="VSM">
       </participant>
+      <participant
+            class="org.eclipse.sirius.business.internal.migration.TechnicalUidMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">

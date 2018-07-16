@@ -15,7 +15,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
@@ -32,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
  *
  * @generated
  */
-public abstract class DFeatureExtensionImpl extends MinimalEObjectImpl.Container implements DFeatureExtension {
+public abstract class DFeatureExtensionImpl extends IdentifiedElementImpl implements DFeatureExtension {
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->

@@ -16,17 +16,10 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.sirius.diagram.AppliedCompositeFilters;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.AppliedCompositeFilters} object. <!--
@@ -34,8 +27,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  *
  * @generated
  */
-public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter
-        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class AppliedCompositeFiltersItemProvider extends GraphicalFilterItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -90,7 +82,9 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_AppliedCompositeFilters_type"); //$NON-NLS-1$
+        String label = ((AppliedCompositeFilters) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_AppliedCompositeFilters_type") : //$NON-NLS-1$
+                getString("_UI_AppliedCompositeFilters_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -115,16 +109,6 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return DiagramUIPlugin.INSTANCE;
     }
 
 }

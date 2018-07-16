@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
 import org.eclipse.sirius.diagram.DiagramPackage;
 
@@ -33,7 +32,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  *
  * @generated
  */
-public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container implements AbsoluteBoundsFilter {
+public class AbsoluteBoundsFilterImpl extends GraphicalFilterImpl implements AbsoluteBoundsFilter {
     /**
      * The default value of the '{@link #getX() <em>X</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *

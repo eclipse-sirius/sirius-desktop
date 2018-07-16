@@ -11,7 +11,6 @@
  */
 package org.eclipse.sirius.viewpoint;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 
 /**
@@ -33,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
  * @model
  * @generated
  */
-public interface Decoration extends EObject {
+public interface Decoration extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Description</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The referenced DecorationDescription. <!-- end-model-doc -->

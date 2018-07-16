@@ -180,7 +180,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GraphicalFilter" abstract="true" interface="true">
+  <eClassifiers xsi:type="ecore:EClass" name="GraphicalFilter" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//IdentifiedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A filter that allow to graphically filter the owner DDiagramElement."/>
     </eAnnotations>
@@ -714,7 +714,7 @@
     <eLiterals name="ring" value="5"/>
     <eLiterals name="providedShape" value="6"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EdgeTarget" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="EdgeTarget" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//IdentifiedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The target of a ViewEdge."/>
     </eAnnotations>
@@ -907,7 +907,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
         defaultValueLiteral="252,233,79"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FilterVariableHistory">
+  <eClassifiers xsi:type="ecore:EClass" name="FilterVariableHistory" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedValues" upperBound="-1"
         eType="#//VariableValue" containment="true"/>
   </eClassifiers>
@@ -958,12 +958,12 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BracketEdgeStyle" eSuperTypes="#//EdgeStyle"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ComputedStyleDescriptionRegistry">
+  <eClassifiers xsi:type="ecore:EClass" name="ComputedStyleDescriptionRegistry" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="computedStyleDescriptions"
         upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/StyleDescription"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DragAndDropTarget">
+  <eClassifiers xsi:type="ecore:EClass" name="DragAndDropTarget" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//IdentifiedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A DragAndDropTarget is an element that can managed drop requests."/>
     </eAnnotations>
@@ -982,7 +982,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableValue" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableValue" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//IdentifiedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="TypedVariableValue" eSuperTypes="#//VariableValue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="variableDefinition" lowerBound="1"
         eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypedVariable"/>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -119,8 +119,12 @@ public class SessionEditorInputTests extends TestCase {
         DRepresentationDescriptor descriptor1 = query.getRepresentationDescriptor();
         query = new DRepresentationQuery(dRepresentation2);
         DRepresentationDescriptor descriptor2 = query.getRepresentationDescriptor();
-        URI dRepresentation1URI = EcoreUtil.getURI(dRepresentation1);
-        URI dRepresentation2URI = EcoreUtil.getURI(dRepresentation2);
+        URI dRepresentation1InitialURI = EcoreUtil.getURI(dRepresentation1);
+        URI dRepresentation2InitialURI = EcoreUtil.getURI(dRepresentation2);
+
+        URI representation1GMFDiagramInitialURI = EcoreUtil.getURI(new DDiagramGraphicalQuery((DDiagram) dRepresentation1).getAssociatedGMFDiagram().get());
+        URI representation2GMFDiagramInitialURI = EcoreUtil.getURI(new DDiagramGraphicalQuery((DDiagram) dRepresentation2).getAssociatedGMFDiagram().get());
+
         Command moveCmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
@@ -130,9 +134,19 @@ public class SessionEditorInputTests extends TestCase {
             }
         };
         session.getTransactionalEditingDomain().getCommandStack().execute(moveCmd);
-        String assertMessage = "DRepresentation's URI should have changed as they are stored in a InMemoryResourceImpl with xpath based uriFragment";
-        assertEquals(assertMessage, dRepresentation1URI, EcoreUtil.getURI(dRepresentation2));
-        assertEquals(assertMessage, dRepresentation2URI, EcoreUtil.getURI(dRepresentation1));
+
+        URI dRepresentation1URI = EcoreUtil.getURI(dRepresentation1);
+        URI dRepresentation2URI = EcoreUtil.getURI(dRepresentation2);
+        URI representation1GMFDiagramURI = EcoreUtil.getURI(new DDiagramGraphicalQuery((DDiagram) dRepresentation1).getAssociatedGMFDiagram().get());
+        URI representation2GMFDiagramURI = EcoreUtil.getURI(new DDiagramGraphicalQuery((DDiagram) dRepresentation2).getAssociatedGMFDiagram().get());
+
+        String representationAssertMessage = "DRepresentation's URI should not have changed as they are stored in a InMemoryResourceImpl with uid based uriFragment";
+        assertEquals(representationAssertMessage, dRepresentation1InitialURI, dRepresentation1URI);
+        assertEquals(representationAssertMessage, dRepresentation2InitialURI, dRepresentation2URI);
+        String gmfAssertMessage = "GMF diagram's URI should have changed as they are stored in a InMemoryResourceImpl with xpath based uriFragment";
+        assertEquals(gmfAssertMessage, representation1GMFDiagramInitialURI, representation2GMFDiagramURI);
+        assertEquals(gmfAssertMessage, representation2GMFDiagramInitialURI, representation1GMFDiagramURI);
+
         IEditorPart newEditor = DialectUIManager.INSTANCE.openEditor(session, dRepresentation1, new NullProgressMonitor());
         assertNotSame(editor1, newEditor);
         assertEquals("Editor for representation1 should be opened", 2, EclipseUIUtil.getActivePage().getEditorReferences().length);
@@ -142,8 +156,6 @@ public class SessionEditorInputTests extends TestCase {
         assertTrue(editor2Input instanceof SessionEditorInput);
         SessionEditorInput sessionNewEditorInput = (SessionEditorInput) newEditor.getEditorInput();
         SessionEditorInput sessionEditor2Input = (SessionEditorInput) editor2.getEditorInput();
-        URI representation1GMFDiagramURI = EcoreUtil.getURI(new DDiagramGraphicalQuery((DDiagram) dRepresentation1).getAssociatedGMFDiagram().get());
-        URI representation2GMFDiagramURI = EcoreUtil.getURI(new DDiagramGraphicalQuery((DDiagram) dRepresentation2).getAssociatedGMFDiagram().get());
         assertEquals(representation1GMFDiagramURI, sessionNewEditorInput.getURI());
         assertEquals(representation2GMFDiagramURI, sessionEditor2Input.getURI());
         assertEquals(new SessionEditorInput(representation1GMFDiagramURI, dRepresentation1.getName(), session), sessionNewEditorInput);

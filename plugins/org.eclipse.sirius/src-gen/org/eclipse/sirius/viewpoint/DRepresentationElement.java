@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface DRepresentationElement extends DMappingBased, DStylizable, DRefreshable, DSemanticDecorator {
+public interface DRepresentationElement extends IdentifiedElement, DMappingBased, DStylizable, DRefreshable, DSemanticDecorator {
     /**
      * Returns the value of the '<em><b>Name</b></em>' attribute. The default value is <code>""</code>. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The name of the element. It is the name that is

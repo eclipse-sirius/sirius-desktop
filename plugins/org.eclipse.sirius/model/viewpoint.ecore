@@ -5,7 +5,11 @@
     <details key="deprecated" value="Anything tagged as deprecated will disappear quite soon.&#xA;&#xA;"/>
     <details key="to be renamed" value="Anything tagged &quot;to be renamed&quot; will be renamed, at least in the UI&#xA;"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="DAnalysis">
+  <eClassifiers xsi:type="ecore:EClass" name="IdentifiedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uid" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DAnalysis" eSuperTypes="#//IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="referencedAnalysis" upperBound="-1"
         eType="#//DAnalysis"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticResources" upperBound="-1"
@@ -23,7 +27,7 @@
         upperBound="-1" eType="#//DFeatureExtension" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DFeatureExtension" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="DFeatureExtension" abstract="true" eSuperTypes="#//IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" lowerBound="1"
         eType="#//description/FeatureExtensionDescription"/>
   </eClassifiers>
@@ -52,7 +56,8 @@
       </eAnnotations>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DSemanticDecorator" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="DSemanticDecorator" abstract="true"
+      eSuperTypes="#//IdentifiedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An element that has a link to the semantic model."/>
     </eAnnotations>
@@ -63,7 +68,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DRepresentationDescriptor" eSuperTypes="#//description/DModelElement">
+  <eClassifiers xsi:type="ecore:EClass" name="DRepresentationDescriptor" eSuperTypes="#//IdentifiedElement #//description/DModelElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
         defaultValueLiteral="">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -91,7 +96,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="repPath" lowerBound="1"
         eType="#//ResourceDescriptor"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DRepresentation" abstract="true" eSuperTypes="#//description/DocumentedElement #//DRefreshable #//description/DModelElement">
+  <eClassifiers xsi:type="ecore:EClass" name="DRepresentation" abstract="true" eSuperTypes="#//IdentifiedElement #//description/DModelElement #//description/DocumentedElement #//DRefreshable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRepresentationElements"
         upperBound="-1" eType="#//DRepresentationElement" changeable="false" volatile="true"
         transient="true" derived="true">
@@ -116,10 +121,9 @@
         upperBound="-1" eType="#//description/AnnotationEntry" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="uiState" eType="#//UIState"
         transient="true" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DRepresentationElement" abstract="true"
-      eSuperTypes="#//DMappingBased #//DStylizable #//DRefreshable #//DSemanticDecorator">
+      eSuperTypes="#//IdentifiedElement #//DMappingBased #//DStylizable #//DRefreshable #//DSemanticDecorator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
         defaultValueLiteral="">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -133,7 +137,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DView" eSuperTypes="#//DRefreshable">
+  <eClassifiers xsi:type="ecore:EClass" name="DView" eSuperTypes="#//IdentifiedElement #//DRefreshable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An view is the root element"/>
     </eAnnotations>
@@ -159,7 +163,7 @@
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
         changeable="false" volatile="true" transient="true" derived="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MetaModelExtension">
+  <eClassifiers xsi:type="ecore:EClass" name="MetaModelExtension" eSuperTypes="#//IdentifiedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Represent a Meta Model extension.&#xD;&#xA;A meta model extension adds types, attributes and references into an existing meta model"/>
     </eAnnotations>
@@ -170,7 +174,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Decoration">
+  <eClassifiers xsi:type="ecore:EClass" name="Decoration" eSuperTypes="#//IdentifiedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Represent a decoration of a diagram element with a specific icon, based on its relationships with MetaElements of the MetaModel.&#xD;&#xA;"/>
     </eAnnotations>
@@ -181,7 +185,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DAnalysisCustomData">
+  <eClassifiers xsi:type="ecore:EClass" name="DAnalysisCustomData" eSuperTypes="#//IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="data" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
         containment="true"/>
@@ -201,7 +205,7 @@
     <eLiterals name="underline" value="2"/>
     <eLiterals name="strike_through" value="3"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Style" abstract="true" eSuperTypes="#//DRefreshable #//Customizable">
+  <eClassifiers xsi:type="ecore:EClass" name="Style" abstract="true" eSuperTypes="#//IdentifiedElement #//DRefreshable #//Customizable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The super class of all styles."/>
     </eAnnotations>
@@ -240,8 +244,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DFile" eSuperTypes="#//DResource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DResourceContainer" eSuperTypes="#//DResource">
+  <eClassifiers xsi:type="ecore:EClass" name="DFile" eSuperTypes="#//IdentifiedElement #//DResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DResourceContainer" eSuperTypes="#//IdentifiedElement #//DResource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
         eType="#//DResource" containment="true"/>
   </eClassifiers>
@@ -279,7 +283,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelColor" eType="#//RGBValues"
         defaultValueLiteral="0,0,0"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Customizable" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Customizable" abstract="true" eSuperTypes="#//IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="customFeatures" upperBound="-1"
         eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>

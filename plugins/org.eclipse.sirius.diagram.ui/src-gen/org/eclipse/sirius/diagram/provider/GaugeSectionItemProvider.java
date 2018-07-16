@@ -113,8 +113,7 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
      */
     @Override
     public String getText(Object object) {
-        Integer labelValue = ((GaugeSection) object).getMin();
-        String label = labelValue == null ? null : labelValue.toString();
+        String label = ((GaugeSection) object).getUid();
         return label == null || label.length() == 0 ? getString("_UI_GaugeSection_type") : //$NON-NLS-1$
                 getString("_UI_GaugeSection_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }

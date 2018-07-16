@@ -14,8 +14,8 @@ package org.eclipse.sirius.viewpoint.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.DFile;
+import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  *
  * @generated
  */
-public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
+public class DFileImpl extends IdentifiedElementImpl implements DFile {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
@@ -204,6 +204,46 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
             return DFileImpl.PATH_EDEFAULT == null ? path != null : !DFileImpl.PATH_EDEFAULT.equals(path);
         }
         return super.eIsSet(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == DResource.class) {
+            switch (derivedFeatureID) {
+            case ViewpointPackage.DFILE__NAME:
+                return ViewpointPackage.DRESOURCE__NAME;
+            case ViewpointPackage.DFILE__PATH:
+                return ViewpointPackage.DRESOURCE__PATH;
+            default:
+                return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == DResource.class) {
+            switch (baseFeatureID) {
+            case ViewpointPackage.DRESOURCE__NAME:
+                return ViewpointPackage.DFILE__NAME;
+            case ViewpointPackage.DRESOURCE__PATH:
+                return ViewpointPackage.DFILE__PATH;
+            default:
+                return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
     /**

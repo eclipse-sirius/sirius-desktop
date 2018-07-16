@@ -16,7 +16,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -27,7 +26,6 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.DRepresentation} object. <!--
@@ -35,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemPr
  *
  * @generated
  */
-public class DRepresentationItemProvider extends DocumentedElementItemProvider {
+public class DRepresentationItemProvider extends IdentifiedElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -55,12 +53,25 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addDocumentationPropertyDescriptor(object);
             addOwnedRepresentationElementsPropertyDescriptor(object);
             addRepresentationElementsPropertyDescriptor(object);
             addNamePropertyDescriptor(object);
-            addUidPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
+    }
+
+    /**
+     * This adds a property descriptor for the Documentation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addDocumentationPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
+                        getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -99,18 +110,6 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DRepresentation_name_feature"), //$NON-NLS-1$
                         getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_name_feature", "_UI_DRepresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         ViewpointPackage.Literals.DREPRESENTATION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the Uid feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addUidPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DRepresentation_uid_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_uid_feature", "_UI_DRepresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        ViewpointPackage.Literals.DREPRESENTATION__UID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -169,8 +168,8 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(DRepresentation.class)) {
+        case ViewpointPackage.DREPRESENTATION__DOCUMENTATION:
         case ViewpointPackage.DREPRESENTATION__NAME:
-        case ViewpointPackage.DREPRESENTATION__UID:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case ViewpointPackage.DREPRESENTATION__EANNOTATIONS:
@@ -197,16 +196,6 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES, DescriptionFactory.eINSTANCE.createAnnotationEntry()));
 
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DREPRESENTATION__UI_STATE, ViewpointFactory.eINSTANCE.createUIState()));
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
     }
 
 }

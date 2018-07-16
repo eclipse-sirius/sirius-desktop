@@ -18,9 +18,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.sirius.viewpoint.Customizable;
+import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  *
  * @generated
  */
-public abstract class StyleImpl extends MinimalEObjectImpl.Container implements Style {
+public abstract class StyleImpl extends IdentifiedElementImpl implements Style {
     /**
      * The cached value of the '{@link #getCustomFeatures() <em>Custom Features</em>}' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -212,6 +212,12 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
      */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == DRefreshable.class) {
+            switch (derivedFeatureID) {
+            default:
+                return -1;
+            }
+        }
         if (baseClass == Customizable.class) {
             switch (derivedFeatureID) {
             case ViewpointPackage.STYLE__CUSTOM_FEATURES:
@@ -230,6 +236,12 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
      */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == DRefreshable.class) {
+            switch (baseFeatureID) {
+            default:
+                return -1;
+            }
+        }
         if (baseClass == Customizable.class) {
             switch (baseFeatureID) {
             case ViewpointPackage.CUSTOMIZABLE__CUSTOM_FEATURES:

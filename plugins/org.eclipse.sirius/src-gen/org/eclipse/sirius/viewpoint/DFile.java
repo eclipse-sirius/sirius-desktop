@@ -19,5 +19,5 @@ package org.eclipse.sirius.viewpoint;
  * @model
  * @generated
  */
-public interface DFile extends DResource {
+public interface DFile extends IdentifiedElement, DResource {
 } // DFile

@@ -97,8 +97,9 @@ public class DotItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        Dot dot = (Dot) object;
-        return getString("_UI_Dot_type") + " " + dot.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((Dot) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_Dot_type") : //$NON-NLS-1$
+                getString("_UI_Dot_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

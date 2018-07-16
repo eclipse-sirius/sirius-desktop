@@ -112,8 +112,9 @@ public class FlatContainerStyleItemProvider extends ContainerStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        FlatContainerStyle flatContainerStyle = (FlatContainerStyle) object;
-        return getString("_UI_FlatContainerStyle_type") + " " + flatContainerStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((FlatContainerStyle) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_FlatContainerStyle_type") : //$NON-NLS-1$
+                getString("_UI_FlatContainerStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

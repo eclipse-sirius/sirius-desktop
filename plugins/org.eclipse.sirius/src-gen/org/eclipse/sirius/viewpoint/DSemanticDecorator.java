@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface DSemanticDecorator extends EObject {
+public interface DSemanticDecorator extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The referenced EObject. <!-- end-model-doc -->

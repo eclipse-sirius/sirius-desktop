@@ -18,18 +18,13 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.viewpoint.provider.IdentifiedElementItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry} object.
@@ -37,8 +32,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  *
  * @generated
  */
-public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAdapter
-        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ComputedStyleDescriptionRegistryItemProvider extends IdentifiedElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -109,7 +103,9 @@ public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAd
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_ComputedStyleDescriptionRegistry_type"); //$NON-NLS-1$
+        String label = ((ComputedStyleDescriptionRegistry) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_ComputedStyleDescriptionRegistry_type") : //$NON-NLS-1$
+                getString("_UI_ComputedStyleDescriptionRegistry_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

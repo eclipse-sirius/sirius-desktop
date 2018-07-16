@@ -12,7 +12,6 @@
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Customizable</b></em>'. <!-- end-user-doc -->
@@ -28,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface Customizable extends EObject {
+public interface Customizable extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Custom Features</b></em>' attribute list. The list contents are of type
      * {@link java.lang.String}. <!-- begin-user-doc -->

@@ -29,6 +29,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
@@ -116,6 +117,16 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseIdentifiedElement(IdentifiedElement object) {
+            return createIdentifiedElementAdapter();
+        }
+
+        @Override
+        public Adapter caseDModelElement(DModelElement object) {
+            return createDModelElementAdapter();
+        }
+
+        @Override
         public Adapter caseDocumentedElement(DocumentedElement object) {
             return createDocumentedElementAdapter();
         }
@@ -123,11 +134,6 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDRefreshable(DRefreshable object) {
             return createDRefreshableAdapter();
-        }
-
-        @Override
-        public Adapter caseDModelElement(DModelElement object) {
-            return createDModelElementAdapter();
         }
 
         @Override
@@ -270,6 +276,20 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDTreeElementSynchronizerAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.IdentifiedElement
+     * <em>Identified Element</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.IdentifiedElement
+     * @generated
+     */
+    public Adapter createIdentifiedElementAdapter() {
         return null;
     }
 

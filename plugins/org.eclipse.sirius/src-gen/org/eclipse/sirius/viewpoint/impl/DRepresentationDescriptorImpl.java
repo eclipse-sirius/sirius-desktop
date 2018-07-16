@@ -11,20 +11,27 @@
  */
 package org.eclipse.sirius.viewpoint.impl;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.representation.DRepresentationDescriptorToDRepresentationLinkManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.sirius.viewpoint.description.DModelElement;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.impl.DModelElementImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DRepresentation Descriptor</b></em>'. <!--
@@ -33,6 +40,8 @@ import org.eclipse.sirius.viewpoint.description.impl.DModelElementImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getEAnnotations
+ * <em>EAnnotations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getDescription <em>Description</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getTarget <em>Target</em>}</li>
@@ -43,7 +52,17 @@ import org.eclipse.sirius.viewpoint.description.impl.DModelElementImpl;
  *
  * @generated
  */
-public class DRepresentationDescriptorImpl extends DModelElementImpl implements DRepresentationDescriptor {
+public class DRepresentationDescriptorImpl extends IdentifiedElementImpl implements DRepresentationDescriptor {
+    /**
+     * The cached value of the '{@link #getEAnnotations() <em>EAnnotations</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getEAnnotations()
+     * @generated
+     * @ordered
+     */
+    protected EList<DAnnotation> eAnnotations;
+
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
@@ -121,6 +140,19 @@ public class DRepresentationDescriptorImpl extends DModelElementImpl implements 
     @Override
     protected EClass eStaticClass() {
         return ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EList<DAnnotation> getEAnnotations() {
+        if (eAnnotations == null) {
+            eAnnotations = new EObjectContainmentEList<DAnnotation>(DAnnotation.class, this, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__EANNOTATIONS);
+        }
+        return eAnnotations;
     }
 
     /**
@@ -298,8 +330,36 @@ public class DRepresentationDescriptorImpl extends DModelElementImpl implements 
      * @generated
      */
     @Override
+    public DAnnotation getDAnnotation(String source) {
+        // TODO: implement this method
+        // Ensure that you remove @generated or mark it @generated NOT
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__EANNOTATIONS:
+            return ((InternalEList<?>) getEAnnotations()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__EANNOTATIONS:
+            return getEAnnotations();
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__NAME:
             return getName();
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__DESCRIPTION:
@@ -328,9 +388,14 @@ public class DRepresentationDescriptorImpl extends DModelElementImpl implements 
      *
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__EANNOTATIONS:
+            getEAnnotations().clear();
+            getEAnnotations().addAll((Collection<? extends DAnnotation>) newValue);
+            return;
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__NAME:
             setName((String) newValue);
             return;
@@ -358,6 +423,9 @@ public class DRepresentationDescriptorImpl extends DModelElementImpl implements 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__EANNOTATIONS:
+            getEAnnotations().clear();
+            return;
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__NAME:
             setName(DRepresentationDescriptorImpl.NAME_EDEFAULT);
             return;
@@ -385,6 +453,8 @@ public class DRepresentationDescriptorImpl extends DModelElementImpl implements 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__EANNOTATIONS:
+            return eAnnotations != null && !eAnnotations.isEmpty();
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__NAME:
             return DRepresentationDescriptorImpl.NAME_EDEFAULT == null ? name != null : !DRepresentationDescriptorImpl.NAME_EDEFAULT.equals(name);
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__DESCRIPTION:
@@ -397,6 +467,42 @@ public class DRepresentationDescriptorImpl extends DModelElementImpl implements 
             return DRepresentationDescriptorImpl.REP_PATH_EDEFAULT == null ? repPath != null : !DRepresentationDescriptorImpl.REP_PATH_EDEFAULT.equals(repPath);
         }
         return super.eIsSet(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == DModelElement.class) {
+            switch (derivedFeatureID) {
+            case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__EANNOTATIONS:
+                return DescriptionPackage.DMODEL_ELEMENT__EANNOTATIONS;
+            default:
+                return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == DModelElement.class) {
+            switch (baseFeatureID) {
+            case DescriptionPackage.DMODEL_ELEMENT__EANNOTATIONS:
+                return ViewpointPackage.DREPRESENTATION_DESCRIPTOR__EANNOTATIONS;
+            default:
+                return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
     /**

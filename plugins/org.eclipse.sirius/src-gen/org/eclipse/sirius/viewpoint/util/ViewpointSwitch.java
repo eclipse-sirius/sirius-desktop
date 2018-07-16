@@ -36,6 +36,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.SessionManagerEObject;
@@ -109,9 +110,20 @@ public class ViewpointSwitch<T> {
      */
     protected T doSwitch(int classifierID, EObject theEObject) {
         switch (classifierID) {
+        case ViewpointPackage.IDENTIFIED_ELEMENT: {
+            IdentifiedElement identifiedElement = (IdentifiedElement) theEObject;
+            T result = caseIdentifiedElement(identifiedElement);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         case ViewpointPackage.DANALYSIS: {
             DAnalysis dAnalysis = (DAnalysis) theEObject;
             T result = caseDAnalysis(dAnalysis);
+            if (result == null) {
+                result = caseIdentifiedElement(dAnalysis);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -120,6 +132,9 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DFEATURE_EXTENSION: {
             DFeatureExtension dFeatureExtension = (DFeatureExtension) theEObject;
             T result = caseDFeatureExtension(dFeatureExtension);
+            if (result == null) {
+                result = caseIdentifiedElement(dFeatureExtension);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -153,6 +168,9 @@ public class ViewpointSwitch<T> {
             DSemanticDecorator dSemanticDecorator = (DSemanticDecorator) theEObject;
             T result = caseDSemanticDecorator(dSemanticDecorator);
             if (result == null) {
+                result = caseIdentifiedElement(dSemanticDecorator);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -160,6 +178,9 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR: {
             DRepresentationDescriptor dRepresentationDescriptor = (DRepresentationDescriptor) theEObject;
             T result = caseDRepresentationDescriptor(dRepresentationDescriptor);
+            if (result == null) {
+                result = caseIdentifiedElement(dRepresentationDescriptor);
+            }
             if (result == null) {
                 result = caseDModelElement(dRepresentationDescriptor);
             }
@@ -172,13 +193,16 @@ public class ViewpointSwitch<T> {
             DRepresentation dRepresentation = (DRepresentation) theEObject;
             T result = caseDRepresentation(dRepresentation);
             if (result == null) {
+                result = caseIdentifiedElement(dRepresentation);
+            }
+            if (result == null) {
+                result = caseDModelElement(dRepresentation);
+            }
+            if (result == null) {
                 result = caseDocumentedElement(dRepresentation);
             }
             if (result == null) {
                 result = caseDRefreshable(dRepresentation);
-            }
-            if (result == null) {
-                result = caseDModelElement(dRepresentation);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -201,6 +225,9 @@ public class ViewpointSwitch<T> {
                 result = caseDSemanticDecorator(dRepresentationElement);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dRepresentationElement);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -208,6 +235,9 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DVIEW: {
             DView dView = (DView) theEObject;
             T result = caseDView(dView);
+            if (result == null) {
+                result = caseIdentifiedElement(dView);
+            }
             if (result == null) {
                 result = caseDRefreshable(dView);
             }
@@ -220,6 +250,9 @@ public class ViewpointSwitch<T> {
             MetaModelExtension metaModelExtension = (MetaModelExtension) theEObject;
             T result = caseMetaModelExtension(metaModelExtension);
             if (result == null) {
+                result = caseIdentifiedElement(metaModelExtension);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -228,6 +261,9 @@ public class ViewpointSwitch<T> {
             Decoration decoration = (Decoration) theEObject;
             T result = caseDecoration(decoration);
             if (result == null) {
+                result = caseIdentifiedElement(decoration);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -235,6 +271,9 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DANALYSIS_CUSTOM_DATA: {
             DAnalysisCustomData dAnalysisCustomData = (DAnalysisCustomData) theEObject;
             T result = caseDAnalysisCustomData(dAnalysisCustomData);
+            if (result == null) {
+                result = caseIdentifiedElement(dAnalysisCustomData);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -250,6 +289,9 @@ public class ViewpointSwitch<T> {
                 result = caseCustomizable(labelStyle);
             }
             if (result == null) {
+                result = caseIdentifiedElement(labelStyle);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -262,6 +304,9 @@ public class ViewpointSwitch<T> {
             }
             if (result == null) {
                 result = caseCustomizable(style);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(style);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -296,6 +341,9 @@ public class ViewpointSwitch<T> {
             DFile dFile = (DFile) theEObject;
             T result = caseDFile(dFile);
             if (result == null) {
+                result = caseIdentifiedElement(dFile);
+            }
+            if (result == null) {
                 result = caseDResource(dFile);
             }
             if (result == null) {
@@ -306,6 +354,9 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DRESOURCE_CONTAINER: {
             DResourceContainer dResourceContainer = (DResourceContainer) theEObject;
             T result = caseDResourceContainer(dResourceContainer);
+            if (result == null) {
+                result = caseIdentifiedElement(dResourceContainer);
+            }
             if (result == null) {
                 result = caseDResource(dResourceContainer);
             }
@@ -319,6 +370,9 @@ public class ViewpointSwitch<T> {
             T result = caseDProject(dProject);
             if (result == null) {
                 result = caseDResourceContainer(dProject);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(dProject);
             }
             if (result == null) {
                 result = caseDResource(dProject);
@@ -335,6 +389,9 @@ public class ViewpointSwitch<T> {
                 result = caseDResourceContainer(dFolder);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dFolder);
+            }
+            if (result == null) {
                 result = caseDResource(dFolder);
             }
             if (result == null) {
@@ -347,6 +404,9 @@ public class ViewpointSwitch<T> {
             T result = caseDModel(dModel);
             if (result == null) {
                 result = caseDFile(dModel);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(dModel);
             }
             if (result == null) {
                 result = caseDResource(dModel);
@@ -363,6 +423,9 @@ public class ViewpointSwitch<T> {
                 result = caseCustomizable(basicLabelStyle);
             }
             if (result == null) {
+                result = caseIdentifiedElement(basicLabelStyle);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -370,6 +433,9 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.CUSTOMIZABLE: {
             Customizable customizable = (Customizable) theEObject;
             T result = caseCustomizable(customizable);
+            if (result == null) {
+                result = caseIdentifiedElement(customizable);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -386,6 +452,21 @@ public class ViewpointSwitch<T> {
         default:
             return defaultCase(theEObject);
         }
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Identified Element</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Identified Element</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseIdentifiedElement(IdentifiedElement object) {
+        return null;
     }
 
     /**

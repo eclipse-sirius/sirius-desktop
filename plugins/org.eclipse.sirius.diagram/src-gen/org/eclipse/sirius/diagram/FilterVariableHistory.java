@@ -12,7 +12,7 @@
 package org.eclipse.sirius.diagram;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Filter Variable History</b></em>'. <!--
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface FilterVariableHistory extends EObject {
+public interface FilterVariableHistory extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Owned Values</b></em>' containment reference list. The list contents are of type
      * {@link org.eclipse.sirius.diagram.VariableValue}. <!-- begin-user-doc -->

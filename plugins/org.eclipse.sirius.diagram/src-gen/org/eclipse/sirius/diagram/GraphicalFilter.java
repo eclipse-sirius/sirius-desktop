@@ -11,7 +11,7 @@
  */
 package org.eclipse.sirius.diagram;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Graphical Filter</b></em>'. <!-- end-user-doc
@@ -24,5 +24,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface GraphicalFilter extends EObject {
+public interface GraphicalFilter extends IdentifiedElement {
 } // GraphicalFilter

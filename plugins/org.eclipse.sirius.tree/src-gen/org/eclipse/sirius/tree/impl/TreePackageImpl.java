@@ -453,6 +453,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
         dTreeItemEClass.getESuperTypes().add(this.getDTreeElement());
         treeItemStyleEClass.getESuperTypes().add(theViewpointPackage.getStyle());
         treeItemStyleEClass.getESuperTypes().add(theViewpointPackage.getLabelStyle());
+        dTreeElementSynchronizerEClass.getESuperTypes().add(theViewpointPackage.getIdentifiedElement());
 
         // Initialize classes and features; add operations and parameters
         initEClass(dTreeEClass, DTree.class, "DTree", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

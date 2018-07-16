@@ -31,6 +31,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
@@ -108,16 +109,19 @@ public class TableSwitch<T> {
                 result = caseLineContainer(dTable);
             }
             if (result == null) {
+                result = caseDModelElement(dTable);
+            }
+            if (result == null) {
                 result = caseDocumentedElement(dTable);
             }
             if (result == null) {
                 result = caseDRefreshable(dTable);
             }
             if (result == null) {
-                result = caseDModelElement(dTable);
+                result = caseDSemanticDecorator(dTable);
             }
             if (result == null) {
-                result = caseDSemanticDecorator(dTable);
+                result = caseIdentifiedElement(dTable);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -143,6 +147,9 @@ public class TableSwitch<T> {
                 result = caseDSemanticDecorator(dTableElement);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dTableElement);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -152,6 +159,9 @@ public class TableSwitch<T> {
             T result = caseLineContainer(lineContainer);
             if (result == null) {
                 result = caseDSemanticDecorator(lineContainer);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(lineContainer);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -172,6 +182,9 @@ public class TableSwitch<T> {
             }
             if (result == null) {
                 result = caseDSemanticDecorator(dLine);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(dLine);
             }
             if (result == null) {
                 result = caseDMappingBased(dLine);
@@ -200,6 +213,9 @@ public class TableSwitch<T> {
                 result = caseDSemanticDecorator(dCell);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dCell);
+            }
+            if (result == null) {
                 result = caseDMappingBased(dCell);
             }
             if (result == null) {
@@ -218,6 +234,9 @@ public class TableSwitch<T> {
             T result = caseDCellStyle(dCellStyle);
             if (result == null) {
                 result = caseDTableElementStyle(dCellStyle);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(dCellStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -246,6 +265,9 @@ public class TableSwitch<T> {
                 result = caseDSemanticDecorator(dColumn);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dColumn);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -264,6 +286,9 @@ public class TableSwitch<T> {
             }
             if (result == null) {
                 result = caseDSemanticDecorator(dTargetColumn);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(dTargetColumn);
             }
             if (result == null) {
                 result = caseDMappingBased(dTargetColumn);
@@ -304,6 +329,9 @@ public class TableSwitch<T> {
                 result = caseDSemanticDecorator(dFeatureColumn);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dFeatureColumn);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -311,6 +339,9 @@ public class TableSwitch<T> {
         case TablePackage.DTABLE_ELEMENT_STYLE: {
             DTableElementStyle dTableElementStyle = (DTableElementStyle) theEObject;
             T result = caseDTableElementStyle(dTableElementStyle);
+            if (result == null) {
+                result = caseIdentifiedElement(dTableElementStyle);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -463,6 +494,21 @@ public class TableSwitch<T> {
      * @generated
      */
     public T caseDTableElementStyle(DTableElementStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Identified Element</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Identified Element</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseIdentifiedElement(IdentifiedElement object) {
         return null;
     }
 

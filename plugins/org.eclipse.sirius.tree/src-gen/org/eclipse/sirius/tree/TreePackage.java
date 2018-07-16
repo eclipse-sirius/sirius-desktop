@@ -80,12 +80,12 @@ public interface TreePackage extends EPackage {
     int DTREE = 0;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DTREE__DOCUMENTATION = ViewpointPackage.DREPRESENTATION__DOCUMENTATION;
+    int DTREE__UID = ViewpointPackage.DREPRESENTATION__UID;
 
     /**
      * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -95,6 +95,14 @@ public interface TreePackage extends EPackage {
      * @ordered
      */
     int DTREE__EANNOTATIONS = ViewpointPackage.DREPRESENTATION__EANNOTATIONS;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DTREE__DOCUMENTATION = ViewpointPackage.DREPRESENTATION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>' reference list. <!-- begin-user-doc -->
@@ -139,14 +147,6 @@ public interface TreePackage extends EPackage {
      * @ordered
      */
     int DTREE__UI_STATE = ViewpointPackage.DREPRESENTATION__UI_STATE;
-
-    /**
-     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int DTREE__UID = ViewpointPackage.DREPRESENTATION__UID;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -201,6 +201,14 @@ public interface TreePackage extends EPackage {
     int DTREE_ELEMENT = 1;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DTREE_ELEMENT__UID = ViewpointPackage.DREPRESENTATION_ELEMENT__UID;
+
+    /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -244,6 +252,14 @@ public interface TreePackage extends EPackage {
     int DTREE_ELEMENT_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM_CONTAINER__UID = ViewpointPackage.DSEMANTIC_DECORATOR__UID;
+
+    /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -278,6 +294,14 @@ public interface TreePackage extends EPackage {
      * @generated
      */
     int DTREE_ITEM = 3;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__UID = TreePackage.DTREE_ITEM_CONTAINER__UID;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -392,6 +416,14 @@ public interface TreePackage extends EPackage {
     int TREE_ITEM_STYLE = 4;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE__UID = ViewpointPackage.STYLE__UID;
+
+    /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -486,13 +518,21 @@ public interface TreePackage extends EPackage {
     int DTREE_ELEMENT_SYNCHRONIZER = 5;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DTREE_ELEMENT_SYNCHRONIZER__UID = ViewpointPackage.IDENTIFIED_ELEMENT__UID;
+
+    /**
      * The number of structural features of the '<em>DTree Element Synchronizer</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DTREE_ELEMENT_SYNCHRONIZER_FEATURE_COUNT = 0;
+    int DTREE_ELEMENT_SYNCHRONIZER_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.tree.DTreeItemContainer <em>DTree Item

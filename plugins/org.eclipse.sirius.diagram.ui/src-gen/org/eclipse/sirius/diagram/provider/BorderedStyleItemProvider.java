@@ -115,8 +115,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        Integer labelValue = ((BorderedStyle) object).getBorderSize();
-        String label = labelValue == null ? null : labelValue.toString();
+        String label = ((BorderedStyle) object).getUid();
         return label == null || label.length() == 0 ? getString("_UI_BorderedStyle_type") : //$NON-NLS-1$
                 getString("_UI_BorderedStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }

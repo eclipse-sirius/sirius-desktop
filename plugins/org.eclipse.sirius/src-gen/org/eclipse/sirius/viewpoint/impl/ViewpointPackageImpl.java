@@ -43,6 +43,7 @@ import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
@@ -70,6 +71,13 @@ import org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackag
  * @generated
  */
 public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPackage {
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass identifiedElementEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -387,6 +395,26 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
+    public EClass getIdentifiedElement() {
+        return identifiedElementEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getIdentifiedElement_Uid() {
+        return (EAttribute) identifiedElementEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getDAnalysis() {
         return dAnalysisEClass;
     }
@@ -659,16 +687,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
     @Override
     public EReference getDRepresentation_UiState() {
         return (EReference) dRepresentationEClass.getEStructuralFeatures().get(4);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EAttribute getDRepresentation_Uid() {
-        return (EAttribute) dRepresentationEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -1241,6 +1259,9 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         isCreated = true;
 
         // Create classes and their features
+        identifiedElementEClass = createEClass(ViewpointPackage.IDENTIFIED_ELEMENT);
+        createEAttribute(identifiedElementEClass, ViewpointPackage.IDENTIFIED_ELEMENT__UID);
+
         dAnalysisEClass = createEClass(ViewpointPackage.DANALYSIS);
         createEReference(dAnalysisEClass, ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS);
         createEAttribute(dAnalysisEClass, ViewpointPackage.DANALYSIS__SEMANTIC_RESOURCES);
@@ -1276,7 +1297,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         createEAttribute(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__NAME);
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES);
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__UI_STATE);
-        createEAttribute(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__UID);
 
         dRepresentationElementEClass = createEClass(ViewpointPackage.DREPRESENTATION_ELEMENT);
         createEAttribute(dRepresentationElementEClass, ViewpointPackage.DREPRESENTATION_ELEMENT__NAME);
@@ -1392,26 +1412,44 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         // Set bounds for type parameters
 
         // Add supertypes to classes
+        dAnalysisEClass.getESuperTypes().add(this.getIdentifiedElement());
+        dFeatureExtensionEClass.getESuperTypes().add(this.getIdentifiedElement());
+        dSemanticDecoratorEClass.getESuperTypes().add(this.getIdentifiedElement());
+        dRepresentationDescriptorEClass.getESuperTypes().add(this.getIdentifiedElement());
         dRepresentationDescriptorEClass.getESuperTypes().add(theDescriptionPackage.getDModelElement());
+        dRepresentationEClass.getESuperTypes().add(this.getIdentifiedElement());
+        dRepresentationEClass.getESuperTypes().add(theDescriptionPackage.getDModelElement());
         dRepresentationEClass.getESuperTypes().add(theDescriptionPackage.getDocumentedElement());
         dRepresentationEClass.getESuperTypes().add(this.getDRefreshable());
-        dRepresentationEClass.getESuperTypes().add(theDescriptionPackage.getDModelElement());
+        dRepresentationElementEClass.getESuperTypes().add(this.getIdentifiedElement());
         dRepresentationElementEClass.getESuperTypes().add(this.getDMappingBased());
         dRepresentationElementEClass.getESuperTypes().add(this.getDStylizable());
         dRepresentationElementEClass.getESuperTypes().add(this.getDRefreshable());
         dRepresentationElementEClass.getESuperTypes().add(this.getDSemanticDecorator());
+        dViewEClass.getESuperTypes().add(this.getIdentifiedElement());
         dViewEClass.getESuperTypes().add(this.getDRefreshable());
+        metaModelExtensionEClass.getESuperTypes().add(this.getIdentifiedElement());
+        decorationEClass.getESuperTypes().add(this.getIdentifiedElement());
+        dAnalysisCustomDataEClass.getESuperTypes().add(this.getIdentifiedElement());
         labelStyleEClass.getESuperTypes().add(this.getBasicLabelStyle());
+        styleEClass.getESuperTypes().add(this.getIdentifiedElement());
         styleEClass.getESuperTypes().add(this.getDRefreshable());
         styleEClass.getESuperTypes().add(this.getCustomizable());
+        dFileEClass.getESuperTypes().add(this.getIdentifiedElement());
         dFileEClass.getESuperTypes().add(this.getDResource());
+        dResourceContainerEClass.getESuperTypes().add(this.getIdentifiedElement());
         dResourceContainerEClass.getESuperTypes().add(this.getDResource());
         dProjectEClass.getESuperTypes().add(this.getDResourceContainer());
         dFolderEClass.getESuperTypes().add(this.getDResourceContainer());
         dModelEClass.getESuperTypes().add(this.getDFile());
         basicLabelStyleEClass.getESuperTypes().add(this.getCustomizable());
+        customizableEClass.getESuperTypes().add(this.getIdentifiedElement());
 
         // Initialize classes and features; add operations and parameters
+        initEClass(identifiedElementEClass, IdentifiedElement.class, "IdentifiedElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getIdentifiedElement_Uid(), theEcorePackage.getEString(), "uid", null, 0, 1, IdentifiedElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
         initEClass(dAnalysisEClass, DAnalysis.class, "DAnalysis", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getDAnalysis_ReferencedAnalysis(), this.getDAnalysis(), null, "referencedAnalysis", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
@@ -1486,8 +1524,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEReference(getDRepresentation_UiState(), this.getUIState(), null, "uiState", null, 0, 1, DRepresentation.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
-        initEAttribute(getDRepresentation_Uid(), ecorePackage.getEString(), "uid", null, 0, 1, DRepresentation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
-                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dRepresentationElementEClass, DRepresentationElement.class, "DRepresentationElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);

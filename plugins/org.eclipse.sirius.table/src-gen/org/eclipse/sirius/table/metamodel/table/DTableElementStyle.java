@@ -11,8 +11,8 @@
 package org.eclipse.sirius.table.metamodel.table;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**
@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * @model
  * @generated
  */
-public interface DTableElementStyle extends EObject {
+public interface DTableElementStyle extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Label Size</b></em>' attribute. The default value is <code>"8"</code>. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The font size. <!-- end-model-doc -->

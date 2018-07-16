@@ -72,12 +72,12 @@ public interface DiagramPackage extends EPackage {
     int DDIAGRAM = 0;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DDIAGRAM__DOCUMENTATION = ViewpointPackage.DREPRESENTATION__DOCUMENTATION;
+    int DDIAGRAM__UID = ViewpointPackage.DREPRESENTATION__UID;
 
     /**
      * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -87,6 +87,14 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DDIAGRAM__EANNOTATIONS = ViewpointPackage.DREPRESENTATION__EANNOTATIONS;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DDIAGRAM__DOCUMENTATION = ViewpointPackage.DREPRESENTATION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>' reference list. <!-- begin-user-doc -->
@@ -131,14 +139,6 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DDIAGRAM__UI_STATE = ViewpointPackage.DREPRESENTATION__UI_STATE;
-
-    /**
-     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int DDIAGRAM__UID = ViewpointPackage.DREPRESENTATION__UID;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>' containment reference list. <!-- begin-user-doc
@@ -332,12 +332,12 @@ public interface DiagramPackage extends EPackage {
     int DSEMANTIC_DIAGRAM = 1;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DSEMANTIC_DIAGRAM__DOCUMENTATION = DiagramPackage.DDIAGRAM__DOCUMENTATION;
+    int DSEMANTIC_DIAGRAM__UID = DiagramPackage.DDIAGRAM__UID;
 
     /**
      * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -347,6 +347,14 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DSEMANTIC_DIAGRAM__EANNOTATIONS = DiagramPackage.DDIAGRAM__EANNOTATIONS;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DSEMANTIC_DIAGRAM__DOCUMENTATION = DiagramPackage.DDIAGRAM__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>' reference list. <!-- begin-user-doc -->
@@ -391,14 +399,6 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DSEMANTIC_DIAGRAM__UI_STATE = DiagramPackage.DDIAGRAM__UI_STATE;
-
-    /**
-     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int DSEMANTIC_DIAGRAM__UID = DiagramPackage.DDIAGRAM__UID;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>' containment reference list. <!-- begin-user-doc
@@ -601,6 +601,14 @@ public interface DiagramPackage extends EPackage {
     int DDIAGRAM_ELEMENT = 2;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DDIAGRAM_ELEMENT__UID = ViewpointPackage.DREPRESENTATION_ELEMENT__UID;
+
+    /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -696,14 +704,22 @@ public interface DiagramPackage extends EPackage {
     int DDIAGRAM_ELEMENT_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 7;
 
     /**
-     * The meta object id for the '{@link org.eclipse.sirius.diagram.GraphicalFilter <em>Graphical Filter</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.impl.GraphicalFilterImpl <em>Graphical
+     * Filter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see org.eclipse.sirius.diagram.GraphicalFilter
+     * @see org.eclipse.sirius.diagram.impl.GraphicalFilterImpl
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getGraphicalFilter()
      * @generated
      */
     int GRAPHICAL_FILTER = 3;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GRAPHICAL_FILTER__UID = ViewpointPackage.IDENTIFIED_ELEMENT__UID;
 
     /**
      * The number of structural features of the '<em>Graphical Filter</em>' class. <!-- begin-user-doc --> <!--
@@ -712,7 +728,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GRAPHICAL_FILTER_FEATURE_COUNT = 0;
+    int GRAPHICAL_FILTER_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.impl.HideFilterImpl <em>Hide Filter</em>}' class.
@@ -723,6 +739,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int HIDE_FILTER = 4;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HIDE_FILTER__UID = DiagramPackage.GRAPHICAL_FILTER__UID;
 
     /**
      * The number of structural features of the '<em>Hide Filter</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
@@ -744,6 +768,14 @@ public interface DiagramPackage extends EPackage {
     int HIDE_LABEL_FILTER = 5;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HIDE_LABEL_FILTER__UID = DiagramPackage.GRAPHICAL_FILTER__UID;
+
+    /**
      * The number of structural features of the '<em>Hide Label Filter</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -761,6 +793,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int FOLDING_POINT_FILTER = 6;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int FOLDING_POINT_FILTER__UID = DiagramPackage.GRAPHICAL_FILTER__UID;
 
     /**
      * The number of structural features of the '<em>Folding Point Filter</em>' class. <!-- begin-user-doc --> <!--
@@ -782,6 +822,14 @@ public interface DiagramPackage extends EPackage {
     int FOLDING_FILTER = 7;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int FOLDING_FILTER__UID = DiagramPackage.GRAPHICAL_FILTER__UID;
+
+    /**
      * The number of structural features of the '<em>Folding Filter</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -799,6 +847,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int APPLIED_COMPOSITE_FILTERS = 8;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int APPLIED_COMPOSITE_FILTERS__UID = DiagramPackage.GRAPHICAL_FILTER__UID;
 
     /**
      * The feature id for the '<em><b>Composite Filter Descriptions</b></em>' reference list. <!-- begin-user-doc -->
@@ -827,6 +883,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int ABSOLUTE_BOUNDS_FILTER = 9;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ABSOLUTE_BOUNDS_FILTER__UID = DiagramPackage.GRAPHICAL_FILTER__UID;
 
     /**
      * The feature id for the '<em><b>X</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -878,6 +942,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int ABSTRACT_DNODE = 10;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_DNODE__UID = DiagramPackage.DDIAGRAM_ELEMENT__UID;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1001,6 +1073,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int DNODE = 11;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DNODE__UID = DiagramPackage.ABSTRACT_DNODE__UID;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1207,6 +1287,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int DDIAGRAM_ELEMENT_CONTAINER = 12;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DDIAGRAM_ELEMENT_CONTAINER__UID = DiagramPackage.ABSTRACT_DNODE__UID;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1422,6 +1510,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int DNODE_CONTAINER = 13;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DNODE_CONTAINER__UID = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__UID;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1657,6 +1753,14 @@ public interface DiagramPackage extends EPackage {
     int DNODE_LIST = 14;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DNODE_LIST__UID = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__UID;
+
+    /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -1881,6 +1985,14 @@ public interface DiagramPackage extends EPackage {
     int DNODE_LIST_ELEMENT = 15;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DNODE_LIST_ELEMENT__UID = DiagramPackage.ABSTRACT_DNODE__UID;
+
+    /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -2036,6 +2148,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int DEDGE = 16;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DEDGE__UID = DiagramPackage.DDIAGRAM_ELEMENT__UID;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2266,6 +2386,14 @@ public interface DiagramPackage extends EPackage {
     int NODE_STYLE = 17;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int NODE_STYLE__UID = ViewpointPackage.LABEL_STYLE__UID;
+
+    /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -2400,6 +2528,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int DOT = 18;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DOT__UID = DiagramPackage.NODE_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -2555,6 +2691,14 @@ public interface DiagramPackage extends EPackage {
     int GAUGE_SECTION = 19;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GAUGE_SECTION__UID = ViewpointPackage.CUSTOMIZABLE__UID;
+
+    /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -2631,6 +2775,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int CONTAINER_STYLE = 20;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_STYLE__UID = ViewpointPackage.LABEL_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -2759,6 +2911,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int FLAT_CONTAINER_STYLE = 21;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int FLAT_CONTAINER_STYLE__UID = DiagramPackage.CONTAINER_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -2916,6 +3076,14 @@ public interface DiagramPackage extends EPackage {
     int SHAPE_CONTAINER_STYLE = 22;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SHAPE_CONTAINER_STYLE__UID = DiagramPackage.CONTAINER_STYLE__UID;
+
+    /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -3059,6 +3227,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int SQUARE = 23;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SQUARE__UID = DiagramPackage.NODE_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -3218,6 +3394,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int ELLIPSE = 24;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ELLIPSE__UID = DiagramPackage.NODE_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -3381,6 +3565,14 @@ public interface DiagramPackage extends EPackage {
     int LOZENGE = 25;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LOZENGE__UID = DiagramPackage.NODE_STYLE__UID;
+
+    /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -3538,6 +3730,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int BUNDLED_IMAGE = 26;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUNDLED_IMAGE__UID = DiagramPackage.NODE_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -3701,6 +3901,14 @@ public interface DiagramPackage extends EPackage {
     int WORKSPACE_IMAGE = 27;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WORKSPACE_IMAGE__UID = DiagramPackage.NODE_STYLE__UID;
+
+    /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -3843,6 +4051,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int CUSTOM_STYLE = 28;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_STYLE__UID = DiagramPackage.NODE_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -3989,13 +4205,21 @@ public interface DiagramPackage extends EPackage {
     int EDGE_TARGET = 29;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int EDGE_TARGET__UID = ViewpointPackage.IDENTIFIED_ELEMENT__UID;
+
+    /**
      * The feature id for the '<em><b>Outgoing Edges</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
      * @generated
      * @ordered
      */
-    int EDGE_TARGET__OUTGOING_EDGES = 0;
+    int EDGE_TARGET__OUTGOING_EDGES = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Incoming Edges</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
@@ -4004,7 +4228,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_TARGET__INCOMING_EDGES = 1;
+    int EDGE_TARGET__INCOMING_EDGES = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Edge Target</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
@@ -4013,7 +4237,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_TARGET_FEATURE_COUNT = 2;
+    int EDGE_TARGET_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl <em>Edge Style</em>}' class.
@@ -4024,6 +4248,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int EDGE_STYLE = 30;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int EDGE_STYLE__UID = ViewpointPackage.STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -4151,6 +4383,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int GAUGE_COMPOSITE_STYLE = 31;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GAUGE_COMPOSITE_STYLE__UID = DiagramPackage.NODE_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -4306,6 +4546,14 @@ public interface DiagramPackage extends EPackage {
     int BORDERED_STYLE = 32;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BORDERED_STYLE__UID = ViewpointPackage.STYLE__UID;
+
+    /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -4374,6 +4622,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int NOTE = 33;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int NOTE__UID = DiagramPackage.NODE_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -4519,13 +4775,21 @@ public interface DiagramPackage extends EPackage {
     int FILTER_VARIABLE_HISTORY = 34;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int FILTER_VARIABLE_HISTORY__UID = ViewpointPackage.IDENTIFIED_ELEMENT__UID;
+
+    /**
      * The feature id for the '<em><b>Owned Values</b></em>' containment reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int FILTER_VARIABLE_HISTORY__OWNED_VALUES = 0;
+    int FILTER_VARIABLE_HISTORY__OWNED_VALUES = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Filter Variable History</em>' class. <!-- begin-user-doc --> <!--
@@ -4534,7 +4798,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FILTER_VARIABLE_HISTORY_FEATURE_COUNT = 1;
+    int FILTER_VARIABLE_HISTORY_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.impl.CollapseFilterImpl <em>Collapse Filter</em>}'
@@ -4545,6 +4809,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int COLLAPSE_FILTER = 35;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int COLLAPSE_FILTER__UID = DiagramPackage.GRAPHICAL_FILTER__UID;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -4582,6 +4854,14 @@ public interface DiagramPackage extends EPackage {
     int INDIRECTLY_COLLAPSE_FILTER = 36;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INDIRECTLY_COLLAPSE_FILTER__UID = DiagramPackage.COLLAPSE_FILTER__UID;
+
+    /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -4615,6 +4895,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int BEGIN_LABEL_STYLE = 37;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BEGIN_LABEL_STYLE__UID = ViewpointPackage.BASIC_LABEL_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -4686,6 +4974,14 @@ public interface DiagramPackage extends EPackage {
     int CENTER_LABEL_STYLE = 38;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CENTER_LABEL_STYLE__UID = ViewpointPackage.BASIC_LABEL_STYLE__UID;
+
+    /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -4755,6 +5051,14 @@ public interface DiagramPackage extends EPackage {
     int END_LABEL_STYLE = 39;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int END_LABEL_STYLE__UID = ViewpointPackage.BASIC_LABEL_STYLE__UID;
+
+    /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -4822,6 +5126,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int BRACKET_EDGE_STYLE = 40;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BRACKET_EDGE_STYLE__UID = DiagramPackage.EDGE_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list. <!-- begin-user-doc --> <!--
@@ -4951,13 +5263,21 @@ public interface DiagramPackage extends EPackage {
     int COMPUTED_STYLE_DESCRIPTION_REGISTRY = 41;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int COMPUTED_STYLE_DESCRIPTION_REGISTRY__UID = ViewpointPackage.IDENTIFIED_ELEMENT__UID;
+
+    /**
      * The feature id for the '<em><b>Computed Style Descriptions</b></em>' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS = 0;
+    int COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Computed Style Description Registry</em>' class. <!--
@@ -4966,7 +5286,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMPUTED_STYLE_DESCRIPTION_REGISTRY_FEATURE_COUNT = 1;
+    int COMPUTED_STYLE_DESCRIPTION_REGISTRY_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.impl.DragAndDropTargetImpl <em>Drag And Drop
@@ -4979,13 +5299,21 @@ public interface DiagramPackage extends EPackage {
     int DRAG_AND_DROP_TARGET = 42;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DRAG_AND_DROP_TARGET__UID = ViewpointPackage.IDENTIFIED_ELEMENT__UID;
+
+    /**
      * The number of structural features of the '<em>Drag And Drop Target</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DRAG_AND_DROP_TARGET_FEATURE_COUNT = 0;
+    int DRAG_AND_DROP_TARGET_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.HideLabelCapabilityStyle <em>Hide Label Capability
@@ -5026,13 +5354,21 @@ public interface DiagramPackage extends EPackage {
     int VARIABLE_VALUE = 44;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int VARIABLE_VALUE__UID = ViewpointPackage.IDENTIFIED_ELEMENT__UID;
+
+    /**
      * The number of structural features of the '<em>Variable Value</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int VARIABLE_VALUE_FEATURE_COUNT = 0;
+    int VARIABLE_VALUE_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.impl.TypedVariableValueImpl <em>Typed Variable
@@ -5043,6 +5379,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int TYPED_VARIABLE_VALUE = 45;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TYPED_VARIABLE_VALUE__UID = DiagramPackage.VARIABLE_VALUE__UID;
 
     /**
      * The feature id for the '<em><b>Variable Definition</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -5079,6 +5423,14 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     int EOBJECT_VARIABLE_VALUE = 46;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int EOBJECT_VARIABLE_VALUE__UID = DiagramPackage.VARIABLE_VALUE__UID;
 
     /**
      * The feature id for the '<em><b>Variable Definition</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -7511,10 +7863,10 @@ public interface DiagramPackage extends EPackage {
         EReference DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS = DiagramPackage.eINSTANCE.getDDiagramElement_GraphicalFilters();
 
         /**
-         * The meta object literal for the '{@link org.eclipse.sirius.diagram.GraphicalFilter <em>Graphical
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.impl.GraphicalFilterImpl <em>Graphical
          * Filter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.diagram.GraphicalFilter
+         * @see org.eclipse.sirius.diagram.impl.GraphicalFilterImpl
          * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getGraphicalFilter()
          * @generated
          */

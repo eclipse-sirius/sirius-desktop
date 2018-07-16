@@ -12,7 +12,7 @@
 package org.eclipse.sirius.diagram;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Edge Target</b></em>'. <!-- end-user-doc -->
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface EdgeTarget extends EObject {
+public interface EdgeTarget extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Outgoing Edges</b></em>' reference list. The list contents are of type
      * {@link org.eclipse.sirius.diagram.DEdge}. It is bidirectional and its opposite is '

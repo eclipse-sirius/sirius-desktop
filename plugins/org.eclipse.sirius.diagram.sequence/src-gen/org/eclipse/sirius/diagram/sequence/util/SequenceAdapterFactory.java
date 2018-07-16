@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
@@ -82,6 +83,16 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseIdentifiedElement(IdentifiedElement object) {
+            return createIdentifiedElementAdapter();
+        }
+
+        @Override
+        public Adapter caseDModelElement(DModelElement object) {
+            return createDModelElementAdapter();
+        }
+
+        @Override
         public Adapter caseDocumentedElement(DocumentedElement object) {
             return createDocumentedElementAdapter();
         }
@@ -89,11 +100,6 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDRefreshable(DRefreshable object) {
             return createDRefreshableAdapter();
-        }
-
-        @Override
-        public Adapter caseDModelElement(DModelElement object) {
-            return createDModelElementAdapter();
         }
 
         @Override
@@ -151,6 +157,20 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createSequenceDDiagramAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.IdentifiedElement
+     * <em>Identified Element</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.IdentifiedElement
+     * @generated
+     */
+    public Adapter createIdentifiedElementAdapter() {
         return null;
     }
 

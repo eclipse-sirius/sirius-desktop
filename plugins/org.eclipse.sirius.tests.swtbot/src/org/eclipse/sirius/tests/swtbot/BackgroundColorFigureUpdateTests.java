@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,10 +13,10 @@ package org.eclipse.sirius.tests.swtbot;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n.DiagramUIActionsMessages;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
@@ -31,8 +31,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
- * Test change background color for Container and node and verify that the color
- * correspond to GMF Color.
+ * Test change background color for Container and node and verify that the color correspond to GMF Color.
  * 
  * See VP-3427.
  * 
@@ -156,51 +155,48 @@ public class BackgroundColorFigureUpdateTests extends AbstractSiriusSwtBotGefTes
     }
 
     /**
-     * Test selected color in contextual Menu correspond to color applied to
-     * figure. In this case figure correspond to 'Container' with 'Flat
-     * Container Style'.
+     * Test selected color in contextual Menu correspond to color applied to figure. In this case figure correspond to
+     * 'Container' with 'Flat Container Style'.
      */
     public void testColorInContextualMenuFromFlatContainerStyle() {
         changeColorFigureFromContextualMenu(NODE_CONTAINER, DNodeContainerEditPart.class);
     }
 
     /**
-     * Test selected color in contextual Menu correspond to color applied to
-     * figure. In this case figure correspond to 'Container' with 'Flat
-     * Container Style'.
+     * Test selected color in contextual Menu correspond to color applied to figure. In this case figure correspond to
+     * 'Container' with 'Flat Container Style'.
      */
     public void testColorInContextualMenuFromShapeContainerStyle() {
         changeColorFigureFromContextualMenu(NODE_CONTAINER2, DNodeContainerEditPart.class);
     }
 
     /**
-     * Test selected color in contextual Menu correspond to color applied to
-     * figure. In this case figure correspond to 'Node' with 'Square Style'.
+     * Test selected color in contextual Menu correspond to color applied to figure. In this case figure correspond to
+     * 'Node' with 'Square Style'.
      */
     public void testColorInContextualMenuFromSquareNodeStyle() {
         changeColorFigureFromContextualMenu(NODE, DNode3EditPart.class);
     }
 
     /**
-     * Test selected color in contextual Menu correspond to color applied to
-     * figure. In this case figure correspond to 'Node' with 'Custom Style'.
+     * Test selected color in contextual Menu correspond to color applied to figure. In this case figure correspond to
+     * 'Node' with 'Custom Style'.
      */
     public void testColorInContextualMenuFromCustomNodeStyle() {
         changeColorFigureFromContextualMenu(NODE2, DNode3EditPart.class);
     }
 
     /**
-     * Test selected color in contextual Menu correspond to color applied to
-     * figure. In this case figure correspond to 'Node' with 'Dot Style'.
+     * Test selected color in contextual Menu correspond to color applied to figure. In this case figure correspond to
+     * 'Node' with 'Dot Style'.
      */
     public void testColorInContextualMenuFromDotNodeStyle() {
         changeColorFigureFromContextualMenu(NODE3, DNode3EditPart.class);
     }
 
     /**
-     * Test selected color in contextual Menu correspond to color applied to
-     * figure. In this case figure correspond to 'BorderedNode' with 'Square
-     * Style'.
+     * Test selected color in contextual Menu correspond to color applied to figure. In this case figure correspond to
+     * 'BorderedNode' with 'Square Style'.
      */
     public void testColorInContextualMenuFromSquareBorderedNodeStyle() {
         changeColorFigureFromContextualMenu(BORDERED_NODE, DNode2EditPart.class);

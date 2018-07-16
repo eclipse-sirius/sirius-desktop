@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
  * @model
  * @generated
  */
-public interface DAnalysis extends EObject {
+public interface DAnalysis extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Referenced Analysis</b></em>' reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DAnalysis}. <!-- begin-user-doc -->

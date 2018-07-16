@@ -12,7 +12,6 @@
 package org.eclipse.sirius.diagram.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideFilter;
 
@@ -21,7 +20,7 @@ import org.eclipse.sirius.diagram.HideFilter;
  *
  * @generated
  */
-public class HideFilterImpl extends MinimalEObjectImpl.Container implements HideFilter {
+public class HideFilterImpl extends GraphicalFilterImpl implements HideFilter {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *

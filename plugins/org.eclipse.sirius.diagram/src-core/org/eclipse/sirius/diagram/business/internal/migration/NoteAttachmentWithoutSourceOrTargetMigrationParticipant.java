@@ -89,7 +89,7 @@ public class NoteAttachmentWithoutSourceOrTargetMigrationParticipant extends Abs
     @Override
     public void postLoad(XMLResource resource, String loadedVersion) {
         deletionOccured = false;
-        sb = new StringBuilder(Messages.NoteAttachmentWithoutSourceOrTargetMigrationParticipant_title);
+        sb = new StringBuilder(MessageFormat.format(Messages.NoteAttachmentWithoutSourceOrTargetMigrationParticipant_title, resource.getURI().toPlatformString(true)));
         super.postLoad(resource, loadedVersion);
         if (deletionOccured) {
             DiagramPlugin.getDefault().logInfo(sb.toString());

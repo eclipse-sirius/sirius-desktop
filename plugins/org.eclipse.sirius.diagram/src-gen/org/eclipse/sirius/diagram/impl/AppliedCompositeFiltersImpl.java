@@ -15,7 +15,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.diagram.AppliedCompositeFilters;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -34,7 +33,7 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
  *
  * @generated
  */
-public class AppliedCompositeFiltersImpl extends MinimalEObjectImpl.Container implements AppliedCompositeFilters {
+public class AppliedCompositeFiltersImpl extends GraphicalFilterImpl implements AppliedCompositeFilters {
     /**
      * The cached value of the '{@link #getCompositeFilterDescriptions() <em>Composite Filter Descriptions</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->

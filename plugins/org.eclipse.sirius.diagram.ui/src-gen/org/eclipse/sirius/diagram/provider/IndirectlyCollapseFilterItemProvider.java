@@ -66,8 +66,9 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
      */
     @Override
     public String getText(Object object) {
-        IndirectlyCollapseFilter indirectlyCollapseFilter = (IndirectlyCollapseFilter) object;
-        return getString("_UI_IndirectlyCollapseFilter_type") + " " + indirectlyCollapseFilter.getWidth(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((IndirectlyCollapseFilter) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_IndirectlyCollapseFilter_type") : //$NON-NLS-1$
+                getString("_UI_IndirectlyCollapseFilter_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -71,6 +71,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
@@ -150,13 +151,16 @@ public class DiagramSwitch<T> {
                 result = caseDragAndDropTarget(dDiagram);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dDiagram);
+            }
+            if (result == null) {
+                result = caseDModelElement(dDiagram);
+            }
+            if (result == null) {
                 result = caseDocumentedElement(dDiagram);
             }
             if (result == null) {
                 result = caseDRefreshable(dDiagram);
-            }
-            if (result == null) {
-                result = caseDModelElement(dDiagram);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -179,13 +183,16 @@ public class DiagramSwitch<T> {
                 result = caseDragAndDropTarget(dSemanticDiagram);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dSemanticDiagram);
+            }
+            if (result == null) {
+                result = caseDModelElement(dSemanticDiagram);
+            }
+            if (result == null) {
                 result = caseDocumentedElement(dSemanticDiagram);
             }
             if (result == null) {
                 result = caseDRefreshable(dSemanticDiagram);
-            }
-            if (result == null) {
-                result = caseDModelElement(dSemanticDiagram);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -211,6 +218,9 @@ public class DiagramSwitch<T> {
                 result = caseDSemanticDecorator(dDiagramElement);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dDiagramElement);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -218,6 +228,9 @@ public class DiagramSwitch<T> {
         case DiagramPackage.GRAPHICAL_FILTER: {
             GraphicalFilter graphicalFilter = (GraphicalFilter) theEObject;
             T result = caseGraphicalFilter(graphicalFilter);
+            if (result == null) {
+                result = caseIdentifiedElement(graphicalFilter);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -228,6 +241,9 @@ public class DiagramSwitch<T> {
             T result = caseHideFilter(hideFilter);
             if (result == null) {
                 result = caseGraphicalFilter(hideFilter);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(hideFilter);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -241,6 +257,9 @@ public class DiagramSwitch<T> {
                 result = caseGraphicalFilter(hideLabelFilter);
             }
             if (result == null) {
+                result = caseIdentifiedElement(hideLabelFilter);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -250,6 +269,9 @@ public class DiagramSwitch<T> {
             T result = caseFoldingPointFilter(foldingPointFilter);
             if (result == null) {
                 result = caseGraphicalFilter(foldingPointFilter);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(foldingPointFilter);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -263,6 +285,9 @@ public class DiagramSwitch<T> {
                 result = caseGraphicalFilter(foldingFilter);
             }
             if (result == null) {
+                result = caseIdentifiedElement(foldingFilter);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -274,6 +299,9 @@ public class DiagramSwitch<T> {
                 result = caseGraphicalFilter(appliedCompositeFilters);
             }
             if (result == null) {
+                result = caseIdentifiedElement(appliedCompositeFilters);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -283,6 +311,9 @@ public class DiagramSwitch<T> {
             T result = caseAbsoluteBoundsFilter(absoluteBoundsFilter);
             if (result == null) {
                 result = caseGraphicalFilter(absoluteBoundsFilter);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(absoluteBoundsFilter);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -309,6 +340,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseDSemanticDecorator(abstractDNode);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(abstractDNode);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -346,6 +380,9 @@ public class DiagramSwitch<T> {
                 result = caseDSemanticDecorator(dNode);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dNode);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -379,6 +416,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseDSemanticDecorator(dDiagramElementContainer);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(dDiagramElementContainer);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -419,6 +459,9 @@ public class DiagramSwitch<T> {
                 result = caseDSemanticDecorator(dNodeContainer);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dNodeContainer);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -457,6 +500,9 @@ public class DiagramSwitch<T> {
                 result = caseDSemanticDecorator(dNodeList);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dNodeList);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -484,6 +530,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseDSemanticDecorator(dNodeListElement);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(dNodeListElement);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -515,6 +564,9 @@ public class DiagramSwitch<T> {
                 result = caseDSemanticDecorator(dEdge);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dEdge);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -542,6 +594,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseCustomizable(nodeStyle);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(nodeStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -576,6 +631,9 @@ public class DiagramSwitch<T> {
                 result = caseCustomizable(dot);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dot);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -585,6 +643,9 @@ public class DiagramSwitch<T> {
             T result = caseGaugeSection(gaugeSection);
             if (result == null) {
                 result = caseCustomizable(gaugeSection);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(gaugeSection);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -614,6 +675,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseCustomizable(containerStyle);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(containerStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -648,6 +712,9 @@ public class DiagramSwitch<T> {
                 result = caseCustomizable(flatContainerStyle);
             }
             if (result == null) {
+                result = caseIdentifiedElement(flatContainerStyle);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -678,6 +745,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseCustomizable(shapeContainerStyle);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(shapeContainerStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -712,6 +782,9 @@ public class DiagramSwitch<T> {
                 result = caseCustomizable(square);
             }
             if (result == null) {
+                result = caseIdentifiedElement(square);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -742,6 +815,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseCustomizable(ellipse);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(ellipse);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -776,6 +852,9 @@ public class DiagramSwitch<T> {
                 result = caseCustomizable(lozenge);
             }
             if (result == null) {
+                result = caseIdentifiedElement(lozenge);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -806,6 +885,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseCustomizable(bundledImage);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(bundledImage);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -843,6 +925,9 @@ public class DiagramSwitch<T> {
                 result = caseCustomizable(workspaceImage);
             }
             if (result == null) {
+                result = caseIdentifiedElement(workspaceImage);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -875,6 +960,9 @@ public class DiagramSwitch<T> {
                 result = caseCustomizable(customStyle);
             }
             if (result == null) {
+                result = caseIdentifiedElement(customStyle);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -882,6 +970,9 @@ public class DiagramSwitch<T> {
         case DiagramPackage.EDGE_TARGET: {
             EdgeTarget edgeTarget = (EdgeTarget) theEObject;
             T result = caseEdgeTarget(edgeTarget);
+            if (result == null) {
+                result = caseIdentifiedElement(edgeTarget);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -898,6 +989,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseCustomizable(edgeStyle);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(edgeStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -932,6 +1026,9 @@ public class DiagramSwitch<T> {
                 result = caseCustomizable(gaugeCompositeStyle);
             }
             if (result == null) {
+                result = caseIdentifiedElement(gaugeCompositeStyle);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -947,6 +1044,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseCustomizable(borderedStyle);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(borderedStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -981,6 +1081,9 @@ public class DiagramSwitch<T> {
                 result = caseCustomizable(note);
             }
             if (result == null) {
+                result = caseIdentifiedElement(note);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -988,6 +1091,9 @@ public class DiagramSwitch<T> {
         case DiagramPackage.FILTER_VARIABLE_HISTORY: {
             FilterVariableHistory filterVariableHistory = (FilterVariableHistory) theEObject;
             T result = caseFilterVariableHistory(filterVariableHistory);
+            if (result == null) {
+                result = caseIdentifiedElement(filterVariableHistory);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -998,6 +1104,9 @@ public class DiagramSwitch<T> {
             T result = caseCollapseFilter(collapseFilter);
             if (result == null) {
                 result = caseGraphicalFilter(collapseFilter);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(collapseFilter);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1014,6 +1123,9 @@ public class DiagramSwitch<T> {
                 result = caseGraphicalFilter(indirectlyCollapseFilter);
             }
             if (result == null) {
+                result = caseIdentifiedElement(indirectlyCollapseFilter);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1026,6 +1138,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseCustomizable(beginLabelStyle);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(beginLabelStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1042,6 +1157,9 @@ public class DiagramSwitch<T> {
                 result = caseCustomizable(centerLabelStyle);
             }
             if (result == null) {
+                result = caseIdentifiedElement(centerLabelStyle);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1054,6 +1172,9 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseCustomizable(endLabelStyle);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(endLabelStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1076,6 +1197,9 @@ public class DiagramSwitch<T> {
                 result = caseCustomizable(bracketEdgeStyle);
             }
             if (result == null) {
+                result = caseIdentifiedElement(bracketEdgeStyle);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1084,6 +1208,9 @@ public class DiagramSwitch<T> {
             ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = (ComputedStyleDescriptionRegistry) theEObject;
             T result = caseComputedStyleDescriptionRegistry(computedStyleDescriptionRegistry);
             if (result == null) {
+                result = caseIdentifiedElement(computedStyleDescriptionRegistry);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1091,6 +1218,9 @@ public class DiagramSwitch<T> {
         case DiagramPackage.DRAG_AND_DROP_TARGET: {
             DragAndDropTarget dragAndDropTarget = (DragAndDropTarget) theEObject;
             T result = caseDragAndDropTarget(dragAndDropTarget);
+            if (result == null) {
+                result = caseIdentifiedElement(dragAndDropTarget);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -1108,6 +1238,9 @@ public class DiagramSwitch<T> {
             VariableValue variableValue = (VariableValue) theEObject;
             T result = caseVariableValue(variableValue);
             if (result == null) {
+                result = caseIdentifiedElement(variableValue);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1119,6 +1252,9 @@ public class DiagramSwitch<T> {
                 result = caseVariableValue(typedVariableValue);
             }
             if (result == null) {
+                result = caseIdentifiedElement(typedVariableValue);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1128,6 +1264,9 @@ public class DiagramSwitch<T> {
             T result = caseEObjectVariableValue(eObjectVariableValue);
             if (result == null) {
                 result = caseVariableValue(eObjectVariableValue);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(eObjectVariableValue);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1825,6 +1964,21 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public T caseEObjectVariableValue(EObjectVariableValue object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Identified Element</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Identified Element</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseIdentifiedElement(IdentifiedElement object) {
         return null;
     }
 

@@ -2777,6 +2777,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         dSemanticDiagramEClass.getESuperTypes().add(this.getDDiagram());
         dSemanticDiagramEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dDiagramElementEClass.getESuperTypes().add(theViewpointPackage.getDRepresentationElement());
+        graphicalFilterEClass.getESuperTypes().add(theViewpointPackage.getIdentifiedElement());
         hideFilterEClass.getESuperTypes().add(this.getGraphicalFilter());
         hideLabelFilterEClass.getESuperTypes().add(this.getGraphicalFilter());
         foldingPointFilterEClass.getESuperTypes().add(this.getGraphicalFilter());
@@ -2814,16 +2815,21 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         workspaceImageEClass.getESuperTypes().add(this.getNodeStyle());
         workspaceImageEClass.getESuperTypes().add(this.getContainerStyle());
         customStyleEClass.getESuperTypes().add(this.getNodeStyle());
+        edgeTargetEClass.getESuperTypes().add(theViewpointPackage.getIdentifiedElement());
         edgeStyleEClass.getESuperTypes().add(theViewpointPackage.getStyle());
         gaugeCompositeStyleEClass.getESuperTypes().add(this.getNodeStyle());
         borderedStyleEClass.getESuperTypes().add(theViewpointPackage.getStyle());
         noteEClass.getESuperTypes().add(this.getNodeStyle());
+        filterVariableHistoryEClass.getESuperTypes().add(theViewpointPackage.getIdentifiedElement());
         collapseFilterEClass.getESuperTypes().add(this.getGraphicalFilter());
         indirectlyCollapseFilterEClass.getESuperTypes().add(this.getCollapseFilter());
         beginLabelStyleEClass.getESuperTypes().add(theViewpointPackage.getBasicLabelStyle());
         centerLabelStyleEClass.getESuperTypes().add(theViewpointPackage.getBasicLabelStyle());
         endLabelStyleEClass.getESuperTypes().add(theViewpointPackage.getBasicLabelStyle());
         bracketEdgeStyleEClass.getESuperTypes().add(this.getEdgeStyle());
+        computedStyleDescriptionRegistryEClass.getESuperTypes().add(theViewpointPackage.getIdentifiedElement());
+        dragAndDropTargetEClass.getESuperTypes().add(theViewpointPackage.getIdentifiedElement());
+        variableValueEClass.getESuperTypes().add(theViewpointPackage.getIdentifiedElement());
         typedVariableValueEClass.getESuperTypes().add(this.getVariableValue());
         eObjectVariableValueEClass.getESuperTypes().add(this.getVariableValue());
 
@@ -2919,7 +2925,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
         addEOperation(dDiagramElementEClass, this.getDDiagram(), "getParentDiagram", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(graphicalFilterEClass, GraphicalFilter.class, "GraphicalFilter", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEClass(graphicalFilterEClass, GraphicalFilter.class, "GraphicalFilter", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(hideFilterEClass, HideFilter.class, "HideFilter", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 

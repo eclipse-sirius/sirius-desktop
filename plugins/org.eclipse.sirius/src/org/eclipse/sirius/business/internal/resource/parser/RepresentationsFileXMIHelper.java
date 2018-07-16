@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIHelperImpl;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.osgi.framework.Version;
 
@@ -140,4 +141,14 @@ public class RepresentationsFileXMIHelper extends XMIHelperImpl {
         }
         return super.createFromString(eFactory, eDataType, value);
     }
+
+    @Override
+    public String getID(EObject obj) {
+        if (obj instanceof IdentifiedElement && ((IdentifiedElement) obj).getUid() != null) {
+            // Do not serialize xmi:id for identified elements as their uuid attribute is used to reference them.
+            return null;
+        }
+        return super.getID(obj);
+    }
+
 }

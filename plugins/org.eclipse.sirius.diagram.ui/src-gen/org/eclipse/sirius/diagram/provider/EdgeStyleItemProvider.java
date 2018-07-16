@@ -25,7 +25,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
-import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.provider.StyleItemProvider;
 
@@ -212,8 +211,7 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        LineStyle labelValue = ((EdgeStyle) object).getLineStyle();
-        String label = labelValue == null ? null : labelValue.toString();
+        String label = ((EdgeStyle) object).getUid();
         return label == null || label.length() == 0 ? getString("_UI_EdgeStyle_type") : //$NON-NLS-1$
                 getString("_UI_EdgeStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }

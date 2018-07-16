@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>DTree Element Synchronizer</b></em>'. <!--
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DTreeElementSynchronizer extends EObject {
+public interface DTreeElementSynchronizer extends IdentifiedElement {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *

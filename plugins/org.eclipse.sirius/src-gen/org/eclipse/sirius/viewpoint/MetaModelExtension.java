@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface MetaModelExtension extends EObject {
+public interface MetaModelExtension extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Extension Group</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * --> <!-- begin-model-doc --> The referenced meta model extension. It should be an instance of ExtensionGroup.

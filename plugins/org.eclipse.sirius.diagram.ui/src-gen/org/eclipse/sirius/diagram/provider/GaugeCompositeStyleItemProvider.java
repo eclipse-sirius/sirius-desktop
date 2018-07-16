@@ -116,8 +116,9 @@ public class GaugeCompositeStyleItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        GaugeCompositeStyle gaugeCompositeStyle = (GaugeCompositeStyle) object;
-        return getString("_UI_GaugeCompositeStyle_type") + " " + gaugeCompositeStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((GaugeCompositeStyle) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_GaugeCompositeStyle_type") : //$NON-NLS-1$
+                getString("_UI_GaugeCompositeStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

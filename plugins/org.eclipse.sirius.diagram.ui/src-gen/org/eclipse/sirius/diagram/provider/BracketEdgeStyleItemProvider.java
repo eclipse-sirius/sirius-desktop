@@ -18,7 +18,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.diagram.BracketEdgeStyle;
-import org.eclipse.sirius.diagram.LineStyle;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.BracketEdgeStyle} object. <!--
@@ -67,8 +66,7 @@ public class BracketEdgeStyleItemProvider extends EdgeStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        LineStyle labelValue = ((BracketEdgeStyle) object).getLineStyle();
-        String label = labelValue == null ? null : labelValue.toString();
+        String label = ((BracketEdgeStyle) object).getUid();
         return label == null || label.length() == 0 ? getString("_UI_BracketEdgeStyle_type") : //$NON-NLS-1$
                 getString("_UI_BracketEdgeStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }

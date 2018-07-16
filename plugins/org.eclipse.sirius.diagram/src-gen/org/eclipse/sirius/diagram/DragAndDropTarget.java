@@ -11,8 +11,8 @@
  */
 package org.eclipse.sirius.diagram;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Drag And Drop Target</b></em>'. <!--
@@ -25,7 +25,7 @@ import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
  * @model
  * @generated
  */
-public interface DragAndDropTarget extends EObject {
+public interface DragAndDropTarget extends IdentifiedElement {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return the description of this Drag&Drop
      * Target. <!-- end-model-doc -->

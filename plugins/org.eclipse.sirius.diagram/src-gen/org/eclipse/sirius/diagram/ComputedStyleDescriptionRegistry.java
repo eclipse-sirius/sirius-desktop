@@ -12,7 +12,7 @@
 package org.eclipse.sirius.diagram;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * @model
  * @generated
  */
-public interface ComputedStyleDescriptionRegistry extends EObject {
+public interface ComputedStyleDescriptionRegistry extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Computed Style Descriptions</b></em>' containment reference list. The list
      * contents are of type {@link org.eclipse.sirius.viewpoint.description.style.StyleDescription}. <!-- begin-user-doc

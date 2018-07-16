@@ -108,8 +108,9 @@ public class SquareItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        Square square = (Square) object;
-        return getString("_UI_Square_type") + " " + square.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((Square) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_Square_type") : //$NON-NLS-1$
+                getString("_UI_Square_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -21,25 +22,27 @@ import org.eclipse.emf.ecore.resource.Resource;
 import com.google.common.base.Objects;
 
 /**
- * An helper to check EObject equality.
+ * An helper to check EObject equality.</br>
+ * It extends and override EcoreUtil.EqualityHelper so that equals methods ignore EAttribute that are ID=true.
  * 
  * @author mchauvin
  */
-public final class EqualityHelper {
+public final class EqualityHelper extends org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper {
 
-    private EqualityHelper() {
+    @Override
+    protected boolean haveEqualAttribute(EObject eObject1, EObject eObject2, EAttribute attribute) {
+        boolean isID = attribute.isID();
+        return isID || super.haveEqualAttribute(eObject1, eObject2, attribute);
     }
 
     /**
-     * Check if a Collection of EObjects contains an EObject, based on their
-     * resource and URI fragment.
+     * Check if a Collection of EObjects contains an EObject, based on their resource and URI fragment.
      * 
      * @param collection
      *            the collection to watch
      * @param eObj
      *            the EObject to find
-     * @return <code>true</code> if the collection contains the object,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the collection contains the object, <code>false</code> otherwise
      */
     public static boolean contains(final Collection<? extends EObject> collection, final EObject eObj) {
         for (final EObject object : collection) {
@@ -51,8 +54,7 @@ public final class EqualityHelper {
     }
 
     /**
-     * Remove from a Collection, an EObject, based on their resource and URI
-     * fragment.
+     * Remove from a Collection, an EObject, based on their resource and URI fragment.
      * 
      * @param collection
      *            the collection
@@ -70,16 +72,14 @@ public final class EqualityHelper {
     }
 
     /**
-     * Check if two EObject are the same, based on their resource and URI
-     * fragment.
+     * Check if two EObject are the same, based on their resource and URI fragment.
      * 
      * @param eObj1
      *            the first EObject to compare
      * @param eObj2
      *            the second EObject to compare
-     * @return <code>true</code> if they are equals, <code>false</code>
-     *         otherwise. If the two objects are both <code>null</code> return
-     *         <code>true</code>, otherwise if only one of them is null, return
+     * @return <code>true</code> if they are equals, <code>false</code> otherwise. If the two objects are both
+     *         <code>null</code> return <code>true</code>, otherwise if only one of them is null, return
      *         <code>false</code>
      */
     public static boolean areEquals(EObject eObj1, EObject eObj2) {
@@ -114,8 +114,7 @@ public final class EqualityHelper {
                 }
             } else {
                 /*
-                 * one of the containers is null.. no chance both objects are
-                 * sharing the same URI.
+                 * one of the containers is null.. no chance both objects are sharing the same URI.
                  */
             }
 

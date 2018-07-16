@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.sirius.business.internal.resource.parser.RepresentationsFileX
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.osgi.framework.Version;
 
 /**
@@ -43,16 +44,14 @@ import org.osgi.framework.Version;
 public class AirDResourceImpl extends XMIResourceImpl implements DResource, AirdResource {
 
     /**
-     * Use this option to abort loading a resource immediately when an error
-     * occurs. The default is <code>Boolean.FALSE</code> unless set to
-     * <code>Boolean.TRUE</code> explicitly.
+     * Use this option to abort loading a resource immediately when an error occurs. The default is
+     * <code>Boolean.FALSE</code> unless set to <code>Boolean.TRUE</code> explicitly.
      */
     public static final String OPTION_ABORT_ON_ERROR = "ABORT_ON_ERROR"; //$NON-NLS-1$
 
     /**
-     * The number of current load in progress. Usefull for determine if the
-     * current load is the first one or is a load triggered by a resolve (for
-     * fragmented files for examples).
+     * The number of current load in progress. Usefull for determine if the current load is the first one or is a load
+     * triggered by a resolve (for fragmented files for examples).
      */
     private static ThreadLocal<Integer> nbLoadInProgress = new ThreadLocal<Integer>() {
         @Override
@@ -62,8 +61,8 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
     };
 
     /**
-     * This constructor should be used only if the version is up to date. There
-     * is no automatic migration during the resolution of an object.
+     * This constructor should be used only if the version is up to date. There is no automatic migration during the
+     * resolution of an object.
      * 
      * @param uri
      *            the URI
@@ -79,7 +78,33 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
 
     @Override
     protected boolean useIDAttributes() {
-        return false;
+        return true;
+    }
+
+    /**
+     * Allow to have the xmiid equal to the uid intrisic id.</br>
+     * 
+     * @see org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl#attachedHelper(org.eclipse.emf.ecore.EObject)
+     */
+    @Override
+    protected void attachedHelper(EObject eObject) {
+        if (eObject instanceof IdentifiedElement) {
+            IdentifiedElement idElem = (IdentifiedElement) eObject;
+            String uid = idElem.getUid();
+            String cachedId = getID(eObject);
+            if (uid == null) {
+                throw new NullPointerException(org.eclipse.sirius.viewpoint.Messages.AirDResourceImpl_nullUid); // $NON-NLS-1$
+            } else if (cachedId == null || !isLoading && !cachedId.equals(uid)) {
+                // Uid must be used as id for href, urifragment and other kind of internal/external reference,
+                // Update cache if it is not known or different.
+                // During load/migration we might still need the old id for idref resolution, the cache will be update
+                // in postLoad phase.
+                setID(eObject, uid);
+            }
+        }
+
+        // for other EObject such GMF's, they are identified with the xmiid
+        super.attachedHelper(eObject);
     }
 
     /**
@@ -106,11 +131,9 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
     }
 
     /**
-     * Overridden to not have {@link XMIResourceImpl} set to true in this
-     * constructor because now it is
-     * {@link org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater}
-     * which manage {@link org.eclipse.emf.ecore.resource.Resource#isModified()}
-     * .
+     * Overridden to not have {@link XMIResourceImpl} set to true in this constructor because now it is
+     * {@link org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater} which manage
+     * {@link org.eclipse.emf.ecore.resource.Resource#isModified()} .
      * 
      * {@inheritDoc}
      */
@@ -141,8 +164,7 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
     }
 
     /**
-     * Handle migration options and return an error diagnostic in case of
-     * migration version mismatch
+     * Handle migration options and return an error diagnostic in case of migration version mismatch
      */
     private Diagnostic handleMigrationOptions() {
         Diagnostic migrationMismatchDiagnostic = null;
@@ -204,8 +226,7 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
     }
 
     /**
-     * Override to migrate fragment if necessary (when a reference has been
-     * renamed) before getting the EObject.
+     * Override to migrate fragment if necessary (when a reference has been renamed) before getting the EObject.
      * 
      * {@inheritDoc}
      */
@@ -237,8 +258,8 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
         loadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
         loadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
         /**
-         * This option is passed so that the resource can decide to adapt the
-         * load mechanism depending on the loaded version.
+         * This option is passed so that the resource can decide to adapt the load mechanism depending on the loaded
+         * version.
          */
         loadOptions.put(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION, loadedVersion);
 

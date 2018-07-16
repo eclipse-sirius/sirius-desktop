@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -34,7 +33,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  *
  * @generated
  */
-public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implements DAnalysisCustomData {
+public class DAnalysisCustomDataImpl extends IdentifiedElementImpl implements DAnalysisCustomData {
     /**
      * The default value of the '{@link #getKey() <em>Key</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -150,6 +150,8 @@ import org.eclipse.sirius.tests.unit.diagram.migration.RgbValuesEDataTypeMigrati
 import org.eclipse.sirius.tests.unit.diagram.migration.RunRepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SnapBackDistantLabelsMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.TechnicalUidMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.TransientLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.multipageeditor.SiriusMultiPageEditorTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
 import org.eclipse.sirius.tests.unit.perf.common.Session1MillionTests;
@@ -236,6 +238,8 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest.class);
         suite.addTestSuite(DecorationDescriptionImageExpressionMigrationTest.class);
         suite.addTestSuite(RepairGMFbendpointsMigrationParticipantTest.class);
+        suite.addTestSuite(TransientLayerMigrationTest.class);
+        suite.addTestSuite(TechnicalUidMigrationTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
         suite.addTest(new JUnit4TestAdapter(GroupingContentProviderTest.class));

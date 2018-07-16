@@ -779,6 +779,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         dTargetColumnEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dTargetColumnEClass.getESuperTypes().add(this.getDColumn());
         dFeatureColumnEClass.getESuperTypes().add(this.getDColumn());
+        dTableElementStyleEClass.getESuperTypes().add(theViewpointPackage.getIdentifiedElement());
 
         // Initialize classes and features; add operations and parameters
         initEClass(dTableEClass, DTable.class, "DTable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

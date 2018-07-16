@@ -69,8 +69,9 @@ public class EndLabelStyleItemProvider extends BasicLabelStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        EndLabelStyle endLabelStyle = (EndLabelStyle) object;
-        return getString("_UI_EndLabelStyle_type") + " " + endLabelStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((EndLabelStyle) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_EndLabelStyle_type") : //$NON-NLS-1$
+                getString("_UI_EndLabelStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

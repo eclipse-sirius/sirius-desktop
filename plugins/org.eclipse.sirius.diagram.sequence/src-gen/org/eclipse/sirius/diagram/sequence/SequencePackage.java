@@ -69,12 +69,12 @@ public interface SequencePackage extends EPackage {
     int SEQUENCE_DDIAGRAM = 0;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__DOCUMENTATION = DiagramPackage.DSEMANTIC_DIAGRAM__DOCUMENTATION;
+    int SEQUENCE_DDIAGRAM__UID = DiagramPackage.DSEMANTIC_DIAGRAM__UID;
 
     /**
      * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -84,6 +84,14 @@ public interface SequencePackage extends EPackage {
      * @ordered
      */
     int SEQUENCE_DDIAGRAM__EANNOTATIONS = DiagramPackage.DSEMANTIC_DIAGRAM__EANNOTATIONS;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SEQUENCE_DDIAGRAM__DOCUMENTATION = DiagramPackage.DSEMANTIC_DIAGRAM__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>' reference list. <!-- begin-user-doc -->
@@ -128,14 +136,6 @@ public interface SequencePackage extends EPackage {
      * @ordered
      */
     int SEQUENCE_DDIAGRAM__UI_STATE = DiagramPackage.DSEMANTIC_DIAGRAM__UI_STATE;
-
-    /**
-     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DDIAGRAM__UID = DiagramPackage.DSEMANTIC_DIAGRAM__UID;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>' containment reference list. <!-- begin-user-doc

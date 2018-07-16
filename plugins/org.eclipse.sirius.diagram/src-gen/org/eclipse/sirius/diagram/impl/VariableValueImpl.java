@@ -11,9 +11,9 @@
 package org.eclipse.sirius.diagram.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.VariableValue;
+import org.eclipse.sirius.viewpoint.impl.IdentifiedElementImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Variable Value</b></em>'. <!-- end-user-doc
@@ -21,7 +21,7 @@ import org.eclipse.sirius.diagram.VariableValue;
  *
  * @generated
  */
-public abstract class VariableValueImpl extends MinimalEObjectImpl.Container implements VariableValue {
+public abstract class VariableValueImpl extends IdentifiedElementImpl implements VariableValue {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *

@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DAnalysisCustomData extends EObject {
+public interface DAnalysisCustomData extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Key</b></em>' attribute. <!-- begin-user-doc -->
      * <p>

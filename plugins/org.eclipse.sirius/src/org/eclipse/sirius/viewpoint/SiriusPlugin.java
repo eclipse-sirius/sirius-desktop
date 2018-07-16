@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -248,16 +248,7 @@ public final class SiriusPlugin extends EMFPlugin {
          *            the exception (optional).
          */
         public void error(String message, final Throwable e) {
-            String messageToDisplay = message;
-            if (messageToDisplay == null && e != null) {
-                messageToDisplay = e.getMessage();
-            }
-            if (e instanceof CoreException) {
-                getLog().log(((CoreException) e).getStatus());
-            } else {
-                IStatus status = new Status(IStatus.ERROR, getDefault().getSymbolicName(), messageToDisplay, e);
-                getLog().log(status);
-            }
+            log(message, e, IStatus.ERROR);
         }
 
         /**
@@ -269,6 +260,22 @@ public final class SiriusPlugin extends EMFPlugin {
          *            the exception (optional).
          */
         public void warning(String message, final Exception e) {
+            log(message, e, IStatus.WARNING);
+        }
+
+        /**
+         * Logs an info in the error log.
+         * 
+         * @param message
+         *            the message to log (optional).
+         * @param e
+         *            the exception (optional).
+         */
+        public void info(String message, final Throwable e) {
+            log(message, e, IStatus.INFO);
+        }
+
+        private void log(String message, final Throwable e, int severity) {
             String messageToDisplay = message;
             if (messageToDisplay == null && e != null) {
                 messageToDisplay = e.getMessage();
@@ -276,7 +283,7 @@ public final class SiriusPlugin extends EMFPlugin {
             if (e instanceof CoreException) {
                 getLog().log(((CoreException) e).getStatus());
             } else {
-                final IStatus status = new Status(IStatus.WARNING, getDefault().getSymbolicName(), messageToDisplay, e);
+                IStatus status = new Status(severity, getDefault().getSymbolicName(), messageToDisplay, e);
                 getLog().log(status);
             }
         }

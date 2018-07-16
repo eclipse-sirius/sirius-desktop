@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * @model abstract="true"
  * @generated
  */
-public interface Style extends DRefreshable, Customizable {
+public interface Style extends IdentifiedElement, DRefreshable, Customizable {
     /**
      * Returns the value of the '<em><b>Description</b></em>' reference. <!-- begin-user-doc -->
      * <p>

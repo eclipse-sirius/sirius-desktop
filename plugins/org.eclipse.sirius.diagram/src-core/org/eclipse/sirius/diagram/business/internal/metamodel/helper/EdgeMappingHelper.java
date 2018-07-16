@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -61,8 +62,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 /**
- * Common utils between
- * {@link org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingSpec}
+ * Common utils between {@link org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingSpec}
  * and {@link EdgeMappingImportWrapper}.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
@@ -240,9 +240,8 @@ public final class EdgeMappingHelper {
         }
 
         /*
-         * Validation does not work here : getParentDiagram is still unknown.
-         * Let's check the fact that we can find back the target from the source
-         * using the target finder expression
+         * Validation does not work here : getParentDiagram is still unknown. Let's check the fact that we can find back
+         * the target from the source using the target finder expression
          */
         // if (!newEdge.validate()) {
         // SiriusPlugin.getDefault().warning("The newly created edge is not
@@ -315,7 +314,7 @@ public final class EdgeMappingHelper {
                 }
             }
 
-            org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper equalityHelper = new org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper();
+            EqualityHelper equalityHelper = new EqualityHelper();
 
             // Change path only if new list is different from original one
             if (!equalityHelper.equals((List) edge.getPath(), (List) newPath)) {
@@ -510,8 +509,7 @@ public final class EdgeMappingHelper {
      *            The potentially imported mapping
      * @param edgeMappingImport
      *            The potential importer
-     * @return true if mapping is imported by edgeMappingImport or a subMapping,
-     *         false otherwise
+     * @return true if mapping is imported by edgeMappingImport or a subMapping, false otherwise
      */
     public static boolean isImported(final IEdgeMapping mapping, final EdgeMappingImport edgeMappingImport) {
         boolean result = false;

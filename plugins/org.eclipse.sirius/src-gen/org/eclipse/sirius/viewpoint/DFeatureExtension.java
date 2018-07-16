@@ -11,7 +11,6 @@
  */
 package org.eclipse.sirius.viewpoint;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 
 /**
@@ -29,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
  * @model abstract="true"
  * @generated
  */
-public interface DFeatureExtension extends EObject {
+public interface DFeatureExtension extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Description</b></em>' reference. <!-- begin-user-doc -->
      * <p>

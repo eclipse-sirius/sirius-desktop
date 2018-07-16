@@ -164,8 +164,9 @@ public class TreeItemStyleItemProvider extends StyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        TreeItemStyle treeItemStyle = (TreeItemStyle) object;
-        return getString("_UI_TreeItemStyle_type") + " " + treeItemStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((TreeItemStyle) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_TreeItemStyle_type") : //$NON-NLS-1$
+                getString("_UI_TreeItemStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

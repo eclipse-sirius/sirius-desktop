@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -1058,7 +1058,7 @@ public final class StyleHelper {
             newGaugeSections.add(styleSection);
         }
 
-        org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper equalityHelper = new org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper();
+        EqualityHelper equalityHelper = new EqualityHelper();
         // Change sections only if new list is different from original one
         if (!equalityHelper.equals((List) style.getSections(), (List) newGaugeSections) && !style.getCustomFeatures().contains(DiagramPackage.Literals.GAUGE_COMPOSITE_STYLE__SECTIONS.getName())) {
             style.getSections().clear();

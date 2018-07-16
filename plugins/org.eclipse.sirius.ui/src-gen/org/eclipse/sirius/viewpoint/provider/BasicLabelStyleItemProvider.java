@@ -135,8 +135,9 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
      */
     @Override
     public String getText(Object object) {
-        BasicLabelStyle basicLabelStyle = (BasicLabelStyle) object;
-        return getString("_UI_BasicLabelStyle_type") + " " + basicLabelStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((BasicLabelStyle) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_BasicLabelStyle_type") : //$NON-NLS-1$
+                getString("_UI_BasicLabelStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

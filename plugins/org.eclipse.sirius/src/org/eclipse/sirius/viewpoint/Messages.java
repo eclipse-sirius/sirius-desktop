@@ -76,6 +76,9 @@ public final class Messages {
     public static String AddSemanticResourceCommand_label;
 
     @TranslatableMessage
+    public static String AirDResourceImpl_nullUid;
+
+    @TranslatableMessage
     public static String AnalysisResourceReloadedCommand_label;
 
     @TranslatableMessage
@@ -827,6 +830,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SiriusUncontrolCommand_resourceDeletionFailedMsg;
+
+    @TranslatableMessage
+    public static String TechnicalUidMigrationParticipant_message;
 
     @TranslatableMessage
     public static String UnexecutableTask_label;

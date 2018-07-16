@@ -92,7 +92,9 @@ public class DTreeItemContainerItemProvider extends DSemanticDecoratorItemProvid
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_DTreeItemContainer_type"); //$NON-NLS-1$
+        String label = ((DTreeItemContainer) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_DTreeItemContainer_type") : //$NON-NLS-1$
+                getString("_UI_DTreeItemContainer_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

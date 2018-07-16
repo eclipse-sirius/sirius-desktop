@@ -98,8 +98,9 @@ public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider 
      */
     @Override
     public String getText(Object object) {
-        ShapeContainerStyle shapeContainerStyle = (ShapeContainerStyle) object;
-        return getString("_UI_ShapeContainerStyle_type") + " " + shapeContainerStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((ShapeContainerStyle) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_ShapeContainerStyle_type") : //$NON-NLS-1$
+                getString("_UI_ShapeContainerStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

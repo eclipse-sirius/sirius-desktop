@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
  * @model
  * @generated
  */
-public interface DRepresentationDescriptor extends DModelElement {
+public interface DRepresentationDescriptor extends IdentifiedElement, DModelElement {
     /**
      * Returns the value of the '<em><b>Name</b></em>' attribute. The default value is <code>""</code>. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The name of the representation. <!--

@@ -111,8 +111,9 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        BundledImage bundledImage = (BundledImage) object;
-        return getString("_UI_BundledImage_type") + " " + bundledImage.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((BundledImage) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_BundledImage_type") : //$NON-NLS-1$
+                getString("_UI_BundledImage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

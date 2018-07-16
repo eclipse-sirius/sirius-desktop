@@ -15,7 +15,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -31,7 +30,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  *
  * @generated
  */
-public abstract class CustomizableImpl extends MinimalEObjectImpl.Container implements Customizable {
+public abstract class CustomizableImpl extends IdentifiedElementImpl implements Customizable {
     /**
      * The cached value of the '{@link #getCustomFeatures() <em>Custom Features</em>}' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->

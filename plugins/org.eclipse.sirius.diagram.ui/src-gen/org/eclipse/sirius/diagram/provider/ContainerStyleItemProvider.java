@@ -132,8 +132,9 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        ContainerStyle containerStyle = (ContainerStyle) object;
-        return getString("_UI_ContainerStyle_type") + " " + containerStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((ContainerStyle) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_ContainerStyle_type") : //$NON-NLS-1$
+                getString("_UI_ContainerStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DiagramPackage;
 
@@ -31,7 +30,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  *
  * @generated
  */
-public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements CollapseFilter {
+public class CollapseFilterImpl extends GraphicalFilterImpl implements CollapseFilter {
     /**
      * The default value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->

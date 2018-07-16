@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * @model
  * @generated
  */
-public interface DView extends DRefreshable {
+public interface DView extends IdentifiedElement, DRefreshable {
     /**
      * Returns the value of the '<em><b>Viewpoint</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The viewpoint that is used for this view <!-- end-model-doc -->

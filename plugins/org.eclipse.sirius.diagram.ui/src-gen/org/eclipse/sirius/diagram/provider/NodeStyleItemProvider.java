@@ -145,8 +145,9 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        NodeStyle nodeStyle = (NodeStyle) object;
-        return getString("_UI_NodeStyle_type") + " " + nodeStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((NodeStyle) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_NodeStyle_type") : //$NON-NLS-1$
+                getString("_UI_NodeStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

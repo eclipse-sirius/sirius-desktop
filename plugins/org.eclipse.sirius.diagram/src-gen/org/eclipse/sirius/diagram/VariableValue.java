@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Variable Value</b></em>'. <!-- end-user-doc -->
@@ -20,6 +20,6 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface VariableValue extends EObject {
+public interface VariableValue extends IdentifiedElement {
 
 } // VariableValue

@@ -95,8 +95,9 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        DCellStyle dCellStyle = (DCellStyle) object;
-        return getString("_UI_DCellStyle_type") + " " + dCellStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((DCellStyle) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_DCellStyle_type") : //$NON-NLS-1$
+                getString("_UI_DCellStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

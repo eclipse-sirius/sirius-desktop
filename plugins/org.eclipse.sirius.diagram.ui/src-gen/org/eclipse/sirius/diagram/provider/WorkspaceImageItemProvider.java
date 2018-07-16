@@ -84,8 +84,9 @@ public class WorkspaceImageItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        WorkspaceImage workspaceImage = (WorkspaceImage) object;
-        return getString("_UI_WorkspaceImage_type") + " " + workspaceImage.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((WorkspaceImage) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_WorkspaceImage_type") : //$NON-NLS-1$
+                getString("_UI_WorkspaceImage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

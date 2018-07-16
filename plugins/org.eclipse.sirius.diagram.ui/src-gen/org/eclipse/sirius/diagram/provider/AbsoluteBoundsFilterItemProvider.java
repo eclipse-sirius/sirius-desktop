@@ -16,20 +16,12 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.AbsoluteBoundsFilter} object. <!--
@@ -37,8 +29,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  *
  * @generated
  */
-public class AbsoluteBoundsFilterItemProvider extends ItemProviderAdapter
-        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class AbsoluteBoundsFilterItemProvider extends GraphicalFilterItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -131,8 +122,7 @@ public class AbsoluteBoundsFilterItemProvider extends ItemProviderAdapter
      */
     @Override
     public String getText(Object object) {
-        Integer labelValue = ((AbsoluteBoundsFilter) object).getX();
-        String label = labelValue == null ? null : labelValue.toString();
+        String label = ((AbsoluteBoundsFilter) object).getUid();
         return label == null || label.length() == 0 ? getString("_UI_AbsoluteBoundsFilter_type") : //$NON-NLS-1$
                 getString("_UI_AbsoluteBoundsFilter_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -168,16 +158,6 @@ public class AbsoluteBoundsFilterItemProvider extends ItemProviderAdapter
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return DiagramUIPlugin.INSTANCE;
     }
 
 }

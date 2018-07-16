@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EObjectVariableValue;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.EObjectVariableValue} object. <!--
@@ -93,7 +94,9 @@ public class EObjectVariableValueItemProvider extends VariableValueItemProvider 
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_EObjectVariableValue_type"); //$NON-NLS-1$
+        String label = ((EObjectVariableValue) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_EObjectVariableValue_type") : //$NON-NLS-1$
+                getString("_UI_EObjectVariableValue_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

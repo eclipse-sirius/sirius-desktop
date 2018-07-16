@@ -29,6 +29,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
@@ -108,16 +109,19 @@ public class TreeSwitch<T> {
                 result = caseDTreeItemContainer(dTree);
             }
             if (result == null) {
+                result = caseDModelElement(dTree);
+            }
+            if (result == null) {
                 result = caseDocumentedElement(dTree);
             }
             if (result == null) {
                 result = caseDRefreshable(dTree);
             }
             if (result == null) {
-                result = caseDModelElement(dTree);
+                result = caseDSemanticDecorator(dTree);
             }
             if (result == null) {
-                result = caseDSemanticDecorator(dTree);
+                result = caseIdentifiedElement(dTree);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -143,6 +147,9 @@ public class TreeSwitch<T> {
                 result = caseDSemanticDecorator(dTreeElement);
             }
             if (result == null) {
+                result = caseIdentifiedElement(dTreeElement);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -152,6 +159,9 @@ public class TreeSwitch<T> {
             T result = caseDTreeItemContainer(dTreeItemContainer);
             if (result == null) {
                 result = caseDSemanticDecorator(dTreeItemContainer);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(dTreeItemContainer);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -172,6 +182,9 @@ public class TreeSwitch<T> {
             }
             if (result == null) {
                 result = caseDSemanticDecorator(dTreeItem);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(dTreeItem);
             }
             if (result == null) {
                 result = caseDMappingBased(dTreeItem);
@@ -203,6 +216,9 @@ public class TreeSwitch<T> {
                 result = caseBasicLabelStyle(treeItemStyle);
             }
             if (result == null) {
+                result = caseIdentifiedElement(treeItemStyle);
+            }
+            if (result == null) {
                 result = caseCustomizable(treeItemStyle);
             }
             if (result == null) {
@@ -213,6 +229,9 @@ public class TreeSwitch<T> {
         case TreePackage.DTREE_ELEMENT_SYNCHRONIZER: {
             DTreeElementSynchronizer dTreeElementSynchronizer = (DTreeElementSynchronizer) theEObject;
             T result = caseDTreeElementSynchronizer(dTreeElementSynchronizer);
+            if (result == null) {
+                result = caseIdentifiedElement(dTreeElementSynchronizer);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -306,6 +325,21 @@ public class TreeSwitch<T> {
      * @generated
      */
     public T caseDTreeElementSynchronizer(DTreeElementSynchronizer object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Identified Element</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Identified Element</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseIdentifiedElement(IdentifiedElement object) {
         return null;
     }
 

@@ -69,8 +69,9 @@ public class CenterLabelStyleItemProvider extends BasicLabelStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        CenterLabelStyle centerLabelStyle = (CenterLabelStyle) object;
-        return getString("_UI_CenterLabelStyle_type") + " " + centerLabelStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((CenterLabelStyle) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_CenterLabelStyle_type") : //$NON-NLS-1$
+                getString("_UI_CenterLabelStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

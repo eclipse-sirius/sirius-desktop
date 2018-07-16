@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,8 +49,9 @@ public class CustomizableQuery {
         List<String> customizableFeatureNames = new ArrayList<String>();
         for (EStructuralFeature feature : customizable.eClass().getEAllStructuralFeatures()) {
             // CHECKSTYLE:OFF
-            if (!ViewpointPackage.Literals.STYLE__DESCRIPTION.equals(feature) && !ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES.equals(feature) && !isUselessFeature(feature)
-                    && !isGaugeCompositeSectionsFeature(feature) && !isEdgeStyleBeginCenterEndFeature(feature) && !isProvidedShapeIdFeature(feature)) {
+            if (!ViewpointPackage.Literals.IDENTIFIED_ELEMENT__UID.equals(feature) && !ViewpointPackage.Literals.STYLE__DESCRIPTION.equals(feature)
+                    && !ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES.equals(feature) && !isUselessFeature(feature) && !isGaugeCompositeSectionsFeature(feature)
+                    && !isEdgeStyleBeginCenterEndFeature(feature) && !isProvidedShapeIdFeature(feature)) {
                 // CHECKSTYLE:ON
                 // TODO : BORDERED_STYLE__BORDER_SIZE is updated according to
                 // borderSizeComputationExpression is this last is a copy of the

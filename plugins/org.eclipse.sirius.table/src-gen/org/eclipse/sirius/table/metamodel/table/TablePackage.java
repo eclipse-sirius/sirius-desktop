@@ -70,12 +70,12 @@ public interface TablePackage extends EPackage {
     int DTABLE = 0;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DTABLE__DOCUMENTATION = ViewpointPackage.DREPRESENTATION__DOCUMENTATION;
+    int DTABLE__UID = ViewpointPackage.DREPRESENTATION__UID;
 
     /**
      * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -85,6 +85,14 @@ public interface TablePackage extends EPackage {
      * @ordered
      */
     int DTABLE__EANNOTATIONS = ViewpointPackage.DREPRESENTATION__EANNOTATIONS;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DTABLE__DOCUMENTATION = ViewpointPackage.DREPRESENTATION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>' reference list. <!-- begin-user-doc -->
@@ -129,14 +137,6 @@ public interface TablePackage extends EPackage {
      * @ordered
      */
     int DTABLE__UI_STATE = ViewpointPackage.DREPRESENTATION__UI_STATE;
-
-    /**
-     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int DTABLE__UID = ViewpointPackage.DREPRESENTATION__UID;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -200,6 +200,14 @@ public interface TablePackage extends EPackage {
     int DTABLE_ELEMENT = 1;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DTABLE_ELEMENT__UID = ViewpointPackage.DREPRESENTATION_ELEMENT__UID;
+
+    /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -253,6 +261,14 @@ public interface TablePackage extends EPackage {
     int LINE_CONTAINER = 2;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LINE_CONTAINER__UID = ViewpointPackage.DSEMANTIC_DECORATOR__UID;
+
+    /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -287,6 +303,14 @@ public interface TablePackage extends EPackage {
      * @generated
      */
     int DLINE = 3;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DLINE__UID = TablePackage.LINE_CONTAINER__UID;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -418,6 +442,14 @@ public interface TablePackage extends EPackage {
     int DCELL = 4;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DCELL__UID = ViewpointPackage.DSEMANTIC_DECORATOR__UID;
+
+    /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -520,12 +552,20 @@ public interface TablePackage extends EPackage {
     int DTABLE_ELEMENT_STYLE = 9;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DTABLE_ELEMENT_STYLE__UID = ViewpointPackage.IDENTIFIED_ELEMENT__UID;
+
+    /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT_STYLE__LABEL_SIZE = 0;
+    int DTABLE_ELEMENT_STYLE__LABEL_SIZE = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
@@ -534,7 +574,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT_STYLE__LABEL_FORMAT = 1;
+    int DTABLE_ELEMENT_STYLE__LABEL_FORMAT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Default Foreground Style</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -543,7 +583,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE = 2;
+    int DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Default Background Style</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -552,7 +592,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE = 3;
+    int DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Foreground Color</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -561,7 +601,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR = 4;
+    int DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -570,7 +610,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR = 5;
+    int DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>DTable Element Style</em>' class. <!-- begin-user-doc --> <!--
@@ -579,7 +619,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT_STYLE_FEATURE_COUNT = 6;
+    int DTABLE_ELEMENT_STYLE_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.table.metamodel.table.impl.DCellStyleImpl <em>DCell
@@ -590,6 +630,14 @@ public interface TablePackage extends EPackage {
      * @generated
      */
     int DCELL_STYLE = 5;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DCELL_STYLE__UID = TablePackage.DTABLE_ELEMENT_STYLE__UID;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -680,6 +728,14 @@ public interface TablePackage extends EPackage {
      * @generated
      */
     int DCOLUMN = 6;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DCOLUMN__UID = TablePackage.DTABLE_ELEMENT__UID;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -800,6 +856,14 @@ public interface TablePackage extends EPackage {
     int DTARGET_COLUMN = 7;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DTARGET_COLUMN__UID = ViewpointPackage.DSEMANTIC_DECORATOR__UID;
+
+    /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -917,6 +981,14 @@ public interface TablePackage extends EPackage {
      * @generated
      */
     int DFEATURE_COLUMN = 8;
+
+    /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DFEATURE_COLUMN__UID = TablePackage.DCOLUMN__UID;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->

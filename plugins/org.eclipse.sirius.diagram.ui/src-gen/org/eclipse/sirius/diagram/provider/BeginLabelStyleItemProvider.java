@@ -69,8 +69,9 @@ public class BeginLabelStyleItemProvider extends BasicLabelStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        BeginLabelStyle beginLabelStyle = (BeginLabelStyle) object;
-        return getString("_UI_BeginLabelStyle_type") + " " + beginLabelStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((BeginLabelStyle) object).getUid();
+        return label == null || label.length() == 0 ? getString("_UI_BeginLabelStyle_type") : //$NON-NLS-1$
+                getString("_UI_BeginLabelStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

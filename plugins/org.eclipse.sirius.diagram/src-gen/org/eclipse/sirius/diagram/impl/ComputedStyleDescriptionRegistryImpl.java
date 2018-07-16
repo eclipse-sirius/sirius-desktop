@@ -17,12 +17,12 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.impl.IdentifiedElementImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Computed Style Description Registry</b></em>'.
@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  *
  * @generated
  */
-public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Container implements ComputedStyleDescriptionRegistry {
+public class ComputedStyleDescriptionRegistryImpl extends IdentifiedElementImpl implements ComputedStyleDescriptionRegistry {
     /**
      * The cached value of the '{@link #getComputedStyleDescriptions() <em>Computed Style Descriptions</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->

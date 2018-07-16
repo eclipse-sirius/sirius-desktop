@@ -36,6 +36,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.SessionManagerEObject;
@@ -96,6 +97,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     protected ViewpointSwitch<Adapter> modelSwitch = new ViewpointSwitch<Adapter>() {
+        @Override
+        public Adapter caseIdentifiedElement(IdentifiedElement object) {
+            return createIdentifiedElementAdapter();
+        }
+
         @Override
         public Adapter caseDAnalysis(DAnalysis object) {
             return createDAnalysisAdapter();
@@ -253,6 +259,20 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     @Override
     public Adapter createAdapter(Notifier target) {
         return modelSwitch.doSwitch((EObject) target);
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.IdentifiedElement
+     * <em>Identified Element</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.IdentifiedElement
+     * @generated
+     */
+    public Adapter createIdentifiedElementAdapter() {
+        return null;
     }
 
     /**
