@@ -184,7 +184,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
      */
     public void removeRefreshViewerTriggers(Session removedSession) {
         if (removedSession != null && removedSession.getTransactionalEditingDomain() != null) {
-            for (RefreshViewerTrigger trigger : Lists.newArrayList(viewerRefreshTriggers)) {
+            for (RefreshViewerTrigger trigger : new ArrayList<RefreshViewerTrigger>(viewerRefreshTriggers)) {
                 if (removedSession.equals(trigger.getSession())) {
                     removedSession.getTransactionalEditingDomain().removeResourceSetListener(trigger);
                     viewerRefreshTriggers.remove(trigger);
@@ -628,7 +628,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
                 }
             }
         };
-        executeRunnables(Lists.newArrayList(updateViewer));
+        executeRunnables(new ArrayList<Runnable>(Arrays.asList(updateViewer)));
     }
 
     /**
@@ -670,7 +670,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
                 }
             }
         };
-        executeRunnables(Lists.newArrayList(refreshViewer));
+        executeRunnables(new ArrayList<Runnable>(Arrays.asList(refreshViewer)));
     }
 
     private Set<IProject> getProjectsToRefresh(Session session) {
@@ -838,7 +838,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     private Resource getSemanticResource(IFile file, Session session) {
         if (session != null) {
             URI fileURI = getFileUri(file);
-            for (Resource resource : Lists.newArrayList(session.getSemanticResources())) {
+            for (Resource resource : new ArrayList<Resource>(session.getSemanticResources())) {
                 if (resource.getURI().equals(fileURI)) {
                     return resource;
                 }

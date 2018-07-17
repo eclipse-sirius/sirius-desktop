@@ -67,7 +67,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
 
 /**
  * Repair process extract from
@@ -489,7 +488,7 @@ public class SiriusRepairProcess {
     }
 
     private List<Resource> getFragmentedResources(final Resource modelResource) {
-        return Lists.newArrayList(Collections2.filter(modelResource.getResourceSet().getResources(), new Predicate<Resource>() {
+        return new ArrayList<Resource>(Collections2.filter(modelResource.getResourceSet().getResources(), new Predicate<Resource>() {
             @Override
             public boolean apply(Resource resource) {
                 return !resource.equals(modelResource) && resource instanceof AirdResource && resource.getURI().isPlatformResource();

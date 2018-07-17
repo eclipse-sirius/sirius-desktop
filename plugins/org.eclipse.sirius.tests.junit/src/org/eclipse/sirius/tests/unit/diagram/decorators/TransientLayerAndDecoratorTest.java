@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.decorators;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -554,7 +555,7 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
     private void processTestOnTransientLayerDecoration(DecorationDescription mbd, String layerName) throws InterruptedException {
         // Activate transient layer with a mapping based decorator
         activateLayer(dDiagram, layerName);
-        final List<DDiagramElement> elements = Lists.newArrayList(dDiagram.getOwnedDiagramElements());
+        final List<DDiagramElement> elements = new ArrayList<DDiagramElement>(dDiagram.getOwnedDiagramElements());
         checkTransientDecoration(elements, mbd);
         Assert.assertEquals("The session should be still be in sync when applying a transient layer", SessionStatus.SYNC, session.getStatus());
 

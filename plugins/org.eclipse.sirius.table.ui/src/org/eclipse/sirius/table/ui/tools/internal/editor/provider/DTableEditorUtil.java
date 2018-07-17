@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.provider;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,7 +26,6 @@ import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeColumn;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -127,7 +128,7 @@ public final class DTableEditorUtil {
      *         tree, false otherwise.
      */
     public static boolean isLastColumn(TreeColumn treeColumn) {
-        List<TreeColumn> allTreeColumns = Lists.newArrayList(treeColumn.getParent().getColumns());
+        List<TreeColumn> allTreeColumns = new ArrayList<TreeColumn>(Arrays.asList(treeColumn.getParent().getColumns()));
         return allTreeColumns.indexOf(treeColumn) == (allTreeColumns.size() - 1);
     }
 

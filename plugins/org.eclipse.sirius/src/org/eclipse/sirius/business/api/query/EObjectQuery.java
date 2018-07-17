@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.query;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -53,7 +54,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link EObject} as a starting point.
@@ -383,7 +383,7 @@ public class EObjectQuery {
                 throw new RuntimeException(MessageFormat.format(Messages.EObjectQuery_valuesErrorMsg, ref.getName(), rawValue.getClass()));
             }
             if (rawValue != null) {
-                result = Lists.newArrayList((EList<EObject>) rawValue);
+                result = new ArrayList<EObject>((EList<EObject>) rawValue);
             }
         } else {
             EObject rawValue = (EObject) eObject.eGet(ref);

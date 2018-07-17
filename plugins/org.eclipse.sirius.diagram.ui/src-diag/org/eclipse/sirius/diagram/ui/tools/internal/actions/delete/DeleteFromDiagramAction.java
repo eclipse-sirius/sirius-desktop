@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -53,7 +54,6 @@ import org.eclipse.ui.actions.RetargetAction;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Delete a {@link org.eclipse.sirius.diagram.DDiagramElement}.
@@ -111,7 +111,7 @@ public class DeleteFromDiagramAction extends RetargetAction implements IObjectAc
     public void run(final IAction action) {
         if (this.selection instanceof IStructuredSelection) {
             final IStructuredSelection structuredSelection = (IStructuredSelection) this.selection;
-            final Collection<?> minimizedSelection = Lists.newLinkedList(Arrays.asList(structuredSelection.toArray()));
+            final Collection<?> minimizedSelection = new LinkedList<>(Arrays.asList(structuredSelection.toArray()));
             final Iterator<?> iterSelection = minimizedSelection.iterator();
 
             DDiagramEditor diagramEditor = null;

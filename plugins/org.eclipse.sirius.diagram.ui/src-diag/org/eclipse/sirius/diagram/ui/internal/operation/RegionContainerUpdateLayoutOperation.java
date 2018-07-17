@@ -144,7 +144,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             EObject element = regionsContainer.getElement();
             if (element instanceof DNodeContainer) {
                 DNodeContainer dnc = (DNodeContainer) element;
-                List<Node> regionsToLayoutSortedByLocation = Lists.newArrayList(regionsToLayout);
+                List<Node> regionsToLayoutSortedByLocation = new ArrayList<Node>(regionsToLayout);
                 sortRegionsAccordingToLocation(dnc, regionsToLayoutSortedByLocation);
                 sortRegions(dnc, regionsToLayout);
                 // Check if the order from location (x axis for horizontal stack

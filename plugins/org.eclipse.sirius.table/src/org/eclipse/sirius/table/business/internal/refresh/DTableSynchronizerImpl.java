@@ -64,7 +64,6 @@ import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -154,7 +153,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             // if there is no more line mapping in vsm delete table rows
             // corresponding
             if (lMappings.isEmpty()) {
-                for (final DLine lineToDelete : Lists.newArrayList(table.getLines())) {
+                for (final DLine lineToDelete : new ArrayList<DLine>(table.getLines())) {
                     doDeleteLine(lineToDelete, xref);
                 }
             }
@@ -181,7 +180,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             }
             // If there is no more column mapping in VSM, delete column in table
             if (cMappings.isEmpty()) {
-                for (final DColumn columnToDelete : Lists.newArrayList(table.getColumns())) {
+                for (final DColumn columnToDelete : new ArrayList<DColumn>(table.getColumns())) {
                     doDeleteColumn(columnToDelete, xref);
                 }
             }
@@ -204,7 +203,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         if (description instanceof EditionTableDescription) {
             // Clean orphan cells
             for (final DColumn column : table.getColumns()) {
-                for (DCell cell : Lists.newArrayList(column.getCells())) {
+                for (DCell cell : new ArrayList<DCell>(column.getCells())) {
                     if (cell.getLine() == null) {
                         doDeleteCell(cell, xref);
                     }
@@ -658,7 +657,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                 // corresponding sub rows, otherwise compute current status will
                 // delete lines without mapping
                 if (this.accessor.getPermissionAuthority().canEditInstance(newContainer)) {
-                    for (final DLine lineToDelete : Lists.newArrayList(newContainer.getLines())) {
+                    for (final DLine lineToDelete : new ArrayList<DLine>(newContainer.getLines())) {
                         doDeleteLine(lineToDelete, xref);
                     }
                 }

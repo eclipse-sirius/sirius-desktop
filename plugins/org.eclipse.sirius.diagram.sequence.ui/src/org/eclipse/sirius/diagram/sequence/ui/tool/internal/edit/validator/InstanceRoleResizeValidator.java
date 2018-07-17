@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +25,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Validator for ChangeBoundsRequest of type RequestConstants#REQ_RESIZE.
@@ -76,7 +76,7 @@ public class InstanceRoleResizeValidator extends AbstractInstanceRoleValidator {
     }
 
     private List<InstanceRole> getPostResizeOrder(List<InstanceRole> allInstanceRoles) {
-        List<InstanceRole> result = Lists.newArrayList(allInstanceRoles);
+        List<InstanceRole> result = new ArrayList<InstanceRole>(allInstanceRoles);
         comparator.setMoveDeltas(moveDeltas);
         Collections.sort(result, comparator);
         comparator.setMoveDeltas(null);

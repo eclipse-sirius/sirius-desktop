@@ -12,11 +12,10 @@ package org.eclipse.sirius.tests.unit.diagram.tools.palette;
 
 import java.util.Arrays;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
-
-import com.google.common.collect.Sets;
 
 /**
  * Test class for {@link PaletteManagerImpl}.
@@ -29,7 +28,7 @@ public class PaletteManagerWithoutLayerTest extends AbstractPaletteManagerSectio
 
     private static final String REPRESENTATION_DESC_NAME = "toolSectionWithoutLayers";
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_PALETTE = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_PALETTE = new TreeSet<Entry>(Arrays.asList(
     //
             createNewEntry("toolSectionWithoutLayers", "CCD50-1", "Tool50-2-1")
             //

@@ -63,8 +63,6 @@ import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
-import com.google.common.collect.Lists;
-
 /**
  * Common operations for DnD tasks.
  * 
@@ -296,7 +294,7 @@ public final class DnDTasksOperations {
      */
     static void moveSubNodes(final DNodeContainer oldDiagramElementContainer, final EObject containerDroppedElement, final ContainerDropDescription tool,
             final DNodeContainer newDiagramElementContainer) {
-        for (DDiagramElement diagramElementToDrop : Lists.newArrayList(oldDiagramElementContainer.getOwnedDiagramElements())) {
+        for (DDiagramElement diagramElementToDrop : new ArrayList<DDiagramElement>(oldDiagramElementContainer.getOwnedDiagramElements())) {
             final DragAndDropTargetDescription dragDragAndDropDescription = newDiagramElementContainer.getDragAndDropDescription();
             final ContainerDropDescription dropTool = DDiagramElementContainerSpecOperations.getBestDropDescription(dragDragAndDropDescription, diagramElementToDrop.getTarget(),
                     containerDroppedElement, containerDroppedElement, newDiagramElementContainer, DragSource.DIAGRAM_LITERAL, diagramElementToDrop);

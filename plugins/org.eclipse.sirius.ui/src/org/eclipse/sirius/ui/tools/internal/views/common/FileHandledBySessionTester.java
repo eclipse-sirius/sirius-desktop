@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,8 +22,6 @@ import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView;
 import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Lists;
 
 /**
  * Property tester to check that an {@link IFile} is:
@@ -89,7 +89,7 @@ public class FileHandledBySessionTester extends PropertyTester {
     private boolean isSessionFile(Object element) {
         boolean isSessionResourceFile = false;
         if (!ModelExplorerView.class.getTypeName().equals(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart().getClass().getTypeName()) && element instanceof IFile) {
-            List<Session> relatedSessions = FileSessionFinder.getRelatedSessions(Lists.newArrayList((IFile) element), false, false);
+            List<Session> relatedSessions = FileSessionFinder.getRelatedSessions(new ArrayList<IFile>(Arrays.asList((IFile) element)), false, false);
             if (!relatedSessions.isEmpty()) {
                 isSessionResourceFile = true;
             } else {

@@ -12,9 +12,9 @@ package org.eclipse.sirius.tests.unit.common;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -23,8 +23,6 @@ import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
@@ -47,14 +45,14 @@ public class ZombieViewpointsTest extends SiriusTestCase {
 
     public void testViewpointRemovedFromWorkspaceDoNotReappear() throws Exception {
         EclipseTestsSupportHelper helper = EclipseTestsSupportHelper.INSTANCE;
-        Set<Viewpoint> initialVPs = Sets.newHashSet(ViewpointRegistry.getInstance().getViewpoints());
+        Set<Viewpoint> initialVPs = new HashSet<Viewpoint>(ViewpointRegistry.getInstance().getViewpoints());
         Set<URI> initialRegistryResources = snapshotRegistryResources();
 
         // Copy the first version of "/sample/bug.odesign" and check its
         // contribution to the Viewpoint registry
         helper.createProject("sample");
         helper.copyFile(SiriusTestsPlugin.PLUGIN_ID, "/data/unit/zombies/bug-1.odesign", ZombieViewpointsTest.WKS_PATH, true);
-        Set<Viewpoint> v1VPs = Sets.newHashSet(ViewpointRegistry.getInstance().getViewpoints());
+        Set<Viewpoint> v1VPs = new HashSet<Viewpoint>(ViewpointRegistry.getInstance().getViewpoints());
         assertTrue("Initially available Viewpoints should still all be visible", v1VPs.containsAll(initialVPs));
         Set<Viewpoint> v1Contributions = Sets.difference(v1VPs, initialVPs);
         assertEquals("The first version of the workspace VSM should contribute only 1 new Viewpoint", 1, v1Contributions.size());
@@ -68,7 +66,7 @@ public class ZombieViewpointsTest extends SiriusTestCase {
         // Viewpoint registry's state
         helper.createProject("sample");
         helper.copyFile(SiriusTestsPlugin.PLUGIN_ID, "/data/unit/zombies/bug-2.odesign", ZombieViewpointsTest.WKS_PATH, true);
-        Set<Viewpoint> v2VPs = Sets.newHashSet(ViewpointRegistry.getInstance().getViewpoints());
+        Set<Viewpoint> v2VPs = new HashSet<Viewpoint>(ViewpointRegistry.getInstance().getViewpoints());
         assertTrue("Initially available Viewpoints should still all be visible", v2VPs.containsAll(initialVPs));
         Set<Viewpoint> v2Contributions = Sets.difference(v2VPs, initialVPs);
         assertEquals("The second version of the workspace VSM should contribute only 1 new Viewpoint", 1, v2Contributions.size());
@@ -84,11 +82,6 @@ public class ZombieViewpointsTest extends SiriusTestCase {
 
     private HashSet<URI> snapshotRegistryResources() {
         ResourceSet resourceSet = ViewpointRegistry.getInstance().getViewpoints().iterator().next().eResource().getResourceSet();
-        return Sets.newHashSet(Iterables.transform(resourceSet.getResources(), new Function<Resource, URI>() {
-            @Override
-            public URI apply(Resource res) {
-                return res.getURI();
-            };
-        }));
+        return new HashSet<URI>(resourceSet.getResources().stream().map(r->r.getURI()).collect(Collectors.toList()));
     }
 }

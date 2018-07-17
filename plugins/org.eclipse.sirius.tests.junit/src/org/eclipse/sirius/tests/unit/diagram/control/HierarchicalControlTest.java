@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.control;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -34,8 +35,6 @@ import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
-import com.google.common.collect.Sets;
 
 /**
  * Tests ensuring that Hierarchical Control/Uncontrol operations works as
@@ -302,7 +301,7 @@ public class HierarchicalControlTest extends AbstractHierarchicalControlTest {
 
         URI controlledModelUriB = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/doremi-2436/My_B.ecore", true);
         URI controlledAirdUriB = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/doremi-2436/My_B.aird", true);
-        siriusControl(rootB, controlledModelUriB, Sets.newHashSet(representationB, representationC), controlledAirdUriB);
+        siriusControl(rootB, controlledModelUriB, new HashSet<DRepresentation>(Arrays.asList(representationB, representationC)), controlledAirdUriB);
 
         DAnalysis bAird = (DAnalysis) session.getTransactionalEditingDomain().getResourceSet().getResource(controlledAirdUriB, true).getContents().get(0);
         assertFilesExist("/doremi-2436/My.ecore", "/doremi-2436/My.aird", "/doremi-2436/My_B.ecore", "/doremi-2436/My_B.aird");

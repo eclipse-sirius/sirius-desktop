@@ -12,6 +12,8 @@ package org.eclipse.sirius.tests.unit.api.convert;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import org.eclipse.core.commands.ExecutionEvent;
@@ -40,8 +42,6 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.ISources;
-
-import com.google.common.collect.Lists;
 
 /**
  * Converts old Viewpoint Modeling Project to Sirius Modeling Project:
@@ -142,7 +142,7 @@ public class ConvertViewpointModelingProjectToSiriusModelingProjectTest extends 
     private void createAndExecuteConvertAction(IProject project) {
         try {
             ModelingToggleNatureAction toogleProject = new ModelingToggleNatureAction();
-            EvaluationContext evaluationContext = new EvaluationContext(null, Lists.newArrayList(project));
+            EvaluationContext evaluationContext = new EvaluationContext(null, new ArrayList<IProject>(Arrays.asList(project)));
             evaluationContext.addVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME, new StructuredSelection(project));
             @SuppressWarnings("rawtypes")
             ExecutionEvent event = new ExecutionEvent(null, new HashMap(), null, evaluationContext);

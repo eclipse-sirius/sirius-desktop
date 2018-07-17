@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.stream.Stream;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.RemoveCommand;
@@ -35,9 +37,6 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.junit.Assert;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Test class that after semantic element deletion in REFRESH_AUTO mode to
@@ -297,8 +296,8 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
         EditPart rootEditPart = editor.rootEditPart().part();
         LayerManager layerManager = LayerManager.Helper.find(rootEditPart);
         IFigure decorationLayer = layerManager.getLayer(DiagramRootEditPart.DECORATION_PRINTABLE_LAYER);
-        Iterable<IDecoration> decorations = Iterables.filter(decorationLayer.getChildren(), IDecoration.class);
-        redCrossDecoratorNumbers += Lists.newArrayList(decorations).size();
+        Stream<IDecoration> decorations = decorationLayer.getChildren().stream().filter(IDecoration.class::isInstance);
+        redCrossDecoratorNumbers += decorations.count();
         return redCrossDecoratorNumbers;
     }
 

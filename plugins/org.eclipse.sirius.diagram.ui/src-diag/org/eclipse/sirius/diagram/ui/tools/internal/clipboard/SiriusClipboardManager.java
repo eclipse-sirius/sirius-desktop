@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.clipboard;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
@@ -111,7 +112,7 @@ public final class SiriusClipboardManager {
         // 3. References through EAnnotation references
         if (eObject instanceof EAnnotation) {
             EList<EObject> references = ((EAnnotation) eObject).getReferences();
-            for (EObject target : Lists.newArrayList(references)) {
+            for (EObject target : new ArrayList<EObject>(references)) {
                 if (isExternalEObject(target, domainResources, keepDescriptions)) {
                     references.remove(target);
                 }

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.decoration;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -67,8 +68,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection;
 import org.eclipse.sirius.viewpoint.description.Position;
 import org.eclipse.swt.graphics.Image;
-
-import com.google.common.collect.Lists;
 
 /**
  * This IDecorator handles core Sirius decorations and decorations provided in the VSM.
@@ -194,7 +193,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
                         Position position = decorationDescriptor.getPosition();
                         List<DecorationDescriptor> list = positionToDecorators.get(position);
                         if (list == null) {
-                            list = Lists.newArrayList(decorationDescriptor);
+                            list = new ArrayList<DecorationDescriptor>(Arrays.asList(decorationDescriptor));
                             positionToDecorators.put(position, list);
                         } else {
                             list.add(decorationDescriptor);
@@ -258,7 +257,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
                 // update group dimension according to contained decoration
                 // figures
                 brotherDecosBounds.add(decorationBounds);
-                decosBoundsToDecoDescriptors.put(decorationBounds, Lists.newArrayList(decorationDescriptor));
+                decosBoundsToDecoDescriptors.put(decorationBounds, new ArrayList<DecorationDescriptor>(Arrays.asList(decorationDescriptor)));
 
                 updateGroupBoundsSize(groupBounds, brotherDecosBounds);
             }
@@ -343,7 +342,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
 
     private void mergeGroups(Dimension figureDimension, Map<Position, Rectangle> groupBoundsAtPosition, Map<Position, List<Rectangle>> decosBoundsAtPosition,
             Map<Rectangle, List<DecorationDescriptor>> decosBoundsToDecoDescriptors, Map<Position, List<DecorationDescriptor>> positionToDecorators, List<Position> positionWithListDecoration) {
-        List<Position> positionsToTest = Lists.newArrayList(groupBoundsAtPosition.keySet());
+        List<Position> positionsToTest = new ArrayList<Position>(groupBoundsAtPosition.keySet());
 
         while (!positionsToTest.isEmpty()) {
             Position position = positionsToTest.get(0);
@@ -362,7 +361,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
                         positionWithListDecoration.add(position);
                         decosBoundsAtPosition.get(position).clear();
                         Rectangle listDecoBounds = new Rectangle(0, 0, LIST_DECORATION_SIZE, LIST_DECORATION_SIZE);
-                        updateGroupBoundsSize(groupBounds, Lists.newArrayList(listDecoBounds));
+                        updateGroupBoundsSize(groupBounds, new ArrayList<Rectangle>(Arrays.asList(listDecoBounds)));
                         updateGroupBoundsLocation(groupBounds, position, figureDimension);
                         decosBoundsAtPosition.get(position).add(listDecoBounds);
 
@@ -387,7 +386,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
     private List<Position> mergeDecorationsInGoups(Dimension figureDimension, Map<Position, Rectangle> groupBoundsAtPosition, Map<Position, List<Rectangle>> decosBoundsAtPosition,
             Map<Rectangle, List<DecorationDescriptor>> decosBoundsToDecoDescriptors, Map<Position, List<DecorationDescriptor>> decosDescAtPosition) {
         List<Position> positionWithListDecoration = new ArrayList<>();
-        Collection<Rectangle> groupBBsToCompareOverlapWith = Lists.newArrayList(groupBoundsAtPosition.values());
+        Collection<Rectangle> groupBBsToCompareOverlapWith = new ArrayList<Rectangle>(groupBoundsAtPosition.values());
         for (Position position : groupBoundsAtPosition.keySet()) {
             Rectangle groupBounds = groupBoundsAtPosition.get(position);
             // check if the group bounding box overlaps the diagram element
@@ -410,7 +409,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
                     positionWithListDecoration.add(position);
                     decosBoundsAtPosition.get(position).clear();
                     Rectangle listDecoBounds = new Rectangle(0, 0, LIST_DECORATION_SIZE, LIST_DECORATION_SIZE);
-                    updateGroupBoundsSize(groupBounds, Lists.newArrayList(listDecoBounds));
+                    updateGroupBoundsSize(groupBounds, new ArrayList<Rectangle>(Arrays.asList(listDecoBounds)));
                     updateGroupBoundsLocation(groupBounds, position, figureDimension);
                     decosBoundsAtPosition.get(position).add(listDecoBounds);
                     decosBoundsToDecoDescriptors.put(listDecoBounds, decosDescAtPosition.get(position));
@@ -424,7 +423,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
 
     private Map<Position, Rectangle> initializeDisplayedDecoratorsGroup(Map<Position, List<DecorationDescriptor>> positionToDecorators, Dimension figureDimension) {
         Map<Position, Rectangle> groupBoundsAtPosition = new HashMap<>();
-        List<Position> positions = Lists.newArrayList(positionToDecorators.keySet());
+        List<Position> positions = new ArrayList<Position>(positionToDecorators.keySet());
         Collections.sort(positions, (p1, p2) -> {
             // We display group starting from center, then west, turning clock_wise ending with south west
             int p1Priority = getPositionPriority(p1);
@@ -479,7 +478,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
 
     private void addVerticalDecoration(Rectangle groupBounds, Rectangle decorationBounds, List<Rectangle> decosHoriz, List<Rectangle> decosVert, Position position) {
         Rectangle previousDecoBoundsInTheDistribDirection = decosVert.size() > 0 ? decosVert.get(decosVert.size() - 1) : decosHoriz.size() > 0 ? decosHoriz.get(0) : null;
-        List<Rectangle> brotherDecosBounds = Lists.newArrayList(decosHoriz);
+        List<Rectangle> brotherDecosBounds = new ArrayList<Rectangle>(decosHoriz);
         brotherDecosBounds.addAll(decosVert);
 
         switch (position.getValue()) {
@@ -532,7 +531,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
 
     private void addHorizontalDecoration(Rectangle groupBounds, Rectangle decorationBounds, List<Rectangle> decosHoriz, List<Rectangle> decosVert, Position position) {
         Rectangle previousDecoBoundsInTheDistribDirection = decosHoriz.size() > 0 ? decosHoriz.get(decosHoriz.size() - 1) : decosVert.size() > 0 ? decosVert.get(0) : null;
-        List<Rectangle> brotherDecosBounds = Lists.newArrayList(decosHoriz);
+        List<Rectangle> brotherDecosBounds = new ArrayList<Rectangle>(decosHoriz);
         brotherDecosBounds.addAll(decosVert);
         switch (position.getValue()) {
         case Position.NORTH_WEST:

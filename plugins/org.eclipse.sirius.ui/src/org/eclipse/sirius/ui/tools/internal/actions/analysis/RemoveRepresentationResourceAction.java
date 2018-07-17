@@ -32,8 +32,6 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import com.google.common.collect.Sets;
-
 /**
  *
  * Action to remove a representation resource from a session.
@@ -57,7 +55,7 @@ public class RemoveRepresentationResourceAction extends Action {
      */
     public RemoveRepresentationResourceAction(final Collection<Resource> diagramResources, final Session session) {
         super(Messages.RemoveRepresentationResourceAction_name, AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/remove.gif")); //$NON-NLS-1$
-        this.diagramResources = Sets.newHashSet(diagramResources);
+        this.diagramResources = new HashSet<Resource>(diagramResources);
         this.session = session;
 
     }

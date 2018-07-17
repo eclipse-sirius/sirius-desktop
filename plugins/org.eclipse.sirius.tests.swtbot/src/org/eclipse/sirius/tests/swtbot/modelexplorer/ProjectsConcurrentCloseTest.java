@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.modelexplorer;
 
+import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 
@@ -35,8 +36,6 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
-
-import com.google.common.collect.Lists;
 
 /**
  * Test that we do not get an error when closing several selected projects.
@@ -110,7 +109,7 @@ public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase
         bot.waitUntil(new OpenedSessionCondition(2));
 
         // Activate Design Viewpoint
-        List<Session> sessions = Lists.newArrayList(SessionManager.INSTANCE.getSessions());
+        List<Session> sessions = new ArrayList<Session>(SessionManager.INSTANCE.getSessions());
         localSession = new UILocalSession(UIResource.createFromResource(sessions.get(0).getSessionResource()));
         localSession2 = new UILocalSession(UIResource.createFromResource(sessions.get(1).getSessionResource()));
     }

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.internal.edit.commands;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,8 +57,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItem
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.straighten.StraightenToAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-
-import com.google.common.collect.Lists;
 
 /**
  * Command to straighten edge.<BR>
@@ -360,7 +359,7 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             boolean isABorderNode, Rectangle sourceBounds, Rectangle targetBounds, Point firstPoint, Point lastPoint) {
         if (isABorderNode) {
             // Add command to move the border node
-            command.add(CommandFactory.createICommand(getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList((Node) editPartOnMovedSide.getModel()),
+            command.add(CommandFactory.createICommand(getEditingDomain(), new ShiftDirectBorderedNodesOperation(new ArrayList<Node>(Arrays.asList((Node) editPartOnMovedSide.getModel())),
                     new Dimension(edgeEditPartWithData.getValue().deltaX, edgeEditPartWithData.getValue().deltaY))));
             if ((editPartOnMovedSide.getSourceConnections().size() + editPartOnMovedSide.getTargetConnections().size()) > 1) {
                 // Add a command to correctly moved all linked edges
@@ -664,7 +663,7 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             // GMF.
             Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode);
             Rectangle initialAsboluteConstraint = initialRelativeConstraint.getTranslated(parentAbsoluteLocation);
-            Point validInitialAbsoluteLocation = borderItemLocator.getValidLocation(initialAsboluteConstraint, node, Lists.newArrayList(node));
+            Point validInitialAbsoluteLocation = borderItemLocator.getValidLocation(initialAsboluteConstraint, node, new ArrayList<Node>(Arrays.asList(node)));
             Rectangle validInitialAbsoluteConstraint = initialAsboluteConstraint.getCopy();
             if ((straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT || straightenType == StraightenToAction.TOP_SIDE_PINNED
                     || straightenType == StraightenToAction.BOTTOM_SIDE_PINNED) && initialAsboluteConstraint.y != validInitialAbsoluteLocation.y) {

@@ -61,8 +61,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
-import com.google.common.collect.Lists;
-
 /**
  * Test that if deleted target element present in other representation opened, the other representation is closed.
  * Testing VP-1853 and VP-1854.
@@ -229,7 +227,7 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
             openedRepresentations.clear();
 
             // Check that editors are able to resolve their proxy model element.
-            for (DialectEditor ed : Lists.newArrayList(uiSession.getEditors())) {
+            for (DialectEditor ed : new ArrayList<DialectEditor>(uiSession.getEditors())) {
                 SWTBotSiriusHelper.getSiriusEditor(ed.getTitle()).show();
                 DRepresentation representation = ed.getRepresentation();
                 assertFalse(representation.eIsProxy());

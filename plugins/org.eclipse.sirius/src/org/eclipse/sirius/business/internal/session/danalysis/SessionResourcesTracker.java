@@ -91,7 +91,7 @@ class SessionResourcesTracker {
         resolveAllSemanticResourcesFromModels(analyses);
         // Then resolve all resources (to automatically add new semantic
         // resources)
-        List<Resource> resourcesBeforeLoadOfSession = Lists.newArrayList(session.getTransactionalEditingDomain().getResourceSet().getResources());
+        List<Resource> resourcesBeforeLoadOfSession = new ArrayList<Resource>(session.getTransactionalEditingDomain().getResourceSet().getResources());
         forceLoadingOfEveryLinkedResource();
         monitor.worked(10);
 
@@ -239,7 +239,7 @@ class SessionResourcesTracker {
      */
     static void manageAutomaticallyLoadedResources(final DAnalysisSessionImpl session, List<Resource> knownResources) {
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-        List<Resource> resourcesAfterLoadOfSession = Lists.newArrayList(domain.getResourceSet().getResources());
+        List<Resource> resourcesAfterLoadOfSession = new ArrayList<Resource>(domain.getResourceSet().getResources());
         // Remove the known resources
         Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), knownResources);
 

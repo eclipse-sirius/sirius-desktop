@@ -17,6 +17,7 @@ import java.io.StringWriter;
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -1442,7 +1443,7 @@ public abstract class SiriusTestCase extends TestCase {
      * Delete every project in the workspace.
      */
     protected void cleanWorkspace() {
-        for (final IProject proj : Lists.newArrayList(ResourcesPlugin.getWorkspace().getRoot().getProjects())) {
+        for (final IProject proj : Arrays.asList(ResourcesPlugin.getWorkspace().getRoot().getProjects())) {
             EclipseTestsSupportHelper.INSTANCE.deleteProject(proj.getName());
         }
     }
@@ -1748,7 +1749,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     private void assertNoSiriusCorePreferenceChangedinSiriusUIStore(String preferenceKey) {
-        Collection<SiriusPreferencesKeys> coreKeys = Lists.newArrayList(SiriusPreferencesKeys.values());
+        Collection<SiriusPreferencesKeys> coreKeys = new ArrayList<SiriusPreferencesKeys>(Arrays.asList(SiriusPreferencesKeys.values()));
         Function<SiriusPreferencesKeys, String> prefToName = new Function<SiriusPreferencesKeys, String>() {
             @Override
             public String apply(SiriusPreferencesKeys input) {
@@ -1820,7 +1821,7 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     private void closeAllSessions() {
-        for (final Session managerSession : Lists.newArrayList(SessionManager.INSTANCE.getSessions())) {
+        for (final Session managerSession : new ArrayList<Session>(SessionManager.INSTANCE.getSessions())) {
             if (managerSession.isOpen()) {
                 managerSession.close(new NullProgressMonitor());
                 TestsUtil.synchronizationWithUIThread();
@@ -1892,7 +1893,7 @@ public abstract class SiriusTestCase extends TestCase {
                 }
             }
 
-            for (final Resource resource : Lists.newArrayList(domain.getResourceSet().getResources())) {
+            for (final Resource resource : new ArrayList<Resource>(domain.getResourceSet().getResources())) {
                 resource.unload();
             }
 

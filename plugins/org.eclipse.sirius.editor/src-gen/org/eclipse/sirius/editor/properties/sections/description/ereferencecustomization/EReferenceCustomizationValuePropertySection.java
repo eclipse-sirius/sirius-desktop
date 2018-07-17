@@ -152,7 +152,7 @@ public class EReferenceCustomizationValuePropertySection extends AbstractComboPr
                         features.addAll(new EClassQuery(metaModelEClass).getEStructuralFeatures(referenceName, new ArrayList<EClass>()));
                     }
                 }
-                commonType = new EStructuralFeaturesQuery(Lists.newArrayList(features)).getCommonType();
+                commonType = new EStructuralFeaturesQuery(new ArrayList<EStructuralFeature>(features)).getCommonType();
             } else {
                 // Get the EClass of appliedOn list.
                 List<EClass> appliedOnEClass = Lists.transform(eReferenceCustomization.getAppliedOn(), new Function<EObject, EClass>() {

@@ -15,8 +15,6 @@ import java.util.List;
 
 import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.AbstractImportHandler;
 
-import com.google.common.collect.Lists;
-
 /**
  * This will contain all of the import handlers that can be used by the Acceleo
  * interpreter.
@@ -70,7 +68,7 @@ public final class ImportHandlerRegistry {
      *            the registry.
      */
     public static void removeHandler(String className) {
-        for (ImportHandlerDescriptor descriptor : Lists.newArrayList(HANDLERS)) {
+        for (ImportHandlerDescriptor descriptor : new ArrayList<ImportHandlerDescriptor>(HANDLERS)) {
             if (descriptor.getClassName().equals(className)) {
                 HANDLERS.remove(descriptor);
             }

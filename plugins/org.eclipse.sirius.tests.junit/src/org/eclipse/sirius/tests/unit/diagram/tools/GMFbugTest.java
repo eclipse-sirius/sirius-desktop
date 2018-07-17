@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.tools;
 
+import java.util.Arrays;
+
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClassifier;
@@ -23,8 +25,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
-
-import com.google.common.collect.Lists;
 
 /**
  * Tests that GMF bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=333856 is
@@ -50,6 +50,7 @@ public class GMFbugTest extends SiriusDiagramTestCase {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void setUp() throws Exception {
         super.setUp();
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, SESSION_PATH);
@@ -78,7 +79,7 @@ public class GMFbugTest extends SiriusDiagramTestCase {
 
         AbstractToolDescription tool = getTool(diagram, "Group Classes");
         assertTrue(tool instanceof OperationAction);
-        Command cmd = getCommand(diagram, tool, Lists.newArrayList((EObject) bDiagramElement, (EObject) cDiagramElement));
+        Command cmd = getCommand(diagram, tool, Arrays.asList((EObject) bDiagramElement, (EObject) cDiagramElement));
         setErrorCatchActive(true);
         session.getTransactionalEditingDomain().getCommandStack().execute(cmd);
         refresh(diagram);
@@ -125,6 +126,7 @@ public class GMFbugTest extends SiriusDiagramTestCase {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void tearDown() throws Exception {
         diagram = null;
         super.tearDown();

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.ide;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -30,8 +31,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-
-import com.google.common.collect.Lists;
 
 /**
  * This implementation of the {@link IProposalProvider} interface will be used
@@ -112,7 +111,7 @@ public class AcceleoProposalProvider implements IProposalProvider {
             final QueryIdentifier identifier = module.ensureQueryExists(acceleoContext);
             final String moduleString = module.buildMTL(acceleoContext, identifier);
 
-            final List<URI> dependencyURIs = Lists.newArrayList(acceleoContext.getDependencies().values());
+            final List<URI> dependencyURIs = new ArrayList<URI>(acceleoContext.getDependencies().values());
             dependencyURIs.addAll(module.compileExtendedDependencies(acceleoContext, module.getResourceSet()));
 
             final AcceleoCompletionService completionService = new AcceleoCompletionService(moduleString, module, dependencyURIs);
@@ -144,7 +143,7 @@ public class AcceleoProposalProvider implements IProposalProvider {
             final QueryIdentifier identifier = module.ensureQueryExists(acceleoContext);
             final String moduleString = module.buildMTL(acceleoContext, identifier);
 
-            final List<URI> dependencyURIs = Lists.newArrayList(acceleoContext.getDependencies().values());
+            final List<URI> dependencyURIs = new ArrayList<URI>(acceleoContext.getDependencies().values());
             dependencyURIs.addAll(module.compileExtendedDependencies(acceleoContext, module.getResourceSet()));
 
             final AcceleoCompletionService completionService = new AcceleoCompletionService(moduleString, module, dependencyURIs);

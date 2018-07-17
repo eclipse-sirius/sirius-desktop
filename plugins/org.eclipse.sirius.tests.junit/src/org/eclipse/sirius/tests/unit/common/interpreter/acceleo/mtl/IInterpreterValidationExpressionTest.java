@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -67,7 +69,6 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * 
@@ -203,7 +204,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
         ensureExpressionValidationRaisedExpectedErrors(edgeMapping, "targetFinderExpression", "[self.eAttributes/]");
         // changing Source Mapping to EC EDataType => [self.eAttributes/]
         // becomes incorrect
-        ensureExpressionValidationRaisedExpectedErrors(edgeMapping, "sourceMapping", Lists.newArrayList(nodeMapping), "Unrecognized variable: (eAttributes)");
+        ensureExpressionValidationRaisedExpectedErrors(edgeMapping, "sourceMapping", new ArrayList<ContainerMapping>(Arrays.asList(nodeMapping)), "Unrecognized variable: (eAttributes)");
         ensureExpressionValidationRaisedExpectedErrors(edgeMapping, "targetFinderExpression", "[self.serializable/]");
     }
 
@@ -378,8 +379,8 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
         String resourceURI = target.eResource().getURI().toString();
         String uriFragment = target.eResource().getURIFragment(target);
         Collection<IMarker> allMarkersForElement = SiriusEditorInterpreterMarkerService.getValidationMarkersForElement(odesignFile, resourceURI + "#" + uriFragment);
-        Collection<String> errorMessages = Lists.newArrayList(message);
-        Collection<String> remainingMessages = Lists.newArrayList(message);
+        Collection<String> errorMessages = new ArrayList<String>(Arrays.asList(message));
+        Collection<String> remainingMessages = new ArrayList<String>(Arrays.asList(message));
         for (IMarker marker : allMarkersForElement) {
             String errorMessage = marker.getAttribute(IMarker.MESSAGE, null);
             assertTrue("The error '" + errorMessage + "' should not have been raised by validation : expecting one of " + errorMessages, errorMessages.contains(errorMessage));

@@ -25,7 +25,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Tests palette update after viewpoint selection change.
@@ -57,9 +56,9 @@ public class PaletteManagerAfterVSMSelectionChange extends AbstractSiriusSwtBotG
 
     private static final String OTHERS_LAYER_1 = "Others_Layer_1";
 
-    private static final SortedSet<String> EXPECTED_ENTRIES_LAYER_PERSON1_SHOWN = Sets.newTreeSet(Arrays.asList("createClass_1"));
+    private static final SortedSet<String> EXPECTED_ENTRIES_LAYER_PERSON1_SHOWN = new TreeSet<String>(Arrays.asList("createClass_1"));
 
-    private static final SortedSet<String> EXPECTED_ENTRIES_LAYER_PERSON1_OTHERS1_SHOWN = Sets.newTreeSet(Arrays.asList("createClass_1", "createEEnum_1"));
+    private static final SortedSet<String> EXPECTED_ENTRIES_LAYER_PERSON1_OTHERS1_SHOWN = new TreeSet<String>(Arrays.asList("createClass_1", "createEEnum_1"));
 
     /**
      * {@inheritDoc}

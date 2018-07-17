@@ -13,14 +13,13 @@ package org.eclipse.sirius.tests.unit.diagram.sequence.action;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.action.AbstractExternalJavaAction;
-
-import com.google.common.collect.Maps;
 
 /**
  * An action which does nothing except record all its invocations (with context
@@ -52,7 +51,7 @@ public class InvocationRecorderAction extends AbstractExternalJavaAction {
         public InvocationData(EObject context, Map<String, Object> parameters) {
             this.timestamp = System.currentTimeMillis();
             this.context = context;
-            this.parameters = Collections.unmodifiableMap(Maps.newHashMap(parameters));
+            this.parameters = Collections.unmodifiableMap(new HashMap<String, Object>(parameters));
         }
 
         /**

@@ -11,9 +11,8 @@
 package org.eclipse.sirius.ui.debug;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
-import com.google.common.collect.Lists;
 
 /**
  * A helper class to build and print a table-formatter report in text mode.
@@ -27,7 +26,7 @@ public class TabularReport {
     private final List<List<String>> lines;
 
     public TabularReport(String... headers) {
-        this.headers = Lists.newArrayList(headers);
+        this.headers = new ArrayList<String>(Arrays.asList(headers));
         this.lines = new ArrayList<>();
     }
 
@@ -36,7 +35,7 @@ public class TabularReport {
     }
 
     public void addLine(String... data) {
-        addLine(Lists.newArrayList(data));
+        addLine(new ArrayList<String>(Arrays.asList(data)));
     }
 
     public String print() {

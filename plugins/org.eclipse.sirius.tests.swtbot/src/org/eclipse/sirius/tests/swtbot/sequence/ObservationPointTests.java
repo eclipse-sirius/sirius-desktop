@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -163,11 +164,11 @@ public class ObservationPointTests extends AbstractDefaultModelSequenceTests {
 
         // First observation point -> first exec's top
         // Fourth observation point -> first exec's bottom
-        checkCenterPosition(getExecutionEditPart(LIFELINE_A, 0), Lists.newArrayList(createdObsPoint.get(0), createdObsPoint.get(3)));
+        checkCenterPosition(getExecutionEditPart(LIFELINE_A, 0), Arrays.asList(createdObsPoint.get(0), createdObsPoint.get(3)));
 
         // Second observation point -> second exec's top
         // Third observation point -> second exec's bottom
-        checkCenterPosition(getExecutionEditPart(LIFELINE_A, 1), Lists.newArrayList(createdObsPoint.get(1), createdObsPoint.get(2)));
+        checkCenterPosition(getExecutionEditPart(LIFELINE_A, 1), Arrays.asList(createdObsPoint.get(1), createdObsPoint.get(2)));
     }
 
     /**

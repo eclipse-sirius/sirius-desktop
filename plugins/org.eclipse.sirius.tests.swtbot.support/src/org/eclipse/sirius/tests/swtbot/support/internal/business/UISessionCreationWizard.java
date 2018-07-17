@@ -10,7 +10,9 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.internal.business;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -31,8 +33,6 @@ import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-
-import com.google.common.collect.Sets;
 
 /**
  * Local session creation wizard.
@@ -104,7 +104,7 @@ public class UISessionCreationWizard implements SessionChoice {
 
         @Override
         public UILocalSession selectViewpoints(final String... vps) {
-            UISessionCreationWizard.this.selectViewpoints(Sets.newHashSet(vps));
+            UISessionCreationWizard.this.selectViewpoints(new HashSet<String>(Arrays.asList(vps)));
             final UILocalSession lSession = UISessionCreationWizard.this.finish();
             return lSession;
         }

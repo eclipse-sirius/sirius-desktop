@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -31,9 +32,7 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Test class to test removal of DDiagramSet during repair/migrate action of
@@ -119,6 +118,6 @@ public class RepairMigratePinStatusTest extends AbstractRepairMigrateTest {
         final Resource resource = ModelUtils.createResource(uri, resourceSet);
         resource.load(Collections.EMPTY_MAP);
 
-        return Lists.newArrayList(Iterables.filter(resource.getContents(), DAnalysis.class));
+        return resource.getContents().stream().filter(DAnalysis.class::isInstance).map(DAnalysis.class::cast).collect(Collectors.toList());
     }
 }

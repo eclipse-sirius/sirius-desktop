@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.operations;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
@@ -32,8 +33,6 @@ import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-
-import com.google.common.collect.Lists;
 
 import junit.framework.TestCase;
 
@@ -77,6 +76,7 @@ public class CreateInstanceOperationTest extends TestCase {
     }
 
     private class Nominal extends Case {
+        @Override
         public void check() throws Exception {
             task = createInstanceTask(rootContext, RIGHT_REFERENCE_NAME, RIGHT_TYPE_NAME, DEFAULT_VARIABLE_NAME);
             super.check();
@@ -114,6 +114,7 @@ public class CreateInstanceOperationTest extends TestCase {
     }
 
     private class NoTypeNameNull extends NoTypeName {
+        @Override
         public void check() throws Exception {
             try {
                 super.check(null);
@@ -154,7 +155,7 @@ public class CreateInstanceOperationTest extends TestCase {
         super.setUp();
         accessor = new ModelAccessor();
         accessor.addExtender(new EcoreIntrinsicExtender(), ExtenderConstants.HIGH_PRIORITY);
-        accessor.activateMetamodels(Lists.newArrayList(new EcoreMetamodelDescriptor(EcorePackage.eINSTANCE)));
+        accessor.activateMetamodels(Arrays.asList(new EcoreMetamodelDescriptor(EcorePackage.eINSTANCE)));
 
         iRegistry = new InterpreterRegistry() {
 

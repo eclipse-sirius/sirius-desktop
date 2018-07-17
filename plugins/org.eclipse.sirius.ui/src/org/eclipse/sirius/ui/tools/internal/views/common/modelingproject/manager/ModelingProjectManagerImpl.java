@@ -11,6 +11,8 @@
 package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manager;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -120,12 +122,12 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
     @Override
     public void loadAndOpenRepresentationsFile(final URI representationsFileURI) {
-        loadAndOpenRepresentationsFiles(Lists.newArrayList(representationsFileURI), false);
+        loadAndOpenRepresentationsFiles(new ArrayList<URI>(Arrays.asList(representationsFileURI)), false);
     }
 
     @Override
     public void loadAndOpenRepresentationsFile(final URI representationsFileURI, boolean user) {
-        loadAndOpenRepresentationsFiles(Lists.newArrayList(representationsFileURI), user);
+        loadAndOpenRepresentationsFiles(new ArrayList<URI>(Arrays.asList(representationsFileURI)), user);
     }
 
     @Override
@@ -362,7 +364,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                     Option<URI> mainRepresentationsFileURI = optionalModelingProject.get().getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), false, true);
                     if (mainRepresentationsFileURI.some()) {
                         // Open the session.
-                        loadAndOpenRepresentationsFiles(Lists.newArrayList(mainRepresentationsFileURI.get()), true, true);
+                        loadAndOpenRepresentationsFiles(new ArrayList<URI>(Arrays.asList(mainRepresentationsFileURI.get())), true, true);
                     }
                 } catch (IllegalArgumentException e) {
                     // Clean existing marker if exists

@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.action;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
@@ -30,7 +33,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 public class DeleteFromDiagramActionTests extends EntitiesDiagramDropTests {
 
@@ -76,7 +78,7 @@ public class DeleteFromDiagramActionTests extends EntitiesDiagramDropTests {
 
         final StructuredSelection onlyDroppedIsSelected = new StructuredSelection(childEditPart);
         final StructuredSelection onlyRootIsSelected = new StructuredSelection(rootEditPart);
-        final StructuredSelection rootAndDroppedareSelected = new StructuredSelection(Lists.newArrayList(childEditPart, rootEditPart));
+        final StructuredSelection rootAndDroppedareSelected = new StructuredSelection(new ArrayList<IGraphicalEditPart>(Arrays.asList(childEditPart, rootEditPart)));
 
         final DeleteFromDiagramAction actionDelegate = new DeleteFromDiagramAction();
 

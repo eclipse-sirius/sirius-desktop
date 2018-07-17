@@ -22,8 +22,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.ILayoutDataManagerProvider
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManagerForSemanticElementsFactory;
 
-import com.google.common.collect.Lists;
-
 /**
  * Registry containing all layout data manager providers that have been parsed
  * from the
@@ -70,7 +68,7 @@ public final class LayoutDataManagerRegistry {
      * @return A copy of the registered extensions list.
      */
     public static Collection<LayoutDataManagerDescriptor> getRegisteredExtensions() {
-        return Lists.newArrayList(EXTENSIONS.keySet());
+        return new ArrayList<LayoutDataManagerDescriptor>(EXTENSIONS.keySet());
     }
 
     /**

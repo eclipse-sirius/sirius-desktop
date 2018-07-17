@@ -19,7 +19,6 @@ import org.eclipse.sirius.ext.base.Messages;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
 
 /**
  * The transitive closure of a given {@link Relation}.
@@ -42,7 +41,7 @@ public class TransitiveClosure<T> implements Relation<T> {
     @Override
     public Set<T> apply(T from) {
         Preconditions.checkNotNull(from);
-        Set<T> result = Sets.newHashSet(relation.apply(from));
+        Set<T> result = new HashSet<T>(relation.apply(from));
 
         Set<T> startingPoints = ImmutableSet.copyOf(result);
         while (!startingPoints.isEmpty()) {

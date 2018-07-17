@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.unit.common;
 import static org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.clamp;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,8 +29,6 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
-
-import com.google.common.collect.Sets;
 
 import junit.framework.TestCase;
 
@@ -90,7 +89,7 @@ public class VisualBindingManagerTestCase extends TestCase {
         // #getColorFromValue(int), as that method internally uses named colors
         // "red" and "green", which have side-effects on the cache.
 
-        final Set<String> names = Sets.newHashSet(visualManager.getSystemPalette().keySet());
+        final Set<String> names = new HashSet<String>(visualManager.getSystemPalette().keySet());
         final Color[] colors = new Color[names.size()];
         final int N = 3;
         final int cacheSize = names.size() - N;

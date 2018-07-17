@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -49,7 +50,6 @@ import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
 
 import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
 
 /**
  * Tests completion in MTL interpreted expression and domain class property
@@ -215,7 +215,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
             return;
         }
 
-        initContext(Lists.newArrayList("test", "VP", "Diag"));
+        initContext(Arrays.asList("test", "VP", "Diag"));
 
         // Set the domain class
         SWTBotText domainClass = propertiesBot.bot().text(2);
@@ -250,7 +250,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
             return;
         }
 
-        initContext(Lists.newArrayList("test", "VP", "Diag", "Default", "C1"));
+        initContext(Arrays.asList("test", "VP", "Diag", "Default", "C1"));
 
         // Set the domain class
         SWTBotText domainClass = propertiesBot.bot().text(2);
@@ -285,7 +285,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
             return;
         }
 
-        initContext(Lists.newArrayList("test", "VP", "Diag", "Default", "C1"));
+        initContext(Arrays.asList("test", "VP", "Diag", "Default", "C1"));
 
         // Set the domain class
         SWTBotText domainClass = propertiesBot.bot().text(2);
@@ -320,9 +320,9 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
             return;
         }
 
-        // initContext(Lists.newArrayList("test", "VP", "Diag", "Default",
+        // initContext(Arrays.asList("test", "VP", "Diag", "Default",
         // "C1"));
-        initContext(Lists.newArrayList("test", "VP", "Diag", "Default", "C1"));
+        initContext(Arrays.asList("test", "VP", "Diag", "Default", "C1"));
 
         // Set the domain class
         SWTBotText domainClass = propertiesBot.bot().text(2);
@@ -353,7 +353,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
             return;
         }
 
-        initContext(Lists.newArrayList("test", "VP", "Diag"));
+        initContext(Arrays.asList("test", "VP", "Diag"));
 
         // Set the domain class
         SWTBotText domainClass = propertiesBot.bot().text(2);
@@ -368,7 +368,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         Collection<String> contentAssistProposal = getContentAssistProposal(precondition, 13);
 
         // Expected mtl queries.
-        Collection<String> mtlServices = Lists.newArrayList("getName() : String", "getNameQuery() : String", "getImportedName() : String", "getImportedQueryName() : String",
+        Collection<String> mtlServices = Arrays.asList("getName() : String", "getNameQuery() : String", "getImportedName() : String", "getImportedQueryName() : String",
                 "isAbstractQuery() : Boolean", "eContentsQuery() : Collection(EObject)", "selfQuery() : EObject", "selfImportedQuery() : EObject");
 
         Collection<String> unfoundServices = new ArrayList<>();
@@ -393,7 +393,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
             return;
         }
 
-        initContext(Lists.newArrayList("test", "VP", "Diag"));
+        initContext(Arrays.asList("test", "VP", "Diag"));
 
         // Get proposals for domain class.
         SWTBotText domainClass = propertiesBot.bot().text(2);
@@ -418,10 +418,10 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
      *                In case of problem during context initialization.
      */
     public void test_Domain_Class_Completion_With_Selected_MetaModels() throws Exception {
-        initContext(Lists.newArrayList("test", "VP", "Diag"));
+        initContext(Arrays.asList("test", "VP", "Diag"));
 
         // select Sirius metamodels
-        Collection<String> expectedMetamodels = Lists.newArrayList(DescriptionPackage.eNS_URI, DiagramPackage.eNS_URI, ViewpointPackage.eNS_URI, InteractionsPackage.eNS_URI);
+        Collection<String> expectedMetamodels = Arrays.asList(DescriptionPackage.eNS_URI, DiagramPackage.eNS_URI, ViewpointPackage.eNS_URI, InteractionsPackage.eNS_URI);
         selectSiriusMetaModels(expectedMetamodels);
 
         propertiesBot = bot.viewByTitle("Properties");

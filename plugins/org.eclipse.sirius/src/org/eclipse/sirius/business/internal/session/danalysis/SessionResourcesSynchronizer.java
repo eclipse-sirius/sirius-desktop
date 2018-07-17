@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -47,7 +48,6 @@ import org.eclipse.sirius.viewpoint.SyncStatus;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
 /**
@@ -190,7 +190,7 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
         if (representationsResource) {
             reloadingAnalysisCmd = new AnalysisResourceReloadedCommand(session, ted, resource);
         }
-        List<Resource> resourcesBeforeReload = Lists.newArrayList(ted.getResourceSet().getResources());
+        List<Resource> resourcesBeforeReload = new ArrayList<Resource>(ted.getResourceSet().getResources());
         /* execute the reload operation as a write transaction */
         RecordingCommand reload = new RecordingCommand(ted) {
             IStatus result;

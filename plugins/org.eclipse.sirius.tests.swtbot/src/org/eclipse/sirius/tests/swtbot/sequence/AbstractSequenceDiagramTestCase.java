@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -84,7 +86,6 @@ import org.junit.Assert;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Abstract base class for SWTbot tests on Sequence Diagram, with helper
@@ -1233,7 +1234,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         if (editPartsToSelect == null || editPartsToSelect.length == 0)
             return;
 
-        selectEditParts(Lists.newArrayList(editPartsToSelect));
+        selectEditParts(new ArrayList<EditPart>(Arrays.asList(editPartsToSelect)));
     }
 
     protected void selectEditParts(final Collection<? extends EditPart> editPartsToSelect) {

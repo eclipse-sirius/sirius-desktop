@@ -188,7 +188,7 @@ public class DecoratorsTest extends GenericTestCase {
         initSynchronizer(classDiag, TEST_CLASS_DIAGRAM);
         final DDiagram diagram = getRefreshedDiagram();
 
-        final List<DDiagramElement> elements = Lists.newArrayList(diagram.getOwnedDiagramElements());
+        final List<DDiagramElement> elements = new ArrayList<DDiagramElement>(diagram.getOwnedDiagramElements());
         assertEquals("We should have 6 diagram elements here .", 6, elements.size());
         assertEquals("We should have 5 nodes here .", 5, diagram.getNodes().size());
         assertEquals("We should have 1 container/list here .", 1, diagram.getContainers().size());

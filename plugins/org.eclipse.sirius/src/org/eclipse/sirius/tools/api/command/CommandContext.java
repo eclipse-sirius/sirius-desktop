@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tools.api.command;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Stack;
@@ -24,7 +25,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
-import com.google.common.collect.Lists;
 
 /**
  * This class keeps the trace of all contexts.
@@ -169,11 +169,11 @@ public class CommandContext {
         if (result == null) {
             contextTargets = new ArrayList<>();
         } else if (result instanceof Collection) {
-            contextTargets = Lists.newArrayList((Collection<?>) result);
+            contextTargets = new ArrayList<Object>((Collection<?>) result);
         } else if (result.getClass().isArray()) {
-            contextTargets = Lists.newArrayList((Object[]) result);
+            contextTargets = new ArrayList<Object>(Arrays.asList((Object[]) result));
         } else {
-            contextTargets = Lists.newArrayList(result);
+            contextTargets = new ArrayList<Object>(Arrays.asList(result));
         }
         return contextTargets;
     }

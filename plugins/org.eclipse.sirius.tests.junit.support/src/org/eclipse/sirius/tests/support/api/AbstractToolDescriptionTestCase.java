@@ -10,6 +10,7 @@
  */
 package org.eclipse.sirius.tests.support.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -18,8 +19,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-
-import com.google.common.collect.Lists;
 
 /**
  * Class owning some utility methods about tools.
@@ -56,7 +55,7 @@ public abstract class AbstractToolDescriptionTestCase extends SiriusTestCase {
      *            semantic object at the root of selected elements
      */
     protected void checkExpectedElementsInSelection(DialectEditor editor, List<String> objectsNameToCheck, int expectedSize, boolean semanticObjectName) {
-        List<DSemanticDecorator> selections = Lists.newArrayList(DialectUIManager.INSTANCE.getSelection(editor));
+        List<DSemanticDecorator> selections = new ArrayList<DSemanticDecorator>(DialectUIManager.INSTANCE.getSelection(editor));
 
         assertEquals("Bad selection size, after tool execution.", expectedSize, selections.size());
 

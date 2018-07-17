@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -167,7 +168,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     private static final String EDIT_MENU_NAME = "Edit";
 
-    private static final List<String> SHELL_TO_CLOSE_AT_TEAR_DOWN_TEXTS = Lists.newArrayList(OpenRepresentationsFileJob.JOB_LABEL);
+    private static final List<String> SHELL_TO_CLOSE_AT_TEAR_DOWN_TEXTS = new ArrayList<String>(Arrays.asList(OpenRepresentationsFileJob.JOB_LABEL));
 
     private static boolean fFullScreen = true;
 
@@ -866,7 +867,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     private void assertNoSiriusCorePreferenceChangedinSiriusUIStore(String preferenceKey) {
-        Collection<SiriusPreferencesKeys> coreKeys = Lists.newArrayList(SiriusPreferencesKeys.values());
+        Collection<SiriusPreferencesKeys> coreKeys = new ArrayList<SiriusPreferencesKeys>(Arrays.asList(SiriusPreferencesKeys.values()));
         Function<SiriusPreferencesKeys, String> prefToName = new Function<SiriusPreferencesKeys, String>() {
             @Override
             public String apply(SiriusPreferencesKeys input) {

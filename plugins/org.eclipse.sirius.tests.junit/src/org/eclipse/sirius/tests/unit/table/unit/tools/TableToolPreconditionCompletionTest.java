@@ -38,9 +38,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-
 /**
  * Tests to check the auto completion result of table tool's precondition.
  * 
@@ -164,13 +161,8 @@ public class TableToolPreconditionCompletionTest extends SiriusDiagramTestCase {
         ContentContext context = new ContentContext("[/]", 1, interContext);
 
         List<ContentProposal> contentProposals = acceleoPrososalProvider.getProposals(acceleoIntepreter, context);
-        ContentProposal contentProposal = Iterables.find(contentProposals, new Predicate<ContentProposal>() {
-            @Override
-            public boolean apply(ContentProposal input) {
-                return input.getProposal().equals("thisEObject");
-            }
-        }, null);
-
+        ContentProposal contentProposal = contentProposals.stream().filter(input->input.getProposal().equals("thisEObject")).findFirst().orElse(null);
+        
         assertNotNull("The 'thisEObject' is not found", contentProposal);
         assertEquals("thisEObject:" + expectedType, contentProposal.getDisplay());
     }

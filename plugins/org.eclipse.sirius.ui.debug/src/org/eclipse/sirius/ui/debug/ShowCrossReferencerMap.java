@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.debug;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -31,8 +32,6 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
-import com.google.common.collect.Lists;
 
 /**
  * Show the content of the internal inverse cross reference map.
@@ -192,7 +191,7 @@ final class ShowCrossReferencerMap implements Runnable {
      *            inverse references to dump
      */
     private void dumpInverseReferences(StringBuilder result, Map<EClass, InverseReferences> inverseRerefences) {
-        List<Entry<EClass, InverseReferences>> entries = Lists.newArrayList(inverseRerefences.entrySet());
+        List<Entry<EClass, InverseReferences>> entries = new ArrayList<Entry<EClass, InverseReferences>>(inverseRerefences.entrySet());
         Collections.sort(entries, new InverseReferencesComparator());
 
         for (Map.Entry<EClass, InverseReferences> entry : entries) {

@@ -37,8 +37,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
-import com.google.common.collect.Lists;
-
 /**
  * A listener to refresh all Sirius opened editors. It is used as :
  * <UL>
@@ -183,7 +181,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
     }
 
     private void restrictRepresentationWithinCurrentEditingDomain(Collection<DRepresentation> representationsToRefresh) {
-        for (DRepresentation rep : Lists.newArrayList(representationsToRefresh)) {
+        for (DRepresentation rep : new ArrayList<DRepresentation>(representationsToRefresh)) {
             if (transactionalEditingDomain != TransactionUtil.getEditingDomain(rep)) {
                 representationsToRefresh.remove(rep);
             } else if (rep instanceof DSemanticDecorator) {

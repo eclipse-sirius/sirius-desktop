@@ -15,8 +15,10 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -45,7 +47,6 @@ import org.eclipse.sirius.common.tools.internal.interpreter.ClassLoadingService;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 
 /**
  * The {@link JavaExtensionsManager} load and maintains {@link Class} instances
@@ -58,7 +59,7 @@ public final class JavaExtensionsManager {
 
     private static final String WORKSPACE_SEPARATOR = "/"; //$NON-NLS-1$
 
-    private static final Set<String> JAVA_SERVICES_BUNDLES_WHITE_LIST = Sets.newHashSet(DslCommonPlugin.PLUGIN_ID, "org.eclipse.sirius.ui.properties"); //$NON-NLS-1$
+    private static final Set<String> JAVA_SERVICES_BUNDLES_WHITE_LIST =  new HashSet<String>(Arrays.asList(DslCommonPlugin.PLUGIN_ID, "org.eclipse.sirius.ui.properties")); //$NON-NLS-1$
 
     /**
      * This will be updated with the list of accessible viewpoint plugins, if

@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.unit.diagram.decorators;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -39,8 +40,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.Position;
-
-import com.google.common.collect.Lists;
 
 /**
  * Test display of decoration via Designer Decorations.
@@ -93,12 +92,12 @@ public class DecorationDisplayTest extends GenericTestCase {
         assertEquals("There should be 3 decoration groups", 3, dDiagramElementDecorationFigures.size());
 
         checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_WEST_LITERAL, new Rectangle(326, 206, 49, 49),
-                Lists.newArrayList(new Rectangle(326, 206, 16, 16), new Rectangle(343, 206, 32, 32), new Rectangle(326, 223, 32, 32)), false);
+                Arrays.asList(new Rectangle(326, 206, 16, 16), new Rectangle(343, 206, 32, 32), new Rectangle(326, 223, 32, 32)), false);
 
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(505, 265, 10, 10), Lists.newArrayList(new Rectangle(505, 265, 10, 10)), false);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(505, 265, 10, 10), Arrays.asList(new Rectangle(505, 265, 10, 10)), false);
 
         checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.SOUTH_EAST_LITERAL, new Rectangle(454, 274, 61, 61),
-                Lists.newArrayList(new Rectangle(505, 325, 10, 10), new Rectangle(488, 275, 16, 60), new Rectangle(455, 308, 60, 16), new Rectangle(471, 319, 16, 16)), false);
+                Arrays.asList(new Rectangle(505, 325, 10, 10), new Rectangle(488, 275, 16, 60), new Rectangle(455, 308, 60, 16), new Rectangle(471, 319, 16, 16)), false);
 
         // test decoration tooltip
         checkDecorationStringTooltip(dDiagramElementDecorationFigures, Position.NORTH_WEST_LITERAL, new Rectangle(326, 206, 49, 49), "NW_1");
@@ -221,13 +220,13 @@ public class DecorationDisplayTest extends GenericTestCase {
 
         // NORTH_WEST decorations are normally displayed
         checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_WEST_LITERAL, new Rectangle(518, 56, 49, 49),
-                Lists.newArrayList(new Rectangle(518, 56, 16, 16), new Rectangle(535, 56, 32, 32), new Rectangle(518, 73, 32, 32)), false);
+                Arrays.asList(new Rectangle(518, 56, 16, 16), new Rectangle(535, 56, 32, 32), new Rectangle(518, 73, 32, 32)), false);
 
         // EAST decorations should NOT be a list decorator because it is smaller
         // than the list decorator size. A group containing one decoration that
         // is smaller than the list decorator can be changed into a list
         // decorator.
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(652, 112, 10, 10), Lists.newArrayList(new Rectangle(652, 112, 10, 10)), false);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(652, 112, 10, 10), Arrays.asList(new Rectangle(652, 112, 10, 10)), false);
 
         // SOUTH_EAST should be a list decorator
         checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.SOUTH_EAST_LITERAL, new Rectangle(646, 163, 16, 16), new ArrayList<>(), true);
@@ -259,7 +258,7 @@ public class DecorationDisplayTest extends GenericTestCase {
 
         // EAST should NOT be a list decorator because it is smaller than the
         // list decorator size
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(424, 25, 10, 10), Lists.newArrayList(new Rectangle(424, 25, 10, 10)), false);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.EAST_LITERAL, new Rectangle(424, 25, 10, 10), Arrays.asList(new Rectangle(424, 25, 10, 10)), false);
 
         // SOUTH_EAST should be a list decorator
         checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.SOUTH_EAST_LITERAL, new Rectangle(418, 37, 16, 16), new ArrayList<>(), true);
@@ -309,14 +308,14 @@ public class DecorationDisplayTest extends GenericTestCase {
         // There should be a single composite decoration at NORTH
         // NORTH should display the composite figure created in
         // org.eclipse.sirius.tests.sample.component.service.ComponentServices.getDecorationFigure(EObject)
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_LITERAL, new Rectangle(153, 182, 36, 20), Lists.newArrayList(new Rectangle(153, 182, 36, 20)), false);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_LITERAL, new Rectangle(153, 182, 36, 20), Arrays.asList(new Rectangle(153, 182, 36, 20)), false);
 
         // test decoration tooltip
         checkDecorationStringTooltip(dDiagramElementDecorationFigures, Position.NORTH_LITERAL, new Rectangle(153, 182, 36, 20), "Tooltip_Root");
 
         // There should be a single decoration at CENTER whose image is provided
         // by DecorationServices.getDecorationImage
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.CENTER_LITERAL, new Rectangle(166, 232, 11, 11), Lists.newArrayList(new Rectangle(166, 232, 11, 11)), false);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.CENTER_LITERAL, new Rectangle(166, 232, 11, 11), Arrays.asList(new Rectangle(166, 232, 11, 11)), false);
 
         // test decoration tooltip
         checkDecorationStringTooltip(dDiagramElementDecorationFigures, Position.CENTER_LITERAL, new Rectangle(166, 232, 11, 11), "Tooltip_Root");
@@ -332,7 +331,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         // image and tooltip should be updated with the name
         ownedDiagramElements = diagram.getOwnedDiagramElements();
         dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(getDiagElement(ownedDiagramElements, "Root_2"), editor);
-        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_LITERAL, new Rectangle(0, 0, 44, 20), Lists.newArrayList(new Rectangle(0, 0, 44, 20)), false);
+        checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_LITERAL, new Rectangle(0, 0, 44, 20), Arrays.asList(new Rectangle(0, 0, 44, 20)), false);
         checkDecorationStringTooltip(dDiagramElementDecorationFigures, Position.NORTH_LITERAL, new Rectangle(0, 0, 44, 20), "Tooltip_Root_2");
     }
 
@@ -349,7 +348,7 @@ public class DecorationDisplayTest extends GenericTestCase {
 
         // decorations are normally displayed at CENTER
         checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.CENTER_LITERAL, new Rectangle(350, 97, 82, 32),
-                Lists.newArrayList(new Rectangle(350, 97, 16, 16), new Rectangle(367, 97, 32, 32), new Rectangle(400, 97, 32, 32)), false);
+                Arrays.asList(new Rectangle(350, 97, 16, 16), new Rectangle(367, 97, 32, 32), new Rectangle(400, 97, 32, 32)), false);
     }
 
     private List<Figure> getDDiagramElementDecorationFigures(DDiagramElement diagElement, DDiagramEditor editor) {

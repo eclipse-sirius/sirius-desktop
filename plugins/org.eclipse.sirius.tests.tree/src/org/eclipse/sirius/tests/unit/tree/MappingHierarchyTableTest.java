@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.tree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,8 +23,6 @@ import org.eclipse.sirius.synchronizer.MappingHiearchy;
 import org.eclipse.sirius.synchronizer.MappingHiearchyTable;
 import org.eclipse.sirius.synchronizer.SemanticPartition;
 import org.junit.Assert;
-
-import com.google.common.collect.Lists;
 
 import junit.framework.TestCase;
 
@@ -56,7 +55,7 @@ public class MappingHierarchyTableTest extends TestCase {
 
     public void testASingleMappingHasAHierarchy() throws Exception {
         Mapping a = new MockMapping();
-        table.compute(Lists.newArrayList(a));
+        table.compute(new ArrayList<Mapping>(Arrays.asList(a)));
 
         Assert.assertNotNull(table.getHierarchy(a));
     }
@@ -66,7 +65,7 @@ public class MappingHierarchyTableTest extends TestCase {
         Mapping a = new MockMapping();
         Mapping b = new MockMapping();
 
-        table.compute(Lists.newArrayList(a, b));
+        table.compute(new ArrayList<Mapping>(Arrays.asList(a, b)));
 
         Assert.assertNotSame(table.getHierarchy(a).iterator().next(), table.getHierarchy(b).iterator().next());
 
@@ -82,7 +81,7 @@ public class MappingHierarchyTableTest extends TestCase {
             }
         };
 
-        table.compute(Lists.newArrayList(a, b));
+        table.compute(new ArrayList<Mapping>(Arrays.asList(a, b)));
 
         Assert.assertSame(table.getHierarchy(a).iterator().next(), table.getHierarchy(b).iterator().next());
 
@@ -95,7 +94,7 @@ public class MappingHierarchyTableTest extends TestCase {
         b.setSuper(a);
         a.setSuper(b);
 
-        table.compute(Lists.newArrayList(a, b));
+        table.compute(new ArrayList<Mapping>(Arrays.asList(a, b)));
 
         Assert.assertSame(table.getHierarchy(a).iterator().next(), table.getHierarchy(b).iterator().next());
     }

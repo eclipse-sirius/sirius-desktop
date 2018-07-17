@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gef.EditDomain;
@@ -39,7 +40,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Test class for {@link PaletteManagerImpl}.
@@ -68,7 +68,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
 
     private static final String TOOL_SECTION_EXTENSION_VIEWPOINT_NAME = "toolSectionExtension"; //$NON-NLS-1$
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_PALETTE = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_PALETTE = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
             //
@@ -82,7 +82,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_EDITOR_PALETTE = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_EDITOR_PALETTE = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
             //
@@ -98,7 +98,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_VIEWPOINT_EXTENSION_DEACTIVATE = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_VIEWPOINT_EXTENSION_DEACTIVATE = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
@@ -114,7 +114,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L3_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L3_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
             //
@@ -128,7 +128,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_HIDDEN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_HIDDEN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
@@ -142,7 +142,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_HIDDEN_L3_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_HIDDEN_L3_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
@@ -156,7 +156,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L4_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L4_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
             //
@@ -170,7 +170,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L4_L5_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L4_L5_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
             //
@@ -184,7 +184,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L4_L5_L6_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L4_L5_L6_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
             //
@@ -200,7 +200,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L5_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L5_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
@@ -214,7 +214,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L4_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L4_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
@@ -228,7 +228,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L5_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L5_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
@@ -242,7 +242,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L6_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L6_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2"),
             //
@@ -256,7 +256,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L3_L4_L5_L6_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_L3_L4_L5_L6_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1", "Tool9-1"),
             //
@@ -272,7 +272,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L3_L5_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L3_L5_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2"),
             //
@@ -286,7 +286,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
     //
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L3_L4_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L3_L4_SHOWN = new TreeSet<Entry>(Arrays.asList(
             //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //

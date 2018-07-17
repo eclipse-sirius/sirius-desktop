@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot;
 import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -57,7 +58,6 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
@@ -206,7 +206,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                 sequenceDiagramEditor.drag(initialLocation, new Point(initialLocation.x + 50, initialLocation.y + 50));
                 SWTBotUtils.waitAllUiEvents();
                 try {
-                    compareActualBendpointsWithExpected(sequenceDiagramEditor, Lists.newArrayList(editPartToMove), previousBendPoints, true, true, false);
+                    compareActualBendpointsWithExpected(sequenceDiagramEditor, Arrays.asList(editPartToMove), previousBendPoints, true, true, false);
                 } finally {
                     try {
                         undo("Move sequence node");
@@ -238,7 +238,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                 PointList points = ((PolylineConnectionEx) connectionEditPart.part().getFigure()).getPoints();
                 previousBendPoints.put(connectionEditPart, points);
             }
-            for (Point move : Lists.newArrayList(HORIZONTAL_MOVE, VERTICAL_MOVE)) {
+            for (Point move : Arrays.asList(HORIZONTAL_MOVE, VERTICAL_MOVE)) {
                 SWTBotGefEditPart editPartToMove = bracketEdgesDiagramEditor.getEditPart("B", IAbstractDiagramNodeEditPart.class);
                 bracketEdgesDiagramEditor.select(editPartToMove);
                 SWTBotUtils.waitAllUiEvents();
@@ -246,7 +246,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                 bracketEdgesDiagramEditor.drag(initialLocation, new Point(initialLocation.x + move.x, initialLocation.y + move.y));
                 SWTBotUtils.waitAllUiEvents();
                 try {
-                    compareActualBendpointsWithExpected(bracketEdgesDiagramEditor, Lists.newArrayList(editPartToMove), previousBendPoints, true, true, false);
+                    compareActualBendpointsWithExpected(bracketEdgesDiagramEditor, Arrays.asList(editPartToMove), previousBendPoints, true, true, false);
                 } finally {
                     undo("Set Location or Size");
                     SWTBotUtils.waitAllUiEvents();
@@ -267,18 +267,18 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
     public void testMoveOneNodeWithOneTargetEdge() {
         // In rectilinear mode, bendpoints must not be modified only while the
         // move does not require to create new bendpoints
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(VERTICAL_MOVE), ZoomLevel.ZOOM_50, false, true, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(VERTICAL_MOVE), ZoomLevel.ZOOM_50, false, true, false,
                 "NodeWithOneTargetEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_125, false, true, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_125, false, true, false,
                 "NodeWithOneTargetEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(LITTLE_MOVE), ZoomLevel.ZOOM_125, false, true, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(LITTLE_MOVE), ZoomLevel.ZOOM_125, false, true, false,
                 "NodeWithOneTargetEdgeAnd3Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, false,
                 "NodeWithOneTargetEdgeAnd3Bendpoints");
 
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_100, false, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_100, false, false, false,
                 "NodeWithOneTargetEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, true, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, true, false, false,
                 "NodeWithOneTargetEdgeAnd2Bendpoints");
 
     }
@@ -291,18 +291,18 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
     public void testMoveOneNodeWithOneSourceEdge() {
         // In rectilinear mode, bendpoints must not be modified only while the
         // move does not require to create new bendpoints
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(VERTICAL_MOVE), ZoomLevel.ZOOM_50, false, false, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(VERTICAL_MOVE), ZoomLevel.ZOOM_50, false, false, true,
                 "NodeWithOneSourceEdgeAnd2Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(VERTICAL_MOVE), ZoomLevel.ZOOM_125, true, false, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(VERTICAL_MOVE), ZoomLevel.ZOOM_125, true, false, true,
                 "NodeWithOneSourceEdgeAnd2Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(LITTLE_MOVE), ZoomLevel.ZOOM_100, false, false, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(LITTLE_MOVE), ZoomLevel.ZOOM_100, false, false, true,
                 "NodeWithOneSourceEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, false, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, false, false, true,
                 "NodeWithOneSourceEdgeAnd1Bendpoints");
 
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, true,
                 "NodeWithOneSourceEdgeAnd3Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, true,
                 "NodeWithOneSourceEdgeAnd3Bendpoints");
 
     }
@@ -315,16 +315,16 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
     public void testMoveOneNodeWithSeveralTargetEdges() {
         // In rectilinear mode, bendpoints must not be modified only while the
         // move does not require to create new bendpoints
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(VERTICAL_MOVE), ZoomLevel.ZOOM_50, false, true, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(VERTICAL_MOVE), ZoomLevel.ZOOM_50, false, true, true,
                 "NodeWithSeveralTargetEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(new Point(-5, -5)), ZoomLevel.ZOOM_50, false, true, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(new Point(-5, -5)), ZoomLevel.ZOOM_50, false, true, true,
                 "NodeWithSeveralTargetEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN, ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_125, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN, ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_125, true,
                 true, true, "NodeWithSeveralTargetEdgeAnd1Bendpoints");
 
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, false,
                 "NodeWithSeveralTargetEdgeAnd3Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, false,
                 "NodeWithSeveralTargetEdgeAnd3Bendpoints");
 
     }
@@ -337,18 +337,18 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
     public void testMoveOneNodeWithSeveralSourceEdges() {
         // In rectilinear mode, bendpoints must not be modified only while the
         // move does not require to create new bendpoints
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(VERTICAL_MOVE), ZoomLevel.ZOOM_125, false, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(VERTICAL_MOVE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithSeveralSourceEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(HORIZONTAL_MOVE), ZoomLevel.ZOOM_125, false, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(HORIZONTAL_MOVE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithSeveralTargetsAndSources2");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_125, true, true, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_125, true, true, false,
                 "NodeWithSeveralSourceEdgeAnd3Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_125, true, true, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_125, true, true, false,
                 "NodeWithSeveralSourceEdgeAnd3Bendpoints");
 
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, true, true, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, true, true, true,
                 "NodeWithSeveralSourceEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_125, true, true, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_125, true, true, true,
                 "NodeWithSeveralSourceEdgeAnd1Bendpoints");
 
     }
@@ -361,18 +361,18 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
     public void testMoveOneNodeWithSeveralTargetAndSourcesEdges() {
         // In rectilinear mode, bendpoints must not be modified only while the
         // move does not require to create new bendpoints
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(HORIZONTAL_MOVE), ZoomLevel.ZOOM_125, false, true, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(HORIZONTAL_MOVE), ZoomLevel.ZOOM_125, false, true, false,
                 "NodeWithSeveralTargetEdgeAnd2Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(LITTLE_MOVE), ZoomLevel.ZOOM_125, false, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(LITTLE_MOVE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithSeveralSourceEdgeAnd3Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, false,
                 "NodeWithSeveralSourceEdgeAnd3Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_125, false, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithSeveralSourceEdgeAnd3Bendpoints");
 
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_100, false, true, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_100, false, true, true,
                 "NodeWithSeveralSourceEdgeAnd3Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_125, true, false, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_125, true, false, true,
                 "NodeWithSeveralSourceEdgeAnd3Bendpoints");
 
     }
@@ -384,11 +384,11 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
     public void testMoveSeveralNodesWithSameEdges() {
         // Here all moved nodes's incoming our outgoing edges have their source
         // and target in the moved nodes => all bendpoints should move
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_STRAIGHT, ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_100, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_STRAIGHT, ROUTING_STYLE_STRAIGHT_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_100, true,
                 false, true, "NodeWithOneTargetEdgeAnd1Bendpoints", "NodeWithOneSourceEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_125, true, false, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_125, true, false, true,
                 "NodeWithOneSourceEdgeAnd1Bendpoints", "NodeWithOneTargetEdgeAnd2Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_125, true, false, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_125, true, false, true,
                 "NodeWithOneSourceEdgeAnd1Bendpoints", "NodeWithOneTargetEdgeAnd2Bendpoints");
     }
 
@@ -398,18 +398,18 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
      * scrollbars, border nodes or not...).
      */
     public void testMoveSeveralNodesWithDifferentEdges() {
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN_BORDERED), Lists.newArrayList(new Point(-10, 0)), ZoomLevel.ZOOM_125, false, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN_BORDERED), Arrays.asList(new Point(-10, 0)), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithSeveralTargetsAndSources2", "NodeWithSeveralSourceEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(VERTICAL_MOVE), ZoomLevel.ZOOM_50, false, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(VERTICAL_MOVE), ZoomLevel.ZOOM_50, false, false, false,
                 "NodeWithOneTargetEdgeAnd1Bendpoints", "NodeWithOneTargetEdgeAnd2Bendpoints", "NodeWithSeveralTargetEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, false, false, false,
                 "NodeWithOneTargetEdgeAnd1Bendpoints", "NodeWithOneTargetEdgeAnd2Bendpoints", "NodeWithSeveralTargetEdgeAnd1Bendpoints");
 
         // Here some of the moved nodes are source or target of edges not
         // contained in the other moved nodes
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT_BORDERED), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, false, false, false,
                 "NodeWithOneTargetEdgeAnd1Bendpoints", "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithSeveralTargetEdgeAnd1Bendpoints");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_125, false, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithOneTargetEdgeAnd1Bendpoints", "NodeWithOneTargetEdgeAnd2Bendpoints", "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithSeveralTargetEdgeAnd1Bendpoints");
 
     }
@@ -420,8 +420,8 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
      * scrollbars,border nodes or not...).
      */
     public void testMoveContainerWithEdges() {
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, false, false, "EmptyContainer");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(HORIZONTAL_MOVE), ZoomLevel.ZOOM_50, false, false, false,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, false, false, false, "EmptyContainer");
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(HORIZONTAL_MOVE), ZoomLevel.ZOOM_50, false, false, false,
                 "EmptyContainer");
     }
 
@@ -431,9 +431,9 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
      * level, scrollbars, border nodes or not...).
      */
     public void testMoveContainerWithNodesHavingEdges() {
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(VERTICAL_MOVE), ZoomLevel.ZOOM_125, false, true, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_MANHATTAN), Arrays.asList(VERTICAL_MOVE), ZoomLevel.ZOOM_125, false, true, true,
                 "NodeWithOneSourceEdgeInContainer");
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_50, false, true, true,
                 "NodeWithOneSourceEdgeInContainer");
     }
 
@@ -443,7 +443,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
      * nodes or not...).
      */
     public void testMoveSeveralContainersWithDifferentEdges() {
-        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_STRAIGHT, ROUTING_STYLE_MANHATTAN), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_100, false, true,
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Arrays.asList(ROUTING_STYLE_STRAIGHT, ROUTING_STYLE_MANHATTAN), Arrays.asList(BIG_MOVE), ZoomLevel.ZOOM_100, false, true,
                 true, "ContainerWithOneNode", "Scrollbar", "DragAndDropTarget", "ContainerWithOneNode2");
     }
 
@@ -458,7 +458,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                 DSemanticDiagram.class);
         rectilinearDiagramEditor.zoom(ZoomLevel.ZOOM_50);
         try {
-            for (String editPartToMove : Lists.newArrayList("A", "B")) {
+            for (String editPartToMove : Arrays.asList("A", "B")) {
                 // Step 2: move nodes, edge should always arrive on center
                 SWTBotGefEditPart editParWithSource = rectilinearDiagramEditor.getEditPart(editPartToMove, IAbstractDiagramNodeEditPart.class);
                 rectilinearDiagramEditor.select(editParWithSource);
@@ -614,17 +614,17 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
      * edge extremity in various configuration (zoom level, edge style, ...)
      */
     public void testMoveEdgeExtremity() {
-        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(HORIZONTAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
-        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(HORIZONTAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
-        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(false, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(false, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(HORIZONTAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
-        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(false, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false,
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(false, false, Arrays.asList(ROUTING_STYLE_STRAIGHT), Arrays.asList(HORIZONTAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false,
                 false, "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
-        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(VERTICAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT_BORDERED), Arrays.asList(VERTICAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
                 "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
-        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(VERTICAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false,
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Arrays.asList(ROUTING_STYLE_STRAIGHT_BORDERED), Arrays.asList(VERTICAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false,
                 false, "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
     }
 
@@ -989,7 +989,7 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
      */
     protected void doAlignAndCheckBendpoints(boolean firstOrLastBendPointShouldMove, boolean allOtherBendpointsShouldMove, SWTBotSiriusDiagramEditor diagramEditor,
             Collection<SWTBotGefEditPart> editPartsToAlign, Map<SWTBotGefConnectionEditPart, PointList> previousBendPoints) {
-        Collection<String> alignKinds = Lists.newArrayList("Bottom", "Middle", "Top");
+        Collection<String> alignKinds = Arrays.asList("Bottom", "Middle", "Top");
         for (String alignKind : alignKinds) {
             diagramEditor.select(editPartsToAlign);
             diagramEditor.clickContextMenu(alignKind);

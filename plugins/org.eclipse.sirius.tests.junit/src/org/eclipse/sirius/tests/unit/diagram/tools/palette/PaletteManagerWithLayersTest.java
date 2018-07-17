@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.diagram.tools.palette;
 
 import java.util.Arrays;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
@@ -26,8 +27,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
 
-import com.google.common.collect.Sets;
-
 /**
  * Test class for {@link PaletteManagerImpl}.
  * 
@@ -39,7 +38,7 @@ public class PaletteManagerWithLayersTest extends AbstractPaletteManagerSectionT
 
     static final String REPRESENTATION_DESC_NAME = "toolSectionLayers";
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_PALETTE = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_PALETTE = new TreeSet<Entry>(Arrays.asList(
     //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
@@ -55,7 +54,7 @@ public class PaletteManagerWithLayersTest extends AbstractPaletteManagerSectionT
     //
             ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L3_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L3_SHOWN = new TreeSet<Entry>(Arrays.asList(
     //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
@@ -71,7 +70,7 @@ public class PaletteManagerWithLayersTest extends AbstractPaletteManagerSectionT
     //
             ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L4_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L4_SHOWN = new TreeSet<Entry>(Arrays.asList(
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2", "Tool9-1"),
             //
             createNewEntry("L1NotEmptySection4", "Tool1-2-1"),
@@ -87,7 +86,7 @@ public class PaletteManagerWithLayersTest extends AbstractPaletteManagerSectionT
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1")
     ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_HIDDEN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_HIDDEN = new TreeSet<Entry>(Arrays.asList(
     //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2"),
             //
@@ -101,7 +100,7 @@ public class PaletteManagerWithLayersTest extends AbstractPaletteManagerSectionT
     //
             ));
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_HIDDEN_L3_SHOWN = Sets.newTreeSet(Arrays.asList(
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_LAYER_L2_HIDDEN_L3_SHOWN = new TreeSet<Entry>(Arrays.asList(
     //
             createNewEntry("L1NotEmptySection1", "Tool1-1", "Tool1-2-1", "Tool1-4-1", "ECD1-2-2"),
             //

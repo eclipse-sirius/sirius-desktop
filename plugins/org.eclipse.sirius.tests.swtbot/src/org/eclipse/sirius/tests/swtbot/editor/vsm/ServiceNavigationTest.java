@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.core.commands.common.CommandException;
@@ -40,8 +41,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTableItem;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.IEditorReference;
-
-import com.google.common.collect.Lists;
 
 /**
  * Test the service implementation navigation from VSM service call in
@@ -229,7 +228,7 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
      *                if a problem occurs.
      */
     public void testServiceNavigationFromJavaExtensionDefinition() throws Exception {
-        initContext(Lists.newArrayList("test", "VP"), false);
+        initContext(Arrays.asList("test", "VP"), false);
         SWTBotTreeItem javaExtensionItem = diagramRepresentationDescription.expandNode("org.eclipse.sirius.test.design.BasicService").select();
         javaExtensionItem.doubleClick();
         TestsUtil.waitUntil(new JavaEditorOpenedCondition(true));
@@ -246,7 +245,7 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
         }
-        initContext(Lists.newArrayList("test", "VP"), false);
+        initContext(Arrays.asList("test", "VP"), false);
 
         SWTBotTreeItem javaExtensionItem = diagramRepresentationDescription.expandNode("org.eclipse.sirius.test.design.BasicService").select();
 
@@ -467,7 +466,7 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
             return;
         }
 
-        initContext(Lists.newArrayList("test", "VP", "Diag"), true);
+        initContext(Arrays.asList("test", "VP", "Diag"), true);
 
         // Init the Precondition Expression
         SWTBotText precondition = propertiesBot.bot().text(3);

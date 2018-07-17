@@ -117,7 +117,7 @@ public class SiriusSnapToGeometry extends SnapToGeometryEx {
             List<Class<?>> expectedClasses = new ArrayList<>();
             expectedClasses.add(AbstractBorderedDiagramElementEditPart.class);
             expectedClasses.add(AbstractDiagramBorderNodeEditPart.class);
-            List<EditPart> snapPartsList = Lists.newArrayList(new EditPartQuery(container.getRoot()).getAllChildren(false, expectedClasses));
+            List<EditPart> snapPartsList = new ArrayList<EditPart>(new EditPartQuery(container.getRoot()).getAllChildren(false, expectedClasses));
             // Add children of elements that are being dragged
             List<EditPart> exclusionsWithChildren = new ArrayList<>();
             for (Object editPart : exclusions) {

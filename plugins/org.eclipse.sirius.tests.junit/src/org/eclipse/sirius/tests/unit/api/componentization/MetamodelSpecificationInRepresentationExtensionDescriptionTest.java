@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.componentization;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -25,8 +27,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescript
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.collect.Sets;
 
 public class MetamodelSpecificationInRepresentationExtensionDescriptionTest extends SiriusDiagramTestCase implements MetamodelSpecificationInRepresentationExtensionDescriptionModeler {
 
@@ -75,7 +75,7 @@ public class MetamodelSpecificationInRepresentationExtensionDescriptionTest exte
 
     public void testExtensionElementsPackageIsProvided() {
         activateViewpoint(ECORE_VIEWPOINT_NAME);
-        Collection<MetamodelDescriptor> descriptors = MetamodelDescriptorManager.INSTANCE.provides(Sets.newHashSet(getSirius(ECORE_VIEWPOINT_NAME)));
+        Collection<MetamodelDescriptor> descriptors = MetamodelDescriptorManager.INSTANCE.provides(new HashSet<Viewpoint>(Arrays.asList(getSirius(ECORE_VIEWPOINT_NAME))));
         for (final MetamodelDescriptor descriptor : descriptors) {
             if (descriptor instanceof EcoreMetamodelDescriptor) {
                 EPackage ePackage = ((EcoreMetamodelDescriptor) descriptor).resolve();

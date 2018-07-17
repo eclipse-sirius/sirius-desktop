@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.sections.description.viewpoint;
 
+import java.util.ArrayList;
+
 // Start of user code imports
 
 import java.util.Arrays;
@@ -36,8 +38,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import com.google.common.collect.Lists;
 
 // End of user code imports
 
@@ -130,7 +130,7 @@ public class ViewpointConflictsPropertySection extends AbstractTextPropertySecti
                 if (eObject instanceof Viewpoint) {
                     Option<Set<URI>> userChoice = new ViewpoitnDependenciesSelectionDialog((Viewpoint) eObject).selectConflictsViewpoints(composite.getShell());
                     if (userChoice.some()) {
-                        List<URI> value = Lists.newArrayList(userChoice.get());
+                        List<URI> value = new ArrayList<URI>(userChoice.get());
                         EditingDomain editingDomain = ((IEditingDomainProvider) getPart()).getEditingDomain();
                         editingDomain.getCommandStack().execute(SetCommand.create(editingDomain, eObject, getFeature(), value));
                     }

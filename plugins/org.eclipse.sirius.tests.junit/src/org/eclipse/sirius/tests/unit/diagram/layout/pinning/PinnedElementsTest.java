@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.layout.pinning;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -44,7 +45,6 @@ import org.eclipse.ui.IEditorPart;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -162,7 +162,7 @@ public class PinnedElementsTest extends SiriusDiagramTestCase {
 
     public void assertNoOverlapsOnPinnedElements(final Map<DDiagramElement, Rectangle> bounds) {
         final DiagramLayoutCustomization layoutCustomization = new DiagramLayoutCustomization();
-        layoutCustomization.initializePaddingWithEditParts(Lists.newArrayList(bounds.keySet()));
+        layoutCustomization.initializePaddingWithEditParts(new ArrayList<DDiagramElement>(bounds.keySet()));
         for (DDiagramElement elt : bounds.keySet()) {
             if (isPinned(elt)) {
                 for (DDiagramElement other : bounds.keySet()) {

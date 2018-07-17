@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -29,7 +31,6 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * A command to fold all the edges (which support it) which have a given element
@@ -73,7 +74,7 @@ public class ToggleFoldingStateCommand extends RecordingCommand {
     private void toggleFoldingState(EdgeTarget startingPoint) {
         FoldingState currentState = new EdgeTargetQuery(startingPoint).getFoldingState();
         folding = currentState == FoldingState.UNFOLDED;
-        Set<DDiagramElement> handledElements = Sets.newHashSet((DDiagramElement) startingPoint);
+        Set<DDiagramElement> handledElements = new HashSet<DDiagramElement>(Arrays.asList((DDiagramElement) startingPoint));
         Iterable<DEdge> allFoldables = new EdgeTargetQuery(startingPoint).getAllFoldableEdges();
         for (DEdge edge : allFoldables) {
             if (new DDiagramElementQuery(edge).isExplicitlyFolded() != folding) {

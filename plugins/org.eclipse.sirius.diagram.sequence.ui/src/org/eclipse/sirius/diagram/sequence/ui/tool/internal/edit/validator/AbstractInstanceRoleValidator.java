@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +25,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRo
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 /**
  * Abstract class to validate InstanceRole move & resize request and get from it
@@ -124,7 +124,7 @@ public abstract class AbstractInstanceRoleValidator {
      * @return the left-to-right ordered list of movable InstanceRole
      */
     protected List<InstanceRole> getOrderedMovableInstanceRoles(List<InstanceRole> instanceRoleToMove) {
-        List<InstanceRole> allInstanceRoles = Lists.newArrayList(instanceRoles.get(0).getDiagram().getAllInstanceRoles());
+        List<InstanceRole> allInstanceRoles = new ArrayList<InstanceRole>(instanceRoles.get(0).getDiagram().getAllInstanceRoles());
         allInstanceRoles.removeAll(instanceRoleToMove);
         Collections.sort(allInstanceRoles, comparator);
 

@@ -57,7 +57,6 @@ import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Test class for {@link SiriusFormatDataManagerForSemanticElements}.
@@ -258,7 +257,7 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
 
         final List<Diagram> result = new ArrayList<>();
 
-        final List<DRepresentation> allDDiagrams = Lists.newArrayList(getRepresentations(representation.name));
+        final List<DRepresentation> allDDiagrams = new ArrayList<DRepresentation>(getRepresentations(representation.name));
 
         assertEquals("The number of expected diagrams is wrong", representation.diagrams.size(), allDDiagrams.size());
 
@@ -466,7 +465,7 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
 
     protected String getPlatformRelatedDataPath() {
         String path = DATA_PATH;
-        String platformVersion = (String) Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
+        String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
         if (platformVersion.startsWith("3.3") || platformVersion.startsWith("3.4") || platformVersion.startsWith("3.5")) {
             path = DATA_PATH + "3.5/";
         } else if (platformVersion.startsWith("3.6")) {

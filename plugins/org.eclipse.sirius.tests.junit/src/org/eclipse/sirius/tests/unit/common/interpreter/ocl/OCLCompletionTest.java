@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.common.interpreter.ocl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -323,7 +324,7 @@ public class OCLCompletionTest extends AbstractCompletionTestCase {
      */
     private void checkStandardOCLOperations(Collection<String> proposals, Predicate<String> concerned, StringBuilder errorMsg) {
         // Step 1: list all OCL operations & toString
-        Collection<String> oclOperations = Lists.newArrayList("oclAsType", "oclIsInState", "oclIsInvalid", "oclIsKindOf", "oclIsTypeOf", "oclIsUndefined");
+        Collection<String> oclOperations = new ArrayList<String>(Arrays.asList("oclAsType", "oclIsInState", "oclIsInvalid", "oclIsKindOf", "oclIsTypeOf", "oclIsUndefined"));
         // oclAsSet and toString are only added in version more recent than ocl
         // 3.0.2
         if (new PluginVersionCompatibility("org.eclipse.ocl").compareTo(new Version("3.0.2.R30x_v201101110610")) > 0) {

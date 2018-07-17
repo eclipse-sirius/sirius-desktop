@@ -166,7 +166,7 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
             regionToResize.remove(firstRegionPart.get());
             if (!regionToResize.isEmpty() && (!request.isConstrainedResize() || !regionToResize.contains(resizePropagator))) {
                 ChangeBoundsRequest req = initConstrainedRequest(request);
-                req.setEditParts(Lists.newArrayList(regionToResize));
+                req.setEditParts(new ArrayList<AbstractDiagramElementContainerEditPart>(regionToResize));
 
                 if (stackDirection == PositionConstants.NORTH_SOUTH) {
                     req.setSizeDelta(new Dimension(sizeDelta.width, 0));
@@ -197,12 +197,12 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
         if (!regionToResize.isEmpty()) {
             if (stackDirection == PositionConstants.NORTH_SOUTH && (query.isResizeFromLeft() || query.isResizeFromRight()) && sizeDelta.width != 0) {
                 ChangeBoundsRequest req = initConstrainedRequest(request);
-                req.setEditParts(Lists.newArrayList(regionToResize));
+                req.setEditParts(new ArrayList<AbstractDiagramElementContainerEditPart>(regionToResize));
                 req.setSizeDelta(new Dimension(sizeDelta.width, 0));
                 constrainedRequests.add(req);
             } else if (stackDirection == PositionConstants.EAST_WEST && (query.isResizeFromTop() || query.isResizeFromBottom()) && sizeDelta.height != 0) {
                 ChangeBoundsRequest req = initConstrainedRequest(request);
-                req.setEditParts(Lists.newArrayList(regionToResize));
+                req.setEditParts(new ArrayList<AbstractDiagramElementContainerEditPart>(regionToResize));
                 req.setSizeDelta(new Dimension(0, sizeDelta.height));
                 constrainedRequests.add(req);
             }

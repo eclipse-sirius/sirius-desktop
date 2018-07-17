@@ -10,7 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.internal.migration.FontFormatMigrationParticipant;
@@ -31,9 +35,6 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.osgi.framework.Version;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Test the migration of label and label description font formats.
@@ -73,8 +74,9 @@ public class FontFormatMigrationTest extends SiriusDiagramTestCase {
      */
     public void testFontFormatDescriptionAfterMigration() {
         DiagramDescription diagDesc = (DiagramDescription) getRepresentationDescription("fontFormatDiag", getViewpointFromName("fontFormat", session));
-        Iterable<AbstractNodeMapping> mappings = Iterables.filter(diagDesc.getDefaultLayer().eContents(), AbstractNodeMapping.class);
-        assertEquals(4, Iterables.size(mappings));
+        List<AbstractNodeMapping> mappings = diagDesc.getDefaultLayer().eContents().stream().filter(AbstractNodeMapping.class::isInstance).map(AbstractNodeMapping.class::cast)
+                .collect(Collectors.toList());
+        assertEquals(4, mappings.size());
         Collection<String> oldFontFormats = getOldFontFormats();
         for (AbstractNodeMapping mapping : mappings) {
             String expectedStyle = mapping.getName();
@@ -103,7 +105,7 @@ public class FontFormatMigrationTest extends SiriusDiagramTestCase {
     public void testFontFormatAfterMigration() {
         DDiagram diag = (DDiagram) getRepresentations("fontFormatDiag").iterator().next();
         Collection<DDiagramElement> ddes = diag.getDiagramElements();
-        assertEquals(4, Iterables.size(ddes));
+        assertEquals(4, ddes.size());
         Collection<String> oldFontFormats = getOldFontFormats();
         for (DDiagramElement dde : ddes) {
             String expectedStyle = dde.getName();
@@ -127,7 +129,7 @@ public class FontFormatMigrationTest extends SiriusDiagramTestCase {
     }
 
     private Collection<String> getOldFontFormats() {
-      return Lists.newArrayList("normal", "bold", "italic", "bold_italic");
+        return new ArrayList<String>(Arrays.asList("normal", "bold", "italic", "bold_italic"));
     }
 
     private Collection<FontFormat> getLabelFormat(AbstractNodeMapping mapping) {

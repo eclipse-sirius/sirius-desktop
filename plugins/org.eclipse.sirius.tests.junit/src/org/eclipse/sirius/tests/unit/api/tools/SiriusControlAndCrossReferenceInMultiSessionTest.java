@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.api.tools;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -42,7 +43,6 @@ import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 import com.google.common.collect.UnmodifiableIterator;
 
 /**
@@ -101,12 +101,12 @@ public class SiriusControlAndCrossReferenceInMultiSessionTest extends SiriusTest
         // ConsumerRoot
         // |_C1
         // ..|_toLibrary -->PC1
-        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, LIBRARY_PROJECT, PATH, Lists.newArrayList(SEMANTIC_MODEL_LIB, AIRD_LIB_1));
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, LIBRARY_PROJECT, PATH, Arrays.asList(SEMANTIC_MODEL_LIB, AIRD_LIB_1));
         genericSetUp(Collections.singletonList(toURI(LIBRARY_PROJECT + "/" + SEMANTIC_MODEL_LIB, ResourceURIType.RESOURCE_PLATFORM_URI)), Collections.<URI> emptyList(), true,
                 toURI(LIBRARY_PROJECT + "/" + AIRD_LIB_1, ResourceURIType.RESOURCE_PLATFORM_URI));
         sessionLibrary = session;
 
-        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, CONSUMER_PROJECT, PATH, Lists.newArrayList(SEMANTIC_MODEL_CONSUMER, AIRD_CONSUMER_1));
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, CONSUMER_PROJECT, PATH, Arrays.asList(SEMANTIC_MODEL_CONSUMER, AIRD_CONSUMER_1));
         genericSetUp(Collections.singletonList(toURI(CONSUMER_PROJECT + "/" + SEMANTIC_MODEL_CONSUMER, ResourceURIType.RESOURCE_PLATFORM_URI)), Collections.<URI> emptyList(), true,
                 toURI(CONSUMER_PROJECT + "/" + AIRD_CONSUMER_1, ResourceURIType.RESOURCE_PLATFORM_URI));
     }

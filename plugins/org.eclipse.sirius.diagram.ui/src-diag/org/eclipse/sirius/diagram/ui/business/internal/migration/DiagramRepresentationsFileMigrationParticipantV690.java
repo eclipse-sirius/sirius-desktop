@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -33,7 +35,6 @@ import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Sets;
 
 /**
  * The migration code of Sirius 6.9.0.
@@ -58,7 +59,7 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
      * @return an AdditionalLayer or null if the given type is not an OptionalLayer.
      */
     public EClassifier getType(EPackage ePackage, String name) {
-        Set<String> descriptionsNsUri = Sets.newHashSet(DescriptionPackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getNsURI());
+        Set<String> descriptionsNsUri = new HashSet<String>(Arrays.asList(DescriptionPackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getNsURI()));
         if (ePackage != null && ePackage.getNsURI() != null && descriptionsNsUri.contains(ePackage.getNsURI()) && name.equals("OptionalLayer")) { //$NON-NLS-1$
             return DescriptionPackage.eINSTANCE.getAdditionalLayer();
         }

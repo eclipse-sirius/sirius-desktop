@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.action;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 
@@ -22,7 +23,6 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * This class might be helpful if you want to easily "browse" a diagram editor
@@ -93,7 +93,7 @@ public class DiagramEditorBrowser {
         EclipseUIUtil.synchronizeWithUIThread();
 
         final ArrangeRequest request = new ArrangeRequest(ActionIds.ACTION_ARRANGE_ALL);
-        request.setPartsToArrange(Lists.newArrayList(editor.getDiagramEditPart()));
+        request.setPartsToArrange(Arrays.asList(editor.getDiagramEditPart()));
         editor.getDiagramEditPart().refresh();
         editor.getDiagramEditPart().performRequest(request);
         editor.getEditingDomain().getCommandStack().flush();

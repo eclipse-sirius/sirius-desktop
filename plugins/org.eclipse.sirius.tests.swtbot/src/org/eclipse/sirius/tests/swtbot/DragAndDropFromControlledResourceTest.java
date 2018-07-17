@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
@@ -108,7 +109,7 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "dnd_from_model_content", "new dnd_from_model_content", DDiagram.class);
 
         // Read the initial state.
-        Set<SWTBotGefEditPart> allEditPartsBefore = Sets.newHashSet(editor.mainEditPart().children());
+        Set<SWTBotGefEditPart> allEditPartsBefore = new HashSet<SWTBotGefEditPart>(editor.mainEditPart().children());
         SWTBotUtils.waitAllUiEvents();
         Thread.sleep(500);
         // Perform the DnD
@@ -121,7 +122,7 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
 
         // Check the final state: we should have exactly one new edit part on
         // the diagram.
-        Set<SWTBotGefEditPart> allEditPartsAfter = Sets.newHashSet(editor.mainEditPart().children());
+        Set<SWTBotGefEditPart> allEditPartsAfter = new HashSet<SWTBotGefEditPart>(editor.mainEditPart().children());
         SetView<SWTBotGefEditPart> newParts = Sets.difference(allEditPartsAfter, allEditPartsBefore);
         assertEquals("Expected exactly one new element on the diagram.", 1, newParts.size());
         EObject semanticTarget = ((DDiagramElement) ((View) newParts.iterator().next().part().getModel()).getElement()).getTarget();

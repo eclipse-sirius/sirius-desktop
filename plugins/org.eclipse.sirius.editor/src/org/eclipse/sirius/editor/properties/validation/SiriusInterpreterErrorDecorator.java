@@ -35,8 +35,6 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import com.google.common.collect.Lists;
-
 /**
  * Decorates all elements by adding an "Error" or "Warning" decoration if any
  * Interpreter Error marker is defined on this element.
@@ -136,7 +134,7 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
         if (uriForElement != null) {
             Collection<IMarker> markersForElementAndChildren = SiriusEditorInterpreterMarkerService.getValidationMarkersForElementAndChildren(this.resource, uriForElement);
             if (!markersForElementAndChildren.isEmpty()) {
-                Collection<IMarker> markersForElementOnly = Lists.newArrayList(SiriusEditorInterpreterMarkerService.getValidationMarkersForElement(this.resource, uriForElement));
+                Collection<IMarker> markersForElementOnly = new ArrayList<IMarker>(SiriusEditorInterpreterMarkerService.getValidationMarkersForElement(this.resource, uriForElement));
 
                 Iterator<IMarker> iter = markersForElementAndChildren.iterator();
                 int globalSeverity = -1;

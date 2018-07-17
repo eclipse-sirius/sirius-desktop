@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -100,7 +101,7 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "dndDiagram", "new dndDiagram", DDiagram.class);
 
         // Read the initial state.
-        Set<SWTBotGefEditPart> allEditPartsBefore = Sets.newHashSet(editor.mainEditPart().children());
+        Set<SWTBotGefEditPart> allEditPartsBefore = new HashSet<SWTBotGefEditPart>(editor.mainEditPart().children());
         SWTBotUtils.waitAllUiEvents();
         SWTBotSplitEditor.splitEditorArea();
 
@@ -125,7 +126,7 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
 
         // Check the final state: we should have exactly one new edit part on
         // the diagram.
-        Set<SWTBotGefEditPart> allEditPartsAfter = Sets.newHashSet(editor.mainEditPart().children());
+        Set<SWTBotGefEditPart> allEditPartsAfter = new HashSet<SWTBotGefEditPart>(editor.mainEditPart().children());
         SetView<SWTBotGefEditPart> newParts = Sets.difference(allEditPartsAfter, allEditPartsBefore);
         assertEquals("Expected exactly one new element on the diagram.", 1, newParts.size());
     }
@@ -147,7 +148,7 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "dndDiagram", "new dndDiagram", DDiagram.class);
 
         // Read the initial state.
-        Set<SWTBotGefEditPart> allEditPartsBefore = Sets.newHashSet(editor.mainEditPart().children());
+        Set<SWTBotGefEditPart> allEditPartsBefore = new HashSet<SWTBotGefEditPart>(editor.mainEditPart().children());
         SWTBotUtils.waitAllUiEvents();
         SWTBotSplitEditor.splitEditorArea();
 
@@ -172,7 +173,7 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
 
         // Check the final state: we should have exactly one new edit part on
         // the diagram.
-        Set<SWTBotGefEditPart> allEditPartsAfter = Sets.newHashSet(editor.mainEditPart().children());
+        Set<SWTBotGefEditPart> allEditPartsAfter = new HashSet<SWTBotGefEditPart>(editor.mainEditPart().children());
         SetView<SWTBotGefEditPart> newParts = Sets.difference(allEditPartsAfter, allEditPartsBefore);
         assertEquals("Expected exactly one new element on the diagram.", 1, newParts.size());
     }

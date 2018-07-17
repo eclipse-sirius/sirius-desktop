@@ -11,13 +11,12 @@
 package org.eclipse.sirius.tests.swtbot.sequence;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-
-import com.google.common.collect.Lists;
 
 /**
  * Tests Pin/Unpin, Show/Hide and Copy/Paste Layout actions are disabled on
@@ -76,7 +75,7 @@ public class ActionDisabledOnExtendedMessagesTest extends AbstractActionDisabled
         // Retrieve the same extended message than the other method. The label
         // is different because the label provider in the wizard is the semantic
         // label provider.
-        pathsToTest.add(Lists.newArrayList("Call Message m1"));
+        pathsToTest.add(new ArrayList<String>(Arrays.asList("Call Message m1")));
         return pathsToTest;
     }
 }

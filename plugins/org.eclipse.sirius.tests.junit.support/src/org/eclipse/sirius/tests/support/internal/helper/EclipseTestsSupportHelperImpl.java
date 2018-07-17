@@ -13,6 +13,9 @@ package org.eclipse.sirius.tests.support.internal.helper;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import org.eclipse.core.filebuffers.manipulation.ContainerCreator;
 import org.eclipse.core.resources.IFile;
@@ -32,8 +35,6 @@ import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
-import com.google.common.io.Files;
 
 import junit.framework.TestCase;
 
@@ -233,7 +234,7 @@ public final class EclipseTestsSupportHelperImpl implements EclipseTestsSupportH
         if (!destFile.exists()) {
             destFile.createNewFile();
         }
-        Files.copy(sourceFile, destFile);
+        Files.copy(Paths.get(sourceFile.getAbsolutePath()), Paths.get(destFile.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
     }
 
     @Override

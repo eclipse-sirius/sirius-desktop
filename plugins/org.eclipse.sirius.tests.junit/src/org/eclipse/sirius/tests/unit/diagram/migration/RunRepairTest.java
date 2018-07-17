@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
@@ -45,9 +46,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Basic repair tests.
@@ -349,7 +347,7 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
         final Resource resource = ModelUtils.createResource(uri, resourceSet);
         resource.load(Collections.EMPTY_MAP);
 
-        List<E> list = Lists.newArrayList(Iterables.filter(resource.getContents(), type));
+        List<E> list = resource.getContents().stream().filter(type::isInstance).map(type::cast).collect(Collectors.toList());
         return list;
     }
 

@@ -27,7 +27,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
@@ -138,7 +137,7 @@ public class ModelInitializer {
 
     private void initializeContents(EObject element, EReference ref, Set<EClass> instanciableCandidates, List<EObject> acc) {
         // Step 1: create an instance of the given types
-        List<EObject> instances = Lists.newArrayListWithCapacity(instanciableCandidates.size());
+        List<EObject> instances = new ArrayList<EObject>(instanciableCandidates.size());
         for (EClass klass : instanciableCandidates) {
             EObject instance = klass.getEPackage().getEFactoryInstance().create(klass);
             instances.add(instance);

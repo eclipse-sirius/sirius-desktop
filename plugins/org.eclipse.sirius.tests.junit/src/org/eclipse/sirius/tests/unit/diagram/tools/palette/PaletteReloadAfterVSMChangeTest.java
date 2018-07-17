@@ -12,6 +12,9 @@ package org.eclipse.sirius.tests.unit.diagram.tools.palette;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -33,9 +36,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 
 /**
  * A test ensuring that when the VSM changes, the palette gets updated.
@@ -198,12 +198,14 @@ public class PaletteReloadAfterVSMChangeTest extends AbstractPaletteManagerTest 
     }
 
     private SectionPaletteDrawer getSectionEntry() {
-        Predicate<SectionPaletteDrawer> entryIdPredicate = new Predicate<SectionPaletteDrawer>() {
-            public boolean apply(SectionPaletteDrawer entry) {
-                return sectionToModify != null && sectionToModify.getName().equals(entry.getId());
-            }
-        };
-        return Iterables.getOnlyElement(Iterables.filter(Iterables.filter(paletteRoot.getChildren(), SectionPaletteDrawer.class), entryIdPredicate));
+        Stream<SectionPaletteDrawer> sectionPaletteDrawersStream = paletteRoot.getChildren().stream().filter(SectionPaletteDrawer.class::isInstance)
+                .filter(entry -> sectionToModify != null && sectionToModify.getName().equals(((SectionPaletteDrawer) entry).getId()));
+        List<SectionPaletteDrawer> sectionPaletteDrawers = sectionPaletteDrawersStream.collect(Collectors.toList());
+
+        if (sectionPaletteDrawers.size() != 1) {
+            throw new IllegalArgumentException("Palette should have only one section to modify.");
+        }
+        return sectionPaletteDrawers.get(0);
     }
 
     @Override

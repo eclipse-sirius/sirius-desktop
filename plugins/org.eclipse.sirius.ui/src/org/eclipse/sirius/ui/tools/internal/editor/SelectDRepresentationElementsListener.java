@@ -42,7 +42,6 @@ import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A post commit listener which select the representation elements specified
@@ -213,7 +212,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
                 if (!notifiedElements.isEmpty()) {
                     dRepElements.retainAll(notifiedElements);
                 }
-                selectedElements = Lists.newArrayList(dRepElements);
+                selectedElements = new ArrayList<DRepresentationElement>(dRepElements);
             } else {
                 selectedElements = new ArrayList<>();
             }
@@ -345,7 +344,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
         SetSelectionRunnable(DialectEditor dialectEditor, Collection<DRepresentationElement> elementsToSelect) {
             super();
             this.dialectEditor = dialectEditor;
-            this.newSelection = Lists.newArrayList(elementsToSelect);
+            this.newSelection = new ArrayList<DRepresentationElement>(elementsToSelect);
         }
 
         @Override

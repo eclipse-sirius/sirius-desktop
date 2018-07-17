@@ -896,7 +896,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         /* Reload EditingDomain of all Sessions. */
         for (Session session : SessionManager.INSTANCE.getSessions()) {
             ResourceSet sessionResourceSet = session.getTransactionalEditingDomain().getResourceSet();
-            for (final Resource resource : Lists.newArrayList(sessionResourceSet.getResources())) {
+            for (final Resource resource : new ArrayList<Resource>(sessionResourceSet.getResources())) {
                 final URI resourceURI = resource.getURI();
                 if (resourceURI != null) {
                     if (resourceURI.toPlatformString(true) != null && resourceURI.toPlatformString(true).equals(resourcePath)) {

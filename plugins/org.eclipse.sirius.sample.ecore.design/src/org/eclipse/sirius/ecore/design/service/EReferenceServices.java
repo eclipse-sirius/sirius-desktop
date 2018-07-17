@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ecore.design.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +19,6 @@ import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import com.google.common.collect.Lists;
 
 /**
  * Services dealing with EReferences usable from a VSM.
@@ -143,7 +142,7 @@ public class EReferenceServices {
      * interpret as a service, but it does not handle arrays. 
      */
     public List<Integer> parseCardinality(String editString) {
-        List<Integer> result = Lists.newArrayList(null, null);
+        List<Integer> result = new ArrayList<Integer>(Arrays.asList(null, null));
         String spec = extractCardinalityPart(editString);
         if (spec != null) {
             if (spec.contains(CARDINALITY_SEPARATOR)) {

@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.layout;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -87,7 +88,6 @@ import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * An abstract implementation for {@link SiriusLayoutDataManager}. <BR>
@@ -404,7 +404,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
                     locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
                 }
                 final Rectangle rect = new Rectangle(locationToApply.getX(), locationToApply.getY(), layoutData.getWidth(), layoutData.getHeight());
-                final org.eclipse.draw2d.geometry.Point realLocation = locator.getValidLocation(rect, toRestoreView, Lists.newArrayList(toRestoreView));
+                final org.eclipse.draw2d.geometry.Point realLocation = locator.getValidLocation(rect, toRestoreView, new ArrayList<Node>(Arrays.asList(toRestoreView)));
                 // Compute the new relative position to the parent
                 final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = ((IGraphicalEditPart) graphicalEditPart.getParent()).getFigure().getBounds().getTopLeft().getCopy();
                 FigureUtilities.translateToAbsoluteByIgnoringScrollbar(((IGraphicalEditPart) graphicalEditPart.getParent()).getFigure(), parentAbsoluteLocation);

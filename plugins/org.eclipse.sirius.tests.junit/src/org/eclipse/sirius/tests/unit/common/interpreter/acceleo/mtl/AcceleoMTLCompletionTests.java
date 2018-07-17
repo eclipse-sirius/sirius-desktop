@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -38,7 +39,6 @@ import org.eclipse.sirius.tests.unit.common.interpreter.AbstractCompletionTestCa
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
-import com.google.common.collect.Lists;
 
 /**
  * Tests for the {@link AcceleoMTLInterpreter} utility class.
@@ -53,6 +53,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
     private static final String SERVICE = "org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.BasicService";
 
     private Function<EOperation, String> getSignature = new Function<EOperation, String>() {
+        @Override
         public String apply(EOperation from) {
             return getProposalSignature(from);
         }
@@ -134,6 +135,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         c.setName("c1");
 
         Function<Integer, ContentContext> createEmptyExpressionContextWithCursor = new Function<Integer, ContentContext>() {
+            @Override
             public ContentContext apply(Integer input) {
                 return createContentContext("[/]", input, "EClass");
             }
@@ -152,6 +154,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         c.setName("c1");
 
         Function<Integer, ContentInstanceContext> createEmptyExpressionContextWithCursor = new Function<Integer, ContentInstanceContext>() {
+            @Override
             public ContentInstanceContext apply(Integer input) {
                 return new ContentInstanceContext(c, "[/]", input);
             }
@@ -396,7 +399,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
     public void testAcceleoMTLCompletionWithDependencies() {
         EClass c = EcoreFactory.eINSTANCE.createEClass();
 
-        Collection<String> dependencies = Lists.newArrayList(IMPORT, SERVICE);
+        Collection<String> dependencies = new ArrayList<String>(Arrays.asList(IMPORT, SERVICE));
         ContentContext c1 = createContentContext("[/]", 1, "EClass", EcorePackage.eINSTANCE, Collections.<String, VariableType> emptyMap(), dependencies);
         ContentContext c2 = createContentContext("[self./]", 6, "EClass", EcorePackage.eINSTANCE, Collections.<String, VariableType> emptyMap(), dependencies);
         ContentContext c3 = createContentContext("[self.name.concat()/]", 18, "EClass");
@@ -413,7 +416,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
     public void testAcceleoMTLInstanceCompletionWithDependencies() {
         EClass c = EcoreFactory.eINSTANCE.createEClass();
 
-        Collection<String> dependencies = Lists.newArrayList(IMPORT, SERVICE);
+        Collection<String> dependencies = new ArrayList<String>(Arrays.asList(IMPORT, SERVICE));
 
         ContentInstanceContext c1 = new ContentInstanceContext(c, "[/]", 1);
         ContentInstanceContext c2 = new ContentInstanceContext(c, "[self./]", 6);
@@ -463,6 +466,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         EClass c = EcoreFactory.eINSTANCE.createEClass();
 
         CreateContextWithCursorPosition<ContentContext> createContext = new CreateContextWithCursorPosition<ContentContext>() {
+            @Override
             public ContentContext apply(String input) {
                 return createContentContext(input, input.indexOf('/') - i, "EClass");
             }
@@ -481,6 +485,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         final EClass c = EcoreFactory.eINSTANCE.createEClass();
 
         CreateContextWithCursorPosition<ContentInstanceContext> createContext = new CreateContextWithCursorPosition<ContentInstanceContext>() {
+            @Override
             public ContentInstanceContext apply(String input) {
                 return new ContentInstanceContext(c, input, getCursorPosition(input));
             }
@@ -537,6 +542,7 @@ public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
         // assertFalse(contentProposals.isEmpty());
         Collection<String> proposals = extractProposal(contentProposals);
         Predicate<String> concerned = new Predicate<String>() {
+            @Override
             public boolean apply(String input) {
                 return StringUtil.isEmpty(proposalStart) || input.startsWith(proposalStart);
             }

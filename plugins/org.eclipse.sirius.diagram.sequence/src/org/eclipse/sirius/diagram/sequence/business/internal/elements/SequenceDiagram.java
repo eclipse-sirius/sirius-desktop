@@ -217,7 +217,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
             }
         };
 
-        List<InstanceRole> allInstanceRoles = Lists.newArrayList(getAllInstanceRoles());
+        List<InstanceRole> allInstanceRoles = new ArrayList<InstanceRole>(getAllInstanceRoles());
         Collections.sort(allInstanceRoles, Ordering.natural().onResultOf(xLocation));
         return allInstanceRoles;
     }
@@ -261,7 +261,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (useCache) {
             // Initialize from cache
             if (allLifelinesCache != null) {
-                allLifelines = Lists.newArrayList(allLifelinesCache);
+                allLifelines = new ArrayList<Lifeline>(allLifelinesCache);
             }
         }
         if (allOrderedLifelinesCache == null) {
@@ -281,7 +281,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 }
             }
             Collections.sort(allLifelines, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-            allOrderedLifelinesCache = Lists.newArrayList(allLifelines);
+            allOrderedLifelinesCache = new ArrayList<Lifeline>(allLifelines);
         }
         return allOrderedLifelinesCache;
     }
@@ -364,7 +364,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (useCache) {
             // Initialize from cache
             if (allMessagesCache != null) {
-                allMessages = Lists.newArrayList(allMessagesCache);
+                allMessages = new ArrayList<Message>(allMessagesCache);
             }
             allOrderedMessages = allOrderedMessagesCache;
         }
@@ -402,7 +402,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (useCache) {
             // Initialize from cache
             if (allAbstractNodeEventsCache != null) {
-                allAbstractNodeEvents = Lists.newArrayList(allAbstractNodeEventsCache);
+                allAbstractNodeEvents = new ArrayList<AbstractNodeEvent>(allAbstractNodeEventsCache);
             }
             allOrderedAbstractNodeEvents = allOrderedAbstractNodeEventsCache;
         }
@@ -440,7 +440,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (useCache) {
             // Initialize from cache
             if (allExecutionsCache != null) {
-                allExecutions = Lists.newArrayList(allExecutionsCache);
+                allExecutions = new ArrayList<Execution>(allExecutionsCache);
             }
             allOrderedExecutions = allOrderedExecutionsCache;
         }
@@ -478,7 +478,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (useCache) {
             // Initialize from cache
             if (allOperandsCache != null) {
-                allStates = Lists.newArrayList(allStatesCache);
+                allStates = new ArrayList<State>(allStatesCache);
             }
             allOrderedStates = allOrderedStatesCache;
         }
@@ -516,7 +516,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (useCache) {
             // Initialize from cache
             if (allExecutionsCache != null) {
-                allFrames = Lists.newArrayList(allFramesCache);
+                allFrames = new ArrayList<AbstractFrame>(allFramesCache);
             }
             allOrderedFrames = allOrderedFramesCache;
         }
@@ -556,7 +556,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (useCache) {
             // Initialize from cache
             if (allInteractionUsesCache != null) {
-                allInteractionUses = Lists.newArrayList(allInteractionUsesCache);
+                allInteractionUses = new ArrayList<InteractionUse>(allInteractionUsesCache);
             }
             allOrderedInteractionUses = allOrderedInteractionUsesCache;
         }
@@ -594,7 +594,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (useCache) {
             // Initialize from cache
             if (allCombinedFragmentsCache != null) {
-                allCombinedFragments = Lists.newArrayList(allCombinedFragmentsCache);
+                allCombinedFragments = new ArrayList<CombinedFragment>(allCombinedFragmentsCache);
             }
             allOrderedCombinedFragments = allOrderedCombinedFragmentsCache;
         }
@@ -632,7 +632,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         if (useCache) {
             // Initialize from cache
             if (allOperandsCache != null) {
-                allOperands = Lists.newArrayList(allOperandsCache);
+                allOperands = new ArrayList<Operand>(allOperandsCache);
             }
             allOrderedOperands = allOrderedOperandsCache;
         }

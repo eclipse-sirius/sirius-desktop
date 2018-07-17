@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -661,6 +662,7 @@ public class AcceleoMTLInterpreterTests extends TestCase {
 
         IVariableStatusListener listener = new IVariableStatusListener() {
 
+            @Override
             public void notifyChanged(Map<?, ?> variables) {
                 if (!varVals.isEmpty()) {
                     assertEquals(1, variables.size());
@@ -776,12 +778,12 @@ public class AcceleoMTLInterpreterTests extends TestCase {
         interpreter.setVariable(varExampleName, arrayValue);
 
         // Test 1: evaluate returns the String array.
-        String expression = "["+varExampleName+"/]";
+        String expression = "[" + varExampleName + "/]";
         evaluateObject(interpreter, eAttribute, expression, arrayValue);
 
         // Test 2: evaluateCollection returns an empty
         // Collection<EObject>the String array.
-        evaluateCollection(interpreter, eAttribute, expression, Collections.<EObject>emptyList());
+        evaluateCollection(interpreter, eAttribute, expression, Collections.<EObject> emptyList());
 
         // Change the value
         EObject[] eobjectArrayValue = new EObject[] { eAttribute };
@@ -792,7 +794,7 @@ public class AcceleoMTLInterpreterTests extends TestCase {
 
         // Test 4: evaluateCollection returns a Collection<EObject> with the
         // array content
-        evaluateCollection(interpreter, eAttribute, expression, Lists.newArrayList(eobjectArrayValue));
+        evaluateCollection(interpreter, eAttribute, expression, new ArrayList<EObject>(Arrays.asList(eobjectArrayValue)));
 
         interpreter.dispose();
     }

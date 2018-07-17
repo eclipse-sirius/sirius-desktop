@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -33,8 +34,6 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Assert;
-
-import com.google.common.collect.Sets;
 
 /**
  * Tests ensuring that hide/reveal Labels located on the border of a
@@ -64,7 +63,7 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         SWTBotGefEditPart editPart = editor.getEditPart(NODE_WITH_LABEL_NAME).parent();
 
         checkLabelIsVisible(NODE_WITH_LABEL_NAME);
-        editor.select(Sets.newHashSet(editPart));
+        editor.select(new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart)));
         editor.bot().toolbarButtonWithTooltip(HIDE_LABEL_TOOLTIP).click();
 
         checkLabelIsHidden(NODE_WITH_LABEL_NAME);
@@ -101,9 +100,9 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
 
         checkEdgeLabelIsVisible(EDGE_WITH_LABEL_NAME);
         if (selectInvalidElement) {
-            editor.select(Sets.newHashSet(editPart, getInvalidElement()));
+            editor.select(new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart, getInvalidElement())));
         } else {
-            editor.select(Sets.newHashSet(editPart));
+            editor.select(new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart)));
         }
         editor.bot().toolbarButtonWithTooltip(HIDE_LABEL_TOOLTIP).click();
 
@@ -154,7 +153,7 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         SWTBotGefEditPart editPart = editor.getEditPart(BORDERED_NODE_WITH_LABEL_NAME).parent();
 
         checkLabelIsVisible(BORDERED_NODE_WITH_LABEL_NAME);
-        editor.select(Sets.newHashSet(editPart));
+        editor.select(new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart)));
         editor.bot().toolbarButtonWithTooltip(HIDE_LABEL_TOOLTIP).click();
 
         checkLabelIsHidden(BORDERED_NODE_WITH_LABEL_NAME);
@@ -188,7 +187,7 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         SWTBotGefEditPart editPart = editor.getEditPart(NODE_WITH_LABEL_NAME);
         SWTBotGefEditPart parentEditPart = editPart.parent();
         checkLabelIsVisible(NODE_WITH_LABEL_NAME);
-        editor.select(Sets.newHashSet(editPart));
+        editor.select(new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart)));
         editor.bot().toolbarButtonWithTooltip(HIDE_LABEL_TOOLTIP).click();
 
         checkLabelIsHidden(NODE_WITH_LABEL_NAME);
@@ -221,9 +220,9 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         SWTBotGefEditPart editPart = editor.getEditPart(NODE_WITH_LABEL_NAME).parent();
         checkLabelIsVisible(NODE_WITH_LABEL_NAME);
         if (selectInvalidElement) {
-            editor.select(Sets.newHashSet(editPart, getInvalidElement()));
+            editor.select(new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart, getInvalidElement())));
         } else {
-            editor.select(Sets.newHashSet(editPart));
+            editor.select(new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart)));
         }
         editor.clickContextMenu(HIDE_LABEL_TOOLTIP);
 
@@ -270,9 +269,9 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         SWTBotGefEditPart editPart = editor.getEditPart(EDGE_WITH_LABEL_NAME).parent();
         HashSet<SWTBotGefEditPart> elementsToSelect;
         if (selectInvalidElement) {
-            elementsToSelect = Sets.newHashSet(editPart, getInvalidElement());
+            elementsToSelect = new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart, getInvalidElement()));
         } else {
-            elementsToSelect = Sets.newHashSet(editPart);
+            elementsToSelect = new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart));
         }
         // Step 1 : hide the label and check that it is correctly hidden
         checkEdgeLabelIsVisible(EDGE_WITH_LABEL_NAME);
@@ -324,9 +323,9 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         SWTBotGefEditPart editPart = editor.getEditPart(BORDERED_NODE_WITH_LABEL_NAME).parent();
         checkLabelIsVisible(BORDERED_NODE_WITH_LABEL_NAME);
         if (selectInvalidElement) {
-            editor.select(Sets.newHashSet(editPart, getInvalidElement(), editor.getEditPart("Text", SiriusTextEditPart.class), editor.getEditPart("Note", SiriusNoteEditPart.class)));
+            editor.select(new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart, getInvalidElement(), editor.getEditPart("Text", SiriusTextEditPart.class), editor.getEditPart("Note", SiriusNoteEditPart.class))));
         } else {
-            editor.select(Sets.newHashSet(editPart));
+            editor.select(new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart)));
         }
         editor.clickContextMenu(HIDE_LABEL_TOOLTIP);
 
@@ -371,9 +370,9 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         SWTBotGefEditPart parentEditPart = editPart.parent();
         checkLabelIsVisible(NODE_WITH_LABEL_NAME);
         if (selectInvalidElement) {
-            editor.select(Sets.newHashSet(editPart, getInvalidElement()));
+            editor.select(new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart, getInvalidElement())));
         } else {
-            editor.select(Sets.newHashSet(editPart));
+            editor.select(new HashSet<SWTBotGefEditPart>(Arrays.asList(editPart)));
         }
         editor.clickContextMenu(HIDE_LABEL_TOOLTIP);
 

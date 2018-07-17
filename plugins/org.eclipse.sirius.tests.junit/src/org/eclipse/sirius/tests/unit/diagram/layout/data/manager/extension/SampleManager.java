@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,8 +33,6 @@ import org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.keys.
 import org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.keys.SampleNodeLayouDataKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.collect.Lists;
 
 /**
  * Sample {@link SiriusLayoutDataManager} to able to copy/paste layout regarding
@@ -152,7 +151,7 @@ public class SampleManager extends AbstractSiriusLayoutDataManager implements Si
      * Remove keys with dangling semantic {@link EObject} from cache.
      */
     private void cleanCache() {
-        for (AbstractSampleLayouDataKey key : Lists.newArrayList(layoutDataMap.keySet())) {
+        for (AbstractSampleLayouDataKey key : new ArrayList<AbstractSampleLayouDataKey>(layoutDataMap.keySet())) {
             if (!validateKey(key)) {
                 layoutDataMap.remove(key);
             }

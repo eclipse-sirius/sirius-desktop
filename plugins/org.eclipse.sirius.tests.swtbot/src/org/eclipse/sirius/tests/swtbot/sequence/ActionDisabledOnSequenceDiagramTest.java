@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.sequence;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,8 +22,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.Interactio
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-
-import com.google.common.collect.Lists;
 
 /**
  * Tests Pin/Unpin, Show/Hide and Copy/Paste Layout actions are disabled on
@@ -97,25 +96,25 @@ public class ActionDisabledOnSequenceDiagramTest extends AbstractActionDisabledO
     protected Collection<List<String>> getElementPathsToCheckNoEffectInWizard() {
         Collection<List<String>> pathsToTest = new ArrayList<>();
         // Retrieve instance role
-        pathsToTest.add(Lists.newArrayList("Participant b"));
+        pathsToTest.add(Arrays.asList("Participant b"));
         // Retrieve lifeline
-        pathsToTest.add(Lists.newArrayList("Participant b", "Participant b"));
+        pathsToTest.add(Arrays.asList("Participant b", "Participant b"));
         // Retrieve end of life
-        pathsToTest.add(Lists.newArrayList("Participant b", "Participant b", "Participant b"));
+        pathsToTest.add(Arrays.asList("Participant b", "Participant b", "Participant b"));
         // Retrieve execution
-        pathsToTest.add(Lists.newArrayList("Participant b", "Participant b", "Execution e1"));
+        pathsToTest.add(Arrays.asList("Participant b", "Participant b", "Execution e1"));
         // Retrieve state
-        pathsToTest.add(Lists.newArrayList("Participant b", "Participant b", "State s1"));
+        pathsToTest.add(Arrays.asList("Participant b", "Participant b", "State s1"));
         // Retrieve message
-        pathsToTest.add(Lists.newArrayList("Call Message m1"));
+        pathsToTest.add(Arrays.asList("Call Message m1"));
         // Retrieve interactionUses
-        pathsToTest.add(Lists.newArrayList("Interaction Use ref.1"));
+        pathsToTest.add(Arrays.asList("Interaction Use ref.1"));
         // Retrieve cominedFragments
-        pathsToTest.add(Lists.newArrayList("Combined Fragment alt.1"));
+        pathsToTest.add(Arrays.asList("Combined Fragment alt.1"));
         // Retrieve Lost messages
-        pathsToTest.add(Lists.newArrayList("Create Participant Message m_create3"));
+        pathsToTest.add(Arrays.asList("Create Participant Message m_create3"));
         // Retrieve found messages
-        pathsToTest.add(Lists.newArrayList("Call Message m4"));
+        pathsToTest.add(Arrays.asList("Call Message m4"));
 
         return pathsToTest;
     }

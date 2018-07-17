@@ -471,7 +471,7 @@ public class DDiagramSynchronizer {
         }
 
         // The list of EdgeMappings that have not been processed.
-        ArrayList<EdgeMapping> remaingEdgeMappingsToRefresh = Lists.newArrayList(edgeMappings);
+        ArrayList<EdgeMapping> remaingEdgeMappingsToRefresh = new ArrayList<EdgeMapping>(edgeMappings);
         remaingEdgeMappingsToRefresh.removeAll(mappingsToEdgeTargets.keySet());
 
         boolean noRefreshImpliesCycleDetected = true;
@@ -487,7 +487,7 @@ public class DDiagramSynchronizer {
                 noRefreshImpliesCycleDetected = false;
             }
 
-            remaingEdgeMappingsToRefresh = Lists.newArrayList(edgeMappings);
+            remaingEdgeMappingsToRefresh = new ArrayList<EdgeMapping>(edgeMappings);
             remaingEdgeMappingsToRefresh.removeAll(mappingsToEdgeTargets.keySet());
             if (noRefreshImpliesCycleDetected) {
                 // No refresh has been done. That means that there are

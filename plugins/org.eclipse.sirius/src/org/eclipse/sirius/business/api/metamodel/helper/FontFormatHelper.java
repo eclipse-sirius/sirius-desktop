@@ -11,13 +11,12 @@
 
 package org.eclipse.sirius.business.api.metamodel.helper;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.sirius.viewpoint.FontFormat;
-
-import com.google.common.collect.Lists;
 
 /**
  * This class helps to update label format multi valued features. Do not use
@@ -40,12 +39,12 @@ public final class FontFormatHelper {
      */
     public static void setFontFormat(List<FontFormat> labelFormat, final Collection<? extends FontFormat> newValue) {
         // Get elements to add
-        List<FontFormat> toAdd = Lists.newArrayList(newValue);
+        List<FontFormat> toAdd = new ArrayList<FontFormat>(newValue);
         toAdd.removeAll(labelFormat);
         Collections.sort(toAdd);
 
         // Get elements to remove
-        List<FontFormat> toRemove = Lists.newArrayList(labelFormat);
+        List<FontFormat> toRemove = new ArrayList<FontFormat>(labelFormat);
         toRemove.removeAll(newValue);
 
         // Update the list

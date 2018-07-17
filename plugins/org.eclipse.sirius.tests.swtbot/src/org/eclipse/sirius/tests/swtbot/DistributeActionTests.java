@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot;
 import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -32,8 +33,6 @@ import org.eclipse.sirius.tests.swtbot.uml.AbstractUmlDragAndDropTest;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
-
-import com.google.common.collect.Lists;
 
 /**
  * Distribute actions tests.
@@ -70,7 +69,7 @@ public class DistributeActionTests extends AbstractUmlDragAndDropTest {
 
     private static final int SCROLLBAR_VERTICALLY_GAP_CENTER_VALUE = 288;
 
-    private static final Collection<Integer> ALL_DISTRIBUTE_KIND = Lists.newArrayList(DistributeAction.GAPS_HORIZONTALLY, DistributeAction.CENTERS_HORIZONTALLY, DistributeAction.GAPS_VERTICALLY,
+    private static final Collection<Integer> ALL_DISTRIBUTE_KIND = Arrays.asList(DistributeAction.GAPS_HORIZONTALLY, DistributeAction.CENTERS_HORIZONTALLY, DistributeAction.GAPS_VERTICALLY,
             DistributeAction.CENTERS_VERTICALLY);
 
     /*
@@ -485,7 +484,7 @@ public class DistributeActionTests extends AbstractUmlDragAndDropTest {
      */
     private void distributeHorizontallyActionTests(ZoomLevel zoomLevel, boolean horizontalScrollbar, boolean verticalScrollBar, String... nodesToDistribute) {
         List<SWTBotGefEditPart> editPartsToDistribute = getEditParts(nodesToDistribute);
-        Collection<Integer> distributeKinds = Lists.newArrayList(DistributeAction.GAPS_HORIZONTALLY, DistributeAction.CENTERS_HORIZONTALLY);
+        Collection<Integer> distributeKinds = Arrays.asList(DistributeAction.GAPS_HORIZONTALLY, DistributeAction.CENTERS_HORIZONTALLY);
         for (int distributeKind : distributeKinds) {
             switch (distributeKind) {
             case DistributeAction.GAPS_HORIZONTALLY:
@@ -530,7 +529,7 @@ public class DistributeActionTests extends AbstractUmlDragAndDropTest {
      */
     private void distributeVerticallyActionTests(ZoomLevel zoomLevel, boolean horizontalScrollbar, boolean verticalScrollBar, String... nodesToDistribute) {
         List<SWTBotGefEditPart> editPartsToDistribute = getEditParts(nodesToDistribute);
-        Collection<Integer> distributeKinds = Lists.newArrayList(DistributeAction.GAPS_VERTICALLY, DistributeAction.CENTERS_VERTICALLY);
+        Collection<Integer> distributeKinds = Arrays.asList(DistributeAction.GAPS_VERTICALLY, DistributeAction.CENTERS_VERTICALLY);
         for (int distributeKind : distributeKinds) {
             switch (distributeKind) {
             case DistributeAction.GAPS_VERTICALLY:

@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.util;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -19,7 +21,6 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideFilter;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Sets;
 
 /**
  * Queries on EMF Notifications to identify what they are about.
@@ -28,9 +29,9 @@ import com.google.common.collect.Sets;
  */
 public class NotificationQuery extends org.eclipse.sirius.common.tools.api.query.NotificationQuery {
     
-    private static final Collection<EStructuralFeature> NOTATION_LAYOUT_FEATURES = Sets.newHashSet(NotationPackage.eINSTANCE.getRelativeBendpoints_Points(), NotationPackage.eINSTANCE.getEdge_Bendpoints(),
+    private static final Collection<EStructuralFeature> NOTATION_LAYOUT_FEATURES = new HashSet<EStructuralFeature>(Arrays.asList(NotationPackage.eINSTANCE.getRelativeBendpoints_Points(), NotationPackage.eINSTANCE.getEdge_Bendpoints(),
             NotationPackage.eINSTANCE.getLocation_Y(), NotationPackage.eINSTANCE.getLocation_X(), NotationPackage.eINSTANCE.getSize_Width(), NotationPackage.eINSTANCE.getSize_Height(),
-            NotationPackage.eINSTANCE.getNode_LayoutConstraint());
+            NotationPackage.eINSTANCE.getNode_LayoutConstraint()));
 
     private final Notification notif;
 

@@ -28,9 +28,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-
 /**
  * PaneBasedSelectionWizard tests.
  * 
@@ -51,6 +48,7 @@ public class DoubleClicCommandBuilderForceRefreshTest extends SiriusDiagramTestC
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void setUp() throws Exception {
         super.setUp();
         genericSetUp(Collections.singletonList(SEMANTIC_MODEL_PATH), Collections.<String> emptyList(), AIRD_PATH);
@@ -95,12 +93,8 @@ public class DoubleClicCommandBuilderForceRefreshTest extends SiriusDiagramTestC
         SiriusCommand vpCmd = (SiriusCommand) cmd;
         List<ICommandTask> tasks = vpCmd.getTasks();
         if (forceRefresh) {
-            Predicate<ICommandTask> refreshPrecommitActivationPredicate = new Predicate<ICommandTask>() {
-                public boolean apply(ICommandTask input) {
-                    return "Set RefreshEditorsPrecommitListener options".equals(input.getLabel());
-                }
-            };
-            assertEquals("The command should contain a refresh editor precommit activation task.", 1, Iterables.size(Iterables.filter(tasks, refreshPrecommitActivationPredicate)));
+            long nbRefreshPrecommitActivation = tasks.stream().filter(input -> "Set RefreshEditorsPrecommitListener options".equals(input.getLabel())).count();
+            assertEquals("The command should contain a refresh editor precommit activation task.", 1, nbRefreshPrecommitActivation);
         }
     }
 

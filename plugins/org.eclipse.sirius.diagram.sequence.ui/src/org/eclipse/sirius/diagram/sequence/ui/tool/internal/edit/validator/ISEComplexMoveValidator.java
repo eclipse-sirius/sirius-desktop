@@ -46,7 +46,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Abstract class to validate Execution move & resize request and get from it a
@@ -203,7 +202,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
 
     private void categorizeMoves() {
         MoveSwitch moveAnalyzer = new MoveSwitch();
-        for (ISequenceEvent movedEvent : Lists.newArrayList(movedElements)) {
+        for (ISequenceEvent movedEvent : new ArrayList<ISequenceEvent>(movedElements)) {
             Range extendedRange = moveAnalyzer.doSwitch(movedEvent);
             globalMovedRange = globalMovedRange.union(extendedRange);
         }
@@ -421,7 +420,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
     }
 
     private boolean checkExpansionNeed(ISequenceEvent ise, boolean topLevel, ISequenceEvent insertionParent, Range futureExtRange, Range insertionPoint, Collection<Lifeline> lifelines) {
-        List<ISequenceEvent> toIgnore = Lists.newArrayList(movedElements);
+        List<ISequenceEvent> toIgnore = new ArrayList<ISequenceEvent>(movedElements);
         toIgnore.addAll(startReflexiveMessageToResize);
         toIgnore.addAll(endReflexiveMessageToResize);
 

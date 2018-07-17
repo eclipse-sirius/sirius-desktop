@@ -11,6 +11,8 @@
 package org.eclipse.sirius.tests.swtbot.tabbar;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -50,8 +52,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
-
-import com.google.common.collect.Lists;
 
 /**
  * Ensure that when DDiagram is locked by using a permission authority all
@@ -378,7 +378,7 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
         private Collection<String> itemsNotToConsider;
 
         public AllItemsExcept(String... itemsNotToConsider) {
-            this.itemsNotToConsider = Lists.newArrayList(itemsNotToConsider);
+            this.itemsNotToConsider = new ArrayList<>(Arrays.asList(itemsNotToConsider));
         }
 
         @Override

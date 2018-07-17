@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.table.unit.tools;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -30,8 +31,6 @@ import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-
-import com.google.common.collect.Lists;
 
 /**
  * Check selection in table after tool execution.
@@ -56,8 +55,8 @@ public class SelectionInTableAfterToolExecutionTest extends AbstractToolDescript
     protected void setUp() throws Exception {
         super.setUp();
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SEMANTIC_RESOURCE_NAME, REPRESENTATIONS_RESOURCE_NAME, MODELER_RESOURCE_NAME);
-        genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME), Lists.newArrayList(TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME), TEMPORARY_PROJECT_NAME
-                + "/" + REPRESENTATIONS_RESOURCE_NAME);
+        genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME), Arrays.asList(TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME),
+                TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME);
 
         tableClasses = (DTable) getRepresentations("Classes", semanticModel).iterator().next();
         editor = (DTableEditor) DialectUIManager.INSTANCE.openEditor(session, tableClasses, new NullProgressMonitor());
@@ -83,14 +82,14 @@ public class SelectionInTableAfterToolExecutionTest extends AbstractToolDescript
         applyCreateLineTool(tool_Name, dLine.getContainer(), dLine.getTarget());
         TestsUtil.synchronizationWithUIThread();
         // check the selection
-        checkExpectedElementsInSelection(editor, Lists.newArrayList("NewEClass"), 1, true);
+        checkExpectedElementsInSelection(editor, Arrays.asList("NewEClass"), 1, true);
 
         changeSelectionExpression(tool, "", false);
         TestsUtil.synchronizationWithUIThread();
         applyCreateLineTool(tool_Name, dLine.getContainer(), dLine.getTarget());
         TestsUtil.synchronizationWithUIThread();
         // check the selection is the newly created element by default
-        checkExpectedElementsInSelection(editor, Lists.newArrayList("NewEClass"), 1, true);
+        checkExpectedElementsInSelection(editor, Arrays.asList("NewEClass"), 1, true);
 
         changeSelectionExpression(tool, "[/]", false);
         TestsUtil.synchronizationWithUIThread();

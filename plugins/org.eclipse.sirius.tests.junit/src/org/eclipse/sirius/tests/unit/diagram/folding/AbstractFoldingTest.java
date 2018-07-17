@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.folding;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -28,10 +29,8 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorPart;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 
 /**
  * Abstract base class for folding-related tests with some utility methods.
@@ -169,11 +168,8 @@ public abstract class AbstractFoldingTest extends SiriusDiagramTestCase {
     }
 
     protected DDiagram getDiagramByName(final String name) {
-        return Iterables.find(Iterables.filter(DialectManager.INSTANCE.getAllRepresentations(session), DDiagram.class), new Predicate<DDiagram>() {
-            public boolean apply(DDiagram input) {
-                return name.equals(input.getName());
-            }
-        });
+        Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
+        return allRepresentations.stream().filter(DDiagram.class::isInstance).map(DDiagram.class::cast).filter(input->name.equals(input.getName())).findFirst().orElse(null);
     }
 
     @Override

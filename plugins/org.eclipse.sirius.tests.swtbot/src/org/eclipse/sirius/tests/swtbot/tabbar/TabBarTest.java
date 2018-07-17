@@ -11,6 +11,8 @@
 package org.eclipse.sirius.tests.swtbot.tabbar;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -63,7 +65,6 @@ import org.eclipse.ui.menus.CommandContributionItem;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import com.google.common.collect.Lists;
 
 /**
  * 
@@ -261,7 +262,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     // (can be found in the toolbar) and
     // at the expected place.
     private void checkDiagramElementTabbarButtons(boolean activeExtensions) {
-        List<String> elementSelectedTabbarButtons = Lists.newArrayList(CONTAINER_TOOLBARBUTTONS_TOOLTIPS);
+        List<String> elementSelectedTabbarButtons = new ArrayList<String>(Arrays.asList(CONTAINER_TOOLBARBUTTONS_TOOLTIPS));
         if (activeExtensions) {
             elementSelectedTabbarButtons.add(TABBAR_EXTENSION_ON_DIAGRAM_ELEMENT);
         }
@@ -376,7 +377,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         // Get the tabbar contributions
         editor.setFocus();
         DDiagramEditorImpl edit = (DDiagramEditorImpl) PlatformUI.getWorkbench().getWorkbenchWindows()[0].getActivePage().getActiveEditor();
-        List<IContributionItem> items = Lists.newArrayList(edit.getTabBarManager().getItems());
+        List<IContributionItem> items = Arrays.asList(edit.getTabBarManager().getItems());
 
         // Close the current editor
         editor.close();
@@ -390,7 +391,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                     assertTrue("The action with id " + action.getId() + " should be disposed.", ((IDisposableAction) action).isDisposed());
                 }
 
-                final Collection<Class<?>> acceptedNonDisposedTypes = Lists.newArrayList(IAction.class, ImageDescriptor.class, Predicate.class, Function.class);
+                final Collection<Class<?>> acceptedNonDisposedTypes = Arrays.asList(IAction.class, ImageDescriptor.class, Predicate.class, Function.class);
                 Predicate<Field> acceptedNonDisposedField = new Predicate<Field>() {
                     @Override
                     public boolean apply(Field input) {
@@ -400,7 +401,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                 assertFieldsAreDisposed(action, acceptedNonDisposedField);
             }
             // Collection<Class<?>> acceptedNonDisposedTypes =
-            // Lists.newArrayList(IAction.class, ImageDescriptor.class,
+            // Arrays.asList(IAction.class, ImageDescriptor.class,
             // Predicate.class, Function.class, IPropertyChangeListener.class,
             // Listener.class, IPartService.class);
 
@@ -418,7 +419,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                     return input.getType() == item.getClass().getEnclosingClass() && "this$0".equals(input.getName());
                 }
             };
-            final Collection<Class<?>> acceptedNonDisposedTypes = Lists.newArrayList(IAction.class, Listener.class, IPropertyChangeListener.class);
+            final Collection<Class<?>> acceptedNonDisposedTypes = Arrays.asList(IAction.class, Listener.class, IPropertyChangeListener.class);
             Predicate<Field> acceptedNonDisposedField = new Predicate<Field>() {
                 @Override
                 public boolean apply(Field input) {
@@ -492,7 +493,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     // (can be found in the toolbar),
     // enabled and at the expected place.
     private void checkDiagramTabbarButtons(boolean activeExtensions) {
-        List<String> diagramSelectedTabbarButtons = Lists.newArrayList(DIAGRAM_TOOLBARBUTTONS_TOOLTIPS);
+        List<String> diagramSelectedTabbarButtons = new ArrayList<String>(Arrays.asList(DIAGRAM_TOOLBARBUTTONS_TOOLTIPS));
         if (activeExtensions) {
             diagramSelectedTabbarButtons.add(TABBAR_EXTENSION_ON_DIAGRAM);
         }

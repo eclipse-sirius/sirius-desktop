@@ -30,7 +30,6 @@ import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
 import org.eclipse.sirius.common.ui.Messages;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -79,7 +78,7 @@ public class FeatureProposalProvider implements IProposalProvider {
             }
 
             if (intersectingProposals != null) {
-                proposals = Lists.newArrayList(intersectingProposals);
+                proposals = new ArrayList<ContentProposal>(intersectingProposals);
             } else {
                 proposals = Collections.<ContentProposal> emptyList();
             }

@@ -949,7 +949,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
      * Register event old and init context (ends, old layout data, previous bounds flag, creators, destructors, ...).
      */
     protected void registerEventEnds() {
-        for (EventEnd end : Lists.newArrayList(semanticOrdering)) {
+        for (EventEnd end : new ArrayList<EventEnd>(semanticOrdering)) {
             registerEventEnd(end);
         }
         Collections.sort(flaggedEnds, Ordering.natural().onResultOf(eventEndOldFlaggedPosition));
@@ -1061,7 +1061,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         }
         Collection<ISequenceEvent> ises1 = endToISequencEvents.get(end1);
         Collection<ISequenceEvent> ises2 = endToISequencEvents.get(end2);
-        Collection<ISequenceEvent> commonIses = Lists.newArrayList(ises2);
+        Collection<ISequenceEvent> commonIses = new ArrayList<ISequenceEvent>(ises2);
         Iterables.retainAll(commonIses, ises1);
         return commonIses;
     }

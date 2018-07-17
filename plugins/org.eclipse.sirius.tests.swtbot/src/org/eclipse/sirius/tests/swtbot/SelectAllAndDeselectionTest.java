@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.swtbot;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -141,7 +142,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
         editor.bot().toolbarDropDownButtonWithTooltip("Select &All").click();
         checkSelectedEditParts(getEditPartsFromNames(PACKAGE_1_NAME, PACKAGE_2_NAME, PACKAGE_3_NAME, CLASS_1_NAME, CLASS_2_NAME, CLASS_3_NAME, CLASS_4_NAME));
         SWTBotUtils.pressKeyboardKey(editor.getCanvas().widget, SWT.ESC);
-        checkSelectedEditParts(Lists.newArrayList(editor.mainEditPart()));
+        checkSelectedEditParts(Arrays.asList(editor.mainEditPart()));
     }
 
     /**

@@ -68,7 +68,6 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -163,7 +162,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
         HostSpecification spec = desc.getHost();
         if (spec != null) {
             fFragmentDescription = desc;
-            List<Object> fragmentDependencies = Lists.newArrayList(getDependencies(desc, fFragmentDescription));
+            List<Object> fragmentDependencies = new ArrayList<Object>(getDependencies(desc, fFragmentDescription));
             BaseDescription host = spec.getSupplier();
             if (host instanceof BundleDescription) {
                 BundleDescription hostDesc = (BundleDescription) host;

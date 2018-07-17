@@ -14,6 +14,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.not;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -44,8 +45,6 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 import org.hamcrest.core.IsAnything;
-
-import com.google.common.collect.Lists;
 
 /**
  * Tests for the "pin elements" feature.
@@ -175,7 +174,7 @@ public class AbstractPinnedElementsTest extends AbstractSiriusSwtBotGefTestCase 
 
     protected void assertNoOverlapsOnPinnedElements(final Map<IGraphicalEditPart, Rectangle> bounds) {
         final DiagramLayoutCustomization layoutCustomization = new DiagramLayoutCustomization();
-        layoutCustomization.initializePaddingWithEditParts(Lists.newArrayList(bounds.keySet()));
+        layoutCustomization.initializePaddingWithEditParts(new ArrayList<IGraphicalEditPart>(bounds.keySet()));
         for (final IGraphicalEditPart elt : bounds.keySet()) {
             if (isEditPartPinned(elt)) {
                 for (final IGraphicalEditPart other : bounds.keySet()) {

@@ -105,7 +105,7 @@ public class ISEComplexMoveCommandBuilder {
     }
 
     private void handleNodes(CompositeTransactionalCommand ctc, Integer vMove) {
-        Collection<ISequenceNode> seqNodesToMove = Lists.newArrayList(validator.getSequenceNodeToMove());
+        Collection<ISequenceNode> seqNodesToMove = new ArrayList<ISequenceNode>(validator.getSequenceNodeToMove());
         Map<AbstractNodeEvent, ISequenceEvent> reparents = new HashMap<>();
 
         computeReparents(seqNodesToMove, reparents);

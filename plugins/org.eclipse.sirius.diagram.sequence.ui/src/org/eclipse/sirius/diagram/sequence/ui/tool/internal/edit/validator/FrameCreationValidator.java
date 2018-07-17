@@ -16,6 +16,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -50,7 +51,6 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 
 /**
  * Validates that is request for InteractionUse or CombinedFragment is allowed.
@@ -108,7 +108,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
         this.ccdTool = ccdTool;
         this.sequenceDiagramQuery = new SequenceDiagramQuery(sequenceDiagram);
         this.sequenceEventsInCreationRange = HashMultimap.create();
-        this.eventsToShift = Sets.newTreeSet(new RangeComparator());
+        this.eventsToShift = new TreeSet<ISequenceEvent>(new RangeComparator());
         this.localParents = new HashSet<>();
     }
 
@@ -159,7 +159,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
                 expansionZone = expansionZone.union(newExpansionZone);
             }
 
-            SortedSet<ISequenceEvent> overlapped = Sets.newTreeSet(new RangeComparator());
+            SortedSet<ISequenceEvent> overlapped = new TreeSet<ISequenceEvent>(new RangeComparator());
             overlapped.addAll(sequenceEventsInCreationRange.values());
             for (ISequenceEvent ise : Iterables.filter(overlapped, Predicates.not(Predicates.in(localParents)))) {
                 int lowerBound = ise.getVerticalRange().getLowerBound();
@@ -282,7 +282,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
             }
 
             // Look for potential following sibling to shift.
-            SortedSet<ISequenceEvent> upperBoundSorted = Sets.newTreeSet(new ReversedRangeComparator());
+            SortedSet<ISequenceEvent> upperBoundSorted = new TreeSet<ISequenceEvent>(new ReversedRangeComparator());
             upperBoundSorted.addAll(overlappedEvents);
             ISequenceEvent lLastIseInRange = upperBoundSorted.last();
 

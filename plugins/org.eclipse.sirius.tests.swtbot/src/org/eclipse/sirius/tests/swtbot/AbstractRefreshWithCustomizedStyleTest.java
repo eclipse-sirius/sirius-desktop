@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -172,13 +173,13 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Check initial state
         assertTrue("Wrong initial state", initialStatePredicate.apply(selectedEditPart));
         assertFalse("Radio should not be selected", radioToTest.isSelected());
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(false), false);
 
         // Step 2: Enable button and check result
         new WrappedSWTBotRadio(radioToTest).click();
         assertTrue(radioToTest.isSelected());
         assertTrue("The radio " + radioToTest.getToolTipText() + " has been modified, so the initial state should not be checked anymore", stateWhenRadioIsModifiedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 3: Reopen diagram
         editor.close();
@@ -193,13 +194,13 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Check result: should be identical to the before-refresh state
         assertTrue(radioToTest.isSelected());
         assertTrue("After having reopened the editor, the edit part should not have changed", stateWhenRadioIsModifiedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 4: Cancel the custom style and check result (should be back to
         // initial state)
         resetStyleCustomizationButton.click();
         assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(false), false);
         assertFalse("Radio should not be selected", radioToTest.isSelected());
 
     }
@@ -247,14 +248,14 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Check initial state
         assertTrue("Wrong initial state", initialStatePredicate.apply(selectedEditPart));
         assertFalse("Checkbox should not be checked", checkboxToTest.isChecked());
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(false), false);
 
         // Step 2: Enable button and check result
         checkboxToTest.click();
         assertTrue("Checkbox should be checked", checkboxToTest.isChecked());
         assertTrue("The radio " + checkboxToTest.getToolTipText() + " has been modified, so the initial state should not be checked anymore",
                 stateWhenRadioIsModifiedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 3: Refresh
         editor.show();
@@ -269,7 +270,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         checkboxToTest = propertiesBot.checkBoxInGroup(checkboxGroupName, checkBoxIndexInGroup);
         assertTrue("Checkbox should be checked", checkboxToTest.isChecked());
         assertTrue("After a refresh, the edit part should not have changed", stateWhenRadioIsModifiedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 4: Reopen diagram
         editor.close();
@@ -284,13 +285,13 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Check result: should be identical to the before-refresh state
         assertTrue("Checkbox should be checked", checkboxToTest.isChecked());
         assertTrue("After having reopened the editor, the edit part should not have changed", stateWhenRadioIsModifiedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 5: Cancel the custom style and check result (should be back to
         // initial state)
         resetStyleCustomizationButton.click();
         assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(false), false);
         assertFalse("Checkbox should not be checked", checkboxToTest.isChecked());
     }
 
@@ -340,26 +341,26 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Check initial state
         assertTrue("Wrong initial state", initialStatePredicate.apply(selectedEditPart));
         assertNotSame(modifiedComboValue, comboBoxToTest.getText());
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(false), false);
 
         // Step 2: Enable button and check result
         comboBoxToTest.setSelection(modifiedComboValue);
         assertTrue("The combo " + comboBoxToTest.getToolTipText() + " has been modified, so the initial state should not be checked anymore",
                 stateWhenComboIsModifiedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
         assertEquals(modifiedComboValue, comboBoxToTest.getText());
 
         // Step 3: Disable button and check result
         comboBoxToTest.setSelection(comboInitialValue);
         assertTrue("The modifications on combo " + comboBoxToTest.getToolTipText() + " have been undone, so the initial state should be checked again", initialStatePredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), !customizationRevertable);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(false), !customizationRevertable);
         assertNotSame(modifiedComboValue, comboBoxToTest.getText());
 
         // Step 4: re-enable button and check result
         comboBoxToTest.setSelection(modifiedComboValue);
         assertTrue("The combo " + comboBoxToTest.getToolTipText() + " has been modified, so the initial state should not be checked anymore",
                 stateWhenComboIsModifiedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
         assertEquals(modifiedComboValue, comboBoxToTest.getText());
 
         // Step 5: Reopen diagram
@@ -374,14 +375,14 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Check result: should be identical to the before-refresh state
         assertEquals(modifiedComboValue, comboBoxToTest.getText());
         assertTrue("After having reopened the editor, the edit part should not have changed", stateWhenComboIsModifiedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 6: Cancel the custom style and check result (should be back to
         // initial state)
         resetStyleCustomizationButton.click();
         assertNotSame(modifiedComboValue, comboBoxToTest.getText());
         assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(false), false);
     }
 
     /**
@@ -440,7 +441,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
             bot.button(3).click();
             assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                     stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-            checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+            checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
             buttonFromAppearanceSectionToTest.click();
             assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(3).isActive());
 
@@ -449,7 +450,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
             resetStyleCustomizationButton.click();
             assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been disabled, so the initial state should be checked again",
                     initialStatePredicate.apply(selectedEditPart));
-            checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+            checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(false), false);
 
             // Step 4: re-enable button and check result
             buttonFromAppearanceSectionToTest.click();
@@ -458,7 +459,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
             bot.button(3).click();
             assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                     stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-            checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+            checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
         }
 
         // Step 5: Reopen diagram
@@ -483,7 +484,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Check result: should be identical to the before-refresh state
         assertTrue("After having reopened the editor, the edit part should not have changed", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 6: "Reset style properties to default values" and check
         // result
@@ -492,7 +493,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         SWTBotUtils.waitAllUiEvents();
 
         assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(false), false);
     }
 
     /**
@@ -542,7 +543,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         bot.activeEditor().setFocus();
         assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                 stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(true), true);
 
         // Step 3: Reopen diagram
         editor.close();
@@ -554,14 +555,14 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Check result: should be identical to the before-refresh state
         assertTrue("After having reopened the editor, the edit part should not have changed", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(true), true);
 
         // Step 4: Cancel the custom style and check result (should be back to
         // initial state)
         resetStylePropertiesToDefaultValuesButtonFromAppearanceTab.click();
         SWTBotUtils.waitAllUiEvents();
         assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(false), false);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(false), false);
     }
 
     /**
@@ -607,7 +608,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Check initial state
         assertTrue("Wrong initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.newArrayList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonAppearanceChecked(Arrays.asList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Arrays.asList(false), false);
         bot.waitUntil(new WidgetIsDisabledCondition(resetStyleCustomizationButton));
 
         // Step 2: Enable button and check result
@@ -616,7 +617,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                 stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
 
-        checkButtonAppearanceChecked(Lists.newArrayList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Arrays.asList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 3: Disable button and check result
         buttonFromAppearanceSectionToTest.click();
@@ -627,14 +628,14 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         }
         assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been disabled, so the initial state should be checked again",
                 initialStatePredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.newArrayList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Lists.newArrayList(false), !customizationRevertable);
+        checkButtonAppearanceChecked(Arrays.asList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Arrays.asList(false), !customizationRevertable);
 
         // Step 4: re-enable button and check result
         buttonFromAppearanceSectionToTest.click();
         bot.waitUntil(new WidgetIsEnabledCondition(resetStyleCustomizationButton));
         assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                 stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.newArrayList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Arrays.asList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 5: Reopen diagram
         editor.close();
@@ -659,14 +660,14 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         bot.waitUntil(new WidgetIsEnabledCondition(resetStyleCustomizationButton));
         // Check result: should be identical to the before-refresh state
         assertTrue("After having reopened the editor, the edit part should not have changed", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.newArrayList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonAppearanceChecked(Arrays.asList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 6: Cancel the custom style and check result (should be back to
         // initial state)
         resetStyleCustomizationButton.click();
         SWTBotUtils.waitAllUiEvents();
         assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.newArrayList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonAppearanceChecked(Arrays.asList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Arrays.asList(false), false);
     }
 
     /**
@@ -757,24 +758,24 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Check initial state
         assertTrue("Wrong initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.newArrayList(buttonFromTabbarToTest), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonTabbarChecked(Arrays.asList(buttonFromTabbarToTest), resetStyleCustomizationButton, Arrays.asList(false), false);
 
         // Step 2: Enable button and check result
         buttonFromTabbarToTest.click();
         assertTrue("The button " + buttonFromTabbarToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                 stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.newArrayList(buttonFromTabbarToTest), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonTabbarChecked(Arrays.asList(buttonFromTabbarToTest), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 3: Disable button and check result
         buttonFromTabbarToTest.click();
         assertTrue("The button " + buttonFromTabbarToTest.getToolTipText() + " has been disabled, so the initial state should be checked again", initialStatePredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.newArrayList(buttonFromTabbarToTest), resetStyleCustomizationButton, Lists.newArrayList(false), true);
+        checkButtonTabbarChecked(Arrays.asList(buttonFromTabbarToTest), resetStyleCustomizationButton, Arrays.asList(false), true);
 
         // Step 4: re-enable button and check result
         buttonFromTabbarToTest.click();
         assertTrue("The button " + buttonFromTabbarToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                 stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.newArrayList(buttonFromTabbarToTest), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonTabbarChecked(Arrays.asList(buttonFromTabbarToTest), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 5: Refresh
         editor.click(0, 0);
@@ -785,7 +786,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Check result: should be identical to the before-refresh state
         assertTrue("After a refresh, the edit part should not have changed", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.newArrayList(buttonFromTabbarToTest), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonTabbarChecked(Arrays.asList(buttonFromTabbarToTest), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 6: Reopen diagram
         editor.close();
@@ -809,13 +810,13 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Check result: should be identical to the before-refresh state
         assertTrue("After having reopened the editor, the edit part should not have changed", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.newArrayList(buttonFromTabbarToTest), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonTabbarChecked(Arrays.asList(buttonFromTabbarToTest), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 7: Cancel the custom style and check result (should be back to
         // initial state)
         resetStyleCustomizationButton.click();
         assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.newArrayList(buttonFromTabbarToTest), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonTabbarChecked(Arrays.asList(buttonFromTabbarToTest), resetStyleCustomizationButton, Arrays.asList(false), false);
     }
 
     /**
@@ -860,7 +861,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         menuItem.click();
         SWTBotUtils.waitAllUiEvents();
         assertTrue("The font color has been changed, so the initial state should not be checked anymore", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 3: Reopen diagram
         editor.close();
@@ -885,14 +886,14 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Check result: should be identical to the before-refresh state
         assertTrue("After having reopened the editor, the edit part should not have changed", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
+        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
 
         // Step 4: Cancel the custom style and check result (should be back to
         // initial state)
         resetStyleCustomizationButton.click();
         SWTBotUtils.waitAllUiEvents();
         assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(false), false);
     }
 
     /**
@@ -937,7 +938,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         menuItem.click();
         SWTBotUtils.waitAllUiEvents();
         assertTrue("The font color has been changed, so the initial state should not be checked anymore", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Lists.newArrayList(true), true);
+        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Arrays.asList(true), true);
 
         // Step 3: Reopen diagram
         editor.close();
@@ -950,14 +951,14 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Check result: should be identical to the before-refresh state
         assertTrue("After having reopened the editor, the edit part should not have changed", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Lists.newArrayList(true), true);
+        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Arrays.asList(true), true);
 
         // Step 4: Cancel the custom style and check result (should be back to
         // initial state)
         resetStylePropertiesToDefaultValuesButtonFromTabbar.click();
         SWTBotUtils.waitAllUiEvents();
         assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Lists.newArrayList(false), false);
+        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Arrays.asList(false), false);
     }
 
     /**
@@ -1005,7 +1006,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         activeShell.bot().button("OK").click();
         bot.waitUntil(Conditions.shellCloses(activeShell));
         assertTrue("The background image has been changed, so the initial state should not be checked anymore", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Lists.newArrayList(true), true);
+        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Arrays.asList(true), true);
 
         // Step 3: Reopen diagram
         editor.close();
@@ -1017,14 +1018,14 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Check result: should be identical to the before-refresh state
         assertTrue("After having reopened the editor, the edit part should not have changed", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Lists.newArrayList(true), true);
+        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Arrays.asList(true), true);
 
         // Step 4: Cancel the custom style and check result (should be back to
         // initial state)
         resetStylePropertiesToDefaultValuesButtonFromTabbar.click();
         SWTBotUtils.waitAllUiEvents();
         assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
-        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Lists.newArrayList(false), false);
+        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Arrays.asList(false), false);
     }
 
     /**

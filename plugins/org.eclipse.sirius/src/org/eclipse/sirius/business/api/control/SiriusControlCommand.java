@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.control;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +41,6 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * An extension of the basic {@link ControlCommand} to handle both the semantic
@@ -127,7 +127,7 @@ public class SiriusControlCommand extends ControlCommand {
             final boolean shouldEndBySaving, IProgressMonitor monitor) {
         super(semanticRoot, semanticDest);
         this.session = SessionManager.INSTANCE.getSession(semanticRoot);
-        this.repDescriptors = Sets.newHashSet(representations);
+        this.repDescriptors = new HashSet<DRepresentationDescriptor>(representations);
         this.representationsDestination = representationsDest;
         this.shouldEndBySaving = shouldEndBySaving;
         this.monitor = monitor;

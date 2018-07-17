@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -44,8 +45,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.eclipse.ui.IEditorPart;
 import org.osgi.framework.Version;
-
-import com.google.common.collect.Sets;
 
 /**
  * Test that the repair process restore only customizations and leave the
@@ -165,7 +164,7 @@ public class RepairOnStyleCustomizationsTest extends AbstractRepairMigrateTest {
         List<String> expectedDnodeListCustomFeatures = new ArrayList<>();
         expectedDnodeListCustomFeatures.add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName());
         expectedDnodeListCustomFeatures.add(labelFormatFeature.getName());
-        assertEquals(assertMessage, Sets.newHashSet(expectedDnodeListCustomFeatures), Sets.newHashSet(dNodeListOfEClass.getStyle().getCustomFeatures()));
+        assertEquals(assertMessage, new HashSet<String>(expectedDnodeListCustomFeatures), new HashSet<String>(dNodeListOfEClass.getStyle().getCustomFeatures()));
         assertEquals(assertMessage, 4, ((List<FontFormat>) dNodeListOfEClass.getStyle().eGet(labelFormatFeature)).size());
         assertEquals(assertMessage, FontFormat.STRIKE_THROUGH_LITERAL, ((List<FontFormat>) dNodeListOfEClass.getStyle().eGet(labelFormatFeature)).get(3));
         assertEquals(assertMessage, FontFormat.UNDERLINE_LITERAL, ((List<FontFormat>) dNodeListOfEClass.getStyle().eGet(labelFormatFeature)).get(2));

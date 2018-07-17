@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.action;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -151,7 +152,7 @@ public class LabelHideRevealTests extends SiriusDiagramTestCase {
     private Action buildRevealLabelAction(final DDiagramElement... diagramElementsToRevealLabelFrom) {
         return new Action() {
             public void run() {
-                Set<DDiagramElement> dDiagramElements = Sets.newHashSet(diagramElementsToRevealLabelFrom);
+                Set<DDiagramElement> dDiagramElements = new HashSet<DDiagramElement>(Arrays.asList(diagramElementsToRevealLabelFrom));
                 if (!dDiagramElements.isEmpty()) {
                     TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(dDiagramElements.iterator().next());
                     editingDomain.getCommandStack().execute(new RevealDDiagramElementsLabel(editingDomain, dDiagramElements));
@@ -522,14 +523,14 @@ public class LabelHideRevealTests extends SiriusDiagramTestCase {
     private void checkForHiddenLabelElements(final DDiagram diagram, DDiagramElement... elementsThatShouldHaveHiddenLabel) {
 
         // We first get all the elements that should have visible labels
-        HashSet<DDiagramElement> allDiagramElements = Sets.newHashSet(diagram.getOwnedDiagramElements());
+        HashSet<DDiagramElement> allDiagramElements = new HashSet<DDiagramElement>(diagram.getOwnedDiagramElements());
         for (DDiagramElement diagramElement : diagram.getOwnedDiagramElements()) {
             Iterator<DDiagramElement> filter = Iterables.filter(diagramElement.eContents(), DDiagramElement.class).iterator();
             while (filter.hasNext()) {
                 allDiagramElements.add(filter.next());
             }
         }
-        SetView<DDiagramElement> elementsThatShouldHaveVisibleLabel = Sets.difference(allDiagramElements, Sets.newHashSet(elementsThatShouldHaveHiddenLabel));
+        SetView<DDiagramElement> elementsThatShouldHaveVisibleLabel = Sets.difference(allDiagramElements, new HashSet<DDiagramElement>(Arrays.asList(elementsThatShouldHaveHiddenLabel)));
 
         // And ensure that all these elements have visible labels
         for (DDiagramElement elementThatShouldHaveVisibleLabel : elementsThatShouldHaveVisibleLabel) {

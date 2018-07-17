@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.tool.internal;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -28,7 +29,6 @@ import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Class responsible for resolving some references.
@@ -70,7 +70,7 @@ public class ReferencesResolver {
         final IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(set);
         final List<Resource> cachedIdsResources = ReferencesResolver.prepareResolveAll(set, authority);
         monitor.beginTask(Messages.ReferencesResolver_resolveNonContainedReferencesTask, set.getResources().size());
-        for (Resource res : Lists.newArrayList(set.getResources())) {
+        for (Resource res : new ArrayList<Resource>(set.getResources())) {
             doResolveAll(res);
             monitor.worked(1);
         }

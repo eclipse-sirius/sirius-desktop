@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.tools.api.wizards.page;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -31,8 +32,6 @@ import org.eclipse.swt.widgets.Composite;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A wizard page to select viewpoints.
@@ -85,7 +84,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         this.setTitle(Messages.ViewpointsSelectionWizardPage_title);
         this.setMessage(Messages.ViewpointsSelectionWizardPage_message);
         this.viewpoints = new ArrayList<>();
-        this.viewpointsNamesToActivateByDefault = Lists.newArrayList(viewpointsNamesToActivateByDefault);
+        this.viewpointsNamesToActivateByDefault = new ArrayList<String>(viewpointsNamesToActivateByDefault);
         viewpointsSelectionGraphicalHandler = new ViewpointsSelectionGraphicalHandler();
         this.session = theSession;
     }
@@ -96,7 +95,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         boolean complete = false;
 
         if (!viewpoints.isEmpty()) {
-            Map<String, Collection<String>> missingDependencies = ViewpointSelection.getMissingDependencies(Sets.newHashSet(viewpoints));
+            Map<String, Collection<String>> missingDependencies = ViewpointSelection.getMissingDependencies(new HashSet<Viewpoint>(viewpoints));
             if (missingDependencies.isEmpty()) {
                 complete = true;
             } else {

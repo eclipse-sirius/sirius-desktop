@@ -71,7 +71,7 @@ public class HideRevealTableLinesTest extends AbstractHideRevealTableElementsTes
     protected List<String> getElementsHeader() {
         return UIThreadRunnable.syncExec(new Result<List<String>>() {
             public List<String> run() {
-                return Lists.newArrayList(Collections2.transform(getAllTreeItems(treeTable.widget), new Function<TreeItem, String>() {
+                return new ArrayList<String>(Collections2.transform(getAllTreeItems(treeTable.widget), new Function<TreeItem, String>() {
                     public String apply(final TreeItem from) {
                         return from.getText();
                     }

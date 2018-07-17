@@ -15,8 +15,6 @@ import java.util.Collection;
 
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 
-import com.google.common.collect.Lists;
-
 /**
  * Registry containing all  model explorer tab  extensions that have been parsed from
  * the
@@ -64,7 +62,7 @@ public final class ModelExplorerTabRegistry {
      * @return A copy of the registered extensions list.
      */
     public static Collection<ModelExplorerTabDescriptor> getRegisteredExtensions() {
-        return Lists.newArrayList(EXTENSIONS);
+        return new ArrayList<ModelExplorerTabDescriptor>(EXTENSIONS);
     }
 
     /**

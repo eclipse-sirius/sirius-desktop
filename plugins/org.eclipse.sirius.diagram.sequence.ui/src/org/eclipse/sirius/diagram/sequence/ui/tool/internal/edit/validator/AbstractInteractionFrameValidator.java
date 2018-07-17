@@ -191,7 +191,7 @@ public abstract class AbstractInteractionFrameValidator {
         for (ISequenceEvent localParent : finalParents) {
             // check the need of space expansion
             if (localParent != null) {
-                if (!movedElements.contains(localParent) && !localParent.canChildOccupy(frame, finalRange, Lists.newArrayList(movedElements), coveredLifelines)) {
+                if (!movedElements.contains(localParent) && !localParent.canChildOccupy(frame, finalRange, new ArrayList<ISequenceEvent>(movedElements), coveredLifelines)) {
                     expansionZone = computeExpansionZone();
                 }
 

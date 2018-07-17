@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.command.builders;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -54,7 +55,6 @@ import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Delete command builder.
@@ -138,7 +138,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
             final DCommand cmd = createEnclosingCommand();
             cmd.getTasks().add(new DeleteEObjectTask(diagramElement, modelAccessor));
 
-            final List<EObject> contents = Lists.newArrayList(this.modelAccessor.eAllContents(diagramElement, "EdgeTarget")); //$NON-NLS-1$
+            final List<EObject> contents = new ArrayList<EObject>(this.modelAccessor.eAllContents(diagramElement, "EdgeTarget")); //$NON-NLS-1$
             contents.add(diagramElement);
             for (final EObject element : contents) {
                 if (element instanceof EdgeTarget) {

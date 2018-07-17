@@ -12,6 +12,7 @@ package org.eclipse.sirius.editor.internal.navigation;
 
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -47,8 +48,6 @@ import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Lists;
 
 /**
  * This navigator opens the JAVA editor on all the classes containing the method corresponding to a service call in a
@@ -148,7 +147,7 @@ public class ServiceNavigator implements INavigatorFromVSMExpression {
                 }
                 Resource vsmResource = interpreterContext.getElement().eResource();
                 if (vsmResource != null) {
-                    itp.setProperty(IInterpreter.FILES, Lists.newArrayList(vsmResource.getURI().toPlatformString(true)));
+                    itp.setProperty(IInterpreter.FILES, new ArrayList<String>(Arrays.asList(vsmResource.getURI().toPlatformString(true))));
                 }
                 Collection<Method> implementations = ((IJavaAwareInterpreter) itp).getImplementation(serviceCallName);
                 Iterator<Method> methodIte = implementations.iterator();

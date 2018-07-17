@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -60,8 +61,6 @@ import org.eclipse.ui.IReusableEditor;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.handlers.HandlerUtil;
-
-import com.google.common.collect.Sets;
 
 /**
  * Implements the UI part of the "Control" operation. This class gathers the required parameters from the user and the
@@ -116,7 +115,7 @@ public class SiriusControlHandler extends AbstractHandler {
             final URI semanticDest = getControledResourceURI(shell, semanticRoot);
             if (semanticDest != null) {
                 try {
-                    Set<DRepresentationDescriptor> representationDescriptors = Sets.newHashSet(getRepresentationDescriptorsToMove(shell, session, semanticRoot));
+                    Set<DRepresentationDescriptor> representationDescriptors = new HashSet<DRepresentationDescriptor>(getRepresentationDescriptorsToMove(shell, session, semanticRoot));
                     final URI representationDest = getDefaultCorrespondingAird(semanticDest);
 
                     Command vcc = new SiriusControlCommand(semanticRoot, semanticDest, representationDescriptors, representationDest, false, new SubProgressMonitor(monitor, 1));

@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.swtbot.support.api.business;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -26,8 +27,6 @@ import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
 import org.junit.Assert;
-
-import com.google.common.collect.Lists;
 
 /**
  * Object to manage graphical resources.
@@ -73,7 +72,7 @@ public class UIResource {
         if (pPath == null || pPath.length() == 0) {
             nodePath = new ArrayList<>();
         } else {
-            nodePath = Lists.newArrayList(pPath.split("/"));
+            nodePath = new ArrayList<String>(Arrays.asList(pPath.split("/")));
         }
     }
 

@@ -11,6 +11,8 @@
 package org.eclipse.sirius.tests.unit.api.convert;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -50,8 +52,6 @@ import org.eclipse.sirius.ui.tools.internal.actions.nature.ModelingToggleNatureA
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.ISources;
-
-import com.google.common.collect.Lists;
 
 /**
  * Test convert Project to Modeling Project and test remove Modeling Project
@@ -491,7 +491,7 @@ public class ConvertProjectToModelingProjectTest extends SiriusTestCase {
     private void createAndExecuteConvertAction(IProject project) {
         try {
             ModelingToggleNatureAction toogleProject = new ModelingToggleNatureAction();
-            EvaluationContext evaluationContext = new EvaluationContext(null, Lists.newArrayList(project));
+            EvaluationContext evaluationContext = new EvaluationContext(null, new ArrayList<>(Arrays.asList(project)));
             evaluationContext.addVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME, new StructuredSelection(project));
             @SuppressWarnings("rawtypes")
             ExecutionEvent event = new ExecutionEvent(null, new HashMap(), null, evaluationContext);

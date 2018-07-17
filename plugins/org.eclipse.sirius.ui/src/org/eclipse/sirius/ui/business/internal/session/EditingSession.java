@@ -60,7 +60,6 @@ import org.eclipse.ui.Saveable;
 import org.eclipse.ui.part.FileEditorInput;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * An {@link EditingSession} is responsible of keeping track of the opened editors on a given model and cleaning stuffs
@@ -173,7 +172,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         }
 
         if (editorReferences != null) {
-            for (IEditorReference ref : Lists.newArrayList(editorReferences)) {
+            for (IEditorReference ref : Arrays.asList(editorReferences)) {
                 IEditorPart editor2 = ref.getEditor(false);
 
                 IEditorInput refInput = null;

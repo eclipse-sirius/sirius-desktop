@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session.danalysis;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
@@ -27,7 +28,6 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 /**
  * Pre-commit listener to handle controlled resources.
@@ -106,7 +106,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
      */
     static void refreshControlledResources(DAnalysisSessionImpl session) {
         Collection<Resource> semantics = session.getSemanticResources();
-        Collection<Resource> allResources = Lists.newArrayList(session.getTransactionalEditingDomain().getResourceSet().getResources());
+        Collection<Resource> allResources = new ArrayList<Resource>(session.getTransactionalEditingDomain().getResourceSet().getResources());
         Collection<Resource> controlledResources = session.getControlledResources();
 
         // Add controlled resources which are in the ResourceSet but not yet

@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.layout.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -100,7 +101,7 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
      */
     @Override
     public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
-        final Map<IGraphicalEditPart, Rectangle> initialBounds = Maps.newHashMap(baseProvider.getExtender().getUpdatedBounds());
+        final Map<IGraphicalEditPart, Rectangle> initialBounds = new HashMap<IGraphicalEditPart, Rectangle>(baseProvider.getExtender().getUpdatedBounds());
 
         // Finds if there are unpinned diagram elements to keep fixed stored in
         // the LayoutHint as a Collection

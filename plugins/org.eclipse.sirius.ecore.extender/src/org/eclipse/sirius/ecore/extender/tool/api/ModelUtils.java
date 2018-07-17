@@ -48,7 +48,6 @@ import org.eclipse.sirius.ecore.extender.tool.internal.ReferencesResolver;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
  * Utility class for model loading/saving and serialization.
@@ -505,10 +504,10 @@ public final class ModelUtils {
         if (res != null && res.getResourceSet() != null) {
             cachedIDsResources = ModelUtils.cachedEObjectIDs(res.getResourceSet());
         }
-        List<Resource> resourcesBeforeResolveAll = Lists.newArrayList(res.getResourceSet().getResources());
+        List<Resource> resourcesBeforeResolveAll = new ArrayList<Resource>(res.getResourceSet().getResources());
         EcoreUtil.resolveAll(res);
         if (recursive) {
-            List<Resource> resourcesAfterResolveAll = Lists.newArrayList(res.getResourceSet().getResources());
+            List<Resource> resourcesAfterResolveAll = new ArrayList<Resource>(res.getResourceSet().getResources());
             // Remove the known resources
             Iterators.removeAll(resourcesAfterResolveAll.iterator(), resourcesBeforeResolveAll);
             for (Resource resource : resourcesAfterResolveAll) {

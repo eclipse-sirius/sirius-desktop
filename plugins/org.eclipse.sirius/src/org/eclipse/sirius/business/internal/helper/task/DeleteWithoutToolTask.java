@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.internal.helper.task;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,7 +29,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Sets;
 
 /**
  * Delete without tool task.
@@ -141,7 +141,7 @@ public class DeleteWithoutToolTask extends AbstractCompoundTask {
      * @return all semantic elements
      */
     private Set<EObject> getAllSemanticElements() {
-        Set<EObject> result = Sets.newHashSet(semanticElements);
+        Set<EObject> result = new HashSet<EObject>(semanticElements);
         for (EObject sem : semanticElements) {
             Iterators.addAll(result, sem.eAllContents());
         }

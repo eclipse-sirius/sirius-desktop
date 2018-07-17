@@ -34,9 +34,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-
 public class MultipleMappingImportTests extends SiriusDiagramTestCase implements MultipleMapppingImportsModeler {
 
     @Override
@@ -87,13 +84,13 @@ public class MultipleMappingImportTests extends SiriusDiagramTestCase implements
         assertEquals("We should have 4 nodes here .", 4, elements.size());
 
         Layer alphaLayer = getLayer(diagram, ALPHA_LAYER);
-        NodeMapping alphaNodeMapping = (NodeMapping) getNodeMapping(ALPHA_NODE, alphaLayer.getNodeMappings());
+        NodeMapping alphaNodeMapping = getNodeMapping(ALPHA_NODE, alphaLayer.getNodeMappings());
 
         Layer betaLayer = getLayer(diagram, BETA_LAYER);
-        NodeMapping betaNodeMapping = (NodeMapping) getNodeMapping(BETA_NODE, betaLayer.getNodeMappings());
+        NodeMapping betaNodeMapping = getNodeMapping(BETA_NODE, betaLayer.getNodeMappings());
 
         Layer defaultLayer = getLayer(diagram, DEFAULT_LAYER);
-        NodeMapping defaultNodeMapping = (NodeMapping) getNodeMapping(DEFAULT_NODE, defaultLayer.getNodeMappings());
+        NodeMapping defaultNodeMapping = getNodeMapping(DEFAULT_NODE, defaultLayer.getNodeMappings());
 
         IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
@@ -169,13 +166,13 @@ public class MultipleMappingImportTests extends SiriusDiagramTestCase implements
         assertEquals("We should have 4 nodes here .", 4, elements.size());
 
         Layer alphaLayer = getLayer(diagram, ALPHA_LAYER);
-        NodeMapping alphaNodeMapping = (NodeMapping) getNodeMapping(ALPHA_NODE, alphaLayer.getNodeMappings());
+        NodeMapping alphaNodeMapping = getNodeMapping(ALPHA_NODE, alphaLayer.getNodeMappings());
 
         Layer betaLayer = getLayer(diagram, BETA_LAYER);
-        NodeMapping betaNodeMapping = (NodeMapping) getNodeMapping(BETA_NODE, betaLayer.getNodeMappings());
+        NodeMapping betaNodeMapping = getNodeMapping(BETA_NODE, betaLayer.getNodeMappings());
 
         Layer defaultLayer = getLayer(diagram, DEFAULT_LAYER);
-        NodeMapping defaultNodeMapping = (NodeMapping) getNodeMapping(DEFAULT_NODE, defaultLayer.getNodeMappings());
+        NodeMapping defaultNodeMapping = getNodeMapping(DEFAULT_NODE, defaultLayer.getNodeMappings());
 
         IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
@@ -477,11 +474,7 @@ public class MultipleMappingImportTests extends SiriusDiagramTestCase implements
     }
 
     private DDiagramElement findByTargetName(final List<DDiagramElement> list, final String targetName) {
-        DDiagramElement found = Iterables.find(list, new Predicate<DDiagramElement>() {
-            public boolean apply(DDiagramElement input) {
-                return input.getTarget() instanceof ENamedElement && targetName.equals(((ENamedElement) input.getTarget()).getName());
-            }
-        });
+        DDiagramElement found = list.stream().filter(input -> input.getTarget() instanceof ENamedElement && targetName.equals(((ENamedElement) input.getTarget()).getName())).findFirst().orElse(null);
         assertNotNull("'" + targetName + "' element not found", found);
         return found;
     }

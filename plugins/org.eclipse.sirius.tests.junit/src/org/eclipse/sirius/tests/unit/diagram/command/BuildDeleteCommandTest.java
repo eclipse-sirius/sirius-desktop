@@ -24,9 +24,6 @@ import org.eclipse.sirius.tests.sample.component.Component;
 import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-
 /**
  * Ensure that there is no unwanted access on some semantic element during the
  * construction of the delete command.
@@ -116,23 +113,20 @@ public class BuildDeleteCommandTest extends SiriusDiagramTestCase {
      * @return the container
      */
     private DNodeContainer getComponentDNodeContainer(final String componentName) {
-        Iterable<DNodeContainer> containers = Iterables.filter(componentDiagram.getDiagramElements(), DNodeContainer.class);
-        DNodeContainer container = Iterables.find(containers, new Predicate<DNodeContainer>() {
-            @Override
-            public boolean apply(DNodeContainer element) {
-                if (element.getTarget() instanceof Component) {
-                    Component component = (Component) element.getTarget();
-                    if (componentName.equals(component.getName())) {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-        });
-
+        DNodeContainer container = componentDiagram.getDiagramElements().stream().filter(DNodeContainer.class::isInstance).map(DNodeContainer.class::cast)
+                .filter(n -> isElementEqualsToComponent(n, componentName)).findFirst().orElse(null);
         assertNotNull("The DNodeContainer for the component " + componentName + " should exist", container);
         return container;
+    }
+
+    private boolean isElementEqualsToComponent(DNodeContainer element, String componentName) {
+        if (element.getTarget() instanceof Component) {
+            Component component = (Component) element.getTarget();
+            if (componentName.equals(component.getName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

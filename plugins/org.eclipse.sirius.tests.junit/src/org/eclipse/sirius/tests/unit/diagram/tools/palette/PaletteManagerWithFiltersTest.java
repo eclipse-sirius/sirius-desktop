@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.unit.diagram.tools.palette;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.gef.palette.PaletteRoot;
@@ -28,7 +29,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Test class for {@link PaletteManagerImpl}.
@@ -53,9 +53,9 @@ public class PaletteManagerWithFiltersTest extends AbstractPaletteManagerTest {
 
     static final String REPRESENTATION_NAME = "new toolFiltersLayers";
 
-    private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_PALETTE = Sets.newTreeSet(Arrays.asList(createNewEntry("never deleted"), createNewEntry("section1", "tool2")));
+    private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_PALETTE = new TreeSet<Entry>(Arrays.asList(createNewEntry("never deleted"), createNewEntry("section1", "tool2")));
 
-    private static final SortedSet<Entry> NO_ENTRIES = Sets.newTreeSet(Arrays.asList(createNewEntry("never deleted")));
+    private static final SortedSet<Entry> NO_ENTRIES = new TreeSet<Entry>(Arrays.asList(createNewEntry("never deleted")));
 
     /**
      * {@inheritDoc}

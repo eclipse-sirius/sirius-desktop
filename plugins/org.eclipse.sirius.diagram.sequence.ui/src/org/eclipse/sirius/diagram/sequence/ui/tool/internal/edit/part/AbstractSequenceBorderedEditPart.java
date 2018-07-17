@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -35,8 +37,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-
-import com.google.common.collect.Sets;
 
 /**
  * Special edit part for common behavior of Lifelines, Executions and States. They are treated as bordered nodes.
@@ -142,7 +142,7 @@ public abstract class AbstractSequenceBorderedEditPart extends DNode2EditPart im
      */
     @Override
     public EditPart getTargetEditPart(Request request) {
-        Set<String> retargetTypes = Sets.newHashSet(RequestConstants.REQ_CREATE, RequestConstants.REQ_CONNECTION_START, RequestConstants.REQ_CONNECTION_END);
+        Set<String> retargetTypes = new HashSet<String>(Arrays.asList(RequestConstants.REQ_CREATE, RequestConstants.REQ_CONNECTION_START, RequestConstants.REQ_CONNECTION_END));
         if (retargetTypes.contains(request.getType()) && request instanceof CreateRequest && ((CreateRequest) request).getLocation() != null) {
             CreateRequest createRequest = (CreateRequest) request;
             Point location = createRequest.getLocation().getCopy();

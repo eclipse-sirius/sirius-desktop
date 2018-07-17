@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.dialect.description;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -31,7 +32,6 @@ import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 /**
  * Maintains the set of {@link IInterpretedExpressionQueryProvider} currently registered.
@@ -119,7 +119,7 @@ public class InterpretedExpressionQueryProviderRegistry {
      * @return the currently registered {@link IInterpretedExpressionQueryProvider}.
      */
     public Collection<IInterpretedExpressionQueryProvider> getEntries() {
-        return Collections.unmodifiableList(Lists.newArrayList(entries));
+        return Collections.unmodifiableList(new ArrayList<IInterpretedExpressionQueryProvider>(entries));
     }
 
     private void register(IConfigurationElement elem) {

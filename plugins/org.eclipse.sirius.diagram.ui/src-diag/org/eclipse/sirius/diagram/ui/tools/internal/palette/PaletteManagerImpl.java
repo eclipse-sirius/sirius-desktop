@@ -339,10 +339,10 @@ public class PaletteManagerImpl implements PaletteManager {
         // not)
         Set<Layer> activatedLayers = new HashSet<Layer>(new DDiagramQuery(dDiagram).getAllActivatedLayers());
         // Get the list of activated layers (of selected viewpoints)
-        final List<Layer> activatedLayersOfSelectedViewpoints = Lists.newArrayList(Sets.intersection(layersInActivatedViewpoints, activatedLayers));
+        final List<Layer> activatedLayersOfSelectedViewpoints = new ArrayList<Layer>(Sets.intersection(layersInActivatedViewpoints, activatedLayers));
         // Get the list of deactivated layers (deactivated layers of selected
         // viewpoints and all layers of deselected viewpoints)
-        final List<Layer> deactivatedLayersAndAllLayersOfDeselectedViewpoints = Lists.newArrayList(Sets.symmetricDifference(layersInActivatedViewpoints, activatedLayers));
+        final List<Layer> deactivatedLayersAndAllLayersOfDeselectedViewpoints = new ArrayList<Layer>(Sets.symmetricDifference(layersInActivatedViewpoints, activatedLayers));
         // Update the filters
         for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedViewpoints(false), description)) {
             updateFilters(session, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
@@ -357,10 +357,10 @@ public class PaletteManagerImpl implements PaletteManager {
                 updateContainer(session, dDiagram, paletteEntry.get(), new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
             }
         }
-        for (final Layer layer : Lists.newArrayList(deactivatedLayersAndAllLayersOfDeselectedViewpoints)) {
+        for (final Layer layer : new ArrayList<Layer>(deactivatedLayersAndAllLayersOfDeselectedViewpoints)) {
             setLayerVisibility(layer, false);
         }
-        for (final Layer layer : Lists.newArrayList(activatedLayersOfSelectedViewpoints)) {
+        for (final Layer layer : new ArrayList<Layer>(activatedLayersOfSelectedViewpoints)) {
             setLayerVisibility(layer, true);
         }
     }
@@ -663,7 +663,7 @@ public class PaletteManagerImpl implements PaletteManager {
 
     private void clearFilters(Diagram diagram) {
         listenersManager.init(diagram);
-        Collection<ToolFilter> filtersCopy = Lists.newArrayList(filters);
+        Collection<ToolFilter> filtersCopy = new ArrayList<ToolFilter>(filters);
         for (final ToolFilter filter : filtersCopy) {
             if (filter instanceof ToolFilterFromDescription) {
                 removeToolFilter(filter);

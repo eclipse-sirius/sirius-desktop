@@ -54,7 +54,6 @@ import org.eclipse.swt.dnd.TransferData;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Drop Listener used to validate and perform Drag and Drop operations on
@@ -295,7 +294,7 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
                 } else {
                     // Check 3.2 : dropping semantic elements : variables and
                     // tool BOTH or PROJECT_EXPLORER
-                    for (EObject droppedElement : Lists.newArrayList(semanticDroppedData.keySet())) {
+                    for (EObject droppedElement : new ArrayList<EObject>(semanticDroppedData.keySet())) {
                         valid = valid && canEditEObject(droppedElement);
 
                         Option<TreeItemContainerDropTool> dropTool = getBestDropDescription(droppedElement, null, TreeDragSource.PROJECT_EXPLORER, null);

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.filter;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -76,8 +77,8 @@ public class DiagramElementSelectionDialogPatternMatcherTest extends SiriusDiagr
      * </p>
      */
     public void testMatcherWithEmptyPattern() {
-        checkMatcher("", Sets.newHashSet("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
-        checkMatcher(null, Sets.newHashSet("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
+        checkMatcher("", new HashSet<String>(Arrays.asList("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY")));
+        checkMatcher(null, new HashSet<String>(Arrays.asList("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY")));
     }
 
     /**
@@ -91,13 +92,13 @@ public class DiagramElementSelectionDialogPatternMatcherTest extends SiriusDiagr
      */
     public void testMatcherWithoutRegularExpressions() {
         // Test with full names
-        checkMatcher("p1", Sets.newHashSet("p1"));
-        checkMatcher("Eddy", Sets.newHashSet("Eddy"));
-        checkMatcher("M with 'simple' quotes", Sets.newHashSet("M with 'simple' quotes"));
+        checkMatcher("p1", new HashSet<String>(Arrays.asList("p1")));
+        checkMatcher("Eddy", new HashSet<String>(Arrays.asList("Eddy")));
+        checkMatcher("M with 'simple' quotes", new HashSet<String>(Arrays.asList("M with 'simple' quotes")));
 
         // Test with beginning of names
-        checkMatcher("Me", Sets.newHashSet("Merks"));
-        checkMatcher("E", Sets.newHashSet("Ed", "Eddy"));
+        checkMatcher("Me", new HashSet<String>(Arrays.asList("Merks")));
+        checkMatcher("E", new HashSet<String>(Arrays.asList("Ed", "Eddy")));
         checkMatcher("X", new HashSet<String>());
 
     }
@@ -113,14 +114,14 @@ public class DiagramElementSelectionDialogPatternMatcherTest extends SiriusDiagr
      * </p>
      */
     public void testMatchWithOneCharJockers() {
-        checkMatcher("p?", Sets.newHashSet("p1", "p2", "p3"));
-        checkMatcher("?", Sets.newHashSet("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
-        checkMatcher("M?", Sets.newHashSet("Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
-        checkMatcher("Mu?", Sets.newHashSet("Mum", "Mummy", "mummY"));
-        checkMatcher("M?m", Sets.newHashSet("Mum", "Mom", "Mummy", "mummY"));
+        checkMatcher("p?", new HashSet<String>(Arrays.asList("p1", "p2", "p3")));
+        checkMatcher("?", new HashSet<String>(Arrays.asList("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY")));
+        checkMatcher("M?", new HashSet<String>(Arrays.asList("Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY")));
+        checkMatcher("Mu?", new HashSet<String>(Arrays.asList("Mum", "Mummy", "mummY")));
+        checkMatcher("M?m", new HashSet<String>(Arrays.asList("Mum", "Mom", "Mummy", "mummY")));
 
         checkMatcher("?m", new HashSet<String>());
-        checkMatcher("Edd?", Sets.newHashSet("Eddy"));
+        checkMatcher("Edd?", new HashSet<String>(Arrays.asList("Eddy")));
         checkMatcher("Eddy?", new HashSet<String>());
 
     }
@@ -133,13 +134,13 @@ public class DiagramElementSelectionDialogPatternMatcherTest extends SiriusDiagr
      * </ul>
      */
     public void testMatchWithStringJockers() {
-        checkMatcher("*", Sets.newHashSet("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
-        checkMatcher("* *", Sets.newHashSet("M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s"));
-        checkMatcher("* * ", Sets.newHashSet("M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s"));
-        checkMatcher("E*y", Sets.newHashSet("Eddy"));
-        checkMatcher("E*d*", Sets.newHashSet("Eddy", "Ed"));
-        checkMatcher("E*d", Sets.newHashSet("Eddy", "Ed"));
-        checkMatcher("Edd*", Sets.newHashSet("Eddy"));
+        checkMatcher("*", new HashSet<String>(Arrays.asList("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY")));
+        checkMatcher("* *", new HashSet<String>(Arrays.asList("M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s")));
+        checkMatcher("* * ", new HashSet<String>(Arrays.asList("M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s")));
+        checkMatcher("E*y", new HashSet<String>(Arrays.asList("Eddy")));
+        checkMatcher("E*d*", new HashSet<String>(Arrays.asList("Eddy", "Ed")));
+        checkMatcher("E*d", new HashSet<String>(Arrays.asList("Eddy", "Ed")));
+        checkMatcher("Edd*", new HashSet<String>(Arrays.asList("Eddy")));
     }
 
     /**
@@ -154,12 +155,12 @@ public class DiagramElementSelectionDialogPatternMatcherTest extends SiriusDiagr
      * </p>
      */
     public void testMatchWithSpacesAtTheEnd() {
-        checkMatcher("E*d ", Sets.newHashSet("Ed"));
-        checkMatcher("* ", Sets.newHashSet("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY"));
-        checkMatcher("? ", Sets.newHashSet("4"));
+        checkMatcher("E*d ", new HashSet<String>(Arrays.asList("Ed")));
+        checkMatcher("* ", new HashSet<String>(Arrays.asList("p1", "p2", "p3", "4", "Ed", "Eddy", "Merks", "Mum", "Mom", "M with 'simple' quotes", "M with spaces s", "M with \"quotes\" s", "Mummy", "mummY")));
+        checkMatcher("? ", new HashSet<String>(Arrays.asList("4")));
         checkMatcher("E ", new HashSet<String>());
-        checkMatcher("Eddy ", Sets.newHashSet("Eddy"));
-        checkMatcher("M?m ", Sets.newHashSet("Mum", "Mom"));
+        checkMatcher("Eddy ", new HashSet<String>(Arrays.asList("Eddy")));
+        checkMatcher("M?m ", new HashSet<String>(Arrays.asList("Mum", "Mom")));
 
     }
 
@@ -168,8 +169,8 @@ public class DiagramElementSelectionDialogPatternMatcherTest extends SiriusDiagr
      * regexp.
      */
     public void testMatchWithCases() {
-        checkMatcher("mummy", Sets.newHashSet("mummY", "Mummy"));
-        checkMatcher("MUMMY", Sets.newHashSet("mummY", "Mummy"));
+        checkMatcher("mummy", new HashSet<String>(Arrays.asList("mummY", "Mummy")));
+        checkMatcher("MUMMY", new HashSet<String>(Arrays.asList("mummY", "Mummy")));
     }
 
     /**

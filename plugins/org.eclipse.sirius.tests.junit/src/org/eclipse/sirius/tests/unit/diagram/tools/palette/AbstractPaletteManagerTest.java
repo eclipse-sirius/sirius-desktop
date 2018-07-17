@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.unit.diagram.tools.palette;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,7 +36,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 /**
  * Common code for palette tests.
@@ -203,7 +203,7 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
         // Don't use equals on SortedSet, TreeSet indeed, because this is
         // compareTo on each element which will be used
         // Implementation of Entry#compareTo is used to sort, not to "equal"...
-        boolean equals = Sets.newHashSet(expected).equals(Sets.newHashSet(value));
+        boolean equals = new HashSet<Entry>(expected).equals(new HashSet<Entry>(value));
 
         if (!equals) {
             String message = "Palette content is wrong :\n";

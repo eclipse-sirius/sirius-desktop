@@ -45,7 +45,6 @@ import org.eclipse.uml2.uml.NamedElement;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 public class LayersTest extends AbtsractLayerTests {
 
@@ -90,6 +89,7 @@ public class LayersTest extends AbtsractLayerTests {
 
     private static final String VIEWPOINT_NAME = "Football with UML2 (Modeler test for layers)";
 
+    @Override
     protected void init() throws Exception {
         genericSetUp(PLUGIN + SEMANTIC_MODEL_PATH, PLUGIN + MODELER_PATH);
         final Viewpoint vp = getViewpointFromName(VIEWPOINT_NAME, session);
@@ -544,7 +544,7 @@ public class LayersTest extends AbtsractLayerTests {
         assertTrue(diagramDescription != diagramDescriptionAfterReload);
 
         // Get the new diagram instance
-        List<DRepresentation> representations = Lists.newArrayList(getRepresentations(diagramDescriptionAfterReload.getName(), semanticModel));
+        List<DRepresentation> representations = new ArrayList<DRepresentation>(getRepresentations(diagramDescriptionAfterReload.getName(), semanticModel));
         assertEquals(2, representations.size());
 
         diagram = null;

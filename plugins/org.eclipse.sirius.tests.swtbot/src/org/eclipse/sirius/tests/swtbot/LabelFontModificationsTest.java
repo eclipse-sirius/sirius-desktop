@@ -14,6 +14,7 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.gef.EditPart;
@@ -326,48 +327,48 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
         // Check initial state
         checkNormalFontStyle(selectedEditPart);
-        checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(false, false), false);
+        checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(false, false), false);
 
         // Enable bold and check result
         boldButton = getTabbarBoldButton();
         boldButton.click();
         checkBoldFontStyle(selectedEditPart);
-        checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(true, false), true);
+        checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(true, false), true);
 
         // Enable italic and check result
         italicButton = getTabbarItalicButton();
         italicButton.click();
         checkBoldItalicFontStyle(selectedEditPart);
-        checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(true, true), true);
+        checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(true, true), true);
 
         // Disable bold and check result
         boldButton = getTabbarBoldButton();
         boldButton.click();
         checkItalicFontStyle(selectedEditPart);
-        checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(false, true), true);
+        checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(false, true), true);
 
         // Disable italic and check result
         italicButton = getTabbarItalicButton();
         italicButton.click();
         checkNormalFontStyle(selectedEditPart);
-        checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(false, false), true);
+        checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(false, false), true);
 
         // Enable bold and check result
         boldButton = getTabbarBoldButton();
         boldButton.click();
         checkBoldFontStyle(selectedEditPart);
-        checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(true, false), true);
+        checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(true, false), true);
 
         // Enable italic and check result
         italicButton = getTabbarItalicButton();
         italicButton.click();
         checkBoldItalicFontStyle(selectedEditPart);
-        checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(true, true), true);
+        checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(true, true), true);
 
         // Cancel custom style and check result
         resetStylePropertiesToDefaultValuesButton.click();
         checkNormalFontStyle(selectedEditPart);
-        checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(false, false), false);
+        checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(false, false), false);
     }
 
     /**
@@ -581,42 +582,42 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
         // Check initial state
         checkNormalFontStyle(selectedEditPart);
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(false, false), false);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(false, false), false);
 
         // Enable bold and check result
         boldButton.click();
         checkBoldFontStyle(selectedEditPart);
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(true, false), true);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(true, false), true);
 
         // Enable italic and check result
         italicButton.click();
         checkBoldItalicFontStyle(selectedEditPart);
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(true, true), true);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(true, true), true);
 
         // Disable bold and check result
         boldButton.click();
         checkItalicFontStyle(selectedEditPart);
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(false, true), true);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(false, true), true);
 
         // Disable italic and check result
         italicButton.click();
         checkNormalFontStyle(selectedEditPart);
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(false, false), true);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(false, false), true);
 
         // Enable bold and check result
         boldButton.click();
         checkBoldFontStyle(selectedEditPart);
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(true, false), true);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(true, false), true);
 
         // Enable italic and check result
         italicButton.click();
         checkBoldItalicFontStyle(selectedEditPart);
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(true, true), true);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(true, true), true);
 
         // Cancel custom style and check result
         resetStylePropertiesToDefaultValuesButtonFromAppearanceTab.click();
         checkNormalFontStyle(selectedEditPart);
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(false, false), false);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Arrays.asList(false, false), false);
     }
 
     /**
@@ -659,7 +660,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
         for (SWTBotGefEditPart swtBotGefEditPart : listSwtBotGefEditPart) {
             checkBoldFontStyle(swtBotGefEditPart);
-            checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(true, false), true);
+            checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(true, false), true);
         }
 
         // Undo the change
@@ -669,7 +670,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
         for (SWTBotGefEditPart swtBotGefEditPart : listSwtBotGefEditPart) {
             checkNormalFontStyle(swtBotGefEditPart);
-            checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(false, false), false);
+            checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(false, false), false);
         }
 
         // Redo the change
@@ -679,7 +680,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
         for (SWTBotGefEditPart swtBotGefEditPart : listSwtBotGefEditPart) {
             checkBoldFontStyle(swtBotGefEditPart);
-            checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(true, false), true);
+            checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(true, false), true);
         }
 
         // Cancel style customization
@@ -687,7 +688,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         SWTBotUtils.waitAllUiEvents();
         for (SWTBotGefEditPart swtBotGefEditPart : listSwtBotGefEditPart) {
             checkNormalFontStyle(swtBotGefEditPart);
-            checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(false, false), false);
+            checkButtonTabbarChecked(Arrays.asList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Arrays.asList(false, false), false);
         }
     }
 

@@ -34,8 +34,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.RunnableWithResult;
@@ -81,8 +81,8 @@ import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
-import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
@@ -433,7 +433,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     @Override
     public Collection<DAnalysis> allAnalyses() {
         Collection<DAnalysis> analysisAndReferenced = new LinkedHashSet<>();
-        for (DAnalysis analysis : Lists.newArrayList(super.getAnalyses())) {
+        for (DAnalysis analysis : new ArrayList<DAnalysis>(super.getAnalyses())) {
             /* analysis could be null */
             if (analysis != null) {
                 analysisAndReferenced.add(analysis);
@@ -1488,7 +1488,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         Collection<Resource> repFiles = new LinkedHashSet<>();
 
         if (transactionalEditingDomain != null && transactionalEditingDomain.getResourceSet() != null) {
-            Collection<Resource> allResources = Lists.newArrayList(transactionalEditingDomain.getResourceSet().getResources());
+            Collection<Resource> allResources = new ArrayList<Resource>(transactionalEditingDomain.getResourceSet().getResources());
             for (Resource res : allResources) {
                 if (!res.getContents().isEmpty() && res.getContents().get(0) instanceof DRepresentation) {
                     repFiles.add(res);

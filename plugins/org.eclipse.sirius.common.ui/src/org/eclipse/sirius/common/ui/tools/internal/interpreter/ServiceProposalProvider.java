@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.ui.tools.internal.interpreter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -34,8 +35,6 @@ import org.eclipse.sirius.common.tools.internal.interpreter.ServiceInterpreter;
 import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
 import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.ext.base.Option;
-
-import com.google.common.collect.Lists;
 
 /**
  * A {@link IProposalProvider} to provide completion for the service
@@ -62,7 +61,7 @@ public class ServiceProposalProvider implements IProposalProvider {
             // Compute the available services
             Resource vsmResource = context.getInterpreterContext().getElement().eResource();
             if (vsmResource != null) {
-                serviceInterpreter.setProperty(IInterpreter.FILES, Lists.newArrayList(vsmResource.getURI().toPlatformString(true)));
+                serviceInterpreter.setProperty(IInterpreter.FILES, new ArrayList<String>(Arrays.asList(vsmResource.getURI().toPlatformString(true))));
             }
             for (String dependency : context.getInterpreterContext().getDependencies()) {
                 serviceInterpreter.addImport(dependency);

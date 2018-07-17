@@ -15,6 +15,7 @@ import java.net.URL;
 import java.security.CodeSource;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -642,7 +643,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         if (result instanceof Collection<?>) {
             Iterables.addAll(coercedResult, Iterables.filter((Collection<?>) result, EObject.class));
         } else if (result != null && result.getClass().isArray()) {
-            Iterables.addAll(coercedResult, Iterables.filter(Lists.newArrayList((Object[]) result), EObject.class));
+            Iterables.addAll(coercedResult, Iterables.filter(new ArrayList<Object>(Arrays.asList((Object[]) result)), EObject.class));
         } else {
             EObject coerced = coerceValue(result, EObject.class);
             if (coerced != null) {

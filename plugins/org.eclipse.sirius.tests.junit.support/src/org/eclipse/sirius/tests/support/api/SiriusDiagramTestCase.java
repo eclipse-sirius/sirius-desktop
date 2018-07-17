@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.support.api;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -18,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -106,7 +108,6 @@ import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
@@ -488,7 +489,8 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
         if (tool instanceof SelectionWizardDescription && container instanceof DSemanticDecorator) {
             cmd = getCommandFactory().buildSelectionWizardCommandFromTool((SelectionWizardDescription) tool, (DSemanticDecorator) container, selectedElements);
         } else if (tool instanceof OperationAction) {
-            cmd = getCommandFactory().buildOperationActionFromTool((OperationAction) tool, Lists.newArrayList(Iterables.filter(selectedElements, DSemanticDecorator.class)));
+            cmd = getCommandFactory().buildOperationActionFromTool((OperationAction) tool,
+                    selectedElements.stream().filter(DSemanticDecorator.class::isInstance).map(DSemanticDecorator.class::cast).collect(Collectors.toList()));
         }
         return cmd;
     }
@@ -1380,14 +1382,14 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     protected void checkForHiddenLabels(final DDiagram diagram, DDiagramElement... elementsThatShouldHaveHiddenLabel) {
 
         // We first get all the elements that should have visible labels
-        HashSet<DDiagramElement> allDiagramElements = Sets.newHashSet(diagram.getOwnedDiagramElements());
+        HashSet<DDiagramElement> allDiagramElements = new HashSet<DDiagramElement>(diagram.getOwnedDiagramElements());
         for (DDiagramElement diagramElement : diagram.getOwnedDiagramElements()) {
-            Iterator<DDiagramElement> filter = Iterables.filter(diagramElement.eContents(), DDiagramElement.class).iterator();
+            Iterator<DDiagramElement> filter = diagramElement.eContents().stream().filter(DDiagramElement.class::isInstance).map(DDiagramElement.class::cast).iterator();
             while (filter.hasNext()) {
                 allDiagramElements.add(filter.next());
             }
         }
-        SetView<DDiagramElement> elementsThatShouldHaveVisibleLabel = Sets.difference(allDiagramElements, Sets.newHashSet(elementsThatShouldHaveHiddenLabel));
+        SetView<DDiagramElement> elementsThatShouldHaveVisibleLabel = Sets.difference(allDiagramElements, new HashSet<DDiagramElement>(Arrays.asList(elementsThatShouldHaveHiddenLabel)));
 
         // And ensure that all these elements have visible labels
         for (DDiagramElement elementThatShouldHaveVisibleLabel : elementsThatShouldHaveVisibleLabel) {

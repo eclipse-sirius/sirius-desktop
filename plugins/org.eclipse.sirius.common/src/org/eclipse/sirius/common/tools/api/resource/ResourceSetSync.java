@@ -378,7 +378,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
 
     private void notifyClientsWhileProcessing(final Resource resource, final ResourceStatus newStatus, final ResourceStatus oldStatus) {
         if (notificationIsRequired) {
-            for (final ResourceSyncClient client : Lists.newArrayList(clients)) {
+            for (final ResourceSyncClient client : new ArrayList<ResourceSyncClient>(clients)) {
                 client.statusChanged(resource, oldStatus, newStatus);
             }
         }
@@ -388,7 +388,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
         if (notificationInProgress.compareAndSet(false, true)) {
             try {
                 if (notificationIsRequired && changes.size() > 0) {
-                    for (final ResourceSyncClient client : Lists.newArrayList(clients)) {
+                    for (final ResourceSyncClient client : new ArrayList<ResourceSyncClient>(clients)) {
                         client.statusesChanged(changes);
                     }
                 }

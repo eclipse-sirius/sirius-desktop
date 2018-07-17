@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.views;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -28,8 +30,6 @@ import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.progress.UIJob;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 /**
  * A {@link UIJob} to refresh the image of the label in a {@link CommonViewer}.
  *
@@ -85,7 +85,7 @@ public class RefreshLabelImageJob extends UIJob {
                 // its descriptor status. So any change to the descriptor triggers the refresh of any
                 // RepresentationItemImpl encapsulating it.
                 if (!repDescs.isEmpty() && expandedElements != null) {
-                    List<Object> expandedElementsList = Lists.newArrayList(expandedElements);
+                    List<Object> expandedElementsList = new ArrayList<Object>(Arrays.asList(expandedElements));
                     for (RepresentationDescriptionItem item : expandedElementsList.stream().filter(RepresentationDescriptionItem.class::isInstance).map(RepresentationDescriptionItem.class::cast)
                             .collect(Collectors.toList())) {
                         for (RepresentationItemImpl repItem : Iterables.filter(item.getChildren(), RepresentationItemImpl.class)) {

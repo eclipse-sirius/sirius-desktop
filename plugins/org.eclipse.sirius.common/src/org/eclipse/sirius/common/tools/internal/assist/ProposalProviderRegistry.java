@@ -18,8 +18,6 @@ import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 
-import com.google.common.collect.Lists;
-
 /**
  * This will contain all of the proposal providers that can be used by the
  * interpreters.
@@ -126,7 +124,7 @@ public final class ProposalProviderRegistry {
      *            from the registry.
      */
     public static void removeProvider(String className) {
-        for (ProposalProviderDescriptor descriptor : Lists.newArrayList(DESCRIPTORS)) {
+        for (ProposalProviderDescriptor descriptor : new ArrayList<ProposalProviderDescriptor>(DESCRIPTORS)) {
             if (className.equals(descriptor.getClassName())) {
                 DESCRIPTORS.remove(descriptor);
             }

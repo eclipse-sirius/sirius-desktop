@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.views;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
@@ -18,8 +20,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.PermissionAuthoritySessionManagerListener;
 import org.eclipse.ui.navigator.CommonViewer;
-
-import com.google.common.collect.Lists;
 
 /**
  * This class is an helper to refresh lock decoration on a {@link CommonViewer} according to the notifications send to
@@ -83,12 +83,12 @@ public class LockDecorationUpdater implements IAuthorityListener {
 
     @Override
     public void notifyIsLocked(EObject instance) {
-        launchRefreshViewerJob(Lists.newArrayList(instance));
+        launchRefreshViewerJob(new ArrayList<EObject>(Arrays.asList(instance)));
     }
 
     @Override
     public void notifyIsReleased(EObject instance) {
-        launchRefreshViewerJob(Lists.newArrayList(instance));
+        launchRefreshViewerJob(new ArrayList<EObject>(Arrays.asList(instance)));
     }
 
     @Override

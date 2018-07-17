@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.tree.tools;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -31,8 +33,6 @@ import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-
-import com.google.common.collect.Lists;
 
 /**
  * Check selection in tree after tool execution.
@@ -57,7 +57,7 @@ public class SelectionInTreeAfterToolExecutionTest extends AbstractToolDescripti
     protected void setUp() throws Exception {
         super.setUp();
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SEMANTIC_RESOURCE_NAME, REPRESENTATIONS_RESOURCE_NAME, MODELER_RESOURCE_NAME);
-        genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME), Lists.newArrayList(TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME),
+        genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME), new ArrayList<String>(Arrays.asList(TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME)),
                 TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME);
 
         // Activate auto refresh

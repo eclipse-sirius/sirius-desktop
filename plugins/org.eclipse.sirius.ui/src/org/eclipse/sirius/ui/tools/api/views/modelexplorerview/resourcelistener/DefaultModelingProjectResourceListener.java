@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
@@ -29,8 +31,6 @@ import org.eclipse.sirius.business.internal.modelingproject.marker.InvalidModeli
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-
-import com.google.common.collect.Lists;
 
 /**
  * A workspace resource listener to automatically add files loadable as emf
@@ -77,7 +77,7 @@ public class DefaultModelingProjectResourceListener implements IModelingProjectR
                 for (IProject projectToInitialize : visitor.projectsToInitialize) {
                     // Launch the job to initialize the modeling project (with
                     // option to force a reset).
-                    InitializeModelingProjectJob job = new InitializeModelingProjectJob(Lists.newArrayList(projectToInitialize));
+                    InitializeModelingProjectJob job = new InitializeModelingProjectJob(new ArrayList<IProject>(Arrays.asList(projectToInitialize)));
                     job.setForceInit(true);
                     job.setPriority(Job.SHORT);
 

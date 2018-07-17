@@ -13,6 +13,8 @@ package org.eclipse.sirius.tests.unit.diagram.navigation;
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.replay;
 
+import java.util.Arrays;
+
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -30,8 +32,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.ui.IEditorPart;
-
-import com.google.common.collect.Lists;
 
 /**
  * Test for the "Navigation" model operation, in particular when it need to
@@ -101,7 +101,7 @@ public class NavigationOperationTest extends SiriusDiagramTestCase {
 
         AbstractToolDescription tool = getTool(diagram, OPERATION_NAME);
         assertTrue(tool instanceof OperationAction);
-        Command cmd = getCommand(diagram, tool, Lists.newArrayList((EObject) aDiagramElement));
+        Command cmd = getCommand(diagram, tool, Arrays.asList((EObject) aDiagramElement));
         setErrorCatchActive(true);
         // This will use the UiCallback (in the context of tests, a
         // NoUICallback) to ask for the new representation name. VP-1851

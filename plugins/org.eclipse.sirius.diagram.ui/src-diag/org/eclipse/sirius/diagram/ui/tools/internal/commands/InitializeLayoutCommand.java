@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -19,8 +21,6 @@ import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationComma
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
-import com.google.common.collect.Lists;
 
 /**
  * Specific command to initialize layout after diagram creation from diagram
@@ -68,7 +68,7 @@ public class InitializeLayoutCommand extends RecordingCommand {
      */
     @Override
     public Collection<?> getResult() {
-        return Lists.newArrayList(layoutedRepresentation);
+        return new ArrayList<>(Arrays.asList(layoutedRepresentation));
     }
 
     /**

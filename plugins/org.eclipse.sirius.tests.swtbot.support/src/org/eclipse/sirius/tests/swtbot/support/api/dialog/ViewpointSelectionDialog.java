@@ -10,7 +10,9 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.dialog;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -21,8 +23,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTableItem;
 import org.junit.Assert;
-
-import com.google.common.collect.Sets;
 
 /**
  * Wrapper for viewpoints selection dialog.
@@ -68,7 +68,7 @@ public class ViewpointSelectionDialog {
         if (viewpointToSelect != null && viewpointToDeselect != null) {
             // Put the two lists in new one in order to call
             // remove() on it and failIfMissingViewpoints() at the end
-            Set<String> viewpointSelection = Sets.newHashSet(viewpointToSelect);
+            Set<String> viewpointSelection = new HashSet<String>(viewpointToSelect);
             viewpointSelection.addAll(viewpointToDeselect);
 
             if (!viewpointSelection.isEmpty()) {
@@ -121,7 +121,7 @@ public class ViewpointSelectionDialog {
      *            Viewpoint to select.
      */
     public void selectViewpoint(String... viewpoints) {
-        selectViewpoint(Sets.newHashSet(viewpoints), Collections.<String> emptySet());
+        selectViewpoint(new HashSet<String>(Arrays.asList(viewpoints)), Collections.<String> emptySet());
     }
 
     /**
@@ -132,7 +132,7 @@ public class ViewpointSelectionDialog {
      *            Viewpoint to deselect.
      */
     public void deselectViewpoint(String... viewpoints) {
-        selectViewpoint(Collections.<String> emptySet(), Sets.newHashSet(viewpoints));
+        selectViewpoint(Collections.<String> emptySet(), new HashSet<String>(Arrays.asList(viewpoints)));
     }
 
     private void failIfMissingViewpoints(final Set<String> remainingViewpoints) {

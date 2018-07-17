@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.operations;
 
+import java.util.Arrays;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.business.internal.helper.task.operations.AbstractOperationTask;
@@ -24,8 +26,6 @@ import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
-
-import com.google.common.collect.Lists;
 
 import junit.framework.TestCase;
 
@@ -55,6 +55,7 @@ public class ChangeContextOperationTest extends TestCase {
     }
 
     private class Nominal extends Case {
+        @Override
         public void check() throws Exception {
             task = changeContextTask(rootContext, "aql:self.eContents()->first()");
             super.check();
@@ -69,7 +70,7 @@ public class ChangeContextOperationTest extends TestCase {
         super.setUp();
         accessor = new ModelAccessor();
         accessor.addExtender(new EcoreIntrinsicExtender(), ExtenderConstants.HIGH_PRIORITY);
-        accessor.activateMetamodels(Lists.newArrayList(new EcoreMetamodelDescriptor(EcorePackage.eINSTANCE)));
+        accessor.activateMetamodels(Arrays.asList(new EcoreMetamodelDescriptor(EcorePackage.eINSTANCE)));
 
         iRegistry = new InterpreterRegistry() {
 

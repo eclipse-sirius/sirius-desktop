@@ -32,8 +32,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
-import com.google.common.collect.Lists;
-
 /**
  * A dialog which lets user select representations among a list of candidates.
  * <p>
@@ -78,7 +76,7 @@ public class RepresentationsSelectionDialog extends TitleAreaDialog implements I
                 return r1.getName().compareTo(r2.getName());
             }
         });
-        this.selectedRepresentations = Lists.newArrayList(candidates);
+        this.selectedRepresentations = new ArrayList<DRepresentation>(candidates);
     }
 
     /**

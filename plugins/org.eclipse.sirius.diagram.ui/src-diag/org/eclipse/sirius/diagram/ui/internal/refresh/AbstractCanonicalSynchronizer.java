@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -72,7 +73,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItem
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -565,7 +565,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode, true);
             rect.translate(parentAbsoluteLocation.x, parentAbsoluteLocation.y);
             dummyFigure.setBounds(rect);
-            final Point realLocation = locator.getValidLocation(rect, createdNode, Lists.newArrayList(createdNode));
+            final Point realLocation = locator.getValidLocation(rect, createdNode, new ArrayList<Node>(Arrays.asList(createdNode)));
             final Dimension d = realLocation.getDifference(parentAbsoluteLocation);
             final Point location = new Point(d.width, d.height);
             realLocation.setLocation(location);

@@ -40,7 +40,6 @@ import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import com.google.common.collect.Lists;
 
 /**
  * Represents a frame container.
@@ -113,7 +112,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
             }
         }
 
-        Collection<Lifeline> allLifelines = Lists.newArrayList(getDiagram().getAllLifelines());
+        Collection<Lifeline> allLifelines = new ArrayList<Lifeline>(getDiagram().getAllLifelines());
         for (Lifeline lifeline : allLifelines) {
             EObject sem = ISequenceElement.SEMANTIC_TARGET.apply(lifeline);
             if (semLifelines.contains(sem)) {

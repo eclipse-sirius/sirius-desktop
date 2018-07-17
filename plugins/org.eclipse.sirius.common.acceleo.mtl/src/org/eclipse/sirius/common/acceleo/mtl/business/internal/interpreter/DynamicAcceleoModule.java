@@ -15,6 +15,7 @@ import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -60,7 +61,6 @@ import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
 import org.eclipse.sirius.common.acceleo.mtl.Messages;
 import org.eclipse.sirius.ext.base.cache.LRUCache;
 
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -479,7 +479,7 @@ public class DynamicAcceleoModule {
     public QueryIdentifier ensureQueryExists(CompilationContext compilationContext) {
         final String queryBody = extractBody(compilationContext.getExpression());
         final Map<String, String> additionalVariables = compilationContext.getVariables();
-        QueryIdentifier identifier = new QueryIdentifier(compilationContext.getTargetType(), Maps.newLinkedHashMap(additionalVariables), queryBody);
+        QueryIdentifier identifier = new QueryIdentifier(compilationContext.getTargetType(), new LinkedHashMap<String, String>(additionalVariables), queryBody);
 
         String queryName = null;
         final Set<QueryIdentifier> existingIds = queries.keySet();
@@ -679,7 +679,7 @@ public class DynamicAcceleoModule {
     private QueryIdentifier getQueryIdentifier(CompilationContext context) {
         final String queryBody = extractBody(context.getExpression());
         final Map<String, String> additionalVariables = context.getVariables();
-        final QueryIdentifier identifier = new QueryIdentifier(context.getTargetType(), Maps.newLinkedHashMap(additionalVariables), queryBody);
+        final QueryIdentifier identifier = new QueryIdentifier(context.getTargetType(), new LinkedHashMap<String, String>(additionalVariables), queryBody);
 
         final Set<QueryIdentifier> existingIds = queries.keySet();
         // Use hash lookup to determine whether it exists

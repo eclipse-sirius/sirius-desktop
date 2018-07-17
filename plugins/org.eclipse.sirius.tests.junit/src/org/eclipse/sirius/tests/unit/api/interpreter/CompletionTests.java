@@ -10,13 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.interpreter;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
@@ -33,8 +36,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-
-import com.google.common.collect.Sets;
 
 /**
  * Tests on editing domain based on entities diagram of ecore modeler.
@@ -82,7 +83,7 @@ public class CompletionTests extends SiriusDiagramTestCase implements EcoreModel
         }
 
         IInterpreterContext interContext = DefaultInterpreterContextFactory.createInterpreterContext(element, true, feature, VariableType.fromString(domainClass),
-                Sets.newHashSet(DiagramPackage.eINSTANCE, EcorePackage.eINSTANCE), variables, Collections.<String> emptyList());
+                new HashSet<EPackage>(Arrays.asList(DiagramPackage.eINSTANCE, EcorePackage.eINSTANCE)), variables, Collections.<String> emptyList());
 
         ContentContext context = new ContentContext(text, cursorPosition, interContext);
         return context;

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.operations;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -47,8 +48,6 @@ import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.session.UserSession;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Group;
-
-import com.google.common.collect.Lists;
 
 import junit.framework.TestCase;
 
@@ -160,7 +159,7 @@ public class CreateViewOperationTest extends TestCase {
         super.setUp();
         accessor = new ModelAccessor();
         accessor.addExtender(new EcoreIntrinsicExtender(), ExtenderConstants.HIGH_PRIORITY);
-        accessor.activateMetamodels(Lists.newArrayList(new EcoreMetamodelDescriptor(EcorePackage.eINSTANCE)));
+        accessor.activateMetamodels(Arrays.asList(new EcoreMetamodelDescriptor(EcorePackage.eINSTANCE)));
 
         oDesign = new CreateViewOperationData();
         oDesign.load();

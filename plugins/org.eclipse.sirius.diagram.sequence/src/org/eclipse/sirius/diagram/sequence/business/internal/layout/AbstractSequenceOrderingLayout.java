@@ -20,7 +20,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Computes the appropriate graphical locations of sequence events and lifelines
@@ -105,9 +104,9 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
         int flaggedIndex = flaggedEnds.indexOf(element);
 
         if (flaggedIndex != -1 && semanticIndex != 0 && graphicalIndex != -1) {
-            List<U> semanticPredecessors = Lists.newArrayList(semanticOrdering.subList(0, semanticIndex));
-            List<U> graphicalPredecessors = Lists.newArrayList(graphicalOrdering.subList(0, graphicalIndex));
-            List<U> flaggedPredecessors = Lists.newArrayList(flaggedEnds.subList(0, flaggedIndex));
+            List<U> semanticPredecessors = new ArrayList<U>(semanticOrdering.subList(0, semanticIndex));
+            List<U> graphicalPredecessors = new ArrayList<U>(graphicalOrdering.subList(0, graphicalIndex));
+            List<U> flaggedPredecessors = new ArrayList<U>(flaggedEnds.subList(0, flaggedIndex));
 
             // Intersection
             semanticPredecessors.retainAll(flaggedEnds);

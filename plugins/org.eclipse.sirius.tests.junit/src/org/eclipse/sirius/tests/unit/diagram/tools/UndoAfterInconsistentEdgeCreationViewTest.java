@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.diagram.tools;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
@@ -22,9 +23,6 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Test that performing an undo after an edge creation tool doesn't lead to
@@ -86,7 +84,7 @@ public class UndoAfterInconsistentEdgeCreationViewTest extends SiriusDiagramTest
      *             if an error occurs during the undo.
      */
     public void testEdgeEditPartCreationAfterFilterDeactivation() throws Exception {
-        List<DNode> nodeClasses = Lists.newArrayList(Iterables.filter(diagram.getDiagramElements(), DNode.class));
+        List<DNode> nodeClasses = diagram.getDiagramElements().stream().filter(DNode.class::isInstance).map(DNode.class::cast).collect(Collectors.toList());
         assertEquals("Bad input data : wrong class number", 2, nodeClasses.size());
         DNode class1 = nodeClasses.get(0);
         DNode class2 = nodeClasses.get(1);

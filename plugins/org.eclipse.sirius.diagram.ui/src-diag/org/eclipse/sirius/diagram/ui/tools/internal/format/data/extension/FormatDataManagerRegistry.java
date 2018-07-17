@@ -22,8 +22,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.format.IFormatDataManagerProvider
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerForSemanticElementsFactory;
 
-import com.google.common.collect.Lists;
-
 /**
  * Registry containing all format data manager providers that have been parsed
  * from the
@@ -70,7 +68,7 @@ public final class FormatDataManagerRegistry {
      * @return A copy of the registered extensions list.
      */
     public static Collection<FormatDataManagerDescriptor> getRegisteredExtensions() {
-        return Lists.newArrayList(EXTENSIONS.keySet());
+        return new ArrayList<FormatDataManagerDescriptor>(EXTENSIONS.keySet());
     }
 
     /**

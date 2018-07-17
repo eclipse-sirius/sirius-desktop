@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.Arrays;
+
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
@@ -23,8 +25,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToggleButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
-
-import com.google.common.collect.Lists;
 
 /**
  * Tests that we can set labels with both "bold" and "italic" styles at the same
@@ -79,7 +79,7 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
         SWTBotToggleButton boldButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 0);
         SWTBotToggleButton italicButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 1);
         SWTBotButton cancelCustomStyle = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), cancelCustomStyle, Lists.newArrayList(true, true), true);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), cancelCustomStyle, Arrays.asList(true, true), true);
 
         editor.click(new Point(0, 0));
         selectAndCheckEditPart(name, type);
@@ -92,7 +92,7 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
         boldButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 0);
         italicButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 1);
         cancelCustomStyle = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), cancelCustomStyle, Lists.newArrayList(false, true), true);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), cancelCustomStyle, Arrays.asList(false, true), true);
 
         editor.click(new Point(0, 0));
         selectAndCheckEditPart(name, type);
@@ -106,7 +106,7 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
         boldButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 0);
         italicButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 1);
         cancelCustomStyle = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), cancelCustomStyle, Lists.newArrayList(false, false), true);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), cancelCustomStyle, Arrays.asList(false, false), true);
 
     }
 
@@ -148,7 +148,7 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
         boldButton.click();
         italicButton.click();
         checkBoldItalicFontStyle(selectedEditPart);
-        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), cancelCustomStyleButton, Lists.newArrayList(true, true), true);
+        checkButtonAppearanceChecked(Arrays.asList(boldButton, italicButton), cancelCustomStyleButton, Arrays.asList(true, true), true);
 
         editor.click(new Point(0, 0));
         selectAndCheckEditPart(name, type);
@@ -157,7 +157,7 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
         SWTBotToolbarToggleButton boldButtonTabbar = getTabbarBoldButton();
         SWTBotToolbarToggleButton italicButtonTabbar = getTabbarItalicButton();
         SWTBotToolbarButton resetStylePropertiesToDefaultValuesButtonFromTabbar = getResetStylePropertiesToDefaultValuesButtonFromTabbar();
-        checkButtonTabbarChecked(Lists.newArrayList(boldButtonTabbar, italicButtonTabbar), resetStylePropertiesToDefaultValuesButtonFromTabbar, Lists.newArrayList(true, true), true);
+        checkButtonTabbarChecked(Arrays.asList(boldButtonTabbar, italicButtonTabbar), resetStylePropertiesToDefaultValuesButtonFromTabbar, Arrays.asList(true, true), true);
 
         // Unchecked the bold button and verify that the button bold is also
         // unchecked on property Appearance tab.
@@ -173,7 +173,7 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
         boldButtonTabbar = getTabbarBoldButton();
         italicButtonTabbar = getTabbarItalicButton();
         resetStylePropertiesToDefaultValuesButtonFromTabbar = getResetStylePropertiesToDefaultValuesButtonFromTabbar();
-        checkButtonTabbarChecked(Lists.newArrayList(boldButtonTabbar, italicButtonTabbar), resetStylePropertiesToDefaultValuesButtonFromTabbar, Lists.newArrayList(false, true), true);
+        checkButtonTabbarChecked(Arrays.asList(boldButtonTabbar, italicButtonTabbar), resetStylePropertiesToDefaultValuesButtonFromTabbar, Arrays.asList(false, true), true);
 
         // Unchecked the italic button and verify that the button italic is also
         // unchecked on property Appearance tab and that the button cancel
@@ -190,6 +190,6 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
         boldButtonTabbar = getTabbarBoldButton();
         italicButtonTabbar = getTabbarItalicButton();
         resetStylePropertiesToDefaultValuesButtonFromTabbar = getResetStylePropertiesToDefaultValuesButtonFromTabbar();
-        checkButtonTabbarChecked(Lists.newArrayList(boldButtonTabbar, italicButtonTabbar), resetStylePropertiesToDefaultValuesButtonFromTabbar, Lists.newArrayList(false, false), true);
+        checkButtonTabbarChecked(Arrays.asList(boldButtonTabbar, italicButtonTabbar), resetStylePropertiesToDefaultValuesButtonFromTabbar, Arrays.asList(false, false), true);
     }
 }

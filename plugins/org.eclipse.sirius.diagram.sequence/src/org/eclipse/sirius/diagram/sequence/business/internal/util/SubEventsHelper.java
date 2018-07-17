@@ -241,7 +241,7 @@ public final class SubEventsHelper {
             if (parents.isEmpty()) {
                 topLevel.add(potentialChild);
             } else if (potentialChild instanceof AbstractFrame && !parentFrames) {
-                Collection<ISequenceEvent> carriers = Lists.newArrayList(getCarryingParents((AbstractFrame) potentialChild, coveredLifelines));
+                Collection<ISequenceEvent> carriers = new ArrayList<ISequenceEvent>(getCarryingParents((AbstractFrame) potentialChild, coveredLifelines));
                 Iterables.removeAll(carriers, parents);
                 if (!carriers.isEmpty()) {
                     topLevel.add(potentialChild);
@@ -362,7 +362,7 @@ public final class SubEventsHelper {
     }
 
     private Iterable<ISequenceEvent> getSequenceEventsToFilter(ISequenceEvent self, ISequenceEvent child, final Range range, final Collection<Lifeline> lifelines) {
-        Set<ISequenceEvent> result = Sets.newHashSet(self.getSubEvents());
+        Set<ISequenceEvent> result = new HashSet<ISequenceEvent>(self.getSubEvents());
         Predicate<ISequenceEvent> inRangePredicate = new Predicate<ISequenceEvent>() {
 
             public boolean apply(ISequenceEvent input) {
@@ -374,7 +374,7 @@ public final class SubEventsHelper {
         Predicate<ISequenceEvent> inCoverage = new Predicate<ISequenceEvent>() {
 
             public boolean apply(ISequenceEvent input) {
-                Collection<Lifeline> inputCoverage = Lists.newArrayList(getCoverage(input));
+                Collection<Lifeline> inputCoverage = new ArrayList<Lifeline>(getCoverage(input));
                 return Iterables.removeAll(inputCoverage, lifelines);
             }
 

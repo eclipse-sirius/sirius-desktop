@@ -11,6 +11,8 @@
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,8 +25,6 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.ui.dialogs.SelectionDialog;
-
-import com.google.common.collect.Lists;
 
 /**
  * Common behaviors for hide/reveal actions. It opens a selection dialog.
@@ -71,7 +71,7 @@ public abstract class AbstractHideRevealAction<T extends EObject> extends Abstra
 
         // User wants to continue his action
         if (Window.OK == dlg.getReturnCode() && dlg.getResult() != null) {
-            List<Object> newVisibles = Lists.newArrayList(dlg.getResult());
+            List<Object> newVisibles = new ArrayList<Object>(Arrays.asList(dlg.getResult()));
             CompoundCommand compoundCommand = new CompoundCommand(MessageFormat.format(Messages.Action_setValues, getSetVisibleMethodName()));
             for (T element : getAllElements()) {
                 boolean visible = newVisibles.contains(element);

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.eclipse.draw2d.geometry.Point;
@@ -29,8 +30,6 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.junit.Assert;
-
-import com.google.common.collect.Lists;
 
 /**
  * Tests only zoom and creation with single/double click, others features to
@@ -655,7 +654,7 @@ public class InteractionUseTwoClickCreationTests extends AbstractInteractionUseS
         bot.waitUntil(new CheckInteractionCreation(3));
         Assert.assertEquals(3, interaction.getInteractionUses().size());
 
-        validateNewInteractionUseCovering(3, Lists.newArrayList(participantE));
+        validateNewInteractionUseCovering(3, Arrays.asList(participantE));
         validateOrdering(22);
     }
 

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.compartment;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Collection;
 import java.util.Collections;
@@ -112,7 +114,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     private final static int[] VSTACK_LAST_REGION_SPECIFIC_CORNERS = { PositionConstants.SOUTH_WEST, PositionConstants.SOUTH_EAST };
 
     private final static Collection<Integer> CORNERS = Collections
-            .unmodifiableList(Lists.newArrayList(PositionConstants.NORTH_WEST, PositionConstants.NORTH_EAST, PositionConstants.SOUTH_WEST, PositionConstants.SOUTH_EAST));
+            .unmodifiableList(new ArrayList<Integer>(Arrays.asList(PositionConstants.NORTH_WEST, PositionConstants.NORTH_EAST, PositionConstants.SOUTH_WEST, PositionConstants.SOUTH_EAST)));
 
     private DDiagram diagram;
 

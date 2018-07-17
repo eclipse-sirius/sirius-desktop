@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.diagram.filter;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EClass;
@@ -861,7 +862,7 @@ public class CompositeFilterTest extends SiriusDiagramTestCase {
         assertNotNull(editor);
 
         // Create a new reference
-        List<DNode> nodeClasses = Lists.newArrayList(Iterables.filter(diagram.getDiagramElements(), DNode.class));
+        List<DNode> nodeClasses = diagram.getDiagramElements().stream().filter(DNode.class::isInstance).map(DNode.class::cast).collect(Collectors.toList());
         assertEquals("Bad input data : wrong class number", 2, nodeClasses.size());
 
         applyEdgeCreationTool(REFERENCE_CREATE_TOOL_NAME, diagram, nodeClasses.get(0), nodeClasses.get(1));
@@ -900,7 +901,7 @@ public class CompositeFilterTest extends SiriusDiagramTestCase {
 
         DDiagramElement element = elementsFromType.get(index);
         // One AppliedCompositeFilter per DDiagramElement
-        assertEquals(filters.length == 0 ? 0 : 1, Iterables.size(Iterables.filter(element.getGraphicalFilters(), AppliedCompositeFilters.class)));
+        assertEquals(filters.length == 0 ? 0 : 1, element.getGraphicalFilters().stream().filter(AppliedCompositeFilters.class::isInstance).count());
 
         DDiagramElementQuery elementQuery = new DDiagramElementQuery(element);
         Option<AppliedCompositeFilters> filterApplication = elementQuery.getAppliedCompositeFilters();
@@ -951,10 +952,8 @@ public class CompositeFilterTest extends SiriusDiagramTestCase {
 
         DDiagramElement element = elementsFromType.get(0);
         // One CollapseApplication per DDiagramElement
-        assertEquals(
-                filters.length == 0 ? 0 : 1,
-                Iterables.size(Iterables.filter(element.getGraphicalFilters(),
-                        Predicates.and(Predicates.instanceOf(CollapseFilter.class), Predicates.not(Predicates.instanceOf(IndirectlyCollapseFilter.class))))));
+        assertEquals(filters.length == 0 ? 0 : 1, Iterables.size(
+                Iterables.filter(element.getGraphicalFilters(), Predicates.and(Predicates.instanceOf(CollapseFilter.class), Predicates.not(Predicates.instanceOf(IndirectlyCollapseFilter.class))))));
 
         DDiagramElementQuery elementQuery = new DDiagramElementQuery(element);
 

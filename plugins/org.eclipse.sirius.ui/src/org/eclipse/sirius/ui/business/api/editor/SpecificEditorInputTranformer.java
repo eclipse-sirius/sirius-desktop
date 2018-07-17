@@ -12,7 +12,9 @@ package org.eclipse.sirius.ui.business.api.editor;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -280,7 +282,7 @@ public class SpecificEditorInputTranformer {
     private void activateSirius() {
         final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
         session.getTransactionalEditingDomain().getCommandStack()
-                .execute(new ChangeViewpointSelectionCommand(session, selectionCallback, Sets.newHashSet(viewpoint), Sets.<Viewpoint> newHashSet(), new NullProgressMonitor()) {
+                .execute(new ChangeViewpointSelectionCommand(session, selectionCallback, new HashSet<Viewpoint>(Arrays.asList(viewpoint)), Sets.<Viewpoint> newHashSet(), new NullProgressMonitor()) {
 
                     @Override
                     public boolean canUndo() {

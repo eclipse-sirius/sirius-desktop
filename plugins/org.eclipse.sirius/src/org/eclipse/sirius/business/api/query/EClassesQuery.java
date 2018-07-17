@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,8 +19,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.ext.base.Option;
-
-import com.google.common.collect.Lists;
 
 /**
  * Queries on {@link List} of {@link EClass}.
@@ -60,6 +59,6 @@ public class EClassesQuery {
                 eReferences.add(eStructuralFeature);
             }
         }
-        return new EStructuralFeaturesQuery(Lists.newArrayList(eReferences)).getCommonType();
+        return new EStructuralFeaturesQuery(new ArrayList<EStructuralFeature>(eReferences)).getCommonType();
     }
 }

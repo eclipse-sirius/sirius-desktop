@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.api.session;
 
 import java.lang.Thread.UncaughtExceptionHandler;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
@@ -44,8 +45,6 @@ import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
-
-import com.google.common.collect.Lists;
 
 public class SampleSessionTest extends SiriusDiagramTestCase {
 
@@ -236,7 +235,7 @@ public class SampleSessionTest extends SiriusDiagramTestCase {
             }
             session = null;
         }
-        for (final Session managerSession : Lists.newArrayList(SessionManager.INSTANCE.getSessions())) {
+        for (final Session managerSession : new ArrayList<Session>(SessionManager.INSTANCE.getSessions())) {
             if (managerSession.isOpen()) {
                 managerSession.close(new NullProgressMonitor());
                 TestsUtil.synchronizationWithUIThread();

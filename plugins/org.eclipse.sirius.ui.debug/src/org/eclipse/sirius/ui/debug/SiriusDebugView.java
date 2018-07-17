@@ -829,7 +829,7 @@ public class SiriusDebugView extends AbstractDebugView {
                             public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                                 ResourceSet rs = new ResourceSetImpl();
                                 final SubMonitor loadingMonitor = SubMonitor.convert(monitor, (int) new File(path).length());
-                                List<URIHandler> handlers = Lists.newArrayList(URIHandler.DEFAULT_HANDLERS);
+                                List<URIHandler> handlers = new ArrayList<URIHandler>(URIHandler.DEFAULT_HANDLERS);
                                 handlers.set(1, new FileURIHandlerImpl() {
                                     @Override
                                     public InputStream createInputStream(URI uri, Map<?, ?> options) throws IOException {
@@ -1100,7 +1100,7 @@ public class SiriusDebugView extends AbstractDebugView {
                     SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
                     if (storedPositions != null) {
                         Map<EObject, Integer> newPositions = readVerticalPositions(sdep);
-                        List<EObject> elements = Lists.newArrayList(newPositions.keySet());
+                        List<EObject> elements = new ArrayList<EObject>(newPositions.keySet());
                         Collections.sort(elements, Ordering.natural().onResultOf(Functions.forMap(newPositions)));
                         TabularReport report = new TabularReport("Semantic element", "Old Position", "New Position", "deltaY");
                         AdapterFactoryLabelProvider lp = new AdapterFactoryLabelProvider(getAdapterFactory());

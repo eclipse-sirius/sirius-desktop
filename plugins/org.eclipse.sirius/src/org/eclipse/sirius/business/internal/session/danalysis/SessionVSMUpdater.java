@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -28,7 +29,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Reload the VSMs used inside a session when the global registry detects their
@@ -51,7 +51,7 @@ public class SessionVSMUpdater implements ViewpointRegistryListener2 {
 
     @Override
     public void modelerDesciptionFilesLoaded() {
-        Collection<Resource> allResources = Lists.newArrayList(session.getTransactionalEditingDomain().getResourceSet().getResources());
+        Collection<Resource> allResources = new ArrayList<Resource>(session.getTransactionalEditingDomain().getResourceSet().getResources());
         for (Resource res : Iterables.filter(allResources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, false))) {
             // Unload emtpy odesign.
             if (!res.isModified() && res.isLoaded() && res.getContents().isEmpty()) {

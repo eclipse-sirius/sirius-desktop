@@ -27,9 +27,6 @@ import org.eclipse.sirius.tests.unit.diagram.sequence.AbstractSequenceSiriusDiag
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.junit.Assert;
 
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 /**
  * Test for the various basic identification and structural navigation methods
  * between sequence diagram elements.
@@ -226,20 +223,20 @@ public class SequenceDiagramElementsSubEventsTests extends AbstractSequenceSiriu
         Assert.assertEquals("Wrong parameters : subs should be the sum of the other numbers.", subs, execs + cfs + ius + msgs + ops + states);
 
         List<ISequenceEvent> subEvents = ise.getSubEvents();
-        List<InteractionUse> subIUs = Lists.newArrayList(Iterables.filter(subEvents, InteractionUse.class));
-        List<CombinedFragment> subCFs = Lists.newArrayList(Iterables.filter(subEvents, CombinedFragment.class));
-        List<Execution> subExecs = Lists.newArrayList(Iterables.filter(subEvents, Execution.class));
-        List<Message> subMsgs = Lists.newArrayList(Iterables.filter(subEvents, Message.class));
-        List<Operand> subOps = Lists.newArrayList(Iterables.filter(subEvents, Operand.class));
-        List<State> subStates = Lists.newArrayList(Iterables.filter(subEvents, State.class));
+        long subIUs = subEvents.stream().filter(InteractionUse.class::isInstance).count();
+        long subCFs = subEvents.stream().filter(CombinedFragment.class::isInstance).count();
+        long subExecs = subEvents.stream().filter(Execution.class::isInstance).count();
+        long subMsgs = subEvents.stream().filter(Message.class::isInstance).count();
+        long subOps = subEvents.stream().filter(Operand.class::isInstance).count();
+        long subStates = subEvents.stream().filter(State.class::isInstance).count();
 
         Assert.assertEquals(subs, subEvents.size());
-        Assert.assertEquals(execs, subExecs.size());
-        Assert.assertEquals(ius, subIUs.size());
-        Assert.assertEquals(cfs, subCFs.size());
-        Assert.assertEquals(ops, subOps.size());
-        Assert.assertEquals(msgs, subMsgs.size());
-        Assert.assertEquals(states, subStates.size());
+        Assert.assertEquals(execs, subExecs);
+        Assert.assertEquals(ius, subIUs);
+        Assert.assertEquals(cfs, subCFs);
+        Assert.assertEquals(ops, subOps);
+        Assert.assertEquals(msgs, subMsgs);
+        Assert.assertEquals(states, subStates);
 
     }
 }

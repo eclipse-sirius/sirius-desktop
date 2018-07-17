@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -22,14 +24,13 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ViewpointSelectionDialog;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTableItem;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-
-import com.google.common.collect.Sets;
 
 /**
  * This tests for a bug (VP-2529) when a viewpoint which contains a
@@ -106,7 +107,7 @@ public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCas
             UILocalSession session = designerPerspective.openSessionCreationWizardFromSemanticResource(semanticResource).fromAlreadySelectedSemanticResource().withDefaultSessionName().finish()
                     .selectNoViewpoint();
 
-            session.changeViewpointSelection(Sets.newHashSet("Base", "Extension_A", "Extension_B"), Collections.<String> emptySet());
+            session.changeViewpointSelection(new HashSet<String>(Arrays.asList("Base", "Extension_A", "Extension_B")), Collections.<String> emptySet());
             SWTBotTreeItem mainPackage = session.getSemanticResourceNode(semanticResource).getNode("package");
             UIDiagramRepresentation diagram = session.newDiagramRepresentation("new " + DIAGRAM_NAME, DIAGRAM_NAME).on(mainPackage).withDefaultName().ok();
             /*
@@ -193,7 +194,7 @@ public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCas
          * and try to create a diagram.
          */
         bot.button("Cancel").click();
-        session.changeViewpointSelection(Sets.newHashSet("Base", "Extension_A"), Collections.<String> emptySet());
+        session.changeViewpointSelection(new HashSet<String>(Arrays.asList("Base", "Extension_A")), Collections.<String> emptySet());
         SWTBotTreeItem mainPackage = session.getSemanticResourceNode(semanticResource).getNode("package");
         UIDiagramRepresentation diagram = session.newDiagramRepresentation("new " + DIAGRAM_NAME, DIAGRAM_NAME).on(mainPackage).withDefaultName().ok();
 

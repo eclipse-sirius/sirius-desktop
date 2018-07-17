@@ -246,7 +246,7 @@ public class AbstractSiriusLayoutDataManagerForSemanticElementsTest extends Siri
 
         final List<Diagram> result = new ArrayList<>();
 
-        final List<DRepresentation> allDDiagrams = Lists.newArrayList(getRepresentations(representation.name));
+        final List<DRepresentation> allDDiagrams = new ArrayList<DRepresentation>(getRepresentations(representation.name));
 
         assertEquals("The number of expected diagrams is wrong", representation.diagrams.size(), allDDiagrams.size());
 

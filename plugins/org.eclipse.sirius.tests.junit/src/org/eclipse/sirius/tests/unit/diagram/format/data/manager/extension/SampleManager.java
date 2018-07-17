@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,8 +34,6 @@ import org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.keys.
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.collect.Lists;
 
 /**
  * Sample {@link SiriusFormatDataManager} to able to copy/paste format regarding
@@ -146,7 +145,7 @@ public class SampleManager extends AbstractSiriusFormatDataManager implements Si
      * Remove keys with dangling semantic {@link EObject} from cache.
      */
     private void cleanCache() {
-        for (AbstractSampleFormatDataKey key : Lists.newArrayList(formatDataMap.keySet())) {
+        for (AbstractSampleFormatDataKey key : new ArrayList<AbstractSampleFormatDataKey>(formatDataMap.keySet())) {
             if (!validateKey(key)) {
                 formatDataMap.remove(key);
             }

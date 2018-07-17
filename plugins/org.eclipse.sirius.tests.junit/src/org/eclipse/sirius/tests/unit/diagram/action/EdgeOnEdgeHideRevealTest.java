@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.action;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -279,14 +280,14 @@ public class EdgeOnEdgeHideRevealTest extends AbstractEdgeOnEdgeTest {
     private void checkForHiddenElements(final DDiagram diagram, DDiagramElement... elementsThatShouldHaveHidden) {
 
         // We first get all the elements that should have visible
-        HashSet<DDiagramElement> allDiagramElements = Sets.newHashSet(diagram.getOwnedDiagramElements());
+        HashSet<DDiagramElement> allDiagramElements = new HashSet<DDiagramElement>(diagram.getOwnedDiagramElements());
         for (DDiagramElement diagramElement : diagram.getOwnedDiagramElements()) {
             Iterator<DDiagramElement> filter = Iterables.filter(diagramElement.eContents(), DDiagramElement.class).iterator();
             while (filter.hasNext()) {
                 allDiagramElements.add(filter.next());
             }
         }
-        SetView<DDiagramElement> elementsThatShouldHaveVisible = Sets.difference(allDiagramElements, Sets.newHashSet(elementsThatShouldHaveHidden));
+        SetView<DDiagramElement> elementsThatShouldHaveVisible = Sets.difference(allDiagramElements, new HashSet<DDiagramElement>(Arrays.asList(elementsThatShouldHaveHidden)));
 
         // And ensure that all these elements have visible
         for (DDiagramElement elementThatShouldHaveVisible : elementsThatShouldHaveVisible) {
@@ -314,7 +315,7 @@ public class EdgeOnEdgeHideRevealTest extends AbstractEdgeOnEdgeTest {
     private Action buildRevealLabelAction(final DDiagramElement... diagramElementsToRevealLabelFrom) {
         return new Action() {
             public void run() {
-                Set<DDiagramElement> dDiagramElements = Sets.newHashSet(diagramElementsToRevealLabelFrom);
+                Set<DDiagramElement> dDiagramElements = new HashSet<DDiagramElement>(Arrays.asList(diagramElementsToRevealLabelFrom));
                 if (!dDiagramElements.isEmpty()) {
                     TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(dDiagramElements.iterator().next());
                     editingDomain.getCommandStack().execute(new RevealDDiagramElementsLabel(editingDomain, dDiagramElements));
@@ -334,7 +335,7 @@ public class EdgeOnEdgeHideRevealTest extends AbstractEdgeOnEdgeTest {
     private Action buildRevealAction(final DDiagramElement... diagramElementsToRevealFrom) {
         return new Action() {
             public void run() {
-                Set<DDiagramElement> dDiagramElements = Sets.newHashSet(diagramElementsToRevealFrom);
+                Set<DDiagramElement> dDiagramElements = new HashSet<DDiagramElement>(Arrays.asList(diagramElementsToRevealFrom));
                 if (!dDiagramElements.isEmpty()) {
                     TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(dDiagramElements.iterator().next());
                     editingDomain.getCommandStack().execute(new RevealDDiagramElements(editingDomain, dDiagramElements));

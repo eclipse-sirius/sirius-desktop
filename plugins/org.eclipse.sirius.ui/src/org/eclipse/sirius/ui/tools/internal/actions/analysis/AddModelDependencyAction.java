@@ -11,6 +11,8 @@
 package org.eclipse.sirius.ui.tools.internal.actions.analysis;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -34,8 +36,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-
-import com.google.common.collect.Lists;
 
 /**
  * Action to add a model dependency to a modeling project.
@@ -83,9 +83,9 @@ public class AddModelDependencyAction extends Action {
     public void run() {
         super.run();
 
-        final IAddModelDependencyWizard wizard = IAddModelDependencyWizardRegistry.getCreateOrAddModelDependencyWizard(Lists.newArrayList(this.session));
+        final IAddModelDependencyWizard wizard = IAddModelDependencyWizardRegistry.getCreateOrAddModelDependencyWizard(new ArrayList<Session>(Arrays.asList(this.session)));
         if (wizard != null) {
-            wizard.setSessions(Lists.newArrayList(this.session));
+            wizard.setSessions(new ArrayList<Session>(Arrays.asList(this.session)));
             final WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), wizard);
             dialog.create();
             dialog.getShell().setText(wizard.getWizardTitle());

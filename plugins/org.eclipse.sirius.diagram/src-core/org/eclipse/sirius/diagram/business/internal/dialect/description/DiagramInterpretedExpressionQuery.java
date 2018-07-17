@@ -11,8 +11,10 @@
 package org.eclipse.sirius.diagram.business.internal.dialect.description;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -109,7 +111,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
 
     private static final String DIAGRAM_D_EDGE_TYPE = "diagram.DEdge"; //$NON-NLS-1$
 
-    private static final VariableType EDGE_TARGET_POSSIBILITIES = VariableType.fromStrings(Sets.newHashSet(DIAGRAM_D_EDGE_TYPE, DIAGRAM_D_NODE, DIAGRAM_D_DIAGRAM_ELEMENT_CONTAINER));
+    private static final VariableType EDGE_TARGET_POSSIBILITIES = VariableType.fromStrings(new HashSet<String>(Arrays.asList(DIAGRAM_D_EDGE_TYPE, DIAGRAM_D_NODE, DIAGRAM_D_DIAGRAM_ELEMENT_CONTAINER)));
 
     /**
      * Default constructor.

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.tools;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -24,8 +25,6 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-
-import com.google.common.collect.Lists;
 
 /**
  * Check selection in diagram after tool execution.
@@ -58,8 +57,8 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
     protected void setUp() throws Exception {
         super.setUp();
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SEMANTIC_RESOURCE_NAME, REPRESENTATIONS_RESOURCE_NAME, MODELER_RESOURCE_NAME);
-        genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME), Lists.newArrayList(TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME), TEMPORARY_PROJECT_NAME
-                + "/" + REPRESENTATIONS_RESOURCE_NAME);
+        genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME), Arrays.asList(TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME),
+                TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME);
 
         diagramForSelection = (DDiagram) getRepresentations("Diagram", semanticModel).iterator().next();
         editorForSelection = (DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagramForSelection, new NullProgressMonitor());
@@ -86,7 +85,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         applyContainerCreationTool(CONTAINER_CREATION_TOOL, diagramForSelection, nodeA);
         TestsUtil.synchronizationWithUIThread();
         // check inverted default selection
-        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("Edge source:NodeList SubA", "NodeList SubA"), 2);
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList("Edge source:NodeList SubA", "NodeList SubA"), 2);
 
         changeSelectionExpression(tool, "[/]", true);
         TestsUtil.synchronizationWithUIThread();
@@ -100,7 +99,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         applyContainerCreationTool(CONTAINER_CREATION_TOOL, diagramForSelection, nodeB);
         TestsUtil.synchronizationWithUIThread();
         // check the selection containing a DRepresentationElement
-        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("NodeList SubB"), 1);
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList("NodeList SubB"), 1);
     }
 
     /**
@@ -116,20 +115,20 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         applyContainerCreationTool(CONTAINER_CREATION_TOOL2, diagramForSelection, nodeA);
         TestsUtil.synchronizationWithUIThread();
         // check default selection
-        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("NodeList SubA_1", "NodeList SubA_2", "Edge source:NodeList SubA_1", "Edge source:NodeList SubA_2"), 4);
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList("NodeList SubA_1", "NodeList SubA_2", "Edge source:NodeList SubA_1", "Edge source:NodeList SubA_2"), 4);
 
         changeSelectionExpression(tool, "", true);
         applyContainerCreationTool(CONTAINER_CREATION_TOOL2, diagramForSelection, nodeA);
         TestsUtil.synchronizationWithUIThread();
         // check inverted default selection
-        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("Edge source:NodeList SubA_2", "Edge source:NodeList SubA_1", "NodeList SubA_2", "NodeList SubA_1"), 4);
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList("Edge source:NodeList SubA_2", "Edge source:NodeList SubA_1", "NodeList SubA_2", "NodeList SubA_1"), 4);
 
         changeSelectionExpression(tool, "[subClass->asSequence()->including(subClass2)/]", false);
         applyContainerCreationTool(CONTAINER_CREATION_TOOL2, diagramForSelection, nodeA);
         TestsUtil.synchronizationWithUIThread();
         // check that selection is the same as default when all semantic element
         // are found
-        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("NodeList SubA_1", "Edge source:NodeList SubA_1", "NodeList SubA_2", "Edge source:NodeList SubA_2"), 4);
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList("NodeList SubA_1", "Edge source:NodeList SubA_1", "NodeList SubA_2", "Edge source:NodeList SubA_2"), 4);
 
         changeSelectionExpression(tool, "[subClass2->asSequence()->including(subClass)/]", true);
         applyContainerCreationTool(CONTAINER_CREATION_TOOL2, diagramForSelection, nodeA);
@@ -137,14 +136,14 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         // check that the order is reverted. Both the lists of several
         // graphical elements corresponding to the same semantic element AND the
         // element in each list must be reverted
-        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("Edge source:NodeList SubA_1", "NodeList SubA_1", "Edge source:NodeList SubA_2", "NodeList SubA_2"), 4);
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList("Edge source:NodeList SubA_1", "NodeList SubA_1", "Edge source:NodeList SubA_2", "NodeList SubA_2"), 4);
 
         changeSelectionExpression(tool, "[subClass2/]", true);
         TestsUtil.synchronizationWithUIThread();
         applyContainerCreationTool(CONTAINER_CREATION_TOOL2, diagramForSelection, nodeA);
         TestsUtil.synchronizationWithUIThread();
         // check the selection with subSet of created semantic elements
-        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("Edge source:NodeList SubA_2", "NodeList SubA_2"), 2);
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList("Edge source:NodeList SubA_2", "NodeList SubA_2"), 2);
     }
 
     /**
@@ -166,7 +165,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         applyEdgeCreationTool(EDGE_CREATION_TOOL, diagramForSelection, ((EdgeTarget) nodeA), ((EdgeTarget) nodeB));
         TestsUtil.synchronizationWithUIThread();
         // check the selection with a DRepresentationElement
-        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("Edge source:Node"), 1);
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList("Edge source:Node"), 1);
     }
 
     /**
@@ -179,7 +178,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         applyGenericTool(GENERIC_CREATION_TOOL, diagramForSelection, diagramForSelection);
         TestsUtil.synchronizationWithUIThread();
         // check the selection
-        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("NodeList Component"), 1);
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList("NodeList Component"), 1);
     }
 
     /**
@@ -203,7 +202,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
 
         // check the selection
-        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("NodeList A1", "NodeList B", "NodeList C"), 3);
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList("NodeList A1", "NodeList B", "NodeList C"), 3);
 
         changeSelectionExpression(tool, "", false);
         TestsUtil.synchronizationWithUIThread();
@@ -211,7 +210,7 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
 
         // check the selection is the same than previous
-        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("NodeList A2", "NodeList B", "NodeList C"), 3);
+        checkExpectedElementsInSelection(editorForSelection, Arrays.asList("NodeList A2", "NodeList B", "NodeList C"), 3);
     }
 
     /**

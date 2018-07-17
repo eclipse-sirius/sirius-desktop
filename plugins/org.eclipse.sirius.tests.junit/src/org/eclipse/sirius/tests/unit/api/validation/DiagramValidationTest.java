@@ -44,9 +44,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-
 /**
  * Validation tests.
  * 
@@ -213,12 +210,7 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
      * @return first valid {@link DNode} found
      */
     private DDiagramElement getGraphicNodeElement(final EObject target) {
-        return Iterables.find(diagram.getDiagramElements(), new Predicate<DDiagramElement>() {
-            @Override
-            public boolean apply(DDiagramElement element) {
-                return element instanceof DNode && element.getTarget() == target;
-            }
-        });
+        return diagram.getDiagramElements().stream().filter(element->element instanceof DNode && element.getTarget() == target).findFirst().orElse(null);
     }
 
     /**

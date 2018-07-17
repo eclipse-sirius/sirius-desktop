@@ -145,7 +145,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
         scope.add(org.eclipse.sirius.tree.description.DescriptionPackage.eINSTANCE);
 
         // Look for descriptions sub packages.
-        for (EPackage pkg : Lists.newArrayList(scope)) {
+        for (EPackage pkg : new ArrayList<EPackage>(scope)) {
             scope.addAll(pkg.getESubpackages());
         }
 
@@ -301,7 +301,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
 
     private void analyzeResult(StringBuilder sb, Collection<EAttribute> abstractIntExp, Collection<EAttribute> instanciatedIntExp, Collection<EAttribute> nonDirectlyInstanciatedIntExp) {
         if (!nonDirectlyInstanciatedIntExp.isEmpty()) {
-            Set<EAttribute> neverInstanciatedExpressionOfConcreteTypes = Sets.newHashSet(nonDirectlyInstanciatedIntExp);
+            Set<EAttribute> neverInstanciatedExpressionOfConcreteTypes = new HashSet<EAttribute>(nonDirectlyInstanciatedIntExp);
             neverInstanciatedExpressionOfConcreteTypes.removeAll(instanciatedIntExp);
             data_expression_without_instance = neverInstanciatedExpressionOfConcreteTypes.size();
             if (!neverInstanciatedExpressionOfConcreteTypes.isEmpty()) {
@@ -379,7 +379,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
         tested.addAll(test_expression_ok.elementSet());
         tested.addAll(test_expression_issue.elementSet());
 
-        List<EAttribute> nonTested = Lists.newArrayList(data_defined_expressions);
+        List<EAttribute> nonTested = new ArrayList<EAttribute>(data_defined_expressions);
         nonTested.removeAll(tested);
 
         sb.append("Error Report:" + NEW_LINE);
@@ -414,7 +414,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
         StringBuilder sb = new StringBuilder();
         if (!issues.isEmpty()) {
             sb.append("Failed to get the target domain Class for the interpreted expressions: \n");
-            List<String> sortedIssues = Lists.newArrayList(issues);
+            List<String> sortedIssues = new ArrayList<String>(issues);
             Collections.sort(sortedIssues);
             for (String interpretedExpressionMessage : sortedIssues) {
                 sb.append(PUCE + interpretedExpressionMessage + NEW_LINE);

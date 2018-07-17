@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.find;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -28,7 +29,6 @@ import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
 
 /**
  * A basic implementation of the AbstractFindLabelEngine. This engine simple
@@ -138,7 +138,7 @@ public class BasicFindLabelEngine extends AbstractFindLabelEngine {
 
     private Collection<? extends EditPart> findAllEditParts() {
         final DiagramEditPart diagram = editor.getDiagramEditPart();
-        final Collection<? extends EditPart> roots = Lists.newArrayList(diagram);
+        final Collection<? extends EditPart> roots = new ArrayList<>(Arrays.asList(diagram));
         roots.addAll(diagram.getConnections());
         final Collection<? extends EditPart> editParts = new ArrayList<>();
         for (EditPart root : roots) {

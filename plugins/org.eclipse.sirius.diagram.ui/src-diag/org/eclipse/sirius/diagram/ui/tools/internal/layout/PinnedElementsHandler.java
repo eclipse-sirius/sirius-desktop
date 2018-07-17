@@ -30,6 +30,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
@@ -45,8 +46,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -146,12 +145,12 @@ public class PinnedElementsHandler {
     /**
      * All the edit parts to consider for the layout, ordered by their position.
      */
-    private final SortedSet<IGraphicalEditPart> allEditParts = Sets.newTreeSet(positionComparator);
+    private final SortedSet<IGraphicalEditPart> allEditParts = new TreeSet<IGraphicalEditPart>(positionComparator);
 
     /**
      * All the pinned edit parts. A subset of <code>allEditParts</code>.
      */
-    private final SortedSet<IGraphicalEditPart> fixedEditParts = Sets.newTreeSet(positionComparator);
+    private final SortedSet<IGraphicalEditPart> fixedEditParts = new TreeSet<IGraphicalEditPart>(positionComparator);
 
     /**
      * The initial bounds of the edit parts, as computed by previous layout
@@ -196,11 +195,11 @@ public class PinnedElementsHandler {
         this.isPinned = new IsPinnedPredicate(this.elementsToKeepFixed);
         this.fixedEditParts.addAll(Collections2.filter(parts, isPinned));
         this.layoutCustomization = new DiagramLayoutCustomization();
-        this.layoutCustomization.initializePaddingWithEditParts(Lists.newArrayList(parts));
+        this.layoutCustomization.initializePaddingWithEditParts(new ArrayList<IGraphicalEditPart>(parts));
     }
 
     private Map<IGraphicalEditPart, Rectangle> getAllInitialPositions(final Collection<IGraphicalEditPart> parts, final Map<IGraphicalEditPart, Rectangle> explicitBounds) {
-        final Map<IGraphicalEditPart, Rectangle> result = Maps.newHashMap(explicitBounds);
+        final Map<IGraphicalEditPart, Rectangle> result = new HashMap<IGraphicalEditPart, Rectangle>(explicitBounds);
         for (IGraphicalEditPart part : parts) {
             if (!result.containsKey(part)) {
                 final Rectangle bounds = part.getFigure().getBounds().getCopy();
@@ -274,7 +273,7 @@ public class PinnedElementsHandler {
      */
     private void packHorizontally() {
         final int[] hRange = getHorizontalRange(allEditParts, EXCLUDE_PADDING);
-        final List<IGraphicalEditPart> movableParts = Lists.newArrayList(Collections2.filter(allEditParts, Predicates.not(isPinned)));
+        final List<IGraphicalEditPart> movableParts = new ArrayList<IGraphicalEditPart>(Collections2.filter(allEditParts, Predicates.not(isPinned)));
         Collections.sort(movableParts, leftToRightComparator);
         for (int i = 0; i < movableParts.size(); i++) {
             /*
@@ -282,7 +281,7 @@ public class PinnedElementsHandler {
              * i. If there is a sufficiently large gap between the two groups,
              * move the elements of the right group to the left.
              */
-            final Set<IGraphicalEditPart> leftSide = Sets.newHashSet(movableParts.subList(0, i));
+            final Set<IGraphicalEditPart> leftSide = new HashSet<IGraphicalEditPart>(movableParts.subList(0, i));
             final Rectangle leftBox;
             final Insets leftPadding;
             if (i == 0) {
@@ -295,7 +294,7 @@ public class PinnedElementsHandler {
                 leftPadding = getPadding(leftSide);
             }
 
-            final Set<IGraphicalEditPart> rightSide = Sets.newHashSet(movableParts.subList(i, movableParts.size()));
+            final Set<IGraphicalEditPart> rightSide = new HashSet<IGraphicalEditPart>(movableParts.subList(i, movableParts.size()));
             final Rectangle rightBox = getBoundingBox(rightSide, EXCLUDE_PADDING);
             final Insets rightPadding = getPadding(rightSide);
 
@@ -399,7 +398,7 @@ public class PinnedElementsHandler {
      */
     private void packVertically() {
         final int[] vRange = getVerticalRange(allEditParts, EXCLUDE_PADDING);
-        final List<IGraphicalEditPart> movableParts = Lists.newArrayList(Collections2.filter(allEditParts, Predicates.not(isPinned)));
+        final List<IGraphicalEditPart> movableParts = new ArrayList<IGraphicalEditPart>(Collections2.filter(allEditParts, Predicates.not(isPinned)));
         Collections.sort(movableParts, topToBottomComparator);
         for (int i = 0; i < movableParts.size(); i++) {
             /*
@@ -407,7 +406,7 @@ public class PinnedElementsHandler {
              * i. If there is a sufficiently large gap between the two groups,
              * move the elements of the bottom group to the top.
              */
-            final Set<IGraphicalEditPart> topSide = Sets.newHashSet(movableParts.subList(0, i));
+            final Set<IGraphicalEditPart> topSide = new HashSet<IGraphicalEditPart>(movableParts.subList(0, i));
             final Rectangle topBox;
             final Insets topPadding;
             if (i == 0) {
@@ -420,7 +419,7 @@ public class PinnedElementsHandler {
                 topPadding = getPadding(topSide);
             }
 
-            final Set<IGraphicalEditPart> bottomSide = Sets.newHashSet(movableParts.subList(i, movableParts.size()));
+            final Set<IGraphicalEditPart> bottomSide = new HashSet<IGraphicalEditPart>(movableParts.subList(i, movableParts.size()));
             final Rectangle bottomBox = getBoundingBox(bottomSide, EXCLUDE_PADDING);
             final Insets bottomPadding = getPadding(bottomSide);
 
@@ -553,7 +552,7 @@ public class PinnedElementsHandler {
             Set<IGraphicalEditPart> newMovables = parts;
             Set<IGraphicalEditPart> newFixed = fixedParts;
 
-            final Set<IGraphicalEditPart> movableOverlaps = Sets.newHashSet(Collections2.filter(overlaps, Predicates.not(isPinned)));
+            final Set<IGraphicalEditPart> movableOverlaps = new HashSet<IGraphicalEditPart>(Collections2.filter(overlaps, Predicates.not(isPinned)));
             if (!movableOverlaps.isEmpty()) {
                 /*
                  * If we created new overlaps with movable parts, simply re-try
@@ -563,7 +562,7 @@ public class PinnedElementsHandler {
                 newMovables = Sets.union(parts, movableOverlaps);
             }
 
-            final Set<IGraphicalEditPart> fixedOverlaps = Sets.newHashSet(Collections2.filter(overlaps, isPinned));
+            final Set<IGraphicalEditPart> fixedOverlaps = new HashSet<IGraphicalEditPart>(Collections2.filter(overlaps, isPinned));
             if (!fixedOverlaps.isEmpty()) {
                 /*
                  * If we created new overlaps with other fixed parts, re-try
@@ -732,7 +731,7 @@ public class PinnedElementsHandler {
         for (IGraphicalEditPart part : parts) {
             final Direction dir = getDirection(origin, part);
             if (!result.containsKey(dir)) {
-                result.put(dir, Sets.newTreeSet(positionComparator));
+                result.put(dir, new TreeSet<IGraphicalEditPart>(positionComparator));
             }
             result.get(dir).add(part);
         }

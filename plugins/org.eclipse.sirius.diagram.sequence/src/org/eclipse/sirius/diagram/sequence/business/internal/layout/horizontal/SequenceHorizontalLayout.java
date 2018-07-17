@@ -51,7 +51,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
@@ -312,7 +311,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
                 Range potentialRange = ranges.get(potentialChild);
 
                 if (frame != potentialChild && frameCoverage.containsAll(potentialCoverage) && frameRange.includes(potentialRange)) {
-                    ArrayList<AbstractFrame> newArrayList = Lists.newArrayList(framesToIgnore);
+                    ArrayList<AbstractFrame> newArrayList = new ArrayList<AbstractFrame>(framesToIgnore);
                     newArrayList.add(potentialChild);
                     children = Math.max(children, 1 + getOrComputeMaxChildrenDepth(potentialChild, newArrayList));
                 }

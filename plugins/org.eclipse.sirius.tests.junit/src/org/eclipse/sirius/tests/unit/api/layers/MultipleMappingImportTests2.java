@@ -32,9 +32,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-
 public class MultipleMappingImportTests2 extends SiriusDiagramTestCase implements MultipleMapppingImportsModeler {
 
     @Override
@@ -162,11 +159,7 @@ public class MultipleMappingImportTests2 extends SiriusDiagramTestCase implement
     }
 
     private DDiagramElement findByTargetName(final List<DDiagramElement> list, final String targetName) {
-        DDiagramElement found = Iterables.find(list, new Predicate<DDiagramElement>() {
-            public boolean apply(DDiagramElement input) {
-                return input.getTarget() instanceof ENamedElement && targetName.equals(((ENamedElement) input.getTarget()).getName());
-            }
-        });
+        DDiagramElement found = list.stream().filter(input->input.getTarget() instanceof ENamedElement && targetName.equals(((ENamedElement) input.getTarget()).getName())).findFirst().orElse(null);
         assertNotNull("'" + targetName + "' element not found", found);
         return found;
     }

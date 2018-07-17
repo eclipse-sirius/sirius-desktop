@@ -15,8 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.Maps;
-
 /**
  * The implementation of the {@link IVariableManager}.
  *
@@ -69,7 +67,7 @@ public class VariableManager implements IVariableManager {
 			parentVariables.putAll(this.variables);
 			return parentVariables;
 		}
-		return Maps.newHashMap(this.variables);
+		return new HashMap<String, Object>(this.variables);
 	}
 
 	@Override

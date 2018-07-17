@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -88,7 +89,7 @@ class PolymorphicService implements IPolymorphicService {
 
     @Override
     public Collection<Method> getImplementations() {
-        Collection<Method> result = Lists.newArrayList();
+        Collection<Method> result = new ArrayList<Method>();
         for (IMonomorphicService svc : this.implementers) {
             result.addAll(svc.getImplementations());
         }

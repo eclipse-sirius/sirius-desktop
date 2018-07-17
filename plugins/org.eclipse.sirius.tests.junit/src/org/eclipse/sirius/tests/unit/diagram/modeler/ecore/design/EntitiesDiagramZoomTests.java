@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -33,8 +34,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
-
-import com.google.common.collect.Lists;
 
 /**
  * Zoom tests for Entities diagram of ecore modeler.
@@ -144,7 +143,7 @@ public class EntitiesDiagramZoomTests extends SiriusDiagramTestCase implements E
     }
 
     private void checkZoomLevelAvailable(String zoomLevel) {
-        List<String> levels = Lists.newArrayList(zoomManager.getZoomLevelsAsText());
+        List<String> levels = Arrays.asList(zoomManager.getZoomLevelsAsText());
         assertTrue("Zoom level '" + zoomLevel + "' is not available.", levels.contains(zoomLevel));
     }
 

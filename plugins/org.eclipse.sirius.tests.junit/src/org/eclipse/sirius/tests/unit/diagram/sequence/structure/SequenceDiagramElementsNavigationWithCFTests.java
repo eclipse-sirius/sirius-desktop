@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.sequence.structure;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
@@ -22,8 +23,6 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.unit.diagram.sequence.AbstractSequenceSiriusDiagramTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.junit.Assert;
-
-import com.google.common.collect.Lists;
 
 /**
  * Test for the various basic identification and structural navigation methods
@@ -72,12 +71,12 @@ public class SequenceDiagramElementsNavigationWithCFTests extends AbstractSequen
 
     public void test_find_all_interaction_uses_on_diagram() {
         Option<SequenceDiagram> sequenceDiagram = openSequenceDiagramOfType(BASIC_INTERACTION_USE_DIAGRAM, REPRESENTATION_TYPE);
-        List<InteractionUse> ius = Lists.newArrayList(sequenceDiagram.get().getAllInteractionUses());
+        List<InteractionUse> ius = new ArrayList<InteractionUse>(sequenceDiagram.get().getAllInteractionUses());
         Assert.assertNotNull(ius);
         Assert.assertEquals(2, ius.size());
         for (int i = 1; i <= 2; i++) {
             Assert.assertTrue(getInteractionUseByName(ius, "ref" + i).some());
-            List<Lifeline> coveredLifelines = Lists.newArrayList(ius.get(i - 1).computeCoveredLifelines());
+            List<Lifeline> coveredLifelines = new ArrayList<Lifeline>(ius.get(i - 1).computeCoveredLifelines());
             Assert.assertTrue(coveredLifelines.size() == 1);
             Assert.assertEquals("p" + i, getLifelineSemanticName(coveredLifelines.get(0)));
         }
@@ -85,14 +84,14 @@ public class SequenceDiagramElementsNavigationWithCFTests extends AbstractSequen
 
     public void test_find_all_combined_fragments_on_diagram() {
         Option<SequenceDiagram> sequenceDiagram = openSequenceDiagramOfType(BASIC_COMBINED_FRAGMENT_DIAGRAM, REPRESENTATION_TYPE);
-        List<CombinedFragment> cfs = Lists.newArrayList(sequenceDiagram.get().getAllCombinedFragments());
+        List<CombinedFragment> cfs = new ArrayList<CombinedFragment>(sequenceDiagram.get().getAllCombinedFragments());
         Assert.assertNotNull(cfs);
         Assert.assertEquals(2, cfs.size());
         for (int i = 1; i <= 2; i++) {
             Assert.assertTrue(getCombinedFragmentByName(cfs, "opt" + i).some());
             CombinedFragment combinedFragment = cfs.get(i - 1);
             Assert.assertEquals("op" + i, getOperandSemanticName(combinedFragment.getOperands().get(0)));
-            List<Lifeline> coveredLifelines = Lists.newArrayList(combinedFragment.computeCoveredLifelines());
+            List<Lifeline> coveredLifelines = new ArrayList<Lifeline>(combinedFragment.computeCoveredLifelines());
             Assert.assertTrue(coveredLifelines.size() == 1);
             Assert.assertEquals("p" + i, getLifelineSemanticName(coveredLifelines.get(0)));
         }
@@ -100,7 +99,7 @@ public class SequenceDiagramElementsNavigationWithCFTests extends AbstractSequen
 
     public void test_find_all_operands_on_diagram() {
         Option<SequenceDiagram> sequenceDiagram = openSequenceDiagramOfType(BASIC_COMBINED_FRAGMENT_DIAGRAM, REPRESENTATION_TYPE);
-        List<Operand> ops = Lists.newArrayList(sequenceDiagram.get().getAllOperands());
+        List<Operand> ops = new ArrayList<Operand>(sequenceDiagram.get().getAllOperands());
         Assert.assertNotNull(ops);
         Assert.assertEquals(2, ops.size());
         for (int i = 1; i <= 2; i++) {
