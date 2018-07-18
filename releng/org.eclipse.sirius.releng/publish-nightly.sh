@@ -128,7 +128,9 @@ create_redirect "$TARGET_ROOT/$STREAM/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLA
 cp -dR "$WKS"/packaging/org.eclipse.sirius.update/target/org.eclipse.sirius.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius-$VERSION-$PLATFORM.zip"
 create_redirect "$TARGET_ROOT/$STREAM/$PLATFORM/tests" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/tests"
 cp -dR "$WKS"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius.tests-$VERSION-$PLATFORM.zip"
-rm -r "$TARGET_ROOT/$STREAM/$PLATFORM/targets"
+if [ -e "$TARGET_ROOT/$STREAM/$PLATFORM/targets" ];
+    rm -r "$TARGET_ROOT/$STREAM/$PLATFORM/targets"
+fi
 cp -a "$TARGET_DIR/targets" "$TARGET_ROOT/$STREAM/$PLATFORM/targets"
 # Also update the global "latest" links if we are building master
 if [ "origin/master" = "$GIT_BRANCH" ]; then
@@ -136,6 +138,8 @@ if [ "origin/master" = "$GIT_BRANCH" ]; then
     cp -dR "$WKS"/packaging/org.eclipse.sirius.update/target/org.eclipse.sirius.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius-$VERSION-$PLATFORM.zip"
     create_redirect "$TARGET_ROOT/latest/$PLATFORM/tests" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/tests"
     cp -dR "$WKS"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius.tests-$VERSION-$PLATFORM.zip"
-    rm -r "$TARGET_ROOT/latest/$PLATFORM/targets"
+    if [ -e "$TARGET_ROOT/latest/$PLATFORM/targets" ];
+        rm -r "$TARGET_ROOT/latest/$PLATFORM/targets"
+    fi
     cp -a "$TARGET_DIR/targets" "$TARGET_ROOT/latest/$PLATFORM/targets"
 fi
