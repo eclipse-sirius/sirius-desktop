@@ -32,6 +32,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLConnection;
 import org.eclipse.sirius.services.graphql.internal.schema.ISiriusGraphQLTypesBuilder;
+import org.eclipse.sirius.services.graphql.internal.schema.directives.SiriusGraphQLCostDirective;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLConnectionTypeBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLEdgeTypeBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLPaginationArguments;
@@ -73,6 +74,11 @@ public class SiriusGraphQLFileTypesBuilder implements ISiriusGraphQLTypesBuilder
      */
     private static final String REPRESENTATIONS = "representations"; //$NON-NLS-1$
 
+    /**
+     * The complexity of the retrieval of a representation.
+     */
+    private static final int COMPLEXITY = 10;
+
     @Override
     public Set<GraphQLType> getTypes() {
         GraphQLObjectType representationEdge = new SiriusGraphQLEdgeTypeBuilder(FILE_REPRESENTATION_EDGE_TYPE, REPRESENTATION_TYPE).build();
@@ -103,11 +109,16 @@ public class SiriusGraphQLFileTypesBuilder implements ISiriusGraphQLTypesBuilder
      * @return The representations field.
      */
     private GraphQLFieldDefinition getRepresentationsField() {
+        List<String> multipliers = new ArrayList<>();
+        multipliers.add(SiriusGraphQLPaginationArguments.FIRST_ARG);
+        multipliers.add(SiriusGraphQLPaginationArguments.LAST_ARG);
+
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(REPRESENTATIONS)
                 .type(new GraphQLTypeReference(FILE_REPRESENTATION_CONNECTION_TYPE))
                 .argument(SiriusGraphQLPaginationArguments.build())
+                .withDirective(new SiriusGraphQLCostDirective(COMPLEXITY, multipliers).build())
                 .dataFetcher(this.getRepresentationsDataFetcher())
                 .build();
         // @formatter:on

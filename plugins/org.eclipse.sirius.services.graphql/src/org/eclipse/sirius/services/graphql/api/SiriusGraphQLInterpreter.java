@@ -12,7 +12,12 @@ package org.eclipse.sirius.services.graphql.api;
 
 import java.util.Map;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLMessages;
+import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLPlugin;
 import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLQueryResult;
+import org.eclipse.sirius.services.graphql.internal.schema.SiriusGraphQLContext;
 import org.eclipse.sirius.services.graphql.internal.schema.SiriusGraphQLSchemaBuilder;
 
 import graphql.ExecutionInput;
@@ -26,6 +31,16 @@ import graphql.schema.GraphQLSchema;
  * @author sbegaudeau
  */
 public class SiriusGraphQLInterpreter {
+
+    /**
+     * The constant used to set a custom value for the max cost allowed in a GraphQL query.
+     */
+    private static final String MAX_COST = "org.eclipse.sirius.services.graphql.cost"; //$NON-NLS-1$
+
+    /**
+     * The maximal cost allowed for a GraphQL query.
+     */
+    private static final int DEFAULT_MAX_COST = 100;
 
     /**
      * The schema.
@@ -58,7 +73,7 @@ public class SiriusGraphQLInterpreter {
                 .query(query)
                 .variables(variables)
                 .operationName(operationName)
-                .context(context)
+                .context(new SiriusGraphQLContext(this.getMaxCost()))
                 .build();
 
         GraphQL graphQL = GraphQL.newGraphQL(this.schema)
@@ -68,5 +83,25 @@ public class SiriusGraphQLInterpreter {
         ExecutionResult executionResult = graphQL.execute(executionInput);
 
         return new SiriusGraphQLQueryResult(executionResult);
+    }
+
+    /**
+     * Returns the maximum cost of a GraphQL query.
+     * 
+     * @return The maximum cost of a GraphQL query
+     */
+    private int getMaxCost() {
+        int value = DEFAULT_MAX_COST;
+        String propertyValue = System.getProperty(MAX_COST);
+        if (propertyValue != null && propertyValue.length() > 0) {
+            try {
+                value = Integer.parseInt(propertyValue);
+            } catch (NumberFormatException exception) {
+                String message = String.format(SiriusGraphQLMessages.SiriusGraphQLInterpreter_wrongPropertyTypeWarning, propertyValue, DEFAULT_MAX_COST);
+                IStatus status = new Status(IStatus.ERROR, SiriusGraphQLPlugin.PLUGIN_ID, message, exception);
+                SiriusGraphQLPlugin.getPlugin().getLog().log(status);
+            }
+        }
+        return value;
     }
 }

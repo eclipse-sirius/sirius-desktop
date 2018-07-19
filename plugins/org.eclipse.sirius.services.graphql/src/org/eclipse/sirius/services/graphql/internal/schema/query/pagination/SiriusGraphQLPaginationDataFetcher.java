@@ -10,18 +10,23 @@
  *******************************************************************************/
 package org.eclipse.sirius.services.graphql.internal.schema.query.pagination;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLMessages;
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLConnection;
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLEdge;
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLPageInfo;
+import org.eclipse.sirius.services.graphql.internal.schema.SiriusGraphQLContext;
+import org.eclipse.sirius.services.graphql.internal.schema.directives.SiriusGraphQLCostDirective;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
+import graphql.schema.GraphQLArgument;
 
 /**
  * Used to create a data fetcher supporting the pagination.
@@ -53,6 +58,16 @@ public final class SiriusGraphQLPaginationDataFetcher {
             String after = SiriusGraphQLPaginationDataFetcher.getAfter(environment);
             String before = SiriusGraphQLPaginationDataFetcher.getBefore(environment);
 
+            SiriusGraphQLPaginationDataFetcher.assertArguments(environment);
+
+            int cost = SiriusGraphQLPaginationDataFetcher.getCost(environment);
+            // @formatter:off
+            Optional.ofNullable(environment.getContext())
+                .filter(SiriusGraphQLContext.class::isInstance)
+                .map(SiriusGraphQLContext.class::cast)
+                .ifPresent(context -> context.add(cost));
+            // @formatter:on
+
             List<T> allEdges = callback.apply(environment);
             List<T> edgesToReturn = SiriusGraphQLPaginationDataFetcher.getEdgesToReturn(allEdges, before, after, first, last);
 
@@ -68,6 +83,25 @@ public final class SiriusGraphQLPaginationDataFetcher {
             SiriusGraphQLPageInfo pageInfo = new SiriusGraphQLPageInfo(hasPreviousPage, hasNextPage);
             return new SiriusGraphQLConnection(totalCount, edges, pageInfo);
         };
+    }
+
+    /**
+     * Asserts the validity of the arguments retrieved.
+     * 
+     * @param environment
+     *            The data fetching environment
+     */
+    private static void assertArguments(DataFetchingEnvironment environment) {
+        Integer first = SiriusGraphQLPaginationDataFetcher.getFirst(environment);
+        Integer last = SiriusGraphQLPaginationDataFetcher.getLast(environment);
+
+        // Both after and before can be null but it has to be a specified value
+        boolean hasFowardPaginationArguments = first != null && environment.containsArgument(SiriusGraphQLPaginationArguments.AFTER_ARG);
+        boolean hasBackwardPaginationArguments = last != null && environment.containsArgument(SiriusGraphQLPaginationArguments.BEFORE_ARG);
+
+        if (!hasFowardPaginationArguments && !hasBackwardPaginationArguments) {
+            throw new IllegalArgumentException(SiriusGraphQLMessages.SiriusGraphQLPaginationDataFetcher_invalidArguments);
+        }
     }
 
     /**
@@ -132,6 +166,77 @@ public final class SiriusGraphQLPaginationDataFetcher {
                 .map(String.class::cast)
                 .orElse(null);
         // @formatter:on
+    }
+
+    /**
+     * Returns the complexity of the field.
+     *
+     * @param environment
+     *            The data fetching environment
+     * @return The complexity of the field
+     */
+    private static int getComplexity(DataFetchingEnvironment environment) {
+        // @formatter:off
+        return Optional.ofNullable(environment.getFieldDefinition().getDirective(SiriusGraphQLCostDirective.COST))
+                .map(directive -> directive.getArgument(SiriusGraphQLCostDirective.COMPLEXITY_ARG))
+                .map(GraphQLArgument::getDefaultValue)
+                .filter(Integer.class::isInstance)
+                .map(Integer.class::cast)
+                .orElse(Integer.valueOf(0))
+                .intValue();
+        // @formatter:on
+    }
+
+    /**
+     * Returns the multipliers of the field.
+     *
+     * @param environment
+     *            The data fetching environment
+     * @return The multipliers of the field
+     */
+    private static List<String> getMultipliers(DataFetchingEnvironment environment) {
+        // @formatter:off
+        return Optional.ofNullable(environment.getFieldDefinition().getDirective(SiriusGraphQLCostDirective.COST))
+                .map(directive -> directive.getArgument(SiriusGraphQLCostDirective.MULTIPLIERS_ARG))
+                .map(GraphQLArgument::getDefaultValue)
+                .map(value -> {
+                    if (value instanceof List<?>) {
+                        return ((List<?>) value).stream()
+                                    .filter(String.class::isInstance)
+                                    .map(String.class::cast)
+                                    .collect(Collectors.toList());
+                    }
+                    return new ArrayList<String>();
+                })
+                .orElseGet(ArrayList::new);
+        // @formatter:on
+    }
+
+    /**
+     * Returns the cost of fetching the elements requested.
+     *
+     * @param environment
+     *            The data fetching environment
+     * @return The cost of fetching the elements requested
+     */
+    private static int getCost(DataFetchingEnvironment environment) {
+        int complexity = SiriusGraphQLPaginationDataFetcher.getComplexity(environment);
+        List<String> multipliers = SiriusGraphQLPaginationDataFetcher.getMultipliers(environment);
+
+        int cost = 0;
+        for (String multiplier : multipliers) {
+            // @formatter:off
+            int value = Optional.ofNullable(environment.getArgument(multiplier))
+                    .filter(Integer.class::isInstance)
+                    .map(Integer.class::cast)
+                    .orElse(Integer.valueOf(0))
+                    .intValue();
+            // @formatter:on
+
+            cost = cost + (value * complexity);
+        }
+
+        return cost;
     }
 
     /**

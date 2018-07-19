@@ -16,6 +16,7 @@ import static org.eclipse.sirius.services.graphql.internal.schema.query.viewpoin
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLConnection;
 import org.eclipse.sirius.services.graphql.internal.schema.ISiriusGraphQLTypesBuilder;
+import org.eclipse.sirius.services.graphql.internal.schema.directives.SiriusGraphQLCostDirective;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLConnectionTypeBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLEdgeTypeBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLPaginationArguments;
@@ -71,6 +73,11 @@ public class SiriusGraphQLViewpointTypesBuilder implements ISiriusGraphQLTypesBu
      * The name of the representationDescriptions field.
      */
     private static final String REPRESENTATION_DESCRIPTIONS_FIELD = "representationDescriptions"; //$NON-NLS-1$
+
+    /**
+     * The complexity of the retrieval of a representation description.
+     */
+    private static final int COMPLEXITY = 1;
 
     @Override
     public Set<GraphQLType> getTypes() {
@@ -155,10 +162,15 @@ public class SiriusGraphQLViewpointTypesBuilder implements ISiriusGraphQLTypesBu
      * @return The representation descriptions field.
      */
     private GraphQLFieldDefinition getRepresentationDescriptionsField() {
+        List<String> multipliers = new ArrayList<>();
+        multipliers.add(SiriusGraphQLPaginationArguments.FIRST_ARG);
+        multipliers.add(SiriusGraphQLPaginationArguments.LAST_ARG);
+
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(REPRESENTATION_DESCRIPTIONS_FIELD)
                 .argument(SiriusGraphQLPaginationArguments.build())
+                .withDirective(new SiriusGraphQLCostDirective(COMPLEXITY, multipliers).build())
                 .type(new GraphQLTypeReference(VIEWPOINT_REPRESENTATION_DESCRIPTION_CONNECTION_TYPE))
                 .dataFetcher(this.getRepresentationDescriptionsDataFetcher())
                 .build();

@@ -31,7 +31,7 @@ import graphql.schema.GraphQLType;
  *
  * @author sbegaudeau
  */
-public class SiriusGraphQLUserTypeBuilder implements ISiriusGraphQLTypesBuilder {
+public class SiriusGraphQLUserTypesBuilder implements ISiriusGraphQLTypesBuilder {
     /**
      * The name of the User type.
      */

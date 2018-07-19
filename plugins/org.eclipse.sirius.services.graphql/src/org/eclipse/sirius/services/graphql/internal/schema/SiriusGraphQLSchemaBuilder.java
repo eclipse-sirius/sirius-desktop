@@ -23,7 +23,7 @@ import org.eclipse.sirius.services.graphql.internal.schema.query.resources.Siriu
 import org.eclipse.sirius.services.graphql.internal.schema.query.resources.SiriusGraphQLFolderTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.resources.SiriusGraphQLProjectTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.resources.SiriusGraphQLResourceTypesBuilder;
-import org.eclipse.sirius.services.graphql.internal.schema.query.user.SiriusGraphQLUserTypeBuilder;
+import org.eclipse.sirius.services.graphql.internal.schema.query.user.SiriusGraphQLUserTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.viewpoints.SiriusGraphQLDiagramDescriptionTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.viewpoints.SiriusGraphQLDiagramTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.viewpoints.SiriusGraphQLRepresentationDescriptionTypesBuilder;
@@ -50,7 +50,7 @@ public class SiriusGraphQLSchemaBuilder {
         GraphQLObjectType query = new SiriusGraphQLQueryTypeBuilder().build();
         GraphQLObjectType mutation = new SiriusGraphQLMutationTypeBuilder().build();
 
-        Set<GraphQLType> userTypes = new SiriusGraphQLUserTypeBuilder().getTypes();
+        Set<GraphQLType> userTypes = new SiriusGraphQLUserTypesBuilder().getTypes();
 
         Set<GraphQLType> resourceTypes = new SiriusGraphQLResourceTypesBuilder().getTypes();
         Set<GraphQLType> fileTypes = new SiriusGraphQLFileTypesBuilder().getTypes();

@@ -11,7 +11,7 @@
 package org.eclipse.sirius.services.graphql.internal.schema.query;
 
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLUser;
-import org.eclipse.sirius.services.graphql.internal.schema.query.user.SiriusGraphQLUserTypeBuilder;
+import org.eclipse.sirius.services.graphql.internal.schema.query.user.SiriusGraphQLUserTypesBuilder;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLFieldDefinition;
@@ -59,7 +59,7 @@ public class SiriusGraphQLQueryTypeBuilder {
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(VIEWER_FIELD)
-                .type(new GraphQLTypeReference(SiriusGraphQLUserTypeBuilder.USER_TYPE))
+                .type(new GraphQLTypeReference(SiriusGraphQLUserTypesBuilder.USER_TYPE))
                 .dataFetcher(this.getViewerDataFetcher())
                 .build();
         // @formatter:on

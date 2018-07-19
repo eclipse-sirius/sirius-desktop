@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLConnection;
+import org.eclipse.sirius.services.graphql.internal.schema.directives.SiriusGraphQLCostDirective;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLPaginationArguments;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLPaginationDataFetcher;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -36,6 +37,11 @@ public final class SiriusGraphQLRepresentationDescriptionEPackagesField {
     private static final String EPACKAGES_FIELD = "ePackages"; //$NON-NLS-1$
 
     /**
+     * The complexity of the retrieval of an EPackage.
+     */
+    private static final int COMPLEXITY = 1;
+
+    /**
      * The constructor.
      */
     private SiriusGraphQLRepresentationDescriptionEPackagesField() {
@@ -48,11 +54,16 @@ public final class SiriusGraphQLRepresentationDescriptionEPackagesField {
      * @return The resources field
      */
     public static GraphQLFieldDefinition build() {
+        List<String> multipliers = new ArrayList<>();
+        multipliers.add(SiriusGraphQLPaginationArguments.FIRST_ARG);
+        multipliers.add(SiriusGraphQLPaginationArguments.LAST_ARG);
+
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(EPACKAGES_FIELD)
                 .argument(SiriusGraphQLPaginationArguments.build())
                 .type(new GraphQLTypeReference(SiriusGraphQLRepresentationDescriptionTypesBuilder.REPRESENTATION_DESCRIPTION_EPACKAGE_CONNECTION_TYPE))
+                .withDirective(new SiriusGraphQLCostDirective(COMPLEXITY, multipliers).build())
                 .dataFetcher(SiriusGraphQLRepresentationDescriptionEPackagesField.getEPackagesDataFetcher())
                 .build();
         // @formatter:on

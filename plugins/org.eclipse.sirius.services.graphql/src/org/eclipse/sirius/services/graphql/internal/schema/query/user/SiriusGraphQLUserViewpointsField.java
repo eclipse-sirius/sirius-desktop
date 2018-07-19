@@ -16,6 +16,7 @@ import java.util.Set;
 
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLConnection;
+import org.eclipse.sirius.services.graphql.internal.schema.directives.SiriusGraphQLCostDirective;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLPaginationArguments;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLPaginationDataFetcher;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -37,6 +38,11 @@ public final class SiriusGraphQLUserViewpointsField {
     private static final String VIEWPOINTS_FIELD = "viewpoints"; //$NON-NLS-1$
 
     /**
+     * The complexity of the retrieval of a viewpoint.
+     */
+    private static final int COMPLEXITY = 1;
+
+    /**
      * The constructor.
      */
     private SiriusGraphQLUserViewpointsField() {
@@ -49,11 +55,16 @@ public final class SiriusGraphQLUserViewpointsField {
      * @return The viewpoints field
      */
     public static GraphQLFieldDefinition build() {
+        List<String> multipliers = new ArrayList<>();
+        multipliers.add(SiriusGraphQLPaginationArguments.FIRST_ARG);
+        multipliers.add(SiriusGraphQLPaginationArguments.LAST_ARG);
+
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(VIEWPOINTS_FIELD)
-                .type(new GraphQLTypeReference(SiriusGraphQLUserTypeBuilder.USER_EPACKAGE_CONNECTION_TYPE))
+                .type(new GraphQLTypeReference(SiriusGraphQLUserTypesBuilder.USER_VIEWPOINT_CONNECTION_TYPE))
                 .argument(SiriusGraphQLPaginationArguments.build())
+                .withDirective(new SiriusGraphQLCostDirective(COMPLEXITY, multipliers).build())
                 .dataFetcher(SiriusGraphQLUserViewpointsField.getViewpointsDataFetcher())
                 .build();
         // @formatter:on

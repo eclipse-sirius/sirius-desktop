@@ -20,6 +20,7 @@
 #-Dorg.eclipse.sirius.server.cors.allowed.origins=*
 #-Dorg.eclipse.sirius.server.cors.allowed.headers=*
 #-Dorg.eclipse.sirius.server.cors.allowed.methods=*
+#-Dorg.eclipse.sirius.services.graphql.cost=100
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
