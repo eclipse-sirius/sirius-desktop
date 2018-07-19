@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -356,6 +356,9 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
             Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject(project);
             if (optionalModelingProject.some()) {
                 try {
+                    // See 525466. we set the validity to true in case of DefaultModelingProjectResourceListener that
+                    // has set it to false or the representation file will not be created if it does not exist yet.
+                    optionalModelingProject.get().setValid(true);
                     Option<URI> mainRepresentationsFileURI = optionalModelingProject.get().getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), false, true);
                     if (mainRepresentationsFileURI.some()) {
                         // Open the session.
