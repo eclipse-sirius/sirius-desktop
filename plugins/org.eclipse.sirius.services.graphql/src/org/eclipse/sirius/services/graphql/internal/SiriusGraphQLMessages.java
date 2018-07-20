@@ -35,6 +35,9 @@ public final class SiriusGraphQLMessages {
     @TranslatableMessage
     public static String SiriusGraphQLInterpreter_wrongPropertyTypeWarning;
 
+    @TranslatableMessage
+    public static String SiriusGraphQLUserEPackagesField_defaultMetamodels;
+
     // CHECKSTYLE:ON
 
     private SiriusGraphQLMessages() {
