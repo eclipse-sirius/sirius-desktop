@@ -13,7 +13,7 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="#sirius6.0.0">Changes in Sirius 6.0.0</a>
+						<a href="#sirius6.0.1">Changes in Sirius 6.0.1</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
@@ -27,10 +27,13 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius5.1.1">Changes in Sirius 5.1.1</a>
+						<a href="#sirius6.0.0">Changes in Sirius 6.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges2">User-Visible Changes</a>
+							</li>
+							<li>
+								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
@@ -38,16 +41,27 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius5.1.0">Changes in Sirius 5.1.0</a>
+						<a href="#sirius5.1.1">Changes in Sirius 5.1.1</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#sirius5.1.0">Changes in Sirius 5.1.0</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
+							</li>
+							<li>
+								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -58,13 +72,13 @@
 						<a href="#sirius5.0.0">Changes in Sirius 5.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges4">User-Visible Changes</a>
+								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -74,8 +88,21 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
-		<h2 id="sirius6.0.0">Changes in Sirius 6.0.0</h2>
+		<h2 id="sirius6.0.1">Changes in Sirius 6.0.1</h2>
+		<p>Sirius 6.0.1 is a service release which contains only important bug fixes compared to version 6.0.0.</p>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<a href="specifier/workflows/Workflows.html">Initial documentation</a> has been added for the &#8220;Workflow&#8221; feature introduced in 6.0.0 (which is still experimental). 
+			</li>
+		</ul>
+		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> The Acceleo version has been changed from 3.7.2 to 3.7.4.</li>
+		</ul>
+		<h2 id="sirius6.0.0">Changes in Sirius 6.0.0</h2>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new feature allows user to insert vertical blank space in sequence diagram. You can refer to the 
 				<a href="user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space">user documentation </a> for more details. 
@@ -100,7 +127,7 @@
 		<p>
 			<img border="0" src="images/color_palette.png"/>
 		</p>
-		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> An action is added in main toolbar to reload the VSM of installed plug-ins that may have changed. Refer to the 
 				<a href="specifier/general/Specifying_Viewpoints.html#reloadVSM">specifier documentation</a> for details.
@@ -122,7 +149,7 @@
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=531487">bugzilla 531487</a> for more details.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The SWTBot test framework version has been upgraded toward SWTBot 2.6. The main impacts are described below:
 				<ul>
@@ -275,7 +302,7 @@
 		</ul>
 		<h4 id="TranslationKeysChanges">Translation Keys Changes</h4>
 		<h2 id="sirius5.1.1">Changes in Sirius 5.1.1</h2>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> When exporting a diagram as an image, it is now possible to choose an image size level. Before this, a preference called 
 				<em>AutoScale</em> was available and when it was enable, the diagram was scaled to the maximum size safely allowed by the system. Now, a new preference named 
@@ -298,7 +325,7 @@
 				<a href="user/diagrams/Diagrams.html#standardToolId">Standard Tools</a> chapter for more details on this tool.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -360,7 +387,7 @@
 		</ul>
 		<p>testcase.</p>
 		<h2 id="sirius5.1.0">Changes in Sirius 5.1.0</h2>
-		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> When exporting a diagram as an image, it is now possible to choose whether or not the diagram should be scaled. If disabled, the diagram will be exported with its normal size (equivalent to a 100% zoom level). If auto-scaling is enabled, the diagram will be scaled to the maximum size safely allowed by the system (this can be different on different OSes). Note that when auto-scaling is enabled, the image files produced may be larger than without. When exporting very large diagrams it is also possible that the diagram will be scaled 
 				<em>down</em> (i.e. with a zoom level smaller than 100%). Enabling auto-scaling can be chosen on a case by case basis from the export dialog; the initial value in the dialog can be controlled by a new preference available in the 
@@ -409,7 +436,7 @@
 				<a href="developer/extensions-provide_custom_bundled_image_shape.html#bundleImageShape">bundleImageShape</a> ), opening or refreshing a diagram will not display exception anymore when the bundleImageShape extension is not valid. A warning is now displayed in the Error Log view to inform user of which attribute of the extension is not correct.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> An 
 				<a href="./user/general/Modeling%20Project.html#Migration">automatic migration</a> has been added in this version to fix diagram with edge labels corrupted (see 
@@ -438,7 +465,7 @@
 				<em>Reference Name</em> field (if a valid feature has been specified).
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
 		<h4 id="Migrations2">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see 
@@ -684,7 +711,7 @@
 			<a href="user/general/Aird_Editor.html">the aird editor</a>.
 		</p>
 		<h2 id="sirius5.0.0">Changes in Sirius 5.0.0</h2>
-		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> An new 
 				<em>aird editor</em> is available on 
@@ -708,8 +735,8 @@
 			</li>
 			<li><span class="label label-info">Modified</span> Decorators on diagram elements are drawn on top of other figures. If there is an overlap between a decorator of a figure A and another figure B that is over figure A, when user clicks on the decorator, the figure B is now selected (before it was the parent figure A).</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
-		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to automatically create one or several pre-configured widget(s) in a group if its domain class and if the meta-models of the properties view containing it have been specified. The widget(s) created will be infered from the features in the domain class (e.g. a properly configured 
 				<em>Checkbox</em> widget will be created for boolean attributes).

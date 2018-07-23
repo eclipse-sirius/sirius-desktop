@@ -4,6 +4,20 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.0.1). Changes in Sirius 6.0.1
+
+Sirius 6.0.1 is a service release which contains only important bug fixes compared to version 6.0.0.
+
+h3. User-Visible Changes
+
+h3. Specifier-Visible Changes
+
+* <span class="label label-success">Added</span> "Initial documentation":specifier/workflows/Workflows.html has been added for the "Workflow" feature introduced in 6.0.0 (which is still experimental). 
+
+h3. Developer-Visible Changes
+
+* <span class="label label-info">Modified</span> The Acceleo version has been changed from 3.7.2 to 3.7.4.
+
 h2(#sirius6.0.0). Changes in Sirius 6.0.0
 
 h3. User-Visible Changes
