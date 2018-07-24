@@ -15,6 +15,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 
 /**
@@ -56,6 +57,11 @@ public class SiriusDiagramElementSwitch {
         case DiagramPackage.DNODE_LIST:
             if (dDiagramElement instanceof DNodeList) {
                 result = this.caseDNodeList((DNodeList) dDiagramElement);
+            }
+            break;
+        case DiagramPackage.DNODE_LIST_ELEMENT:
+            if (dDiagramElement instanceof DNodeListElement) {
+                result = this.caseDNodeListElement((DNodeListElement) dDiagramElement);
             }
             break;
         case DiagramPackage.DEDGE:
@@ -102,6 +108,17 @@ public class SiriusDiagramElementSwitch {
      */
     public ISiriusDiagramElementConverter caseDNodeList(DNodeList dNodeList) {
         return new SiriusDiagramDNodeListConverter(dNodeList);
+    }
+
+    /**
+     * Returns the converter for a DNodeListElement.
+     *
+     * @param dNodeListElement
+     *            The DNodeListElement
+     * @return The converter for a DNodeListelement
+     */
+    public ISiriusDiagramElementConverter caseDNodeListElement(DNodeListElement dNodeListElement) {
+        return new SiriusDiagramDNodeListElementConverter(dNodeListElement);
     }
 
     /**

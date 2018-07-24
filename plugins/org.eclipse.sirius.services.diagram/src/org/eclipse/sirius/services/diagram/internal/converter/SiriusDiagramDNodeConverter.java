@@ -66,7 +66,7 @@ public class SiriusDiagramDNodeConverter implements ISiriusDiagramElementConvert
             String identifier = EcoreUtil.getURI(this.dNode).toString();
             String semanticElementIdentifier = EcoreUtil.getURI(this.dNode.getTarget()).toString();
             String workspacePath = workspaceImage.getWorkspacePath();
-            String imagePath = "//images" + workspacePath; //$NON-NLS-1$
+            String imagePath = "http://localhost:8080/images" + workspacePath; //$NON-NLS-1$
 
             SiriusDiagramImageNode node = new SiriusDiagramImageNode(identifier, semanticElementIdentifier, imagePath);
             node.getChildren().addAll(borderedNodes);

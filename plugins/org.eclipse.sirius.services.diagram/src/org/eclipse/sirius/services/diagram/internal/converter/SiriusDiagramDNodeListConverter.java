@@ -11,8 +11,10 @@
 package org.eclipse.sirius.services.diagram.internal.converter;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.services.diagram.api.entities.AbstractSiriusDiagramElement;
@@ -65,9 +67,28 @@ public class SiriusDiagramDNodeListConverter implements ISiriusDiagramElementCon
             SiriusDiagramListNode node = new SiriusDiagramListNode(identifier, semanticElementIdentifier, backgroundColor, borderColor, borderSize);
             node.getChildren().add(new SiriusDiagramLabel(identifier + "__label", this.dNodeList.getName(), labelColor)); //$NON-NLS-1$
 
+         // @formatter:off
+            this.dNodeList.getOwnedElements().stream()
+                .filter(DDiagramElement::isVisible)
+                .flatMap(this::convert)
+                .forEach(node.getChildren()::add);
+            // @formatter:on
+
             return Optional.of(node);
         }
         return Optional.empty();
+    }
+
+    /**
+     * Converts the given DDiagramElement into a Sirius diagram element.
+     *
+     * @param dDiagramElement
+     *            The DDiagramElement to convert
+     * @return The converted diagram element
+     */
+    private Stream<AbstractSiriusDiagramElement> convert(DDiagramElement dDiagramElement) {
+        ISiriusDiagramElementConverter converter = new SiriusDiagramElementSwitch().doSwitch(dDiagramElement);
+        return converter.convert().map(Stream::of).orElseGet(Stream::empty);
     }
 
 }
