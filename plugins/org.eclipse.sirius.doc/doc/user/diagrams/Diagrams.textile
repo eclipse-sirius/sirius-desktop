@@ -2,7 +2,7 @@ h1. Diagram Editors
 
 This document explains how to use diagram editors/modelers supported by Sirius which allow to view and manipulate data in a graphical way.
 
-{toc:style=disc|minLevel=2|maxLevel=3}
+{toc:style=disc|minLevel=2|maxLevel=4}
 
 h2(#introduction). Introduction
 
@@ -610,8 +610,20 @@ You can also use "RegularExpressions":#UsingRegularExpressionstoFindDiagramEleme
 To see more easily if one or more graphical elements are pinned, the icon in the toolbar change, showing a "checked" if an element is pinned.
 
 	!images/diagram_editor_pin_toolbar_activated.png!
+	
+h3. Edit modes
 
-h3. Layouting mode: arrange your diagrams without modifying semantic models
+Different diagram edit modes are available. Each mode focus on a specific way of editing diagrams. Modes are accessible from a dropdown menu in the tabbar when no diagram element is selected:
+!images/editModesDropdown.png!
+
+h4. Standard mode
+
+This is the default mode used to create diagrams and populate them. In this mode, there is no restriction regarding available tools and semantic changes.
+To go back to this mode after changing it, you just have to select it from the tabbar:
+
+!images/standardModeActivation.png!
+
+h4. Layouting mode: arrange your diagrams without modifying semantic models
 
 When you only want to do layout operations (e.g. arrange a diagram by moving nodes or edges), you may modify the semantic models without paying attention. For example, when organizing bordered nodes, you may change the container of the semantic element, without wanting do so.
 
@@ -621,9 +633,11 @@ When this mode is enabled, the following operations are changed:
 * moving the extremity of an edge to adjust its connection point (to the source or target element) is possible, but will never trigger a reconnection operation.
 Note that other operations which can change the semantic model are still possible. Only the operations listed above, which are easy to misuse, are disabled/modified. *Layout Mode is not a "read-only" mode and does not guarantee that the semantic model is not modified when it is enabled.*
 
-*Layouting mode* can be activated/disabled on a diagram through the tab bar (when there is no selected element) : 
+*Layouting mode* can be activated on a diagram through the tab bar (when there is no selected element) : 
 
 !images/layouting_mode_tabbar_activate.png!
+
+To deactivate the mode you just have to select the _Standard mode_.
 
 The diagram's status line then indicates that the diagram is currently in _Layouting mode_ : 
 
@@ -632,6 +646,36 @@ The diagram's status line then indicates that the diagram is currently in _Layou
 In this example, as _Layouting mode_ is activated, reconnecting the Edge from _Abstrat Customer_ to _Company_ is forbidden. You can arrange this edge (change start location, add bending points...) without risking to modify the underlying semantic model.
 
 When a diagram is closed, the _Layouting mode_ is automatically disabled.
+
+h4. Show/hide mode: change diagram element visibility without modifying semantic models
+
+This mode allows to visualize all diagram elements either visible or invisible because of a filter or a previous hiding action execution on the element. Invisible elements will be shown with transparency:
+ 
+!images/show_hide_mode_example.png!
+ 
+This mode also allows to change visibility of diagram elements.
+Indeed, when you double click on a visible diagram element, it will hide it like the "hide" menu action. And if not visible, it will show it like the "show" menu action. 
+Additional features of the double click are the following:
+* If the diagram element to make visible is contained by other invisible elements, then all its parent elements will be made visible.
+* If the diagram element to make visible has children, these children will be made visible if they are not hidden. Otherwise they will be displayed with transparency.
+* A double click on an edge to show will also show its source and target.
+* If a diagram element is invisible because a filter hiding is activated, then you will be asked if you want to deactivate this filter to make it visible after a double click on it.
+* If a diagram element is invisible because the layer showing it is not activated, then you will be asked if you want to activate this layer to make it visible after a double click on it.
+ 
+It is easy to do semantics changes whereas you only want to change diagram element visibility.
+So when this mode is enabled, the following operations are changed:
+* direct edit is disabled on all elements;
+* moving elements by dragging them can be used to change their position, but will never trigger a drag and drop operation;
+* moving the extremity of an edge to adjust its connection point (to the source or target element) is possible, but will never trigger a reconnection operation.
+Note that other operations which can change the semantic model are still possible. Only the operations listed above, which are easy to misuse, are disabled/modified. *Show/Hide mode is not a "read-only" mode and does not guarantee that the semantic model is not modified when it is enabled.*
+
+*Show/Hide mode* can be activated on a diagram through the tabbar (when there is no selected element) : 
+
+!images/show_hide_mode_tabbar_activate.png!
+
+To deactivate the mode you just have to select the _Standard mode_.
+
+When a diagram is closed, the _Show/Hide mode_ is automatically disabled.
 
 h3(#synchronized_diagram). Synchronized/Unsynchronized diagram
 
