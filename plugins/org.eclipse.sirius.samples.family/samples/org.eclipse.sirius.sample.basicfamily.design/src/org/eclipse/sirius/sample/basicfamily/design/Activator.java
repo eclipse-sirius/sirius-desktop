@@ -13,15 +13,15 @@ package org.eclipse.sirius.sample.basicfamily.design;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.core.runtime.Plugin;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class Activator extends Plugin {
     // The plug-in ID
     public static final String PLUGIN_ID = "org.eclipse.sirius.sample.basicfamily.design";
 

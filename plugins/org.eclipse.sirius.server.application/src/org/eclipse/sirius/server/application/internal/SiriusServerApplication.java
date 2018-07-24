@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.server.application.internal;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleException;
 
 /**
  * The entry point of the Sirius Server application.
@@ -19,6 +22,11 @@ import org.eclipse.equinox.app.IApplicationContext;
  * @author sbegaudeau
  */
 public class SiriusServerApplication implements IApplication {
+
+    /**
+     * The identifier of the bundler containing the Sirius server.
+     */
+    private static final String SIRIUS_SERVER_PLUGIN_ID = "org.eclipse.sirius.server"; //$NON-NLS-1$
 
     /**
      * The application context.
@@ -33,6 +41,17 @@ public class SiriusServerApplication implements IApplication {
     @Override
     public Object start(IApplicationContext context) throws Exception {
         this.appContext = context;
+
+        Bundle siriusServerBundle = Platform.getBundle(SIRIUS_SERVER_PLUGIN_ID);
+        if (siriusServerBundle != null && siriusServerBundle.getState() != Bundle.ACTIVE) {
+            try {
+                siriusServerBundle.start(Bundle.START_TRANSIENT);
+            } catch (BundleException exception) {
+                // @CHECKSTYLE:OFF
+                exception.printStackTrace();
+                // @CHECKSTYLE:ON
+            }
+        }
         return IApplicationContext.EXIT_ASYNC_RESULT;
     }
 

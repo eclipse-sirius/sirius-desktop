@@ -499,9 +499,11 @@
 
         <module>../../packaging/org.eclipse.sirius.diagram.elk.feature</module>
         <module>../../packaging/org.eclipse.sirius.server.ui.autostart.feature</module>
+        <module>../../packaging/org.eclipse.sirius.sample.basicfamily.feature</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.update</module>
+        <module>../../packaging/org.eclipse.sirius.sample.basicfamily.update</module>
 
         <!-- Test metamodels and modelers -->
         <module>../../plugins/org.eclipse.sirius.sample.ecore.design</module>
@@ -615,8 +617,8 @@
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.aql</module>
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
         <module>../../packaging/org.eclipse.sirius.tests.support</module>
-        
         <module>../../packaging/org.eclipse.sirius.interpreter.feature</module>
+        <module>../../packaging/org.eclipse.sirius.sample.basicfamily.feature</module>
 
         <!-- Test metamodels and modelers -->
         <module>../../plugins/org.eclipse.sirius.sample.ecore.design</module>
@@ -643,6 +645,7 @@
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.tests.update</module>
+        <module>../../packaging/org.eclipse.sirius.sample.basicfamily.update</module>
      </modules>
     </profile>
 

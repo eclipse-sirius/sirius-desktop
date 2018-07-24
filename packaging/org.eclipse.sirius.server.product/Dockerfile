@@ -36,6 +36,4 @@ RUN chown -R developer:developer "$SIRIUS_SERVER_HOME"
 USER developer
 RUN chmod +x /home/developer/sirius-server/sirius-server
 WORKDIR /home/developer/sirius-server
-
 EXPOSE 8080
-ENTRYPOINT ["./sirius-server"]

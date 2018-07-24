@@ -127,6 +127,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.equinox.compendium.sdk"/>
       <feature id="org.eclipse.equinox.executable"/>
       <feature id="org.eclipse.equinox.p2.core.feature"/>
+      <feature id="org.eclipse.equinox.p2.extras.feature"/>
       <feature id="org.eclipse.sirius.server.product.feature"/>
    </features>
 
@@ -136,7 +137,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
-      <plugin id="org.eclipse.sirius.server" autoStart="true" startLevel="0" />
    </configurations>
 
    <preferencesInfo>

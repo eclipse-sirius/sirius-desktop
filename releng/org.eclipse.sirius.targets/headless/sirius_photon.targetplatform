@@ -19,6 +19,7 @@ location Eclipse-Oxygen "http://download.eclipse.org/releases/photon" {
     org.eclipse.equinox.compendium.sdk.feature.group lazy
     org.eclipse.equinox.executable.feature.group lazy
     org.eclipse.equinox.p2.core.feature.feature.group lazy
+    org.eclipse.equinox.p2.extras.feature.feature.group lazy
     com.google.guava lazy
     org.eclipse.emf lazy
     org.eclipse.emf.common lazy
