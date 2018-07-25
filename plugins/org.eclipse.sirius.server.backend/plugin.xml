@@ -2,6 +2,8 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         id="org.eclipse.sirius.server.backendServices"
+         name="%SiriusServerBackendService_label"
          point="org.eclipse.sirius.server.siriusServerService">
       <descriptor
             class="org.eclipse.sirius.server.backend.internal.services.dashboard.SiriusServerDashboardService"
