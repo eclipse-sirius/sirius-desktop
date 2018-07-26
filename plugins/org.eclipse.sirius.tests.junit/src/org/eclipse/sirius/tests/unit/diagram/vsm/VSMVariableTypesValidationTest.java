@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -156,17 +157,26 @@ public class VSMVariableTypesValidationTest {
                          * its ok to have an error here.
                          */
                     } else if (!useNonExistantFeature && errors.size() > 0) {
-                        String message = underTest.toString() + "triggers unexpected errors \n" + Joiner.on('\n').join(Iterables.transform(errors, new Function<IInterpreterStatus, String>() {
-
+                        Iterable<IInterpreterStatus> errorsWithoutInfo = Iterables.filter(errors, new Predicate<IInterpreterStatus>() {
                             @Override
-                            public String apply(IInterpreterStatus input) {
-                                return input.getSeverity() + " : " + input.getMessage();
+                            public boolean apply(IInterpreterStatus input) {
+                                return IInterpreterStatus.INFO != input.getSeverity();
                             }
-                        }));
+                        });
 
-                        fail(message);
+                        if (!Iterables.isEmpty(errorsWithoutInfo)) {
+                            String message = underTest.toString() + "triggers unexpected errors \n"
+                                    + Joiner.on('\n').join(Iterables.transform(errorsWithoutInfo, new Function<IInterpreterStatus, String>() {
+
+                                        @Override
+                                        public String apply(IInterpreterStatus input) {
+                                            return input.getSeverity() + " : " + input.getMessage();
+                                        }
+                                    }));
+
+                            fail(message);
+                        }
                     }
-
                 }
             }
         }
