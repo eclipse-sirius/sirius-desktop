@@ -18,6 +18,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.util.GraphicsUtilities;
 import org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusGraphicsToGraphics2DAdaptor;
+import org.eclipse.sirius.ext.draw2d.figure.ViewGradientFigureDesc;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Pattern;
@@ -48,12 +49,12 @@ public final class GradientHelper {
         if (zoomedBounds != null) {
             SWTGraphics swtGraphics = GraphicsUtilities.getSWTGraphics(graphics);
             if (swtGraphics != null) {
-                final Pattern pattern = GradientHelper.getGradientPattern(figure.getBackgroundStyle().getValue(), zoomedBounds, figure.getBackgroundColor(), figure.getGradientColor());
+                final Pattern pattern = GradientHelper.getGradientPattern(figure.getBackgroundStyle(), zoomedBounds, figure.getBackgroundColor(), figure.getGradientColor());
                 swtGraphics.setBackgroundPattern(pattern);
             } else {
                 SiriusGraphicsToGraphics2DAdaptor siriusGraphics2DAdaptor = GraphicsUtilities.getSiriusGraphicsToGraphics2DAdaptor(graphics);
                 if (siriusGraphics2DAdaptor != null) {
-                    siriusGraphics2DAdaptor.setBackgroundPattern(figure.getBackgroundStyle().getValue(), zoomedBounds, figure.getBackgroundColor(), figure.getGradientColor());
+                    siriusGraphics2DAdaptor.setBackgroundPattern(figure.getBackgroundStyle(), zoomedBounds, figure.getBackgroundColor(), figure.getGradientColor());
                 }
             }
         }

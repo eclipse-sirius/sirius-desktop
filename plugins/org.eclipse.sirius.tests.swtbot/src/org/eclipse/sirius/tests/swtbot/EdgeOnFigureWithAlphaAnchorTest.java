@@ -31,7 +31,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
  * Test first point or last point location of edges on figure with
- * {@link org.eclipse.sirius.diagram.ui.tools.internal.figure.AlphaBasedSlidableImageAnchor}
+ * {@link org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaBasedSlidableImageAnchor}
  * . There locations should not be on the bounding box but on the figure itself
  * (non transparent area).
  * 

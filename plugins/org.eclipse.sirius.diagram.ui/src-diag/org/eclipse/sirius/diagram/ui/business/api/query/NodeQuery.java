@@ -35,9 +35,9 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.draw2d.figure.ICollapseMode;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;

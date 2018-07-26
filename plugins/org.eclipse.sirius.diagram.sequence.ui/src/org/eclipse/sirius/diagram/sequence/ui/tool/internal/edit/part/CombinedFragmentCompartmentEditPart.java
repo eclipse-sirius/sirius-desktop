@@ -20,8 +20,8 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.CombinedFragmentInvisibleResizableCompartmentFigure;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.CombinedFragmentInvisibleResizableCompartmentFigure;
 
 /**
  * A specific DNodeContainerViewNodeContainerCompartmentEditPart to remove the

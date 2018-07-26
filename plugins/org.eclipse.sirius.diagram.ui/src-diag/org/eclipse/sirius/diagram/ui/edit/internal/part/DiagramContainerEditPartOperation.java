@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,15 +42,15 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.OneLineMarginBorder;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.RoundedCornerMarginBorder;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -189,7 +189,7 @@ public final class DiagramContainerEditPartOperation {
         // Update the background figure when the background gradient style
         ViewNodeContainerFigureDesc primaryShape = self.getPrimaryShape();
         if (primaryShape instanceof GradientRoundedRectangle && style instanceof FlatContainerStyle) {
-            if (((GradientRoundedRectangle) primaryShape).getBackgroundStyle() != ((FlatContainerStyle) style).getBackgroundStyle()) {
+            if (((GradientRoundedRectangle) primaryShape).getBackgroundStyle() != ((FlatContainerStyle) style).getBackgroundStyle().getValue()) {
                 self.reInitFigure();
             }
         }

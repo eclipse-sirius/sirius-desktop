@@ -46,10 +46,10 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.DBorderedNodeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
+import org.eclipse.sirius.ext.draw2d.figure.ICollapseMode;
+import org.eclipse.sirius.ext.draw2d.figure.ITransparentFigure;
+import org.eclipse.sirius.ext.draw2d.figure.StyledFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.DBorderedNodeFigure;
 
 /**
  * Common operations for nodes that are on the border of other nodes.

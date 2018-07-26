@@ -52,7 +52,7 @@ public class RegionRoundedGradientRectangle extends GradientRoundedRectangle {
      *            the model view of the part showing the figure.
      */
     public RegionRoundedGradientRectangle(final Dimension dimension, final BackgroundStyle backgroundStyle, View view) {
-        super(dimension, backgroundStyle, view);
+        super(dimension, backgroundStyle.getValue(), view);
         setOutline(false);
     }
 

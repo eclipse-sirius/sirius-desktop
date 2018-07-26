@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.description.StateMapping;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.LayoutEditPartConstants;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LifelineNodeFigure;
 
 import com.google.common.collect.Iterables;
 

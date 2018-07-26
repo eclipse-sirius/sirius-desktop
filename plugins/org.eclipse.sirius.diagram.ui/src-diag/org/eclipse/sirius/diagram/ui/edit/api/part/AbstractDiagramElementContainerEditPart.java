@@ -75,12 +75,9 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.NonResizableAndNonDu
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.RegionGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
@@ -90,7 +87,10 @@ import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
@@ -459,7 +459,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                 shapeFigure = new RegionRoundedGradientRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this),
                         (View) getModel());
             } else {
-                shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this), (View) getModel());
+                shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this).getValue(), (View) getModel());
             }
         }
 

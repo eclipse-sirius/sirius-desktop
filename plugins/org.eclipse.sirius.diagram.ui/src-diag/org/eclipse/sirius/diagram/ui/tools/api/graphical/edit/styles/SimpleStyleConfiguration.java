@@ -42,10 +42,10 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeCompositeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.GaugeCompositeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -62,7 +62,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptNodeLabel(org.eclipse.sirius.viewpoint.DNode,
-     *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel)
+     *      org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.draw2d.ui.figures.SiriusWrapLabel)
      */
     @Override
     public void adaptNodeLabel(final DNode node, final SiriusWrapLabel nodeLabel) {
@@ -87,7 +87,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.viewpoint.DNode,
-     *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
+     *      org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.draw2d.ui.figures.SiriusWrapLabel,
      *      int)
      */
     @Override
@@ -238,7 +238,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#fitToText(org.eclipse.sirius.viewpoint.DNode,
-     *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
+     *      org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.draw2d.ui.figures.SiriusWrapLabel,
      *      org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)
      */
     @Override

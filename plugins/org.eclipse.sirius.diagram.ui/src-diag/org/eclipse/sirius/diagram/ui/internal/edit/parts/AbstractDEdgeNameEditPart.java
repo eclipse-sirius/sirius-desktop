@@ -36,9 +36,9 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResizableShapeLabel
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelLocator;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 
 /**
  * @was-generated

@@ -53,10 +53,10 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerItemSe
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LabelBorderStyleIds;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 import com.google.common.collect.Iterables;

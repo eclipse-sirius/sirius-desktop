@@ -31,8 +31,8 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPar
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ODesignEllipseFigure;
+import org.eclipse.sirius.ext.draw2d.figure.ODesignEllipseFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 
 /**

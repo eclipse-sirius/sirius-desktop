@@ -19,8 +19,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.OneLineMarginBorder;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;

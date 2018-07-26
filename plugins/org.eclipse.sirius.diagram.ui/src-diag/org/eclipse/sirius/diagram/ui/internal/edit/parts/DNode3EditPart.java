@@ -43,15 +43,15 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDrop
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNode3ItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.DBorderedNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirDefaultSizeNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.DBorderedNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
 /**

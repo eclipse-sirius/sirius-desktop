@@ -64,7 +64,6 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolic
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusEdgeLabelSnapBackEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionEditPolicy;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabelWithAttachment;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
@@ -73,6 +72,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.Siri
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.SiriusBendpointConnectionRouter;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;

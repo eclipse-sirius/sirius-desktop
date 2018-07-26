@@ -22,8 +22,8 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQuery;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -55,7 +55,7 @@ public class SafeStyleConfiguration implements StyleConfiguration {
      * {@inheritDoc}
      *
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptNodeLabel(org.eclipse.sirius.viewpoint.DNode,
-     *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel)
+     *      org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.draw2d.ui.figures.SiriusWrapLabel)
      */
     @Override
     public void adaptNodeLabel(final DNode node, final SiriusWrapLabel nodeLabel) {
@@ -71,7 +71,7 @@ public class SafeStyleConfiguration implements StyleConfiguration {
      * {@inheritDoc}
      *
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.viewpoint.DNode,
-     *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
+     *      org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.draw2d.ui.figures.SiriusWrapLabel,
      *      int)
      */
     @Override
@@ -88,7 +88,7 @@ public class SafeStyleConfiguration implements StyleConfiguration {
      * {@inheritDoc}
      *
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#fitToText(org.eclipse.sirius.viewpoint.DNode,
-     *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
+     *      org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.draw2d.ui.figures.SiriusWrapLabel,
      *      org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)
      */
     @Override

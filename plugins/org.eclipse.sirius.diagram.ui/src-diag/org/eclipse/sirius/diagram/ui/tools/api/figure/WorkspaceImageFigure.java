@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.WorkspaceFileResourceChangeListener;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AbstractTransparentImage;
 import org.eclipse.swt.graphics.Image;
 
 /**

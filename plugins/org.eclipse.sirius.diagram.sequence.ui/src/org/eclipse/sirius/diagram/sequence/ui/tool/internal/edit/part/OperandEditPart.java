@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.Sequence
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.OperandFigure;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.OneLineMarginBorder;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
 import com.google.common.base.Preconditions;

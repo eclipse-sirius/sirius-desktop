@@ -34,11 +34,11 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandl
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListElementItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusTextNonResizableEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 
 /**

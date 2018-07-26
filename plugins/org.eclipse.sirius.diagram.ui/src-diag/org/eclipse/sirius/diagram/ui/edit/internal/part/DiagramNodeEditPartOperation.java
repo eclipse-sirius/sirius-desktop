@@ -38,9 +38,9 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.ext.draw2d.figure.StyledFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
 

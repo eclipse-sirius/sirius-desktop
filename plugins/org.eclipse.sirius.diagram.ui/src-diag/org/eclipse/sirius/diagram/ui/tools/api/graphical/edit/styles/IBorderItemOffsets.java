@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles;
 
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
+import org.eclipse.sirius.ext.draw2d.figure.ICollapseMode;
 
 /**
  * Constants for border item offsets.

@@ -33,9 +33,9 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPar
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeCompositeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeSectionFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirStyleDefaultSizeNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.GaugeCompositeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.GaugeSectionFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 
@@ -169,7 +169,7 @@ public class GaugeCompositeEditPart extends AbstractNotSelectableShapeNodeEditPa
                 fillGaugeProperties(gaugeSection, figure.getGaugeAt(i));
                 i++;
             }
-            figure.setAlignment(gaugeCompositeStyle.getAlignment());
+            figure.setAlignment(gaugeCompositeStyle.getAlignment().getLiteral());
         }
         DiagramNodeEditPartOperation.refreshFigure(this);
         DiagramElementEditPartOperation.refreshLabelAlignment(((GraphicalEditPart) getParent()).getContentPane(), (LabelStyle) element);

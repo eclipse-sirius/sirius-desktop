@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 
 /**
  * @was-generated

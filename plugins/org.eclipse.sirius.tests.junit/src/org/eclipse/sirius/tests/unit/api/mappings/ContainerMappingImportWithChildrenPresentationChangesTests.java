@@ -29,8 +29,8 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.RegionContainerResi
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.RegionResizableEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart.RegionContainerLayoutManager;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeListCompartmentEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;

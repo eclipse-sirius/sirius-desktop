@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.styles;
 
-import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 
 /**
  * {@link org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration}

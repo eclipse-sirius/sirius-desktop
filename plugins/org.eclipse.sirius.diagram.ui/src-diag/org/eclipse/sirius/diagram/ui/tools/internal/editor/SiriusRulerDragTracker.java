@@ -22,7 +22,7 @@ import org.eclipse.gef.internal.ui.rulers.RulerDragTracker;
 import org.eclipse.gef.internal.ui.rulers.RulerEditPart;
 import org.eclipse.gef.tools.SimpleDragTracker;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.InsertBlankSpaceGuide;
+import org.eclipse.sirius.ext.draw2d.figure.InsertBlankSpaceGuide;
 import org.eclipse.swt.graphics.Cursor;
 
 /**

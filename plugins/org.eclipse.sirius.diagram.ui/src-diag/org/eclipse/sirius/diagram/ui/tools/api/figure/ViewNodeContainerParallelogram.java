@@ -14,7 +14,10 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.ParallelogramFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.ViewNodeContainerFigureDesc;
 
 /**
  * Figure for the parallelogram shape.
@@ -77,7 +80,7 @@ public class ViewNodeContainerParallelogram extends ParallelogramFigure implemen
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc#getLabelFigure()
+     * @see org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.ViewNodeContainerFigureDesc#getLabelFigure()
      */
     @Override
     public SiriusWrapLabel getLabelFigure() {

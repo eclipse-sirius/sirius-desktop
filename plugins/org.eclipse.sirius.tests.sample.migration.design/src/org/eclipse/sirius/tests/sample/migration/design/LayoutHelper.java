@@ -22,7 +22,6 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
@@ -31,8 +30,8 @@ import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewGradientFigureDesc;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
+import org.eclipse.sirius.ext.draw2d.figure.ViewGradientFigureDesc;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.ViewNodeContainerFigureDesc;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.IEditorPart;
 
@@ -178,7 +177,7 @@ public class LayoutHelper {
      * @param diagramElement
      * @return
      */
-    public static BackgroundStyle getBackgroundStyle(DDiagramElement diagramElement) {
+    public static Integer getBackgroundStyle(DDiagramElement diagramElement) {
         if (diagramElement instanceof DNodeContainer) {
             IGraphicalEditPart graphicalEditPart = getEditPart(diagramElement);
 

@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.HideFilter;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 
 /**
  * This utility class contains methods to handle {@link View} and to take in consideration the activation status of the

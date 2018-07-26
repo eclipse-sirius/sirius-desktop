@@ -15,7 +15,7 @@ import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 
 /**
  * This type regroups all nodes of the Diagram (DNodes, DContainer, DList).

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -149,9 +149,6 @@ public final class LayoutConstants {
      * The default width used for lost messages.
      */
     public static final int LOST_MESSAGE_DEFAULT_WIDTH = 6 * UNIT;
-
-    /** Defines the visual appearance of lifelines. */
-    public static final int[] LIFELINE_DASH_STYLE = new int[] { 10, 10 };
 
     /** Defines the visual appearance of operands. */
     public static final int[] OPERAND_DASH_STYLE = new int[] { 5, 5 };

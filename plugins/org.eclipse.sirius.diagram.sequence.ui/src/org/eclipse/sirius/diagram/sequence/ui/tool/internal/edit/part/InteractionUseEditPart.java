@@ -37,7 +37,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Seque
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.InteractionUseResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.swt.SWT;
 

@@ -28,7 +28,7 @@ public final class LabelAlignmentHelper {
     /**
      * Converts a {@link LabelAlignment} style value into the equivalent Draw2D
      * {@link PositionConstants} value, which can be used in
-     * {@link org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel}
+     * {@link org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.draw2d.ui.figures.SiriusWrapLabel}
      * s.
      * 
      * @param alignment

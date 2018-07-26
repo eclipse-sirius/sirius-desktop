@@ -86,7 +86,7 @@ import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
 import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.ui.IWorkbenchPart;

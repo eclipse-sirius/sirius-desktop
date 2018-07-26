@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListName2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;

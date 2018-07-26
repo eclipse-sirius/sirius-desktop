@@ -34,9 +34,9 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.LifelineNodeFigure;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LifelineNodeFigure;
 
 /**
  * A specific router for the messages on a sequence diagram.

@@ -24,7 +24,7 @@ import org.eclipse.draw2d.text.TextFlow;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.GraphicalViewer;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Control;

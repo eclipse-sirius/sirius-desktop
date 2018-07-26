@@ -31,6 +31,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.TransparentBorder;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
+import org.eclipse.sirius.ext.draw2d.figure.IFixedFigure;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;

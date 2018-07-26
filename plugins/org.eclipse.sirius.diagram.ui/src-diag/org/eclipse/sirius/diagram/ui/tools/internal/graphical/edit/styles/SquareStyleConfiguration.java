@@ -18,12 +18,12 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFi
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ResizeKind;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.BorderItemLocatorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.DefaultBorderItemLocatorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirDefaultSizeNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 
 /**
  * A
@@ -55,7 +55,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration#adaptNodeLabel(org.eclipse.sirius.viewpoint.DNode,
-     *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel)
+     *      org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.draw2d.ui.figures.SiriusWrapLabel)
      */
     @Override
     public void adaptNodeLabel(final DNode node, final SiriusWrapLabel nodeLabel) {
@@ -79,7 +79,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.viewpoint.DNode,
-     *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
+     *      org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.draw2d.ui.figures.SiriusWrapLabel,
      *      int)
      */
     @Override
@@ -125,7 +125,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
         }
 
         /**
-         * @see org.eclipse.sirius.transversal.figure.anchor.AnchorProvider#createAnchor(org.eclipse.sirius.diagram.ui.tools.api.figure.common.ui.tool.api.graphical.figure.AirDefaultSizeNodeFigure,
+         * @see org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.transversal.figure.anchor.AnchorProvider#createAnchor(org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.common.ui.tool.api.graphical.figure.AirDefaultSizeNodeFigure,
          *      org.eclipse.draw2d.geometry.PrecisionPoint)
          */
         @Override
@@ -137,7 +137,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
         }
 
         /**
-         * @see org.eclipse.sirius.transversal.figure.anchor.AnchorProvider#createDefaultAnchor(org.eclipse.sirius.diagram.ui.tools.api.figure.common.ui.tool.api.graphical.figure.AirDefaultSizeNodeFigure)
+         * @see org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.transversal.figure.anchor.AnchorProvider#createDefaultAnchor(org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.common.ui.tool.api.graphical.figure.AirDefaultSizeNodeFigure)
          */
         @Override
         public ConnectionAnchor createDefaultAnchor(final AirDefaultSizeNodeFigure figure) {

@@ -114,7 +114,6 @@ Export-Package: org.eclipse.sirius.diagram.description.concern.provider;version=
  org.eclipse.sirius.diagram.ui.tools.api.editor;version="2.2.0",
  org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar;version="4.0.0",
  org.eclipse.sirius.diagram.ui.tools.api.figure;version="3.2.0",
- org.eclipse.sirius.diagram.ui.tools.api.figure.anchor;version="2.0.4",
  org.eclipse.sirius.diagram.ui.tools.api.figure.locator;version="3.0.0",
  org.eclipse.sirius.diagram.ui.tools.api.format;version="4.1.0",
  org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette;version="2.0.4",

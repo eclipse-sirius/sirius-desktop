@@ -20,6 +20,54 @@ h3. Developer-Visible Changes
 ** New method to open session when this is due to a direct user action (@org.eclipse.sirius.business.api.session.SessionManager.openSession(sessionResourceURI, monitor, uiCallback, isDirectUserActionLoading)@). Previous version calls this new version with the value false for @isDirectUserActionLoading@ parameter
 ** New system preference to know if user want to be asked to save resources after automatic migration @org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants.PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION@
 
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.ImageFigureWithAlpha@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.IRoundedCorner@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.internal.figure.IFixedFigure@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractTransparentEllipse@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractTransparentRectangle@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractTransparentRectangle@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.ODesignEllipseFigure@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.PolygoneAndPolylineDecoraction@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.TransparentFigureGraphicsModifier@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.internal.figure.InsertBlankSpaceGuide@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.internal.figure.AlphaBasedSlidableImageAnchor@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.internal.figure.NotificationFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.internal.figure.util.OpaquePixelFinder@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractGeoShapePolygonFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractTransparentImage@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractTransparentNode@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.DBorderedNodeFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.ParallelogramFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.AirNoteFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AirSlidableImageAnchor@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util@ package.
+* <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeCompositeFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeSectionFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.LifelineNodeFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SequenceNodeFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.ZoomDependantAnchor@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.ViewGradientFigureDesc@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> An int parameter replace now the BackgroundStyle parameter into the class @org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle@. This parameter represents still the backgroundStyle in int format.
+
+h4. Changes in @org.eclipse.sirius.diagram.sequence.ui@
+
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.HorizontalGuide@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.CombinedFragmentInvisibleResizableCompartmentFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SequenceSlidableAnchor@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
+
 h2(#sirius6.0.0). Changes in Sirius 6.0.0
 
 h3. User-Visible Changes

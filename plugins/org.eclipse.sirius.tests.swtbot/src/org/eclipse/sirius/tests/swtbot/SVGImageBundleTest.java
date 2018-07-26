@@ -22,7 +22,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.BundledImageEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.EllipseEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ODesignEllipseFigure;
+import org.eclipse.sirius.ext.draw2d.figure.ODesignEllipseFigure;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;

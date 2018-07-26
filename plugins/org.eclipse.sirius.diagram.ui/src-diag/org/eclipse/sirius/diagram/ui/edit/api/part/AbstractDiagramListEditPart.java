@@ -26,8 +26,8 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.ViewNodeContainerFigureDesc;
 
 import com.google.common.collect.Iterables;
 

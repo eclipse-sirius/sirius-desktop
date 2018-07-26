@@ -27,10 +27,10 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SequenceSlidableAnchor;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SequenceSlidableAnchor;
 
 /**
  * Helper class to business code between different kinds of edit parts when

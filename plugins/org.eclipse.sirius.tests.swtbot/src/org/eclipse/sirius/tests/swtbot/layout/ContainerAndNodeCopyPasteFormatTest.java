@@ -24,11 +24,11 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContain
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart.SquareFigure;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.LozengeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ODesignEllipseFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.draw2d.figure.LozengeFigure;
+import org.eclipse.sirius.ext.draw2d.figure.ODesignEllipseFigure;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;

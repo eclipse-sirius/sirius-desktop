@@ -16,7 +16,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.NotificationFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.NotificationFigure;
 import org.eclipse.sirius.ui.business.api.dialect.DefaultDialectEditorDialogFactory;
 import org.eclipse.ui.IWorkbenchPartSite;
 

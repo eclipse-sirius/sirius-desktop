@@ -22,9 +22,9 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRo
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ObservationPoint;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CollapseUpdater;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.draw2d.figure.ICollapseMode;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;

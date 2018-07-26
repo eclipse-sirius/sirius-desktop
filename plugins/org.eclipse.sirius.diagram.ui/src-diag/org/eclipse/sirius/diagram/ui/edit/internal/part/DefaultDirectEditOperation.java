@@ -43,7 +43,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusEditPartFactory;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusParserProvider;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**

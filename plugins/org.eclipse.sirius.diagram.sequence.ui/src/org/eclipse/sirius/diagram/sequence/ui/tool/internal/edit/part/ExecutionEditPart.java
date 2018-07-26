@@ -32,13 +32,13 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.ExecutionSelectionEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.ExecutionItemLocator;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SequenceNodeFigure;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
+import org.eclipse.sirius.ext.draw2d.figure.ICollapseMode;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SequenceNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
 /**

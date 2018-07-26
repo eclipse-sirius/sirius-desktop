@@ -22,9 +22,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.AbstractSequenceInteractionValidator;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.HorizontalGuide;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.RangeGuide;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.ext.draw2d.figure.HorizontalGuide;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.swt.graphics.Color;
 

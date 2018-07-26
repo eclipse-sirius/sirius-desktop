@@ -65,8 +65,8 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListViewNodeLis
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.RegionCollapseAwarePropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.ComparisonHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LabelBorderStyleIds;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;

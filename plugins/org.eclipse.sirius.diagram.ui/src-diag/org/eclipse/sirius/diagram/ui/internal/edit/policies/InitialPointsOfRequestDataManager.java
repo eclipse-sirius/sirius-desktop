@@ -22,7 +22,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelLocator;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 
 /**
  * This manager is used to store the initial points of an edge before the

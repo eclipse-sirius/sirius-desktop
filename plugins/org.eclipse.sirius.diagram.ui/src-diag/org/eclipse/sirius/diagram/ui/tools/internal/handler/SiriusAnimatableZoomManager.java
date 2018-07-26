@@ -27,7 +27,7 @@ import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.AnimationModel;
 import org.eclipse.gmf.runtime.gef.ui.internal.editparts.AnimatedZoomListener;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.IFixedFigure;
+import org.eclipse.sirius.ext.draw2d.figure.IFixedFigure;
 
 /**
  * Sirius zoom manager zooming on given point and not on view center. The code is the same than

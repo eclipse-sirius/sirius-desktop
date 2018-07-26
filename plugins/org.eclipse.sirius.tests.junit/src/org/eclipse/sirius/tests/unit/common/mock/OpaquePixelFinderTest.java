@@ -16,8 +16,8 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.ImageFigureWithAlpha;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.util.OpaquePixelFinder;
+import org.eclipse.sirius.ext.draw2d.figure.ImageFigureWithAlpha;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.OpaquePixelFinder;
 import org.junit.Test;
 
 /**

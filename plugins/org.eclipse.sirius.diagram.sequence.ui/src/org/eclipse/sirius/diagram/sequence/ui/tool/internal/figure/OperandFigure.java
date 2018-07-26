@@ -17,7 +17,8 @@ import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LifelineNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.OneLineMarginBorder;
 
 /**
  * Custom figure to paint only a bottom dash line instead of a full border.
@@ -39,7 +40,7 @@ public class OperandFigure extends GradientRoundedRectangle {
      *            the current operand
      */
     public OperandFigure(final Dimension dimension, final BackgroundStyle backgroundStyle, Operand operand) {
-        super(dimension, backgroundStyle, null);
+        super(dimension, backgroundStyle.getValue(), null);
 
         this.operand = operand;
 
