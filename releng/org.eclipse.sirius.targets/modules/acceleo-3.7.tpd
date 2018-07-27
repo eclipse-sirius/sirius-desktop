@@ -2,9 +2,9 @@ target "acceleo-3.7"
 
 with source, requirements
 
-location Acceleo-3.7 "http://download.eclipse.org/acceleo/updates/milestones/3.7/S201802240723" {
-	org.eclipse.acceleo.feature.group lazy
-	org.eclipse.acceleo.ide.ui lazy
+location Acceleo-3.7 "http://download.eclipse.org/acceleo/updates/releases/3.7/R201807201001" {
+    org.eclipse.acceleo.feature.group lazy
+    org.eclipse.acceleo.ide.ui lazy
     org.eclipse.acceleo.ui.interpreter.feature.group lazy
     org.eclipse.acceleo.ui.interpreter.source.feature.group lazy
 }
