@@ -2,6 +2,8 @@ h1. Specifying Workflows
 
 {toc:style=disc|minLevel=2|maxLevel=3}
 
+%{color:red}WARNING:% This feature is **experimental** in Sirius 6.0.x. Adopters are encouraged to test it and give "feedback":https://bugs.eclipse.org/bugs/enter_bug.cgi?product=Sirius, but this sould not be deployed in production. In particular, workflows defined using Sirius 6.0.x may not work at all in Sirius 6.1 and later.
+
 h2(#introduction). Introduction
 
 The _Workflow_ section is a new tab included in the aird editor (to open it, double click on the file with _aird_ extension).
