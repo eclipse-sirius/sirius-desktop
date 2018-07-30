@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -117,15 +117,20 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider, IInt
         if (this.dependencies.add(dependency)) {
             for (final IInterpreter interpreter : this.loadedInterpreters.values()) {
                 if (interpreter != null) {
-                    // Is the class imported from one of the white-listed plug-ins (which are not in the normal search path of interpreters)?
-                    boolean isSpecialImport = dependency != null && (dependency.startsWith("org.eclipse.sirius.properties.") || dependency.startsWith("org.eclipse.sirius.common.")); //$NON-NLS-1$ //$NON-NLS-2$
-                    // Is the target interpreter the legacy one, which does not support the plug-ins white list?
-                    boolean isTargetLegacyInterpreter = interpreter.getClass().getName().startsWith("org.eclipse.sirius.query.legacy."); //$NON-NLS-1$
-                    if (!isSpecialImport || !isTargetLegacyInterpreter) {
-                        interpreter.addImport(dependency);
-                    }
+                    safeAddImport(interpreter, dependency);
                 }
             }
+        }
+    }
+
+    private void safeAddImport(final IInterpreter interpreter, final String dependency) {
+        // Is the class imported from one of the white-listed plug-ins (which are not in the normal search path of
+        // interpreters)?
+        boolean isSpecialImport = dependency != null && (dependency.startsWith("org.eclipse.sirius.properties.") || dependency.startsWith("org.eclipse.sirius.common.")); //$NON-NLS-1$ //$NON-NLS-2$
+        // Is the target interpreter the legacy one, which does not support the plug-ins white list?
+        boolean isTargetLegacyInterpreter = interpreter.getClass().getName().startsWith("org.eclipse.sirius.query.legacy."); //$NON-NLS-1$
+        if (!isSpecialImport || !isTargetLegacyInterpreter) {
+            interpreter.addImport(dependency);
         }
     }
 
@@ -328,7 +333,7 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider, IInt
                 result.clearImports();
             }
             for (final String dependency : this.dependencies) {
-                result.addImport(dependency);
+                safeAddImport(result, dependency);
             }
             result.activateMetamodels(additionalMetamodels);
             this.variables.setVariables(result);
