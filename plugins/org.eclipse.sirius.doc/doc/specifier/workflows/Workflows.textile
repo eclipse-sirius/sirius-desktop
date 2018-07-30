@@ -11,7 +11,7 @@ The _Workflow_ section is a new tab included in the aird editor (to open it, dou
 !images/aird_editor.png!
 
 The new workflow tab displays both fixed information and information that can be defined in the VSM. The fixed information are the following:
-* The name of the project and its description. The description is an element stored in the .project file, in a @<comment>An UMLDesigner test project</comment>@ tag
+* The name of the project and its description.
 * A list of all semantic resources known by the Sirius session
 * A list of all representations (diagrams, tables and trees) in the Sirius session
 * A workflow tile, empty by default, that can be customized by the specifier in the "_VSM_":../../Glossary.html#VSM to display actions that should be available more directly to users.
