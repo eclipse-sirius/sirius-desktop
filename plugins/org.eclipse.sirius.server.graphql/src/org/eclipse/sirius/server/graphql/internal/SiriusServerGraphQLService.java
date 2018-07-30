@@ -44,6 +44,11 @@ public class SiriusServerGraphQLService implements ISiriusServerService {
     private static final String UTF_8 = "UTF-8"; //$NON-NLS-1$
 
     @Override
+    public SiriusServerResponse doOptions(HttpServletRequest request, Map<String, String> variables, String remainingPart) {
+        return new SiriusServerResponse(STATUS_OK);
+    }
+
+    @Override
     public SiriusServerResponse doPost(HttpServletRequest request, Map<String, String> variables, String remainingPart) {
         SiriusServerResponse response = new SiriusServerResponse(STATUS_BAD_REQUEST);
         try (Reader reader = new InputStreamReader(request.getInputStream(), UTF_8);) {

@@ -70,13 +70,14 @@ public class SiriusServerFilter implements Filter {
             Optional<SiriusServerResponse> optionalResponse = this.processRequest(request);
             if (optionalResponse.isPresent()) {
                 SiriusServerResponse httpServiceResponse = optionalResponse.get();
-                Object payload = httpServiceResponse.getPayload();
-                String jsonPayload = new Gson().toJson(payload);
 
                 response.setStatus(httpServiceResponse.getStatus());
                 response.setContentType(httpServiceResponse.getContentType());
                 response.setCharacterEncoding(UTF_8);
-                response.getWriter().write(jsonPayload);
+
+                Optional<Object> optionalPayload = Optional.ofNullable(httpServiceResponse.getPayload());
+                Optional<String> optionalJsonPayload = optionalPayload.map(new Gson()::toJson);
+                optionalJsonPayload.ifPresent(response.getWriter()::write);
             }
         }
     }
