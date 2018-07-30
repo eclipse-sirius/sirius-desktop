@@ -355,12 +355,16 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
             // check project
             Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject(project);
             if (optionalModelingProject.some()) {
+                ModelingProject modelingProject = optionalModelingProject.get();
                 try {
                     // See 525466. we set the validity to true in case of DefaultModelingProjectResourceListener that
                     // has set it to false or the representation file will not be created if it does not exist yet.
-                    optionalModelingProject.get().setValid(true);
-                    Option<URI> mainRepresentationsFileURI = optionalModelingProject.get().getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), false, true);
-                    if (mainRepresentationsFileURI.some()) {
+                    Option<URI> mainRepresentationsFileURI;
+                    synchronized (modelingProject) {
+                        modelingProject.setValid(true);
+                        mainRepresentationsFileURI = modelingProject.getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), false, true);
+                    }
+                    if (mainRepresentationsFileURI != null && mainRepresentationsFileURI.some()) {
                         // Open the session.
                         loadAndOpenRepresentationsFiles(Lists.newArrayList(mainRepresentationsFileURI.get()), true, true);
                     }
@@ -371,31 +375,33 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                     } catch (final CoreException ce) {
                         SiriusPlugin.getDefault().getLog().log(ce.getStatus());
                     }
-                    // Add a marker on this project
-                    try {
-                        final IMarker marker = project.createMarker(ModelingMarker.MARKER_TYPE);
-                        marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
-                        marker.setAttribute(IMarker.MESSAGE, e.getMessage());
-                    } catch (final CoreException ce) {
-                        SiriusPlugin.getDefault().getLog().log(ce.getStatus());
-                    }
                     if (e.getCause() != null && ModelingProjectQuery.ZERO_REPRESENTATIONS_FILE_FOUND_IN.equals(e.getCause().getMessage())) {
                         // 0 files has been found : create a representation
                         ModelingProjectManager.INSTANCE.createLocalRepresentationsFile(project, new SubProgressMonitor(monitor, 1));
                         // Project has been marked as invalid but now it has a
                         // main representation file, force the computation of
                         // its mainRepresentationFileURI.
-                        optionalModelingProject.get().getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), true, true);
-                    } else if (e.getCause() != null && ModelingProjectQuery.A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE.equals(e.getCause().getMessage())) {
-                        // several files have been found : rollback
-                        removeModelingNature(project, new SubProgressMonitor(monitor, 1));
-                        throw new CoreException(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getMessage()));
+                        modelingProject.getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), true, true);
+                    } else {
+                        // Add a marker on this project
+                        try {
+                            final IMarker marker = project.createMarker(ModelingMarker.MARKER_TYPE);
+                            marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
+                            marker.setAttribute(IMarker.MESSAGE, e.getMessage());
+                        } catch (final CoreException ce) {
+                            SiriusPlugin.getDefault().getLog().log(ce.getStatus());
+                        }
+                        if (e.getCause() != null && ModelingProjectQuery.A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE.equals(e.getCause().getMessage())) {
+                            // several files have been found : rollback
+                            removeModelingNature(project, new SubProgressMonitor(monitor, 1));
+                            throw new CoreException(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getMessage()));
+                        }
                     }
                 }
 
-                if (optionalModelingProject.get().getSession() != null) {
+                if (modelingProject.getSession() != null) {
                     // add semantic resources if already existing in the project
-                    addSemanticResources(project, optionalModelingProject.get().getSession(), new SubProgressMonitor(monitor, 1));
+                    addSemanticResources(project, modelingProject.getSession(), new SubProgressMonitor(monitor, 1));
                 }
             }
         } finally {
