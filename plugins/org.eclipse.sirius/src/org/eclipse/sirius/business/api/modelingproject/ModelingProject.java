@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,8 +26,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.Messages;
 
 /**
- * A modeling project nature is used to know which projects should be handled in
- * project mode by the modeling explorer.
+ * A modeling project nature is used to know which projects should be handled in project mode by the modeling explorer.
  * 
  * @author mchauvin
  */
@@ -48,8 +47,7 @@ public class ModelingProject implements IProjectNature, IModelingElement {
     private URI mainRepresentationsFileURI;
 
     /**
-     * A modeling project is not valid if its main representations file has not
-     * be loaded correctly.
+     * A modeling project is not valid if its main representations file has not be loaded correctly.
      */
     private boolean valid = true;
 
@@ -101,8 +99,7 @@ public class ModelingProject implements IProjectNature, IModelingElement {
     }
 
     /**
-     * Check if the given project is accessible and it has a modeling project
-     * nature.
+     * Check if the given project is accessible and it has a modeling project nature.
      * 
      * @param project
      *            the project to check
@@ -122,8 +119,7 @@ public class ModelingProject implements IProjectNature, IModelingElement {
      * 
      * @param project
      *            The original project
-     * @return an optional ModelingProject (none if this project is not a
-     *         modeling project).
+     * @return an optional ModelingProject (none if this project is not a modeling project).
      */
     public static Option<ModelingProject> asModelingProject(IProject project) {
         IProjectNature nature = null;
@@ -146,14 +142,13 @@ public class ModelingProject implements IProjectNature, IModelingElement {
     /**
      * Retrieve the opened session in this project.
      * 
-     * @return the opened session associated to this project, <code>null</code>
-     *         if it can not be found or if session is not yet opened
+     * @return the opened session associated to this project, <code>null</code> if it can not be found or if session is
+     *         not yet opened
      */
     public Session getSession() {
         /*
-         * this method should remain fastest as possible : - the number of aird
-         * file for a a project should be very low, most often there will be
-         * only one.
+         * this method should remain fastest as possible : - the number of aird file for a a project should be very low,
+         * most often there will be only one.
          */
         final Option<URI> optionalUri = getMainRepresentationsFileURI(new NullProgressMonitor());
         if (optionalUri.some()) {
@@ -167,16 +162,14 @@ public class ModelingProject implements IProjectNature, IModelingElement {
     }
 
     /**
-     * Return an optional URI corresponding to the main representations file of
-     * this project. If the main representations file is not known, it will be
-     * computed by a specific SaxParser that analyzes representations files of
-     * this project to determine which is never referenced.
+     * Return an optional URI corresponding to the main representations file of this project. If the main
+     * representations file is not known, it will be computed by a specific SaxParser that analyzes representations
+     * files of this project to determine which is never referenced.
      * 
      * @param monitor
-     *            the monitor to be used for reporting progress and responding
-     *            to cancellation. The monitor is never <code>null</code>
-     * @return an optional URI corresponding to the main session file of this
-     *         project.
+     *            the monitor to be used for reporting progress and responding to cancellation. The monitor is never
+     *            <code>null</code>
+     * @return an optional URI corresponding to the main session file of this project.
      * @throws IllegalArgumentException
      *             In case of multiples main aird in the references.
      */
@@ -185,28 +178,23 @@ public class ModelingProject implements IProjectNature, IModelingElement {
     }
 
     /**
-     * Return an optional URI corresponding to the main representations file of
-     * this project. If the main representations file is not known, it will be
-     * computed by a specific SaxParser that analyzes representations files of
-     * this project to determine which is never referenced.<BR>
+     * Return an optional URI corresponding to the main representations file of this project. If the main
+     * representations file is not known, it will be computed by a specific SaxParser that analyzes representations
+     * files of this project to determine which is never referenced.<BR>
      * This method marks this project as invalid.
      * 
      * @param monitor
-     *            the monitor to be used for reporting progress and responding
-     *            to cancellation. The monitor is never <code>null</code>
+     *            the monitor to be used for reporting progress and responding to cancellation. The monitor is never
+     *            <code>null</code>
      * @param force
-     *            true if the main representations file must be compute even if
-     *            it is already known.
+     *            true if the main representations file must be compute even if it is already known.
      * @param throwException
-     *            true if you want to throw exception in case of problem or only
-     *            have an None option result.
-     * @return an optional URI corresponding to the main session file of this
-     *         project.
+     *            true if you want to throw exception in case of problem or only have an None option result.
+     * @return an optional URI corresponding to the main session file of this project.
      * @throws IllegalArgumentException
-     *             In case of problem during computing the main representations
-     *             file.
+     *             In case of problem during computing the main representations file.
      */
-    public Option<URI> getMainRepresentationsFileURI(IProgressMonitor monitor, boolean force, boolean throwException) throws IllegalArgumentException {
+    public synchronized Option<URI> getMainRepresentationsFileURI(IProgressMonitor monitor, boolean force, boolean throwException) throws IllegalArgumentException {
         Option<URI> mainRepresentationsFileURIOption = Options.newNone();
         try {
             monitor.beginTask(Messages.ModelingProject_getMainRepFileURIMsg, 1);
@@ -238,13 +226,11 @@ public class ModelingProject implements IProjectNature, IModelingElement {
     }
 
     /**
-     * Check if this representations file is the main representations file of
-     * this project.
+     * Check if this representations file is the main representations file of this project.
      * 
      * @param representationsFile
      *            the file to check
-     * @return true if this file is the main representations file, false
-     *         otherwise
+     * @return true if this file is the main representations file, false otherwise
      */
     public boolean isMainRepresentationsFile(IFile representationsFile) {
         boolean result = false;
@@ -256,23 +242,23 @@ public class ModelingProject implements IProjectNature, IModelingElement {
     }
 
     /**
-     * Get the valid status of this project.A modeling project is not valid if
-     * its main representations file has not be loaded correctly.
+     * Get the valid status of this project.A modeling project is not valid if its main representations file has not be
+     * loaded correctly.
      * 
      * @return true is the Modeling project is valid, false otherwise.
      */
-    public boolean isValid() {
+    public synchronized boolean isValid() {
         return this.valid;
     }
 
     /**
-     * Set the valid status of a modeling project. A modeling project is not
-     * valid if its main representations file has not be loaded correctly.
+     * Set the valid status of a modeling project. A modeling project is not valid if its main representations file has
+     * not be loaded correctly.
      * 
      * @param valid
      *            The new valid state
      */
-    public void setValid(boolean valid) {
+    public synchronized void setValid(boolean valid) {
         this.valid = valid;
     }
 }
