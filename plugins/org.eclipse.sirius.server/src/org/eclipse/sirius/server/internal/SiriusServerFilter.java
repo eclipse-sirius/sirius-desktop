@@ -32,6 +32,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.server.api.ISiriusServerService;
 import org.eclipse.sirius.server.api.SiriusServerPath;
 import org.eclipse.sirius.server.api.SiriusServerResponse;
+import org.eclipse.sirius.server.internal.services.SiriusServerCSPViolationReportService;
 
 /**
  * Filter used to dynamically dispatch request to the appropriate service.
@@ -115,6 +116,9 @@ public class SiriusServerFilter implements Filter {
      */
     private List<SiriusServerServiceDescriptor> getDescriptors(HttpServletRequest request) {
         List<Class<? extends ISiriusServerService>> serviceClasses = new ArrayList<>();
+
+        // Default services
+        serviceClasses.add(SiriusServerCSPViolationReportService.class);
 
         // @formatter:off
         SiriusServerPlugin.getPlugin().getSiriusServerServices().stream()

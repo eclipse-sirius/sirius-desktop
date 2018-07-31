@@ -66,6 +66,9 @@ public class SiriusServerManager {
 
             SiriusServerPlugin.getPlugin().getSiriusServerConfigurators().forEach(configurator -> configurator.configure(server));
 
+            SiriusServerHeaderConfigurator headerConfigurator = new SiriusServerHeaderConfigurator();
+            headerConfigurator.configure(server);
+
             try {
                 this.server.start();
             } catch (Exception exception) {

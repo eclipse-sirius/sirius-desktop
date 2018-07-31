@@ -34,6 +34,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SiriusServerConfigurator_wrongPropertyTypeWarning;
+
+    @TranslatableMessage
+    public static String SiriusServerConfigurator_headerConfig;
     // CHECKSTYLE:ON
 
     private Messages() {

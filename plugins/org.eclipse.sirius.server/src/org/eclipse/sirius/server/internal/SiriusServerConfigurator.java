@@ -33,9 +33,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.SslConnectionFactory;
 import org.eclipse.jetty.server.handler.HandlerCollection;
-import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import org.eclipse.sirius.server.api.ISiriusServerConfigurator;
@@ -47,30 +45,6 @@ import org.eclipse.sirius.server.api.ISiriusServerEndpointConfigurationProvider;
  * @author sbegaudeau
  */
 public class SiriusServerConfigurator implements ISiriusServerConfigurator {
-
-    /**
-     * The constant used specified allowed methods. Expects a list of string
-     * with comma separated values.
-     */
-    private static final String ALLOWED_METHODS = "org.eclipse.sirius.server.cors.allowed.methods"; //$NON-NLS-1$
-
-    /**
-     * The constant used specified allowed headers. Expects a list of string
-     * with comma separated values.
-     */
-    private static final String ALLOWED_HEADERS = "org.eclipse.sirius.server.cors.allowed.headers"; //$NON-NLS-1$
-
-    /**
-     * The constant used specified allowed origins. Expects a list of string
-     * with comma separated values.
-     */
-    private static final String ALLOWED_ORIGINS = "org.eclipse.sirius.server.cors.allowed.origins"; //$NON-NLS-1$
-
-    /**
-     * The constant used to determine if Cross Origin Resource Sharing are
-     * enabled or not. Expects a boolean.
-     */
-    private static final String ALLOW_CORS = "org.eclipse.sirius.server.cors.enabled"; //$NON-NLS-1$
 
     /**
      * The constant used to determine whether ssl is activated or not.
@@ -134,6 +108,11 @@ public class SiriusServerConfigurator implements ISiriusServerConfigurator {
     private static final String WS_API_CONTEXT_PATH = "/ws"; //$NON-NLS-1$
 
     /**
+     * The context path of all requests.
+     */
+    private static final String ALL_PATH = "/*"; //$NON-NLS-1$
+
+    /**
      * {@inheritDoc}
      *
      * @see org.eclipse.sirius.server.api.ISiriusServerConfigurator#configure(org.eclipse.sirius.server.api.Server)
@@ -157,26 +136,7 @@ public class SiriusServerConfigurator implements ISiriusServerConfigurator {
         SessionCookieConfig sessionCookieConfig = httpAPIServletContextHandler.getServletContext().getSessionCookieConfig();
         sessionCookieConfig.setHttpOnly(true);
 
-        boolean allowCors = Boolean.parseBoolean(System.getProperty(ALLOW_CORS));
-        if (allowCors) {
-            FilterHolder cors = new FilterHolder();
-            String allowedOrigins = System.getProperty(ALLOWED_ORIGINS);
-            if (allowedOrigins != null) {
-                cors.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, allowedOrigins);
-            }
-            String allowedHeaders = System.getProperty(ALLOWED_HEADERS);
-            if (allowedHeaders != null) {
-                cors.setInitParameter(CrossOriginFilter.ALLOWED_HEADERS_PARAM, allowedHeaders);
-            }
-            String allowedMethods = System.getProperty(ALLOWED_METHODS);
-            if (allowedMethods != null) {
-                cors.setInitParameter(CrossOriginFilter.ALLOWED_METHODS_PARAM, allowedMethods);
-            }
-            cors.setFilter(new CrossOriginFilter());
-            httpAPIServletContextHandler.addFilter(cors, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.INCLUDE)); //$NON-NLS-1$
-        }
-
-        httpAPIServletContextHandler.addFilter(SiriusServerFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST, DispatcherType.INCLUDE)); //$NON-NLS-1$
+        httpAPIServletContextHandler.addFilter(SiriusServerFilter.class, ALL_PATH, EnumSet.of(DispatcherType.REQUEST, DispatcherType.INCLUDE));
 
         ServletContextHandler wsAPIServletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS | ServletContextHandler.GZIP);
         wsAPIServletContextHandler.setContextPath(WS_API_CONTEXT_PATH);
@@ -212,7 +172,10 @@ public class SiriusServerConfigurator implements ISiriusServerConfigurator {
      * @return The created http connector
      */
     private Connector createHttpConnector(Server server) {
-        ServerConnector serverConnector = new ServerConnector(server);
+        HttpConfiguration httpConfiguration = new HttpConfiguration();
+        httpConfiguration.setSendServerVersion(false);
+        HttpConnectionFactory httpConnectionFactory = new HttpConnectionFactory(httpConfiguration);
+        ServerConnector serverConnector = new ServerConnector(server, httpConnectionFactory);
         serverConnector.setHost(System.getProperty(HTTP_HOST, DEFAULT_HOSTNAME));
         serverConnector.setPort(handleSystemPropertiesIntegerValue(HTTP_PORT, DEFAULT_HTTP_PORT));
         return serverConnector;
@@ -238,6 +201,7 @@ public class SiriusServerConfigurator implements ISiriusServerConfigurator {
         sslContextFactory.setNeedClientAuth(false);
 
         HttpConfiguration httpsConfiguration = new HttpConfiguration();
+        httpsConfiguration.setSendServerVersion(false);
         httpsConfiguration.addCustomizer(new SecureRequestCustomizer());
 
         ServerConnector serverConnector = new ServerConnector(server, new SslConnectionFactory(sslContextFactory, "http/1.1"), new HttpConnectionFactory(httpsConfiguration)); //$NON-NLS-1$
