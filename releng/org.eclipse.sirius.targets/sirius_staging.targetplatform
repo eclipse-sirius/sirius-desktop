@@ -13,7 +13,7 @@ include "modules/gmf-runtime-1.12.tpd"
 
 with source, requirements
 
-location Sirius-Photon-6.0.0M7 "http://download.eclipse.org/sirius/updates/milestones/6.0.0M7/photon/" {
+location Sirius-Photon-Master "http://download.eclipse.org/sirius/updates/nightly/latest/photon/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
