@@ -81,7 +81,7 @@ mkdir -p "$TARGET_ROOT/$STREAM/$PLATFORM/targets"
 cp -dR "$WKS"/releng/org.eclipse.sirius.targets/* "$TARGET_ROOT/$STREAM/$PLATFORM/targets"
 # Also update publish targets "$BUILD_TYPE/targets and "$BUILD_TYPE/latest/targets" links if we are building master
 mkdir -p "$TARGET_ROOT/targets"
-if [ "master" = "$GIT_BRANCH" ]; then
+if [ "origin/master" = "$GIT_BRANCH" ]; then
     mkdir -p "$TARGET_ROOT/targets"
     cp -dR "$WKS"/releng/org.eclipse.sirius.targets/* "$TARGET_ROOT/targets"
     mkdir -p "$TARGET_ROOT/latest/targets"
