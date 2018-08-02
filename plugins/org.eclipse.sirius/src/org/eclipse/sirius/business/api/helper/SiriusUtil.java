@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ import com.google.common.collect.Iterators;
  * 
  * @author ymortier
  */
-public final class SiriusUtil {
+public final class SiriusUtil implements ViewpointUtil {
 
     /** The file extension for Designer diagram files. */
     public static final String SESSION_RESOURCE_EXTENSION = "aird"; //$NON-NLS-1$
@@ -55,12 +55,6 @@ public final class SiriusUtil {
 
     /** The name of the folder containing srm files. */
     public static final String REPRESENTATIONS_FOLDER_NAME = ".representations"; //$NON-NLS-1$
-
-    /** The "environment:/" uri scheme. */
-    public static final String ENVIRONMENT_URI_SCHEME = "environment"; //$NON-NLS-1$
-
-    /** The "environment:/viewpoint" resource uri. */
-    public static final String VIEWPOINT_ENVIRONMENT_RESOURCE_URI = ENVIRONMENT_URI_SCHEME + ":/viewpoint"; //$NON-NLS-1$
 
     /**
      * Avoid instantiation.

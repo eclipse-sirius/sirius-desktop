@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,20 +19,22 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 
 /**
  * Implementation of ValidationRuleImpl.java.
  * 
  * @author cbrun.
  */
-public final class ValidationRuleSpecOperations {
+public final class ValidationRuleOperations {
 
     /**
      * Avoid instantiation.
      */
-    private ValidationRuleSpecOperations() {
+    private ValidationRuleOperations() {
         // empty.
     }
 
@@ -46,16 +48,18 @@ public final class ValidationRuleSpecOperations {
      * @return <code>true</code> if the validation rule is checked.
      */
     public static boolean checkRule(final ValidationRule rule, final EObject eObj) {
-        final IInterpreter acceleoInterpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(eObj);
         boolean valid = true;
-        final Iterator<RuleAudit> iterAudits = rule.getAudits().iterator();
-        while (iterAudits.hasNext() && valid) {
-            final RuleAudit ruleAudit = iterAudits.next();
-            final String expression = ruleAudit.getAuditExpression();
-            try {
-                valid = valid && acceleoInterpreter.evaluateBoolean(eObj, expression);
-            } catch (final EvaluationException e) {
-                RuntimeLoggerManager.INSTANCE.error(ruleAudit, ValidationPackage.eINSTANCE.getRuleAudit_AuditExpression(), e);
+        if (rule instanceof SemanticValidationRule || rule instanceof ViewValidationRule) {
+            final IInterpreter acceleoInterpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(eObj);
+            final Iterator<RuleAudit> iterAudits = rule.getAudits().iterator();
+            while (iterAudits.hasNext() && valid) {
+                final RuleAudit ruleAudit = iterAudits.next();
+                final String expression = ruleAudit.getAuditExpression();
+                try {
+                    valid = valid && acceleoInterpreter.evaluateBoolean(eObj, expression);
+                } catch (final EvaluationException e) {
+                    RuntimeLoggerManager.INSTANCE.error(ruleAudit, ValidationPackage.eINSTANCE.getRuleAudit_AuditExpression(), e);
+                }
             }
         }
         return valid;
@@ -74,10 +78,12 @@ public final class ValidationRuleSpecOperations {
     public static String getMessage(final ValidationRule rule, final EObject eObj) {
         final IInterpreter acceleoInterpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(eObj);
         String message = rule.getMessage();
-        try {
-            message = acceleoInterpreter.evaluateString(eObj, message);
-        } catch (final EvaluationException e) {
-            SiriusPlugin.getDefault().error(Messages.ValidationRuleSpecOperations_evaluationErrorMsg, e);
+        if (rule instanceof SemanticValidationRule || rule instanceof ViewValidationRule) {
+            try {
+                message = acceleoInterpreter.evaluateString(eObj, message);
+            } catch (final EvaluationException e) {
+                SiriusPlugin.getDefault().error(Messages.ValidationRuleSpecOperations_evaluationErrorMsg, e);
+            }
         }
         return message;
     }

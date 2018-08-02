@@ -59,7 +59,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.helper.ViewpointUtil;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
 import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMExtendedMetaData;
@@ -222,7 +222,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                 }
 
                 private boolean isEnvironmentResource(final Object element) {
-                    return element instanceof Resource && ((Resource) element).getURI() != null && SiriusUtil.ENVIRONMENT_URI_SCHEME.equals(((Resource) element).getURI().scheme());
+                    return element instanceof Resource && ((Resource) element).getURI() != null && ViewpointUtil.ENVIRONMENT_URI_SCHEME.equals(((Resource) element).getURI().scheme());
                 }
 
                 private boolean isMigrationAnnotation(final Object element) {

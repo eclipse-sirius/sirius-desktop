@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,9 +14,8 @@ import java.util.Optional;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
@@ -70,7 +69,7 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
         if (loadOnDemand && !representation.isPresent()) {
             representation = getRepresentationInternal(true);
 
-            representation.ifPresent(rep -> Optional.ofNullable(new EObjectQuery(repDescriptor).getSession()).map(Session::getSemanticCrossReferencer).ifPresent(crossRef -> {
+            representation.ifPresent(rep -> Optional.ofNullable(ECrossReferenceAdapter.getCrossReferenceAdapter(repDescriptor.eResource())).ifPresent(crossRef -> {
                 crossRef.setTarget(repDescriptor);
                 rep.eAdapters().add(crossRef);
             }));

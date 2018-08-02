@@ -29,7 +29,8 @@
    <extension-point id="interpretedExpressionQueryProvider" name="%extension-point.interpretedExpressionQueryProvider.name" schema="schema/interpretedExpressionQueryProvider.exsd"/>
    <extension-point id="modelOperationManager" name="%extension-point.modelOperationManager.name" schema="schema/modelOperationManager.exsd"/>
    <extension-point id="dRepresentationLocationRule" name="%extension-point.dRepresentationLocationRule.name" schema="schema/dRepresentationLocationRule.exsd"/>
-
+   <extension-point id="migrationHandler" name="%extension-point.migrationHandler.name" schema="schema/migrationHandler.exsd"/>
+   
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated viewpoint -->
       <package
@@ -480,6 +481,12 @@
       <enablement>
           <test property="org.eclipse.core.resources.projectNature" value="org.eclipse.sirius.nature.modelingproject" />
       </enablement>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.migrationHandler">
+      <migrationHandler
+            class="org.eclipse.sirius.business.internal.migration.description.ViewpointMigrationHandler">
+      </migrationHandler>
    </extension>
 
 </plugin>

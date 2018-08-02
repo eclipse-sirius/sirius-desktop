@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 OBEO.
+ * Copyright (c) 2015, 2018 OBEO.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
-import org.eclipse.sirius.business.api.query.ResourceQuery;
 
 /**
  * This class aggregates queries (read-only!) from a {@link Resource} starting
@@ -28,7 +27,12 @@ import org.eclipse.sirius.business.api.query.ResourceQuery;
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  *
  */
-public class ResourceQueryInternal extends ResourceQuery {
+public class ResourceQueryInternal {
+    
+    /**
+     * The resource to query.
+     */
+    private Resource resource;
 
     /**
      * Create a new query handler.
@@ -37,7 +41,7 @@ public class ResourceQueryInternal extends ResourceQuery {
      *            the element to query.
      */
     public ResourceQueryInternal(Resource resource) {
-        super(resource);
+        this.resource = resource;
     }
 
     /**

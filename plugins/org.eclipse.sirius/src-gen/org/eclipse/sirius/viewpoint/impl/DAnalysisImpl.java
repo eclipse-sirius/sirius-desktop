@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,9 +14,13 @@ package org.eclipse.sirius.viewpoint.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -30,10 +34,10 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.query.ResourceQueryInternal;
-import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 
@@ -189,7 +193,7 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
         ResourceSet resourceSet = eResource != null ? eResource.getResourceSet() : null;
         if (resourceSet != null) {
             for (ResourceDescriptor resourceDescriptor : getSemanticResources()) {
-                Resource resource = ModelUtils.getResource(resourceSet, resourceDescriptor.getResourceURI());
+                Resource resource = getResource(resourceSet, resourceDescriptor.getResourceURI());
                 if (resource != null) {
                     EObject eObject = new ResourceQueryInternal(resource).findSemanticRoot();
                     if (eObject != null) {
@@ -200,6 +204,29 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
         }
 
         return new EcoreEList.UnmodifiableEList<EObject>(this, ViewpointPackage.eINSTANCE.getDAnalysis_Models(), models.size(), models.toArray());
+    }
+
+    /**
+     * Loads a resource from an {@link org.eclipse.emf.common.util.URI URI} in a given {@link ResourceSet}.
+     * <p>
+     * If the load fails, the resource is unloaded and removed from the resourceSet.
+     * </p>
+     *
+     * @param resourceURI
+     *            {@link org.eclipse.emf.common.util.URI URI} where the model is stored.
+     * @param resourceSet
+     *            The {@link ResourceSet} to load the model in.
+     * @return The resource.
+     */
+    private static Resource getResource(final ResourceSet resourceSet, final URI resourceURI) {
+        Resource resource = null;
+        try {
+            resource = resourceSet.getResource(resourceURI, true);
+        } catch (WrappedException e) {
+            SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, e.getMessage(), e));
+        }
+
+        return resource;
     }
 
     /**

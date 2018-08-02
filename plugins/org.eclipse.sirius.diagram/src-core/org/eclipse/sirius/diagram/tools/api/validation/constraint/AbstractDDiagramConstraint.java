@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.internal.metamodel.description.validation.operations.ValidationRuleOperations;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -67,7 +68,8 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
                         target = ((DSemanticDecorator) objectToValidate).getTarget();
                     }
 
-                    final ConstraintStatus emfStatus = (ConstraintStatus) ctx.createFailureStatus(new Object[] { failedRule.getMessage(target) });
+                    String message = ValidationRuleOperations.getMessage(failedRule, target);
+                    final ConstraintStatus emfStatus = (ConstraintStatus) ctx.createFailureStatus(new Object[] { message });
                     parentStatus.add(new RuleWrappingStatus(emfStatus, failedRule));
                 }
                 return parentStatus;
@@ -180,14 +182,16 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
                         && !StringUtil.isEmpty(((SemanticValidationRule) rule).getTargetClass().trim())) {
                     EObject semanticTargetElement = ((DSemanticDecorator) objectToValidate).getTarget();
                     if (isSemanticElementToValidate(objectToValidate, semanticTargetElement, ((SemanticValidationRule) rule).getTargetClass())) {
-                        if (!rule.checkRule(semanticTargetElement)) {
+                        boolean checkRule = ValidationRuleOperations.checkRule(rule, semanticTargetElement);
+                        if (!checkRule) {
                             failingRules.add(rule);
                         }
                     }
                 } else if (objectToValidate instanceof DDiagramElement && rule instanceof ViewValidationRule) {
                     final DiagramElementMapping objMapping = ((DDiagramElement) objectToValidate).getDiagramElementMapping();
                     if (objMapping != null && ((ViewValidationRule) rule).getTargets().contains(objMapping)) {
-                        if (!rule.checkRule(objectToValidate)) {
+                        boolean checkRule = ValidationRuleOperations.checkRule(rule, objectToValidate);
+                        if (!checkRule) {
                             failingRules.add(rule);
                         }
                     }

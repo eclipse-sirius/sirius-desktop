@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and other.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@ package org.eclipse.sirius.diagram.business.api.helper;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.helper.ViewpointUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.DView;
 public final class SiriusDiagramUtil {
 
     /** The "environment:/diagram" resource uri. */
-    public static final String DIAGRAM_ENVIRONMENT_RESOURCE_URI = SiriusUtil.ENVIRONMENT_URI_SCHEME + ":/diagram"; //$NON-NLS-1$
+    public static final String DIAGRAM_ENVIRONMENT_RESOURCE_URI = ViewpointUtil.ENVIRONMENT_URI_SCHEME + ":/diagram"; //$NON-NLS-1$
 
     /**
      * Avoid instantiation.

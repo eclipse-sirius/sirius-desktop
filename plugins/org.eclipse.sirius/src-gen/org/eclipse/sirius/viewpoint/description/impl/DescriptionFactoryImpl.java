@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,10 +20,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.helper.ViewpointUtil;
 import org.eclipse.sirius.business.internal.metamodel.description.spec.DAnnotationSpec;
-import org.eclipse.sirius.business.internal.metamodel.description.spec.MetamodelExtensionSettingSpec;
-import org.eclipse.sirius.business.internal.metamodel.description.spec.ViewpointSpec;
 import org.eclipse.sirius.business.internal.metamodel.spec.FixedColorSpec;
 import org.eclipse.sirius.business.internal.metamodel.spec.InterpolatedColorSpec;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
@@ -232,7 +230,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     private SytemColorsPalette forgeSystemPaletteProxy() {
         final EObject environment = EcoreUtil.create(DescriptionPackage.eINSTANCE.getSytemColorsPalette());
-        URI paletteURI = URI.createURI(SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors"); //$NON-NLS-1$
+        URI paletteURI = URI.createURI(ViewpointUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors"); //$NON-NLS-1$
         ((InternalEObject) environment).eSetProxyURI(paletteURI);
         return ((SytemColorsPalette) environment);
     }
@@ -240,22 +238,22 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public Viewpoint createViewpoint() {
-        ViewpointImpl viewpoint = new ViewpointSpec();
+        ViewpointImpl viewpoint = new ViewpointImpl();
         return viewpoint;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public MetamodelExtensionSetting createMetamodelExtensionSetting() {
-        MetamodelExtensionSettingImpl metamodelExtensionSetting = new MetamodelExtensionSettingSpec();
+        MetamodelExtensionSettingImpl metamodelExtensionSetting = new MetamodelExtensionSettingImpl();
         return metamodelExtensionSetting;
     }
 

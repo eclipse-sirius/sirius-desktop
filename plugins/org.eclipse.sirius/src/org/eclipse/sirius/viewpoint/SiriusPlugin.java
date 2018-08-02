@@ -11,6 +11,7 @@
 package org.eclipse.sirius.viewpoint;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -26,9 +27,11 @@ import org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidat
 import org.eclipse.sirius.business.internal.dialect.description.InterpretedExpressionQueryProviderRegistry;
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistryListener;
 import org.eclipse.sirius.business.internal.helper.task.ModelOperationManagerRegistryListener;
+import org.eclipse.sirius.business.internal.migration.IMigrationHandler;
 import org.eclipse.sirius.business.internal.representation.DRepresentationLocationRuleRegistryListener;
 import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistryListener;
 import org.eclipse.sirius.business.internal.session.factory.SessionFactoryRegistryListener;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessorsRegistry;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
@@ -104,6 +107,12 @@ public final class SiriusPlugin extends EMFPlugin {
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
     public static class Implementation extends EclipsePlugin {
+        
+        /**
+         * Handler for migration.
+         */
+        private IMigrationHandler migrationHandler;
+        
         /**
          * Registry of all supported interpreters.
          */
@@ -184,6 +193,11 @@ public final class SiriusPlugin extends EMFPlugin {
             modelOperationManagerRegistryListener.init();
             expressionQueryProviderRegistry = new InterpretedExpressionQueryProviderRegistry(Platform.getExtensionRegistry(), this);
             expressionQueryProviderRegistry.init();
+            
+            List<IMigrationHandler> migrationHandlers = EclipseUtil.getExtensionPlugins(IMigrationHandler.class, IMigrationHandler.ID, IMigrationHandler.CLASS_ATTRIBUTE);
+            if (migrationHandlers.size() > 0) {
+                migrationHandler = migrationHandlers.get(0);
+            }
         }
 
         /**
@@ -237,6 +251,15 @@ public final class SiriusPlugin extends EMFPlugin {
          */
         public InterpreterRegistry getInterpreterRegistry() {
             return interRegistry;
+        }
+        
+        /**
+         * Get the migration handler used for Description resource creation.
+         *
+         * @return the migration handler used for Description resource creation.
+         */
+        public IMigrationHandler getMigrationHandler() {
+            return migrationHandler;
         }
 
         /**

@@ -12,7 +12,6 @@
 package org.eclipse.sirius.viewpoint.description.validation;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
@@ -126,23 +125,5 @@ public interface ValidationRule extends IdentifiedElement {
      * @generated
      */
     EList<ValidationFix> getFixes();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Check the rule for the specified element.
-     *
-     * @param eObj
-     *            The object to test. <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    boolean checkRule(EObject eObj);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @model
-     * @generated
-     */
-    String getMessage(EObject eObj);
 
 } // ValidationRule

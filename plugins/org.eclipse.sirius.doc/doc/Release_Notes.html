@@ -130,6 +130,18 @@
 				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.4.0">ELK documentation</a> for the list of changes in that version.
 			</li>
 			<li><span class="label label-info">Modified</span> The Acceleo version has been changed from 3.7.2 to 3.7.4.</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.migrationHandler</code> extension point has been added. It allows to contribute migration process, mainly handle migration options.
+			</li>
+			<li><span class="label label-success">Removed</span> 
+				<em>EOperations</em> 
+				<code>checkRule</code> and 
+				<code>getMessage</code> of 
+				<code>ValidationRule</code> 
+				<em>EClass</em> have been removed from 
+				<code>viewpoint</code> metamodel. These operations were deprecated and useless since we used method of 
+				<code>org.eclipse.sirius.business.internal.metamodel.description.validation.operations.ValidationRuleOperations</code> class.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>

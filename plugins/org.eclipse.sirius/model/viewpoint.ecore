@@ -1827,19 +1827,6 @@
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A validation rule."/>
         </eAnnotations>
-        <eOperations name="checkRule" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Check the rule for the specified element."/>
-          </eAnnotations>
-          <eParameters name="eObj" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-              <details key="documentation" value="The object to test."/>
-            </eAnnotations>
-          </eParameters>
-        </eOperations>
-        <eOperations name="getMessage" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
-          <eParameters name="eObj" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        </eOperations>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" lowerBound="1"
             eType="#//description/validation/ERROR_LEVEL" defaultValueLiteral="INFO"/>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="#//description/InterpretedExpression"

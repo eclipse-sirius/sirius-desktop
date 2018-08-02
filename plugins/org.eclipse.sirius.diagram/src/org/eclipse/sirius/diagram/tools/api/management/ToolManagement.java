@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.helper.ViewpointUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -518,7 +518,7 @@ public class ToolManagement {
     }
 
     private List<ToolEntry> getDefaultTools(final ResourceSet context) {
-        final Resource coreEnvResource = context.getResource(URI.createURI(SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI, true), true);
+        final Resource coreEnvResource = context.getResource(URI.createURI(ViewpointUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI, true), true);
         final Environment coreEnv = (Environment) coreEnvResource.getContents().get(0);
 
         final Resource diagramEnvResource = context.getResource(URI.createURI(SiriusDiagramUtil.DIAGRAM_ENVIRONMENT_RESOURCE_URI, true), true);

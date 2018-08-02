@@ -747,12 +747,6 @@
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/validation/ValidationRule/message"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/validation/ValidationRule/audits"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/validation/ValidationRule/fixes"/>
-          <genOperations ecoreOperation="viewpoint.ecore#//description/validation/ValidationRule/checkRule">
-            <genParameters ecoreParameter="viewpoint.ecore#//description/validation/ValidationRule/checkRule/eObj"/>
-          </genOperations>
-          <genOperations ecoreOperation="viewpoint.ecore#//description/validation/ValidationRule/getMessage">
-            <genParameters ecoreParameter="viewpoint.ecore#//description/validation/ValidationRule/getMessage/eObj"/>
-          </genOperations>
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/validation/SemanticValidationRule">
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/validation/SemanticValidationRule/targetClass"/>

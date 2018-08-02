@@ -18,8 +18,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.internal.metamodel.description.validation.ValidationSetSpec;
-import org.eclipse.sirius.business.internal.metamodel.description.validation.spec.SemanticValidationRuleSpec;
-import org.eclipse.sirius.business.internal.metamodel.description.validation.spec.ViewValidationRuleSpec;
 import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
@@ -128,22 +126,22 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public SemanticValidationRule createSemanticValidationRule() {
-        SemanticValidationRuleImpl semanticValidationRule = new SemanticValidationRuleSpec();
+        SemanticValidationRuleImpl semanticValidationRule = new SemanticValidationRuleImpl();
         return semanticValidationRule;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public ViewValidationRule createViewValidationRule() {
-        ViewValidationRuleImpl viewValidationRule = new ViewValidationRuleSpec();
+        ViewValidationRuleImpl viewValidationRule = new ViewValidationRuleImpl();
         return viewValidationRule;
     }
 
