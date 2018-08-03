@@ -11,6 +11,7 @@
 package org.eclipse.sirius.services.graphql.internal.schema.query.resources;
 
 import graphql.schema.GraphQLFieldDefinition;
+import graphql.schema.GraphQLNonNull;
 import graphql.schema.GraphQLTypeReference;
 
 /**
@@ -40,7 +41,7 @@ public final class SiriusGraphQLResourceProjectField {
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(PROJECT_FIELD)
-                .type(new GraphQLTypeReference(SiriusGraphQLProjectTypesBuilder.PROJECT_TYPE))
+                .type(new GraphQLNonNull(new GraphQLTypeReference(SiriusGraphQLProjectTypesBuilder.PROJECT_TYPE)))
                 .build();
         // @formatter:on
     }

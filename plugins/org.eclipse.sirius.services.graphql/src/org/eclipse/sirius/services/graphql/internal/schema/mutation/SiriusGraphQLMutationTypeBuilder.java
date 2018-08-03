@@ -10,9 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.services.graphql.internal.schema.mutation;
 
-import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLCreateFileField;
 import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLCreateFolderField;
 import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLCreateProjectField;
+import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLCreateSemanticFileField;
+import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLCreateTextFileField;
 
 import graphql.schema.GraphQLObjectType;
 
@@ -39,7 +40,8 @@ public class SiriusGraphQLMutationTypeBuilder {
                 .name(MUTATION_TYPE)
                 .field(SiriusGraphQLCreateProjectField.build())
                 .field(SiriusGraphQLCreateFolderField.build())
-                .field(SiriusGraphQLCreateFileField.build())
+                .field(SiriusGraphQLCreateTextFileField.build())
+                .field(SiriusGraphQLCreateSemanticFileField.build())
                 .build();
         // @formatter:on
     }

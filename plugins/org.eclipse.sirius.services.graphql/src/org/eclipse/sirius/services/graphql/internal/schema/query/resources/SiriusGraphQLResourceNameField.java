@@ -12,6 +12,7 @@ package org.eclipse.sirius.services.graphql.internal.schema.query.resources;
 
 import graphql.Scalars;
 import graphql.schema.GraphQLFieldDefinition;
+import graphql.schema.GraphQLNonNull;
 
 /**
  * The name field of the resources.
@@ -41,7 +42,7 @@ public final class SiriusGraphQLResourceNameField {
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(NAME_FIELD)
-                .type(Scalars.GraphQLString)
+                .type(new GraphQLNonNull(Scalars.GraphQLString))
                 .build();
         // @formatter:on
     }

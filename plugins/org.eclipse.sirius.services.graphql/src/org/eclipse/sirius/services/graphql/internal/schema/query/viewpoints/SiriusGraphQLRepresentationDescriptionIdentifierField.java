@@ -17,6 +17,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import graphql.Scalars;
 import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLFieldDefinition;
+import graphql.schema.GraphQLNonNull;
 
 /**
  * Used to create the identifier field of the representation description.
@@ -45,7 +46,7 @@ public final class SiriusGraphQLRepresentationDescriptionIdentifierField {
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(IDENTIFIER_FIELD)
-                .type(Scalars.GraphQLString)
+                .type(new GraphQLNonNull(Scalars.GraphQLString))
                 .dataFetcher(SiriusGraphQLRepresentationDescriptionIdentifierField.getIdentifierDataFetcher())
                 .build();
         // @formatter:on

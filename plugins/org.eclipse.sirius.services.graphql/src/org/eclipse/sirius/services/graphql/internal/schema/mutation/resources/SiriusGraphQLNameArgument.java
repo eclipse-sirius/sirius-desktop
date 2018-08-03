@@ -12,6 +12,7 @@ package org.eclipse.sirius.services.graphql.internal.schema.mutation.resources;
 
 import graphql.Scalars;
 import graphql.schema.GraphQLArgument;
+import graphql.schema.GraphQLNonNull;
 
 /**
  * Used to create the name argument.
@@ -40,7 +41,7 @@ public final class SiriusGraphQLNameArgument {
         // @formatter:off
         return GraphQLArgument.newArgument()
                 .name(NAME_ARG)
-                .type(Scalars.GraphQLString)
+                .type(new GraphQLNonNull(Scalars.GraphQLString))
                 .build();
         // @formatter:on
     }

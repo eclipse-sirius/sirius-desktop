@@ -34,6 +34,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import graphql.Scalars;
 import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLFieldDefinition;
+import graphql.schema.GraphQLNonNull;
 import graphql.schema.GraphQLObjectType;
 import graphql.schema.GraphQLType;
 import graphql.schema.GraphQLTypeReference;
@@ -105,7 +106,7 @@ public class SiriusGraphQLViewpointTypesBuilder implements ISiriusGraphQLTypesBu
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(IDENTIFIER_FIELD)
-                .type(Scalars.GraphQLString)
+                .type(new GraphQLNonNull(Scalars.GraphQLString))
                 .dataFetcher(this.getIdentifierDataFetcher())
                 .build();
         // @formatter:on
@@ -135,7 +136,7 @@ public class SiriusGraphQLViewpointTypesBuilder implements ISiriusGraphQLTypesBu
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(NAME_FIELD)
-                .type(Scalars.GraphQLString)
+                .type(new GraphQLNonNull(Scalars.GraphQLString))
                 .dataFetcher(this.getNameDataFetcher())
                 .build();
         // @formatter:on

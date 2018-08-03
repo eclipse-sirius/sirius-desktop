@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.services.graphql.internal.schema.mutation.resources;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.eclipse.core.resources.IProject;
@@ -23,7 +24,9 @@ import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLPlugin;
 import org.eclipse.sirius.services.graphql.internal.schema.query.resources.SiriusGraphQLProjectTypesBuilder;
 
 import graphql.schema.DataFetcher;
+import graphql.schema.GraphQLArgument;
 import graphql.schema.GraphQLFieldDefinition;
+import graphql.schema.GraphQLNonNull;
 import graphql.schema.GraphQLTypeReference;
 
 /**
@@ -34,9 +37,14 @@ import graphql.schema.GraphQLTypeReference;
 public final class SiriusGraphQLCreateProjectField {
 
     /**
-     * The name of the createProject mutation.
+     * The name of the createProject field.
      */
     private static final String CREATE_PROJECT_FIELD = "createProject"; //$NON-NLS-1$
+
+    /**
+     * The name of the description argument.
+     */
+    private static final String DESCRIPTION_ARG = "description"; //$NON-NLS-1$
 
     /**
      * The constructor.
@@ -55,8 +63,22 @@ public final class SiriusGraphQLCreateProjectField {
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(CREATE_PROJECT_FIELD)
                 .type(new GraphQLTypeReference(SiriusGraphQLProjectTypesBuilder.PROJECT_TYPE))
-                .argument(SiriusGraphQLNameArgument.build())
+                .argument(SiriusGraphQLCreateProjectField.getProjectDescriptionArgument())
                 .dataFetcher(SiriusGraphQLCreateProjectField.getCreateProjectDataFetcher())
+                .build();
+        // @formatter:on
+    }
+
+    /**
+     * Returns the description argument.
+     * 
+     * @return The description argument
+     */
+    private static GraphQLArgument getProjectDescriptionArgument() {
+        // @formatter:off
+        return GraphQLArgument.newArgument()
+                .name(DESCRIPTION_ARG)
+                .type(new GraphQLNonNull(new GraphQLTypeReference(SiriusGraphQLProjectCreationDescriptionTypesBuilder.PROJECT_CREATION_DESCRIPTION_TYPE)))
                 .build();
         // @formatter:on
     }
@@ -68,10 +90,9 @@ public final class SiriusGraphQLCreateProjectField {
      */
     private static DataFetcher<IProject> getCreateProjectDataFetcher() {
         // @formatter:off
-        return environment -> Optional.of(environment.getArgument(SiriusGraphQLNameArgument.NAME_ARG))
-                .filter(String.class::isInstance)
-                .map(String.class::cast)
-                .map(name -> {
+        return environment -> Optional.of(environment.<Map<String, String>>getArgument(DESCRIPTION_ARG))
+                .map(description -> {
+                    String name = description.get(SiriusGraphQLProjectCreationDescriptionTypesBuilder.NAME_FIELD);
                     IProject iProject = ResourcesPlugin.getWorkspace().getRoot().getProject(name);
                     if (!iProject.exists()) {
                         try {

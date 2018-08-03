@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IPath;
 import graphql.Scalars;
 import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLFieldDefinition;
+import graphql.schema.GraphQLNonNull;
 
 /**
  * The path field of the resources.
@@ -47,7 +48,7 @@ public final class SiriusGraphQLResourcePathField {
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(PATH_FIELD)
-                .type(Scalars.GraphQLString)
+                .type(new GraphQLNonNull(Scalars.GraphQLString))
                 .dataFetcher(SiriusGraphQLResourcePathField.getPathDataFetcher())
                 .build();
         // @formatter:on

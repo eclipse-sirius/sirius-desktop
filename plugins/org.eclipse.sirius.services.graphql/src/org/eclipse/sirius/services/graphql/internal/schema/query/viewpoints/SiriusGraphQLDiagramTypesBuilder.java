@@ -17,6 +17,7 @@ import org.eclipse.sirius.services.graphql.internal.schema.ISiriusGraphQLTypesBu
 
 import graphql.Scalars;
 import graphql.schema.GraphQLFieldDefinition;
+import graphql.schema.GraphQLNonNull;
 import graphql.schema.GraphQLObjectType;
 import graphql.schema.GraphQLType;
 import graphql.schema.GraphQLTypeReference;
@@ -67,7 +68,7 @@ public class SiriusGraphQLDiagramTypesBuilder implements ISiriusGraphQLTypesBuil
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(NAME_FIELD)
-                .type(Scalars.GraphQLString)
+                .type(new GraphQLNonNull(Scalars.GraphQLString))
                 .build();
         // @formatter:on
     }
@@ -81,7 +82,7 @@ public class SiriusGraphQLDiagramTypesBuilder implements ISiriusGraphQLTypesBuil
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(DESCRIPTION_FIELD)
-                .type(new GraphQLTypeReference(SiriusGraphQLDiagramDescriptionTypesBuilder.DIAGRAM_DESCRIPTION_TYPE))
+                .type(new GraphQLNonNull(new GraphQLTypeReference(SiriusGraphQLDiagramDescriptionTypesBuilder.DIAGRAM_DESCRIPTION_TYPE)))
                 .build();
         // @formatter:on
     }

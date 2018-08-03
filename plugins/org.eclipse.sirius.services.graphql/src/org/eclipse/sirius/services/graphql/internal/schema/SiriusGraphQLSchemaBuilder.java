@@ -14,8 +14,10 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.services.graphql.internal.schema.mutation.SiriusGraphQLMutationTypeBuilder;
+import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLProjectCreationDescriptionTypesBuilder;
+import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLSemanticFileCreationDescriptionTypesBuilder;
+import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLTextFileCreationDescriptionTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.SiriusGraphQLQueryTypeBuilder;
-
 import org.eclipse.sirius.services.graphql.internal.schema.query.emf.SiriusGraphQLEPackageTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLPageInfoTypeBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.resources.SiriusGraphQLContainerTypesBuilder;
@@ -48,7 +50,6 @@ public class SiriusGraphQLSchemaBuilder {
      */
     public GraphQLSchema build() {
         GraphQLObjectType query = new SiriusGraphQLQueryTypeBuilder().build();
-        GraphQLObjectType mutation = new SiriusGraphQLMutationTypeBuilder().build();
 
         Set<GraphQLType> userTypes = new SiriusGraphQLUserTypesBuilder().getTypes();
 
@@ -68,6 +69,11 @@ public class SiriusGraphQLSchemaBuilder {
 
         Set<GraphQLType> ecoreTypes = new SiriusGraphQLEPackageTypesBuilder(EcorePackage.eINSTANCE).getTypes();
 
+        GraphQLObjectType mutation = new SiriusGraphQLMutationTypeBuilder().build();
+        Set<GraphQLType> projectCreationDescriptionTypes = new SiriusGraphQLProjectCreationDescriptionTypesBuilder().getTypes();
+        Set<GraphQLType> textFileCreationDescriptionTypes = new SiriusGraphQLTextFileCreationDescriptionTypesBuilder().getTypes();
+        Set<GraphQLType> semanticFileCreationDescriptionTypes = new SiriusGraphQLSemanticFileCreationDescriptionTypesBuilder().getTypes();
+
         // @formatter:off
         GraphQLSchema schema = GraphQLSchema.newSchema()
                 .query(query)
@@ -85,6 +91,9 @@ public class SiriusGraphQLSchemaBuilder {
                 .additionalTypes(diagramTypes)
                 .additionalType(pageInfo)
                 .additionalTypes(ecoreTypes)
+                .additionalTypes(projectCreationDescriptionTypes)
+                .additionalTypes(textFileCreationDescriptionTypes)
+                .additionalTypes(semanticFileCreationDescriptionTypes)
                 .build();
         // @formatter:on
 

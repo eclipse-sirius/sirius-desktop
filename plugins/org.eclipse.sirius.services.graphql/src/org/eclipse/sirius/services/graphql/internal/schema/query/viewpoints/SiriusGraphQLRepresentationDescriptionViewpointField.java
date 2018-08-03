@@ -17,6 +17,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLFieldDefinition;
+import graphql.schema.GraphQLNonNull;
 import graphql.schema.GraphQLTypeReference;
 
 /**
@@ -46,7 +47,7 @@ public final class SiriusGraphQLRepresentationDescriptionViewpointField {
         // @formatter:off
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(VIEWPOINT_FIELD)
-                .type(new GraphQLTypeReference(SiriusGraphQLViewpointTypesBuilder.VIEWPOINT_TYPE))
+                .type(new GraphQLNonNull(new GraphQLTypeReference(SiriusGraphQLViewpointTypesBuilder.VIEWPOINT_TYPE)))
                 .dataFetcher(SiriusGraphQLRepresentationDescriptionViewpointField.getViewpointDataFetcher())
                 .build();
         // @formatter:on

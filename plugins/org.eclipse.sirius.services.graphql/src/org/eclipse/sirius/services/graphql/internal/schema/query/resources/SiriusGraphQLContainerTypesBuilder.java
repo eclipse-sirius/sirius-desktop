@@ -54,9 +54,6 @@ public class SiriusGraphQLContainerTypesBuilder implements ISiriusGraphQLTypesBu
         // @formatter:off
         GraphQLInterfaceType container = GraphQLInterfaceType.newInterface()
                 .name(CONTAINER_TYPE)
-                .field(SiriusGraphQLResourceNameField.build())
-                .field(SiriusGraphQLResourcePathField.build())
-                .field(SiriusGraphQLResourceContainerField.build())
                 .field(SiriusGraphQLContainerResourcesField.build())
                 .typeResolver(SiriusGraphQLResourceTypeResolver.build())
                 .build();

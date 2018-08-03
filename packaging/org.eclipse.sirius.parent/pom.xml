@@ -390,6 +390,7 @@
         
         <!-- tests -->
         <module>../../plugins/org.eclipse.sirius.tests.server</module>
+        <module>../../plugins/org.eclipse.sirius.tests.services.graphql</module>
 
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.server.feature</module>
