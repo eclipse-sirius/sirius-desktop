@@ -54,6 +54,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DiagramPlugin;
@@ -234,6 +235,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     private final HashMap<String, Object> oldValueSiriusPreferences = new HashMap<String, Object>();
 
+    private final HashMap<String, Object> oldValueCommonPreferences = new HashMap<String, Object>();
+
     private final HashMap<String, Object> oldValueSiriusUIPreferences = new HashMap<String, Object>();
 
     private final HashMap<String, Object> oldPlatformUIPreferences = new HashMap<String, Object>();
@@ -299,7 +302,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                     defaultEnableAnimatedLayout = preferenceStore.getBoolean(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT);
                     preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, false);
 
-                    // Set the auto-refresh to false because it's historically the default value
+                    // Set the auto-refresh to false because it's historically
+                    // the default value
                     DefaultScope.INSTANCE.getNode(SiriusPlugin.ID).putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
                     InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), getAutoRefreshMode());
                 }
@@ -629,7 +633,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     protected void launchCancelCustomStyle() {
         bot.buttonWithTooltip("Cancel custom style").click();
     }
-    
+
     /**
      * Change a preference and store the old value. It will be automatically
      * reset during tear down.
@@ -731,7 +735,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             }
         });
     }
-    
+
     /**
      * Change an int preference and store the old value. It will be
      * automatically reset during tear down.
@@ -755,7 +759,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             }
         });
     }
-    
+
     /**
      * Change a double preference and store the old value. It will be
      * automatically reset during tear down.
@@ -830,6 +834,28 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
         boolean valueToCheck = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, preferenceKey, false, null);
         TestCase.assertEquals(getErrorMessage(preferenceKey, SiriusPlugin.ID), newValue.booleanValue(), valueToCheck);
+    }
+
+    /**
+     * Change a boolean preference and store the old value. It will be
+     * automatically reset during tear down.
+     *
+     * TO CALL ONLY ONCE PER TEST (set up + test)
+     *
+     * @param preferenceKey
+     *            The key of the preference.
+     * @param newValue
+     *            The new value.
+     */
+    protected void changeSiriusCommonPreference(String preferenceKey, Boolean newValue) {
+        boolean oldValue = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, preferenceKey, false, null);
+        oldValueCommonPreferences.put(preferenceKey, oldValue);
+
+        IEclipsePreferences corePreferences = InstanceScope.INSTANCE.getNode(SiriusTransPlugin.PLUGIN_ID);
+        corePreferences.putBoolean(preferenceKey, newValue);
+
+        boolean valueToCheck = Platform.getPreferencesService().getBoolean(SiriusTransPlugin.PLUGIN_ID, preferenceKey, false, null);
+        TestCase.assertEquals(getErrorMessage(preferenceKey, SiriusTransPlugin.PLUGIN_ID), newValue.booleanValue(), valueToCheck);
     }
 
     /**
@@ -1692,7 +1718,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         CrossReferenceAdapterDetector crossRefDetector = new CrossReferenceAdapterDetector();
         try {
             SWTBotUtils.waitAllUiEvents();
-
             // Close an eventual popup if the test failed and a popup remain
             // opened
             if (bot != null) {
@@ -1772,12 +1797,14 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             SWTBotUtils.waitAllUiEvents();
 
             UIThreadRunnable.syncExec(new VoidResult() {
+
                 @Override
                 public void run() {
                     IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
                     preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM, defaultEnableAnimatedZoom);
                     preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, defaultEnableAnimatedLayout);
                 }
+
             });
             setErrorCatchActive(false);
             setWarningCatchActive(false);
@@ -1821,6 +1848,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         for (Entry<String, Object> pref : oldValueSiriusPreferences.entrySet()) {
             corePreferences.putBoolean(pref.getKey(), (Boolean) pref.getValue());
         }
+
+        IEclipsePreferences commonPrefs = InstanceScope.INSTANCE.getNode(SiriusTransPlugin.PLUGIN_ID);
+        for (Entry<String, Object> pref : oldValueCommonPreferences.entrySet()) {
+            commonPrefs.putBoolean(pref.getKey(), (Boolean) pref.getValue());
+        }
+
     }
 
     /**
@@ -1985,7 +2018,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         super.tearDown();
         setErrorCatchActive(false);
         setWarningCatchActive(false);
-        // Avoid NPE in org.eclipse.ui.internal.statushandlers.StatusHandlerRegistry.<init> on close.
+        // Avoid NPE in
+        // org.eclipse.ui.internal.statushandlers.StatusHandlerRegistry.<init>
+        // on close.
         ResourcesPlugin.getWorkspace().save(true, null);
     }
 

@@ -79,6 +79,14 @@ h4. Changes in @org.eclipse.sirius.diagram.sequence.ui@
 * <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.CombinedFragmentInvisibleResizableCompartmentFigure@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
 * <span class="label label-info">Modified</span> The class @org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SequenceSlidableAnchor@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
 
+h4. Changes in  @org.eclipse.sirius.common@
+
+* <span class="label label-success">Added</span> The new preference @PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION@ has been added in @CommonPreferencesConstants@. If true users will be asked to save the VSM or aird if it has been automatically migrated after a user action.
+
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@  
+
+* <span class="label label-success">Added</span> The new method @AbstractSiriusSwtBotGefTestCase.changeSiriusCommonPreference(String, Boolean)@ has been added. It allows to change a preference defined in @oes.common@ plugin.
+
 h2(#sirius6.0.0). Changes in Sirius 6.0.0
 
 h3. User-Visible Changes
