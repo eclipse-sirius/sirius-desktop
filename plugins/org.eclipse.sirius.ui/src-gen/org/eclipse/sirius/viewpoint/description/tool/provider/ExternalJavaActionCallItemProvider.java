@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemProvider {
+public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionWithIconItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *

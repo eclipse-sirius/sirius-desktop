@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public class GroupMenuItemProvider extends AbstractToolDescriptionItemProvider {
+public class GroupMenuItemProvider extends MenuItemDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -52,6 +52,7 @@ public class GroupMenuItemProvider extends AbstractToolDescriptionItemProvider {
             super.getPropertyDescriptors(object);
 
             addLocationURIPropertyDescriptor(object);
+            addPopupMenusPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -70,6 +71,18 @@ public class GroupMenuItemProvider extends AbstractToolDescriptionItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Popup Menus feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addPopupMenusPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupMenu_popupMenus_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupMenu_popupMenus_feature", "_UI_GroupMenu_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.GROUP_MENU__POPUP_MENUS, false, false, false, null, null, null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
@@ -81,7 +94,6 @@ public class GroupMenuItemProvider extends AbstractToolDescriptionItemProvider {
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(ToolPackage.Literals.GROUP_MENU__POPUP_MENUS);
             childrenFeatures.add(ToolPackage.Literals.GROUP_MENU__ITEM_DESCRIPTIONS);
         }
         return childrenFeatures;
@@ -137,7 +149,6 @@ public class GroupMenuItemProvider extends AbstractToolDescriptionItemProvider {
         case ToolPackage.GROUP_MENU__LOCATION_URI:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
-        case ToolPackage.GROUP_MENU__POPUP_MENUS:
         case ToolPackage.GROUP_MENU__ITEM_DESCRIPTIONS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
@@ -170,13 +181,13 @@ public class GroupMenuItemProvider extends AbstractToolDescriptionItemProvider {
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.GROUP_MENU__POPUP_MENUS, ToolFactory.eINSTANCE.createPopupMenu()));
-
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.GROUP_MENU__ITEM_DESCRIPTIONS, ToolFactory.eINSTANCE.createOperationAction()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.GROUP_MENU__ITEM_DESCRIPTIONS, ToolFactory.eINSTANCE.createExternalJavaAction()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.GROUP_MENU__ITEM_DESCRIPTIONS, ToolFactory.eINSTANCE.createExternalJavaActionCall()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.GROUP_MENU__ITEM_DESCRIPTIONS, ToolFactory.eINSTANCE.createPopupMenu()));
     }
 
 }

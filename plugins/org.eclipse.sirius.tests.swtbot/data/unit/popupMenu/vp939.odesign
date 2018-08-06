@@ -142,7 +142,7 @@
               <parameters name="view" value="var:elementView"/>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool:GroupMenu" name="groupWithBlankLocationURI">
+          <ownedTools xsi:type="tool:GroupMenu" name="groupWithBlankLocationURI" precondition="aql:self.oclIsKindOf(ecore::EClass)">
             <itemDescriptions xsi:type="tool:OperationAction" name="myActionInGroupWithBlankLocationURI">
               <view name="views"/>
               <initialOperation>
@@ -182,13 +182,31 @@
               </initialOperation>
             </itemDescriptions>
           </ownedTools>
-          <ownedTools xsi:type="tool:GroupMenu" name="groupInTabbar" locationURI="tabbar:Select">
+          <ownedTools xsi:type="tool:GroupMenu" name="groupInTabbar" locationURI="tabbar:selectMenu">
             <itemDescriptions xsi:type="tool:OperationAction" name="myActionInSelectTabbarMenu">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
               </initialOperation>
             </itemDescriptions>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="myMenuContainingGroup" precondition="aql:self.oclIsKindOf(ecore::EPackage)">
+            <menuItemDescription xsi:type="tool:GroupMenu" name="groupInPopupMenuWithLocationURI" locationURI="aNotBlankLocationURI">
+              <itemDescriptions xsi:type="tool:OperationAction" name="myActionInGroupInPopupMenuWithLocationURI">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+                </initialOperation>
+              </itemDescriptions>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:GroupMenu" name="groupInPopupMenu">
+              <itemDescriptions xsi:type="tool:OperationAction" name="myActionInGroupInPopupMenu">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+                </initialOperation>
+              </itemDescriptions>
+            </menuItemDescription>
           </ownedTools>
         </toolSections>
       </defaultLayer>

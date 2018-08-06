@@ -49,6 +49,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem;
 import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
@@ -58,6 +59,7 @@ import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference;
+import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionWithIcon;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
@@ -477,6 +479,20 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * @generated
      */
     private EClass groupMenuEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass groupMenuItemEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass menuItemDescriptionWithIconEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1165,16 +1181,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
     @Override
     public EClass getMenuItemDescription() {
         return menuItemDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EAttribute getMenuItemDescription_Icon() {
-        return (EAttribute) menuItemDescriptionEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -2093,6 +2099,36 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * @generated
      */
     @Override
+    public EClass getGroupMenuItem() {
+        return groupMenuItemEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getMenuItemDescriptionWithIcon() {
+        return menuItemDescriptionWithIconEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getMenuItemDescriptionWithIcon_Icon() {
+        return (EAttribute) menuItemDescriptionWithIconEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EEnum getDragSource() {
         return dragSourceEEnum;
     }
@@ -2196,7 +2232,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         menuItemOrRefEClass = createEClass(ToolPackage.MENU_ITEM_OR_REF);
 
         menuItemDescriptionEClass = createEClass(ToolPackage.MENU_ITEM_DESCRIPTION);
-        createEAttribute(menuItemDescriptionEClass, ToolPackage.MENU_ITEM_DESCRIPTION__ICON);
 
         menuItemDescriptionReferenceEClass = createEClass(ToolPackage.MENU_ITEM_DESCRIPTION_REFERENCE);
         createEReference(menuItemDescriptionReferenceEClass, ToolPackage.MENU_ITEM_DESCRIPTION_REFERENCE__ITEM);
@@ -2333,6 +2368,11 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         createEReference(groupMenuEClass, ToolPackage.GROUP_MENU__POPUP_MENUS);
         createEReference(groupMenuEClass, ToolPackage.GROUP_MENU__ITEM_DESCRIPTIONS);
 
+        groupMenuItemEClass = createEClass(ToolPackage.GROUP_MENU_ITEM);
+
+        menuItemDescriptionWithIconEClass = createEClass(ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON);
+        createEAttribute(menuItemDescriptionWithIconEClass, ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__ICON);
+
         // Create enums
         dragSourceEEnum = createEEnum(ToolPackage.DRAG_SOURCE);
     }
@@ -2384,12 +2424,16 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         menuItemDescriptionEClass.getESuperTypes().add(this.getAbstractToolDescription());
         menuItemDescriptionEClass.getESuperTypes().add(this.getMenuItemOrRef());
         menuItemDescriptionReferenceEClass.getESuperTypes().add(this.getMenuItemOrRef());
-        operationActionEClass.getESuperTypes().add(this.getMenuItemDescription());
-        externalJavaActionEClass.getESuperTypes().add(this.getMenuItemDescription());
+        operationActionEClass.getESuperTypes().add(this.getMenuItemDescriptionWithIcon());
+        operationActionEClass.getESuperTypes().add(this.getGroupMenuItem());
+        externalJavaActionEClass.getESuperTypes().add(this.getMenuItemDescriptionWithIcon());
         externalJavaActionEClass.getESuperTypes().add(this.getContainerModelOperation());
-        externalJavaActionCallEClass.getESuperTypes().add(this.getMenuItemDescription());
+        externalJavaActionEClass.getESuperTypes().add(this.getGroupMenuItem());
+        externalJavaActionCallEClass.getESuperTypes().add(this.getMenuItemDescriptionWithIcon());
         externalJavaActionCallEClass.getESuperTypes().add(this.getContainerModelOperation());
+        externalJavaActionCallEClass.getESuperTypes().add(this.getGroupMenuItem());
         popupMenuEClass.getESuperTypes().add(this.getAbstractToolDescription());
+        popupMenuEClass.getESuperTypes().add(this.getGroupMenuItem());
         acceleoVariableEClass.getESuperTypes().add(this.getVariableContainer());
         acceleoVariableEClass.getESuperTypes().add(theDescriptionPackage.getSubVariable());
         dialogVariableEClass.getESuperTypes().add(theDescriptionPackage.getAbstractVariable());
@@ -2427,7 +2471,9 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         defaultEClass.getESuperTypes().add(this.getSwitchChild());
         switchEClass.getESuperTypes().add(this.getModelOperation());
         letEClass.getESuperTypes().add(this.getContainerModelOperation());
-        groupMenuEClass.getESuperTypes().add(this.getAbstractToolDescription());
+        groupMenuEClass.getESuperTypes().add(this.getMenuItemDescription());
+        groupMenuItemEClass.getESuperTypes().add(this.getAbstractToolDescription());
+        menuItemDescriptionWithIconEClass.getESuperTypes().add(this.getMenuItemDescription());
 
         // Initialize classes and features; add operations and parameters
         initEClass(toolEntryEClass, ToolEntry.class, "ToolEntry", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2603,8 +2649,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEClass(menuItemOrRefEClass, MenuItemOrRef.class, "MenuItemOrRef", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(menuItemDescriptionEClass, MenuItemDescription.class, "MenuItemDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getMenuItemDescription_Icon(), theDescriptionPackage.getImagePath(), "icon", null, 0, 1, MenuItemDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(menuItemDescriptionReferenceEClass, MenuItemDescriptionReference.class, "MenuItemDescriptionReference", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
@@ -2809,12 +2853,19 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEClass(groupMenuEClass, GroupMenu.class, "GroupMenu", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getGroupMenu_LocationURI(), theEcorePackage.getEString(), "locationURI", "", 0, 1, GroupMenu.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, !EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getGroupMenu_PopupMenus(), this.getPopupMenu(), null, "popupMenus", null, 0, -1, GroupMenu.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+        initEReference(getGroupMenu_PopupMenus(), this.getPopupMenu(), null, "popupMenus", null, 0, -1, GroupMenu.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getGroupMenu_ItemDescriptions(), this.getGroupMenuItem(), null, "itemDescriptions", null, 0, -1, GroupMenu.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
-        initEReference(getGroupMenu_ItemDescriptions(), this.getMenuItemDescription(), null, "itemDescriptions", null, 0, -1, GroupMenu.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
+
+        initEClass(groupMenuItemEClass, GroupMenuItem.class, "GroupMenuItem", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+        initEClass(menuItemDescriptionWithIconEClass, MenuItemDescriptionWithIcon.class, "MenuItemDescriptionWithIcon", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getMenuItemDescriptionWithIcon_Icon(), theDescriptionPackage.getImagePath(), "icon", null, 0, 1, MenuItemDescriptionWithIcon.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(dragSourceEEnum, DragSource.class, "DragSource"); //$NON-NLS-1$

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 
-import java.io.IOException;
-import java.io.StringReader;
 import java.net.URISyntaxException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -20,8 +18,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Properties;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -76,8 +72,6 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.viewpoint.DMappingBased;
@@ -86,6 +80,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
@@ -103,49 +98,13 @@ import org.eclipse.ui.PlatformUI;
  * 
  */
 public class PopupMenuContribution implements IContributionItemProvider {
-
     /**
-     * VM argument name to activate the POC of bugzilla 529992.
+     * There is no real group in select menu of tabbar. To allow addition of actions after the 3 existing actions, the
+     * specifier can use this group name.
      */
-    public static final String POPUP_MENU_IMPROVEMENT_ID = "org.eclipse.sirius.experimental.popupMenuImprovement"; //$NON-NLS-1$
+    private static final String DEFAULT_TABBAR_GROUP = "selectGroup"; //$NON-NLS-1$
 
     /**
-     * Constant used for POC of bugzilla 529992 to separate group and menu id in path.>
-     */
-    private static final String PATH_SEPARATOR = "/"; //$NON-NLS-1$
-
-    /**
-     * Constant used for POC of bugzilla 529992 to insert action in a specific group or in an existing menu. The path is
-     * relative to the current menu. It is used in documentation field of an operation action with this kind of format:
-     * <UL>
-     * <LI><code>path=/mySpecificGroupId</code> to add it in the group mySpecificGroupId of the current menu</LI>
-     * <LI><code>path=myMenu/mySpecificGroupId</code> to add it in the group mySpecificGroupId of the sub menu myMenu of
-     * the current menu</LI>
-     * </UL>
-     */
-    private static final String PATH_PREFIX = "path"; //$NON-NLS-1$
-
-    /**
-     * Constant used for POC of bugzilla 529992 to insert a group declared as a "Popup Menu" in a specific existing
-     * dropdown menu of tabbar. Currently only "Select" dropdown menu car be used ("tabbarPath=Select").
-     */
-    private static final String TABBAR_PATH_PREFIX = "tabbarPath"; //$NON-NLS-1$
-
-    /**
-     * Constant used for POC of bugzilla 529992 to define a group in a Popup Menu. It is used in documentation field of
-     * a Popup Menu with this kind of format:<BR/>
-     * <code>group=mySpecificGroupId</code>
-     */
-    private static final String GROUP_PREFIX = "group"; //$NON-NLS-1$
-
-    /**
-     * Constant used for POC of bugzilla 529992 to define the root of the menu. It allows to define a Popup Menu only to
-     * define a group.
-     */
-    private static final String ROOT_MENU_ID = "/"; //$NON-NLS-1$
-
-    /**
-     * Field used only in case of POC of bugzilla 529992.<BR/>
      * True if this instance is called to contribute to tabbar, false otherwise. In case of tabbar contribution, only
      * "Popup menu" with a tabbar path are considered.
      */
@@ -182,9 +141,11 @@ public class PopupMenuContribution implements IContributionItemProvider {
      *            The target popup menu manager
      * @param part
      *            The context workbench part
+     * @param contributeToTabbar
+     *            true if the contribution is for tabbar, false if it is for the contextual menu.
      */
-    public static void contributeToPopupMenuProgrammatically(final IMenuManager menu, final IWorkbenchPart part) {
-        new PopupMenuContribution(true).contributeToPopupMenu(menu, part);
+    public static void contributeToPopupMenuProgrammatically(final IMenuManager menu, final IWorkbenchPart part, final boolean contributeToTabbar) {
+        new PopupMenuContribution(contributeToTabbar).contributeToPopupMenu(menu, part);
     }
 
     @Override
@@ -236,6 +197,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
                 }
                 EditDomain domain = null;
                 EditPart primarySelection = null;
+
                 final Collection<DSemanticDecorator> selectedViews = new ArrayList<DSemanticDecorator>(diagrampart.getDiagramGraphicalViewer().getSelectedEditParts().size());
                 for (final EditPart editpart : (Iterable<EditPart>) diagrampart.getDiagramGraphicalViewer().getSelectedEditParts()) {
                     if (EditPart.SELECTED_PRIMARY == editpart.getSelected()) {
@@ -256,19 +218,14 @@ public class PopupMenuContribution implements IContributionItemProvider {
                     selectedViews.add(designerDiag);
                     primarySelection = diagrampart.getDiagramEditPart();
                 }
-
                 if (domain != null && selectedViews.size() > 0) {
 
                     Point relativeCursorLocationToPrimarySelection = getCurrentLocation(primarySelection);
 
-                    if (!Boolean.getBoolean(POPUP_MENU_IMPROVEMENT_ID)) {
-                        contributeToPopupMenuNotImproved(menu, emfCommandFactory, activatedPopupMenus, activatedOperationActionMenus, activatedExternalJavaActionMenus, domain, primarySelection,
-                                selectedViews, relativeCursorLocationToPrimarySelection);
-                    } else {
-                        contributeToPopupMenuImproved(menu, emfCommandFactory, session, activatedGroups, activatedPopupMenus, activatedOperationActionMenus, activatedExternalJavaActionMenus, domain,
-                                primarySelection, selectedViews, relativeCursorLocationToPrimarySelection);
-                    }
+                    contributeToPopupMenu(menu, emfCommandFactory, session, activatedGroups, activatedPopupMenus, activatedOperationActionMenus, activatedExternalJavaActionMenus, domain,
+                            primarySelection, selectedViews, relativeCursorLocationToPrimarySelection);
                 }
+
             } else {
                 // no focused edit part
             }
@@ -276,53 +233,26 @@ public class PopupMenuContribution implements IContributionItemProvider {
     }
 
     // CHECKSTYLE:OFF
-    private void contributeToPopupMenuNotImproved(final IMenuManager menu, final IDiagramCommandFactory emfCommandFactory, final EList<PopupMenu> activatedPopupMenus,
-            final EList<OperationAction> activatedOperationActionMenus, final EList<ExternalJavaAction> activatedExternalJavaActionMenus, EditDomain domain, EditPart primarySelection,
-            final Collection<DSemanticDecorator> selectedViews, Point relativeCursorLocationToPrimarySelection) {
-        // CHECKSTYLE:ON
-        for (final PopupMenu popMenu : new LinkedHashSet<>(activatedPopupMenus)) {
-            Option<? extends IContributionItem> contributionItem = buildContributionItemToAdd(domain, selectedViews, popMenu, emfCommandFactory, primarySelection,
-                    relativeCursorLocationToPrimarySelection);
-            if (contributionItem.some()) {
-                menu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, contributionItem.get());
-            }
-        }
-        for (final OperationAction operationAction : new LinkedHashSet<>(activatedOperationActionMenus)) {
-            Option<IAction> action = buildActionToAdd(domain, selectedViews, operationAction, emfCommandFactory, primarySelection, relativeCursorLocationToPrimarySelection);
-            if (action.some()) {
-                menu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, action.get());
-            }
-        }
-        for (final ExternalJavaAction externalJavaAction : new LinkedHashSet<>(activatedExternalJavaActionMenus)) {
-            Option<IAction> action = buildActionToAdd(domain, selectedViews, externalJavaAction, emfCommandFactory, primarySelection, relativeCursorLocationToPrimarySelection);
-            if (action.some()) {
-                menu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, action.get());
-            }
-        }
-    }
-
-    // CHECKSTYLE:OFF
-    private void contributeToPopupMenuImproved(final IMenuManager menu, final IDiagramCommandFactory emfCommandFactory, final Session session, final EList<GroupMenu> activatedGroups,
+    private void contributeToPopupMenu(final IMenuManager menu, final IDiagramCommandFactory emfCommandFactory, final Session session, final EList<GroupMenu> activatedGroups,
             final EList<PopupMenu> activatedPopupMenus, final EList<OperationAction> activatedOperationActionMenus, final EList<ExternalJavaAction> activatedExternalJavaActionMenus, EditDomain domain,
             EditPart primarySelection, final Collection<DSemanticDecorator> selectedViews, Point relativeCursorLocationToPrimarySelection) {
         // CHECKSTYLE:ON
-        for (final PopupMenu popMenu : new LinkedHashSet<>(activatedPopupMenus)) {
-            Option<? extends IContributionItem> contributionItem = buildContributionItemToAdd(menu, domain, selectedViews, popMenu, emfCommandFactory, primarySelection,
-                    relativeCursorLocationToPrimarySelection);
-            addSubMenuInMenu(menu, popMenu.getDocumentation(), contributionItem);
-        }
-        for (final OperationAction operationAction : new LinkedHashSet<>(activatedOperationActionMenus)) {
-            Optional<IAction> action = buildActionToAdd(domain, selectedViews, operationAction, emfCommandFactory, primarySelection, relativeCursorLocationToPrimarySelection,
-                    session.getInterpreter());
-            addActionInMenu(menu, operationAction.getDocumentation(), action);
-        }
-        for (final ExternalJavaAction externalJavaAction : new LinkedHashSet<>(activatedExternalJavaActionMenus)) {
-            Optional<IAction> action = buildActionToAdd(domain, selectedViews, externalJavaAction, emfCommandFactory, primarySelection, relativeCursorLocationToPrimarySelection,
-                    session.getInterpreter());
-            addActionInMenu(menu, externalJavaAction.getDocumentation(), action);
+        if (!contributionToTabbar) {
+            for (final PopupMenu popMenu : new LinkedHashSet<>(activatedPopupMenus)) {
+                addPopupMenu(popMenu, menu, null, domain, selectedViews, emfCommandFactory, primarySelection, relativeCursorLocationToPrimarySelection);
+            }
         }
         for (final GroupMenu group : new LinkedHashSet<>(activatedGroups)) {
-            addGroup(menu, domain, selectedViews, group, emfCommandFactory, primarySelection, relativeCursorLocationToPrimarySelection);
+            addItemToMenu(group, menu, null, selectedViews, domain, emfCommandFactory, session.getInterpreter(), primarySelection, relativeCursorLocationToPrimarySelection);
+        }
+        if (!contributionToTabbar) {
+            for (final OperationAction operationAction : new LinkedHashSet<>(activatedOperationActionMenus)) {
+                addItemToMenu(operationAction, menu, null, selectedViews, domain, emfCommandFactory, session.getInterpreter(), primarySelection, relativeCursorLocationToPrimarySelection);
+
+            }
+            for (final ExternalJavaAction externalJavaAction : new LinkedHashSet<>(activatedExternalJavaActionMenus)) {
+                addItemToMenu(externalJavaAction, menu, null, selectedViews, domain, emfCommandFactory, session.getInterpreter(), primarySelection, relativeCursorLocationToPrimarySelection);
+            }
         }
     }
 
@@ -375,77 +305,19 @@ public class PopupMenuContribution implements IContributionItemProvider {
         }
     }
 
-    /**
-     * Builds contents of popup menus from active layers.
-     * 
-     * @param domain
-     *            the edit domain used for execution
-     * @param selectedViews
-     *            the semantic viewpoint element under focus.
-     * @param emfCommandFactory
-     * @param primarySelection
-     *            The first selected edit part
-     * @param currentMouseLocation
-     *            The mouse location (used if some elements are created with contextual action)
-     * @return an optional IContributionItem.
-     */
-    private Option<? extends IContributionItem> buildContributionItemToAdd(final EditDomain domain, final Collection<DSemanticDecorator> selectedViews, final PopupMenu popupMenu,
-            final IDiagramCommandFactory emfCommandFactory, EditPart primarySelection, Point currentMouseLocation) {
-
-        final EObject semantic = selectedViews.iterator().next().getTarget();
-        final MenuManager subMenu = new MenuManager(MessageTranslator.INSTANCE.getMessage(popupMenu, new IdentifiedElementQuery(popupMenu).getLabel()), popupMenu.getName().toLowerCase());
-        final EList<MenuItemDescription> activatedAction = popupMenu.getMenuItemDescription();
-
-        IInterpreter interpreter = null;
-        if (semantic != null && semantic.eResource() != null) {
-            interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
-        } else if (semantic instanceof DMappingBased) {
-            interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(((DMappingBased) semantic).getMapping());
-        }
-
-        final Boolean isMenuPreconditionValidated;
-        if (StringUtil.isEmpty(popupMenu.getPrecondition())) {
-            isMenuPreconditionValidated = true;
-        } else {
-            isMenuPreconditionValidated = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(semantic, popupMenu, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
-        }
-
-        if (isMenuPreconditionValidated) {
-            final Iterator<MenuItemDescription> mIterator = activatedAction.iterator();
-            while (mIterator.hasNext()) {
-                final MenuItemDescription menuItemDescription = mIterator.next();
-                if (interpreter != null && preconditionHolds(menuItemDescription, selectedViews, semantic, interpreter)) {
-                    final IAction action = buildMenuItemAction(menuItemDescription, selectedViews, domain, emfCommandFactory, interpreter, primarySelection, currentMouseLocation);
-                    if (action != null) {
-                        subMenu.add(action);
-                    }
-                }
-            }
-        } else {
-            subMenu.removeAll();
-        }
-        // finalize
-        if (subMenu.getSize() > 0) {
-            subMenu.setVisible(true);
-            return Options.newSome(subMenu);
-        } else {
-            return Options.newNone();
-        }
-    }
-
-    private Boolean preconditionHolds(MenuItemDescription menuItemDescription, Collection<DSemanticDecorator> selectedViews, EObject semantic, IInterpreter interpreter) {
+    private Boolean preconditionHolds(AbstractToolDescription menuOrGroupItem, Collection<DSemanticDecorator> selectedViews, EObject semantic, IInterpreter interpreter) {
         final Boolean precondition;
-        if (StringUtil.isEmpty(menuItemDescription.getPrecondition())) {
+        if (StringUtil.isEmpty(menuOrGroupItem.getPrecondition())) {
             precondition = true;
         } else {
-            if (menuItemDescription instanceof OperationAction) {
-                interpreter.setVariable(((OperationAction) menuItemDescription).getView().getName(), selectedViews);
+            if (menuOrGroupItem instanceof OperationAction) {
+                interpreter.setVariable(((OperationAction) menuOrGroupItem).getView().getName(), selectedViews);
             }
             try {
-                precondition = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(semantic, menuItemDescription, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
+                precondition = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(semantic, menuOrGroupItem, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
             } finally {
-                if (menuItemDescription instanceof OperationAction) {
-                    interpreter.unSetVariable(((OperationAction) menuItemDescription).getView().getName());
+                if (menuOrGroupItem instanceof OperationAction) {
+                    interpreter.unSetVariable(((OperationAction) menuOrGroupItem).getView().getName());
                 }
             }
         }
@@ -453,34 +325,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
     }
 
     /**
-     * Builds contents of popup menus from menuItemDescription.
-     * 
-     * @param domain
-     *            the edit domain used for execution
-     * @param selectedViews
-     *            the semantic viewpoint element under focus.
-     */
-    private Option<IAction> buildActionToAdd(final EditDomain domain, final Collection<DSemanticDecorator> selectedViews, final MenuItemDescription menuItemDescription,
-            final IDiagramCommandFactory emfCommandFactory, EditPart primarySelection, Point currentMouseLocation) {
-        final EObject semantic = selectedViews.iterator().next().getTarget();
-        IInterpreter interpreter = null;
-        if (semantic != null && semantic.eResource() != null) {
-            interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
-        } else if (semantic instanceof DMappingBased) {
-            interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(((DMappingBased) semantic).getMapping());
-        }
-        if (interpreter != null && preconditionHolds(menuItemDescription, selectedViews, semantic, interpreter)) {
-            final IAction action = buildMenuItemAction(menuItemDescription, selectedViews, domain, emfCommandFactory, interpreter, primarySelection, currentMouseLocation);
-            if (action != null) {
-                return Options.newSome(action);
-            }
-        }
-        return Options.newNone();
-    }
-
-    /**
-     * 
-     * Builds actions of popup menus from active layers.
+     * Add a group or an action in the <code>parentMenu</code>
      * 
      * @param menuItemDescription
      *            the menu item which must receive an action
@@ -492,21 +337,34 @@ public class PopupMenuContribution implements IContributionItemProvider {
      *            the edit domain used for command execution
      * @param emfCommandFactory
      */
-    private IAction buildMenuItemAction(final MenuItemDescription menuItemDescription, final Collection<DSemanticDecorator> selectedViews, final EditDomain domain,
-            final IDiagramCommandFactory emfCommandFactory, final IInterpreter interpreter, EditPart primarySelection, Point currentMouseLocation) {
-        IAction result = null;
-        if (menuItemDescription instanceof ExternalJavaAction) {
-            final ExternalJavaAction javaAction = (ExternalJavaAction) menuItemDescription;
-            if (javaAction.getId() != null && !"".equalsIgnoreCase(javaAction.getId())) { //$NON-NLS-1$
-                result = buildJavaAction(javaAction, selectedViews, domain, emfCommandFactory, interpreter, currentMouseLocation);
-            }
-        } else if (menuItemDescription instanceof OperationAction) {
-            final OperationAction operation = (OperationAction) menuItemDescription;
-            if (operation.getInitialOperation().getFirstModelOperations() != null) {
-                result = buildOperationAction(operation, selectedViews, domain, emfCommandFactory, primarySelection, currentMouseLocation);
+    // CHECKSTYLE:OFF
+    private void addItemToMenu(final AbstractToolDescription menuOrGroupItem, IMenuManager parentMenu, final String groupId, final Collection<DSemanticDecorator> selectedViews,
+            final EditDomain domain, final IDiagramCommandFactory emfCommandFactory, final IInterpreter interpreter, EditPart primarySelection, Point currentMouseLocation) {
+        // CHECKSTYLE:ON
+        final EObject semantic = selectedViews.iterator().next().getTarget();
+        if (interpreter != null && preconditionHolds(menuOrGroupItem, selectedViews, semantic, interpreter)) {
+            if (menuOrGroupItem instanceof GroupMenu) {
+                addGroup((GroupMenu) menuOrGroupItem, parentMenu, domain, selectedViews, emfCommandFactory, primarySelection, currentMouseLocation);
+            } else if (menuOrGroupItem instanceof PopupMenu) {
+                addPopupMenu((PopupMenu) menuOrGroupItem, parentMenu, groupId, domain, selectedViews, emfCommandFactory, primarySelection, currentMouseLocation);
+            } else if (menuOrGroupItem instanceof ExternalJavaAction) {
+                final ExternalJavaAction javaAction = (ExternalJavaAction) menuOrGroupItem;
+                if (javaAction.getId() != null && !"".equalsIgnoreCase(javaAction.getId())) { //$NON-NLS-1$
+                    IAction action = buildJavaAction(javaAction, selectedViews, domain, emfCommandFactory, interpreter, currentMouseLocation);
+                    if (action != null) {
+                        addActionInGroup(parentMenu, groupId, action);
+                    }
+                }
+            } else if (menuOrGroupItem instanceof OperationAction) {
+                final OperationAction operation = (OperationAction) menuOrGroupItem;
+                if (operation.getInitialOperation().getFirstModelOperations() != null) {
+                    IAction action = buildOperationAction(operation, selectedViews, domain, emfCommandFactory, primarySelection, currentMouseLocation);
+                    if (action != null) {
+                        addActionInGroup(parentMenu, groupId, action);
+                    }
+                }
             }
         }
-        return result;
     }
 
     /**
@@ -619,25 +477,29 @@ public class PopupMenuContribution implements IContributionItemProvider {
     }
 
     /**
-     * Add the menu, if it is a new one, in the <code>parentMenu</code>.<BR/>
-     * Method added in case of POC of bug 529992.
+     * Add the action in the group <code>groupId</code> of the menu <code>parentMenu</code>.
      * 
      * @param parentMenu
-     *            The menu in which to add the new menu.
-     * @param documentationOptions
-     *            Used only for POC of bug 529992
-     * @param contributionItem
-     *            The new menu
+     *            The menu in which to add the new action.
+     * @param groupId
+     *            The group of the menu in which to add the new action.
+     * @param action
+     *            The new action
      */
-    private void addSubMenuInMenu(final IMenuManager parentMenu, final String documentationOptions, Option<? extends IContributionItem> contributionItem) {
-        if (contributionItem.some()) {
-            if (!(parentMenu.equals(contributionItem)) && parentMenu.find(contributionItem.get().getId()) == null) {
-                // It is not an already existing menu, add it to the corresponding group
+    private void addActionInGroup(final IMenuManager parentMenu, final String groupId, IAction action) {
+        if (contributionToTabbar && DEFAULT_TABBAR_GROUP.equals(groupId)) {
+            parentMenu.add(action);
+        } else {
+            try {
+                parentMenu.appendToGroup(groupId, action);
+            } catch (IllegalArgumentException e) {
+                // Group not found, use additions as fallback
                 try {
-                    parentMenu.appendToGroup(getGroupId(getPath(documentationOptions)), contributionItem.get());
-                } catch (IllegalArgumentException e) {
-                    // Group not found, use additions as fallback
-                    parentMenu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, contributionItem.get());
+                    parentMenu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, action);
+                } catch (IllegalArgumentException e2) {
+                    // If the group additions does not exist, we create it.
+                    parentMenu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+                    parentMenu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, action);
                 }
             }
         }
@@ -650,124 +512,90 @@ public class PopupMenuContribution implements IContributionItemProvider {
      *            The menu in which to add the new action.
      * @param groupId
      *            The group of the menu in which to add the new action.
-     * @param action
-     *            The new action
+     * @param menu
+     *            The new menu
      */
-    private void addActionInGroup(final IMenuManager parentMenu, final String groupId, Optional<IAction> action) {
-        if (action.isPresent()) {
-            try {
-                parentMenu.appendToGroup(groupId, action.get());
-            } catch (IllegalArgumentException e) {
-                // Group not found, use additions as fallback
-                parentMenu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, action.get());
-            }
-        }
-    }
-
-    /**
-     * Add the action in the <code>parentMenu</code>.<BR/>
-     * Method added in case of POC of bug 529992.
-     * 
-     * @param parentMenu
-     *            The menu in which to add the new action.
-     * @param documentationOptions
-     *            Used only for POC of bug 529992
-     * @param action
-     *            The new action
-     */
-    private void addActionInMenu(final IMenuManager parentMenu, final String documentationOptions, Optional<IAction> action) {
-        if (action.isPresent()) {
-            Optional<String> optionalPath = getPath(documentationOptions);
-            IMenuManager insertMenu = getMenuManager(parentMenu, optionalPath);
-            try {
-                insertMenu.appendToGroup(getGroupId(optionalPath), action.get());
-            } catch (IllegalArgumentException e) {
-                // Group not found, use additions as fallback
-                insertMenu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, action.get());
-            }
-        }
-    }
-
-    private Optional<String> getPropertyValueFromString(String documentationOptions, String key) {
+    private void addMenuInGroup(final IMenuManager parentMenu, final String groupId, IContributionItem menu) {
         try {
-            Properties docProps = new Properties();
-            StringReader docReader = new StringReader(documentationOptions);
+            parentMenu.appendToGroup(groupId, menu);
+        } catch (IllegalArgumentException e) {
+            // Group not found, use additions as fallback
             try {
-                docProps.load(docReader);
-            } finally {
-                docReader.close();
-            }
-            String value = docProps.getProperty(key);
-            if (value != null) {
-                return Optional.of(value);
-            }
-        } catch (IOException e) {
-            // Do nothing
-        }
-        return Optional.empty();
-    }
-
-    private Optional<String> getTabbarPath(String documentationOptions) {
-        return getPropertyValueFromString(documentationOptions, TABBAR_PATH_PREFIX);
-    }
-
-    private Optional<String> getPath(String documentationOptions) {
-        return getPropertyValueFromString(documentationOptions, PATH_PREFIX);
-    }
-
-    private Optional<String> getGroupIdToCreate(String documentationOptions) {
-        return getPropertyValueFromString(documentationOptions, GROUP_PREFIX);
-    }
-
-    private IMenuManager getMenuManager(IMenuManager menu, Optional<String> optionalPath) {
-        IMenuManager result = menu;
-        if (optionalPath.isPresent()) {
-            String[] pathSegments = optionalPath.get().split(PATH_SEPARATOR);
-            for (int i = 0; i < pathSegments.length - 1; i++) {
-                IMenuManager foundMenu = result.findMenuUsingPath(pathSegments[i]);
-                if (foundMenu == null) {
-                    break;
-                }
-                result = foundMenu;
+                parentMenu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, menu);
+            } catch (IllegalArgumentException e2) {
+                // If the group additions does not exist, we create it.
+                parentMenu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+                parentMenu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, menu);
             }
         }
-        return result;
     }
 
     /**
-     * Return the groupId of the <code>optionalPath</code>. "additions" is returned if no groupId is found in the
-     * path.<BR/>
-     * Examples of path with corresponding groupID:
-     * <UL>
-     * <LI>path="myGroupId" --> groupId ==> "myGroupId"</LI>
-     * <LI>path="/myGroupId" --> groupId ==> ""</LI>
-     * <LI>path="/myMenuId/myGroupId" --> groupId ==> "myGroupId"</LI>
-     * <LI>path="/myMenuId1/myMenuId2/myMenuId3/myGroupId" --> groupId ==> "myGroupId"</LI>
-     * </UL>
+     * Builds content of popup menus from active layers and add it in the "additions" group of the current
+     * <code>parentMenu</code>.<BR/>
      * 
-     * @param optionalPath
-     *            The optional path from which to retreive the groupID
-     * @return the groupId of the <code>optionalPath</code>. "additions" is returned if no groupId is found in the path.
+     * @param popupMenu
+     *            The description of the PopupMenu to add
+     * @param parentMenu
+     *            The menu in which to add the PopupMenu and its content.
+     * @param domain
+     *            the edit domain used for execution of the actions contained in this PopupMenu
+     * @param selectedViews
+     *            the DRepresentationElement under focus.
+     * @param emfCommandFactory
+     *            The factory used to build the command corresponding to the actions contained in this PopupMenu
+     * @param primarySelection
+     *            The first selected edit part
+     * @param currentMouseLocation
+     *            The mouse location (used if some elements are created with contextual action)
      */
-    private String getGroupId(Optional<String> optionalPath) {
-        String groupId = IWorkbenchActionConstants.MB_ADDITIONS;
-        if (optionalPath.isPresent()) {
-            if (!optionalPath.get().contains(PATH_SEPARATOR) && optionalPath.get().length() > 0) {
-                groupId = optionalPath.get();
-            } else {
-                String[] pathSegments = optionalPath.get().split(PATH_SEPARATOR);
-                if (pathSegments.length > 1) {
-                    groupId = pathSegments[pathSegments.length - 1];
-                }
+    // CHECKSTYLE:OFF
+    private void addPopupMenu(PopupMenu popupMenu, IMenuManager parentMenu, String groupId, final EditDomain domain, final Collection<DSemanticDecorator> selectedViews,
+            final IDiagramCommandFactory emfCommandFactory, EditPart primarySelection, Point currentMouseLocation) {
+        // CHECKSTYLE:ON
+        final EObject semantic = selectedViews.iterator().next().getTarget();
+
+        final EList<MenuItemDescription> activatedGroupsOrActions = popupMenu.getMenuItemDescription();
+
+        IInterpreter interpreter = null;
+        if (semantic != null && semantic.eResource() != null) {
+            interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
+        } else if (semantic instanceof DMappingBased) {
+            interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(((DMappingBased) semantic).getMapping());
+        }
+
+        final Boolean isMenuPreconditionValidated;
+        if (StringUtil.isEmpty(popupMenu.getPrecondition())) {
+            isMenuPreconditionValidated = true;
+        } else {
+            isMenuPreconditionValidated = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(semantic, popupMenu, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
+        }
+
+        if (isMenuPreconditionValidated) {
+            // Search if a menu with the same id already exists. In this case, we reuse it.
+            String menuId = popupMenu.getName();
+            IMenuManager subMenu = parentMenu.findMenuUsingPath(menuId);
+            if (subMenu == null) {
+                subMenu = new MenuManager(MessageTranslator.INSTANCE.getMessage(popupMenu, new IdentifiedElementQuery(popupMenu).getLabel()), menuId);
+                // Add a default "additions" group
+                subMenu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+            }
+
+            final Iterator<MenuItemDescription> mIterator = activatedGroupsOrActions.iterator();
+            while (mIterator.hasNext()) {
+                final MenuItemDescription menuItemDescription = mIterator.next();
+                addItemToMenu(menuItemDescription, subMenu, null, selectedViews, domain, emfCommandFactory, interpreter, primarySelection, currentMouseLocation);
+            }
+            // finalize
+            if (!(parentMenu.equals(subMenu)) && subMenu instanceof ContributionManager && ((ContributionManager) subMenu).getSize() > 0) {
+                subMenu.setVisible(true);
+                addMenuInGroup(parentMenu, groupId, subMenu);
             }
         }
-        return groupId;
     }
 
     /**
      * Builds contents of popup menus from active layers.<BR/>
-     * Method added in case of POC of bug 529992 (initially a copy of
-     * {@link #buildContributionItemToAdd(EditDomain, Collection, PopupMenu, IDiagramCommandFactory, EditPart, Point)}.
      * 
      * @param domain
      *            the edit domain used for execution
@@ -780,39 +608,56 @@ public class PopupMenuContribution implements IContributionItemProvider {
      *            The mouse location (used if some elements are created with contextual action)
      * @return an optional IContributionItem.
      */
-    private Option<? extends IContributionItem> buildContributionItemToAdd(IMenuManager parentMenu, final EditDomain domain, final Collection<DSemanticDecorator> selectedViews,
-            final PopupMenu popupMenu, final IDiagramCommandFactory emfCommandFactory, EditPart primarySelection, Point currentMouseLocation) {
+    private void addGroup(final GroupMenu group, IMenuManager parentMenu, final EditDomain domain, final Collection<DSemanticDecorator> selectedViews, final IDiagramCommandFactory emfCommandFactory,
+            EditPart primarySelection, Point currentMouseLocation) {
         final EObject semantic = selectedViews.iterator().next().getTarget();
-        // Search if a menu with the same id already exists. In this case, we reuse it.
-        String menuId = popupMenu.getName();
-        Optional<String> tabbarPath = getTabbarPath(popupMenu.getDocumentation());
-        Option<? extends IContributionItem> result;
-        if (contributionToTabbar && !tabbarPath.isPresent()) {
-            // For tabbar contribution, ignore contribution without tabbar path.
-            result = Options.newNone();
-        } else {
-            IMenuManager subMenu;
-            if (ROOT_MENU_ID.equals(menuId)) {
-                subMenu = parentMenu;
-            } else if (tabbarPath.isPresent() && tabbarPath.get().equals(parentMenu.getId())) {
-                subMenu = parentMenu;
+        IMenuManager menuContainingNewGroup = null;
+        String locationURI = group.getLocationURI();
+        if (group.eContainer() instanceof PopupMenu) {
+            if (locationURI != null && !locationURI.isEmpty()) {
+                // The location URI must be null/empty when it is located in a PopupMenu
+                DiagramUIPlugin.getPlugin()
+                        .log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, IStatus.OK,
+                                MessageFormat.format(Messages.Group_Not_Displayed, group.getName(),
+                                        MessageFormat.format(org.eclipse.sirius.viewpoint.Messages.Constraint_validNullLocationURIForGroupInPopupMenuConstraint_message, group.getLocationURI())),
+                                null));
             } else {
-                subMenu = parentMenu.findMenuUsingPath(menuId);
-                if (subMenu == null) {
-                    subMenu = new MenuManager(MessageTranslator.INSTANCE.getMessage(popupMenu, new IdentifiedElementQuery(popupMenu).getLabel()), menuId);
-                    // Add a default "additions" group
-                    subMenu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+                menuContainingNewGroup = parentMenu;
+            }
+        } else {
+            try {
+                LocationURI locationURIQuery = new LocationURI(locationURI);
+                if (!contributionToTabbar && locationURIQuery.getMenuId().isPresent()) {
+                    String menuId = locationURIQuery.getMenuId().get();
+                    if (LocationURI.ROOT_MENU_ID.equals(menuId)) {
+                        menuContainingNewGroup = parentMenu;
+                    } else {
+                        menuContainingNewGroup = parentMenu.findMenuUsingPath(menuId);
+                        if (menuContainingNewGroup == null) {
+                            DiagramUIPlugin.getPlugin().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, IStatus.OK,
+                                    MessageFormat.format(Messages.Group_Not_Displayed, group.getName(), MessageFormat.format(Messages.Group_No_Menu_ID, menuId)), null));
+                        }
+                    }
+                } else if (contributionToTabbar && locationURIQuery.getTabbarId().isPresent()) {
+                    if (locationURIQuery.getTabbarId().get().equals(parentMenu.getId())) {
+                        menuContainingNewGroup = parentMenu;
+                    }
                 }
+            } catch (URISyntaxException e) {
+                DiagramUIPlugin.getPlugin().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, IStatus.OK, MessageFormat.format(Messages.Group_Not_Displayed, group.getName(), e.getMessage()), e));
+            }
+        }
+
+        if (menuContainingNewGroup != null) {
+            // Search if the group already exist (reuse it if it is the case).
+            IContributionItem existingSeparator = menuContainingNewGroup.findUsingPath(group.getName());
+            if (!(existingSeparator instanceof Separator) && !(contributionToTabbar && DEFAULT_TABBAR_GROUP.equals(group.getName()))) {
+                // Add a new separator group in the desired menu
+                menuContainingNewGroup.add(new Separator(group.getName()));
             }
 
-            // Add a separator group if asked
-            Optional<String> optionalGroupId = getGroupIdToCreate(popupMenu.getDocumentation());
-            if (optionalGroupId.isPresent()) {
-                Separator separator = new Separator(optionalGroupId.get());
-                subMenu.add(separator);
-            }
-
-            final EList<MenuItemDescription> activatedActions = popupMenu.getMenuItemDescription();
+            // Add actions or menus in the group
+            final EList<GroupMenuItem> activatedMenusOrActions = group.getItemDescriptions();
 
             IInterpreter interpreter = null;
             if (semantic != null && semantic.eResource() != null) {
@@ -821,132 +666,21 @@ public class PopupMenuContribution implements IContributionItemProvider {
                 interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(((DMappingBased) semantic).getMapping());
             }
 
-            final Boolean isMenuPreconditionValidated;
-            if (StringUtil.isEmpty(popupMenu.getPrecondition())) {
-                isMenuPreconditionValidated = true;
+            final Boolean isGroupPreconditionValidated;
+            if (StringUtil.isEmpty(group.getPrecondition())) {
+                isGroupPreconditionValidated = true;
             } else {
-                isMenuPreconditionValidated = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(semantic, popupMenu, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
+                isGroupPreconditionValidated = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(semantic, group, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
             }
 
-            if (isMenuPreconditionValidated) {
-                final Iterator<MenuItemDescription> mIterator = activatedActions.iterator();
+            if (isGroupPreconditionValidated) {
+                final Iterator<GroupMenuItem> mIterator = activatedMenusOrActions.iterator();
                 while (mIterator.hasNext()) {
-                    final MenuItemDescription menuItemDescription = mIterator.next();
-                    Optional<IAction> optionalAction = buildActionToAdd(domain, selectedViews, menuItemDescription, emfCommandFactory, primarySelection, currentMouseLocation, interpreter);
-                    addActionInMenu(subMenu, menuItemDescription.getDocumentation(), optionalAction);
+                    final GroupMenuItem menuItemDescription = mIterator.next();
+                    addItemToMenu(menuItemDescription, menuContainingNewGroup, group.getName(), selectedViews, domain, emfCommandFactory, interpreter, primarySelection, currentMouseLocation);
                 }
-            } else {
-                subMenu.removeAll();
-            }
-            // finalize
-            if (!(parentMenu.equals(subMenu)) && subMenu instanceof ContributionManager && ((ContributionManager) subMenu).getSize() > 0) {
-                subMenu.setVisible(true);
-                result = Options.newSome(subMenu);
-            } else {
-                result = Options.newNone();
             }
         }
-        return result;
-    }
 
-    /**
-     * Builds contents of popup menus from active layers.<BR/>
-     * Method added in case of POC of bug 529992 (initially a copy of
-     * {@link #buildContributionItemToAdd(EditDomain, Collection, PopupMenu, IDiagramCommandFactory, EditPart, Point)}.
-     * 
-     * @param domain
-     *            the edit domain used for execution
-     * @param selectedViews
-     *            the semantic viewpoint element under focus.
-     * @param emfCommandFactory
-     * @param primarySelection
-     *            The first selected edit part
-     * @param currentMouseLocation
-     *            The mouse location (used if some elements are created with contextual action)
-     * @return an optional IContributionItem.
-     */
-    private void addGroup(IMenuManager parentMenu, final EditDomain domain, final Collection<DSemanticDecorator> selectedViews, final GroupMenu group, final IDiagramCommandFactory emfCommandFactory,
-            EditPart primarySelection, Point currentMouseLocation) {
-        final EObject semantic = selectedViews.iterator().next().getTarget();
-        String locationURI = group.getLocationURI();
-        try {
-            LocationURI locationURIQuery = new LocationURI(locationURI);
-            IMenuManager menuContainingNewGroup = null;
-            if (!contributionToTabbar && locationURIQuery.getMenuId().isPresent()) {
-                String menuId = locationURIQuery.getMenuId().get();
-                if (LocationURI.ROOT_MENU_ID.equals(menuId)) {
-                    menuContainingNewGroup = parentMenu;
-                } else {
-                    menuContainingNewGroup = parentMenu.findMenuUsingPath(menuId);
-                    if (menuContainingNewGroup == null) {
-                        DiagramUIPlugin.getPlugin().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, IStatus.OK,
-                                MessageFormat.format(Messages.Group_Not_Displayed, group.getName(), MessageFormat.format(Messages.Group_No_Menu_ID, menuId)), null));
-                    }
-                }
-            } else if (contributionToTabbar && locationURIQuery.getTabbarId().isPresent()) {
-                if (locationURIQuery.getTabbarId().get().equals(parentMenu.getId())) {
-                    menuContainingNewGroup = parentMenu;
-                }
-            }
-
-            if (menuContainingNewGroup != null) {
-                // Add the separator group in the desired menu
-                Separator separator = new Separator(group.getName());
-                menuContainingNewGroup.add(separator);
-                // separator.setVisible(true);
-                // TODO: Add new popupMenu if any
-
-                // Add actions in the group
-                final EList<MenuItemDescription> activatedActions = group.getItemDescriptions();
-
-                IInterpreter interpreter = null;
-                if (semantic != null && semantic.eResource() != null) {
-                    interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
-                } else if (semantic instanceof DMappingBased) {
-                    interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(((DMappingBased) semantic).getMapping());
-                }
-
-                final Boolean isMenuPreconditionValidated;
-                if (StringUtil.isEmpty(group.getPrecondition())) {
-                    isMenuPreconditionValidated = true;
-                } else {
-                    isMenuPreconditionValidated = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(semantic, group, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition());
-                }
-
-                if (isMenuPreconditionValidated) {
-                    final Iterator<MenuItemDescription> mIterator = activatedActions.iterator();
-                    while (mIterator.hasNext()) {
-                        final MenuItemDescription menuItemDescription = mIterator.next();
-                        Optional<IAction> optionalAction = buildActionToAdd(domain, selectedViews, menuItemDescription, emfCommandFactory, primarySelection, currentMouseLocation, interpreter);
-                        addActionInGroup(menuContainingNewGroup, group.getName(), optionalAction);
-                    }
-                }
-            }
-        } catch (URISyntaxException e) {
-            DiagramUIPlugin.getPlugin().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, IStatus.OK, MessageFormat.format(Messages.Group_Not_Displayed, group.getName(), e.getMessage()), e));
-        }
-
-    }
-
-    /**
-     * Builds contents of popup menus from menuItemDescription.<BR/>
-     * Method added in case of POC of bug 529992 (initially a copy of
-     * {@link #buildActionToAdd(EditDomain, Collection, MenuItemDescription, IDiagramCommandFactory, EditPart, Point, IInterpreter)}.
-     * 
-     * @param domain
-     *            the edit domain used for execution
-     * @param selectedViews
-     *            the semantic viewpoint element under focus.
-     */
-    private Optional<IAction> buildActionToAdd(final EditDomain domain, final Collection<DSemanticDecorator> selectedViews, final MenuItemDescription menuItemDescription,
-            final IDiagramCommandFactory emfCommandFactory, EditPart primarySelection, Point currentMouseLocation, IInterpreter interpreter) {
-        final EObject semantic = selectedViews.iterator().next().getTarget();
-        if (interpreter != null && preconditionHolds(menuItemDescription, selectedViews, semantic, interpreter)) {
-            final IAction action = buildMenuItemAction(menuItemDescription, selectedViews, domain, emfCommandFactory, interpreter, primarySelection, currentMouseLocation);
-            if (action != null) {
-                return Optional.of(action);
-            }
-        }
-        return Optional.empty();
     }
 }

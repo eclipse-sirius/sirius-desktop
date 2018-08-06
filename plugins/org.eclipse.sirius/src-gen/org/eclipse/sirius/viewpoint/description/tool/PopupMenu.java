@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface PopupMenu extends AbstractToolDescription {
+public interface PopupMenu extends AbstractToolDescription, GroupMenuItem {
     /**
      * Returns the value of the '<em><b>Menu Item Description</b></em>' containment reference list. The list contents
      * are of type {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription}. <!-- begin-user-doc -->

@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ExternalJavaAction extends MenuItemDescription, ContainerModelOperation {
+public interface ExternalJavaAction extends MenuItemDescriptionWithIcon, ContainerModelOperation, GroupMenuItem {
     /**
      * Returns the value of the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> Identifier for your External Java Action provided through extension points. <!--

@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public class OperationActionImpl extends MenuItemDescriptionImpl implements OperationAction {
+public class OperationActionImpl extends MenuItemDescriptionWithIconImpl implements OperationAction {
     /**
      * The cached value of the '{@link #getView() <em>View</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->

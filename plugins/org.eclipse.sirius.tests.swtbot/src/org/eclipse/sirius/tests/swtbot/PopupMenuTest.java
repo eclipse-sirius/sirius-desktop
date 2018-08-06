@@ -74,7 +74,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMenu1OnPackage() throws Exception {
 
-        // Select a diagram element named "ref"
+        // Select a diagram element named "sub package"
         editor.click(editor.getEditPart("sub package"));
         editor.select(editor.getSelectableEditPart("sub package"));
         try {
@@ -292,7 +292,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
      * @throws Exception
      *             In case of unexpected problem
      */
-    public void _testWarningForGroupWithBlankLocationOnClass() throws Exception {
+    public void testWarningForGroupWithBlankLocationOnClass() throws Exception {
 
         editor.click(editor.getEditPart("Class"));
         editor.select(editor.getEditPart("Class"));
@@ -324,12 +324,49 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that a warning is logged for a group with a not empty location contained in a popup menu.
+     * 
+     * @throws Exception
+     *             In case of unexpected problem
+     */
+    public void testWarningForGroupWithLocationInPopupMenuOnPackage() throws Exception {
+
+        editor.click(editor.getEditPart("sub package"));
+        editor.select(editor.getSelectableEditPart("sub package"));
+        boolean previousWarningCatchActiveStatus = isWarningCatchActive();
+        warnings.clear();
+        setWarningCatchActive(true);
+        try {
+            try {
+                editor.clickContextMenu("myActionInGroupInPopupMenuWithLocationURI");
+            } catch (WidgetNotFoundException e) {
+                // Expected, check that a warning has been displayed
+                String expectedMessage = MessageFormat.format(Messages.Group_Not_Displayed, "groupInPopupMenuWithLocationURI",
+                        MessageFormat.format(org.eclipse.sirius.viewpoint.Messages.Constraint_validNullLocationURIForGroupInPopupMenuConstraint_message, "aNotBlankLocationURI"));
+                if (doesAWarningOccurs()) {
+                    if (warnings.values().size() == 1) {
+                        String message = warnings.values().iterator().next().getMessage();
+                        assertEquals("The warning concerning the group with blank locationUri should use a specific message.", expectedMessage, message);
+                    } else {
+                        fail("One warning is expected concerning the group with locationUri in a popup menu, but was " + warnings.values().size() + ".");
+                    }
+                } else {
+                    fail("One warning is expected concerning the group with locationUri in a popup menu, but was 0.");
+                }
+            }
+        } finally {
+            setWarningCatchActive(previousWarningCatchActiveStatus);
+            warnings.clear();
+        }
+    }
+
+    /**
      * Test that action in a new group in an existing menu is accessible.
      * 
      * @throws Exception
      *             In case of unexpected problem
      */
-    public void _testActionInANewGroupInExistingMenuOnClass() throws Exception {
+    public void testActionInANewGroupInExistingMenuOnClass() throws Exception {
         // TODO: There is no check that the action is really in the right menu. So clickContextMenu must be
         // replaced/completed by a new method
         // org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils.isMenuEnabled(Display, Control, String) with a
@@ -344,12 +381,32 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that action in a new group in an existing menu is accessible.
+     * 
+     * @throws Exception
+     *             In case of unexpected problem
+     */
+    public void testActionInANewGroupInAPopupMenuOnPackage() throws Exception {
+        // TODO: There is no check that the action is really in the right menu. So clickContextMenu must be
+        // replaced/completed by a new method
+        // org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils.isMenuEnabled(Display, Control, String) with a
+        // "qualifiedName" instead of a simple label.
+        editor.click(editor.getEditPart("sub package"));
+        editor.select(editor.getSelectableEditPart("sub package"));
+        try {
+            editor.clickContextMenu("myActionInGroupInPopupMenu");
+        } catch (WidgetNotFoundException e) {
+            fail("The action \"myActionInGroupInPopupMenu\" of the new group \"groupInPopupMenu\" of the new menu \"myMenuContainingGroups\" should exist");
+        }
+    }
+
+    /**
      * Test that action in a new group in the default menu (locationURI without menu id) is accessible.
      * 
      * @throws Exception
      *             In case of unexpected problem
      */
-    public void _testActionInANewGroupInDefaultMenuOnClass() throws Exception {
+    public void testActionInANewGroupInDefaultMenuOnClass() throws Exception {
 
         editor.click(editor.getEditPart("Class"));
         editor.select(editor.getEditPart("Class"));
@@ -366,7 +423,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
      * @throws Exception
      *             In case of unexpected problem
      */
-    public void _testActionInANewGroupInAMenuContributedByVSMOnClass() throws Exception {
+    public void testActionInANewGroupInAMenuContributedByVSMOnClass() throws Exception {
 
         editor.click(editor.getEditPart("Class"));
         editor.select(editor.getEditPart("Class"));

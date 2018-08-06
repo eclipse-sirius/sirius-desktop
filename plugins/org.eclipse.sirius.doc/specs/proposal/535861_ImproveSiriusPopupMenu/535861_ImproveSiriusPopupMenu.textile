@@ -35,7 +35,7 @@ h2. Detailed Specification
 h3. Group notion in meta-model
 
 The notion of @Group@ will be added in the meta-model.
-As @PopupMenu@, a @Group@ can be added in a tool section of a diagram. 
+As @PopupMenu@, a @Group@ can be added in a tool section of a diagram.
 As @PopupMenu@, the properties @elementsToSelect@ and @inverseSelectionOrder@ will be filtered in the UI (in the Properties view).
 A @Group@ can contain 0 or multiple @PopupMenu@. A @Group@ can contain 0 or multiple @MenuItemDescription@ (ie actions).
 A @Group@ has an id (the field @name@ inherited from @IdentifiedElement@). It also has a @label@, but the field is not mandatory and not really used.
@@ -44,6 +44,7 @@ The format for the URI is comprised of two basic parts:
 * Scheme: One of "menu", "tabbar". Indicates the type of the manager used to handle the contributions.
 * Id: This is either the id of an existing menu or tabbar menu
 We can imagine a third part: Query - This field allows fine-grained definition of the specific location within a given menu. It has the form "[placement]=[id]" where placement is one of "before", "after", or "endof" and the id is expected to be the id of another contribution in the menu. This third part is not in the scope of this evolution.
+A @Group@ can be added as a child of a @PopupMenu@. In this context, the @locationURI@ must be null.
 
 Extract of the Meta-Model with the changes in green:
 !images/mmChanges.png!
@@ -78,5 +79,6 @@ h2. Tests and Non-regression strategy
 * Group at the same place of an existing group of an existing menu (to insert action in the existing group)
 * Group in a PopupMenu contributed by Sirius through the VSM
 * Group in Select All menu of the tabbar
+* PopupMenu contributed by Sirius through the VSM in a Group
 
 h2. Implementation choices and tradeoffs

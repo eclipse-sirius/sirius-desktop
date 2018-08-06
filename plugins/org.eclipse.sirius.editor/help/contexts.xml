@@ -1892,6 +1892,40 @@
    
       </description>
    </context>
+   <context id="GroupMenuItem">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+          - elementsToSelect: a Collection&lt;EObject>
+
+
+         
+   <!-- Start of user code GroupMenuItem description -->
+   
+   <!-- End of user code GroupMenuItem description -->
+   
+      </description>
+   </context>
+   <context id="MenuItemDescriptionWithIcon">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+          - elementsToSelect: a Collection&lt;EObject>
+
+
+         
+   <!-- Start of user code MenuItemDescriptionWithIcon description -->
+   
+   <!-- End of user code MenuItemDescriptionWithIcon description -->
+   
+      </description>
+   </context>
    <context id="ValidationSet">
      <description>
        A set of validation rules.

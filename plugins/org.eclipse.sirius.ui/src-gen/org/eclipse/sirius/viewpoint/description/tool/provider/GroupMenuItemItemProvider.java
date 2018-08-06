@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,6 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *
  */
 package org.eclipse.sirius.viewpoint.description.tool.provider;
 
@@ -17,23 +16,21 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItemProvider {
+public class GroupMenuItemItemProvider extends AbstractToolDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public MenuItemDescriptionItemProvider(AdapterFactory adapterFactory) {
+    public GroupMenuItemItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -54,12 +51,13 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_MenuItemDescription_type") : getString("_UI_MenuItemDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        String label = ((GroupMenuItem) object).getName();
+        return label == null || label.length() == 0 ? getString("_UI_GroupMenuItem_type") : //$NON-NLS-1$
+                getString("_UI_GroupMenuItem_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

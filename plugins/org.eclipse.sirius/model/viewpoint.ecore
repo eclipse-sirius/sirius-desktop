@@ -1368,20 +1368,18 @@
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="MenuItemOrRef" abstract="true" interface="true"/>
       <eClassifiers xsi:type="ecore:EClass" name="MenuItemDescription" abstract="true"
-          eSuperTypes="#//description/tool/AbstractToolDescription #//description/tool/MenuItemOrRef">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="icon" eType="#//description/ImagePath"/>
-      </eClassifiers>
+          eSuperTypes="#//description/tool/AbstractToolDescription #//description/tool/MenuItemOrRef"/>
       <eClassifiers xsi:type="ecore:EClass" name="MenuItemDescriptionReference" eSuperTypes="#//description/tool/MenuItemOrRef">
         <eStructuralFeatures xsi:type="ecore:EReference" name="item" lowerBound="1"
             eType="#//description/tool/MenuItemDescription"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="OperationAction" eSuperTypes="#//description/tool/MenuItemDescription">
+      <eClassifiers xsi:type="ecore:EClass" name="OperationAction" eSuperTypes="#//description/tool/MenuItemDescriptionWithIcon #//description/tool/GroupMenuItem">
         <eStructuralFeatures xsi:type="ecore:EReference" name="view" lowerBound="1"
             eType="#//description/tool/ContainerViewVariable" containment="true"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
             eType="#//description/tool/InitialOperation" containment="true"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="ExternalJavaAction" eSuperTypes="#//description/tool/MenuItemDescription #//description/tool/ContainerModelOperation">
+      <eClassifiers xsi:type="ecore:EClass" name="ExternalJavaAction" eSuperTypes="#//description/tool/MenuItemDescriptionWithIcon #//description/tool/ContainerModelOperation #//description/tool/GroupMenuItem">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1"
             eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1391,7 +1389,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
             eType="#//description/tool/ExternalJavaActionParameter" containment="true"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="ExternalJavaActionCall" eSuperTypes="#//description/tool/MenuItemDescription #//description/tool/ContainerModelOperation">
+      <eClassifiers xsi:type="ecore:EClass" name="ExternalJavaActionCall" eSuperTypes="#//description/tool/MenuItemDescriptionWithIcon #//description/tool/ContainerModelOperation #//description/tool/GroupMenuItem">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="An operation which can be used to call an ExternalJavaAction defined elsewhere."/>
         </eAnnotations>
@@ -1402,7 +1400,7 @@
           </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="PopupMenu" eSuperTypes="#//description/tool/AbstractToolDescription">
+      <eClassifiers xsi:type="ecore:EClass" name="PopupMenu" eSuperTypes="#//description/tool/AbstractToolDescription #//description/tool/GroupMenuItem">
         <eStructuralFeatures xsi:type="ecore:EReference" name="menuItemDescription"
             lowerBound="1" upperBound="-1" eType="#//description/tool/MenuItemDescription"
             containment="true"/>
@@ -1747,7 +1745,7 @@
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="GroupMenu" eSuperTypes="#//description/tool/AbstractToolDescription">
+      <eClassifiers xsi:type="ecore:EClass" name="GroupMenu" eSuperTypes="#//description/tool/MenuItemDescription">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="locationURI" unique="false"
             eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
             defaultValueLiteral="">
@@ -1756,9 +1754,15 @@
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="popupMenus" upperBound="-1"
-            eType="#//description/tool/PopupMenu" containment="true"/>
+            eType="#//description/tool/PopupMenu" changeable="false" volatile="true"
+            transient="true" derived="true"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="itemDescriptions" upperBound="-1"
-            eType="#//description/tool/MenuItemDescription" containment="true"/>
+            eType="#//description/tool/GroupMenuItem" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="GroupMenuItem" abstract="true" eSuperTypes="#//description/tool/AbstractToolDescription"/>
+      <eClassifiers xsi:type="ecore:EClass" name="MenuItemDescriptionWithIcon" abstract="true"
+          eSuperTypes="#//description/tool/MenuItemDescription">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="icon" eType="#//description/ImagePath"/>
       </eClassifiers>
     </eSubpackages>
     <eSubpackages name="validation" nsURI="http://www.eclipse.org/sirius/description/validation/1.1.0"

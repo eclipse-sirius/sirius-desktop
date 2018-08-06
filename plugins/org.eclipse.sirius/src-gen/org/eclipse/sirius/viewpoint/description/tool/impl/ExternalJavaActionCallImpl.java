@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -42,7 +43,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implements ExternalJavaActionCall {
+public class ExternalJavaActionCallImpl extends MenuItemDescriptionWithIconImpl implements ExternalJavaActionCall {
     /**
      * The cached value of the '{@link #getSubModelOperations() <em>Sub Model Operations</em>}' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -245,6 +246,12 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
                 return -1;
             }
         }
+        if (baseClass == GroupMenuItem.class) {
+            switch (derivedFeatureID) {
+            default:
+                return -1;
+            }
+        }
         return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
     }
 
@@ -265,6 +272,12 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
             switch (baseFeatureID) {
             case ToolPackage.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS:
                 return ToolPackage.EXTERNAL_JAVA_ACTION_CALL__SUB_MODEL_OPERATIONS;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == GroupMenuItem.class) {
+            switch (baseFeatureID) {
             default:
                 return -1;
             }

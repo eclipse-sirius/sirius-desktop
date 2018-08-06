@@ -132,7 +132,7 @@ public class TreePopupMenuItemProvider extends AbstractToolDescriptionItemProvid
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @not-generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -145,6 +145,30 @@ public class TreePopupMenuItemProvider extends AbstractToolDescriptionItemProvid
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS, ToolFactory.eINSTANCE.createExternalJavaAction()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS, ToolFactory.eINSTANCE.createExternalJavaActionCall()));
+
+        // Do not add Group (not supported for Tree)
+        // newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS,
+        // ToolFactory.eINSTANCE.createGroupMenu()));
+    }
+
+    /**
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS, ToolFactory.eINSTANCE.createMenuItemDescriptionReference()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS, ToolFactory.eINSTANCE.createOperationAction()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS, ToolFactory.eINSTANCE.createExternalJavaAction()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS, ToolFactory.eINSTANCE.createExternalJavaActionCall()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS, ToolFactory.eINSTANCE.createGroupMenu()));
     }
 
     /**

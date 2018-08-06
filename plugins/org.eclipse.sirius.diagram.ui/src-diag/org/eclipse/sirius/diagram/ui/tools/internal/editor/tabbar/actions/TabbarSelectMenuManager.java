@@ -16,25 +16,25 @@ import java.lang.reflect.Method;
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.SelectAllAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.SelectMenuManager;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
- * A select menu manager which handle cleanly {@link IDisposableAction} and set
- * correctly handler for tabbar.
+ * A select menu manager which handle cleanly {@link IDisposableAction} and set correctly handler for tabbar. <BR>
+ * This menu contains GMF global SelectAll actions plus SelectAll actions defined in the VSM.
  * 
  * @author mchauvin
  */
 public class TabbarSelectMenuManager extends SelectMenuManager {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.ContributionManager#add(org.eclipse.jface.action.IAction)
-     */
+    private boolean contributionsAdded;
+
     @Override
     public void add(IAction action) {
         super.add(action);
@@ -43,11 +43,6 @@ public class TabbarSelectMenuManager extends SelectMenuManager {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.ui.action.ActionMenuManager#itemRemoved(org.eclipse.jface.action.IContributionItem)
-     */
     @Override
     protected void itemRemoved(IContributionItem item) {
         if (item instanceof ActionContributionItem) {
@@ -58,9 +53,6 @@ public class TabbarSelectMenuManager extends SelectMenuManager {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void dispose() {
         removeAll();
@@ -114,14 +106,31 @@ public class TabbarSelectMenuManager extends SelectMenuManager {
     @Override
     public void setVisible(boolean visible) {
         super.setVisible(visible);
-        if (isEmpty() && visible) {
-            IWorkbenchPage page = EclipseUIUtil.getActivePage();
-            if (page != null) {
-                add(SelectAllAction.createToolbarSelectAllAction(page));
-                add(SelectAllAction.createToolbarSelectAllConnectionsAction(page));
-                add(SelectAllAction.createToolbarSelectAllShapesAction(page));
-                setDefaultAction("toolbarSelectAllAction"); //$NON-NLS-1$
+        if (visible) {
+            if (isEmpty()) {
+                IWorkbenchPage page = EclipseUIUtil.getActivePage();
+                if (page != null) {
+                    add(SelectAllAction.createToolbarSelectAllAction(page));
+                    add(SelectAllAction.createToolbarSelectAllConnectionsAction(page));
+                    add(SelectAllAction.createToolbarSelectAllShapesAction(page));
+                    setDefaultAction("toolbarSelectAllAction"); //$NON-NLS-1$
+
+                }
             }
+            if (!contributionsAdded) {
+                IEditorPart editorPart = EclipseUIUtil.getActiveEditor();
+                if (editorPart instanceof IDiagramWorkbenchPart && ((IDiagramWorkbenchPart) editorPart).getDiagramGraphicalViewer() != null) {
+                    // Add potential select all actions contributed in VSM
+                    PopupMenuContribution.contributeToPopupMenuProgrammatically(this, editorPart, true);
+                    contributionsAdded = true;
+                }
+            }
+        } else {
+            // Remove actions contributed from VSM. They will be added on the next call to setVisible(true).
+            for (int i = getItems().length - 1; i > 2; i--) {
+                remove(getItems()[i]);
+            }
+            contributionsAdded = false;
         }
     }
 }

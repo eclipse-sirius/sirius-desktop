@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,27 +7,26 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *
  */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Menu Item Description</b></em>'. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Group Menu Item</b></em>'. <!-- end-user-doc
+ * -->
  *
  * @generated
  */
-public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImpl implements MenuItemDescription {
+public abstract class GroupMenuItemImpl extends AbstractToolDescriptionImpl implements GroupMenuItem {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected MenuItemDescriptionImpl() {
+    protected GroupMenuItemImpl() {
         super();
     }
 
@@ -38,7 +37,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
      */
     @Override
     protected EClass eStaticClass() {
-        return ToolPackage.Literals.MENU_ITEM_DESCRIPTION;
+        return ToolPackage.Literals.GROUP_MENU_ITEM;
     }
 
-} // MenuItemDescriptionImpl
+} // GroupMenuItemImpl

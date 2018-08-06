@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.tool.menuitemdescription;
+package org.eclipse.sirius.editor.properties.sections.tool.menuitemdescriptionwithicon;
 
 // Start of user code imports
 
@@ -25,9 +25,9 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the icon property of a MenuItemDescription object.
+ * A section for the icon property of a MenuItemDescriptionWithIcon object.
  */
-public class MenuItemDescriptionIconPropertySection extends AbstractTextWithButtonPropertySection {
+public class MenuItemDescriptionWithIconIconPropertySection extends AbstractTextWithButtonPropertySection {
 
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
@@ -55,7 +55,7 @@ public class MenuItemDescriptionIconPropertySection extends AbstractTextWithButt
      */
     @Override
     public EAttribute getFeature() {
-        return ToolPackage.eINSTANCE.getMenuItemDescription_Icon();
+        return ToolPackage.eINSTANCE.getMenuItemDescriptionWithIcon_Icon();
     }
 
     /**

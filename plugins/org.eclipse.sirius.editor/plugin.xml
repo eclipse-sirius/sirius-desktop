@@ -378,12 +378,12 @@
         <input type="org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.tool.menuitemdescription.MenuItemDescriptionIconPropertySection"
-               filter="org.eclipse.sirius.editor.properties.filters.tool.menuitemdescription.MenuItemDescriptionIconFilter"
-               id="tool.section.menuItemDescription.Icon"
+               class="org.eclipse.sirius.editor.properties.sections.tool.menuitemdescriptionwithicon.MenuItemDescriptionWithIconIconPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.tool.menuitemdescriptionwithicon.MenuItemDescriptionWithIconIconFilter"
+               id="tool.section.menuItemDescriptionWithIcon.Icon"
                afterSection="tool.section.externalJavaActionCall.Action"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription"/>        
+        <input type="org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionWithIcon"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.representationnavigationdescription.RepresentationNavigationDescriptionNavigationNameExpressionPropertySection"

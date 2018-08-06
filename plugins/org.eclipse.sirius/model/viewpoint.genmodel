@@ -552,9 +552,7 @@
           <genOperations ecoreOperation="viewpoint.ecore#//description/tool/RepresentationNavigationDescription/getMappings"/>
         </genClasses>
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/MenuItemOrRef"/>
-        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/MenuItemDescription">
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/MenuItemDescription/icon"/>
-        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/MenuItemDescription"/>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/MenuItemDescriptionReference">
           <genFeatures notify="false" createChild="false" propertySortChoices="true"
               ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/MenuItemDescriptionReference/item"/>
@@ -700,9 +698,15 @@
           <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Let/valueExpression"/>
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/GroupMenu">
-          <genFeatures createChild="false" propertyCategory="General" propertyDescription="A &lt;code>URI&lt;/code> specification that defines the insertion point at which the group will be added.&#xD;&#xA;&#xD;&#xA;The format for the URI is comprised of two basic parts:&#xD;&#xA;* Scheme: One of &quot;menu&quot;, &quot;tabbar&quot;. Indicates the type of the manager used to handle the contributions.&#xD;&#xA;* Id: This is either the id of an existing menu or tabbar menu" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/GroupMenu/locationURI"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/GroupMenu/popupMenus"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="A &lt;code>URI&lt;/code> specification that defines the insertion point at which the group will be added.&#xD;&#xA;&#xD;&#xA;The format for the URI is comprised of two basic parts:&#xD;&#xA;* Scheme: One of &quot;menu&quot;, &quot;tabbar&quot;. Indicates the type of the manager used to handle the contributions.&#xD;&#xA;* Id: This is either the id of an existing menu or tabbar menu"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/GroupMenu/locationURI"/>
+          <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/GroupMenu/popupMenus"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/GroupMenu/itemDescriptions"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/GroupMenuItem"/>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/MenuItemDescriptionWithIcon">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription=""
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/MenuItemDescriptionWithIcon/icon"/>
         </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Validation" basePackage="org.eclipse.sirius.viewpoint.description"

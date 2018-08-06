@@ -156,6 +156,8 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.POPUP_MENU__MENU_ITEM_DESCRIPTION, ToolFactory.eINSTANCE.createExternalJavaAction()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.POPUP_MENU__MENU_ITEM_DESCRIPTION, ToolFactory.eINSTANCE.createExternalJavaActionCall()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.POPUP_MENU__MENU_ITEM_DESCRIPTION, ToolFactory.eINSTANCE.createGroupMenu()));
     }
 
 }

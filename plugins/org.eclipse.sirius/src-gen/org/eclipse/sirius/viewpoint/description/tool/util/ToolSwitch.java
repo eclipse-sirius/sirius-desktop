@@ -44,6 +44,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem;
 import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
@@ -53,6 +54,7 @@ import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference;
+import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionWithIcon;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
@@ -368,6 +370,12 @@ public class ToolSwitch<T> {
             OperationAction operationAction = (OperationAction) theEObject;
             T result = caseOperationAction(operationAction);
             if (result == null) {
+                result = caseMenuItemDescriptionWithIcon(operationAction);
+            }
+            if (result == null) {
+                result = caseGroupMenuItem(operationAction);
+            }
+            if (result == null) {
                 result = caseMenuItemDescription(operationAction);
             }
             if (result == null) {
@@ -394,19 +402,25 @@ public class ToolSwitch<T> {
             ExternalJavaAction externalJavaAction = (ExternalJavaAction) theEObject;
             T result = caseExternalJavaAction(externalJavaAction);
             if (result == null) {
-                result = caseMenuItemDescription(externalJavaAction);
+                result = caseMenuItemDescriptionWithIcon(externalJavaAction);
             }
             if (result == null) {
                 result = caseContainerModelOperation(externalJavaAction);
+            }
+            if (result == null) {
+                result = caseGroupMenuItem(externalJavaAction);
+            }
+            if (result == null) {
+                result = caseMenuItemDescription(externalJavaAction);
+            }
+            if (result == null) {
+                result = caseModelOperation(externalJavaAction);
             }
             if (result == null) {
                 result = caseAbstractToolDescription(externalJavaAction);
             }
             if (result == null) {
                 result = caseMenuItemOrRef(externalJavaAction);
-            }
-            if (result == null) {
-                result = caseModelOperation(externalJavaAction);
             }
             if (result == null) {
                 result = caseToolEntry(externalJavaAction);
@@ -426,19 +440,25 @@ public class ToolSwitch<T> {
             ExternalJavaActionCall externalJavaActionCall = (ExternalJavaActionCall) theEObject;
             T result = caseExternalJavaActionCall(externalJavaActionCall);
             if (result == null) {
-                result = caseMenuItemDescription(externalJavaActionCall);
+                result = caseMenuItemDescriptionWithIcon(externalJavaActionCall);
             }
             if (result == null) {
                 result = caseContainerModelOperation(externalJavaActionCall);
+            }
+            if (result == null) {
+                result = caseGroupMenuItem(externalJavaActionCall);
+            }
+            if (result == null) {
+                result = caseMenuItemDescription(externalJavaActionCall);
+            }
+            if (result == null) {
+                result = caseModelOperation(externalJavaActionCall);
             }
             if (result == null) {
                 result = caseAbstractToolDescription(externalJavaActionCall);
             }
             if (result == null) {
                 result = caseMenuItemOrRef(externalJavaActionCall);
-            }
-            if (result == null) {
-                result = caseModelOperation(externalJavaActionCall);
             }
             if (result == null) {
                 result = caseToolEntry(externalJavaActionCall);
@@ -457,6 +477,9 @@ public class ToolSwitch<T> {
         case ToolPackage.POPUP_MENU: {
             PopupMenu popupMenu = (PopupMenu) theEObject;
             T result = casePopupMenu(popupMenu);
+            if (result == null) {
+                result = caseGroupMenuItem(popupMenu);
+            }
             if (result == null) {
                 result = caseAbstractToolDescription(popupMenu);
             }
@@ -932,7 +955,13 @@ public class ToolSwitch<T> {
             GroupMenu groupMenu = (GroupMenu) theEObject;
             T result = caseGroupMenu(groupMenu);
             if (result == null) {
+                result = caseMenuItemDescription(groupMenu);
+            }
+            if (result == null) {
                 result = caseAbstractToolDescription(groupMenu);
+            }
+            if (result == null) {
+                result = caseMenuItemOrRef(groupMenu);
             }
             if (result == null) {
                 result = caseToolEntry(groupMenu);
@@ -942,6 +971,52 @@ public class ToolSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(groupMenu);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case ToolPackage.GROUP_MENU_ITEM: {
+            GroupMenuItem groupMenuItem = (GroupMenuItem) theEObject;
+            T result = caseGroupMenuItem(groupMenuItem);
+            if (result == null) {
+                result = caseAbstractToolDescription(groupMenuItem);
+            }
+            if (result == null) {
+                result = caseToolEntry(groupMenuItem);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(groupMenuItem);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(groupMenuItem);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON: {
+            MenuItemDescriptionWithIcon menuItemDescriptionWithIcon = (MenuItemDescriptionWithIcon) theEObject;
+            T result = caseMenuItemDescriptionWithIcon(menuItemDescriptionWithIcon);
+            if (result == null) {
+                result = caseMenuItemDescription(menuItemDescriptionWithIcon);
+            }
+            if (result == null) {
+                result = caseAbstractToolDescription(menuItemDescriptionWithIcon);
+            }
+            if (result == null) {
+                result = caseMenuItemOrRef(menuItemDescriptionWithIcon);
+            }
+            if (result == null) {
+                result = caseToolEntry(menuItemDescriptionWithIcon);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(menuItemDescriptionWithIcon);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(menuItemDescriptionWithIcon);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1759,6 +1834,36 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T caseGroupMenu(GroupMenu object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Group Menu Item</em>'. <!-- begin-user-doc
+     * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
+     * -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Group Menu Item</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGroupMenuItem(GroupMenuItem object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Menu Item Description With Icon</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Menu Item Description With Icon</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseMenuItemDescriptionWithIcon(MenuItemDescriptionWithIcon object) {
         return null;
     }
 

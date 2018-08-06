@@ -28,7 +28,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * @model
  * @generated
  */
-public interface OperationAction extends MenuItemDescription {
+public interface OperationAction extends MenuItemDescriptionWithIcon, GroupMenuItem {
     /**
      * Returns the value of the '<em><b>View</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>

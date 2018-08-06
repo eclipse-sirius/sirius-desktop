@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,19 +7,16 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Menu Item Description</b></em>'. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Group Menu Item</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getMenuItemDescription()
+ * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getGroupMenuItem()
  * @model abstract="true"
  * @generated
  */
-public interface MenuItemDescription extends AbstractToolDescription, MenuItemOrRef {
-
-} // MenuItemDescription
+public interface GroupMenuItem extends AbstractToolDescription {
+} // GroupMenuItem

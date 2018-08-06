@@ -23,7 +23,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.TabbarContributionFactory;
-import org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
@@ -167,11 +166,7 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
     }
 
     private void addDiagramContributionItems() {
-        if (Boolean.getBoolean(PopupMenuContribution.POPUP_MENU_IMPROVEMENT_ID)) {
-            addContributionItem(diagramContributionItems, ARRANGE_SELECTION, contributionFactory.createSelectAllContribution(part, manager));
-        } else {
-            addContributionItem(diagramContributionItems, ARRANGE_SELECTION, contributionFactory.createSelectMenuManager());
-        }
+        addContributionItem(diagramContributionItems, ARRANGE_SELECTION, contributionFactory.createSelectMenuManager());
         addContributionItem(diagramContributionItems, ARRANGE_SELECTION, contributionFactory.createArrangeMenuManager(part));
 
         addContributionItem(diagramContributionItems, REFRESH, contributionFactory.createRefreshContribution());

@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface GroupMenu extends AbstractToolDescription {
+public interface GroupMenu extends MenuItemDescription {
     /**
      * Returns the value of the '<em><b>Location URI</b></em>' attribute. The default value is <code>""</code>. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> A <code>URI</code> specification that defines
@@ -59,7 +59,7 @@ public interface GroupMenu extends AbstractToolDescription {
     void setLocationURI(String value);
 
     /**
-     * Returns the value of the '<em><b>Popup Menus</b></em>' containment reference list. The list contents are of type
+     * Returns the value of the '<em><b>Popup Menus</b></em>' reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu}. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Popup Menus</em>' containment reference list isn't clear, there really should be more
@@ -67,16 +67,16 @@ public interface GroupMenu extends AbstractToolDescription {
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Popup Menus</em>' containment reference list.
+     * @return the value of the '<em>Popup Menus</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getGroupMenu_PopupMenus()
-     * @model containment="true" resolveProxies="true"
+     * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
     EList<PopupMenu> getPopupMenus();
 
     /**
      * Returns the value of the '<em><b>Item Descriptions</b></em>' containment reference list. The list contents are of
-     * type {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription}. <!-- begin-user-doc -->
+     * type {@link org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem}. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Item Descriptions</em>' containment reference list isn't clear, there really should be
      * more of a description here...
@@ -88,6 +88,6 @@ public interface GroupMenu extends AbstractToolDescription {
      * @model containment="true" resolveProxies="true"
      * @generated
      */
-    EList<MenuItemDescription> getItemDescriptions();
+    EList<GroupMenuItem> getItemDescriptions();
 
 } // GroupMenu

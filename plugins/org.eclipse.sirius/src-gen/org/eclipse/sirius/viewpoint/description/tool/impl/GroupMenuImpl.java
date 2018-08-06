@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
-import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public class GroupMenuImpl extends AbstractToolDescriptionImpl implements GroupMenu {
+public class GroupMenuImpl extends MenuItemDescriptionImpl implements GroupMenu {
     /**
      * The default value of the '{@link #getLocationURI() <em>Location URI</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -62,16 +62,6 @@ public class GroupMenuImpl extends AbstractToolDescriptionImpl implements GroupM
     protected String locationURI = GroupMenuImpl.LOCATION_URI_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getPopupMenus() <em>Popup Menus</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getPopupMenus()
-     * @generated
-     * @ordered
-     */
-    protected EList<PopupMenu> popupMenus;
-
-    /**
      * The cached value of the '{@link #getItemDescriptions() <em>Item Descriptions</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -79,7 +69,7 @@ public class GroupMenuImpl extends AbstractToolDescriptionImpl implements GroupM
      * @generated
      * @ordered
      */
-    protected EList<MenuItemDescription> itemDescriptions;
+    protected EList<GroupMenuItem> itemDescriptions;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -131,10 +121,12 @@ public class GroupMenuImpl extends AbstractToolDescriptionImpl implements GroupM
      */
     @Override
     public EList<PopupMenu> getPopupMenus() {
-        if (popupMenus == null) {
-            popupMenus = new EObjectContainmentEList.Resolving<PopupMenu>(PopupMenu.class, this, ToolPackage.GROUP_MENU__POPUP_MENUS);
-        }
-        return popupMenus;
+        // TODO: implement this method to return the 'Popup Menus' reference list
+        // Ensure that you remove @generated or mark it @generated NOT
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
+        // org.eclipse.emf.ecore.EStructuralFeature.Setting
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -143,9 +135,9 @@ public class GroupMenuImpl extends AbstractToolDescriptionImpl implements GroupM
      * @generated
      */
     @Override
-    public EList<MenuItemDescription> getItemDescriptions() {
+    public EList<GroupMenuItem> getItemDescriptions() {
         if (itemDescriptions == null) {
-            itemDescriptions = new EObjectContainmentEList.Resolving<MenuItemDescription>(MenuItemDescription.class, this, ToolPackage.GROUP_MENU__ITEM_DESCRIPTIONS);
+            itemDescriptions = new EObjectContainmentEList.Resolving<GroupMenuItem>(GroupMenuItem.class, this, ToolPackage.GROUP_MENU__ITEM_DESCRIPTIONS);
         }
         return itemDescriptions;
     }
@@ -158,8 +150,6 @@ public class GroupMenuImpl extends AbstractToolDescriptionImpl implements GroupM
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case ToolPackage.GROUP_MENU__POPUP_MENUS:
-            return ((InternalEList<?>) getPopupMenus()).basicRemove(otherEnd, msgs);
         case ToolPackage.GROUP_MENU__ITEM_DESCRIPTIONS:
             return ((InternalEList<?>) getItemDescriptions()).basicRemove(otherEnd, msgs);
         }
@@ -196,13 +186,9 @@ public class GroupMenuImpl extends AbstractToolDescriptionImpl implements GroupM
         case ToolPackage.GROUP_MENU__LOCATION_URI:
             setLocationURI((String) newValue);
             return;
-        case ToolPackage.GROUP_MENU__POPUP_MENUS:
-            getPopupMenus().clear();
-            getPopupMenus().addAll((Collection<? extends PopupMenu>) newValue);
-            return;
         case ToolPackage.GROUP_MENU__ITEM_DESCRIPTIONS:
             getItemDescriptions().clear();
-            getItemDescriptions().addAll((Collection<? extends MenuItemDescription>) newValue);
+            getItemDescriptions().addAll((Collection<? extends GroupMenuItem>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -218,9 +204,6 @@ public class GroupMenuImpl extends AbstractToolDescriptionImpl implements GroupM
         switch (featureID) {
         case ToolPackage.GROUP_MENU__LOCATION_URI:
             setLocationURI(GroupMenuImpl.LOCATION_URI_EDEFAULT);
-            return;
-        case ToolPackage.GROUP_MENU__POPUP_MENUS:
-            getPopupMenus().clear();
             return;
         case ToolPackage.GROUP_MENU__ITEM_DESCRIPTIONS:
             getItemDescriptions().clear();
@@ -240,7 +223,7 @@ public class GroupMenuImpl extends AbstractToolDescriptionImpl implements GroupM
         case ToolPackage.GROUP_MENU__LOCATION_URI:
             return GroupMenuImpl.LOCATION_URI_EDEFAULT == null ? locationURI != null : !GroupMenuImpl.LOCATION_URI_EDEFAULT.equals(locationURI);
         case ToolPackage.GROUP_MENU__POPUP_MENUS:
-            return popupMenus != null && !popupMenus.isEmpty();
+            return !getPopupMenus().isEmpty();
         case ToolPackage.GROUP_MENU__ITEM_DESCRIPTIONS:
             return itemDescriptions != null && !itemDescriptions.isEmpty();
         }

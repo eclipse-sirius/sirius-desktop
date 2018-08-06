@@ -291,6 +291,19 @@
                   %constraint.metaModels.message
                </message>
             </constraint>
+            <constraint
+                  class="org.eclipse.sirius.tools.internal.validation.description.constraints.NullLocationURIForGroupInPopupMenuConstraint"
+                  id="org.eclipse.sirius.tools.internal.validation.description.constraints.NullLocationURIForGroupInPopupMenuConstraint"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="%constraint.validNullLocationURIForGroupInPopupMenuConstraint.name"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  %Constraint_validNullLocationURIForGroupInPopupMenuConstraint_message
+               </message>
+            </constraint>
          </constraints>
       </constraintProvider>
    </extension>

@@ -44,6 +44,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
+import org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem;
 import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
@@ -53,6 +54,7 @@ import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference;
+import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionWithIcon;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
@@ -402,6 +404,16 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseGroupMenu(GroupMenu object) {
             return createGroupMenuAdapter();
+        }
+
+        @Override
+        public Adapter caseGroupMenuItem(GroupMenuItem object) {
+            return createGroupMenuItemAdapter();
+        }
+
+        @Override
+        public Adapter caseMenuItemDescriptionWithIcon(MenuItemDescriptionWithIcon object) {
+            return createMenuItemDescriptionWithIconAdapter();
         }
 
         @Override
@@ -1256,6 +1268,34 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createGroupMenuAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem
+     * <em>Group Menu Item</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem
+     * @generated
+     */
+    public Adapter createGroupMenuItemAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionWithIcon <em>Menu Item Description With
+     * Icon</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionWithIcon
+     * @generated
+     */
+    public Adapter createMenuItemDescriptionWithIconAdapter() {
         return null;
     }
 

@@ -29,7 +29,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * @model
  * @generated
  */
-public interface ExternalJavaActionCall extends MenuItemDescription, ContainerModelOperation {
+public interface ExternalJavaActionCall extends MenuItemDescriptionWithIcon, ContainerModelOperation, GroupMenuItem {
     /**
      * Returns the value of the '<em><b>Action</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The action to call. <!-- end-model-doc -->

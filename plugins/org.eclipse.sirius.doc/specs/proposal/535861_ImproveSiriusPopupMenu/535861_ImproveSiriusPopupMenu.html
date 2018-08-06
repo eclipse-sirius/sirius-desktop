@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationImproveSiriusPopupMenuContribution">Sirius Evolution Specification: Improve Sirius Popup Menu Contribution</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: The goal of the evolution is to improve the capability of the 
+			<code>Popup Menu</code> defined in Sirius.
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2018-06-13</td>
+				<td>lredor</td>
+				<td>Initial version.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em> (links to the Bugzilla tickets which are related to the change):
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=535861">Bug 535861 &#8211; Improve Sirius Popup Menu contributions &#8211; Step 2</a>
+			</li>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=534301">Bug 534301 &#8211; Improve Sirius Popup Menu contributions</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>The bugzilla 
+			<a href=":https://bugs.eclipse.org/bugs/show_bug.cgi?id=534301">534301</a> is the POC of this current evolution. It only concerns diagram popup menu. Another issue exists, 
+			<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=535946">bugzilla 535946</a>, to merge:
+		</p>
+		<ul>
+			<li>the core concept of 
+				<code>PopupMenu</code> declared in the viewpoint.ecore meta-model and used in diagram representation
+			</li>
+			<li>and the tree concept 
+				<code>TreePopupMenu</code> declared in the tree.ecore meta-model and used in tree representation
+			</li>
+		</ul>
+		<p>The new features covered by this evolution are:</p>
+		<ul>
+			<li>capability to contribute a group in an existing diagram menu or in menu contributed in your modeler. It will be also possible to contribute menus (
+				<code>Popup Menu</code>) or actions (
+				<code>Operation Action</code>) in this group. For the UI aspect, a separator line is drawn between each group. 
+			</li>
+		</ul>
+		<p>Sample of menu contributions with group:
+			<br/>
+			<img border="0" src="images/contextualMenuImprovement.png"/>
+		</p>
+		<ul>
+			<li>capability to contribute a group in the drop-down menus of the tabbar. Only &#171;Select All&#187; drop-down will be handled in this evolution.</li>
+		</ul>
+		<p>Sample of tabbar contributions:
+			<br/>
+			<img border="0" src="images/contributionToTabbar.png"/>
+		</p>
+		<ul>
+			<li>document the list of all IDs of existing menus and groups in contextual menu of a diagram. This documentation is necessary to facilitate the locate group in existing menu.</li>
+		</ul>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<h3 id="Groupnotioninmetamodel">Group notion in meta-model</h3>
+		<p>The notion of 
+			<code>Group</code> will be added in the meta-model.
+			<br/>As 
+			<code>PopupMenu</code>, a 
+			<code>Group</code> can be added in a tool section of a diagram.
+			<br/>As 
+			<code>PopupMenu</code>, the properties 
+			<code>elementsToSelect</code> and 
+			<code>inverseSelectionOrder</code> will be filtered in the UI (in the Properties view).
+			<br/>A 
+			<code>Group</code> can contain 0 or multiple 
+			<code>PopupMenu</code>. A 
+			<code>Group</code> can contain 0 or multiple 
+			<code>MenuItemDescription</code> (ie actions).
+			<br/>A 
+			<code>Group</code> has an id (the field 
+			<code>name</code> inherited from 
+			<code>IdentifiedElement</code>). It also has a 
+			<code>label</code>, but the field is not mandatory and not really used.
+			<br/>A 
+			<code>Group</code> has a 
+			<code>locationURI</code>: an URI specification that defines the insertion point at which the group will be added.
+			<br/>The format for the URI is comprised of two basic parts:
+		</p>
+		<ul>
+			<li>Scheme: One of &#171;menu&#187;, &#171;tabbar&#187;. Indicates the type of the manager used to handle the contributions.</li>
+			<li>Id: This is either the id of an existing menu or tabbar menu</li>
+		</ul>
+		<p>We can imagine a third part: Query &#8211; This field allows fine-grained definition of the specific location within a given menu. It has the form &#171;[placement]=[id]&#187; where placement is one of &#171;before&#187;, &#171;after&#187;, or &#171;endof&#187; and the id is expected to be the id of another contribution in the menu. This third part is not in the scope of this evolution.
+			<br/>A 
+			<code>Group</code> can be added as a child of a 
+			<code>PopupMenu</code>. In this context, the 
+			<code>locationURI</code> must be null.
+		</p>
+		<p>Extract of the Meta-Model with the changes in green:
+			<br/>
+			<img border="0" src="images/mmChanges.png"/>
+		</p>
+		<h3 id="Technicalchanges">Technical changes</h3>
+		<p>Here is a list of some technical necessary changes detected during the specification:</p>
+		<ul>
+			<li>
+				<code>org.eclipse.sirius.editor.properties.filters.tool.abstracttool.AbstractToolDescriptionElementsToSelectFilterSpec</code> and 
+				<code>org.eclipse.sirius.editor.properties.filters.tool.abstracttool.AbstractToolDescriptionInverseSelectionOrderFilterSpec</code> to filter the properties 
+				<code>elementsToSelect</code> and 
+				<code>inverseSelectionOrder</code> in the Properties view.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.description.tool.provider.ToolGroupItemProvider.collectNewChildDescriptors(Collection&lt;Object&gt;, Object)</code>: To remove the 
+				<code>Group</code> creation menu from the 
+				<code>ToolGroup</code>.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution</code>: To replace all the code from the POC with the new concept of 
+				<code>Group</code>
+			</li>
+			<li>
+				<code>org.eclipse.sirius.editor.tools.internal.menu.child.MenuToolsMenuBuilder</code>: To add the 
+				<code>Group</code> in first position of the &#171;New Menu&#187; menu on a 
+				<code>Tool Section</code>.
+			</li>
+		</ul>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<p>This evolution does not change any API. It adds new APIs allowing the capability to define 
+			<code>Group</code> in the VSM file. 
+		</p>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>For the specifier, the &#171;New Menu&#187; menu on a 
+			<code>Tool Section</code> displays the 
+			<code>Group</code> in first:
+			<br/>
+			<img border="0" src="images/NewGroupMenu.png"/>
+		</p>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>A note will be added in the New and Noteworthy.
+			<br/>A chapter will be added in the 
+			<em>Sirius Specifier Manual</em> near the 
+			<em>Popup Menu</em> 
+			<a href="https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html#popup_menu">chapter</a> in 
+			<em>Tools</em> section. 
+		</p>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<ul>
+			<li>Group with blank locationURI</li>
+			<li>Group in an existing menu (default location)</li>
+			<li>Group at the same place of an existing group of an existing menu (to insert action in the existing group)</li>
+			<li>Group in a PopupMenu contributed by Sirius through the VSM</li>
+			<li>Group in Select All menu of the tabbar</li>
+			<li>PopupMenu contributed by Sirius through the VSM in a Group</li>
+		</ul>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+	</body>
+</html>

@@ -1322,21 +1322,13 @@ public interface ToolPackage extends EPackage {
     int MENU_ITEM_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Icon</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int MENU_ITEM_DESCRIPTION__ICON = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
-
-    /**
      * The number of structural features of the '<em>Menu Item Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int MENU_ITEM_DESCRIPTION_FEATURE_COUNT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
+    int MENU_ITEM_DESCRIPTION_FEATURE_COUNT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the
@@ -1367,6 +1359,101 @@ public interface ToolPackage extends EPackage {
     int MENU_ITEM_DESCRIPTION_REFERENCE_FEATURE_COUNT = ToolPackage.MENU_ITEM_OR_REF_FEATURE_COUNT + 1;
 
     /**
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.impl.MenuItemDescriptionWithIconImpl <em>Menu Item
+     * Description With Icon</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.MenuItemDescriptionWithIconImpl
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getMenuItemDescriptionWithIcon()
+     * @generated
+     */
+    int MENU_ITEM_DESCRIPTION_WITH_ICON = 56;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION_WITH_ICON__DOCUMENTATION = ToolPackage.MENU_ITEM_DESCRIPTION__DOCUMENTATION;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION_WITH_ICON__NAME = ToolPackage.MENU_ITEM_DESCRIPTION__NAME;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION_WITH_ICON__LABEL = ToolPackage.MENU_ITEM_DESCRIPTION__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION_WITH_ICON__PRECONDITION = ToolPackage.MENU_ITEM_DESCRIPTION__PRECONDITION;
+
+    /**
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION_WITH_ICON__FORCE_REFRESH = ToolPackage.MENU_ITEM_DESCRIPTION__FORCE_REFRESH;
+
+    /**
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION_WITH_ICON__FILTERS = ToolPackage.MENU_ITEM_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION_WITH_ICON__ELEMENTS_TO_SELECT = ToolPackage.MENU_ITEM_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION_WITH_ICON__INVERSE_SELECTION_ORDER = ToolPackage.MENU_ITEM_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
+     * The feature id for the '<em><b>Icon</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION_WITH_ICON__ICON = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '<em>Menu Item Description With Icon</em>' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION_WITH_ICON_FEATURE_COUNT = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.tool.impl.OperationActionImpl
      * <em>Operation Action</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1382,7 +1469,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION__DOCUMENTATION = ToolPackage.MENU_ITEM_DESCRIPTION__DOCUMENTATION;
+    int OPERATION_ACTION__DOCUMENTATION = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1390,7 +1477,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION__NAME = ToolPackage.MENU_ITEM_DESCRIPTION__NAME;
+    int OPERATION_ACTION__NAME = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1398,7 +1485,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION__LABEL = ToolPackage.MENU_ITEM_DESCRIPTION__LABEL;
+    int OPERATION_ACTION__LABEL = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1406,7 +1493,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION__PRECONDITION = ToolPackage.MENU_ITEM_DESCRIPTION__PRECONDITION;
+    int OPERATION_ACTION__PRECONDITION = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1414,7 +1501,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION__FORCE_REFRESH = ToolPackage.MENU_ITEM_DESCRIPTION__FORCE_REFRESH;
+    int OPERATION_ACTION__FORCE_REFRESH = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -1423,7 +1510,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION__FILTERS = ToolPackage.MENU_ITEM_DESCRIPTION__FILTERS;
+    int OPERATION_ACTION__FILTERS = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__FILTERS;
 
     /**
      * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1432,7 +1519,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION__ELEMENTS_TO_SELECT = ToolPackage.MENU_ITEM_DESCRIPTION__ELEMENTS_TO_SELECT;
+    int OPERATION_ACTION__ELEMENTS_TO_SELECT = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__ELEMENTS_TO_SELECT;
 
     /**
      * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1441,7 +1528,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION__INVERSE_SELECTION_ORDER = ToolPackage.MENU_ITEM_DESCRIPTION__INVERSE_SELECTION_ORDER;
+    int OPERATION_ACTION__INVERSE_SELECTION_ORDER = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Icon</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1449,7 +1536,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION__ICON = ToolPackage.MENU_ITEM_DESCRIPTION__ICON;
+    int OPERATION_ACTION__ICON = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__ICON;
 
     /**
      * The feature id for the '<em><b>View</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1458,7 +1545,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION__VIEW = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 0;
+    int OPERATION_ACTION__VIEW = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
@@ -1467,7 +1554,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION__INITIAL_OPERATION = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 1;
+    int OPERATION_ACTION__INITIAL_OPERATION = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Operation Action</em>' class. <!-- begin-user-doc --> <!--
@@ -1476,7 +1563,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERATION_ACTION_FEATURE_COUNT = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 2;
+    int OPERATION_ACTION_FEATURE_COUNT = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.tool.impl.ExternalJavaActionImpl
@@ -1494,7 +1581,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__DOCUMENTATION = ToolPackage.MENU_ITEM_DESCRIPTION__DOCUMENTATION;
+    int EXTERNAL_JAVA_ACTION__DOCUMENTATION = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1502,7 +1589,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__NAME = ToolPackage.MENU_ITEM_DESCRIPTION__NAME;
+    int EXTERNAL_JAVA_ACTION__NAME = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1510,7 +1597,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__LABEL = ToolPackage.MENU_ITEM_DESCRIPTION__LABEL;
+    int EXTERNAL_JAVA_ACTION__LABEL = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1518,7 +1605,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__PRECONDITION = ToolPackage.MENU_ITEM_DESCRIPTION__PRECONDITION;
+    int EXTERNAL_JAVA_ACTION__PRECONDITION = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1526,7 +1613,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__FORCE_REFRESH = ToolPackage.MENU_ITEM_DESCRIPTION__FORCE_REFRESH;
+    int EXTERNAL_JAVA_ACTION__FORCE_REFRESH = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -1535,7 +1622,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__FILTERS = ToolPackage.MENU_ITEM_DESCRIPTION__FILTERS;
+    int EXTERNAL_JAVA_ACTION__FILTERS = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__FILTERS;
 
     /**
      * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1544,7 +1631,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__ELEMENTS_TO_SELECT = ToolPackage.MENU_ITEM_DESCRIPTION__ELEMENTS_TO_SELECT;
+    int EXTERNAL_JAVA_ACTION__ELEMENTS_TO_SELECT = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__ELEMENTS_TO_SELECT;
 
     /**
      * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1553,7 +1640,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__INVERSE_SELECTION_ORDER = ToolPackage.MENU_ITEM_DESCRIPTION__INVERSE_SELECTION_ORDER;
+    int EXTERNAL_JAVA_ACTION__INVERSE_SELECTION_ORDER = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Icon</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1561,7 +1648,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__ICON = ToolPackage.MENU_ITEM_DESCRIPTION__ICON;
+    int EXTERNAL_JAVA_ACTION__ICON = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__ICON;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment reference list. <!-- begin-user-doc -->
@@ -1570,7 +1657,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__SUB_MODEL_OPERATIONS = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 0;
+    int EXTERNAL_JAVA_ACTION__SUB_MODEL_OPERATIONS = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1578,7 +1665,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__ID = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 1;
+    int EXTERNAL_JAVA_ACTION__ID = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Parameters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -1587,7 +1674,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION__PARAMETERS = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 2;
+    int EXTERNAL_JAVA_ACTION__PARAMETERS = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>External Java Action</em>' class. <!-- begin-user-doc --> <!--
@@ -1596,7 +1683,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_FEATURE_COUNT = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 3;
+    int EXTERNAL_JAVA_ACTION_FEATURE_COUNT = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.tool.impl.ExternalJavaActionCallImpl
@@ -1614,7 +1701,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL__DOCUMENTATION = ToolPackage.MENU_ITEM_DESCRIPTION__DOCUMENTATION;
+    int EXTERNAL_JAVA_ACTION_CALL__DOCUMENTATION = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1622,7 +1709,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL__NAME = ToolPackage.MENU_ITEM_DESCRIPTION__NAME;
+    int EXTERNAL_JAVA_ACTION_CALL__NAME = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1630,7 +1717,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL__LABEL = ToolPackage.MENU_ITEM_DESCRIPTION__LABEL;
+    int EXTERNAL_JAVA_ACTION_CALL__LABEL = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1638,7 +1725,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL__PRECONDITION = ToolPackage.MENU_ITEM_DESCRIPTION__PRECONDITION;
+    int EXTERNAL_JAVA_ACTION_CALL__PRECONDITION = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1646,7 +1733,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL__FORCE_REFRESH = ToolPackage.MENU_ITEM_DESCRIPTION__FORCE_REFRESH;
+    int EXTERNAL_JAVA_ACTION_CALL__FORCE_REFRESH = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -1655,7 +1742,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL__FILTERS = ToolPackage.MENU_ITEM_DESCRIPTION__FILTERS;
+    int EXTERNAL_JAVA_ACTION_CALL__FILTERS = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__FILTERS;
 
     /**
      * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1664,7 +1751,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL__ELEMENTS_TO_SELECT = ToolPackage.MENU_ITEM_DESCRIPTION__ELEMENTS_TO_SELECT;
+    int EXTERNAL_JAVA_ACTION_CALL__ELEMENTS_TO_SELECT = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__ELEMENTS_TO_SELECT;
 
     /**
      * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1673,7 +1760,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL__INVERSE_SELECTION_ORDER = ToolPackage.MENU_ITEM_DESCRIPTION__INVERSE_SELECTION_ORDER;
+    int EXTERNAL_JAVA_ACTION_CALL__INVERSE_SELECTION_ORDER = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Icon</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1681,7 +1768,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL__ICON = ToolPackage.MENU_ITEM_DESCRIPTION__ICON;
+    int EXTERNAL_JAVA_ACTION_CALL__ICON = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON__ICON;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment reference list. <!-- begin-user-doc -->
@@ -1690,7 +1777,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL__SUB_MODEL_OPERATIONS = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 0;
+    int EXTERNAL_JAVA_ACTION_CALL__SUB_MODEL_OPERATIONS = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Action</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1698,7 +1785,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL__ACTION = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 1;
+    int EXTERNAL_JAVA_ACTION_CALL__ACTION = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>External Java Action Call</em>' class. <!-- begin-user-doc --> <!--
@@ -1707,7 +1794,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXTERNAL_JAVA_ACTION_CALL_FEATURE_COUNT = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 2;
+    int EXTERNAL_JAVA_ACTION_CALL_FEATURE_COUNT = ToolPackage.MENU_ITEM_DESCRIPTION_WITH_ICON_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.tool.impl.PopupMenuImpl <em>Popup
@@ -3199,7 +3286,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GROUP_MENU__DOCUMENTATION = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__DOCUMENTATION;
+    int GROUP_MENU__DOCUMENTATION = ToolPackage.MENU_ITEM_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3207,7 +3294,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GROUP_MENU__NAME = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__NAME;
+    int GROUP_MENU__NAME = ToolPackage.MENU_ITEM_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3215,7 +3302,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GROUP_MENU__LABEL = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__LABEL;
+    int GROUP_MENU__LABEL = ToolPackage.MENU_ITEM_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3223,7 +3310,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GROUP_MENU__PRECONDITION = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION;
+    int GROUP_MENU__PRECONDITION = ToolPackage.MENU_ITEM_DESCRIPTION__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3231,7 +3318,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GROUP_MENU__FORCE_REFRESH = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH;
+    int GROUP_MENU__FORCE_REFRESH = ToolPackage.MENU_ITEM_DESCRIPTION__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -3240,7 +3327,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GROUP_MENU__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+    int GROUP_MENU__FILTERS = ToolPackage.MENU_ITEM_DESCRIPTION__FILTERS;
 
     /**
      * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -3249,7 +3336,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GROUP_MENU__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+    int GROUP_MENU__ELEMENTS_TO_SELECT = ToolPackage.MENU_ITEM_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
      * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -3258,7 +3345,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GROUP_MENU__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+    int GROUP_MENU__INVERSE_SELECTION_ORDER = ToolPackage.MENU_ITEM_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Location URI</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3266,16 +3353,16 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GROUP_MENU__LOCATION_URI = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
+    int GROUP_MENU__LOCATION_URI = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Popup Menus</b></em>' containment reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The feature id for the '<em><b>Popup Menus</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
      */
-    int GROUP_MENU__POPUP_MENUS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
+    int GROUP_MENU__POPUP_MENUS = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Item Descriptions</b></em>' containment reference list. <!-- begin-user-doc -->
@@ -3284,7 +3371,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GROUP_MENU__ITEM_DESCRIPTIONS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
+    int GROUP_MENU__ITEM_DESCRIPTIONS = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Group Menu</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
@@ -3293,7 +3380,93 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int GROUP_MENU_FEATURE_COUNT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
+    int GROUP_MENU_FEATURE_COUNT = ToolPackage.MENU_ITEM_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.tool.impl.GroupMenuItemImpl <em>Group
+     * Menu Item</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.GroupMenuItemImpl
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getGroupMenuItem()
+     * @generated
+     */
+    int GROUP_MENU_ITEM = 55;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU_ITEM__DOCUMENTATION = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__DOCUMENTATION;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU_ITEM__NAME = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__NAME;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU_ITEM__LABEL = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU_ITEM__PRECONDITION = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION;
+
+    /**
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU_ITEM__FORCE_REFRESH = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH;
+
+    /**
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU_ITEM__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU_ITEM__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU_ITEM__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
+     * The number of structural features of the '<em>Group Menu Item</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_MENU_ITEM_FEATURE_COUNT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.tool.DragSource <em>Drag
@@ -3303,7 +3476,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDragSource()
      * @generated
      */
-    int DRAG_SOURCE = 55;
+    int DRAG_SOURCE = 57;
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.description.tool.ToolEntry
@@ -3995,18 +4168,6 @@ public interface ToolPackage extends EPackage {
      * @generated
      */
     EClass getMenuItemDescription();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription#getIcon <em>Icon</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the attribute '<em>Icon</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription#getIcon()
-     * @see #getMenuItemDescription()
-     * @generated
-     */
-    EAttribute getMenuItemDescription_Icon();
 
     /**
      * Returns the meta object for class
@@ -5017,6 +5178,39 @@ public interface ToolPackage extends EPackage {
     EReference getGroupMenu_ItemDescriptions();
 
     /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem <em>Group
+     * Menu Item</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Group Menu Item</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.tool.GroupMenuItem
+     * @generated
+     */
+    EClass getGroupMenuItem();
+
+    /**
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionWithIcon <em>Menu Item Description With
+     * Icon</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Menu Item Description With Icon</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionWithIcon
+     * @generated
+     */
+    EClass getMenuItemDescriptionWithIcon();
+
+    /**
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionWithIcon#getIcon <em>Icon</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Icon</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionWithIcon#getIcon()
+     * @see #getMenuItemDescriptionWithIcon()
+     * @generated
+     */
+    EAttribute getMenuItemDescriptionWithIcon_Icon();
+
+    /**
      * Returns the meta object for enum '{@link org.eclipse.sirius.viewpoint.description.tool.DragSource <em>Drag
      * Source</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -5549,14 +5743,6 @@ public interface ToolPackage extends EPackage {
          * @generated
          */
         EClass MENU_ITEM_DESCRIPTION = ToolPackage.eINSTANCE.getMenuItemDescription();
-
-        /**
-         * The meta object literal for the '<em><b>Icon</b></em>' attribute feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
-         * @generated
-         */
-        EAttribute MENU_ITEM_DESCRIPTION__ICON = ToolPackage.eINSTANCE.getMenuItemDescription_Icon();
 
         /**
          * The meta object literal for the
@@ -6397,6 +6583,35 @@ public interface ToolPackage extends EPackage {
          * @generated
          */
         EReference GROUP_MENU__ITEM_DESCRIPTIONS = ToolPackage.eINSTANCE.getGroupMenu_ItemDescriptions();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.description.tool.impl.GroupMenuItemImpl
+         * <em>Group Menu Item</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.viewpoint.description.tool.impl.GroupMenuItemImpl
+         * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getGroupMenuItem()
+         * @generated
+         */
+        EClass GROUP_MENU_ITEM = ToolPackage.eINSTANCE.getGroupMenuItem();
+
+        /**
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.viewpoint.description.tool.impl.MenuItemDescriptionWithIconImpl <em>Menu Item
+         * Description With Icon</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.viewpoint.description.tool.impl.MenuItemDescriptionWithIconImpl
+         * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getMenuItemDescriptionWithIcon()
+         * @generated
+         */
+        EClass MENU_ITEM_DESCRIPTION_WITH_ICON = ToolPackage.eINSTANCE.getMenuItemDescriptionWithIcon();
+
+        /**
+         * The meta object literal for the '<em><b>Icon</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute MENU_ITEM_DESCRIPTION_WITH_ICON__ICON = ToolPackage.eINSTANCE.getMenuItemDescriptionWithIcon_Icon();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.description.tool.DragSource <em>Drag

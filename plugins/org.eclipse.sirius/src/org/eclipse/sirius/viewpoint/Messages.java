@@ -100,6 +100,9 @@ public final class Messages {
     public static String CompositeResourceMonitor_uriCompareErrorMsg;
 
     @TranslatableMessage
+    public static String Constraint_validNullLocationURIForGroupInPopupMenuConstraint_message;
+
+    @TranslatableMessage
     public static String ControlCommand_moveErrorMsg;
 
     @TranslatableMessage

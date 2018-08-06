@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  *
  * @generated
  */
-public class OperationActionItemProvider extends MenuItemDescriptionItemProvider {
+public class OperationActionItemProvider extends MenuItemDescriptionWithIconItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *

@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarSelectMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.TabbarContributionFactory;
 
 /**
@@ -42,15 +41,12 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
     }
 
     /**
-     * Creates the Select menu manager contribution item. Organized in a
-     * drop-down menu, can be used to select groups of diagram elements in a
-     * single operation.
+     * Creates the Select menu manager contribution item. Organized in a drop-down menu, can be used to select groups of
+     * diagram elements in a single operation.
      * 
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createSelectMenuManager() {
-        TabbarSelectMenuManager selectMenu = new TabbarSelectMenuManager();
-        selectMenu.setVisible(true);
         return contributorFactory.createSelectMenuManager();
     }
 

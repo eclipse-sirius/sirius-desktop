@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.tool.menuitemdescription;
+package org.eclipse.sirius.editor.properties.filters.tool.groupmenu;
 
 // Start of user code specific imports
 
@@ -19,16 +19,16 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 // End of user code specific imports
 
 /**
- * A filter for the icon property section.
+ * A filter for the popupMenus property section.
  */
-public class MenuItemDescriptionIconFilter extends ViewpointPropertyFilter {
+public class GroupMenuPopupMenusFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return ToolPackage.eINSTANCE.getMenuItemDescription_Icon();
+        return ToolPackage.eINSTANCE.getGroupMenu_PopupMenus();
     }
 
     /**
@@ -36,7 +36,7 @@ public class MenuItemDescriptionIconFilter extends ViewpointPropertyFilter {
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
+        return arg0 instanceof org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
     }
 
     // Start of user code user methods

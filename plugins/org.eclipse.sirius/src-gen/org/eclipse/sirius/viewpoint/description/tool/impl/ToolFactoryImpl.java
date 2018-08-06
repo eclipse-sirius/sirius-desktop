@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.GroupMenuSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.PasteDescriptionSpec;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
@@ -748,11 +749,11 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @not-generated
      */
     @Override
     public GroupMenu createGroupMenu() {
-        GroupMenuImpl groupMenu = new GroupMenuImpl();
+        GroupMenuImpl groupMenu = new GroupMenuSpec();
         return groupMenu;
     }
 

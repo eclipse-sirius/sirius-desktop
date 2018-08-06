@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -34,13 +34,18 @@ public class GroupMenuLocationURIPropertySection extends AbstractTextPropertySec
 
     /**
      * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
-     * 
-     * @Override public void refresh() { super.refresh();
-     * 
-     *           final String tooltip = getToolTipText(); if (tooltip != null && help != null) {
-     *           help.setToolTipText(getToolTipText()); } }
-     * 
-     *           /**
+     */
+    @Override
+    public void refresh() {
+        super.refresh();
+
+        final String tooltip = getToolTipText();
+        if (tooltip != null && help != null) {
+            help.setToolTipText(getToolTipText());
+        }
+    }
+
+    /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
      */
     @Override
