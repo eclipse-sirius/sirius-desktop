@@ -122,6 +122,7 @@ public class SiriusGraphQLEClassTypesBuilder implements ISiriusGraphQLTypesBuild
                 .fields(this.getFields())
                 .withInterface(interfaceType)
                 .withInterfaces(this.getInterfaces())
+                .withInterface(new GraphQLTypeReference(SiriusGraphQLEObjectTypesBuilder.EOBJECT_TYPE))
                 .build();
         // @formatter:on
     }
