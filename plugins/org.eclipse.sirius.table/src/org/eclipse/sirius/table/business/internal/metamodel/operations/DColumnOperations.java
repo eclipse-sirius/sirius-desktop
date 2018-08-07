@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.util.Map;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
+import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.tools.internal.Messages;
 
@@ -44,7 +45,10 @@ public final class DColumnOperations {
      */
     public static Collection<DCell> getOrderedCells(final DColumn column) {
         final Map<DLine, Integer> lineIndices = new HashMap<>();
-        fillIndices(column.getTable(), lineIndices, 0);
+        DTable table = column.getTable();
+        if (table != null) {
+            fillIndices(table, lineIndices, 0);
+        }
         Ordering<DCell> ordering = Ordering.from(new Comparator<DCell>() {
             @Override
             public int compare(DCell a, DCell b) {
