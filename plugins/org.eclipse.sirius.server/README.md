@@ -35,6 +35,7 @@ On top of those, you will encounter those additional components:
 * ```org.eclipse.sirius.server.graphql```
 * ```org.eclipse.sirius.services.graphql```
 * ```org.eclipse.sirius.server.frontend```
+* ```org.eclipse.sirius.server.images```
 
 The ```org.eclipse.sirius.server.backend``` component is a soon-to-be deprecated HTTP API which was released with the first implementation of the workflow. This HTTP API based on the REST principles gave users access to some information on projects, semantic resources and representations. It is replaced by the GraphQL based API.
 
@@ -42,7 +43,7 @@ The Sirius Server Diagram component is used to provide a Web Socket API to manip
 
 The Sirius Server GraphQL component provides the entry point used to manipulate the GraphQL API of Sirius on the web. This component uses ```org.eclipse.sirius.services.graphql``` which provides the GraphQL interpreter. The Sirius Services GraphQL component can be manipulated programmatically without any network interaction.
 
-The Sirius Server FrontEnd component is only used to provide some static resources. Those resources (html, css, js) are used to create the user interface of the Sirius Server. They are located in a folder named ```sirius-frontend``` at the root of the plugin. Those files are the result of the build of the Sirius Components repository.
+The Sirius Server FrontEnd component is only used to provide some static resources. Those resources (html, css, js) are used to create the user interface of the Sirius Server. They are located in a folder named ```sirius-frontend``` at the root of the plugin. Those files are the result of the build of the Sirius Components repository. The Sirius Server Images component is used to provide access to images inside of plugins.
 
 All the plugins necessary to have the full experience of the Sirius Server will be added to the feature ```org.eclipse.sirius.server.feature```. Additional features and plugins required for the creation of the product will be added to the feature ```org.eclipse.sirius.server.product.feature```. Optional features and plugins used to help managing the Sirius Server will be directly added to the product ```org.eclipse.sirius.server.product```. Among those plugins, you will find some Eclipse Equinox utility plugins like the support for ```p2```. The feature ```org.eclipse.equinox.p2.core.feature``` comes with the p2 console for example and the feature ```org.eclipse.equinox.p2.extras.feature``` comes with the p2 director application used to easily install new dependencies into the product.
 
@@ -139,16 +140,17 @@ You can now publish your Docker image and let your users consume it. Have a look
 Once the Sirius Server is up and running, it will log some information in the console. The first messages should have the following content:
 
 ```
-2018-07-20 14:22:37.628:INFO::main: Logging initialized @26442ms to org.eclipse.jetty.util.log.StdErrLog
-2018-07-20 14:22:38.086:INFO:oejs.Server:main: jetty-9.4.10.v20180503; built: 2018-05-03T15:56:21.710Z; git: daa59876e6f384329b122929e70a80934569428c; jvm 1.8.0_20-b26
-2018-07-20 14:22:38.178:INFO:oejs.session:main: DefaultSessionIdManager workerName=node0
-2018-07-20 14:22:38.179:INFO:oejs.session:main: No SessionScavenger set, using defaults
-2018-07-20 14:22:38.181:INFO:oejs.session:main: node0 Scavenging every 660000ms
-2018-07-20 14:22:38.213:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@1869639d{/api,null,AVAILABLE}
-2018-07-20 14:22:38.231:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@6ce3e92d{/ws,null,AVAILABLE}
-2018-07-20 14:22:38.263:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@2acd6251{/,null,AVAILABLE}
-2018-07-20 14:22:38.459:INFO:oejs.AbstractConnector:main: Started ServerConnector@123d65b7{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
-2018-07-20 14:22:38.460:INFO:oejs.Server:main: Started @27273ms
+2018-08-08 10:58:22.688:INFO::main: Logging initialized @34626ms to org.eclipse.jetty.util.log.StdErrLog
+2018-08-08 10:58:23.081:INFO:oejs.Server:main: jetty-9.4.10.v20180503; built: 2018-05-03T15:56:21.710Z; git: daa59876e6f384329b122929e70a80934569428c; jvm 1.8.0_20-b26
+2018-08-08 10:58:23.130:INFO:oejs.session:main: DefaultSessionIdManager workerName=node0
+2018-08-08 10:58:23.131:INFO:oejs.session:main: No SessionScavenger set, using defaults
+2018-08-08 10:58:23.134:INFO:oejs.session:main: node0 Scavenging every 660000ms
+2018-08-08 10:58:23.144:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@522a8886{/api,null,AVAILABLE}
+2018-08-08 10:58:23.156:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@373bfbf6{/ws,null,AVAILABLE}
+2018-08-08 10:58:23.158:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@296ecb77{/images,null,AVAILABLE}
+2018-08-08 10:58:23.187:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@2a0fb087{/,null,AVAILABLE}
+2018-08-08 10:58:23.261:INFO:oejs.AbstractConnector:main: Started ServerConnector@4e161f41{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
+2018-08-08 10:58:23.263:INFO:oejs.Server:main: Started @35201ms
 ```
 
 The logs start with the version of Jetty used by the server along with some settings.
@@ -159,6 +161,7 @@ After that, you will find the list of context handlers used by the server. Here 
 
 * The context handler of the HTTP API ```{/api,null,AVAILABLE}```
 * The context handler of the Web Socket API ```{/ws,null,AVAILABLE}```
+* The context handler of the Images API ```{/images,null,AVAILABLE}```
 * The context handler of the front end ```{/,null,AVAILABLE}```
 
 The context handler of the HTTP API will be used for all requests on ```http://localhost:8080/api```. The context handler of the Web Socket API will be used for all requests on ```http://localhost:8080/ws```. Finally, the context handler of the front-end will handle all other requests on ```http://localhost:8080/```.
@@ -187,6 +190,7 @@ id	State       Bundle
 1863	ACTIVE      org.eclipse.sirius.server.diagram_6.1.0.qualifier
 1864	ACTIVE      org.eclipse.sirius.server.frontend_6.1.0.qualifier
 1865	ACTIVE      org.eclipse.sirius.server.graphql_6.1.0.qualifier
+1866	ACTIVE      org.eclipse.sirius.server.images_6.1.0.qualifier
 ```
 
 You can see the components matching the given scope, their id and their state.
