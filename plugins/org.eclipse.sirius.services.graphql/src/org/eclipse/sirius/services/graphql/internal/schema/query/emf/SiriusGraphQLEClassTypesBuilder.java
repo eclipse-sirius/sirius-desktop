@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.services.graphql.internal.schema.query.emf;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -29,6 +29,7 @@ import graphql.Scalars;
 import graphql.schema.GraphQLFieldDefinition;
 import graphql.schema.GraphQLInterfaceType;
 import graphql.schema.GraphQLList;
+import graphql.schema.GraphQLNonNull;
 import graphql.schema.GraphQLObjectType;
 import graphql.schema.GraphQLOutputType;
 import graphql.schema.GraphQLType;
@@ -147,12 +148,18 @@ public class SiriusGraphQLEClassTypesBuilder implements ISiriusGraphQLTypesBuild
      * @return The fields of the EClass
      */
     private List<GraphQLFieldDefinition> getFields() {
+        List<GraphQLFieldDefinition> fields = new ArrayList<>();
+
+        fields.add(SiriusGraphQLEObjectFragmentField.build());
+
         // @formatter:off
-        return this.eClass.getEAllStructuralFeatures().stream()
+        this.eClass.getEAllStructuralFeatures().stream()
                 .filter(this::isSupported)
                 .map(this::getField)
-                .collect(Collectors.toList());
+                .forEach(fields::add);
         // @formatter:on
+
+        return fields;
     }
 
     /**
@@ -196,10 +203,14 @@ public class SiriusGraphQLEClassTypesBuilder implements ISiriusGraphQLTypesBuild
         if (eStructuralFeature instanceof EAttribute) {
             EAttribute eAttribute = (EAttribute) eStructuralFeature;
             type = this.getScalar(eAttribute.getEAttributeType());
+
+            if (Scalars.GraphQLBoolean.equals(type) || Scalars.GraphQLInt.equals(type)) {
+                type = new GraphQLNonNull(type);
+            }
         } else if (eStructuralFeature instanceof EReference) {
             EReference eReference = (EReference) eStructuralFeature;
             if (eReference.isMany()) {
-                type = new GraphQLList(new GraphQLTypeReference(eReference.getEReferenceType().getName()));
+                type = new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(new GraphQLTypeReference(eReference.getEReferenceType().getName()))));
             } else {
                 type = new GraphQLTypeReference(eReference.getEReferenceType().getName());
             }

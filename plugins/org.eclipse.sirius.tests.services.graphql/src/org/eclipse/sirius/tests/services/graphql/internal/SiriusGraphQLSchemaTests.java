@@ -56,6 +56,11 @@ public class SiriusGraphQLSchemaTests {
     private static final String QUERY = "Query"; //$NON-NLS-1$
 
     /**
+     * The name of the PageInfo type.
+     */
+    private static final String PAGEINFO = "PageInfo"; //$NON-NLS-1$
+
+    /**
      * The name of the Mutation type.
      */
     private static final String MUTATION = "Mutation"; //$NON-NLS-1$
@@ -101,6 +106,11 @@ public class SiriusGraphQLSchemaTests {
     private static final String SEMANTIC_FILE_CREATION_DESCRIPTION = "SemanticFileCreationDescription"; //$NON-NLS-1$
 
     /**
+     * The name of the RepresentationCreationDescription type.
+     */
+    private static final String REPRESENTATION_CREATION_DESCRIPTION = "RepresentationCreationDescription"; //$NON-NLS-1$
+
+    /**
      * The name of the Viewpoint type.
      */
     private static final String VIEWPOINT = "Viewpoint"; //$NON-NLS-1$
@@ -124,6 +134,51 @@ public class SiriusGraphQLSchemaTests {
      * The name of the Diagram type.
      */
     private static final String DIAGRAM = "Diagram"; //$NON-NLS-1$
+
+    /**
+     * The name of the EObject type.
+     */
+    private static final String EOBJECT = "EObject"; //$NON-NLS-1$
+
+    /**
+     * The name of the EModelElement type.
+     */
+    private static final String EMODELELEMENT = "EModelElement"; //$NON-NLS-1$
+
+    /**
+     * The name of the ENamedElement type.
+     */
+    private static final String ENAMEDELEMENT = "ENamedElement"; //$NON-NLS-1$
+
+    /**
+     * The name of the EClassifier type.
+     */
+    private static final String ECLASSIFIER = "EClassifier"; //$NON-NLS-1$
+
+    /**
+     * The name of the EClass type.
+     */
+    private static final String ECLASS = "EClass"; //$NON-NLS-1$
+
+    /**
+     * The name of the ETypedElement type.
+     */
+    private static final String ETYPEDELEMENT = "ETypedElement"; //$NON-NLS-1$
+
+    /**
+     * The name of the EStructuralFeature type.
+     */
+    private static final String ESTRUCTURALFEATURE = "EStructuralFeature"; //$NON-NLS-1$
+
+    /**
+     * The name of the EAttribute type.
+     */
+    private static final String EATTRIBUTE = "EAttribute"; //$NON-NLS-1$
+
+    /**
+     * The name of the EReference type.
+     */
+    private static final String EREFERENCE = "EReference"; //$NON-NLS-1$
 
     /**
      * The result of the execution of the query.
@@ -168,6 +223,14 @@ public class SiriusGraphQLSchemaTests {
     }
 
     /**
+     * Test the PageInfo type of the schema.
+     */
+    @Test
+    public void testPageInfoSchema() {
+        this.testType(SiriusGraphQLTestsMessages.pageInfo, PAGEINFO);
+    }
+
+    /**
      * Test the User type of the schema.
      */
     @Test
@@ -197,6 +260,14 @@ public class SiriusGraphQLSchemaTests {
     @Test
     public void testSemanticFileCreationDescriptionSchema() {
         this.testType(SiriusGraphQLTestsMessages.semanticFileCreationDescription, SEMANTIC_FILE_CREATION_DESCRIPTION);
+    }
+
+    /**
+     * Test the RepresentationCreationDescription type of the schema.
+     */
+    @Test
+    public void testRepresentationCreationDescriptionSchema() {
+        this.testType(SiriusGraphQLTestsMessages.representationCreationDescription, REPRESENTATION_CREATION_DESCRIPTION);
     }
 
     /**
@@ -277,5 +348,77 @@ public class SiriusGraphQLSchemaTests {
     @Test
     public void testDiagramSchema() {
         this.testType(SiriusGraphQLTestsMessages.diagram, DIAGRAM);
+    }
+
+    /**
+     * Test the EObject type of the schema.
+     */
+    @Test
+    public void testEObjectSchema() {
+        this.testType(SiriusGraphQLTestsMessages.eObject, EOBJECT);
+    }
+
+    /**
+     * Test the EModelElement type of the schema.
+     */
+    @Test
+    public void testEModelElementSchema() {
+        this.testType(SiriusGraphQLTestsMessages.eModelElement, EMODELELEMENT);
+    }
+
+    /**
+     * Test the ENamedElement type of the schema.
+     */
+    @Test
+    public void testENamedElementSchema() {
+        this.testType(SiriusGraphQLTestsMessages.eNamedElement, ENAMEDELEMENT);
+    }
+
+    /**
+     * Test the EClassifier type of the schema.
+     */
+    @Test
+    public void testEClassifierSchema() {
+        this.testType(SiriusGraphQLTestsMessages.eClassifier, ECLASSIFIER);
+    }
+
+    /**
+     * Test the EClass type of the schema.
+     */
+    @Test
+    public void testEClassSchema() {
+        this.testType(SiriusGraphQLTestsMessages.eClass, ECLASS);
+    }
+
+    /**
+     * Test the ETypedElement type of the schema.
+     */
+    @Test
+    public void testETypedElementSchema() {
+        this.testType(SiriusGraphQLTestsMessages.eTypedElement, ETYPEDELEMENT);
+    }
+
+    /**
+     * Test the EStructuralFeature type of the schema.
+     */
+    @Test
+    public void testEStructuralFeatureSchema() {
+        this.testType(SiriusGraphQLTestsMessages.eStructuralFeature, ESTRUCTURALFEATURE);
+    }
+
+    /**
+     * Test the EAttribute type of the schema.
+     */
+    @Test
+    public void testEAttributeSchema() {
+        this.testType(SiriusGraphQLTestsMessages.eAttribute, EATTRIBUTE);
+    }
+
+    /**
+     * Test the EReference type of the schema.
+     */
+    @Test
+    public void testEReferenceSchema() {
+        this.testType(SiriusGraphQLTestsMessages.eReference, EREFERENCE);
     }
 }

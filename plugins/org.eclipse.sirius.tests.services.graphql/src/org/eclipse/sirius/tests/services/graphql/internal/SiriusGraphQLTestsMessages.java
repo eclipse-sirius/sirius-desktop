@@ -32,6 +32,9 @@ public final class SiriusGraphQLTestsMessages {
     public static String query;
 
     @TranslatableMessage
+    public static String pageInfo;
+
+    @TranslatableMessage
     public static String mutation;
 
     @TranslatableMessage
@@ -59,6 +62,9 @@ public final class SiriusGraphQLTestsMessages {
     public static String semanticFileCreationDescription;
 
     @TranslatableMessage
+    public static String representationCreationDescription;
+
+    @TranslatableMessage
     public static String viewpoint;
 
     @TranslatableMessage
@@ -72,6 +78,33 @@ public final class SiriusGraphQLTestsMessages {
 
     @TranslatableMessage
     public static String diagram;
+
+    @TranslatableMessage
+    public static String eObject;
+
+    @TranslatableMessage
+    public static String eModelElement;
+
+    @TranslatableMessage
+    public static String eNamedElement;
+
+    @TranslatableMessage
+    public static String eClassifier;
+
+    @TranslatableMessage
+    public static String eClass;
+
+    @TranslatableMessage
+    public static String eTypedElement;
+
+    @TranslatableMessage
+    public static String eStructuralFeature;
+
+    @TranslatableMessage
+    public static String eAttribute;
+
+    @TranslatableMessage
+    public static String eReference;
 
     // CHECKSTYLE:ON
 

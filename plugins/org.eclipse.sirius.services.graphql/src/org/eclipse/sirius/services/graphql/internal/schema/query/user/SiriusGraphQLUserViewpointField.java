@@ -10,10 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.services.graphql.internal.schema.query.user;
 
-import java.util.Optional;
-import java.util.Set;
-
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLOptionalUtils;
 import org.eclipse.sirius.services.graphql.internal.schema.query.viewpoints.SiriusGraphQLViewpointTypesBuilder;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -85,15 +82,7 @@ public final class SiriusGraphQLUserViewpointField {
      */
     private static DataFetcher<Viewpoint> getViewpointDataFetcher() {
         // @formatter:off
-        return environment -> Optional.of(environment.getArgument(VIEWPOINT_IDENTIFIER_ARG))
-                .filter(String.class::isInstance)
-                .map(String.class::cast)
-                .flatMap(identifier -> {
-                    Set<Viewpoint> viewpoints = ViewpointRegistry.getInstance().getViewpoints();
-                    return viewpoints.stream()
-                            .filter(viewpoint -> identifier.equals(viewpoint.getName()))
-                            .findFirst();
-                })
+        return environment -> SiriusGraphQLOptionalUtils.viewpointFromIdentifier(environment.getArgument(VIEWPOINT_IDENTIFIER_ARG))
                 .orElse(null);
         // @formatter:on
     }

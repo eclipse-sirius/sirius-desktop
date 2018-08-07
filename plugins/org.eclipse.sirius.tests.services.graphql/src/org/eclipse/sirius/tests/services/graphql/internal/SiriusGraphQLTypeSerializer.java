@@ -82,6 +82,11 @@ public class SiriusGraphQLTypeSerializer {
     private static final String NON_NULL = "NON_NULL"; //$NON-NLS-1$
 
     /**
+     * The value used to indicate that an element is a list.
+     */
+    private static final String LIST = "LIST"; //$NON-NLS-1$
+
+    /**
      * Returns a standard definition language representation of the given type.
      * 
      * @param type
@@ -202,23 +207,20 @@ public class SiriusGraphQLTypeSerializer {
      */
     @SuppressWarnings("unchecked")
     private String typeRefToString(Map<String, Object> type) {
-        StringBuilder stringBuilder = new StringBuilder();
-
         String typeName = (String) type.get(NAME);
         String typeKind = (String) type.get(KIND);
 
         Map<String, Object> ofType = (Map<String, Object>) type.get(OFTYPE);
-        if (ofType != null) {
-            String ofTypeName = (String) ofType.get(NAME);
-            stringBuilder.append(ofTypeName);
-        } else {
-            stringBuilder.append(typeName);
+        if (typeName == null && ofType != null) {
+            typeName = this.typeRefToString(ofType);
         }
         if (NON_NULL.equals(typeKind)) {
-            stringBuilder.append("!"); //$NON-NLS-1$
+            typeName = typeName + "!"; //$NON-NLS-1$
+        } else if (LIST.equals(typeKind)) {
+            typeName = "[" + typeName + "]"; //$NON-NLS-1$ //$NON-NLS-2$
         }
 
-        return stringBuilder.toString();
+        return typeName;
     }
 
 }

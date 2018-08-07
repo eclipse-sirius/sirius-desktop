@@ -14,12 +14,17 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
+import org.eclipse.sirius.business.api.session.SessionCreationOperation;
 import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLPlugin;
 import org.eclipse.sirius.services.graphql.internal.schema.query.resources.SiriusGraphQLProjectTypesBuilder;
 
@@ -96,8 +101,15 @@ public final class SiriusGraphQLCreateProjectField {
                     IProject iProject = ResourcesPlugin.getWorkspace().getRoot().getProject(name);
                     if (!iProject.exists()) {
                         try {
-                            iProject.create(new NullProgressMonitor());
+                            IProjectDescription projectDescription = ResourcesPlugin.getWorkspace().newProjectDescription(name);
+                            projectDescription.setNatureIds(new String[] { ModelingProject.NATURE_ID });
+                            iProject.create(projectDescription, new NullProgressMonitor());
                             iProject.open(new NullProgressMonitor());
+
+                            URI representationsURI = URI.createPlatformResourceURI(iProject.getFullPath().append(ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME).toString(), true);
+                            SessionCreationOperation sessionCreationOperation = new DefaultLocalSessionCreationOperation(representationsURI, new NullProgressMonitor());
+                            sessionCreationOperation.execute();
+                            
                             iProject.build(IncrementalProjectBuilder.FULL_BUILD, new NullProgressMonitor());
                         } catch (CoreException exception) {
                             IStatus status = new Status(IStatus.ERROR, SiriusGraphQLPlugin.PLUGIN_ID, exception.getMessage(), exception);

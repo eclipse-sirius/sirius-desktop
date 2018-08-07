@@ -14,6 +14,9 @@ import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.Si
 import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLCreateProjectField;
 import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLCreateSemanticFileField;
 import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLCreateTextFileField;
+import org.eclipse.sirius.services.graphql.internal.schema.mutation.viewpoints.SiriusGraphQLActivateViewpointField;
+import org.eclipse.sirius.services.graphql.internal.schema.mutation.viewpoints.SiriusGraphQLCreateRepresentationField;
+import org.eclipse.sirius.services.graphql.internal.schema.mutation.viewpoints.SiriusGraphQLDeactivateViewpointField;
 
 import graphql.schema.GraphQLObjectType;
 
@@ -42,6 +45,9 @@ public class SiriusGraphQLMutationTypeBuilder {
                 .field(SiriusGraphQLCreateFolderField.build())
                 .field(SiriusGraphQLCreateTextFileField.build())
                 .field(SiriusGraphQLCreateSemanticFileField.build())
+                .field(SiriusGraphQLActivateViewpointField.build())
+                .field(SiriusGraphQLDeactivateViewpointField.build())
+                .field(SiriusGraphQLCreateRepresentationField.build())
                 .build();
         // @formatter:on
     }

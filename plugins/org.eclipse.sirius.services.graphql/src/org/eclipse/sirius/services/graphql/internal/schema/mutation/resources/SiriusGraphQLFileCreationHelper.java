@@ -16,8 +16,8 @@ import java.util.Optional;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLOptionalUtils;
 
 import graphql.schema.DataFetchingEnvironment;
 
@@ -62,8 +62,7 @@ public final class SiriusGraphQLFileCreationHelper {
      * @return The container in which the file should be created
      */
     private static Optional<IContainer> getContainer(DataFetchingEnvironment environment) {
-        Optional<String> optionalProjectName = Optional.of(environment.getArgument(SiriusGraphQLProjectNameArgument.PROJECT_NAME_ARG));
-        Optional<IProject> optionalProject = optionalProjectName.map(ResourcesPlugin.getWorkspace().getRoot()::getProject);
+        Optional<IProject> optionalProject = SiriusGraphQLOptionalUtils.projectFromName(environment.getArgument(SiriusGraphQLProjectNameArgument.PROJECT_NAME_ARG));
         Optional<String> optionalContainerPath = Optional.of(environment.getArgument(SiriusGraphQLContainerPathArgument.CONTAINER_PATH_ARG));
 
        // @formatter:off

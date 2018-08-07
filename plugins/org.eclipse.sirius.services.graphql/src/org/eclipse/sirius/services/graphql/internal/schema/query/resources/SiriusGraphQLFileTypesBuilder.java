@@ -23,18 +23,13 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLOptionalUtils;
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLConnection;
 import org.eclipse.sirius.services.graphql.internal.schema.ISiriusGraphQLTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.directives.SiriusGraphQLCostDirective;
@@ -42,13 +37,10 @@ import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.Siri
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLEdgeTypeBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLPaginationArguments;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLPaginationDataFetcher;
-import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import graphql.schema.DataFetcher;
-import graphql.schema.DataFetchingEnvironment;
 import graphql.schema.GraphQLFieldDefinition;
 import graphql.schema.GraphQLObjectType;
 import graphql.schema.GraphQLType;
@@ -163,8 +155,12 @@ public class SiriusGraphQLFileTypesBuilder implements ISiriusGraphQLTypesBuilder
     private DataFetcher<SiriusGraphQLConnection> getRepresentationsDataFetcher() {
         // @formatter:off
         return SiriusGraphQLPaginationDataFetcher.build(environment -> {
-            Optional<IFile> optionalFile = this.getFile(environment);
-            Optional<Session> optionalSession = optionalFile.flatMap(this::getSession);
+            Optional<IFile> optionalFile = Optional.of(environment.getSource())
+                    .filter(IFile.class::isInstance)
+                    .map(IFile.class::cast);
+            
+            Optional<Session> optionalSession = optionalFile.map(IFile::getProject)
+                    .flatMap(SiriusGraphQLOptionalUtils::toSession);
 
             List<DRepresentation> representations = new ArrayList<>();
             if (optionalFile.isPresent() && optionalSession.isPresent()) {
@@ -216,60 +212,18 @@ public class SiriusGraphQLFileTypesBuilder implements ISiriusGraphQLTypesBuilder
     private DataFetcher<SiriusGraphQLConnection> getEObjectsDataFetcher() {
         // @formatter:off
         return SiriusGraphQLPaginationDataFetcher.build(environment -> {
-            Optional<IFile> optionalFile = this.getFile(environment);
-            Optional<URI> optionalURI = optionalFile.map(IFile::getFullPath)
-                    .map(IPath::toString)
-                    .map(path -> URI.createPlatformResourceURI(path, true));
+            Optional<IFile> optionalFile = Optional.of(environment.getSource())
+                    .filter(IFile.class::isInstance)
+                    .map(IFile.class::cast);
             
-            Optional<Session> optionalSession = optionalFile.flatMap(this::getSession);
-            Optional<Resource> optionalResource = optionalSession.map(Session::getTransactionalEditingDomain)
-                    .map(TransactionalEditingDomain::getResourceSet)
-                    .flatMap(resourceSet -> optionalURI.map(uri -> resourceSet.getResource(uri, true)));
+            Optional<Session> optionalSession = optionalFile.map(IFile::getProject)
+                    .flatMap(SiriusGraphQLOptionalUtils::toSession);
+            
+            Optional<Resource> optionalResource = optionalFile.flatMap(iFile -> {
+                return optionalSession.flatMap(session -> SiriusGraphQLOptionalUtils.toResource(session, iFile));
+            });
             
             return optionalResource.map(Resource::getContents).orElseGet(BasicEList::new);
-        });
-        // @formatter:on
-    }
-
-    /**
-     * Returns the file from the given data fetching environment or an empty optional if it is missing.
-     * 
-     * @param environment
-     *            The data fetching environment
-     * @return The file
-     */
-    private Optional<IFile> getFile(DataFetchingEnvironment environment) {
-        // @formatter:off
-        return Optional.of(environment.getSource())
-                .filter(IFile.class::isInstance)
-                .map(IFile.class::cast);
-        // @formatter:on
-    }
-
-    /**
-     * Returns the Sirius session for the given file or an empty optional if it is not in a session.
-     * 
-     * @param iFile
-     *            The file
-     * @return The Sirius session
-     */
-    private Optional<Session> getSession(IFile iFile) {
-        Optional<ModelingProject> optionalModelingProject = Optional.empty();
-
-        IProject project = iFile.getProject();
-        if (ModelingProject.hasModelingProjectNature(project) && project.isOpen()) {
-            optionalModelingProject = Optional.of(ModelingProject.asModelingProject(project).get());
-        }
-
-        // @formatter:off
-        return optionalModelingProject.map(modelingProject -> {
-            Session session = modelingProject.getSession();
-            if (session == null) {
-                URI sessionResourceURI = modelingProject.getMainRepresentationsFileURI(new NullProgressMonitor()).get();
-                UICallBack uiCallback = SiriusPlugin.getDefault().getUiCallback();
-                return SessionManager.INSTANCE.openSession(sessionResourceURI, new NullProgressMonitor(), uiCallback);
-            }
-            return session;
         });
         // @formatter:on
     }

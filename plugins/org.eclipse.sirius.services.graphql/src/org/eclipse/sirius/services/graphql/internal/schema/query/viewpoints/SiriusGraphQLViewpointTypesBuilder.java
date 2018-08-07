@@ -21,6 +21,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLConnection;
 import org.eclipse.sirius.services.graphql.internal.schema.ISiriusGraphQLTypesBuilder;
@@ -147,12 +148,13 @@ public class SiriusGraphQLViewpointTypesBuilder implements ISiriusGraphQLTypesBu
      *
      * @return The name data fetcher
      */
-    private DataFetcher<?> getNameDataFetcher() {
+    private DataFetcher<String> getNameDataFetcher() {
         // @formatter:off
         return environment -> Optional.of(environment.getSource())
                 .filter(Viewpoint.class::isInstance)
                 .map(Viewpoint.class::cast)
-                .map(Viewpoint::getLabel)
+                .map(IdentifiedElementQuery::new)
+                .map(IdentifiedElementQuery::getLabel)
                 .orElse(null);
         // @formatter:on
     }

@@ -17,6 +17,7 @@ import org.eclipse.sirius.services.graphql.internal.schema.mutation.SiriusGraphQ
 import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLProjectCreationDescriptionTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLSemanticFileCreationDescriptionTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLTextFileCreationDescriptionTypesBuilder;
+import org.eclipse.sirius.services.graphql.internal.schema.mutation.viewpoints.SiriusGraphQLRepresentationCreationDescriptionTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.SiriusGraphQLQueryTypeBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.emf.SiriusGraphQLEPackageTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.query.pagination.SiriusGraphQLPageInfoTypeBuilder;
@@ -73,6 +74,7 @@ public class SiriusGraphQLSchemaBuilder {
         Set<GraphQLType> projectCreationDescriptionTypes = new SiriusGraphQLProjectCreationDescriptionTypesBuilder().getTypes();
         Set<GraphQLType> textFileCreationDescriptionTypes = new SiriusGraphQLTextFileCreationDescriptionTypesBuilder().getTypes();
         Set<GraphQLType> semanticFileCreationDescriptionTypes = new SiriusGraphQLSemanticFileCreationDescriptionTypesBuilder().getTypes();
+        Set<GraphQLType> representationCreationDescriptionTypes = new SiriusGraphQLRepresentationCreationDescriptionTypesBuilder().getTypes();
 
         // @formatter:off
         GraphQLSchema schema = GraphQLSchema.newSchema()
@@ -94,6 +96,7 @@ public class SiriusGraphQLSchemaBuilder {
                 .additionalTypes(projectCreationDescriptionTypes)
                 .additionalTypes(textFileCreationDescriptionTypes)
                 .additionalTypes(semanticFileCreationDescriptionTypes)
+                .additionalTypes(representationCreationDescriptionTypes)
                 .build();
         // @formatter:on
 

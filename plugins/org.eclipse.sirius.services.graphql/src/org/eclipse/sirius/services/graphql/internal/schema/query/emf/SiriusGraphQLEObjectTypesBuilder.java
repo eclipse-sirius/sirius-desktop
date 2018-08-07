@@ -39,6 +39,7 @@ public class SiriusGraphQLEObjectTypesBuilder implements ISiriusGraphQLTypesBuil
         // @formatter:off
         GraphQLType eObject = GraphQLInterfaceType.newInterface()
                 .name(EOBJECT_TYPE)
+                .field(SiriusGraphQLEObjectFragmentField.build())
                 .typeResolver(this.getTypeResolver())
                 .build();
         // @formatter:on
