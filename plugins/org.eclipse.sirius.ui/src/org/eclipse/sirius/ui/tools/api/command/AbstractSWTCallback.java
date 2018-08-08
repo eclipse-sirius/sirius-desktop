@@ -384,7 +384,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
 
     @Override
     public void askUserAndSaveMigratedSession(Session session) {
-        if (MigrationUIUtil.shouldMigratedElementBeSaved(session)) {
+        if (MigrationUIUtil.shouldMigratedElementBeSaved(session, getSessionNameToDisplayWhileSaving(session))) {
             PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
                 try {
                     new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(false, false, new WorkspaceModifyOperation() {

@@ -45,32 +45,31 @@ public final class MigrationUIUtil {
     public static boolean shouldMigratedElementBeSaved(Resource resource) {
         String migrateFrom = hasBeenMigratedFrom(resource);
         if (migrateFrom != null && shouldUserBeWarnedAboutMigration(resource)) {
-            return doAskUserIfElementShouldBeSaved(resource);
+            String message = MessageFormat.format(Messages.MigrationUIUtil_askToSaveChanges, resource.getURI().lastSegment());
+            return SWTUtil.showSaveDialogWithMessage(resource, message, false) == ISaveablePart2.YES;
         }
         return false;
     }
 
     /**
      * Test if the session resource has been automatically migrated. If it is the case and this is due to a direct user
-     * action, ask user if he want to save the session
+     * action, ask user if he wants to save the session
      * 
      * @param session
      *            The session to test
+     * @param sessionLabel
+     *            the session label to use when interacting with user if needed.
      * @return <code>true</code> if the user want to save the session, <code>false</code> otherwise
      */
-    public static boolean shouldMigratedElementBeSaved(Session session) {
+    public static boolean shouldMigratedElementBeSaved(Session session, String sessionLabel) {
         for (Resource resource : session.getAllSessionResources()) {
             String migrateFrom = hasBeenMigratedFrom(resource);
             if (migrateFrom != null && shouldUserBeWarnedAboutMigration(resource)) {
-                return doAskUserIfElementShouldBeSaved(resource);
+                String message = MessageFormat.format(Messages.MigrationUIUtil_askToSaveChanges, sessionLabel);
+                return SWTUtil.showSaveDialogWithMessage(resource, message, false) == ISaveablePart2.YES;
             }
         }
         return false;
-    }
-
-    private static boolean doAskUserIfElementShouldBeSaved(Resource resource) {
-        String message = MessageFormat.format(Messages.MigrationUIUtil_askToSaveChanges, resource.getURI().lastSegment());
-        return SWTUtil.showSaveDialogWithMessage(resource, message, true) == ISaveablePart2.YES;
     }
 
     /**
