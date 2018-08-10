@@ -122,9 +122,9 @@ public class ModesMenuManager extends ActionMenuManager {
                 if (LayoutingModeSwitchingAction.diagramAllowsLayoutingMode(editorDiagram)) {
                     add(new LayoutingModeSwitchingAction(page.getActivePart(), editorDiagram));
                 }
-                if (editorDiagram.isIsInLayoutingMode()) {
+                if (editorDiagram != null && editorDiagram.isIsInLayoutingMode()) {
                     setDefaultAction(ActionIds.SWITCH_LAYOUTING_MODE);
-                } else if (editorDiagram.isIsInShowingMode()) {
+                } else if (editorDiagram != null && editorDiagram.isIsInShowingMode()) {
                     setDefaultAction(ActionIds.SWITCH_SHOWING_MODE);
                 } else {
                     setDefaultAction(ActionIds.DEFAULT_MODE);

@@ -30,7 +30,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.HideFilter;
 import org.eclipse.sirius.diagram.HideLabelFilter;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DEdgeSpec;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
@@ -269,7 +268,7 @@ public final class ShowingViewUtil {
             // label.
             EList<GraphicalFilter> graphicalFilters = ((DDiagramElement) correspondingView.getElement()).getGraphicalFilters();
             boolean isLabelFiltered = graphicalFilters.stream().anyMatch(HideLabelFilter.class::isInstance) || graphicalFilters.stream().anyMatch(HideFilter.class::isInstance)
-                    || (correspondingView instanceof Edge && !((DEdgeSpec) correspondingView.getElement()).isVisible());
+                    || (correspondingView instanceof Edge && !((DDiagramElement) correspondingView.getElement()).isVisible());
             if (isLabelFiltered && viewQuery.isInShowingMode()) {
                 graphics.setAlpha(50);
             }
