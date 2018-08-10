@@ -12,15 +12,29 @@ package org.eclipse.sirius.tests.swtbot;
 
 import java.text.MessageFormat;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.transaction.RunnableWithResult;
+import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
+import org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n.DiagramUIActionsMessages;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.Tabbar;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.LocationURI;
+import org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * Tests for the popup menu tool.
@@ -432,6 +446,58 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (WidgetNotFoundException e) {
             fail("The action \"myActionG1.1\" of the new group \"myGroup1\" of the menu \\\"myMenu1\\\" should exist");
         }
+    }
+
+    /**
+     * Test that an action in a new group in the Select menu of tabbar is accessible.
+     * 
+     * @throws Exception
+     *             In case of unexpected problem
+     */
+    public void testActionInNewGroupInTabbar() throws Exception {
+        assertEquals("Only the action contributed by the VSM must be available in mock Select menu of tabbar (+ the separator)", 2, getNbElementsInSelectMenuOfTabbar(editor));
+    }
+
+    private int getNbElementsInSelectMenuOfTabbar(SWTBotSiriusDiagramEditor editor) {
+        final DDiagramEditorImpl edit = (DDiagramEditorImpl) editor.getReference().getEditor(false);
+        Tabbar tabbar = edit.getTabbar();
+        Option<Object> toolbarOption = ReflectionHelper.getFieldValueWithoutException(tabbar, "toolBar");
+        final ToolBar toolBar = (ToolBar) toolbarOption.get();
+
+        RunnableWithResult<Integer> result = new RunnableWithResult<Integer>() {
+            int result = 0;
+
+            @Override
+            public void run() {
+                ToolItem selecAllMenuItem = toolBar.getItem(1);
+                assertEquals("The second item must be the \"Select\" menu", DiagramUIActionsMessages.SelectAllAction_toolbar_SelectAll, selecAllMenuItem.getToolTipText());
+                // It is not possible to check tabbar menu by Swtbot so we use a mock menu and the "API" to complete the
+                // menu with the contents of the VSM
+                IMenuManager mockMenuManager = new MenuManager(null, ActionIds.MENU_SELECT);
+                // Add potential select all actions contributed in VSM
+                PopupMenuContribution.contributeToPopupMenuProgrammatically(mockMenuManager, edit, true);
+                result = mockMenuManager.getItems().length;
+                mockMenuManager.dispose();
+            }
+
+            @Override
+            public Integer getResult() {
+                return result;
+            }
+
+            @Override
+            public void setStatus(IStatus status) {
+
+            }
+
+            @Override
+            public IStatus getStatus() {
+                return null;
+            }
+        };
+        PlatformUI.getWorkbench().getDisplay().syncExec(result);
+        int count = result.getResult();
+        return count;
     }
 
     /**
