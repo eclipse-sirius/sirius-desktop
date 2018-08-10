@@ -158,7 +158,7 @@ public class WorkflowPage extends AbstractSessionEditorPage {
             java.net.URI serverUri = SiriusServerPlugin.getPlugin().getServerURI();
             // Use this URL when using the frontend in dev mode.
             // return "http://localhost:3000/projects/" + uri.segment(1); //$NON-NLS-1$
-            return String.format("http://%s:%d/projects/%s?fullscreen=true", serverUri.getHost(), serverUri.getPort(), uri.segment(1)); //$NON-NLS-1$
+            return String.format("http://%s:%d/workflow/projects/%s?fullscreen=true", serverUri.getHost(), serverUri.getPort(), uri.segment(1)); //$NON-NLS-1$
         } else {
             return "http://localhost:8080/"; //$NON-NLS-1$
         }

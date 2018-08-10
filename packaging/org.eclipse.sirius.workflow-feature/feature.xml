@@ -69,9 +69,10 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.sirius.server.frontend"
+         id="org.eclipse.sirius.server.frontend.workflow"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

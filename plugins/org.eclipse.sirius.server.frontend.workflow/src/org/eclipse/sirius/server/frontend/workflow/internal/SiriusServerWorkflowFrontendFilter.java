@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.server.frontend.internal;
+package org.eclipse.sirius.server.frontend.workflow.internal;
 
 import java.io.IOException;
 
@@ -22,36 +22,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet filter used to redirect the request to provide a single page
- * application.
+ * Servlet filter used to redirect the request to provide a single page application.
  *
  * @author sbegaudeau
  */
-public class SiriusServerFrontendFilter implements Filter {
-    /**
-     * The path of the HTTP API.
-     */
-    private static final String HTTP_API_PATH = "/api"; //$NON-NLS-1$
-
-    /**
-     * The path of the WebSocket API.
-     */
-    private static final String WS_API_PATH = "/ws"; //$NON-NLS-1$
-
-    /**
-     * The path of the images API.
-     */
-    private static final String IMAGES_PATH = "/images"; //$NON-NLS-1$
-
-    /**
-     * The path of the workflow front-e,d.
-     */
-    private static final String WORKFLOW_PATH = "/workflow"; //$NON-NLS-1$
-
+public class SiriusServerWorkflowFrontendFilter implements Filter {
     /**
      * The path of the static resources.
      */
-    private static final String STATIC_PATH = "/static"; //$NON-NLS-1$
+    private static final String STATIC_PATH = "/workflow/static"; //$NON-NLS-1$
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -77,28 +56,21 @@ public class SiriusServerFrontendFilter implements Filter {
      *
      * @param requestURI
      *            The URI of the request
-     * @return <code>true</code> if the given request matches a static
-     *         resources, <code>false</code> otherwise
+     * @return <code>true</code> if the given request matches a static resources, <code>false</code> otherwise
      */
     private boolean isStaticResource(String requestURI) {
         return requestURI.startsWith(STATIC_PATH);
     }
 
     /**
-     * Indicates if the given request URI should be redirected to the front end
-     * for a proper single page application.
+     * Indicates if the given request URI should be redirected to the front end for a proper single page application.
      *
      * @param requestURI
      *            The URI of the request
-     * @return <code>true</code> if the given request should be redirected to
-     *         the front end
+     * @return <code>true</code> if the given request should be redirected to the front end
      */
     private boolean isFrontEnd(String requestURI) {
         boolean isFrontEnd = true;
-        isFrontEnd = isFrontEnd && !requestURI.startsWith(HTTP_API_PATH);
-        isFrontEnd = isFrontEnd && !requestURI.startsWith(WS_API_PATH);
-        isFrontEnd = isFrontEnd && !requestURI.startsWith(IMAGES_PATH);
-        isFrontEnd = isFrontEnd && !requestURI.startsWith(WORKFLOW_PATH);
         isFrontEnd = isFrontEnd && !requestURI.startsWith(STATIC_PATH);
         return isFrontEnd;
     }
@@ -120,8 +92,7 @@ public class SiriusServerFrontendFilter implements Filter {
     }
 
     /**
-     * Redirects the request to the front end in order to have a proper single
-     * page application.
+     * Redirects the request to the front end in order to have a proper single page application.
      *
      * @param httpServletRequest
      *            The request
