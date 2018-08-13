@@ -351,30 +351,49 @@
         <module>../../plugins/org.eclipse.sirius.diagram.formatdata</module>
         <module>../../plugins/org.eclipse.sirius.diagram.layoutdata</module>
         <module>../../plugins/org.eclipse.sirius.ecore.extender</module>
-        <module>../../plugins/org.eclipse.sirius.services.graphql</module>
-        <module>../../plugins/org.eclipse.sirius.server</module>
-        <module>../../plugins/org.eclipse.sirius.server.application</module>
-        <module>../../plugins/org.eclipse.sirius.server.backend</module>
-        <module>../../plugins/org.eclipse.sirius.server.frontend</module>
-        <module>../../plugins/org.eclipse.sirius.server.graphql</module>
         <module>../../plugins/org.eclipse.sirius.synchronizer</module>
         <module>../../plugins/org.eclipse.sirius.table</module>
         <module>../../plugins/org.eclipse.sirius.tree</module>
         <module>../../plugins/org.eclipse.sirius.workflow.model</module>
-        
-        <!-- tests -->
-        <module>../../plugins/org.eclipse.sirius.tests.server</module>
 
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.runtime</module>
         <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
         <module>../../packaging/org.eclipse.sirius.runtime.aql</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ocl</module>
+
+        <!-- update sites -->
+        <module>../../packaging/org.eclipse.sirius.headless.update</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>headless-server</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+          <directory>${build-folder-name}</directory>
+      </build>
+      <properties>
+        <target-platform-path>headless</target-platform-path>
+      </properties>
+      <modules>
+        <!-- plugins -->
+        <module>../../plugins/org.eclipse.sirius.services.graphql</module>
+        <module>../../plugins/org.eclipse.sirius.server</module>
+        <module>../../plugins/org.eclipse.sirius.server.application</module>
+        <module>../../plugins/org.eclipse.sirius.server.backend</module>
+        <module>../../plugins/org.eclipse.sirius.server.frontend</module>
+        <module>../../plugins/org.eclipse.sirius.server.graphql</module>
+        
+        <!-- tests -->
+        <module>../../plugins/org.eclipse.sirius.tests.server</module>
+
+        <!-- features -->
         <module>../../packaging/org.eclipse.sirius.server.feature</module>
         <module>../../packaging/org.eclipse.sirius.server.product.feature</module>
 
         <!-- update sites -->
-        <module>../../packaging/org.eclipse.sirius.headless.update</module>
         <module>../../packaging/org.eclipse.sirius.server.product</module>
       </modules>
     </profile>
