@@ -74,11 +74,10 @@ public class AttachmentBetweenEdgeAndItsLabelsTest extends SiriusDiagramTestCase
     }
 
     /**
-     * Check that there is only one attachment displayed when the preference is enabled and a begin label is selected.
-     * <BR>
-     * TODO: Test to fix: Disabled since commits corresponding to bug 527109.
+     * Check that there is only one attachment displayed when the preference is
+     * enabled and a begin label is selected.
      */
-    public void _testAttachmentOnBeginLabelSelection() {
+    public void testAttachmentOnBeginLabelSelection() {
         changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_SHOW_LINK_EDGE_LABEL_ON_SELECTION.name(), true);
         // Select the begin label
         IGraphicalEditPart edgeEditPart = getEditPart(getDiagramElementsFromLabel(diagram, "center_p1 package entitiesref").get(0), editor);
@@ -95,10 +94,10 @@ public class AttachmentBetweenEdgeAndItsLabelsTest extends SiriusDiagramTestCase
     }
 
     /**
-     * Check that there is only one attachment displayed when the preference is enabled and a end label is selected.<BR>
-     * TODO: Test to fix: Disabled since commits corresponding to bug 527109.
+     * Check that there is only one attachment displayed when the preference is
+     * enabled and a end label is selected.
      */
-    public void _testAttachmentOnEndLabelSelection() {
+    public void testAttachmentOnEndLabelSelection() {
         changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_SHOW_LINK_EDGE_LABEL_ON_SELECTION.name(), true);
         // Select the end label
         IGraphicalEditPart edgeEditPart = getEditPart(getDiagramElementsFromLabel(diagram, "center_p1 package entitiesref").get(0), editor);
@@ -115,22 +114,21 @@ public class AttachmentBetweenEdgeAndItsLabelsTest extends SiriusDiagramTestCase
     }
 
     /**
-     * Check that there is only one attachment displayed when the preference is enabled and a center label is selected
-     * (and also check that there is no attachment displayed when the preference is disabled). <BR>
-     * TODO: Test to fix: Disabled since commits corresponding to bug 527109.
+     * Check that there is only one attachment displayed when the preference is
+     * enabled and a center label is selected (and also check that there is no
+     * attachment displayed when the preference is disabled).
      */
-    public void _testAttachmentOnCenterLabelSelection() {
+    public void testAttachmentOnCenterLabelSelection() {
         testAttachmentOnCenterLabelSelection(false);
         editor.getDiagramGraphicalViewer().deselectAll();
         testAttachmentOnCenterLabelSelection(true);
     }
 
     /**
-     * Check that there are 3 attachments displayed when the preference is enabled and an edge with 3 labels is
-     * selected. <BR>
-     * TODO: Test to fix: Disabled since commits corresponding to bug 527109.
+     * Check that there are 3 attachments displayed when the preference is
+     * enabled and an edge with 3 labels is selected.
      */
-    public void _testAttachmentOnEdgeSelection() {
+    public void testAttachmentOnEdgeSelection() {
         testAttachmentOnEdgeSelection(true);
     }
 

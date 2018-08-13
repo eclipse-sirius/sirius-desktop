@@ -68,70 +68,82 @@ public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase imp
      * <li>Get the listeners list before opening any editor.</li>
      * <li>Open all editors.</li>
      * <li>Close all editors.</li>
-     * <li>Check that the selection listeners list did not grew up during the open/close first cycle, except for
-     * additional PagePartSelectionTracker</li>
+     * <li>Check that the selection listeners list did not grew up during the
+     * open/close first cycle, except for additional PagePartSelectionTracker</li>
      * <li>Open all editors.</li>
      * <li>Close all editors.</li>
-     * <li>Check that the selection listeners list length is the same than after the first open/close cycle.</li>
+     * <li>Check that the selection listeners list length is the same than after
+     * the first open/close cycle.</li>
      * <li>Open one editor</li>
      * <li>Open a second editor</li>
      * <li>Close the second editor</li>
-     * <li>Check that listener list length is the same as after having opened one editor.</li>
+     * <li>Check that listener list length is the same as after having opened
+     * one editor.</li>
      * </ul>
-     * <BR>
-     * TODO: Test to fix: Disabled since commits corresponding to bug 527109.
      */
     public void testNumberOfListenerIsCorrectAfterOpenCloseDiagrams() {
-        /*
-         * Object[] pageSelectionListeners = getPageSelectionListeners(); Object[] partServiceListeners =
-         * getPartServiceListeners(); Object[] workbenchWindowSelectionListeners =
-         * getWorkbenchWindowSelectionListeners(); assertNotNull("Review the test, no found page selection listener.",
-         * pageSelectionListeners); assertNotNull("Review the test, no found part service listener.",
-         * partServiceListeners); assertNotNull("Review the test no found workbench window selection listener.",
-         * workbenchWindowSelectionListeners); // we get the listeners list before opening editors. int
-         * expectedPageSelectionListener = pageSelectionListeners.length; int expectedPartServiceListeners =
-         * partServiceListeners.length; int expectedWindowSelectionListener = workbenchWindowSelectionListeners.length;
-         * openAllEditors(); assertTrue("Review this test: opening editor should add page selection listeners.",
-         * expectedPageSelectionListener < getPageSelectionListeners().length);
-         * assertTrue("Review this test: opening editor should add part service listeners.",
-         * expectedPartServiceListeners < getPartServiceListeners().length);
-         * assertTrue("Review this test: opening editor should add workbench window selection listeners.",
-         * expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().length); closeAllEditors(); if
-         * (!TestsUtil.isEclipse4xPlatform()) { // +3 comes from the new PagePartSelectionTracker listener created //
-         * for viewpoint editor and undo/redo handlers. expectedPartServiceListeners = expectedPartServiceListeners + 3;
-         * } // We check that after having opened and closed editors, the // selection listener list length is as
-         * before. assertTrue("Too many page selection listeners.", expectedPageSelectionListener >=
-         * getPageSelectionListeners().length); assertTrue("Too many part service listeners.",
-         * expectedPartServiceListeners >= getPartServiceListeners().length);
-         * assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >=
-         * getWorkbenchWindowSelectionListeners().length); openAllEditors();
-         * assertTrue("Review this test: opening editor should add selection listeners.", expectedPageSelectionListener
-         * < getPageSelectionListeners().length);
-         * assertTrue("Review this test: opening editor should add part service listeners.",
-         * expectedPartServiceListeners < getPartServiceListeners().length);
-         * assertTrue("Review this test: opening editor should add selection listeners.",
-         * expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().length); closeAllEditors(); // ...
-         * so we check that after having reopened and closed editors // again, the listener list size doesn't grow up
-         * again. assertTrue("Too many page selection listeners.", expectedPageSelectionListener >=
-         * getPageSelectionListeners().length); assertTrue("Too many part service listeners.",
-         * expectedPartServiceListeners >= getPartServiceListeners().length);
-         * assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >=
-         * getWorkbenchWindowSelectionListeners().length); // Check for one editor: openEditor(1);
-         * expectedPageSelectionListener = getPageSelectionListeners().length; expectedPartServiceListeners =
-         * getPartServiceListeners().length; expectedWindowSelectionListener =
-         * getWorkbenchWindowSelectionListeners().length; DDiagramEditor editor2 = openEditor(2);
-         * assertTrue("Review this test: opening editor should add selection listeners.", expectedPageSelectionListener
-         * < getPageSelectionListeners().length);
-         * assertTrue("Review this test: opening editor should add part service listeners.",
-         * expectedPartServiceListeners < getPartServiceListeners().length);
-         * assertTrue("Review this test: opening editor should add selection listeners.",
-         * expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().length); // close the second editor
-         * closeEditor(editor2); assertTrue("Too many page selection listeners.", expectedPageSelectionListener >=
-         * getPageSelectionListeners().length); assertTrue("Too many part service listeners.",
-         * expectedPartServiceListeners >= getPartServiceListeners().length);
-         * assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >=
-         * getWorkbenchWindowSelectionListeners().length);
-         */
+        Object[] pageSelectionListeners = getPageSelectionListeners();
+        Object[] partServiceListeners = getPartServiceListeners();
+        Object[] workbenchWindowSelectionListeners = getWorkbenchWindowSelectionListeners();
+
+        assertNotNull("Review the test, no found page selection listener.", pageSelectionListeners);
+        assertNotNull("Review the test, no found part service listener.", partServiceListeners);
+        assertNotNull("Review the test no found workbench window selection listener.", workbenchWindowSelectionListeners);
+
+        // we get the listeners list before opening editors.
+        int expectedPageSelectionListener = pageSelectionListeners.length;
+        int expectedPartServiceListeners = partServiceListeners.length;
+        int expectedWindowSelectionListener = workbenchWindowSelectionListeners.length;
+
+        openAllEditors();
+
+        assertTrue("Review this test: opening editor should add page selection listeners.", expectedPageSelectionListener < getPageSelectionListeners().length);
+        assertTrue("Review this test: opening editor should add part service listeners.", expectedPartServiceListeners < getPartServiceListeners().length);
+        assertTrue("Review this test: opening editor should add workbench window selection listeners.", expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().length);
+
+        closeAllEditors();
+
+        if (!TestsUtil.isEclipse4xPlatform()) {
+            // +3 comes from the new PagePartSelectionTracker listener created
+            // for viewpoint editor and undo/redo handlers.
+            expectedPartServiceListeners = expectedPartServiceListeners + 3;
+        }
+
+        // We check that after having opened and closed editors, the
+        // selection listener list length is as before.
+        assertTrue("Too many page selection listeners.", expectedPageSelectionListener >= getPageSelectionListeners().length);
+        assertTrue("Too many part service listeners.", expectedPartServiceListeners >= getPartServiceListeners().length);
+        assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >= getWorkbenchWindowSelectionListeners().length);
+
+        openAllEditors();
+
+        assertTrue("Review this test: opening editor should add selection listeners.", expectedPageSelectionListener < getPageSelectionListeners().length);
+        assertTrue("Review this test: opening editor should add part service listeners.", expectedPartServiceListeners < getPartServiceListeners().length);
+        assertTrue("Review this test: opening editor should add selection listeners.", expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().length);
+
+        closeAllEditors();
+
+        // ... so we check that after having reopened and closed editors
+        // again, the listener list size doesn't grow up again.
+        assertTrue("Too many page selection listeners.", expectedPageSelectionListener >= getPageSelectionListeners().length);
+        assertTrue("Too many part service listeners.", expectedPartServiceListeners >= getPartServiceListeners().length);
+        assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >= getWorkbenchWindowSelectionListeners().length);
+
+        // Check for one editor:
+        openEditor(1);
+        expectedPageSelectionListener = getPageSelectionListeners().length;
+        expectedPartServiceListeners = getPartServiceListeners().length;
+        expectedWindowSelectionListener = getWorkbenchWindowSelectionListeners().length;
+        DDiagramEditor editor2 = openEditor(2);
+        assertTrue("Review this test: opening editor should add selection listeners.", expectedPageSelectionListener < getPageSelectionListeners().length);
+        assertTrue("Review this test: opening editor should add part service listeners.", expectedPartServiceListeners < getPartServiceListeners().length);
+        assertTrue("Review this test: opening editor should add selection listeners.", expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().length);
+
+        // close the second editor
+        closeEditor(editor2);
+        assertTrue("Too many page selection listeners.", expectedPageSelectionListener >= getPageSelectionListeners().length);
+        assertTrue("Too many part service listeners.", expectedPartServiceListeners >= getPartServiceListeners().length);
+        assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >= getWorkbenchWindowSelectionListeners().length);
     }
 
     private void closeEditor(DDiagramEditor editor) {

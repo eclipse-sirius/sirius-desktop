@@ -85,7 +85,7 @@ public class DoubleClickCommandBuilder extends AbstractDiagramCommandBuilder {
     private boolean canDoubleClick() {
         // if the dDiagram is in layoutMode or show/hide mode, we disable this double click, unless the tool is only
         // containing Navigation descriptions
-        boolean valid = !((isInLayoutingModeDiagram(dDiagramElement) || !isInShowingModeDiagram(dDiagramElement)) && !(tool.getInitialOperation().getFirstModelOperations() instanceof Navigation));
+        boolean valid = !((isInLayoutingModeDiagram(dDiagramElement) || isInShowingModeDiagram(dDiagramElement)) && !(tool.getInitialOperation().getFirstModelOperations() instanceof Navigation));
         valid = valid && checkPrecondition(dDiagramElement, tool);
         return valid;
     }

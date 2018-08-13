@@ -17,12 +17,15 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
+import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.DoubleClickCommandBuilder;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
+import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 
 /**
@@ -54,22 +57,35 @@ public class DoubleClicCommandBuilderForceRefreshTest extends SiriusDiagramTestC
     }
 
     /**
-     * Test a {@link PaneBasedSelectionWizardDescription} tool. Test the initial operation execution.<BR>
-     * TODO: Test to fix: Disabled since commits corresponding to bug 527109.
+     * Test a {@link PaneBasedSelectionWizardDescription} tool. Test the initial
+     * operation execution.
      */
     public void testDoubleClickCommandBuilder() {
-        /*
-         * DoubleClickDescription dc = ToolFactory.eINSTANCE.createDoubleClickDescription(); InitialOperation io =
-         * org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation(); ChangeContext
-         * cc = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createChangeContext();
-         * dc.setInitialOperation(io); io.setFirstModelOperations(cc); cc.setBrowseExpression("aql:self"); Command cmd =
-         * getDoubleClicCommand(dc); checkDoubleClicCommand(cmd, false); // Set force refresh dc.setForceRefresh(true);
-         * cmd = getDoubleClicCommand(dc); checkDoubleClicCommand(cmd, true); // Set force refresh
-         * dc.setForceRefresh(false);
-         * cc.getSubModelOperations().add(org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.
-         * createRemoveElement()); cmd = getDoubleClicCommand(dc); checkDoubleClicCommand(cmd, false); // Set force
-         * refresh dc.setForceRefresh(true); cmd = getDoubleClicCommand(dc); checkDoubleClicCommand(cmd, true);
-         */
+        DoubleClickDescription dc = ToolFactory.eINSTANCE.createDoubleClickDescription();
+        InitialOperation io = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
+        ChangeContext cc = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createChangeContext();
+        dc.setInitialOperation(io);
+        io.setFirstModelOperations(cc);
+        cc.setBrowseExpression("aql:self");
+
+        Command cmd = getDoubleClicCommand(dc);
+        checkDoubleClicCommand(cmd, false);
+
+        // Set force refresh
+        dc.setForceRefresh(true);
+        cmd = getDoubleClicCommand(dc);
+        checkDoubleClicCommand(cmd, true);
+
+        // Set force refresh
+        dc.setForceRefresh(false);
+        cc.getSubModelOperations().add(org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createRemoveElement());
+        cmd = getDoubleClicCommand(dc);
+        checkDoubleClicCommand(cmd, false);
+
+        // Set force refresh
+        dc.setForceRefresh(true);
+        cmd = getDoubleClicCommand(dc);
+        checkDoubleClicCommand(cmd, true);
 
     }
 

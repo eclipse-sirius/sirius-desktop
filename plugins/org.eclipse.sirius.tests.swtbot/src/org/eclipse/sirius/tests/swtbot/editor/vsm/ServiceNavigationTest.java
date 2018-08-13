@@ -264,20 +264,20 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the service interpreter.</li>
      * <li>The cursor is at the starting position</li>
      * <li>The service called is present in two different classes</li>
-     * <li>The service from which the navigation is done is the second one in the wizard.</li>
+     * <li>The service from which the navigation is done is the second one in
+     * the wizard.</li>
      * </ul>
-     * <BR>
-     * TODO: Test to fix: Disabled since commits corresponding to bug 527109.
      * 
      * @exception Exception
      *                if a problem occurs.
      */
-    public void _testServiceNavigationWithSameServiceInDifferentClasses2() throws Exception {
+    public void testServiceNavigationWithSameServiceInDifferentClasses2() throws Exception {
         List<String> expectedItemLabels = new ArrayList<>();
         expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design");
         expectedItemLabels.add("BasicService2");
@@ -375,20 +375,21 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works
+     * in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the 9 index position</li>
-     * <li>The service call at cursor position is present in two different classes</li>
-     * <li>The service from which the navigation is done is the second one in the wizard.</li>
+     * <li>The service call at cursor position is present in two different
+     * classes</li>
+     * <li>The service from which the navigation is done is the second one in
+     * the wizard.</li>
      * </ul>
-     * <BR>
-     * TODO: Test to fix: Disabled since commits corresponding to bug 527109.
      * 
      * @exception Exception
      *                if a problem occurs.
      */
-    public void _testDualServiceNavigationWithAqlInterpreter2() throws Exception {
+    public void testDualServiceNavigationWithAqlInterpreter2() throws Exception {
         List<String> expectedItemLabels = new ArrayList<>();
         expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design");
         expectedItemLabels.add("BasicService2");

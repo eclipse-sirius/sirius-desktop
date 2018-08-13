@@ -575,7 +575,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
          */
         private void createCenterLabelFigure(final EObject element) {
             attachmentToEdgeNameFigure = addNewAttachmentFigure();
-            fFigureViewEdgeNameFigure = getLabelFigure(LabelViewConstants.MIDDLE_LOCATION, attachmentToEdgeNameFigure);
+            fFigureViewEdgeNameFigure = new SiriusWrapLabelWithAttachmentWithModel(LabelViewConstants.MIDDLE_LOCATION, attachmentToEdgeNameFigure);
 
             if (element instanceof DEdge) {
                 DEdge edge = (DEdge) element;
@@ -597,7 +597,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         private void createBeginLabelFigure(final EObject element) {
             attachmentToEdgeBeginNameFigure = addNewAttachmentFigure();
 
-            fFigureViewEdgeBeginNameFigure = getLabelFigure(LabelViewConstants.SOURCE_LOCATION, attachmentToEdgeBeginNameFigure);
+            fFigureViewEdgeBeginNameFigure = new SiriusWrapLabelWithAttachmentWithModel(LabelViewConstants.SOURCE_LOCATION, attachmentToEdgeBeginNameFigure);
             if (element instanceof DEdge) {
                 DEdge edge = (DEdge) element;
                 fFigureViewEdgeBeginNameFigure.setText(edge.getBeginLabel());
@@ -632,7 +632,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         private void createEndLabelFigure(final EObject element) {
             attachmentToEdgeEndNameFigure = addNewAttachmentFigure();
 
-            fFigureViewEdgeEndNameFigure = getLabelFigure(LabelViewConstants.TARGET_LOCATION, attachmentToEdgeEndNameFigure);
+            fFigureViewEdgeEndNameFigure = new SiriusWrapLabelWithAttachmentWithModel(LabelViewConstants.TARGET_LOCATION, attachmentToEdgeEndNameFigure);
             if (element instanceof DEdge) {
                 DEdge edge = (DEdge) element;
                 fFigureViewEdgeEndNameFigure.setText(edge.getEndLabel());
@@ -645,10 +645,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             fFigureViewEdgeEndNameFigure.setTextWrapAlignment(PositionConstants.CENTER);
             this.add(fFigureViewEdgeEndNameFigure);
 
-        }
-
-        private SiriusWrapLabelWithAttachment getLabelFigure(int location, Polyline theAttachmentToEdgeNameFigure) {
-            return new SiriusWrapLabelWithAttachmentWithModel(location, attachmentToEdgeNameFigure);
         }
 
         @SuppressWarnings("deprecation")

@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.eclipse.gmf.runtime.common.ui.action.ActionMenuManager;
+import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
@@ -105,6 +106,22 @@ public class ModesMenuManager extends ActionMenuManager {
         } catch (InvocationTargetException e) {
             /* do nothing should not happen */
         }
+    }
+
+    @Override
+    protected void itemRemoved(IContributionItem item) {
+        if (item instanceof ActionContributionItem) {
+            IAction action = ((ActionContributionItem) item).getAction();
+            if (action instanceof IDisposableAction) {
+                ((IDisposableAction) action).dispose();
+            }
+        }
+    }
+
+    @Override
+    public void dispose() {
+        removeAll();
+        super.dispose();
     }
 
     @Override
