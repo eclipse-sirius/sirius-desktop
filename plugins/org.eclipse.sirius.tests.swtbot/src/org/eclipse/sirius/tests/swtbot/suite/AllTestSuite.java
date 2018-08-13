@@ -127,7 +127,6 @@ public class AllTestSuite extends TestCase {
      */
     public static void addGerritPart1(TestSuite suite) {
         suite.addTest(new JUnit4TestAdapter(SWTBotBundlesReport.class));
-        suite.addTestSuite(ServiceNavigationTest.class);
         suite.addTestSuite(ContentAssistTest.class);
         suite.addTestSuite(FeatureAssistTest.class);
         suite.addTestSuite(ResizeKindEditorTest.class);
@@ -242,6 +241,7 @@ public class AllTestSuite extends TestCase {
 
         addGerritPart1(suite);
 
+        suite.addTestSuite(ServiceNavigationTest.class);
         // suite.addTest(PseudoClearcaseSwtbotTestSuite.suite());
         STDSwtbotTestSuite.addPart1(suite);
         suite.addTest(UMLSwtbotTestSuite.suite());
