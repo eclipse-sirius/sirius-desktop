@@ -42,6 +42,8 @@ When checked, a dialog asking you to save migrated resources is shown in the fol
 * When you open the session by double clicking on the aird or VSM or by using the contextual menu _open_.
 * When you open your bundle whereas a Sirius editor was opened previously.
 
+The side effect of this operation is that your model will not be openable in previous version of the product. So you should backup your models if you still want to be able to open it in the previous version.
+
 h3(#UICHanges). User Interface Changes
 
 You will notice some radical changes in the user interface. The most important change is the disappearance of the _Model Content_ view. It has been replaced with a streamlined UI which integrates directly into the Eclipse explorer view. The notion of "Local Session" has disappeared from the user interface; its management has been made as transparent as possible so you do not have to deal with it except in some very specific circumstances.
