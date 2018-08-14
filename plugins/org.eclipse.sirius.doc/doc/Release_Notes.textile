@@ -12,6 +12,8 @@ h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> A new preference has been added in the Sirius preference panel. It allows Sirius to ask the user if he wants to save session resources after an automatic migration. If the new preference is ticked, the pop-up will only appear for session opening caused by a direct action of the user (i.e. opening a diagram or unfolding the resources in the model explorer). You can refer to the "user documentation ":user/general/Modeling%20Project.html#Migration for more details. 
 * <span class="label label-info">Modified</span> The tool "Link Note", introduced in Sirius 6.0.0, has been renamed into "Representation Link".
+* <span class="label label-success">Added</span> A new preference has been added in the Sirius preference panel. It allows Sirius to ask the user if he wants to save session resources after an automatic migration. If the new preference is ticked, the pop-up will only appear for session opening caused by a direct action of the user (i.e. opening a diagram or unfolding the resources in the model explorer).
+* <span class="label label-success">Added</span> On sequence diagrams, it is now possible to add vertical blank spaces on standard edition mode by dragging the mouse anywhere in the canvas with the Ctrl+Shift keys pressed.  This "feature:":user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space was here since version 6.0.0 but was only accessible through the ruler.
 
 h3. Specifier-Visible Changes
 

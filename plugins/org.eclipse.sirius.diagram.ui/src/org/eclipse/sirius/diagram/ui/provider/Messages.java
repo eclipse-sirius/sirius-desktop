@@ -1553,6 +1553,8 @@ public final class Messages {
     @TranslatableMessage
     public static String DoubleClickEditPolicy_confirmDialogAsking;
 
+    @TranslatableMessage
+    public static String UndoRedoCapableEMFCommandFactory_insertHorizontalBlankSpaceNotImplemented;
     // CHECKSTYLE:ON
 
     private Messages() {

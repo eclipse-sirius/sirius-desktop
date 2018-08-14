@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
 import org.eclipse.gef.DragTracker;
+import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.SelectionRequest;
@@ -72,6 +73,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingProvi
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.InitializeHiddenElementsCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.SiriusBlankSpacesDragTracker;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.SynchronizeStatusFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.ordering.ViewOrderingProviderRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -146,6 +148,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         super.removeNotationalListeners();
         removeListenerFilter("ShowingMode"); //$NON-NLS-1$
     }
+
     /*
      * (non-Javadoc)
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#setVisibility(boolean)
@@ -487,9 +490,12 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
      */
     @Override
     public DragTracker getDragTracker(final Request req) {
-        if (req instanceof SelectionRequest && ((SelectionRequest) req).getLastButtonPressed() == 3) {
-            return new DeselectAllTracker(this);
+        DragTracker result = SiriusBlankSpacesDragTracker.getDragTracker(this, (GraphicalViewer) getViewer(), req, true, true);
+        if (result == null && req instanceof SelectionRequest && ((SelectionRequest) req).getLastButtonPressed() == 3) {
+            result = new DeselectAllTracker(this);
+        } else if (result == null) {
+            result = new RubberbandDragTracker();
         }
-        return new RubberbandDragTracker();
+        return result;
     }
 }

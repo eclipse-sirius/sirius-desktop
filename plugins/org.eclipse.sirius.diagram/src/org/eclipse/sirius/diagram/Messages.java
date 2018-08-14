@@ -267,9 +267,6 @@ public final class Messages {
     public static String UndoRedoCapableEMFCommandFactory_createRepresentationLabel;
 
     @TranslatableMessage
-    public static String UndoRedoCapableEMFCommandFactory_insertHorizontalBlankSpaceNotImplemented;
-
-    @TranslatableMessage
     public static String UndoRedoCapableEMFCommandFactory_insertVerticalBlankSpaceNotImplemented;
 
     @TranslatableMessage
