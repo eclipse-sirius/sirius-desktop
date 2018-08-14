@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLOptionalUtils;
+import org.eclipse.sirius.services.common.api.SiriusServicesCommonOptionalUtils;
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLConnection;
 import org.eclipse.sirius.services.graphql.internal.schema.ISiriusGraphQLTypesBuilder;
 import org.eclipse.sirius.services.graphql.internal.schema.directives.SiriusGraphQLCostDirective;
@@ -160,7 +160,7 @@ public class SiriusGraphQLFileTypesBuilder implements ISiriusGraphQLTypesBuilder
                     .map(IFile.class::cast);
             
             Optional<Session> optionalSession = optionalFile.map(IFile::getProject)
-                    .flatMap(SiriusGraphQLOptionalUtils::toSession);
+                    .flatMap(SiriusServicesCommonOptionalUtils::toSession);
 
             List<DRepresentation> representations = new ArrayList<>();
             if (optionalFile.isPresent() && optionalSession.isPresent()) {
@@ -217,10 +217,10 @@ public class SiriusGraphQLFileTypesBuilder implements ISiriusGraphQLTypesBuilder
                     .map(IFile.class::cast);
             
             Optional<Session> optionalSession = optionalFile.map(IFile::getProject)
-                    .flatMap(SiriusGraphQLOptionalUtils::toSession);
+                    .flatMap(SiriusServicesCommonOptionalUtils::toSession);
             
             Optional<Resource> optionalResource = optionalFile.flatMap(iFile -> {
-                return optionalSession.flatMap(session -> SiriusGraphQLOptionalUtils.toResource(session, iFile));
+                return optionalSession.flatMap(session -> SiriusServicesCommonOptionalUtils.toResource(session, iFile));
             });
             
             return optionalResource.map(Resource::getContents).orElseGet(BasicEList::new);

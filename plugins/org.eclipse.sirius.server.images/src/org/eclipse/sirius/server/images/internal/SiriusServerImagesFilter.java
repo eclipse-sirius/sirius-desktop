@@ -27,7 +27,18 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.services.common.api.SiriusServicesCommonOptionalUtils;
 import org.osgi.framework.Bundle;
 
 /**
@@ -75,6 +86,11 @@ public class SiriusServerImagesFilter implements Filter {
      */
     private static final String IMAGES_PATH = "/images"; //$NON-NLS-1$
 
+    /**
+     * The name of the parameter used to send the fragment of the EObject.
+     */
+    private static final String FRAGMENT = "fragment"; //$NON-NLS-1$
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         // Do nothing
@@ -86,20 +102,22 @@ public class SiriusServerImagesFilter implements Filter {
             HttpServletRequest httpServletRequest = (HttpServletRequest) request;
             HttpServletResponse httpServletResponse = (HttpServletResponse) response;
             String requestURI = httpServletRequest.getRequestURI();
-            if (this.isImage(requestURI)) {
-                this.handleImage(httpServletRequest, httpServletResponse, chain);
+            if (this.isStaticImage(requestURI)) {
+                this.handleStaticImage(httpServletRequest, httpServletResponse, chain);
+            } else if (this.isEObjectImage(httpServletRequest)) {
+                this.handleEObjectImage(httpServletRequest, httpServletResponse, chain);
             }
         }
     }
 
     /**
-     * Indicates if the given request URI matches an image path.
+     * Indicates if the given request URI matches a static image path.
      *
      * @param requestURI
      *            The URI of the request
      * @return <code>true</code> if the given request URI matches an image path.
      */
-    private boolean isImage(String requestURI) {
+    private boolean isStaticImage(String requestURI) {
         boolean isImagePath = requestURI.startsWith(IMAGES_PATH);
 
         boolean isImageExtension = requestURI.endsWith(JPG);
@@ -113,7 +131,7 @@ public class SiriusServerImagesFilter implements Filter {
     }
 
     /**
-     * Returns the image matching the given request.
+     * Returns the static image matching the given request.
      *
      * @param httpServletRequest
      *            The request
@@ -126,7 +144,7 @@ public class SiriusServerImagesFilter implements Filter {
      * @throws IOException
      *             In case of error
      */
-    private void handleImage(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain chain) throws ServletException, IOException {
+    private void handleStaticImage(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain chain) throws ServletException, IOException {
         // requestURI = /images/projectname/path/to/a/folder/image.png
         String requestURI = httpServletRequest.getRequestURI();
 
@@ -205,6 +223,99 @@ public class SiriusServerImagesFilter implements Filter {
             byteRead += index;
         }
         return byteRead;
+    }
+
+    /**
+     * Indicates if the given request potentially matches the path of an EObject's image.
+     * 
+     * @param httpServletRequest
+     *            The HTTP request
+     * @return <code>true</code> if the request matches an EObject's image path, <code>false</code> otherwise
+     */
+    private boolean isEObjectImage(HttpServletRequest httpServletRequest) {
+        boolean isImagePath = httpServletRequest.getRequestURI().startsWith(IMAGES_PATH);
+        boolean hasFragment = httpServletRequest.getParameterMap().containsKey(FRAGMENT);
+
+        return isImagePath && hasFragment;
+    }
+
+    /**
+     * Handles the retrieval of the image of the EObject matching the given request.
+     * 
+     * @param httpServletRequest
+     *            The request
+     * @param httpServletResponse
+     *            The response
+     * @param chain
+     *            The filter chain
+     * @throws ServletException
+     *             In case of error
+     * @throws IOException
+     *             In case of error
+     */
+    private void handleEObjectImage(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain chain) throws ServletException, IOException {
+        // requestURI = /images/projectname/path/to/a/folder/resource
+        String requestURI = httpServletRequest.getRequestURI();
+
+        // segments = ["", "images", "projectname", "path", "to", "a", "folder", "resource"]
+        String[] segments = requestURI.split("/"); //$NON-NLS-1$
+        if (segments.length >= 4) {
+            String projectName = segments[2];
+
+            // resourcePath = path/to/a/folder/resource
+            String resourcePath = Arrays.stream(segments).skip(3).reduce("", (string1, string2) -> { //$NON-NLS-1$
+                return string1 + '/' + string2;
+            });
+
+            String eObjectFragment = httpServletRequest.getParameter(FRAGMENT);
+
+            Optional<IProject> optionalProject = Optional.ofNullable(ResourcesPlugin.getWorkspace().getRoot().getProject(projectName));
+            Optional<IFile> optionalFile = optionalProject.map(iProject -> iProject.getFile(new Path(resourcePath)));
+            Optional<Session> optionalSession = optionalProject.flatMap(SiriusServicesCommonOptionalUtils::toSession);
+            Optional<Resource> optionalResource = optionalFile.flatMap(iFile -> {
+                return optionalSession.flatMap(session -> SiriusServicesCommonOptionalUtils.toResource(session, iFile));
+            });
+
+            Optional<EObject> optionalEObject = optionalResource.map(resource -> resource.getEObject(eObjectFragment));
+            Optional<URL> optionalImageURL = optionalEObject.flatMap(this::toImageURL);
+
+            if (optionalImageURL.isPresent()) {
+                URL imageURL = optionalImageURL.get();
+                URLConnection connection = imageURL.openConnection();
+
+                httpServletResponse.setContentLength(connection.getContentLength());
+                httpServletResponse.setContentType(this.getContentType(imageURL.toString()));
+                try (InputStream inputStream = connection.getInputStream(); OutputStream outputStream = httpServletResponse.getOutputStream();) {
+                    this.copy(inputStream, outputStream);
+                    outputStream.flush();
+                }
+            } else {
+                chain.doFilter(httpServletRequest, httpServletResponse);
+            }
+        } else {
+            chain.doFilter(httpServletRequest, httpServletResponse);
+        }
+    }
+
+    /**
+     * Retrieves the URL of the image for the given eObject or an empty optional if none could be found.
+     * 
+     * @param eObject
+     *            The eObject
+     * @return An optional with the URL of the image for the given EObject
+     */
+    private Optional<URL> toImageURL(EObject eObject) {
+        // @formatter:off
+        ComposedAdapterFactory composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+        composedAdapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+        
+        return Optional.of(composedAdapterFactory.adapt(eObject.eClass(), IItemLabelProvider.class))
+                .filter(IItemLabelProvider.class::isInstance)
+                .map(IItemLabelProvider.class::cast)
+                .map(labelProvider -> labelProvider.getImage(eObject))
+                .filter(URL.class::isInstance)
+                .map(URL.class::cast);
+        // @formatter:on
     }
 
     @Override

@@ -26,7 +26,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLOptionalUtils;
+import org.eclipse.sirius.services.common.api.SiriusServicesCommonOptionalUtils;
 import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLPlugin;
 import org.eclipse.sirius.services.graphql.internal.entities.SiriusGraphQLConnection;
 import org.eclipse.sirius.services.graphql.internal.schema.ISiriusGraphQLTypesBuilder;
@@ -240,7 +240,7 @@ public class SiriusGraphQLProjectTypesBuilder implements ISiriusGraphQLTypesBuil
                     .filter(IProject.class::isInstance)
                     .map(IProject.class::cast);
             
-            return optionalProject.flatMap(SiriusGraphQLOptionalUtils::toSession)
+            return optionalProject.flatMap(SiriusServicesCommonOptionalUtils::toSession)
                     .map(session -> new ArrayList<>(session.getSelectedViewpoints(true)))
                     .orElseGet(ArrayList::new);
         });

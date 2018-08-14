@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.services.common.api.SiriusServicesCommonOptionalUtils;
 import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLOptionalUtils;
 import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLProjectNameArgument;
 import org.eclipse.sirius.services.graphql.internal.schema.query.resources.SiriusGraphQLProjectTypesBuilder;
@@ -120,7 +121,7 @@ public final class SiriusGraphQLCreateRepresentationField {
         // @formatter:off
         return environment -> {
             Optional<IProject> optionalProject = SiriusGraphQLOptionalUtils.projectFromName(environment.getArgument(SiriusGraphQLProjectNameArgument.PROJECT_NAME_ARG));
-            Optional<Session> optionalSession = optionalProject.flatMap(SiriusGraphQLOptionalUtils::toSession);
+            Optional<Session> optionalSession = optionalProject.flatMap(SiriusServicesCommonOptionalUtils::toSession);
             
             Function<IProject, Optional<IFile>> getFile = iProject -> Optional.of(environment.getArgument(RESOURCE_PATH_ARG))
                     .filter(String.class::isInstance)
@@ -131,7 +132,7 @@ public final class SiriusGraphQLCreateRepresentationField {
             Optional<IFile> optionalFile = optionalProject.flatMap(getFile);
             
             Optional<Resource> optionalResource = optionalFile.flatMap(iFile -> {
-                return optionalSession.flatMap(session -> SiriusGraphQLOptionalUtils.toResource(session, iFile));
+                return optionalSession.flatMap(session -> SiriusServicesCommonOptionalUtils.toResource(session, iFile));
             });
             
             Map<String, String> description = environment.<Map<String, String>>getArgument(DESCRIPTION_ARG);

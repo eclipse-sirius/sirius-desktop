@@ -36,6 +36,7 @@ On top of those, you will encounter those additional components:
 * ```org.eclipse.sirius.services.graphql```
 * ```org.eclipse.sirius.server.frontend```
 * ```org.eclipse.sirius.server.frontend.workflow```
+* ```org.eclipse.sirius.services.common```
 * ```org.eclipse.sirius.server.images```
 
 The ```org.eclipse.sirius.server.backend``` component is a soon-to-be deprecated HTTP API which was released with the first implementation of the workflow. This HTTP API based on the REST principles gave users access to some information on projects, semantic resources and representations. It is replaced by the GraphQL based API.
@@ -44,7 +45,7 @@ The Sirius Server Diagram component is used to provide a Web Socket API to manip
 
 The Sirius Server GraphQL component provides the entry point used to manipulate the GraphQL API of Sirius on the web. This component uses ```org.eclipse.sirius.services.graphql``` which provides the GraphQL interpreter. The Sirius Services GraphQL component can be manipulated programmatically without any network interaction.
 
-The Sirius Server FrontEnd component is only used to provide some static resources. Those resources (html, css, js) are used to create the user interface of the Sirius Server. They are located in a folder named ```sirius-frontend``` at the root of the plugin. Those files are the result of the build of the Sirius Components repository. The Sirius Server Workflow Frontend is used to provide all the frontend resources for the workflow integatred in Eclipse. This component is not part of the Sirius Server feature and won't be included in the Sirius Server product. The Sirius Server Images component is used to provide access to images inside of plugins.
+The Sirius Server FrontEnd component is only used to provide some static resources. Those resources (html, css, js) are used to create the user interface of the Sirius Server. They are located in a folder named ```sirius-frontend``` at the root of the plugin. Those files are the result of the build of the Sirius Components repository. The Sirius Server Workflow Frontend is used to provide all the frontend resources for the workflow integatred in Eclipse. This component is not part of the Sirius Server feature and won't be included in the Sirius Server product. The Sirius Server Images component is used to provide access to images inside of plugins and images for EObjects.
 
 All the plugins necessary to have the full experience of the Sirius Server will be added to the feature ```org.eclipse.sirius.server.feature```. Additional features and plugins required for the creation of the product will be added to the feature ```org.eclipse.sirius.server.product.feature```. Optional features and plugins used to help managing the Sirius Server will be directly added to the product ```org.eclipse.sirius.server.product```. Among those plugins, you will find some Eclipse Equinox utility plugins like the support for ```p2```. The feature ```org.eclipse.equinox.p2.core.feature``` comes with the p2 console for example and the feature ```org.eclipse.equinox.p2.extras.feature``` comes with the p2 director application used to easily install new dependencies into the product.
 
@@ -339,6 +340,21 @@ If some JavaScript from ```http://www.domainA.com``` tries to contact the HTTP A
 
 In this configuration, requests coming your front-end will be considered as coming from a different domain and as such they will fail. While some options are available in front-end development tools to fix this issue, you can also fix it by setting some Cross Origin Resource Sharing (CORS) headers in your responses. With those headers, your web browser will accept to process the responses from the server. To configure the CORS, use the dedicated environment variables to allow, for example, all the origins to request data from your server with ```-Dorg.eclipse.sirius.server.cors.allowed.origin=*```.
 
+## Image HTTP API
+
+The HTTP API also provides access to static images located inside any plugin in the server. For that, use HTTP request with the following structure:
+
+```
+http://localhost:8080/images/PLUGIN_NAME/PATH_TO_IMAGE
+```
+
+For example ```http://localhost:8080/images/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif```. This API can let you easily retrieve images used by tools and mappings in a Sirius diagram. The HTTP API can also be used to retrieve the image provided by the EMF label provider with request such as:
+
+```
+http://localhost:8080/images/PROJECT_NAME/PATH_TO_RESOURCE?fragment=EOBJECT_FRAGMENT
+```
+
+For example, ```http://localhost:8080/images/basicfamily.modeling.sample/model/MyModel.basicfamily?fragment=_duh2kO9BKz_XL45```.
 
 ## GraphQL HTTP
 
