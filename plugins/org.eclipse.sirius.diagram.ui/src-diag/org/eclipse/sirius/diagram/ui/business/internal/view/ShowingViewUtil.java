@@ -266,11 +266,14 @@ public final class ShowingViewUtil {
         if (figure instanceof SiriusWrapLabel) {
             // labels do not have any view associated so we have to check the filters on the node view containing the
             // label.
-            EList<GraphicalFilter> graphicalFilters = ((DDiagramElement) correspondingView.getElement()).getGraphicalFilters();
-            boolean isLabelFiltered = graphicalFilters.stream().anyMatch(HideLabelFilter.class::isInstance) || graphicalFilters.stream().anyMatch(HideFilter.class::isInstance)
-                    || (correspondingView instanceof Edge && !((DDiagramElement) correspondingView.getElement()).isVisible());
-            if (isLabelFiltered && viewQuery.isInShowingMode()) {
-                graphics.setAlpha(50);
+            EObject element = correspondingView.getElement();
+            if (element instanceof DDiagramElement) {
+                EList<GraphicalFilter> graphicalFilters = ((DDiagramElement) element).getGraphicalFilters();
+                boolean isLabelFiltered = graphicalFilters.stream().anyMatch(HideLabelFilter.class::isInstance) || graphicalFilters.stream().anyMatch(HideFilter.class::isInstance)
+                        || (correspondingView instanceof Edge && !((DDiagramElement) correspondingView.getElement()).isVisible());
+                if (isLabelFiltered && viewQuery.isInShowingMode()) {
+                    graphics.setAlpha(50);
+                }
             }
         } else if (figure.isVisible() != correspondingView.isVisible() && viewQuery.isInShowingMode()) {
             graphics.setAlpha(50);
