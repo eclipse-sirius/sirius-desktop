@@ -18,6 +18,11 @@ package org.eclipse.sirius.services.diagram.api.entities;
 public class SiriusDiagramLabel extends AbstractSiriusDiagramElement {
 
     /**
+     * The suffix of the label.
+     */
+    public static final String LABEL_SUFFIX = "__label"; //$NON-NLS-1$
+
+    /**
      * The type of the element.
      */
     private static final String TYPE = "label"; //$NON-NLS-1$

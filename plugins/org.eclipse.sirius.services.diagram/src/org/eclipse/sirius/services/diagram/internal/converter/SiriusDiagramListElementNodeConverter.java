@@ -12,19 +12,18 @@ package org.eclipse.sirius.services.diagram.internal.converter;
 
 import java.util.Optional;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.services.diagram.api.entities.AbstractSiriusDiagramElement;
-import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramLabel;
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramListElementNode;
-import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramRGBColor;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 
 /**
  * The DNodeListElement converter.
  *
  * @author sbegaudeau
  */
-public class SiriusDiagramDNodeListElementConverter implements ISiriusDiagramElementConverter {
+public class SiriusDiagramListElementNodeConverter extends AbstractSiriusDiagramNodeConverter {
 
     /**
      * The DNodeListElement.
@@ -37,22 +36,31 @@ public class SiriusDiagramDNodeListElementConverter implements ISiriusDiagramEle
      * @param dNodeListElement
      *            The DNodeListElement
      */
-    public SiriusDiagramDNodeListElementConverter(DNodeListElement dNodeListElement) {
+    public SiriusDiagramListElementNodeConverter(DNodeListElement dNodeListElement) {
         this.dNodeListElement = dNodeListElement;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.services.diagram.internal.converter.ISiriusDiagramElementConverter#convert()
-     */
+    @Override
+    protected AbstractDNode getDNode() {
+        return this.dNodeListElement;
+    }
+
     @Override
     public Optional<AbstractSiriusDiagramElement> convert() {
-        String identifier = EcoreUtil.getURI(this.dNodeListElement).toString();
-        String semanticElementIdentifier = EcoreUtil.getURI(this.dNodeListElement.getTarget()).toString();
-        SiriusDiagramListElementNode node = new SiriusDiagramListElementNode(identifier, semanticElementIdentifier);
-        node.getChildren().add(new SiriusDiagramLabel(identifier + "__label", this.dNodeListElement.getName(), new SiriusDiagramRGBColor(0, 0, 0))); //$NON-NLS-1$
-        return Optional.of(node);
+        // @formatter:off
+        Optional<BasicLabelStyle> optionalStyle = Optional.of(this.dNodeListElement.getStyle())
+                .filter(BasicLabelStyle.class::isInstance)
+                .map(BasicLabelStyle.class::cast);
+
+        return optionalStyle.map(style -> {
+            String identifier = this.getIdentifier();
+
+            return SiriusDiagramListElementNode.newListElementNode(identifier, this.getSemanticElementIdentifier())
+                    .label(this.getLabel(identifier, style))
+                    .imagePath(this.getImagePath())
+                    .build();
+        });
+        // @formatter:on
     }
 
 }

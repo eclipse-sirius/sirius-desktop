@@ -17,6 +17,10 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.FlatContainerStyle;
+import org.eclipse.sirius.diagram.Square;
+import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.Style;
 
 /**
  * Switch used to compute the converter of a given diagram element.
@@ -85,7 +89,13 @@ public class SiriusDiagramElementSwitch {
      * @return The converter for a DNode
      */
     public ISiriusDiagramElementConverter caseDNode(DNode dNode) {
-        return new SiriusDiagramDNodeConverter(dNode);
+        Style style = dNode.getStyle();
+        if (style instanceof WorkspaceImage) {
+            return new SiriusDiagramImageNodeConverter(dNode);
+        } else if (style instanceof Square) {
+            return new SiriusDiagramSquareNodeConverter(dNode);
+        }
+        throw new IllegalArgumentException(); // Not supported yet :)
     }
 
     /**
@@ -96,7 +106,11 @@ public class SiriusDiagramElementSwitch {
      * @return The converter for a DNodeContainer
      */
     public ISiriusDiagramElementConverter caseDNodeContainer(DNodeContainer dNodeContainer) {
-        return new SiriusDiagramDNodeContainerConverter(dNodeContainer);
+        Style style = dNodeContainer.getStyle();
+        if (style instanceof FlatContainerStyle) {
+            return new SiriusDiagramGradientNodeConverter(dNodeContainer);
+        }
+        throw new IllegalArgumentException(); // Not supported yet :)
     }
 
     /**
@@ -107,7 +121,7 @@ public class SiriusDiagramElementSwitch {
      * @return The converter for a DNodeList
      */
     public ISiriusDiagramElementConverter caseDNodeList(DNodeList dNodeList) {
-        return new SiriusDiagramDNodeListConverter(dNodeList);
+        return new SiriusDiagramListNodeConverter(dNodeList);
     }
 
     /**
@@ -118,7 +132,7 @@ public class SiriusDiagramElementSwitch {
      * @return The converter for a DNodeListelement
      */
     public ISiriusDiagramElementConverter caseDNodeListElement(DNodeListElement dNodeListElement) {
-        return new SiriusDiagramDNodeListElementConverter(dNodeListElement);
+        return new SiriusDiagramListElementNodeConverter(dNodeListElement);
     }
 
     /**
@@ -129,6 +143,6 @@ public class SiriusDiagramElementSwitch {
      * @return The converter for a DEdge
      */
     public ISiriusDiagramElementConverter caseDEdge(DEdge dEdge) {
-        return new SiriusDiagramDEdgeConverter(dEdge);
+        return new SiriusDiagramEdgeConverter(dEdge);
     }
 }

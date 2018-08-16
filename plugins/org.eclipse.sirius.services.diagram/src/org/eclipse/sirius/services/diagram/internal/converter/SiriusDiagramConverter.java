@@ -11,11 +11,10 @@
 package org.eclipse.sirius.services.diagram.internal.converter;
 
 import java.util.Objects;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.services.diagram.api.entities.AbstractSiriusDiagramElement;
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagram;
 
 /**
@@ -51,22 +50,13 @@ public class SiriusDiagramConverter {
         // @formatter:off
         this.dDiagram.getOwnedDiagramElements().stream()
             .filter(DDiagramElement::isVisible)
-            .flatMap(this::convert)
+            .map(new SiriusDiagramElementSwitch()::doSwitch)
+            .map(ISiriusDiagramElementConverter::convert)
+            .filter(Optional::isPresent)
+            .map(Optional::get)
             .forEach(siriusDiagram.getChildren()::add);
         // @formatter:on
 
         return siriusDiagram;
-    }
-
-    /**
-     * Converts the given DDiagramElement into a Sirius diagram element.
-     *
-     * @param dDiagramElement
-     *            The DDiagramElement to convert
-     * @return The converted diagram element
-     */
-    private Stream<AbstractSiriusDiagramElement> convert(DDiagramElement dDiagramElement) {
-        ISiriusDiagramElementConverter converter = new SiriusDiagramElementSwitch().doSwitch(dDiagramElement);
-        return converter.convert().map(Stream::of).orElseGet(Stream::empty);
     }
 }

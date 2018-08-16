@@ -16,21 +16,20 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.EdgeStyle;
-import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.services.diagram.api.entities.AbstractSiriusDiagramElement;
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramEdge;
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramEdgeArrowStyle;
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramEdgeLineStyle;
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramLabel;
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramRGBColor;
-import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 
 /**
  * The DEdge converter.
  *
  * @author sbegaudeau
  */
-public class SiriusDiagramDEdgeConverter implements ISiriusDiagramElementConverter {
+public class SiriusDiagramEdgeConverter implements ISiriusDiagramElementConverter {
 
     /**
      * The DEdge.
@@ -43,7 +42,7 @@ public class SiriusDiagramDEdgeConverter implements ISiriusDiagramElementConvert
      * @param dEdge
      *            The DEdge
      */
-    public SiriusDiagramDEdgeConverter(DEdge dEdge) {
+    public SiriusDiagramEdgeConverter(DEdge dEdge) {
         this.dEdge = dEdge;
     }
 
@@ -54,35 +53,87 @@ public class SiriusDiagramDEdgeConverter implements ISiriusDiagramElementConvert
      */
     @Override
     public Optional<AbstractSiriusDiagramElement> convert() {
-        Style style = this.dEdge.getStyle();
-        if (style instanceof EdgeStyle) {
-            EdgeStyle edgeStyle = (EdgeStyle) style;
-            String identifier = EcoreUtil.getURI(this.dEdge).toString();
+        // @formatter:off
+        Optional<EdgeStyle> optionalStyle = Optional.of(this.dEdge.getStyle())
+                .filter(EdgeStyle.class::isInstance)
+                .map(EdgeStyle.class::cast);
 
-            SiriusDiagramRGBColor labelColor = SiriusDiagramColorConverter.convert(edgeStyle.getCenterLabelStyle().getLabelColor());
-            String sourceId = EcoreUtil.getURI(this.dEdge.getSourceNode()).toString();
-            String targetId = EcoreUtil.getURI(this.dEdge.getTargetNode()).toString();
+        return optionalStyle.map(style -> {
+            String identifier = this.getIdentifier();
 
-            // @formatter:off
-            SiriusDiagramRGBColor color = Optional.of(this.dEdge.getStyle())
-                    .filter(EdgeStyle.class::isInstance)
-                    .map(EdgeStyle.class::cast)
-                    .map(EdgeStyle::getStrokeColor)
-                    .map(SiriusDiagramColorConverter::convert)
-                    .orElse(SiriusDiagramColorConverter.DEFAULT_COLOR);
-            // @formatter:on
+            return SiriusDiagramEdge.newEdge(identifier, this.getSourceId(), this.getTargetId())
+                    .color(this.getColor(style))
+                    .size(this.getSize(style))
+                    .lineStyle(this.getLineStyle(style))
+                    .sourceArrowStyle(this.getArrowStyle(style.getSourceArrow()))
+                    .targetArrowStyle(this.getArrowStyle(style.getTargetArrow()))
+                    .label(this.getLabel(identifier, style.getCenterLabelStyle()))
+                    .build();
+        });
+        // @formatter:on
+    }
 
-            SiriusDiagramEdgeLineStyle lineStyle = this.convertLineStyle(edgeStyle.getLineStyle());
-            SiriusDiagramEdgeArrowStyle sourceArrowStyle = this.convertArrowStyle(edgeStyle.getSourceArrow());
-            SiriusDiagramEdgeArrowStyle targetArrowStyle = this.convertArrowStyle(edgeStyle.getTargetArrow());
+    /**
+     * Returns the identifier.
+     *
+     * @return The identifier
+     */
+    private String getIdentifier() {
+        return EcoreUtil.getURI(this.dEdge).toString();
+    }
 
-            SiriusDiagramEdge edge = new SiriusDiagramEdge(identifier, sourceId, targetId, color, lineStyle, sourceArrowStyle, targetArrowStyle);
+    /**
+     * Returns the identifier of the source of the edge.
+     *
+     * @return The identifier of the source of the edge
+     */
+    private String getSourceId() {
+        return EcoreUtil.getURI(this.dEdge.getSourceNode()).toString();
+    }
 
-            edge.getChildren().add(new SiriusDiagramLabel(identifier + "__label", this.dEdge.getName(), labelColor)); //$NON-NLS-1$
+    /**
+     * Returns the identifier of the target of the edge.
+     *
+     * @return The identifier of the target of the edge
+     */
+    private String getTargetId() {
+        return EcoreUtil.getURI(this.dEdge.getTargetNode()).toString();
+    }
 
-            return Optional.of(edge);
-        }
-        return Optional.empty();
+    /**
+     * Returns the color of the edge.
+     *
+     * @param style
+     *            The style
+     * @return The color of the edge
+     */
+    private SiriusDiagramRGBColor getColor(EdgeStyle style) {
+        return SiriusDiagramColorConverter.convert(style.getStrokeColor());
+    }
+
+    /**
+     * Returns the size of the edge.
+     *
+     * @param style
+     *            The style
+     * @return The size of the edge
+     */
+    private int getSize(EdgeStyle style) {
+        return Optional.ofNullable(style.getSize()).orElse(Integer.valueOf(1)).intValue();
+    }
+
+    /**
+     * Returns the label.
+     *
+     * @param identifier
+     *            The identifier
+     * @param style
+     *            The style
+     * @return The label
+     */
+    private SiriusDiagramLabel getLabel(String identifier, BasicLabelStyle style) {
+        SiriusDiagramRGBColor labelColor = SiriusDiagramColorConverter.convert(style.getLabelColor());
+        return new SiriusDiagramLabel(identifier + SiriusDiagramLabel.LABEL_SUFFIX, this.dEdge.getName(), labelColor);
     }
 
     /**
@@ -92,9 +143,9 @@ public class SiriusDiagramDEdgeConverter implements ISiriusDiagramElementConvert
      *            The line style
      * @return The converted Sirius line style
      */
-    private SiriusDiagramEdgeLineStyle convertLineStyle(LineStyle lineStyle) {
+    private SiriusDiagramEdgeLineStyle getLineStyle(EdgeStyle style) {
         SiriusDiagramEdgeLineStyle diagramEdgeLineStyle = SiriusDiagramEdgeLineStyle.SOLID;
-        switch (lineStyle) {
+        switch (style.getLineStyle()) {
         case SOLID_LITERAL:
             diagramEdgeLineStyle = SiriusDiagramEdgeLineStyle.SOLID;
             break;
@@ -120,7 +171,7 @@ public class SiriusDiagramDEdgeConverter implements ISiriusDiagramElementConvert
      *            The style of the arrow
      * @return The converted style of the arrow
      */
-    private SiriusDiagramEdgeArrowStyle convertArrowStyle(EdgeArrows arrowStyle) {
+    private SiriusDiagramEdgeArrowStyle getArrowStyle(EdgeArrows arrowStyle) {
         SiriusDiagramEdgeArrowStyle diagramEdgeArrowStyle = SiriusDiagramEdgeArrowStyle.NO_DECORATION;
         switch (arrowStyle) {
         case DIAMOND_LITERAL:

@@ -48,7 +48,7 @@ public class SiriusServerDiagramEndpoint extends Endpoint {
 
     /**
      * The constructor.
-     * 
+     *
      * @param diagramServiceManager
      *            The diagram service manager
      */

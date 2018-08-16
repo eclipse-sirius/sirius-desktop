@@ -17,16 +17,15 @@ import java.util.Objects;
 import org.eclipse.sirius.services.diagram.internal.converter.SiriusDiagramColorConverter;
 
 /**
- * A list-based node.
+ * A node with a gradient-based style.
  *
  * @author sbegaudeau
  */
-public final class SiriusDiagramListNode extends AbstractSiriusDiagramNode {
-
+public class SiriusDiagramGradientNode extends AbstractSiriusDiagramNode {
     /**
-     * The type of the element.
+     * The type of the node.
      */
-    private static final String TYPE = "node:listflatcontainer"; //$NON-NLS-1$
+    private static final String TYPE = "node:gradient"; //$NON-NLS-1$
 
     /**
      * The label.
@@ -37,6 +36,11 @@ public final class SiriusDiagramListNode extends AbstractSiriusDiagramNode {
      * The background color.
      */
     private SiriusDiagramRGBColor backgroundColor;
+
+    /**
+     * The foreground color.
+     */
+    private SiriusDiagramRGBColor foregroundColor;
 
     /**
      * The border color.
@@ -66,7 +70,7 @@ public final class SiriusDiagramListNode extends AbstractSiriusDiagramNode {
      * @param semanticElementIdentifier
      *            The identifier of the semantic element
      */
-    private SiriusDiagramListNode(String identifier, String semanticElementIdentifier) {
+    public SiriusDiagramGradientNode(String identifier, String semanticElementIdentifier) {
         super(identifier, semanticElementIdentifier, TYPE);
     }
 
@@ -87,6 +91,25 @@ public final class SiriusDiagramListNode extends AbstractSiriusDiagramNode {
      */
     private void setBackgroundColor(SiriusDiagramRGBColor backgroundColor) {
         this.backgroundColor = backgroundColor;
+    }
+
+    /**
+     * Return the foregroundColor.
+     *
+     * @return the foregroundColor
+     */
+    public SiriusDiagramRGBColor getForegroundColor() {
+        return this.foregroundColor;
+    }
+
+    /**
+     * Sets the foregroundColor.
+     *
+     * @param foregroundColor
+     *            the foregroundColor to set
+     */
+    private void setForegroundColor(SiriusDiagramRGBColor foregroundColor) {
+        this.foregroundColor = foregroundColor;
     }
 
     /**
@@ -175,20 +198,20 @@ public final class SiriusDiagramListNode extends AbstractSiriusDiagramNode {
     }
 
     /**
-     * Creates a new list node.
+     * Creates a new gradient node.
      *
      * @param identifier
      *            The identifier
      * @param semanticElementIdentifier
      *            The identifier of the semantic element
-     * @return A builder used to create the new list node
+     * @return A builder used to create the new gradient node
      */
-    public static Builder newListNode(String identifier, String semanticElementIdentifier) {
+    public static Builder newGradientNode(String identifier, String semanticElementIdentifier) {
         return new Builder(identifier, semanticElementIdentifier);
     }
 
     /**
-     * The builder used to create the list nodes.
+     * The builder used to create the gradient nodes.
      *
      * @author sbegaudeau
      */
@@ -210,6 +233,11 @@ public final class SiriusDiagramListNode extends AbstractSiriusDiagramNode {
          * The background color.
          */
         private SiriusDiagramRGBColor backgroundColor = SiriusDiagramColorConverter.DEFAULT_COLOR;
+
+        /**
+         * The foreground color.
+         */
+        private SiriusDiagramRGBColor foregroundColor = SiriusDiagramColorConverter.DEFAULT_COLOR;
 
         /**
          * The border color.
@@ -255,7 +283,7 @@ public final class SiriusDiagramListNode extends AbstractSiriusDiagramNode {
         }
 
         /**
-         * Sets the background color.
+         * Sets the backgroundColor.
          *
          * @param backgroundColor
          *            The background color
@@ -263,6 +291,18 @@ public final class SiriusDiagramListNode extends AbstractSiriusDiagramNode {
          */
         public Builder backgroundColor(SiriusDiagramRGBColor backgroundColor) {
             this.backgroundColor = backgroundColor;
+            return this;
+        }
+
+        /**
+         * Sets the foregroundColor.
+         *
+         * @param foregroundColor
+         *            The foreground color
+         * @return The builder
+         */
+        public Builder foregroundColor(SiriusDiagramRGBColor foregroundColor) {
+            this.foregroundColor = foregroundColor;
             return this;
         }
 
@@ -339,21 +379,21 @@ public final class SiriusDiagramListNode extends AbstractSiriusDiagramNode {
         }
 
         /**
-         * Creates the list node.
+         * Creates the gradient node.
          *
-         * @return The list node created
+         * @return The gradient node created
          */
-        public SiriusDiagramListNode build() {
-            SiriusDiagramListNode listNode = new SiriusDiagramListNode(this.identifier, this.semanticElementIdentifier);
-            listNode.setBackgroundColor(this.backgroundColor);
-            listNode.setBorderColor(this.borderColor);
-            listNode.setBorderSize(this.borderSize);
-            listNode.setImagePath(this.imagePath);
-            listNode.setLabel(this.label);
-            listNode.getPorts().addAll(this.ports);
-            listNode.getChildren().addAll(this.children);
-            return listNode;
+        public SiriusDiagramGradientNode build() {
+            SiriusDiagramGradientNode gradientNode = new SiriusDiagramGradientNode(this.identifier, this.semanticElementIdentifier);
+            gradientNode.setBackgroundColor(this.backgroundColor);
+            gradientNode.setForegroundColor(this.foregroundColor);
+            gradientNode.setBorderColor(this.borderColor);
+            gradientNode.setBorderSize(this.borderSize);
+            gradientNode.setImagePath(this.imagePath);
+            gradientNode.setLabel(this.label);
+            gradientNode.getPorts().addAll(this.ports);
+            gradientNode.getChildren().addAll(this.children);
+            return gradientNode;
         }
     }
-
 }

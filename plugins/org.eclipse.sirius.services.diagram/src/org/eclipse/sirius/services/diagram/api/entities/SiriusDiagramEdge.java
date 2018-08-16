@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.services.diagram.api.entities;
 
+import org.eclipse.sirius.services.diagram.internal.converter.SiriusDiagramColorConverter;
+
 /**
  * An edge.
  *
@@ -33,9 +35,19 @@ public class SiriusDiagramEdge extends AbstractSiriusDiagramElement {
     private String targetId;
 
     /**
+     * The label.
+     */
+    private SiriusDiagramLabel label;
+
+    /**
      * The color.
      */
     private SiriusDiagramRGBColor color;
+
+    /**
+     * The size.
+     */
+    private int size;
 
     /**
      * The style of the line.
@@ -61,24 +73,11 @@ public class SiriusDiagramEdge extends AbstractSiriusDiagramElement {
      *            The identifier of the source
      * @param targetId
      *            The identifier of the target
-     * @param color
-     *            The color
-     * @param lineStyle
-     *            The style of the line
-     * @param sourceArrowStyle
-     *            The style of the source arrow
-     * @param targetArrowStyle
-     *            The style of the target arrow
      */
-    public SiriusDiagramEdge(String identifier, String sourceId, String targetId, SiriusDiagramRGBColor color, SiriusDiagramEdgeLineStyle lineStyle, SiriusDiagramEdgeArrowStyle sourceArrowStyle,
-            SiriusDiagramEdgeArrowStyle targetArrowStyle) {
+    public SiriusDiagramEdge(String identifier, String sourceId, String targetId) {
         super(identifier, TYPE);
         this.sourceId = sourceId;
         this.targetId = targetId;
-        this.color = color;
-        this.lineStyle = lineStyle;
-        this.sourceArrowStyle = sourceArrowStyle;
-        this.targetArrowStyle = targetArrowStyle;
     }
 
     /**
@@ -109,12 +108,51 @@ public class SiriusDiagramEdge extends AbstractSiriusDiagramElement {
     }
 
     /**
+     * Sets the color.
+     *
+     * @param color
+     *            the color to set
+     */
+    private void setColor(SiriusDiagramRGBColor color) {
+        this.color = color;
+    }
+
+    /**
+     * Return the size.
+     *
+     * @return the size
+     */
+    public int getSize() {
+        return this.size;
+    }
+
+    /**
+     * Sets the size.
+     *
+     * @param size
+     *            the size to set
+     */
+    private void setSize(int size) {
+        this.size = size;
+    }
+
+    /**
      * Return the lineStyle.
      *
      * @return the lineStyle
      */
     public SiriusDiagramEdgeLineStyle getLineStyle() {
         return this.lineStyle;
+    }
+
+    /**
+     * Sets the lineStyle.
+     *
+     * @param lineStyle
+     *            the lineStyle to set
+     */
+    private void setLineStyle(SiriusDiagramEdgeLineStyle lineStyle) {
+        this.lineStyle = lineStyle;
     }
 
     /**
@@ -127,6 +165,16 @@ public class SiriusDiagramEdge extends AbstractSiriusDiagramElement {
     }
 
     /**
+     * Sets the sourceArrowStyle.
+     *
+     * @param sourceArrowStyle
+     *            the sourceArrowStyle to set
+     */
+    private void setSourceArrowStyle(SiriusDiagramEdgeArrowStyle sourceArrowStyle) {
+        this.sourceArrowStyle = sourceArrowStyle;
+    }
+
+    /**
      * Return the targetArrowStyle.
      *
      * @return the targetArrowStyle
@@ -135,4 +183,206 @@ public class SiriusDiagramEdge extends AbstractSiriusDiagramElement {
         return this.targetArrowStyle;
     }
 
+    /**
+     * Sets the targetArrowStyle.
+     *
+     * @param targetArrowStyle
+     *            the targetArrowStyle to set
+     */
+    private void setTargetArrowStyle(SiriusDiagramEdgeArrowStyle targetArrowStyle) {
+        this.targetArrowStyle = targetArrowStyle;
+    }
+
+    /**
+     * Return the label.
+     *
+     * @return the label
+     */
+    public SiriusDiagramLabel getLabel() {
+        return this.label;
+    }
+
+    /**
+     * Sets the label.
+     *
+     * @param label
+     *            the label to set
+     */
+    private void setLabel(SiriusDiagramLabel label) {
+        this.label = label;
+    }
+
+    /**
+     * Creates a new edge.
+     *
+     * @param identifier
+     *            The identifier
+     * @param sourceId
+     *            The identifier of the source of the edge
+     * @param targetId
+     *            The identifier of the target of the edge
+     * @return A builder used to create the new edge
+     */
+    public static Builder newEdge(String identifier, String sourceId, String targetId) {
+        return new Builder(identifier, sourceId, targetId);
+    }
+
+    /**
+     * The builder used to create the edges.
+     *
+     * @author sbegaudeau
+     */
+    // fields hidden by design
+    @SuppressWarnings({ "checkstyle:HiddenField", "hiding" })
+    public static final class Builder {
+
+        /**
+         * The identifier.
+         */
+        private String identifier;
+
+        /**
+         * The identifier of the source of the edge.
+         */
+        private String sourceId;
+
+        /**
+         * The identifier of the target of the edge.
+         */
+        private String targetId;
+
+        /**
+         * The color.
+         */
+        private SiriusDiagramRGBColor color = SiriusDiagramColorConverter.DEFAULT_COLOR;
+
+        /**
+         * The size.
+         */
+        private int size = 1;
+
+        /**
+         * The label.
+         */
+        private SiriusDiagramLabel label;
+
+        /**
+         * The style of the line.
+         */
+        private SiriusDiagramEdgeLineStyle lineStyle = SiriusDiagramEdgeLineStyle.SOLID;
+
+        /**
+         * The style of the source arrow.
+         */
+        private SiriusDiagramEdgeArrowStyle sourceArrowStyle = SiriusDiagramEdgeArrowStyle.NO_DECORATION;
+
+        /**
+         * The style of the target arrow.
+         */
+        private SiriusDiagramEdgeArrowStyle targetArrowStyle = SiriusDiagramEdgeArrowStyle.NO_DECORATION;
+
+        /**
+         * The constructor.
+         *
+         * @param identifier
+         *            The identifier
+         * @param sourceId
+         *            The identifier of the source of the edge
+         * @param targetId
+         *            The identifier of the target of the edge
+         */
+        private Builder(String identifier, String sourceId, String targetId) {
+            this.identifier = identifier;
+            this.sourceId = sourceId;
+            this.targetId = targetId;
+        }
+
+        /**
+         * Sets the color.
+         *
+         * @param color
+         *            The color
+         * @return The builder
+         */
+        public Builder color(SiriusDiagramRGBColor color) {
+            this.color = color;
+            return this;
+        }
+
+        /**
+         * Sets the size.
+         *
+         * @param size
+         *            The size
+         * @return The builder
+         */
+        public Builder size(int size) {
+            this.size = size;
+            return this;
+        }
+
+        /**
+         * Sets the line style.
+         *
+         * @param lineStyle
+         *            The line style
+         * @return The builder
+         */
+        public Builder lineStyle(SiriusDiagramEdgeLineStyle lineStyle) {
+            this.lineStyle = lineStyle;
+            return this;
+        }
+
+        /**
+         * Sets the source arrow style.
+         * 
+         * @param sourceArrowStyle
+         *            The source arrow style
+         * @return The builder
+         */
+        public Builder sourceArrowStyle(SiriusDiagramEdgeArrowStyle sourceArrowStyle) {
+            this.sourceArrowStyle = sourceArrowStyle;
+            return this;
+        }
+
+        /**
+         * Sets the target arrow style.
+         * 
+         * @param targetArrowStyle
+         *            The target arrow style
+         * @return The builder
+         */
+        public Builder targetArrowStyle(SiriusDiagramEdgeArrowStyle targetArrowStyle) {
+            this.targetArrowStyle = targetArrowStyle;
+            return this;
+        }
+
+        /**
+         * Sets the label.
+         *
+         * @param label
+         *            The label
+         * @return The builder
+         */
+        public Builder label(SiriusDiagramLabel label) {
+            this.label = label;
+            return this;
+        }
+
+        /**
+         * Creates the edge.
+         *
+         * @return The edge created
+         */
+        public SiriusDiagramEdge build() {
+            SiriusDiagramEdge edge = new SiriusDiagramEdge(this.identifier, this.sourceId, this.targetId);
+            edge.setColor(this.color);
+            edge.setSize(this.size);
+            edge.setLineStyle(this.lineStyle);
+            edge.setSourceArrowStyle(this.sourceArrowStyle);
+            edge.setTargetArrowStyle(this.targetArrowStyle);
+            edge.setLabel(this.label);
+            return edge;
+        }
+    }
 }
