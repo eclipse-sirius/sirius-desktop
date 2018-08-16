@@ -158,12 +158,14 @@ public class SiriusServerDiagramServiceManager {
      */
     public void release(String identifier) {
         synchronized (this.representation2services) {
-            SiriusDiagramService diagramService = this.identifier2services.remove(identifier);
-            this.service2identifiers.remove(diagramService);
-            String representationId = this.service2representations.remove(diagramService);
-            this.representation2services.remove(representationId);
+            Optional<SiriusDiagramService> optionalDiagramService = Optional.ofNullable(this.identifier2services.remove(identifier));
+            optionalDiagramService.ifPresent(diagramService -> {
+                this.service2identifiers.remove(diagramService);
+                String representationId = this.service2representations.remove(diagramService);
+                this.representation2services.remove(representationId);
 
-            diagramService.dispose();
+                diagramService.dispose();
+            });
         }
     }
 }

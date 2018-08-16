@@ -15,7 +15,9 @@ import java.util.Optional;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.services.diagram.api.entities.AbstractSiriusDiagramElement;
+import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramLabel;
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramListElementNode;
+import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramRGBColor;
 
 /**
  * The DNodeListElement converter.
@@ -49,6 +51,7 @@ public class SiriusDiagramDNodeListElementConverter implements ISiriusDiagramEle
         String identifier = EcoreUtil.getURI(this.dNodeListElement).toString();
         String semanticElementIdentifier = EcoreUtil.getURI(this.dNodeListElement.getTarget()).toString();
         SiriusDiagramListElementNode node = new SiriusDiagramListElementNode(identifier, semanticElementIdentifier);
+        node.getChildren().add(new SiriusDiagramLabel(identifier + "__label", this.dNodeListElement.getName(), new SiriusDiagramRGBColor(0, 0, 0))); //$NON-NLS-1$
         return Optional.of(node);
     }
 

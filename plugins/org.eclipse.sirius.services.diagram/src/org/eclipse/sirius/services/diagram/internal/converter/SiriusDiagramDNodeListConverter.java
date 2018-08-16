@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.services.diagram.internal.converter;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -21,7 +23,7 @@ import org.eclipse.sirius.services.diagram.api.entities.AbstractSiriusDiagramEle
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramLabel;
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramListNode;
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramRGBColor;
-import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.services.diagram.internal.SiriusDiagramPlugin;
 
 /**
  * The DNodeList converter.
@@ -29,6 +31,11 @@ import org.eclipse.sirius.viewpoint.Style;
  * @author sbegaudeau
  */
 public class SiriusDiagramDNodeListConverter implements ISiriusDiagramElementConverter {
+
+    /**
+     * The suffix of the label.
+     */
+    private static final String LABEL_SUFFIX = "__label"; //$NON-NLS-1$
 
     /**
      * The DNodeList.
@@ -52,31 +59,116 @@ public class SiriusDiagramDNodeListConverter implements ISiriusDiagramElementCon
      */
     @Override
     public Optional<AbstractSiriusDiagramElement> convert() {
-        Style style = this.dNodeList.getStyle();
-        if (style instanceof FlatContainerStyle) {
-            FlatContainerStyle flatContainerStyle = (FlatContainerStyle) style;
-            String identifier = EcoreUtil.getURI(this.dNodeList).toString();
-            String semanticElementIdentifier = EcoreUtil.getURI(this.dNodeList.getTarget()).toString();
+        // @formatter:off
+        Optional<FlatContainerStyle> optionalStyle = Optional.of(this.dNodeList.getStyle())
+                .filter(FlatContainerStyle.class::isInstance)
+                .map(FlatContainerStyle.class::cast);
 
-            SiriusDiagramRGBColor labelColor = SiriusDiagramColorConverter.convert(flatContainerStyle.getLabelColor());
+        return optionalStyle.map(style -> {
+            String identifier = this.getIdentifier();
 
-            SiriusDiagramRGBColor backgroundColor = SiriusDiagramColorConverter.convert(flatContainerStyle.getBackgroundColor());
-            SiriusDiagramRGBColor borderColor = SiriusDiagramColorConverter.convert(flatContainerStyle.getBorderColor());
-            int borderSize = Optional.ofNullable(flatContainerStyle.getBorderSize()).orElse(Integer.valueOf(1)).intValue();
+            return SiriusDiagramListNode.newListNode(identifier, this.getSemanticElementIdentifier())
+                    .backgroundColor(this.getBackgroundColor(style))
+                    .bordercolor(this.getBorderColor(style))
+                    .borderSize(this.getBorderSize(style))
+                    .label(this.getLabel(identifier, style))
+                    .imagePath(this.getImagePath())
+                    .withChildren(this.getChildren())
+                    .build();
+        });
+        // @formatter:on
+    }
 
-            SiriusDiagramListNode node = new SiriusDiagramListNode(identifier, semanticElementIdentifier, backgroundColor, borderColor, borderSize);
-            node.getChildren().add(new SiriusDiagramLabel(identifier + "__label", this.dNodeList.getName(), labelColor)); //$NON-NLS-1$
+    /**
+     * Returns the identifier.
+     * 
+     * @return The identifier
+     */
+    private String getIdentifier() {
+        return EcoreUtil.getURI(this.dNodeList).toString();
+    }
 
-         // @formatter:off
-            this.dNodeList.getOwnedElements().stream()
-                .filter(DDiagramElement::isVisible)
-                .flatMap(this::convert)
-                .forEach(node.getChildren()::add);
-            // @formatter:on
+    /**
+     * Returns the identifier of the semantic element.
+     * 
+     * @return The identifier of the semantic element
+     */
+    private String getSemanticElementIdentifier() {
+        return EcoreUtil.getURI(this.dNodeList.getTarget()).toString();
+    }
 
-            return Optional.of(node);
-        }
-        return Optional.empty();
+    /**
+     * Returns the background color.
+     * 
+     * @param style
+     *            The style
+     * @return The background color
+     */
+    private SiriusDiagramRGBColor getBackgroundColor(FlatContainerStyle style) {
+        return SiriusDiagramColorConverter.convert(style.getBackgroundColor());
+    }
+
+    /**
+     * Returns the border color.
+     * 
+     * @param style
+     *            The style
+     * @return The border color
+     */
+    private SiriusDiagramRGBColor getBorderColor(FlatContainerStyle style) {
+        return SiriusDiagramColorConverter.convert(style.getBorderColor());
+    }
+
+    /**
+     * Returns the border size.
+     * 
+     * @param style
+     *            The style
+     * @return The border size
+     */
+    private int getBorderSize(FlatContainerStyle style) {
+        return Optional.ofNullable(style.getBorderSize()).orElse(Integer.valueOf(1)).intValue();
+    }
+
+    /**
+     * Returns the label.
+     * 
+     * @param identifier
+     *            The identifier
+     * @param style
+     *            The style
+     * @return The label
+     */
+    private SiriusDiagramLabel getLabel(String identifier, FlatContainerStyle style) {
+        SiriusDiagramRGBColor labelColor = SiriusDiagramColorConverter.convert(style.getLabelColor());
+        return new SiriusDiagramLabel(identifier + LABEL_SUFFIX, this.dNodeList.getName(), labelColor);
+    }
+
+    /**
+     * Returns the path of the image.
+     * 
+     * @return The path of the image
+     */
+    private String getImagePath() {
+        // @formatter:off
+        return SiriusDiagramPlugin.getPlugin().getImagePathProvider()
+                    .flatMap(provider -> provider.getLabelProviderImagePath(this.dNodeList.getTarget()))
+                    .orElse(null);
+        // @formatter:on
+    }
+
+    /**
+     * Returns the list of the children.
+     *
+     * @return The list of the children
+     */
+    private List<AbstractSiriusDiagramElement> getChildren() {
+        // @formatter:off
+        return this.dNodeList.getOwnedElements().stream()
+            .filter(DDiagramElement::isVisible)
+            .flatMap(this::convertDiagramElement)
+            .collect(Collectors.toList());
+        // @formatter:on
     }
 
     /**
@@ -86,9 +178,14 @@ public class SiriusDiagramDNodeListConverter implements ISiriusDiagramElementCon
      *            The DDiagramElement to convert
      * @return The converted diagram element
      */
-    private Stream<AbstractSiriusDiagramElement> convert(DDiagramElement dDiagramElement) {
+    private Stream<AbstractSiriusDiagramElement> convertDiagramElement(DDiagramElement dDiagramElement) {
         ISiriusDiagramElementConverter converter = new SiriusDiagramElementSwitch().doSwitch(dDiagramElement);
-        return converter.convert().map(Stream::of).orElseGet(Stream::empty);
+
+        // @formatter:off
+        return converter.convert()
+                .map(Stream::of)
+                .orElseGet(Stream::empty);
+        // @formatter:on
     }
 
 }

@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.services.diagram.api.entities.AbstractSiriusDiagramElement;
 import org.eclipse.sirius.services.diagram.api.entities.SiriusDiagramImageNode;
+import org.eclipse.sirius.services.diagram.internal.SiriusDiagramPlugin;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
@@ -65,8 +66,8 @@ public class SiriusDiagramDNodeConverter implements ISiriusDiagramElementConvert
 
             String identifier = EcoreUtil.getURI(this.dNode).toString();
             String semanticElementIdentifier = EcoreUtil.getURI(this.dNode.getTarget()).toString();
-            String workspacePath = workspaceImage.getWorkspacePath();
-            String imagePath = "http://localhost:8080/images" + workspacePath; //$NON-NLS-1$
+
+            String imagePath = SiriusDiagramPlugin.getPlugin().getImagePathProvider().flatMap(provider -> provider.getStaticImagePath(workspaceImage)).orElse(""); //$NON-NLS-1$
 
             SiriusDiagramImageNode node = new SiriusDiagramImageNode(identifier, semanticElementIdentifier, imagePath);
             node.getChildren().addAll(borderedNodes);

@@ -38,6 +38,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.server.images.api.ISiriusServerImagesConstants;
 import org.eclipse.sirius.services.common.api.SiriusServicesCommonOptionalUtils;
 import org.osgi.framework.Bundle;
 
@@ -81,16 +82,6 @@ public class SiriusServerImagesFilter implements Filter {
     /** The svg mime type. */
     private static final String SVG_MIME_TYPE = "image/svg+xml"; //$NON-NLS-1$
 
-    /**
-     * The path of the images API.
-     */
-    private static final String IMAGES_PATH = "/images"; //$NON-NLS-1$
-
-    /**
-     * The name of the parameter used to send the fragment of the EObject.
-     */
-    private static final String FRAGMENT = "fragment"; //$NON-NLS-1$
-
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         // Do nothing
@@ -118,7 +109,7 @@ public class SiriusServerImagesFilter implements Filter {
      * @return <code>true</code> if the given request URI matches an image path.
      */
     private boolean isStaticImage(String requestURI) {
-        boolean isImagePath = requestURI.startsWith(IMAGES_PATH);
+        boolean isImagePath = requestURI.startsWith(ISiriusServerImagesConstants.IMAGES_PATH);
 
         boolean isImageExtension = requestURI.endsWith(JPG);
         isImageExtension = isImageExtension || requestURI.endsWith(JPEG);
@@ -233,8 +224,8 @@ public class SiriusServerImagesFilter implements Filter {
      * @return <code>true</code> if the request matches an EObject's image path, <code>false</code> otherwise
      */
     private boolean isEObjectImage(HttpServletRequest httpServletRequest) {
-        boolean isImagePath = httpServletRequest.getRequestURI().startsWith(IMAGES_PATH);
-        boolean hasFragment = httpServletRequest.getParameterMap().containsKey(FRAGMENT);
+        boolean isImagePath = httpServletRequest.getRequestURI().startsWith(ISiriusServerImagesConstants.IMAGES_PATH);
+        boolean hasFragment = httpServletRequest.getParameterMap().containsKey(ISiriusServerImagesConstants.FRAGMENT);
 
         return isImagePath && hasFragment;
     }
@@ -267,7 +258,7 @@ public class SiriusServerImagesFilter implements Filter {
                 return string1 + '/' + string2;
             });
 
-            String eObjectFragment = httpServletRequest.getParameter(FRAGMENT);
+            String eObjectFragment = httpServletRequest.getParameter(ISiriusServerImagesConstants.FRAGMENT);
 
             Optional<IProject> optionalProject = Optional.ofNullable(ResourcesPlugin.getWorkspace().getRoot().getProject(projectName));
             Optional<IFile> optionalFile = optionalProject.map(iProject -> iProject.getFile(new Path(resourcePath)));
@@ -309,7 +300,7 @@ public class SiriusServerImagesFilter implements Filter {
         ComposedAdapterFactory composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
         composedAdapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
         
-        return Optional.of(composedAdapterFactory.adapt(eObject.eClass(), IItemLabelProvider.class))
+        return Optional.of(composedAdapterFactory.adapt(eObject, IItemLabelProvider.class))
                 .filter(IItemLabelProvider.class::isInstance)
                 .map(IItemLabelProvider.class::cast)
                 .map(labelProvider -> labelProvider.getImage(eObject))
