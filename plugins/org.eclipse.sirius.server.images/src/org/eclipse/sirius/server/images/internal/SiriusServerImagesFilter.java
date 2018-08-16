@@ -16,7 +16,9 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -35,6 +37,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.sirius.business.api.session.Session;
@@ -268,10 +271,10 @@ public class SiriusServerImagesFilter implements Filter {
             });
 
             Optional<EObject> optionalEObject = optionalResource.map(resource -> resource.getEObject(eObjectFragment));
-            Optional<URL> optionalImageURL = optionalEObject.flatMap(this::toImageURL);
-
-            if (optionalImageURL.isPresent()) {
-                URL imageURL = optionalImageURL.get();
+            Optional<Object> optionalImage = optionalEObject.flatMap(this::toImage);
+            Optional<URL> optionalURL = optionalImage.flatMap(this::toURL);
+            if (optionalURL.isPresent()) {
+                URL imageURL = optionalURL.get();
                 URLConnection connection = imageURL.openConnection();
 
                 httpServletResponse.setContentLength(connection.getContentLength());
@@ -289,13 +292,40 @@ public class SiriusServerImagesFilter implements Filter {
     }
 
     /**
-     * Retrieves the URL of the image for the given eObject or an empty optional if none could be found.
+     * Converts the given image object to an URL.
+     * 
+     * @param object
+     *            The image object
+     * @return An optional containing an URL or an empty optional
+     */
+    private Optional<URL> toURL(Object object) {
+        // @formatter:off
+        Optional<URL> optionalURL = Optional.of(object)
+                .filter(URL.class::isInstance)
+                .map(URL.class::cast);
+        
+        if (!optionalURL.isPresent()) {
+            optionalURL = Optional.of(object)
+                    .filter(ComposedImage.class::isInstance)
+                    .map(ComposedImage.class::cast)
+                    .map(ComposedImage::getImages)
+                    .map(Collection::stream)
+                    .flatMap(Stream::findFirst)
+                    .filter(URL.class::isInstance)
+                    .map(URL.class::cast);
+        }
+        // @formatter:on
+        return optionalURL;
+    }
+
+    /**
+     * Retrieves the image for the given eObject or an empty optional if none could be found.
      * 
      * @param eObject
      *            The eObject
-     * @return An optional with the URL of the image for the given EObject
+     * @return An optional with the image for the given EObject
      */
-    private Optional<URL> toImageURL(EObject eObject) {
+    private Optional<Object> toImage(EObject eObject) {
         // @formatter:off
         ComposedAdapterFactory composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
         composedAdapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
@@ -303,9 +333,7 @@ public class SiriusServerImagesFilter implements Filter {
         return Optional.of(composedAdapterFactory.adapt(eObject, IItemLabelProvider.class))
                 .filter(IItemLabelProvider.class::isInstance)
                 .map(IItemLabelProvider.class::cast)
-                .map(labelProvider -> labelProvider.getImage(eObject))
-                .filter(URL.class::isInstance)
-                .map(URL.class::cast);
+                .map(labelProvider -> labelProvider.getImage(eObject));
         // @formatter:on
     }
 
