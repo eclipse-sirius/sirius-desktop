@@ -14,7 +14,7 @@ then
     FAE=" -fae"
 fi
 
-MAVEN_COMMAND="SWT_GTK3=1 mvn -Dplatform-version-name="$PLATFORM" -Dbuild-folder-name="$BUILD_FOLDER" -Declipse.p2.mirrors="$USE_P2_MIRRORS" -f "$BUILD_POM" -Pfull,headless,"$TESTS_SUITES$FAE" clean "$GOAL
+MAVEN_COMMAND="SWT_GTK3=1 mvn -Dplatform-version-name="$PLATFORM" -Dbuild-folder-name="$BUILD_FOLDER" -Declipse.p2.mirrors="$USE_P2_MIRRORS" -f "$BUILD_POM" -Pfull,headless,headless-server,"$TESTS_SUITES$FAE" clean "$GOAL
 
 echo ""
 echo ""
