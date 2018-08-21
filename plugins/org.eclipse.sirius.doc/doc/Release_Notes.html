@@ -89,6 +89,12 @@
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
 		<h2 id="sirius6.1.0">Changes in Sirius 6.1.0</h2>
+		<p>
+			<em>Note:</em> The new (and still experimental) 
+			<em>Workflow</em> and 
+			<em>Server</em> features depend on a specific version of Eclipse Jetty which is available in the main Eclipse Photon repository but not from Oxygen repository. If you want to install these inside an Oxygen-based environment you need to explicitly register the 
+			<code>http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.10.v20180503/</code> p2 repository for the dependencies to resolve.
+		</p>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new preference has been added in the Sirius preference panel. It allows Sirius to ask the user if he wants to save session resources after an automatic migration. If the new preference is ticked, the pop-up will only appear for session opening caused by a direct action of the user (i.e. opening a diagram or unfolding the resources in the model explorer). You can refer to the 
