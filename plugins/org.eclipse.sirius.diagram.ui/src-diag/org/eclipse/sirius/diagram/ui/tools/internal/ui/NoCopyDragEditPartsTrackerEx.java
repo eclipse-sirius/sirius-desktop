@@ -93,16 +93,18 @@ public class NoCopyDragEditPartsTrackerEx extends SnapToAllDragEditPartsTracker 
     private boolean isAuthorized() {
         boolean isAuthorized = true;
         EditPart movedEditPart = getSourceEditPart();
-        EditPartQuery editPartQuery = new EditPartQuery((AbstractBorderedDiagramElementEditPart) movedEditPart);
-        if (movedEditPart instanceof AbstractBorderedDiagramElementEditPart && (editPartQuery.isInShowingMode() || editPartQuery.isInLayoutingMode())) {
-            // We are in layouting mode
-            EditPart targetEditPart = getTargetEditPart();
-            // Check if the target container is not the same as before move
-            boolean notSameContainer = targetEditPart != null
-                    && !(movedEditPart.getParent() == targetEditPart || targetEditPart instanceof CompartmentEditPart && targetEditPart.getParent() == movedEditPart.getParent());
-            notSameContainer = notSameContainer && (targetEditPart instanceof IGraphicalEditPart && ((IGraphicalEditPart) targetEditPart).resolveSemanticElement() instanceof DSemanticDecorator);
-            if (notSameContainer) {
-                isAuthorized = false;
+        if (movedEditPart instanceof AbstractBorderedDiagramElementEditPart) {
+            EditPartQuery editPartQuery = new EditPartQuery((IGraphicalEditPart) movedEditPart);
+            if (editPartQuery.isInShowingMode() || editPartQuery.isInLayoutingMode()) {
+                // We are in layouting mode
+                EditPart targetEditPart = getTargetEditPart();
+                // Check if the target container is not the same as before move
+                boolean notSameContainer = targetEditPart != null
+                        && !(movedEditPart.getParent() == targetEditPart || targetEditPart instanceof CompartmentEditPart && targetEditPart.getParent() == movedEditPart.getParent());
+                notSameContainer = notSameContainer && (targetEditPart instanceof IGraphicalEditPart && ((IGraphicalEditPart) targetEditPart).resolveSemanticElement() instanceof DSemanticDecorator);
+                if (notSameContainer) {
+                    isAuthorized = false;
+                }
             }
         }
         return isAuthorized;
