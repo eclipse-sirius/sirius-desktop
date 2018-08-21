@@ -6,7 +6,7 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius6.1.0). Changes in Sirius 6.1.0
 
-_Note:_ The new (and still experimental) _Workflow_ and _Server_ features depend on a specific version of Eclipse Jetty which is available in the main Eclipse Photon repository but not from Oxygen repository. If you want to install these inside an Oxygen-based environment you need to explicitly register the @http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.10.v20180503/@ p2 repository for the dependencies to resolve.
+_Note:_ The new (and still experimental) _Workflow_ and _Server_ features depend on a specific version of Eclipse Jetty which is available in the main Eclipse Photon repository. They can not be used under Oxygen (which include older and incompatible versions of Jetty).
 
 h3. User-Visible Changes
 
