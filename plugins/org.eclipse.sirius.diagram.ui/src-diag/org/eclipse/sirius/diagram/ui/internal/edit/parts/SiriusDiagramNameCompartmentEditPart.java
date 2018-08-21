@@ -25,7 +25,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * An edit part that shows representation name/icon as a header in diagram link notes.
+ * An edit part that shows representation name/icon as a header in representation link notes.
  */
 public class SiriusDiagramNameCompartmentEditPart extends DiagramNameCompartmentEditPart {
 

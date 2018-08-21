@@ -50,7 +50,7 @@ import com.google.common.collect.Iterables;
  */
 public class SiriusNoteEditPart extends NoteEditPart {
 
-    /* this handles removal of diagram link notes when the referenced diagram is deleted */
+    /* this handles removal of representation link notes when the referenced diagram is deleted */
     static final Adapter LINK_ADAPTER = new DiagramLinkAdapter();
 
     private boolean diagramLinkMode = false;
@@ -100,7 +100,7 @@ public class SiriusNoteEditPart extends NoteEditPart {
                 addListenerFilter("ShowingMode", this, diagram.get(), DiagramPackage.eINSTANCE.getDDiagram_IsInShowingMode()); //$NON-NLS-1$
             }
         }
-        if (isLinkNote()) {
+        if (isRepresentationLink()) {
             getNotationView().eAdapters().add(LINK_ADAPTER);
         }
 
@@ -110,7 +110,7 @@ public class SiriusNoteEditPart extends NoteEditPart {
     protected void removeNotationalListeners() {
         super.removeNotationalListeners();
         removeListenerFilter("ShowingMode"); //$NON-NLS-1$
-        if (isLinkNote()) {
+        if (isRepresentationLink()) {
             getNotationView().eAdapters().remove(LINK_ADAPTER);
         }
     }
@@ -177,8 +177,8 @@ public class SiriusNoteEditPart extends NoteEditPart {
     protected void handleNotificationEvent(Notification notification) {
         super.handleNotificationEvent(notification);
 
-        // this handles link note label refresh when the linked representation name changes
-        if (isLinkNote()) {
+        // this handles representation link note label refresh when the linked representation name changes
+        if (isRepresentationLink()) {
             if (getNotationView().getElement() == notification.getNotifier() && notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME) {
                 Iterable<DiagramNameCompartmentEditPart> diagramNameCompartmentEditPartsfilter = Iterables.filter(this.getChildren(), DiagramNameCompartmentEditPart.class);
                 if (Iterables.size(diagramNameCompartmentEditPartsfilter) == 1) {
@@ -194,18 +194,18 @@ public class SiriusNoteEditPart extends NoteEditPart {
         super.createDefaultEditPolicies();
 
         // replace the default open policy with one that handles DRepresentationDescriptors
-        if (isLinkNote()) {
+        if (isRepresentationLink()) {
             removeEditPolicy(EditPolicyRoles.OPEN_ROLE);
             installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenDRepresentationEditPolicy());
         }
     }
 
     /**
-     * Is this a link note or is it a 'simple' note?
+     * Is this a diagram link or is it a 'simple' note?
      * 
-     * @return true if this is a link note, false otherwise
+     * @return true if this is a diagram link, false otherwise
      */
-    public boolean isLinkNote() {
+    public boolean isRepresentationLink() {
         return getNotationView() != null && getNotationView().getElement() instanceof DRepresentationDescriptor;
     }
 
