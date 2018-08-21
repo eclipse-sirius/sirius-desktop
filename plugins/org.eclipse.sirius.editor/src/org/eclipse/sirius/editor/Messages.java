@@ -36,7 +36,6 @@ public final class Messages {
     @TranslatableMessage
     public static String ServiceNavigator_serviceNavigationDialog_description;
 
-
     @TranslatableMessage
     public static String AddOptionOverridePropertySection_overrideButtonLabel;
 
@@ -72,6 +71,12 @@ public final class Messages {
 
     @TranslatableMessage
     public static String OptionOverrideEditorDialog_optionDescriptionLabel;
+
+    @TranslatableMessage
+    public static String CustomLayoutConfigurationDescriptionPropertySection_noLayoutAlgorithmProviderDescription;
+
+    @TranslatableMessage
+    public static String CustomLayoutConfigurationDescriptionPropertySection_noLayoutAlgorithmProviderName;
 
     // CHECKSTYLE:ON
     private Messages() {

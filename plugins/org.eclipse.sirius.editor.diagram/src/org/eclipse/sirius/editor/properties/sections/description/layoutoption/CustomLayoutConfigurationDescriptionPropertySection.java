@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.sections.description.layoutoption;
 
+import java.text.MessageFormat;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.editor.Messages;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection;
 import org.eclipse.swt.SWT;
@@ -61,14 +63,15 @@ public class CustomLayoutConfigurationDescriptionPropertySection extends Abstrac
         composite = getWidgetFactory().createFlatFormComposite(parent);
         FormData data;
 
-        String descriptionString = "";
         CustomLayoutConfiguration layout = (CustomLayoutConfiguration) eObject;
         Map<String, CustomLayoutAlgorithm> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutAlgorithms();
         CustomLayoutAlgorithm customLayoutAlgorithm = layoutProviderRegistry.get(layout.getId());
-        if (customLayoutAlgorithm != null) {
+        String descriptionString;
+        if (customLayoutAlgorithm == null) {
+            descriptionString = MessageFormat.format(Messages.CustomLayoutConfigurationDescriptionPropertySection_noLayoutAlgorithmProviderDescription, layout.getId());
+        } else {
             descriptionString = customLayoutAlgorithm.getDescription() == null ? "" : customLayoutAlgorithm.getDescription();
         }
-
         description = new Label(composite, SWT.WRAP);
         description.setText(descriptionString);
         data = new FormData();
@@ -78,8 +81,8 @@ public class CustomLayoutConfigurationDescriptionPropertySection extends Abstrac
         data.width = 100;
         description.setLayoutData(data);
         description.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-
-        nameLabel = getWidgetFactory().createCLabel(composite, customLayoutAlgorithm.getLabel());
+        String label = customLayoutAlgorithm != null ? customLayoutAlgorithm.getLabel() : Messages.CustomLayoutConfigurationDescriptionPropertySection_noLayoutAlgorithmProviderName;
+        nameLabel = getWidgetFactory().createCLabel(composite, label);
         data = new FormData();
         data.left = new FormAttachment(0, 0);
         data.right = new FormAttachment(description, -ITabbedPropertyConstants.HSPACE - 20);

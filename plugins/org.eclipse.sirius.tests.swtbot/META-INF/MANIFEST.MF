@@ -55,7 +55,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edit.ui,
  org.eclipse.gmf.runtime.diagram.ui.render,
  org.eclipse.sirius.ui.editor,
- org.eclipse.sirius.diagram.elk;bundle-version="6.0.0"
+ org.eclipse.sirius.diagram.elk,
+ org.eclipse.elk.alg.layered
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-RegisterBuddy: org.apache.log4j

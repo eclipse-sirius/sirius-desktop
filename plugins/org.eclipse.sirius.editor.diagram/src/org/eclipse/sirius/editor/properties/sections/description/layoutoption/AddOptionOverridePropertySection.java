@@ -11,6 +11,7 @@
 package org.eclipse.sirius.editor.properties.sections.description.layoutoption;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -92,7 +93,7 @@ public class AddOptionOverridePropertySection extends AbstractViewpointPropertyS
                 CustomLayoutConfiguration layout = (CustomLayoutConfiguration) eObject;
 
                 CustomLayoutAlgorithm genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getId());
-                Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
+                Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier != null ? genericLayoutProviderSupplier.getLayoutOptions() : new HashMap<>(0);
                 for (LayoutOption layoutOption : layoutOptions.values()) {
                     if (!layout.getLayoutOptions().stream().anyMatch(option -> option.getId().equals(layoutOption.getId()))) {
                         LayoutOption copy = EcoreUtil.copy(layoutOption);
