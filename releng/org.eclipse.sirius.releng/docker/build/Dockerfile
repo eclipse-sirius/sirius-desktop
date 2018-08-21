@@ -40,7 +40,7 @@ RUN addgroup --system xusers \
 
 # Add package repository for Microsoft fonts
 RUN echo "deb http://security.debian.org/ stretch/updates contrib non-free" >> /etc/apt/sources.list \
-    && echo "deb http://gce_debian_mirror.storage.googleapis.com stretch contrib non-free" >> /etc/apt/sources.list \
+    && echo "deb http://ftp.debian.org/debian/ stretch contrib non-free" >> /etc/apt/sources.list \
     && echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 
 # This is needed for the configuration of installed packets
