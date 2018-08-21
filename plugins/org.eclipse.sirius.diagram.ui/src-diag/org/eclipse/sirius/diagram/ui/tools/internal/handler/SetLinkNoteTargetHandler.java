@@ -30,7 +30,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
- * Changes the target representation descriptor for diagram link notes.
+ * Changes the target representation descriptor for representation link notes.
  */
 public class SetLinkNoteTargetHandler extends AbstractHandler {
 

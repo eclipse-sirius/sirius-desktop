@@ -32,14 +32,14 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
 /**
- * Reuse the sirius 'specific styles' annotation to mark all existing link notes with a special details entry. This
- * marker neccessary to differenciate between link notes whose target representation descriptor has been deleted and
- * normal notes.
+ * Reuse the sirius 'specific styles' annotation to mark all existing representation links with a special details entry.
+ * This marker neccessary to differenciate between representation links whose target representation descriptor has been
+ * deleted and normal notes.
  * 
  * @see <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=535648">Bug 535648</a>
  * @author Felix Dorner <felix.dorner@gmail.com>
  */
-public class LinkNoteMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
+public class RepresentationLinkMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
 
     /**
      * The version for which this migration is added.

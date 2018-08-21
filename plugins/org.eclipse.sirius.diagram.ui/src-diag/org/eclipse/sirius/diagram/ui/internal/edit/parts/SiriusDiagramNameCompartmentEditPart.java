@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * An edit part that shows representation name/icon as a header in diagram link notes.
+ * An edit part that shows representation name/icon as a header in representation link notes.
  */
 public class SiriusDiagramNameCompartmentEditPart extends DiagramNameCompartmentEditPart {
 
@@ -41,9 +41,9 @@ public class SiriusDiagramNameCompartmentEditPart extends DiagramNameCompartment
     protected Image getLabelIcon(int i) {
         EditPart ep = getParent();
         if (ep instanceof SiriusNoteEditPart) {
-            if (((SiriusNoteEditPart) ep).isLinkNote()) {
+            if (((SiriusNoteEditPart) ep).isRepresentationLink()) {
 
-                if (((SiriusNoteEditPart) ep).isLinkNoteBroken()) {
+                if (((SiriusNoteEditPart) ep).isRepresentationLinkBroken()) {
                     return DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON));
                 }
 
@@ -62,7 +62,7 @@ public class SiriusDiagramNameCompartmentEditPart extends DiagramNameCompartment
     @Override
     protected String getLabelText() {
         EditPart ep = getParent();
-        if (ep instanceof SiriusNoteEditPart && ((SiriusNoteEditPart) ep).isLinkNote() && (((SiriusNoteEditPart) ep).isLinkNoteBroken())) {
+        if (ep instanceof SiriusNoteEditPart && ((SiriusNoteEditPart) ep).isRepresentationLink() && (((SiriusNoteEditPart) ep).isRepresentationLinkBroken())) {
             return DiagramUIPlugin.getPlugin().getString("palettetool.linkNote.deletedLabel"); //$NON-NLS-1$
         }
         return super.getLabelText();
@@ -79,16 +79,16 @@ public class SiriusDiagramNameCompartmentEditPart extends DiagramNameCompartment
     }
 
     /**
-     * Overridden to handle dangling link notes in sirius collab.
+     * Overridden to handle dangling representation links in sirius collab.
      */
     @Override
     protected void setVisibility(boolean vis) {
         EditPart parent = getParent();
-        if (parent instanceof SiriusNoteEditPart && ((SiriusNoteEditPart) parent).isLinkNote()) {
+        if (parent instanceof SiriusNoteEditPart && ((SiriusNoteEditPart) parent).isRepresentationLink()) {
             // This code is copied from GraphicalEditPart to avoid calling
             // the parent class method: DiagramNameCompartmentEditPart is invisible
             // if the view element is null, but this collides with the case
-            // of a dangling link note in sirius collab.
+            // of a dangling representation link in sirius collab.
             if (!vis && getSelected() != SELECTED_NONE)
                 getViewer().deselect(this);
 

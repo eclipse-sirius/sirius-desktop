@@ -1250,7 +1250,7 @@
               class="org.eclipse.sirius.diagram.ui.tools.internal.testers.LinkNoteTester"
               id="org.eclipse.sirius.diagram.ui.LinkNoteTester"
               namespace="org.eclipse.sirius.diagram.ui"
-              properties="isLinkNote"
+              properties="isRepresentationLink"
               type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
         </propertyTester>
    </extension>
@@ -1809,7 +1809,7 @@
               </count>
               <iterate>
                  <test
-                       property="org.eclipse.sirius.diagram.ui.isLinkNote">
+                       property="org.eclipse.sirius.diagram.ui.isRepresentationLink">
                  </test>
               </iterate>
            </and>
@@ -1918,7 +1918,7 @@
             kind="RepresentationsFile">
       </participant>
       <participant
-            class="org.eclipse.sirius.diagram.ui.business.internal.migration.LinkNoteMigrationParticipant"
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.RepresentationLinkMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
    </extension>

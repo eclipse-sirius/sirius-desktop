@@ -85,7 +85,7 @@ public class SiriusNoteEditPart extends NoteEditPart {
             if (diagram.isPresent()) {
                 addListenerFilter("ShowingMode", this, diagram.get(), DiagramPackage.eINSTANCE.getDDiagram_IsInShowingMode()); //$NON-NLS-1$
             }
-            if (isLinkNote() && !isLinkNoteBroken()) {
+            if (isRepresentationLink() && !isRepresentationLinkBroken()) {
                 DRepresentationDescriptor linkedDescriptor = (DRepresentationDescriptor) getNotationView().getElement();
                 if (linkedDescriptor != null) {
                     addListenerFilter("DiagramLink_RepresentationNameChange", this, linkedDescriptor); //$NON-NLS-1$
@@ -138,41 +138,41 @@ public class SiriusNoteEditPart extends NoteEditPart {
         super.createDefaultEditPolicies();
 
         // replace the default open policy with one that handles DRepresentationDescriptors
-        if (isLinkNote()) {
+        if (isRepresentationLink()) {
             removeEditPolicy(EditPolicyRoles.OPEN_ROLE);
             installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenDRepresentationEditPolicy());
         }
     }
 
     /**
-     * Is this a link note or is it a 'simple' note?
+     * Is this a representation link or is it a 'simple' note?
      * 
-     * @see {@link ViewQuery#isLinkNote()}
-     * @return true if this is a link note, false otherwise
+     * @see {@link ViewQuery#isRepresentationLink()}
+     * @return true if this is a representation link, false otherwise
      */
-    boolean isLinkNote() {
+    boolean isRepresentationLink() {
         boolean result = false;
         View view = getNotationView();
         if (view != null) {
             ViewQuery query = new ViewQuery(view);
-            result = query.isLinkNote();
+            result = query.isRepresentationLink();
         }
         return result;
     }
 
     /**
-     * For a link note, check if it refers to a deleted representation descriptor. Invocations should be guarded by
-     * {@link #isLinkNote()}.
+     * For a representation note, check if it refers to a deleted representation descriptor. Invocations should be
+     * guarded by {@link #isRepresentationLink()}.
      * 
-     * @see {@link ViewQuery#isLinkNoteBroken()}
-     * @return true if the link note view has a dangling target, false otherwise.
+     * @see {@link ViewQuery#isRepresentationLinkBroken()}
+     * @return true if the representation link view has a dangling target, false otherwise.
      */
-    boolean isLinkNoteBroken() {
+    boolean isRepresentationLinkBroken() {
         boolean result = false;
         View view = getNotationView();
         if (view != null) {
             ViewQuery query = new ViewQuery(view);
-            result = query.isLinkNoteBroken();
+            result = query.isRepresentationLinkBroken();
         }
         return result;
     }

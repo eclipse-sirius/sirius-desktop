@@ -31,9 +31,9 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * Triggers refresh of this diagram's link notes when appropriate.
+ * Triggers refresh of this diagram's representation links when appropriate.
  */
-public class LinkNotePostCommitListener extends ResourceSetListenerImpl {
+public class RepresentationLinkPostCommitListener extends ResourceSetListenerImpl {
 
     private DDiagramEditorImpl diagramEditor;
 
@@ -43,8 +43,8 @@ public class LinkNotePostCommitListener extends ResourceSetListenerImpl {
      * @param dDiagramEditorImpl
      *            listened part.
      */
-    public LinkNotePostCommitListener(DDiagramEditorImpl dDiagramEditorImpl) {
-        // Link notes must be refreshed not only when the target representation
+    public RepresentationLinkPostCommitListener(DDiagramEditorImpl dDiagramEditorImpl) {
+        // Representation Links must be refreshed not only when the target representation
         // is deleted, but also when the target representation is added after
         // undoing a deletion
         super(createFeatureFilter(ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS).and(NotificationFilter.NOT_TOUCH));

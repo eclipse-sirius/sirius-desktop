@@ -24,7 +24,7 @@ import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
-import org.eclipse.sirius.diagram.ui.business.internal.migration.LinkNoteMigrationParticipant;
+import org.eclipse.sirius.diagram.ui.business.internal.migration.RepresentationLinkMigrationParticipant;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -39,7 +39,7 @@ import com.google.common.collect.Iterables;
  * Test that all link notes have the special link note marker annotation key
  * after migration.
  * 
- * @see LinkNoteMigrationParticipant
+ * @see RepresentationLinkMigrationParticipant
  */
 public class LinkNoteMigrationParticipantTest extends SiriusDiagramTestCase {
 
@@ -60,7 +60,7 @@ public class LinkNoteMigrationParticipantTest extends SiriusDiagramTestCase {
      * Test that the model still needs to be migrated
      */
     public void testMigrationIsNeededOnData() {
-        Version migration = LinkNoteMigrationParticipant.MIGRATION_VERSION;
+        Version migration = RepresentationLinkMigrationParticipant.MIGRATION_VERSION;
         URI uri = URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + REPRESENTATIONS_FILE_PATH + REPRESENTATIONS_FILE_NAME, true);
         Version loadedVersion = checkRepresentationFileMigrationStatus(uri, true);
         assertTrue("The migration must be required on test data.", loadedVersion == null || migration.compareTo(loadedVersion) > 0);
@@ -92,15 +92,15 @@ public class LinkNoteMigrationParticipantTest extends SiriusDiagramTestCase {
                             boolean marked = false;
                             EAnnotation annot = view.getEAnnotation(ViewQuery.SPECIFIC_STYLES);
                             if (annot != null) {
-                                marked = annot.getDetails().containsKey(ViewQuery.LINK_NOTE);
+                                marked = annot.getDetails().containsKey(ViewQuery.REPRESENTATION_LINK_NOTE);
                             }
                             // The view is marked if and only if it is a link
                             // note
                             if (marked) {
-                                assertTrue("View has link note annotation, but is not a link note", isNoteWithDRepresentationDescriptorTarget(view));
+                                assertTrue("View has representation link annotation, but is not a representation link", isNoteWithDRepresentationDescriptorTarget(view));
                             }
                             if (isNoteWithDRepresentationDescriptorTarget(view)) {
-                                assertTrue("View is a link note, but has no link note annotation", marked);
+                                assertTrue("View is a representation link, but has no representation link annotation", marked);
                             }
                         }
                     }

@@ -21,9 +21,9 @@ import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 public class LinkNoteTester extends PropertyTester {
 
     /**
-     * The 'isLinkNote' property.
+     * The 'isRepresentationLink' property.
      */
-    public static final String PROPERTY_IS_LINK_NOTE = "isLinkNote"; //$NON-NLS-1$
+    public static final String PROPERTY_IS_LINK_NOTE = "isRepresentationLink"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -39,7 +39,7 @@ public class LinkNoteTester extends PropertyTester {
             View view = part.getNotationView();
             if (view != null) {
                 ViewQuery query = new ViewQuery(view);
-                result = query.isLinkNote();
+                result = query.isRepresentationLink();
             }
             return result;
         }

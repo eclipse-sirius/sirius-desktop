@@ -36,7 +36,7 @@ import com.google.common.collect.Iterables;
  * in GMF runtime 1.8.0 (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=432387). This factory creates notes with the
  * old default alignment value.
  * 
- * Also handles specific view creation for link notes.
+ * Also handles specific view creation for representation links.
  * 
  * @author <a href="mailto:axel.richard@obeo.fr">Axel Richard</a>
  *
@@ -61,10 +61,10 @@ public class SiriusNoteViewFactory extends NoteViewFactory {
     }
 
     /**
-     * Made public for migration of old notes.
+     * Made public for migration of old representation links.
      * 
      * @param view
-     *            the link note view
+     *            the representation link view
      */
     public static void markAsLinkNote(View view) {
         EAnnotation specificStyles = view.getEAnnotation(ViewQuery.SPECIFIC_STYLES);
@@ -73,7 +73,7 @@ public class SiriusNoteViewFactory extends NoteViewFactory {
             specificStyles.setSource(ViewQuery.SPECIFIC_STYLES);
             view.getEAnnotations().add(specificStyles);
         }
-        specificStyles.getDetails().put(ViewQuery.LINK_NOTE, null);
+        specificStyles.getDetails().put(ViewQuery.REPRESENTATION_LINK_NOTE, null);
     }
 
     /**
@@ -99,7 +99,7 @@ public class SiriusNoteViewFactory extends NoteViewFactory {
     }
 
     /**
-     * Overridden to mark representation link note views with a special annotation.
+     * Overridden to mark representation link views with a special annotation.
      *
      * @inheritDoc
      */

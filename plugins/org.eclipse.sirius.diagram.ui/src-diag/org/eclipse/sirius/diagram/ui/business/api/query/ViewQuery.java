@@ -72,9 +72,9 @@ public class ViewQuery {
     public static final String VERTICAL_ALIGNMENT = "verticalAlignment"; //$NON-NLS-1$
 
     /**
-     * custom data key for link notes, used in the {@link #SPECIFIC_STYLES} annotation.
+     * custom data key for representation links, used in the {@link #SPECIFIC_STYLES} annotation.
      */
-    public static final String LINK_NOTE = "representationlink"; //$NON-NLS-1$
+    public static final String REPRESENTATION_LINK_NOTE = "representationlink"; //$NON-NLS-1$
 
     /**
      * The set of GMF style attributes customizable for which not corresponding Sirius style property exists.
@@ -326,22 +326,22 @@ public class ViewQuery {
     }
 
     /**
-     * Is the view a link note?
+     * Is the view a representation link note?
      * 
-     * @return true if this is a link note, false otherwise
+     * @return true if this is a representation link note, false otherwise
      */
-    public boolean isLinkNote() {
+    public boolean isRepresentationLink() {
         EAnnotation specificStyles = view.getEAnnotation(ViewQuery.SPECIFIC_STYLES);
-        return specificStyles != null && specificStyles.getDetails().containsKey(LINK_NOTE) && ViewType.NOTE.equals(view.getType());
+        return specificStyles != null && specificStyles.getDetails().containsKey(REPRESENTATION_LINK_NOTE) && ViewType.NOTE.equals(view.getType());
     }
 
     /**
-     * For a link note, check if it refers to a deleted representation descriptor. Invocations should be guarded by
-     * {@link #isLinkNote()}.
+     * For a representation link, check if it refers to a deleted representation descriptor. Invocations should be
+     * guarded by {@link #isRepresentationLink()}.
      * 
-     * @return true if the link note view has a dangling target, false otherwise.
+     * @return true if the representation link note view has a dangling target, false otherwise.
      */
-    public boolean isLinkNoteBroken() {
+    public boolean isRepresentationLinkBroken() {
         EObject element = view.getElement();
         return !(element instanceof DRepresentationDescriptor) || element.eIsProxy() || element.eResource() == null;
     }

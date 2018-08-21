@@ -87,7 +87,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String NOTE_TOOL = "Note";
 
-    private static final String LINK_NOTE_TOOL = "Link Note";
+    private static final String LINK_NOTE_TOOL = "Representation Link";
 
     private static final String LINK_TARGET_NEW_NAME = "Renamed Representation";
 

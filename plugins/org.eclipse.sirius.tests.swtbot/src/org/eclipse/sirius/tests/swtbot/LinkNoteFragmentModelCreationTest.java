@@ -24,12 +24,12 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.PartInitException;
 
 /**
- * Test the link note tool in a fragmented model. More link note tests can be
- * found in {@link NoteCreationTest}.
+ * Test the representation link tool in a fragmented model. More representation link tests can be found in
+ * {@link NoteCreationTest}.
  */
 public class LinkNoteFragmentModelCreationTest extends AbstractSiriusSwtBotGefTestCase {
 
-    private static final String LINK_NOTE_TOOL = "Link Note";
+    private static final String LINK_NOTE_TOOL = "Representation Link";
 
     private static final String REPRESENTATION_INSTANCE_NAME = "root package entities";
 
@@ -73,9 +73,8 @@ public class LinkNoteFragmentModelCreationTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * This test creates a link note from the main diagram to the fragment
-     * diagram, and verifies that the diagram in the fragment can be opened by
-     * doubleclick on the link note.
+     * This test creates a representation link from the main diagram to the fragment diagram, and verifies that the
+     * diagram in the fragment can be opened by doubleclick on the representation link.
      * 
      * @throws Exception
      *             any test exception
@@ -87,9 +86,8 @@ public class LinkNoteFragmentModelCreationTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * This test creates a link note from the fragment diagram to the main
-     * diagram and verifies that the main diagram can be opened by doubleclick
-     * on the link note.
+     * This test creates a representation link from the fragment diagram to the main diagram and verifies that the main
+     * diagram can be opened by doubleclick on the representation link.
      * 
      * @throws Exception
      *             any test exception

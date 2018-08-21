@@ -27,8 +27,8 @@ import org.eclipse.sirius.ui.tools.internal.editor.NavigateToCommand;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 /**
- * This edit policy handles 'Open' requests on link note edit parts by opening the target representation in a new
- * editor.
+ * This edit policy handles 'Open' requests on representation link edit parts by opening the target representation in a
+ * new editor.
  */
 public class OpenDRepresentationEditPolicy extends OpenDiagramEditPolicy {
 

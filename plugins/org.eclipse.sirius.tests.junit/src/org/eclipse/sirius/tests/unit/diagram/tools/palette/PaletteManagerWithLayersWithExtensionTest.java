@@ -94,7 +94,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1", "ToolL4-A-1"),
             //
-            createNewEntry("Standard", "Link Note", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
+            createNewEntry("Standard", "Representation Link", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
             //
     ));
 
@@ -110,7 +110,7 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
             //
             createNewEntry("SectionSharedWithOtherLayersA", "ToolL2-A-1"),
             //
-            createNewEntry("Standard", "Link Note", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
+            createNewEntry("Standard", "Representation Link", "Note", "Note Attachment", "Pin", "Select", "Text", "Unpin", "Zoom In", "Zoom Out", "[Separator]")
     //
     ));
 

@@ -143,14 +143,15 @@
 		<h2 id="sirius5.1.4">Changes in Sirius 5.1.4</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-info">Modified</span> A &#8220;Link Note&#8221; is no longer deleted automatically when the targeted representation is deleted. Instead, the note header changes to &#8220;Broken Representation Link&#8221; and the note icon changes to a small red diagonal cross. You can refer to the 
+			<li><span class="label label-info">Modified</span> The tool &#8220;Link Note&#8221;, introduced in Sirius 5.1.2, has been renamed into &#8220;Representation Link&#8221;.</li>
+			<li><span class="label label-info">Modified</span> A &#8220;Representation Link&#8221; is no longer deleted automatically when the targeted representation is deleted. Instead, the note header changes to &#8220;Broken Representation Link&#8221; and the note icon changes to a small red diagonal cross. You can refer to the 
 				<a href="user/diagrams/Diagrams.html#notes">user documentation</a> for more details.
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
-			<li><span class="label label-success">Added</span> A migration participant has been added to update existing link notes. (see 
+			<li><span class="label label-success">Added</span> A migration participant has been added to update existing representation links. (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=535648">bugzilla #533175</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
 				<em>12.1.4.201810100944</em>.
 			</li>
@@ -160,13 +161,13 @@
 		</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> The query 
-				<code>isLinkNote()</code> has been added in 
-				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery</code> to know if the view is a link note or a normal note.
+				<code>isRepresentationLink()</code> has been added in 
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery</code> to know if the view is a representation link or a normal note.
 			</li>
 			<li><span class="label label-success">Added</span> The query 
-				<code>isLinkNoteBroken()</code> has been added in 
-				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery</code> to know, for a link note, if it refers to a deleted representation descriptor. Invocations should be guarded by 
-				<code>isLinkNote()</code>.
+				<code>isRepresentationLinkBroken()</code> has been added in 
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery</code> to know, for a representation link, if it refers to a deleted representation descriptor. Invocations should be guarded by 
+				<code>isRepresentationLink()</code>.
 			</li>
 			<li><span class="label label-info">Modified</span> The class 
 				<code>SiriusFormatDataManagerForSemanticElements</code> has been moved from package 

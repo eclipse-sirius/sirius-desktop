@@ -22,7 +22,7 @@ import org.eclipse.gmf.runtime.diagram.ui.util.INotationType;
  * <ul>
  * <li>Override the noteAttachment tool to make two clicks for create the note attachment (as the other edge in Sirius).
  * </li>
- * <li>A tool to create diagram link notes.</li>
+ * <li>A tool to create diagram representation links.</li>
  * </ul>
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
