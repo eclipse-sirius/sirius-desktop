@@ -1321,8 +1321,8 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
             GaugeCompositeEditPart gaugeCompositeEditPart = (GaugeCompositeEditPart) gaugeCompositeEditPartBot.part();
             GaugeCompositeFigure primaryShape = gaugeCompositeEditPart.getPrimaryShape();
             Object object = ReflectionHelper.getFieldValueWithoutException(primaryShape, "alignment").get();
-            assertTrue(object instanceof AlignmentKind);
-            figureAlignmentKind = (AlignmentKind) object;
+            assertTrue(object instanceof String);
+            figureAlignmentKind = AlignmentKind.getByName((String) object);
         }
         return figureAlignmentKind;
     }
