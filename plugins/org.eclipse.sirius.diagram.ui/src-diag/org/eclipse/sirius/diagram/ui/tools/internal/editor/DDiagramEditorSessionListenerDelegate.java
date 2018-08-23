@@ -150,7 +150,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
              * removing the tool filter so that all tools available when representation is not locked are accessible
              */
             if (paletteManager != null) {
-                paletteManager.removeToolFilter(toolFilterWhenRepresentationIsLocked);
+                toolManagement.removeToolFilter(toolFilterWhenRepresentationIsLocked);
                 if (dDiagramEditorImpl.getTabbar() != null) {
                     dDiagramEditorImpl.getTabbar().reinitToolBar(dDiagramEditorImpl.getDiagramGraphicalViewer().getSelection());
                 }
@@ -167,7 +167,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             break;
         case SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY:
             if (paletteManager != null) {
-                paletteManager.removeToolFilter(toolFilterWhenRepresentationIsLocked);
+                toolManagement.removeToolFilter(toolFilterWhenRepresentationIsLocked);
                 if (dDiagramEditorImpl.getTabbar() != null) {
                     dDiagramEditorImpl.getTabbar().reinitToolBar(dDiagramEditorImpl.getDiagramGraphicalViewer().getSelection());
                 }

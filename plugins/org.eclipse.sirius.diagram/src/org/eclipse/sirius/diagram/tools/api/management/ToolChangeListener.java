@@ -19,12 +19,27 @@ package org.eclipse.sirius.diagram.tools.api.management;
 public interface ToolChangeListener {
 
     /**
-     * Notifies that tool(s) have been updated.
+     * Define the kind of change that can trigger tool changes.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
      */
-    void notifyToolChange();
+    enum ChangeKind {
+        /**
+         * The tool changes have been triggered by a VSM update.
+         */
+        VSM_UPDATE,
+        /**
+         * The tool changes have not been triggered by a VSM update.
+         */
+        OTHER_UPDATE
+    }
 
     /**
-     * Notifies that a VSM reload has been done leading to potential obsolete tools.
+     * Notifies that tool(s) have been updated.
+     * 
+     * @param changeKind
+     *            the kind of change that triggered the tool changes.
      */
-    void notifyToolChangeAfterVSMReload();
+    void notifyToolChange(ChangeKind changeKind);
 }

@@ -158,7 +158,7 @@ public class ToolManagement {
     public void notifyToolChangeAfterVSMReload() {
         Set<ToolChangeListener> toolListeners = getToolListeners();
         for (ToolChangeListener toolChangeListener : toolListeners) {
-            toolChangeListener.notifyToolChangeAfterVSMReload();
+            toolChangeListener.notifyToolChange(ToolChangeListener.ChangeKind.VSM_UPDATE);
         }
     }
 
@@ -169,7 +169,7 @@ public class ToolManagement {
     public void notifyToolChange() {
         Set<ToolChangeListener> toolListeners = getToolListeners();
         for (ToolChangeListener toolChangeListener : toolListeners) {
-            toolChangeListener.notifyToolChange();
+            toolChangeListener.notifyToolChange(ToolChangeListener.ChangeKind.OTHER_UPDATE);
         }
     }
 

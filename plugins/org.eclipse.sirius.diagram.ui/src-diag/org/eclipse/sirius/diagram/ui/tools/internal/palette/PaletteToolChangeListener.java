@@ -32,19 +32,12 @@ public final class PaletteToolChangeListener implements ToolChangeListener {
     }
 
     @Override
-    public void notifyToolChange() {
+    public void notifyToolChange(ChangeKind changeKind) {
         if (paletteManager != null && !paletteManager.isDisposed()) {
-            paletteManager.update((DDiagram) diagram.getElement());
+            if (changeKind == ChangeKind.VSM_UPDATE) {
+                paletteManager.update((DDiagram) diagram.getElement(), true);
+            } else
+                paletteManager.update((DDiagram) diagram.getElement());
         }
-
-    }
-
-    @Override
-    public void notifyToolChangeAfterVSMReload() {
-        if (paletteManager != null && !paletteManager.isDisposed()) {
-            // After the VSM has been reload, we want to clean the palette from any obsolete entry.
-            paletteManager.update((DDiagram) diagram.getElement(), true);
-        }
-
     }
 }

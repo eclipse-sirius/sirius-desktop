@@ -98,7 +98,7 @@ public class ToolFilterDescriptionListenerForUpdate extends ResourceSetListenerI
         if (shoudUpdate) {
             Set<ToolChangeListener> listenersAssociatedToDiagram = DiagramPlugin.getDefault().getToolManagement(diagram).getToolListeners();
             for (ToolChangeListener toolChangeListener : listenersAssociatedToDiagram) {
-                toolChangeListener.notifyToolChange();
+                toolChangeListener.notifyToolChange(ToolChangeListener.ChangeKind.OTHER_UPDATE);
             }
         }
     }

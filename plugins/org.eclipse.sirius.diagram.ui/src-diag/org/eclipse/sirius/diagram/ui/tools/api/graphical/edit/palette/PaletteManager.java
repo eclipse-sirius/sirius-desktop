@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.tools.api.management.ToolFilter;
+import org.eclipse.sirius.diagram.tools.api.management.ToolManagement;
 
 /**
  * Manage the palette and the associated filters.
@@ -35,6 +36,7 @@ public interface PaletteManager {
     /**
      * Show all tools provided by a layer.
      * 
+     * @deprecated layer activation/deactivation in now handled by {@link ToolManagement}.
      * @param layer
      *            the layer
      */
@@ -46,6 +48,7 @@ public interface PaletteManager {
      * 
      * @param toolFilter
      *            the filter to add
+     * @deprecated replaced by {@link ToolManagement#addToolFilter(ToolFilter)}
      */
     @Deprecated
     void addToolFilter(ToolFilter toolFilter);
@@ -55,6 +58,8 @@ public interface PaletteManager {
      * 
      * @param toolFilter
      *            the filter to remove
+     * 
+     * @deprecated replaced by {@link ToolManagement#removeToolFilter(ToolFilter)}
      */
     @Deprecated
     void removeToolFilter(ToolFilter toolFilter);

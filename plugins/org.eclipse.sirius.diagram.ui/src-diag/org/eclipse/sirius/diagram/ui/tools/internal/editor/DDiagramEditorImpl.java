@@ -439,7 +439,11 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     @Override
     public void close(boolean save) {
-        DiagramPlugin.getPlugin().removeToolManagement(getDiagram());
+        ToolManagement toolManagement = DiagramPlugin.getDefault().getToolManagement(getDiagram());
+        if (toolManagement != null) {
+            toolManagement.removeToolChangeListener(paletteToolChangeListener);
+            DiagramPlugin.getPlugin().removeToolManagement(getDiagram());
+        }
         if (refreshJob != null) {
             try {
                 refreshJob.join();
@@ -779,10 +783,13 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     public void dispose() {
         isClosing = true;
+
         ToolManagement toolManagement = DiagramPlugin.getDefault().getToolManagement(getDiagram());
         if (toolManagement != null) {
             toolManagement.removeToolChangeListener(paletteToolChangeListener);
+            DiagramPlugin.getPlugin().removeToolManagement(getDiagram());
         }
+
         // Dispose the tabbar (to avoid memory leak)
         if (getTabbar() != null) {
             getTabbar().dispose();
