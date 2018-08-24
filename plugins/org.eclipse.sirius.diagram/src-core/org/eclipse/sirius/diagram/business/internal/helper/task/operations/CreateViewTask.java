@@ -51,7 +51,7 @@ import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilte
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
@@ -165,7 +165,7 @@ public class CreateViewTask extends AbstractOperationTask {
             if (bestMapping instanceof AbstractNodeMapping) {
                 AbstractNodeMapping abstractNodeMapping = (AbstractNodeMapping) bestMapping;
                 if (extPackage.eInstanceOf(semanticElt, abstractNodeMapping.getDomainClass())) {
-                    AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(abstractNodeMapping, semanticElt, (DragAndDropTarget) containerView,
+                    DNodeCandidate abstractDNodeCandidate = new DNodeCandidate(abstractNodeMapping, semanticElt, (DragAndDropTarget) containerView,
                             RefreshIdsHolder.getOrCreateHolder(parentDDiagram));
                     DDiagramElementSynchronizer dDiagramElementSynchronizer = new DDiagramElementSynchronizer(parentDDiagram, interpreter, extPackage);
                     DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, parentDDiagram);

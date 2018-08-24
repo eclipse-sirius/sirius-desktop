@@ -133,17 +133,17 @@ public class MappingsUpdater {
          * @see org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingsListVisitor#visit(org.eclipse.sirius.viewpoint.description.DiagramElementMapping,
          *      java.util.Set)
          */
-        public Set<AbstractDNodeCandidate> visit(final DiagramElementMapping pMapping, final Set<AbstractDNodeCandidate> candidateFilter) {
-            Set<AbstractDNodeCandidate> result;
+        public Set<DNodeCandidate> visit(final DiagramElementMapping pMapping, final Set<DNodeCandidate> candidateFilter) {
+            Set<DNodeCandidate> result;
 
             if (pMapping instanceof AbstractNodeMapping) {
                 final AbstractNodeMapping mapping = (AbstractNodeMapping) pMapping;
-                final Collection<AbstractDNodeCandidate> validCandidates = getNodeCandidates(mapping, candidateFilter);
+                final Collection<DNodeCandidate> validCandidates = getNodeCandidates(mapping, candidateFilter);
 
                 final Set<EObject> semanticElementsDone = new HashSet<EObject>();
                 if (!validCandidates.isEmpty()) {
-                    final Set<EObject> validSemantics = Sets.newHashSet(Iterables.transform(validCandidates, new Function<AbstractDNodeCandidate, EObject>() {
-                        public EObject apply(final AbstractDNodeCandidate from) {
+                    final Set<EObject> validSemantics = Sets.newHashSet(Iterables.transform(validCandidates, new Function<DNodeCandidate, EObject>() {
+                        public EObject apply(final DNodeCandidate from) {
                             return from.getSemantic();
                         }
                     }));
@@ -160,9 +160,9 @@ public class MappingsUpdater {
                     }
                 }
 
-                result = Sets.newHashSet(Iterables.transform(semanticElementsDone, new Function<EObject, AbstractDNodeCandidate>() {
-                    public AbstractDNodeCandidate apply(final EObject from) {
-                        return new AbstractDNodeCandidate(mapping, from, container, factory);
+                result = Sets.newHashSet(Iterables.transform(semanticElementsDone, new Function<EObject, DNodeCandidate>() {
+                    public DNodeCandidate apply(final EObject from) {
+                        return new DNodeCandidate(mapping, from, container, factory);
                     }
                 }));
             } else {
@@ -174,13 +174,13 @@ public class MappingsUpdater {
         /*
          * Transform the already known candidate filters
          */
-        private Set<AbstractDNodeCandidate> getHierarchyCandidateFilter(final AbstractNodeMapping mapping, final Set<AbstractDNodeCandidate> semanticFilter) {
+        private Set<DNodeCandidate> getHierarchyCandidateFilter(final AbstractNodeMapping mapping, final Set<DNodeCandidate> semanticFilter) {
             final DiagramElementMappingQuery diagramElementMappingQuery = new DiagramElementMappingQuery(mapping);
             final Map<AbstractNodeMapping, Boolean> knownMappingHierarchy = new HashMap<>();
 
-            return Sets.newLinkedHashSet(Iterables.transform(semanticFilter, new Function<AbstractDNodeCandidate, AbstractDNodeCandidate>() {
-                public AbstractDNodeCandidate apply(final AbstractDNodeCandidate from) {
-                    AbstractDNodeCandidate result = from;
+            return Sets.newLinkedHashSet(Iterables.transform(semanticFilter, new Function<DNodeCandidate, DNodeCandidate>() {
+                public DNodeCandidate apply(final DNodeCandidate from) {
+                    DNodeCandidate result = from;
                     AbstractNodeMapping fromMapping = from.getMapping();
 
                     boolean areInSameHiearchy;
@@ -194,7 +194,7 @@ public class MappingsUpdater {
                     }
 
                     if (areInSameHiearchy) {
-                        result = new AbstractDNodeCandidate(mapping, from.getSemantic(), container, factory);
+                        result = new DNodeCandidate(mapping, from.getSemantic(), container, factory);
                     }
 
                     return result;
@@ -202,9 +202,9 @@ public class MappingsUpdater {
             }));
         }
 
-        private Collection<AbstractDNodeCandidate> getNodeCandidates(final AbstractNodeMapping mapping, final Set<AbstractDNodeCandidate> candidateFilter) {
-            Collection<AbstractDNodeCandidate> result;
-            final Set<AbstractDNodeCandidate> hierarchyCandidateFilter = getHierarchyCandidateFilter(mapping, candidateFilter);
+        private Collection<DNodeCandidate> getNodeCandidates(final AbstractNodeMapping mapping, final Set<DNodeCandidate> candidateFilter) {
+            Collection<DNodeCandidate> result;
+            final Set<DNodeCandidate> hierarchyCandidateFilter = getHierarchyCandidateFilter(mapping, candidateFilter);
 
             if (!new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram)) {
                 /*
@@ -213,7 +213,7 @@ public class MappingsUpdater {
                  * with mappings which could now be overriden by mapping imports
                  */
                 MappingsUpdater.this.synchronizer.forceRetrieve();
-                Collection<AbstractDNodeCandidate> candidates = MappingsUpdater.this.synchronizer.computeNodeCandidates(container, mapping, hierarchyCandidateFilter);
+                Collection<DNodeCandidate> candidates = MappingsUpdater.this.synchronizer.computeNodeCandidates(container, mapping, hierarchyCandidateFilter);
                 MappingsUpdater.this.synchronizer.resetforceRetrieve();
                 result = candidates;
             } else {

@@ -365,7 +365,7 @@ public class DDiagramSynchronizer {
 
                     fillIgnoredElements();
 
-                    final Set<AbstractDNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<AbstractDNodeCandidate>();
+                    final Set<DNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<DNodeCandidate>();
 
                     /* Let's refresh the node mappings. */
                     for (final NodeMapping mapping : nodeMappings) {
@@ -600,9 +600,9 @@ public class DDiagramSynchronizer {
     private AbstractDNode handleListAttributeChangeOnMapping(final AbstractDNode node, final ContainerMapping containerMapping, final DragAndDropTarget viewContainer, IProgressMonitor monitor) {
         final boolean isListContainer = new ContainerMappingQuery(containerMapping).isListContainer();
         if ((node instanceof DNodeContainer && isListContainer) || (node instanceof DNodeList && !isListContainer)) {
-            final AbstractDNodeCandidate newCandidate = new AbstractDNodeCandidate(containerMapping, node.getTarget(), viewContainer, ids);
+            final DNodeCandidate newCandidate = new DNodeCandidate(containerMapping, node.getTarget(), viewContainer, ids);
 
-            final Set<AbstractDNodeCandidate> newCandidates = new HashSet<AbstractDNodeCandidate>(1);
+            final Set<DNodeCandidate> newCandidates = new HashSet<DNodeCandidate>(1);
             newCandidates.add(newCandidate);
             List<AbstractDNode> newContents = createNewContent(newCandidates, true, viewContainer, containerMapping, false, monitor);
             if (!newContents.isEmpty()) {
@@ -663,8 +663,8 @@ public class DDiagramSynchronizer {
         final ContainerMapping containerMapping = diagramElementContainer.getActualMapping();
         final boolean isListContainer = new ContainerMappingQuery(containerMapping).isListContainer();
         if ((node instanceof DNode && isListContainer) || (node instanceof DNodeListElement && !isListContainer)) {
-            final AbstractDNodeCandidate newCandidate = new AbstractDNodeCandidate(nodeMapping, node.getTarget(), diagramElementContainer, ids);
-            final Set<AbstractDNodeCandidate> newCandidates = new HashSet<AbstractDNodeCandidate>(1);
+            final DNodeCandidate newCandidate = new DNodeCandidate(nodeMapping, node.getTarget(), diagramElementContainer, ids);
+            final Set<DNodeCandidate> newCandidates = new HashSet<DNodeCandidate>(1);
             newCandidates.add(newCandidate);
 
             List<AbstractDNode> newContents = createNewContent(newCandidates, true, diagramElementContainer, nodeMapping, false, monitor);
@@ -694,10 +694,10 @@ public class DDiagramSynchronizer {
      *            a {@link IProgressMonitor} to show progression of refresh of container
      */
     private void refreshContainerMapping(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final DragAndDropTarget viewContainer, final ContainerMapping mapping,
-            final Set<AbstractDNodeCandidate> semanticFilter, final boolean border, final boolean orderBySemantic, IProgressMonitor monitor) {
+            final Set<DNodeCandidate> semanticFilter, final boolean border, final boolean orderBySemantic, IProgressMonitor monitor) {
         /* computed added/removed candidates */
-        final SetIntersection<AbstractDNodeCandidate> status = computeCurrentStatus(viewContainer, mapping, semanticFilter);
-        Collection<AbstractDNodeCandidate> newElements = status.getNewElements();
+        final SetIntersection<DNodeCandidate> status = computeCurrentStatus(viewContainer, mapping, semanticFilter);
+        Collection<DNodeCandidate> newElements = status.getNewElements();
         try {
             monitor.beginTask(Messages.DDiagramSynchronizer_refreshContainerMsg, 3);
 
@@ -752,7 +752,7 @@ public class DDiagramSynchronizer {
                     final List<ContainerMapping> childMappings = diagramMappingsManager.getContainerMappings(newContainer);
                     final List<NodeMapping> childNodeMappings = diagramMappingsManager.getNodeMappings(newContainer);
 
-                    final Set<AbstractDNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<AbstractDNodeCandidate>();
+                    final Set<DNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<DNodeCandidate>();
 
                     boolean stackContainer = new DNodeContainerExperimentalQuery(newContainer).isRegionContainer();
                     for (final ContainerMapping child : childMappings) {
@@ -770,7 +770,7 @@ public class DDiagramSynchronizer {
                     }
                 } else if (newNode instanceof DNodeList) {
                     final List<NodeMapping> childNodeMappings = diagramMappingsManager.getNodeMappings((DNodeList) newNode);
-                    final Set<AbstractDNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<AbstractDNodeCandidate>();
+                    final Set<DNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<DNodeCandidate>();
 
                     for (final NodeMapping child : childNodeMappings) {
                         refreshNodeMapping(mappingsToEdgeTargets, newNode, child, elementsCreated, new SubProgressMonitor(monitor, 1));
@@ -795,9 +795,9 @@ public class DDiagramSynchronizer {
      *            a {@link IProgressMonitor} to show progression of nodes refresh
      */
     private void refreshNodeMapping(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToAbstractNodes, final DragAndDropTarget viewContainer, final NodeMapping mapping,
-            final Set<AbstractDNodeCandidate> semanticFilter, IProgressMonitor monitor) {
+            final Set<DNodeCandidate> semanticFilter, IProgressMonitor monitor) {
         /* compute added/removed candidates. */
-        final SetIntersection<AbstractDNodeCandidate> status = computeCurrentStatus(viewContainer, mapping, semanticFilter);
+        final SetIntersection<DNodeCandidate> status = computeCurrentStatus(viewContainer, mapping, semanticFilter);
         try {
             monitor.beginTask(Messages.DDiagramSynchronizer_refreshNodeMsg, 3);
 
@@ -835,7 +835,7 @@ public class DDiagramSynchronizer {
      *            a {@link IProgressMonitor} to show progression of refresh of borderedNodes
      */
     private void refreshBorderNodeMapping(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToAbstractNodes, final AbstractDNode newNode,
-            final Set<AbstractDNodeCandidate> semanticFilter, IProgressMonitor monitor) {
+            final Set<DNodeCandidate> semanticFilter, IProgressMonitor monitor) {
         if (newNode instanceof DragAndDropTarget && this.accessor.getPermissionAuthority().canEditInstance(newNode)) {
             final DragAndDropTarget newNodeDDT = (DragAndDropTarget) newNode;
             List<NodeMapping> borderedNodeMappings = diagramMappingsManager.getBorderedNodeMappings(newNode);
@@ -843,7 +843,7 @@ public class DDiagramSynchronizer {
                 monitor.beginTask(Messages.DDiagramSynchronizer_borderNodeRefreshMsg, 4 * borderedNodeMappings.size());
 
                 for (final NodeMapping bordermapping : borderedNodeMappings) {
-                    final SetIntersection<AbstractDNodeCandidate> borderStatus = computeCurrentStatus(newNodeDDT, bordermapping, semanticFilter);
+                    final SetIntersection<DNodeCandidate> borderStatus = computeCurrentStatus(newNodeDDT, bordermapping, semanticFilter);
                     deleteCandidatesToRemove(borderStatus, new SubProgressMonitor(monitor, 1));
 
                     // kept and created nodes
@@ -871,18 +871,18 @@ public class DDiagramSynchronizer {
         }
     }
 
-    private SetIntersection<AbstractDNodeCandidate> computeCurrentStatus(final DragAndDropTarget viewcontainer, final AbstractNodeMapping mapping, final Set<AbstractDNodeCandidate> semanticFilter) {
-        final SetIntersection<AbstractDNodeCandidate> biSet = new GSetIntersection<AbstractDNodeCandidate>();
+    private SetIntersection<DNodeCandidate> computeCurrentStatus(final DragAndDropTarget viewcontainer, final AbstractNodeMapping mapping, final Set<DNodeCandidate> semanticFilter) {
+        final SetIntersection<DNodeCandidate> biSet = new GSetIntersection<DNodeCandidate>();
         addPreviousCandidates(biSet, viewcontainer, mapping);
         addNowNodeCandidates(biSet, viewcontainer, mapping, semanticFilter);
         return biSet;
     }
 
-    private void deleteCandidatesToRemove(final SetIntersection<AbstractDNodeCandidate> status, IProgressMonitor monitor) {
+    private void deleteCandidatesToRemove(final SetIntersection<DNodeCandidate> status, IProgressMonitor monitor) {
         try {
-            final Iterable<AbstractDNodeCandidate> candidatesToRemove = status.getRemovedElements();
+            final Iterable<DNodeCandidate> candidatesToRemove = status.getRemovedElements();
             monitor.beginTask(Messages.DDiagramSynchronizer_deleteNodesMsg, Iterables.size(candidatesToRemove));
-            for (final AbstractDNodeCandidate nodeToDelete : candidatesToRemove) {
+            for (final DNodeCandidate nodeToDelete : candidatesToRemove) {
                 if (nodeToDelete.comesFromDiagramElement()) {
                     this.accessor.eDelete(nodeToDelete.getOriginalElement(), session != null ? session.getSemanticCrossReferencer() : null);
                     monitor.worked(1);
@@ -893,10 +893,10 @@ public class DDiagramSynchronizer {
         }
     }
 
-    private void handleKeptAndNewNodesWithOrder(final DragAndDropTarget viewContainer, final DiagramElementMapping mapping, final SetIntersection<AbstractDNodeCandidate> status,
+    private void handleKeptAndNewNodesWithOrder(final DragAndDropTarget viewContainer, final DiagramElementMapping mapping, final SetIntersection<DNodeCandidate> status,
             final Collection<AbstractDNode> keptNodes, final Collection<AbstractDNode> createdNodes, IProgressMonitor monitor) {
         try {
-            Iterable<AbstractDNodeCandidate> allElements = status.getAllElements();
+            Iterable<DNodeCandidate> allElements = status.getAllElements();
             monitor.beginTask("", Iterables.size(allElements)); //$NON-NLS-1$
 
             final boolean createContents = this.accessor.getPermissionAuthority().canCreateIn(viewContainer) && new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram);
@@ -908,7 +908,7 @@ public class DDiagramSynchronizer {
              * each candidate determine if it has to be added to the current appending position, only refreshed, or
              * moved to another position.
              */
-            for (final AbstractDNodeCandidate candidate : allElements) {
+            for (final DNodeCandidate candidate : allElements) {
                 int positionToAppend = mappingBeginIndex + currentGlobalPosition;
                 if (candidate.getOriginalElement() != null) {
                     AbstractDNode node = handleKeptNode(viewContainer, candidate, keptNodes, false, new SubProgressMonitor(monitor, 1));
@@ -933,12 +933,12 @@ public class DDiagramSynchronizer {
         }
     }
 
-    private void handleKeptNodes(final DragAndDropTarget viewContainer, final SetIntersection<AbstractDNodeCandidate> status, Collection<AbstractDNode> keptNodes, boolean border,
+    private void handleKeptNodes(final DragAndDropTarget viewContainer, final SetIntersection<DNodeCandidate> status, Collection<AbstractDNode> keptNodes, boolean border,
             IProgressMonitor monitor) {
-        final Iterable<AbstractDNodeCandidate> keptNodeCandidates = status.getKeptElements();
+        final Iterable<DNodeCandidate> keptNodeCandidates = status.getKeptElements();
         try {
             monitor.beginTask(Messages.DDiagramSynchronizer_refreshNodesMsg, Iterables.size(keptNodeCandidates));
-            for (final AbstractDNodeCandidate keptCandidate : keptNodeCandidates) {
+            for (final DNodeCandidate keptCandidate : keptNodeCandidates) {
                 handleKeptNode(viewContainer, keptCandidate, keptNodes, border, new SubProgressMonitor(monitor, 1));
             }
         } finally {
@@ -946,7 +946,7 @@ public class DDiagramSynchronizer {
         }
     }
 
-    private AbstractDNode handleKeptNode(final DragAndDropTarget viewContainer, AbstractDNodeCandidate keptCandidate, final Collection<AbstractDNode> keptNodes, boolean border,
+    private AbstractDNode handleKeptNode(final DragAndDropTarget viewContainer, DNodeCandidate keptCandidate, final Collection<AbstractDNode> keptNodes, boolean border,
             IProgressMonitor monitor) {
         /* The element is already here. */
         AbstractDNode keptNode = keptCandidate.getOriginalElement();
@@ -1031,10 +1031,10 @@ public class DDiagramSynchronizer {
         }
     }
 
-    private void addNowNodeCandidates(final SetIntersection<AbstractDNodeCandidate> biSet, final DragAndDropTarget container, final AbstractNodeMapping mapping,
-            final Set<AbstractDNodeCandidate> semanticFilter) {
-        final Collection<AbstractDNodeCandidate> nowCandidates = computeNodeCandidates(container, mapping, semanticFilter);
-        for (final AbstractDNodeCandidate candidate : nowCandidates) {
+    private void addNowNodeCandidates(final SetIntersection<DNodeCandidate> biSet, final DragAndDropTarget container, final AbstractNodeMapping mapping,
+            final Set<DNodeCandidate> semanticFilter) {
+        final Collection<DNodeCandidate> nowCandidates = computeNodeCandidates(container, mapping, semanticFilter);
+        for (final DNodeCandidate candidate : nowCandidates) {
             biSet.addInNew(candidate);
         }
     }
@@ -1064,7 +1064,7 @@ public class DDiagramSynchronizer {
      *            the filter which contains candidates to not add in the returned collection
      * @return all node candidates
      */
-    public Collection<AbstractDNodeCandidate> computeNodeCandidates(final DragAndDropTarget container, final AbstractNodeMapping mapping, final Set<AbstractDNodeCandidate> semanticFilter) {
+    public Collection<DNodeCandidate> computeNodeCandidates(final DragAndDropTarget container, final AbstractNodeMapping mapping, final Set<DNodeCandidate> semanticFilter) {
         return nodHelper.computeNodeCandidates(container, mapping, semanticFilter, ids);
     }
 
@@ -1109,7 +1109,7 @@ public class DDiagramSynchronizer {
      * @param mapping
      *            mapping of the elements to add in the status.
      */
-    private void addPreviousCandidates(final SetIntersection<AbstractDNodeCandidate> biSet, final DragAndDropTarget container, final AbstractNodeMapping mapping) {
+    private void addPreviousCandidates(final SetIntersection<DNodeCandidate> biSet, final DragAndDropTarget container, final AbstractNodeMapping mapping) {
         final EObjectCouple key = new EObjectCouple(container, mapping, ids);
         this.ignoredDuringRefreshProcess.remove(key);
         Collection<DDiagramElement> candidates = previousCandidatesCache.get(key);
@@ -1120,12 +1120,12 @@ public class DDiagramSynchronizer {
         addCandidates(biSet, candidates.iterator(), mapping);
     }
 
-    private <T extends DDiagramElement> void addCandidates(final SetIntersection<AbstractDNodeCandidate> biSet, final Iterator<T> it, final AbstractNodeMapping mapping) {
+    private <T extends DDiagramElement> void addCandidates(final SetIntersection<DNodeCandidate> biSet, final Iterator<T> it, final AbstractNodeMapping mapping) {
         while (it.hasNext()) {
             final DDiagramElement element = it.next();
             final DiagramElementMapping elementMapping = element.getDiagramElementMapping();
             if (EqualityHelper.areEquals(elementMapping, mapping) || mapping.eResource() == null) {
-                final AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate((AbstractDNode) element, ids);
+                final DNodeCandidate abstractDNodeCandidate = new DNodeCandidate((AbstractDNode) element, ids);
                 biSet.addInOld(abstractDNodeCandidate);
             }
         }
@@ -1146,12 +1146,12 @@ public class DDiagramSynchronizer {
      *            a {@link IProgressMonitor} to show progression of {@link AbstractDNode}s creation
      * @return the newly created nodes.
      */
-    private List<AbstractDNode> createNewContent(final Collection<AbstractDNodeCandidate> candidatesToCreate, final DragAndDropTarget container, final AbstractNodeMapping mapping,
+    private List<AbstractDNode> createNewContent(final Collection<DNodeCandidate> candidatesToCreate, final DragAndDropTarget container, final AbstractNodeMapping mapping,
             final boolean border, IProgressMonitor monitor) {
         return createNewContent(candidatesToCreate, false, container, mapping, border, monitor);
     }
 
-    private List<AbstractDNode> createNewContent(final Collection<AbstractDNodeCandidate> candidatesToCreate, boolean force, final DragAndDropTarget container, final AbstractNodeMapping mapping,
+    private List<AbstractDNode> createNewContent(final Collection<DNodeCandidate> candidatesToCreate, boolean force, final DragAndDropTarget container, final AbstractNodeMapping mapping,
             final boolean border, IProgressMonitor monitor) {
         try {
             monitor.beginTask(Messages.DDiagramSynchronizer_nodeCreationMsg, candidatesToCreate.size());
@@ -1159,7 +1159,7 @@ public class DDiagramSynchronizer {
             if (!candidatesToCreate.isEmpty() && this.accessor.getPermissionAuthority().canCreateIn(container)
                     && (force || new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram))) {
                 final List<AbstractDNode> createdNodes = new ArrayList<AbstractDNode>(candidatesToCreate.size());
-                for (final AbstractDNodeCandidate candidate : candidatesToCreate) {
+                for (final DNodeCandidate candidate : candidatesToCreate) {
                     final AbstractDNode createdNode = this.sync.createNewNode(diagramMappingsManager, candidate, border);
                     createdNodes.add(createdNode);
                     monitor.worked(1);

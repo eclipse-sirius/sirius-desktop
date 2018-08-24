@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -113,7 +113,7 @@ public class CreateDNodeTask extends AbstractCommandTask implements ICreationTas
             BestMappingGetter bestMappingGetter = new BestMappingGetter(containerViewDSemanticDecorator, semanticElt);
             NodeMapping bestMapping = bestMappingGetter.getBestNodeMapping(tool.getNodeMappings());
             if (bestMapping != null) {
-                AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(bestMapping, semanticElt, containerView, RefreshIdsHolder.getOrCreateHolder(dSemanticDiagram));
+                DNodeCandidate abstractDNodeCandidate = new DNodeCandidate(bestMapping, semanticElt, containerView, RefreshIdsHolder.getOrCreateHolder(dSemanticDiagram));
                 AbstractDNode createdAbstractDNode = dDiagramElementSynchronizer.createNewNode(mappingManager, abstractDNodeCandidate,
                         bestMapping.eContainingFeature() == DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS);
                 if (createdAbstractDNode != null) {

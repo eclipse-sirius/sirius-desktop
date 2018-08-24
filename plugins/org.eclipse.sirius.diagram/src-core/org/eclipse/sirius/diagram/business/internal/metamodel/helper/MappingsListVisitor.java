@@ -14,7 +14,7 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.util.Set;
 
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
 /**
@@ -35,6 +35,6 @@ public interface MappingsListVisitor {
      * @return the list of displayed candidate elements by this mapping. The
      *         method must return an empty list, if there is none.
      */
-    Set<AbstractDNodeCandidate> visit(DiagramElementMapping mapping, Set<AbstractDNodeCandidate> candidateFilter);
+    Set<DNodeCandidate> visit(DiagramElementMapping mapping, Set<DNodeCandidate> candidateFilter);
 
 }

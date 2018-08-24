@@ -59,17 +59,17 @@ public class DNodeSynchronizerHelper extends AbstractSynchronizerHelper {
      *            the refresh ids holder.
      * @return all node candidates
      */
-    public Collection<AbstractDNodeCandidate> computeNodeCandidates(final DragAndDropTarget container, final AbstractNodeMapping mapping, final Collection<AbstractDNodeCandidate> candidateFilter,
+    public Collection<DNodeCandidate> computeNodeCandidates(final DragAndDropTarget container, final AbstractNodeMapping mapping, final Collection<DNodeCandidate> candidateFilter,
             RefreshIdsHolder ids) {
 
-        final Collection<AbstractDNodeCandidate> nowCandidates = new ArrayList<>();
+        final Collection<DNodeCandidate> nowCandidates = new ArrayList<>();
         final Iterable<EObject> semantics = getSemanticCandidates(container, mapping);
 
         /*
          * produce the candidates states if the precondition is valid.
          */
         for (final EObject semantic : semantics) {
-            final AbstractDNodeCandidate candidate = new AbstractDNodeCandidate(mapping, semantic, container, ids);
+            final DNodeCandidate candidate = new DNodeCandidate(mapping, semantic, container, ids);
             if (candidateFilter == null || !candidateFilter.contains(candidate)) {
                 AbstractNodeMappingQuery abstractNodeMappingQuery = new AbstractNodeMappingQuery(mapping);
                 if (abstractNodeMappingQuery.evaluatePrecondition(diagram, container, interpreter, semantic)) {

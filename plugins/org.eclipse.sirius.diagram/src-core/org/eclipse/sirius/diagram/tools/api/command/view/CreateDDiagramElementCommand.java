@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
@@ -56,7 +56,7 @@ public class CreateDDiagramElementCommand extends RecordingCommand {
 
     private IInterpreter interpreter;
 
-    private AbstractDNodeCandidate nodeCandidate;
+    private DNodeCandidate nodeCandidate;
 
     private DEdgeCandidate edgeCandidate;
 
@@ -75,7 +75,7 @@ public class CreateDDiagramElementCommand extends RecordingCommand {
     public CreateDDiagramElementCommand(final TransactionalEditingDomain domain, final EObject semantic, final AbstractNodeMapping mapping, final DragAndDropTarget container) {
         this(domain, semantic);
         this.container = container;
-        nodeCandidate = new AbstractDNodeCandidate(mapping, semantic, container, RefreshIdsHolder.getOrCreateHolder(getParentDiagram()));
+        nodeCandidate = new DNodeCandidate(mapping, semantic, container, RefreshIdsHolder.getOrCreateHolder(getParentDiagram()));
     }
 
     /**

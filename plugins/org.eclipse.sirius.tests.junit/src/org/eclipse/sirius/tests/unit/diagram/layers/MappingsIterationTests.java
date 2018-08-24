@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.internal.componentization.mappings.DiagramDescriptionMappingsManagerImpl;
 import org.eclipse.sirius.diagram.business.internal.componentization.mappings.DiagramMappingsManagerImpl;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingsListVisitor;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -42,7 +42,7 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 
 public class MappingsIterationTests extends AbstractMappingsTableTest {
 
-    private static final Set<AbstractDNodeCandidate> EMPTY_SET = Collections.emptySet();
+    private static final Set<DNodeCandidate> EMPTY_SET = Collections.emptySet();
 
     private DSemanticDiagram diagram;
 
@@ -73,7 +73,7 @@ public class MappingsIterationTests extends AbstractMappingsTableTest {
         final AbstractNodeMapping containerMappingNotInActiveLayer = createContainerMapping(null);
 
         MappingsListVisitorTest visitor = new MappingsListVisitorTest() {
-            public Set<AbstractDNodeCandidate> visit(final DiagramElementMapping mapping, final Set<AbstractDNodeCandidate> semanticFilter) {
+            public Set<DNodeCandidate> visit(final DiagramElementMapping mapping, final Set<DNodeCandidate> semanticFilter) {
                 assertFalse("mapping not in an active layer should not appear in the smart iteration", mapping.equals(nodeMappingNotInActiveLayer));
                 assertFalse("mapping not in an active layer should not appear in the smart iteration", mapping.equals(containerMappingNotInActiveLayer));
                 return EMPTY_SET;
@@ -94,7 +94,7 @@ public class MappingsIterationTests extends AbstractMappingsTableTest {
 
         MappingsListVisitorTest test = new MappingsListVisitorTest() {
 
-            public Set<AbstractDNodeCandidate> visit(DiagramElementMapping mapping, Set<AbstractDNodeCandidate> semanticFilter) {
+            public Set<DNodeCandidate> visit(DiagramElementMapping mapping, Set<DNodeCandidate> semanticFilter) {
 
                 if (mapping.equals(mappingA))
                     assertTrue("a imported mapping should be visited after the mapping which imports it", visitedMappings.contains(mappingAAimportA));
@@ -131,7 +131,7 @@ public class MappingsIterationTests extends AbstractMappingsTableTest {
 
         MappingsListVisitorTest test = new MappingsListVisitorTest() {
 
-            public Set<AbstractDNodeCandidate> visit(DiagramElementMapping mapping, Set<AbstractDNodeCandidate> semanticFilter) {
+            public Set<DNodeCandidate> visit(DiagramElementMapping mapping, Set<DNodeCandidate> semanticFilter) {
 
                 if (mapping.equals(mappingNM1))
                     assertTrue("a imported mapping should be visited after the mapping which imports it", visitedMappings.contains(mappingNM3));
@@ -165,7 +165,7 @@ public class MappingsIterationTests extends AbstractMappingsTableTest {
 
         MappingsListVisitorTest test = new MappingsListVisitorTest() {
 
-            public Set<AbstractDNodeCandidate> visit(DiagramElementMapping mapping, Set<AbstractDNodeCandidate> semanticFilter) {
+            public Set<DNodeCandidate> visit(DiagramElementMapping mapping, Set<DNodeCandidate> semanticFilter) {
 
                 if (mapping.equals(mappingA))
                     assertTrue("a imported mapping should be visited after the mapping which imports it", visitedMappings.contains(mappingAAimportA));
@@ -203,7 +203,7 @@ public class MappingsIterationTests extends AbstractMappingsTableTest {
 
         MappingsListVisitorTest test = new MappingsListVisitorTest() {
 
-            public Set<AbstractDNodeCandidate> visit(DiagramElementMapping mapping, Set<AbstractDNodeCandidate> semanticFilter) {
+            public Set<DNodeCandidate> visit(DiagramElementMapping mapping, Set<DNodeCandidate> semanticFilter) {
                 assertFalse("if a mapping import another mapping and hide submappings, the submappings should not be visited", visitedMappings.contains(mappingB));
                 visitedMappings.add(mapping);
                 return EMPTY_SET;
@@ -229,7 +229,7 @@ public class MappingsIterationTests extends AbstractMappingsTableTest {
 
         MappingsListVisitorTest test = new MappingsListVisitorTest() {
 
-            public Set<AbstractDNodeCandidate> visit(DiagramElementMapping mapping, Set<AbstractDNodeCandidate> semanticFilter) {
+            public Set<DNodeCandidate> visit(DiagramElementMapping mapping, Set<DNodeCandidate> semanticFilter) {
                 assertFalse("if a mapping import another mapping and hide submappings, the submappings should not be visited", visitedMappings.contains(mappingB));
                 visitedMappings.add(mapping);
                 return EMPTY_SET;
@@ -271,7 +271,7 @@ public class MappingsIterationTests extends AbstractMappingsTableTest {
         // Step 3: Visit mappings : the child mapping should be visited
         MappingsListVisitorTest mappingVisitor = new MappingsListVisitorTest() {
 
-            public Set<AbstractDNodeCandidate> visit(DiagramElementMapping mapping, Set<AbstractDNodeCandidate> semanticFilter) {
+            public Set<DNodeCandidate> visit(DiagramElementMapping mapping, Set<DNodeCandidate> semanticFilter) {
                 visitedMappings.add(mapping);
                 return EMPTY_SET;
             }
