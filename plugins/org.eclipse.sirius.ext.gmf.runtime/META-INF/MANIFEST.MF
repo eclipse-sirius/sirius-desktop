@@ -6,7 +6,8 @@ Bundle-Version: 6.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: com.google.guava;bundle-version="[15.0,22.0)"
+Require-Bundle: com.google.guava;bundle-version="[15.0,22.0)",
+ org.eclipse.sirius.ext.draw2d;bundle-version="6.1.0";visibility:=reexport
 Import-Package: org.eclipse.core.runtime,
  org.eclipse.draw2d,
  org.eclipse.draw2d.geometry,
