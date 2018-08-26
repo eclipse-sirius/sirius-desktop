@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_canary" sequenceNumber="1528460983">
+<target name="sirius_canary" sequenceNumber="1535290054">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -51,16 +51,26 @@
       <unit id="org.eclipse.platform.ide" version="0.0.0"/>
       <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
       <unit id="org.eclipse.sdk.ide" version="0.0.0"/>
-      <repository id="Eclipse-Photon-Integration" location="http://download.eclipse.org/eclipse/updates/4.8-I-builds/"/>
+      <unit id="org.eclipse.equinox.core.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.compendium.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+      <repository id="Eclipse-Photon-Integration" location="http://download.eclipse.org/eclipse/updates/4.9-I-builds/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="com.google.guava" version="0.0.0"/>
-      <unit id="org.junit" version="0.0.0"/>
-      <unit id="org.hamcrest.core" version="0.0.0"/>
-      <unit id="org.hamcrest.library" version="0.0.0"/>
       <unit id="org.apache.log4j" version="0.0.0"/>
       <unit id="org.easymock" version="0.0.0"/>
-      <repository id="Orbit-Stable" location="http://download.eclipse.org/tools/orbit/downloads/drops/S20171130170529/repository"/>
+      <unit id="org.hamcrest.core" version="0.0.0"/>
+      <unit id="org.hamcrest.library" version="0.0.0"/>
+      <unit id="org.junit" version="4.12.0.v201504281640"/>
+      <unit id="javax.servlet" version="0.0.0"/>
+      <unit id="javax.websocket" version="0.0.0"/>
+      <unit id="com.google.gson" version="0.0.0"/>
+      <unit id="org.slf4j.api" version="1.7.2.v20121108-1250"/>
+      <unit id="ch.qos.logback.slf4j" version="1.0.7.v201505121915"/>
+      <unit id="ch.qos.logback.classic" version="1.0.7.v20121108-1250"/>
+      <unit id="ch.qos.logback.core" version="1.0.7.v20121108-1250"/>
+      <unit id="org.apache.xalan" version="2.7.1.v201005080400"/>
+      <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180606145124/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.draw2d.sdk.feature.group" version="0.0.0"/>
@@ -69,12 +79,12 @@
       <repository id="GEF-LastSuccessful" location="https://ci.eclipse.org/gef/job/gef-legacy-master/lastSuccessfulBuild/artifact/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.6.0.201706141832"/>
-      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.6.0.201706141832"/>
-      <unit id="org.eclipse.swtbot.feature.group" version="2.6.0.201706141832"/>
-      <unit id="org.eclipse.swtbot.forms.feature.group" version="2.6.0.201706141832"/>
-      <unit id="org.eclipse.swtbot.ide.feature.group" version="2.6.0.201706141832"/>
-      <repository id="SWTBot-2_6" location="http://download.eclipse.org/technology/swtbot/releases/2.6.0/"/>
+      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.7.0.201805151425"/>
+      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.7.0.201805151425"/>
+      <unit id="org.eclipse.swtbot.feature.group" version="2.7.0.201805151425"/>
+      <unit id="org.eclipse.swtbot.forms.feature.group" version="2.7.0.201805151425"/>
+      <unit id="org.eclipse.swtbot.ide.feature.group" version="2.7.0.201805151425"/>
+      <repository id="SWTBot-2_7" location="http://download.eclipse.org/technology/swtbot/milestones/photon-m7/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.feature.group" version="0.0.0"/>
