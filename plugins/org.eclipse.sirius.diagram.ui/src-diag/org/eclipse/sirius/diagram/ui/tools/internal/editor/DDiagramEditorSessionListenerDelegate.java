@@ -11,10 +11,15 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.edit.provider.ComposedImage;
+import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.impl.TransactionImpl;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -24,6 +29,7 @@ import org.eclipse.sirius.diagram.tools.api.management.ToolFilter;
 import org.eclipse.sirius.diagram.tools.api.management.ToolManagement;
 import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -225,16 +231,28 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
     private void reloadPalette(PaletteManager paletteManager, Diagram gmfDiagram, boolean clean) {
         TransactionalEditingDomain editingDomain = dDiagramEditorImpl.getEditingDomain();
         if (editingDomain != null) {
-            UpdateToolRecordingCommand updateToolRecordingCommand = new UpdateToolRecordingCommand(editingDomain, (DDiagram) gmfDiagram.getElement(), true);
-            editingDomain.getCommandStack().execute(updateToolRecordingCommand);
-            ToolManagement toolManagement = DiagramPlugin.getDefault().getToolManagement(gmfDiagram);
-            if (toolManagement != null) {
-                if (clean) {
-                    toolManagement.notifyToolChangeAfterVSMReload();
-                } else {
-                    toolManagement.notifyToolChange();
+
+            // We don't use a command stack because we don't want the tool computation to be undone.
+            TransactionImpl t = new TransactionImpl(editingDomain, false, Collections.EMPTY_MAP);
+            try {
+                t.start();
+                UpdateToolRecordingCommand updateToolRecordingCommand = new UpdateToolRecordingCommand(editingDomain, (DDiagram) gmfDiagram.getElement(), true);
+                if (updateToolRecordingCommand.canExecute()) {
+                    updateToolRecordingCommand.execute();
                 }
+                t.commit();
+                ToolManagement toolManagement = DiagramPlugin.getDefault().getToolManagement(gmfDiagram);
+                if (toolManagement != null) {
+                    if (clean) {
+                        toolManagement.notifyToolChangeAfterVSMReload();
+                    } else {
+                        toolManagement.notifyToolChange();
+                    }
+                }
+            } catch (RollbackException | InterruptedException e) {
+                DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, Messages.DDiagramEditorImpl_updateToolFailure, e));
             }
+
         }
     }
 

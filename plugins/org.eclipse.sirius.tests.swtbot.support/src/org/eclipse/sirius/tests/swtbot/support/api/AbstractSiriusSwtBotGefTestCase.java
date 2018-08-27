@@ -276,6 +276,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 } else {
                     shell.setFullScreen(AbstractSiriusSwtBotGefTestCase.fFullScreen);
                 }
+                if (PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell() != null) {
+                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().forceActive();
+                }
             }
         });
 

@@ -14,6 +14,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +44,9 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IDisposable;
+import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.impl.TransactionImpl;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.EditPart;
@@ -759,10 +762,20 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             toolManagement.addToolChangeListener(paletteToolChangeListener);
 
             if (getSession() != null) {
-                UpdateToolRecordingCommand updateToolRecordingCommand = new UpdateToolRecordingCommand(getSession().getTransactionalEditingDomain(), (DDiagram) getDiagram().getElement(), true);
-                session.getTransactionalEditingDomain().getCommandStack().execute(updateToolRecordingCommand);
+                // We don't use a command stack because we don't want the tool computation to be undone.
+                TransactionImpl t = new TransactionImpl(session.getTransactionalEditingDomain(), false, Collections.EMPTY_MAP);
+                try {
+                    t.start();
+                    UpdateToolRecordingCommand updateToolRecordingCommand = new UpdateToolRecordingCommand(session.getTransactionalEditingDomain(), (DDiagram) getDiagram().getElement(), true);
+                    if (updateToolRecordingCommand.canExecute()) {
+                        updateToolRecordingCommand.execute();
+                    }
+                    t.commit();
+                    toolManagement.notifyToolChange();
+                } catch (RollbackException | InterruptedException e) {
+                    DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, Messages.DDiagramEditorImpl_updateToolFailure, e));
+                }
             }
-            toolManagement.notifyToolChange();
         }
         // Initialize drag'n drop listener from palette
         paletteTransferDropTargetListener = new SiriusPaletteToolDropTargetListener(getGraphicalViewer());

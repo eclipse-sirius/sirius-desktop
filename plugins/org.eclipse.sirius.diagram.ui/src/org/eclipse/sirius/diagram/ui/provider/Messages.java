@@ -1555,6 +1555,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String UndoRedoCapableEMFCommandFactory_insertHorizontalBlankSpaceNotImplemented;
+
+    @TranslatableMessage
+    public static String DDiagramEditorImpl_updateToolFailure;
     // CHECKSTYLE:ON
 
     private Messages() {

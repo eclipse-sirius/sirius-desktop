@@ -76,30 +76,9 @@ public abstract class AbstractModelMarkerNavigationProvider
             }
         }
         
-        // If the refresh at opening is activated, we do not run the gotoMarker
-        // in runExclusive since the refresh can modify the model. See bug
-        // 509970.
-        if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
-            AbstractModelMarkerNavigationProvider.super.gotoMarker(editor, marker);
-        } else if (editingDomain != null) {
-            if (editingDomain != null) {
-    
-                // Perform the "goto" in a read operation.
-                try {
-                    editingDomain.runExclusive(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            AbstractModelMarkerNavigationProvider.super.gotoMarker(editor, marker);
-                        }
-                    });
-
-                } catch (InterruptedException e) {
-                    Trace.catching(MslUIPlugin.getDefault(), MslUIDebugOptions.EXCEPTIONS_CATCHING, getClass(), "gotoMarker", e); //$NON-NLS-1$
-                    Log.error(MslUIPlugin.getDefault(), MslUIStatusCodes.IGNORED_EXCEPTION_WARNING, e.getLocalizedMessage(), e);
-                }
-            }
-        }
+        // We do not run the gotoMarker
+        // in runExclusive since tool computation modifies the model.
+        AbstractModelMarkerNavigationProvider.super.gotoMarker(editor, marker);
     }
     
     /**

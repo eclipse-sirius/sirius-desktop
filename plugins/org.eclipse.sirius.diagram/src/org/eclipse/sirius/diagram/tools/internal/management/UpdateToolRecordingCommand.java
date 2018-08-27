@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.management;
 
-import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -56,8 +55,6 @@ public class UpdateToolRecordingCommand extends RecordingCommand {
         ToolManagement toolManagement = DiagramPlugin.getPlugin().getToolManagement(diagram);
         if (toolManagement != null) {
             toolManagement.updateTools(updateFilters);
-        } else {
-            throw new OperationCanceledException(Messages.UpdateToolRecordingCommand_cancelExceptionMessage);
         }
     }
 

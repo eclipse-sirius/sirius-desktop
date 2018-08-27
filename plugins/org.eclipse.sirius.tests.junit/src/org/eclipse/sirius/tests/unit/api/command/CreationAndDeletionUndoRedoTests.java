@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,8 +35,7 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Tests creation and deletion undo command based on entities diagram of ecore
- * modeler.
+ * Tests creation and deletion undo command based on entities diagram of ecore modeler.
  * 
  * @author mchauvin
  */
@@ -171,18 +170,6 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
         assertTrue(DialectManager.INSTANCE.getAllRepresentations(session).contains(createdRepresentation));
         TestsUtil.synchronizationWithUIThread();
 
-        /* undo tools availability update. */
-        assertTrue(canUndo());
-        assertEquals("Update available tools", getCommandLabel());
-        undo();
-        TestsUtil.synchronizationWithUIThread();
-
-        /* undo tools availability update. */
-        assertTrue(canUndo());
-        assertEquals("Update available tools", getCommandLabel());
-        undo();
-        TestsUtil.synchronizationWithUIThread();
-
         /* undo diagram creation command */
         assertTrue(canUndo());
         assertEquals("Create representation", getCommandLabel());
@@ -198,9 +185,8 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
 
     private String getArrangeAllCommandLabel() {
         /*
-         * org.eclipse.gmf.runtime.diagram.ui.editpolicies.ContainerEditPolicy.
-         * getArrangeCommand() starting from Eclipse 3.6 return directly a
-         * ArrangeCommand with an empty label
+         * org.eclipse.gmf.runtime.diagram.ui.editpolicies.ContainerEditPolicy. getArrangeCommand() starting from
+         * Eclipse 3.6 return directly a ArrangeCommand with an empty label
          */
         if (isPlatformAtLeastEclipse36())
             return "";
