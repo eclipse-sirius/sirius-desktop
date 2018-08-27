@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,54 @@ public final class SiriusGraphQLTestsMessages {
 
     @TranslatableMessage
     public static String introspectionQuery;
+
+    @TranslatableMessage
+    public static String findProjectNameByName;
+
+    @TranslatableMessage
+    public static String findProjectNameByName_resultSample;
+
+    @TranslatableMessage
+    public static String findProjectPathByName;
+
+    @TranslatableMessage
+    public static String findProjectPathByName_resultSample;
+
+    @TranslatableMessage
+    public static String findProjectContainerByName;
+
+    @TranslatableMessage
+    public static String findProjectContainerByName_resultSample;
+
+    @TranslatableMessage
+    public static String findProjectProjectByName;
+
+    @TranslatableMessage
+    public static String findProjectProjectByName_resultSample;
+
+    @TranslatableMessage
+    public static String findProjectResourcesByName;
+
+    @TranslatableMessage
+    public static String findProjectResourcesByName_resultSample;
+
+    @TranslatableMessage
+    public static String findProjectDescriptionByName;
+
+    @TranslatableMessage
+    public static String findProjectDescriptionByName_resultSample;
+
+    @TranslatableMessage
+    public static String findProjectResourceByPathByName;
+
+    @TranslatableMessage
+    public static String findProjectResourceByPathByName_resultSample;
+
+    @TranslatableMessage
+    public static String findProjectActivatedViewpointsByName;
+
+    @TranslatableMessage
+    public static String findProjectActivatedViewpointsByName_resultSample;
 
     @TranslatableMessage
     public static String query;
