@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
@@ -145,11 +146,13 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
             cmd.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(reconnectionSource), edge.getTarget(), parentDiagram.get()));
 
             final CompoundCommand cc = new CompoundCommand();
-            IEdgeMapping actualMapping = edge.getActualMapping();
-            if (newEdgeMapping != null && !newEdgeMapping.equals(actualMapping)) {
+            // Use getMapping() and not getActualMapping to be sure to have an
+            // EdgeMapping and not a IEdgeMapping
+            EdgeMapping currentMapping = (EdgeMapping) edge.getMapping();
+            if (newEdgeMapping != null && !newEdgeMapping.equals(currentMapping)) {
                 cc.append(new SetEdgeActualMappingCommand(editingDomain, edge, newEdgeMapping));
             }
-            if (reconnectionSource.equals(oldSource) && (newEdgeMapping != null && !newEdgeMapping.isUseDomainElement() || !isEdgeActualMappingUsingDomainElement(actualMapping))) {
+            if (reconnectionSource.equals(oldSource) && (newEdgeMapping != null && !newEdgeMapping.isUseDomainElement() || !isEdgeActualMappingUsingDomainElement(currentMapping))) {
                 cc.append(new ReconnectSourceNodeCommand(editingDomain, edge, reconnectionTarget, semanticTarget));
             }
             cc.append(cmd);
@@ -200,7 +203,13 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
                 final EdgeMapping currentMapping = iterMappings.next();
                 if (currentMapping.getTargetMapping().contains(targetMapping) && currentMapping.getSourceMapping().contains(sourceMapping)) {
                     bestMapping = currentMapping;
-                    if (currentMapping.equals(edge.getActualMapping())) {
+                    IEdgeMapping currentIEdgeMapping;
+                    if (currentMapping instanceof EdgeMappingImportWrapper) {
+                        currentIEdgeMapping = ((EdgeMappingImportWrapper) currentMapping).getImportedMapping();
+                    } else {
+                        currentIEdgeMapping = currentMapping;
+                    }
+                    if (currentIEdgeMapping.equals(edge.getActualMapping())) {
                         break;
                     }
                 }

@@ -10,19 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.spec;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.impl.DEdgeImpl;
 import org.eclipse.sirius.viewpoint.Style;
 
@@ -85,18 +81,5 @@ public class DEdgeSpec extends DEdgeImpl {
             };
         }
         return path;
-    }
-
-    @Override
-    public void eNotify(Notification notification) {
-        if (notification.getEventType() == Notification.SET && notification.getFeatureID(DEdge.class) == DiagramPackage.DEDGE__ACTUAL_MAPPING) {
-            if (notification.getOldValue() instanceof EdgeMappingImport && EdgeMappingImportWrapper.getWrapper((EdgeMappingImport) notification.getOldValue()) == notification.getNewValue()) {
-                // silently replace the EdgeMappingImport by its corresponding
-                // wrapper : occurs only once on the first refresh after load.
-                // During save, the mapping s serialized, not the wrapper.
-                return;
-            }
-        }
-        super.eNotify(notification);
     }
 }

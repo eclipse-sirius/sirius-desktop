@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,8 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.Messages;
-import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
 
 /**
  * Specific command to set the actual mapping of an edge.
@@ -25,7 +26,7 @@ public final class SetEdgeActualMappingCommand extends RecordingCommand {
 
     private final DEdge edge;
 
-    private final EdgeMapping newEdgeMapping;
+    private final IEdgeMapping newEdgeMapping;
 
     /**
      * Constructor.
@@ -37,10 +38,14 @@ public final class SetEdgeActualMappingCommand extends RecordingCommand {
      * @param edge
      *            the DEdge to update.
      */
-    public SetEdgeActualMappingCommand(TransactionalEditingDomain domain, DEdge edge, EdgeMapping newEdgeMapping) {
+    public SetEdgeActualMappingCommand(TransactionalEditingDomain domain, DEdge edge, IEdgeMapping newEdgeMapping) {
         super(domain, Messages.SetEdgeActualMappingCommand_commandLabel);
         this.edge = edge;
-        this.newEdgeMapping = newEdgeMapping;
+        if (newEdgeMapping instanceof EdgeMappingImportWrapper) {
+            this.newEdgeMapping = ((EdgeMappingImportWrapper) newEdgeMapping).getWrappedEdgeMappingImport();
+        } else {
+            this.newEdgeMapping = newEdgeMapping;
+        }
     }
 
     /**
