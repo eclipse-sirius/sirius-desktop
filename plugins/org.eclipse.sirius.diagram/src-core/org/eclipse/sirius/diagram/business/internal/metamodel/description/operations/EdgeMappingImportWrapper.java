@@ -57,7 +57,11 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
 /**
  * Implementation of the EdgeMapping interface. This class is more or less a
  * wrapper for another EdgeMapping, it helps in reusing mappings from
- * EdgeMapping.
+ * EdgeMapping.<BR>
+ * It must not be used to set the actual mapping. This class must only be used
+ * for {@link DEdge#getMapping()} and then the result of
+ * {@link #getWrappedEdgeMappingImport()} must be used to set actual mapping:
+ * {@link DEdge#setActualMapping(IEdgeMapping)}.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 

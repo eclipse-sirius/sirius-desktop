@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -194,12 +195,12 @@ public class MessageExtensionTest extends AbstractDefaultModelSequenceTests {
         // The edge has the extended label, now check the style and mapping.
         SequenceMessageEditPart sequenceMessageEditPart = getSequenceMessageEditPart(M12_EXTENDED);
         DEdge dEdge = (DEdge) sequenceMessageEditPart.resolveDiagramElement();
-        IEdgeMapping actualEdgeMapping = dEdge.getActualMapping();
+        EdgeMapping actualEdgeMapping = (EdgeMapping) dEdge.getMapping();
         assertTrue("The edge's mapping is not the import mapping, check the data.", actualEdgeMapping instanceof EdgeMappingImportWrapper);
 
-        actualEdgeMapping = ((EdgeMappingImportWrapper) actualEdgeMapping).getWrappedEdgeMappingImport();
+        IEdgeMapping wrappedEdgeMapping = ((EdgeMappingImportWrapper) actualEdgeMapping).getWrappedEdgeMappingImport();
         EObject styleDescriptionParentMapping = dEdge.getOwnedStyle().getDescription().eContainer().eContainer();
-        assertEquals("The edge's style is not provided by the import mapping, check the data.", actualEdgeMapping, styleDescriptionParentMapping);
+        assertEquals("The edge's style is not provided by the import mapping, check the data.", wrappedEdgeMapping, styleDescriptionParentMapping);
 
         editor.click(getSequenceMessageScreenCenteredPosition(M12_EXTENDED));
         deleteSelectedElement();
