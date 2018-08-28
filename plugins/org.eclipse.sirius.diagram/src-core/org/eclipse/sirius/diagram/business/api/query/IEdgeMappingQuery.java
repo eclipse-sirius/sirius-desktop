@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,14 +39,14 @@ public class IEdgeMappingQuery {
     }
 
     /**
-     * Return the wrapper in case of EdgeMappingImport or the EdgeMapping itself
-     * otherwise.
+     * Return the wrapper in case of EdgeMappingImport or
+     * EdgeMappingImportWrapper, or the EdgeMapping itself otherwise.
      * 
      * @return The correct EdgeMapping
      */
     public Option<EdgeMapping> getEdgeMapping() {
         EdgeMapping result = null;
-        if (iEdgeMapping instanceof EdgeMappingImport) {
+        if (iEdgeMapping instanceof EdgeMappingImport && !(iEdgeMapping instanceof EdgeMappingImportWrapper)) {
             result = EdgeMappingImportWrapper.getWrapper((EdgeMappingImport) iEdgeMapping);
         } else {
             result = (EdgeMapping) iEdgeMapping;
