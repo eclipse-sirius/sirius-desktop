@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDi
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.sample.interactions.Interaction;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
@@ -47,18 +48,22 @@ public class ExecutionMoveTests extends AbstractDefaultModelSequenceTests {
 
     private static final String SESSION_FILE = "executions.aird";
 
+    @Override
     protected String getPath() {
         return PATH;
     }
 
+    @Override
     protected String getSemanticModel() {
         return MODEL;
     }
 
+    @Override
     protected String getSessionModel() {
         return SESSION_FILE;
     }
 
+    @Override
     protected Option<String> getDRepresentationName() {
         return Options.newSome(REPRESENTATION_NAME);
     }
@@ -127,6 +132,7 @@ public class ExecutionMoveTests extends AbstractDefaultModelSequenceTests {
 
     private static final int NB_ENDS_EXECUTIONS = (5 * 2) + (4 * 2);
 
+    @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
 
@@ -407,6 +413,9 @@ public class ExecutionMoveTests extends AbstractDefaultModelSequenceTests {
      * Move e2 out of e1, just above it
      */
     public void test_move_execution_out_of_parent_and_above_it() {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         int newY = 170;
         int dy = newY - e2Bounds.y;
         

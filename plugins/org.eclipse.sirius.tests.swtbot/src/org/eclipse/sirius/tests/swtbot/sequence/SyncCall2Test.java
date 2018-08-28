@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberExecutionOnLifeline;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfChildren;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
@@ -169,6 +170,9 @@ public class SyncCall2Test extends AbstractDefaultModelSequenceTests {
      * 
      */
     public void test_SyncCall_Delete_And_Reconnect_Sub_Event() {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
         
