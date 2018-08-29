@@ -38,6 +38,7 @@ import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener;
 import org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider;
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
+import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -488,7 +489,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
      */
     private void addActionInGroup(final IMenuManager parentMenu, final String groupId, IAction action) {
         if (contributionToTabbar && DEFAULT_TABBAR_GROUP.equals(groupId)) {
-            parentMenu.add(action);
+            parentMenu.insertAfter(ActionIds.ACTION_TOOLBAR_SELECT_ALL_SHAPES, action);
         } else {
             try {
                 parentMenu.appendToGroup(groupId, action);
