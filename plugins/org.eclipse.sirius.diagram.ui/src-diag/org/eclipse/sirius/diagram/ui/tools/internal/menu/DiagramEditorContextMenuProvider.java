@@ -53,6 +53,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 
     private static final String FILTER_FORMAT_GROUP = "filterFormatGroup"; //$NON-NLS-1$
 
+    private static final String PLUGIN_MENU_MANAGER_CLASS_NAME = "PluginMenuManager"; //$NON-NLS-1$
+
     /** the workbench part */
     private IWorkbenchPart part;
 
@@ -131,8 +133,11 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     if (item1 != null) {
                         menu.remove(item1);
                         final IMenuManager arrangeMenu = menu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
-                        updateArrangeMenuName(arrangeMenu);
-                        arrangeMenu.insertAfter(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL, item1);
+                        if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(arrangeMenu.getClass().getSimpleName())) { // $NON-NLS-1$
+                            //We move the arrangeMenu only if it is contributed through plugin contribution. In case of VSM contribution, we ignore it.
+                            updateArrangeMenuName(arrangeMenu);
+                            arrangeMenu.insertAfter(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL, item1);
+                        }
                     }
 
                     // Move arrange menu for diagram element
@@ -228,12 +233,16 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                 // We check the enablement of the arrange actions according to
                 // the current selected elements.
                 updateArrangeMenuEnableActions(arrangeMenu, this.getViewer().getSelection());
-                // Rename of the menu Arrange into Layout
-                updateArrangeMenuName(arrangeMenu);
-                // Remove Layout menu from format menu
-                formatMenu.remove(arrangeMenu);
-                // and add it just after FILTER_FORMAT_GROUP
-                menu.insertAfter(FILTER_FORMAT_GROUP, arrangeMenu);
+                if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(arrangeMenu.getClass().getSimpleName())) {
+                    // We move the arrangeMenu only if it is contributed through plugin contribution. In case of VSM
+                    // contribution, we ignore it.
+                    // Rename of the menu Arrange into Layout
+                    updateArrangeMenuName(arrangeMenu);
+                    // Remove Layout menu from format menu
+                    formatMenu.remove(arrangeMenu);
+                    // and add it just after FILTER_FORMAT_GROUP
+                    menu.insertAfter(FILTER_FORMAT_GROUP, arrangeMenu);
+                }
             }
         }
     }
