@@ -32,7 +32,7 @@ public class TechnicalUidMigrationParticipant extends AbstractRepresentationsFil
     /**
      * The VP version for which this migration is added.
      */
-    public static final Version MIGRATION_VERSION = new Version("14.1.0.201808080808"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("14.1.0.201808300808"); //$NON-NLS-1$
 
     private boolean migrationOccured;
 

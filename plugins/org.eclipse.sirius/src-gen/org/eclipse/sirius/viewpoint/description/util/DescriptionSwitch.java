@@ -296,6 +296,9 @@ public class DescriptionSwitch<T> {
             DAnnotation dAnnotation = (DAnnotation) theEObject;
             T result = caseDAnnotation(dAnnotation);
             if (result == null) {
+                result = caseViewpoint_IdentifiedElement(dAnnotation);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -538,6 +541,9 @@ public class DescriptionSwitch<T> {
             AnnotationEntry annotationEntry = (AnnotationEntry) theEObject;
             T result = caseAnnotationEntry(annotationEntry);
             if (result == null) {
+                result = caseViewpoint_IdentifiedElement(annotationEntry);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -575,6 +581,9 @@ public class DescriptionSwitch<T> {
         case DescriptionPackage.DANNOTATION_ENTRY: {
             DAnnotationEntry dAnnotationEntry = (DAnnotationEntry) theEObject;
             T result = caseDAnnotationEntry(dAnnotationEntry);
+            if (result == null) {
+                result = caseViewpoint_IdentifiedElement(dAnnotationEntry);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -1349,6 +1358,21 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseTypedVariable(TypedVariable object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Identified Element</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Identified Element</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseViewpoint_IdentifiedElement(org.eclipse.sirius.viewpoint.IdentifiedElement object) {
         return null;
     }
 

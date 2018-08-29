@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains accessors for the meta objects to represent
@@ -867,12 +868,20 @@ public interface DescriptionPackage extends EPackage {
     int DANNOTATION = 15;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DANNOTATION__UID = ViewpointPackage.IDENTIFIED_ELEMENT__UID;
+
+    /**
      * The feature id for the '<em><b>Source</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DANNOTATION__SOURCE = 0;
+    int DANNOTATION__SOURCE = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Details</b></em>' map. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -880,7 +889,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANNOTATION__DETAILS = 1;
+    int DANNOTATION__DETAILS = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>References</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -888,7 +897,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANNOTATION__REFERENCES = 2;
+    int DANNOTATION__REFERENCES = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>DAnnotation</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
@@ -897,7 +906,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANNOTATION_FEATURE_COUNT = 3;
+    int DANNOTATION_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.impl.ConditionalStyleDescriptionImpl
@@ -1942,12 +1951,20 @@ public interface DescriptionPackage extends EPackage {
     int ANNOTATION_ENTRY = 40;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ANNOTATION_ENTRY__UID = ViewpointPackage.IDENTIFIED_ELEMENT__UID;
+
+    /**
      * The feature id for the '<em><b>Source</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int ANNOTATION_ENTRY__SOURCE = 0;
+    int ANNOTATION_ENTRY__SOURCE = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Data</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1956,7 +1973,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ANNOTATION_ENTRY__DATA = 1;
+    int ANNOTATION_ENTRY__DATA = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Annotation Entry</em>' class. <!-- begin-user-doc --> <!--
@@ -1965,7 +1982,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ANNOTATION_ENTRY_FEATURE_COUNT = 2;
+    int ANNOTATION_ENTRY_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.impl.EndUserDocumentedElementImpl
@@ -2057,12 +2074,20 @@ public interface DescriptionPackage extends EPackage {
     int DANNOTATION_ENTRY = 44;
 
     /**
+     * The feature id for the '<em><b>Uid</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DANNOTATION_ENTRY__UID = ViewpointPackage.IDENTIFIED_ELEMENT__UID;
+
+    /**
      * The feature id for the '<em><b>Source</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DANNOTATION_ENTRY__SOURCE = 0;
+    int DANNOTATION_ENTRY__SOURCE = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Details</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2070,7 +2095,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANNOTATION_ENTRY__DETAILS = 1;
+    int DANNOTATION_ENTRY__DETAILS = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>DAnnotation Entry</em>' class. <!-- begin-user-doc --> <!--
@@ -2079,7 +2104,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANNOTATION_ENTRY_FEATURE_COUNT = 2;
+    int DANNOTATION_ENTRY_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl

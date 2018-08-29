@@ -363,6 +363,11 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseViewpoint_IdentifiedElement(org.eclipse.sirius.viewpoint.IdentifiedElement object) {
+            return createViewpoint_IdentifiedElementAdapter();
+        }
+
+        @Override
         public Adapter defaultCase(EObject object) {
             return createEObjectAdapter();
         }
@@ -1061,6 +1066,20 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createTypedVariableAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.IdentifiedElement
+     * <em>Identified Element</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.IdentifiedElement
+     * @generated
+     */
+    public Adapter createViewpoint_IdentifiedElementAdapter() {
         return null;
     }
 

@@ -2409,6 +2409,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         ValidationPackage theValidationPackage = (ValidationPackage) EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI);
         AuditPackage theAuditPackage = (AuditPackage) EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+        ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
 
         // Add subpackages
         getESubpackages().add(theStylePackage);
@@ -2432,6 +2433,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         representationDescriptionEClass.getESuperTypes().add(this.getIdentifiedElement());
         representationImportDescriptionEClass.getESuperTypes().add(this.getRepresentationDescription());
         representationElementMappingEClass.getESuperTypes().add(this.getIdentifiedElement());
+        dAnnotationEClass.getESuperTypes().add(theViewpointPackage.getIdentifiedElement());
         semanticBasedDecorationEClass.getESuperTypes().add(this.getDecorationDescription());
         genericDecorationDescriptionEClass.getESuperTypes().add(this.getDecorationDescription());
         vsmElementCustomizationEClass.getESuperTypes().add(this.getIVSMElementCustomization());
@@ -2444,8 +2446,10 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         fixedColorEClass.getESuperTypes().add(this.getColorDescription());
         userFixedColorEClass.getESuperTypes().add(this.getFixedColor());
         userFixedColorEClass.getESuperTypes().add(this.getUserColor());
+        annotationEntryEClass.getESuperTypes().add(theViewpointPackage.getIdentifiedElement());
         computedColorEClass.getESuperTypes().add(this.getUserColor());
         computedColorEClass.getESuperTypes().add(this.getColorDescription());
+        dAnnotationEntryEClass.getESuperTypes().add(theViewpointPackage.getIdentifiedElement());
         subVariableEClass.getESuperTypes().add(this.getAbstractVariable());
         typedVariableEClass.getESuperTypes().add(this.getInteractiveVariableDescription());
         typedVariableEClass.getESuperTypes().add(this.getSubVariable());

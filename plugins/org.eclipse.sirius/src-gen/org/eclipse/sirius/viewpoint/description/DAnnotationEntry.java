@@ -12,7 +12,7 @@
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>DAnnotation Entry</b></em>'. <!-- end-user-doc
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DAnnotationEntry extends EObject {
+public interface DAnnotationEntry extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Source</b></em>' attribute. <!-- begin-user-doc -->
      * <p>

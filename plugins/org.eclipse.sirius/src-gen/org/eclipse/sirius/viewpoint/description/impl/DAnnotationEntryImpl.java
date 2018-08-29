@@ -17,10 +17,10 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.impl.IdentifiedElementImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DAnnotation Entry</b></em>'. <!-- end-user-doc
@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  *
  * @generated
  */
-public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implements DAnnotationEntry {
+public class DAnnotationEntryImpl extends IdentifiedElementImpl implements DAnnotationEntry {
     /**
      * The default value of the '{@link #getSource() <em>Source</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
