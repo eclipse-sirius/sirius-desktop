@@ -78,7 +78,12 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
 
     @Override
     protected boolean useIDAttributes() {
-        return true;
+        // The cache used to get an element from its ID is idToEObjectMap.
+        // This map is updated in attachedHelper and detachedHelper and should be always up to date.
+        // If this.getEObject(String uriFragment) is called and uriFragment corresponds to an object that is not in the
+        // resource then, if useIDAttributes=true, the whole resource content is iterated.
+        // To avoid that, useIDAttributes return false.
+        return false;
     }
 
     /**
