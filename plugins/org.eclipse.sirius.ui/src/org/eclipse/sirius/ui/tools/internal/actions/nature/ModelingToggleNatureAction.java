@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,7 +61,7 @@ public class ModelingToggleNatureAction extends AbstractHandler {
                 } else if (object instanceof IProjectNature) {
                     IProjectNature nature = (IProjectNature) object;
                     selectedProjects.add(nature.getProject());
-                } else if (Platform.getAdapterManager().getAdapter(object, IProject.class) instanceof IProject) {
+                } else if (Platform.getAdapterManager().getAdapter(object, IProject.class) != null) {
                     selectedProjects.add(Platform.getAdapterManager().getAdapter(object, IProject.class));
                 }
             }
