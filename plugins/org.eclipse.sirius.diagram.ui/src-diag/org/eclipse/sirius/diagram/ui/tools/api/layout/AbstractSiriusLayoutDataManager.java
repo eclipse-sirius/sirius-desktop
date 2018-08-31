@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -187,7 +187,6 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
         }
     }
 
-    @SuppressWarnings("unchecked")
     private void centerEdgesEnds(View view) {
         Set<Edge> edges = new HashSet<Edge>();
         if (view instanceof Diagram) {

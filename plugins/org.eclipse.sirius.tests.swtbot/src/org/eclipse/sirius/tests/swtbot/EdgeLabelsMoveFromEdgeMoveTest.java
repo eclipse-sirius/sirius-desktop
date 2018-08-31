@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -863,7 +863,6 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
             diagramEditor.select(edgeEditPart);
             Connection figure = (Connection) edgeEditPart.part().getFigure();
             PointList pointList = figure.getPoints();
-            @SuppressWarnings("unchecked")
             List<LineSeg> edgeSegments = PointListUtilities.getLineSegments(pointList);
             LineSeg lineSegToMove = edgeSegments.get(segmentIndex);
             Point initialLocation = new Point();
