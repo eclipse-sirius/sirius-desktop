@@ -163,10 +163,10 @@ public class TechnicalUidMigrationTest extends SiriusTestCase {
 
         // Check that the migration went well on the xml level
         Collection<String> uidAttributes = getXmlAttributes(analysis.eResource().getURI(), "uid");
-        assertEquals("Bad number of elements with uid attribute", 8, uidAttributes.size());
+        assertEquals("Bad number of elements with uid attribute", 10, uidAttributes.size());
 
         Collection<String> xmiIdAttributes = getXmlAttributes(analysis.eResource().getURI(), "xmi:id");
-        assertEquals("Bad number of elements with xmi:id attribute", 11, xmiIdAttributes.size());
+        assertEquals("Bad number of elements with xmi:id attribute", 9, xmiIdAttributes.size());
 
         List<String> newUids = uidAttributes.stream().filter(s -> !initialXmiIdAttributes.contains(s)).collect(Collectors.toList());
         assertTrue("Migration should not introduce new uids and all uid must come from the pevious xmi:id", newUids.isEmpty());
