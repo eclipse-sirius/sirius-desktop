@@ -13,3 +13,4 @@ Export-Package: org.eclipse.sirius.ext.ide.api,
  org.eclipse.sirius.ext.ide.internal;x-internal:=true
 Bundle-Activator: org.eclipse.sirius.ext.ide.internal.SiriusExtIdePlugin$Implementation
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.eclipse.sirius.ext.ide

@@ -23,3 +23,4 @@ Export-Package: org.eclipse.sirius.tests.sample.xtext.ui.quickfix,
  org.eclipse.sirius.tests.sample.xtext.ui.contentassist,
  org.eclipse.sirius.tests.sample.xtext.statemachine.ui.internal
 Bundle-Activator: org.eclipse.sirius.tests.sample.xtext.statemachine.ui.internal.StatemachineActivator
+Automatic-Module-Name: org.eclipse.sirius.tests.sample.xtext.statemachine.ui
