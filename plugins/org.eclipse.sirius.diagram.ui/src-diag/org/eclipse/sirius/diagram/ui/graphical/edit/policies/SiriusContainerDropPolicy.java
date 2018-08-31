@@ -135,22 +135,31 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
                 }
             }
         }
-        if (c != null && c.canExecute()) {
-            if (revertColor == null) {
-                if (getHostFigure() instanceof BorderedNodeFigure) {
-                    final Rectangle bounds = getHostFigure().getBounds().getCopy();
-                    getHostFigure().translateToAbsolute(bounds);
-                    figure = ((AbstractGraphicalEditPart) getHost().getRoot()).getFigure().findFigureAt(bounds.getCenter());
-                    revertColor = figure.getBackgroundColor();
-                    opacity = figure.isOpaque();
-                    figure.setBackgroundColor(org.eclipse.draw2d.FigureUtilities.mixColors(GRAY, revertColor));
-                    figure.setOpaque(true);
-                } else {
-                    revertColor = getHostFigure().getBackgroundColor();
-                    opacity = getHostFigure().isOpaque();
-                    getHostFigure().setBackgroundColor(org.eclipse.draw2d.FigureUtilities.mixColors(GRAY, revertColor));
-                    getHostFigure().setOpaque(true);
+        if (c != null && c.canExecute() && revertColor == null) {
+            if (getHostFigure() instanceof BorderedNodeFigure) {
+                final Rectangle bounds = getHostFigure().getBounds().getCopy();
+                getHostFigure().translateToAbsolute(bounds);
+                IFigure rootFigure = ((AbstractGraphicalEditPart) getHost().getRoot()).getFigure();
+                Point searchPoint = bounds.getCenter();
+                if (!rootFigure.getBounds().contains(searchPoint)) {
+                    // If the search is not in the bounds of the root figure, we
+                    // set the search point to the center of the visible part of
+                    // the figure.
+                    Rectangle intersection = rootFigure.getBounds().getIntersection(bounds);
+                    if (!intersection.isEmpty()) {
+                        searchPoint = intersection.getCenter();
+                    }
                 }
+                figure = rootFigure.findFigureAt(searchPoint);
+                revertColor = figure.getBackgroundColor();
+                opacity = figure.isOpaque();
+                figure.setBackgroundColor(org.eclipse.draw2d.FigureUtilities.mixColors(GRAY, revertColor));
+                figure.setOpaque(true);
+            } else {
+                revertColor = getHostFigure().getBackgroundColor();
+                opacity = getHostFigure().isOpaque();
+                getHostFigure().setBackgroundColor(org.eclipse.draw2d.FigureUtilities.mixColors(GRAY, revertColor));
+                getHostFigure().setOpaque(true);
             }
         }
     }
