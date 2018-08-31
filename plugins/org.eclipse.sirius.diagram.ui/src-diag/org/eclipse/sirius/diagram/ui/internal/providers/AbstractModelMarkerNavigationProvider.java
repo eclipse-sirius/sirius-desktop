@@ -25,13 +25,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.gmf.runtime.common.core.util.Log;
-import org.eclipse.gmf.runtime.common.core.util.Trace;
 import org.eclipse.gmf.runtime.common.ui.services.marker.AbstractMarkerNavigationProvider;
-import org.eclipse.gmf.runtime.emf.ui.internal.MslUIDebugOptions;
-import org.eclipse.gmf.runtime.emf.ui.internal.MslUIPlugin;
-import org.eclipse.gmf.runtime.emf.ui.internal.MslUIStatusCodes;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
 
 /**

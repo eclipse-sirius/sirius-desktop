@@ -47,7 +47,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import com.google.common.collect.Lists;
 
 /**
  * Tests the label font modifications.
