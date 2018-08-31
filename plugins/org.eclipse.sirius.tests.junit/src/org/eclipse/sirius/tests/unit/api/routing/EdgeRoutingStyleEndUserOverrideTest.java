@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.ICondition;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -57,6 +58,35 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
     private EClass source;
 
     private EClass target;
+
+    private class EdgeCreatedCondition implements ICondition {
+        private int nbEdgesBeforeCreation;
+
+        private DDiagram dDiagram;
+
+        /**
+         * Default constructor.
+         * 
+         * @param nbEdgesBeforeCreation
+         *            Number of edges before applying the creation tool
+         * @param dDiagram
+         *            Diagram in which the edge is created
+         */
+        public EdgeCreatedCondition(int nbEdgesBeforeCreation, DDiagram dDiagram) {
+            this.nbEdgesBeforeCreation = nbEdgesBeforeCreation;
+            this.dDiagram = dDiagram;
+        }
+
+        @Override
+        public boolean test() throws Exception {
+            return (nbEdgesBeforeCreation + 1) == dDiagram.getEdges().size();
+        }
+
+        @Override
+        public String getFailureMessage() {
+            return "The edge creation tool does not create new edge.";
+        }
+    }
 
     @Override
     protected void setUp() throws Exception {
@@ -93,7 +123,9 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE);
 
         // Create a new edge with tool createTree
+        EdgeCreatedCondition edgeCreatedCondition = new EdgeCreatedCondition(diagram.getEdges().size(), diagram);
         applyEdgeCreationTool("CreateTree", diagram, (EdgeTarget) getFirstDiagramElement(diagram, source), (EdgeTarget) getFirstDiagramElement(diagram, target));
+        TestsUtil.waitUntil(edgeCreatedCondition);
         // Check that the routing style is Oblique (In GMF style and DEdge
         // style) and is custom (the customFeatures list contains routingStyle)
         checkRoutingStyleCustomStyle(editor, Routing.MANUAL_LITERAL, EdgeRouting.STRAIGHT_LITERAL, "NewEClass1", 2, true);
@@ -130,7 +162,9 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_LINE_STYLE, EdgeRouting.MANHATTAN);
 
         // Create a new edge with tool createTree
+        EdgeCreatedCondition edgeCreatedCondition = new EdgeCreatedCondition(diagram.getEdges().size(), diagram);
         applyEdgeCreationTool("CreateTree", diagram, (EdgeTarget) getFirstDiagramElement(diagram, source), (EdgeTarget) getFirstDiagramElement(diagram, target));
+        TestsUtil.waitUntil(edgeCreatedCondition);
         // Check that the routing style is Rectilinear (In GMF style and DEdge
         // style) and is custom (the customFeatures list contains routingStyle)
         checkRoutingStyleCustomStyle(editor, Routing.RECTILINEAR_LITERAL, EdgeRouting.MANHATTAN_LITERAL, "NewEClass1", 2, true);
@@ -166,7 +200,9 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_LINE_STYLE, EdgeRouting.TREE);
 
         // Create a new edge with tool createOblique
+        EdgeCreatedCondition edgeCreatedCondition = new EdgeCreatedCondition(diagram.getEdges().size(), diagram);
         applyEdgeCreationTool("CreateOblique", diagram, (EdgeTarget) getFirstDiagramElement(diagram, source), (EdgeTarget) getFirstDiagramElement(diagram, target));
+        TestsUtil.waitUntil(edgeCreatedCondition);
         // Check that the routing style is Tree (In GMF style and DEdge
         // style) and is custom (the customFeatures list contains routingStyle)
         checkRoutingStyleCustomStyle(editor, Routing.TREE_LITERAL, EdgeRouting.TREE_LITERAL, "NewEClass1", 2, true);
@@ -189,8 +225,7 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
      * edge.
      * 
      * @param editor
-     *            the editor opened
-     *            the opened editor
+     *            the editor opened the opened editor
      * @param expectedGMFRoutingLiteral
      *            the expected routing style literal to check
      * @param expectedDEdgeRoutingLiteral
@@ -200,8 +235,8 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
      * @param expectedEdgeSize
      *            the expected edge's size to check
      */
-    private void checkRoutingStyleCustomStyle(DiagramDocumentEditor editor, Routing expectedGMFRoutingLiteral, EdgeRouting expectedDEdgeRoutingLiteral, String sourceNodeName,
-            Integer expectedEdgeSize, boolean customFeature) {
+    private void checkRoutingStyleCustomStyle(DiagramDocumentEditor editor, Routing expectedGMFRoutingLiteral, EdgeRouting expectedDEdgeRoutingLiteral, String sourceNodeName, Integer expectedEdgeSize,
+            boolean customFeature) {
         boolean edgeFound = false;
         Iterable<IDiagramEdgeEditPart> connections = Iterables.filter(editor.getDiagramEditPart().getConnections(), IDiagramEdgeEditPart.class);
 
