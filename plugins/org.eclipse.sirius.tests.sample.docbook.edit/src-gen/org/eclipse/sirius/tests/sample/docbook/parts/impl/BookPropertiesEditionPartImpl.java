@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Obeo
+ * Copyright (c) 2015, 2018 Obeo
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -234,7 +234,6 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
              *
              */
             @Override
-            @SuppressWarnings("synthetic-access")
             public void focusLost(FocusEvent e) {
                 if (propertiesEditionComponent != null) {
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BookPropertiesEditionPartImpl.this, DocbookViewsRepository.Book.Properties.id,
@@ -252,7 +251,6 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
              *
              */
             @Override
-            @SuppressWarnings("synthetic-access")
             public void keyPressed(KeyEvent e) {
                 if (e.character == SWT.CR) {
                     if (propertiesEditionComponent != null) {
@@ -286,7 +284,6 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
              *
              */
             @Override
-            @SuppressWarnings("synthetic-access")
             public void focusLost(FocusEvent e) {
                 if (propertiesEditionComponent != null) {
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BookPropertiesEditionPartImpl.this, DocbookViewsRepository.Book.Properties.lang,
@@ -304,7 +301,6 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
              *
              */
             @Override
-            @SuppressWarnings("synthetic-access")
             public void keyPressed(KeyEvent e) {
                 if (e.character == SWT.CR) {
                     if (propertiesEditionComponent != null) {
@@ -338,7 +334,6 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
              *
              */
             @Override
-            @SuppressWarnings("synthetic-access")
             public void focusLost(FocusEvent e) {
                 if (propertiesEditionComponent != null) {
                     propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BookPropertiesEditionPartImpl.this, DocbookViewsRepository.Book.Properties.version,
@@ -356,7 +351,6 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
              *
              */
             @Override
-            @SuppressWarnings("synthetic-access")
             public void keyPressed(KeyEvent e) {
                 if (e.character == SWT.CR) {
                     if (propertiesEditionComponent != null) {
