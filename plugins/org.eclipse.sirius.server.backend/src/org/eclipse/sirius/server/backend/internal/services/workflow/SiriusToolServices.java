@@ -60,7 +60,7 @@ public class SiriusToolServices {
                         if (command.canExecute()) {
                             command.execute();
                         }
-                    } catch (OperationCanceledException cancel) {
+                    } catch (@SuppressWarnings("unused") OperationCanceledException cancel) {
                         // A tool (possibly via a Java service) can request the
                         // cancellation of its execution. This is
                         // handled as a rollback by EMF Transaction, but the
