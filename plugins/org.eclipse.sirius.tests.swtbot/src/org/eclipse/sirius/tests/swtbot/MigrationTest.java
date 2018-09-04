@@ -257,7 +257,7 @@ public class MigrationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when the preference {@link CommonPreferencesConstants.PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION} is
+     * Test that when the preference {@link CommonPreferencesConstants#PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION} is
      * used then a dialog asks user to save aird and VSM after their migration when a double click is done on the files.
      * Also test than when the user choose the yes option, then the saving is done.
      */
@@ -266,7 +266,7 @@ public class MigrationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when the preference {@link CommonPreferencesConstants.PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION} is
+     * Test that when the preference {@link CommonPreferencesConstants#PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION} is
      * used then a dialog asks user to save aird and VSM after their migration when a double click is done on the files.
      * Also test than when the user choose the No option, then the saving is not done.
      */
@@ -275,7 +275,7 @@ public class MigrationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when the preference {@link CommonPreferencesConstants.PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION} is
+     * Test that when the preference {@link CommonPreferencesConstants#PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION} is
      * used then a dialog asks user to save aird after their migration when the project is turned into a modeling one.
      * Also test than when the user choose the yes option, then the saving is done.
      */
@@ -284,7 +284,7 @@ public class MigrationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when the preference {@link CommonPreferencesConstants.PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION} is
+     * Test that when the preference {@link CommonPreferencesConstants#PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION} is
      * used then a dialog ask user to save aird after their migration when the project is turned into a modeling one.
      * Also test than when the user choose the No option, then the saving is not done.
      */
