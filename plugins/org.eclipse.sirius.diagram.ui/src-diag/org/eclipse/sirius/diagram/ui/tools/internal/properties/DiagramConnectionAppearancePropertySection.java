@@ -176,7 +176,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
             }
             if (!commands.isEmpty()) {
                 executeAsCompositeCommand(commandName, commands);
-                final Image overlyedImage = new ColorOverlayImageDescriptor(imageDescriptor.getImageData(), color).createImage();
+                final Image overlyedImage = new ColorOverlayImageDescriptor(imageDescriptor.getImageData(100), color).createImage();
                 disposeImage(button.getImage());
                 button.setImage(overlyedImage);
             }
