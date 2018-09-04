@@ -526,7 +526,7 @@ public final class SWTBotUtils {
     }
 
     /**
-     * Find a {@link SWTBotTreetem} with its name in a {@link SWTBotTreetem} list and its children recursively.It will
+     * Find a {@link SWTBotTreeItem} with its name in a {@link SWTBotTreeItem} list and its children recursively.It will
      * return the first found matching the given label.
      * 
      * This method checks enabled and disabled items and does consider only visible items, it will expand the tree to
@@ -534,9 +534,9 @@ public final class SWTBotUtils {
      * {@link SWTBotUtils#getTreeItem(SWTBotTreeItem[], String, boolean, boolean)}.
      * 
      * @param treeElements
-     *            the {@link SWTBotTreetem} list to search in
+     *            the {@link SWTBotTreeItem} list to search in
      * @param name
-     *            the name of the searched {@link SWTBotTreetem}
+     *            the name of the searched {@link SWTBotTreeItem}
      * @return the tree item
      */
     public static SWTBotTreeItem getTreeItem(final SWTBotTreeItem[] treeElements, final String name) {
@@ -544,13 +544,13 @@ public final class SWTBotUtils {
     }
 
     /**
-     * Find a {@link SWTBotTreeItem} with its name in a {@link SWTBotTreetem} list and its children recursively. It will
+     * Find a {@link SWTBotTreeItem} with its name in a {@link SWTBotTreeItem} list and its children recursively. It will
      * return the first found matching the given label.
      * 
      * If checkEnabled=true, it will only consider enabled items. If espance
      * 
      * @param treeElements
-     *            the {@link SWTBotTreetem} list to search in
+     *            the {@link SWTBotTreeItem} list to search in
      * @param searchedLabel
      *            the searched label
      * @param enabledItemsOnly
