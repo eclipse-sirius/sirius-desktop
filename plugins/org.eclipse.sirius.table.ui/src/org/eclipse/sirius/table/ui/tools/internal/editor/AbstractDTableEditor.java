@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import java.util.Optional;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
@@ -151,9 +150,8 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
         }
         dialog.create();
         if (isAirdResourceDeleted(input) && original != null) {
-            final String message = MessageFormat.format(Messages.dTableEditor_SavingDeletedFile, original.getName());
             dialog.setErrorMessage(null);
-            dialog.setMessage(message, IMessageProvider.WARNING);
+            dialog.setMessage(MessageFormat.format(Messages.dTableEditor_SavingDeletedFile, original.getName()), IMessageProvider.WARNING);
         }
         if (dialog.open() == Window.CANCEL) {
             if (progressMonitor != null) {
@@ -162,8 +160,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
         } else {
             final IPath filePath = dialog.getResult();
             if (filePath != null) {
-                final IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-                final IFile file = workspaceRoot.getFile(filePath);
+                final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(filePath);
                 final IEditorInput newInput = new FileEditorInput(file);
                 // Check if the editor is already open
                 final IEditorMatchingStrategy matchingStrategy = getEditorDescriptor().getEditorMatchingStrategy();
@@ -416,8 +413,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
      * @param marker
      *            the marker to go to
      */
-    // TODO for now on, this implementation only allow to handle Traceability
-    // markers
     protected void doGoToMarker(IMarker marker) {
         final String tableURI = marker.getAttribute(TraceabilityMarkerNavigationProvider.REPRESENTATION_URI, null);
         final String elementId = marker.getAttribute(TraceabilityMarkerNavigationProvider.REPRESENTATION_ELEMENT_ID, null);
