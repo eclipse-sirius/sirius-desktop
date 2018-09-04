@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,16 +62,15 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * {@link SiriusGraphicalNodeEditPolicy} specific to sequence to manage creation
- * of message targeting InstanceRole (create & destroy messages).
+ * {@link SiriusGraphicalNodeEditPolicy} specific to sequence to manage creation of message targeting InstanceRole
+ * (create & destroy messages).
  * 
  * @author edugueperoux
  */
 public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEditPolicy {
 
     /**
-     * overriden to handle Ymove of InstanceRoles when connecting a
-     * "create message".
+     * overriden to handle Ymove of InstanceRoles when connecting a "create message".
      * 
      * @param request
      *            the request to create a new connection targeting an
@@ -82,97 +81,90 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
     protected Command getConnectionCompleteCommand(CreateConnectionRequest request) {
         Command result = UnexecutableCommand.INSTANCE;
 
-        TransactionalEditingDomain domain = ((IGraphicalEditPart) getHost()).getEditingDomain();
-
         InstanceRoleEditPart host = (InstanceRoleEditPart) getHost();
         ISequenceElement sequenceElement = host.getInstanceRole();
         SequenceDiagram sequenceDiagram = sequenceElement.getDiagram();
-
-        RequestQuery requestQuery = new RequestQuery(request);
-
-        if (requestQuery.isCreateMessageCreation()) {
+        if (new RequestQuery(request).isCreateMessageCreation()) {
             CreateMessageCreationValidator validator = new CreateMessageCreationValidator();
-
-            EditPart sourceEditPart = request.getSourceEditPart();
-            EditPart targetEditPart = request.getTargetEditPart();
-
-            Option<Lifeline> lifelineSource = ISequenceElementAccessor.getISequenceElement((View) sourceEditPart.getModel()).get().getLifeline();
-            Option<Lifeline> lifelineTarget = ISequenceElementAccessor.getISequenceElement((View) targetEditPart.getModel()).get().getLifeline();
-
-            InstanceRole instanceRoleSource = lifelineSource.get().getInstanceRole();
-            InstanceRole instanceRoleTarget = lifelineTarget.get().getInstanceRole();
-
-            validator.setSource(instanceRoleSource);
-            validator.setTarget(instanceRoleTarget);
+            validator.setSource(getInstanceRole(request.getSourceEditPart()));
+            validator.setTarget(getInstanceRole(request.getTargetEditPart()));
 
             Point firstClickLocation = SequenceEditPartsOperations.getConnectionSourceLocation(request, host);
             Point secondClickLocation = SequenceEditPartsOperations.getConnectionTargetLocation(request, host);
 
             // Creation message will be horizontal.
             if (!ExecutionSemanticEditPolicy.isCombinedFragmentTitleRangeEdgeCreation(sequenceElement, sequenceDiagram, firstClickLocation, firstClickLocation)) {
-
                 validator.setFirstClickLocation(firstClickLocation);
                 validator.setSecondClickLocation(secondClickLocation);
-
                 if (validator.isValid(request)) {
                     result = super.getConnectionCompleteCommand(request);
                 }
             }
         } else {
-
-            // OLD code
-            // TODO EDU : refactor this following with validators
             result = super.getConnectionCompleteCommand(request);
             if (result != null && result.canExecute() && validateIsConnectingCreateMessage(request)) {
-                CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(domain, Messages.InstanceRoleSiriusGraphicalNodeEditPolicy_createParticipantMessageAndMoveDownLifelineCompositeCommand);
-                Point sourceLocation = ((Point) ViewLocationHint.getInstance().getData(org.eclipse.gef.RequestConstants.REQ_CONNECTION_START)).getCopy();
-                final LifelineEditPart lep = EditPartsHelper.getAllLifelines((IGraphicalEditPart) getHost()).get(0);
-
-                if (((AbstractGraphicalEditPart) getHost()).getTargetConnections().isEmpty() && validateIsNotCreateMessageToSelf(request) && validateNoEventBeforeCreate(sourceLocation, lep)
-                        && validateNotCreatingMessageInDifferentOperands(request, sourceLocation)) {
-
-                    // Create a ChangeBoundsRequest to move down the targeted
-                    // InstanceRoleEditPart to the Y position of connection
-                    // source
-                    ChangeBoundsRequest changeBoundsRequest = new ChangeBoundsRequest(org.eclipse.gef.RequestConstants.REQ_MOVE);
-                    Rectangle bounds = ((AbstractGraphicalEditPart) getHost()).getFigure().getBounds();
-                    Point scrollSize = GraphicalHelper.getScrollSize((IGraphicalEditPart) getHost());
-                    int yMoveNeeded = sourceLocation.y - bounds.y - bounds.height / 2 + scrollSize.y;
-
-                    changeBoundsRequest.setMoveDelta(new Point(0, yMoveNeeded));
-                    // add a specific extended data to enable vertical move of
-                    // an
-                    // InstanceRoleEditPart
-                    changeBoundsRequest.setConstrainedMove(true);
-                    changeBoundsRequest.setEditParts(getHost());
-                    ctc.compose(new CommandProxy(getHost().getCommand(changeBoundsRequest)));
-                    ctc.compose(new CommandProxy(result));
-
-                    /*
-                     * These additional commands adjust the positions of the
-                     * executions and messages on the lifeline so that visually
-                     * they do not move. They are dual to the commands we add
-                     * when moving a normal execution, as in that case we want
-                     * all the executions and messages it contains to move
-                     * along.
-                     */
-                    final int deltaY = changeBoundsRequest.getMoveDelta().y;
-
-                    // Avoid EndOfLife Move
-                    Lifeline lifeline = (Lifeline) lep.getISequenceEvent();
-                    ctc.compose(CommandFactory.createICommand(domain, new EndOfLifeMoveOperation(lifeline, -deltaY)));
-                    ctc.compose(CommandFactory.createICommand(domain, new ShiftDirectSubExecutionsOperation(lep.getISequenceEvent(), -deltaY)));
-                    ctc.compose(CommandFactory.createICommand(domain, new ShiftDescendantMessagesOperation(lep.getISequenceEvent(), deltaY, true, false, true)));
-                    SequenceEditPartsOperations.addRefreshSemanticOrderingCommand(ctc, (IGraphicalEditPart) getHost());
-                    SequenceEditPartsOperations.addRefreshGraphicalOrderingCommand(ctc, (IGraphicalEditPart) getHost());
-
-                } else {
-                    result = UnexecutableCommand.INSTANCE;
-                }
-                result = new ICommandProxy(ctc);
+                result = adjustCreationCommand(request, result);
             }
         }
         return result;
+    }
+
+    /**
+     * Adjust the connection creation command with pre/post operations to shift/resize the impacted elements (e.g.
+     * executions).
+     */
+    private Command adjustCreationCommand(CreateConnectionRequest request, Command cmd) {
+        Command result = cmd;
+        TransactionalEditingDomain domain = ((IGraphicalEditPart) getHost()).getEditingDomain();
+        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(domain, Messages.InstanceRoleSiriusGraphicalNodeEditPolicy_createParticipantMessageAndMoveDownLifelineCompositeCommand);
+        Point sourceLocation = ((Point) ViewLocationHint.getInstance().getData(org.eclipse.gef.RequestConstants.REQ_CONNECTION_START)).getCopy();
+        final LifelineEditPart lep = EditPartsHelper.getAllLifelines((IGraphicalEditPart) getHost()).get(0);
+
+        if (((AbstractGraphicalEditPart) getHost()).getTargetConnections().isEmpty() && validateIsNotCreateMessageToSelf(request) && validateNoEventBeforeCreate(sourceLocation, lep)
+                && validateNotCreatingMessageInDifferentOperands(request, sourceLocation)) {
+
+            // Create a ChangeBoundsRequest to move down the targeted
+            // InstanceRoleEditPart to the Y position of connection
+            // source
+            ChangeBoundsRequest changeBoundsRequest = new ChangeBoundsRequest(org.eclipse.gef.RequestConstants.REQ_MOVE);
+            Rectangle bounds = ((AbstractGraphicalEditPart) getHost()).getFigure().getBounds();
+            Point scrollSize = GraphicalHelper.getScrollSize((IGraphicalEditPart) getHost());
+            int yMoveNeeded = sourceLocation.y - bounds.y - bounds.height / 2 + scrollSize.y;
+
+            changeBoundsRequest.setMoveDelta(new Point(0, yMoveNeeded));
+            // add a specific extended data to enable vertical move of
+            // an
+            // InstanceRoleEditPart
+            changeBoundsRequest.setConstrainedMove(true);
+            changeBoundsRequest.setEditParts(getHost());
+            ctc.compose(new CommandProxy(getHost().getCommand(changeBoundsRequest)));
+            ctc.compose(new CommandProxy(result));
+
+            /*
+             * These additional commands adjust the positions of the executions and messages on the lifeline so that
+             * visually they do not move. They are dual to the commands we add when moving a normal execution, as in
+             * that case we want all the executions and messages it contains to move along.
+             */
+            final int deltaY = changeBoundsRequest.getMoveDelta().y;
+
+            // Avoid EndOfLife Move
+            Lifeline lifeline = (Lifeline) lep.getISequenceEvent();
+            ctc.compose(CommandFactory.createICommand(domain, new EndOfLifeMoveOperation(lifeline, -deltaY)));
+            ctc.compose(CommandFactory.createICommand(domain, new ShiftDirectSubExecutionsOperation(lep.getISequenceEvent(), -deltaY)));
+            ctc.compose(CommandFactory.createICommand(domain, new ShiftDescendantMessagesOperation(lep.getISequenceEvent(), deltaY, true, false, true)));
+            SequenceEditPartsOperations.addRefreshSemanticOrderingCommand(ctc, (IGraphicalEditPart) getHost());
+            SequenceEditPartsOperations.addRefreshGraphicalOrderingCommand(ctc, (IGraphicalEditPart) getHost());
+
+        } else {
+            result = UnexecutableCommand.INSTANCE;
+        }
+        result = new ICommandProxy(ctc);
+        return result;
+    }
+
+    private InstanceRole getInstanceRole(EditPart part) {
+        Option<Lifeline> lifelineSource = ISequenceElementAccessor.getISequenceElement((View) part.getModel()).get().getLifeline();
+        return lifelineSource.get().getInstanceRole();
     }
 
     /**
@@ -196,8 +188,7 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
      * 
      * @param request
      *            the request to create a "create message".
-     * @return the validation that this request will not create a
-     *         "create message" to self.
+     * @return the validation that this request will not create a "create message" to self.
      */
     private boolean validateIsNotCreateMessageToSelf(CreateConnectionRequest request) {
         // validate request does not add a create message to self
@@ -205,15 +196,13 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
     }
 
     /**
-     * Validates that a message is not created between two elements that are not
-     * in the same operand.
+     * Validates that a message is not created between two elements that are not in the same operand.
      * 
      * @param request
      *            current create connection request
      * @param location
      *            location of target
-     * @return the validation that a message is not created between two elements
-     *         that are not in the same operand.
+     * @return the validation that a message is not created between two elements that are not in the same operand.
      */
     private boolean validateNotCreatingMessageInDifferentOperands(CreateConnectionRequest request, Point location) {
         boolean result = false;
@@ -250,16 +239,15 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
 
     /**
      * Validates that there is no message on the targeted
-     * {@link org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart}
-     * before sourceLocation Y position. There can not be any message before
-     * creation.
+     * {@link org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart} before sourceLocation
+     * Y position. There can not be any message before creation.
      * 
      * @param sourceLocation
      *            location where the create message has its source
      * @param lep
      * @return if there is no message on the targeted
-     *         {@link org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart}
-     *         before sourceLocation
+     *         {@link org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart} before
+     *         sourceLocation
      */
     private boolean validateNoEventBeforeCreate(final Point sourceLocation, LifelineEditPart lep) {
         ISequenceEvent lifeline = lep.getISequenceEvent();
@@ -286,16 +274,6 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
         return sourceLocation.y < firstEventInTargetInstanceRole;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy#buildCreateEdgeCommand(org.eclipse.gef.requests.CreateConnectionRequest,
-     *      org.eclipse.sirius.diagram.EdgeTarget,
-     *      org.eclipse.sirius.diagram.EdgeTarget,
-     *      org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription,
-     *      org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider,
-     *      org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData)
-     */
     @Override
     protected Command buildCreateEdgeCommand(CreateConnectionRequest request, EdgeTarget source, EdgeTarget target, EdgeCreationDescription edgeCreationDescription,
             IDiagramCommandFactoryProvider cmdFactoryProvider, EdgeLayoutData edgeLayoutData) {
@@ -308,9 +286,8 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
     }
 
     /**
-     * The snap to grid should be disabled in sequence diagram, but to avoid
-     * confusion the specific method for edge behavior with snap to grid is
-     * disabled.
+     * The snap to grid should be disabled in sequence diagram, but to avoid confusion the specific method for edge
+     * behavior with snap to grid is disabled.
      * 
      * {@inheritDoc}
      */
