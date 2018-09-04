@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,11 @@ package org.eclipse.sirius.tests.swtbot;
 
 import java.util.List;
 
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -24,6 +28,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.DiagramWithChildrensCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -51,7 +56,11 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_INSTANCE_5BLANK = "new TC1041 representation 5 Blank";
 
+    private static final String TEST_NO_NPE_RAISED_DURING_DND = "Test no NPE raised during DND";
+
     private static final String REPRESENTATION_NAME_2 = "TC1041 representation 2 Blank";
+
+    private static final String REPRESENTATION_NAME_3 = "TC1041 representation 3";
 
     private static final String REPRESENTATION_NAME_5 = "TC1041 representation 5 Blank";
 
@@ -95,7 +104,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        ecoreEcoreResource = new UIResource(designerProject, MODELS_DIR, MODEL);
+        ecoreEcoreResource = new UIResource(designerProject, FILE_DIR, MODEL);
         semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
     }
 
@@ -111,6 +120,13 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void openRepresentation5() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_5, REPRESENTATION_INSTANCE_5BLANK, DDiagram.class);
+    }
+
+    /**
+     * Open "Test no NPE raised during DND" diagram.
+     */
+    private void openRepresentation3() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_3, TEST_NO_NPE_RAISED_DURING_DND, DDiagram.class);
     }
 
     /**
@@ -141,6 +157,55 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         } finally {
             closeErrorLogView();
         }
+    }
+
+    /**
+     * @throws Exception
+     *             Test the drag&drop of C1(EClass) from P1(EPackage) to
+     *             P2(EPackage). The test is done on the "Test no NPE raised
+     *             during DND" diagram. P2 has been expanded vertically in order
+     *             to have its center out of the editor display. This test has
+     *             been created in order to test the feedback in this particular
+     *             case.
+     */
+    public void test_DnDNoNPEDuringFeedback_Diagram3() throws Exception {
+
+        openRepresentation3();
+        boolean errorCatchPreviouslyEnabled = isErrorCatchActive();
+        try {
+            openErrorLogViewByAPI();
+            SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
+            int errorCount = errorLogBot.tree().rowCount();
+
+            // In the diagram, DnD C1(EClass) from P1(EPackage) to P2(EPackage)
+            SWTBotGefEditPart eClassBorderNodeEditPart = editor.getEditPart(CLASS_TO_DRAG_C1).parent();
+            SWTBotGefEditPart targetEPackageNodeEditPart = editor.getEditPart(CONTAINER_TO_DRAG_P2, AbstractDiagramNodeEditPart.class);
+
+            Point sourceLocation = editor.getBounds(eClassBorderNodeEditPart).getLocation();
+
+            Rectangle endBounds = ((GraphicalEditPart) targetEPackageNodeEditPart.part()).getFigure().getBounds();
+            Point endLocation = endBounds.getCenter();
+
+            // Find the center of the visible part of P2
+            IFigure rootFigure = ((AbstractGraphicalEditPart) targetEPackageNodeEditPart.part().getRoot()).getFigure();
+            if (!rootFigure.getBounds().contains(endLocation)) {
+                Rectangle intersection = rootFigure.getBounds().intersect(endBounds);
+                if (!intersection.isEmpty()) {
+                    endLocation = intersection.getCenter();
+                }
+            }
+            // Activate the error catch to detect the potential NPE fixed by the
+            // previous commit
+            setErrorCatchActive(true);
+            eClassBorderNodeEditPart.click();
+            editor.drag(sourceLocation, endLocation);
+            SWTBotUtils.waitAllUiEvents();
+
+        } finally {
+            closeErrorLogView();
+            setErrorCatchActive(errorCatchPreviouslyEnabled);
+        }
+
     }
 
     /**
