@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -691,10 +691,5 @@ public class EditModeTest extends AbstractModeTest {
 
     private SWTBotGefEditPart getEditPart(String partName) {
         return getEditPart(partName, GraphicalEditPart.class);
-    }
-
-    private void doubleClickOnEdge(SWTBotGefEditPart swtBotDNodeEditPart) {
-        Point firstPoint = ((AbstractConnectionEditPart) swtBotDNodeEditPart.part()).getConnectionFigure().getPoints().getCopy().getFirstPoint();
-        editor.getCanvas().mouseMoveDoubleClick(firstPoint.x, firstPoint.y);
     }
 }

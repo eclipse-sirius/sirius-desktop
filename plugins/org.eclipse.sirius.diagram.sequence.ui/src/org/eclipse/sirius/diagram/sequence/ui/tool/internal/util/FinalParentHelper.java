@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
@@ -71,22 +70,6 @@ public class FinalParentHelper {
         if (fullFinalRange != null && request.isResize()) {
             globalFinalParent = getFinalParentOnResize(fullFinalRange);
         }
-    }
-
-    /**
-     * Validates if the execution resize is valid if located in an operand.
-     * 
-     * @param fullFinalRange
-     *            the new range of the resized {@link ISequenceEvent}
-     * @return if the execution resize is valid if located in an operand.
-     */
-    private boolean isInvalidInteractionInsideOperand(Range fullFinalRange) {
-        boolean result = false;
-        Option<Operand> parentOperand = self.getParentOperand();
-        if (request.isResize()) {
-            result = parentOperand.some() && !parentOperand.get().getVerticalRange().includes(fullFinalRange);
-        }
-        return result;
     }
 
     /**

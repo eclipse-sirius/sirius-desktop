@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,7 +67,6 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.action.SortColumnsByLin
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.SortLinesByColumnAction;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.editor.MenuHelper;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -626,20 +625,6 @@ public class DTableMenuListener implements IMenuListener {
     private boolean isFromActiveViewpoint(final Session session, final RepresentationDescription representationDescription) {
         final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(representationDescription);
         return vp != null && session.getSelectedViewpoints(false).contains(vp);
-    }
-
-    /**
-     * Tests whether a representation belongs to a viewpoint which is currently active in the session.
-     * 
-     * @param session
-     *            the current session.
-     * @param representation
-     *            the representation to check.
-     * @return <code>true</code> if the representation belongs to a viewpoint which is currently active in the session.
-     */
-    private boolean isFromActiveViewpoint(final Session session, final DRepresentation representation) {
-        final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
-        return isFromActiveViewpoint(session, description);
     }
 
     protected Map<TableMapping, DeleteTargetColumnAction> getMappingToDeleteActions() {
