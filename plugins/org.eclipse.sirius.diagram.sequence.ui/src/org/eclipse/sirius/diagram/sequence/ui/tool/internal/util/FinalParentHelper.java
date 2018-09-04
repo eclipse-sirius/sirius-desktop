@@ -36,6 +36,86 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 public class FinalParentHelper {
+    /**
+     * Precidate to theck if the final range of a (group of) elements, after a move operation, intersect with a given
+     * element.
+     * 
+     * @author pcdavid
+     *
+     */
+    private final class IntersectsFinalBoundsPredicate implements Predicate<ISequenceEvent> {
+        private final Collection<ISequenceEvent> remoteErrors;
+
+        private final Range fullFinalRange;
+
+        private final Collection<ISequenceEvent> linkedSiblings;
+
+        private IntersectsFinalBoundsPredicate(Collection<ISequenceEvent> remoteErrors, Range fullFinalRange, Collection<ISequenceEvent> linkedSiblings) {
+            this.remoteErrors = remoteErrors;
+            this.fullFinalRange = fullFinalRange;
+            this.linkedSiblings = linkedSiblings;
+        }
+
+        @Override
+        public boolean apply(ISequenceEvent input) {
+            Range inputRange = input.getVerticalRange();
+            boolean intersection = inputRange.intersects(fullFinalRange) && !linkedSiblings.contains(input);
+            // Some event could not be parents : states for examples.
+            boolean includedInput = !self.getValidSubEventsRange().isEmpty() && fullFinalRange.includes(inputRange.grown(1));
+
+            if (input instanceof Message) {
+                Message msg = (Message) input;
+
+                if (msg.isReflective() && !includedInput) {
+                    intersection = inputRange.intersects(fullFinalRange) && !inputRange.includes(fullFinalRange);
+                    includedInput = inputRange.includes(fullFinalRange);
+                }
+
+                if (intersection && msg.isCompoundMessage()) {
+                    Iterable<Execution> compoundEvents = Iterables.filter(EventEndHelper.getCompoundEvents(input), Execution.class);
+                    if (!Iterables.isEmpty(compoundEvents)) {
+                        Execution remoteExec = compoundEvents.iterator().next();
+                        if (remoteExec != null && remoteExec.getEndMessage().some() && !fullFinalRange.includes(remoteExec.getExtendedVerticalRange())) {
+                            includedInput = false;
+                            remoteErrors.add(remoteExec);
+                        }
+                    }
+                }
+            }
+            return intersection && !includedInput;
+        }
+    }
+
+    /**
+     * Predicate to check if an event is on a given lifeline. Messages are considered to be "on" both their source and
+     * target lifelines.
+     * 
+     * @author pcdavid
+     *
+     */
+    private final class SameLifelinePredicate implements Predicate<ISequenceEvent> {
+        private final Option<Lifeline> selfLifeline;
+
+        private SameLifelinePredicate(Option<Lifeline> selfLifeline) {
+            this.selfLifeline = selfLifeline;
+        }
+
+        @Override
+        public boolean apply(ISequenceEvent input) {
+            Option<Lifeline> inputLifeline = input.getLifeline();
+            boolean same = !inputLifeline.some() || (selfLifeline.some() && inputLifeline.get() == selfLifeline.get());
+
+            if (input instanceof Message) {
+                Option<Lifeline> sourceLifeline = ((Message) input).getSourceLifeline();
+                same = same || !sourceLifeline.some() || (selfLifeline.some() && sourceLifeline.get() == selfLifeline.get());
+                Option<Lifeline> tgtLifeline = ((Message) input).getTargetLifeline();
+                same = same || !tgtLifeline.some() || (selfLifeline.some() && tgtLifeline.get() == selfLifeline.get());
+            }
+
+            return same;
+        }
+    }
+
     private final AbstractNodeEvent self;
 
     private final RequestQuery request;
@@ -139,53 +219,9 @@ public class FinalParentHelper {
         Iterable<ISequenceEvent> finalSiblings = EventEndHelper.getIndependantEvents(self, finalParent.getSubEvents());
 
         final Option<Lifeline> selfLifeline = self.getLifeline();
-        Predicate<ISequenceEvent> sameLifeline = new Predicate<ISequenceEvent>() {
-            @Override
-            public boolean apply(ISequenceEvent input) {
-                Option<Lifeline> inputLifeline = input.getLifeline();
-                boolean same = !inputLifeline.some() || (selfLifeline.some() && inputLifeline.get() == selfLifeline.get());
+        Predicate<ISequenceEvent> sameLifeline = new SameLifelinePredicate(selfLifeline);
 
-                if (input instanceof Message) {
-                    Option<Lifeline> sourceLifeline = ((Message) input).getSourceLifeline();
-                    same = same || !sourceLifeline.some() || (selfLifeline.some() && sourceLifeline.get() == selfLifeline.get());
-                    Option<Lifeline> tgtLifeline = ((Message) input).getTargetLifeline();
-                    same = same || !tgtLifeline.some() || (selfLifeline.some() && tgtLifeline.get() == selfLifeline.get());
-                }
-
-                return same;
-            }
-        };
-
-        Predicate<ISequenceEvent> intersectsFinalBounds = new Predicate<ISequenceEvent>() {
-            @Override
-            public boolean apply(ISequenceEvent input) {
-                Range inputRange = input.getVerticalRange();
-                boolean intersection = inputRange.intersects(fullFinalRange) && !linkedSiblings.contains(input);
-                // Some event could not be parents : states for examples.
-                boolean includedInput = !self.getValidSubEventsRange().isEmpty() && fullFinalRange.includes(inputRange.grown(1));
-
-                if (input instanceof Message) {
-                    Message msg = (Message) input;
-
-                    if (msg.isReflective() && !includedInput) {
-                        intersection = inputRange.intersects(fullFinalRange) && !inputRange.includes(fullFinalRange);
-                        includedInput = inputRange.includes(fullFinalRange);
-                    }
-
-                    if (intersection && msg.isCompoundMessage()) {
-                        Iterable<Execution> compoundEvents = Iterables.filter(EventEndHelper.getCompoundEvents(input), Execution.class);
-                        if (!Iterables.isEmpty(compoundEvents)) {
-                            Execution remoteExec = compoundEvents.iterator().next();
-                            if (remoteExec != null && remoteExec.getEndMessage().some() && !fullFinalRange.includes(remoteExec.getExtendedVerticalRange())) {
-                                includedInput = false;
-                                remoteErrors.add(remoteExec);
-                            }
-                        }
-                    }
-                }
-                return intersection && !includedInput;
-            }
-        };
+        Predicate<ISequenceEvent> intersectsFinalBounds = new IntersectsFinalBoundsPredicate(remoteErrors, fullFinalRange, linkedSiblings);
 
         /*
          * Removes parent combined fragment to be able to resize an execution in a combined fragment
