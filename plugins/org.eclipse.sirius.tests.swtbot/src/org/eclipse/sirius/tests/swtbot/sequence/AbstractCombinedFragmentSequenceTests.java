@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES, others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,17 +43,22 @@ public abstract class AbstractCombinedFragmentSequenceTests extends AbstractSequ
 
     private static final String SESSION_FILE = "combinedFragment.aird";
 
-    protected static final String TYPES_FILE = "types.ecore";
+    private static final String TYPES_FILE = "types.ecore";
 
-    protected static final int NB_INITIAL_EXECUTIONS = 2;
+    private static final int NB_INITIAL_EXECUTIONS = 2;
 
-    protected static final int NB_INITIAL_INTERACTION_USE = 0;
+    private static final int NB_INITIAL_INTERACTION_USE = 0;
 
-    protected static final int NB_INITIAL_COMBINED_FRAGMENT = 2;
+    private static final int NB_INITIAL_COMBINED_FRAGMENT = 2;
 
-    // Main part
+    /**
+     * The bot for the whole sequence diagram.
+     */
     protected SWTBotGefEditPart sequenceDiagramBot;
 
+    /**
+     * The semantic root.
+     */
     protected Interaction interaction;
 
     // InstanceRoles
