@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -150,68 +150,70 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
      * {@inheritDoc}
      */
     @Override
-    @SuppressWarnings("restriction")
     public void showSourceFeedback(Request request) {
         removeFeedBackOnGuides();
-
         if (request instanceof BendpointRequest) {
-            BendpointRequest br = (BendpointRequest) request;
-            SequenceMessageEditPart thisEvent = (SequenceMessageEditPart) getHost();
-            ISequenceEvent iSequenceEvent = thisEvent.getISequenceEvent();
-            List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(iSequenceEvent);
-            super.showSourceFeedback(request);
+            showSourceFeedback((BendpointRequest) request);
+        }
+    }
 
-            MoveType moveType = getMoveType(thisEvent, br, ends);
-            if (moveType.needsCompoundMove()) {
-                showCompoundEndFeedback(br, thisEvent, ends, moveType.isFromTop());
-            } else {
-                Point location = new Point(1, thisEvent.getConnectionFigure().getPoints().getFirstPoint().y);
-                location.performScale(GraphicalHelper.getZoom(getHost()));
+    @SuppressWarnings("restriction")
+    private void showSourceFeedback(BendpointRequest br) {
+        SequenceMessageEditPart thisEvent = (SequenceMessageEditPart) getHost();
+        ISequenceEvent iSequenceEvent = thisEvent.getISequenceEvent();
+        List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(iSequenceEvent);
+        super.showSourceFeedback(br);
 
-                Figure guide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, location.y);
-                Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
+        MoveType moveType = getMoveType(thisEvent, br, ends);
+        if (moveType.needsCompoundMove()) {
+            showCompoundEndFeedback(br, thisEvent, ends, moveType.isFromTop());
+        } else {
+            Point location = new Point(1, thisEvent.getConnectionFigure().getPoints().getFirstPoint().y);
+            location.performScale(GraphicalHelper.getZoom(getHost()));
+
+            Figure guide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, location.y);
+            Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
+            bounds.height = 1;
+            bounds.y = location.y;
+            guide.setBounds(bounds);
+            addFeedback(guide);
+            guides.add(guide);
+
+            if (new ISequenceEventQuery(getMessage().getISequenceEvent()).isReflectiveMessage()) {
+                Point endLocation = new Point(1, thisEvent.getConnectionFigure().getPoints().getLastPoint().y);
+                endLocation.performScale(GraphicalHelper.getZoom(getHost()));
+                Figure messageToSelfBottomGuide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, endLocation.y);
+                bounds = getFeedbackLayer().getBounds().getCopy();
                 bounds.height = 1;
-                bounds.y = location.y;
-                guide.setBounds(bounds);
-                addFeedback(guide);
-                guides.add(guide);
+                bounds.y = endLocation.y;
+                messageToSelfBottomGuide.setBounds(bounds);
+                addFeedback(messageToSelfBottomGuide);
+                guides.add(messageToSelfBottomGuide);
+            }
 
-                if (new ISequenceEventQuery(getMessage().getISequenceEvent()).isReflectiveMessage()) {
-                    Point endLocation = new Point(1, thisEvent.getConnectionFigure().getPoints().getLastPoint().y);
-                    endLocation.performScale(GraphicalHelper.getZoom(getHost()));
-                    Figure messageToSelfBottomGuide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, endLocation.y);
+            if (thisEvent.getTarget() instanceof InstanceRoleEditPart) {
+                showInstanceRoleFeedback(br);
+            } else if (thisEvent.getTarget() instanceof EndOfLifeEditPart) {
+                showEndOfLifeFeedback(br);
+            }
+
+            Point reqLoc = br.getLocation().getCopy();
+            GraphicalHelper.screen2logical(reqLoc, (IGraphicalEditPart) getHost());
+            Option<Range> finalRange = computeFinalRange(br, thisEvent, reqLoc);
+            if (finalRange.some()) {
+                Collection<Integer> invalidPositions = checkGlobalPositions(iSequenceEvent, finalRange);
+                for (Integer conflict : invalidPositions) {
                     bounds = getFeedbackLayer().getBounds().getCopy();
+
+                    Point conflictingPosition = new Point(0, conflict);
+                    conflictingPosition.performScale(GraphicalHelper.getZoom(getHost()));
+
+                    HorizontalGuide conflictGuide = new HorizontalGuide(ColorConstants.red, conflictingPosition.y);
+                    bounds.y = conflictingPosition.y;
                     bounds.height = 1;
-                    bounds.y = endLocation.y;
-                    messageToSelfBottomGuide.setBounds(bounds);
-                    addFeedback(messageToSelfBottomGuide);
-                    guides.add(messageToSelfBottomGuide);
-                }
-
-                if (thisEvent.getTarget() instanceof InstanceRoleEditPart) {
-                    showInstanceRoleFeedback(br);
-                } else if (thisEvent.getTarget() instanceof EndOfLifeEditPart) {
-                    showEndOfLifeFeedback(br);
-                }
-
-                Point reqLoc = br.getLocation().getCopy();
-                GraphicalHelper.screen2logical(reqLoc, (IGraphicalEditPart) getHost());
-                Option<Range> finalRange = computeFinalRange(br, thisEvent, reqLoc);
-                if (finalRange.some()) {
-                    Collection<Integer> invalidPositions = checkGlobalPositions(iSequenceEvent, finalRange);
-                    for (Integer conflict : invalidPositions) {
-                        bounds = getFeedbackLayer().getBounds().getCopy();
-
-                        Point conflictingPosition = new Point(0, conflict);
-                        conflictingPosition.performScale(GraphicalHelper.getZoom(getHost()));
-
-                        HorizontalGuide conflictGuide = new HorizontalGuide(ColorConstants.red, conflictingPosition.y);
-                        bounds.y = conflictingPosition.y;
-                        bounds.height = 1;
-                        conflictGuide.setBounds(bounds);
-                        addFeedback(conflictGuide);
-                        guides.add(conflictGuide);
-                    }
+                    conflictGuide.setBounds(bounds);
+                    addFeedback(conflictGuide);
+                    guides.add(conflictGuide);
                 }
             }
         }
