@@ -7,7 +7,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.sirius.ext.draw2d;bundle-version="6.1.0";visibility:=reexport
-Import-Package: org.eclipse.core.runtime,
+Import-Package: org.eclipse.core.runtime;version="3.5.0",
  org.eclipse.draw2d,
  org.eclipse.draw2d.geometry,
  org.eclipse.draw2d.text,
@@ -42,5 +42,5 @@ Export-Package: org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools;version="2.0
  org.eclipse.sirius.ext.gmf.runtime.editparts;version="3.0.0",
  org.eclipse.sirius.ext.gmf.runtime.editpolicies;version="4.0.0",
  org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures;version="5.1.0",
- org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util
+ org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util;version="6.1.0"
 Automatic-Module-Name: org.eclipse.sirius.ext.gmf.runtime
