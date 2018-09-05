@@ -332,12 +332,12 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         };
         headerTreeColumn.setLabelProvider(lineheaderColumnLabelProvider);
         int headerColumnWidth = ((DTable) dRepresentation).getHeaderColumnWidth();
-        if (headerColumnWidth != 0) {
+        if (headerColumnWidth > 0) {
             theTreeLayout.setColumnData(headerTreeColumn.getColumn(), new ColumnPixelData(headerColumnWidth));
             if (headerTreeColumn.getColumn().getWidth() != headerColumnWidth) {
                 headerTreeColumn.getColumn().setWidth(headerColumnWidth);
             }
-        } else {
+        } else if (headerColumnWidth == 0 || ((DTable) dRepresentation).getDescription() instanceof CrossTableDescription) {
             theTreeLayout.setColumnData(headerTreeColumn.getColumn(), new ColumnWeightData(1));
             if (IS_GTK_OS) {
                 // Do not launch treeViewerColumn.getColumn().pack() here
@@ -348,6 +348,9 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 // Not really understood...
                 headerTreeColumn.getColumn().pack();
             }
+        } else {
+            // Negative width means "hide the header"
+            treeLayout.setColumnData(headerTreeColumn.getColumn(), new ColumnPixelData(0));
         }
 
         headerTreeColumn.getColumn().addListener(SWT.Selection, sortListener);

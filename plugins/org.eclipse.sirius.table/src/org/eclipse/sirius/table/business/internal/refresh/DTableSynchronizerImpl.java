@@ -49,6 +49,7 @@ import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
+import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
@@ -123,6 +124,10 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
             final Map<TableMapping, Collection<DTableElement>> mappingToElements = new HashMap<TableMapping, Collection<DTableElement>>();
             ECrossReferenceAdapter xref = ECrossReferenceAdapter.getCrossReferenceAdapter(table.getTarget());
+
+            if (!table.eIsSet(TablePackage.Literals.DTABLE__HEADER_COLUMN_WIDTH)) {
+                table.setHeaderColumnWidth(description.getInitialHeaderColumnWidth());
+            }
 
             refreshLines(new SubProgressMonitor(monitor, 1), mappingToElements, xref);
 

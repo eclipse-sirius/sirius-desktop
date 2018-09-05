@@ -39,7 +39,7 @@ It is recommended that the _Edition Table Description_ be explicitly associated 
 
 The _Initialization_ and _Show on startup_ flags control whether table instances are created and/or opened automatically without user intervention. If _Initialization_ is set, then when the viewpoint which contains this table description is enabled, instances of this table description will be automatically created on all compatible semantic elements. If _Show on startup_ in set, then when a modeling project is opened which contains instances of this table description, they will be opened: if only one such representation exist, it will be opened automatically; is there are more than one, a dialog box will appear to allow the user to select which one(s) to open.
 
-Finally, the _Initial Header Column Width_ (_Advanced_ category) is specific to table descriptions (both edition tables and cross tables). It can be used to specify the default size (in pixels) of the left-most column of the table, which contains the labels of the elements represented by each line. If the value if 0 (the default), the column width will be computed from the initial content when the table is created.
+Finally, the _Initial Header Column Width_ (_Advanced_ category) is specific to table descriptions (both edition tables and cross tables). It can be used to specify the default size (in pixels) of the left-most column of the table, which contains the labels of the elements represented by each line. If the value is 0 (the default), the column width will be computed from the initial content when the table is created. In case of edition tables, if the value is -1, the header Column is hidden. In case of cross tables, -1 value has the same behavior than 0 value.
 
 h3(#table_tools). Table Tools
 

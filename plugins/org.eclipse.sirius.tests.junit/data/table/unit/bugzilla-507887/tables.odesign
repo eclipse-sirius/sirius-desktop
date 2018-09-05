@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" name="fixture.odesign" version="12.0.0.2017041100">
+  <ownedViewpoints name="Bugzilla-507887">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="testEditionTable" domainClass="ecore.EPackage" initialHeaderColumnWidth="-1">
+      <ownedLineMappings name="Class" domainClass="ecore.EClass" semanticCandidatesExpression="feature:eClassifiers"/>
+      <ownedColumnMappings name="Names" label="Names" headerLabelExpression="Name" featureName="name" labelExpression="feature:name"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="testCrossTable" domainClass="EPackage">
+      <ownedLineMappings name="Packages" domainClass="EPackage"/>
+      <ownedColumnMappings name="Classes" domainClass="EClass"/>
+      <intersection name="Interaction" lineMapping="//@ownedViewpoints[name='Bugzilla-507887']/@ownedRepresentations[name='testCrossTable']/@ownedLineMappings[name='Packages']" columnMapping="//@ownedViewpoints[name='Bugzilla-507887']/@ownedRepresentations[name='testCrossTable']/@ownedColumnMappings.0" labelExpression="X"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

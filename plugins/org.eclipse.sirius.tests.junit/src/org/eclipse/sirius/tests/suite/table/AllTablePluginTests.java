@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.sirius.tests.unit.table.tests.provider.TreeLabelProviderTest;
 import org.eclipse.sirius.tests.unit.table.tests.srs.ExploitArrays_Test;
 import org.eclipse.sirius.tests.unit.table.tests.srs.SpecifyArrays_Test;
 import org.eclipse.sirius.tests.unit.table.unit.TableContentTest;
+import org.eclipse.sirius.tests.unit.table.unit.TableWithHeaderColumnWidthTest;
 import org.eclipse.sirius.tests.unit.table.unit.TableWithMultivaluedAttributeTest;
 import org.eclipse.sirius.tests.unit.table.unit.dialect.DialectManagerTest;
 import org.eclipse.sirius.tests.unit.table.unit.export.ExportToCsvTest;
@@ -105,6 +106,7 @@ public class AllTablePluginTests extends TestCase {
         suite.addTestSuite(VariableOnTableCreationToolsTest.class);
         suite.addTestSuite(TableStyleRefreshTest.class);
         suite.addTestSuite(TableWithMultivaluedAttributeTest.class);
+        suite.addTestSuite(TableWithHeaderColumnWidthTest.class);
         return suite;
     }
 
