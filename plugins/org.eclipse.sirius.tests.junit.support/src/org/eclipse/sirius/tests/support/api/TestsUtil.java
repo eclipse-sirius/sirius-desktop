@@ -99,6 +99,22 @@ public final class TestsUtil {
     }
 
     /**
+     * Tests whether the environment has a version of gtk that correctly supports GTK3.
+     * 
+     * @return <code>true</code> if GTK3 is supported, false otherwise.
+     */
+    public static boolean isGTK3supported() {
+        boolean isGTK3supported = true;
+        String stringVersion = System.getProperty("org.eclipse.swt.internal.gtk.version");
+        if (stringVersion != null) {
+            Version minimalRequiredVersion = new Version("3.22.11");
+            Version currentVersion = new Version(stringVersion);
+            isGTK3supported = currentVersion.compareTo(minimalRequiredVersion) >= 0;
+        }
+        return isGTK3supported;
+    }
+
+    /**
      * Tests whether unreliable tests should be run. See {@link #shouldSkipUnreliableTests()}. Can be used in tests as:
      * 
      * <pre>
