@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEdit
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -917,6 +918,10 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testNodeCreationInContainerPositionStabilityUsingDragAndDropFromTreeview() throws Exception {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+
         Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
         final SWTBotSiriusDiagramEditor editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER,
                 REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class, true, true);
@@ -1093,6 +1098,10 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     @Test
     public void testContainerCreationInContainerPositionStabilityUsingDragAndDropTool() throws Exception {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+
         Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, REPRESENTATION_NAME_CONTAINER_IN_CONTAINER,
                 DDiagram.class, true, true);
