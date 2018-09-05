@@ -79,12 +79,16 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
 
         @Override
         public boolean test() throws Exception {
-            return (nbEdgesBeforeCreation + 1) == dDiagram.getEdges().size();
+            return (nbEdgesBeforeCreation + 1) == dDiagram.getEdges().size() && editor.getDiagramEditPart().getConnections().size() == (nbEdgesBeforeCreation + 1);
         }
 
         @Override
         public String getFailureMessage() {
-            return "The edge creation tool does not create new edge.";
+            if ((nbEdgesBeforeCreation + 1) == dDiagram.getEdges().size()) {
+                return "The edge creation tool is OK but there is no corresponding edge edit part.";
+            } else {
+                return "The edge creation tool does not create new edge.";
+            }
         }
     }
 
