@@ -230,7 +230,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
 
     private void reloadPalette(PaletteManager paletteManager, Diagram gmfDiagram, boolean clean) {
         TransactionalEditingDomain editingDomain = dDiagramEditorImpl.getEditingDomain();
-        if (editingDomain != null) {
+        if (editingDomain != null && gmfDiagram != null) {
 
             // We don't use a command stack because we don't want the tool computation to be undone.
             TransactionImpl t = new TransactionImpl(editingDomain, false, Collections.EMPTY_MAP);
