@@ -155,7 +155,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             /*
              * removing the tool filter so that all tools available when representation is not locked are accessible
              */
-            if (paletteManager != null) {
+            if (paletteManager != null && toolManagement != null) {
                 toolManagement.removeToolFilter(toolFilterWhenRepresentationIsLocked);
                 if (dDiagramEditorImpl.getTabbar() != null) {
                     dDiagramEditorImpl.getTabbar().reinitToolBar(dDiagramEditorImpl.getDiagramGraphicalViewer().getSelection());
@@ -172,7 +172,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             reloadPalette(paletteManager, gmfDiagram, false);
             break;
         case SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY:
-            if (paletteManager != null) {
+            if (paletteManager != null&& toolManagement != null) {
                 toolManagement.removeToolFilter(toolFilterWhenRepresentationIsLocked);
                 if (dDiagramEditorImpl.getTabbar() != null) {
                     dDiagramEditorImpl.getTabbar().reinitToolBar(dDiagramEditorImpl.getDiagramGraphicalViewer().getSelection());
@@ -190,7 +190,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
              * create a toolfilter that will hide any creation tool
              */
 
-            if (paletteManager != null) {
+            if (paletteManager != null && toolManagement != null) {
                 toolManagement.addToolFilter(toolFilterWhenRepresentationIsLocked);
                 if (dDiagramEditorImpl.getTabbar() != null) {
                     dDiagramEditorImpl.getTabbar().reinitToolBar(dDiagramEditorImpl.getDiagramGraphicalViewer().getSelection());
@@ -230,7 +230,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
 
     private void reloadPalette(PaletteManager paletteManager, Diagram gmfDiagram, boolean clean) {
         TransactionalEditingDomain editingDomain = dDiagramEditorImpl.getEditingDomain();
-        if (editingDomain != null && gmfDiagram != null) {
+        if (editingDomain != null && gmfDiagram != null && gmfDiagram.getElement() instanceof DDiagram) {
 
             // We don't use a command stack because we don't want the tool computation to be undone.
             TransactionImpl t = new TransactionImpl(editingDomain, false, Collections.EMPTY_MAP);
