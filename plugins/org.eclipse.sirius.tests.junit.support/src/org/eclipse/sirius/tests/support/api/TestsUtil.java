@@ -107,7 +107,7 @@ public final class TestsUtil {
         boolean isGTK3supported = true;
         String stringVersion = System.getProperty("org.eclipse.swt.internal.gtk.version");
         if (stringVersion != null) {
-            Version minimalRequiredVersion = new Version("3.22.11");
+            Version minimalRequiredVersion = new Version("3.14.0");
             Version currentVersion = new Version(stringVersion);
             isGTK3supported = currentVersion.compareTo(minimalRequiredVersion) >= 0;
         }
