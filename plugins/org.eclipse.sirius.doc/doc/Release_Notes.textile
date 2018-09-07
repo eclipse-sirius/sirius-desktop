@@ -15,6 +15,10 @@ h3. User-Visible Changes
 * <span class="label label-success">Added</span> A new preference has been added in the Sirius preference panel. It allows Sirius to ask the user if he wants to save session resources after an automatic migration. If the new preference is ticked, the pop-up will only appear for session opening caused by a direct action of the user (i.e. opening a diagram or unfolding the resources in the model explorer).
 * <span class="label label-success">Added</span> On sequence diagrams, it is now possible to add vertical blank spaces on standard edition mode by dragging the mouse anywhere in the canvas with the Ctrl+Shift keys pressed.  This "feature:":user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space was here since version 6.0.0 but was only accessible through the ruler.
 * <span class="label label-success">Added</span> The preference @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE@ has been added and can be managed in Preferences/Sirius/Sirius Diagram/Appearance/Display viewpoint colors. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
+* <span class="label label-success">Added</span> A new visibility diagram edit "mode":user/diagrams/Diagrams.html#edit_modes is available. It allows to see diagram elements hidden manually with some transparency. In this mode the visibility can be changed by a double click on the target diagram element.
+!user/diagrams/images/show_hide_mode_example.png!
+* <span class="label label-success">Added</span> A new dropdown menu gathering the layouting, visibility and standard mode is now available in the tabbar of diagram editors to activate the chosen edit mode. The standard mode corresponds to a diagram editor without the layouting and visibility mode activated.
+!user/diagrams/images/show_hide_mode_tabbar_activate.png!
 
 h3. Specifier-Visible Changes
 

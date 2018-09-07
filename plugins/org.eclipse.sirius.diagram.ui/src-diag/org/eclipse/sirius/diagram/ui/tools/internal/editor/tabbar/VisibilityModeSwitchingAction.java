@@ -10,29 +10,29 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.IAdaptable;
+import java.util.Collections;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gef.Request;
-import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.UnexecutableCommand;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
-import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.emf.transaction.impl.TransactionImpl;
+import org.eclipse.gmf.runtime.diagram.ui.actions.CheckedPropertyAction;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.ModesMenuManager;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
-import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.part.EditorActionBarContributor;
 
 /**
@@ -41,7 +41,7 @@ import org.eclipse.ui.part.EditorActionBarContributor;
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
  */
-public class ShowingModeSwitchingAction extends DiagramAction {
+public class VisibilityModeSwitchingAction extends CheckedPropertyAction {
 
     /**
      * Icon used in the tabbar to allow end-user to activate the showing mode. It is also used in the editor's status
@@ -55,21 +55,40 @@ public class ShowingModeSwitchingAction extends DiagramAction {
     private DDiagram ddiagram;
 
     /**
+     * The {@link DDiagramEditor} containing the tabbar containing this action.
+     */
+    private DDiagramEditor editor;
+
+    /**
+     * The {@link ModesMenuManager} handling this action.
+     */
+    private ModesMenuManager modesMenuManager;
+
+    /**
      * Default constructor.
-     *
-     * @param iWorkbenchPart
+     * 
+     * @param page
      *            The workbench part associated with this action
+     *
+     * @param editor
+     *            The {@link DDiagramEditor} containing the tabbar containing this action.
      * @param editorDiagram
      *            the {@link DDiagram} on witch the showing mode should be switched
+     * @param modesMenuManager
+     *            The {@link ModesMenuManager} handling this action.
      */
-    public ShowingModeSwitchingAction(IWorkbenchPart iWorkbenchPart, DDiagram editorDiagram) {
-        super(iWorkbenchPart);
+    public VisibilityModeSwitchingAction(IWorkbenchPage page, DDiagramEditor editor, DDiagram editorDiagram, ModesMenuManager modesMenuManager) {
+        super(page, ActionIds.SWITCH_SHOWING_MODE, Messages.ChangeEditModeAction_ChangePropertyValueRequest_label, ActionIds.SWITCH_SHOWING_MODE);
+        setWorkbenchPart(page.getActivePart());
         setId(ActionIds.SWITCH_SHOWING_MODE);
+        setToolTipText(Messages.EditModeAction_Label);
         this.ddiagram = editorDiagram;
         if (ddiagram != null) {
             setImageDescriptor(ACTIVATE_SHOW_HIDE_MODE_IMAGE_DESCRIPTOR);
             setTextAndStatusAccordingToShowingMode();
         }
+        this.editor = editor;
+        this.modesMenuManager = modesMenuManager;
     }
 
     /**
@@ -109,7 +128,7 @@ public class ShowingModeSwitchingAction extends DiagramAction {
 
     @Override
     public int getStyle() {
-        return AS_UNSPECIFIED;
+        return AS_CHECK_BOX;
     }
 
     @Override
@@ -118,51 +137,42 @@ public class ShowingModeSwitchingAction extends DiagramAction {
     }
 
     @Override
-    protected Command getCommand() {
-        Command returnedCommand = UnexecutableCommand.INSTANCE;
-        returnedCommand = switchShowingModeCommand(ddiagram);
-
-        return returnedCommand;
+    protected boolean calculateEnabled() {
+        return ddiagram != null && editor != null;
     }
 
-    /**
-     * Returns a command that deactivate the showing mode of the given {@link DDiagram}.
-     *
-     * @param diagram
-     *            the {@link DDiagram} on witch the showing mode should be switched
-     * @return a command that deactivate the showing mode of the given {@link DDiagram}
-     */
-    private Command switchShowingModeCommand(DDiagram diagram) {
-        Command returnedCommand = UnexecutableCommand.INSTANCE;
-        TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(diagram);
+    @Override
+    protected void doRun(IProgressMonitor progressMonitor) {
+        TransactionalEditingDomain editingDomain = (TransactionalEditingDomain) editor.getEditingDomain();
         if (editingDomain != null) {
-            String commandLabel = diagram.isIsInShowingMode() ? Messages.SetShowingModeCommandAndUpdateActionImage_deactivateLabel : Messages.SetShowingModeCommandAndUpdateActionImage_activateLabel;
-            returnedCommand = new ICommandProxy(new SetLayoutingModeCommand(TransactionUtil.getEditingDomain(ddiagram), ddiagram, false))
-                    .chain(new ICommandProxy(new SetShowingModeCommand(editingDomain, diagram, commandLabel, true) {
 
-                        @Override
-                        protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-                            CommandResult doExecuteWithResult = super.doExecuteWithResult(monitor, info);
-                            if (IStatus.OK == doExecuteWithResult.getStatus().getCode()) {
-                                setTextAndStatusAccordingToShowingMode();
-                            }
-                            return doExecuteWithResult;
-                        }
+            // We don't use a command stack because we don't want the mode update to be undone
+            TransactionImpl t = new TransactionImpl(editingDomain, false, Collections.EMPTY_MAP);
+            try {
+                t.start();
+                this.ddiagram.setIsInLayoutingMode(false);
+                this.ddiagram.setIsInShowingMode(true);
+                t.commit();
+            } catch (RollbackException | InterruptedException e) {
+                DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, Messages.ChangeEditModeAction_ChangeFailure, e));
+            }
 
-                    }));
         }
-        return returnedCommand;
+        modesMenuManager.refresh();
+        setTextAndStatusAccordingToShowingMode();
+    }
+
+    @Override
+    protected boolean calculateChecked() {
+        return ddiagram != null && ddiagram.isIsInShowingMode();
     }
 
     @Override
     public void dispose() {
         ddiagram = null;
+        modesMenuManager = null;
+        editor = null;
         super.dispose();
-    }
-
-    @Override
-    protected Request createTargetRequest() {
-        return null;
     }
 
 }

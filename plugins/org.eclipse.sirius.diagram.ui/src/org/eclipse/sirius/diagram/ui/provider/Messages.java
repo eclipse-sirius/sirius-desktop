@@ -1554,6 +1554,9 @@ public final class Messages {
     public static String DefaultModeAction_Label;
 
     @TranslatableMessage
+    public static String EditModeAction_Label;
+
+    @TranslatableMessage
     public static String DoubleClickEditPolicy_confirmDialogAsking;
 
     @TranslatableMessage
@@ -1561,8 +1564,14 @@ public final class Messages {
 
     @TranslatableMessage
     public static String DDiagramEditorImpl_updateToolFailure;
-    // CHECKSTYLE:ON
 
+    @TranslatableMessage
+    public static String ChangeEditModeAction_ChangePropertyValueRequest_label;
+
+    @TranslatableMessage
+    public static String ChangeEditModeAction_ChangeFailure;
+
+    // CHECKSTYLE:ON
     private Messages() {
         // Prevents instanciation.
     }

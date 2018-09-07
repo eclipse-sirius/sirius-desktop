@@ -611,7 +611,7 @@ To see more easily if one or more graphical elements are pinned, the icon in the
 
 	!images/diagram_editor_pin_toolbar_activated.png!
 	
-h3. Edit modes
+h3(#edit_modes). Edit modes
 
 Different diagram edit modes are available. Each mode focus on a specific way of editing diagrams. Modes are accessible from a dropdown menu in the tabbar when no diagram element is selected:
 !images/editModesDropdown.png!
@@ -647,7 +647,7 @@ In this example, as _Layouting mode_ is activated, reconnecting the Edge from _A
 
 When a diagram is closed, the _Layouting mode_ is automatically disabled.
 
-h4. Show/hide mode: change diagram element visibility without modifying semantic models
+h4. Visibility mode: change diagram element visibility without modifying semantic models
 
 This mode allows to visualize all diagram elements either visible or invisible because of a filter or a previous hiding action execution on the element. Invisible elements will be shown with transparency:
  
@@ -667,15 +667,15 @@ So when this mode is enabled, the following operations are changed:
 * direct edit is disabled on all elements;
 * moving elements by dragging them can be used to change their position, but will never trigger a drag and drop operation;
 * moving the extremity of an edge to adjust its connection point (to the source or target element) is possible, but will never trigger a reconnection operation.
-Note that other operations which can change the semantic model are still possible. Only the operations listed above, which are easy to misuse, are disabled/modified. *Show/Hide mode is not a "read-only" mode and does not guarantee that the semantic model is not modified when it is enabled.*
+Note that other operations which can change the semantic model are still possible. Only the operations listed above, which are easy to misuse, are disabled/modified. *Visibility mode is not a "read-only" mode and does not guarantee that the semantic model is not modified when it is enabled.*
 
-*Show/Hide mode* can be activated on a diagram through the tabbar (when there is no selected element) : 
+*Visibility mode* can be activated on a diagram through the tabbar (when there is no selected element) : 
 
 !images/show_hide_mode_tabbar_activate.png!
 
 To deactivate the mode you just have to select the _Standard mode_.
 
-When a diagram is closed, the _Show/Hide mode_ is automatically disabled.
+When a diagram is closed, the _Visibility mode_ is automatically disabled.
 
 h3(#synchronized_diagram). Synchronized/Unsynchronized diagram
 

@@ -46,8 +46,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWork
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.FiltersContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.LayersContribution;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.LayoutingModeSwitchingAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.ShowingModeSwitchingAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DiagramActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarAlignMenuManager;
@@ -525,28 +523,6 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the Layout Mode contribution item. This button enables a special "layout mode", in which some operations
-     * are prevented from having an effect on the semantic model.
-     * 
-     * @param part
-     *            the current IDiagramWorkbenchPart.
-     * @return the {@link IContributionItem} or null if the workbench part is being initialized or if the diagram
-     *         doesn't allow the layouting mode.
-     */
-    public IContributionItem createLayoutingModeContributionItem(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null && part instanceof DDiagramEditor) {
-            final DDiagramEditor editor = (DDiagramEditor) part;
-            DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
-            if (LayoutingModeSwitchingAction.diagramAllowsLayoutingMode(editorDiagram)) {
-                LayoutingModeSwitchingAction layoutingModeSwitchingAction = new LayoutingModeSwitchingAction(part, editorDiagram);
-                return new TabbarActionContributionItem(layoutingModeSwitchingAction);
-            }
-        }
-        return null;
-    }
-
-    /**
      * Creates the {@link ModesMenuManager} allowing to choose a diagram editor edit mode.
      * 
      * @param editorDiagram
@@ -558,29 +534,6 @@ public class TabbarContributionFactory {
         modesMenu = new ModesMenuManager(EclipseUIUtil.getActivePage(), editorDiagram);
         modesMenu.setVisible(true);
         return modesMenu;
-    }
-
-    /**
-     * Creates the Showing Mode contribution item. This button enables a special "showing mode" in which invisible
-     * diagram elements are temporarily revealed to allow user to easily make them visible.
-     * 
-     * @param part
-     *            the current IDiagramWorkbenchPart.
-     * @param manager
-     *            the toolbar manager
-     * @return the {@link IContributionItem} or null if the workbench part is being initialized.
-     */
-    public IContributionItem createShowingModeContributionItem(IDiagramWorkbenchPart part, ToolBarManager manager) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null && part instanceof DDiagramEditor) {
-            final DDiagramEditor editor = (DDiagramEditor) part;
-            DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
-            ShowingModeSwitchingAction showingModeSwitchingAction = new ShowingModeSwitchingAction(part, editorDiagram);
-            TabbarActionContributionItem tabbarActionContributionItem = new TabbarActionContributionItem(showingModeSwitchingAction);
-
-            return tabbarActionContributionItem;
-        }
-        return null;
     }
 
     /**

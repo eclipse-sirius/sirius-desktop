@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,9 +30,10 @@ public class CanHideElementTester extends PropertyTester {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object,
-     *      java.lang.String, java.lang.Object[], java.lang.Object)
+     * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
+     *      java.lang.Object)
      */
+    @Override
     public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
         boolean result = false;
 
@@ -59,6 +60,7 @@ public class CanHideElementTester extends PropertyTester {
         } else {
             DDiagram parentDiagram = diagramElement.getParentDiagram();
             result = parentDiagram != null ? HideDDiagramElementAction.allowsHideReveal(parentDiagram).apply(diagramElement) : false;
+            result = result && !parentDiagram.isIsInShowingMode();
         }
         return result;
     }
@@ -66,8 +68,7 @@ public class CanHideElementTester extends PropertyTester {
     /**
      * @param selectedElements
      *            The current selection
-     * @return true if all selected elements is kind of IDiagramElementEditPart
-     *         and has label hidden.
+     * @return true if all selected elements is kind of IDiagramElementEditPart and has label hidden.
      */
     private boolean testStructuredSelection(IStructuredSelection selectedElements) {
         boolean result = true;

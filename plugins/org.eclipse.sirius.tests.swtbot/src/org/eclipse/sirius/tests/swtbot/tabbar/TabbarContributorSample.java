@@ -82,7 +82,7 @@ public class TabbarContributorSample extends AbstractTabbarContributor {
             diagramContributionItems.add(createPasteFormatContribution(part));
             diagramContributionItems.add(createRefreshContribution());
             diagramContributionItems.add(createSaveAsImageContributionItem());
-            diagramContributionItems.add(createLayoutingModeContributionItem(part));
+            diagramContributionItems.add(createModeMenuManagerContributionItem(part));
             diagramContributionItems.add(createCopyAppearancePropertiesContribution(part));
             diagramContributionItems.add(createCopyFormatContribution(part));
         }
@@ -112,7 +112,7 @@ public class TabbarContributorSample extends AbstractTabbarContributor {
             diagramElementContributionItems.add(createSetStyleToWorkspaceImageContribution(part));
             diagramElementContributionItems.add(createSaveAsImageContributionItem());
             diagramElementContributionItems.add(createDistributeContribution());
-            diagramElementContributionItems.add(createLayoutingModeContributionItem(part));
+            diagramElementContributionItems.add(createModeMenuManagerContributionItem(part));
             diagramElementContributionItems.add(createRouterContribution());
             diagramElementContributionItems.add(createCopyAppearancePropertiesContribution(part));
             diagramElementContributionItems.add(createCopyFormatContribution(part));

@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.LayoutingModeSwitchingAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.ShowingModeSwitchingAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.VisibilityModeSwitchingAction;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
@@ -45,12 +45,27 @@ public class ModesMenuManager extends ActionMenuManager {
      */
     private static class StandardModeMenuAction extends Action {
         StandardModeMenuAction() {
-            setText(Messages.DefaultModeAction_Label);
+            setText(Messages.EditModeAction_Label);
             ImageDescriptor imageDesc = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DEFAULT_MODE);
             setImageDescriptor(imageDesc);
             setHoverImageDescriptor(imageDesc);
         }
     }
+
+    /**
+     * Action to activate standard edit mode.
+     */
+    private StandardModeAction standardModeAction;
+
+    /**
+     * Action to activate layouting edit mode.
+     */
+    private LayoutingModeSwitchingAction layoutingModeSwitchingAction;
+
+    /**
+     * Action to activate visibility edit mode.
+     */
+    private VisibilityModeSwitchingAction visibilityModeSwitchingAction;
 
     /**
      * Creates a new instance of the menu manager.
@@ -120,8 +135,20 @@ public class ModesMenuManager extends ActionMenuManager {
 
     @Override
     public void dispose() {
+        standardModeAction = null;
+        layoutingModeSwitchingAction = null;
+        visibilityModeSwitchingAction = null;
         removeAll();
         super.dispose();
+    }
+
+    /**
+     * Refresh icon of all actions.
+     */
+    public void refresh() {
+        standardModeAction.refresh();
+        visibilityModeSwitchingAction.refresh();
+        layoutingModeSwitchingAction.refresh();
     }
 
     @Override
@@ -134,24 +161,32 @@ public class ModesMenuManager extends ActionMenuManager {
             if (page != null && page.getActivePart() instanceof DDiagramEditor) {
                 final DDiagramEditor editor = (DDiagramEditor) page.getActivePart();
                 DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
-                add(new StandardModeAction(page.getActivePart(), editorDiagram));
-                add(new ShowingModeSwitchingAction(page.getActivePart(), editorDiagram));
+                standardModeAction = new StandardModeAction(page, editor, editorDiagram, this);
+                visibilityModeSwitchingAction = new VisibilityModeSwitchingAction(page, editor, editorDiagram, this);
+                add(standardModeAction);
+                add(visibilityModeSwitchingAction);
                 if (LayoutingModeSwitchingAction.diagramAllowsLayoutingMode(editorDiagram)) {
-                    add(new LayoutingModeSwitchingAction(page.getActivePart(), editorDiagram));
+                    layoutingModeSwitchingAction = new LayoutingModeSwitchingAction(page, editor, editorDiagram, this);
+                    add(layoutingModeSwitchingAction);
                 }
-                if (editorDiagram != null && editorDiagram.isIsInLayoutingMode()) {
+                if (editorDiagram != null && editorDiagram.isIsInLayoutingMode() && layoutingModeSwitchingAction != null) {
                     setDefaultAction(ActionIds.SWITCH_LAYOUTING_MODE);
+                    layoutingModeSwitchingAction.setChecked(true);
                 } else if (editorDiagram != null && editorDiagram.isIsInShowingMode()) {
                     setDefaultAction(ActionIds.SWITCH_SHOWING_MODE);
+                    visibilityModeSwitchingAction.setChecked(true);
                 } else {
                     setDefaultAction(ActionIds.DEFAULT_MODE);
+                    standardModeAction.setChecked(true);
                 }
-
             }
         } else if (!isEmpty() && !visible) {
             remove(ActionIds.SWITCH_LAYOUTING_MODE);
             remove(ActionIds.SWITCH_SHOWING_MODE);
             remove(ActionIds.DEFAULT_MODE);
+            standardModeAction = null;
+            layoutingModeSwitchingAction = null;
+            visibilityModeSwitchingAction = null;
         }
     }
 }
