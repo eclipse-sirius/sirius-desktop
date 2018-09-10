@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,8 +39,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnosti
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
-import com.google.common.collect.Iterables;
 
 /**
  * This task delegates to the viewpoint's CompoundInterpreter for expression
@@ -140,8 +138,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
         final Set<EPackage.Registry> localEPackageRegistries = new LinkedHashSet<>();
         final Set<EPackage> knownEPackages = new LinkedHashSet<>();
 
-        for (EObject targetEObject : Iterables.filter(context.getTargetNotifiers(), EObject.class)) {
-
+        context.getTargetNotifiers().stream().filter(EObject.class::isInstance).map(EObject.class::cast).forEachOrdered(targetEObject -> {
             EPackage ePackage = targetEObject.eClass().getEPackage();
             if (ePackage != null && ePackage.getNsURI() != null) {
                 knownEPackages.add(ePackage);
@@ -150,7 +147,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
             if (targetEObjectResource != null && targetEObjectResource.getResourceSet() != null) {
                 localEPackageRegistries.add(targetEObjectResource.getResourceSet().getPackageRegistry());
             }
-        }
+        });
         Set<String> localyRegisteredNsURIs = new LinkedHashSet<>();
         for (EPackage.Registry registry : localEPackageRegistries) {
             localyRegisteredNsURIs.addAll(registry.keySet());

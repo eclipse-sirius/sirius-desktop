@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,10 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.interpreter;
+
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
@@ -21,27 +25,29 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithRepl
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-
 /**
  * Allows us to provide content assist for the viewpoint dialect.
- * 
+ *
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  */
 public class SiriusContentAssistProcessor implements IContentAssistProcessor {
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#computeCompletionProposals(org.eclipse.jface.text.ITextViewer,
      *      int)
      */
+    @Override
     public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer, int offset) {
         if (viewer instanceof SiriusInterpreterSourceViewer) {
             final Iterable<ContentProposal> vpProposals = ((SiriusInterpreterSourceViewer) viewer).getComputedProposals();
             if (vpProposals != null) {
-                final Iterable<ICompletionProposal> proposals = Iterables.transform(vpProposals, new CompletionProposalConverter(viewer.getSelectedRange()));
-                return Iterables.toArray(proposals, ICompletionProposal.class);
+                // @formatter:off
+                return StreamSupport.stream(vpProposals.spliterator(), false)
+                        .map(new CompletionProposalConverter(viewer.getSelectedRange()))
+                        .collect(Collectors.toList())
+                        .toArray(new ICompletionProposal[0]);
+                // @formatter:off
             }
         }
         return null;
@@ -49,10 +55,11 @@ public class SiriusContentAssistProcessor implements IContentAssistProcessor {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#computeContextInformation(org.eclipse.jface.text.ITextViewer,
      *      int)
      */
+    @Override
     public IContextInformation[] computeContextInformation(ITextViewer viewer, int offset) {
         // No context information for VP
         return null;
@@ -60,23 +67,24 @@ public class SiriusContentAssistProcessor implements IContentAssistProcessor {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#getCompletionProposalAutoActivationCharacters()
      */
+    @Override
     public char[] getCompletionProposalAutoActivationCharacters() {
         /*
-         * We do not trigger auto activation : we need contextual information
-         * from the interpreter which will only be sent to us through manual
-         * activation.
+         * We do not trigger auto activation : we need contextual information from the interpreter which will only be
+         * sent to us through manual activation.
          */
         return null;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#getContextInformationAutoActivationCharacters()
      */
+    @Override
     public char[] getContextInformationAutoActivationCharacters() {
         // No context information for VP
         return null;
@@ -84,9 +92,10 @@ public class SiriusContentAssistProcessor implements IContentAssistProcessor {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#getErrorMessage()
      */
+    @Override
     public String getErrorMessage() {
         // For now, assume no error messages from completion.
         return null;
@@ -94,9 +103,10 @@ public class SiriusContentAssistProcessor implements IContentAssistProcessor {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.text.contentassist.IContentAssistProcessor#getContextInformationValidator()
      */
+    @Override
     public IContextInformationValidator getContextInformationValidator() {
         // No context information for VP
         return null;
@@ -104,7 +114,7 @@ public class SiriusContentAssistProcessor implements IContentAssistProcessor {
 
     /**
      * Will be used to convert the Sirius-specific proposals to JFace ones.
-     * 
+     *
      * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
      */
     private class CompletionProposalConverter implements Function<ContentProposal, ICompletionProposal> {
@@ -114,18 +124,19 @@ public class SiriusContentAssistProcessor implements IContentAssistProcessor {
             this.currentRange = currentRange;
         }
 
+        @Override
         public ICompletionProposal apply(ContentProposal input) {
             final ICompletionProposal proposal;
             if (input instanceof ContentProposalWithReplacement) {
                 ContentProposalWithReplacement proposalWithReplacement = (ContentProposalWithReplacement) input;
-                
+
                 Image image = null;
-                
+
                 if (ImageKind.SWT_IMAGE.equals(proposalWithReplacement.getImageKind()) && proposalWithReplacement.getImage() instanceof Image) {
                     // We have a SWT image already loaded, we can reuse it directly
                     image = (Image) proposalWithReplacement.getImage();
                 }
-                
+
                 proposal = new SiriusCompletionProposal(proposalWithReplacement.getProposal(), proposalWithReplacement.getReplacementOffset(), proposalWithReplacement.getReplacementLength(),
                         proposalWithReplacement.getCursorPosition(), image, proposalWithReplacement.getDisplay(), null, proposalWithReplacement.getInformation());
             } else {

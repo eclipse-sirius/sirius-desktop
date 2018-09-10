@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2007 IBM Corporation and others.
+ * Copyright (c) 2000, 2018 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,8 +21,6 @@ import org.eclipse.jface.text.contentassist.ICompletionProposalExtension2;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
-
-import com.google.common.base.Throwables;
 
 /**
  * Implementation of a completion proposal for Sirius.
@@ -201,7 +199,7 @@ public class SiriusCompletionProposal implements ICompletionProposal, ICompletio
                 doc.replace(fReplacementOffset, fReplacementLength, replacement);
             }
         } catch (BadLocationException e) {
-            Throwables.propagate(e);
+            throw new RuntimeException(e);
         }
     }
 
