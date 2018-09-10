@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.business.internal.componentization.mappings.v
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
@@ -36,11 +37,11 @@ public class MappingsHierarchyVisitor {
     public Collection<? extends DiagramElementMapping> getChildren(final DiagramElementMapping mapping) {
         final Collection<DiagramElementMapping> children = new ArrayList<DiagramElementMapping>();
         if (mapping instanceof ContainerMapping) {
-            children.addAll(((ContainerMapping) mapping).getAllContainerMappings());
-            children.addAll(((ContainerMapping) mapping).getAllNodeMappings());
-            children.addAll(((ContainerMapping) mapping).getAllBorderedNodeMappings());
+            children.addAll(MappingHelper.getAllContainerMappings((ContainerMapping) mapping));
+            children.addAll(MappingHelper.getAllNodeMappings((ContainerMapping) mapping));
+            children.addAll(MappingHelper.getAllBorderedNodeMappings((ContainerMapping) mapping));
         } else if (mapping instanceof NodeMapping) {
-            children.addAll(((NodeMapping) mapping).getAllBorderedNodeMappings());
+            children.addAll(MappingHelper.getAllBorderedNodeMappings((NodeMapping) mapping));
         }
         /* do nothing for edge mapping as they do not have children */
         return children;

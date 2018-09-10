@@ -14,10 +14,6 @@
 package org.eclipse.sirius.diagram.description;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 
 /**
@@ -74,69 +70,5 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
      * @generated
      */
     EList<ConditionalNodeStyleDescription> getConditionnalStyles();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Create a node for the specified element.
-     *
-     * @param modelElement
-     *            The element.
-     * @param container
-     *            The container of the element. <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    DNode createNode(EObject modelElement, EObject container, DDiagram viewPoint);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Update the node.
-     *
-     * @param node
-     *            The node to update. <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    @Deprecated
-    void updateNode(DNode node);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Update a ViewNodeListElement.
-     *
-     * @param listElement
-     *            The view node list element to update <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    @Deprecated
-    void updateListElement(DNodeListElement listElement);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return all semantic elements that are
-     * candidates for the mapping.
-     *
-     * @param semanticOrigin
-     *            The root element.
-     * @param container
-     *            The container element <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    @Deprecated
-    EList<EObject> getNodesCandidates(EObject semanticOrigin, EObject container);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return all semantic elements that are
-     * candidates for the mapping.
-     *
-     * @param semanticOrigin
-     *            The root element.
-     * @param container
-     *            The container of the element.
-     * @param containerView
-     *            The view of the container. <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    @Deprecated
-    EList<EObject> getNodesCandidates(EObject semanticOrigin, EObject container, EObject containerView);
 
 } // NodeMapping

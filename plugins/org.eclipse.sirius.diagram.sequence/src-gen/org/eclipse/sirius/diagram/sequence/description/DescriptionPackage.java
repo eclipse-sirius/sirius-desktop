@@ -173,24 +173,6 @@ public interface DescriptionPackage extends EPackage {
     int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS;
 
     /**
-     * The feature id for the '<em><b>All Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>All Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS;
-
-    /**
      * The feature id for the '<em><b>Validation Set</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -292,23 +274,6 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int SEQUENCE_DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS;
-
-    /**
-     * The feature id for the '<em><b>All Layers</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_LAYERS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS;
-
-    /**
-     * The feature id for the '<em><b>All Activated Tools</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -2853,15 +2818,6 @@ public interface DescriptionPackage extends EPackage {
     int FRAME_MAPPING__SUB_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
     /**
-     * The feature id for the '<em><b>All Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int FRAME_MAPPING__ALL_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__ALL_NODE_MAPPINGS;
-
-    /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -2887,15 +2843,6 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int FRAME_MAPPING__REUSED_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>All Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int FRAME_MAPPING__ALL_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -3146,15 +3093,6 @@ public interface DescriptionPackage extends EPackage {
     int INTERACTION_USE_MAPPING__SUB_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__SUB_NODE_MAPPINGS;
 
     /**
-     * The feature id for the '<em><b>All Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int INTERACTION_USE_MAPPING__ALL_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__ALL_NODE_MAPPINGS;
-
-    /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -3180,15 +3118,6 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int INTERACTION_USE_MAPPING__REUSED_CONTAINER_MAPPINGS = DescriptionPackage.FRAME_MAPPING__REUSED_CONTAINER_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>All Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int INTERACTION_USE_MAPPING__ALL_CONTAINER_MAPPINGS = DescriptionPackage.FRAME_MAPPING__ALL_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -3440,15 +3369,6 @@ public interface DescriptionPackage extends EPackage {
     int COMBINED_FRAGMENT_MAPPING__SUB_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__SUB_NODE_MAPPINGS;
 
     /**
-     * The feature id for the '<em><b>All Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int COMBINED_FRAGMENT_MAPPING__ALL_NODE_MAPPINGS = DescriptionPackage.FRAME_MAPPING__ALL_NODE_MAPPINGS;
-
-    /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -3474,15 +3394,6 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int COMBINED_FRAGMENT_MAPPING__REUSED_CONTAINER_MAPPINGS = DescriptionPackage.FRAME_MAPPING__REUSED_CONTAINER_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>All Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int COMBINED_FRAGMENT_MAPPING__ALL_CONTAINER_MAPPINGS = DescriptionPackage.FRAME_MAPPING__ALL_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -3733,15 +3644,6 @@ public interface DescriptionPackage extends EPackage {
     int OPERAND_MAPPING__SUB_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
     /**
-     * The feature id for the '<em><b>All Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int OPERAND_MAPPING__ALL_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__ALL_NODE_MAPPINGS;
-
-    /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -3767,15 +3669,6 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int OPERAND_MAPPING__REUSED_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>All Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int OPERAND_MAPPING__ALL_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc

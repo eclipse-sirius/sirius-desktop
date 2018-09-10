@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,14 +12,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.experimental.sync;
 
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
 import com.google.common.base.Predicate;
 
 /**
- * {@link Predicate} to checks if a {@link DiagramElementMapping} is owned by a
- * specified {@link DiagramDescription}.
+ * {@link Predicate} to checks if a {@link DiagramElementMapping} is owned by a specified {@link DiagramDescription}.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -38,13 +38,13 @@ public class IsMappingOfCurrentDiagramDescription implements Predicate<DiagramEl
     }
 
     /**
-     * Overridden to checks that a {@link DiagramElementMapping} is owned by a
-     * {@link DiagramDescription}.
+     * Overridden to checks that a {@link DiagramElementMapping} is owned by a {@link DiagramDescription}.
      * 
      * {@inheritDoc}
      */
+    @Override
     public boolean apply(DiagramElementMapping diagramElementMapping) {
-        return diagramDescription.getAllEdgeMappings().contains(diagramElementMapping) || diagramDescription.getAllNodeMappings().contains(diagramElementMapping)
-                || diagramDescription.getAllContainerMappings().contains(diagramElementMapping);
+        return diagramDescription.getAllEdgeMappings().contains(diagramElementMapping) || ContentHelper.getAllNodeMappings(diagramDescription, false).contains(diagramElementMapping)
+                || ContentHelper.getAllContainerMappings(diagramDescription, false).contains(diagramElementMapping);
     }
 }

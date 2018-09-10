@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -202,11 +203,9 @@ public class DecoratorsTest extends GenericTestCase {
         checkDecoration(elements, mbdle);
 
         /*
-         * The decoration are computed by the ddiagram synchronizer even if
-         * there is no check on list element edit parts which are
-         * IDiagramNameEditpart: DescribedDecoratorProvider currently provide
-         * decorations only for IDiagramElementEditPart whch does not inherits
-         * from IDiagramNameEditPart.
+         * The decoration are computed by the ddiagram synchronizer even if there is no check on list element edit parts
+         * which are IDiagramNameEditpart: DescribedDecoratorProvider currently provide decorations only for
+         * IDiagramElementEditPart whch does not inherits from IDiagramNameEditPart.
          */
         checkDecoration(listElements, mbd);
         checkDecoration(listElements, mbdc);
@@ -433,9 +432,8 @@ public class DecoratorsTest extends GenericTestCase {
     }
 
     /*
-     * No check on list element edit parts which are IDiagramNameEditpart:
-     * DescribedDecoratorProvider currently provide decorations only for
-     * IDiagramElementEditPart whch does not inherits from IDiagramNameEditPart.
+     * No check on list element edit parts which are IDiagramNameEditpart: DescribedDecoratorProvider currently provide
+     * decorations only for IDiagramElementEditPart whch does not inherits from IDiagramNameEditPart.
      */
     public void testMappingBasedDecorationEditPart() throws Exception {
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 8, viewpoints.iterator().next().getOwnedRepresentations().size());
@@ -452,15 +450,15 @@ public class DecoratorsTest extends GenericTestCase {
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 1, decorationDescription.getMappings().size());
 
         NodeMapping nodeMapping = defaultLayer.getNodeMappings().get(0);
-        List<? extends DDiagramElement> elements = diagram.getNodesFromMapping(nodeMapping);
+        List<? extends DDiagramElement> elements = DDiagramSpecOperations.getNodesFromMapping(diagram, nodeMapping);
         assertEquals("We should have 3 nodes here", 3, elements.size());
 
         nodeMapping = defaultLayer.getNodeMappings().get(1);
-        elements = diagram.getNodesFromMapping(nodeMapping);
+        elements = DDiagramSpecOperations.getNodesFromMapping(diagram, nodeMapping);
         assertEquals("We should have 2 nodes here", 2, elements.size());
 
         ContainerMapping containerMapping = defaultLayer.getContainerMappings().get(0);
-        elements = diagram.getContainersFromMapping(containerMapping);
+        elements = DDiagramSpecOperations.getContainersFromMapping(diagram, containerMapping);
         assertEquals("We should have 1 container here", 1, elements.size());
 
         final Shell shell = new Shell();
@@ -506,13 +504,13 @@ public class DecoratorsTest extends GenericTestCase {
         assertFalse(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, StringUtil.isEmpty(decorationDescription.getDomainClass()));
 
         NodeMapping nodeMapping = defaultLayer.getNodeMappings().get(0);
-        List<DNode> elements = diagram.getNodesFromMapping(nodeMapping);
+        List<DNode> elements = DDiagramSpecOperations.getNodesFromMapping(diagram, nodeMapping);
         nodeMapping = defaultLayer.getNodeMappings().get(1);
-        elements.addAll(diagram.getNodesFromMapping(nodeMapping));
+        elements.addAll(DDiagramSpecOperations.getNodesFromMapping(diagram, nodeMapping));
         assertEquals("We should have 5 nodes here", 5, elements.size());
 
         nodeMapping = defaultLayer.getNodeMappings().get(2);
-        elements = diagram.getNodesFromMapping(nodeMapping);
+        elements = DDiagramSpecOperations.getNodesFromMapping(diagram, nodeMapping);
         assertEquals("We should have 2 nodes here", 2, elements.size());
 
         final Shell shell = new Shell();
@@ -553,13 +551,13 @@ public class DecoratorsTest extends GenericTestCase {
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, decorationDescription);
 
         NodeMapping nodeMapping = defaultLayer.getNodeMappings().get(0);
-        List<DNode> elements = diagram.getNodesFromMapping(nodeMapping);
+        List<DNode> elements = DDiagramSpecOperations.getNodesFromMapping(diagram, nodeMapping);
         nodeMapping = defaultLayer.getNodeMappings().get(1);
-        elements.addAll(diagram.getNodesFromMapping(nodeMapping));
+        elements.addAll(DDiagramSpecOperations.getNodesFromMapping(diagram, nodeMapping));
         assertEquals("We should have 5 nodes here", 5, elements.size());
 
         nodeMapping = defaultLayer.getNodeMappings().get(2);
-        elements = diagram.getNodesFromMapping(nodeMapping);
+        elements = DDiagramSpecOperations.getNodesFromMapping(diagram, nodeMapping);
         assertEquals("We should have 2 nodes here", 2, elements.size());
 
         final Shell shell = new Shell();

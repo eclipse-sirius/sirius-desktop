@@ -75,6 +75,8 @@ import org.eclipse.sirius.diagram.business.internal.helper.decoration.Decoration
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
@@ -469,7 +471,7 @@ public class DDiagramSynchronizer {
         // EdgeMapping as source neither as target
         for (final EdgeMapping mapping : Iterables.filter(edgeMappings, edgeMappingWithoutEdgeAsSourceOrTarget)) {
             refreshEdgeMapping(diagramMappingsManager, mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, new SubProgressMonitor(monitor, 1));
-            mappingsToEdgeTargets.put(mapping, (Collection) diagram.getEdgesFromMapping(mapping));
+            mappingsToEdgeTargets.put(mapping, (Collection) DDiagramSpecOperations.getEdgesFromMapping(diagram, mapping));
         }
 
         // The list of EdgeMappings that have not been processed.
@@ -485,7 +487,7 @@ public class DDiagramSynchronizer {
         while (!mappingsToEdgeTargets.keySet().containsAll(edgeMappings)) {
             for (final EdgeMapping mapping : Iterables.filter(remaingEdgeMappingsToRefresh, unrefreshedEdgeMappingWithRefreshedEdgeAsSourceOrTarget)) {
                 refreshEdgeMapping(diagramMappingsManager, mappingsToEdgeTargets, mapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, new SubProgressMonitor(monitor, 1));
-                mappingsToEdgeTargets.put(mapping, (Collection) diagram.getEdgesFromMapping(mapping));
+                mappingsToEdgeTargets.put(mapping, (Collection) DDiagramSpecOperations.getEdgesFromMapping(diagram, mapping));
                 noRefreshImpliesCycleDetected = false;
             }
 
@@ -535,7 +537,7 @@ public class DDiagramSynchronizer {
                 return;
             }
 
-            for (final DiagramElementMapping subMapping : mapping.getAllMappings()) {
+            for (final DiagramElementMapping subMapping : MappingHelper.getAllMappings(mapping)) {
                 for (final DDiagramElement element : elements) {
                     key = new EObjectCouple(element, subMapping, ids);
                     this.ignoredDuringRefreshProcess.remove(key);
@@ -1253,7 +1255,7 @@ public class DDiagramSynchronizer {
         /*
          * Collect existing edges.
          */
-        for (final DEdge edge : this.diagram.getEdgesFromMapping(mapping)) {
+        for (final DEdge edge : DDiagramSpecOperations.getEdgesFromMapping(this.diagram, mapping)) {
             final DEdgeCandidate edgeCandidate = new DEdgeCandidate(edge, ids);
             if (edgeCandidate.isInvalid()) {
                 invalidCandidates.add(edgeCandidate);

@@ -23,12 +23,8 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
-import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.impl.DDiagramImpl;
@@ -85,21 +81,6 @@ public class DDiagramSpec extends DDiagramImpl {
         final Collection<DDiagramElementContainer> result = new DDiagramInternalQuery(this).getContainers();
         return new EcoreEList.UnmodifiableEList<DDiagramElementContainer>(eInternalContainer(), DiagramPackage.eINSTANCE.getDDiagram_Containers(), result.size(), result.toArray());
 
-    }
-
-    @Override
-    public EList<DNode> getNodesFromMapping(final NodeMapping mapping) {
-        return DDiagramSpecOperations.getNodesFromMapping(this, mapping);
-    }
-
-    @Override
-    public EList<DEdge> getEdgesFromMapping(final EdgeMapping mapping) {
-        return DDiagramSpecOperations.getEdgesFromMapping(this, mapping);
-    }
-
-    @Override
-    public EList<DDiagramElementContainer> getContainersFromMapping(final ContainerMapping mapping) {
-        return DDiagramSpecOperations.getContainersFromMapping(this, mapping);
     }
 
     @Override

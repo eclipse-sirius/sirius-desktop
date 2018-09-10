@@ -1,22 +1,23 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
- * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * https://www.eclipse.org/legal/epl-2.0/
- *
- * SPDX-License-Identifier: EPL-2.0
+ * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.metamodel.description.filter.spec;
+package org.eclipse.sirius.diagram.business.internal.helper.filter;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
@@ -28,7 +29,7 @@ import org.eclipse.sirius.diagram.EObjectVariableValue;
 import org.eclipse.sirius.diagram.TypedVariableValue;
 import org.eclipse.sirius.diagram.VariableValue;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
-import org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl;
+import org.eclipse.sirius.diagram.description.filter.VariableFilter;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
@@ -38,12 +39,14 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 
 /**
- * Customizations for the implementation of <code>VariableFilter</code>.
+ * Wrapper handling available variable for a filter.
  * 
- * @author cbrun
- * 
+ * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+ *
  */
-public class VariableFilterSpec extends VariableFilterImpl {
+public class VariableFilterWrapper implements Adapter {
+
+    private VariableFilter variableFilter;
 
     private Multimap<String, EObject> variables;
 
@@ -52,11 +55,23 @@ public class VariableFilterSpec extends VariableFilterImpl {
     private DDiagram curDiagram;
 
     /**
-     * {@inheritDoc}
+     * Initialize the wrapper with given variable filter.
      * 
-     * @see org.eclipse.sirius.diagram.description.filter.impl.FilterImpl#isVisible(DDiagramElement)
+     * @param variableFilter
+     *            the {@link VariableFilter} wrapped.
      */
-    @Override
+    public VariableFilterWrapper(VariableFilter variableFilter) {
+        super();
+        this.variableFilter = variableFilter;
+    }
+
+    /**
+     * Returns true if the given element is visible. False otherwise.
+     * 
+     * @param element
+     *            the element from which we want to know if it is visible.
+     * @return true if the given element is visible. False otherwise.
+     */
     public boolean isVisible(final DDiagramElement element) {
         //
         // If the element has no container it will be deleted.
@@ -66,8 +81,7 @@ public class VariableFilterSpec extends VariableFilterImpl {
         }
 
         /*
-         * We'll init the variables using the history contained in the
-         * viewpoint.
+         * We'll init the variables using the history contained in the viewpoint.
          */
         getVariablesFromDiagram(element.getParentDiagram());
         boolean valid = true;
@@ -88,15 +102,15 @@ public class VariableFilterSpec extends VariableFilterImpl {
             }
         }
 
-        if (getSemanticConditionExpression() != null) {
+        if (variableFilter.getSemanticConditionExpression() != null) {
             final EObject target = ((DSemanticDecorator) element).getTarget();
             if (target == null || target.eResource() == null) {
                 valid = false;
             } else {
                 try {
-                    valid = interpreter.evaluateBoolean(element.getTarget(), getSemanticConditionExpression());
+                    valid = interpreter.evaluateBoolean(element.getTarget(), variableFilter.getSemanticConditionExpression());
                 } catch (final EvaluationException e) {
-                    RuntimeLoggerManager.INSTANCE.error(this, FilterPackage.eINSTANCE.getVariableFilter_SemanticConditionExpression(), e);
+                    RuntimeLoggerManager.INSTANCE.error(variableFilter, FilterPackage.eINSTANCE.getVariableFilter_SemanticConditionExpression(), e);
                 }
             }
         }
@@ -126,13 +140,13 @@ public class VariableFilterSpec extends VariableFilterImpl {
                     final VariableValue value = it.next();
                     if (value instanceof EObjectVariableValue) {
                         EObjectVariableValue objectVarValue = (EObjectVariableValue) value;
-                        if (getOwnedVariables().contains(objectVarValue.getVariableDefinition())) {
+                        if (variableFilter.getOwnedVariables().contains(objectVarValue.getVariableDefinition())) {
                             variables.put(((AbstractVariable) objectVarValue.getVariableDefinition()).getName(), objectVarValue.getModelElement());
                         }
                     } else if (value instanceof TypedVariableValue) {
                         TypedVariableValue typeVariableValue = (TypedVariableValue) value;
                         TypedVariable variableDefinition = typeVariableValue.getVariableDefinition();
-                        if (getOwnedVariables().contains(variableDefinition)) {
+                        if (variableFilter.getOwnedVariables().contains(variableDefinition)) {
                             // Instantiate value which dataType is defined on
                             // TypedVariable.valueType.
                             Object convertedObject = EcoreUtil.createFromString(variableDefinition.getValueType(), typeVariableValue.getValue());
@@ -145,8 +159,32 @@ public class VariableFilterSpec extends VariableFilterImpl {
         }
     }
 
-    @Override
+    /**
+     * Reset the variables.
+     */
     public void resetVariables() {
         this.curDiagram = null;
+    }
+
+    @Override
+    public void notifyChanged(Notification notification) {
+        // not used
+    }
+
+    @Override
+    public Notifier getTarget() {
+        // not used
+        return null;
+    }
+
+    @Override
+    public void setTarget(Notifier newTarget) {
+        // not used
+    }
+
+    @Override
+    public boolean isAdapterForType(Object type) {
+        // not used
+        return false;
     }
 }

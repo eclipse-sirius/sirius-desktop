@@ -16,7 +16,6 @@ package org.eclipse.sirius.diagram.description;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
@@ -104,34 +103,5 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      */
     @Deprecated
     EList<DDiagramElement> findDNodeFromEObject(EObject eObject);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Clear the list of done nodes. <!--
-     * end-model-doc -->
-     *
-     * @model
-     * @generated
-     */
-    @Deprecated
-    void clearDNodesDone();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Add a new node in the done nodes.
-     *
-     * <!-- end-model-doc -->
-     *
-     * @model nodeRequired="true"
-     * @generated
-     */
-    @Deprecated
-    void addDoneNode(DSemanticDecorator node);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @model kind="operation"
-     * @generated
-     */
-    EList<NodeMapping> getAllBorderedNodeMappings();
 
 } // AbstractNodeMapping

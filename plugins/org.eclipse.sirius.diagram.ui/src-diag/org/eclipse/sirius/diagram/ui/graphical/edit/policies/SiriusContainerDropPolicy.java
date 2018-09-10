@@ -46,7 +46,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerWithInterpreterOperations;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
@@ -324,7 +324,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
                     Object next = selection.next();
                     Session session = SessionManager.INSTANCE.getSession(targetAbstractDNodeSemanticTarget);
                     EObject droppedElementForDropTool = new WorkspaceDragAndDropSupport().convert(next, session);
-                    ContainerDropDescription dropTool = DDiagramElementContainerSpecOperations.getBestDropDescription(dragDragAndDropDescription, droppedElementForDropTool, null,
+                    ContainerDropDescription dropTool = DDiagramElementContainerWithInterpreterOperations.getBestDropDescription(dragDragAndDropDescription, droppedElementForDropTool, null,
                             targetAbstractDNodeSemanticTarget, targetDragAndDropTarget, DragSource.PROJECT_EXPLORER_LITERAL, null);
                     org.eclipse.emf.common.command.Command buildDropInContainerCommandFromTool = diagramCommandFactory.buildDropInContainerCommandFromTool(targetDragAndDropTarget,
                             droppedElementForDropTool, dropTool);
@@ -342,9 +342,9 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
         }
         /* The drag operation starts from an Diagram */
         for (DDiagramElement elementFromDiagramToDrop : elementsFromDiagramToDrop) {
-            ContainerDropDescription dropTool = DDiagramElementContainerSpecOperations.getBestDropDescription(dragDragAndDropDescription, ((DSemanticDecorator) elementFromDiagramToDrop).getTarget(),
-                    SiriusContainerDropPolicy.getSemanticContainer(elementFromDiagramToDrop), targetAbstractDNodeSemanticTarget, targetDragAndDropTarget, DragSource.DIAGRAM_LITERAL,
-                    elementFromDiagramToDrop);
+            ContainerDropDescription dropTool = DDiagramElementContainerWithInterpreterOperations.getBestDropDescription(dragDragAndDropDescription,
+                    ((DSemanticDecorator) elementFromDiagramToDrop).getTarget(), SiriusContainerDropPolicy.getSemanticContainer(elementFromDiagramToDrop), targetAbstractDNodeSemanticTarget,
+                    targetDragAndDropTarget, DragSource.DIAGRAM_LITERAL, elementFromDiagramToDrop);
             org.eclipse.emf.common.command.Command cmd = diagramCommandFactory.buildDropInContainerCommandFromTool(targetDragAndDropTarget, elementFromDiagramToDrop, dropTool);
             if (cmd != null && cmd.canExecute()) {
                 command.append(cmd);

@@ -6,36 +6,6 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="ViewPoint is the type of all diagrams in AIR.&#xD;&#xA;A viewpoint is composed of nodes, containers and connections. It is owned by an anlysis or by a parent viewpoint. In this last case the viewpoint should be called detailed viewpoint."/>
     </eAnnotations>
-    <eOperations name="getNodesFromMapping" upperBound="-1" eType="#//DNode">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Returns all nodes owned (directly or not) by this viewpoint that have been created from the specified mapping."/>
-      </eAnnotations>
-      <eParameters name="mapping" eType="#//description/NodeMapping">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The mapping that has created the returned ViewNodes"/>
-        </eAnnotations>
-      </eParameters>
-    </eOperations>
-    <eOperations name="getEdgesFromMapping" upperBound="-1" eType="#//DEdge">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Returns all edges owned (directly or not) by this viewpoint that have been created from the specified mapping."/>
-      </eAnnotations>
-      <eParameters name="mapping" eType="#//description/EdgeMapping">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The mapping that has created the returned ViewEdges"/>
-        </eAnnotations>
-      </eParameters>
-    </eOperations>
-    <eOperations name="getContainersFromMapping" upperBound="-1" eType="#//DDiagramElementContainer">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Returns all containers owned (directly or not) by this viewpoint that have been created from the specified mapping."/>
-      </eAnnotations>
-      <eParameters name="mapping" eType="#//description/ContainerMapping">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The mapping that has created the returned ViewPointElementContainers"/>
-        </eAnnotations>
-      </eParameters>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedDiagramElements" upperBound="-1"
         eType="#//DDiagramElement" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -405,11 +375,6 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A view edge. It is a connection between two EdgeTarget."/>
     </eAnnotations>
-    <eOperations name="isRootFolding" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="&lt;code>true&lt;/code> if the edge is the root of a folded branch."/>
-      </eAnnotations>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStyle" eType="#//EdgeStyle"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1014,20 +979,6 @@
           <details key="documentation" value="All edge mappings (including import edge ampping) of this simple mapping."/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allNodeMappings" upperBound="-1"
-          eType="#//description/NodeMapping" changeable="false" volatile="true" transient="true"
-          derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="All node mappings of this simple mapping."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allContainerMappings"
-          upperBound="-1" eType="#//description/ContainerMapping" changeable="false"
-          volatile="true" transient="true" derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="All container mappings of this simple mapping."/>
-        </eAnnotations>
-      </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="validationSet" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/validation/ValidationSet"
           containment="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1090,12 +1041,6 @@
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="additionalLayers" upperBound="-1"
           eType="#//description/AdditionalLayer" containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allLayers" upperBound="-1"
-          eType="#//description/Layer" changeable="false" volatile="true" transient="true"
-          derived="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allActivatedTools" upperBound="-1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription"
-          volatile="true" transient="true" derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="nodeMappings" upperBound="-1"
           eType="#//description/NodeMapping" containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1182,41 +1127,6 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Represent the mapping of a ViewPointElement."/>
       </eAnnotations>
-      <eOperations name="checkPrecondition" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Check the precondition of the mapping. Return true if the condition is checked, false otherwise."/>
-        </eAnnotations>
-        <eParameters name="modelElement" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The element to test."/>
-          </eAnnotations>
-        </eParameters>
-        <eParameters name="container" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The semantic element of the view container of the eventual view of the modelElement"/>
-          </eAnnotations>
-        </eParameters>
-        <eParameters name="containerView" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The view container of the eventual view of the modelElement"/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
-      <eOperations name="getAllMappings" upperBound="-1" eType="#//description/DiagramElementMapping">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Return all sub mappings."/>
-        </eAnnotations>
-      </eOperations>
-      <eOperations name="isFrom" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Returns true if the given ViewPointElement has been produced from this Mapping or any imported mapping."/>
-        </eAnnotations>
-        <eParameters name="element" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//DMappingBased">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Any ViewPointElement"/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
           eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"
           defaultValueLiteral="">
@@ -1317,18 +1227,6 @@
           </eAnnotations>
         </eParameters>
       </eOperations>
-      <eOperations name="clearDNodesDone">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Clear the list of done nodes."/>
-        </eAnnotations>
-      </eOperations>
-      <eOperations name="addDoneNode">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Add a new node in the done nodes.&#xA;"/>
-        </eAnnotations>
-        <eParameters name="node" lowerBound="1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//DSemanticDecorator"/>
-      </eOperations>
-      <eOperations name="getAllBorderedNodeMappings" upperBound="-1" eType="#//description/NodeMapping"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
           eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1348,77 +1246,6 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Represents a node mapping. A node mapping allows to create nodes (ViewNode)."/>
       </eAnnotations>
-      <eOperations name="createNode" eType="#//DNode">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Create a node for the specified element."/>
-        </eAnnotations>
-        <eParameters name="modelElement" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The element."/>
-          </eAnnotations>
-        </eParameters>
-        <eParameters name="container" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The container of the element."/>
-          </eAnnotations>
-        </eParameters>
-        <eParameters name="viewPoint" eType="#//DDiagram"/>
-      </eOperations>
-      <eOperations name="updateNode">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Update the node.&#xD;&#xA;"/>
-        </eAnnotations>
-        <eParameters name="node" eType="#//DNode">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The node to update."/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
-      <eOperations name="updateListElement">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Update a ViewNodeListElement."/>
-        </eAnnotations>
-        <eParameters name="listElement" eType="#//DNodeListElement">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The view node list element to update"/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
-      <eOperations name="getNodesCandidates" upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Return all semantic elements that are candidates for the mapping."/>
-        </eAnnotations>
-        <eParameters name="semanticOrigin" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The root element."/>
-          </eAnnotations>
-        </eParameters>
-        <eParameters name="container" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The container element"/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
-      <eOperations name="getNodesCandidates" upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Return all semantic elements that are candidates for the mapping."/>
-        </eAnnotations>
-        <eParameters name="semanticOrigin" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The root element."/>
-          </eAnnotations>
-        </eParameters>
-        <eParameters name="container" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The container of the element."/>
-          </eAnnotations>
-        </eParameters>
-        <eParameters name="containerView" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The view of the container."/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/style/NodeStyleDescription"
           containment="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1436,16 +1263,8 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A container mapping allows to create containers (ViewNodeContainer or ViewNodeList)."/>
       </eAnnotations>
-      <eOperations name="getBestStyle" eType="#//ContainerStyle">
-        <eParameters name="modelElement" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="viewVariable" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="containerVariable" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-      </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="subNodeMappings" upperBound="-1"
           eType="#//description/NodeMapping" containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allNodeMappings" upperBound="-1"
-          eType="#//description/NodeMapping" changeable="false" volatile="true" transient="true"
-          derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="reusedNodeMappings" upperBound="-1"
           eType="#//description/NodeMapping"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="subContainerMappings"
@@ -1453,9 +1272,6 @@
           eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="reusedContainerMappings"
           upperBound="-1" eType="#//description/ContainerMapping"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allContainerMappings"
-          upperBound="-1" eType="#//description/ContainerMapping" changeable="false"
-          volatile="true" transient="true" derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/style/ContainerStyleDescription"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="conditionnalStyles" upperBound="-1"
@@ -1493,38 +1309,6 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An edge mapping allows to create ViewEdge."/>
       </eAnnotations>
-      <eOperations name="createEdge" eType="#//DEdge">
-        <eParameters name="source" lowerBound="1" eType="#//EdgeTarget"/>
-        <eParameters name="target" lowerBound="1" eType="#//EdgeTarget"/>
-        <eParameters name="semanticTarget" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-      </eOperations>
-      <eOperations name="createEdge" eType="#//DEdge">
-        <eParameters name="source" lowerBound="1" eType="#//EdgeTarget"/>
-        <eParameters name="target" lowerBound="1" eType="#//EdgeTarget"/>
-        <eParameters name="container" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="semanticTarget" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-      </eOperations>
-      <eOperations name="getBestStyle" eType="#//EdgeStyle">
-        <eParameters name="modelElement" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="viewVariable" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="containerVariable" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-      </eOperations>
-      <eOperations name="updateEdge">
-        <eParameters name="viewEdge" lowerBound="1" eType="#//DEdge"/>
-      </eOperations>
-      <eOperations name="getEdgeTargetCandidates" upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-        <eParameters name="semanticOrigin" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="viewPoint" eType="#//DDiagram"/>
-      </eOperations>
-      <eOperations name="getEdgeSourceCandidates" upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-        <eParameters name="semanticOrigin" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="viewPoint" eType="#//DDiagram"/>
-      </eOperations>
-      <eOperations name="getEdgeTargetCandidates" upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-        <eParameters name="semanticOrigin" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="container" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="containerView" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-      </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="sourceMapping" lowerBound="1"
           upperBound="-1" eType="#//description/DiagramElementMapping">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1615,13 +1399,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="pathNodeMapping" upperBound="-1"
           eType="#//description/AbstractNodeMapping"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="IEdgeMapping" abstract="true" interface="true">
-      <eOperations name="getBestStyle" eType="#//EdgeStyle">
-        <eParameters name="modelElement" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="viewVariable" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="containerVariable" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-      </eOperations>
-    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IEdgeMapping" abstract="true" interface="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="EdgeMappingImport" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/DocumentedElement #//description/IEdgeMapping ../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement">
       <eStructuralFeatures xsi:type="ecore:EReference" name="importedMapping" lowerBound="1"
           eType="#//description/IEdgeMapping">
@@ -1803,13 +1581,6 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="icon" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ImagePath">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="image path to use as an icon for the layer"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allEdgeMappings" upperBound="-1"
-          eType="#//description/EdgeMapping" changeable="false" volatile="true" transient="true"
-          derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="All edge mappings (including import edge mapping) of this simple mapping."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="customization" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/Customization"
@@ -2413,26 +2184,6 @@
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Tools to create a ViewEdge it appears in the palette."/>
         </eAnnotations>
-        <eOperations name="getBestMapping" eType="#//description/EdgeMapping">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Returns the best mapping to use."/>
-          </eAnnotations>
-          <eParameters name="source" eType="#//EdgeTarget">
-            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-              <details key="documentation" value="The source View."/>
-            </eAnnotations>
-          </eParameters>
-          <eParameters name="target" eType="#//EdgeTarget">
-            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-              <details key="documentation" value="The target view."/>
-            </eAnnotations>
-          </eParameters>
-          <eParameters name="createdElements" upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-              <details key="documentation" value="The element that has been created by this tool."/>
-            </eAnnotations>
-          </eParameters>
-        </eOperations>
         <eStructuralFeatures xsi:type="ecore:EReference" name="edgeMappings" lowerBound="1"
             upperBound="-1" eType="#//description/EdgeMapping">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2832,10 +2583,6 @@
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Tool that describes a Drag &amp; Drop operation."/>
         </eAnnotations>
-        <eOperations name="getBestMapping" eType="#//description/DiagramElementMapping">
-          <eParameters name="targetContainer" eType="#//DragAndDropTarget"/>
-          <eParameters name="droppedElement" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        </eOperations>
         <eOperations name="getContainers" lowerBound="1" upperBound="-1" eType="#//description/DragAndDropTargetDescription"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="mappings" upperBound="-1"
             eType="#//description/DiagramElementMapping">
@@ -2917,16 +2664,6 @@
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A filter."/>
         </eAnnotations>
-        <eOperations name="isVisible" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Return true if the specified viewpoint element is visible for this filter."/>
-          </eAnnotations>
-          <eParameters name="element" eType="#//DDiagramElement">
-            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-              <details key="documentation" value="The element to test."/>
-            </eAnnotations>
-          </eParameters>
-        </eOperations>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterKind" eType="#//description/filter/FilterKind"
             defaultValueLiteral="HIDE">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2980,11 +2717,6 @@
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A filter that filters viewpoint elements considering an expression and some variables defined by the user.&#xA;"/>
         </eAnnotations>
-        <eOperations name="resetVariables">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Reset the variables of the filter."/>
-          </eAnnotations>
-        </eOperations>
         <eStructuralFeatures xsi:type="ecore:EReference" name="ownedVariables" upperBound="-1"
             eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InteractiveVariableDescription"
             containment="true"/>

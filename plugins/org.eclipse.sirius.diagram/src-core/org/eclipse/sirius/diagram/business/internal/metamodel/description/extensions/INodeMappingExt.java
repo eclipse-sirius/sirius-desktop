@@ -12,14 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions;
 
-import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
@@ -43,19 +40,4 @@ public interface INodeMappingExt extends NodeMapping {
      * @return the candidates cache for this mapping.
      */
     Map<EObjectCouple, EList<EObject>> getCandidatesCache();
-
-    /**
-     * Create the bordering nodes of this mapping.
-     * 
-     * @param modelElement
-     *            the semantic element.
-     * @param vpElement
-     *            the viewpoint element.
-     * @param filterSemantic
-     *            a collection of already managed elements.
-     * @param viewPoint
-     *            the parent {@link DDiagram}.
-     * 
-     */
-    void createBorderingNodes(EObject modelElement, DDiagramElement vpElement, Collection filterSemantic, DDiagram viewPoint);
 }

@@ -40,10 +40,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getFilters <em>Filters</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getAllEdgeMappings <em>All Edge
  * Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getAllNodeMappings <em>All Node
- * Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getAllContainerMappings <em>All Container
- * Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getValidationSet <em>Validation Set</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getConcerns <em>Concerns</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getAllTools <em>All Tools</em>}</li>
@@ -59,9 +55,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getDefaultLayer <em>Default Layer</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getAdditionalLayers <em>Additional
  * Layers</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getAllLayers <em>All Layers</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getAllActivatedTools <em>All Activated
- * Tools</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getNodeMappings <em>Node Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getEdgeMappings <em>Edge Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getEdgeMappingImports <em>Edge Mapping
@@ -106,30 +99,6 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * @generated
      */
     EList<EdgeMapping> getAllEdgeMappings();
-
-    /**
-     * Returns the value of the '<em><b>All Node Mappings</b></em>' reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> All node mappings of this simple mapping. <!-- end-model-doc -->
-     *
-     * @return the value of the '<em>All Node Mappings</em>' reference list.
-     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllNodeMappings()
-     * @model transient="true" changeable="false" volatile="true" derived="true"
-     * @generated
-     */
-    EList<NodeMapping> getAllNodeMappings();
-
-    /**
-     * Returns the value of the '<em><b>All Container Mappings</b></em>' reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.ContainerMapping}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * <!-- begin-model-doc --> All container mappings of this simple mapping. <!-- end-model-doc -->
-     *
-     * @return the value of the '<em>All Container Mappings</em>' reference list.
-     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllContainerMappings()
-     * @model transient="true" changeable="false" volatile="true" derived="true"
-     * @generated
-     */
-    EList<ContainerMapping> getAllContainerMappings();
 
     /**
      * Returns the value of the '<em><b>Validation Set</b></em>' containment reference. <!-- begin-user-doc --> <!--
@@ -414,38 +383,6 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * @generated
      */
     EList<AdditionalLayer> getAdditionalLayers();
-
-    /**
-     * Returns the value of the '<em><b>All Layers</b></em>' reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.Layer}. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>All Layers</em>' reference list isn't clear, there really should be more of a
-     * description here...
-     * </p>
-     * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>All Layers</em>' reference list.
-     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllLayers()
-     * @model transient="true" changeable="false" volatile="true" derived="true"
-     * @generated
-     */
-    EList<Layer> getAllLayers();
-
-    /**
-     * Returns the value of the '<em><b>All Activated Tools</b></em>' reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription}. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>All Activated Tools</em>' reference list isn't clear, there really should be more of a
-     * description here...
-     * </p>
-     * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>All Activated Tools</em>' reference list.
-     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllActivatedTools()
-     * @model transient="true" volatile="true" derived="true"
-     * @generated
-     */
-    EList<AbstractToolDescription> getAllActivatedTools();
 
     /**
      * Returns the value of the '<em><b>Node Mappings</b></em>' containment reference list. The list contents are of

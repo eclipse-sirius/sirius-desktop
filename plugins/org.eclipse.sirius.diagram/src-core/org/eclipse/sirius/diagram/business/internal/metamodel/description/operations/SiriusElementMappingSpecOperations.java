@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,9 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
@@ -37,23 +39,26 @@ public final class SiriusElementMappingSpecOperations {
     }
 
     /**
-     * Check the precondition of the mapping for the object
-     * <code>modelElement</code>.
+     * Check the precondition of the mapping for the object <code>modelElement</code>.
      * 
      * @param mapping
      *            the mapping.
      * @param modelElement
      *            the element to check.
      * @param container
-     *            the semantic element of the view that contains the potential
-     *            view of <code>modelElement</code>.
+     *            the semantic element of the view that contains the potential view of <code>modelElement</code>.
      * @param containerView
-     *            the view that contains the potential view of
-     *            <code>modelElement</code>.
-     * @return <code>true</code> if the precondition is checked, false
-     *         otherwise.
+     *            the view that contains the potential view of <code>modelElement</code>.
+     * @return <code>true</code> if the precondition is checked, false otherwise.
      */
     public static boolean checkPrecondition(final DiagramElementMapping mapping, final EObject modelElement, final EObject container, final EObject containerView) {
+        DiagramElementMapping effectiveMapping = null;
+        if (mapping instanceof EdgeMappingImport) {
+            effectiveMapping = MappingHelper.getEdgeMapping((EdgeMappingImport) mapping);
+        } else {
+            effectiveMapping = mapping;
+        }
+
         final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
         boolean result = true;
         if (container != null) {
@@ -62,10 +67,10 @@ public final class SiriusElementMappingSpecOperations {
         if (containerView != null) {
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, containerView);
         }
-        if (mapping.getPreconditionExpression() != null && !StringUtil.isEmpty(mapping.getPreconditionExpression().trim())) {
+        if (effectiveMapping.getPreconditionExpression() != null && !StringUtil.isEmpty(effectiveMapping.getPreconditionExpression().trim())) {
             result = false;
             try {
-                result = interpreter.evaluateBoolean(modelElement, mapping.getPreconditionExpression());
+                result = interpreter.evaluateBoolean(modelElement, effectiveMapping.getPreconditionExpression());
             } catch (final EvaluationException e) {
                 // nothing special, keep silent
             }
@@ -91,8 +96,14 @@ public final class SiriusElementMappingSpecOperations {
      * @return <code>true</code> if the element has been created by the mapping.
      */
     public static boolean isFrom(final DiagramElementMapping mapping, final DMappingBased element) {
-        if (element.getMapping() != null) {
-            return new DiagramElementMappingQuery(mapping).isTypeOf(element);
+        DiagramElementMapping mappingTemp = null;
+        if (mapping instanceof EdgeMappingImport) {
+            mappingTemp = MappingHelper.getEdgeMapping((EdgeMappingImport) mapping);
+        } else if (element.getMapping() != null) {
+            mappingTemp = mapping;
+        }
+        if (mappingTemp != null) {
+            return new DiagramElementMappingQuery(mappingTemp).isTypeOf(element);
         }
         return false;
     }

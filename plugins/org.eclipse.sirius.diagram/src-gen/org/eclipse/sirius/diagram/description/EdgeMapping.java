@@ -14,11 +14,6 @@
 package org.eclipse.sirius.diagram.description;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.EdgeStyle;
-import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
@@ -329,68 +324,5 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * @generated
      */
     EList<AbstractNodeMapping> getPathNodeMapping();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @model sourceRequired="true" targetRequired="true"
-     * @generated
-     */
-    @Deprecated
-    DEdge createEdge(EdgeTarget source, EdgeTarget target, EObject semanticTarget);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @model sourceRequired="true" targetRequired="true"
-     * @generated
-     */
-    @Deprecated
-    DEdge createEdge(EdgeTarget source, EdgeTarget target, EObject container, EObject semanticTarget);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @model
-     * @generated
-     */
-    @Override
-    EdgeStyle getBestStyle(EObject modelElement, EObject viewVariable, EObject containerVariable);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @model viewEdgeRequired="true"
-     * @generated
-     */
-    @Deprecated
-    void updateEdge(DEdge viewEdge);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @model
-     * @generated
-     */
-    @Deprecated
-    EList<EObject> getEdgeTargetCandidates(EObject semanticOrigin, DDiagram viewPoint);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @model
-     * @generated
-     */
-    @Deprecated
-    EList<EObject> getEdgeSourceCandidates(EObject semanticOrigin, DDiagram viewPoint);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @model
-     * @generated
-     */
-    @Deprecated
-    EList<EObject> getEdgeTargetCandidates(EObject semanticOrigin, EObject container, EObject containerView);
 
 } // EdgeMapping

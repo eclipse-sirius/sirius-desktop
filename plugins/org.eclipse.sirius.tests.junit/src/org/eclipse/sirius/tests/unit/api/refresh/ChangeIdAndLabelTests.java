@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -30,8 +31,8 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * Tests of changes of the id (name) or the label (of Sirius,
- * RepresentationDescription and Layer) and check the expected result.
+ * Tests of changes of the id (name) or the label (of Sirius, RepresentationDescription and Layer) and check the
+ * expected result.
  * 
  * @author lredor
  */
@@ -55,8 +56,7 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
     }
 
     /**
-     * Check that the modification of the id of a viewpoint break the existing
-     * diagram.
+     * Check that the modification of the id of a viewpoint break the existing diagram.
      * 
      * @throws Exception
      *             In case of problem
@@ -87,8 +87,7 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
     }
 
     /**
-     * Check that the modification of the label of a viewpoint have no incidence
-     * on the existing diagram.
+     * Check that the modification of the label of a viewpoint have no incidence on the existing diagram.
      */
     public void testModificationOfLabelOfSirius() {
         assertEquals("The data is incorrect (bad number of representations).", 1, getRepresentations(REPRESENTATION_DESC_NAME).size());
@@ -104,8 +103,7 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
     }
 
     /**
-     * Check that the modification of the id of a representation description
-     * break the existing diagram.
+     * Check that the modification of the id of a representation description break the existing diagram.
      */
     public void testModificationOfIdOfRepresentationDescription() {
         assertEquals("The data is incorrect (bad number of representations).", 1, getRepresentations(REPRESENTATION_DESC_NAME).size());
@@ -121,8 +119,8 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
     }
 
     /**
-     * Check that the modification of the label of a representation description
-     * have no incidence on the existing diagram.
+     * Check that the modification of the label of a representation description have no incidence on the existing
+     * diagram.
      */
     public void testModificationOfLabelOfRepresentationDescription() {
         assertEquals("The data is incorrect (bad number of representations).", 1, getRepresentations(REPRESENTATION_DESC_NAME).size());
@@ -139,19 +137,18 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
     }
 
     /**
-     * Check that the modification of the id of a layer break the existing
-     * diagram.
+     * Check that the modification of the id of a layer break the existing diagram.
      */
     public void testModificationOfIdOfLayer() {
         assertEquals("The data is incorrect (bad number of representations).", 1, getRepresentations(REPRESENTATION_DESC_NAME).size());
-        assertEquals("The data is incorrect (bad number of layers).", 3, diagram.getDescription().getAllLayers().size());
+        assertEquals("The data is incorrect (bad number of layers).", 3, LayerHelper.getAllLayers(diagram.getDescription()).size());
         int nbDiagramElementsExpected = diagram.getOwnedDiagramElements().size();
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             /** {@inheritDoc} */
             @Override
             protected void doExecute() {
-                Layer layer = diagram.getDescription().getAllLayers().get(1);
+                Layer layer = LayerHelper.getAllLayers(diagram.getDescription()).get(1);
                 layer.setName(layer.getName() + "Modify");
             }
         });
@@ -160,19 +157,18 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
     }
 
     /**
-     * Check that the modification of the label of a layer have no incidence on
-     * the existing diagram.
+     * Check that the modification of the label of a layer have no incidence on the existing diagram.
      */
     public void testModificationOfLabelOfLayer() {
         assertEquals("The data is incorrect (bad number of representations).", 1, getRepresentations(REPRESENTATION_DESC_NAME).size());
-        assertEquals("The data is incorrect (bad number of layers).", 3, diagram.getDescription().getAllLayers().size());
+        assertEquals("The data is incorrect (bad number of layers).", 3, LayerHelper.getAllLayers(diagram.getDescription()).size());
         int nbDiagramElementsExpected = diagram.getOwnedDiagramElements().size();
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             /** {@inheritDoc} */
             @Override
             protected void doExecute() {
-                Layer layer = diagram.getDescription().getAllLayers().get(1);
+                Layer layer = LayerHelper.getAllLayers(diagram.getDescription()).get(1);
                 layer.setLabel(layer.getLabel() + "Modify");
             }
         });

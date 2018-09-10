@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -43,6 +41,9 @@ import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceMana
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
@@ -66,8 +67,7 @@ public final class AbstractNodeMappingSpecOperations {
     }
 
     /**
-     * Implementation of
-     * {@link AbstractNodeMapping#findViewNodeFromEObject(EObject)}.
+     * Implementation of {@link AbstractNodeMapping#findViewNodeFromEObject(EObject)}.
      * 
      * @param mapping
      *            the node mapping.
@@ -118,8 +118,7 @@ public final class AbstractNodeMappingSpecOperations {
      * @param dDiagramElement
      *            the view point element on which to create new bordering nodes
      * @param filterSemantic
-     *            a collection of objects from model to exclude from the
-     *            creation process
+     *            a collection of objects from model to exclude from the creation process
      * @param diagram
      *            a {@link DDiagram} instance
      */
@@ -128,7 +127,7 @@ public final class AbstractNodeMappingSpecOperations {
         final EObject containerVariable = dDiagramElement.getTarget();
         EObjectQuery eObjectQuery = new EObjectQuery(modelElement);
         Session session = eObjectQuery.getSession();
-        final Iterator<NodeMapping> it = mapping.getAllBorderedNodeMappings().iterator();
+        final Iterator<NodeMapping> it = MappingHelper.getAllBorderedNodeMappings(mapping).iterator();
         while (it.hasNext()) {
             final NodeMapping borderMapping = it.next();
             if (new DiagramElementMappingQuery(borderMapping).isSynchronizedAndCreateElement(diagram)) {
@@ -139,7 +138,8 @@ public final class AbstractNodeMappingSpecOperations {
                         final EObjectCouple couple = new EObjectCouple(eObj, borderMapping, RefreshIdsHolder.getOrCreateHolder(diagram));
                         if (AbstractNodeMappingSpecOperations.isInstanceOf(mapping, eObj, borderMapping.getDomainClass())
                                 && SiriusElementMappingSpecOperations.checkPrecondition(borderMapping, eObj, modelElement, dDiagramElement) && !filterSemantic.contains(couple)) {
-                            final DNode newBorderNode = borderMapping.createNode(eObj, containerVariable, diagram);
+                            IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(eObj);
+                            final DNode newBorderNode = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) borderMapping, eObj, containerVariable, diagram);
                             if (dDiagramElement instanceof DNode) {
                                 ((DNode) dDiagramElement).getOwnedBorderedNodes().add(newBorderNode);
                             } else if (dDiagramElement instanceof DNodeContainer) {
@@ -171,21 +171,6 @@ public final class AbstractNodeMappingSpecOperations {
             return resultNode.iterator();
         }
         return AbstractNodeMappingSpecOperations.extEAllContents(mapping, context);
-    }
-
-    /**
-     * Implementation of
-     * {@link AbstractNodeMapping#getAllBorderedNodeMappings()}.
-     * 
-     * @param nodeMapping
-     *            the mapping.
-     * @return all bordered node mappings.
-     */
-    public static EList<NodeMapping> getAllBorderedNodeMappings(final AbstractNodeMapping nodeMapping) {
-        final EList<NodeMapping> result = new BasicEList<NodeMapping>();
-        result.addAll(nodeMapping.getBorderedNodeMappings());
-        result.addAll(nodeMapping.getReusedBorderedNodeMappings());
-        return result;
     }
 
     /**

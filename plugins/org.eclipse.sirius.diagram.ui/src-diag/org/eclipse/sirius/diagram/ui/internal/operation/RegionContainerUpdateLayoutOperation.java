@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
@@ -70,8 +71,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 
 /**
- * Update and keep consistent the GMF Bounds of a regions container and its
- * regions.
+ * Update and keep consistent the GMF Bounds of a regions container and its regions.
  * 
  * @author mporhel
  */
@@ -80,8 +80,8 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
     private final Node regionsContainer;
 
     /**
-     * True if this layout operation is caused for a regions container that has
-     * at least one new region or one region less, false otherwise.
+     * True if this layout operation is caused for a regions container that has at least one new region or one region
+     * less, false otherwise.
      */
     private final boolean containsCreatedOrDeletedRegions;
 
@@ -103,8 +103,8 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
      * @param regionsContainer
      *            The regions container view to layout.
      * @param containsCreatedOrDeletedRegions
-     *            true if this layout operation is caused for a regions
-     *            container that has at least one new region or one region less.
+     *            true if this layout operation is caused for a regions container that has at least one new region or
+     *            one region less.
      */
     public RegionContainerUpdateLayoutOperation(Node regionsContainer, boolean containsCreatedOrDeletedRegions) {
         super(Messages.RegionContainerUpdateLayoutOperation_name);
@@ -278,23 +278,18 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
     }
 
     /**
-     * Check if the current regions container size is a fixed size (fixed in the
-     * VSM or by the end-user):
+     * Check if the current regions container size is a fixed size (fixed in the VSM or by the end-user):
      * <ul>
-     * <li>If it is fixed by the end-user both width and height will be
-     * different than -1.</li>
-     * <li>If it is fixed in the VSM, it is possible that only one value is
-     * different that -1, but in this case, only one size is interesting
-     * according to stack orietation.</li>
+     * <li>If it is fixed by the end-user both width and height will be different than -1.</li>
+     * <li>If it is fixed in the VSM, it is possible that only one value is different that -1, but in this case, only
+     * one size is interesting according to stack orietation.</li>
      * </ul>
      * 
      * @param regionsContainerSize
      *            The GMF size of the current regions container
      * @param isVertical
-     *            the stack orientation (true for vertical, false for
-     *            horizontal)
-     * @return true if the <code>regionsContainerSize</code> is considered as
-     *         fixed size, false otherwise.
+     *            the stack orientation (true for vertical, false for horizontal)
+     * @return true if the <code>regionsContainerSize</code> is considered as fixed size, false otherwise.
      */
     private boolean hasRegionContainerFixedSize(Size regionsContainerSize, boolean isVertical) {
         boolean result = regionsContainerSize.getWidth() != -1 && regionsContainerSize.getHeight() != -1;
@@ -313,19 +308,16 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
     }
 
     /**
-     * This method computes the default region size according to all bounds of
-     * the region and to the <code>regionSizeComputedFromContainer</code>.
+     * This method computes the default region size according to all bounds of the region and to the
+     * <code>regionSizeComputedFromContainer</code>.
      * 
      * @param regionsBounds
-     *            The bounds of the regions, of the current regions container,
-     *            to layout.
+     *            The bounds of the regions, of the current regions container, to layout.
      * @param regionSizeComputedFromContainer
-     *            The default region size computed from regions container size
-     *            (if it is defined). If the regions container size is not
-     *            defined, the <code>regionSizeComputedFromContainer</code>
-     *            width/height will be "-1". If it is not "-1", it is priority.
-     * @return The default dimension to consider for the region of this regions
-     *         container.
+     *            The default region size computed from regions container size (if it is defined). If the regions
+     *            container size is not defined, the <code>regionSizeComputedFromContainer</code> width/height will be
+     *            "-1". If it is not "-1", it is priority.
+     * @return The default dimension to consider for the region of this regions container.
      */
     private Dimension getDefaultRegionsSize(Map<Node, Rectangle> regionsBounds, Dimension regionSizeComputedFromContainer) {
         Dimension result = new Dimension(-1, -1);
@@ -353,9 +345,8 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
     }
 
     /**
-     * Compute the default size of regions according to regions container size.
-     * This method is called only when the regions container has not an auto
-     * sized for its GMF size.
+     * Compute the default size of regions according to regions container size. This method is called only when the
+     * regions container has not an auto sized for its GMF size.
      * 
      * @param nbRegionsToLayout
      *            Number of regions to layout
@@ -364,11 +355,9 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
      * @param containerIsRegion
      *            true if the container is also a region
      * @param regionsContainerSize
-     *            The size, defined in the VSM or by the end-user at creation,
-     *            of the regions container
-     * @return list of dimension (the first is the size of a region, the second,
-     *         optional, is the size of the last region if different of the
-     *         others)
+     *            The size, defined in the VSM or by the end-user at creation, of the regions container
+     * @return list of dimension (the first is the size of a region, the second, optional, is the size of the last
+     *         region if different of the others)
      */
     private List<Dimension> computeRegionsSizeAccordingToContainerSize(int nbRegionsToLayout, boolean vertical, boolean containerIsRegion, Size regionsContainerSize) {
         List<Dimension> result = new ArrayList<>();
@@ -491,8 +480,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
     }
 
     /**
-     * Sort the regions with the ddiagram element index comparator and then with
-     * a mapping comparator.
+     * Sort the regions with the ddiagram element index comparator and then with a mapping comparator.
      * 
      * @param dNodeContainer
      *            the {@link DNodeContainer} regions container
@@ -546,7 +534,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
 
         @Override
         protected List<? extends RepresentationElementMapping> getMappingsToSort() {
-            return self.getActualMapping().getAllContainerMappings();
+            return MappingHelper.getAllContainerMappings(self.getActualMapping());
         }
     }
 }

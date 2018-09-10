@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,9 +40,8 @@ public final class DiagramDescriptionHelper {
      */
     public static Set<AbstractToolDescription> getAllTools(final DiagramDescription self) {
         /*
-         * TODOCBR change that, we need to get: All the defined tool in this
-         * viewpoint + all the direct edit tools from the mappings + all the
-         * delete tools from the mappings
+         * TODOCBR change that, we need to get: All the defined tool in this viewpoint + all the direct edit tools from
+         * the mappings + all the delete tools from the mappings
          */
         final Set<AbstractToolDescription> result = new LinkedHashSet<AbstractToolDescription>();
 
@@ -58,7 +57,7 @@ public final class DiagramDescriptionHelper {
         }
 
         // Layers tools
-        final Iterator<Layer> it = self.getAllLayers().iterator();
+        final Iterator<Layer> it = LayerHelper.getAllLayers(self).iterator();
         while (it.hasNext()) {
             final Layer layer = it.next();
             if (layer != null) {

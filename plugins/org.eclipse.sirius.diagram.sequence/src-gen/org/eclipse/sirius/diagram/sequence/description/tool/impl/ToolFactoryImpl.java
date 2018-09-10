@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.tool.MessageCreationToolSpec;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
@@ -147,7 +146,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     @Override
     public MessageCreationTool createMessageCreationTool() {
-        MessageCreationToolImpl messageCreationTool = new MessageCreationToolSpec();
+        MessageCreationToolImpl messageCreationTool = new MessageCreationToolImpl();
         final InitEdgeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitEdgeCreationOperation();
         messageCreationTool.setInitialOperation(initialOperation);
         return messageCreationTool;

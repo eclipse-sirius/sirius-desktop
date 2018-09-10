@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -46,7 +46,8 @@ import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramEl
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerWithInterpreterOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -130,8 +131,7 @@ public final class DnDTasksOperations {
      * @param mapping
      *            the mapping
      * @param droppedDiagramElement
-     *            the diagram dropped element (can be null if the drop element
-     *            doesn't comes from a diagram)
+     *            the diagram dropped element (can be null if the drop element doesn't comes from a diagram)
      * @param droppedElement
      *            the semantic dropped element
      * @param semanticContainer
@@ -161,8 +161,7 @@ public final class DnDTasksOperations {
         final List<DEdge> edgesOnPreviousNode = new ArrayList<DEdge>();
 
         /*
-         * if dropped diagram element is null => we dropped from the model
-         * content view
+         * if dropped diagram element is null => we dropped from the model content view
          */
         if (droppedDiagramElement != null && parentDiagram != null) {
             final List<DEdge> edges = parentDiagram.getEdges();
@@ -189,9 +188,8 @@ public final class DnDTasksOperations {
      * @param droppedDiagramElement
      *            the diagram element which was moved
      * @param createdDiagramElement
-     *            the new diagram element created according to the new mapping
-     *            for the dropped element (it can be equals to the
-     *            droppedDiagramElement if the mapping is the same)
+     *            the new diagram element created according to the new mapping for the dropped element (it can be equals
+     *            to the droppedDiagramElement if the mapping is the same)
      */
     static void moveEdges(final DragAndDropTarget target, final EObject semanticTarget, final DDiagramElement droppedDiagramElement, final DDiagramElement createdDiagramElement) {
 
@@ -214,8 +212,7 @@ public final class DnDTasksOperations {
         final List<DEdge> edgesOnPreviousNode = new ArrayList<DEdge>();
 
         /*
-         * if dropped diagram element is null => we dropped from the model
-         * content view
+         * if dropped diagram element is null => we dropped from the model content view
          */
         if (droppedDiagramElement != null) {
             final List<DEdge> edges = parentDiagram.getEdges();
@@ -298,11 +295,11 @@ public final class DnDTasksOperations {
             final DNodeContainer newDiagramElementContainer) {
         for (DDiagramElement diagramElementToDrop : new ArrayList<DDiagramElement>(oldDiagramElementContainer.getOwnedDiagramElements())) {
             final DragAndDropTargetDescription dragDragAndDropDescription = newDiagramElementContainer.getDragAndDropDescription();
-            final ContainerDropDescription dropTool = DDiagramElementContainerSpecOperations.getBestDropDescription(dragDragAndDropDescription, diagramElementToDrop.getTarget(),
+            final ContainerDropDescription dropTool = DDiagramElementContainerWithInterpreterOperations.getBestDropDescription(dragDragAndDropDescription, diagramElementToDrop.getTarget(),
                     containerDroppedElement, containerDroppedElement, newDiagramElementContainer, DragSource.DIAGRAM_LITERAL, diagramElementToDrop);
             if (dropTool != null
                     && DnDTasksOperations.checkDragAndDropPrecondition(tool, diagramElementToDrop.getTarget(), containerDroppedElement, containerDroppedElement, newDiagramElementContainer)) {
-                final DiagramElementMapping mapping = dropTool.getBestMapping(newDiagramElementContainer, diagramElementToDrop.getTarget());
+                final DiagramElementMapping mapping = ContainerMappingWithInterpreterHelper.getBestMapping(dropTool, newDiagramElementContainer, diagramElementToDrop.getTarget());
                 try {
                     if (mapping instanceof NodeMapping) {
 
@@ -361,9 +358,8 @@ public final class DnDTasksOperations {
     }
 
     /**
-     * Create the task, which will remove the diagram element targeting the
-     * dropped element before it was dropped (already done if the mapping of the
-     * element is the same before and after the dropped).
+     * Create the task, which will remove the diagram element targeting the dropped element before it was dropped
+     * (already done if the mapping of the element is the same before and after the dropped).
      * 
      * @param viewContainer
      *            the container of the diagram element

@@ -14,8 +14,6 @@
 package org.eclipse.sirius.diagram.description.tool;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
@@ -276,19 +274,5 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * @generated
      */
     void setConnectionStartPrecondition(String value);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Returns the best mapping to use.
-     *
-     * @param source
-     *            The source View.
-     * @param target
-     *            The target view.
-     * @param createdElements
-     *            The element that has been created by this tool. <!-- end-model-doc -->
-     * @model createdElementsMany="true"
-     * @generated
-     */
-    EdgeMapping getBestMapping(EdgeTarget source, EdgeTarget target, EList<EObject> createdElements);
 
 } // EdgeCreationDescription

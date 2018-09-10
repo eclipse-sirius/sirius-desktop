@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -59,8 +59,9 @@ import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.componentization.mappings.DiagramDescriptionMappingsManagerImpl;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramElementMappingHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -111,7 +112,7 @@ public class DDiagramElementSynchronizer {
 
     private final StyleHelper styleHelper;
 
-    private final MappingHelper mappingHelper;
+    private final MappingWithInterpreterHelper mappingHelper;
 
     private final DecorationHelperInternal decorationHelper;
 
@@ -131,7 +132,7 @@ public class DDiagramElementSynchronizer {
         this.interpreter = interpreter;
         this.accessor = accessor;
         this.styleHelper = new StyleHelper(interpreter);
-        this.mappingHelper = new MappingHelper(interpreter);
+        this.mappingHelper = new MappingWithInterpreterHelper(interpreter);
         this.decorationHelper = new DecorationHelperInternal(diagram, interpreter, accessor);
     }
 
@@ -139,11 +140,9 @@ public class DDiagramElementSynchronizer {
      * Create completely a new Node with its style and so on from a candidate.
      * 
      * @param mappingManager
-     *            the manager used to handle return the Mappings to consider
-     *            regarding the enablement of Viewpoints.
+     *            the manager used to handle return the Mappings to consider regarding the enablement of Viewpoints.
      * @param candidate
-     *            the node candidate, it contains the mapping and the semantic
-     *            target.
+     *            the node candidate, it contains the mapping and the semantic target.
      * @param isBorder
      *            true if the element is a border one.
      * @return newly created node.
@@ -156,11 +155,9 @@ public class DDiagramElementSynchronizer {
      * Build a new Node from a candidate.
      * 
      * @param mappingManager
-     *            the manager used to handle return the Mappings to consider
-     *            regarding the enablement of Viewpoints.
+     *            the manager used to handle return the Mappings to consider regarding the enablement of Viewpoints.
      * @param candidate
-     *            the node candidate, it contains the mapping and the semantic
-     *            target.
+     *            the node candidate, it contains the mapping and the semantic target.
      * @param isBorder
      *            true if the element is a border one.
      * @param insertionIndex
@@ -188,8 +185,7 @@ public class DDiagramElementSynchronizer {
      * @param container
      *            the object who will contain the new node.
      * @param candidate
-     *            the node candidate, it contains the mapping and the semantic
-     *            target.
+     *            the node candidate, it contains the mapping and the semantic target.
      * @param border
      *            true if the element is a border one.
      * @return newly created node.
@@ -257,21 +253,21 @@ public class DDiagramElementSynchronizer {
         final Iterable<EdgeMapping> allEdgeMappings = Iterables.filter(allMappings, EdgeMapping.class);
 
         for (final NodeMapping nodeMapping : allNodeMappings) {
-            final List<DNode> nodes = diagram.getNodesFromMapping(nodeMapping);
+            final List<DNode> nodes = DDiagramSpecOperations.getNodesFromMapping(diagram, nodeMapping);
             if (!nodes.isEmpty()) {
                 mappingsToEdgeTargets.put(nodeMapping, DDiagramElementSynchronizer.convertNodesAndContainersToEdgeTarget(nodes));
             }
         }
 
         for (final ContainerMapping containerMapping : allContainerMappings) {
-            final List<DDiagramElementContainer> containers = diagram.getContainersFromMapping(containerMapping);
+            final List<DDiagramElementContainer> containers = DDiagramSpecOperations.getContainersFromMapping(diagram, containerMapping);
             if (!containers.isEmpty()) {
                 mappingsToEdgeTargets.put(containerMapping, DDiagramElementSynchronizer.convertNodesAndContainersToEdgeTarget(containers));
             }
         }
 
         for (final EdgeMapping edgeMapping : allEdgeMappings) {
-            final List<DEdge> edges = diagram.getEdgesFromMapping(edgeMapping);
+            final List<DEdge> edges = DDiagramSpecOperations.getEdgesFromMapping(diagram, edgeMapping);
             if (!edges.isEmpty()) {
                 mappingsToEdgeTargets.put(edgeMapping, DDiagramElementSynchronizer.convertNodesAndContainersToEdgeTarget(edges));
             }
@@ -285,22 +281,18 @@ public class DDiagramElementSynchronizer {
     }
 
     /**
-     * Create completely a new Edge with it style path and so on from a
-     * candidate and the mappings maps.
+     * Create completely a new Edge with it style path and so on from a candidate and the mappings maps.
      * 
      * @param mappingManager
-     *            the manager used to handle return the Mappings to consider
-     *            regarding the enablement of Viewpoints.
+     *            the manager used to handle return the Mappings to consider regarding the enablement of Viewpoints.
      * @param candidate
      *            the edge candidate
      * @param mappingsToEdgeTargets
      *            mappings to edge targets map
      * @param edgeToMappingBasedDecoration
-     *            a map with for key a mapping and for value the associated
-     *            decorations
+     *            a map with for key a mapping and for value the associated decorations
      * @param edgeToSemanticBasedDecoration
-     *            a map with for key a domain class as string and for value the
-     *            associated decorations
+     *            a map with for key a domain class as string and for value the associated decorations
      * @return the created edge
      */
     public DEdge createNewEdge(DiagramMappingsManager mappingManager, final DEdgeCandidate candidate, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets,
@@ -328,8 +320,7 @@ public class DDiagramElementSynchronizer {
      * Create a new Edge from a candidate.
      * 
      * @param candidate
-     *            the edge candidate containing the mapping and the edge
-     *            semantic target (among other things).
+     *            the edge candidate containing the mapping and the edge semantic target (among other things).
      * @return the newly created edge.
      */
     private DEdge createAndAttachEdge(final DEdgeCandidate candidate) {
@@ -362,11 +353,9 @@ public class DDiagramElementSynchronizer {
      * @param edge
      *            the edge
      * @param edgeToMappingBasedDecoration
-     *            a map with for key a mapping and for value the associated
-     *            decorations
+     *            a map with for key a mapping and for value the associated decorations
      * @param edgeToSemanticBasedDecoration
-     *            a map with for key a domain class as string and for value the
-     *            associated decorations
+     *            a map with for key a domain class as string and for value the associated decorations
      */
     public void computeEdgeDecorations(final DEdge edge, final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration,
             final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration) {
@@ -617,8 +606,7 @@ public class DDiagramElementSynchronizer {
      * @param node
      *            Node which style is to be refreshed.
      * @param mapping
-     *            Mapping that is to be used to compute the best style for this
-     *            node.
+     *            Mapping that is to be used to compute the best style for this node.
      */
     public void refreshStyle(final AbstractDNode node, final AbstractNodeMapping mapping) {
         EObject containerVariable = null;
@@ -696,8 +684,7 @@ public class DDiagramElementSynchronizer {
      * @param edge
      *            Edge which style is to be refreshed.
      * @param mapping
-     *            Mapping that is to be used to compute the best style for this
-     *            node.
+     *            Mapping that is to be used to compute the best style for this node.
      * @param parentDiagram
      *            the parent diagram of the edge
      */

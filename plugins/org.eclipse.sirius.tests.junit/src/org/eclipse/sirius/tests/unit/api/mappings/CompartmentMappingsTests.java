@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
@@ -47,8 +48,8 @@ public class CompartmentMappingsTests extends SiriusDiagramTestCase implements I
     }
 
     /**
-     * Ensure that the modeler is valid. It contains 3 kinds of container
-     * mappings : FreeForm, List, Vertical Stack and Horizontal Stack.
+     * Ensure that the modeler is valid. It contains 3 kinds of container mappings : FreeForm, List, Vertical Stack and
+     * Horizontal Stack.
      */
     public void testVSMValidation() {
         ResourceSet set = new ResourceSetImpl();
@@ -82,7 +83,7 @@ public class CompartmentMappingsTests extends SiriusDiagramTestCase implements I
 
         assertEquals("The '" + regionContainerMapping.getName() + "' should displays its children in vertical stack", ContainerLayout.VERTICAL_STACK, regionContainerMapping.getChildrenPresentation());
 
-        final ContainerMapping regionMapping = regionContainerMapping.getAllContainerMappings().get(0);
+        final ContainerMapping regionMapping = MappingHelper.getAllContainerMappings(regionContainerMapping).get(0);
 
         diagnostic = diagnostician.validate(dDiagram.getDescription());
         checkDiagnostic(diagnostic, Diagnostic.OK, 0, 0, "The VSM should be valid.");
@@ -140,9 +141,8 @@ public class CompartmentMappingsTests extends SiriusDiagramTestCase implements I
         DDiagramElement dDiagramElement = representation.getContainers().get(0);
         DiagramElementMapping diagramElementMapping = dDiagramElement.getDiagramElementMapping();
 
-        assertTrue("The '" + diagramElementMapping.getLabel() + "' mapping should be a ContainerMapping",
-                diagramElementMapping instanceof ContainerMapping);
+        assertTrue("The '" + diagramElementMapping.getLabel() + "' mapping should be a ContainerMapping", diagramElementMapping instanceof ContainerMapping);
         ContainerMapping containerMapping = (ContainerMapping) diagramElementMapping;
-        return containerMapping;  
+        return containerMapping;
     }
 }

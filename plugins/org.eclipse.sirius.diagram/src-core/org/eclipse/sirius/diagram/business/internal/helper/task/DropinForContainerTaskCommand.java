@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
@@ -58,8 +58,7 @@ public class DropinForContainerTaskCommand extends AbstractCommandTask {
      * @param mapping
      *            the mapping
      * @param droppedDiagramElement
-     *            the diagram dropped element (can be null if the drop element
-     *            doesn't comes from a diagram)
+     *            the diagram dropped element (can be null if the drop element doesn't comes from a diagram)
      * @param droppedElement
      *            the semantic dropped element
      * @param semanticContainer
@@ -92,7 +91,7 @@ public class DropinForContainerTaskCommand extends AbstractCommandTask {
             newDiagramElementContainer = (DDiagramElementContainer) droppedDiagramElement;
         } else if (mapping instanceof IContainerMappingExt) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticContainer);
-            newDiagramElementContainer = new ContainerMappingHelper(interpreter).createContainer((IContainerMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
+            newDiagramElementContainer = new ContainerMappingWithInterpreterHelper(interpreter).createContainer((IContainerMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
         }
         if (newDiagramElementContainer != null) {
             if (target instanceof DDiagram) {

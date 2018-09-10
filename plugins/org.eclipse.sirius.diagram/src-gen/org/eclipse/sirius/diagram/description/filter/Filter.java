@@ -14,7 +14,6 @@
 package org.eclipse.sirius.diagram.description.filter;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DDiagramElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Filter</b></em>'. <!-- end-user-doc -->
@@ -59,16 +58,5 @@ public interface Filter extends EObject {
      * @generated
      */
     void setFilterKind(FilterKind value);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return true if the specified viewpoint
-     * element is visible for this filter.
-     *
-     * @param element
-     *            The element to test. <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    boolean isVisible(DDiagramElement element);
 
 } // Filter

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,8 +25,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -80,7 +78,7 @@ public final class LayerHelper {
             layers.add(description.getDefaultLayer());
         }
         layers.addAll(description.getAdditionalLayers());
-        return new EcoreEList.UnmodifiableEList<Layer>((InternalEObject) description, DescriptionPackage.eINSTANCE.getDiagramDescription_AllLayers(), layers.size(), layers.toArray());
+        return new BasicEList<>(layers);
     }
 
     /**
@@ -185,13 +183,10 @@ public final class LayerHelper {
      * @param element
      *            the diagram element.
      * @param parentDiagram
-     *            the parent diagram of the diagram element. This information
-     *            can be retrieved from the diagram element but sometimes
-     *            (during drag'n'drop of element with bordered nodes for example
-     *            : PortLocationAfterDragAndDropTest.
-     *            testPortLocationFromParentDnDFromModelExplorerView()) this
-     *            method is called before setting all parents hierarchy of
-     *            diagram element.
+     *            the parent diagram of the diagram element. This information can be retrieved from the diagram element
+     *            but sometimes (during drag'n'drop of element with bordered nodes for example :
+     *            PortLocationAfterDragAndDropTest. testPortLocationFromParentDnDFromModelExplorerView()) this method is
+     *            called before setting all parents hierarchy of diagram element.
      * @return <code>true</code> if it is, <code>false</code> otherwise
      */
     public static boolean isInActivatedLayer(DiagramMappingsManager session, final DDiagramElement element, final DDiagram parentDiagram) {
@@ -208,11 +203,9 @@ public final class LayerHelper {
             boolean visible = false;
             if (diagram != null && session.getActiveParentLayers(mapping).size() > 0) {
                 /*
-                 * We are visible in the following cases: 1. the mapping is in
-                 * active layer and not hidden by owner mapping in an active
-                 * layer and container is diagram 2- the mapping is in active
-                 * layer and not hidden by owner mapping in an active layer and
-                 * container is element and element.mapping contains mapping and
+                 * We are visible in the following cases: 1. the mapping is in active layer and not hidden by owner
+                 * mapping in an active layer and container is diagram 2- the mapping is in active layer and not hidden
+                 * by owner mapping in an active layer and container is element and element.mapping contains mapping and
                  * element is visible
                  */
 
@@ -227,8 +220,7 @@ public final class LayerHelper {
                     final EObject container = element.eContainer();
 
                     /*
-                     * Case 2 The mapping should be imported by another mapping
-                     * owned by a visible element.
+                     * Case 2 The mapping should be imported by another mapping owned by a visible element.
                      */
                     if (container instanceof DDiagramElement && LayerHelper.isInActivatedLayer(session, (DDiagramElement) container, parentDiagram)) {
                         visible = LayerHelper.caseDiagramElementContainer((DDiagramElement) container, mapping);
@@ -252,7 +244,7 @@ public final class LayerHelper {
 
     private static boolean caseDiagramElementContainer(final DDiagramElement container, final DiagramElementMapping mapping) {
         final DiagramElementMapping containerMapping = container.getDiagramElementMapping();
-        if (containerMapping.getAllMappings().contains(mapping)) {
+        if (MappingHelper.getAllMappings(containerMapping).contains(mapping)) {
             return true;
         }
         return false;
@@ -306,7 +298,7 @@ public final class LayerHelper {
         while (iterMappingImport.hasNext()) {
             result.add(EdgeMappingImportWrapper.getWrapper(iterMappingImport.next()));
         }
-        result.addAll(ContentHelper.getReuseMappings(layer));
+        result.addAll(ContentLayerHelper.getReuseMappings(layer));
         return result;
     }
 
@@ -386,11 +378,9 @@ public final class LayerHelper {
      * mch : may be useful do not delete elements
      */
     /*
-     * public static boolean areOnSameLayers(final DiagramElementMapping
-     * mapping1, final DiagramElementMapping mapping2) { if
-     * (!LayerHelper.withoutLayersMode(mapping1)) { final Layer layer1 =
-     * LayerHelper.getParentLayer(mapping1); final Layer layer2 =
-     * LayerHelper.getParentLayer(mapping1); } return true; }
+     * public static boolean areOnSameLayers(final DiagramElementMapping mapping1, final DiagramElementMapping mapping2)
+     * { if (!LayerHelper.withoutLayersMode(mapping1)) { final Layer layer1 = LayerHelper.getParentLayer(mapping1);
+     * final Layer layer2 = LayerHelper.getParentLayer(mapping1); } return true; }
      */
 
     /**
@@ -398,8 +388,7 @@ public final class LayerHelper {
      * 
      * @param mapping
      *            any {@link DiagramElementMapping}
-     * @return <code>true</code> if we are in the without layer mode,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if we are in the without layer mode, <code>false</code> otherwise
      */
     public static boolean withoutLayersMode(final DiagramElementMapping mapping) {
         return LayerHelper.getContainingLayer(mapping) == null;
@@ -428,14 +417,13 @@ public final class LayerHelper {
     }
 
     /**
-     * Search in this diagram (or in activated layer of this diagram) if there
-     * is one EdgeMappingImport which import edgeMapping.
+     * Search in this diagram (or in activated layer of this diagram) if there is one EdgeMappingImport which import
+     * edgeMapping.
      * 
      * @param edgeMapping
      *            the edgeMapping to possibly refine (with importMapping)
      * @param diagram
-     *            the diagram in which search the list of EdgeMappingImport to
-     *            check
+     *            the diagram in which search the list of EdgeMappingImport to check
      * @return the best EdgeMapping
      */
     public static EdgeMapping getBestMapping(final EdgeMapping edgeMapping, final DDiagram diagram) {
@@ -447,7 +435,7 @@ public final class LayerHelper {
         // Add wrapper from EdgeMappingImport of activated layers
 
         for (final Layer layer : diagram.getActivatedLayers()) {
-            for (final EdgeMapping otherEdgeMapping : layer.getAllEdgeMappings()) {
+            for (final EdgeMapping otherEdgeMapping : ContentLayerHelper.getAllEdgeMappings(layer)) {
                 if (otherEdgeMapping instanceof EdgeMappingImportWrapper) {
                     edgeMappingImportWrappers.add((EdgeMappingImportWrapper) otherEdgeMapping);
                 }
@@ -466,8 +454,7 @@ public final class LayerHelper {
     }
 
     /**
-     * Search in the list of EdgeMappingImportWrapper if there is one which
-     * import edgeMapping.
+     * Search in the list of EdgeMappingImportWrapper if there is one which import edgeMapping.
      * 
      * @param edgeMapping
      *            the edgeMapping to possibly refine (with importMapping)
@@ -521,8 +508,7 @@ public final class LayerHelper {
      * 
      * @param layer
      *            the layer to check
-     * @return <code>true</code> if it contains only tools, <code>false</code>
-     *         otherwise
+     * @return <code>true</code> if it contains only tools, <code>false</code> otherwise
      */
     public static boolean containsOnlyTools(final Layer layer) {
         final boolean containsMappings = containsMappings(layer);
@@ -537,13 +523,12 @@ public final class LayerHelper {
     }
 
     /**
-     * Check if this layer is considered as Transient. A transient layer is an
-     * additional layer that contains at most tools or decorationDescription.
+     * Check if this layer is considered as Transient. A transient layer is an additional layer that contains at most
+     * tools or decorationDescription.
      * 
      * @param layer
      *            the layer to check
-     * @return <code>true</code> if it is transient, <code>false</code>
-     *         otherwise
+     * @return <code>true</code> if it is transient, <code>false</code> otherwise
      */
     public static boolean isTransientLayer(final Layer layer) {
         if (layer instanceof AdditionalLayer) {

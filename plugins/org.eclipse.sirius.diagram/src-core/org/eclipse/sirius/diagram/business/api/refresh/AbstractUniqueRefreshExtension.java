@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.internal.helper.refresh.EdgeFilter;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -41,9 +42,8 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import com.google.common.collect.Lists;
 
 /**
- * A refresh extension that constrained all views that are issued from the
- * mappings that are "unique" ({@link #isUnique(DiagramElementMapping)}) to be
- * unique.
+ * A refresh extension that constrained all views that are issued from the mappings that are "unique"
+ * ({@link #isUnique(DiagramElementMapping)}) to be unique.
  * 
  * @author ymortier
  */
@@ -87,7 +87,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
 
     private void clearNode(final NodeMapping nodeMapping, final DDiagram viewPoint) {
         final Set<NodeFilter> allViews = new HashSet<NodeFilter>();
-        final List<? extends DDiagramElement> nodes = Lists.newArrayList(viewPoint.getNodesFromMapping(nodeMapping));
+        final List<? extends DDiagramElement> nodes = Lists.newArrayList(DDiagramSpecOperations.getNodesFromMapping(viewPoint, nodeMapping));
         for (DDiagramElement vpElement : nodes) {
             NodeFilter nodeFilter = null;
             if (vpElement instanceof DNodeListElement) {
@@ -107,7 +107,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
 
     private void clearContainer(final ContainerMapping containerMapping, final DDiagram viewPoint) {
         final Set<NodeFilter> allViews = new HashSet<NodeFilter>();
-        final List<? extends DDiagramElement> containers = Lists.newArrayList(viewPoint.getContainersFromMapping(containerMapping));
+        final List<? extends DDiagramElement> containers = Lists.newArrayList(DDiagramSpecOperations.getContainersFromMapping(viewPoint, containerMapping));
         for (DDiagramElement vpElement : containers) {
             NodeFilter nodeFilter = null;
             if (vpElement instanceof DNodeContainer) {
@@ -127,7 +127,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
 
     private void clearEdge(final EdgeMapping edgeMapping, final DDiagram diagram) {
         final Set<EdgeFilter> allViews = new HashSet<EdgeFilter>();
-        final List<DEdge> edges = Lists.newArrayList(diagram.getEdgesFromMapping(edgeMapping));
+        final List<DEdge> edges = Lists.newArrayList(DDiagramSpecOperations.getEdgesFromMapping(diagram, edgeMapping));
         for (DEdge edge : edges) {
             final EdgeFilter edgeFilter = new EdgeFilter(edge);
             if (!allViews.contains(edgeFilter)) {
@@ -157,13 +157,11 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
     public abstract boolean isUnique(DiagramElementMapping mapping);
 
     /**
-     * Returns all mappings that are directly or indirectly contained by the
-     * specified {@link DiagramDescription}.
+     * Returns all mappings that are directly or indirectly contained by the specified {@link DiagramDescription}.
      * 
      * @param diagramDescription
      *            the {@link DiagramDescription}.
-     * @return all mappings that are directly or indirectly contained by the
-     *         specified {@link DiagramDescription}.
+     * @return all mappings that are directly or indirectly contained by the specified {@link DiagramDescription}.
      */
     private List<DiagramElementMapping> getAllMappings(final DiagramDescription diagramDescription) {
         final List<DiagramElementMapping> result = new LinkedList<DiagramElementMapping>();

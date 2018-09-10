@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -44,12 +43,6 @@ public class DEdgeSpec extends DEdgeImpl {
     @Override
     public DDiagram getParentDiagram() {
         return DDiagramElementSpecOperations.getParentDiagram(this);
-    }
-
-    @Override
-    @Deprecated
-    public boolean isRootFolding() {
-        throw new UnsupportedOperationException(Messages.DEdgeSpec_deprecatedMsg);
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -38,8 +39,7 @@ import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
- * Tests the style customization on a {@link WorkspaceImage} coming from a
- * {@link ConditionalStyleDescription}.
+ * Tests the style customization on a {@link WorkspaceImage} coming from a {@link ConditionalStyleDescription}.
  * 
  * See VP-4407.
  * 
@@ -78,8 +78,8 @@ public class StyleCustomizationAndConditionalStyleDescriptionTest extends Sirius
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH + MODELER_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH + SESSION_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH + SEMANTIC_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME);
-        genericSetUp("/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/"
-                + SESSION_RESOURCE_NAME);
+        genericSetUp("/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME,
+                "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME);
 
         Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
         dDiagram = (DDiagram) allRepresentations.iterator().next();
@@ -89,15 +89,14 @@ public class StyleCustomizationAndConditionalStyleDescriptionTest extends Sirius
         dNodeA = getDiagramElementsFromLabel(dDiagram, "a", DNode.class).get(0);
         dNodeAEditPart = getEditPart(dNodeA, dDiagramEditor);
 
-        NodeMapping nodeMapping = dDiagram.getDescription().getDefaultLayer().getContainerMappings().get(0).getAllBorderedNodeMappings().get(0);
+        NodeMapping nodeMapping = MappingHelper.getAllBorderedNodeMappings(dDiagram.getDescription().getDefaultLayer().getContainerMappings().get(0)).get(0);
         nodeStyleDescriptionOfConditionalStyle = nodeMapping.getConditionnalStyles().get(0).getStyle();
     }
 
     /**
-     * Tests that the style customization of a {@link WorkspaceImage} coming
-     * from a {@link ConditionalStyleDescription} keep the same
-     * {@link WorkspaceImage} instead of setting a style default from the
-     * default {@link StyleDescription}.
+     * Tests that the style customization of a {@link WorkspaceImage} coming from a {@link ConditionalStyleDescription}
+     * keep the same {@link WorkspaceImage} instead of setting a style default from the default
+     * {@link StyleDescription}.
      */
     public void testWorkspaceImageStyleCustomizationWithConditionalStyleDescription() {
         StyleDescription styleDescriptionBeforeCusto = dNodeA.getStyle().getDescription();

@@ -24,7 +24,6 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.s
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.DiagramCreationDescriptionSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.DiagramNavigationDescriptionSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.DirectEditLabelSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.EdgeCreationDescriptionSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.ReconnectEdgeDescriptionSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.ToolSectionSpec;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
@@ -254,7 +253,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     @Override
     public EdgeCreationDescription createEdgeCreationDescription() {
-        EdgeCreationDescriptionImpl edgeCreationDescription = new EdgeCreationDescriptionSpec();
+        EdgeCreationDescriptionImpl edgeCreationDescription = new EdgeCreationDescriptionImpl();
 
         SourceEdgeCreationVariable sourceVariable = createSourceEdgeCreationVariable();
         sourceVariable.setName("source"); //$NON-NLS-1$

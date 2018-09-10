@@ -35,7 +35,7 @@
 						<a href="#sirius6.1.1">Changes in Sirius 6.1.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#Changesinorg.eclipse.sirius.diagram2">Changes in  @org.eclipse.sirius.diagram@</a>
+								<a href="#Changesinorg.eclipse.sirius.diagram3">Changes in  @org.eclipse.sirius.diagram@</a>
 							</li>
 						</ol>
 					</li>
@@ -100,6 +100,155 @@
 		</p>
 		<h2 id="sirius6.2.0">Changes in Sirius 6.2.0</h2>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
+			<code>org.eclipse.sirius.diagram</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> Method 
+				<em>getAllEdgeMappings</em> defined in 
+				<code>org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper</code> has been moved in a new class called 
+				<code>org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentLayerHelper</code> to ensure method to be independent from pure Sirius code. 
+			</li>
+			<li><span class="label label-danger">Removed</span> EOperations and features have been removed from the metamodel 
+				<code>diagram.ecore</code>. This is the ones that are computed outside of EMF environment with dependencies to IInterpreter or that are deprecated. The following EOperations have been removed/replaced: 
+				<ul>
+					<li>
+						<code>DEdge.isRootFolding</code> has been removed
+					</li>
+					<li>
+						<code>DDiagram.getNodesFromMapping</code> has been replaced by 
+						<code>DDiagramSpecOperations.getNodesFromMapping</code>
+					</li>
+					<li>
+						<code>DDiagram.getEdgesFromMapping</code> has been replaced by 
+						<code>DDiagramSpecOperations.getEdgesFromMapping</code>
+					</li>
+					<li>
+						<code>DDiagram.getContainersFromMapping</code> has been replaced by 
+						<code>DDiagramSpecOperations.getEdgesFromMapping</code>
+					</li>
+					<li>
+						<code>DiagramElementMapping.checkPrecondition</code> has been replaced by 
+						<code>SiriusElementMappingSpecOperations.checkPrecondition</code>
+					</li>
+					<li>
+						<code>DiagramElementMapping.getAllMappings</code> has been replaced by 
+						<code>MappingHelper.getAllMappings</code>
+					</li>
+					<li>
+						<code>DiagramElementMapping.isFrom</code> has been replaced by 
+						<code>SiriusElementMappingSpecOperations.isFrom</code>
+					</li>
+					<li>
+						<code>AbstractNodeMapping.clearDNodesDone</code> has been replaced by 
+						<code>NodeMappingHelper.clearDNodesDone</code>
+					</li>
+					<li>
+						<code>AbstractNodeMapping.addDoneNode</code> has been replaced by 
+						<code>NodeMappingHelper.addDoneNode</code>
+					</li>
+					<li>
+						<code>AbstractNodeMapping.getAllBorderedNodeMappings</code> has been replaced by 
+						<code>MappingHelper.getAllBorderedNodeMappings</code>
+					</li>
+					<li>
+						<code>NodeMapping.createNode</code> has been replaced by 
+						<code>NodeMappingHelper.createNode</code>
+					</li>
+					<li>
+						<code>NodeMapping.updateNode</code> has been replaced by 
+						<code>NodeMappingHelper.updateNode</code>
+					</li>
+					<li>
+						<code>NodeMapping.updateListElement</code> has been replaced by 
+						<code>NodeMappingHelper.updateListElement</code>
+					</li>
+					<li>
+						<code>NodeMapping.getNodesCandidates(semanticOrigin,container)</code> has been replaced by 
+						<code>NodeMappingHelper.getNodesCandidates(semanticOrigin,container)</code>
+					</li>
+					<li>
+						<code>NodeMapping.getNodesCandidates(semanticOrigin,container,containerView)</code> has been replaced by 
+						<code>NodeMappingHelper.getNodesCandidates(semanticOrigin,container,containerView)</code>
+					</li>
+					<li>
+						<code>ContainerMapping.getBestStyle</code> has been replaced by 
+						<code>ContainerMappingWithInterpreterHelper.getBestStyle</code>
+					</li>
+					<li>
+						<code>EdgeMapping.createEdge(source,target,semanticTarget)</code> has been replaced by 
+						<code>EdgeMappingHelper.createEdge(EdgeMapping, EdgeTarget, EdgeTarget, EObject, EObject)</code>
+					</li>
+					<li>
+						<code>EdgeMapping.createEdge(source,target,container,semanticTarget)</code> has been replaced by 
+						<code>EdgeMappingHelper.createEdge(EdgeMapping, EdgeTarget, EdgeTarget, EObject, EObject)</code>
+					</li>
+					<li>
+						<code>EdgeMapping.getBestStyle</code> has been replaced by 
+						<code>MappingWithInterpreterHelper.getBestStyle</code>
+					</li>
+					<li>
+						<code>EdgeMapping.updateEdge</code> has been replaced by 
+						<code>EdgeMappingHelper.updateEdge</code>
+					</li>
+					<li>
+						<code>EdgeMapping.getEdgeTargetCandidates(semanticOrigin,viewPoint)</code> has been replaced by 
+						<code>EdgeMappingHelper.getEdgeTargetCandidates</code>
+					</li>
+					<li>
+						<code>EdgeMapping.getEdgeSourceCandidates</code> has been replaced by 
+						<code>EdgeMappingHelper.getEdgeSourceCandidates</code>
+					</li>
+					<li>
+						<code>EdgeMapping.getEdgeTargetCandidates(semanticOrigin,container,containerView)</code> has been replaced by 
+						<code>EdgeMappingHelper.getEdgeTargetCandidates</code>
+					</li>
+					<li>
+						<code>EdgeCreationDescription.getBestMapping</code> has been removed because it is never used.
+					</li>
+					<li>
+						<code>ContainerDropDescription.getBestMapping</code> has been replaced by 
+						<code>ContainerMappingWithInterpreterHelper.getBestMapping</code>
+					</li>
+					<li>
+						<code>Filter.isVisible</code> has been replaced by 
+						<code>FilterService.isVisible(Filter, DDiagramElement)</code>
+					</li>
+					<li>
+						<code>VariableFilter.resetVariables</code> has been replaced by 
+						<code>VariableFilterWrapper.resetVariables</code>
+					</li>
+				</ul>
+			</li>
+			<li><span class="label label-info">Modified</span> The following features have been removed/replaced:
+				<ul>
+					<li>
+						<code>DiagramDescription.allNodeMappings</code> has been replaced by 
+						<code>ContentHelper.getAllNodeMappings</code>
+					</li>
+					<li>
+						<code>DiagramDescription.allContainerMappings</code> has been replaced by 
+						<code>ContentHelper.getAllContainerMappings</code>
+					</li>
+					<li>
+						<code>DiagramDescription.allLayers</code> has been replaced by 
+						<code>LayerHelper.getAllLayers</code>
+					</li>
+					<li>
+						<code>ContainerMapping.allNodeMappings</code> has been replaced by 
+						<code>ContainerMappingHelper.getAllNodeMappings</code>
+					</li>
+					<li>
+						<code>ContainerMapping.allContainerMappings</code> has been replaced by 
+						<code>ContainerMappingHelper.getAllContainerMappings</code>
+					</li>
+					<li>
+						<code>Layer.allEdgeMappings</code> has been replaced by 
+						<code>ContentLayerHelper.getAllEdgeMappings</code>
+					</li>
+				</ul>
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui.editor">Changes in 
 			<code>org.eclipse.sirius.ui.editor</code>
 		</h4>
@@ -153,7 +302,7 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider</code> has been made protected to allow to provide layout provider from other mechanism than LayoutService.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -178,7 +327,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.1.1">Changes in Sirius 6.1.1</h2>
-		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -682,7 +831,7 @@
 				<code>ToolMangament</code> mechanism used to handle tools and layer changes.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1069,7 +1218,7 @@
 				<code>getFilesFromWorkspace(Collection&lt;IContainer&gt;, String)</code> to be more generic.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram5">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>

@@ -62,7 +62,6 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * <li>{@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getDecorationDescriptionsSet <em>Decoration
  * Descriptions Set</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getIcon <em>Icon</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getAllEdgeMappings <em>All Edge Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getCustomization <em>Customization</em>}</li>
  * </ul>
  *
@@ -546,21 +545,6 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * @generated
      */
     @Override
-    public EList<EdgeMapping> getAllEdgeMappings() {
-        // TODO: implement this method to return the 'All Edge Mappings' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public Customization getCustomization() {
         if (customization != null && customization.eIsProxy()) {
             InternalEObject oldCustomization = (InternalEObject) customization;
@@ -697,8 +681,6 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
             return basicGetDecorationDescriptionsSet();
         case DescriptionPackage.LAYER__ICON:
             return getIcon();
-        case DescriptionPackage.LAYER__ALL_EDGE_MAPPINGS:
-            return getAllEdgeMappings();
         case DescriptionPackage.LAYER__CUSTOMIZATION:
             if (resolve) {
                 return getCustomization();
@@ -852,8 +834,6 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
             return decorationDescriptionsSet != null;
         case DescriptionPackage.LAYER__ICON:
             return LayerImpl.ICON_EDEFAULT == null ? icon != null : !LayerImpl.ICON_EDEFAULT.equals(icon);
-        case DescriptionPackage.LAYER__ALL_EDGE_MAPPINGS:
-            return !getAllEdgeMappings().isEmpty();
         case DescriptionPackage.LAYER__CUSTOMIZATION:
             return customization != null;
         }

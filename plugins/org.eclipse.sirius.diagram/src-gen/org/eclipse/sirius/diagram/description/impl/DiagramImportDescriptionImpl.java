@@ -80,10 +80,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getFilters <em>Filters</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getAllEdgeMappings <em>All Edge
  * Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getAllNodeMappings <em>All Node
- * Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getAllContainerMappings <em>All
- * Container Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getValidationSet <em>Validation
  * Set</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getConcerns
@@ -106,10 +102,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * Layer</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getAdditionalLayers
  * <em>Additional Layers</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getAllLayers <em>All
- * Layers</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getAllActivatedTools <em>All
- * Activated Tools</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getNodeMappings <em>Node
  * Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getEdgeMappings <em>Edge
@@ -781,36 +773,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * @generated
      */
     @Override
-    public EList<NodeMapping> getAllNodeMappings() {
-        // TODO: implement this method to return the 'All Node Mappings' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EList<ContainerMapping> getAllContainerMappings() {
-        // TODO: implement this method to return the 'All Container Mappings' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public ValidationSet getValidationSet() {
         if (validationSet != null && validationSet.eIsProxy()) {
             InternalEObject oldValidationSet = (InternalEObject) validationSet;
@@ -1394,36 +1356,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * @generated
      */
     @Override
-    public EList<Layer> getAllLayers() {
-        // TODO: implement this method to return the 'All Layers' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EList<AbstractToolDescription> getAllActivatedTools() {
-        // TODO: implement this method to return the 'All Activated Tools' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EList<NodeMapping> getNodeMappings() {
         if (nodeMappings == null) {
             nodeMappings = new EObjectContainmentEList.Resolving<NodeMapping>(NodeMapping.class, this, DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__NODE_MAPPINGS);
@@ -1761,10 +1693,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             return getFilters();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_EDGE_MAPPINGS:
             return getAllEdgeMappings();
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_NODE_MAPPINGS:
-            return getAllNodeMappings();
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_CONTAINER_MAPPINGS:
-            return getAllContainerMappings();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__VALIDATION_SET:
             if (resolve) {
                 return getValidationSet();
@@ -1810,10 +1738,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             return basicGetDefaultLayer();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ADDITIONAL_LAYERS:
             return getAdditionalLayers();
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_LAYERS:
-            return getAllLayers();
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_ACTIVATED_TOOLS:
-            return getAllActivatedTools();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__NODE_MAPPINGS:
             return getNodeMappings();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__EDGE_MAPPINGS:
@@ -1923,10 +1847,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ADDITIONAL_LAYERS:
             getAdditionalLayers().clear();
             getAdditionalLayers().addAll((Collection<? extends AdditionalLayer>) newValue);
-            return;
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_ACTIVATED_TOOLS:
-            getAllActivatedTools().clear();
-            getAllActivatedTools().addAll((Collection<? extends AbstractToolDescription>) newValue);
             return;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__NODE_MAPPINGS:
             getNodeMappings().clear();
@@ -2039,9 +1959,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ADDITIONAL_LAYERS:
             getAdditionalLayers().clear();
             return;
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_ACTIVATED_TOOLS:
-            getAllActivatedTools().clear();
-            return;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__NODE_MAPPINGS:
             getNodeMappings().clear();
             return;
@@ -2107,10 +2024,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             return filters != null && !filters.isEmpty();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_EDGE_MAPPINGS:
             return !getAllEdgeMappings().isEmpty();
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_NODE_MAPPINGS:
-            return !getAllNodeMappings().isEmpty();
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_CONTAINER_MAPPINGS:
-            return !getAllContainerMappings().isEmpty();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__VALIDATION_SET:
             return validationSet != null;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__CONCERNS:
@@ -2136,10 +2049,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             return defaultLayer != null;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ADDITIONAL_LAYERS:
             return additionalLayers != null && !additionalLayers.isEmpty();
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_LAYERS:
-            return !getAllLayers().isEmpty();
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_ACTIVATED_TOOLS:
-            return !getAllActivatedTools().isEmpty();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__NODE_MAPPINGS:
             return nodeMappings != null && !nodeMappings.isEmpty();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__EDGE_MAPPINGS:
@@ -2211,10 +2120,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS;
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_EDGE_MAPPINGS:
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS;
-            case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_NODE_MAPPINGS:
-                return DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS;
-            case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_CONTAINER_MAPPINGS:
-                return DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS;
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__VALIDATION_SET:
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET;
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__CONCERNS:
@@ -2239,10 +2144,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER;
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ADDITIONAL_LAYERS:
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS;
-            case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_LAYERS:
-                return DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS;
-            case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_ACTIVATED_TOOLS:
-                return DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS;
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__NODE_MAPPINGS:
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__NODE_MAPPINGS;
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__EDGE_MAPPINGS:
@@ -2315,10 +2216,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__FILTERS;
             case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS:
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_EDGE_MAPPINGS;
-            case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS:
-                return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_NODE_MAPPINGS;
-            case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS:
-                return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_CONTAINER_MAPPINGS;
             case DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET:
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__VALIDATION_SET;
             case DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS:
@@ -2343,10 +2240,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DEFAULT_LAYER;
             case DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS:
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ADDITIONAL_LAYERS;
-            case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS:
-                return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_LAYERS;
-            case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS:
-                return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_ACTIVATED_TOOLS;
             case DescriptionPackage.DIAGRAM_DESCRIPTION__NODE_MAPPINGS:
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__NODE_MAPPINGS;
             case DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS:

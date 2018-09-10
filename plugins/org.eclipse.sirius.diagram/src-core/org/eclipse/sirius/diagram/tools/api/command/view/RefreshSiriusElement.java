@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,7 +55,9 @@ import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceMana
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.StyleSpecOperations;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
@@ -249,7 +251,7 @@ public class RefreshSiriusElement extends RecordingCommand {
         @Override
         public DRefreshable caseDNodeContainer(DNodeContainer object) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(object);
-            new ContainerMappingHelper(interpreter).updateContainer((IContainerMappingExt) object.getActualMapping(), object);
+            new ContainerMappingWithInterpreterHelper(interpreter).updateContainer((IContainerMappingExt) object.getActualMapping(), object);
             for (DDiagramElement iterElement : object.getOwnedDiagramElements()) {
                 doSwitch(iterElement);
             }
@@ -344,7 +346,8 @@ public class RefreshSiriusElement extends RecordingCommand {
         public DRefreshable caseDNode(DNode object) {
             NodeMapping nodeMapping = object.getActualMapping();
             if (nodeMapping != null) {
-                nodeMapping.updateNode(object);
+                IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(object);
+                new NodeMappingHelper(interpreter).updateNode(nodeMapping, object);
                 refreshBorderNodes(object);
             }
             return object;
@@ -353,7 +356,7 @@ public class RefreshSiriusElement extends RecordingCommand {
         @Override
         public DRefreshable caseDNodeList(DNodeList object) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(object);
-            new ContainerMappingHelper(interpreter).updateContainer((IContainerMappingExt) object.getActualMapping(), object);
+            new ContainerMappingWithInterpreterHelper(interpreter).updateContainer((IContainerMappingExt) object.getActualMapping(), object);
             for (DNodeListElement iterElement : object.getOwnedElements()) {
                 doSwitch(iterElement);
             }
@@ -365,7 +368,8 @@ public class RefreshSiriusElement extends RecordingCommand {
         @Override
         public DRefreshable caseDNodeListElement(DNodeListElement object) {
             if (object.getActualMapping() != null) {
-                object.getActualMapping().updateListElement(object);
+                IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(object);
+                new NodeMappingHelper(interpreter).updateListElement(object.getActualMapping(), object);
             }
             return object;
         }
@@ -374,9 +378,14 @@ public class RefreshSiriusElement extends RecordingCommand {
         public DRefreshable caseDEdge(DEdge object) {
             Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(object.getActualMapping()).getEdgeMapping();
             if (edgeMapping.some()) {
-                edgeMapping.get().updateEdge(object);
+                updateEdge(edgeMapping.get(), object);
             }
             return object;
+        }
+        
+        private void updateEdge(final EdgeMapping edgeMapping, final DEdge dEdge) {
+            IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(dEdge);
+            new EdgeMappingHelper(interpreter).updateEdge(edgeMapping, dEdge);
         }
     }
 }

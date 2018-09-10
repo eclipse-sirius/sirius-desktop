@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.helper.task.DnDTasksOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -140,7 +141,7 @@ public class DragAndDropCommandBuilder extends AbstractDiagramCommandBuilder {
 
                 /* Check the precondition of the tool */
                 if (checkDragAndDropPrecondition(semanticOldContainer, semanticContainer)) {
-                    final DiagramElementMapping mapping = tool.getBestMapping(container, droppedElement);
+                    final DiagramElementMapping mapping = ContainerMappingWithInterpreterHelper.getBestMapping(tool, container, droppedElement);
                     if (mapping != null || dragSemantic) {
                         // Get the command which contains all the tasks describe
                         // in the model operation of the VSM (viewpoint

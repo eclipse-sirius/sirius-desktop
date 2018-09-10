@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-1015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
@@ -75,7 +75,7 @@ public class ResetStylePropertiesToDefaultValuesCommand extends RecordingCommand
     @Override
     protected void doExecute() {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(dDiagram);
-        MappingHelper mappingHelper = new MappingHelper(interpreter);
+        MappingWithInterpreterHelper mappingHelper = new MappingWithInterpreterHelper(interpreter);
         StyleHelper styleHelper = new StyleHelper(interpreter);
         for (Entry<View, DDiagramElement> entry : customizedViews.entrySet()) {
             View view = entry.getKey();
@@ -87,7 +87,7 @@ public class ResetStylePropertiesToDefaultValuesCommand extends RecordingCommand
         }
     }
 
-    private void resetDDiagramElementCustomizations(DDiagramElement dDiagramElement, MappingHelper mappingHelper, StyleHelper styleHelper) {
+    private void resetDDiagramElementCustomizations(DDiagramElement dDiagramElement, MappingWithInterpreterHelper mappingHelper, StyleHelper styleHelper) {
         DSemanticDecorator parentDDiagramElt = (DSemanticDecorator) dDiagramElement.eContainer();
         DiagramElementMapping diagramElementMapping = dDiagramElement.getDiagramElementMapping();
         if (dDiagramElement instanceof DEdge) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -27,8 +28,7 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * A class which is able to build the items tree to select node mappings to
- * import.
+ * A class which is able to build the items tree to select node mappings to import.
  * 
  * @author mchauvin
  * @see AbstractMappingImportSelectionWizardBuilder
@@ -80,7 +80,7 @@ public class NodeMappingImportSelectionWizardItemsBuilder extends AbstractMappin
      */
     @Override
     protected <T extends AbstractNodeMapping> Collection<T> getAllMappings(final DiagramDescription diagramDescription) {
-        return (Collection<T>) diagramDescription.getAllNodeMappings();
+        return (Collection<T>) ContentHelper.getAllNodeMappings(diagramDescription, false);
     }
 
     /**
@@ -91,7 +91,7 @@ public class NodeMappingImportSelectionWizardItemsBuilder extends AbstractMappin
      */
     @Override
     protected void addMappings(final TreeItemWrapper parentItem, final DiagramDescription diagramDescription) {
-        final List<ContainerMapping> candidates = diagramDescription.getAllContainerMappings();
+        final List<ContainerMapping> candidates = ContentHelper.getAllContainerMappings(diagramDescription, false);
         addMappings(parentItem, candidates);
     }
 

@@ -82,12 +82,4 @@ public interface VariableFilter extends Filter {
      */
     void setSemanticConditionExpression(String value);
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Reset the variables of the filter.
-     *
-     * @model
-     * @generated
-     */
-    void resetVariables();
-
 } // VariableFilter

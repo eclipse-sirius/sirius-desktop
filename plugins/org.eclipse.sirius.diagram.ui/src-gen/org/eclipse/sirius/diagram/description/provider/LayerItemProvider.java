@@ -77,7 +77,6 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
             addAllToolsPropertyDescriptor(object);
             addReusedToolsPropertyDescriptor(object);
             addIconPropertyDescriptor(object);
-            addAllEdgeMappingsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -170,18 +169,6 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
                 org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__ICON, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
                 getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
                 null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Edge Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addAllEdgeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Layer_allEdgeMappings_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_Layer_allEdgeMappings_feature", "_UI_Layer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__ALL_EDGE_MAPPINGS, false, false, false, null, null, null));
     }
 
     /**

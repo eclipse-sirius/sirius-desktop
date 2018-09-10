@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -56,6 +56,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
@@ -273,6 +274,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         super.removeNotationalListeners();
         removeListenerFilter("ShowingMode"); //$NON-NLS-1$
     }
+
     /*
      * (non-Javadoc)
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#setVisibility(boolean)
@@ -327,7 +329,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
                 final Object createdElement = ((Proxy) adapt).getRealObject();
                 if (createdElement instanceof DNode) {
                     final EObject containerSemanticElement = this.resolveSemanticElement();
-                    if (((DNode) containerSemanticElement).getActualMapping().getAllBorderedNodeMappings().contains(((DNode) createdElement).getActualMapping())) {
+                    if (MappingHelper.getAllBorderedNodeMappings(((DNode) containerSemanticElement).getActualMapping()).contains(((DNode) createdElement).getActualMapping())) {
                         //
                         // Create a port...
                         final Rectangle bounds = PortLayoutHelper.getBounds(this, (DNode) createdElement, viewDescriptor, (DDiagramElement) containerSemanticElement);

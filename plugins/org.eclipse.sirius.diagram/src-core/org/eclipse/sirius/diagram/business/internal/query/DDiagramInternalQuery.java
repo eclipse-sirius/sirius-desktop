@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.BestStyleDescriptionRegistry;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleConstants;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.Style;
@@ -37,8 +37,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
- * A class aggregating all the queries (read-only!) having a {@link DDiagram} as
- * a starting point.
+ * A class aggregating all the queries (read-only!) having a {@link DDiagram} as a starting point.
  * 
  * @author mporhel
  */
@@ -217,8 +216,7 @@ public class DDiagramInternalQuery {
     }
 
     /**
-     * Returns all diagram elements (directly and indirectly contained) of the
-     * given diagram.
+     * Returns all diagram elements (directly and indirectly contained) of the given diagram.
      * 
      * @return all diagram elements of the given diagram.
      */
@@ -271,23 +269,20 @@ public class DDiagramInternalQuery {
     }
 
     /**
-     * Get the {@link ComputedStyleDescriptionRegistry} of the specified
-     * {@link DDiagram}.
+     * Get the {@link ComputedStyleDescriptionRegistry} of the specified {@link DDiagram}.
      * 
      * @param createIfNotExists
-     *            true if we want to create a
-     *            {@link ComputedStyleDescriptionRegistry} for the specified
+     *            true if we want to create a {@link ComputedStyleDescriptionRegistry} for the specified
      *            {@link DDiagram} if there is not one, false otherwise
-     * @return the {@link ComputedStyleDescriptionRegistry} of the
-     *         {@link DDiagram} or null if this last has not one
+     * @return the {@link ComputedStyleDescriptionRegistry} of the {@link DDiagram} or null if this last has not one
      */
     public ComputedStyleDescriptionRegistry getComputedStyleDescriptionRegistry(boolean createIfNotExists) {
         ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = null;
         AnnotationEntry annotationEntry = null;
-        Collection<AnnotationEntry> annotationEntries = new DRepresentationQuery(dDiagram).getAnnotation(BestStyleDescriptionRegistry.DANNOTATION_CUSTOMIZATION_KEY);
+        Collection<AnnotationEntry> annotationEntries = new DRepresentationQuery(dDiagram).getAnnotation(StyleConstants.DANNOTATION_CUSTOMIZATION_KEY);
         if (annotationEntries == null || annotationEntries.isEmpty()) {
             annotationEntry = DescriptionFactory.eINSTANCE.createAnnotationEntry();
-            annotationEntry.setSource(BestStyleDescriptionRegistry.DANNOTATION_CUSTOMIZATION_KEY);
+            annotationEntry.setSource(StyleConstants.DANNOTATION_CUSTOMIZATION_KEY);
             dDiagram.getOwnedAnnotationEntries().add(annotationEntry);
         } else {
             annotationEntry = annotationEntries.iterator().next();
@@ -302,8 +297,7 @@ public class DDiagramInternalQuery {
     }
 
     /**
-     * Get computed {@link StyleDescription} really used by the specified
-     * {@link DDiagram}.
+     * Get computed {@link StyleDescription} really used by the specified {@link DDiagram}.
      * 
      * @return the computed {@link StyleDescription} really used
      */

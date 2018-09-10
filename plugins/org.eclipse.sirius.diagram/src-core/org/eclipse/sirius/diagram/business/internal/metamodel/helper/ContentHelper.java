@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,9 +15,7 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -53,8 +51,7 @@ public final class ContentHelper {
     }
 
     /**
-     * Get all edge mappings used in a designer diagram description on all
-     * layers.
+     * Get all edge mappings used in a designer diagram description on all layers.
      * 
      * @param diagramDescription
      *            the description of a designer diagram
@@ -93,7 +90,7 @@ public final class ContentHelper {
 
             while (itLayer.hasNext()) {
                 final Layer layer = itLayer.next();
-                result.addAll(ContentHelper.getAllEdgeMappings(layer));
+                result.addAll(ContentLayerHelper.getAllEdgeMappings(layer));
             }
         }
         return new EcoreEList.UnmodifiableEList<EdgeMapping>((InternalEObject) diagramDescription, DescriptionPackage.eINSTANCE.getDiagramDescription_AllEdgeMappings(), result.size(),
@@ -101,38 +98,9 @@ public final class ContentHelper {
     }
 
     /**
-     * Get all edge mappings (including wrap EdgeMappingImport) used in a
-     * designer diagram description on one particular layer.
-     * 
-     * @param layer
-     *            the layer of a diagram description of a designer diagram
-     * @return all the edge mappings used
-     */
-    public static EList<EdgeMapping> getAllEdgeMappings(final Layer layer) {
-        final Collection<EdgeMapping> result = new ArrayList<EdgeMapping>();
-
-        result.addAll(layer.getEdgeMappings());
-        // Add the wrapper of EdgeMappingImport
-        final Iterator<EdgeMappingImport> iterMappingImport = layer.getEdgeMappingImports().iterator();
-        while (iterMappingImport.hasNext()) {
-            result.add(EdgeMappingImportWrapper.getWrapper(iterMappingImport.next()));
-        }
-        // Add the EdgeMapping of the reused mapping
-        final Iterator<DiagramElementMapping> it = ContentHelper.getReuseMappings(layer).iterator();
-        while (it.hasNext()) {
-            final DiagramElementMapping eObj = it.next();
-            if (eObj instanceof EdgeMapping) {
-                result.add((EdgeMapping) eObj);
-            }
-        }
-        return new EcoreEList.UnmodifiableEList<EdgeMapping>((InternalEObject) layer, DescriptionPackage.eINSTANCE.getLayer_AllEdgeMappings(), result.size(), result.toArray());
-    }
-
-    /**
      * DO NOT USE except in property sections or DiagramComponentizationManager.
      * 
-     * Get all edge mappings used in a designer diagram extension description on
-     * all layers.
+     * Get all edge mappings used in a designer diagram extension description on all layers.
      * 
      * @param diagramExtensionDescription
      *            the description of a designer diagram
@@ -147,14 +115,13 @@ public final class ContentHelper {
         while (itLayer.hasNext()) {
             final Layer layer = itLayer.next();
 
-            result.addAll(ContentHelper.getAllEdgeMappings(layer));
+            result.addAll(ContentLayerHelper.getAllEdgeMappings(layer));
         }
         return result;
     }
 
     /**
-     * Get all node mappings used in a designer diagram description on all
-     * layers.
+     * Get all node mappings used in a designer diagram description on all layers.
      * 
      * @param diagramDescription
      *            the description of a designer diagram
@@ -189,7 +156,7 @@ public final class ContentHelper {
                 final Layer layer = itLayer.next();
 
                 result.addAll(layer.getNodeMappings());
-                final Iterator<DiagramElementMapping> it = ContentHelper.getReuseMappings(layer).iterator();
+                final Iterator<DiagramElementMapping> it = ContentLayerHelper.getReuseMappings(layer).iterator();
                 while (it.hasNext()) {
                     final DiagramElementMapping mapping = it.next();
                     if (mapping instanceof NodeMapping) {
@@ -198,15 +165,13 @@ public final class ContentHelper {
                 }
             }
         }
-        return new EcoreEList.UnmodifiableEList<NodeMapping>((InternalEObject) diagramDescription, DescriptionPackage.eINSTANCE.getDiagramDescription_AllNodeMappings(), result.size(),
-                result.toArray());
+        return new BasicEList<>(result);
     }
 
     /**
      * DO NOT USE except in property sections or DiagramComponentizationManager.
      * 
-     * Get all node mappings used in a designer diagram extension description on
-     * all layers.
+     * Get all node mappings used in a designer diagram extension description on all layers.
      * 
      * @param diagramExtensionDescription
      *            the description of a designer diagram
@@ -222,7 +187,7 @@ public final class ContentHelper {
             final Layer layer = itLayer.next();
 
             result.addAll(layer.getNodeMappings());
-            final Iterator<DiagramElementMapping> it = ContentHelper.getReuseMappings(layer).iterator();
+            final Iterator<DiagramElementMapping> it = ContentLayerHelper.getReuseMappings(layer).iterator();
             while (it.hasNext()) {
                 final EObject eObj = it.next();
                 if (eObj instanceof NodeMapping) {
@@ -234,8 +199,7 @@ public final class ContentHelper {
     }
 
     /**
-     * Get all containers mappings used in a designer diagram description on all
-     * layers.
+     * Get all containers mappings used in a designer diagram description on all layers.
      * 
      * @param diagramDescription
      *            the description of a designer diagram
@@ -270,7 +234,7 @@ public final class ContentHelper {
                 final Layer layer = itLayer.next();
 
                 result.addAll(layer.getContainerMappings());
-                final Iterator<DiagramElementMapping> it = ContentHelper.getReuseMappings(layer).iterator();
+                final Iterator<DiagramElementMapping> it = ContentLayerHelper.getReuseMappings(layer).iterator();
                 while (it.hasNext()) {
                     final EObject eObj = it.next();
                     if (eObj instanceof ContainerMapping) {
@@ -279,38 +243,13 @@ public final class ContentHelper {
                 }
             }
         }
-        return new EcoreEList.UnmodifiableEList<ContainerMapping>((InternalEObject) diagramDescription, DescriptionPackage.eINSTANCE.getDiagramDescription_AllContainerMappings(), result.size(),
-                result.toArray());
-    }
-
-    /**
-     * Return the list of reuse mappings for the layer removing any import of
-     * the layers mappings itself (which might be considered as a "useless
-     * import").
-     * 
-     * @param layer
-     *            the layer.
-     * @return the collection of reused mappings.
-     */
-    public static Collection<DiagramElementMapping> getReuseMappings(final Layer layer) {
-        final Set<DiagramElementMapping> mappings = new LinkedHashSet<DiagramElementMapping>(layer.getReusedMappings().size());
-        mappings.addAll(layer.getReusedMappings());
-        mappings.removeAll(layer.getContainerMappings());
-        mappings.removeAll(layer.getNodeMappings());
-        mappings.removeAll(layer.getEdgeMappings());
-        // Remove the wrapper of EdgeMappingImport
-        final Iterator<EdgeMappingImport> iterMappingImport = layer.getEdgeMappingImports().iterator();
-        while (iterMappingImport.hasNext()) {
-            mappings.remove(EdgeMappingImportWrapper.getWrapper(iterMappingImport.next()));
-        }
-        return mappings;
+        return new BasicEList<>(result);
     }
 
     /**
      * DO NOT USE except in property sections or DiagramComponentizationManager.
      * 
-     * Get all containers mappings used in a designer diagram extension
-     * description on all layers.
+     * Get all containers mappings used in a designer diagram extension description on all layers.
      * 
      * @param diagramExtensionDescription
      *            the description of a designer diagram
@@ -326,7 +265,7 @@ public final class ContentHelper {
             final Layer layer = itLayer.next();
 
             result.addAll(layer.getContainerMappings());
-            final Iterator<DiagramElementMapping> it = ContentHelper.getReuseMappings(layer).iterator();
+            final Iterator<DiagramElementMapping> it = ContentLayerHelper.getReuseMappings(layer).iterator();
             while (it.hasNext()) {
                 final EObject eObj = it.next();
                 if (eObj instanceof ContainerMapping) {
@@ -338,8 +277,7 @@ public final class ContentHelper {
     }
 
     /**
-     * Implementation of
-     * {@link AbstractNodeMapping#getAllBorderedNodeMappings()}.
+     * Implementation of {@link AbstractNodeMapping#getAllBorderedNodeMappings()}.
      * 
      * @param nodeMapping
      *            the mapping.

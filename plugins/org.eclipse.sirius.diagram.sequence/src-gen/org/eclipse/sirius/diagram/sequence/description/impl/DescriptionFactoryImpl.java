@@ -17,17 +17,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.BasicMessageMappingSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.CombinedFragmentMappingSpec;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.CreationMessageMappingSpec;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.DestructionMessageMappingSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.EndOfLifeMappingSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.ExecutionMappingSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.InstanceRoleMappingSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.InteractionUseMappingSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.ObservationPointMappingSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.OperandMappingSpec;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.ReturnMessageMappingSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.SequenceDiagramDescriptionSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.StateMappingSpec;
 import org.eclipse.sirius.diagram.sequence.description.BasicMessageMapping;
@@ -181,44 +177,44 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public BasicMessageMapping createBasicMessageMapping() {
-        BasicMessageMappingSpec basicMessageMapping = new BasicMessageMappingSpec();
+        BasicMessageMappingImpl basicMessageMapping = new BasicMessageMappingImpl();
         return basicMessageMapping;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public ReturnMessageMapping createReturnMessageMapping() {
-        ReturnMessageMappingSpec returnMessageMapping = new ReturnMessageMappingSpec();
+        ReturnMessageMappingImpl returnMessageMapping = new ReturnMessageMappingImpl();
         return returnMessageMapping;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public CreationMessageMapping createCreationMessageMapping() {
-        CreationMessageMappingSpec creationMessageMapping = new CreationMessageMappingSpec();
+        CreationMessageMappingImpl creationMessageMapping = new CreationMessageMappingImpl();
         return creationMessageMapping;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public DestructionMessageMapping createDestructionMessageMapping() {
-        DestructionMessageMappingSpec destructionMessageMapping = new DestructionMessageMappingSpec();
+        DestructionMessageMappingImpl destructionMessageMapping = new DestructionMessageMappingImpl();
         return destructionMessageMapping;
     }
 

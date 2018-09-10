@@ -14,8 +14,6 @@
 package org.eclipse.sirius.diagram.description.tool;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
@@ -240,14 +238,6 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * @generated
      */
     void setMoveEdges(boolean value);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @model
-     * @generated
-     */
-    DiagramElementMapping getBestMapping(DragAndDropTarget targetContainer, EObject droppedElement);
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,8 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.Messages;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
@@ -109,7 +111,7 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
         } else if (abstractDNode == null) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(droppedElement);
             if (isBorderNode) {
-                abstractDNode = mapping.createNode(droppedElement, semanticContainer, parentDiagram);
+                abstractDNode = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
             } else {
                 abstractDNode = new NodeMappingHelper(interpreter).createListElement(mapping, droppedElement, parentDiagram);
             }
@@ -134,13 +136,11 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
      * @param nodeMapping
      *            the node mapping
      * @param abstractNodeMapping
-     *            the abstract node mapping for which the given node mapping is
-     *            a sub-node.
-     * @return true if the given mapping is a border node for the given abstract
-     *         node mapping, otherwise false.
+     *            the abstract node mapping for which the given node mapping is a sub-node.
+     * @return true if the given mapping is a border node for the given abstract node mapping, otherwise false.
      */
     private static boolean isBorderNodeMapping(NodeMapping nodeMapping, AbstractNodeMapping abstractNodeMapping) {
-        return abstractNodeMapping.getAllBorderedNodeMappings().contains(nodeMapping);
+        return MappingHelper.getAllBorderedNodeMappings(abstractNodeMapping).contains(nodeMapping);
     }
 
     private void handleDNodeContainerCase(DDiagram parentDiagram) {
@@ -151,7 +151,8 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
             // so we don't create a new DNode
             dNode = (DNode) droppedDiagramElement;
         } else {
-            dNode = mapping.createNode(droppedElement, semanticContainer, parentDiagram);
+            IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(droppedElement);
+            dNode = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
         }
 
         final DNodeContainer dNodeContainer = (DNodeContainer) target;
@@ -177,7 +178,8 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
             // DNode
             dNode = (DNode) droppedDiagramElement;
         } else {
-            dNode = mapping.createNode(droppedElement, semanticContainer, parentDiagram);
+            IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(droppedElement);
+            dNode = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
         }
         ((DNode) target).getOwnedBorderedNodes().add(dNode);
         if (!dNode.equals(droppedDiagramElement)) {
@@ -197,7 +199,8 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
             // DNode
             dNode = (DNode) droppedDiagramElement;
         } else {
-            dNode = mapping.createNode(droppedElement, semanticContainer, parentDiagram);
+            IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(droppedElement);
+            dNode = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
         }
         parentDiagram.getOwnedDiagramElements().add(dNode);
         if (!dNode.equals(droppedDiagramElement)) {

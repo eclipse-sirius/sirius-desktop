@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -281,8 +281,8 @@ public class DiagramExistingExpressionVariablesConstraint extends AbstractConstr
      * @return the validation status.
      */
     private IStatus checkNodeMappingLabel(final IValidationContext ctx, final NodeMapping nodeMapping) {
-        if (MappingHelper.getDefaultStyleDescription(nodeMapping) != null) {
-            return this.checkVariables(ctx, ((NodeStyleDescription) MappingHelper.getDefaultStyleDescription(nodeMapping)).getLabelExpression(), Collections.<String> emptySet(), nodeMapping,
+        if (MappingWithInterpreterHelper.getDefaultStyleDescription(nodeMapping) != null) {
+            return this.checkVariables(ctx, ((NodeStyleDescription) MappingWithInterpreterHelper.getDefaultStyleDescription(nodeMapping)).getLabelExpression(), Collections.<String> emptySet(), nodeMapping,
                     StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelExpression().getName());
         }
         return ctx.createSuccessStatus();
@@ -300,8 +300,8 @@ public class DiagramExistingExpressionVariablesConstraint extends AbstractConstr
      * @return the validation status.
      */
     private IStatus checkNodeMappingSizeComputation(final IValidationContext ctx, final NodeMapping nodeMapping) {
-        if (MappingHelper.getDefaultStyleDescription(nodeMapping) != null) {
-            return this.checkVariables(ctx, ((NodeStyleDescription) MappingHelper.getDefaultStyleDescription(nodeMapping)).getSizeComputationExpression(), Collections.<String> emptySet(),
+        if (MappingWithInterpreterHelper.getDefaultStyleDescription(nodeMapping) != null) {
+            return this.checkVariables(ctx, ((NodeStyleDescription) MappingWithInterpreterHelper.getDefaultStyleDescription(nodeMapping)).getSizeComputationExpression(), Collections.<String> emptySet(),
                     nodeMapping, org.eclipse.sirius.diagram.description.style.StylePackage.eINSTANCE.getNodeStyleDescription_SizeComputationExpression().getName());
         }
         return ctx.createSuccessStatus();
@@ -318,8 +318,8 @@ public class DiagramExistingExpressionVariablesConstraint extends AbstractConstr
      * @return the validation status.
      */
     private IStatus checkContainerMappingLabel(final IValidationContext ctx, final ContainerMapping containerMapping) {
-        if (MappingHelper.getDefaultStyleDescription(containerMapping) != null) {
-            return this.checkVariables(ctx, ((ContainerStyleDescription) MappingHelper.getDefaultStyleDescription(containerMapping)).getLabelExpression(), Collections.<String> emptySet(),
+        if (MappingWithInterpreterHelper.getDefaultStyleDescription(containerMapping) != null) {
+            return this.checkVariables(ctx, ((ContainerStyleDescription) MappingWithInterpreterHelper.getDefaultStyleDescription(containerMapping)).getLabelExpression(), Collections.<String> emptySet(),
                     containerMapping, StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelExpression().getName());
         }
         return ctx.createSuccessStatus();
@@ -605,6 +605,7 @@ public class DiagramExistingExpressionVariablesConstraint extends AbstractConstr
          * 
          * @see DescriptionSwitch#caseDiagramDescription(DiagramDescription)
          */
+        @Override
         public IStatus caseDiagramDescription(final DiagramDescription object) {
             if (this.currentStatus.isOK()) {
                 final IStatus superStatus = super.caseDiagramDescription(object);
@@ -622,6 +623,7 @@ public class DiagramExistingExpressionVariablesConstraint extends AbstractConstr
          * 
          * @see DescriptionSwitch#caseDiagramElementMapping(DiagramElementMapping)
          */
+        @Override
         public IStatus caseDiagramElementMapping(final DiagramElementMapping object) {
             if (this.currentStatus.isOK()) {
                 final IStatus superStatus = super.caseDiagramElementMapping(object);

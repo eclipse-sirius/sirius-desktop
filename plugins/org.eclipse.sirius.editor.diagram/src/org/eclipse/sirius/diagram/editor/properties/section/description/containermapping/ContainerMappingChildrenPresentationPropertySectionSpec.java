@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.editor.properties.section.description.contain
 
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.editor.properties.sections.description.containermapping.ContainerMappingChildrenPresentationPropertySection;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -26,8 +27,7 @@ import org.eclipse.swt.widgets.Button;
 /**
  * A section for the childrenPresentation property of a ContainerMapping object.
  * 
- * It is able to mark as experimental or disable the compartment capabilities to
- * help the user to produce a valid VSM.
+ * It is able to mark as experimental or disable the compartment capabilities to help the user to produce a valid VSM.
  */
 public class ContainerMappingChildrenPresentationPropertySectionSpec extends ContainerMappingChildrenPresentationPropertySection {
 
@@ -50,7 +50,7 @@ public class ContainerMappingChildrenPresentationPropertySectionSpec extends Con
             message.append(" - the mapping will produce containers which will be Region and RegionContainer");
         }
 
-        for (ContainerMapping subContainerMapping : containerMapping.getAllContainerMappings()) {
+        for (ContainerMapping subContainerMapping : MappingHelper.getAllContainerMappings(containerMapping)) {
             experimental = experimental || new ContainerMappingQuery(subContainerMapping).isRegionContainer();
 
             if (experimental) {

@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
@@ -60,12 +60,12 @@ public class DNodeListSpec extends DNodeListImpl {
 
     @Override
     public DDiagram getParentDiagram() {
-        return DDiagramElementContainerSpecOperations.getParentDiagram(this);
+        return DDiagramElementContainerOperations.getParentDiagram(this);
     }
 
     @Override
     public EList<DNode> getNodes() {
-        final Collection<AbstractDNode> result = DDiagramElementContainerSpecOperations.getNodes(this);
+        final Collection<AbstractDNode> result = DDiagramElementContainerOperations.getNodes(this);
         Collection<DNode> dNodeResult = new ArrayList<DNode>();
         for (AbstractDNode dNode : Collections2.filter(result, Predicates.instanceOf(DNode.class))) {
             dNodeResult.add((DNode) dNode);
@@ -75,19 +75,19 @@ public class DNodeListSpec extends DNodeListImpl {
 
     @Override
     public EList<DDiagramElementContainer> getContainers() {
-        final Collection<DDiagramElementContainer> result = DDiagramElementContainerSpecOperations.getContainers(this);
+        final Collection<DDiagramElementContainer> result = DDiagramElementContainerOperations.getContainers(this);
         return new EcoreEList.UnmodifiableEList<DDiagramElementContainer>(eInternalContainer(), DiagramPackage.eINSTANCE.getDDiagram_Containers(), result.size(), result.toArray());
     }
 
     @Override
     public EList<DDiagramElementContainer> getContainersFromMapping(final ContainerMapping mapping) {
-        return DDiagramElementContainerSpecOperations.getContainersFromMapping(this, mapping);
+        return DDiagramElementContainerOperations.getContainersFromMapping(this, mapping);
 
     }
 
     @Override
     public EList<DNode> getNodesFromMapping(final NodeMapping mapping) {
-        return DDiagramElementContainerSpecOperations.getNodesFromMapping(this, mapping);
+        return DDiagramElementContainerOperations.getNodesFromMapping(this, mapping);
 
     }
 
@@ -98,7 +98,7 @@ public class DNodeListSpec extends DNodeListImpl {
 
     @Override
     public DragAndDropTargetDescription getDragAndDropDescription() {
-        return DDiagramElementContainerSpecOperations.getDragAndDropDescription(this);
+        return DDiagramElementContainerOperations.getDragAndDropDescription(this);
     }
 
     @Override

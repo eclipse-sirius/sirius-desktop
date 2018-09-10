@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.business.api.componentization;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -26,7 +25,10 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentLayerHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -61,10 +63,6 @@ public class DiagramComponentizationManager {
         return false;
     }
 
-    private EList<Layer> wrapGetAllLayers(final DiagramDescription diagramDescription, final Collection<Layer> layers) {
-        return new EcoreEList.UnmodifiableEList<Layer>((InternalEObject) diagramDescription, DescriptionPackage.eINSTANCE.getDiagramDescription_AllLayers(), layers.size(), layers.toArray());
-    }
-
     /**
      * Get all the layers of a diagram description.
      * 
@@ -75,15 +73,15 @@ public class DiagramComponentizationManager {
      * @return all the available layers
      */
     public EList<Layer> getAllLayers(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
-        final Collection<Layer> layers = new ArrayList<Layer>(diagramDescription.getAllLayers());
+        final Collection<Layer> layers = new ArrayList<Layer>(LayerHelper.getAllLayers(diagramDescription));
 
         if (enabledViewpoints != null) {
             if (!DiagramComponentizationManager.isInSelectedViewpoints(enabledViewpoints, diagramDescription)) {
-                return wrapGetAllLayers(diagramDescription, Collections.<Layer> emptySet());
+                return new BasicEList<>();
             }
             layers.addAll(DiagramComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints));
         }
-        return wrapGetAllLayers(diagramDescription, layers);
+        return new BasicEList<>(layers);
     }
 
     /**
@@ -99,7 +97,7 @@ public class DiagramComponentizationManager {
         final Collection<EdgeMapping> edgeMappings = new ArrayList<EdgeMapping>(diagramDescription.getAllEdgeMappings());
         if (enabledViewpoints != null) {
             for (final Layer layer : DiagramComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
-                edgeMappings.addAll(layer.getAllEdgeMappings());
+                edgeMappings.addAll(ContentLayerHelper.getAllEdgeMappings(layer));
             }
         }
         return new EcoreEList.UnmodifiableEList<EdgeMapping>((InternalEObject) diagramDescription, DescriptionPackage.eINSTANCE.getDiagramDescription_AllEdgeMappings(), edgeMappings.size(),
@@ -116,15 +114,13 @@ public class DiagramComponentizationManager {
      * @return all the available node mappings
      */
     public EList<NodeMapping> getAllNodeMappings(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
-        final Collection<NodeMapping> nodeMappings = new ArrayList<NodeMapping>(diagramDescription.getAllNodeMappings());
+        final Collection<NodeMapping> nodeMappings = new ArrayList<NodeMapping>(ContentHelper.getAllNodeMappings(diagramDescription, false));
         if (enabledViewpoints != null) {
             for (final Layer layer : DiagramComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 nodeMappings.addAll(layer.getNodeMappings());
             }
         }
-
-        return new EcoreEList.UnmodifiableEList<NodeMapping>((InternalEObject) diagramDescription, DescriptionPackage.eINSTANCE.getDiagramDescription_AllNodeMappings(), nodeMappings.size(),
-                nodeMappings.toArray());
+        return new BasicEList<>(nodeMappings);
     }
 
     /**
@@ -137,14 +133,13 @@ public class DiagramComponentizationManager {
      * @return all the available container mappings
      */
     public EList<ContainerMapping> getAllContainerMappings(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
-        final Collection<ContainerMapping> containerMappings = new ArrayList<ContainerMapping>(diagramDescription.getAllContainerMappings());
+        final Collection<ContainerMapping> containerMappings = new ArrayList<ContainerMapping>(ContentHelper.getAllContainerMappings(diagramDescription, false));
         if (enabledViewpoints != null) {
             for (final Layer layer : DiagramComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 containerMappings.addAll(layer.getContainerMappings());
             }
         }
-        return new EcoreEList.UnmodifiableEList<ContainerMapping>((InternalEObject) diagramDescription, DescriptionPackage.eINSTANCE.getDiagramDescription_AllContainerMappings(),
-                containerMappings.size(), containerMappings.toArray());
+        return new BasicEList<>(containerMappings);
     }
 
     /**

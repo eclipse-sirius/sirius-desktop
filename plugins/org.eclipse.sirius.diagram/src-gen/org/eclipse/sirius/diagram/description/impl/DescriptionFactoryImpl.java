@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,14 +20,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.AdditionalLayerSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ConditionalContainerStyleDescriptionSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ConditionalEdgeStyleDescriptionSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ConditionalNodeStyleDescriptionSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingImportSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.DiagramDescriptionSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.DiagramImportDescriptionSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.LayerSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingImportSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingSpec;
@@ -279,7 +275,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      */
     @Override
     public EdgeMapping createEdgeMapping() {
-        EdgeMappingImpl edgeMapping = new EdgeMappingSpec();
+        EdgeMappingImpl edgeMapping = new EdgeMappingImpl();
         edgeMapping.setUseDomainElement(false);
         return edgeMapping;
     }
@@ -291,7 +287,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      */
     @Override
     public EdgeMapping createEdgeMappingUsingDomainElement() {
-        EdgeMappingImpl edgeMapping = new EdgeMappingSpec();
+        EdgeMappingImpl edgeMapping = new EdgeMappingImpl();
         edgeMapping.setUseDomainElement(true);
         return edgeMapping;
     }
@@ -310,33 +306,33 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public ConditionalNodeStyleDescription createConditionalNodeStyleDescription() {
-        ConditionalNodeStyleDescriptionImpl conditionalNodeStyleDescription = new ConditionalNodeStyleDescriptionSpec();
+        ConditionalNodeStyleDescriptionImpl conditionalNodeStyleDescription = new ConditionalNodeStyleDescriptionImpl();
         return conditionalNodeStyleDescription;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public ConditionalEdgeStyleDescription createConditionalEdgeStyleDescription() {
-        ConditionalEdgeStyleDescriptionImpl conditionalEdgeStyleDescription = new ConditionalEdgeStyleDescriptionSpec();
+        ConditionalEdgeStyleDescriptionImpl conditionalEdgeStyleDescription = new ConditionalEdgeStyleDescriptionImpl();
         return conditionalEdgeStyleDescription;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public ConditionalContainerStyleDescription createConditionalContainerStyleDescription() {
-        ConditionalContainerStyleDescriptionImpl conditionalContainerStyleDescription = new ConditionalContainerStyleDescriptionSpec();
+        ConditionalContainerStyleDescriptionImpl conditionalContainerStyleDescription = new ConditionalContainerStyleDescriptionImpl();
         return conditionalContainerStyleDescription;
     }
 

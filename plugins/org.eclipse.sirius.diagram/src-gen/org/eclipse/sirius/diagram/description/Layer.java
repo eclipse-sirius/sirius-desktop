@@ -40,7 +40,6 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getDecorationDescriptionsSet <em>Decoration Descriptions
  * Set</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getIcon <em>Icon</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.Layer#getAllEdgeMappings <em>All Edge Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getCustomization <em>Customization</em>}</li>
  * </ul>
  *
@@ -198,19 +197,6 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * @generated
      */
     void setIcon(String value);
-
-    /**
-     * Returns the value of the '<em><b>All Edge Mappings</b></em>' reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.EdgeMapping}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> All edge mappings (including import edge mapping) of this simple mapping. <!-- end-model-doc
-     * -->
-     *
-     * @return the value of the '<em>All Edge Mappings</em>' reference list.
-     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_AllEdgeMappings()
-     * @model transient="true" changeable="false" volatile="true" derived="true"
-     * @generated
-     */
-    EList<EdgeMapping> getAllEdgeMappings();
 
     /**
      * Returns the value of the '<em><b>Customization</b></em>' containment reference. <!-- begin-user-doc -->

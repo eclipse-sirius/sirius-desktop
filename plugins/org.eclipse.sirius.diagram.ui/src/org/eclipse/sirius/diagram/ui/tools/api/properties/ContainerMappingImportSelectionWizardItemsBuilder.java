@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
@@ -76,7 +77,7 @@ public class ContainerMappingImportSelectionWizardItemsBuilder extends AbstractM
      */
     @Override
     protected <T extends AbstractNodeMapping> Collection<T> getAllMappings(final DiagramDescription diagramDescription) {
-        return (Collection<T>) diagramDescription.getAllContainerMappings();
+        return (Collection<T>) ContentHelper.getAllContainerMappings(diagramDescription, false);
     }
 
     /**
@@ -100,7 +101,7 @@ public class ContainerMappingImportSelectionWizardItemsBuilder extends AbstractM
      */
     @Override
     protected void addMappingItems(final DiagramDescription diagramDescription, final TreeItemWrapper diagramDescriptionItem) {
-        final List<ContainerMapping> candidates = diagramDescription.getAllContainerMappings();
+        final List<ContainerMapping> candidates = ContentHelper.getAllContainerMappings(diagramDescription, false);
         addMappingItems(diagramDescriptionItem, candidates);
     }
 

@@ -44,6 +44,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
@@ -144,7 +145,8 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
                 final Object createdElement = ((Proxy) adapt).getRealObject();
                 if (createdElement instanceof DNode) {
                     final EObject containerSemanticElement = this.resolveSemanticElement();
-                    if (((DDiagramElementContainer) containerSemanticElement).getActualMapping().getAllBorderedNodeMappings().contains(((DNode) createdElement).getActualMapping())) {
+                    if (MappingHelper.getAllBorderedNodeMappings(((DDiagramElementContainer) containerSemanticElement).getActualMapping())
+                            .contains(((DNode) createdElement).getActualMapping())) {
                         //
                         // Create a port...
                         final Rectangle bounds = PortLayoutHelper.getBounds(this, (DNode) createdElement, viewDescriptor, (DDiagramElement) containerSemanticElement);
@@ -173,8 +175,8 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
     }
 
     /**
-     * Performs a direct edit request (usually by showing some type of editor).
-     * Is required to have the same behavior as AbstractDiagramNodeEditPart
+     * Performs a direct edit request (usually by showing some type of editor). Is required to have the same behavior as
+     * AbstractDiagramNodeEditPart
      * 
      * @param request
      *            the direct edit request

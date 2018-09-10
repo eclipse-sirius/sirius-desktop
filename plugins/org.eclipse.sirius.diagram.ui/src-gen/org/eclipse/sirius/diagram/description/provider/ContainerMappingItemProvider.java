@@ -62,10 +62,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
             super.getPropertyDescriptors(object);
 
             addDropDescriptionsPropertyDescriptor(object);
-            addAllNodeMappingsPropertyDescriptor(object);
             addReusedNodeMappingsPropertyDescriptor(object);
             addReusedContainerMappingsPropertyDescriptor(object);
-            addAllContainerMappingsPropertyDescriptor(object);
             addChildrenPresentationPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
@@ -82,19 +80,6 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
                 getString("_UI_DragAndDropTargetDescription_dropDescriptions_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
                 null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Node Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addAllNodeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ContainerMapping_allNodeMappings_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_ContainerMapping_allNodeMappings_feature", "_UI_ContainerMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        DescriptionPackage.Literals.CONTAINER_MAPPING__ALL_NODE_MAPPINGS, false, false, false, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
-                        null));
     }
 
     /**
@@ -123,20 +108,6 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
                 getString("_UI_ContainerMapping_reusedContainerMappings_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
                 null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Container Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @generated
-     */
-    protected void addAllContainerMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ContainerMapping_allContainerMappings_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_ContainerMapping_allContainerMappings_feature", "_UI_ContainerMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        DescriptionPackage.Literals.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS, false, false, false, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
-                        null));
     }
 
     /**

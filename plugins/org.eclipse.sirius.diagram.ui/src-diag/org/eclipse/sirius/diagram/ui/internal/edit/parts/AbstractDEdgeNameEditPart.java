@@ -30,7 +30,6 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure.SiriusWrapLabelWithAttachmentWithModel;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DEdgeNameSelectionFeedbackEditPolicy;
@@ -92,7 +91,7 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
     @Override
     protected void setManager(DirectEditManager manager) {
         DEdge edge = (DEdge) resolveSemanticElement();
-        Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping();
+        Option<EdgeMapping> edgeMapping = new org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping();
         if (edgeMapping.some() && edgeMapping.get().getLabelDirectEdit() != null) {
             this.manager = manager;
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2018 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ConditionalContainerStyleDescriptionSpec;
+import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -70,17 +70,14 @@ public class BorderNodeSidePropertySectionTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Checks that the side property is visible or not for node with conditional
-     * style or not.
+     * Checks that the side property is visible or not for node with conditional style or not.
      * 
      * @param parentNodeOfTestedNode
-     *            the parent node of the node we test the property visibility
-     *            on.
+     *            the parent node of the node we test the property visibility on.
      * @param testedNode
      *            the node we want to check the side property visibility on.
      * @param shouldBeVisible
-     *            true if the side property must be visible on the given tested
-     *            node.
+     *            true if the side property must be visible on the given tested node.
      * @param conditionalStylePresent
      *            true if the given node should be under a conditional style.
      * @param failMessage
@@ -94,9 +91,9 @@ public class BorderNodeSidePropertySectionTest extends AbstractSiriusSwtBotGefTe
             public void run() {
                 Object data = parentNodeOfTestedNode.widget.getData();
                 if (conditionalStylePresent) {
-                    assertTrue(data instanceof ConditionalNodeStyleDescription || data instanceof ConditionalContainerStyleDescriptionSpec);
+                    assertTrue(data instanceof ConditionalNodeStyleDescription || data instanceof ConditionalContainerStyleDescription);
                 } else {
-                    assertFalse(data instanceof ConditionalNodeStyleDescription || data instanceof ConditionalContainerStyleDescriptionSpec);
+                    assertFalse(data instanceof ConditionalNodeStyleDescription || data instanceof ConditionalContainerStyleDescription);
                 }
             }
         });
@@ -121,8 +118,8 @@ public class BorderNodeSidePropertySectionTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Tests that the checkbox used to specify the authorized sides of a border
-     * node in its parent are visible for a conditional style
+     * Tests that the checkbox used to specify the authorized sides of a border node in its parent are visible for a
+     * conditional style
      */
     public void testSidePropertyVisibilityOnBorderedNodeWithConditionalStyle() {
         final SWTBotTreeItem westBorderedNodeContditionalStyleParent = viewpointItemBot.getNode(0).getNode(0).getNode(0).getNode(DEFAULT_LAYER_NAME).getNode(1).getNode(0).getNode(1);
@@ -132,8 +129,8 @@ public class BorderNodeSidePropertySectionTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Tests that the checkbox used to specify the authorized sides of a border
-     * node in its parent are visible for a no conditional style
+     * Tests that the checkbox used to specify the authorized sides of a border node in its parent are visible for a no
+     * conditional style
      */
     public void testSidePropertyVisibilityOnBorderedNode() {
         final SWTBotTreeItem westBorderedNodeDefaultStyleParent = viewpointItemBot.getNode(0).getNode(0).getNode(0).getNode(DEFAULT_LAYER_NAME).getNode(1).getNode(0);
@@ -143,9 +140,8 @@ public class BorderNodeSidePropertySectionTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Tests that the checkbox used to specify the authorized sides of a
-     * bordered node are not visible for a WorkspaceImageImage no conditional
-     * style of a container.
+     * Tests that the checkbox used to specify the authorized sides of a bordered node are not visible for a
+     * WorkspaceImageImage no conditional style of a container.
      */
     public void testSidePropertyNoVisibilityOnContainerWithConditionalStyle() {
         final SWTBotTreeItem containerWithConditionalStyleParent = viewpointItemBot.getNode(0).getNode(0).getNode(0).getNode(DEFAULT_LAYER_NAME).getNode(1).getNode(6);
@@ -156,9 +152,8 @@ public class BorderNodeSidePropertySectionTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Tests that the checkbox used to specify the authorized sides of a
-     * bordered node are not visible for a WorkspaceImage conditional style of a
-     * container.
+     * Tests that the checkbox used to specify the authorized sides of a bordered node are not visible for a
+     * WorkspaceImage conditional style of a container.
      */
     public void testSidePropertyNoVisibilityOnContainerWithNoConditionalStyle() {
         final SWTBotTreeItem containerWithNoConditionalStyleParent = viewpointItemBot.getNode(0).getNode(0).getNode(0).getNode(DEFAULT_LAYER_NAME).getNode(1);
@@ -168,9 +163,8 @@ public class BorderNodeSidePropertySectionTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Tests that the checkbox used to specify the authorized sides of a
-     * bordered node are not visible for a WorkspaceImage no conditional style
-     * of a container.
+     * Tests that the checkbox used to specify the authorized sides of a bordered node are not visible for a
+     * WorkspaceImage no conditional style of a container.
      */
     public void testSidePropertyNoVisibilityOnSimpleNodeWithConditionalStyle() {
         final SWTBotTreeItem simpleNodeWithConditionalStyleParent = viewpointItemBot.getNode(0).getNode(0).getNode(0).getNode(DEFAULT_LAYER_NAME).getNode(0).getNode(1);
@@ -180,9 +174,8 @@ public class BorderNodeSidePropertySectionTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Tests that the checkbox used to specify the authorized sides of a
-     * bordered node are not visible for a WorkspaceImage conditional style of a
-     * container.
+     * Tests that the checkbox used to specify the authorized sides of a bordered node are not visible for a
+     * WorkspaceImage conditional style of a container.
      */
     public void testSidePropertyNoVisibilityOnSimpleNodeWithNoConditionalStyle() {
         final SWTBotTreeItem simpleNodeWithNoConditionalStyleParent = viewpointItemBot.getNode(0).getNode(0).getNode(0).getNode(DEFAULT_LAYER_NAME).getNode(0);

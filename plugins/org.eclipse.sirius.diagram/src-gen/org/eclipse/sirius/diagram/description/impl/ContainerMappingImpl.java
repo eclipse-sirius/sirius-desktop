@@ -19,14 +19,12 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.ContainerLayout;
-import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -207,21 +205,6 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * @generated
      */
     @Override
-    public EList<NodeMapping> getAllNodeMappings() {
-        // TODO: implement this method to return the 'All Node Mappings' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EList<NodeMapping> getReusedNodeMappings() {
         if (reusedNodeMappings == null) {
             reusedNodeMappings = new EObjectResolvingEList<NodeMapping>(NodeMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS);
@@ -253,21 +236,6 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
             reusedContainerMappings = new EObjectResolvingEList<ContainerMapping>(ContainerMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS);
         }
         return reusedContainerMappings;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EList<ContainerMapping> getAllContainerMappings() {
-        // TODO: implement this method to return the 'All Container Mappings' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -393,18 +361,6 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
      * @generated
      */
     @Override
-    public ContainerStyle getBestStyle(EObject modelElement, EObject viewVariable, EObject containerVariable) {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS:
@@ -431,16 +387,12 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
             return getDropDescriptions();
         case DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS:
             return getSubNodeMappings();
-        case DescriptionPackage.CONTAINER_MAPPING__ALL_NODE_MAPPINGS:
-            return getAllNodeMappings();
         case DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS:
             return getReusedNodeMappings();
         case DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS:
             return getSubContainerMappings();
         case DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS:
             return getReusedContainerMappings();
-        case DescriptionPackage.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS:
-            return getAllContainerMappings();
         case DescriptionPackage.CONTAINER_MAPPING__STYLE:
             if (resolve) {
                 return getStyle();
@@ -545,16 +497,12 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
             return dropDescriptions != null && !dropDescriptions.isEmpty();
         case DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS:
             return subNodeMappings != null && !subNodeMappings.isEmpty();
-        case DescriptionPackage.CONTAINER_MAPPING__ALL_NODE_MAPPINGS:
-            return !getAllNodeMappings().isEmpty();
         case DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS:
             return reusedNodeMappings != null && !reusedNodeMappings.isEmpty();
         case DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS:
             return subContainerMappings != null && !subContainerMappings.isEmpty();
         case DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS:
             return reusedContainerMappings != null && !reusedContainerMappings.isEmpty();
-        case DescriptionPackage.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS:
-            return !getAllContainerMappings().isEmpty();
         case DescriptionPackage.CONTAINER_MAPPING__STYLE:
             return style != null;
         case DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES:

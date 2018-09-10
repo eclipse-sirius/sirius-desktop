@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -32,6 +33,7 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.EObjectVariableValue;
 import org.eclipse.sirius.diagram.TypedVariableValue;
 import org.eclipse.sirius.diagram.VariableValue;
+import org.eclipse.sirius.diagram.business.internal.helper.filter.VariableFilterWrapper;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
@@ -71,8 +73,7 @@ public final class FilterTools {
         final EObject model = diagram.getTarget();
         final UICallBack uiCallback = SiriusEditPlugin.getPlugin().getUiCallback();
         /*
-         * First let's clear the Values history corresponding to this filter in
-         * the viewpoint
+         * First let's clear the Values history corresponding to this filter in the viewpoint
          */
         if (diagram.getFilterVariableHistory() != null) {
             final Iterator<VariableValue> it = diagram.getFilterVariableHistory().getOwnedValues().iterator();
@@ -106,8 +107,7 @@ public final class FilterTools {
                 FilterTools.computeInput(diagram, model, var, input);
 
                 if (!var.isMultiple()) {
-                    final EObject modelElement = uiCallback.askForEObject(var.getMessage(), input,
-                            DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
+                    final EObject modelElement = uiCallback.askForEObject(var.getMessage(), input, DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
 
                     final EObjectVariableValue newValue = DiagramFactory.eINSTANCE.createEObjectVariableValue();
                     newValue.setModelElement(modelElement);
@@ -117,8 +117,7 @@ public final class FilterTools {
                     }
                 } else {
                     EList<EObject> values = new BasicEList<EObject>();
-                    final Collection<EObject> modelElements = uiCallback.askForEObjects(var.getMessage(), input,
-                            DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
+                    final Collection<EObject> modelElements = uiCallback.askForEObjects(var.getMessage(), input, DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
 
                     values.addAll(modelElements);
                     EList<VariableValue> variables = new BasicEList<VariableValue>();
@@ -146,7 +145,10 @@ public final class FilterTools {
         /*
          * Now changing the model structure in a Map
          */
-        filter.resetVariables();
+        Optional<VariableFilterWrapper> variableFilterWrapper = filter.eAdapters().stream().filter(VariableFilterWrapper.class::isInstance).map(VariableFilterWrapper.class::cast).findFirst();
+        if (variableFilterWrapper.isPresent()) {
+            variableFilterWrapper.get().resetVariables();
+        }
     }
 
     private static List<VariableValue> getTypedVariableValue(UICallBack uiCallback, List<TypedVariable> typedVariableList, DSemanticDiagram diagram) {

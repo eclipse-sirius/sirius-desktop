@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -47,18 +47,11 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import com.google.common.primitives.Primitives;
 
 /**
- * A registry of {@link StyleDescription}. Its lifecycle must be valid only
- * during one refresh.
+ * A registry of {@link StyleDescription}. Its lifecycle must be valid only during one refresh.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKey, StyleDescription> {
-
-    /**
-     * The key of the annotation containing the cache of computed
-     * {@link StyleDescription}.
-     */
-    public static final String DANNOTATION_CUSTOMIZATION_KEY = "DANNOTATION_CUSTOMIZATION_KEY"; //$NON-NLS-1$
 
     private static final long serialVersionUID = 1L;
 
@@ -68,8 +61,7 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
      * Default constructor.
      * 
      * @param interpreter
-     *            the {@link IInterpreter} used to evaluate some
-     *            InterpretedExpression of style description
+     *            the {@link IInterpreter} used to evaluate some InterpretedExpression of style description
      */
     public BestStyleDescriptionRegistry(IInterpreter interpreter) {
         this.interpreter = interpreter;
@@ -92,10 +84,8 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
      * Returns the best style description to use for the given mapping.
      * 
      * @param bestStyleDescriptionKey
-     *            the {@link BestStyleDescriptionKey} identifying the best
-     *            {@link StyleDescription} to use.
-     * @return the best style description to use for the given
-     *         {@link BestStyleDescriptionKey}.
+     *            the {@link BestStyleDescriptionKey} identifying the best {@link StyleDescription} to use.
+     * @return the best style description to use for the given {@link BestStyleDescriptionKey}.
      */
     private StyleDescription getBestStyleDescription(BestStyleDescriptionKey bestStyleDescriptionKey) {
         StyleDescription result = null;
@@ -112,7 +102,7 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
             }
         }
         if (result == null) {
-            result = MappingHelper.getDefaultStyleDescription(diagramElementMapping);
+            result = MappingWithInterpreterHelper.getDefaultStyleDescription(diagramElementMapping);
         }
         if (result != null) {
             // Apply customization
@@ -122,14 +112,13 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
     }
 
     /**
-     * Get a customized release of the best {@link StyleDescription} if
-     * Customization exists, the same as in parameter else.
+     * Get a customized release of the best {@link StyleDescription} if Customization exists, the same as in parameter
+     * else.
      * 
      * @param styleDescription
      *            the {@link StyleDescription} to be customized
      * @param bestStyleDescriptionKey
-     *            the {@link BestStyleDescriptionKey} associated to the best
-     *            {@link StyleDescription}
+     *            the {@link BestStyleDescriptionKey} associated to the best {@link StyleDescription}
      * @return a customized release of the {@link StyleDescription} in parameter
      */
     private StyleDescription getCustomizedBestStyleDescription(StyleDescription styleDescription, BestStyleDescriptionKey bestStyleDescriptionKey) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -84,8 +84,7 @@ import com.google.common.collect.Sets;
 /**
  * Handle for clipboard action.
  * 
- * It allows Sirius to make a semantic copy/cut/paste for semantic elements and
- * to let GFM handle notes.
+ * It allows Sirius to make a semantic copy/cut/paste for semantic elements and to let GFM handle notes.
  * 
  * @author glefur
  * 
@@ -93,8 +92,8 @@ import com.google.common.collect.Sets;
 public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalActionHandler {
 
     /**
-     * Keep trace of the paste command computed for canPaste : avoid duplicated
-     * command buildong operation and mouse location change between.
+     * Keep trace of the paste command computed for canPaste : avoid duplicated command buildong operation and mouse
+     * location change between.
      */
     private ICommand pasteCommand;
 
@@ -107,8 +106,7 @@ public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalAction
     public boolean canHandle(IGlobalActionContext cntxt) {
 
         /*
-         * Check if the active part is a IDiagramWorkbenchPart and if the
-         * selection is a structured selection
+         * Check if the active part is a IDiagramWorkbenchPart and if the selection is a structured selection
          */
         IWorkbenchPart part = cntxt.getActivePart();
         if (!(part instanceof IDiagramWorkbenchPart) || !(cntxt.getSelection() instanceof IStructuredSelection)) {
@@ -323,8 +321,7 @@ public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalAction
             /* Get the selected edit parts */
             for (IGraphicalEditPart part : Iterables.filter(((IStructuredSelection) cntxt.getSelection()).toList(), IGraphicalEditPart.class)) {
                 /*
-                 * Send the request to the target edit part of the paste command
-                 * for the currently selected part
+                 * Send the request to the target edit part of the paste command for the currently selected part
                  */
                 EditPart targetEP = part.getTargetEditPart(pasteReq);
                 if (targetEP != null) {
@@ -486,7 +483,9 @@ public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalAction
             if (bestTool == null) {
                 bestTool = pasteTool;
             } else {
-                SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.SiriusClipboardGlobalActionHandler_severalFoundPasteToolError, pasteTarget.getTarget(), bestTool.getName(), pasteTool.getName()), new RuntimeException());
+                SiriusPlugin.getDefault().warning(
+                        MessageFormat.format(Messages.SiriusClipboardGlobalActionHandler_severalFoundPasteToolError, pasteTarget.getTarget(), bestTool.getName(), pasteTool.getName()),
+                        new RuntimeException());
             }
         }
 

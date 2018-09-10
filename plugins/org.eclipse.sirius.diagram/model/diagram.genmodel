@@ -99,15 +99,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagram/isInLayoutingMode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagram/isInShowingMode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagram/headerHeight"/>
-      <genOperations ecoreOperation="diagram.ecore#//DDiagram/getNodesFromMapping">
-        <genParameters ecoreParameter="diagram.ecore#//DDiagram/getNodesFromMapping/mapping"/>
-      </genOperations>
-      <genOperations ecoreOperation="diagram.ecore#//DDiagram/getEdgesFromMapping">
-        <genParameters ecoreParameter="diagram.ecore#//DDiagram/getEdgesFromMapping/mapping"/>
-      </genOperations>
-      <genOperations ecoreOperation="diagram.ecore#//DDiagram/getContainersFromMapping">
-        <genParameters ecoreParameter="diagram.ecore#//DDiagram/getContainersFromMapping/mapping"/>
-      </genOperations>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//DSemanticDiagram"/>
     <genClasses image="false" ecoreClass="diagram.ecore#//DDiagramElement">
@@ -192,7 +183,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DEdge/arrangeConstraints"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DEdge/beginLabel"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DEdge/endLabel"/>
-      <genOperations ecoreOperation="diagram.ecore#//DEdge/isRootFolding"/>
     </genClasses>
     <genClasses image="false" ecoreClass="diagram.ecore#//NodeStyle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//NodeStyle/labelPosition"/>
@@ -347,8 +337,6 @@
       <genClasses ecoreClass="diagram.ecore#//description/DiagramDescription">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/filters"/>
         <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/allEdgeMappings"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/allNodeMappings"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/allContainerMappings"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/validationSet"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/concerns"/>
         <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory=""
@@ -368,10 +356,6 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/diagramInitialisation"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/defaultLayer"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/additionalLayers"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/allLayers"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/allActivatedTools"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/nodeMappings"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/edgeMappings"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/edgeMappingImports"/>
@@ -419,15 +403,6 @@
         <genFeatures property="None" createChild="false" propertyCategory="Advanced"
             propertyDescription="Set to true to force the synchronization of the elements of this mapping when the current diagram is in an unsynchronized mode.\nThis option is used only if createElements is true and the diagram which contain the elements of this mapping is unsynchronized."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/DiagramElementMapping/synchronizationLock"/>
-        <genOperations ecoreOperation="diagram.ecore#//description/DiagramElementMapping/checkPrecondition">
-          <genParameters ecoreParameter="diagram.ecore#//description/DiagramElementMapping/checkPrecondition/modelElement"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/DiagramElementMapping/checkPrecondition/container"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/DiagramElementMapping/checkPrecondition/containerView"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/DiagramElementMapping/getAllMappings"/>
-        <genOperations ecoreOperation="diagram.ecore#//description/DiagramElementMapping/isFrom">
-          <genParameters ecoreParameter="diagram.ecore#//description/DiagramElementMapping/isFrom/element"/>
-        </genOperations>
       </genClasses>
       <genClasses image="false" ecoreClass="diagram.ecore#//description/AbstractNodeMapping">
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="Type of the element represented by the Node."
@@ -438,40 +413,13 @@
         <genOperations ecoreOperation="diagram.ecore#//description/AbstractNodeMapping/findDNodeFromEObject">
           <genParameters ecoreParameter="diagram.ecore#//description/AbstractNodeMapping/findDNodeFromEObject/eObject"/>
         </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/AbstractNodeMapping/clearDNodesDone"/>
-        <genOperations ecoreOperation="diagram.ecore#//description/AbstractNodeMapping/addDoneNode">
-          <genParameters ecoreParameter="diagram.ecore#//description/AbstractNodeMapping/addDoneNode/node"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/AbstractNodeMapping/getAllBorderedNodeMappings"/>
       </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/NodeMapping">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/NodeMapping/style"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/NodeMapping/conditionnalStyles"/>
-        <genOperations ecoreOperation="diagram.ecore#//description/NodeMapping/createNode">
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/createNode/modelElement"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/createNode/container"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/createNode/viewPoint"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/NodeMapping/updateNode">
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/updateNode/node"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/NodeMapping/updateListElement">
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/updateListElement/listElement"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/NodeMapping/getNodesCandidates">
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/getNodesCandidates/semanticOrigin"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/getNodesCandidates/container"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/NodeMapping/getNodesCandidates.1">
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/getNodesCandidates.1/semanticOrigin"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/getNodesCandidates.1/container"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/getNodesCandidates.1/containerView"/>
-        </genOperations>
       </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/ContainerMapping">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/ContainerMapping/subNodeMappings"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Import"
-            ecoreFeature="ecore:EReference diagram.ecore#//description/ContainerMapping/allNodeMappings"/>
         <genFeatures notify="false" createChild="false" propertyCategory="Import"
             propertyDescription="Node mappings reused as child of this container."
             propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/ContainerMapping/reusedNodeMappings"/>
@@ -479,17 +427,10 @@
         <genFeatures notify="false" createChild="false" propertyCategory="Import"
             propertyDescription="Container mappings reused as childs of this container."
             propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/ContainerMapping/reusedContainerMappings"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Import"
-            propertyDescription="" ecoreFeature="ecore:EReference diagram.ecore#//description/ContainerMapping/allContainerMappings"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/ContainerMapping/style"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/ContainerMapping/conditionnalStyles"/>
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="Tell whether the container will display it's children as list elements, as shapes or as regions."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/ContainerMapping/childrenPresentation"/>
-        <genOperations ecoreOperation="diagram.ecore#//description/ContainerMapping/getBestStyle">
-          <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getBestStyle/modelElement"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getBestStyle/viewVariable"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getBestStyle/containerVariable"/>
-        </genOperations>
       </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/NodeMappingImport">
         <genFeatures createChild="false" propertyCategory="Import" propertyDescription="Imported node mapping"
@@ -525,46 +466,8 @@
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/EdgeMapping/pathExpression"/>
         <genFeatures notify="false" createChild="false" propertyCategory="Path" propertyDescription="List of node mappings considered by the path expression."
             propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/EdgeMapping/pathNodeMapping"/>
-        <genOperations ecoreOperation="diagram.ecore#//description/EdgeMapping/createEdge">
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/createEdge/source"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/createEdge/target"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/createEdge/semanticTarget"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/EdgeMapping/createEdge.1">
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/createEdge.1/source"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/createEdge.1/target"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/createEdge.1/container"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/createEdge.1/semanticTarget"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/EdgeMapping/getBestStyle">
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/getBestStyle/modelElement"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/getBestStyle/viewVariable"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/getBestStyle/containerVariable"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/EdgeMapping/updateEdge">
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/updateEdge/viewEdge"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/EdgeMapping/getEdgeTargetCandidates">
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/getEdgeTargetCandidates/semanticOrigin"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/getEdgeTargetCandidates/viewPoint"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/EdgeMapping/getEdgeSourceCandidates">
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/getEdgeSourceCandidates/semanticOrigin"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/getEdgeSourceCandidates/viewPoint"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/EdgeMapping/getEdgeTargetCandidates.1">
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/getEdgeTargetCandidates.1/semanticOrigin"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/getEdgeTargetCandidates.1/container"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/EdgeMapping/getEdgeTargetCandidates.1/containerView"/>
-        </genOperations>
       </genClasses>
-      <genClasses image="false" ecoreClass="diagram.ecore#//description/IEdgeMapping">
-        <genOperations ecoreOperation="diagram.ecore#//description/IEdgeMapping/getBestStyle">
-          <genParameters ecoreParameter="diagram.ecore#//description/IEdgeMapping/getBestStyle/modelElement"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/IEdgeMapping/getBestStyle/viewVariable"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/IEdgeMapping/getBestStyle/containerVariable"/>
-        </genOperations>
-      </genClasses>
+      <genClasses image="false" ecoreClass="diagram.ecore#//description/IEdgeMapping"/>
       <genClasses ecoreClass="diagram.ecore#//description/EdgeMappingImport">
         <genFeatures notify="false" createChild="false" propertyCategory="General"
             propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/EdgeMappingImport/importedMapping"/>
@@ -649,7 +552,6 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/Layer/decorationDescriptionsSet"/>
         <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Optional icon for the layer."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/Layer/icon"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//description/Layer/allEdgeMappings"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/Layer/customization"/>
       </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/AdditionalLayer">
@@ -847,11 +749,6 @@
           <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
               propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/EdgeCreationDescription/extraTargetMappings"/>
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/EdgeCreationDescription/connectionStartPrecondition"/>
-          <genOperations ecoreOperation="diagram.ecore#//description/tool/EdgeCreationDescription/getBestMapping">
-            <genParameters ecoreParameter="diagram.ecore#//description/tool/EdgeCreationDescription/getBestMapping/source"/>
-            <genParameters ecoreParameter="diagram.ecore#//description/tool/EdgeCreationDescription/getBestMapping/target"/>
-            <genParameters ecoreParameter="diagram.ecore#//description/tool/EdgeCreationDescription/getBestMapping/createdElements"/>
-          </genOperations>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/tool/ContainerCreationDescription">
           <genFeatures notify="false" createChild="false" propertyCategory="General"
@@ -968,10 +865,6 @@
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/ContainerDropDescription/dragSource"/>
           <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="If set to true, drop to the container will not invalidate the linked edges."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/ContainerDropDescription/moveEdges"/>
-          <genOperations ecoreOperation="diagram.ecore#//description/tool/ContainerDropDescription/getBestMapping">
-            <genParameters ecoreParameter="diagram.ecore#//description/tool/ContainerDropDescription/getBestMapping/targetContainer"/>
-            <genParameters ecoreParameter="diagram.ecore#//description/tool/ContainerDropDescription/getBestMapping/droppedElement"/>
-          </genOperations>
           <genOperations ecoreOperation="diagram.ecore#//description/tool/ContainerDropDescription/getContainers"/>
         </genClasses>
       </nestedGenPackages>
@@ -989,9 +882,6 @@
         <genClasses image="false" ecoreClass="diagram.ecore#//description/filter/Filter">
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="A filter may hide an element or just collapse it. If an element is collapsed, any edge going from or to this element will still be visible."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/filter/Filter/filterKind"/>
-          <genOperations ecoreOperation="diagram.ecore#//description/filter/Filter/isVisible">
-            <genParameters ecoreParameter="diagram.ecore#//description/filter/Filter/isVisible/element"/>
-          </genOperations>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/filter/MappingFilter">
           <genFeatures notify="false" createChild="false" propertyCategory="General"
@@ -1005,7 +895,6 @@
         <genClasses ecoreClass="diagram.ecore#//description/filter/VariableFilter">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/filter/VariableFilter/ownedVariables"/>
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//description/filter/VariableFilter/semanticConditionExpression"/>
-          <genOperations ecoreOperation="diagram.ecore#//description/filter/VariableFilter/resetVariables"/>
         </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Concern" basePackage="org.eclipse.sirius.diagram.description"

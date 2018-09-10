@@ -8,9 +8,49 @@ h2(#sirius6.2.0). Changes in Sirius 6.2.0
 
 h3. Developer-Visible Changes
 
+h4. Changes in  @org.eclipse.sirius.diagram@
+
+* <span class="label label-info">Modified</span> Method _getAllEdgeMappings_ defined in @org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper@ has been moved in a new class called @org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentLayerHelper@ to ensure method to be independent from pure Sirius code. 
+* <span class="label label-danger">Removed</span> EOperations and features have been removed from the metamodel @diagram.ecore@. This is the ones that are computed outside of EMF environment with dependencies to IInterpreter or that are deprecated. The following EOperations have been removed/replaced: 
+** @DEdge.isRootFolding@ has been removed
+** @DDiagram.getNodesFromMapping@ has been replaced by @DDiagramSpecOperations.getNodesFromMapping@
+** @DDiagram.getEdgesFromMapping@ has been replaced by @DDiagramSpecOperations.getEdgesFromMapping@
+** @DDiagram.getContainersFromMapping@ has been replaced by @DDiagramSpecOperations.getEdgesFromMapping@
+** @DiagramElementMapping.checkPrecondition@ has been replaced by @SiriusElementMappingSpecOperations.checkPrecondition@
+** @DiagramElementMapping.getAllMappings@ has been replaced by @MappingHelper.getAllMappings@
+** @DiagramElementMapping.isFrom@ has been replaced by @SiriusElementMappingSpecOperations.isFrom@
+** @AbstractNodeMapping.clearDNodesDone@ has been replaced by @NodeMappingHelper.clearDNodesDone@
+** @AbstractNodeMapping.addDoneNode@ has been replaced by @NodeMappingHelper.addDoneNode@
+** @AbstractNodeMapping.getAllBorderedNodeMappings@ has been replaced by @MappingHelper.getAllBorderedNodeMappings@
+** @NodeMapping.createNode@ has been replaced by @NodeMappingHelper.createNode@
+** @NodeMapping.updateNode@ has been replaced by @NodeMappingHelper.updateNode@
+** @NodeMapping.updateListElement@ has been replaced by @NodeMappingHelper.updateListElement@
+** @NodeMapping.getNodesCandidates(semanticOrigin,container)@ has been replaced by @NodeMappingHelper.getNodesCandidates(semanticOrigin,container)@
+** @NodeMapping.getNodesCandidates(semanticOrigin,container,containerView)@ has been replaced by @NodeMappingHelper.getNodesCandidates(semanticOrigin,container,containerView)@
+** @ContainerMapping.getBestStyle@ has been replaced by @ContainerMappingWithInterpreterHelper.getBestStyle@
+** @EdgeMapping.createEdge(source,target,semanticTarget)@ has been replaced by @EdgeMappingHelper.createEdge(EdgeMapping, EdgeTarget, EdgeTarget, EObject, EObject)@
+** @EdgeMapping.createEdge(source,target,container,semanticTarget)@ has been replaced by @EdgeMappingHelper.createEdge(EdgeMapping, EdgeTarget, EdgeTarget, EObject, EObject)@
+** @EdgeMapping.getBestStyle@ has been replaced by @MappingWithInterpreterHelper.getBestStyle@
+** @EdgeMapping.updateEdge@ has been replaced by @EdgeMappingHelper.updateEdge@
+** @EdgeMapping.getEdgeTargetCandidates(semanticOrigin,viewPoint)@ has been replaced by @EdgeMappingHelper.getEdgeTargetCandidates@
+** @EdgeMapping.getEdgeSourceCandidates@ has been replaced by @EdgeMappingHelper.getEdgeSourceCandidates@
+** @EdgeMapping.getEdgeTargetCandidates(semanticOrigin,container,containerView)@ has been replaced by @EdgeMappingHelper.getEdgeTargetCandidates@
+** @EdgeCreationDescription.getBestMapping@ has been removed because it is never used.
+** @ContainerDropDescription.getBestMapping@ has been replaced by @ContainerMappingWithInterpreterHelper.getBestMapping@
+** @Filter.isVisible@ has been replaced by @FilterService.isVisible(Filter, DDiagramElement)@
+** @VariableFilter.resetVariables@ has been replaced by @VariableFilterWrapper.resetVariables@
+* <span class="label label-info">Modified</span> The following features have been removed/replaced:
+** @DiagramDescription.allNodeMappings@ has been replaced by @ContentHelper.getAllNodeMappings@
+** @DiagramDescription.allContainerMappings@ has been replaced by @ContentHelper.getAllContainerMappings@
+** @DiagramDescription.allLayers@ has been replaced by @LayerHelper.getAllLayers@
+** @ContainerMapping.allNodeMappings@ has been replaced by @ContainerMappingHelper.getAllNodeMappings@
+** @ContainerMapping.allContainerMappings@ has been replaced by @ContainerMappingHelper.getAllContainerMappings@
+** @Layer.allEdgeMappings@ has been replaced by @ContentLayerHelper.getAllEdgeMappings@
+
 h4. Changes in @org.eclipse.sirius.ui.editor@
 
 * <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.editor.api.pages.PageProvider.provides()@ now takes the @SessionEditor@ as an additional parameter to allow implementation to decide if it should provide an additional page or not.
+
 
 h2(#sirius6.1.2). Changes in Sirius 6.1.2
 

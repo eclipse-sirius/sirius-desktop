@@ -1,11 +1,9 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
- * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * https://www.eclipse.org/legal/epl-2.0/
- *
- * SPDX-License-Identifier: EPL-2.0
+ * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
  *    Obeo - initial API and implementation
@@ -14,36 +12,27 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.description.spec;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.ContainerStyle;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
-import org.eclipse.sirius.viewpoint.DMappingBased;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 
 /**
- * Implementation of the ontainerMappingImport interface. This class is more or
- * less a wrapper for another ContainerMapping, it helps in reusing mappings
- * from other elements.
+ * Implementation of the ontainerMappingImport interface. This class is more or less a wrapper for another
+ * ContainerMapping, it helps in reusing mappings from other elements.
  * 
  * @author mchauvin
  */
 public class ContainerMappingImportSpec extends ContainerMappingSpec implements ContainerMappingImport {
 
     /**
-     * The default value of the '{@link #isHideSubMappings()
-     * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #isHideSubMappings() <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @see #isHideSubMappings()
      * @ordered
@@ -51,9 +40,8 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     protected static final boolean HIDE_SUB_MAPPINGS_EDEFAULT = false;
 
     /**
-     * The default value of the '{@link #isInheritsAncestorFilters()
-     * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #isInheritsAncestorFilters() <em>Inherits Ancestor Filters</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isInheritsAncestorFilters()
      * @generated
@@ -62,9 +50,8 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     protected static final boolean INHERITS_ANCESTOR_FILTERS_EDEFAULT = true;
 
     /**
-     * The cached value of the '{@link #isHideSubMappings()
-     * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #isHideSubMappings() <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @see #isHideSubMappings()
      * @ordered
@@ -72,9 +59,8 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     protected boolean hideSubMappings = HIDE_SUB_MAPPINGS_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #isInheritsAncestorFilters()
-     * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isInheritsAncestorFilters() <em>Inherits Ancestor Filters</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #isInheritsAncestorFilters()
      * @generated
@@ -83,57 +69,14 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     protected boolean inheritsAncestorFilters = INHERITS_ANCESTOR_FILTERS_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getImportedMapping()
-     * <em>Imported Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getImportedMapping() <em>Imported Mapping</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @see #getImportedMapping()
      * @ordered
      */
     protected ContainerMapping importedMapping;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingSpec#isFrom(org.eclipse.sirius.viewpoint.DMappingBased)
-     */
-    @Override
-    public boolean isFrom(final DMappingBased element) {
-        return SiriusElementMappingSpecOperations.isFrom(this, element);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingSpec#addDoneNode(org.eclipse.sirius.viewpoint.DSemanticDecorator)
-     */
-    @Override
-    public void addDoneNode(final DSemanticDecorator node) {
-        super.addDoneNode(node);
-        if (getImportedMapping() != null && getImportedMapping() != this) {
-            getImportedMapping().addDoneNode(node);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingSpec#getBestStyle(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
-     */
-    @Override
-    public ContainerStyle getBestStyle(final EObject modelElement, final EObject viewVariable, final EObject containerVariable) {
-        StyleHelper sHelper = new StyleHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement));
-        final ContainerStyle result = sHelper.createContainerStyle(getStyle());
-        if (result == null && getImportedMapping() != null && getImportedMapping() != this) {
-            /*
-             * Here if you are importing a node and if we did not used custom
-             * styles, then we want to re-use it's styles.
-             */
-            return getImportedMapping().getBestStyle(modelElement, viewVariable, containerVariable);
-        }
-        return result;
-    }
 
     /**
      * {@inheritDoc}
@@ -341,8 +284,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl#eGet(int,
-     *      boolean, boolean)
+     * @see org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl#eGet(int, boolean, boolean)
      */
     @Override
     public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
@@ -372,11 +314,9 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
 
     // CHECKSTYLE:OFF
     /**
-     * {@inheritDoc} CHECKSTYLE:OFF because this code is copied from generated
-     * code
+     * {@inheritDoc} CHECKSTYLE:OFF because this code is copied from generated code
      * 
-     * @see org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl#eSet(int,
-     *      java.lang.Object)
+     * @see org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl#eSet(int, java.lang.Object)
      */
     @Override
     public void eSet(final int featureID, final Object newValue) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentLayerHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
@@ -78,7 +79,7 @@ public class EdgeMappingCreationDescriptionTests extends SiriusDiagramTestCase {
         Viewpoint viewpoint = ((Group) modelerResource.getContents().get(0)).getOwnedViewpoints().get(0);
         DiagramDescription diagramDescription = (DiagramDescription) viewpoint.getOwnedRepresentations().get(0);
         edgeCreationDescription = (EdgeCreationDescription) diagramDescription.getDefaultLayer().getAllTools().get(0);
-        edgeMapping2 = diagramDescription.getDefaultLayer().getAllEdgeMappings().get(1);
+        edgeMapping2 = ContentLayerHelper.getAllEdgeMappings(diagramDescription.getDefaultLayer()).get(1);
 
         DAnalysis dAnalysis = (DAnalysis) session.getSessionResource().getContents().get(0);
         EList<DRepresentationElement> ownedRepresentationElements = new DViewQuery(dAnalysis.getOwnedViews().get(0)).getLoadedRepresentations().get(0).getOwnedRepresentationElements();

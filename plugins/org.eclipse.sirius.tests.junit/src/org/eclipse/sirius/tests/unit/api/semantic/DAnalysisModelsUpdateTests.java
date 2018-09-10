@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -52,7 +52,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerWithInterpreterOperations;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
@@ -532,7 +532,7 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
         DragAndDropTargetDescription dragAndDropDescription = p1EPackageDragAndDropTarget.getDragAndDropDescription();
         EObject droppedElementForDropTool = workspaceDragAndDropSupport.convert(eObjectToDrag, session);
 
-        ContainerDropDescription dropTool = DDiagramElementContainerSpecOperations.getBestDropDescription(dragAndDropDescription, droppedElementForDropTool, null, semanticDropTarget,
+        ContainerDropDescription dropTool = DDiagramElementContainerWithInterpreterOperations.getBestDropDescription(dragAndDropDescription, droppedElementForDropTool, null, semanticDropTarget,
                 p1EPackageDragAndDropTarget, DragSource.PROJECT_EXPLORER_LITERAL, null);
         Command dropCmd = getCommandFactory().buildDropInContainerCommandFromTool(p1EPackageDragAndDropTarget, droppedElementForDropTool, dropTool);
         session.getTransactionalEditingDomain().getCommandStack().execute(dropCmd);

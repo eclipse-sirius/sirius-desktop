@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -66,7 +66,7 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescripti
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionMappingManagerQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerWithInterpreterOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -385,7 +385,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
         boolean result = false;
         DragAndDropTargetDescription dragDragAndDropDescription = containerView.getDragAndDropDescription();
         if (dragDragAndDropDescription != null) {
-            ContainerDropDescription dropTool = DDiagramElementContainerSpecOperations.getBestDropDescription(dragDragAndDropDescription, semanticElement, null,
+            ContainerDropDescription dropTool = DDiagramElementContainerWithInterpreterOperations.getBestDropDescription(dragDragAndDropDescription, semanticElement, null,
                     ((DSemanticDecorator) containerView).getTarget(), containerView, DragSource.PROJECT_EXPLORER_LITERAL, diagramElt);
             if (dropTool != null) {
                 Command command = getCommandFactory().buildDropInContainerCommandFromTool(containerView, semanticElement, dropTool);

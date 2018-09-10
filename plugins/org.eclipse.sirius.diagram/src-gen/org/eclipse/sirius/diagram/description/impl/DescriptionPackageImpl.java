@@ -452,7 +452,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getDiagramDescription_AllNodeMappings() {
+    public EReference getDiagramDescription_ValidationSet() {
         return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
@@ -462,7 +462,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getDiagramDescription_AllContainerMappings() {
+    public EReference getDiagramDescription_Concerns() {
         return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(3);
     }
 
@@ -472,7 +472,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getDiagramDescription_ValidationSet() {
+    public EReference getDiagramDescription_AllTools() {
         return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(4);
     }
 
@@ -482,28 +482,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getDiagramDescription_Concerns() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(5);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getDiagramDescription_AllTools() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(6);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EAttribute getDiagramDescription_DomainClass() {
-        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(7);
+        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -513,7 +493,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EAttribute getDiagramDescription_PreconditionExpression() {
-        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(8);
+        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -523,7 +503,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_DefaultConcern() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(9);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -533,7 +513,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EAttribute getDiagramDescription_RootExpression() {
-        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(10);
+        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(8);
     }
 
     /**
@@ -543,7 +523,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_Init() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(11);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(9);
     }
 
     /**
@@ -553,7 +533,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_Layout() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(12);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(10);
     }
 
     /**
@@ -563,7 +543,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_DiagramInitialisation() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(13);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(11);
     }
 
     /**
@@ -573,7 +553,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_DefaultLayer() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(14);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(12);
     }
 
     /**
@@ -583,27 +563,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_AdditionalLayers() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(15);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getDiagramDescription_AllLayers() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(16);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getDiagramDescription_AllActivatedTools() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(17);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(13);
     }
 
     /**
@@ -613,7 +573,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_NodeMappings() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(18);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(14);
     }
 
     /**
@@ -623,7 +583,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_EdgeMappings() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(19);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(15);
     }
 
     /**
@@ -633,7 +593,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_EdgeMappingImports() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(20);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(16);
     }
 
     /**
@@ -643,7 +603,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_ContainerMappings() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(21);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(17);
     }
 
     /**
@@ -653,7 +613,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_ReusedMappings() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(22);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(18);
     }
 
     /**
@@ -663,7 +623,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_ToolSection() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(23);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(19);
     }
 
     /**
@@ -673,7 +633,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_ReusedTools() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(24);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(20);
     }
 
     /**
@@ -683,7 +643,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EAttribute getDiagramDescription_EnablePopupBars() {
-        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(25);
+        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(21);
     }
 
     /**
@@ -693,7 +653,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     @Override
     public EReference getDiagramDescription_BackgroundColor() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(26);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(22);
     }
 
     /**
@@ -942,7 +902,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getContainerMapping_AllNodeMappings() {
+    public EReference getContainerMapping_ReusedNodeMappings() {
         return (EReference) containerMappingEClass.getEStructuralFeatures().get(1);
     }
 
@@ -952,7 +912,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getContainerMapping_ReusedNodeMappings() {
+    public EReference getContainerMapping_SubContainerMappings() {
         return (EReference) containerMappingEClass.getEStructuralFeatures().get(2);
     }
 
@@ -962,7 +922,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getContainerMapping_SubContainerMappings() {
+    public EReference getContainerMapping_ReusedContainerMappings() {
         return (EReference) containerMappingEClass.getEStructuralFeatures().get(3);
     }
 
@@ -972,7 +932,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getContainerMapping_ReusedContainerMappings() {
+    public EReference getContainerMapping_Style() {
         return (EReference) containerMappingEClass.getEStructuralFeatures().get(4);
     }
 
@@ -982,7 +942,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getContainerMapping_AllContainerMappings() {
+    public EReference getContainerMapping_ConditionnalStyles() {
         return (EReference) containerMappingEClass.getEStructuralFeatures().get(5);
     }
 
@@ -992,28 +952,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getContainerMapping_Style() {
-        return (EReference) containerMappingEClass.getEStructuralFeatures().get(6);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getContainerMapping_ConditionnalStyles() {
-        return (EReference) containerMappingEClass.getEStructuralFeatures().get(7);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EAttribute getContainerMapping_ChildrenPresentation() {
-        return (EAttribute) containerMappingEClass.getEStructuralFeatures().get(8);
+        return (EAttribute) containerMappingEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -1762,18 +1702,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EReference getLayer_AllEdgeMappings() {
-        return (EReference) layerEClass.getEStructuralFeatures().get(10);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EReference getLayer_Customization() {
-        return (EReference) layerEClass.getEStructuralFeatures().get(11);
+        return (EReference) layerEClass.getEStructuralFeatures().get(10);
     }
 
     /**
@@ -1889,8 +1819,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         diagramDescriptionEClass = createEClass(DescriptionPackage.DIAGRAM_DESCRIPTION);
         createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS);
         createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS);
-        createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS);
-        createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS);
         createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET);
         createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS);
         createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_TOOLS);
@@ -1903,8 +1831,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION);
         createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER);
         createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS);
-        createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS);
-        createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS);
         createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__NODE_MAPPINGS);
         createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS);
         createEReference(diagramDescriptionEClass, DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS);
@@ -1944,11 +1870,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         containerMappingEClass = createEClass(DescriptionPackage.CONTAINER_MAPPING);
         createEReference(containerMappingEClass, DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS);
-        createEReference(containerMappingEClass, DescriptionPackage.CONTAINER_MAPPING__ALL_NODE_MAPPINGS);
         createEReference(containerMappingEClass, DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS);
         createEReference(containerMappingEClass, DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS);
         createEReference(containerMappingEClass, DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS);
-        createEReference(containerMappingEClass, DescriptionPackage.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS);
         createEReference(containerMappingEClass, DescriptionPackage.CONTAINER_MAPPING__STYLE);
         createEReference(containerMappingEClass, DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES);
         createEAttribute(containerMappingEClass, DescriptionPackage.CONTAINER_MAPPING__CHILDREN_PRESENTATION);
@@ -2049,7 +1973,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEReference(layerEClass, DescriptionPackage.LAYER__REUSED_TOOLS);
         createEReference(layerEClass, DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET);
         createEAttribute(layerEClass, DescriptionPackage.LAYER__ICON);
-        createEReference(layerEClass, DescriptionPackage.LAYER__ALL_EDGE_MAPPINGS);
         createEReference(layerEClass, DescriptionPackage.LAYER__CUSTOMIZATION);
 
         additionalLayerEClass = createEClass(DescriptionPackage.ADDITIONAL_LAYER);
@@ -2101,7 +2024,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 .getEPackage(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
         DiagramPackage theDiagramPackage = (DiagramPackage) EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI);
-        ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
 
         // Add subpackages
         getESubpackages().add(theStylePackage);
@@ -2167,12 +2089,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEReference(getDiagramDescription_AllEdgeMappings(), this.getEdgeMapping(), null, "allEdgeMappings", null, 0, -1, DiagramDescription.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getDiagramDescription_AllNodeMappings(), this.getNodeMapping(), null, "allNodeMappings", null, 0, -1, DiagramDescription.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
-                EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
-                EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getDiagramDescription_AllContainerMappings(), this.getContainerMapping(), null, "allContainerMappings", null, 0, -1, DiagramDescription.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
-                EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
-                EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getDiagramDescription_ValidationSet(), theValidationPackage.getValidationSet(), null, "validationSet", null, 0, 1, DiagramDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -2208,12 +2124,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         getDiagramDescription_AdditionalLayers().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
-        initEReference(getDiagramDescription_AllLayers(), this.getLayer(), null, "allLayers", null, 0, -1, DiagramDescription.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEReference(getDiagramDescription_AllActivatedTools(), theToolPackage_1.getAbstractToolDescription(), null, "allActivatedTools", null, 0, -1, DiagramDescription.class, //$NON-NLS-1$
-                EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
-                EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getDiagramDescription_NodeMappings(), this.getNodeMapping(), null, "nodeMappings", null, 0, -1, DiagramDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
@@ -2291,16 +2201,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEAttribute(getDiagramElementMapping_SynchronizationLock(), theEcorePackage.getEBoolean(), "synchronizationLock", "false", 0, 1, DiagramElementMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$//$NON-NLS-2$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        EOperation op = addEOperation(diagramElementMappingEClass, theEcorePackage.getEBoolean(), "checkPrecondition", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "modelElement", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "container", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "containerView", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        addEOperation(diagramElementMappingEClass, this.getDiagramElementMapping(), "getAllMappings", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(diagramElementMappingEClass, theEcorePackage.getEBoolean(), "isFrom", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theViewpointPackage.getDMappingBased(), "element", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
         initEClass(abstractNodeMappingEClass, AbstractNodeMapping.class, "AbstractNodeMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getAbstractNodeMapping_DomainClass(), theDescriptionPackage_1.getTypeName(), "domainClass", null, 1, 1, AbstractNodeMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -2312,15 +2212,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        op = addEOperation(abstractNodeMappingEClass, theDiagramPackage.getDDiagramElement(), "findDNodeFromEObject", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        EOperation op = addEOperation(abstractNodeMappingEClass, theDiagramPackage.getDDiagramElement(), "findDNodeFromEObject", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         addEParameter(op, theEcorePackage.getEObject(), "eObject", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        addEOperation(abstractNodeMappingEClass, null, "clearDNodesDone", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(abstractNodeMappingEClass, null, "addDoneNode", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theViewpointPackage.getDSemanticDecorator(), "node", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        addEOperation(abstractNodeMappingEClass, this.getNodeMapping(), "getAllBorderedNodeMappings", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         initEClass(nodeMappingEClass, NodeMapping.class, "NodeMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getNodeMapping_Style(), theStylePackage.getNodeStyleDescription(), null, "style", null, 0, 1, NodeMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
@@ -2330,34 +2223,11 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        op = addEOperation(nodeMappingEClass, theDiagramPackage.getDNode(), "createNode", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "modelElement", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "container", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theDiagramPackage.getDDiagram(), "viewPoint", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(nodeMappingEClass, null, "updateNode", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theDiagramPackage.getDNode(), "node", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(nodeMappingEClass, null, "updateListElement", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theDiagramPackage.getDNodeListElement(), "listElement", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(nodeMappingEClass, theEcorePackage.getEObject(), "getNodesCandidates", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "semanticOrigin", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "container", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(nodeMappingEClass, theEcorePackage.getEObject(), "getNodesCandidates", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "semanticOrigin", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "container", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "containerView", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
         initEClass(containerMappingEClass, ContainerMapping.class, "ContainerMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getContainerMapping_SubNodeMappings(), this.getNodeMapping(), null, "subNodeMappings", null, 0, -1, ContainerMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         getContainerMapping_SubNodeMappings().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
-        initEReference(getContainerMapping_AllNodeMappings(), this.getNodeMapping(), null, "allNodeMappings", null, 0, -1, ContainerMapping.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
         initEReference(getContainerMapping_ReusedNodeMappings(), this.getNodeMapping(), null, "reusedNodeMappings", null, 0, -1, ContainerMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -2368,9 +2238,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEReference(getContainerMapping_ReusedContainerMappings(), this.getContainerMapping(), null, "reusedContainerMappings", null, 0, -1, ContainerMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getContainerMapping_AllContainerMappings(), this.getContainerMapping(), null, "allContainerMappings", null, 0, -1, ContainerMapping.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
-                EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
-                EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getContainerMapping_Style(), theStylePackage.getContainerStyleDescription(), null, "style", null, 0, 1, ContainerMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -2379,11 +2246,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getContainerMapping_ChildrenPresentation(), theDiagramPackage.getContainerLayout(), "childrenPresentation", "FreeForm", 1, 1, ContainerMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$//$NON-NLS-2$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-
-        op = addEOperation(containerMappingEClass, theDiagramPackage.getContainerStyle(), "getBestStyle", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "modelElement", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "viewVariable", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "containerVariable", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         initEClass(nodeMappingImportEClass, NodeMappingImport.class, "NodeMappingImport", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getNodeMappingImport_ImportedMapping(), this.getNodeMapping(), null, "importedMapping", null, 1, 1, NodeMappingImport.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
@@ -2428,44 +2290,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
 
-        op = addEOperation(edgeMappingEClass, theDiagramPackage.getDEdge(), "createEdge", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theDiagramPackage.getEdgeTarget(), "source", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theDiagramPackage.getEdgeTarget(), "target", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "semanticTarget", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(edgeMappingEClass, theDiagramPackage.getDEdge(), "createEdge", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theDiagramPackage.getEdgeTarget(), "source", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theDiagramPackage.getEdgeTarget(), "target", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "container", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "semanticTarget", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(edgeMappingEClass, theDiagramPackage.getEdgeStyle(), "getBestStyle", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "modelElement", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "viewVariable", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "containerVariable", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(edgeMappingEClass, null, "updateEdge", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theDiagramPackage.getDEdge(), "viewEdge", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(edgeMappingEClass, theEcorePackage.getEObject(), "getEdgeTargetCandidates", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "semanticOrigin", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theDiagramPackage.getDDiagram(), "viewPoint", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(edgeMappingEClass, theEcorePackage.getEObject(), "getEdgeSourceCandidates", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "semanticOrigin", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theDiagramPackage.getDDiagram(), "viewPoint", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(edgeMappingEClass, theEcorePackage.getEObject(), "getEdgeTargetCandidates", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "semanticOrigin", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "container", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "containerView", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
         initEClass(iEdgeMappingEClass, IEdgeMapping.class, "IEdgeMapping", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-        op = addEOperation(iEdgeMappingEClass, theDiagramPackage.getEdgeStyle(), "getBestStyle", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "modelElement", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "viewVariable", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theEcorePackage.getEObject(), "containerVariable", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         initEClass(edgeMappingImportEClass, EdgeMappingImport.class, "EdgeMappingImport", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getEdgeMappingImport_ImportedMapping(), this.getIEdgeMapping(), null, "importedMapping", null, 1, 1, EdgeMappingImport.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
@@ -2608,9 +2433,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getLayer_Icon(), theDescriptionPackage_1.getImagePath(), "icon", null, 0, 1, Layer.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
                 !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getLayer_AllEdgeMappings(), this.getEdgeMapping(), null, "allEdgeMappings", null, 0, -1, Layer.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
         initEReference(getLayer_Customization(), theDescriptionPackage_1.getCustomization(), null, "customization", null, 0, 1, Layer.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);

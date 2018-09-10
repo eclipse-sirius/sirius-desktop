@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,9 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramExtensionDescriptionQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -37,8 +39,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 
 /**
- * Class dedicated to tools applicability test. Should not be used directly but
- * leveraged through the specific queries. see xxxCreationDescriptionQuery()...
+ * Class dedicated to tools applicability test. Should not be used directly but leveraged through the specific queries.
+ * see xxxCreationDescriptionQuery()...
  * 
  * @author cbrun
  * 
@@ -63,8 +65,7 @@ public class AbstractNodeMappingApplicabilityTester {
         Iterator<DiagramElementMapping> superTypes = selfAndSuperTypes.iterator();
         while (!canCreateIn && superTypes.hasNext()) {
             /*
-             * we're pretty sure the super of a container mapping is a container
-             * mapping, the cast is safe.
+             * we're pretty sure the super of a container mapping is a container mapping, the cast is safe.
              */
 
             DiagramElementMapping selfOrSuper = superTypes.next();
@@ -82,13 +83,11 @@ public class AbstractNodeMappingApplicabilityTester {
     }
 
     /**
-     * return true if the node could be created on the current container
-     * checking the mapping consistency.
+     * return true if the node could be created on the current container checking the mapping consistency.
      * 
      * @param diagram
      *            any diagram
-     * @return true if the node could be created on the current container
-     *         checking the mapping consistency.
+     * @return true if the node could be created on the current container checking the mapping consistency.
      */
     public boolean canCreateIn(DDiagram diagram) {
         if (diagram.getDescription() != null) {
@@ -106,8 +105,7 @@ public class AbstractNodeMappingApplicabilityTester {
         Iterator<DiagramDescription> superTypes = selfAndSuperTypes.iterator();
         while (!canCreateIn && superTypes.hasNext()) {
             /*
-             * we're pretty sure the super of a container mapping is a container
-             * mapping, the cast is safe.
+             * we're pretty sure the super of a container mapping is a container mapping, the cast is safe.
              */
 
             DiagramDescription selfOrSuper = superTypes.next();
@@ -138,7 +136,7 @@ public class AbstractNodeMappingApplicabilityTester {
     }
 
     private boolean checkValidSubMappingsAreSubtypeOf(DiagramDescription description, Iterable<? extends AbstractNodeMapping> collectToolNodeMappings) {
-        for (final AbstractNodeMapping validChild : Iterables.concat(description.getAllNodeMappings(), description.getAllContainerMappings())) {
+        for (final AbstractNodeMapping validChild : Iterables.concat(ContentHelper.getAllNodeMappings(description, false), ContentHelper.getAllContainerMappings(description, false))) {
             if (doCheckAtLeastOneIsSubTypeOf(validChild, collectToolNodeMappings)) {
                 return true;
             }
@@ -164,18 +162,15 @@ public class AbstractNodeMappingApplicabilityTester {
     }
 
     /**
-     * return true if the node could be created on the current container
-     * checking the mapping consistency.
+     * return true if the node could be created on the current container checking the mapping consistency.
      * 
      * @param container
      *            any container
-     * @return true if the node could be created on the current container
-     *         checking the mapping consistency.
+     * @return true if the node could be created on the current container checking the mapping consistency.
      */
     public boolean canCreateIn(DDiagramElementContainer container) {
         /*
-         * here we should check if one of the node mappings is inside the
-         * container mapping
+         * here we should check if one of the node mappings is inside the container mapping
          */
         final ContainerMapping containerMapping = container.getActualMapping();
         if (containerMapping != null) {
@@ -185,13 +180,11 @@ public class AbstractNodeMappingApplicabilityTester {
     }
 
     /**
-     * return true if the node could be created on the current container
-     * checking the mapping consistency.
+     * return true if the node could be created on the current container checking the mapping consistency.
      * 
      * @param node
      *            any container node
-     * @return true if the node could be created on the current container
-     *         checking the mapping consistency.
+     * @return true if the node could be created on the current container checking the mapping consistency.
      */
     public boolean canCreateIn(DNode node) {
         final NodeMapping nodeMapping = node.getActualMapping();
@@ -203,7 +196,8 @@ public class AbstractNodeMappingApplicabilityTester {
     }
 
     private boolean checkValidSubMappingsAreSubtypeOf(final ContainerMapping containerMapping, Iterable<? extends AbstractNodeMapping> toolDefinedMappings) {
-        for (final AbstractNodeMapping validChild : Iterables.concat(containerMapping.getAllNodeMappings(), containerMapping.getAllBorderedNodeMappings(), containerMapping.getAllContainerMappings())) {
+        for (final AbstractNodeMapping validChild : Iterables.concat(MappingHelper.getAllNodeMappings(containerMapping), MappingHelper.getAllBorderedNodeMappings(containerMapping),
+                MappingHelper.getAllContainerMappings(containerMapping))) {
             if (doCheckAtLeastOneIsSubTypeOf(validChild, toolDefinedMappings)) {
                 return true;
             }
@@ -212,7 +206,7 @@ public class AbstractNodeMappingApplicabilityTester {
     }
 
     private boolean checkValidSubMappingsAreSubtypeOf(NodeMapping selfOrSuper, Iterable<? extends AbstractNodeMapping> collectToolNodeMappings) {
-        for (final AbstractNodeMapping validChild : selfOrSuper.getAllBorderedNodeMappings()) {
+        for (final AbstractNodeMapping validChild : MappingHelper.getAllBorderedNodeMappings(selfOrSuper)) {
             if (doCheckAtLeastOneIsSubTypeOf(validChild, collectToolNodeMappings)) {
                 return true;
             }

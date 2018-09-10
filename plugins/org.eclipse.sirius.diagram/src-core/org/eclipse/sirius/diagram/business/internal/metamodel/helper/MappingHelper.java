@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,16 +12,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.BasicEList.UnmodifiableEList;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
-import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 
 /**
  * Helper to create/update diagram elements.
@@ -30,99 +32,72 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  */
 public final class MappingHelper {
 
-    private BestStyleDescriptionRegistry bestStyleDescriptionRegistry;
-
-    private StyleHelper styleHelper;
-
-    /**
-     * Create the helper.
-     * 
-     * @param interpreter
-     *            interpreter used to evaluate expressions.
-     */
-    public MappingHelper(IInterpreter interpreter) {
-        this.bestStyleDescriptionRegistry = new BestStyleDescriptionRegistry(interpreter);
-        this.styleHelper = new StyleHelper(interpreter);
+    private MappingHelper() {
+        super();
     }
 
     /**
-     * Affect the style to the specified diagram element with the given mapping,
-     * semantic element, view and container and refresh it.
+     * Returns all mappings the given mapping contains.
      * 
      * @param mapping
-     *            the mapping.
-     * @param diagramElement
-     *            the diagram element.
-     * @param semanticElement
-     *            the semantic element of the diagram element.
-     * @param containerVariable
-     *            the semantic element of the container of the view.
-     * @param parentDiagram
-     *            the parent diagram of the edge
+     *            the mapping from which contained mappings must be retrieved.
+     * @return all mappings the given mapping contains.
      */
-    public void affectAndRefreshStyle(final DiagramElementMapping mapping, final DDiagramElement diagramElement, final EObject semanticElement, final EObject containerVariable,
-            final DDiagram parentDiagram) {
-        final Style currentStyle = diagramElement.getStyle();
-        final Style bestStyle = getBestStyle(mapping, semanticElement, diagramElement, containerVariable, parentDiagram);
-
-        this.styleHelper.setAndRefreshStyle(diagramElement, currentStyle, bestStyle);
-    }
-
-    /**
-     * Gets the best style to use.
-     * 
-     * @param mapping
-     *            the mapping.
-     * @param modelElement
-     *            the semantic element.
-     * @param viewVariable
-     *            the view variable.
-     * @param containerVariable
-     *            the semantic container variable.
-     * @param parentDiagram
-     *            the parent diagram of the edge
-     * @return the best style to use.
-     */
-    public Style getBestStyle(final DiagramElementMapping mapping, final EObject modelElement, final EObject viewVariable, final EObject containerVariable, final DDiagram parentDiagram) {
-        final StyleDescription description = getBestStyleDescription(mapping, modelElement, viewVariable, containerVariable, parentDiagram);
-        Style result = null;
-        if (description != null) {
-            result = this.styleHelper.createStyle(description);
+    public static EList<DiagramElementMapping> getAllMappings(final DiagramElementMapping mapping) {
+        EList<DiagramElementMapping> diagramElementMappings = new BasicEList<>();
+        if (mapping instanceof ContainerMapping) {
+            diagramElementMappings = ContainerMappingHelper.getAllMappings((ContainerMapping) mapping);
+        } else if (mapping instanceof EdgeMappingImport) {
+            final EdgeMapping edgeMapping = MappingHelper.getEdgeMapping((EdgeMappingImport) mapping);
+            if (edgeMapping != null) {
+                diagramElementMappings = getAllMappings(edgeMapping);
+            }
+        } else if (mapping instanceof NodeMapping) {
+            final BasicEList<DiagramElementMapping> allMappings = new BasicEList<DiagramElementMapping>();
+            allMappings.addAll(getAllBorderedNodeMappings((NodeMapping) mapping));
+            diagramElementMappings = new UnmodifiableEList<DiagramElementMapping>(allMappings.size(), allMappings.toArray());
+        } else {
+            diagramElementMappings = new BasicEList.UnmodifiableEList<DiagramElementMapping>(0, new Object[0]);
         }
+        return diagramElementMappings;
+    }
+
+    /**
+     * Implementation of {@link AbstractNodeMapping#getAllBorderedNodeMappings()}.
+     * 
+     * @param nodeMapping
+     *            the mapping.
+     * @return all bordered node mappings.
+     */
+    public static EList<NodeMapping> getAllBorderedNodeMappings(final AbstractNodeMapping nodeMapping) {
+        final EList<NodeMapping> result = new BasicEList<NodeMapping>();
+        result.addAll(nodeMapping.getBorderedNodeMappings());
+        result.addAll(nodeMapping.getReusedBorderedNodeMappings());
         return result;
     }
 
     /**
-     * Returns the best style description to use for the given mapping.
+     * Return an unmodifiable EList of all node mapping contained by the given container mapping.
      * 
-     * @param mapping
-     *            the mapping.
-     * @param modelElement
-     *            the semantic element.
-     * @param viewVariable
-     *            the view variable.
-     * @param containerVariable
-     *            the semantic container variable.
-     * @param parentDiagram
-     *            the parent diagram of the edge
-     * @return the best style description to use for the given mapping.
+     * @param containerMapping
+     *            the mapping from which we want to retrieve contained node mappings
+     * @return an unmodifiable EList of all node mapping contained by the given container mapping.
      */
-    public StyleDescription getBestStyleDescription(final DiagramElementMapping mapping, final EObject modelElement, final EObject viewVariable, final EObject containerVariable,
-            final DDiagram parentDiagram) {
-        BestStyleDescriptionKey bestStyleDescriptionKey = new BestStyleDescriptionKey(mapping, modelElement, viewVariable, containerVariable, parentDiagram);
-        StyleDescription result = bestStyleDescriptionRegistry.get(bestStyleDescriptionKey);
-        return result;
+    public static EList<NodeMapping> getAllNodeMappings(ContainerMapping containerMapping) {
+        final Collection<NodeMapping> result = ContainerMappingHelper.getAllNodeMappings(containerMapping);
+        return new UnmodifiableEList<>(result.size(), result.toArray());
     }
 
     /**
-     * Returns the default style description of the given mapping.
+     * Return an unmodifiable EList of all container mapping contained by the given container mapping.
      * 
-     * @param mapping
-     *            the mapping.
-     * @return the default style description of the given mapping.
+     * @param containerMapping
+     *            the mapping from which we want to retrieve contained container mappings
+     * @return an unmodifiable EList of all container mapping contained by the given container mapping.
      */
-    public static StyleDescription getDefaultStyleDescription(final DiagramElementMapping mapping) {
-        return new GetDefaultStyle().doSwitch(mapping);
+    public static EList<ContainerMapping> getAllContainerMappings(ContainerMapping containerMapping) {
+        final Collection<ContainerMapping> result = ContainerMappingHelper.getAllContainerMappings(containerMapping);
+        return new UnmodifiableEList<>(result.size(), result.toArray());
     }
 
     /**

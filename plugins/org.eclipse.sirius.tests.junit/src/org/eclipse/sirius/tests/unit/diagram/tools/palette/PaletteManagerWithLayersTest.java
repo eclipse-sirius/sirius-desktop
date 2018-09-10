@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
@@ -273,7 +274,7 @@ public class PaletteManagerWithLayersTest extends AbstractPaletteManagerSectionT
 
     private Layer getLayer(String partialId) {
         Layer result = null;
-        EList<Layer> allLayers = dDiagram.getDescription().getAllLayers();
+        EList<Layer> allLayers = LayerHelper.getAllLayers(dDiagram.getDescription());
         for (Layer layer : allLayers) {
             if (layer.getName().contains(partialId)) {
                 result = layer;

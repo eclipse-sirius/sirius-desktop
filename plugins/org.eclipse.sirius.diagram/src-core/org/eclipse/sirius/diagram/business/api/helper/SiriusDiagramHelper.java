@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,9 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.api.query.GroupQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.ext.base.Option;
@@ -66,25 +68,24 @@ public final class SiriusDiagramHelper {
     public static DDiagramElement createElement(final RepresentationElementMapping mapping, final DSemanticDiagram diagram, final EObject modelElement) {
         DDiagramElement created = null;
         if (mapping instanceof NodeMapping) {
-            created = ((NodeMapping) mapping).createNode(modelElement, diagram.getTarget(), diagram);
+            IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
+            created = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) mapping, modelElement, diagram.getTarget(), diagram);
         }
         if (mapping instanceof IContainerMappingExt) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(diagram.getTarget());
-            return new ContainerMappingHelper(interpreter).createContainer((IContainerMappingExt) mapping, modelElement, diagram.getTarget(), diagram);
+            return new ContainerMappingWithInterpreterHelper(interpreter).createContainer((IContainerMappingExt) mapping, modelElement, diagram.getTarget(), diagram);
         }
         return created;
     }
 
     /**
-     * Return the {@link DiagramDescription} having the same name has the given
-     * one .
+     * Return the {@link DiagramDescription} having the same name has the given one .
      * 
      * @param groups
      *            a list of groups to search in.
      * @param diagramDescriptionName
      *            the {@link DiagramDescription} name.
-     * @return the {@link DiagramDescription} having the same name has the given
-     *         one .
+     * @return the {@link DiagramDescription} having the same name has the given one .
      */
     public static DiagramDescription findDiagramDescription(final Collection<Group> groups, final String diagramDescriptionName) {
         final Iterator<Group> itG = groups.iterator();
@@ -99,10 +100,8 @@ public final class SiriusDiagramHelper {
     }
 
     /**
-     * Adds the given elementToAdd at the end of the given list; it does no
-     * uniqueness checking. <br/>
-     * If the given list has no <i>addUnique</i> method available, a simple add
-     * is realized.
+     * Adds the given elementToAdd at the end of the given list; it does no uniqueness checking. <br/>
+     * If the given list has no <i>addUnique</i> method available, a simple add is realized.
      * 
      * @param <T>
      *            the type of the elementToAdd
@@ -120,10 +119,8 @@ public final class SiriusDiagramHelper {
     }
 
     /**
-     * Adds the given elementToAdd in the given list at the given index; it does
-     * no uniqueness checking. <br/>
-     * If the given list has no <i>addUnique</i> method available, a simple add
-     * is realized.
+     * Adds the given elementToAdd in the given list at the given index; it does no uniqueness checking. <br/>
+     * If the given list has no <i>addUnique</i> method available, a simple add is realized.
      * 
      * @param <T>
      *            the type of the elementToAdd
@@ -143,8 +140,7 @@ public final class SiriusDiagramHelper {
     }
 
     /**
-     * Add an abstract node to the corresponding container, checking if it's a
-     * border node or not.
+     * Add an abstract node to the corresponding container, checking if it's a border node or not.
      * 
      * @param container
      *            a view container.
@@ -180,8 +176,7 @@ public final class SiriusDiagramHelper {
     }
 
     /**
-     * Remove an abstract node to the corresponding container, checking if it's
-     * a border node or not.
+     * Remove an abstract node to the corresponding container, checking if it's a border node or not.
      * 
      * @param container
      *            a view container.
@@ -211,8 +206,7 @@ public final class SiriusDiagramHelper {
     }
 
     /**
-     * Add an abstract node to the corresponding container, checking if it's a
-     * border node or not.
+     * Add an abstract node to the corresponding container, checking if it's a border node or not.
      * 
      * @param container
      *            a view container.

@@ -44,6 +44,8 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -207,7 +209,7 @@ public final class EdgeMappingHelper {
          * We'll see if it's proven to be useful
          */
         // Get the best style according to conditionals styles
-        final EdgeStyle style = (EdgeStyle) new MappingHelper(interpreter).getBestStyle(edgeMapping, newEdge.getTarget(), diagram, container, diagram);
+        final EdgeStyle style = (EdgeStyle) new MappingWithInterpreterHelper(interpreter).getBestStyle(edgeMapping, newEdge.getTarget(), diagram, container, diagram);
         EdgeStyleDescription styleDescription = null;
         DiagramElementMappingHelper.refreshSemanticElements(edgeMapping, newEdge, interpreter);
 
@@ -303,7 +305,7 @@ public final class EdgeMappingHelper {
 
             for (final EObject current : elements) {
                 for (final AbstractNodeMapping currentNodeMapping : edgeMapping.getPathNodeMapping()) {
-                    final List<DDiagramElement> listView = currentNodeMapping.findDNodeFromEObject(current);
+                    final List<DDiagramElement> listView = findDNodeFromEObject(currentNodeMapping, current);
                     if (listView != null) {
                         final Iterator<DDiagramElement> iterViews = listView.iterator();
                         while (iterViews.hasNext()) {
@@ -326,6 +328,18 @@ public final class EdgeMappingHelper {
         }
     }
 
+    private List<DDiagramElement> findDNodeFromEObject(AbstractNodeMapping currentNodeMapping, EObject current) {
+        List<DDiagramElement> result = new BasicEList<>();
+        if (currentNodeMapping instanceof IContainerMappingExt) {
+            IContainerMappingExt containerMapping = (IContainerMappingExt) currentNodeMapping;
+            result = ContainerMappingWithInterpreterHelper.findDNodeFromEObject(containerMapping, current);
+        } else if (currentNodeMapping instanceof INodeMappingExt) {
+            INodeMappingExt nodeMapping = (INodeMappingExt) currentNodeMapping;
+            result = NodeMappingHelper.findDNodeFromEObject(nodeMapping, current);
+        }
+        return result;
+    }
+
     /**
      * Update an existing edge.
      * 
@@ -341,7 +355,7 @@ public final class EdgeMappingHelper {
             if (dEdge.eContainer() instanceof DSemanticDecorator) {
                 containerVariable = ((DSemanticDecorator) dEdge.eContainer()).getTarget();
             }
-            final EdgeStyleDescription styleDescription = (EdgeStyleDescription) new MappingHelper(interpreter).getBestStyleDescription(edgeMapping, dEdge.getTarget(), dEdge, containerVariable,
+            final EdgeStyleDescription styleDescription = (EdgeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(edgeMapping, dEdge.getTarget(), dEdge, containerVariable,
                     dEdge.getParentDiagram());
 
             DDiagram dDiagram = dEdge.getParentDiagram();
@@ -450,13 +464,13 @@ public final class EdgeMappingHelper {
 
         if (mapping.isUseDomainElement()) {
             final EObject edgeTarget = dEdge.getTarget();
-            if (mapping.getEdgeTargetCandidates(edgeTarget, vp).contains(target)) {
-                if (mapping.getEdgeSourceCandidates(edgeTarget, vp).contains(source)) {
+            if (getEdgeMappingTargetCandidates(mapping, edgeTarget, vp).contains(target)) {
+                if (getEdgeMappingSourceCandidates(mapping, edgeTarget, vp).contains(source)) {
                     result = true;
                 }
             }
         } else {
-            if (mapping.getEdgeTargetCandidates(source, vp).contains(target)) {
+            if (getEdgeMappingTargetCandidates(mapping, source, vp).contains(target)) {
                 result = true;
             }
         }
@@ -522,4 +536,15 @@ public final class EdgeMappingHelper {
         }
         return result;
     }
+
+    private EList<EObject> getEdgeMappingTargetCandidates(final EdgeMapping edgeMapping, final EObject semanticOrigin, final DDiagram diagram) {
+        IInterpreter newInterpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticOrigin);
+        return new EdgeMappingHelper(newInterpreter).getEdgeTargetCandidates(edgeMapping, semanticOrigin, diagram);
+    }
+
+    private EList<EObject> getEdgeMappingSourceCandidates(final EdgeMapping edgeMapping, final EObject semanticOrigin, final DDiagram diagram) {
+        IInterpreter newInterpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(edgeMapping.getStyle());
+        return new EdgeMappingHelper(newInterpreter).getEdgeSourceCandidates(edgeMapping, semanticOrigin, diagram);
+    }
+
 }

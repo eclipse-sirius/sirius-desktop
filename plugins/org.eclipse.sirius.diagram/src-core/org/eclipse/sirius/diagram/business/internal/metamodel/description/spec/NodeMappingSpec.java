@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,36 +12,22 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.description.spec;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.BasicEList.UnmodifiableEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.impl.NodeMappingImpl;
-import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
- * The implementation of NodeMapping. The actual code should be placed in
- * {@link NodeMappingHelper} so that it can be reused without copy/paste by
- * specialized node mapping types.
+ * The implementation of NodeMapping. The actual code should be placed in {@link NodeMappingHelper} so that it can be
+ * reused without copy/paste by specialized node mapping types.
  * 
  * @author ymortier, pcdavid
  */
@@ -54,6 +40,7 @@ public class NodeMappingSpec extends NodeMappingImpl implements INodeMappingExt 
     /**
      * {@inheritDoc}
      */
+    @Override
     public Map<EObject, EList<DSemanticDecorator>> getViewNodesDone() {
         return viewNodesDone;
     }
@@ -61,117 +48,24 @@ public class NodeMappingSpec extends NodeMappingImpl implements INodeMappingExt 
     /**
      * {@inheritDoc}
      */
+    @Override
     public Map<EObjectCouple, EList<EObject>> getCandidatesCache() {
         return candidatesCache;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public EList<EObject> getNodesCandidates(final EObject semanticOrigin, final EObject container) {
-        return NodeMappingHelper.getNodesCandidates(this, semanticOrigin, container);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public EList<EObject> getNodesCandidates(final EObject semanticOrigin, final EObject container, final EObject containerView) {
-        return NodeMappingHelper.getNodesCandidates(this, semanticOrigin, container, containerView);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public DNode createNode(final EObject modelElement, final EObject container, final DDiagram diagram) {
-        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
-        return new NodeMappingHelper(interpreter).createNode(this, modelElement, container, diagram);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void updateNode(final DNode node) {
-        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(node);
-        new NodeMappingHelper(interpreter).updateNode(this, node);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void updateListElement(final DNodeListElement listElement) {
-        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(listElement);
-        new NodeMappingHelper(interpreter).updateListElement(this, listElement);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void clearDNodesDone() {
-        NodeMappingHelper.clearDNodesDone(this);
-    }
 
     /**
      * {@inheritDoc}
      */
     @Override
     public EList<DDiagramElement> findDNodeFromEObject(final EObject object) {
-        return NodeMappingHelper.findDNodeFromEObject(this, object);
-    }
-
-    /*
-     * Here we add the behavior we should inherit from AbstractNodeMapping
-     */
-
-    /**
-     * {@inheritDoc}
-     */
-    public void createBorderingNodes(final EObject modelElement, final DDiagramElement vpElement, final Collection filterSemantic, final DDiagram viewPoint) {
-        AbstractNodeMappingSpecOperations.createBorderingNodes(this, modelElement, vpElement, filterSemantic, viewPoint);
+        throw new UnsupportedOperationException();
     }
 
     /*
      * Behavior inherited from DiagramElementMapping
      */
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean checkPrecondition(final EObject modelElement, final EObject container, final EObject containerView) {
-        return SiriusElementMappingSpecOperations.checkPrecondition(this, modelElement, container, containerView);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public EList<DiagramElementMapping> getAllMappings() {
-        final BasicEList<DiagramElementMapping> allMappings = new BasicEList<DiagramElementMapping>();
-        allMappings.addAll(this.getAllBorderedNodeMappings());
-        return new UnmodifiableEList<DiagramElementMapping>(allMappings.size(), allMappings.toArray());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isFrom(final DMappingBased element) {
-        return SiriusElementMappingSpecOperations.isFrom(this, element);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void addDoneNode(final DSemanticDecorator node) {
-        NodeMappingHelper.addDoneNode(this, node);
-    }
 
     /**
      * {@inheritDoc}
@@ -179,13 +73,5 @@ public class NodeMappingSpec extends NodeMappingImpl implements INodeMappingExt 
     @Override
     public String toString() {
         return new StringBuffer(getClass().getName()).append(" ").append(getName()).toString(); //$NON-NLS-1$
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public EList<NodeMapping> getAllBorderedNodeMappings() {
-        return AbstractNodeMappingSpecOperations.getAllBorderedNodeMappings(this);
     }
 }

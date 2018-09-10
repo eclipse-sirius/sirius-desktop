@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -35,9 +36,12 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
@@ -345,7 +349,12 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
      */
     public void testValidationExpressionWithAcceleo3OnSequenceDiagramExecution() {
         InstanceRoleMapping instanceRole = (InstanceRoleMapping) sequenceDiagramAcceleo3.getDefaultLayer().getNodeMappings().iterator().next();
-        ExecutionMapping executionMapping = (ExecutionMapping) instanceRole.getAllMappings().iterator().next();
+        
+        
+        BasicEList<DiagramElementMapping> allMappings = new BasicEList<DiagramElementMapping>();
+        allMappings.addAll(MappingHelper.getAllBorderedNodeMappings(instanceRole));
+        
+        ExecutionMapping executionMapping = (ExecutionMapping) allMappings.iterator().next();
         ensureExpressionValidationRaisedExpectedErrors(executionMapping, "startingEndFinderExpression", "[self/]",
                 "The EClass interactions.Participant used in domainClass is not accessible. You are most likely trying to use an EClass without having a dependency to its plugin.");
         ensureExpressionValidationRaisedExpectedErrors(executionMapping, "startingEndFinderExpression", "[self.invalidFeature/]",
@@ -433,7 +442,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     }
 
     private Layer getLayer(DiagramDescription diagramDescription, final String expectedLayerName) {
-        Iterable<Layer> layers = Iterables.filter(diagramDescription.getAllLayers(), new Predicate<Layer>() {
+        Iterable<Layer> layers = Iterables.filter(LayerHelper.getAllLayers(diagramDescription), new Predicate<Layer>() {
             @Override
             public boolean apply(Layer input) {
                 return input.getName().equals(expectedLayerName);

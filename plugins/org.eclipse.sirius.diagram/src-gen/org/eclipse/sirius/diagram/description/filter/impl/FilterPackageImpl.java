@@ -416,9 +416,6 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
         initEAttribute(getFilter_FilterKind(), this.getFilterKind(), "filterKind", "HIDE", 0, 1, Filter.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$//$NON-NLS-2$
                 !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        op = addEOperation(filterEClass, theEcorePackage.getEBoolean(), "isVisible", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, theDiagramPackage.getDDiagramElement(), "element", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
         initEClass(mappingFilterEClass, MappingFilter.class, "MappingFilter", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getMappingFilter_Mappings(), theDescriptionPackage.getDiagramElementMapping(), null, "mappings", null, 0, -1, MappingFilter.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
@@ -443,8 +440,6 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
         initEAttribute(getVariableFilter_SemanticConditionExpression(), theDescriptionPackage_1.getInterpretedExpression(), "semanticConditionExpression", "", 0, 1, VariableFilter.class, //$NON-NLS-1$//$NON-NLS-2$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
-
-        addEOperation(variableFilterEClass, null, "resetVariables", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         // Initialize enums and add enum literals
         initEEnum(filterKindEEnum, FilterKind.class, "FilterKind"); //$NON-NLS-1$

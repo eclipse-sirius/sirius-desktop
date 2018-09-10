@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,27 +25,21 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
-import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DSemanticDiagramHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -60,98 +54,11 @@ import com.google.common.collect.Sets;
  * 
  * @author cbrun, mchauvin
  */
-public final class DDiagramElementContainerSpecOperations {
+public final class DDiagramElementContainerWithInterpreterOperations {
 
     /** Avoid instanciations */
-    private DDiagramElementContainerSpecOperations() {
+    private DDiagramElementContainerWithInterpreterOperations() {
         // empty.
-    }
-
-    /**
-     * Return all nodes that are directly contained in the specified container.
-     * 
-     * @param container
-     *            the container.
-     * @return all nodes that are directly contained in the specified container.
-     */
-    public static Collection<AbstractDNode> getNodes(final DDiagramElementContainer container) {
-        final Collection<AbstractDNode> result = new ArrayList<AbstractDNode>();
-        for (final DDiagramElement elem : container.getElements()) {
-            if (elem instanceof DNode) {
-                result.add((DNode) elem);
-                final DNode node = (DNode) elem;
-                for (DNode borderNode : node.getOwnedBorderedNodes()) {
-                    result.add(borderNode);
-                }
-            } else if (elem instanceof DNodeListElement) {
-                result.add((DNodeListElement) elem);
-            }
-
-            if (elem instanceof DDiagramElementContainer) {
-                DDiagramElementContainerSpecOperations.addViewNodes((DDiagramElementContainer) elem, result);
-            }
-        }
-        return result;
-    }
-
-    private static void addViewNodes(final DDiagramElementContainer elem, final Collection<AbstractDNode> result) {
-        if (elem instanceof DNodeContainer) {
-            final DNodeContainer container = (DNodeContainer) elem;
-            result.addAll(container.getOwnedBorderedNodes());
-            for (final DDiagramElement subElem : container.getOwnedDiagramElements()) {
-                if (subElem instanceof DNode) {
-                    result.add((DNode) subElem);
-                }
-                if (subElem instanceof DDiagramElementContainer) {
-                    DDiagramElementContainerSpecOperations.addViewNodes((DDiagramElementContainer) subElem, result);
-                }
-            }
-        } else if (elem instanceof DNodeList) {
-            final DNodeList container = (DNodeList) elem;
-            for (final DDiagramElement subElem : container.getOwnedElements()) {
-                if (subElem instanceof DNode) {
-                    result.add((DNode) subElem);
-                }
-                if (subElem instanceof DDiagramElementContainer) {
-                    DDiagramElementContainerSpecOperations.addViewNodes((DDiagramElementContainer) subElem, result);
-                }
-            }
-        }
-
-    }
-
-    /**
-     * Return all containers that are directly contained in the specified
-     * container.
-     * 
-     * @param container
-     *            the container.
-     * @return all containers that are directly contained in the specified
-     *         container.
-     */
-    public static Collection<DDiagramElementContainer> getContainers(final DDiagramElementContainer container) {
-        final Collection<DDiagramElementContainer> result = new ArrayList<DDiagramElementContainer>();
-        for (final DDiagramElement elem : container.getElements()) {
-            if (elem instanceof DDiagramElementContainer) {
-                result.add((DDiagramElementContainer) elem);
-            }
-            if (elem instanceof DNodeContainer) {
-                DDiagramElementContainerSpecOperations.addSiriusElementContainers((DNodeContainer) elem, result);
-            }
-        }
-        return result;
-
-    }
-
-    private static void addSiriusElementContainers(final DNodeContainer container, final Collection<DDiagramElementContainer> result) {
-        for (final DDiagramElement elem : container.getOwnedDiagramElements()) {
-            if (elem instanceof DDiagramElementContainer) {
-                result.add((DDiagramElementContainer) elem);
-            }
-            if (elem instanceof DNodeContainer) {
-                DDiagramElementContainerSpecOperations.addSiriusElementContainers((DNodeContainer) elem, result);
-            }
-        }
     }
 
     /**
@@ -169,59 +76,6 @@ public final class DDiagramElementContainerSpecOperations {
     }
 
     /**
-     * Return all nodes that are in the specified container and that have been
-     * created from the specified mapping.
-     * 
-     * @param container
-     *            the container.
-     * @param mapping
-     *            the node mapping.
-     * @return all nodes that are in the specified container and that have been
-     *         created from the specified mapping.
-     */
-    public static EList<DNode> getNodesFromMapping(final DDiagramElementContainer container, final NodeMapping mapping) {
-        final EList<DNode> result = new BasicEList<DNode>();
-        for (final DNode node : container.getNodes()) {
-            if (node.getMapping() == mapping) {
-                result.add(node);
-            }
-        }
-        return result;
-    }
-
-    /**
-     * Return all containers that are in the specified container and that have
-     * been created from the specified mapping.
-     * 
-     * @param current
-     *            the container.
-     * @param mapping
-     *            the node mapping.
-     * @return all containers that are in the specified container and that have
-     *         been created from the specified mapping.
-     */
-    public static EList<DDiagramElementContainer> getContainersFromMapping(final DDiagramElementContainer current, final ContainerMapping mapping) {
-        final EList<DDiagramElementContainer> result = new BasicEList<DDiagramElementContainer>();
-        for (final DDiagramElementContainer container : DDiagramElementContainerSpecOperations.getContainers(current)) {
-            if (container.getActualMapping() == mapping) {
-                result.add(container);
-            }
-        }
-        return result;
-    }
-
-    /**
-     * Return the parent {@link DDiagram} of the specified container.
-     * 
-     * @param container
-     *            the container.
-     * @return the parent {@link DDiagram} of the specified container.
-     */
-    public static DDiagram getParentDiagram(final DDiagramElementContainer container) {
-        return DDiagramElementSpecOperations.getParentDiagram(container);
-    }
-
-    /**
      * Validated the specified container.
      * 
      * @param container
@@ -230,15 +84,15 @@ public final class DDiagramElementContainerSpecOperations {
      */
     public static boolean validate(final DDiagramElementContainer container) {
         ContainerMapping actualMapping = container.getActualMapping();
-        if (actualMapping != null && container.getTarget() != null && DDiagramElementContainerSpecOperations.getFirstParentWithSemantic(container) != null) {
+        if (actualMapping != null && container.getTarget() != null && DDiagramElementContainerWithInterpreterOperations.getFirstParentWithSemantic(container) != null) {
             final EObject mySemanticElement = container.getTarget();
-            final EObject representedParent = DDiagramElementContainerSpecOperations.getFirstParentWithSemantic(container);
-            EObject representedParentSemantic = DDiagramElementContainerSpecOperations.getFirstParentWithSemantic(container).getTarget();
+            final EObject representedParent = DDiagramElementContainerWithInterpreterOperations.getFirstParentWithSemantic(container);
+            EObject representedParentSemantic = DDiagramElementContainerWithInterpreterOperations.getFirstParentWithSemantic(container).getTarget();
             if (representedParent instanceof DSemanticDiagram) {
                 representedParentSemantic = DSemanticDiagramHelper.getRootContent((DSemanticDiagram) representedParent);
             }
-            if (!ContainerMappingHelper.getNodesCandidates((IContainerMappingExt) actualMapping, representedParentSemantic, ((DSemanticDecorator) representedParent).getTarget(), container)
-                    .contains(mySemanticElement)) {
+            if (!ContainerMappingWithInterpreterHelper
+                    .getNodesCandidates((IContainerMappingExt) actualMapping, representedParentSemantic, ((DSemanticDecorator) representedParent).getTarget(), container).contains(mySemanticElement)) {
                 return false;
             }
         }
@@ -246,13 +100,11 @@ public final class DDiagramElementContainerSpecOperations {
     }
 
     /**
-     * Return the first parent of the specified container that is a
-     * {@link DSemanticDecorator}.
+     * Return the first parent of the specified container that is a {@link DSemanticDecorator}.
      * 
      * @param container
      *            the container.
-     * @return the first parent of the specified container that is a
-     *         {@link DSemanticDecorator}.
+     * @return the first parent of the specified container that is a {@link DSemanticDecorator}.
      */
     public static DSemanticDecorator getFirstParentWithSemantic(final DDiagramElementContainer container) {
         DSemanticDecorator result = null;
@@ -267,17 +119,6 @@ public final class DDiagramElementContainerSpecOperations {
     }
 
     /**
-     * Return the description of this D&D target.
-     * 
-     * @param self
-     *            the container.
-     * @return the description of this D&D target.
-     */
-    public static DragAndDropTargetDescription getDragAndDropDescription(final DDiagramElementContainer self) {
-        return self.getActualMapping();
-    }
-
-    /**
      * Return the best drop description.
      * 
      * @param description
@@ -285,8 +126,7 @@ public final class DDiagramElementContainerSpecOperations {
      * @param droppedElement
      *            The semantic dropped element
      * @param oldContainer
-     *            The old semantic container, can be null (for instance if drop
-     *            comes from project explorer)
+     *            The old semantic container, can be null (for instance if drop comes from project explorer)
      * @param newContainer
      *            The new semantic container
      * @param newViewContainer
@@ -320,10 +160,10 @@ public final class DDiagramElementContainerSpecOperations {
 
         /* find valid candidates */
         final Collection<ContainerDropDescription> candidates = new ArrayList<>();
-        for (final ContainerDropDescription dropTool : DDiagramElementContainerSpecOperations.getDropToolsOnActivatedLayers(diagram, description)) {
-            if (DDiagramElementContainerSpecOperations.checkDragSource(dropTool, dragSource)
-                    && DDiagramElementContainerSpecOperations.checkDroppedDiagramElement(dropTool, droppedDiagramElement, newViewContainer)) {
-                if (DDiagramElementContainerSpecOperations.checkPrecondition(dropTool, safeInterpreter, droppedElement)) {
+        for (final ContainerDropDescription dropTool : DDiagramElementContainerWithInterpreterOperations.getDropToolsOnActivatedLayers(diagram, description)) {
+            if (DDiagramElementContainerWithInterpreterOperations.checkDragSource(dropTool, dragSource)
+                    && DDiagramElementContainerWithInterpreterOperations.checkDroppedDiagramElement(dropTool, droppedDiagramElement, newViewContainer)) {
+                if (DDiagramElementContainerWithInterpreterOperations.checkPrecondition(dropTool, safeInterpreter, droppedElement)) {
                     candidates.add(dropTool);
                 }
             }
@@ -333,7 +173,7 @@ public final class DDiagramElementContainerSpecOperations {
          * if a candidate define a target mapping which matches he has priority
          */
         for (final ContainerDropDescription dropTool : candidates) {
-            if (dropTool.getBestMapping((DragAndDropTarget) newViewContainer, droppedElement) != null) {
+            if (ContainerMappingWithInterpreterHelper.getBestMapping(dropTool, (DragAndDropTarget) newViewContainer, droppedElement) != null) {
                 if (bestDropDescription == null) {
                     bestDropDescription = dropTool;
                 } else {
@@ -344,8 +184,7 @@ public final class DDiagramElementContainerSpecOperations {
             }
         }
         /*
-         * if there is no target mapping, the drag may not create a diagram
-         * element but could be valid
+         * if there is no target mapping, the drag may not create a diagram element but could be valid
          */
         if (dragSource == DragSource.PROJECT_EXPLORER_LITERAL && bestDropDescription == null && !candidates.isEmpty()) {
             bestDropDescription = (ContainerDropDescription) candidates.toArray()[0];
@@ -385,11 +224,11 @@ public final class DDiagramElementContainerSpecOperations {
             for (Layer layer : new DDiagramQuery(diagram).getAllActivatedLayers()) {
                 allActivatedTools.addAll(layer.getAllTools());
             }
-            Collection<ContainerDropDescription> dropTools = DDiagramElementContainerSpecOperations.getDropTools(mapping);
+            Collection<ContainerDropDescription> dropTools = DDiagramElementContainerWithInterpreterOperations.getDropTools(mapping);
             dropTools.retainAll(allActivatedTools);
             return dropTools;
         }
-        return DDiagramElementContainerSpecOperations.getDropTools(mapping);
+        return DDiagramElementContainerWithInterpreterOperations.getDropTools(mapping);
     }
 
     /**

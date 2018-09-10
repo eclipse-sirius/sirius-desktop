@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,9 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.filter.spec.CompositeFilterDescriptionSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.filter.spec.MappingFilterSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.filter.spec.VariableFilterSpec;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterFactory;
 import org.eclipse.sirius.diagram.description.filter.FilterKind;
@@ -113,33 +110,33 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public MappingFilter createMappingFilter() {
-        MappingFilterImpl mappingFilter = new MappingFilterSpec();
+        MappingFilterImpl mappingFilter = new MappingFilterImpl();
         return mappingFilter;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public CompositeFilterDescription createCompositeFilterDescription() {
-        CompositeFilterDescriptionImpl compositeFilterDescription = new CompositeFilterDescriptionSpec();
+        CompositeFilterDescriptionImpl compositeFilterDescription = new CompositeFilterDescriptionImpl();
         return compositeFilterDescription;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public VariableFilter createVariableFilter() {
-        VariableFilterImpl variableFilter = new VariableFilterSpec();
+        VariableFilterImpl variableFilter = new VariableFilterImpl();
         return variableFilter;
     }
 

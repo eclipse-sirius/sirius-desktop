@@ -15,11 +15,8 @@ package org.eclipse.sirius.diagram;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
-import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
@@ -436,38 +433,5 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * @generated
      */
     void setHeaderHeight(int value);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Returns all nodes owned (directly or not)
-     * by this viewpoint that have been created from the specified mapping.
-     *
-     * @param mapping
-     *            The mapping that has created the returned ViewNodes <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    EList<DNode> getNodesFromMapping(NodeMapping mapping);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Returns all edges owned (directly or not)
-     * by this viewpoint that have been created from the specified mapping.
-     *
-     * @param mapping
-     *            The mapping that has created the returned ViewEdges <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    EList<DEdge> getEdgesFromMapping(EdgeMapping mapping);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Returns all containers owned (directly or
-     * not) by this viewpoint that have been created from the specified mapping.
-     *
-     * @param mapping
-     *            The mapping that has created the returned ViewPointElementContainers <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    EList<DDiagramElementContainer> getContainersFromMapping(ContainerMapping mapping);
 
 } // DDiagram

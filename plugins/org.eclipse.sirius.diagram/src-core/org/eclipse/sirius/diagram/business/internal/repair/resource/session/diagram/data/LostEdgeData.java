@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data;
 
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
@@ -83,7 +86,8 @@ public class LostEdgeData extends LostElementDataWithMapping {
             if (sourceElement instanceof EdgeTarget && targetElement instanceof EdgeTarget) {
 
                 final EdgeMapping edgeMapping = (EdgeMapping) getMapping();
-                final DEdge dEdge = edgeMapping.createEdge((EdgeTarget) sourceElement, (EdgeTarget) targetElement, designerDiagram, getTarget());
+                IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(designerDiagram);
+                final DEdge dEdge = new EdgeMappingHelper(interpreter).createEdge(edgeMapping, (EdgeTarget) sourceElement, (EdgeTarget) targetElement, designerDiagram, getTarget());
                 if (designerDiagram.getOwnedDiagramElements().add(dEdge)) {
                     result = LostElementDataState.CREATED;
                 }

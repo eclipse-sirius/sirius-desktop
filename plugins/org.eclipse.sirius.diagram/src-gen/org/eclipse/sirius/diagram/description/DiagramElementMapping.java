@@ -13,12 +13,9 @@
  */
 package org.eclipse.sirius.diagram.description;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
-import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
@@ -281,40 +278,5 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * @generated
      */
     void setSynchronizationLock(boolean value);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Check the precondition of the mapping.
-     * Return true if the condition is checked, false otherwise.
-     *
-     * @param modelElement
-     *            The element to test.
-     * @param container
-     *            The semantic element of the view container of the eventual view of the modelElement
-     * @param containerView
-     *            The view container of the eventual view of the modelElement <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    boolean checkPrecondition(EObject modelElement, EObject container, EObject containerView);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return all sub mappings. <!--
-     * end-model-doc -->
-     *
-     * @model kind="operation"
-     * @generated
-     */
-    EList<DiagramElementMapping> getAllMappings();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Returns true if the given ViewPointElement
-     * has been produced from this Mapping or any imported mapping.
-     *
-     * @param element
-     *            Any ViewPointElement <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    boolean isFrom(DMappingBased element);
 
 } // DiagramElementMapping

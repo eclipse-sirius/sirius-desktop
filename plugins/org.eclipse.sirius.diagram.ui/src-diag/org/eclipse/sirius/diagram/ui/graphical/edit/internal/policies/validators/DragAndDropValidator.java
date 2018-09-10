@@ -29,7 +29,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerWithInterpreterOperations;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
@@ -165,7 +165,7 @@ public class DragAndDropValidator {
                     EObject droppedElementForDropTool = new WorkspaceDragAndDropSupport().convert(object, session);
                     isValidDragAndDropRequestForElementFromEclipseView = isValidDragAndDropRequestForElementFromEclipseView && droppedElementForDropTool != null;
                     if (isValidDragAndDropRequestForElementFromEclipseView) {
-                        ContainerDropDescription containerDropDescription = DDiagramElementContainerSpecOperations.getBestDropDescription(dragAndDropDescription, droppedElementForDropTool, null,
+                        ContainerDropDescription containerDropDescription = DDiagramElementContainerWithInterpreterOperations.getBestDropDescription(dragAndDropDescription, droppedElementForDropTool, null,
                                 targetAbstractDNodeSemanticTarget, targetDragAndDropTarget, DragSource.PROJECT_EXPLORER_LITERAL, null);
                         isValidDragAndDropRequestForElementFromEclipseView = containerDropDescription != null;
                         if (isValidDragAndDropRequestForElementFromEclipseView) {
@@ -204,7 +204,7 @@ public class DragAndDropValidator {
             DDiagramElement elementFromDiagramToDrop = iterator.next();
             isValidDragAndDropRequestForElementFromDiagram = isValidDragAndDropRequestForElementFromDiagram && elementFromDiagramToDrop != null;
             if (isValidDragAndDropRequestForElementFromDiagram) {
-                ContainerDropDescription containerDropDescription = DDiagramElementContainerSpecOperations.getBestDropDescription(dragAndDropDescription,
+                ContainerDropDescription containerDropDescription = DDiagramElementContainerWithInterpreterOperations.getBestDropDescription(dragAndDropDescription,
                         ((DSemanticDecorator) elementFromDiagramToDrop).getTarget(), getSemanticContainer(elementFromDiagramToDrop), targetAbstractDNodeSemanticTarget, targetDragAndDropTarget,
                         DragSource.DIAGRAM_LITERAL, elementFromDiagramToDrop);
                 isValidDragAndDropRequestForElementFromDiagram = containerDropDescription != null;

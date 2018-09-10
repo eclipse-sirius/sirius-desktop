@@ -351,14 +351,4 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      */
     void setEndLabel(String value);
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> <code>true</code> if the edge is the root
-     * of a folded branch. <!-- end-model-doc -->
-     *
-     * @model kind="operation"
-     * @generated
-     */
-    @Deprecated
-    boolean isRootFolding();
-
 } // DEdge

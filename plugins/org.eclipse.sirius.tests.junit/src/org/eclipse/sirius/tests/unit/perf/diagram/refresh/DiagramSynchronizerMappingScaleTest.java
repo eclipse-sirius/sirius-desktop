@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.unit.perf.diagram.refresh;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.tests.unit.diagram.refresh.AbstractSynchronizerTest;
@@ -43,7 +44,7 @@ public class DiagramSynchronizerMappingScaleTest extends AbstractSynchronizerTes
     protected void doTestRefreshMappingScale(int nbNewElements) {
         final DiagramDescription classDiag = findDiagramDescription("Node Class Diagram");
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, classDiag);
-        NodeMapping originalMapping = (NodeMapping) classDiag.getAllNodeMappings().get(0);
+        NodeMapping originalMapping = ContentHelper.getAllNodeMappings(classDiag, false).get(0);
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, originalMapping);
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         prepareSynchronizer(classDiag, "Test class diagram");

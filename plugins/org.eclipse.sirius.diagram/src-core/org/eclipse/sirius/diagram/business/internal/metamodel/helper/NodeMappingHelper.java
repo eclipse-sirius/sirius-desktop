@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
@@ -70,8 +71,7 @@ public final class NodeMappingHelper {
     }
 
     /**
-     * Implementation of
-     * {@link NodeMapping#getNodesCandidates(EObject, EObject)}.
+     * Implementation of {@link NodeMapping#getNodesCandidates(EObject, EObject)}.
      * 
      * @param self
      *            the node mapping.
@@ -83,12 +83,11 @@ public final class NodeMappingHelper {
      */
     public static EList<EObject> getNodesCandidates(NodeMapping self, EObject semanticOrigin, EObject container) {
         SiriusPlugin.getDefault().warning(Messages.NodeMappingHelper_methodInvocationErrorMsg, null);
-        return self.getNodesCandidates(semanticOrigin, container, null);
+        return NodeMappingHelper.getNodesCandidates((INodeMappingExt) self, semanticOrigin, container, null);
     }
 
     /**
-     * ! Implementation of
-     * {@link NodeMapping#getNodesCandidates(EObject, EObject, EObject)}.
+     * ! Implementation of {@link NodeMapping#getNodesCandidates(EObject, EObject, EObject)}.
      * 
      * @param self
      *            the node mapping.
@@ -138,8 +137,7 @@ public final class NodeMappingHelper {
     }
 
     /**
-     * Implementation of
-     * {@link NodeMapping#createNode(EObject, EObject, DDiagram)}.
+     * Implementation of {@link NodeMapping#createNode(EObject, EObject, DDiagram)}.
      * 
      * @param self
      *            the node mapping.
@@ -155,7 +153,7 @@ public final class NodeMappingHelper {
         final DNode newNode = DiagramFactory.eINSTANCE.createDNode();
 
         // getting the right style description : default or conditional
-        final NodeStyleDescription style = (NodeStyleDescription) new MappingHelper(interpreter).getBestStyleDescription(self, modelElement, newNode, container, diagram);
+        final NodeStyleDescription style = (NodeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, newNode, container, diagram);
 
         newNode.setTarget(modelElement);
         newNode.setActualMapping(self);
@@ -177,21 +175,20 @@ public final class NodeMappingHelper {
 
             styleHelper.setComputedSize(newNode, style);
         }
-        final NodeStyle bestStyle = (NodeStyle) new MappingHelper(interpreter).getBestStyle(self, modelElement, newNode, container, diagram);
+        final NodeStyle bestStyle = (NodeStyle) new MappingWithInterpreterHelper(interpreter).getBestStyle(self, modelElement, newNode, container, diagram);
         if (bestStyle != null) {
             newNode.setOwnedStyle(bestStyle);
         }
 
-        self.addDoneNode(newNode);
+        MappingWithInterpreterHelper.addDoneNode(self, newNode);
 
         interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
         interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
 
         /*
-         * Iterate over the border mapping of the node to initialize the border
-         * nodes.
+         * Iterate over the border mapping of the node to initialize the border nodes.
          */
-        self.createBorderingNodes(modelElement, newNode, Collections.EMPTY_LIST, diagram);
+        AbstractNodeMappingSpecOperations.createBorderingNodes(self, modelElement, newNode, Collections.EMPTY_LIST, diagram);
         if (newNode.getOwnedStyle() != null) {
             Option<NodeStyle> noPreviousStyle = Options.newNone();
             new StyleHelper(interpreter).refreshStyle(newNode.getOwnedStyle(), noPreviousStyle);
@@ -215,7 +212,7 @@ public final class NodeMappingHelper {
 
         // getting the right style description : default or conditional
         if (container != null) {
-            style = (NodeStyleDescription) new MappingHelper(interpreter).getBestStyleDescription(self, modelElement, node, container.getTarget(), node.getParentDiagram());
+            style = (NodeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, node, container.getTarget(), node.getParentDiagram());
         }
 
         if (style != null && style.getLabelExpression() != null) {
@@ -261,7 +258,7 @@ public final class NodeMappingHelper {
             containerVariable = ((DSemanticDecorator) node.eContainer()).getTarget();
         }
 
-        final StyleDescription bestStyleDescription = new MappingHelper(interpreter).getBestStyleDescription(self, modelElement, node, containerVariable, node.getParentDiagram());
+        final StyleDescription bestStyleDescription = new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, node, containerVariable, node.getParentDiagram());
         Style bestStyle = node.getStyle();
         if ((bestStyle == null || bestStyle.getDescription() != bestStyleDescription) && bestStyleDescription != null) {
             bestStyle = styleHelper.createStyle(bestStyleDescription);
@@ -269,7 +266,7 @@ public final class NodeMappingHelper {
 
         styleHelper.setAndRefreshStyle(node, node.getStyle(), bestStyle);
 
-        self.addDoneNode(node);
+        MappingWithInterpreterHelper.addDoneNode(self, node);
     }
 
     /**
@@ -288,7 +285,7 @@ public final class NodeMappingHelper {
         final DNodeListElement newNode = DiagramFactory.eINSTANCE.createDNodeListElement();
 
         // getting the right style description : default or conditional
-        final NodeStyleDescription style = (NodeStyleDescription) new MappingHelper(interpreter).getBestStyleDescription(self, modelElement, newNode, null, diagram);
+        final NodeStyleDescription style = (NodeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, newNode, null, diagram);
 
         newNode.setTarget(modelElement);
         newNode.setActualMapping(self);
@@ -303,9 +300,9 @@ public final class NodeMappingHelper {
         /*
          * Getting the node size
          */
-        self.addDoneNode(newNode);
+        MappingWithInterpreterHelper.addDoneNode(self, newNode);
 
-        final NodeStyle bestStyle = (NodeStyle) new MappingHelper(interpreter).getBestStyle(self, modelElement, newNode, null, diagram);
+        final NodeStyle bestStyle = (NodeStyle) new MappingWithInterpreterHelper(interpreter).getBestStyle(self, modelElement, newNode, null, diagram);
         if (bestStyle != null) {
             newNode.setOwnedStyle(bestStyle);
         }
@@ -314,8 +311,7 @@ public final class NodeMappingHelper {
     }
 
     /**
-     * Implementation of {@link NodeMapping#updateListElement(DNodeListElement)}
-     * .
+     * Implementation of {@link NodeMapping#updateListElement(DNodeListElement)} .
      * 
      * @param self
      *            the node mapping.
@@ -330,7 +326,8 @@ public final class NodeMappingHelper {
 
         // getting the right style description : default or conditional
         if (container != null) {
-            style = (NodeStyleDescription) new MappingHelper(interpreter).getBestStyleDescription(self, modelElement, listElement, container.getTarget(), listElement.getParentDiagram());
+            style = (NodeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, listElement, container.getTarget(),
+                    listElement.getParentDiagram());
         }
 
         if (style != null && !StringUtil.isEmpty(style.getLabelExpression())) {
@@ -345,13 +342,13 @@ public final class NodeMappingHelper {
         // semantic elements
         DiagramElementMappingHelper.refreshSemanticElements(self, listElement, interpreter);
 
-        final NodeStyle bestStyle = (NodeStyle) new MappingHelper(interpreter).getBestStyle(self, modelElement, listElement, containerVariable, listElement.getParentDiagram());
+        final NodeStyle bestStyle = (NodeStyle) new MappingWithInterpreterHelper(interpreter).getBestStyle(self, modelElement, listElement, containerVariable, listElement.getParentDiagram());
 
         if ((bestStyle == null || bestStyle.getDescription() != style) && style != null) {
             listElement.setOwnedStyle(bestStyle);
         }
         styleHelper.setAndRefreshStyle(listElement, listElement.getStyle(), bestStyle);
-        self.addDoneNode(listElement);
+        MappingWithInterpreterHelper.addDoneNode(self, listElement);
     }
 
     /**
@@ -400,15 +397,13 @@ public final class NodeMappingHelper {
     }
 
     /**
-     * Return <code>true</code> if <code>eObj</code> is an instance of
-     * <code>typename</code>.
+     * Return <code>true</code> if <code>eObj</code> is an instance of <code>typename</code>.
      * 
      * @param eObj
      *            an object.
      * @param typename
      *            the name of the type to check.
-     * @return <code>true</code> if <code>eObj</code> is an instance of
-     *         <code>typename</code>.
+     * @return <code>true</code> if <code>eObj</code> is an instance of <code>typename</code>.
      */
     private static boolean isInstanceOf(final EObject eObj, final String typename) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.INSTANCE_OF_KEY);

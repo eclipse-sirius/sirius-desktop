@@ -55,6 +55,7 @@ import org.eclipse.sirius.diagram.business.api.query.CompositeFilterDescriptionQ
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DMappingBasedQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -466,7 +467,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         if (element instanceof DNodeContainer) {
             final ContainerMapping containerMapping = ((DNodeContainer) element).getActualMapping();
             if (containerMapping != null) {
-                final Iterator<DiagramElementMapping> iterAllMappings = containerMapping.getAllMappings().iterator();
+                final Iterator<DiagramElementMapping> iterAllMappings = ContainerMappingHelper.getAllMappings(containerMapping).iterator();
                 while (iterAllMappings.hasNext()) {
                     final DiagramElementMapping diagramElementMapping = iterAllMappings.next();
                     final ViewOrderingProvider provider = ViewOrderingProviderRegistry.getInstance().getProvider(diagramElementMapping);

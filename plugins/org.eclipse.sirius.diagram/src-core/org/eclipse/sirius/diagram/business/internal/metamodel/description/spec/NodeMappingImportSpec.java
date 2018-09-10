@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,20 +17,16 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
-import org.eclipse.sirius.viewpoint.DMappingBased;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 
 /**
- * Implementation of the NodeMappingImport interface. This class is more or less
- * a wrapper for another NodeMapping, it helps in reusing mappings from other
- * elements.
+ * Implementation of the NodeMappingImport interface. This class is more or less a wrapper for another NodeMapping, it
+ * helps in reusing mappings from other elements.
  * 
  * @author cbrun
  * 
@@ -38,9 +34,8 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappingImport {
 
     /**
-     * The default value of the '{@link #isHideSubMappings()
-     * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #isHideSubMappings() <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @see #isHideSubMappings()
      * @generated
@@ -49,9 +44,8 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
     protected static final boolean HIDE_SUB_MAPPINGS_EDEFAULT = false;
 
     /**
-     * The default value of the '{@link #isInheritsAncestorFilters()
-     * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #isInheritsAncestorFilters() <em>Inherits Ancestor Filters</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #isInheritsAncestorFilters()
      * @generated
@@ -60,9 +54,8 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
     protected static final boolean INHERITS_ANCESTOR_FILTERS_EDEFAULT = true;
 
     /**
-     * The cached value of the '{@link #getImportedMapping()
-     * <em>Imported Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getImportedMapping() <em>Imported Mapping</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @see #getImportedMapping()
      * @generated
@@ -71,9 +64,8 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
     protected NodeMapping importedMapping;
 
     /**
-     * The cached value of the '{@link #isHideSubMappings()
-     * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #isHideSubMappings() <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @see #isHideSubMappings()
      * @generated
@@ -82,38 +74,14 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
     protected boolean hideSubMappings = HIDE_SUB_MAPPINGS_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #isInheritsAncestorFilters()
-     * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isInheritsAncestorFilters() <em>Inherits Ancestor Filters</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #isInheritsAncestorFilters()
      * @generated
      * @ordered
      */
     protected boolean inheritsAncestorFilters = INHERITS_ANCESTOR_FILTERS_EDEFAULT;
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingSpec#isFrom(org.eclipse.sirius.viewpoint.DMappingBased)
-     */
-    @Override
-    public boolean isFrom(final DMappingBased element) {
-        return SiriusElementMappingSpecOperations.isFrom(this, element);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingSpec#addDoneNode(org.eclipse.sirius.viewpoint.DSemanticDecorator)
-     */
-    @Override
-    public void addDoneNode(final DSemanticDecorator node) {
-        super.addDoneNode(node);
-        if (getImportedMapping() != null && getImportedMapping() != this) {
-            getImportedMapping().addDoneNode(node);
-        }
-    }
 
     /**
      * {@inheritDoc}
@@ -273,8 +241,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.impl.NodeMappingImpl#eGet(int,
-     *      boolean, boolean)
+     * @see org.eclipse.sirius.viewpoint.description.impl.NodeMappingImpl#eGet(int, boolean, boolean)
      */
     @Override
     public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
@@ -304,11 +271,9 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
 
     // CHECKSTYLE:OFF
     /**
-     * {@inheritDoc} CHECKSTYLE:OFF because this code is copied from generated
-     * code
+     * {@inheritDoc} CHECKSTYLE:OFF because this code is copied from generated code
      * 
-     * @see org.eclipse.sirius.viewpoint.description.impl.NodeMappingImpl#eSet(int,
-     *      java.lang.Object)
+     * @see org.eclipse.sirius.viewpoint.description.impl.NodeMappingImpl#eSet(int, java.lang.Object)
      */
     @Override
     public void eSet(final int featureID, final Object newValue) {
@@ -332,8 +297,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
 
     // CHECKSTYLE:OFF
     /**
-     * {@inheritDoc} CHECKSTYLE:OFF because this code is copied from generated
-     * code
+     * {@inheritDoc} CHECKSTYLE:OFF because this code is copied from generated code
      * 
      * @see org.eclipse.sirius.viewpoint.description.impl.NodeMappingImpl#eUnset(int)
      */
@@ -385,8 +349,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.impl.NodeMappingImpl#eBaseStructuralFeatureID(int,
-     *      java.lang.Class)
+     * @see org.eclipse.sirius.viewpoint.description.impl.NodeMappingImpl#eBaseStructuralFeatureID(int, java.lang.Class)
      */
     @Override
     public int eBaseStructuralFeatureID(final int derivedFeatureID, @SuppressWarnings("rawtypes") final Class baseClass) {

@@ -81,16 +81,12 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
             addShowOnStartupPropertyDescriptor(object);
             addPasteDescriptionsPropertyDescriptor(object);
             addAllEdgeMappingsPropertyDescriptor(object);
-            addAllNodeMappingsPropertyDescriptor(object);
-            addAllContainerMappingsPropertyDescriptor(object);
             addAllToolsPropertyDescriptor(object);
             addDomainClassPropertyDescriptor(object);
             addPreconditionExpressionPropertyDescriptor(object);
             addDefaultConcernPropertyDescriptor(object);
             addRootExpressionPropertyDescriptor(object);
             addInitPropertyDescriptor(object);
-            addAllLayersPropertyDescriptor(object);
-            addAllActivatedToolsPropertyDescriptor(object);
             addReusedMappingsPropertyDescriptor(object);
             addReusedToolsPropertyDescriptor(object);
             addEnablePopupBarsPropertyDescriptor(object);
@@ -232,31 +228,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
     }
 
     /**
-     * This adds a property descriptor for the All Node Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addAllNodeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DiagramDescription_allNodeMappings_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allNodeMappings_feature", "_UI_DiagramDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS, false, false, false, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Container Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @generated
-     */
-    protected void addAllContainerMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DiagramDescription_allContainerMappings_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allContainerMappings_feature", "_UI_DiagramDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS, false, false, false, null, null, null));
-    }
-
-    /**
      * This adds a property descriptor for the All Tools feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -335,31 +306,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
                         getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_init_feature", "_UI_DiagramDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__INIT, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                         null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Layers feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addAllLayersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DiagramDescription_allLayers_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allLayers_feature", "_UI_DiagramDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_LAYERS, true, false, true, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Activated Tools feature. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @generated
-     */
-    protected void addAllActivatedToolsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DiagramDescription_allActivatedTools_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allActivatedTools_feature", "_UI_DiagramDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS, true, false, true, null, null, null));
     }
 
     /**

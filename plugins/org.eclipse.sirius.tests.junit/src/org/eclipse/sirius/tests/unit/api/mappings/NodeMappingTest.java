@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -49,9 +52,9 @@ public class NodeMappingTest extends SiriusDiagramTestCase implements MappingsRe
         assertTrue("Bad type for representation", representationDesc instanceof DiagramDescription);
         DiagramDescription diagDesc = (DiagramDescription) representationDesc;
         DDiagram diag = DiagramFactory.eINSTANCE.createDDiagram();
-        for (NodeMapping nodeMapping : diagDesc.getAllNodeMappings()) {
+        for (NodeMapping nodeMapping : ContentHelper.getAllNodeMappings(diagDesc, false)) {
             if (COMMON_NODE_MAPPING_ON_ECLASS.equals(nodeMapping.getName())) {
-                EList<EObject> nodesCandidates = nodeMapping.getNodesCandidates(semanticModel, semanticModel, diag);
+                EList<EObject> nodesCandidates = NodeMappingHelper.getNodesCandidates((INodeMappingExt) nodeMapping, semanticModel, semanticModel, diag);
                 assertEquals("Bad number of nodes candidates for mapping \"" + COMMON_NODE_MAPPING_ON_ECLASS + "\"", 1, nodesCandidates.size());
             }
         }
