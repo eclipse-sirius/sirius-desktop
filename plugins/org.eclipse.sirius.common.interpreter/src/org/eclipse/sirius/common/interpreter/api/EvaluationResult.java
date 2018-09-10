@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,15 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.interpreter.api;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Default implementaiton of {@link IEvaluationResult}, suitable for most cases.
@@ -124,11 +123,11 @@ public final class EvaluationResult implements IEvaluationResult {
     public Collection<EObject> asEObjects() {
         final Collection<EObject> result;
         if (rawValue instanceof Collection<?>) {
-            result = Lists.newArrayList(Iterables.filter((Collection<?>) rawValue, EObject.class));
+            result = ((Collection<?>) rawValue).stream().filter(EObject.class::isInstance).map(EObject.class::cast).collect(Collectors.toList());
         } else if (rawValue instanceof EObject) {
             result = Collections.singleton((EObject) rawValue);
         } else if (rawValue != null && rawValue.getClass().isArray()) {
-            result = Lists.newArrayList(Iterables.filter(Lists.newArrayList((Object[]) rawValue), EObject.class));
+            result = Arrays.asList((Object[]) rawValue).stream().filter(EObject.class::isInstance).map(EObject.class::cast).collect(Collectors.toList());
         } else {
             result = Collections.emptySet();
         }
