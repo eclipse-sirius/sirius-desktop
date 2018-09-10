@@ -24,8 +24,6 @@ import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.sirius.ext.draw2d.figure.ImageFigureWithAlpha;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.OpaquePixelFinder;
 
-import com.google.common.collect.Iterators;
-
 /**
  * A slidable Anchor implementation which use the alpha value provided by some
  * image based figures to shift the edge anchors so that it gets close to the
@@ -97,7 +95,7 @@ public class AlphaBasedSlidableImageAnchor extends SlidableAnchor {
             if (root instanceof ImageFigureWithAlpha) {
                 ret = (ImageFigureWithAlpha) root;
             }
-            final Iterator<IFigure> iterChilren = Iterators.filter(root.getChildren().iterator(), IFigure.class);
+            final Iterator<IFigure> iterChilren = root.getChildren().stream().filter(IFigure.class::isInstance).map(IFigure.class::cast).iterator();
             while (iterChilren.hasNext() && ret == null) {
                 ret = AlphaBasedSlidableImageAnchor.getImageFigure(iterChilren.next());
             }

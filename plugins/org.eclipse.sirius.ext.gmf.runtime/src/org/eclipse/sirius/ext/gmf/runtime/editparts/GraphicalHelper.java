@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.ext.gmf.runtime.editparts;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.FreeformViewport;
@@ -37,8 +38,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 
-import com.google.common.base.Preconditions;
-
 /**
  * Utility class to collect helper methods which deal with GraphicalOrdering but
  * which are not part of its API.
@@ -58,7 +57,7 @@ public final class GraphicalHelper {
      * @return the zoom factor
      */
     public static double getZoom(EditPart part) {
-        Preconditions.checkNotNull(part);
+        Objects.requireNonNull(part);
         double scale = 1.0;
         if (part.getRoot() instanceof DiagramRootEditPart) {
             DiagramRootEditPart rootEditPart = (DiagramRootEditPart) part.getRoot();
@@ -157,7 +156,7 @@ public final class GraphicalHelper {
      *            the zoom factor
      */
     public static void setZoom(IGraphicalEditPart part, double scale) {
-        Preconditions.checkNotNull(part);
+        Objects.requireNonNull(part);
         if (part.getRoot() instanceof DiagramRootEditPart) {
             DiagramRootEditPart rootEditPart = (DiagramRootEditPart) part.getRoot();
             rootEditPart.getZoomManager().setZoom(scale);
@@ -174,7 +173,7 @@ public final class GraphicalHelper {
      * @return the scroll size
      */
     public static Point getScrollSize(GraphicalEditPart part) {
-        Preconditions.checkNotNull(part);
+        Objects.requireNonNull(part);
         FreeformViewport viewport = FigureUtilities.getRootFreeformViewport(part.getFigure());
         if (viewport != null) {
             return viewport.getViewLocation();
@@ -192,7 +191,7 @@ public final class GraphicalHelper {
      * @return the scroll size
      */
     protected static Point getContainerScrollSize(GraphicalEditPart part) {
-        Preconditions.checkNotNull(part);
+        Objects.requireNonNull(part);
         Point result = new Point(0, 0);
         Point diagramScrollSize = new Point(0, 0);
 
@@ -219,7 +218,7 @@ public final class GraphicalHelper {
      *            the scroll size
      */
     public static void setScrollSize(IGraphicalEditPart part, Point scrollPosition) {
-        Preconditions.checkNotNull(part);
+        Objects.requireNonNull(part);
         // FreeformViewport viewport =
         // FigureUtilities.getFreeformViewport(part.getFigure());
         // if (viewport != null) {
