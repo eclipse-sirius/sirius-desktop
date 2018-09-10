@@ -10,12 +10,10 @@
 *******************************************************************************/
 package org.eclipse.sirius.tests.sample.xtext.statemachine.ui.internal;
 
-import com.google.common.collect.Maps;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.google.inject.Module;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.eclipse.sirius.tests.sample.xtext.StatemachineRuntimeModule;
 import org.eclipse.sirius.tests.sample.xtext.ui.StatemachineUiModule;
@@ -23,6 +21,10 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.shared.SharedStateModule;
 import org.eclipse.xtext.util.Modules2;
 import org.osgi.framework.BundleContext;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.Module;
 
 /**
  * This class was generated. Customizations should only happen in a newly
@@ -36,7 +38,7 @@ public class StatemachineActivator extends AbstractUIPlugin {
 	
 	private static StatemachineActivator INSTANCE;
 	
-	private Map<String, Injector> injectors = Collections.synchronizedMap(Maps.<String, Injector> newHashMapWithExpectedSize(1));
+	private Map<String, Injector> injectors = Collections.synchronizedMap(new HashMap<>());
 	
 	@Override
 	public void start(BundleContext context) throws Exception {
