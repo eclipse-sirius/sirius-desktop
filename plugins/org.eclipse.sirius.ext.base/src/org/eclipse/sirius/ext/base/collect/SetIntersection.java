@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,8 +16,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.google.common.collect.Lists;
 
 /**
  * The {@link SetIntersection} is able to provide intersection and differences
@@ -142,7 +140,7 @@ public class SetIntersection<E> {
      * @return the old - new difference.
      */
     public Iterable<E> getRemovedElements() {
-        Collection<E> result = Lists.newArrayList(removedElements.values());
+        Collection<E> result = new ArrayList<>(removedElements.values());
         if (duplicateOldElements != null && !duplicateOldElements.isEmpty()) {
             result.addAll(duplicateOldElements);
         }

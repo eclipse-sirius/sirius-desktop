@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.ext.base.relations;
 import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.sirius.ext.base.Messages;
@@ -35,12 +36,12 @@ public class TransitiveClosure<T> implements Relation<T> {
      *            the relation for which to compute the transitive closure.
      */
     public TransitiveClosure(Relation<T> relation) {
-        this.relation = Preconditions.checkNotNull(relation);
+        this.relation = Objects.requireNonNull(relation);
     }
 
     @Override
     public Set<T> apply(T from) {
-        Preconditions.checkNotNull(from);
+        Objects.requireNonNull(from);
         Set<T> result = new HashSet<T>(relation.apply(from));
 
         Set<T> startingPoints = ImmutableSet.copyOf(result);
