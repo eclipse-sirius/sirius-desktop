@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,9 +46,6 @@ import org.eclipse.sirius.sample.interactions.ReturnMessage;
 import org.eclipse.sirius.sample.interactions.State;
 import org.eclipse.sirius.sample.interactions.StateEnd;
 
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-
 /**
  * Java services for the sample 'Interactions' sequence diagrams.
  * 
@@ -57,8 +54,7 @@ import com.google.common.collect.Iterables;
 public class InteractionOrderingServices {
 
     /**
-     * Helper class to keep track of who "contains" who depending on the
-     * interleaving of the start/finish ends.
+     * Helper class to keep track of who "contains" who depending on the interleaving of the start/finish ends.
      * 
      * @author pcdavid
      * @see InteractionOrderingServices#computeContainmentStructure(Participant)
@@ -111,12 +107,11 @@ public class InteractionOrderingServices {
 
     public boolean eolPrecondition(Participant p) {
         Interaction i = (Interaction) new EObjectQuery(p).getFirstAncestorOfType(InteractionsPackage.Literals.INTERACTION).get();
-        for (Message msg : Iterables.filter(i.getMessages(), Predicates.instanceOf(DestroyParticipantMessage.class))) {
-            if (msg.getReceivingEnd() != null && msg.getReceivingEnd().getContext() == p) {
-                return true;
-            }
-        }
-        return false;
+        // @formatter:off
+        return i.getMessages().stream()
+                .filter(DestroyParticipantMessage.class::isInstance)
+                .anyMatch(msg -> msg.getReceivingEnd() != null && msg.getReceivingEnd().getContext() == p);
+        // @formatter::on
     }
 
     public boolean redimEolPrecondition(Participant p) {
@@ -202,19 +197,16 @@ public class InteractionOrderingServices {
     }
 
     /**
-     * Computes the semantic elements corresponding to the events directly below
-     * the specified parent on a given lifelines. This is necessary because the
-     * VSM expects a tree-like structure for mappings, but in an 'Interactions'
-     * model, the events corresponding to the start/finish of
-     * execution/messages/etc. are stored in a linear structure.
+     * Computes the semantic elements corresponding to the events directly below the specified parent on a given
+     * lifelines. This is necessary because the VSM expects a tree-like structure for mappings, but in an 'Interactions'
+     * model, the events corresponding to the start/finish of execution/messages/etc. are stored in a linear structure.
      * 
      * @param context
      *            the participant/lifeline on which to look.
      * @param parent
      *            the semantic element of the parent event.
-     * @return the semantic elements of all the direct sub-events of
-     *         <code>parent</code> on the given participant. The order is not
-     *         specified.
+     * @return the semantic elements of all the direct sub-events of <code>parent</code> on the given participant. The
+     *         order is not specified.
      */
     public Collection<EObject> getDirectEventsOn(Participant context, EObject parent) {
         List<EventContext> structure = computeContainmentStructure(context);
@@ -234,11 +226,9 @@ public class InteractionOrderingServices {
     }
 
     /**
-     * Returns the event end which represents the finishing of an operand. An
-     * operand only has a starting end in the model. Its finishing end must be
-     * inferred from the context. If the operand is the last operand in the
-     * Combined Fragment, it finishes with the end of the CF. Otherwise it
-     * finished when the next operand starts.
+     * Returns the event end which represents the finishing of an operand. An operand only has a starting end in the
+     * model. Its finishing end must be inferred from the context. If the operand is the last operand in the Combined
+     * Fragment, it finishes with the end of the CF. Otherwise it finished when the next operand starts.
      * 
      * @param operand
      *            the operand.
@@ -267,8 +257,7 @@ public class InteractionOrderingServices {
     }
 
     /**
-     * Returns the semantic element corresponding to the source of a message.
-     * This can be a participant or an execution.
+     * Returns the semantic element corresponding to the source of a message. This can be a participant or an execution.
      * 
      * @param msg
      *            the message.
@@ -294,8 +283,8 @@ public class InteractionOrderingServices {
     }
 
     /**
-     * Returns the semantic element corresponding to the target of a message.
-     * This can be a participant, execution or an instance role.
+     * Returns the semantic element corresponding to the target of a message. This can be a participant, execution or an
+     * instance role.
      * 
      * @param msg
      *            the message.
@@ -353,9 +342,8 @@ public class InteractionOrderingServices {
     }
 
     /**
-     * Delete an operand, including all the events it contains. Does nothing if
-     * the operand is the only one in the fragment, as this would produce an
-     * invalid interaction.
+     * Delete an operand, including all the events it contains. Does nothing if the operand is the only one in the
+     * fragment, as this would produce an invalid interaction.
      * 
      * @param oper
      *            the operand to delete.
@@ -397,12 +385,10 @@ public class InteractionOrderingServices {
      * @param finishingEnd
      *            the finishing of the range of events to delete.
      * @param deleteFinishingEnd
-     *            whether to delete the finishing end (and the corresponding
-     *            event) or to stop just before.
+     *            whether to delete the finishing end (and the corresponding event) or to stop just before.
      * @param coverage
-     *            the participants from which to delete events. Events which
-     *            happen in the specified range but strictly on participants
-     *            outside this list will not be deleted.
+     *            the participants from which to delete events. Events which happen in the specified range but strictly
+     *            on participants outside this list will not be deleted.
      */
     public void delete(Interaction inter, AbstractEnd startingEnd, AbstractEnd finishingEnd, boolean deleteFinishingEnd, EList<Participant> coverage) {
         Set<EObject> toDelete = new HashSet<EObject>();
@@ -557,8 +543,7 @@ public class InteractionOrderingServices {
     }
 
     /**
-     * Compute the depth of a combined fragment. If the EObject if not a
-     * combined fragment, this method return 0.
+     * Compute the depth of a combined fragment. If the EObject if not a combined fragment, this method return 0.
      * 
      * @param eobject
      *            the EObject to find the depth if it is a combined fragment
@@ -605,8 +590,7 @@ public class InteractionOrderingServices {
     }
 
     /**
-     * Compute the depth of an Execution. If the EObject if not an Execution,
-     * this method return 0.
+     * Compute the depth of an Execution. If the EObject if not an Execution, this method return 0.
      * 
      * @param eobject
      *            the EObject to find the depth if it is an Execution
@@ -641,8 +625,7 @@ public class InteractionOrderingServices {
     }
 
     /**
-     * Check if the current participant can be created, regarding the end before
-     * click.
+     * Check if the current participant can be created, regarding the end before click.
      * 
      * @param eobject
      *            the EObject to find the depth if it is an Execution
@@ -666,8 +649,7 @@ public class InteractionOrderingServices {
     }
 
     /**
-     * Check if the current participant can be destroyed, regarding the end
-     * before click.
+     * Check if the current participant can be destroyed, regarding the end before click.
      * 
      * @param eobject
      *            the EObject to find the depth if it is an Execution
@@ -720,8 +702,7 @@ public class InteractionOrderingServices {
     }
 
     /**
-     * Check if the current participant can be destroyed, regarding the end
-     * before click.
+     * Check if the current participant can be destroyed, regarding the end before click.
      * 
      * @param eobject
      *            the EObject to find the depth if it is an Execution
