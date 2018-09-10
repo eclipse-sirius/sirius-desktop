@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,8 +88,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 
 /**
- * Class to get a view model equivalent the draw2d model to check that migration
- * preserve the draw2d infos.
+ * Class to get a view model equivalent the draw2d model to check that migration preserve the draw2d infos.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -102,8 +101,7 @@ public class Draw2dToSiriusModelTransformer {
      * Default constructor.
      * 
      * @param dDiagramEditPart
-     *            the {@link DDiagramEditPart} of a diagram editor for which get
-     *            a Sirius model of what is displayed
+     *            the {@link DDiagramEditPart} of a diagram editor for which get a Sirius model of what is displayed
      */
     public Draw2dToSiriusModelTransformer(DDiagramEditPart dDiagramEditPart) {
         this.dDiagramEditPart = dDiagramEditPart;
@@ -318,12 +316,13 @@ public class Draw2dToSiriusModelTransformer {
         updateLayout(containerRepresentation, diagramListEditPart.getFigure());
 
         List<?> children = new ArrayList<Object>(diagramListEditPart.getChildren());
-        Iterator<ResizableCompartmentEditPart> compart = Iterators.filter(diagramListEditPart.getChildren().iterator(), ResizableCompartmentEditPart.class);
+        Iterator<ResizableCompartmentEditPart> compart = diagramListEditPart.getChildren().stream().filter(ResizableCompartmentEditPart.class::isInstance).map(ResizableCompartmentEditPart.class::cast)
+                .iterator();
         if (compart.hasNext()) {
             ResizableCompartmentEditPart compartmentEditPart = compart.next();
             children.addAll(compartmentEditPart.getChildren());
         }
-        Iterable<IAbstractDiagramNodeEditPart> filter = Iterables.filter(children, IAbstractDiagramNodeEditPart.class);
+        Iterable<IAbstractDiagramNodeEditPart> filter = () -> children.stream().filter(IAbstractDiagramNodeEditPart.class::isInstance).map(IAbstractDiagramNodeEditPart.class::cast).iterator();
         for (IAbstractDiagramNodeEditPart childEditPart : filter) {
             EObject targetSemanticElement = childEditPart.resolveTargetSemanticElement();
             if (targetSemanticElement instanceof Node && childEditPart instanceof IDiagramNodeEditPart) {
@@ -660,8 +659,7 @@ public class Draw2dToSiriusModelTransformer {
     }
 
     /**
-     * Test the equality of two {@link Image} according to their
-     * {@link Image#getImageData()#data}.
+     * Test the equality of two {@link Image} according to their {@link Image#getImageData()#data}.
      * 
      * @param image1
      *            first {@link Image}
