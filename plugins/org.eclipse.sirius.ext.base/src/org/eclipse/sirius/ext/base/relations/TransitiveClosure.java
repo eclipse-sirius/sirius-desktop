@@ -18,7 +18,6 @@ import java.util.Set;
 
 import org.eclipse.sirius.ext.base.Messages;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 
 /**
