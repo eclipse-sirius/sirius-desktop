@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,8 @@ import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferences
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -39,6 +41,8 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
 
     private BooleanFieldEditor authorizeDecorationOverlap;
 
+    private BooleanFieldEditor displayUserFixedColor;
+
     /**
      * @was-generated
      */
@@ -53,6 +57,16 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
         createFontAndColorGroup(main);
         createDisplayHeadergroup(main);
         createDecorationGroup(main);
+    }
+
+    @Override
+    protected void addFontAndColorFields(Composite composite) {
+        super.addFontAndColorFields(composite);
+
+        displayUserFixedColor = new BooleanFieldEditor(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name(), Messages.DiagramAppearancePreferencePage_displayUserFixedColorsInPaletteLabel,
+                composite);
+
+        addField(displayUserFixedColor);
     }
 
     /**
@@ -194,6 +208,9 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
         IPreferenceStore diagramCorePreferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, DiagramPlugin.ID);
         displayHeader.setPreferenceStore(diagramCorePreferenceStore);
         displayHeader.load();
+
+        displayUserFixedColor.setPreferenceStore(SiriusEditPlugin.getPlugin().getPreferenceStore());
+        displayUserFixedColor.load();
     }
 
     /**

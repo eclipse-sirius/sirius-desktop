@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,6 +55,12 @@ public enum SiriusUIPreferencesKeys {
      * false</b>. When a a permission issue should be displayed graphically, specifies wether it should be displayed
      * through the Dialect (e.g. a NotificationFigure inside a DDiagram) or through a standard pop-up.
      */
-    PREF_DISPLAY_PERMISSION_ISSUES_THROUGH_DIALOG;
+    PREF_DISPLAY_PERMISSION_ISSUES_THROUGH_DIALOG,
+
+    /**
+     * Indicates if the UserFixedColors, defined in the VSM, are displayed in the color palette.</br>
+     * The color palette is used in appearance tab of properties view.
+     */
+    PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE;
 
 }

@@ -321,6 +321,9 @@ public final class Messages {
     public static String DiagramAppearancePreferencePage_labelIconsGroupText;
 
     @TranslatableMessage
+    public static String DiagramAppearancePreferencePage_displayUserFixedColorsInPaletteLabel;
+
+    @TranslatableMessage
     public static String DiagramConnectionsPreferencePage_enableOverrideLabel;
 
     @TranslatableMessage

@@ -87,6 +87,9 @@
 			<li><span class="label label-success">Added</span> On sequence diagrams, it is now possible to add vertical blank spaces on standard edition mode by dragging the mouse anywhere in the canvas with the Ctrl+Shift keys pressed.  This 
 				<a href="user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space">feature:</a> was here since version 6.0.0 but was only accessible through the ruler.
 			</li>
+			<li><span class="label label-success">Added</span> The preference 
+				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE</code> has been added and can be managed in Preferences/Sirius/Sirius Diagram/Appearance/Display viewpoint colors. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
+			</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
@@ -145,6 +148,14 @@
 				<em>EClass</em> have been removed from 
 				<code>viewpoint</code> metamodel. These operations were deprecated and useless since we used method of 
 				<code>org.eclipse.sirius.business.internal.metamodel.description.validation.operations.ValidationRuleOperations</code> class.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+			<code>org.eclipse.sirius.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE</code> has been added. Its default value is true. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
@@ -517,7 +528,7 @@
 				<code>DDiagram</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -618,7 +629,7 @@
 		<pre>SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(),0); 
 
 </pre>
-		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -899,7 +910,7 @@
 				<a href="./specifier/general/Writing_Queries.html#service_methods">specifier documentation</a>, it is recommended to use List or Set instead of Collection in java services signature.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>

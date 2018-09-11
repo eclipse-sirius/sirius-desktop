@@ -14,6 +14,7 @@ h3. User-Visible Changes
 * <span class="label label-info">Modified</span> The tool "Link Note", introduced in Sirius 6.0.0, has been renamed into "Representation Link".
 * <span class="label label-success">Added</span> A new preference has been added in the Sirius preference panel. It allows Sirius to ask the user if he wants to save session resources after an automatic migration. If the new preference is ticked, the pop-up will only appear for session opening caused by a direct action of the user (i.e. opening a diagram or unfolding the resources in the model explorer).
 * <span class="label label-success">Added</span> On sequence diagrams, it is now possible to add vertical blank spaces on standard edition mode by dragging the mouse anywhere in the canvas with the Ctrl+Shift keys pressed.  This "feature:":user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space was here since version 6.0.0 but was only accessible through the ruler.
+* <span class="label label-success">Added</span> The preference @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE@ has been added and can be managed in Preferences/Sirius/Sirius Diagram/Appearance/Display viewpoint colors. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
 
 h3. Specifier-Visible Changes
 
@@ -38,6 +39,11 @@ h3. Developer-Visible Changes
 * <span class="label label-info">Modified</span> The Acceleo version has been changed from 3.7.2 to 3.7.4.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.migrationHandler@ extension point has been added. It allows to contribute migration process, mainly handle migration options.
 * <span class="label label-success">Removed</span> _EOperations_ @checkRule@ and @getMessage@ of @ValidationRule@ _EClass_ have been removed from @viewpoint@ metamodel. These operations were deprecated and useless since we used method of @org.eclipse.sirius.business.internal.metamodel.description.validation.operations.ValidationRuleOperations@ class.
+
+
+h4. Changes in @org.eclipse.sirius.ui@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE@ has been added. Its default value is true. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
 
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
