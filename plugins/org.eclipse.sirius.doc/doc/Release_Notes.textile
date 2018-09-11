@@ -10,6 +10,7 @@ h3. User-Visible Changes
 
 * <span class="label label-info">Modified</span> The tool "Link Note", introduced in Sirius 5.1.2, has been renamed into "Representation Link".
 * <span class="label label-info">Modified</span> A "Representation Link" is no longer deleted automatically when the targeted representation is deleted. Instead, the note header changes to "Broken Representation Link" and the note icon changes to a small red diagonal cross. You can refer to the "user documentation":user/diagrams/Diagrams.html#notes for more details.
+* <span class="label label-success">Added</span> The preference @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE@ has been added and can be managed in Preferences/Sirius/Sirius Diagram/Appearance/Display viewpoint colors. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
 
 h3. Developer-Visible Changes
 
@@ -22,6 +23,10 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * <span class="label label-success">Added</span> The query @isRepresentationLink()@ has been added in @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery@ to know if the view is a representation link or a normal note.
 * <span class="label label-success">Added</span> The query @isRepresentationLinkBroken()@ has been added in @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery@ to know, for a representation link, if it refers to a deleted representation descriptor. Invocations should be guarded by @isRepresentationLink()@.
 * <span class="label label-info">Modified</span> The class @SiriusFormatDataManagerForSemanticElements@ has been moved from package @org.eclipse.sirius.diagram.ui.tools.internal.format.semantic@ to @org.eclipse.sirius.diagram.ui.tools.api.format.semantic@.
+
+h4. Changes in @org.eclipse.sirius.ui@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE@ has been added. Its default value is true. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
 
 h2(#sirius5.1.3). Changes in Sirius 5.1.3
 

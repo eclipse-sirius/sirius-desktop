@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,7 @@ public class GenericPreferencesInitializer extends AbstractPreferenceInitializer
         uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), getValue("_Pref_SaveWhenNoEditor")); //$NON-NLS-1$
         uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_REACT_TO_PERMISSION_ISSUES_BY_GRAPHICAL_DISPLAY.name(), getValue("_Pref_ReactToPermissionIssuesByDisplayingPopup")); //$NON-NLS-1$
         uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_DISPLAY_PERMISSION_ISSUES_THROUGH_DIALOG.name(), getValue("_Pref_DisplayPermissionIssuesThroughDialog")); //$NON-NLS-1$
+        uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name(), getValue("_Pref_DisplayUserVsmColorInPalette")); //$NON-NLS-1$
 
         final boolean autoRefreshDefValue = getValue("_Pref_AutoRefresh"); //$NON-NLS-1$
         defaultCorePreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefreshDefValue);
@@ -55,6 +56,7 @@ public class GenericPreferencesInitializer extends AbstractPreferenceInitializer
         final boolean emptyAirdFragOnControl = getValue("_Pref_EmptyAirdFragmentOnControl"); //$NON-NLS-1$
         defaultCorePreferences.putBoolean(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), emptyAirdFragOnControl);
         uiPreferenceStore.setDefault(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), emptyAirdFragOnControl);
+
     }
 
     private boolean getValue(final String key) {

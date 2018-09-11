@@ -147,6 +147,9 @@
 			<li><span class="label label-info">Modified</span> A &#8220;Representation Link&#8221; is no longer deleted automatically when the targeted representation is deleted. Instead, the note header changes to &#8220;Broken Representation Link&#8221; and the note icon changes to a small red diagonal cross. You can refer to the 
 				<a href="user/diagrams/Diagrams.html#notes">user documentation</a> for more details.
 			</li>
+			<li><span class="label label-success">Added</span> The preference 
+				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE</code> has been added and can be managed in Preferences/Sirius/Sirius Diagram/Appearance/Display viewpoint colors. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Migrations">Migrations</h4>
@@ -173,6 +176,14 @@
 				<code>SiriusFormatDataManagerForSemanticElements</code> has been moved from package 
 				<code>org.eclipse.sirius.diagram.ui.tools.internal.format.semantic</code> to 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.format.semantic</code>.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+			<code>org.eclipse.sirius.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE</code> has been added. Its default value is true. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
 			</li>
 		</ul>
 		<h2 id="sirius5.1.3">Changes in Sirius 5.1.3</h2>
@@ -290,7 +301,7 @@
 		<pre>SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(),0); 
 
 </pre>
-		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -571,7 +582,7 @@
 				<a href="./specifier/general/Writing_Queries.html#service_methods">specifier documentation</a>, it is recommended to use List or Set instead of Collection in java services signature.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -883,7 +894,7 @@
 				<code>RepresentationElementIdentifier</code>) have been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1557,7 +1568,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>updateModelsReferences(DAnalysis, Iterator&lt;DSemanticDecorator&gt;)</code> because it is more suited to the client needs.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -2051,7 +2062,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.resetVariables()</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui6">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -2199,7 +2210,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker</code> has been added to declare states used by all DragTrackers which manage move in diagram using mouse middle click.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui6">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui7">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
