@@ -217,7 +217,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         if (isSupported(representationDescriptor)) {
             DRepresentation representation = representationDescriptor.getRepresentation();
             Optional<Resource> resOpt = Optional.ofNullable(representation).map(EObject::eResource);
-            SiriusUtil.delete(representationDescriptor, session);
+            EcoreUtil.remove(representationDescriptor);
             if (representation != null) {
                 SiriusUtil.delete(representation, session);
             }

@@ -1508,6 +1508,11 @@ public final class Messages {
     @TranslatableMessage
     public static String ResetToDefaultFiltersAction_tooltip;
 
+    @TranslatableMessage
+    public static String LinkNoteMigrationParticipant_title;
+
+    @TranslatableMessage
+    public static String LinkNoteMigrationParticipant_entry;
     // CHECKSTYLE:ON
 
     private Messages() {

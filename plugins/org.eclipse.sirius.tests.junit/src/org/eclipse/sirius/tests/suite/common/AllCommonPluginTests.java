@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Felix Dorner <felix.dorner@gmail.com> - Bug 535648
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.common;
 
@@ -126,6 +127,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.DiagramSplitMigrationTest
 import org.eclipse.sirius.tests.unit.diagram.migration.FontFormatMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.FontStyleForDNodeListElementMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.FragmentedFilesMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.LinkNoteMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ListContainerAttributeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationCompartmentWithLayoutConstraintsTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationEdgeLabelLocationToBoundsTest;
@@ -236,6 +238,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest.class);
         suite.addTestSuite(DecorationDescriptionImageExpressionMigrationTest.class);
         suite.addTestSuite(RepairGMFbendpointsMigrationParticipantTest.class);
+        suite.addTestSuite(LinkNoteMigrationParticipantTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
         suite.addTest(new JUnit4TestAdapter(GroupingContentProviderTest.class));

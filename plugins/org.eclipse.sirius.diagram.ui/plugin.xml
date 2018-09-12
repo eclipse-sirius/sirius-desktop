@@ -9,7 +9,7 @@
 
   Contributors:
        Obeo - Initial API and implementation
-       Felix Dorner <felix.dorner@gmail.com> - Bug 533002
+       Felix Dorner <felix.dorner@gmail.com> - Bug 533002, 535648
 -->
 
 <plugin>
@@ -1915,6 +1915,10 @@
       </participant>
       <participant
             class="org.eclipse.sirius.diagram.ui.business.internal.migration.RepairGMFbendpointsMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.LinkNoteMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
    </extension>
