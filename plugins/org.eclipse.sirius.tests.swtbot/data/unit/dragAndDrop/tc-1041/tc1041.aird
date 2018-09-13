@@ -1,40 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram" xmi:id="_bTB5EA0hEeC5sN0Dpug5Pw" selectedViews="_gzkJcA0hEeC5sN0Dpug5Pw" version="8.0.0">
-  <models xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_gzkJcA0hEeC5sN0Dpug5Pw" initialized="true">
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_UpGg0A2nEeC5sN0Dpug5Pw" name="new TC1041 representation 2 Blank">
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_UpGg0g2nEeC5sN0Dpug5Pw" source="GMF_DIAGRAMS">
-        <data xmi:type="notation:Diagram" xmi:id="_UpGg0w2nEeC5sN0Dpug5Pw" type="Sirius" element="_UpGg0A2nEeC5sN0Dpug5Pw" measurementUnit="Pixel">
-          <styles xmi:type="notation:DiagramStyle" xmi:id="_UpGg1A2nEeC5sN0Dpug5Pw"/>
-        </data>
-      </ownedAnnotationEntries>
-      <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']"/>
-      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_UpGg0Q2nEeC5sN0Dpug5Pw"/>
-      <activatedLayers xmi:type="description_1:Layer" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@defaultLayer"/>
-      <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
-    </ownedRepresentations>
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Vk3lgA2nEeC5sN0Dpug5Pw" name="new TC1041 representation 5 Blank">
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Vk3lgg2nEeC5sN0Dpug5Pw" source="GMF_DIAGRAMS">
-        <data xmi:type="notation:Diagram" xmi:id="_Vk3lgw2nEeC5sN0Dpug5Pw" type="Sirius" element="_Vk3lgA2nEeC5sN0Dpug5Pw" measurementUnit="Pixel">
-          <styles xmi:type="notation:DiagramStyle" xmi:id="_Vk3lhA2nEeC5sN0Dpug5Pw"/>
-        </data>
-      </ownedAnnotationEntries>
-      <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%205%20Blank']"/>
-      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Vk3lgQ2nEeC5sN0Dpug5Pw"/>
-      <activatedLayers xmi:type="description_1:Layer" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%205%20Blank']/@defaultLayer"/>
-      <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
-    </ownedRepresentations>
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Vk3lgA2nEeC5sN0Dpug5Px" name="new TC1041 representation 6 Blank">
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Vk3lgg2nEeC5sN0Dpug5Px" source="GMF_DIAGRAMS">
-        <data xmi:type="notation:Diagram" xmi:id="_Vk3lgw2nEeC5sN0Dpug5Px" type="Sirius" element="_Vk3lgA2nEeC5sN0Dpug5Px" measurementUnit="Pixel">
-          <styles xmi:type="notation:DiagramStyle" xmi:id="_Vk3lhA2nEeC5sN0Dpug5Px"/>
-        </data>
-      </ownedAnnotationEntries>
-      <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']"/>
-      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Vk3lgQ2nEeC5sN0Dpug5Px"/>
-      <activatedLayers xmi:type="description_1:Layer" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']/@defaultLayer"/>
-      <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
-    </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']"/>
-  </ownedViews>
-</viewpoint:DAnalysis>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_bTB5EA0hEeC5sN0Dpug5Pw" selectedViews="_gzkJcA0hEeC5sN0Dpug5Pw" version="14.1.0.201808300808">
+    <semanticResources>tc1041.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_gzkJcA0hEeC5sN0Dpug5Pw">
+      <viewpoint xmi:type="description:Viewpoint" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_d3znALduEeikhI0_o-TVyA" name="new TC1041 representation 2 Blank" repPath="#_UpGg0A2nEeC5sN0Dpug5Pw">
+        <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']"/>
+        <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_d4FT0LduEeikhI0_o-TVyA" name="new TC1041 representation 5 Blank" repPath="#_Vk3lgA2nEeC5sN0Dpug5Pw">
+        <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%205%20Blank']"/>
+        <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_d4FT0rduEeikhI0_o-TVyA" name="new TC1041 representation 6 Blank" repPath="#_Vk3lgA2nEeC5sN0Dpug5Px">
+        <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']"/>
+        <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_aiae8K9fEei-GetRWcSf5A" name="Test no NPE raised during DND" representation="#_aiae8a9fEei-GetRWcSf5A">
+        <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']"/>
+        <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_UpGg0A2nEeC5sN0Dpug5Pw" name="new TC1041 representation 2 Blank">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_UpGg0g2nEeC5sN0Dpug5Pw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_UpGg0w2nEeC5sN0Dpug5Pw" type="Sirius" element="_UpGg0A2nEeC5sN0Dpug5Pw" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_UpGg1A2nEeC5sN0Dpug5Pw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_d4IXILduEeikhI0_o-TVyA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_d4IXIbduEeikhI0_o-TVyA"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_UpGg0Q2nEeC5sN0Dpug5Pw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%202%20Blank']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_Vk3lgA2nEeC5sN0Dpug5Pw" name="new TC1041 representation 5 Blank">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_Vk3lgg2nEeC5sN0Dpug5Pw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_Vk3lgw2nEeC5sN0Dpug5Pw" type="Sirius" element="_Vk3lgA2nEeC5sN0Dpug5Pw" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_Vk3lhA2nEeC5sN0Dpug5Pw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_d4IXIrduEeikhI0_o-TVyA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_d4IXI7duEeikhI0_o-TVyA"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%205%20Blank']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_Vk3lgQ2nEeC5sN0Dpug5Pw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%205%20Blank']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_Vk3lgA2nEeC5sN0Dpug5Px" name="new TC1041 representation 6 Blank">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_Vk3lgg2nEeC5sN0Dpug5Px" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_Vk3lgw2nEeC5sN0Dpug5Px" type="Sirius" element="_Vk3lgA2nEeC5sN0Dpug5Px" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_Vk3lhA2nEeC5sN0Dpug5Px"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_d4IXJLduEeikhI0_o-TVyA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_d4IXJbduEeikhI0_o-TVyA"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_Vk3lgQ2nEeC5sN0Dpug5Px"/>
+    <activatedLayers xmi:type="description_1:Layer" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%206%20Blank']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_aiae8a9fEei-GetRWcSf5A" name="Test no NPE raised during DND">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_aiae8q9fEei-GetRWcSf5A" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_aiae869fEei-GetRWcSf5A"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_aizggK9fEei-GetRWcSf5A" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_aizgga9fEei-GetRWcSf5A" type="Sirius" element="_aiae8a9fEei-GetRWcSf5A" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_ai_twK9fEei-GetRWcSf5A" type="2001" element="_aiae9K9fEei-GetRWcSf5A">
+          <children xmi:type="notation:Node" xmi:id="_ajbyoK9fEei-GetRWcSf5A" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_ajbyoa9fEei-GetRWcSf5A" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_ajp1EK9fEei-GetRWcSf5A" type="3001" element="_aiae9a9fEei-GetRWcSf5A">
+            <children xmi:type="notation:Node" xmi:id="_ajrDMK9fEei-GetRWcSf5A" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_ajrDMa9fEei-GetRWcSf5A" x="-10" y="11"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_aj33gK9fEei-GetRWcSf5A" type="3002" element="_aiae9q9fEei-GetRWcSf5A">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_aj33ga9fEei-GetRWcSf5A" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aj33gq9fEei-GetRWcSf5A"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ajp1Ea9fEei-GetRWcSf5A" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ajp1Eq9fEei-GetRWcSf5A" x="40" y="62" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_aj2pYK9fEei-GetRWcSf5A" type="3003" element="_aiae969fEei-GetRWcSf5A">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_aj2pYa9fEei-GetRWcSf5A" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aj2pYq9fEei-GetRWcSf5A"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ai_twa9fEei-GetRWcSf5A" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ai_twq9fEei-GetRWcSf5A" width="70" height="70"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_ajmxwK9fEei-GetRWcSf5A" type="2001" element="_aiae-K9fEei-GetRWcSf5A">
+          <children xmi:type="notation:Node" xmi:id="_ajnY0K9fEei-GetRWcSf5A" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_ajnY0a9fEei-GetRWcSf5A" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_aj4ekK9fEei-GetRWcSf5A" type="3003" element="_aiae-a9fEei-GetRWcSf5A">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_aj4eka9fEei-GetRWcSf5A" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aj4ekq9fEei-GetRWcSf5A"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ajmxwa9fEei-GetRWcSf5A" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ajmxwq9fEei-GetRWcSf5A" x="132" width="70" height="2689"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_ai0HkK9fEei-GetRWcSf5A"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_aiae9K9fEei-GetRWcSf5A" name="P1" width="7" height="7" resizeKind="NORTH_SOUTH">
+      <target xmi:type="ecore:EPackage" href="tc1041.ecore#//P1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="tc1041.ecore#//P1"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_aiae9a9fEei-GetRWcSf5A" name="C1" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="tc1041.ecore#//P1/C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc1041.ecore#//P1/C1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Dot" uid="_aiae9q9fEei-GetRWcSf5A" backgroundColor="138,226,52">
+          <description xmi:type="style:DotDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@nodeMappings[name='Node%20EPackage%20R3']/@borderedNodeMappings[name='EClass%20as%20ports']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@nodeMappings[name='Node%20EPackage%20R3']/@borderedNodeMappings[name='EClass%20as%20ports']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:Square" uid="_aiae969fEei-GetRWcSf5A" borderColor="246,139,139" labelPosition="node" color="217,196,215">
+        <description xmi:type="style:SquareDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@nodeMappings[name='Node%20EPackage%20R3']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@nodeMappings[name='Node%20EPackage%20R3']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_aiae-K9fEei-GetRWcSf5A" name="P2" width="7" height="7" resizeKind="NORTH_SOUTH">
+      <target xmi:type="ecore:EPackage" href="tc1041.ecore#//P2"/>
+      <semanticElements xmi:type="ecore:EPackage" href="tc1041.ecore#//P2"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_aiae-a9fEei-GetRWcSf5A" borderColor="246,139,139" labelPosition="node" color="217,196,215">
+        <description xmi:type="style:SquareDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@nodeMappings[name='Node%20EPackage%20R3']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer/@nodeMappings[name='Node%20EPackage%20R3']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_aiae-q9fEei-GetRWcSf5A"/>
+    <activatedLayers xmi:type="description_1:Layer" href="tc1041.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231041']/@ownedRepresentations[name='TC1041%20representation%203']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="tc1041.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>
