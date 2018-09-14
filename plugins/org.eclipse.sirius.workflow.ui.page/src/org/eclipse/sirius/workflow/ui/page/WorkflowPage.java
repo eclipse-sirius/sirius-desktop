@@ -21,12 +21,12 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
+import org.eclipse.sirius.server.backend.internal.services.workflow.WorkflowHelper;
 import org.eclipse.sirius.server.internal.SiriusServerPlugin;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.editor.api.pages.AbstractSessionEditorPage;
 import org.eclipse.sirius.ui.editor.api.pages.PageProviderRegistry.PositioningKind;
 import org.eclipse.sirius.ui.editor.api.pages.PageUpdateCommandBuilder.PageUpdateCommand;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.layout.GridData;
@@ -52,27 +52,7 @@ public class WorkflowPage extends AbstractSessionEditorPage {
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
      */
-    private final class SessionManagerListenerForBrowserRefresh implements SessionManagerListener {
-        @Override
-        public void notifyAddSession(Session newSession) {
-            // Nothing to do for this event.
-        }
-
-        @Override
-        public void notifyRemoveSession(Session removedSession) {
-            // Nothing to do for this event.
-        }
-
-        @Override
-        public void viewpointSelected(Viewpoint selectedSirius) {
-            // Nothing to do for this event.
-        }
-
-        @Override
-        public void viewpointDeselected(Viewpoint deselectedSirius) {
-            // Nothing to do for this event.
-        }
-
+    private final class BrowserRefresher extends SessionManagerListener.Stub {
         @Override
         public void notify(Session updated, int notification) {
             switch (notification) {
@@ -91,7 +71,6 @@ public class WorkflowPage extends AbstractSessionEditorPage {
                 // do nothing as we will be notified in other way
                 break;
             }
-
         }
     }
 
@@ -108,7 +87,7 @@ public class WorkflowPage extends AbstractSessionEditorPage {
     /**
      * Listener refreshing the {@link Browser} when Sirius resource changes occur.
      */
-    private SessionManagerListenerForBrowserRefresh sessionManagerListenerForBrowserRefresh;
+    private BrowserRefresher sessionManagerListenerForBrowserRefresh;
 
     /**
      * Creates a new {@link WorkflowPage} for the specified session.
@@ -119,7 +98,7 @@ public class WorkflowPage extends AbstractSessionEditorPage {
     public WorkflowPage(Session s) {
         super(s.getID(), Messages.WorkflowPage_tab_name);
         this.session = Objects.requireNonNull(s);
-        sessionManagerListenerForBrowserRefresh = new SessionManagerListenerForBrowserRefresh();
+        sessionManagerListenerForBrowserRefresh = new BrowserRefresher();
         SessionManager.INSTANCE.addSessionsListener(sessionManagerListenerForBrowserRefresh);
     }
 
