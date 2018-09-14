@@ -28,6 +28,7 @@ Now, it is possible to:
 * add new menus and actions in an existing group of an existing menu (action MyActionH1 and menu MySpecificPopupMenu3 for example):
 !images/popupMenuAfter.png!
 Refer to the "specifier documentation":specifier/diagrams/Diagrams.html#group for details.
+* <span class="label label-success">Modified</span> Specifier can now hide header column of Edition Table (the left-most column of the table). It is possible by specifying value -1 in the _Initial Header Column Width_ field of Edition table representation. See "the documentation":specifier/tables/Tables.html#edition_tables for details. 
 
 h3. Developer-Visible Changes
 
