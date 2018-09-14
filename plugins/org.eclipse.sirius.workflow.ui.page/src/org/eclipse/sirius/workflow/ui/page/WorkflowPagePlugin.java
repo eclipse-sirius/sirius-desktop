@@ -12,7 +12,6 @@ package org.eclipse.sirius.workflow.ui.page;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.osgi.framework.BundleContext;
 
 public class WorkflowPagePlugin extends EMFPlugin {
     /**
@@ -59,21 +58,10 @@ public class WorkflowPagePlugin extends EMFPlugin {
     public static class Implementation extends EclipsePlugin {
 
         /**
-         * The constructor.
+         * The constructor. 
          */
         public Implementation() {
-            super();
             WorkflowPagePlugin.plugin = this;
-        }
-
-        @Override
-        public void start(BundleContext context) throws Exception {
-            super.start(context);
-        }
-
-        @Override
-        public void stop(BundleContext context) throws Exception {
-            super.stop(context);
         }
     }
 }

@@ -59,11 +59,6 @@ public class SiriusServerWorkflowFrontendConfigurator implements ISiriusServerCo
      */
     private static final String SERVLET_PATH = "/"; //$NON-NLS-1$
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.server.api.ISiriusServerConfigurator#configure(org.eclipse.jetty.server.Server)
-     */
     @Override
     public void configure(Server server) {
         ServletContextHandler servletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS | ServletContextHandler.GZIP);

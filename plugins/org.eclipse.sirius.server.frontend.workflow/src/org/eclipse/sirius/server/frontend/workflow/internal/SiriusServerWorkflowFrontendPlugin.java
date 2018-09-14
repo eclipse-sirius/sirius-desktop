@@ -12,7 +12,6 @@ package org.eclipse.sirius.server.frontend.workflow.internal;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.osgi.framework.BundleContext;
 
 /**
  * The plugin of the bundle.
@@ -67,28 +66,7 @@ public class SiriusServerWorkflowFrontendPlugin extends EMFPlugin {
          * The constructor.
          */
         public Implementation() {
-            super();
             SiriusServerWorkflowFrontendPlugin.plugin = this;
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
-         */
-        @Override
-        public void start(BundleContext context) throws Exception {
-            super.start(context);
-        }
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
-         */
-        @Override
-        public void stop(BundleContext context) throws Exception {
-            super.stop(context);
         }
     }
 }
