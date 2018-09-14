@@ -55,21 +55,23 @@ public class WorkflowPage extends AbstractSessionEditorPage {
     private final class BrowserRefresher extends SessionManagerListener.Stub {
         @Override
         public void notify(Session updated, int notification) {
-            switch (notification) {
-            case SessionListener.REPRESENTATION_CHANGE:
-            case SessionListener.SEMANTIC_CHANGE:
-            case SessionListener.SELECTED_VIEWS_CHANGE_KIND:
-            case SessionListener.VSM_UPDATED:
-            case SessionListener.REPLACED:
-                Display.getDefault().asyncExec(() -> {
-                    if (browser != null && !browser.isDisposed()) {
-                        browser.refresh();
-                    }
-                });
-                break;
-            default:
-                // do nothing as we will be notified in other way
-                break;
+            if (session == updated) {
+                switch (notification) {
+                case SessionListener.REPRESENTATION_CHANGE:
+                case SessionListener.SEMANTIC_CHANGE:
+                case SessionListener.SELECTED_VIEWS_CHANGE_KIND:
+                case SessionListener.VSM_UPDATED:
+                case SessionListener.REPLACED:
+                    Display.getDefault().asyncExec(() -> {
+                        if (browser != null && !browser.isDisposed()) {
+                            browser.refresh();
+                        }
+                    });
+                    break;
+                default:
+                    // do nothing as we will be notified in other way
+                    break;
+                }
             }
         }
     }
