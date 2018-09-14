@@ -797,21 +797,23 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     public void dispose() {
         isClosing = true;
 
-        ToolManagement toolManagement = DiagramPlugin.getDefault().getToolManagement(getDiagram());
-        if (toolManagement != null) {
-            toolManagement.removeToolChangeListener(paletteToolChangeListener);
-            DiagramPlugin.getPlugin().removeToolManagement(getDiagram());
-        }
-
         // Dispose the tabbar (to avoid memory leak)
         if (getTabbar() != null) {
             getTabbar().dispose();
             setTabbar(null);
         }
         disposeGraphicalListeners();
-        if (getDiagram() != null && getDiagram().eResource() != null) {
+
+        Diagram diagram = getDiagram();
+        if (diagram != null && diagram.eResource() != null) {
+            ToolManagement toolManagement = DiagramPlugin.getDefault().getToolManagement(diagram);
+            if (toolManagement != null) {
+                toolManagement.removeToolChangeListener(paletteToolChangeListener);
+                DiagramPlugin.getPlugin().removeToolManagement(diagram);
+            }
+
             if (dRepresentationLockStatusListener != null) {
-                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getDiagram().getElement());
+                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(diagram.getElement());
                 permissionAuthority.removeAuthorityListener(dRepresentationLockStatusListener);
             }
         }
