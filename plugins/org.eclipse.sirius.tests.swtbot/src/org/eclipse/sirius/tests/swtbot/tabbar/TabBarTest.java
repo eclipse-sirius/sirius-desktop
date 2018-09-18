@@ -89,14 +89,14 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String FILE_DIR = "/";
 
-    private static final String[] DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange All", "Select &All", "Layers", "Filters", Messages.DefaultModeAction_statusOn,
+    private static final String[] DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange All", "Select &All", "Layers", "Filters", Messages.EditModeAction_Label,
             Messages.PasteFormatAction_toolTipText };
 
     private static final String[] DIAGRAM_TOOLBARBUTTONS_TOOLTIPS = { Messages.SiriusDiagramActionBarContributor_refreshDiagram, Messages.SelectHiddenElementsAction_tooltip,
             Messages.SelectPinnedElementsAction_tooltip, "Zoom In (Ctrl+=)", "Zoom Out (Ctrl+-)", Messages.SaveAsImageFileAction_label };
 
     private static final String[] CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Straighten to top",
-            Messages.DefaultModeAction_statusOn, "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
+            Messages.EditModeAction_Label, "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
 
     private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { Messages.PinElementsEclipseAction_text, Messages.UnpinElementsEclipseAction_text, Messages.CopyFormatAction_toolTipText,
             Messages.SiriusDiagramActionBarContributor_hideElement, Messages.SiriusDiagramActionBarContributor_hideLabel, Messages.SiriusDiagramActionBarContributor_deleteFromDiagram,
