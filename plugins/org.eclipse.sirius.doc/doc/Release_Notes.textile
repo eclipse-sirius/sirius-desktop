@@ -19,6 +19,8 @@ h3. Developer-Visible Changes
 h4. Migrations
 
 * <span class="label label-success">Added</span> A migration participant has been added to update existing representation links. (see "bugzilla #533175":https://bugs.eclipse.org/bugs/show_bug.cgi?id=535648 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _12.1.4.201810100944_.
+* <span class="label label-success">Added</span> A migration participant has been added to fix diagrams with corrupted Note, Text or Note Attachment (see "bugzilla #539554":https://bugs.eclipse.org/bugs/show_bug.cgi?id=539554 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _12.1.4.201811151800_.
+
 
 h4. Changes in  @org.eclipse.sirius.diagram@
 

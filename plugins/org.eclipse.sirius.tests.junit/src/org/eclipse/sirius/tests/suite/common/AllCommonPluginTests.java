@@ -113,7 +113,6 @@ import org.eclipse.sirius.tests.unit.common.migration.LabelEditToolVariableMigra
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius0_9Test;
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius1_0_0_M5Test;
 import org.eclipse.sirius.tests.unit.common.migration.ModelsToSemanticResourcesMigrationTest;
-import org.eclipse.sirius.tests.unit.common.migration.NoteAttachmentMigrationTest;
 import org.eclipse.sirius.tests.unit.common.migration.VariableMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.EObjectSelectionFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.BorderSizeMigrationTest;
@@ -136,6 +135,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.MigrationLabelBoundsToLoc
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfCollapsedBorderedNodeTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfHideLabelFilterInconsistencyTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationRoutingStyleEndUserOverrideTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.NoteAttachmentMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.NoteShapeDefaultLabelAlignmentMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.OptionalLayerToAdditionalLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ReferencedModelResourceMigrationTest;
@@ -152,6 +152,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.RgbValuesEDataTypeMigrati
 import org.eclipse.sirius.tests.unit.diagram.migration.RunRepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SnapBackDistantLabelsMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.ViewWithNullElementMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.multipageeditor.SiriusMultiPageEditorTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
 import org.eclipse.sirius.tests.unit.perf.common.Session1MillionTests;
@@ -239,6 +240,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(DecorationDescriptionImageExpressionMigrationTest.class);
         suite.addTestSuite(RepairGMFbendpointsMigrationParticipantTest.class);
         suite.addTestSuite(LinkNoteMigrationParticipantTest.class);
+        suite.addTestSuite(ViewWithNullElementMigrationParticipantTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
         suite.addTest(new JUnit4TestAdapter(GroupingContentProviderTest.class));
