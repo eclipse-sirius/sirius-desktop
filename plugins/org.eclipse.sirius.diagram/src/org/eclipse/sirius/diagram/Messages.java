@@ -284,6 +284,15 @@ public final class Messages {
     @TranslatableMessage
     public static String UpdateToolRecordingCommand_cancelExceptionMessage;
 
+    @TranslatableMessage
+    public static String ViewWithNullElementMigrationParticipant_title;
+
+    @TranslatableMessage
+    public static String ViewWithNullElementMigrationParticipant_message;
+
+    @TranslatableMessage
+    public static String ViewWithNullElementMigrationParticipant_singleMessage;
+
     // CHECKSTYLE:ON
     private Messages() {
         // Prevents instanciation.

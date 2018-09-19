@@ -82,7 +82,7 @@ public class NoteAttachmentWithoutSourceOrTargetMigrationParticipant extends Abs
         DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
         if (diagramCreationUtil.findAssociatedGMFDiagram()) {
             Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();
-            deleteNoteAttachmentWithoutSourceOrTarget(gmfDiagram);
+            deleteNoteAttachmentWithoutSourceOrTarget(gmfDiagram, dDiagram.getName());
         }
     }
 
@@ -96,7 +96,7 @@ public class NoteAttachmentWithoutSourceOrTargetMigrationParticipant extends Abs
         }
     }
 
-    private void deleteNoteAttachmentWithoutSourceOrTarget(Diagram gmfDiagram) {
+    private void deleteNoteAttachmentWithoutSourceOrTarget(Diagram gmfDiagram, String diagramName) {
         Iterable<Connector> noteAttachmentsToRemoveIter = Iterables.filter(Iterables.filter(gmfDiagram.getEdges(), Connector.class), new Predicate<Connector>() {
             @Override
             public boolean apply(Connector connector) {
@@ -116,7 +116,8 @@ public class NoteAttachmentWithoutSourceOrTargetMigrationParticipant extends Abs
             gmfDiagram.removeEdge(connector);
         }
         if (noteAttachmentsToRemove.length > 0) {
-            sb.append(MessageFormat.format(Messages.NoteAttachmentWithoutSourceOrTargetMigrationParticipant_edgesRemoved, gmfDiagram.getName(), noteAttachmentsToRemove.length));
+            deletionOccured = true;
+            sb.append(MessageFormat.format(Messages.NoteAttachmentWithoutSourceOrTargetMigrationParticipant_edgesRemoved, noteAttachmentsToRemove.length, diagramName));
         }
     }
 

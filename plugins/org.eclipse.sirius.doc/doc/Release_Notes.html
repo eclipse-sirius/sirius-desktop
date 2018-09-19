@@ -331,6 +331,17 @@
 				<code>oes.common</code> plugin.
 			</li>
 		</ul>
+		<h4 id="Migrations">Migrations</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> A migration participant has been added to convert the serialized xmi:id to the technical id (uid attribut) for Sirius model elements of the .aird files (see 
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=525261">bugzilla #525261</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
+				<em>14.1.0.201808300808</em>.
+			</li>
+			<li><span class="label label-success">Added</span> A migration participant has been added to fix diagrams with corrupted Note, Text or Note Attachment (see 
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=539550">bugzilla #539550</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
+				<em>14.1.0.201809271200</em>.
+			</li>
+		</ul>
 		<h2 id="sirius6.0.0">Changes in Sirius 6.0.0</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
@@ -576,7 +587,7 @@
 				<code>org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot.dragAndDrop(AbstractSWTBot&lt;? extends Widget&gt;)</code> method instead. 
 			</li>
 		</ul>
-		<h4 id="Migrations">Migrations</h4>
+		<h4 id="Migrations2">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to fix diagram with note attachment corrupted (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=533177">bugzilla #533177</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
@@ -749,7 +760,7 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
-		<h4 id="Migrations2">Migrations</h4>
+		<h4 id="Migrations3">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=518870">bugzilla #518870</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 

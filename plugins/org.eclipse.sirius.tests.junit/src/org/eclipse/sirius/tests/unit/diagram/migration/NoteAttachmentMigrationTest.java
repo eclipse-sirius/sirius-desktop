@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tests.unit.common.migration;
+package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -106,7 +106,7 @@ public class NoteAttachmentMigrationTest extends SiriusTestCase {
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
      */
-    private class RepresentationsFileResourceHandlerWithoutPostLoad extends RepresentationsFileResourceHandler {
+    public static class RepresentationsFileResourceHandlerWithoutPostLoad extends RepresentationsFileResourceHandler {
         public RepresentationsFileResourceHandlerWithoutPostLoad(String loadedVersion) {
             super(loadedVersion);
         }
