@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,10 @@ import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
 import org.eclipse.sirius.diagram.ui.internal.refresh.SiriusDiagramSessionEventBroker;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyWrapperPermissionAuthority;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -85,8 +89,11 @@ public class FilterListener implements ModelChangeTrigger {
 
         @Override
         protected void doExecute() {
-            CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(diagram);
-            builder.computeCompositeFilterApplications();
+            IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(diagram);
+            if (!(permissionAuthority != null && LockStatus.LOCKED_BY_OTHER.equals(permissionAuthority.getLockStatus(diagram)))) {
+                CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(diagram);
+                builder.computeCompositeFilterApplications();
+            }
         }
     }
 }
