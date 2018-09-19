@@ -364,8 +364,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         // Obtain or create and register package
         ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.get(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl
-                ? EPackage.Registry.INSTANCE.get(ViewpointPackage.eNS_URI)
-                : new ViewpointPackageImpl());
+                ? EPackage.Registry.INSTANCE.get(ViewpointPackage.eNS_URI) : new ViewpointPackageImpl());
 
         ViewpointPackageImpl.isInited = true;
 
@@ -374,20 +373,15 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         // Obtain or create and register interdependencies
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
-                : DescriptionPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
         StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI)
-                : StylePackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI)
-                : ToolPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
         ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI)
-                : ValidationPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI)
-                : AuditPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
 
         // Create package meta-data objects
         theViewpointPackage.createPackageContents();
@@ -1329,7 +1323,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EReference getToolSectionInstance_Groups() {
+    public EReference getToolSectionInstance_Section() {
         return (EReference) toolSectionInstanceEClass.getEStructuralFeatures().get(1);
     }
 
@@ -1339,18 +1333,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EReference getToolSectionInstance_Section() {
-        return (EReference) toolSectionInstanceEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EReference getToolSectionInstance_SubSections() {
-        return (EReference) toolSectionInstanceEClass.getEStructuralFeatures().get(3);
+        return (EReference) toolSectionInstanceEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1553,7 +1537,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         toolSectionInstanceEClass = createEClass(ViewpointPackage.TOOL_SECTION_INSTANCE);
         createEReference(toolSectionInstanceEClass, ViewpointPackage.TOOL_SECTION_INSTANCE__TOOLS);
-        createEReference(toolSectionInstanceEClass, ViewpointPackage.TOOL_SECTION_INSTANCE__GROUPS);
         createEReference(toolSectionInstanceEClass, ViewpointPackage.TOOL_SECTION_INSTANCE__SECTION);
         createEReference(toolSectionInstanceEClass, ViewpointPackage.TOOL_SECTION_INSTANCE__SUB_SECTIONS);
 
@@ -1864,9 +1847,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         initEClass(toolSectionInstanceEClass, ToolSectionInstance.class, "ToolSectionInstance", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getToolSectionInstance_Tools(), this.getToolInstance(), null, "tools", null, 0, -1, ToolSectionInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEReference(getToolSectionInstance_Groups(), this.getToolGroupInstance(), null, "groups", null, 0, -1, ToolSectionInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEReference(getToolSectionInstance_Section(), theEcorePackage.getEObject(), null, "section", null, 0, 1, ToolSectionInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$

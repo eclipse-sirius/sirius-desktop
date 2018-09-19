@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.ToolSectionInstance#getTools <em>Tools</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.ToolSectionInstance#getGroups <em>Groups</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.ToolSectionInstance#getSection <em>Section</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.ToolSectionInstance#getSubSections <em>Sub Sections</em>}</li>
  * </ul>
@@ -48,22 +47,6 @@ public interface ToolSectionInstance extends ToolInstance {
      * @generated
      */
     EList<ToolInstance> getTools();
-
-    /**
-     * Returns the value of the '<em><b>Groups</b></em>' containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.ToolGroupInstance}. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Groups</em>' containment reference list isn't clear, there really should be more of a
-     * description here...
-     * </p>
-     * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Groups</em>' containment reference list.
-     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getToolSectionInstance_Groups()
-     * @model containment="true" resolveProxies="true"
-     * @generated
-     */
-    EList<ToolGroupInstance> getGroups();
 
     /**
      * Returns the value of the '<em><b>Section</b></em>' reference. <!-- begin-user-doc -->

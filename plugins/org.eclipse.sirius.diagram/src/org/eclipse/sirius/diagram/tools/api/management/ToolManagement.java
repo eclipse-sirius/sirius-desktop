@@ -388,7 +388,7 @@ public class ToolManagement {
             newToolGroupInstance.getTools().addAll(group.getTools().stream().map(ts -> {
                 return createNewTool(ts, false);
             }).collect(Collectors.toSet()));
-            newToolSectionInstance.getGroups().add(newToolGroupInstance);
+            newToolSectionInstance.getTools().add(newToolGroupInstance);
         }
         EList<ToolSection> subSections = toolSection.getSubSections();
         for (ToolSection subToolSection : subSections) {
@@ -439,8 +439,8 @@ public class ToolManagement {
                     newToolGroupInstance.getTools().addAll(new DiagramComponentizationManager().getTools(session.getSelectedViewpoints(false), (ToolGroup) toolEntry).stream().map(ts -> {
                         ToolInstance tool = createNewTool(ts, false);
                         return tool;
-                    }).collect(Collectors.toSet()));
-                    newToolSectionInstance.getGroups().add(newToolGroupInstance);
+                    }).collect(Collectors.toCollection(LinkedHashSet::new)));
+                    newToolSectionInstance.getTools().add(newToolGroupInstance);
                 } else {
                     ToolInstance newToolInstance = createNewTool(toolEntry, false);
                     newToolSectionInstance.getTools().add(newToolInstance);

@@ -80,7 +80,6 @@ public class ToolSectionInstanceItemProvider extends ToolInstanceItemProvider {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(ViewpointPackage.Literals.TOOL_SECTION_INSTANCE__TOOLS);
-            childrenFeatures.add(ViewpointPackage.Literals.TOOL_SECTION_INSTANCE__GROUPS);
             childrenFeatures.add(ViewpointPackage.Literals.TOOL_SECTION_INSTANCE__SUB_SECTIONS);
         }
         return childrenFeatures;
@@ -134,7 +133,6 @@ public class ToolSectionInstanceItemProvider extends ToolInstanceItemProvider {
 
         switch (notification.getFeatureID(ToolSectionInstance.class)) {
         case ViewpointPackage.TOOL_SECTION_INSTANCE__TOOLS:
-        case ViewpointPackage.TOOL_SECTION_INSTANCE__GROUPS:
         case ViewpointPackage.TOOL_SECTION_INSTANCE__SUB_SECTIONS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
@@ -158,8 +156,6 @@ public class ToolSectionInstanceItemProvider extends ToolInstanceItemProvider {
 
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.TOOL_SECTION_INSTANCE__TOOLS, ViewpointFactory.eINSTANCE.createToolSectionInstance()));
 
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.TOOL_SECTION_INSTANCE__GROUPS, ViewpointFactory.eINSTANCE.createToolGroupInstance()));
-
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.TOOL_SECTION_INSTANCE__SUB_SECTIONS, ViewpointFactory.eINSTANCE.createToolSectionInstance()));
     }
 
@@ -174,8 +170,7 @@ public class ToolSectionInstanceItemProvider extends ToolInstanceItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == ViewpointPackage.Literals.TOOL_SECTION_INSTANCE__TOOLS || childFeature == ViewpointPackage.Literals.TOOL_SECTION_INSTANCE__GROUPS
-                || childFeature == ViewpointPackage.Literals.TOOL_SECTION_INSTANCE__SUB_SECTIONS;
+        boolean qualify = childFeature == ViewpointPackage.Literals.TOOL_SECTION_INSTANCE__TOOLS || childFeature == ViewpointPackage.Literals.TOOL_SECTION_INSTANCE__SUB_SECTIONS;
 
         if (qualify) {
             return getString("_UI_CreateChild_text2", //$NON-NLS-1$

@@ -17,7 +17,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
@@ -287,7 +286,7 @@ public class PaletteManagerImpl implements PaletteManager {
         }
         // Update the root of the palette with only VSM tools
         updateContainer(session, dDiagram, descGroup.get(),
-                dDiagram.getUiState().getToolSections().stream().flatMap(section -> Stream.concat(section.getTools().stream(), section.getGroups().stream())).collect(Collectors.toList()));
+                dDiagram.getUiState().getToolSections().stream().flatMap(section -> section.getTools().stream()).collect(Collectors.toList()));
     }
 
     /**
@@ -304,7 +303,7 @@ public class PaletteManagerImpl implements PaletteManager {
         for (final ToolSectionInstance sectionInstance : dDiagram.getUiState().getToolSections()) {
             if (!ToolConstants.DEFAULT_SECTION_ID.equals(sectionInstance.getId())) {
                 Option<SectionPaletteDrawer> paletteEntry = getPaletteEntry(paletteRoot, PaletteManagerImpl.getToolSectionId((ToolSection) sectionInstance.getSection()), SectionPaletteDrawer.class);
-                List<ToolInstance> toolInstances = Stream.concat(sectionInstance.getTools().stream(), sectionInstance.getGroups().stream()).collect(Collectors.toList());
+                List<ToolInstance> toolInstances = sectionInstance.getTools();
                 if (!paletteEntry.some()) {
                     final PaletteContainer container = PaletteManagerImpl.createPaletteDrawner((ToolSection) sectionInstance.getSection());
                     updateContainer(session, dDiagram, container, toolInstances);

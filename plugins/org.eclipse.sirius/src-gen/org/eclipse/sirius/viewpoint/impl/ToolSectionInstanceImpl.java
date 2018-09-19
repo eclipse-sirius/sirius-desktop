@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,6 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *
  */
 package org.eclipse.sirius.viewpoint.impl;
 
@@ -22,7 +21,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.sirius.viewpoint.ToolGroupInstance;
 import org.eclipse.sirius.viewpoint.ToolInstance;
 import org.eclipse.sirius.viewpoint.ToolSectionInstance;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -35,7 +33,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.ToolSectionInstanceImpl#getTools <em>Tools</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.ToolSectionInstanceImpl#getGroups <em>Groups</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.ToolSectionInstanceImpl#getSection <em>Section</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.ToolSectionInstanceImpl#getSubSections <em>Sub Sections</em>}</li>
  * </ul>
@@ -52,16 +49,6 @@ public class ToolSectionInstanceImpl extends ToolInstanceImpl implements ToolSec
      * @ordered
      */
     protected EList<ToolInstance> tools;
-
-    /**
-     * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
-     * @see #getGroups()
-     * @generated
-     * @ordered
-     */
-    protected EList<ToolGroupInstance> groups;
 
     /**
      * The cached value of the '{@link #getSection() <em>Section</em>}' reference. <!-- begin-user-doc --> <!--
@@ -113,19 +100,6 @@ public class ToolSectionInstanceImpl extends ToolInstanceImpl implements ToolSec
             tools = new EObjectContainmentEList.Resolving<ToolInstance>(ToolInstance.class, this, ViewpointPackage.TOOL_SECTION_INSTANCE__TOOLS);
         }
         return tools;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EList<ToolGroupInstance> getGroups() {
-        if (groups == null) {
-            groups = new EObjectContainmentEList.Resolving<ToolGroupInstance>(ToolGroupInstance.class, this, ViewpointPackage.TOOL_SECTION_INSTANCE__GROUPS);
-        }
-        return groups;
     }
 
     /**
@@ -193,8 +167,6 @@ public class ToolSectionInstanceImpl extends ToolInstanceImpl implements ToolSec
         switch (featureID) {
         case ViewpointPackage.TOOL_SECTION_INSTANCE__TOOLS:
             return ((InternalEList<?>) getTools()).basicRemove(otherEnd, msgs);
-        case ViewpointPackage.TOOL_SECTION_INSTANCE__GROUPS:
-            return ((InternalEList<?>) getGroups()).basicRemove(otherEnd, msgs);
         case ViewpointPackage.TOOL_SECTION_INSTANCE__SUB_SECTIONS:
             return ((InternalEList<?>) getSubSections()).basicRemove(otherEnd, msgs);
         }
@@ -211,8 +183,6 @@ public class ToolSectionInstanceImpl extends ToolInstanceImpl implements ToolSec
         switch (featureID) {
         case ViewpointPackage.TOOL_SECTION_INSTANCE__TOOLS:
             return getTools();
-        case ViewpointPackage.TOOL_SECTION_INSTANCE__GROUPS:
-            return getGroups();
         case ViewpointPackage.TOOL_SECTION_INSTANCE__SECTION:
             if (resolve) {
                 return getSection();
@@ -237,10 +207,6 @@ public class ToolSectionInstanceImpl extends ToolInstanceImpl implements ToolSec
             getTools().clear();
             getTools().addAll((Collection<? extends ToolInstance>) newValue);
             return;
-        case ViewpointPackage.TOOL_SECTION_INSTANCE__GROUPS:
-            getGroups().clear();
-            getGroups().addAll((Collection<? extends ToolGroupInstance>) newValue);
-            return;
         case ViewpointPackage.TOOL_SECTION_INSTANCE__SECTION:
             setSection((EObject) newValue);
             return;
@@ -263,9 +229,6 @@ public class ToolSectionInstanceImpl extends ToolInstanceImpl implements ToolSec
         case ViewpointPackage.TOOL_SECTION_INSTANCE__TOOLS:
             getTools().clear();
             return;
-        case ViewpointPackage.TOOL_SECTION_INSTANCE__GROUPS:
-            getGroups().clear();
-            return;
         case ViewpointPackage.TOOL_SECTION_INSTANCE__SECTION:
             setSection((EObject) null);
             return;
@@ -286,8 +249,6 @@ public class ToolSectionInstanceImpl extends ToolInstanceImpl implements ToolSec
         switch (featureID) {
         case ViewpointPackage.TOOL_SECTION_INSTANCE__TOOLS:
             return tools != null && !tools.isEmpty();
-        case ViewpointPackage.TOOL_SECTION_INSTANCE__GROUPS:
-            return groups != null && !groups.isEmpty();
         case ViewpointPackage.TOOL_SECTION_INSTANCE__SECTION:
             return section != null;
         case ViewpointPackage.TOOL_SECTION_INSTANCE__SUB_SECTIONS:

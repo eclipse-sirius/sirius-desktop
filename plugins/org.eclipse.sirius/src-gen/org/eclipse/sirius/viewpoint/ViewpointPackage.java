@@ -1605,21 +1605,12 @@ public interface ViewpointPackage extends EPackage {
     int TOOL_SECTION_INSTANCE__TOOLS = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Groups</b></em>' containment reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int TOOL_SECTION_INSTANCE__GROUPS = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 1;
-
-    /**
      * The feature id for the '<em><b>Section</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int TOOL_SECTION_INSTANCE__SECTION = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 2;
+    int TOOL_SECTION_INSTANCE__SECTION = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Sub Sections</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -1628,7 +1619,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TOOL_SECTION_INSTANCE__SUB_SECTIONS = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 3;
+    int TOOL_SECTION_INSTANCE__SUB_SECTIONS = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Tool Section Instance</em>' class. <!-- begin-user-doc --> <!--
@@ -1637,7 +1628,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TOOL_SECTION_INSTANCE_FEATURE_COUNT = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 4;
+    int TOOL_SECTION_INSTANCE_FEATURE_COUNT = ViewpointPackage.TOOL_INSTANCE_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.FontFormat <em>Font Format</em>}' enum. <!--
@@ -2671,18 +2662,6 @@ public interface ViewpointPackage extends EPackage {
     EReference getToolSectionInstance_Tools();
 
     /**
-     * Returns the meta object for the containment reference list
-     * '{@link org.eclipse.sirius.viewpoint.ToolSectionInstance#getGroups <em>Groups</em>}'. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference list '<em>Groups</em>'.
-     * @see org.eclipse.sirius.viewpoint.ToolSectionInstance#getGroups()
-     * @see #getToolSectionInstance()
-     * @generated
-     */
-    EReference getToolSectionInstance_Groups();
-
-    /**
      * Returns the meta object for the reference '{@link org.eclipse.sirius.viewpoint.ToolSectionInstance#getSection
      * <em>Section</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -3563,14 +3542,6 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EReference TOOL_SECTION_INSTANCE__TOOLS = ViewpointPackage.eINSTANCE.getToolSectionInstance_Tools();
-
-        /**
-         * The meta object literal for the '<em><b>Groups</b></em>' containment reference list feature. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         *
-         * @generated
-         */
-        EReference TOOL_SECTION_INSTANCE__GROUPS = ViewpointPackage.eINSTANCE.getToolSectionInstance_Groups();
 
         /**
          * The meta object literal for the '<em><b>Section</b></em>' reference feature. <!-- begin-user-doc --> <!--
