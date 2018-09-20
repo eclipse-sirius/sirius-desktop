@@ -97,7 +97,7 @@
     <repository
         url="http://download.eclipse.org/technology/swtbot/releases/2.1.1"/>
     <repository
-        url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/"/>
+        url="https://dl.bintray.com/mbarbero/fr.obeo.releng.targetplatform/latest/"/>
     <repository
         url="https://dl.bintray.com/eclipse-cs/eclipse-cs/7.6.0/"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
