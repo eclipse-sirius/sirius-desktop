@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -33,6 +35,8 @@ import org.eclipse.core.commands.operations.IOperationHistory;
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.core.commands.operations.IUndoableOperation;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.Adapters;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
@@ -496,6 +500,7 @@ public class SiriusDebugView extends AbstractDebugView {
         // addDeferredChangeAction();
         // addDeferredUnrelatedChangeAction();
         addListProxiesAction();
+        addLoadResourceAction();
     }
 
     private void addListProxiesAction() {
@@ -538,6 +543,48 @@ public class SiriusDebugView extends AbstractDebugView {
         } else {
             return Optional.empty();
         }
+    }
+
+    private void addLoadResourceAction() {
+        addAction("Load EMF resource", new Runnable() {
+            @Override
+            public void run() {
+                IFile input = Adapters.adapt(selection, IFile.class);
+                if (input != null) {
+                    URI uri = URI.createPlatformResourceURI(input.getFullPath().toString(), true);
+                    ResourceSet rs = new ResourceSetImpl();
+                    Resource res = rs.createResource(uri);
+                    long loadTime = time(() -> {
+                        try {
+                            res.load(Collections.emptyMap());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    long copyTime = time(() -> {
+                        for (EObject root : res.getContents()) {
+                            EcoreUtil.copy(root);
+                        }
+                    });
+                    long sizeBytes = new File(input.getRawLocation().toString()).length();
+                    AtomicLong sizeElements = new AtomicLong();
+                    res.getAllContents().forEachRemaining(o -> sizeElements.incrementAndGet());
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("File: ").append(input.getFullPath().toString()).append("\n");
+                    sb.append("File size: ").append((sizeBytes / 1024) + "kiB\n");
+                    sb.append("Number of EObjects: ").append(sizeElements).append("\n");
+                    sb.append("EMF Resource load time: ").append(TimeUnit.NANOSECONDS.toMillis(loadTime)).append("ms\n");
+                    sb.append("EMF copy time: ").append(TimeUnit.NANOSECONDS.toMillis(copyTime)).append("ms\n");
+                    setText(sb.toString());
+                }
+            }
+        });
+    }
+
+    private long time(Runnable r) {
+        long start = System.nanoTime();
+        r.run();
+        return System.nanoTime() - start;
     }
 
     private void addDeferredChangeAction() {
