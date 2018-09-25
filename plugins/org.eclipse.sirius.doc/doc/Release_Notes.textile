@@ -4,6 +4,10 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.0.2). Changes in Sirius 6.0.2
+
+Sirius 6.0.2 fixes an "important issue":https://bugs.eclipse.org/bugs/show_bug.cgi?id=539333 which is present in all previous versions of Sirius but only manifests itself under Windows and when using Eclipse SimRel 2018-09 or later (technically, the bug appear when using Sirius with JFace 3.14.100 or later). The symptom is that the _Model Explorer_ view fails to initialize with an error message about a @ClassCastException@.
+
 h2(#sirius6.0.1). Changes in Sirius 6.0.1
 
 Sirius 6.0.1 is a service release which contains only important bug fixes compared to version 6.0.0.
