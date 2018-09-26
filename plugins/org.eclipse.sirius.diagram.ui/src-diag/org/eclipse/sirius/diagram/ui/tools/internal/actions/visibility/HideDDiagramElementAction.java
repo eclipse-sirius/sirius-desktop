@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,8 +57,7 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
 /**
- * Hide a {@link DDiagramElement} on a
- * {@link org.eclipse.sirius.diagram.DDiagram}.
+ * Hide a {@link DDiagramElement} on a {@link org.eclipse.sirius.diagram.DDiagram}.
  * 
  * @author cbrun
  * 
@@ -150,8 +149,9 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
             }
 
             if (!ddes.isEmpty()) {
-                Predicate<DDiagramElement> allowsHideReveal = allowsHideReveal(ddes.iterator().next().getParentDiagram());
-                return Iterables.all(ddes, allowsHideReveal);
+                DDiagram parentDiagram = ddes.iterator().next().getParentDiagram();
+                Predicate<DDiagramElement> allowsHideReveal = allowsHideReveal(parentDiagram);
+                return Iterables.all(ddes, allowsHideReveal) && !parentDiagram.isIsInShowingMode();
             }
 
         }
@@ -275,8 +275,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
      * 
      * @param diagram
      *            the diagram to inspect
-     * @return true if the given ddiagram is allowing layouting mode, false
-     *         otherwise
+     * @return true if the given ddiagram is allowing layouting mode, false otherwise
      */
     public static Predicate<DDiagramElement> allowsHideReveal(DDiagram diagram) {
         // default return value is true for non-Region element (for basic
